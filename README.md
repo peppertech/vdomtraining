@@ -1,7 +1,7 @@
 # Oracle JET VDOM training sample app
 Example code for learning Oracle JET Virtual DOM Architecture based applications.
 
-This project is developed for using with the Oracle JavaScript Extension Toolkit(JET) coding environment.
+This project is developed for use with the Oracle JavaScript Extension Toolkit(JET) coding environment.
 
 ## Installation
 
