@@ -1,22 +1,10 @@
 import { h, Fragment, FunctionalComponent } from "preact";
 import { useState } from "preact/hooks";
 import "ojs/ojbutton";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../../store";
 
 /** Trivial functional components used for demo purposes only **/
 function Page1() {
-  // const count = useSelector<RootState>((state) => state.count);
-  // const dispatch = useDispatch();
-  return (
-    <div>
-      {/* <div>This is Page 1 content, the count is {count}</div> */}
-      <div>
-        {/* <button onClick={() => dispatch({ type: "INCREMENT_COUNTER" })}>Increment</button> */}
-        {/* <button onClick={() => dispatch({ type: "DECREMENT_COUNTER" })}>Decrement</button> */}
-      </div>
-    </div>
-  );
+  return <div>This is Page 1 content</div>;
 }
 function Page2() {
   return <div>This is Page 2 content</div>;
