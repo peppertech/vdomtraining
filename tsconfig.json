@@ -1,0 +1,43 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "module": "amd",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "lib": [
+      "es2015",
+      "dom",
+      "esnext.asynciterable",
+      "ESNext.String"
+    ],
+    "typeRoots": [
+      "./node_modules/@oracle/oraclejet/dist/types",
+      "./node_modules/@types"
+    ],
+    "paths": {
+      "ojs/*": [
+        "./node_modules/@oracle/oraclejet/dist/types/*"
+      ],
+      "react": [
+        "./node_modules/preact/compat/src/index.d.ts"
+      ],
+      "react-dom": [
+        "./node_modules/preact/compat/src/index.d.ts"
+      ],
+      "my-test/*": [
+        "./src/./components/my-test/*"
+      ]
+    },
+    "declaration": true,
+    "noEmitOnError": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}

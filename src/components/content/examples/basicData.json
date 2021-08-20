@@ -1,0 +1,62 @@
+[
+	{
+		"id": 0,
+		"series": "Series 1",
+		"group": "Group A",
+		"value": 42
+	},
+	{
+		"id": 1,
+		"series": "Series 1",
+		"group": "Group B",
+		"value": 34
+	},
+	{
+		"id": 2,
+		"series": "Series 2",
+		"group": "Group A",
+		"value": 55
+	},
+	{
+		"id": 3,
+		"series": "Series 2",
+		"group": "Group B",
+		"value": 30
+	},
+	{
+		"id": 4,
+		"series": "Series 3",
+		"group": "Group A",
+		"value": 36
+	},
+	{
+		"id": 5,
+		"series": "Series 3",
+		"group": "Group B",
+		"value": 50
+	},
+	{
+		"id": 6,
+		"series": "Series 4",
+		"group": "Group A",
+		"value": 22
+	},
+	{
+		"id": 7,
+		"series": "Series 4",
+		"group": "Group B",
+		"value": 46
+	},
+	{
+		"id": 8,
+		"series": "Series 5",
+		"group": "Group A",
+		"value": 22
+	},
+	{
+		"id": 9,
+		"series": "Series 5",
+		"group": "Group B",
+		"value": 46
+	}
+]
