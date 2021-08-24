@@ -16,4 +16,4 @@ This project is developed for use with the Oracle JavaScript Extension Toolkit(J
 
 
 ## Additional Resources
-As series of videos using this sample project, are available from this [YouTube playlist](https://www.youtube.com/playlist?list=PLnADbF0cZL0DiIzNQmRJJ950mStthbpbR)
+A series of videos using this sample project, are available from this [YouTube playlist](https://www.youtube.com/playlist?list=PLnADbF0cZL0DiIzNQmRJJ950mStthbpbR)
