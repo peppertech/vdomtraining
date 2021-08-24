@@ -13,7 +13,7 @@ import * as peopleData from "text!./peopleData.json";
 import { ojButton } from "ojs/ojbutton";
 import { ojCheckboxset } from "ojs/ojcheckboxset";
 
-let buyers: Array<object> = [];
+const buyers: Array<object> = [];
 
 type Buyer = {
   id: number;
@@ -34,7 +34,7 @@ JSON.parse(peopleData).map((item: Person) => {
   buyers.push({ id: item.id, value: item.name, label: item.name });
 });
 
-let buyerData = new MutableArrayDataProvider<Buyer["value"], Buyer>(buyers, {
+const buyerData = new MutableArrayDataProvider<Buyer["value"], Buyer>(buyers, {
   keyAttributes: "value"
 });
 
@@ -80,11 +80,7 @@ export const FormElements: FunctionalComponent = () => {
   const handleAgreement = (
     event: ojCheckboxset.valueChanged<string, Array<string>, Array<string>>
   ) => {
-    if (event.detail.updatedFrom === "internal") {
-      event.detail.value.length < 1
-        ? setIsDisabled(true)
-        : setIsDisabled(false);
-    }
+    event.detail.value.length < 1 ? setIsDisabled(true) : setIsDisabled(false);
   };
 
   return (
