@@ -5,7 +5,7 @@ This project is developed for use with the Oracle JavaScript Extension Toolkit(J
 
 ## Prerequisites
   * JET v13 or higher is required for this project to work.
-  * Nodejs v16 LTS or higher LTS is required.  Nodejs nightly releases may not work correctly. 
+  * Nodejs v16.9.1 LTS or higher LTS is required.  Nodejs nightly releases may not work correctly. 
 
 ## Installation
 
