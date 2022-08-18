@@ -3,17 +3,19 @@
   "version": "1.0.0",
   "description": "An Oracle JavaScript Extension Toolkit(JET) web app",
   "dependencies": {
-    "@oracle/oraclejet": "~11.0.0",
+    "@oracle/oraclejet": "~13.0.0",
+    "@oracle/oraclejet-tooling": "~13.0.0",
     "react-redux": "^7.2.4",
     "redux": "^4.1.1"
   },
   "devDependencies": {
-    "@oracle/oraclejet-tooling": "~11.0.0",
     "css-loader": "^5.2.6",
     "style-loader": "^3.0.0",
     "text-loader": "0.0.1",
-    "typescript": "~4.2.4",
-    "webpack": "5.44.0"
+    "ts-creator": "1.2.5",
+    "typescript": "4.6.4",
+    "webpack": "5.44.0",
+    "yargs-parser": "13.1.2"
   },
   "engines": {
     "node": ">=12.0.0"

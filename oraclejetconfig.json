@@ -21,7 +21,7 @@
   "sassVer": "5.0.0",
   "defaultTheme": "redwood",
   "architecture": "vdom",
-  "generatorVersion": "11.0.1",
+  "generatorVersion": "13.0.0",
   "bundler": "webpack",
   "bundleName": "bundle.js"
 }
