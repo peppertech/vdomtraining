@@ -1,4 +1,4 @@
-import { h, FunctionalComponent, ComponentProps } from "preact";
+import { h, FunctionalComponent, ComponentProps, createRef } from "preact";
 import { useState } from "preact/hooks";
 import * as NumberConverter from "ojs/ojconverter-number";
 import * as ConverterUtilsI18n from "ojs/ojconverterutils-i18n";
@@ -9,8 +9,10 @@ import "ojs/ojformlayout";
 import "ojs/ojinputtext";
 import "ojs/ojdatetimepicker";
 import "ojs/ojselectsingle";
+import "ojs/ojdialog";
 import * as peopleData from "text!./peopleData.json";
 import { ojButton } from "ojs/ojbutton";
+import { ojDialog } from "ojs/ojdialog";
 import { ojCheckboxset } from "ojs/ojcheckboxset";
 
 const buyers: Array<object> = [];
@@ -35,19 +37,19 @@ JSON.parse(peopleData).map((item: Person) => {
 });
 
 const buyerData = new MutableArrayDataProvider<Buyer["value"], Buyer>(buyers, {
-  keyAttributes: "value"
+  keyAttributes: "value",
 });
 
 // Converter and oj-input-text configurations variables
 const hintDefinition: InputTextProps["helpHints"] = {
-  definition: "cost of a single item"
+  definition: "cost of a single item",
 };
 const placeholder: InputTextProps["placeholder"] = "Enter item cost";
 const lblHint: InputTextProps["labelHint"] = "Item Cost";
 const eurNumberConverter = new NumberConverter.IntlNumberConverter({
   style: "currency",
   currency: "EUR",
-  currencyDisplay: "symbol"
+  currencyDisplay: "symbol",
 });
 let value: string = "598.42";
 let name: string = "Kopi Luwak beans (2 lbs)";
@@ -60,22 +62,28 @@ export const FormElements: FunctionalComponent = () => {
     itemName: name,
     itemBuyer: "",
     itemCost: value,
-    salesDate: valDateTime
+    salesDate: valDateTime,
   });
 
   const [isDisabled, setIsDisabled] = useState(true);
 
+  const dialogRef = createRef();
   const onChange = (event) => {
     setFormData({
       ...formData,
-      [event.currentTarget.id]: event.detail.value
+      [event.currentTarget.id]: event.detail.value,
     });
   };
 
   const onSubmit = (event: ojButton.ojAction) => {
     event.preventDefault();
+    (dialogRef.current as ojDialog).open();
     console.log("formData: " + JSON.stringify(formData));
   };
+
+  const close = () => {
+    (dialogRef.current as ojDialog).close();
+  }
 
   const handleAgreement = (
     event: ojCheckboxset.valueChanged<string, Array<string>, Array<string>>
@@ -84,46 +92,66 @@ export const FormElements: FunctionalComponent = () => {
   };
 
   return (
-    <oj-form-layout columns={1} class="oj-md-margin-4x-horizontal">
-      <oj-input-text
-        id="itemName"
-        value={formData.itemName}
-        labelHint="Name"
-        onvalueChanged={onChange}>
-        <span
-          slot="end"
-          class="oj-text-field-start-end-icon oj-ux-ico-coffee oj-sm-margin-4x-end"
-          role="presentation"></span>
-      </oj-input-text>
-      <oj-input-text
-        id="itemCost"
-        value={formData.itemCost}
-        placeholder={placeholder}
-        labelHint={lblHint}
-        helpHints={hintDefinition}
-        onvalueChanged={onChange}
-        converter={eurNumberConverter}></oj-input-text>
-      <oj-input-date-time
-        id="salesDate"
-        value={formData.salesDate}
-        labelHint="Purchase date"
-        onvalueChanged={onChange}></oj-input-date-time>
-      <oj-select-single
-        id="itemBuyer"
-        labelHint="Buyer"
-        data={buyerData}
-        value={formData.itemBuyer}
-        onvalueChanged={onChange}></oj-select-single>
-      <oj-checkboxset
-        id="checkboxSetAgreeId"
-        labelHint="Everything is correct?"
-        labelEdge="inside"
-        onvalueChanged={handleAgreement}>
-        <oj-option value={"agree"}>I Agree</oj-option>
-      </oj-checkboxset>
-      <oj-button onojAction={onSubmit} disabled={isDisabled}>
-        Send this stuff
-      </oj-button>
-    </oj-form-layout>
+    <div>
+      <oj-form-layout columns={1} class="oj-md-margin-4x-horizontal">
+        <oj-input-text
+          id="itemName"
+          value={formData.itemName}
+          labelHint="Name"
+          onvalueChanged={onChange}
+        >
+          <span
+            slot="end"
+            class="oj-text-field-start-end-icon oj-ux-ico-coffee oj-sm-margin-4x-end"
+            role="presentation"
+          ></span>
+        </oj-input-text>
+        <oj-input-text
+          id="itemCost"
+          value={formData.itemCost}
+          placeholder={placeholder}
+          labelHint={lblHint}
+          helpHints={hintDefinition}
+          onvalueChanged={onChange}
+          converter={eurNumberConverter}
+        ></oj-input-text>
+        <oj-input-date-time
+          id="salesDate"
+          value={formData.salesDate}
+          labelHint="Purchase date"
+          onvalueChanged={onChange}
+        ></oj-input-date-time>
+        <oj-select-single
+          id="itemBuyer"
+          labelHint="Buyer"
+          data={buyerData}
+          value={formData.itemBuyer}
+          onvalueChanged={onChange}
+        ></oj-select-single>
+        <oj-checkboxset
+          id="checkboxSetAgreeId"
+          labelHint="Everything is correct?"
+          labelEdge="inside"
+          onvalueChanged={handleAgreement}
+        >
+          <oj-option value={"agree"}>I Agree</oj-option>
+        </oj-checkboxset>
+        <oj-button onojAction={onSubmit} disabled={isDisabled}>
+          Send this stuff
+        </oj-button>
+      </oj-form-layout>
+      <oj-dialog ref={dialogRef} dialogTitle="Form Data Submitted">
+        <div slot="body">
+          <p id="desc">
+            {JSON.stringify(formData)}
+          </p>
+        </div>
+        <div slot="footer">
+          <oj-button id="okButton" onojAction={close}>
+            OK
+          </oj-button>
+        </div>
+      </oj-dialog>
+    </div>
   );
 };

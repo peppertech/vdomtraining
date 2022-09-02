@@ -5,14 +5,12 @@
     "target": "es6",
     "module": "amd",
     "moduleResolution": "node",
-    "jsx": "react",
-    "jsxFactory": "h",
-    "jsxFragmentFactory": "Fragment",
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
     "lib": [
-      "es2015",
+      "es2021",
       "dom",
-      "esnext.asynciterable",
-      "ESNext.String"
+      "esnext.asynciterable"
     ],
     "typeRoots": [
       "./node_modules/@oracle/oraclejet/dist/types",
@@ -22,14 +20,14 @@
       "ojs/*": [
         "./node_modules/@oracle/oraclejet/dist/types/*"
       ],
-      "react": [
-        "./node_modules/preact/compat/src/index.d.ts"
+      "@oracle/oraclejet-preact/*": [
+        "./node_modules/@oracle/oraclejet/dist/js/libs/oraclejet-preact/types/*"
       ],
-      "react-dom": [
-        "./node_modules/preact/compat/src/index.d.ts"
+      "oj-c/*": [
+        "./node_modules/@oracle/oraclejet-core-pack/oj-c/types/*"
       ],
-      "my-test/*": [
-        "./src/./components/my-test/*"
+      "preact": [
+        "./node_modules/@oracle/oraclejet/dist/js/libs/preact"
       ]
     },
     "declaration": true,

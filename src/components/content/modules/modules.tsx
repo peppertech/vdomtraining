@@ -10,7 +10,7 @@ function Page1() {
   // const dispatch = useDispatch();
   return (
     <div>
-      {/* <div>This is Page 1 content, the count is {count}</div> */}
+      <div>This is Page 1 content</div>
       <div>
         {/* <button onClick={() => dispatch({ type: "INCREMENT_COUNTER" })}>Increment</button> */}
         {/* <button onClick={() => dispatch({ type: "DECREMENT_COUNTER" })}>Decrement</button> */}

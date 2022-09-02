@@ -1,2 +1,3 @@
-import "preact/debug";
+// injector:preactDebugImport
+// endinjector
 import './components/app';
