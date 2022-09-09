@@ -14,6 +14,7 @@ import * as peopleData from "text!./peopleData.json";
 import { ojButton } from "ojs/ojbutton";
 import { ojDialog } from "ojs/ojdialog";
 import { ojCheckboxset } from "ojs/ojcheckboxset";
+import { ojFormLayout } from "ojs/ojformlayout";
 
 const buyers: Array<object> = [];
 
@@ -35,6 +36,8 @@ type InputTextProps = ComponentProps<"oj-input-text">;
 JSON.parse(peopleData).map((item: Person) => {
   buyers.push({ id: item.id, value: item.name, label: item.name });
 });
+
+type FormLayoutProps = ComponentProps<'oj-form-layout'>;
 
 const buyerData = new MutableArrayDataProvider<Buyer["value"], Buyer>(buyers, {
   keyAttributes: "value",
@@ -66,6 +69,7 @@ export const FormElements: FunctionalComponent = () => {
   });
 
   const [isDisabled, setIsDisabled] = useState(true);
+  const [density, setDensity] = useState<FormLayoutProps['userAssistanceDensity']>('efficient');
 
   const dialogRef = createRef();
   const onChange = (event) => {
@@ -83,7 +87,7 @@ export const FormElements: FunctionalComponent = () => {
 
   const close = () => {
     (dialogRef.current as ojDialog).close();
-  }
+  };
 
   const handleAgreement = (
     event: ojCheckboxset.valueChanged<string, Array<string>, Array<string>>
@@ -93,7 +97,7 @@ export const FormElements: FunctionalComponent = () => {
 
   return (
     <div>
-      <oj-form-layout columns={1} class="oj-md-margin-4x-horizontal">
+      <oj-form-layout userAssistanceDensity={density} labelEdge="inside" columns={1} class="oj-md-margin-4x-horizontal">
         <oj-input-text
           id="itemName"
           value={formData.itemName}
@@ -142,9 +146,27 @@ export const FormElements: FunctionalComponent = () => {
       </oj-form-layout>
       <oj-dialog ref={dialogRef} dialogTitle="Form Data Submitted">
         <div slot="body">
-          <p id="desc">
-            {JSON.stringify(formData)}
-          </p>
+          <oj-form-layout id="desc">
+            <oj-input-text
+              id="finalName"
+              readonly
+              value={formData.itemName}
+              labelHint="Name"
+            ></oj-input-text>
+            <oj-input-text
+              id="finalPrice"
+              readonly
+              value={formData.itemCost}
+              labelHint="Price"
+              converter={eurNumberConverter}
+            ></oj-input-text>
+            <oj-input-date-time
+              id="salesDate"
+              value={formData.salesDate}
+              labelHint="Purchase date"
+              readonly
+            ></oj-input-date-time>
+          </oj-form-layout>
         </div>
         <div slot="footer">
           <oj-button id="okButton" onojAction={close}>
