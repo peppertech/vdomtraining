@@ -9,11 +9,10 @@ This project is developed for use with the Oracle JavaScript Extension Toolkit(J
 
 ## Installation
 
-* Install JET CLI ( *npm i -g @oracle/ojet-cli* )
 * Clone project
 * Change to the root directory of the project
-* run *ojet restore*
-* run *ojet serve*
+* run *npx @oracle/ojet-cli restore*
+* run *npm run serve*
 
 
 ## Additional Resources
