@@ -17,3 +17,5 @@ hybrid/plugins/*
 
 .DS_Store
 Thumbs.db
+settings.json
+package-lock.json
