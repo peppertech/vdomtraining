@@ -20,5 +20,11 @@
   "engines": {
     "node": ">=12.0.0"
   },
-  "private": true
+  "private": true,
+  "scripts": {
+    "build": "npx @oracle/ojet-cli@13.0.0 build",
+    "serve": "npx @oracle/ojet-cli@13.0.0 serve",
+    "strip": "npx @oracle/ojet-cli@13.0.0 strip",
+    "restore": "npx @oracle/ojet-cli@13.0.0 restore"
+  }
 }
