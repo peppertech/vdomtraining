@@ -15,31 +15,31 @@ export class ExampleContent extends Component {
         <hr />
         <div class="oj-flex">
           <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12 oj-md-6">
-            <h3 class="oj-typography-heading-xs"> Table </h3>
+            <h2 class="oj-typography-heading-sm"> Table </h2>
             <Table />
           </div>
           <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12 oj-md-6">
-            <h3 class="oj-typography-heading-xs"> ListView </h3>
+            <h2 class="oj-typography-heading-sm"> ListView </h2>
             <ListView />
           </div>
           <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12 oj-md-6">
-            <h3 class="oj-typography-heading-xs"> Form Elements </h3>
+            <h2 class="oj-typography-heading-sm"> Form Elements </h2>
             <FormElements />
           </div>
           <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12 oj-md-6">
-            <h3 class="oj-typography-heading-xs"> Chart </h3>
+            <h2 class="oj-typography-heading-sm"> Chart </h2>
             <Chart />
           </div>
           <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12 oj-md-6">
-            <h3 class="oj-typography-heading-xs"> Treeview </h3>
+            <h2 class="oj-typography-heading-sm"> Treeview </h2>
             <Treeview />
           </div>
           <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12 oj-md-6">
-            <h3 class="oj-typography-heading-xs"> Standalone Legend </h3>
+            <h2 class="oj-typography-heading-sm"> Standalone Legend </h2>
             <Legend />
           </div>
           <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12 oj-md-6">
-            <h3 class="oj-typography-heading-xs"> DataGrid </h3>
+            <h2 class="oj-typography-heading-sm"> DataGrid </h2>
             <DataGrid />
           </div>
         </div>

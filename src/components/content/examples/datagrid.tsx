@@ -1,13 +1,10 @@
-import { h, FunctionalComponent, ComponentProps } from "preact";
+import { h, ComponentProps } from "preact";
 import { useState } from "preact/hooks";
-import "ojs/ojbutton";
 import "ojs/ojdatagrid";
-import "ojs/ojmenu";
 import { ojDataGrid } from "ojs/ojdatagrid";
 import * as popData from "text!./population.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { RowDataGridProvider } from "ojs/ojrowdatagridprovider";
-import {Item} from "ojs/ojdataprovider";
 
 type States = {
   states: string;
@@ -18,17 +15,12 @@ const populationData = JSON.parse(popData);
 const mutableArrayDataProvider = new MutableArrayDataProvider<string, States>(
   populationData
 );
-const getColumnHeaderStyle = (headerContext) => {
-  if (headerContext.index === 0) {
-    return 'width: 165px;';
-  }
-};
+
 const getColumnHeaderClassName = (
   headerContext: ojDataGrid.HeaderContext<number, string | number>
 ) => {
   return getAlignmentClassNameByIndex(headerContext.index);
 };
-
 const getCellClassName = (
   cellContext: ojDataGrid.CellContext<number, string | number>
 ) => {
@@ -36,9 +28,7 @@ const getCellClassName = (
 };
 
 const getAlignmentClassNameByIndex = (index: number) => {
-  if (index === 0) {
-    return 'oj-sm-justify-content-flex-start oj-sm-text-align-start';
-  }
+
 };
 
 type DataGridProps = ComponentProps<"oj-data-grid">;
@@ -51,7 +41,6 @@ const cellStyle: DataGridProps["cell"] = {
 // typing is a bit messed up here.  To many required properties. Need to file a bug for this.
 const headerStyle: DataGridProps["header"] = {
   column:{
-    style: getColumnHeaderStyle,
     className:getColumnHeaderClassName,
     resizable:{
       height:'disable'
@@ -66,6 +55,7 @@ const headerStyle: DataGridProps["header"] = {
   },
   row:{
     label:{},
+    style:'width:165px',
     resizable:{
       width:'disable'
     }
@@ -78,42 +68,32 @@ const headerStyle: DataGridProps["header"] = {
   }
 }
 
-
-let columns:any;
-
 const dataGridDP = new RowDataGridProvider<string | number, string, States>(
   mutableArrayDataProvider,
   {
     columns: {
-      databody: (item: Item<string, States>) => {
-        // Show States First
-        let keys = Object.keys(item.data);
-        keys.splice(keys.indexOf("states"), 1);
-        keys.unshift("states");
-        columns = keys;
-        return keys;
-      },
+      rowHeader:['states']
     },
     columnHeaders: {
-      column: () => {
-        let returnVal = columns.slice();
-        returnVal[0] = "States";
-        return returnVal;
-      }
+      column: "attributeName"
+    },
+    headerLabels: {
+      column:['Years'],
+      row:['States']
     }
   }
 );
 
-export const DataGrid: FunctionalComponent = () => {
+export const DataGrid = () => {
   const [dataGridProvider, setDataGridProvider] = useState(dataGridDP);
-
 
   return (
     <div class="oj-md-margin-4x-horizontal">
+      <h3 id="dataGridLabel" class="oj-typography-heading-xs">State Population by Year</h3>
       <oj-data-grid
         id="datagrid"
         class="demo-data-grid"
-        aria-label="Data Grid Layout Demo" 
+        aria-labelledby="dataGridLabel" 
         header={headerStyle}
         cell={cellStyle}
         data={dataGridProvider}></oj-data-grid>
