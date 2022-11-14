@@ -5,6 +5,7 @@ import { Table } from "./table";
 import { Treeview } from "./treeview";
 import { ListView } from "./listview";
 import { Legend } from "./legend";
+import { DataGrid } from "./datagrid";
 
 export class ExampleContent extends Component {
   render(): ComponentChild {
@@ -36,6 +37,10 @@ export class ExampleContent extends Component {
           <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12 oj-md-6">
             <h3 class="oj-typography-heading-xs"> Standalone Legend </h3>
             <Legend />
+          </div>
+          <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12 oj-md-6">
+            <h3 class="oj-typography-heading-xs"> DataGrid </h3>
+            <DataGrid />
           </div>
         </div>
       </div>

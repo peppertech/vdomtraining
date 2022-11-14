@@ -17,3 +17,8 @@
   max-width: 400px;
   overflow-wrap: break-word;
 }
+.demo-data-grid {
+  width: 100%;
+  min-height: 25rem;
+  height: calc(50vh - 0.625rem);
+}

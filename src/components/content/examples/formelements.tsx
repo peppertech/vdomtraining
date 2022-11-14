@@ -1,5 +1,5 @@
-import { h, FunctionalComponent, ComponentProps, createRef } from "preact";
-import { useState } from "preact/hooks";
+import { h, FunctionalComponent, ComponentProps} from "preact";
+import { useState, useRef } from "preact/hooks";
 import * as NumberConverter from "ojs/ojconverter-number";
 import * as ConverterUtilsI18n from "ojs/ojconverterutils-i18n";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
@@ -71,7 +71,7 @@ export const FormElements: FunctionalComponent = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [density, setDensity] = useState<FormLayoutProps['userAssistanceDensity']>('efficient');
 
-  const dialogRef = createRef();
+  const dialogRef = useRef<ojDialog>(null);
   const onChange = (event) => {
     setFormData({
       ...formData,
@@ -81,12 +81,12 @@ export const FormElements: FunctionalComponent = () => {
 
   const onSubmit = (event: ojButton.ojAction) => {
     event.preventDefault();
-    (dialogRef.current as ojDialog).open();
+    dialogRef.current.open();
     console.log("formData: " + JSON.stringify(formData));
   };
 
   const close = () => {
-    (dialogRef.current as ojDialog).close();
+    dialogRef.current.close();
   };
 
   const handleAgreement = (
