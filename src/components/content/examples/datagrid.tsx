@@ -27,76 +27,76 @@ const getCellClassName = (
   return getAlignmentClassNameByIndex(cellContext.indexes.column);
 };
 
-const getAlignmentClassNameByIndex = (index: number) => {
-
-};
+const getAlignmentClassNameByIndex = (index: number) => {};
 
 type DataGridProps = ComponentProps<"oj-data-grid">;
 
-
 const cellStyle: DataGridProps["cell"] = {
-  className: getCellClassName
-}
+  className: getCellClassName,
+};
 
 // typing is a bit messed up here.  To many required properties. Need to file a bug for this.
 const headerStyle: DataGridProps["header"] = {
-  column:{
-    className:getColumnHeaderClassName,
-    resizable:{
-      height:'disable'
+  column: {
+    className: getColumnHeaderClassName,
+    resizable: {
+      height: "disable",
     },
-    label:{}
+    label: {},
   },
-  columnEnd:{
-    label:{},
-    resizable:{
-      height:'disable'
-    }
+  columnEnd: {
+    label: {},
+    resizable: {
+      height: "disable",
+    },
   },
-  row:{
-    label:{},
-    style:'width:165px',
-    resizable:{
-      width:'disable'
-    }
+  row: {
+    label: {},
+    style: "width:165px",
+    resizable: {
+      width: "disable",
+    },
   },
-  rowEnd:{
-    label:{},
-    resizable:{
-      width:'disable'
-    }
-  }
-}
+  rowEnd: {
+    label: {},
+    resizable: {
+      width: "disable",
+    },
+  },
+};
 
 const dataGridDP = new RowDataGridProvider<string | number, string, States>(
   mutableArrayDataProvider,
   {
     columns: {
-      rowHeader:['states']
+      rowHeader: ["states"],
     },
     columnHeaders: {
-      column: "attributeName"
+      column: "attributeName",
     },
     headerLabels: {
-      column:['Years'],
-      row:['States']
-    }
+      column: ["Years"],
+      row: ["States"],
+    },
   }
 );
 
-export const DataGrid = () => {
+const DataGrid = () => {
   const [dataGridProvider, setDataGridProvider] = useState(dataGridDP);
 
   return (
     <div class="oj-md-margin-4x-horizontal">
-      <h3 id="dataGridLabel" class="oj-typography-heading-xs">State Population by Year</h3>
+      <h3 id="dataGridLabel" class="oj-typography-heading-xs">
+        State Population by Year
+      </h3>
       <oj-data-grid
         id="datagrid"
         class="demo-data-grid"
-        aria-labelledby="dataGridLabel" 
+        aria-labelledby="dataGridLabel"
         header={headerStyle}
         cell={cellStyle}
         data={dataGridProvider}></oj-data-grid>
     </div>
   );
 };
+export default DataGrid;

@@ -1,8 +1,7 @@
-import { h, FunctionalComponent } from "preact";
+import { h } from "preact";
 import "ojs/ojlegend";
 import { ColorAttributeGroupHandler } from "ojs/ojattributegrouphandler";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { ojLegend } from "ojs/ojlegend";
 
 type TlegendItem = {
   fruit: string;
@@ -13,13 +12,13 @@ const fruits = [
   { fruit: "Kiwis" },
   { fruit: "Bananas" },
   { fruit: "Apples" },
-  { fruit: "Grapes" }
+  { fruit: "Grapes" },
 ];
 const dataProvider: MutableArrayDataProvider<
   TlegendItem["fruit"],
   TlegendItem
 > = new MutableArrayDataProvider(fruits, {
-  keyAttributes: "fruit"
+  keyAttributes: "fruit",
 });
 
 const colorHandler = new ColorAttributeGroupHandler();
@@ -39,7 +38,7 @@ const renderLegendItem = (item) => {
   }
 };
 
-export const Legend: FunctionalComponent = () => {
+const Legend = () => {
   return (
     <div class="oj-md-margin-4x-horizontal">
       <oj-legend
@@ -53,3 +52,4 @@ export const Legend: FunctionalComponent = () => {
     </div>
   );
 };
+export default Legend;

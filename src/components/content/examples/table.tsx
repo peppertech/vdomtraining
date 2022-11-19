@@ -1,4 +1,4 @@
-import { h, FunctionalComponent, ComponentProps } from "preact";
+import { h, ComponentProps } from "preact";
 import "ojs/ojbutton";
 import "ojs/ojtable";
 import "ojs/ojmenu";
@@ -17,15 +17,15 @@ type Dept = {
 type TableProps = ComponentProps<"oj-table">;
 
 const setColumnsDefault: TableProps["columnsDefault"] = {
-  sortable: "disabled"
+  sortable: "disabled",
 };
 const setSelectionMode: TableProps["selectionMode"] = {
   row: "multiple",
-  column: "multiple"
+  column: "multiple",
 };
 const setScrollPolicy: TableProps["scrollPolicyOptions"] = {
   fetchSize: 10,
-  maxCount: 500
+  maxCount: 500,
 };
 
 const columnsDef: TableProps["columns"] = [
@@ -35,29 +35,31 @@ const columnsDef: TableProps["columns"] = [
     headerClassName: "oj-sm-only-hide",
     className: "oj-sm-only-hide",
     resizable: "enabled",
-    sortable: "enabled"
+    sortable: "enabled",
   },
   {
     headerText: "Department Name",
     field: "DepartmentName",
-    resizable: "enabled"
+    resizable: "enabled",
   },
   {
     headerText: "Location Id",
     field: "LocationId",
     headerClassName: "oj-sm-only-hide",
     className: "oj-sm-only-hide",
-    resizable: "enabled"
+    resizable: "enabled",
   },
   { headerText: "Manager Id", field: "ManagerId", resizable: "enabled" },
-  { headerText: "Action", resizable: "disabled", template: "actionTemplate" }
+  { headerText: "Action", resizable: "disabled", template: "actionTemplate" },
 ];
 
-const dataprovider: MutableArrayDataProvider<Dept["DepartmentId"], Dept> =
-  new MutableArrayDataProvider(JSON.parse(deptData), {
-    keyAttributes: "DepartmentId",
-    implicitSort: [{ attribute: "DepartmentId", direction: "ascending" }]
-  });
+const dataprovider: MutableArrayDataProvider<
+  Dept["DepartmentId"],
+  Dept
+> = new MutableArrayDataProvider(JSON.parse(deptData), {
+  keyAttributes: "DepartmentId",
+  implicitSort: [{ attribute: "DepartmentId", direction: "ascending" }],
+});
 
 const menuListener = (event: ojMenu.ojMenuAction) => {
   console.log("Menu item " + event.detail.selectedValue + " was clicked");
@@ -85,7 +87,7 @@ const actionColumn = (
   );
 };
 
-export const Table: FunctionalComponent = () => {
+const Table = () => {
   return (
     <div class="oj-md-margin-4x-horizontal">
       <oj-table
@@ -103,3 +105,4 @@ export const Table: FunctionalComponent = () => {
     </div>
   );
 };
+export default Table;

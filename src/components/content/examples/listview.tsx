@@ -1,4 +1,4 @@
-import { h, FunctionalComponent, ComponentProps } from "preact";
+import { h, ComponentProps } from "preact";
 import { useCallback, useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojlistview";
@@ -22,14 +22,14 @@ type Employee = {
 const dataProvider = new MutableArrayDataProvider<Employee["id"], Employee>(
   JSON.parse(peopleData),
   {
-    keyAttributes: "id"
+    keyAttributes: "id",
   }
 );
 type ListViewProps = ComponentProps<"oj-list-view">;
 const gridlinesItemVisible: ListViewProps["gridlines"] = { item: "visible" };
 const INIT_SELECTEDITEMS = new KeySetImpl([]) as KeySet<Employee["id"]>;
 
-export const ListView: FunctionalComponent = () => {
+const ListView = () => {
   const [selectedItems, setselectedItems] = useState(INIT_SELECTEDITEMS);
 
   const handleSelectedChanged = (
@@ -113,3 +113,4 @@ export const ListView: FunctionalComponent = () => {
     </div>
   );
 };
+export default ListView;

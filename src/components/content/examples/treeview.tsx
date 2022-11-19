@@ -1,4 +1,4 @@
-import { h, FunctionalComponent } from "preact";
+import { h } from "preact";
 import { useCallback, useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojmenu";
@@ -23,14 +23,16 @@ const actionColumn = (item) => (
   </li>
 );
 
-const data: ArrayTreeDataProvider<TreeviewItem["id"], TreeviewItem> =
-  new ArrayTreeDataProvider(JSON.parse(treeviewData), {
-    keyAttributes: "id"
-  });
+const data: ArrayTreeDataProvider<
+  TreeviewItem["id"],
+  TreeviewItem
+> = new ArrayTreeDataProvider(JSON.parse(treeviewData), {
+  keyAttributes: "id",
+});
 
 const INIT_SELECTED = new KeySetImpl([]) as KeySet<TreeviewItem["id"]>;
 
-export const Treeview: FunctionalComponent = () => {
+const Treeview = () => {
   const [selected, setselected] = useState(INIT_SELECTED);
   const [listofSelected, setlistofSelected] = useState("nothing selected yet");
 
@@ -59,9 +61,8 @@ export const Treeview: FunctionalComponent = () => {
         aria-label="Tree View with JSON Data">
         <template slot="itemTemplate" render={actionColumn} />
       </oj-tree-view>
-      <div class="selected-list">
-        {listofSelected}
-      </div>
+      <div class="selected-list">{listofSelected}</div>
     </div>
   );
 };
+export default Treeview;

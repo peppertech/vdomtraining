@@ -1,11 +1,11 @@
 import { h } from "preact";
-import { FormElements } from "./formelements";
-import { Chart } from "./chart";
-import { Table } from "./table";
-import { Treeview } from "./treeview";
-import { ListView } from "./listview";
-import { Legend } from "./legend";
-import { DataGrid } from "./datagrid";
+import FormElements from "./formelements";
+import Chart from "./chart";
+import Table from "./table";
+import Treeview from "./treeview";
+import ListView from "./listview";
+import Legend from "./legend";
+import DataGrid from "./datagrid";
 
 const ExampleContent = () => {
   return (

@@ -1,4 +1,4 @@
-import { h, FunctionalComponent, ComponentProps } from "preact";
+import { h, ComponentProps } from "preact";
 import "ojs/ojchart";
 import { ojChart } from "ojs/ojchart";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
@@ -13,17 +13,19 @@ type chartItem = {
 
 type ChartProps = ComponentProps<"oj-chart">;
 const xaxisConfig: ChartProps["xAxis"] = {
-  tickLabel: { rotation: "auto", rendered: "on" }
+  tickLabel: { rotation: "auto", rendered: "on" },
 };
 
-const dataProvider: MutableArrayDataProvider<chartItem["id"], chartItem> =
-  new MutableArrayDataProvider(JSON.parse(data), {
-    keyAttributes: "id"
-  });
+const dataProvider: MutableArrayDataProvider<
+  chartItem["id"],
+  chartItem
+> = new MutableArrayDataProvider(JSON.parse(data), {
+  keyAttributes: "id",
+});
 
-// should be using type of :ojChart.ItemTemplateContext<IchartItem['id'],IchartItem>
-// waiting on bug fix JET-45437
-const renderChartItem = (item) => {
+const renderChartItem = (
+  item: ojChart.ItemTemplateContext<chartItem["id"], chartItem>
+) => {
   return (
     <oj-chart-item
       value={item.data.value}
@@ -32,7 +34,7 @@ const renderChartItem = (item) => {
   );
 };
 
-export const Chart: FunctionalComponent = () => {
+const Chart = () => {
   return (
     <div class="oj-md-margin-4x-horizontal">
       <oj-chart
@@ -53,3 +55,4 @@ export const Chart: FunctionalComponent = () => {
     </div>
   );
 };
+export default Chart;
