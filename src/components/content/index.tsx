@@ -1,15 +1,14 @@
-import { h, Component, ComponentChild } from "preact";
-import { BindingContent } from "./bindings/index";
-import { ModulesContent } from "./modules/index";
-import { ExampleContent } from "./examples/index";
+import { h } from "preact";
+import BindingContent from "./bindings/index";
+import ModulesContent from "./modules/index";
+import ExampleContent from "./examples/index";
 
 type Props = {
   page: string;
 };
 
-export class Content extends Component<Props> {
-
-  pageContent = (page) => {
+const Content = (props: Props) => {
+  let pageContent = (page) => {
     switch (page) {
       case "modules":
         return <ModulesContent />;
@@ -22,11 +21,10 @@ export class Content extends Component<Props> {
     }
   };
 
-  render(props: Props): ComponentChild {
-    return (
-      <div class="oj-web-applayout-max-width oj-web-applayout-content">
-        {this.pageContent(props.page)}
-      </div>
-    );
-  }
-}
+  return (
+    <div class="oj-web-applayout-max-width oj-web-applayout-content">
+      {pageContent(props.page)}
+    </div>
+  );
+};
+export default Content;

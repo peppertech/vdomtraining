@@ -1,6 +1,6 @@
-import { h, FunctionalComponent } from "preact";
+import { h } from "preact";
 
-export const Foreach: FunctionalComponent = () => {
+const Foreach = () => {
   return (
     <div>
       <p>
@@ -51,3 +51,4 @@ export const Foreach: FunctionalComponent = () => {
     </div>
   );
 };
+export default Foreach;

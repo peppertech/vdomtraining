@@ -1,4 +1,4 @@
-import { h, Fragment, FunctionalComponent } from "preact";
+import { h, Fragment } from "preact";
 import { useState } from "preact/hooks";
 import "ojs/ojbutton";
 import { useSelector, useDispatch } from "react-redux";
@@ -64,7 +64,7 @@ const PageContent = (props: { pageName: string }) => {
 };
 
 /** Main functional component for this page  */
-export const Modules: FunctionalComponent = () => {
+const Modules = () => {
   const [isActive, setisActive] = useState(true);
   const [pageName, setpageName] = useState("Page3");
 
@@ -139,3 +139,4 @@ export const Modules: FunctionalComponent = () => {
     </div>
   );
 };
+export default Modules;

@@ -1,6 +1,6 @@
-import { h, FunctionalComponent } from "preact";
+import { h } from "preact";
 
-export const JETAttr: FunctionalComponent = () => {
+const JETAttr = () => {
   return (
     <div>
       <p>
@@ -19,3 +19,4 @@ export const JETAttr: FunctionalComponent = () => {
     </div>
   );
 };
+export default JETAttr;

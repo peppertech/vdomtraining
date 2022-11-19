@@ -4,8 +4,8 @@ import CoreRouter = require("ojs/ojcorerouter");
 import UrlParamAdapter = require("ojs/ojurlparamadapter");
 import Context = require("ojs/ojcontext");
 import { Header } from "./header";
-import { Footer } from "./footer";
-import { Content } from "./content/index";
+import Footer from "./footer";
+import Content from "./content/index";
 
 type Props = {
   appName?: string;

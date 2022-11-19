@@ -1,11 +1,11 @@
-import { h, FunctionalComponent } from "preact";
+import { h } from "preact";
 
 type Props = {
   testId?: string;
   message?: string;
 };
 
-export const Attributes: FunctionalComponent<Props> = (props: Props) => {
+const Attributes = (props: Props) => {
   return (
     <div id={props.testId}>
       <p>{props.message}</p>
@@ -27,3 +27,4 @@ export const Attributes: FunctionalComponent<Props> = (props: Props) => {
     </div>
   );
 };
+export default Attributes;

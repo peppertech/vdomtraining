@@ -1,6 +1,6 @@
-import { h, FunctionalComponent } from "preact";
+import { h } from "preact";
 
-export const JETforeach: FunctionalComponent = () => {
+const JETforeach = () => {
   return (
     <div>
       <p>
@@ -13,11 +13,17 @@ export const JETforeach: FunctionalComponent = () => {
             <div>
               {'<oj-bind-for-each data="[[itemList]]">'}
               <br />
-              &nbsp;{'<template data-oj-as="item">'}<br />
-              &nbsp;&nbsp;{'<div :id="[[item.detail.id]]">'}<br/>
-              &nbsp;&nbsp;&nbsp;{'<oj-bind-text value="[[item.detail.message]]"></oj-bind-text>'}<br/>
-              &nbsp;&nbsp;{'</div>'}<br />
-              &nbsp;{'</template>'}<br />
+              &nbsp;{'<template data-oj-as="item">'}
+              <br />
+              &nbsp;&nbsp;{'<div :id="[[item.detail.id]]">'}
+              <br />
+              &nbsp;&nbsp;&nbsp;
+              {'<oj-bind-text value="[[item.detail.message]]"></oj-bind-text>'}
+              <br />
+              &nbsp;&nbsp;{"</div>"}
+              <br />
+              &nbsp;{"</template>"}
+              <br />
               {"</oj-bind-for-each>"}
             </div>
           }
@@ -26,3 +32,4 @@ export const JETforeach: FunctionalComponent = () => {
     </div>
   );
 };
+export default JETforeach;

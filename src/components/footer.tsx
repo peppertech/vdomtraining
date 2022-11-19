@@ -1,44 +1,44 @@
 import { h } from "preact";
 
 type Props = {
-  links?: FooterLink[]
-}
+  links?: FooterLink[];
+};
 
 type FooterLink = {
   name: string;
   linkId: string;
   linkTarget: string;
-}
+};
 
 const _DEFAULT_LINKS: FooterLink[] = [
   {
     name: "About Oracle",
     linkId: "aboutOracle",
-    linkTarget: "http://www.oracle.com/us/corporate/index.html#menu-about"
+    linkTarget: "http://www.oracle.com/us/corporate/index.html#menu-about",
   },
   {
     name: "Contact Us",
     linkId: "contactUs",
-    linkTarget: "http://www.oracle.com/us/corporate/contact/index.html"
+    linkTarget: "http://www.oracle.com/us/corporate/contact/index.html",
   },
   {
     name: "Legal Notices",
     linkId: "legalNotices",
-    linkTarget: "http://www.oracle.com/us/legal/index.html"
+    linkTarget: "http://www.oracle.com/us/legal/index.html",
   },
   {
     name: "Terms Of Use",
     linkId: "termsOfUse",
-    linkTarget: "http://www.oracle.com/us/legal/terms/index.html"
+    linkTarget: "http://www.oracle.com/us/legal/terms/index.html",
   },
   {
     name: "Your Privacy Rights",
     linkId: "yourPrivacyRights",
-    linkTarget: "http://www.oracle.com/us/legal/privacy/index.html"
-  }
-]
+    linkTarget: "http://www.oracle.com/us/legal/privacy/index.html",
+  },
+];
 
-export function Footer({ links = _DEFAULT_LINKS } : Props ) {
+const Footer = ({ links = _DEFAULT_LINKS }: Props) => {
   return (
     <footer class="oj-web-applayout-footer" role="contentinfo">
       <div class="oj-web-applayout-footer-item oj-web-applayout-max-width">
@@ -57,4 +57,5 @@ export function Footer({ links = _DEFAULT_LINKS } : Props ) {
       </div>
     </footer>
   );
-}
+};
+export default Footer;
