@@ -5,6 +5,7 @@ import { ojDataGrid } from "ojs/ojdatagrid";
 import * as popData from "text!./population.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { RowDataGridProvider } from "ojs/ojrowdatagridprovider";
+import { IntlNumberConverter } from "ojs/ojconverter-number";
 
 type States = {
   states: string;
@@ -34,6 +35,8 @@ type DataGridProps = ComponentProps<"oj-data-grid">;
 const cellStyle: DataGridProps["cell"] = {
   className: getCellClassName,
 };
+
+const numberConverter = new IntlNumberConverter({ useGrouping: true });
 
 // typing is a bit messed up here.  To many required properties. Need to file a bug for this.
 const headerStyle: DataGridProps["header"] = {
@@ -81,6 +84,10 @@ const dataGridDP = new RowDataGridProvider<string | number, string, States>(
   }
 );
 
+const cellRenderer = (cell: ojDataGrid.CellTemplateContext<States>) => {
+  return <span>{numberConverter.format(cell.item.data.data as number)}</span>;
+};
+
 const DataGrid = () => {
   const [dataGridProvider, setDataGridProvider] = useState(dataGridDP);
 
@@ -95,7 +102,9 @@ const DataGrid = () => {
         aria-labelledby="dataGridLabel"
         header={headerStyle}
         cell={cellStyle}
-        data={dataGridProvider}></oj-data-grid>
+        data={dataGridProvider}>
+        <template slot="cellTemplate" render={cellRenderer} />
+      </oj-data-grid>
     </div>
   );
 };
