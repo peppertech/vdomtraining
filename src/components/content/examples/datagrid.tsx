@@ -1,6 +1,7 @@
 import { h, ComponentProps } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojdatagrid";
+import "ojs/ojbutton";
+import "ojs/ojtoolbar";
 import { ojDataGrid } from "ojs/ojdatagrid";
 import * as popData from "text!./population.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
@@ -68,28 +69,56 @@ const headerStyle: DataGridProps["header"] = {
   },
 };
 
-const dataGridDP = new RowDataGridProvider<string | number, string, States>(
-  mutableArrayDataProvider,
-  {
-    columns: {
-      rowHeader: ["states"],
-    },
-    columnHeaders: {
-      column: "attributeName",
-    },
-    headerLabels: {
-      column: ["Years"],
-      row: ["States"],
-    },
-  }
-);
-
+const dataDP = new RowDataGridProvider<string | number, string, States>(mutableArrayDataProvider, {
+  columns: {
+    rowHeader: ["states"],
+  },
+  columnHeaders: {
+    column: "attributeName",
+  },
+  headerLabels: {
+    column: ["Years"],
+    row: ["States"],
+  },
+});
 const cellRenderer = (cell: ojDataGrid.CellTemplateContext<States>) => {
   return <span>{numberConverter.format(cell.item.data.data as number)}</span>;
 };
 
 const DataGrid = () => {
-  const [dataGridProvider, setDataGridProvider] = useState(dataGridDP);
+
+  const changePopulation = () => {
+    let tempData = Object.assign([], populationData);
+    tempData.unshift({
+      states: "FreeState",
+      "2000": 5160586,
+      "2001": 5273477,
+      "2002": 5396255,
+      "2003": 5510364,
+      "2004": 5652404,
+      "2005": 5839077,
+      "2006": 6029141,
+      "2007": 6167681,
+      "2008": 6280362,
+      "2009": 6343154,
+      "2010": 6407342,
+      "2011": 6473416,
+      "2012": 6556344,
+      "2013": 6634690,
+      "2014": 6732873,
+      "2015": 6832810,
+      "2016": 6944767,
+      "2017": 7048088,
+      "2018": 7164228,
+      "2019": 7291843,
+      "2020": 7421401,
+    });
+    mutableArrayDataProvider.data = tempData;
+  };
+
+  const resetPopulation = () => {
+    mutableArrayDataProvider.data = populationData;
+  };
 
   return (
     <div class="oj-md-margin-4x-horizontal">
@@ -102,9 +131,15 @@ const DataGrid = () => {
         aria-labelledby="dataGridLabel"
         header={headerStyle}
         cell={cellStyle}
-        data={dataGridProvider}>
+        data={dataDP}>
         <template slot="cellTemplate" render={cellRenderer} />
       </oj-data-grid>
+      <oj-toolbar>
+        <oj-button
+          onojAction={changePopulation}
+          label="Add new State"></oj-button>
+        <oj-button onojAction={resetPopulation} label="Reset"></oj-button>
+      </oj-toolbar>
     </div>
   );
 };
