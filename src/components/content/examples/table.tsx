@@ -1,7 +1,9 @@
 import { h, ComponentProps } from "preact";
+import { useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojtable";
 import "ojs/ojmenu";
+import "ojs/ojinputtext";
 import { ojMenu } from "ojs/ojmenu";
 import { ojTable } from "ojs/ojtable";
 import * as deptData from "text!./departmentData.json";
@@ -14,6 +16,7 @@ type Dept = {
   ManagerId: number;
 };
 
+const Data = JSON.parse(deptData);
 type TableProps = ComponentProps<"oj-table">;
 
 const setColumnsDefault: TableProps["columnsDefault"] = {
@@ -41,6 +44,7 @@ const columnsDef: TableProps["columns"] = [
     headerText: "Department Name",
     field: "DepartmentName",
     resizable: "enabled",
+    template: "deptNameTemplate",
   },
   {
     headerText: "Location Id",
@@ -56,7 +60,7 @@ const columnsDef: TableProps["columns"] = [
 const dataprovider: MutableArrayDataProvider<
   Dept["DepartmentId"],
   Dept
-> = new MutableArrayDataProvider(JSON.parse(deptData), {
+> = new MutableArrayDataProvider(Data, {
   keyAttributes: "DepartmentId",
   implicitSort: [{ attribute: "DepartmentId", direction: "ascending" }],
 });
@@ -88,19 +92,72 @@ const actionColumn = (
 };
 
 const Table = () => {
+  const [deptName, setDeptName] = useState(null);
+
+  const submitRow = (key) => {
+    let tempArray = [];
+    for (let element of Data) {
+      if (element.DepartmentId === key) {
+        console.log(element);
+        element.DepartmentName = deptName;
+      }
+      tempArray.push(element);
+    }
+    dataprovider.data = tempArray;
+  };
+  const beforeRowEditListener = (
+    event: ojTable.ojBeforeRowEdit<Dept["DepartmentId"], Dept>
+  ) => {
+    const rowContext = event.detail.rowContext;
+    setDeptName(rowContext.item.data.DepartmentName);
+  };
+  const beforeRowEditEndListener = (
+    event: ojTable.ojBeforeRowEditEnd<Dept["DepartmentId"], Dept>
+  ) => {
+    const key = event.detail.rowContext.item.data.DepartmentId;
+    submitRow(key);
+  };
+
+  const updateDeptName = (event) => {
+    if (event.detail.updatedFrom === "internal") {
+      setDeptName(event.detail.value);
+    }
+  };
+
+  const editableTemplate = (
+    cell: ojTable.CellTemplateContext<Dept["DepartmentId"], Dept>
+  ) => {
+    return (
+      <>
+        {cell.mode == "navigation" && cell.data}
+        {cell.mode == "edit" && (
+          <oj-input-text
+            id="it1"
+            value={deptName}
+            class="editable"
+            onvalueChanged={updateDeptName}></oj-input-text>
+        )}
+      </>
+    );
+  };
+
   return (
     <div class="oj-md-margin-4x-horizontal">
       <oj-table
         id="table"
         aria-label="Departments Table"
         data={dataprovider}
+        editMode={"rowEdit"}
         selectionMode={setSelectionMode}
         scrollPolicy="loadMoreOnScroll"
         scrollPolicyOptions={setScrollPolicy}
         columnsDefault={setColumnsDefault}
         columns={columnsDef}
+        onojBeforeRowEdit={beforeRowEditListener}
+        onojBeforeRowEditEnd={beforeRowEditEndListener}
         class="oj-bg-body table-sizing">
         <template slot="actionTemplate" render={actionColumn}></template>
+        <template slot="deptNameTemplate" render={editableTemplate}></template>
       </oj-table>
     </div>
   );
