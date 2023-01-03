@@ -1,13 +1,15 @@
 import { h, ComponentProps } from "preact";
-import { useState } from "preact/hooks";
+import { useState, useRef } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojtable";
 import "ojs/ojmenu";
 import "ojs/ojinputtext";
+import "ojs/ojtoolbar";
 import { ojMenu } from "ojs/ojmenu";
 import { ojTable } from "ojs/ojtable";
 import * as deptData from "text!./departmentData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import { ojButton, ojButtonsetOne } from "ojs/ojbutton";
 
 type Dept = {
   DepartmentId: number;
@@ -69,30 +71,10 @@ const menuListener = (event: ojMenu.ojMenuAction) => {
   console.log("Menu item " + event.detail.selectedValue + " was clicked");
 };
 
-const actionColumn = (
-  cell: ojTable.CellTemplateContext<Dept["DepartmentId"], Dept>
-) => {
-  return (
-    <oj-menu-button
-      chroming="borderless"
-      display="icons"
-      data-oj-clickthrough="disabled">
-      Action
-      <oj-menu slot="menu" onojMenuAction={menuListener}>
-        <oj-option value="approve" disabled={cell.row.LocationId === 100}>
-          <span class="oj-ux-ico-check" slot="startIcon"></span>Approve
-        </oj-option>
-        <oj-option value="delete">
-          <span class="oj-ux-ico-delete-circle" slot="startIcon"></span>
-          Delete
-        </oj-option>
-      </oj-menu>
-    </oj-menu-button>
-  );
-};
-
 const Table = () => {
   const [deptName, setDeptName] = useState(null);
+  const [editRow, setEditRow] = useState(null);
+  const cancelEdit = useRef(false);
 
   const submitRow = (key) => {
     let tempArray = [];
@@ -105,6 +87,7 @@ const Table = () => {
     }
     dataprovider.data = tempArray;
   };
+
   const beforeRowEditListener = (
     event: ojTable.ojBeforeRowEdit<Dept["DepartmentId"], Dept>
   ) => {
@@ -114,8 +97,10 @@ const Table = () => {
   const beforeRowEditEndListener = (
     event: ojTable.ojBeforeRowEditEnd<Dept["DepartmentId"], Dept>
   ) => {
-    const key = event.detail.rowContext.item.data.DepartmentId;
-    submitRow(key);
+    if (!cancelEdit.current) {
+      const key = event.detail.rowContext.item.data.DepartmentId;
+      submitRow(key);
+    }
   };
 
   const updateDeptName = (event) => {
@@ -135,19 +120,75 @@ const Table = () => {
             id="it1"
             value={deptName}
             class="editable"
-            onvalueChanged={updateDeptName}></oj-input-text>
+            onvalueChanged={updateDeptName}
+          ></oj-input-text>
         )}
       </>
     );
   };
 
+  const actionColumn = (
+    cell: ojTable.CellTemplateContext<Dept["DepartmentId"], Dept>
+  ) => {
+    const handleUpdate = (event: ojButton.ojAction) => {
+      setEditRow({ rowKey: cell.item.data.DepartmentId });
+    };
+    const handleEditOption = (event: ojButtonsetOne.valueChanged) => {
+      if (event.detail.updatedFrom === "internal") {
+        if (event.detail.value === "save") {
+          cancelEdit.current = false;
+          setEditRow({ rowKey: null });
+        } else {
+          cancelEdit.current = true;
+          setEditRow({ rowKey: null });
+        }
+      }
+    };
+
+    return (
+      <>
+        {cell.mode == "navigation" && (
+          <oj-button
+            data-oj-clickthrough="disabled"
+            display="icons"
+            chroming="borderless"
+            onojAction={handleUpdate}
+          >
+            <span slot="startIcon" class="oj-ux-ico-edit"></span>
+            Edit
+          </oj-button>
+        )}
+
+        {cell.mode == "edit" && (
+          <oj-buttonset-one
+            id="formatsetWidth1"
+            aria-label="Choose only one format"
+            display="icons"
+            chroming="borderless"
+            onvalueChanged={handleEditOption}
+            class="oj-buttonset-width-auto"
+          >
+            <oj-option value="save">
+              <span slot="startIcon" class="oj-ux-ico-check"></span>
+              Save
+            </oj-option>
+            <oj-option value="cancel">
+              <span slot="startIcon" class="oj-ux-ico-multiply"></span>
+              Cancel
+            </oj-option>
+          </oj-buttonset-one>
+        )}
+      </>
+    );
+  };
   return (
     <div class="oj-md-margin-4x-horizontal">
       <oj-table
         id="table"
         aria-label="Departments Table"
         data={dataprovider}
-        editMode={"rowEdit"}
+        editMode="rowEdit"
+        editRow={editRow}
         selectionMode={setSelectionMode}
         scrollPolicy="loadMoreOnScroll"
         scrollPolicyOptions={setScrollPolicy}
@@ -155,7 +196,8 @@ const Table = () => {
         columns={columnsDef}
         onojBeforeRowEdit={beforeRowEditListener}
         onojBeforeRowEditEnd={beforeRowEditEndListener}
-        class="oj-bg-body table-sizing">
+        class="oj-bg-body table-sizing"
+      >
         <template slot="actionTemplate" render={actionColumn}></template>
         <template slot="deptNameTemplate" render={editableTemplate}></template>
       </oj-table>
