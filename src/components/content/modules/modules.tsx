@@ -1,8 +1,7 @@
 import { h, Fragment } from "preact";
 import { useState } from "preact/hooks";
 import "ojs/ojbutton";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../../store";
+import { ojButtonsetOne } from "ojs/ojbutton";
 
 /** Trivial functional components used for demo purposes only **/
 function Page1() {
@@ -34,18 +33,18 @@ function NotActive() {
 }
 
 /** Example of fragments */
-const FragementChild = (
+const FragmentChild = (
   <Fragment>
     <li>Item 3</li>
     <li>Item 4</li>
   </Fragment>
 );
-function FragementParent() {
+function FragmentParent() {
   return (
     <ul>
       <li>Item 1</li>
       <li>Item 2</li>
-      {FragementChild}
+      {FragmentChild}
     </ul>
   );
 }
@@ -65,17 +64,17 @@ const PageContent = (props: { pageName: string }) => {
 
 /** Main functional component for this page  */
 const Modules = () => {
-  const [isActive, setisActive] = useState(true);
-  const [pageName, setpageName] = useState("Page3");
+  const [isActive, setIsActive] = useState(true);
+  const [pageName, setPageName] = useState("Page3");
 
-  /** Example showing tierny based loading of components  */
+  /** Example showing ternary based loading of components  */
   const toggleActive = () => {
-    isActive ? setisActive(false) : setisActive(true);
+    isActive ? setIsActive(false) : setIsActive(true);
   };
 
   /** Example using a buttonset to load different components  */
-  const pageChangeHandler = (event) => {
-    setpageName(event.detail.value);
+  const pageChangeHandler = (event:ojButtonsetOne.valueChanged) => {
+    setPageName(event.detail.value);
   };
 
   return (
@@ -124,18 +123,18 @@ const Modules = () => {
       {/* Fragment example */}
       <p>
         A Fragment can be used to return DOM that does not require a wrapping or
-        parent DOM element like normal Funcational component does. In the
-        example below, a Funcational component us returning an unordered list.
+        parent DOM element like normal Functional component does. In the
+        example below, a Functional component us returning an unordered list.
         This works fine because the &lt;ul&gt; element can be used as the parent
         node. However if you wanted to dynamically insert some &lt;li&gt;
-        elements using a different Funcational component, this would work
+        elements using a different Functional component, this would work
         because it's not valid to return multiple elements at the root level of
         the render method. This is where a Fragment comes in. You would use the
         &lt;Fragment&gt; element to wrap the &lt;li&gt; elements that you want
-        to be inserted into the first components unordered list. The Fragement
+        to be inserted into the first components unordered list. The Fragment
         will return the DOM elements without a wrapping element.
       </p>
-      <FragementParent />
+      <FragmentParent />
     </div>
   );
 };

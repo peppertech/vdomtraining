@@ -14,9 +14,7 @@ interface TreeviewItem {
   children?: Array<TreeviewItem>;
 }
 
-// should have a type of ojTreeView.ItemTemplateContext<TreeviewItem['id'],TreeviewItem>
-// waiting for bug fix
-const actionColumn = (item) => (
+const actionColumn = (item:ojTreeView.ItemTemplateContext<TreeviewItem['id'],TreeviewItem>) => (
   <li>
     <span class="oj-treeview-item-icon"></span>
     <span class="oj-treeview-item-text">{item.data.title}</span>

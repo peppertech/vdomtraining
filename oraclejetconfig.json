@@ -23,5 +23,6 @@
   "architecture": "vdom",
   "generatorVersion": "11.1.0",
   "bundler": "webpack",
-  "bundleName": "bundle.js"
+  "bundleName": "bundle.js",
+  "watchInterval": 1000
 }

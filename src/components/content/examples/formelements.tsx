@@ -14,6 +14,9 @@ import * as peopleData from "text!./peopleData.json";
 import { ojButton } from "ojs/ojbutton";
 import { ojDialog } from "ojs/ojdialog";
 import { ojCheckboxset } from "ojs/ojcheckboxset";
+import { ojInputText } from "ojs/ojinputtext";
+import { ojInputDate } from "ojs/ojdatetimepicker";
+import { ojSelectSingle } from "ojs/ojselectsingle";
 
 const buyers: Array<object> = [];
 
@@ -73,7 +76,8 @@ const FormElements = () => {
   >("efficient");
 
   const dialogRef = useRef<ojDialog>(null);
-  const onChange = (event) => {
+
+  const onChange = (event:any) => {
     setFormData({
       ...formData,
       [event.currentTarget.id]: event.detail.value,
@@ -82,18 +86,18 @@ const FormElements = () => {
 
   const onSubmit = (event: ojButton.ojAction) => {
     event.preventDefault();
-    dialogRef.current.open();
+    dialogRef.current!.open();
     console.log("formData: " + JSON.stringify(formData));
   };
 
   const close = () => {
-    dialogRef.current.close();
+    dialogRef.current!.close();
   };
 
   const handleAgreement = (
     event: ojCheckboxset.valueChanged<string, Array<string>, Array<string>>
   ) => {
-    event.detail.value.length < 1 ? setIsDisabled(true) : setIsDisabled(false);
+    event.detail.value!.length < 1 ? setIsDisabled(true) : setIsDisabled(false);
   };
 
   return (

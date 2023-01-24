@@ -10,6 +10,7 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import * as peopleData from "text!./peopleData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { ojListView } from "ojs/ojlistview";
+import {SelectorElement } from "ojs/ojselector";
 
 type Employee = {
   id: number;
@@ -30,10 +31,11 @@ const gridlinesItemVisible: ListViewProps["gridlines"] = { item: "visible" };
 const INIT_SELECTEDITEMS = new KeySetImpl([]) as KeySet<Employee["id"]>;
 
 const ListView = () => {
-  const [selectedItems, setselectedItems] = useState(INIT_SELECTEDITEMS);
+  const [selectedItems, setselectedItems] = useState<KeySet<Employee['id']>>(INIT_SELECTEDITEMS);
 
+  /* TODO:  workout the proper type for this event */
   const handleSelectedChanged = (
-    event: ojListView.selectedChanged<Employee["id"], Employee>
+    event:any
   ) => {
     setselectedItems(event.detail.value);
   };

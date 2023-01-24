@@ -1,9 +1,10 @@
 import { h } from "preact";
 import "ojs/ojlegend";
+import { ojLegend } from "ojs/ojlegend";
 import { ColorAttributeGroupHandler } from "ojs/ojattributegrouphandler";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-type TlegendItem = {
+type LegendItem = {
   fruit: string;
 };
 
@@ -15,8 +16,8 @@ const fruits = [
   { fruit: "Grapes" },
 ];
 const dataProvider: MutableArrayDataProvider<
-  TlegendItem["fruit"],
-  TlegendItem
+  LegendItem["fruit"],
+  LegendItem
 > = new MutableArrayDataProvider(fruits, {
   keyAttributes: "fruit",
 });
@@ -26,9 +27,9 @@ const getColor = (item: string) => {
   return colorHandler.getValue(item);
 };
 
-// should be using type of :ojLegend.ItemTemplateContext<TlegendItem["fruit"],TlegendItem>
+// should be using type of :ojLegend.ItemTemplateContext<LegendItem["fruit"],LegendItem>
 // waiting on bug fix JET-46038
-const renderLegendItem = (item) => {
+const renderLegendItem = (item:ojLegend.ItemTemplateContext<LegendItem["fruit"],LegendItem>) => {
   if (item) {
     return (
       <oj-legend-item

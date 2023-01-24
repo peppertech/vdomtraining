@@ -53,7 +53,7 @@ const Footer = ({ links = _DEFAULT_LINKS }: Props) => {
         </ul>
       </div>
       <div class="oj-web-applayout-footer-item oj-web-applayout-max-width oj-text-secondary-color oj-text-sm">
-        Copyright © 2014, 2021 Oracle and/or its affiliates All rights reserved.
+        Copyright © 2014, 2023 Oracle and/or its affiliates All rights reserved.
       </div>
     </footer>
   );

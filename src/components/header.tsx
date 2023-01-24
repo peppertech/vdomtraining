@@ -1,4 +1,5 @@
-import { h, Component, ComponentChild } from "preact";
+import { h } from "preact";
+import { useRef, useState, useEffect } from "preact/hooks";
 import * as ResponsiveUtils from "ojs/ojresponsiveutils";
 import "ojs/ojtoolbar";
 import "ojs/ojmenu";
@@ -12,133 +13,100 @@ type Props = Readonly<{
   userLogin: string;
   page?: string;
   routes: Array<object>;
-  onPageChanged?: (value: string) => void;
+  onPageChanged: (value: string) => void;
 }>;
-
-type State = {
-  displayType: string;
-  endIconClass: string;
-  selectedPage: string;
-};
 
 type Route = {
   path: string;
   detail: object;
-}
+};
 
-export class Header extends Component<Props, State> {
-  private mediaQuery: MediaQueryList;
-  public selectedPage: string;
-  routesDP: ArrayDataProvider<string, Route>;
+export const Header = (props: Props) => {
+  const [selectedPage, setSelectedPage] = useState<string>(
+    props.page ? props.page : "bindings"
+  );
+  const mediaQueryRef = useRef<MediaQueryList>(
+    window.matchMedia(ResponsiveUtils.getFrameworkQuery("sm-only")!)
+  );
 
-  constructor(props: Props) {
-    super(props);
-    
-    // Create ADP with partial array, excluding first redirect route
-    this.routesDP = new ArrayDataProvider(this.props.routes.slice(1), {
-      keyAttributes: "path"
-    });
+  const [isSmallWidth, setIsSmallWidth] = useState(
+    mediaQueryRef.current.matches
+  );
 
-    const smallOnlyQuery = ResponsiveUtils.getFrameworkQuery(
-      ResponsiveUtils.FRAMEWORK_QUERY_KEY.SM_ONLY
-    );
-    this.mediaQuery = window.matchMedia(smallOnlyQuery);
-    this._mediaQueryChangeListener = this._mediaQueryChangeListener.bind(this);
-    const displayType = this._getDisplayTypeFromMediaQuery(this.mediaQuery);
-    const endIconClass = this._getEndIconClassFromDisplayType(displayType);
-    let selectedPage = "";
-    this.state = {
-      displayType,
-      endIconClass,
-      selectedPage
-    };
+  useEffect(() => {
+    mediaQueryRef.current.addEventListener("change", handleMediaQueryChange);
+    return () =>
+      mediaQueryRef.current.removeEventListener(
+        "change",
+        handleMediaQueryChange
+      );
+  }, [mediaQueryRef]);
 
-    this.setState({
-      selectedPage: this.props.page ? this.props.page : "bindings"
-    });
+  const handleMediaQueryChange = (e: MediaQueryListEvent) => {
+    setIsSmallWidth(e.matches);
   }
 
-  pageChangeHandler = (
-    event: ojNavigationList.selectionChanged<string, Route>
+  const getDisplayType = () => {
+    return isSmallWidth ? "icons" : "all";
+  }
+
+  const routesDP = new ArrayDataProvider(props.routes.slice(1), {
+    keyAttributes: "path",
+  });
+
+  const pageChangeHandler = (
+    event: ojNavigationList.selectionChanged<Route["path"], Route>
   ) => {
-    this.props.onPageChanged(event.detail.value);
+    props.onPageChanged(event.detail.value);
   };
 
-  renderNavList = (item: ojNavigationList.ItemContext<string, Route>) => {
+  const renderNavList = (item: ojNavigationList.ItemContext<string, Route>) => {
     return (
       <li id={item.data.path}>
         <a href="#">
           <span class={item.data.detail.iconClass} />
-          {this.state.displayType === "all" ? item.data.detail.label : ""}
+          {getDisplayType() === "all" ? item.data.detail.label : ""}
         </a>
       </li>
     );
   };
 
-  render(props: Props): ComponentChild {
-    return (
-      <header role="banner" class="oj-web-applayout-header">
-        <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
-          <div class="oj-flex-bar-middle oj-sm-align-items-baseline">
-            <span
-              role="img"
-              class="oj-icon demo-oracle-icon"
-              title="Oracle Logo"
-              alt="Oracle Logo"></span>
-            <h1
-              class="oj-sm-only-hide oj-web-applayout-header-title"
-              title="Virtual DOM Training Application">
-              {props.appName}
-            </h1>
-          </div>
-          <div class="oj-flex-bar-end">
-            <div
-              role="navigation"
-              class="oj-web-applayout-max-width oj-web-applayout-navbar">
-              <oj-navigation-list
-                selection={this.props.page}
-                edge="top"
-                id="navilist1"
-                aria-label="Main navigation, select a page"
-                onselectionChanged={this.pageChangeHandler}
-                drillMode="none"
-                data={this.routesDP}>
-                <template slot="itemTemplate" render={this.renderNavList} />
-              </oj-navigation-list>
-            </div>
+  return (
+    <header role="banner" class="oj-web-applayout-header">
+      <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
+        <div class="oj-flex-bar-middle oj-sm-align-items-baseline">
+          <span
+            role="img"
+            class="oj-icon demo-oracle-icon"
+            title="Oracle Logo"
+            alt="Oracle Logo"
+          ></span>
+          <h1
+            class="oj-sm-only-hide oj-web-applayout-header-title"
+            title="Virtual DOM Training Application"
+          >
+            {props.appName}
+          </h1>
+        </div>
+        <div class="oj-flex-bar-end">
+          <div
+            role="navigation"
+            class="oj-web-applayout-max-width oj-web-applayout-navbar"
+          >
+            <oj-navigation-list
+              selection={props.page}
+              edge="top"
+              id="navilist1"
+              aria-label="Main navigation, select a page"
+              onselectionChanged={pageChangeHandler}
+              drillMode="none"
+              data={routesDP}
+            >
+              <template slot="itemTemplate" render={renderNavList} />
+            </oj-navigation-list>
           </div>
         </div>
-      </header>
-    );
-  }
-
-  componentDidMount() {
-    this.mediaQuery.addEventListener("change", this._mediaQueryChangeListener);
-  }
-
-  componentWillUnmount() {
-    this.mediaQuery.removeEventListener(
-      "change",
-      this._mediaQueryChangeListener
-    );
-  }
-
-  _mediaQueryChangeListener(mediaQuery) {
-    const displayType = this._getDisplayTypeFromMediaQuery(mediaQuery);
-    const endIconClass = this._getEndIconClassFromDisplayType(displayType);
-    this.setState({
-      displayType,
-      endIconClass
-    });
-  }
-
-  _getDisplayTypeFromMediaQuery(mediaQuery) {
-    return mediaQuery.matches ? "icons" : "all";
-  }
-
-  _getEndIconClassFromDisplayType(displayType) {
-    return displayType === "icons"
-      ? "oj-icon demo-appheader-avatar"
-      : "oj-component-icon oj-button-menu-dropdown-icon";
-  }
+      </div>
+    </header>
+  );
 }

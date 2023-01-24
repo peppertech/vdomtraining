@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Content = (props: Props) => {
-  let pageContent = (page) => {
+  let pageContent = (page:string) => {
     switch (page) {
       case "modules":
         return <ModulesContent />;
@@ -23,7 +23,7 @@ const Content = (props: Props) => {
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
-      {pageContent(props.page)}
+      {pageContent(props.page as string)}
     </div>
   );
 };

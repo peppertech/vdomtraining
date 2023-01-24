@@ -1,13 +1,13 @@
 {
-  "use": "local",
+  "use": "cdn",
   "cdns": {
     "jet": {
-      "prefix": "https://static.oracle.com/cdn/jet/13.0.0/default/js",
-      "css": "https://static.oracle.com/cdn/jet/13.0.0/default/css",
-      "csspreact": "https://static.oracle.com/cdn/jet/13.0.0/3rdparty/oraclejet-preact/es",
+      "prefix": "https://static.oracle.com/cdn/jet/14.0.0/default/js",
+      "css": "https://static.oracle.com/cdn/jet/14.0.0/default/css",
+      "csspreact": "https://static.oracle.com/cdn/jet/14.0.0/3rdparty/oraclejet-preact/amd",
       "config": "bundles-config.js"
     },
-    "3rdparty": "https://static.oracle.com/cdn/jet/13.0.0/3rdparty"
+    "3rdparty": "https://static.oracle.com/cdn/jet/14.0.0/3rdparty"
   },
   "libs": {
     "knockout": {
@@ -30,12 +30,12 @@
       "debug": {
         "src": "jquery.js",
         "path": "libs/jquery/jquery-#{version}.js",
-        "cdnPath": "jquery/jquery-3.6.0"
+        "cdnPath": "jquery/jquery-3.6.1"
       },
       "release": {
         "src": "jquery.min.js",
         "path": "libs/jquery/jquery-#{version}.min.js",
-        "cdnPath": "jquery/jquery-3.6.0.min"
+        "cdnPath": "jquery/jquery-3.6.1.min"
       }
     },
     "jqueryui-amd": {
@@ -50,7 +50,7 @@
           "vendor/jquery-color/jquery.color.js"
         ],
         "path": "libs/jquery/jqueryui-amd-#{version}",
-        "cdnPath": "jquery/jqueryui-amd-1.13.0"
+        "cdnPath": "jquery/jqueryui-amd-1.13.2"
       },
       "release": {
         "src": [
@@ -61,7 +61,7 @@
           "vendor/jquery-color/jquery.color.js"
         ],
         "path": "libs/jquery/jqueryui-amd-#{version}.min",
-        "cdnPath": "jquery/jqueryui-amd-1.13.0.min"
+        "cdnPath": "jquery/jqueryui-amd-1.13.2.min"
       }
     },
     "hammerjs": {
@@ -146,7 +146,7 @@
     },
     "@oracle/oraclejet-preact": {
       "cdn": "3rdparty",
-      "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/oraclejet-preact/amd",
+      "cwd": "node_modules/@oracle/oraclejet-preact/amd",
       "debug": {
         "src": [
           "**"
@@ -170,7 +170,7 @@
           "**"
         ],
         "path": "libs/packs/oj-c",
-        "cdnPath": "../../packs/oj-c/#{version}"
+        "cdnPath": "../../packs/oj-c/#{version}/min"
       },
       "release": {
         "src": [
@@ -436,48 +436,6 @@
         "path": "libs/oj/#{version}",
         "pathSuffix": "/min/ojcss'",
         "cdnPath": "ojcss"
-      }
-    },
-    "react": {
-      "cdn": "3rdparty",
-      "cwd": "node_modules/preact/compat/dist",
-      "debug": {
-        "src": [
-          "compat.umd.js",
-          "compat.umd.js.map"
-        ],
-        "path": "libs/preact/compat/dist/compat.umd.js",
-        "cdnPath": "preact/devtools/dist/compat.umd"
-      },
-      "release": {
-        "src": [
-          "compat.umd.js",
-          "compat.umd.js.map"
-        ],
-        "path": "libs/preact/compat/dist/compat.umd.js",
-        "cdnPath": "preact/compat/dist/compat.umd"
-      }
-    },
-    "redux": {
-      "cwd": "node_modules/redux/dist",
-      "debug": {
-        "src": "redux.js",
-        "path": "libs/redux/dist/redux.js"
-      },
-      "release": {
-        "src": "redux.min.js",
-        "path": "libs/redux/dist/redux.min.js"
-      }
-    },
-    "react-redux": {
-      "cwd": "node_modules/react-redux/dist",
-      "debug": {
-        "src": "react-redux.js",
-        "path": "libs/react-redux/react-redux.js"
-      },
-      "release": {
-        "src": "react-redux.min.js",
-        "path": "libs/react-redux/react-redux.min.js"
       }
     }
   }

@@ -7,9 +7,10 @@ import "ojs/ojinputtext";
 import "ojs/ojtoolbar";
 import { ojMenu } from "ojs/ojmenu";
 import { ojTable } from "ojs/ojtable";
+import { ojButton, ojButtonsetOne } from "ojs/ojbutton";
+import { ojInputText } from "ojs/ojinputtext";
 import * as deptData from "text!./departmentData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { ojButton, ojButtonsetOne } from "ojs/ojbutton";
 
 type Dept = {
   DepartmentId: number;
@@ -17,6 +18,10 @@ type Dept = {
   LocationId: number;
   ManagerId: number;
 };
+
+type Row = {
+  rowKey: number|null
+}
 
 const Data = JSON.parse(deptData);
 type TableProps = ComponentProps<"oj-table">;
@@ -72,11 +77,11 @@ const menuListener = (event: ojMenu.ojMenuAction) => {
 };
 
 const Table = () => {
-  const [deptName, setDeptName] = useState(null);
-  const [editRow, setEditRow] = useState(null);
+  const [deptName, setDeptName] = useState<Dept['DepartmentName']>();
+  const [editRow, setEditRow] = useState<Row>();
   const cancelEdit = useRef(false);
 
-  const submitRow = (key) => {
+  const submitRow = (key:Dept['DepartmentId']) => {
     let tempArray = [];
     for (let element of Data) {
       if (element.DepartmentId === key) {
@@ -103,7 +108,7 @@ const Table = () => {
     }
   };
 
-  const updateDeptName = (event) => {
+  const updateDeptName = (event:ojInputText.valueChanged) => {
     if (event.detail.updatedFrom === "internal") {
       setDeptName(event.detail.value);
     }
@@ -130,9 +135,11 @@ const Table = () => {
   const actionColumn = (
     cell: ojTable.CellTemplateContext<Dept["DepartmentId"], Dept>
   ) => {
+
     const handleUpdate = (event: ojButton.ojAction) => {
       setEditRow({ rowKey: cell.item.data.DepartmentId });
     };
+    
     const handleEditOption = (event: ojButtonsetOne.valueChanged) => {
       if (event.detail.updatedFrom === "internal") {
         if (event.detail.value === "save") {
@@ -182,7 +189,7 @@ const Table = () => {
     );
   };
   return (
-    <div class="oj-md-margin-4x-horizontal">
+    <div>
       <oj-table
         id="table"
         aria-label="Departments Table"
