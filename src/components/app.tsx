@@ -60,6 +60,8 @@ export const App = registerCustomElement("app-root", (props: Props) => {
 
   useEffect(() => {
     Context.getPageContext().getBusyContext().applicationBootstrapComplete();
+    router.currentState.subscribe(routerUpdated);
+    router.sync();
   }, []);
 
   const routerUpdated = (
@@ -69,9 +71,6 @@ export const App = registerCustomElement("app-root", (props: Props) => {
     const newPath = actionable.state?.path;
     setRoutePath(newPath);
   };
-
-  router.currentState.subscribe(routerUpdated);
-  router.sync();
 
   return (
     <div id="appContainer" class="oj-web-applayout-page">
