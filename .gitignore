@@ -17,5 +17,6 @@ hybrid/plugins/*
 
 .DS_Store
 Thumbs.db
+/.vscode
 settings.json
 package-lock.json

@@ -3,7 +3,7 @@ import "ojs/ojdatagrid";
 import "ojs/ojbutton";
 import "ojs/ojtoolbar";
 import { ojDataGrid } from "ojs/ojdatagrid";
-import * as popData from "text!./population.json";
+import * as popData from "text!./data/population.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { RowDataGridProvider } from "ojs/ojrowdatagridprovider";
 import { IntlNumberConverter } from "ojs/ojconverter-number";
@@ -69,24 +69,26 @@ const headerStyle: DataGridProps["header"] = {
   },
 };
 
-const dataDP = new RowDataGridProvider<string | number, string, States>(mutableArrayDataProvider, {
-  columns: {
-    rowHeader: ["states"],
-  },
-  columnHeaders: {
-    column: "attributeName",
-  },
-  headerLabels: {
-    column: ["Years"],
-    row: ["States"],
-  },
-});
+const dataDP = new RowDataGridProvider<string | number, string, States>(
+  mutableArrayDataProvider,
+  {
+    columns: {
+      rowHeader: ["states"],
+    },
+    columnHeaders: {
+      column: "attributeName",
+    },
+    headerLabels: {
+      column: ["Years"],
+      row: ["States"],
+    },
+  }
+);
 const cellRenderer = (cell: ojDataGrid.CellTemplateContext<States>) => {
   return <span>{numberConverter.format(cell.item.data.data as number)}</span>;
 };
 
 const DataGrid = () => {
-
   const changePopulation = () => {
     let tempData = Object.assign([], populationData);
     tempData.unshift({
