@@ -2,12 +2,12 @@
   "use": "cdn",
   "cdns": {
     "jet": {
-      "prefix": "https://static.oracle.com/cdn/jet/14.1.1/default/js",
-      "css": "https://static.oracle.com/cdn/jet/14.1.1/default/css",
-      "csspreact": "https://static.oracle.com/cdn/jet/14.1.1/3rdparty/oraclejet-preact/amd",
+      "prefix": "https://static.oracle.com/cdn/jet/15.1.0/default/js",
+      "css": "https://static.oracle.com/cdn/jet/15.1.0/default/css",
+      "csspreact": "https://static.oracle.com/cdn/jet/15.1.0/3rdparty/oraclejet-preact/amd",
       "config": "bundles-config.js"
     },
-    "3rdparty": "https://static.oracle.com/cdn/jet/14.1.1/3rdparty"
+    "3rdparty": "https://static.oracle.com/cdn/jet/15.1.0/3rdparty"
   },
   "libs": {
     "knockout": {
@@ -30,12 +30,12 @@
       "debug": {
         "src": "jquery.js",
         "path": "libs/jquery/jquery-#{version}.js",
-        "cdnPath": "jquery/jquery-3.6.1"
+        "cdnPath": "jquery/jquery-3.6.4"
       },
       "release": {
         "src": "jquery.min.js",
         "path": "libs/jquery/jquery-#{version}.min.js",
-        "cdnPath": "jquery/jquery-3.6.1.min"
+        "cdnPath": "jquery/jquery-3.6.4.min"
       }
     },
     "jqueryui-amd": {

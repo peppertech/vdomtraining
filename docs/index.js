@@ -1,0 +1,1 @@
+define(["require","exports","./components/app"],(function(require,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0})}));

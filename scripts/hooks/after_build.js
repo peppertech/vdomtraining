@@ -5,11 +5,18 @@
 
 */
 
-'use strict';
+"use strict";
+const fs = require("fs");
 
 module.exports = function (configObj) {
   return new Promise((resolve, reject) => {
-  	console.log("Running after_build hook.");
-  	resolve(configObj);
+    console.log("Running after_build hook.");
+    console.log("buildType: ", configObj.buildType);
+    if (configObj.buildType == "release") {
+      console.log("Copying files to docs");
+      fs.cpSync("web", "docs", { recursive: true });
+      console.log("Finished copy.");
+    }
+    resolve(configObj);
   });
 };

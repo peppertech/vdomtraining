@@ -22,7 +22,7 @@
   "defaultTheme": "redwood",
   "architecture": "vdom",
   "generatorVersion": "14.1.0",
-  "bundler": "webpack",
+  "bundler": "require",
   "bundleName": "bundle.js",
   "watchInterval": 1000
 }
