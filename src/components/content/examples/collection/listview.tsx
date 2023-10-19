@@ -10,7 +10,6 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import * as peopleData from "text!./data/peopleData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { ojListView } from "ojs/ojlistview";
-import { SelectorElement } from "ojs/ojselector";
 
 type Employee = {
   id: number;

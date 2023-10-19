@@ -5,10 +5,9 @@
 
 */
 
-'use strict';
+"use strict";
 
 module.exports = function (configObj) {
-
   // function urlRewriteMiddleware(req, res, next) {
   //   const matchStaticFiles = req.url.match(/\/(js|css)\/.*/);
   //   req.url = matchStaticFiles ? matchStaticFiles[0] : '/';
@@ -16,7 +15,7 @@ module.exports = function (configObj) {
   // }
 
   return new Promise((resolve, reject) => {
-    console.log('Running before_serve hook.');
+    console.log("Running before_serve hook.");
     // ojet custom connect and serve options
     // { connectOpts, serveOpts } = configObj;
     // const express = require('express');
@@ -39,8 +38,33 @@ module.exports = function (configObj) {
     // configObj['preMiddleware'] = [...];
     // pass back a set of middleware that goes after the default middleware
     // configObj['postMiddleware'] = [...];
-    
+
     // configObj['preMiddleware'] = [urlRewriteMiddleware]
+
+    // const clean = (url) => {
+    //   if (url.length > 1) {
+    //     const cleanedUrl = url.endsWith("/")
+    //       ? url.slice(0, url.length - 1)
+    //       : url;
+    //     console.log("clean: ", cleanedUrl);
+    //     return cleanedUrl;
+    //   } else {
+    //     return url;
+    //   }
+    // };
+
+    // function urlRewriteMiddleware(req, res, next) {
+    //   console.log("files: ", req.url);
+    //   const matchStaticFiles = req.url.match(
+    //     /^(\/modules|\/bindings|\/examples)$/
+    //   );
+    //   console.log("match: ", matchStaticFiles);
+    //   req.url = matchStaticFiles ? "/index.html" : clean(req.url);
+    //   console.log("updated url: ", req.url);
+    //   next();
+    // }
+
+    // configObj["preMiddleware"] = [urlRewriteMiddleware];
     resolve(configObj);
   });
 };
