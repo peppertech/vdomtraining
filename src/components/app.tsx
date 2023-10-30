@@ -2,7 +2,7 @@ import { Header } from "./header";
 import Footer from "./footer";
 import Content from "./content/index";
 import { registerCustomElement } from "ojs/ojvcomponent";
-import { h } from "preact";
+import "preact";
 import { useEffect, useState } from "preact/hooks";
 import CoreRouter = require("ojs/ojcorerouter");
 import UrlParamAdapter = require("ojs/ojurlparamadapter");
