@@ -44,11 +44,11 @@ export const Header = (props: Props) => {
 
   const handleMediaQueryChange = (e: MediaQueryListEvent) => {
     setIsSmallWidth(e.matches);
-  }
+  };
 
   const getDisplayType = () => {
     return isSmallWidth ? "icons" : "all";
-  }
+  };
 
   const routesDP = new ArrayDataProvider(props.routes.slice(1), {
     keyAttributes: "path",
@@ -57,7 +57,8 @@ export const Header = (props: Props) => {
   const pageChangeHandler = (
     event: ojNavigationList.selectionChanged<Route["path"], Route>
   ) => {
-    props.onPageChanged(event.detail.value);
+    if (event.detail.updatedFrom === "internal")
+      props.onPageChanged(event.detail.value);
   };
 
   const renderNavList = (item: ojNavigationList.ItemContext<string, Route>) => {
@@ -109,4 +110,4 @@ export const Header = (props: Props) => {
       </div>
     </header>
   );
-}
+};
