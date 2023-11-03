@@ -1,0 +1,9 @@
+define(["require", "exports", "preact/jsx-runtime", "ojs/ojaccordion", "ojs/ojradioset", "ojs/ojlabel", "preact"], function (require, exports, jsx_runtime_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.Accordion = void 0;
+    const Accordion = () => {
+        return ((0, jsx_runtime_1.jsx)("div", Object.assign({ class: "oj-web-applayout-max-width oj-web-applayout-content" }, { children: (0, jsx_runtime_1.jsxs)("oj-accordion", Object.assign({ id: "a1" }, { children: [(0, jsx_runtime_1.jsxs)("oj-collapsible", Object.assign({ id: "c1" }, { children: [(0, jsx_runtime_1.jsxs)("h3", Object.assign({ slot: "header" }, { children: [(0, jsx_runtime_1.jsx)("span", { class: "oj-ux-ico-cart oj-ux-icon-size-5x oj-sm-padding-2x-end" }), "Header 1"] })), (0, jsx_runtime_1.jsx)("p", { children: "Content 1." })] })), (0, jsx_runtime_1.jsxs)("oj-collapsible", Object.assign({ id: "c3", expanded: true }, { children: [(0, jsx_runtime_1.jsx)("h3", Object.assign({ slot: "header" }, { children: "Header 2" })), (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)("oj-label", Object.assign({ id: "mainlabelid" }, { children: "Colors" })), (0, jsx_runtime_1.jsxs)("oj-radioset", Object.assign({ id: "radiosetBasicDemoId", value: "red", "labelled-by": "mainlabelid" }, { children: [(0, jsx_runtime_1.jsx)("oj-option", Object.assign({ id: "blueopt", value: "blue" }, { children: "Blue" })), (0, jsx_runtime_1.jsx)("oj-option", Object.assign({ id: "greenopt", value: "green" }, { children: "Green" })), (0, jsx_runtime_1.jsx)("oj-option", Object.assign({ id: "redopt", value: "red" }, { children: "Red" }))] }))] })] })), (0, jsx_runtime_1.jsxs)("oj-collapsible", Object.assign({ id: "c4" }, { children: [(0, jsx_runtime_1.jsx)("h3", Object.assign({ slot: "header" }, { children: "Header 3" })), (0, jsx_runtime_1.jsx)("p", { children: "Content 3." })] }))] })) })));
+    };
+    exports.Accordion = Accordion;
+});

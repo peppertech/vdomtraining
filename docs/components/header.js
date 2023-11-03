@@ -20,7 +20,8 @@ define(["require", "exports", "preact/jsx-runtime", "preact/hooks", "ojs/ojrespo
             keyAttributes: "path",
         });
         const pageChangeHandler = (event) => {
-            props.onPageChanged(event.detail.value);
+            if (event.detail.updatedFrom === "internal")
+                props.onPageChanged(event.detail.value);
         };
         const renderNavList = (item) => {
             return ((0, jsx_runtime_1.jsx)("li", Object.assign({ id: item.data.path }, { children: (0, jsx_runtime_1.jsxs)("a", Object.assign({ href: "#" }, { children: [(0, jsx_runtime_1.jsx)("span", { class: item.data.detail.iconClass }), getDisplayType() === "all" ? item.data.detail.label : ""] })) })));
