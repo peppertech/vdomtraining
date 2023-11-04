@@ -17,6 +17,10 @@
   max-width: 400px;
   overflow-wrap: break-word;
 }
+.nav-drawer-light-bg {
+  background-color: #3a3631;
+}
+
 .demo-data-grid {
   width: 100%;
   min-height: 25rem;
@@ -29,4 +33,22 @@
 .demo-collection-panel {
   min-width: 50rem;
   max-width: 21rem;
+}
+.demo-drawer-end {
+  height: 100%;
+}
+
+.demo-full-height {
+  height: 100vh;
+}
+
+.demo-drawer-header {
+  display: flex;
+  padding: 0.3rem 1rem 0 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.demo-form-container {
+  width: 350px;
 }
