@@ -1,9 +1,21 @@
 import "ojs/ojpopup";
 import "ojs/ojbutton";
-import "preact";
+import { ComponentProps } from "preact";
 import { useRef } from "preact/hooks";
 import { ojPopup } from "ojs/ojpopup";
 import { ojButton } from "ojs/ojbutton";
+
+type PopupProps = ComponentProps<"oj-popup">;
+const positionConfig: PopupProps["position"] = {
+  at: {
+    horizontal: "end",
+    vertical: "top",
+  },
+  my: {
+    horizontal: "start",
+    vertical: "bottom",
+  },
+};
 
 export const Popup = () => {
   const popRef = useRef<ojPopup>(null);
@@ -20,16 +32,7 @@ export const Popup = () => {
           ref={popRef}
           autoDismiss="focusLoss"
           modality="modeless"
-          position={{
-            at: {
-              horizontal: "end",
-              vertical: "top",
-            },
-            my: {
-              horizontal: "start",
-              vertical: "bottom",
-            },
-          }}
+          position={positionConfig}
           tail="simple">
           <div class="oj-flex">
             <pre
