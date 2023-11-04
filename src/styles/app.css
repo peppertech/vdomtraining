@@ -22,3 +22,11 @@
   min-height: 25rem;
   height: calc(50vh - 0.625rem);
 }
+.demo-panel {
+  min-width: 17rem;
+  max-width: 21rem;
+}
+.demo-collection-panel {
+  min-width: 50rem;
+  max-width: 21rem;
+}

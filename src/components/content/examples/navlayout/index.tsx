@@ -4,7 +4,6 @@ import { ActionCard } from "./actioncard";
 import { TabBar } from "./tabbar";
 import { Dialog } from "./dialog";
 import { Popup } from "./popup";
-import "css!./style/examples.css";
 import "preact";
 
 const NavLayout = () => {
