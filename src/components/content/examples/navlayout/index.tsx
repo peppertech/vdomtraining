@@ -2,7 +2,8 @@ import { NavList } from "./navlist";
 import { Accordion } from "./accordion";
 import { ActionCard } from "./actioncard";
 import { TabBar } from "./tabbar";
-import { Dialog, Popup } from "./dialog-popup";
+import { Dialog } from "./dialog";
+import { Popup } from "./popup";
 import "css!./style/examples.css";
 import "preact";
 
@@ -29,6 +30,10 @@ const NavLayout = () => {
         <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel">
           <h2 class="oj-typography-heading-sm"> Dialog </h2>
           <Dialog />
+        </div>
+        <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel">
+          <h2 class="oj-typography-heading-sm"> Popup </h2>
+          <Popup />
         </div>
       </div>
     </div>
