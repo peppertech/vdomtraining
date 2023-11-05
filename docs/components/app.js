@@ -1,4 +1,4 @@
-define(["require", "exports", "preact/jsx-runtime", "./header", "./footer", "./content/index", "ojs/ojvcomponent", "preact/hooks", "ojs/ojcorerouter", "ojs/ojurlparamadapter", "ojs/ojcontext"], function (require, exports, jsx_runtime_1, header_1, footer_1, index_1, ojvcomponent_1, hooks_1, CoreRouter, UrlParamAdapter, Context) {
+define(["require", "exports", "preact/jsx-runtime", "./header", "./footer", "./content/index", "ojs/ojvcomponent", "preact/hooks", "ojs/ojcorerouter", "ojs/ojurlparamadapter", "ojs/ojcontext", "preact"], function (require, exports, jsx_runtime_1, header_1, footer_1, index_1, ojvcomponent_1, hooks_1, CoreRouter, UrlParamAdapter, Context) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.App = void 0;

@@ -1,0 +1,1846 @@
+/* start:src/Common/themes/redwood/Common.css */
+:root {
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-10: 255, 248, 247;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-20: 255, 241, 239;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-30: 255, 235, 232;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-40: 255, 217, 211;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-50: 255, 193, 184;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-60: 255, 157, 144;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-70: 255, 134, 117;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-80: 254, 104, 84;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-90: 236, 79, 58;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-100: 214, 59, 37;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-110: 195, 53, 34;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-120: 179, 49, 31;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-130: 170, 34, 34;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-140: 143, 39, 25;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-150: 124, 34, 22;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-160: 102, 28, 18;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-170: 86, 24, 15;
+
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-10: 254, 249, 242;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-20: 253, 242, 229;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-30: 252, 237, 220;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-40: 249, 221, 188;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-50: 246, 199, 146;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-60: 240, 169, 87;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-70: 235, 150, 50;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-80: 225, 128, 18;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-90: 198, 113, 14;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-100: 172, 99, 12;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-110: 156, 89, 11;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-120: 143, 82, 10;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-130: 129, 73, 9;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-140: 114, 65, 8;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-150: 99, 56, 7;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-160: 81, 47, 6;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-170: 69, 39, 5;
+
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-10: 244, 252, 235;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-20: 235, 248, 222;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-30: 228, 245, 211;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-40: 207, 235, 179;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-50: 177, 221, 136;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-60: 138, 201, 79;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-70: 125, 186, 69;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-80: 111, 169, 57;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-90: 94, 148, 43;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-100: 80, 130, 35;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-110: 73, 118, 32;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-120: 67, 107, 29;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-130: 60, 96, 26;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-140: 53, 86, 23;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-150: 46, 73, 20;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-160: 38, 61, 16;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-170: 31, 51, 14;
+
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-10: 246, 250, 252;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-20: 237, 246, 249;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-30: 228, 241, 247;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-40: 208, 229, 238;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-50: 180, 213, 225;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-60: 143, 191, 208;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-70: 121, 177, 198;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-80: 95, 162, 186;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-90: 65, 144, 172;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-100: 34, 126, 158;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-110: 14, 114, 151;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-120: 0, 104, 140;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-130: 2, 94, 126;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-140: 4, 83, 111;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-150: 6, 72, 95;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-160: 6, 60, 78;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-170: 5, 50, 66;
+
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-10: 246, 250, 252;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-20: 237, 246, 249;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-30: 228, 241, 247;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-40: 208, 229, 238;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-50: 180, 213, 225;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-60: 143, 191, 208;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-70: 121, 177, 198;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-80: 95, 162, 186;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-90: 65, 144, 172;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-100: 34, 126, 158;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-110: 14, 114, 151;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-120: 0, 104, 140;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-130: 2, 94, 126;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-140: 4, 83, 111;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-150: 6, 72, 95;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-160: 6, 60, 78;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-170: 5, 50, 66;
+
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0: 255, 255, 255;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-10: 251, 249, 248;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-20: 245, 244, 242;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-30: 241, 239, 237;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-40: 228, 225, 221;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-50: 212, 207, 202;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-60: 188, 182, 177;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-70: 174, 168, 162;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-80: 158, 152, 146;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-90: 139, 133, 128;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-100: 123, 117, 112;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-110: 111, 105, 100;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-120: 101, 95, 91;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-130: 92, 86, 81;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-140: 81, 76, 71;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-150: 71, 66, 62;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-160: 58, 54, 50;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-170: 49, 45, 42;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-180: 32, 30, 28;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190: 22, 21, 19;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-200: 00, 00, 00;
+
+  --oj-c-PRIVATE-DO-NOT-USE-palette-dvt-rgb-1: 36, 93, 99;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-dvt-rgb-2: 222, 127, 17;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-dvt-rgb-3: 95, 185, 181;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-dvt-rgb-4: 78, 65, 55;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-dvt-rgb-5: 160, 201, 139;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-dvt-rgb-6: 180, 114, 130;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-dvt-rgb-7: 131, 64, 30;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-dvt-rgb-8: 158, 127, 204;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-dvt-rgb-9: 251, 194, 106;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-dvt-rgb-10: 88, 49, 110;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-dvt-rgb-11: 95, 162, 186;
+  --oj-c-PRIVATE-DO-NOT-USE-palette-dvt-rgb-12: 49, 122, 69;
+}
+
+:root {
+  /* text colors */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190));
+  --oj-c-PRIVATE-DO-NOT-USE-core-text-color-secondary: rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190), 0.65);
+  --oj-c-PRIVATE-DO-NOT-USE-core-text-color-disabled: rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190), 0.4);
+  --oj-c-PRIVATE-DO-NOT-USE-core-text-color-brand: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-110));
+  --oj-c-PRIVATE-DO-NOT-USE-core-text-color-danger: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-120));
+  --oj-c-PRIVATE-DO-NOT-USE-core-text-color-danger-low: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-100));
+  --oj-c-PRIVATE-DO-NOT-USE-core-text-color-warning: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-120));
+  --oj-c-PRIVATE-DO-NOT-USE-core-text-color-success: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-120));
+
+  /* TODO - Move this variable into Heading component CSS files once Heading implementation is merged */
+  --oj-c-PRIVATE-DO-NOT-USE-heading-text-color: var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+
+  --oj-c-PRIVATE-DO-NOT-USE-core-bg-color-content: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0));
+  --oj-c-PRIVATE-DO-NOT-USE-core-bg-color-hover: rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190), 0.08);
+  --oj-c-PRIVATE-DO-NOT-USE-core-bg-color-danger-hover: var(--oj-c-PRIVATE-DO-NOT-USE-core-danger-secondary-1);
+  --oj-c-PRIVATE-DO-NOT-USE-core-bg-color-active: rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190), 0.16);
+  --oj-c-PRIVATE-DO-NOT-USE-core-bg-color-selected: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-30));
+  --oj-c-PRIVATE-DO-NOT-USE-core-border-color-selected: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-110));
+  --oj-c-PRIVATE-DO-NOT-USE-core-color-disabled-1: rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190), 0.05);
+  --oj-c-PRIVATE-DO-NOT-USE-core-color-disabled-2: rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190), 0.1);
+
+  /* icon */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-icon-size-lg: 1.5rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-icon-size-sm: 1rem;
+
+  /* divider */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-divider-color: rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190), 0.1);
+
+  /* neutral */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-neutral-1: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-100));
+  --oj-c-PRIVATE-DO-NOT-USE-core-neutral-2: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-110));
+  --oj-c-PRIVATE-DO-NOT-USE-core-neutral-3: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-120));
+  --oj-c-PRIVATE-DO-NOT-USE-core-neutral-contrast: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0));
+  --oj-c-PRIVATE-DO-NOT-USE-core-neutral-secondary-1: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-30));
+  --oj-c-PRIVATE-DO-NOT-USE-core-neutral-secondary-2: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-20));
+  --oj-c-PRIVATE-DO-NOT-USE-core-neutral-secondary-3: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-10));
+  --oj-c-PRIVATE-DO-NOT-USE-core-neutral-secondary-contrast: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-120));
+
+  /* brand */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-brand-1: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-100));
+  --oj-c-PRIVATE-DO-NOT-USE-core-brand-2: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-110));
+  --oj-c-PRIVATE-DO-NOT-USE-core-brand-3: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-120));
+  --oj-c-PRIVATE-DO-NOT-USE-core-brand-contrast: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0));
+
+  /* danger */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-danger-1: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-100));
+  --oj-c-PRIVATE-DO-NOT-USE-core-danger-2: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-110));
+  --oj-c-PRIVATE-DO-NOT-USE-core-danger-3: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-120));
+  --oj-c-PRIVATE-DO-NOT-USE-core-danger-contrast: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0));
+
+  /* danger secondary */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-danger-secondary-1: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-30));
+  --oj-c-PRIVATE-DO-NOT-USE-core-danger-secondary-2: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-20));
+  --oj-c-PRIVATE-DO-NOT-USE-core-danger-secondary-3: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-10));
+  --oj-c-PRIVATE-DO-NOT-USE-core-danger-secondary-contrast: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-danger-rgb-120));
+
+  /* warning */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-warning-1: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-100));
+  --oj-c-PRIVATE-DO-NOT-USE-core-warning-2: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-110));
+  --oj-c-PRIVATE-DO-NOT-USE-core-warning-3: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-120));
+  --oj-c-PRIVATE-DO-NOT-USE-core-warning-contrast: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0));
+
+  /* warning secondary */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-warning-secondary-1: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-30));
+  --oj-c-PRIVATE-DO-NOT-USE-core-warning-secondary-2: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-20));
+  --oj-c-PRIVATE-DO-NOT-USE-core-warning-secondary-3: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-10));
+  --oj-c-PRIVATE-DO-NOT-USE-core-warning-secondary-contrast: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-warning-rgb-120));
+
+  /* success */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-success-1: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-100));
+  --oj-c-PRIVATE-DO-NOT-USE-core-success-2: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-110));
+  --oj-c-PRIVATE-DO-NOT-USE-core-success-3: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-120));
+  --oj-c-PRIVATE-DO-NOT-USE-core-success-contrast: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0));
+
+  /* success secondary */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-success-secondary-1: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-30));
+  --oj-c-PRIVATE-DO-NOT-USE-core-success-secondary-2: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-20));
+  --oj-c-PRIVATE-DO-NOT-USE-core-success-secondary-3: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-10));
+  --oj-c-PRIVATE-DO-NOT-USE-core-success-secondary-contrast: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-success-rgb-120));
+
+  /* info */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-info-1: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-100));
+  --oj-c-PRIVATE-DO-NOT-USE-core-info-2: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-110));
+  --oj-c-PRIVATE-DO-NOT-USE-core-info-3: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-120));
+  --oj-c-PRIVATE-DO-NOT-USE-core-info-contrast: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0));
+
+  /* info secondary */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-info-secondary-1: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-30));
+  --oj-c-PRIVATE-DO-NOT-USE-core-info-secondary-2: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-20));
+  --oj-c-PRIVATE-DO-NOT-USE-core-info-secondary-3: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-10));
+  --oj-c-PRIVATE-DO-NOT-USE-core-info-secondary-contrast: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-info-rgb-120));
+
+  /* focus */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-focus-border-color: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190));
+
+  /* cursor */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-cursor-clickable: pointer;
+
+  /* drag and drop */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-drag-drop-color-1: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-40));
+  --oj-c-PRIVATE-DO-NOT-USE-core-drag-drop-color-2: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-100));
+  --oj-c-PRIVATE-DO-NOT-USE-core-drag-drop-line-color: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-100));
+
+  /* shadow */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-box-shadow-rgb: var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-200);
+  --oj-c-PRIVATE-DO-NOT-USE-core-box-shadow-xs: 0px 1px 4px 0px
+    rgba(var(--oj-c-PRIVATE-DO-NOT-USE-core-box-shadow-rgb), 0.12);
+  --oj-c-PRIVATE-DO-NOT-USE-core-box-shadow-sm: 0px 4px 8px 0px
+    rgba(var(--oj-c-PRIVATE-DO-NOT-USE-core-box-shadow-rgb), 0.16);
+  --oj-c-PRIVATE-DO-NOT-USE-core-box-shadow-md: 0px 6px 12px 0px
+    rgba(var(--oj-c-PRIVATE-DO-NOT-USE-core-box-shadow-rgb), 0.2);
+  --oj-c-PRIVATE-DO-NOT-USE-core-box-shadow-lg: 0px 8px 16px 0px
+    rgba(var(--oj-c-PRIVATE-DO-NOT-USE-core-box-shadow-rgb), 0.24);
+  --oj-c-PRIVATE-DO-NOT-USE-core-box-shadow-xl: 0px 12px 20px 0px
+    rgba(var(--oj-c-PRIVATE-DO-NOT-USE-core-box-shadow-rgb), 0.28);
+
+  /* a dropdown is a popup that drops down from a component, for example a menu or select popup */
+  --oj-c-PRIVATE-DO-NOT-USE-core-dropdown-box-shadow: var(--oj-c-PRIVATE-DO-NOT-USE-core-box-shadow-sm);
+
+  /* scrim color, for example behind a modal dialog */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-scrim-color: rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190), 0.4);
+
+  /* spacing */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-spacing-1x: 0.25rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-spacing-2x: 0.5rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-spacing-3x: 0.75rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-spacing-4x: 1rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-spacing-5x: 1.25rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-spacing-6x: 1.5rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-spacing-7x: 1.75rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-spacing-8x: 2rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-spacing-9x: 2.25rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-spacing-10x: 2.5rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-spacing-11x: 2.75rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-spacing-12x: 3rem;
+
+  /* border radius */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-core-border-radius-sm: 2px;
+  --oj-c-PRIVATE-DO-NOT-USE-core-border-radius-md: 0.25rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-border-radius-lg: 0.375rem;
+  --oj-c-PRIVATE-DO-NOT-USE-core-border-radius-xl: 0.5rem;
+
+  /* z index */
+  /* -------------------------- */
+  --oj-c-PRIVATE-DO-NOT-USE-private-core-z-index-fixed: 100;
+  --oj-c-PRIVATE-DO-NOT-USE-private-core-z-index-off-canvas: 200;
+  --oj-c-PRIVATE-DO-NOT-USE-private-core-z-index-resizable: 900;
+  --oj-c-PRIVATE-DO-NOT-USE-core-z-index-popup: 1000;
+  --oj-c-PRIVATE-DO-NOT-USE-core-z-index-dialog: 1050;
+  --oj-c-PRIVATE-DO-NOT-USE-core-z-index-messages: 2000;
+
+  --oj-c-PRIVATE-DO-NOT-USE-private-core-global-loading-indicator-delay-duration: 0.05s;
+}
+
+:root {
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-2xl-font-size: 2.5rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-2xl-font-weight: 900;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-2xl-line-height: 1.3;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-xl-font-size: 2.25rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-xl-font-weight: 900;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-xl-line-height: 1.222;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-lg-font-size: 2rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-lg-font-weight: 900;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-lg-line-height: 1.25;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-md-font-size: 1.75rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-md-font-weight: 900;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-md-line-height: 1.2857;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-sm-font-size: 1.5rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-sm-font-weight: 900;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-sm-line-height: 1.3333;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-xs-font-size: 1.25rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-xs-font-weight: 900;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-heading-xs-line-height: 1.4;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-2xl-font-size: 2.25rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-2xl-font-weight: bold;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-2xl-line-height: 1.2222;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-xl-font-size: 2rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-xl-font-weight: bold;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-xl-line-height: 1.25;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-lg-font-size: 1.75rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-lg-font-weight: bold;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-lg-line-height: 1.2857;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-md-font-size: 1.5rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-md-font-weight: bold;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-md-line-height: 1.3333;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-sm-font-size: 1.25rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-sm-font-weight: bold;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-sm-line-height: 1.4;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-xs-font-size: 1rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-xs-font-weight: bold;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-xs-line-height: 1.5;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-2xs-font-size: .875rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-2xs-font-weight: bold;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-subheading-2xs-line-height: 1.4286;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-body-xl-font-size: 1.25rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-body-xl-line-height: 1.4;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-body-lg-font-size: 1.125rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-body-lg-line-height: 1.3333;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-body-md-font-size: 1rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-body-md-line-height: 1.25;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-body-sm-font-size: 0.859rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-body-sm-line-height: 1.2;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-body-xs-font-size: 0.75rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-body-xs-line-height: 1.3333;
+
+  --oj-c-PRIVATE-DO-NOT-USE-typography-body-2xs-font-size: 0.625rem;
+  --oj-c-PRIVATE-DO-NOT-USE-typography-body-2xs-line-height: 1.2;
+}
+
+/* animations */
+/* -------------------------- */
+:root {
+  --oj-c-PRIVATE-DO-NOT-USE-animation-duration-xshort: 0.15s;
+  --oj-c-PRIVATE-DO-NOT-USE-animation-duration-short: 0.2s;
+  --oj-c-PRIVATE-DO-NOT-USE-animation-duration-medium: 0.25s;
+  --oj-c-PRIVATE-DO-NOT-USE-animation-duration-long: 0.4s;
+  --oj-c-PRIVATE-DO-NOT-USE-animation-duration-xlong: 0.5s;
+
+  --oj-c-PRIVATE-DO-NOT-USE-animation-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --oj-c-PRIVATE-DO-NOT-USE-animation-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --oj-c-PRIVATE-DO-NOT-USE-animation-ease-in: cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* button */
+/* -------------------------- */
+/* TODO - Move this variable into Button component CSS files once Button implementation is merged */
+:root {
+  --oj-c-PRIVATE-DO-NOT-USE-private-button-ghost-chrome-text-color: var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+  --oj-c-PRIVATE-DO-NOT-USE-private-button-ghost-chrome-text-color-hover: var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-secondary);
+  --oj-c-PRIVATE-DO-NOT-USE-private-button-ghost-chrome-text-color-active: var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+}
+
+/* meter bar and meter circle */
+:root {
+  --oj-c-PRIVATE-DO-NOT-USE-meter-track-bg-color: rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-170), 0.15);
+  --oj-c-PRIVATE-DO-NOT-USE-meter-value-bg-color: rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190));
+  --oj-c-PRIVATE-DO-NOT-USE-meter-threshold-color: rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-170), 0.15);
+}
+
+/* dvt vars */
+:root {
+  --oj-c-PRIVATE-DO-NOT-USE-dvt-contrast-line-color: rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-20), 0.7);
+  --oj-c-PRIVATE-DO-NOT-USE-dvt-reference-object-line-color: rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190), 0.8);
+  --oj-c-PRIVATE-DO-NOT-USE-dvt-threshold-danger:  #D63B25;
+  --oj-c-PRIVATE-DO-NOT-USE-dvt-threshold-warning: #CF7C00;
+  --oj-c-PRIVATE-DO-NOT-USE-dvt-threshold-success: #508223;
+
+  --oj-c-PRIVATE-DO-NOT-USE-dvt-label-font-size-sm: var(--oj-c-PRIVATE-DO-NOT-USE-typography-body-xs-font-size);
+}
+
+.oj-c-colorscheme-dark, .oj-color-invert {
+  /* Override CSS vars to make it dark themed (the values are taken from the Legacy JET scoped under oj-color-invert) */
+  --oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary  : rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0));
+  --oj-c-PRIVATE-DO-NOT-USE-core-text-color-secondary: rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0), 0.6);
+  --oj-c-PRIVATE-DO-NOT-USE-core-text-color-disabled : rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0), 0.3);   
+  --oj-c-PRIVATE-DO-NOT-USE-core-bg-color-hover      : rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0), 0.12);
+  --oj-c-PRIVATE-DO-NOT-USE-core-bg-color-active     : rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0), 0.16);
+}
+/* end:src/Common/themes/redwood/Common.css */
+/* start:src/UNSAFE_BaseButton/themes/redwood/BaseButton.css */
+.oj-c-base-button-outlined {
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color:                      transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color:                  rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190), .5);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color:                    var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-hover:              var(--oj-c-PRIVATE-DO-NOT-USE-core-bg-color-hover);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-hover:            rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190), .5);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-hover:              var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-active:             var(--oj-c-PRIVATE-DO-NOT-USE-core-bg-color-active);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-active:           rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190), .5);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-active:             var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);  
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-disabled:         var(--oj-c-PRIVATE-DO-NOT-USE-core-divider-color);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-disabled:           var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-disabled);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color-disabled:             transparent;        
+}
+
+.oj-c-base-button-callToAction {
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color:                      rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-170));
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color:                  transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color:                    var(--oj-c-PRIVATE-DO-NOT-USE-core-neutral-contrast);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-hover:              rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-160));
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-hover:            transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-hover:              var(--oj-c-PRIVATE-DO-NOT-USE-core-neutral-contrast);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-active:             rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-150));
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-active:           transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-active:             var(--oj-c-PRIVATE-DO-NOT-USE-core-neutral-contrast);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color-disabled:             var(--oj-c-PRIVATE-DO-NOT-USE-core-color-disabled-1);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-disabled:         transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-disabled:           var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-disabled);    
+}
+
+.oj-c-base-button-borderless {
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color:                      transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color:                  transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color:                    var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-hover:              var(--oj-c-PRIVATE-DO-NOT-USE-core-bg-color-hover);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-hover:            transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-hover:              var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-active:             var(--oj-c-PRIVATE-DO-NOT-USE-core-bg-color-active);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-active:           transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-active:             var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color-disabled:             transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-disabled:         transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-disabled:           var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-disabled);  
+}
+
+.oj-c-base-button-ghost {
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color:                      transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color:                  transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color:                    var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-hover:              transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-hover:            transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-hover:              var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-secondary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-active:             transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-active:           transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-active:             var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-secondary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color-disabled:             transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-disabled:         transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-disabled:           var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-disabled);      
+}
+
+.oj-c-base-button-solid {
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color:                      rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190),.08);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color:                  transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color:                    var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-hover:              rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190),.12);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-hover:            transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-hover:              var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-active:             rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190),.16);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-active:           transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-active:             var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);    
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color-disabled:             var(--oj-c-PRIVATE-DO-NOT-USE-core-color-disabled-1);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-disabled:         transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-disabled:           var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-disabled);    
+}
+
+.oj-c-base-button-danger {
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color:                      var(--oj-c-PRIVATE-DO-NOT-USE-core-danger-1);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color:                  transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color:                    var(--oj-c-PRIVATE-DO-NOT-USE-core-danger-contrast);      
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-hover:              var(--oj-c-PRIVATE-DO-NOT-USE-core-danger-2);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-hover:            transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-hover:              var(--oj-c-PRIVATE-DO-NOT-USE-core-danger-contrast);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-active:             var(--oj-c-PRIVATE-DO-NOT-USE-core-danger-3);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-active:           transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-active:             var(--oj-c-PRIVATE-DO-NOT-USE-core-danger-contrast);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color-disabled:             var(--oj-c-PRIVATE-DO-NOT-USE-core-color-disabled-1);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-disabled:         transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-disabled:           var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-disabled);    
+}
+
+.oj-c-base-button-lg {
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-height:                      3.25rem;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-to-edge-padding:        1.5rem;  
+}
+
+.oj-c-base-button-md {
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-height:                      2.75rem;
+}
+
+.oj-c-base-button-sm {
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-height:                      2.25rem;
+}
+
+.oj-c-base-button-xs {
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-height:                      1.5rem;
+}
+
+:root {
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color:             transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color:         rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190), .5);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-radius:        var(--oj-c-PRIVATE-DO-NOT-USE-core-border-radius-md);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-font-weight:          600;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-height:               2.75rem;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-to-edge-padding: 1rem;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color:           var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-font-size:            var(--oj-c-PRIVATE-DO-NOT-USE-typography-body-sm-font-size);    
+}
+
+/* 
+ * Dark color scheme 
+ */
+.oj-color-invert .oj-c-base-button-solid,
+.oj-c-colorscheme-dark .oj-c-base-button-solid {
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color:                       rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-10), 0.08);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color:                   transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color:                     var(--oj-c-PRIVATE-DO-NOT-USE-core-neutral-contrast);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-hover:               var(--oj-c-PRIVATE-DO-NOT-USE-core-bg-color-hover);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-hover:             transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-hover:               var(--oj-c-PRIVATE-DO-NOT-USE-core-neutral-contrast);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-active:              var(--oj-c-PRIVATE-DO-NOT-USE-core-bg-color-active);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-active:            transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-active:              var(--oj-c-PRIVATE-DO-NOT-USE-core-neutral-contrast);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color-disabled:              rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0), 0.16);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-disabled:          transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-disabled:            var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-disabled);
+}
+
+.oj-color-invert .oj-c-base-button-borderless,
+.oj-c-colorscheme-dark .oj-c-base-button-borderless { 
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color:                     var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-hover:               var(--oj-c-PRIVATE-DO-NOT-USE-core-bg-color-hover);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-hover:             transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-hover:               var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-active:              var(--oj-c-PRIVATE-DO-NOT-USE-core-bg-color-active);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-active:            transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-active:              var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-disabled:            var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-disabled);
+}
+
+.oj-color-invert .oj-c-base-button-outlined,
+.oj-c-colorscheme-dark .oj-c-base-button-outlined { 
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color:                   rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0), .3);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color:                     var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-hover:               var(--oj-c-PRIVATE-DO-NOT-USE-core-bg-color-hover);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-hover:             rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0), .3);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-hover:               var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-active:              var(--oj-c-PRIVATE-DO-NOT-USE-core-bg-color-active);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-active:            rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0), .3);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-active:              var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-disabled:          rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0), .1);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-disabled:            var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-disabled);
+}
+
+.oj-color-invert .oj-c-base-button-callToAction,
+.oj-c-colorscheme-dark .oj-c-base-button-callToAction { 
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color:              rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0));
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color:          transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color:            rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190));
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-hover:      rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-10));
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-hover:    transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-hover:      rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190));
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-overlay-active:     rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-20));
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-active:   transparent;
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-text-color-active:     rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-190));
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-bg-color-disabled:     rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0), 0.16);
+    --oj-c-PRIVATE-DO-NOT-USE-base-button-border-color-disabled: transparent;
+}
+
+/* end:src/UNSAFE_BaseButton/themes/redwood/BaseButton.css */
+/* start:src/UNSAFE_ButtonLayout/themes/redwood/ButtonLayout.css */
+.oj-c-button-layout-lg {
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-to-text-padding:        1.0rem;
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-to-edge-padding:        1.0rem;
+}
+
+.oj-c-button-layout-md {
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-to-text-padding:       0.625rem;
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-to-edge-padding:       0.625rem;
+}
+
+.oj-c-button-layout-sm {
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-to-text-padding:        .5rem;      
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-to-edge-padding:        .5rem;
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-size:                   1.25rem;
+}    
+
+.oj-c-button-layout-xs {
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-size:                   1.25rem;
+}  
+
+.oj-c-button-layout-embedded-lg {
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-to-text-padding:        1rem;
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-to-edge-padding:        0.84375rem;
+}
+
+.oj-c-button-layout-embedded-md {
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-to-text-padding:        .625rem;
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-to-edge-padding:        .59375rem;
+}
+
+.oj-c-button-layout-embedded-sm {
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-to-text-padding:        .5rem;      
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-to-edge-padding:        .46875rem;
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-size:                   1.25rem;
+}    
+
+
+:root {
+    --oj-c-PRIVATE-DO-NOT-USE-button-icon-size:                   var(--oj-c-PRIVATE-DO-NOT-USE-core-icon-size-lg);
+}
+/* end:src/UNSAFE_ButtonLayout/themes/redwood/ButtonLayout.css */
+/* start:src/UNSAFE_ComponentMessage/themes/redwood/ComponentMessaging.css */
+:root {
+  --oj-c-PRIVATE-DO-NOT-USE-message-inline-start-icon-color:         var(--oj-c-PRIVATE-DO-NOT-USE-core-info-3);
+  --oj-c-PRIVATE-DO-NOT-USE-message-inline-start-icon-size:          1rem;
+
+  --oj-c-PRIVATE-DO-NOT-USE-message-inline-summary-text-color:       var(--oj-c-PRIVATE-DO-NOT-USE-user-assistance-inline-text-color);
+  --oj-c-PRIVATE-DO-NOT-USE-message-inline-summary-text-weight:      400;
+  --oj-c-PRIVATE-DO-NOT-USE-message-inline-summary-text-size:        var(--oj-c-PRIVATE-DO-NOT-USE-user-assistance-inline-font-size);
+  --oj-c-PRIVATE-DO-NOT-USE-message-inline-summary-line-height:      1.333rem;
+}
+
+.oj-c-messageinline-error {
+  --oj-c-PRIVATE-DO-NOT-USE-message-inline-start-icon-color:         var(--oj-c-PRIVATE-DO-NOT-USE-core-danger-3);
+}
+
+.oj-c-messageinline-warning {
+  --oj-c-PRIVATE-DO-NOT-USE-message-inline-start-icon-color:         var(--oj-c-PRIVATE-DO-NOT-USE-core-warning-3);
+}
+
+.oj-c-messageinline-confirmation {
+  --oj-c-PRIVATE-DO-NOT-USE-message-inline-start-icon-color:         var(--oj-c-PRIVATE-DO-NOT-USE-core-success-3);
+}
+
+.oj-c-messageinline-info {
+  --oj-c-PRIVATE-DO-NOT-USE-message-inline-start-icon-color:         var(--oj-c-PRIVATE-DO-NOT-USE-core-info-3);
+}
+
+/* end:src/UNSAFE_ComponentMessage/themes/redwood/ComponentMessaging.css */
+/* start:src/UNSAFE_Label/themes/redwood/Label.css */
+:root {
+  --oj-c-PRIVATE-DO-NOT-USE-label-font-size:                   var(--oj-c-PRIVATE-DO-NOT-USE-typography-body-sm-font-size);
+  --oj-c-PRIVATE-DO-NOT-USE-label-font-weight:                 600;
+  --oj-c-PRIVATE-DO-NOT-USE-label-line-height:                 var(--oj-c-PRIVATE-DO-NOT-USE-typography-body-sm-line-height);
+  --oj-c-PRIVATE-DO-NOT-USE-label-color:                       var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+  --oj-c-PRIVATE-DO-NOT-USE-label-color-disabled:              var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-disabled);
+  --oj-c-PRIVATE-DO-NOT-USE-label-inside-edge-font-size:       var(--oj-c-PRIVATE-DO-NOT-USE-typography-body-xs-font-size);
+  --oj-c-PRIVATE-DO-NOT-USE-label-inside-edge-font-weight:     600;
+  --oj-c-PRIVATE-DO-NOT-USE-label-inside-edge-line-height:     var(--oj-c-PRIVATE-DO-NOT-USE-typography-body-xs-line-height);
+  --oj-c-PRIVATE-DO-NOT-USE-label-inside-edge-position-top:    0.5rem;
+  --oj-c-PRIVATE-DO-NOT-USE-label-inside-edge-color:           var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-secondary);
+
+  --oj-c-PRIVATE-DO-NOT-USE-text-field-inside-edge-label-color-focus:        rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-brand-rgb-110));
+
+  /* TODO: This is also used by LabelValueLayout, so where should it live? */
+  /* top aligned labels
+     by default labels are display: block and therefore
+     render on top of the field. This variable controls
+     the vertical spacing between labels and fields */
+  --oj-c-PRIVATE-DO-NOT-USE-form-layout-top-edge-label-to-value-padding:       0.5rem;
+
+  /* in a form layout when the labels are inline what is the
+     default label alignment */
+  --oj-c-PRIVATE-DO-NOT-USE-form-layout-start-edge-label-text-align: end;
+}
+/* end:src/UNSAFE_Label/themes/redwood/Label.css */
+/* start:src/UNSAFE_MessageToast/themes/redwood/MessageToast.css */
+:root {
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-background-color:         var(--oj-c-PRIVATE-DO-NOT-USE-core-info-secondary-3);
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-max-width-lg:             calc(150 * var(--oj-c-PRIVATE-DO-NOT-USE-core-spacing-1x));
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-max-width-md:             calc(100vw - var(--oj-c-PRIVATE-DO-NOT-USE-core-spacing-12x));
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-max-width-sm:             calc(100vw - var(--oj-c-PRIVATE-DO-NOT-USE-core-spacing-8x));
+
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-start-icon-color:         var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-start-icon-size:          var(--oj-c-PRIVATE-DO-NOT-USE-core-spacing-6x);
+
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-summary-text-color:       var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-primary);
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-summary-text-weight:      normal;
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-summary-text-size:        var(--oj-c-PRIVATE-DO-NOT-USE-typography-body-md-font-size);
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-summary-line-height:      var(--oj-c-PRIVATE-DO-NOT-USE-core-spacing-5x);
+
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-detail-text-color:        var(--oj-c-PRIVATE-DO-NOT-USE-core-text-color-secondary);
+}
+
+.oj-c-colorscheme-dark, .oj-color-invert {
+  /* Override MessageToast css vars for dark theme */
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-background-color:        rgb(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-160));
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-start-icon-color:        rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0));
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-summary-text-color:      rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0));
+  --oj-c-PRIVATE-DO-NOT-USE-message-toast-detail-text-color:       rgba(var(--oj-c-PRIVATE-DO-NOT-USE-palette-neutral-rgb-0), 0.6);
+}
+
+/* end:src/UNSAFE_MessageToast/themes/redwood/MessageToast.css */
+/* start:UNSAFE_ComponentMessage/themes/redwood/ComponentMessageBaseTheme.styles.css */
+.ComponentMessageBaseTheme_baseTheme__tgaz2j0 {
+  --startIconColor__1aj7c360: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-info);
+  --startIconSize__1aj7c361:  1rem;
+  --summaryTextColor__1aj7c362: var(--inlineTextColor__1n9ixz60);
+  --summaryTextWeight__1aj7c363: 400;
+  --summaryTextSize__1aj7c364: var(--inlineFontSize__1n9ixz61);
+  --summaryLineHeight__1aj7c365: 1.333rem;
+}
+/* end:UNSAFE_ComponentMessage/themes/redwood/ComponentMessageBaseTheme.styles.css */
+/* start:UNSAFE_DrawerPopup/themes/redwood/DrawerPopupBaseTheme.styles.css */
+.DrawerPopupBaseTheme_baseTheme__11hfduf0 {
+  --overlayDrawerBackgroundColor__1ekn0ug0: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral0);
+}
+/* end:UNSAFE_DrawerPopup/themes/redwood/DrawerPopupBaseTheme.styles.css */
+/* start:UNSAFE_FilePicker/themes/redwood/FilePickerBaseTheme.styles.css */
+.FilePickerBaseTheme_baseTheme__gjv4mp0 {
+  --borderColor__12s6ppx0: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-enabled);
+  --borderRadius__12s6ppx1: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-xl);
+  --borderWidth__12s6ppx2: 1px;
+}
+/* end:UNSAFE_FilePicker/themes/redwood/FilePickerBaseTheme.styles.css */
+/* start:UNSAFE_Floating/themes/redwood/FloatingBaseTheme.styles.css */
+.FloatingBaseTheme_baseTheme__18jw0qa0 {
+  --backgroundColor__ihlnqb0: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral0);
+}
+/* end:UNSAFE_Floating/themes/redwood/FloatingBaseTheme.styles.css */
+/* start:UNSAFE_GroupedList/themes/redwood/GroupedListBaseTheme.styles.css */
+.GroupedListBaseTheme_baseTheme__1nfzl1m0 {
+  --groupHeaderBgColorSticky__11yn0c70: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-30));
+}
+/* end:UNSAFE_GroupedList/themes/redwood/GroupedListBaseTheme.styles.css */
+/* start:UNSAFE_Indexer/themes/redwood/IndexerBaseTheme.styles.css */
+.IndexerBaseTheme_baseTheme__k2mgdb0 {
+  --textColor__1gj3n970: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --fontSize__1gj3n971: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-font-size);
+}
+/* end:UNSAFE_Indexer/themes/redwood/IndexerBaseTheme.styles.css */
+/* start:UNSAFE_Link/themes/redwood/LinkBaseTheme.styles.css */
+.LinkBaseTheme_baseTheme__eahcnn0 {
+  --standaloneTextDecoration__1w21kyl0: none;
+  --standaloneTextDecorationHover__1w21kyl1: underline;
+  --embeddedTextDecoration__1w21kyl2: underline;
+  --embeddedTextDecorationHover__1w21kyl3: none;
+  --textUnderlineOffset__1w21kyl4: calc(0.6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --textColor__1w21kyl5: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-link);
+  --textColorActive__1w21kyl6: var(--textColor__1w21kyl5);
+  --textColorVisited__1w21kyl7: var(--textColor__1w21kyl5);
+}
+/* end:UNSAFE_Link/themes/redwood/LinkBaseTheme.styles.css */
+/* start:UNSAFE_Menu/themes/redwood/MenuDividerBaseTheme.styles.css */
+.MenuDividerBaseTheme_baseTheme__1wmh2g70 {
+  --verticalPadding__14rtvpd0: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+}
+/* end:UNSAFE_Menu/themes/redwood/MenuDividerBaseTheme.styles.css */
+/* start:UNSAFE_Menu/themes/redwood/MenuItemBaseTheme.styles.css */
+.MenuItemBaseTheme_baseTheme__153jibj0 {
+  --iconSize__1qbg5hn0: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --startEdgeToStartIconPadding__1qbg5hn1: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --endIconToEndEdgePadding__1qbg5hn2: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --startIconToLabelPadding__1qbg5hn3: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --labelToEndIconPadding__1qbg5hn4: calc(8 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --textColor__1qbg5hn5: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --iconColor__1qbg5hn6: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+}
+/* end:UNSAFE_Menu/themes/redwood/MenuItemBaseTheme.styles.css */
+/* start:UNSAFE_MessageBanner/themes/redwood/MessageBannerBaseTheme.styles.css */
+.MessageBannerBaseTheme_baseTheme__1mzbhvy0 {
+  --backgroundColor__l2hi9d0: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-info-low, var(--oj-core-info-secondary-3));
+  --startIconColor__l2hi9d1: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-info, var(--oj-core-info-3));
+  --startIconSize__l2hi9d2: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --summaryTextColor__l2hi9d3: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-info, var(--oj-core-info-3));
+  --summaryTextWeight__l2hi9d4: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-xs-font-weight, var(--oj-typography-subheading-xs-font-weight));
+  --summaryTextSize__l2hi9d5: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-xs-font-size, var(--oj-typography-subheading-xs-font-size));
+  --summaryLineHeight__l2hi9d6: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-xs-line-height);
+}
+/* end:UNSAFE_MessageBanner/themes/redwood/MessageBannerBaseTheme.styles.css */
+/* start:UNSAFE_MeterBar/themes/redwood/MeterBarBaseTheme.styles.css */
+.MeterBarBaseTheme_baseTheme__1n8hfuv0 {
+  --size__saju1q0: ;
+  --sizes-lg__saju1q1: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-md__saju1q2: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-sm__saju1q3: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x));
+}
+/* end:UNSAFE_MeterBar/themes/redwood/MeterBarBaseTheme.styles.css */
+/* start:UNSAFE_MeterCircle/themes/redwood/MeterCircleBaseTheme.styles.css */
+.MeterCircleBaseTheme_baseTheme__jo6utu0 {
+  --size__1qest1m0: ;
+  --trackSize__1qest1m1: ;
+  --sizes-lg__1qest1m2: calc(49  * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-md__1qest1m3: calc(24  * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-sm__1qest1m4: calc(14  * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --trackSizes-lg__1qest1m5: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --trackSizes-md__1qest1m6: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --trackSizes-sm__1qest1m7: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x));
+}
+/* end:UNSAFE_MeterCircle/themes/redwood/MeterCircleBaseTheme.styles.css */
+/* start:UNSAFE_Popup/themes/redwood/PopupBaseTheme.styles.css */
+.PopupBaseTheme_baseTheme__17qjw4f0 {
+  --borderColor__2ugez71: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  --boxShadow__2ugez73: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-box-shadow-xs);
+  --borderRadius__2ugez72: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-sm);
+  --backgroundColor__2ugez70: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral0);
+  --padding__2ugez74: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+}
+/* end:UNSAFE_Popup/themes/redwood/PopupBaseTheme.styles.css */
+/* start:UNSAFE_ProgressBar/themes/redwood/ProgressBarBaseTheme.styles.css */
+.ProgressBarBaseTheme_baseTheme__suzb8h0 {
+  --height__irxz4j0: 6px;
+  --borderRadius__irxz4j1: 3px;
+}
+/* end:UNSAFE_ProgressBar/themes/redwood/ProgressBarBaseTheme.styles.css */
+/* start:UNSAFE_ProgressCircle/themes/redwood/ProgressCircleBaseTheme.styles.css */
+.ProgressCircleBaseTheme_baseTheme__1qsbny60 {
+  --size__lborgv0: ;
+  --trackWidth__lborgv1: ;
+  --sizes-sm-size__lborgv2: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-sm-trackWidth__lborgv3: 2px;
+  --sizes-md-size__lborgv4: calc(12 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-md-trackWidth__lborgv5: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x));
+  --sizes-lg-size__lborgv6: calc(24 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-lg-trackWidth__lborgv7: calc(1.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+}
+/* end:UNSAFE_ProgressCircle/themes/redwood/ProgressCircleBaseTheme.styles.css */
+/* start:UNSAFE_Radio/themes/redwood/RadioBaseTheme.styles.css */
+.RadioBaseTheme_baseTheme__1rmn4iw0 {
+  --iconToTextGap__uwoc4u2: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --outlineWidth__uwoc4u0: 1px;
+  --rowHeight__uwoc4u1: calc(9 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+}
+/* end:UNSAFE_Radio/themes/redwood/RadioBaseTheme.styles.css */
+/* start:UNSAFE_Radio/themes/redwood/RadioIconBaseTheme.styles.css */
+.RadioIconBaseTheme_baseTheme__17vksju0 {
+  --iconSize__1681zg40: var(--iconSize__1681zg40);
+  --iconColorSelected__1681zg41: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --iconColorUnselected__1681zg42: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --iconTransformActive__1681zg43: scale(0.75);
+}
+/* end:UNSAFE_Radio/themes/redwood/RadioIconBaseTheme.styles.css */
+/* start:UNSAFE_Skeleton/themes/redwood/SkeletonBaseTheme.styles.css */
+.SkeletonBaseTheme_baseTheme__afgqbw0 {
+  --bgColor-start__1mh02730: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-170), 0.05);
+  --bgColor-end__1mh02731: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-170), 0.15);
+}
+/* end:UNSAFE_Skeleton/themes/redwood/SkeletonBaseTheme.styles.css */
+/* start:UNSAFE_TabBar/themes/redwood/TabBarItemBaseTheme.styles.css */
+.TabBarItemBaseTheme_baseTheme__1ex8m7v0 {
+  --labelColor__1j8m5ay0: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary);
+  --labelColorSelected__1j8m5ay1: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --iconSize__1j8m5ay2: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --borderWidthBottom__1j8m5ay3: 3px;
+  --borderWidthLeftRight__1j8m5ay4: 1.5px;
+}
+/* end:UNSAFE_TabBar/themes/redwood/TabBarItemBaseTheme.styles.css */
+/* start:UNSAFE_TextField/themes/redwood/FormLayoutBaseTheme.styles.css */
+.FormLayoutBaseTheme_baseTheme__sm2a4g0 {
+  --startEdgeLabelToValuePadding__vm51h40: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --startEdgeLabelTextAlign__vm51h41: end;
+  --topEdgeLabelToValuePadding__vm51h42: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+}
+/* end:UNSAFE_TextField/themes/redwood/FormLayoutBaseTheme.styles.css */
+/* start:UNSAFE_UserAssistance/themes/redwood/UserAssistanceBaseTheme.styles.css */
+.UserAssistanceBaseTheme_baseTheme__j8tei50 {
+  --inlineTextColor__1n9ixz60: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary);
+  --inlineFontSize__1n9ixz61: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-size);
+}
+/* end:UNSAFE_UserAssistance/themes/redwood/UserAssistanceBaseTheme.styles.css */
+/* start:UNSAFE_WindowOverlay/themes/redwood/WindowOverlayBaseTheme.styles.css */
+.WindowOverlayBaseTheme_baseTheme__1qrldld0 {
+  --notificationMainAxisOffset__5h4cac0: 0px;
+  --notificationCrossAxisOffset__5h4cac1: 0px;
+}
+/* end:UNSAFE_WindowOverlay/themes/redwood/WindowOverlayBaseTheme.styles.css */
+/* start:UNSAFE_Avatar/themes/redwood/AvatarBaseTheme.styles.css */
+.AvatarBaseTheme_baseTheme__se034w0 {
+  --bgColor__n2nsgo0: ;
+  --textColor__n2nsgo1: ;
+  --size__n2nsgo2: ;
+  --borderRadius__n2nsgo3: ;
+  --initialsFontSize__n2nsgo4: ;
+  --initialsFontWeight__n2nsgo5: ;
+  --iconFontSize__n2nsgo6: ;
+  --pattern__n2nsgo7: ;
+  --colors-neutral-bgColor__n2nsgo8: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-130));
+  --colors-neutral-pattern__n2nsgo9: url(./images/avatar-pattern0.png);
+  --colors-neutral-textColor__n2nsgoa: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse);
+  --colors-orange-bgColor__n2nsgob: #9b5734;
+  --colors-orange-pattern__n2nsgoc: url(./images/avatar-pattern1.png);
+  --colors-orange-textColor__n2nsgod: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse);
+  --colors-green-bgColor__n2nsgoe: #4c825c;
+  --colors-green-pattern__n2nsgof: url(./images/avatar-pattern2.png);
+  --colors-green-textColor__n2nsgog: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse);
+  --colors-teal-bgColor__n2nsgoh: #4f7d7b;
+  --colors-teal-pattern__n2nsgoi: url(./images/avatar-pattern3.png);
+  --colors-teal-textColor__n2nsgoj: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse);
+  --colors-blue-bgColor__n2nsgok: #437c94;
+  --colors-blue-pattern__n2nsgol: url(./images/avatar-pattern4.png);
+  --colors-blue-textColor__n2nsgom: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse);
+  --colors-slate-bgColor__n2nsgon: #798b8a;
+  --colors-slate-pattern__n2nsgoo: url(./images/avatar-pattern5.png);
+  --colors-slate-textColor__n2nsgop: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse);
+  --colors-pink-bgColor__n2nsgoq: #925865;
+  --colors-pink-pattern__n2nsgor: url(./images/avatar-pattern6.png);;
+  --colors-pink-textColor__n2nsgos: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse);
+  --colors-purple-bgColor__n2nsgot: #846a92;
+  --colors-purple-pattern__n2nsgou: url(./images/avatar-pattern7.png);
+  --colors-purple-textColor__n2nsgov: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse);
+  --colors-lilac-bgColor__n2nsgow: #6b7494;
+  --colors-lilac-pattern__n2nsgox: url(./images/avatar-pattern8.png);;
+  --colors-lilac-textColor__n2nsgoy: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse);
+  --colors-gray-bgColor__n2nsgoz: #6f757e;
+  --colors-gray-pattern__n2nsgo10: url(./images/avatar-pattern9.png);
+  --colors-gray-textColor__n2nsgo11: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse);
+  --sizes-2xs-size__n2nsgo12: calc(7 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-2xs-borderRadius__n2nsgo13: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-md);
+  --sizes-2xs-initialsFontSize__n2nsgo14: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-size);
+  --sizes-2xs-initialsFontWeight__n2nsgo15: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-weight-semibold);
+  --sizes-2xs-iconFontSize__n2nsgo16: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-size);
+  --sizes-xs-size__n2nsgo17: calc(11 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-xs-borderRadius__n2nsgo18: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-lg);
+  --sizes-xs-initialsFontSize__n2nsgo19: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size);
+  --sizes-xs-initialsFontWeight__n2nsgo1a: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-weight-regular);
+  --sizes-xs-iconFontSize__n2nsgo1b: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-sm-size__n2nsgo1c: calc(14 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-sm-borderRadius__n2nsgo1d: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-lg);
+  --sizes-sm-initialsFontSize__n2nsgo1e: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-heading-xs-font-size);
+  --sizes-sm-initialsFontWeight__n2nsgo1f: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-weight-regular);
+  --sizes-sm-iconFontSize__n2nsgo1g: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-md-size__n2nsgo1h: calc(18 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-md-borderRadius__n2nsgo1i: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-xl);
+  --sizes-md-initialsFontSize__n2nsgo1j: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-heading-lg-font-size);
+  --sizes-md-initialsFontWeight__n2nsgo1k: lighter;
+  --sizes-md-iconFontSize__n2nsgo1l: calc(8 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-lg-size__n2nsgo1m: calc(24 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-lg-borderRadius__n2nsgo1n: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-xl);
+  --sizes-lg-initialsFontSize__n2nsgo1o: calc(10 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-lg-initialsFontWeight__n2nsgo1p: lighter;
+  --sizes-lg-iconFontSize__n2nsgo1q: calc(9 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-xl-size__n2nsgo1r: calc(36 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-xl-borderRadius__n2nsgo1s: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-xl);
+  --sizes-xl-initialsFontSize__n2nsgo1t: calc(12 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-xl-initialsFontWeight__n2nsgo1u: lighter;
+  --sizes-xl-iconFontSize__n2nsgo1v: calc(14 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-2xl-size__n2nsgo1w: calc(49 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-2xl-borderRadius__n2nsgo1x: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-xl);
+  --sizes-2xl-initialsFontSize__n2nsgo1y: calc(18 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-2xl-initialsFontWeight__n2nsgo1z: lighter;
+  --sizes-2xl-iconFontSize__n2nsgo20: calc(14 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --shapes-circle-borderRadius__n2nsgo21: 50%;
+}
+/* end:UNSAFE_Avatar/themes/redwood/AvatarBaseTheme.styles.css */
+/* start:UNSAFE_Badge/themes/redwood/BadgeThemeBaseTheme.styles.css */
+.BadgeThemeBaseTheme_baseTheme__lng3910 {
+  --backgroundColor__88ut8n0: ;
+  --color__88ut8n1: ;
+  --fontSize__88ut8n2: ;
+  --fontWeight__88ut8n3: ;
+  --fontStretch__88ut8n4: condensed;
+  --size__88ut8n5: ;
+  --height__88ut8n6: ;
+  --borderRadius__88ut8n7: ;
+  --padding__88ut8n8: ;
+  --variants-neutral-backgroundColor__88ut8n9: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral-strong);
+  --variants-neutral-color__88ut8na: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-on-color);
+  --variants-danger-backgroundColor__88ut8nb: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-danger-strong);
+  --variants-danger-color__88ut8nc: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-on-color);
+  --variants-warning-backgroundColor__88ut8nd: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-warning-strong);
+  --variants-warning-color__88ut8ne: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-on-color);
+  --variants-success-backgroundColor__88ut8nf: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-success-strong);
+  --variants-success-color__88ut8ng: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-on-color);
+  --variants-info-backgroundColor__88ut8nh: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-info-strong);
+  --variants-info-color__88ut8ni: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-on-color);
+  --variants-neutralSubtle-backgroundColor__88ut8nj: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral-subtle);
+  --variants-neutralSubtle-color__88ut8nk: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --variants-dangerSubtle-backgroundColor__88ut8nl: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-danger-subtle);
+  --variants-dangerSubtle-color__88ut8nm: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --variants-warningSubtle-backgroundColor__88ut8nn: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-warning-subtle);
+  --variants-warningSubtle-color__88ut8no: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --variants-successSubtle-backgroundColor__88ut8np: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-success-subtle);
+  --variants-successSubtle-color__88ut8nq: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --variants-infoSubtle-backgroundColor__88ut8nr: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-info-subtle);
+  --variants-infoSubtle-color__88ut8ns: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --sizes-sm-height__88ut8nt: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-sm-fontSize__88ut8nu: calc(2.25 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-sm-fontWeight__88ut8nv: 700;
+  --sizes-sm-borderRadius__88ut8nw: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-md);
+  --sizes-sm-padding__88ut8nx: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x));
+  --sizes-md-height__88ut8ny: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-md-fontSize__88ut8nz: calc(2.75 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-md-fontWeight__88ut8n10: 700;
+  --sizes-md-borderRadius__88ut8n11: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-lg);
+  --sizes-md-padding__88ut8n12: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+}
+/* end:UNSAFE_Badge/themes/redwood/BadgeThemeBaseTheme.styles.css */
+/* start:UNSAFE_Dialog/themes/redwood/DialogBaseTheme.styles.css */
+.DialogBaseTheme_baseTheme__s3vxcb0 {
+  --boxShadow__9f8o6i0: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-box-shadow-lg);
+  --backgroundColor__9f8o6i1: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral10);
+  --borderColor__9f8o6i2: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  --borderRadius__9f8o6i3: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-lg);
+  --titleFontSize__9f8o6i4: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-heading-xs-font-size);
+  --titleColor__9f8o6i5: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --titleFontWeight__9f8o6i6: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-heading-xs-font-weight);
+  --titleLineHeight__9f8o6i7: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-heading-xs-line-height);
+  --backgroundImage__9f8o6i8: url('./images/texture-dialog-144x20-opacity-08.png');
+  --headerPaddingTop__9f8o6i9: calc(11 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --headerPaddingBottom__9f8o6ia: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --headerPaddingHorizontal__9f8o6ib: calc(8 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --headerBackgroundColor__9f8o6ic: transparent;
+  --headerBorderBottomColor__9f8o6id: transparent;
+  --bodyPaddingTop__9f8o6ie: calc(0 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --bodyPaddingBottom__9f8o6if: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --bodyPaddingHorizontal__9f8o6ig: calc(8 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --footerPaddingTop__9f8o6ih: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --footerPaddingBottom__9f8o6ii: calc(8 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --footerPaddingHorizontal__9f8o6ij: calc(8 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --footerBorderColor__9f8o6ik: transparent;
+}
+/* end:UNSAFE_Dialog/themes/redwood/DialogBaseTheme.styles.css */
+/* start:UNSAFE_Label/themes/redwood/LabelBaseTheme.styles.css */
+.LabelBaseTheme_baseTheme__mpxezv0 {
+  --fontSize__kn3t7f0: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-font-size);
+  --fontWeight__kn3t7f1: 600;
+  --lineHeight__kn3t7f2: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-line-height);
+  --color__kn3t7f3: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --colorDisabled__kn3t7f4: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-disabled);
+  --insideEdgeFontSize__kn3t7f5: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-size);
+  --insideEdgeFontWeight__kn3t7f6: 600;
+  --insideEdgeLineHeight__kn3t7f7: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-line-height);
+  --insideEdgeColor__kn3t7f8: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary);
+  --formLayoutTopEdgeLabelToValuePadding__kn3t7f9: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --formLayoutTopEdgeLabelTextAlign__kn3t7fa: end;
+}
+.oj-scale-sm, :root.oj-scale-sm {
+  --insideEdgePositionTop__kn3t7fb: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x));
+}
+.oj-scale-md, :root.oj-scale-md {
+  --insideEdgePositionTop__kn3t7fb: calc(1.14 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+}
+.oj-scale-lg {
+  --insideEdgePositionTop__kn3t7fb: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+}
+:root {
+  --insideEdgePositionTop__kn3t7fb: 0.5rem;
+}
+/* end:UNSAFE_Label/themes/redwood/LabelBaseTheme.styles.css */
+/* start:UNSAFE_MessageToast/themes/redwood/MessageToastBaseTheme.styles.css */
+.MessageToastBaseTheme_baseTheme__3146600 {
+  --backgroundColor__zw7y740: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-50));
+  --maxWidthLg__zw7y741: calc(150 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --maxWidthMd__zw7y742: calc(100vw - calc(12 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))));
+  --maxWidthSm__zw7y743: calc(100vw - calc(8 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))));
+  --startIconColor__zw7y744: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --startIconSize__zw7y745: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --summaryTextColor__zw7y746: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --summaryTextWeight__zw7y747: normal;
+  --summaryTextSize__zw7y748: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size);
+  --summaryLineHeight__zw7y749: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-line-height);
+  --detailTextColor__zw7y74a: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary);
+}
+/* end:UNSAFE_MessageToast/themes/redwood/MessageToastBaseTheme.styles.css */
+/* start:UNSAFE_NavigationList/themes/redwood/NavigationListItemBaseTheme.styles.css */
+.NavigationListItemBaseTheme_baseTheme__cn44r50 {
+  --fontSize__1497t560: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size);
+  --fontWeight__1497t561: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-weight-semibold);
+  --minHeight__1497t562: calc(12 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --borderWidth__1497t563: 3px;
+  --paddingHorizontal__1497t564: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --labelColor__1497t565: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary);
+  --labelColorHover__1497t566: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --backgroundColorHover__1497t567: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover);
+  --borderColorHover__1497t568: transparent;
+  --labelColorSelected__1497t569: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --backgroundColorSelected__1497t56a: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.06);
+  --borderColorSelected__1497t56b: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-110));
+}
+/* end:UNSAFE_NavigationList/themes/redwood/NavigationListItemBaseTheme.styles.css */
+/* start:UNSAFE_RatingGauge/themes/redwood/RatingGaugeBaseTheme.styles.css */
+.RatingGaugeBaseTheme_baseTheme__1u6vk8m0 {
+  --colorSelected__1kgzocs0: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --borderColorSelected__1kgzocs1: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --colorUnselected__1kgzocs2: transparent;
+  --borderColorUnselected__1kgzocs3: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --colorSelectedDisabled__1kgzocs4: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-disabled);
+  --borderColorSelectedDisabled__1kgzocs5: transparent;
+  --colorUnselectedDisabled__1kgzocs6: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.12);
+  --borderColorUnselectedDisabled__1kgzocs7: transparent;
+  --colorSelectedReadonly__1kgzocs8: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --borderColorSelectedReadonly__1kgzocs9: transparent;
+  --colorUnselectedReadonly__1kgzocsa: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-170), 0.15);
+  --borderColorUnselectedReadonly__1kgzocsb: transparent;
+  --size__1kgzocsc: ;
+  --margin__1kgzocsd: ;
+  --sizes-sm__1kgzocse: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-md__1kgzocsf: calc(5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --sizes-lg__1kgzocsg: calc(9 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --colors-gold-colorSelected__1kgzocsh: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-warning-strong);
+  --colors-gold-bordorColorSelected__1kgzocsi: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-warning);
+  --colors-gold-colorSelectedReadonly__1kgzocsj: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-warning-strong);
+  --colors-gold-borderColorUnselected__1kgzocsk: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-warning);
+  --colors-gold-borderColorUnselectedReadonly__1kgzocsl: transparent;
+  --colors-gold-borderColorSelectedReadonly__1kgzocsm: transparent;
+  --colors-success-colorSelected__1kgzocsn: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-success);
+  --colors-success-bordorColorSelected__1kgzocso: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-success);
+  --colors-success-colorSelectedReadonly__1kgzocsp: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-success);
+  --colors-warning-colorSelected__1kgzocsq: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-warning);
+  --colors-warning-bordorColorSelected__1kgzocsr: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-warning);
+  --colors-warning-colorSelectedReadonly__1kgzocss: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-warning);
+  --colors-danger-colorSelected__1kgzocst: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-danger);
+  --colors-danger-bordorColorSelected__1kgzocsu: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-danger);
+  --colors-danger-colorSelectedReadonly__1kgzocsv: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-danger);
+}
+/* end:UNSAFE_RatingGauge/themes/redwood/RatingGaugeBaseTheme.styles.css */
+/* start:UNSAFE_Train/themes/redwood/TrainBaseTheme.styles.css */
+.TrainBaseTheme_baseTheme__kpes8h0 {
+  --stepWidth__wmjnh60: calc(28 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --stepPaddingTop__wmjnh61: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --stepPaddingBottom__wmjnh62: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --stepBorderRadius__wmjnh6n: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-xl);
+  --labelFontSize__wmjnh63: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-font-size);
+  --labelPaddingTop__wmjnh65: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --buttonDiameter__wmjnh66: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --buttonFontSize__wmjnh67: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-size);
+  --connectorHeight__wmjnh68: calc(0.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --buttonBgColor__wmjnh6a: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
+  --buttonBorderColor__wmjnh6b: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.6);
+  --buttonTextColor__wmjnh6c: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary);
+  --labelColor__wmjnh6d: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary);
+  --labelFontWeight__wmjnh64: bold;
+  --connectorColor__wmjnh6e: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.3);
+  --connectorPadding__wmjnh69: calc(2.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --buttonBgColorVisited__wmjnh6f: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-110));
+  --buttonBorderColorVisited__wmjnh6g: transparent;
+  --buttonTextColorVisited__wmjnh6h: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse);
+  --labelColorVisited__wmjnh6i: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --buttonBgColorHover__wmjnh6j: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral0);
+  --buttonBorderColorHover__wmjnh6k: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-160), 0.6);
+  --buttonTextColorHover__wmjnh6l: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-160), 0.6);
+  --stepBgColorHover__wmjnh6m: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover);
+  --buttonBgColorActive__wmjnh6o: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190));
+  --buttonBorderColorActive__wmjnh6p: transparent;
+  --buttonTextColorActive__wmjnh6q: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse);
+  --labelFontWeightActive__wmjnh6r: bold;
+  --stepBgColorActive__wmjnh6s: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-active);
+  --buttonBgColorSelected__wmjnh6t: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190));
+  --buttonBorderColorSelected__wmjnh6u: transparent;
+  --buttonTextColorSelected__wmjnh6v: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse);
+  --labelFontWeightSelected__wmjnh6w: bold;
+  --labelColorSelected__wmjnh6x: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --connectorColorSelected__wmjnh6y: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.3);
+  --connectorPaddingSelected__wmjnh6z: 0px;
+  --buttonBgColorDisabled__wmjnh610: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral0);
+  --buttonBorderColorDisabled__wmjnh611: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-disabled);
+  --buttonTextColorDisabled__wmjnh612: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-disabled);
+  --labelColorDisabled__wmjnh613: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-disabled);
+}
+/* end:UNSAFE_Train/themes/redwood/TrainBaseTheme.styles.css */
+/* start:hooks/UNSAFE_useTooltip/themes/redwood/TooltipContentBaseTheme.styles.css */
+.TooltipContentBaseTheme_baseTheme__sanbbo0 {
+  --maxWidth__1x922a00: ;
+  --backgroundColor__1x922a01: ;
+  --textColor__1x922a02: ;
+  --fontSize__1x922a03: ;
+  --lineHeight__1x922a04: ;
+  --borderRadius__1x922a05: ;
+  --borderColor__1x922a06: ;
+  --paddingHorizontal__1x922a07: ;
+  --paddingVertical__1x922a08: ;
+  --variants-tooltip-maxWidth__1x922a09: calc(72 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --variants-tooltip-backgroundColor__1x922a0a: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral30);
+  --variants-tooltip-textColor__1x922a0b: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --variants-tooltip-fontSize__1x922a0c: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-font-size);
+  --variants-tooltip-lineHeight__1x922a0d: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-line-height);
+  --variants-tooltip-borderRadius__1x922a0e: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-md);
+  --variants-tooltip-borderColor__1x922a0f: transparent;
+  --variants-tooltip-paddingHorizontal__1x922a0g: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --variants-tooltip-paddingVertical__1x922a0h: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x));
+  --variants-datatip-maxWidth__1x922a0i: calc(72 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --variants-datatip-backgroundColor__1x922a0j: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral0);
+  --variants-datatip-textColor__1x922a0k: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --variants-datatip-fontSize__1x922a0l: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-size);
+  --variants-datatip-lineHeight__1x922a0m: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-line-height);
+  --variants-datatip-borderRadius__1x922a0n: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-md);
+  --variants-datatip-borderColor__1x922a0o: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-enabled);
+  --variants-datatip-paddingHorizontal__1x922a0p: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --variants-datatip-paddingVertical__1x922a0q: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+}
+/* end:hooks/UNSAFE_useTooltip/themes/redwood/TooltipContentBaseTheme.styles.css */
+/* start:Common/themes/redwood/theme.styles.css */
+:root, .oj-c-colorscheme-dependent {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-cursor-clickable: pointer;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-box-shadow-xs: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-boxshadow-shadowcolor), .12) 0 calc(0.25 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))) var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)) 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-box-shadow-sm: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-boxshadow-shadowcolor), .16) 0 var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)) calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))) 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-box-shadow-md: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-boxshadow-shadowcolor), .2) 0 calc(1.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))) calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))) 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-box-shadow-lg: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-boxshadow-shadowcolor), .24) 0 calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))) calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))) 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-box-shadow-xl: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-boxshadow-shadowcolor), .28) 0 calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))) calc(5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))) 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-sm: calc(0.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-md: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-lg: calc(1.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-xl: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+}
+:root {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-easing-enter: cubic-bezier(0,0,0.2,1);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-easing-persist: cubic-bezier(.4,0,0.2,1);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-easing-exit: cubic-bezier(0.4,0,1,1);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-easing-linear: cubic-bezier(0,0,0,0);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-default-vertical: 0.5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-default-horizontal: 0.5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-start-top-corner-vertical: 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-start-top-corner-horizontal: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-top-vertical: 0.5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-top-horizontal: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-end-top-corner-vertical: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-end-top-corner-horizontal: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-start-vertical: 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-start-horizontal: 0.5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-end-vertical: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-end-horizontal: 0.5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-start-bottom-corner-vertical: 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-start-bottom-corner-horizontal: 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-bottom-vertical: 0.5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-bottom-horizontal: 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-end-bottom-corner-vertical: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-anchor-end-bottom-corner-horizontal: 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-duration-2xs: 25ms;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-duration-xs: 50ms;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-duration-sm: 100ms;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-duration-md: 150ms;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-duration-lg: 250ms;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-duration-xl: 300ms;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-duration-2xl: 500ms;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-delay-none: 0ms;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-delay-sm: 20ms;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-delay-md: 30ms;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-delay-lg: 50ms;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-up-sm: 0.25;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-up-md: 0.5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-up-lg: 0.75;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-up-xl: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-down-sm: 0.25;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-down-md: 0.5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-down-lg: 0.75;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-down-xl: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-start-sm: 0.25;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-start-md: 0.5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-start-lg: 0.75;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-start-xl: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-end-sm: 0.25;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-end-md: 0.5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-end-lg: 0.75;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-slide-end-xl: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-scale-down-sm-to: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-scale-down-sm-from: 0.9;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-scale-down-md-to: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-scale-down-md-from: 0.7;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-scale-down-full-to: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-scale-down-full-from: 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-scale-up-sm-to: 0.9;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-scale-up-sm-from: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-scale-up-md-to: 0.7;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-scale-up-md-from: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-scale-up-full-to: 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-scale-up-full-from: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-fade-in-sm-to: 0.6;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-fade-in-sm-from: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-fade-in-full-to: 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-fade-in-full-from: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-fade-out-sm-to: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-fade-out-sm-from: 0.6;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-fade-out-full-to: 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-fade-out-full-from: 0;
+}
+:root, .oj-scale-dependent, :root.oj-scale-sm, :root.oj-scale-md {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-xs-font-size: calc(5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-xs-line-height: 1.4;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-xs-font-weight: 800;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-sm-font-size: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-sm-line-height: 1.3333;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-sm-font-weight: 800;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-md-font-size: calc(7 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-md-line-height: 1.2857;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-md-font-weight: 800;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-lg-font-size: calc(8 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-lg-line-height: 1.25;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-lg-font-weight: 800;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-xl-font-size: calc(9 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-xl-line-height: 1.222;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-xl-font-weight: 800;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-2xl-font-size: calc(10 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-2xl-line-height: 1.3;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-heading-2xl-font-weight: 800;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-2xs-font-size: calc(3.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-2xs-line-height: 1.4286;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-2xs-font-weight: 700;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-xs-font-size: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-xs-line-height: 1.5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-xs-font-weight: 700;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-sm-font-size: calc(5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-sm-line-height: 1.4;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-sm-font-weight: 700;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-md-font-size: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-md-line-height: 1.3333;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-md-font-weight: 700;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-lg-font-size: calc(7 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-lg-line-height: 1.2857;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-lg-font-weight: 700;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-xl-font-size: calc(8 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-xl-line-height: 1.25;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-xl-font-weight: 700;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-2xl-font-size: calc(9 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-2xl-line-height: 1.2222;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-subheader-2xl-font-weight: 700;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-2xs-font-size: max(calc(2.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))),10px);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-2xs-line-height: 1.2;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-2xs-font-weight-regular: 400;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-2xs-font-weight-semibold: 600;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-2xs-font-weight-bold: 700;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-size: max(calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))),12px);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-line-height: 1.3333;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-weight-regular: 400;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-weight-semibold: 600;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-weight-bold: 700;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-font-size: max(calc(3.4375 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))),12px);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-line-height: 1.2;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-font-weight-regular: 400;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-font-weight-semibold: 600;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-font-weight-bold: 700;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size: max(calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))),12px);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-line-height: 1.25;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-weight-regular: 400;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-weight-semibold: 600;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-weight-bold: 700;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-lg-font-size: max(calc(4.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))),14px);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-lg-line-height: 1.3333;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-lg-font-weight-regular: 400;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-lg-font-weight-semibold: 600;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-lg-font-weight-bold: 700;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-xl-font-size: max(calc(5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x))),16px);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-xl-line-height: 1.4;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-xl-font-weight-regular: 400;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-xl-font-weight-semibold: 600;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-body-xl-font-weight-bold: 700;
+}
+:root, .oj-c-colorscheme-light {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0: 255,255,255;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-10: 251,249,248;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20: 245,244,242;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-30: 241,239,237;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-40: 228,225,221;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-50: 212,207,202;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-60: 188,182,177;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-70: 174,168,162;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-80: 158,152,146;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-90: 139,133,128;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-100: 122,115,110;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-110: 111,105,100;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-120: 102,95,91;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-130: 92,86,81;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-140: 81,76,71;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-150: 71,66,62;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-160: 58,54,50;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-170: 49,45,42;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-180: 32,30,28;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190: 22,21,19;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200: 0,0,0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-10: 255,248,247;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-20: 255,241,239;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-30: 255,235,232;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-40: 255,217,211;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-50: 255,193,184;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-60: 255,157,144;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-70: 255,134,117;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-80: 254,105,84;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-90: 236,79,58;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-100: 214,59,37;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-110: 195,53,34;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-120: 179,49,31;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-130: 162,44,28;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-140: 143,39,25;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-150: 124,34,22;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-160: 102,28,18;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-170: 86,24,15;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-180: 60,17,11;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-190: 42,12,7;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-10: 244,252,235;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-20: 235,248,222;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-30: 228,245,211;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-40: 207,235,179;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-50: 177,221,136;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-60: 138,201,79;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-70: 125,186,69;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-80: 111,169,57;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-90: 94,148,43;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-100: 80,130,35;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-110: 73,118,32;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-120: 67,107,29;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-130: 60,96,26;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-140: 53,86,23;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-150: 46,73,20;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-160: 38,61,16;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-170: 31,51,14;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-180: 21,35,9;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-190: 15,23,6;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-10: 254,249,242;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-20: 253,242,229;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-30: 252,237,220;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-40: 249,221,188;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-50: 246,199,146;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-60: 240,169,87;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-70: 235,150,50;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-80: 225,130,18;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-90: 198,113,14;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-100: 172,99,12;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-110: 156,89,11;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-120: 143,82,10;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-130: 129,73,9;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-140: 114,65,8;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-150: 99,56,7;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-160: 81,47,6;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-170: 69,39,5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-180: 46,26,3;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-190: 32,18,2;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-10: 246,250,252;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-20: 237,246,249;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-30: 228,241,247;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-40: 208,229,238;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-50: 180,213,225;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-60: 143,191,208;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-70: 121,177,198;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-80: 95,162,186;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-90: 65,144,172;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-100: 34,126,158;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-110: 14,114,149;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-120: 0,104,140;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-130: 2,94,126;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-140: 4,83,111;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-150: 6,72,95;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-160: 6,60,78;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-170: 5,50,66;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-180: 4,35,45;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-190: 2,24,31;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-10: 246,250,252;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-20: 237,246,249;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-30: 228,241,247;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-40: 208,229,238;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-50: 180,213,225;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-60: 143,191,208;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-70: 121,177,198;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-80: 95,162,186;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-90: 65,144,172;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-100: 34,126,158;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-110: 14,114,149;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-120: 0,104,140;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-130: 2,94,126;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-140: 4,83,111;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-150: 6,72,95;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-160: 6,60,78;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-170: 5,50,66;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-180: 4,35,45;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-190: 2,24,31;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.08);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-active: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.16);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-danger-hover: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-60), 0.16);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-danger-active: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-60), 0.2);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-scrim: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.4);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-inverse-hover: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0), 0.08);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-inverse-active: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0), 0.12);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral0: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral10: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-10));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral20: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral30: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-30));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral40: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-40));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral0: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral10: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-10));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral20: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral30: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-30));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-selected: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-30));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-disabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.04);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-10));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral-subtle: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.08);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral-strong: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-success-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-10));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-success-subtle: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-60), 0.4);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-success-strong: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-info-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-10));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-info-subtle: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-60), 0.4);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-info-strong: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-warning-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-10));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-warning-subtle: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-60), 0.4);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-warning-strong: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-danger-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-10));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-danger-subtle: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-60), 0.4);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-danger-strong: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-enabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.5);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-disabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.2);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.12);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-drop-line: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected-neutral: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-warning: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-120));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-danger: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-120));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-boxshadow-shadowcolor: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.7);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-disabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.4);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-on-color: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-link: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-120));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-success: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-120));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-info: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-120));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-warning: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-120));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-120));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-success-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-info-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-warning-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-text: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-surface-selected: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.12);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-surface-partial-selected: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.04);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-collection-grid-cell-surface-edit: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-track-enabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-170), 0.15);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-track-disabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.16);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-fill-enabled: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-fill-disabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.2);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-thumb-surface: var(--globalVars_currentBackgroundColor__1xmik4z0, var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-reference-line: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.8);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-reference-line-contrast: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20), 0.7);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-reference-area: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-170), 0.08);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-contrast-line: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-1: 36, 93, 99;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-2: 222, 127, 17;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-3: 95, 185, 181;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-4: 78, 65, 55;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-5: 160, 201, 140;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-6: 180, 114, 130;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-7: 131, 64, 30;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-8: 158, 127, 204;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-9: 251, 194, 106;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-10: 88, 49, 110;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-11: 95, 162, 186;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-12: 49, 122, 69;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-success: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-warning: rgb(207, 124, 0);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-danger: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-marquee-border: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.8);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-marquee-surface: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20), 0.1);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-reference-object-area: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-170), 0.08);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-reference-object-line: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.8);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-overview-background: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-50));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-overview-window-background: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-overview-window-border: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-170));
+}
+.oj-c-colorscheme-dark, .oj-color-invert {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0: 0, 0, 0;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-10: 10, 10, 9;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20: 18, 17, 15;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-30: 23, 22, 20;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-40: 35, 33, 31;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-50: 49, 46, 43;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-60: 67, 63, 59;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-70: 78, 73, 68;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-80: 91, 85, 81;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-90: 107, 101, 96;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-100: 124, 117, 112;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-110: 135, 129, 124;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-120: 146, 139, 134;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-130: 157, 150, 145;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-140: 170, 163, 158;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-150: 184, 178, 173;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-160: 200, 195, 191;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-170: 212, 207, 204;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-180: 231, 227, 225;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190: 241, 238, 237;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200: 255, 255, 255;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-10: 18, 5, 3;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-20: 32, 9, 5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-30: 41, 12, 7;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-40: 64, 18, 11;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-50: 89, 24, 15;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-60: 119, 32, 20;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-70: 138, 37, 24;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-80: 160, 43, 28;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-90: 188, 52, 33;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-100: 216, 63, 42;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-110: 224, 82, 62;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-120: 231, 98, 80;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-130: 238, 115, 98;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-140: 245, 133, 118;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-150: 253, 151, 138;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-160: 255, 176, 166;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-170: 255, 193, 185;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-180: 255, 220, 216;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-190: 255, 234, 232;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-10: 7, 11, 3;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-20: 11, 17, 4;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-30: 16, 25, 7;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-40: 24, 37, 10;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-50: 33, 52, 14;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-60: 44, 70, 19;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-70: 51, 82, 22;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-80: 60, 95, 26;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-90: 70, 113, 31;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-100: 81, 131, 36;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-110: 91, 144, 43;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-120: 100, 154, 50;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-130: 110, 167, 58;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-140: 121, 181, 66;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-150: 134, 196, 76;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-160: 159, 211, 109;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-170: 179, 221, 140;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-180: 211, 236, 187;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-190: 228, 244, 212;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-10: 15, 8, 1;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-20: 25, 14, 2;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-30: 33, 18, 2;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-40: 50, 28, 3;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-50: 70, 39, 5;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-60: 95, 53, 7;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-70: 110, 62, 8;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-80: 128, 72, 9;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-90: 151, 86, 11;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-100: 174, 101, 14;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-110: 185, 113, 27;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-120: 196, 124, 39;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-130: 208, 136, 52;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-140: 221, 149, 66;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-150: 236, 164, 82;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-160: 243, 185, 118;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-170: 246, 201, 148;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-180: 250, 224, 193;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-190: 252, 237, 218;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-10: 1, 11, 15;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-20: 2, 19, 24;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-30: 2, 24, 31;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-40: 3, 37, 49;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-50: 4, 51, 67;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-60: 6, 69, 91;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-70: 10, 80, 104;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-80: 17, 93, 120;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-90: 26, 110, 140;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-100: 36, 127, 159;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-110: 57, 139, 168;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-120: 73, 149, 176;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-130: 93, 161, 185;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-140: 114, 173, 195;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-150: 135, 186, 205;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-160: 163, 202, 217;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-170: 182, 213, 225;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-180: 213, 231, 238;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-190: 229, 241, 245;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-10: 10, 8, 4;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-20: 19, 16, 9;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-30: 26, 22, 12;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-40: 38, 32, 18;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-50: 54, 46, 25;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-60: 73, 62, 34;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-70: 85, 72, 40;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-80: 99, 84, 47;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-90: 118, 100, 56;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-100: 137, 116, 65;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-110: 150, 127, 71;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-120: 162, 137, 76;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-130: 175, 149, 83;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-140: 190, 162, 90;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-150: 206, 176, 97;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-160: 226, 192, 107;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-170: 240, 204, 114;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-180: 247, 226, 176;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-190: 250, 238, 209;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.08);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-active: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.12);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-danger-hover: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-60), 0.32);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-danger-active: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-60), 0.2);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-scrim: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0), 0.4);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-inverse-hover: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20), 0.08);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-inverse-active: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20), 0.16);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral0: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-10));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral10: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral20: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-30));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral30: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-40));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral40: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-50));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral0: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-10));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral10: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral20: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-30));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral30: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-40));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-selected: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-70));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-disabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.04);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-40));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral-subtle: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.16);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral-strong: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-success-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-40));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-success-subtle: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-70), 0.6);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-success-strong: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-info-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-40));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-info-subtle: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-70), 0.6);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-info-strong: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-warning-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-40));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-warning-subtle: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-70), 0.6);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-warning-strong: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-danger-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-40));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-danger-subtle: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-70), 0.6);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-surface-danger-strong: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-enabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.5);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-disabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.2);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.12);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-170));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-drop-line: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-170));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected-neutral: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-warning: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-120));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-danger: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-120));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-boxshadow-shadowcolor: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.7);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-disabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.4);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-inverse: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-10));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-link: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-170));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-success: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-120));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-info: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-120));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-warning: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-120));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-120));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-success-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-info-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-warning-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-on-color: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-text: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-surface-selected: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.12);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-surface-partial-selected: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.04);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-collection-grid-cell-surface-edit: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-track-enabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.16);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-track-disabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.16);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-fill-enabled: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-fill-disabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.3);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-thumb-surface: var(--globalVars_currentBackgroundColor__1xmik4z0, var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-reference-line: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.8);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-reference-line-contrast: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20), 0.7);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-measure-reference-area: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.08);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-contrast-line: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-1: 36, 93, 99;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-2: 222, 127, 17;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-3: 95, 185, 181;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-4: 78, 65, 55;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-5: 160, 201, 140;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-6: 180, 114, 130;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-7: 131, 64, 30;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-8: 158, 127, 204;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-9: 251, 194, 106;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-10: 88, 49, 110;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-11: 95, 162, 186;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-palette-qualitative-12: 49, 122, 69;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-success: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-warning: rgb(207, 124, 0);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-threshold-danger: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-100));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-marquee-border: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.8);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-marquee-surface: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20), 0.1);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-reference-object-area: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-170), 0.08);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-reference-object-line: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.8);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-overview-background: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-50));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-overview-window-background: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-overview-window-border: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-170));
+}
+.oj-scale-sm, :root.oj-scale-sm {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-size-units: 3px;
+}
+.oj-scale-md, :root.oj-scale-md {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-size-units: 3.5px;
+}
+.oj-scale-lg {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-size-units: 4px;
+}
+:root {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-size-units: 0.25rem;
+}
+:root {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-font-size: 1em;
+}
+:root {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-bg-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral10);
+}
+:root, .oj-scale-dependent, :root.oj-scale-sm, :root.oj-scale-md {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-list-row-height: calc(12 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-list-cell-padding-vertical: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-sparkle-img: url(./images/AI-Sparkle.gif), url(../../css/redwood/images/AI-Sparkle.gif);
+}
+:root, .oj-scale-dependent, :root.oj-scale-sm, :root.oj-scale-md {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-label-sm-font-size: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-size);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-label-md-font-size: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-font-size);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-label-lg-font-size: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size);
+}
+/* end:Common/themes/redwood/theme.styles.css */
+/* start:UNSAFE_TextField/themes/redwood/TextFieldBaseTheme.styles.css */
+.TextFieldBaseTheme_baseTheme__1qsscqw0 {
+  --borderColor__w6gg1y0: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-enabled);
+  --borderWidth__w6gg1y1: 1px;
+  --borderRadius__w6gg1y2: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-md);
+  --bgColor__w6gg1y3: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral0);
+  --borderColorFocus__w6gg1y4: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected);
+  --boxShadowFocus__w6gg1y5: 0 0 0 1px var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected) inset;
+  --fontSize__w6gg1y6: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size);
+  --height__w6gg1y7: calc(11 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --iconToTextPadding__w6gg1y8: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --iconToEdgePadding__w6gg1y9: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --insideEdgeLabelColorFocus__w6gg1yd: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-110));
+  --textToEdgePadding__w6gg1ya: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --insideEdgeHeight__w6gg1yb: calc(13 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --insideEdgePaddingTop__w6gg1yc: calc(3.25 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, var(--oj-core-spacing-1x)));
+  --textColor__w6gg1ye: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --bgColorDisabled__w6gg1yf: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-disabled);
+  --borderColorDisabled__w6gg1yg: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-disabled);
+  --textColorDisabled__w6gg1yh: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-disabled);
+  --placeholderAnimationName__w6gg1yi: TextFieldStyles_placeholderAnimation__952vaf0;
+}
+/* end:UNSAFE_TextField/themes/redwood/TextFieldBaseTheme.styles.css */

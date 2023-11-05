@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Content = (props: Props) => {
-  let pageContent = (page:string) => {
+  let pageContent = (page: string) => {
     switch (page) {
       case "modules":
         return <ModulesContent />;
@@ -16,8 +16,6 @@ const Content = (props: Props) => {
         return <BindingContent />;
       case "examples":
         return <ExampleContent />;
-      default:
-        return <BindingContent />;
     }
   };
 

@@ -197,7 +197,7 @@ const Table = () => {
         columns={columnsDef}
         onojBeforeRowEdit={beforeRowEditListener}
         onojBeforeRowEditEnd={beforeRowEditEndListener}
-        class="oj-bg-body table-sizing">
+        class="table-sizing">
         <template slot="actionTemplate" render={actionColumn}></template>
         <template slot="deptNameTemplate" render={editableTemplate}></template>
       </oj-table>

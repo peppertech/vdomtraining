@@ -5,12 +5,12 @@ import { h } from "preact";
 const DataViz = () => {
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
-      <div class="oj-flex">
-        <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12 oj-md-6">
+      <div class="oj-flex oj-sm-flex-items-1">
+        <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel">
           <h2 class="oj-typography-heading-sm"> Chart </h2>
           <Chart />
         </div>
-        <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12 oj-md-6">
+        <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel">
           <h2 class="oj-typography-heading-sm"> Standalone Legend </h2>
           <Legend />
         </div>

@@ -10,8 +10,6 @@ define(["require", "exports", "preact/jsx-runtime", "./bindings/index", "./modul
                     return (0, jsx_runtime_1.jsx)(index_1.default, {});
                 case "examples":
                     return (0, jsx_runtime_1.jsx)(index_3.default, {});
-                default:
-                    return (0, jsx_runtime_1.jsx)(index_1.default, {});
             }
         };
         return ((0, jsx_runtime_1.jsx)("div", Object.assign({ class: "oj-web-applayout-max-width oj-web-applayout-content" }, { children: pageContent(props.page) })));
