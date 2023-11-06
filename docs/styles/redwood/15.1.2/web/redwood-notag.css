@@ -363,7 +363,7 @@
   visibility: hidden; }
 
 .oj-theme-json {
-  font-family: '{"name":"redwood","targetPlatform":"all","behavior":"redwood","jetReleaseVersion":"v15.1.0"}' !important; }
+  font-family: '{"name":"redwood","targetPlatform":"all","behavior":"redwood","jetReleaseVersion":"v15.1.2"}' !important; }
 
 .oj-helper-hidden-accessible {
   border: 0;
@@ -844,16 +844,19 @@ html[dir="rtl"] .oj-divider-end.oj-divider-margin {
   --oj-typography-body-2xs-font-size:                        0.625rem;
   --oj-typography-body-2xs-line-height:                      1.2; }
 
+.oj-body {
+  --oj-current-bg-color: var(--oj-body-bg-color); }
+
 /* html */
 /* --------------------------------------------------------------- */
-html {
+.oj-html {
   -webkit-text-size-adjust: 100%;
   font-family: var(--oj-html-font-family);
   font-size: var(--oj-html-font-size); }
 
 /* body */
 /* --------------------------------------------------------------- */
-body {
+.oj-body {
   margin: 0;
   background-repeat: repeat;
   background-position: top left;
@@ -862,22 +865,22 @@ body {
   touch-action: manipulation;
   line-height: var(--oj-typography-body-md-line-height); }
 
-a {
+a.oj-link {
   color: var(--oj-link-text-color);
   line-height: inherit;
   -webkit-text-decoration: var(--oj-link-text-decoration);
           text-decoration: var(--oj-link-text-decoration); }
 
-a:not(.oj-disabled) {
+a.oj-link:not(.oj-disabled) {
   cursor: var(--oj-core-cursor-clickable); }
 
-a:visited {
+a.oj-link:visited {
   color: var(--oj-link-text-color-visited); }
 
-a:active {
+a.oj-link:active {
   color: var(--oj-link-text-color-active); }
 
-a:hover {
+a.oj-link:hover {
   -webkit-text-decoration: var(--oj-link-text-decoration-hover);
           text-decoration: var(--oj-link-text-decoration-hover);
   transition: -webkit-text-decoration var(--oj-animation-duration-long);
@@ -926,106 +929,46 @@ a.oj-disabled:visited {
 
 /* header */
 /* --------------------------------------------------------------- */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.oj-header {
   color: var(--oj-heading-text-color);
   font-family: inherit;
   font-style: normal;
-  padding: 0;
-  margin-top: var(--oj-heading-margin-top);
-  margin-bottom: var(--oj-heading-margin-bottom); }
+  margin: 8px 0;
+  padding: 0 0 2px; }
 
-h1.oj-typography-subheading-2xl,
-h1.oj-typography-subheading-xl,
-h1.oj-typography-subheading-lg,
-h1.oj-typography-subheading-md,
-h1.oj-typography-subheading-sm,
-h1.oj-typography-subheading-xs {
-  margin-top: var(--oj-subheading-margin-top);
-  margin-bottom: var(--oj-subheading-margin-bottom); }
-
-h2.oj-typography-subheading-2xl,
-h2.oj-typography-subheading-xl,
-h2.oj-typography-subheading-lg,
-h2.oj-typography-subheading-md,
-h2.oj-typography-subheading-sm,
-h2.oj-typography-subheading-xs {
-  margin-top: var(--oj-subheading-margin-top);
-  margin-bottom: var(--oj-subheading-margin-bottom); }
-
-h3.oj-typography-subheading-2xl,
-h3.oj-typography-subheading-xl,
-h3.oj-typography-subheading-lg,
-h3.oj-typography-subheading-md,
-h3.oj-typography-subheading-sm,
-h3.oj-typography-subheading-xs {
-  margin-top: var(--oj-subheading-margin-top);
-  margin-bottom: var(--oj-subheading-margin-bottom); }
-
-h4.oj-typography-subheading-2xl,
-h4.oj-typography-subheading-xl,
-h4.oj-typography-subheading-lg,
-h4.oj-typography-subheading-md,
-h4.oj-typography-subheading-sm,
-h4.oj-typography-subheading-xs {
-  margin-top: var(--oj-subheading-margin-top);
-  margin-bottom: var(--oj-subheading-margin-bottom); }
-
-h5.oj-typography-subheading-2xl,
-h5.oj-typography-subheading-xl,
-h5.oj-typography-subheading-lg,
-h5.oj-typography-subheading-md,
-h5.oj-typography-subheading-sm,
-h5.oj-typography-subheading-xs {
-  margin-top: var(--oj-subheading-margin-top);
-  margin-bottom: var(--oj-subheading-margin-bottom); }
-
-h6.oj-typography-subheading-2xl,
-h6.oj-typography-subheading-xl,
-h6.oj-typography-subheading-lg,
-h6.oj-typography-subheading-md,
-h6.oj-typography-subheading-sm,
-h6.oj-typography-subheading-xs {
-  margin-top: var(--oj-subheading-margin-top);
-  margin-bottom: var(--oj-subheading-margin-bottom); }
-
-h1 {
+h1.oj-header {
   font-size: var(--oj-typography-heading-2xl-font-size);
   font-weight: var(--oj-typography-heading-2xl-font-weight);
   line-height: var(--oj-typography-heading-2xl-line-height); }
 
-h2 {
+h2.oj-header {
   font-size: var(--oj-typography-heading-xl-font-size);
   font-weight: var(--oj-typography-heading-xl-font-weight);
   line-height: var(--oj-typography-heading-xl-line-height); }
 
-h3 {
+h3.oj-header {
   font-size: var(--oj-typography-heading-lg-font-size);
   font-weight: var(--oj-typography-heading-lg-font-weight);
   line-height: var(--oj-typography-heading-lg-line-height); }
 
-h4 {
+h4.oj-header {
   font-size: var(--oj-typography-heading-md-font-size);
   font-weight: var(--oj-typography-heading-md-font-weight);
   line-height: var(--oj-typography-heading-md-line-height); }
 
-h5 {
+h5.oj-header {
   font-size: var(--oj-typography-heading-sm-font-size);
   font-weight: var(--oj-typography-heading-sm-font-weight);
   line-height: var(--oj-typography-heading-sm-line-height); }
 
-h6 {
+h6.oj-header {
   font-size: var(--oj-typography-heading-xs-font-size);
   font-weight: var(--oj-typography-heading-xs-font-weight);
   line-height: var(--oj-typography-heading-xs-line-height); }
 
 /* hr */
 /* --------------------------------------------------------------- */
-hr {
+.oj-hr {
   border: solid var(--oj-core-divider-color);
   border-width: 1px 0 0;
   margin: var(--oj-core-divider-margin) 0;
@@ -1035,7 +978,7 @@ hr {
 
 /* p */
 /* --------------------------------------------------------------- */
-p {
+.oj-p {
   margin: 0 0 var(--oj-paragraph-margin-bottom) 0; }
 
 .oj-header-border {
@@ -1045,112 +988,25 @@ p {
 
 /* lists */
 /* --------------------------------------------------------------- */
-ul,
-ol {
+.oj-ul,
+.oj-ol {
   margin: var(--oj-list-margin-top) 0;
   padding: 0 40px; }
 
-ul {
+.oj-ul {
   list-style: var(--oj-list-unordered-style-type); }
 
-ul ul,
-ul ol,
-ol ul,
-ol ol {
+.oj-ul .oj-ul,
+.oj-ul .oj-ol,
+.oj-ol .oj-ul,
+.oj-ol .oj-ol {
   margin-bottom: 0;
   margin-top: 0;
   padding: 0 var(--oj-list-nested-padding-start); }
 
-ul li,
-ol li {
+.oj-ul li,
+.oj-ol li {
   line-height: var(--oj-list-item-line-height); }
-
-code,
-kbd,
-samp {
-  font-family: monospace, monospace;
-  font-size: 0.875em; }
-
-/* tags                       */
-/* -------------------------- */
-.oj-contrast-marker,
-.oj-color-invert {
-  --oj-link-text-color:                 rgb(var(--oj-palette-brand-rgb-50));
-  --oj-link-text-color-active:          var(--oj-link-text-color);
-  --oj-link-text-color-visited:         var(--oj-link-text-color);
-  --oj-heading-text-color:               var(--oj-core-text-color-primary); }
-
-:root.oj-scale-sm {
-  --oj-html-font-size:   .75em; }
-
-:root.oj-scale-md {
-  --oj-html-font-size:   .875em; }
-
-body {
-  --oj-current-bg-color: var(--oj-body-bg-color); }
-
-:root {
-  --oj-scrollbar-thumb-color-hover:rgba(var(--oj-palette-neutral-rgb-170), .15);
-  --oj-scrollbar-track-color-force:   rgba(var(--oj-palette-neutral-rgb-170), .05); }
-
-.oj-agent-os-windows *,
-html.oj-agent-os-windows {
-  /* FF 68+ */
-  scrollbar-width: thin;
-  scrollbar-color: transparent; }
-
-.oj-agent-os-windows :hover {
-  /* FF 68+ */
-  scrollbar-color: var(--oj-scrollbar-thumb-color-hover) transparent; }
-
-.oj-agent-os-windows ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px; }
-
-.oj-agent-os-windows ::-webkit-scrollbar-track {
-  background-color: transparent; }
-
-.oj-agent-os-windows ::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  border-radius: var(--oj-core-border-radius-md); }
-
-.oj-agent-os-windows :hover::-webkit-scrollbar-track {
-  background-color: rgba(var(--oj-palette-neutral-rgb-170), 0.15); }
-
-.oj-agent-os-windows :hover::-webkit-scrollbar-thumb {
-  background-color: var(--oj-scrollbar-thumb-color-hover); }
-
-.oj-agent-os-windows ::-webkit-scrollbar-button {
-  display: none; }
-
-.oj-agent-os-windows ::-webkit-scrollbar-corner {
-  background-color: transparent; }
-
-.oj-agent-os-windows .oj-scrollbar-force,
-.oj-agent-os-windows body {
-  /* FF 68+ */
-  scrollbar-color: var(--oj-scrollbar-thumb-color-hover) var(--oj-scrollbar-track-color-force); }
-
-.oj-agent-os-windows .oj-scrollbar-force::-webkit-scrollbar-track,
-.oj-agent-os-windows body::-webkit-scrollbar-track {
-  background-color: var(--oj-scrollbar-track-color-force); }
-
-.oj-agent-os-windows .oj-scrollbar-force::-webkit-scrollbar-thumb,
-.oj-agent-os-windows body::-webkit-scrollbar-thumb {
-  background-color: var(--oj-scrollbar-thumb-color-hover); }
-
-.oj-agent-os-windows .oj-scrollbar-force::-webkit-scrollbar-corner,
-.oj-agent-os-windows body::-webkit-scrollbar-corner {
-  background-color: var(--oj-scrollbar-track-color-force); }
-
-.oj-agent-os-windows .oj-scrollbar-force:hover::-webkit-scrollbar-thumb {
-  background-color: var(--oj-scrollbar-thumb-color-hover); }
-
-/* scrollbar                  */
-/* -------------------------- */
-.oj-color-invert {
-  --oj-scrollbar-thumb-color-hover:   rgba(var(--oj-palette-neutral-rgb-0), .3);
-  --oj-scrollbar-track-color-force:   rgba(var(--oj-palette-neutral-rgb-0), .3); }
 
 /*
      * Viewport element for clipping ojModule view host during animation
@@ -22553,7 +22409,8 @@ html[dir="rtl"]
 
 /* Styling for the status message. */
 .oj-table-status-message {
-  position: absolute; }
+  position: absolute;
+  background-color: inherit; }
 
 /* Styling for the status message text. */
 .oj-table-status-message-text {

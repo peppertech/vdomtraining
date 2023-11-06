@@ -363,7 +363,7 @@
   visibility: hidden; }
 
 .oj-theme-json {
-  font-family: '{"name":"redwood","targetPlatform":"all","behavior":"redwood","jetReleaseVersion":"v15.1.1"}' !important; }
+  font-family: '{"name":"redwood","targetPlatform":"all","behavior":"redwood","jetReleaseVersion":"v15.1.2"}' !important; }
 
 .oj-helper-hidden-accessible {
   border: 0;
@@ -22553,7 +22553,8 @@ html[dir="rtl"]
 
 /* Styling for the status message. */
 .oj-table-status-message {
-  position: absolute; }
+  position: absolute;
+  background-color: inherit; }
 
 /* Styling for the status message text. */
 .oj-table-status-message-text {
