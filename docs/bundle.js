@@ -935,6 +935,84 @@ define('components/content/examples/dataviz/chart',["require", "exports", "preac
     exports.default = Chart;
 });
 
+
+define('text!components/content/examples/dataviz/data/drillData.json',[],function () { return '[\r\n  {\r\n    "id": 0,\r\n    "series": "Series 1",\r\n    "quarter": "Q1",\r\n    "value": 74\r\n  },\r\n  {\r\n    "id": 1,\r\n    "series": "Series 1",\r\n    "quarter": "Q2",\r\n    "value": 42\r\n  },\r\n  {\r\n    "id": 2,\r\n    "series": "Series 1",\r\n    "quarter": "Q3",\r\n    "value": 70\r\n  },\r\n  {\r\n    "id": 3,\r\n    "series": "Series 1",\r\n    "quarter": "Q4",\r\n    "value": 46\r\n  },\r\n  {\r\n    "id": 4,\r\n    "series": "Series 2",\r\n    "quarter": "Q1",\r\n    "value": 50\r\n  },\r\n  {\r\n    "id": 5,\r\n    "series": "Series 2",\r\n    "quarter": "Q2",\r\n    "value": 58\r\n  },\r\n  {\r\n    "id": 6,\r\n    "series": "Series 2",\r\n    "quarter": "Q3",\r\n    "value": 46\r\n  },\r\n  {\r\n    "id": 7,\r\n    "series": "Series 2",\r\n    "quarter": "Q4",\r\n    "value": 54\r\n  },\r\n  {\r\n    "id": 8,\r\n    "series": "Series 3",\r\n    "quarter": "Q1",\r\n    "value": 34\r\n  },\r\n  {\r\n    "id": 9,\r\n    "series": "Series 3",\r\n    "quarter": "Q2",\r\n    "value": 22\r\n  },\r\n  {\r\n    "id": 10,\r\n    "series": "Series 3",\r\n    "quarter": "Q3",\r\n    "value": 30\r\n  },\r\n  {\r\n    "id": 11,\r\n    "series": "Series 3",\r\n    "quarter": "Q4",\r\n    "value": 32\r\n  },\r\n  {\r\n    "id": 12,\r\n    "series": "Series 4",\r\n    "quarter": "Q1",\r\n    "value": 18\r\n  },\r\n  {\r\n    "id": 13,\r\n    "series": "Series 4",\r\n    "quarter": "Q2",\r\n    "value": 6\r\n  },\r\n  {\r\n    "id": 14,\r\n    "series": "Series 4",\r\n    "quarter": "Q3",\r\n    "value": 14\r\n  },\r\n  {\r\n    "id": 15,\r\n    "series": "Series 4",\r\n    "quarter": "Q4",\r\n    "value": 22\r\n  }\r\n]\r\n';});
+
+define('components/content/examples/dataviz/chart-drill',["require", "exports", "preact/jsx-runtime", "preact/hooks", "ojs/ojattributegrouphandler", "ojs/ojmutablearraydataprovider", "text!./data/drillData.json", "ojs/ojbutton", "ojs/ojchart"], function (require, exports, jsx_runtime_1, hooks_1, ojattributegrouphandler_1, MutableArrayDataProvider, data) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.DrillChart = void 0;
+    const dataProvider = new MutableArrayDataProvider([], {
+        keyAttributes: "id",
+    });
+    const colorHandler = new ojattributegrouphandler_1.ColorAttributeGroupHandler();
+    const years = ["2012", "2013", "2014", "2015"];
+    const getYearlyItems = () => {
+        const chartData = JSON.parse(data);
+        const items = [];
+        for (let i = 0; i < chartData.length; i += 4) {
+            const year = years[i / 4];
+            chartData[i].color = colorHandler.getValue(year);
+            chartData[i].group = year;
+            chartData[i].series = "Total Revenue";
+            chartData[i].value =
+                chartData[i].value +
+                    chartData[i + 1].value +
+                    chartData[i + 2].value +
+                    chartData[i + 3].value;
+            items.push(chartData[i]);
+        }
+        dataProvider.data = items;
+    };
+    const getQuarterlyItems = (year) => {
+        const start = (year - 2012) * 4;
+        const chartData = JSON.parse(data).slice(start, start + 4);
+        for (let i = 0; i < chartData.length; i++) {
+            chartData[i].color = colorHandler.getValue(year.toString());
+            chartData[i].series = year;
+        }
+        dataProvider.data = chartData;
+    };
+    const renderChartItem = (item) => {
+        return ((0, jsx_runtime_1.jsx)("oj-chart-item", { groupId: [item.data.group || item.data.quarter], seriesId: item.data.series, color: item.data.color, value: item.data.value }));
+    };
+    const DrillChart = () => {
+        const [isDisabled, setIsDisabled] = (0, hooks_1.useState)(true);
+        const [drillingValue, setDrillingValue] = (0, hooks_1.useState)("groupsOnly");
+        const [titleValue, setTitleValue] = (0, hooks_1.useState)("Annual");
+        const [tickLabelStyle, setTickLabelStyle] = (0, hooks_1.useState)({
+            textDecoration: "underline",
+            color: "#045fab",
+        });
+        const xaxisConfig = {
+            tickLabel: {
+                rotation: "auto",
+                rendered: "on",
+                style: tickLabelStyle,
+            },
+        };
+        (0, hooks_1.useEffect)(() => {
+            getYearlyItems();
+        }, []);
+        const drillUpButtonClick = (event) => {
+            getYearlyItems();
+            setDrillingValue("groupsOnly");
+            setTitleValue("Annual");
+            setTickLabelStyle({ textDecoration: "underline", color: "#045fab" });
+            setIsDisabled(true);
+        };
+        const chartDrillAction = (event) => {
+            getQuarterlyItems(Number(event.detail.group));
+            setDrillingValue("off");
+            setTitleValue(event.detail.group);
+            setTickLabelStyle({});
+            setIsDisabled(false);
+        };
+        return ((0, jsx_runtime_1.jsx)("div", Object.assign({ class: "oj-md-margin-4x-horizontal" }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ id: "chart-container" }, { children: [(0, jsx_runtime_1.jsxs)("div", Object.assign({ class: "oj-typography-heading-xs" }, { children: [titleValue, " Revenue"] })), (0, jsx_runtime_1.jsx)("oj-toolbar", Object.assign({ "aria-controls": "barChart" }, { children: !isDisabled && ((0, jsx_runtime_1.jsx)("oj-button", Object.assign({ id: "drillUpButton", onojAction: drillUpButtonClick, chroming: "outlined" }, { children: "Return" }))) })), (0, jsx_runtime_1.jsx)("oj-chart", Object.assign({ id: "barChart", type: "bar", orientation: "vertical", data: dataProvider, drilling: drillingValue, xAxis: xaxisConfig, onojGroupDrill: chartDrillAction, legend: { rendered: "off" } }, { children: (0, jsx_runtime_1.jsx)("template", { slot: "itemTemplate", render: renderChartItem }) }))] })) })));
+    };
+    exports.DrillChart = DrillChart;
+});
+
 define('components/content/examples/dataviz/legend',["require", "exports", "preact/jsx-runtime", "ojs/ojattributegrouphandler", "ojs/ojmutablearraydataprovider", "ojs/ojlegend"], function (require, exports, jsx_runtime_1, ojattributegrouphandler_1, MutableArrayDataProvider) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
@@ -963,11 +1041,11 @@ define('components/content/examples/dataviz/legend',["require", "exports", "prea
     exports.default = Legend;
 });
 
-define('components/content/examples/dataviz/index',["require", "exports", "preact/jsx-runtime", "./chart", "./legend"], function (require, exports, jsx_runtime_1, chart_1, legend_1) {
+define('components/content/examples/dataviz/index',["require", "exports", "preact/jsx-runtime", "./chart", "./chart-drill", "./legend"], function (require, exports, jsx_runtime_1, chart_1, chart_drill_1, legend_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     const DataViz = () => {
-        return ((0, jsx_runtime_1.jsx)("div", Object.assign({ class: "oj-web-applayout-max-width oj-web-applayout-content" }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ class: "oj-flex oj-sm-flex-items-1" }, { children: [(0, jsx_runtime_1.jsxs)("div", Object.assign({ class: "oj-flex-item oj-panel oj-sm-margin-2x demo-panel" }, { children: [(0, jsx_runtime_1.jsx)("h2", Object.assign({ class: "oj-typography-heading-sm" }, { children: " Chart " })), (0, jsx_runtime_1.jsx)(chart_1.default, {})] })), (0, jsx_runtime_1.jsxs)("div", Object.assign({ class: "oj-flex-item oj-panel oj-sm-margin-2x demo-panel" }, { children: [(0, jsx_runtime_1.jsx)("h2", Object.assign({ class: "oj-typography-heading-sm" }, { children: " Standalone Legend " })), (0, jsx_runtime_1.jsx)(legend_1.default, {})] }))] })) })));
+        return ((0, jsx_runtime_1.jsx)("div", Object.assign({ class: "oj-web-applayout-max-width oj-web-applayout-content" }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ class: "oj-flex oj-sm-flex-items-1" }, { children: [(0, jsx_runtime_1.jsxs)("div", Object.assign({ class: "oj-flex-item oj-panel oj-sm-margin-2x demo-panel" }, { children: [(0, jsx_runtime_1.jsx)("h2", Object.assign({ class: "oj-typography-heading-sm" }, { children: " Chart " })), (0, jsx_runtime_1.jsx)(chart_1.default, {})] })), (0, jsx_runtime_1.jsxs)("div", Object.assign({ class: "oj-flex-item oj-panel oj-sm-margin-2x demo-panel" }, { children: [(0, jsx_runtime_1.jsx)("h2", Object.assign({ class: "oj-typography-heading-sm" }, { children: " Standalone Legend " })), (0, jsx_runtime_1.jsx)(legend_1.default, {})] })), (0, jsx_runtime_1.jsxs)("div", Object.assign({ class: "oj-flex-item oj-panel oj-sm-margin-2x demo-panel" }, { children: [(0, jsx_runtime_1.jsx)("h2", Object.assign({ class: "oj-typography-heading-sm" }, { children: " Drillable Chart " })), (0, jsx_runtime_1.jsx)(chart_drill_1.DrillChart, {})] }))] })) })));
     };
     exports.default = DataViz;
 });
