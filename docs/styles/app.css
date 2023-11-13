@@ -30,9 +30,21 @@
   min-width: 17rem;
   max-width: 21rem;
 }
+.demo-panel-md {
+  min-width: 17rem;
+  max-width: 25rem;
+}
+.demo-panel-sm {
+  min-width: 15rem;
+  max-width: 15rem;
+}
+.demo-panel-lg {
+  min-width: 25rem;
+  max-width: 50rem;
+}
 .demo-collection-panel {
   min-width: 50rem;
-  max-width: 21rem;
+  max-width: 50rem;
 }
 .demo-drawer-end {
   height: 100%;
