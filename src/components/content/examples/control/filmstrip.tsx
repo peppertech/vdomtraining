@@ -1,15 +1,15 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
 import "ojs/ojfilmstrip";
+import Avatar from "./avatar";
 
 const FilmStrip = () => {
-	const [chemicals] = useState([
-		{ name: "Hydrogen" },
-		{ name: "Helium" },
-		{ name: "Lithium" },
-		{ name: "Beryllium" },
-		{ name: "Boron" },
-		// ... other chemicals
+	const [avatars] = useState([
+		{ src: "images/hcm/placeholder-female-01.png" },
+		{ src: "images/hcm/placeholder-male-03.png" },
+		{ src: "images/hcm/placeholder-male-04.png" },
+		{ src: "images/hcm/placeholder-male-05.png" },
+		{ src: "images/hcm/placeholder-male-06.png" },
 	]);
 	const [navArrowPlacement, setNavArrowPlacement] = useState("adjacent");
 	const [navArrowVisibility, setNavArrowVisibility] = useState("auto");
@@ -17,26 +17,20 @@ const FilmStrip = () => {
 	return (
 		<oj-film-strip
 			id="filmStrip"
-			aria-label="Set of chemicals"
+			aria-label="Set of avatars"
 			arrow-placement={navArrowPlacement}
 			arrow-visibility={navArrowVisibility}
 		>
-			{chemicals.map((chemical, index) => (
-				<div
-					key={index}
-					class={`
-            oj-panel
-            demo-filmstrip-item
-            oj-bg-info-30
-            oj-sm-margin-2x
-            oj-helper-text-align-center
-            oj-typography-bold
-            oj-text-color-primary
-          `}
-					style={{ display: index < 3 ? "" : "none" }}
-				>
-					<span>{chemical.name}</span>
-				</div>
+			{avatars.map((avatar, index) => (
+				<>
+					<Avatar
+						src={avatar.src}
+						initials="AB"
+						size="md"
+						shape="square"
+						ariaLabel="Amy Bartlett"
+					/>
+				</>
 			))}
 		</oj-film-strip>
 	);
