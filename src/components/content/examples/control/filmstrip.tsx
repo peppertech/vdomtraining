@@ -5,11 +5,13 @@ import Avatar from "./avatar";
 
 const FilmStrip = () => {
 	const [avatars] = useState([
-		{ src: "images/hcm/placeholder-female-01.png" },
-		{ src: "images/hcm/placeholder-male-03.png" },
-		{ src: "images/hcm/placeholder-male-04.png" },
-		{ src: "images/hcm/placeholder-male-05.png" },
-		{ src: "images/hcm/placeholder-male-06.png" },
+		{ src: "images/hcm/placeholder-female-01.png", ariaLabel: "Person 1" },
+		{ src: "images/hcm/placeholder-male-03.png", ariaLabel: "Person 2" },
+		{ src: "images/hcm/placeholder-female-01.png", ariaLabel: "Person 3" },
+		{ src: "images/hcm/placeholder-male-03.png", ariaLabel: "Person 4" },
+		{ src: "images/hcm/placeholder-male-04.png", ariaLabel: "Person 5" },
+		{ src: "images/hcm/placeholder-male-05.png", ariaLabel: "Person 6" },
+		{ src: "images/hcm/placeholder-male-06.png", ariaLabel: "Person 7" },
 	]);
 	const [navArrowPlacement, setNavArrowPlacement] = useState("adjacent");
 	const [navArrowVisibility, setNavArrowVisibility] = useState("auto");
@@ -22,15 +24,14 @@ const FilmStrip = () => {
 			arrow-visibility={navArrowVisibility}
 		>
 			{avatars.map((avatar, index) => (
-				<>
-					<Avatar
-						src={avatar.src}
-						initials="AB"
-						size="md"
-						shape="square"
-						ariaLabel="Amy Bartlett"
-					/>
-				</>
+				<Avatar
+					key={index}
+					src={avatar.src}
+					initials="AB"
+					size="md"
+					shape="square"
+					ariaLabel={avatar.ariaLabel}
+				/>
 			))}
 		</oj-film-strip>
 	);

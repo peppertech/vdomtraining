@@ -56,14 +56,16 @@ const Toolbar = () => {
 					</oj-option>
 				</oj-menu>
 			</oj-menu-button>
+
 			<span
 				role="separator"
 				aria-orientation="vertical"
 				class="oj-toolbar-separator"
 			></span>
-			<oj-button id="paint1" display="icons">
+
+			<oj-button id="additionalPaint" display="icons">
 				<span slot="startIcon" class="oj-ux-ico-color-palette"></span>
-				Paint
+				Additional Paint
 			</oj-button>
 		</oj-toolbar>
 	);

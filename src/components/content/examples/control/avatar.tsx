@@ -1,5 +1,5 @@
 import { h } from "preact";
-import "ojs/ojavatar"; // Import Oracle JET Avatar component
+import "ojs/ojavatar";
 
 type AvatarProps = {
 	src?: string;
@@ -7,20 +7,32 @@ type AvatarProps = {
 	initials?: string;
 	size?: "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 	shape?: "square" | "circle";
-	ariaLabel: string;
+	ariaLabel?: string;
+	background?:
+		| "neutral"
+		| "orange"
+		| "green"
+		| "teal"
+		| "blue"
+		| "slate"
+		| "pink"
+		| "purple"
+		| "lilac"
+		| "gray";
 };
 
 const Avatar = ({
 	src,
 	iconClass,
 	initials,
-	size = "md", // Default size is 'md'
+	size = "md",
 	shape,
 	ariaLabel,
+	background,
 }: AvatarProps) => {
 	return (
 		<oj-avatar
-			role="img"
+			role={ariaLabel ? "img" : undefined}
 			src={src}
 			icon-class={iconClass}
 			initials={initials}
@@ -28,6 +40,7 @@ const Avatar = ({
 			shape={shape}
 			aria-label={ariaLabel}
 			title={ariaLabel}
+			background={background}
 		></oj-avatar>
 	);
 };

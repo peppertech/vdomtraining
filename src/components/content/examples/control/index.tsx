@@ -114,23 +114,60 @@ const Control = () => {
 					<Badge text="Warning" color="warning" subtle /> &nbsp;
 					<Badge text="Success" color="success" subtle /> &nbsp;
 				</MasonryItem>
+				<MasonryItem sizeClass="oj-masonrylayout-tile-3x1">
+					<h2 class="oj-typography-heading-sm">Conveyor Belt</h2>
+					<ConveyorBelt>
+						<Button
+							label="Button 1"
+							onOjAction={() => console.log("Button 1 clicked")}
+						/>
+						&nbsp;
+						<Button
+							label="Button 2"
+							onOjAction={() => console.log("Button 2 clicked")}
+						/>
+						&nbsp;
+						<Button
+							label="Button 3"
+							onOjAction={() => console.log("Button 3 clicked")}
+						/>
+						&nbsp;
+						<Button
+							label="Button 4"
+							onOjAction={() => console.log("Button 4 clicked")}
+						/>
+						&nbsp;
+						<Button
+							label="Button 5"
+							onOjAction={() => console.log("Button 5 clicked")}
+						/>
+						&nbsp;
+						<Button
+							label="Button 6"
+							onOjAction={() => console.log("Button 5 clicked")}
+						/>
+					</ConveyorBelt>
+				</MasonryItem>
 				<MasonryItem sizeClass="oj-masonrylayout-tile-2x3">
 					<h2 class="oj-typography-heading-sm">Button</h2>
 					<div>
 						<Button
-							text="Button Text 1"
-							onClick={() => console.log("Button clicked")}
+							label="Button Text 1"
+							onOjAction={() => console.log("Button clicked")}
 						/>
 						<br />
 						<br />
-						<Button text="Icon Button" iconStartClass="oj-ux-ico-information" />
+						<Button
+							label="Icon Button"
+							iconStartClass="oj-ux-ico-information"
+						/>
 						<br />
 						<br />
-						<Button text="Disabled Button" disabled={true} />
+						<Button label="Disabled Button" disabled={true} />
 						<br />
 						<br />
 						<Button
-							text="Call To Action"
+							label="Call To Action"
 							chroming="callToAction"
 							fullWidth={true}
 						/>
@@ -183,40 +220,6 @@ const Control = () => {
 				</MasonryItem>
 			</MasonryLayout>
 			<MasonryLayout>
-				<MasonryItem sizeClass="oj-masonrylayout-tile-3x1">
-					<h2 class="oj-typography-heading-sm">Conveyor Belt</h2>
-					<ConveyorBelt>
-						<Button
-							text="Button 1"
-							onClick={() => console.log("Button 1 clicked")}
-						/>
-						&nbsp;
-						<Button
-							text="Button 2"
-							onClick={() => console.log("Button 2 clicked")}
-						/>
-						&nbsp;
-						<Button
-							text="Button 3"
-							onClick={() => console.log("Button 3 clicked")}
-						/>
-						&nbsp;
-						<Button
-							text="Button 4"
-							onClick={() => console.log("Button 4 clicked")}
-						/>
-						&nbsp;
-						<Button
-							text="Button 5"
-							onClick={() => console.log("Button 5 clicked")}
-						/>
-						&nbsp;
-						<Button
-							text="Button 6"
-							onClick={() => console.log("Button 5 clicked")}
-						/>
-					</ConveyorBelt>
-				</MasonryItem>
 				<MasonryItem sizeClass="oj-masonrylayout-tile-3x1">
 					<h2 class="oj-typography-heading-sm">Toolbar</h2>
 					<Toolbar />

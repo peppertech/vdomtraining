@@ -19,6 +19,7 @@ const FilePicker = ({ onFileSelect, onInvalidFileSelect }: FilePickerProps) => {
 		"multiple"
 	);
 	const [disabled, setDisabled] = useState<boolean>(false);
+	const [selectedFiles, setSelectedFiles] = useState<FileDetails[]>([]); // State for storing file details
 
 	const selectListener = useCallback(
 		(event: CustomEvent<{ files: File[] }>) => {
@@ -28,6 +29,7 @@ const FilePicker = ({ onFileSelect, onInvalidFileSelect }: FilePickerProps) => {
 				size: file.size,
 				type: file.type,
 			}));
+			setSelectedFiles(fileDetails); // Update state with file details
 			onFileSelect(fileDetails);
 		},
 		[onFileSelect]
@@ -48,13 +50,27 @@ const FilePicker = ({ onFileSelect, onInvalidFileSelect }: FilePickerProps) => {
 	);
 
 	return (
-		<oj-file-picker
-			accept={accept}
-			selection-mode={selectionMode}
-			on-oj-select={selectListener}
-			disabled={disabled}
-			on-oj-invalid-select={invalidSelectListener}
-		></oj-file-picker>
+		<>
+			<oj-file-picker
+				accept={accept}
+				selection-mode={selectionMode}
+				on-oj-select={selectListener}
+				disabled={disabled}
+				on-oj-invalid-select={invalidSelectListener}
+			></oj-file-picker>
+			<div>
+				{/* Display selected file details */}
+				{selectedFiles.length > 0 && (
+					<ul>
+						{selectedFiles.map((file, index) => (
+							<li key={index}>
+								{file.name} ({file.type}), Size: {file.size} bytes
+							</li>
+						))}
+					</ul>
+				)}
+			</div>
+		</>
 	);
 };
 

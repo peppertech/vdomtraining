@@ -1,20 +1,27 @@
 import { h } from "preact";
 import "ojs/ojconveyorbelt";
-import "ojs/ojbutton";
 
 type ConveyorBeltProps = {
-	children: preact.ComponentChildren; // Accept any valid Preact children
-	orientation?: "horizontal" | "vertical"; // Optional orientation property
+	children: preact.ComponentChildren;
+	orientation?: "horizontal" | "vertical";
+	arrowVisibility?: "auto" | "visible" | "hidden";
+	contentParent?: string;
+	scrollPosition?: number;
 };
 
 const ConveyorBelt = ({
 	children,
 	orientation = "horizontal",
+	arrowVisibility,
+	contentParent,
+	scrollPosition,
 }: ConveyorBeltProps) => {
 	return (
 		<oj-conveyor-belt
-			class={`oj-conveyorbelt-${orientation}`}
-			data-oj-binding-provider="none"
+			orientation={orientation}
+			arrow-visibility={arrowVisibility}
+			content-parent={contentParent}
+			scroll-position={scrollPosition}
 		>
 			{children}
 		</oj-conveyor-belt>

@@ -24,7 +24,14 @@ const Badge = ({ text, color, subtle, small, end }: BadgeProps) => {
 		classNames += " oj-badge-end";
 	}
 
-	return <span className={classNames}>{text}</span>;
+	return (
+		<span className={classNames} aria-label={text}>
+			{text}
+		</span>
+	);
 };
 
 export default Badge;
+
+// aria-label code addition ensures that the badge's text is also accessible to screen readers,
+// enhancing the accessibility of your application.
