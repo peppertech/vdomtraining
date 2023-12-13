@@ -1,15 +1,18 @@
-import { h } from "preact";
+import { ComponentProps } from "preact";
+import { ButtonElement } from "ojs/ojbutton"; // import the types for ojButton
 import "ojs/ojbutton"; // Import Oracle JET Button component
 
-type ButtonProps = {
+type ButtonProps = ComponentProps<"oj-button">;
+
+type Props = {
 	label?: string; // Text label for the button, overrides default slot if provided
 	iconStartClass?: string;
 	iconEndClass?: string;
-	disabled?: boolean;
-	chroming?: "borderless" | "outlined" | "solid" | "callToAction" | "danger";
-	size?: "sm" | "md" | "lg";
-	fullWidth?: boolean;
-	onOjAction?: (event: CustomEvent) => void; // Handling ojAction event
+	disabled?: ButtonProps["disabled"];
+	chroming?: ButtonProps["chroming"];
+	size?: "sm" | "md" | "lg"; // Assuming 'md' is the default size
+	fullWidth?: boolean; // This could be used for 'oj-button-full-width'
+	ojAction?: (event: CustomEvent) => void; // Handling ojAction event
 	ariaLabel?: string; // For accessibility
 };
 
@@ -21,16 +24,16 @@ const Button = ({
 	chroming = "solid",
 	size = "md",
 	fullWidth = false,
-	onOjAction,
+	ojAction,
 	ariaLabel,
-}: ButtonProps) => {
+}: Props) => {
 	const buttonClasses = `oj-button ${size === "sm" ? "oj-button-sm" : ""} ${
 		size === "lg" ? "oj-button-lg" : ""
 	} ${fullWidth ? "oj-button-full-width" : ""}`;
 
 	const handleOjAction = (event: CustomEvent) => {
-		if (onOjAction) {
-			onOjAction(event);
+		if (ojAction) {
+			ojAction(event);
 		}
 	};
 

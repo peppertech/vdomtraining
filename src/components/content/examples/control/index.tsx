@@ -1,4 +1,4 @@
-import { h } from "preact";
+import "preact";
 import Avatar from "./avatar";
 import Badge from "./badge";
 import Button from "./button/button";
@@ -119,32 +119,32 @@ const Control = () => {
 					<ConveyorBelt>
 						<Button
 							label="Button 1"
-							onOjAction={() => console.log("Button 1 clicked")}
+							ojAction={() => console.log("Button 1 clicked")}
 						/>
 						&nbsp;
 						<Button
 							label="Button 2"
-							onOjAction={() => console.log("Button 2 clicked")}
+							ojAction={() => console.log("Button 2 clicked")}
 						/>
 						&nbsp;
 						<Button
 							label="Button 3"
-							onOjAction={() => console.log("Button 3 clicked")}
+							ojAction={() => console.log("Button 3 clicked")}
 						/>
 						&nbsp;
 						<Button
 							label="Button 4"
-							onOjAction={() => console.log("Button 4 clicked")}
+							ojAction={() => console.log("Button 4 clicked")}
 						/>
 						&nbsp;
 						<Button
 							label="Button 5"
-							onOjAction={() => console.log("Button 5 clicked")}
+							ojAction={() => console.log("Button 5 clicked")}
 						/>
 						&nbsp;
 						<Button
 							label="Button 6"
-							onOjAction={() => console.log("Button 5 clicked")}
+							ojAction={() => console.log("Button 5 clicked")}
 						/>
 					</ConveyorBelt>
 				</MasonryItem>
@@ -153,7 +153,7 @@ const Control = () => {
 					<div>
 						<Button
 							label="Button Text 1"
-							onOjAction={() => console.log("Button clicked")}
+							ojAction={() => console.log("Button clicked")}
 						/>
 						<br />
 						<br />
