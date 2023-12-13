@@ -1,5 +1,7 @@
 import { ComponentProps } from "preact";
 import { ButtonElement } from "ojs/ojbutton"; // import the types for ojButton
+import { ComponentProps } from "preact";
+import { ButtonElement } from "ojs/ojbutton"; // import the types for ojButton
 import "ojs/ojbutton"; // Import Oracle JET Button component
 
 type ButtonProps = ComponentProps<"oj-button">;

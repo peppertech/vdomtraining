@@ -1,4 +1,5 @@
 import "preact";
+import "preact";
 import Avatar from "./avatar";
 import Badge from "./badge";
 import Button from "./button/button";
