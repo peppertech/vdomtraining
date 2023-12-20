@@ -1,12 +1,14 @@
-import { h } from "preact";
+import { ComponentProps } from "preact";
 import "ojs/ojconveyorbelt";
 
-type ConveyorBeltProps = {
+type ConveyorBeltProps = ComponentProps<"oj-conveyor-belt">;
+
+type Props = {
 	children: preact.ComponentChildren;
-	orientation?: "horizontal" | "vertical";
-	arrowVisibility?: "auto" | "visible" | "hidden";
-	contentParent?: string;
-	scrollPosition?: number;
+	orientation?: ConveyorBeltProps["orientation"];
+	arrowVisibility?: ConveyorBeltProps["arrowVisibility"];
+	contentParent?: ConveyorBeltProps["contentParent"];
+	scrollPosition?: ConveyorBeltProps["scrollPosition"];
 };
 
 const ConveyorBelt = ({
@@ -15,7 +17,7 @@ const ConveyorBelt = ({
 	arrowVisibility,
 	contentParent,
 	scrollPosition,
-}: ConveyorBeltProps) => {
+}: Props) => {
 	return (
 		<oj-conveyor-belt
 			orientation={orientation}

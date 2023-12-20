@@ -1,24 +1,16 @@
-import { h } from "preact";
+import { ComponentProps } from "preact";
 import "ojs/ojavatar";
 
-type AvatarProps = {
-	src?: string;
-	iconClass?: string;
-	initials?: string;
-	size?: "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
-	shape?: "square" | "circle";
+type AvatarProps = ComponentProps<"oj-avatar">;
+
+type Props = {
+	src?: AvatarProps["src"];
+	iconClass?: AvatarProps["iconClass"];
+	initials?: AvatarProps["initials"];
+	size?: AvatarProps["size"];
+	shape?: AvatarProps["shape"];
 	ariaLabel?: string;
-	background?:
-		| "neutral"
-		| "orange"
-		| "green"
-		| "teal"
-		| "blue"
-		| "slate"
-		| "pink"
-		| "purple"
-		| "lilac"
-		| "gray";
+	background?: AvatarProps["background"];
 };
 
 const Avatar = ({
@@ -29,7 +21,7 @@ const Avatar = ({
 	shape,
 	ariaLabel,
 	background,
-}: AvatarProps) => {
+}: Props) => {
 	return (
 		<oj-avatar
 			role={ariaLabel ? "img" : undefined}
