@@ -30,12 +30,7 @@ const MenuButton = () => {
       Action
       <oj-menu id="myMenu1" slot="menu" onojMenuAction={handleMenuSelection}>
         {menuItems.map((item) => (
-          <oj-option
-            value={item.label}
-            disabled={item.disabled}
-            id={item.id}
-            // key={item.id}
-          >
+          <oj-option value={item.label} disabled={item.disabled} id={item.id}>
             {item.icon && <span slot="startIcon" class={item.icon}></span>}
             {item.label}
           </oj-option>

@@ -22,11 +22,7 @@ const ButtonSetOne = () => {
       id="setMultipleButtons"
       value={selectedValue}
       aria-label="Choose only one format"
-      onvalueChanged={changeHandler}
-      // on-oj-value-changed={(event: {
-      // 	detail: { value: string | ((prevState: string) => string) };
-      // }) => setSelectedValue(event.detail.value)}
-    >
+      onvalueChanged={changeHandler}>
       {formatValues.map((format) => (
         <oj-option value={format.id} key={format.id}>
           {format.label}

@@ -1,4 +1,4 @@
-import { h } from "preact";
+import "preact";
 import BindingContent from "./bindings/index";
 import ModulesContent from "./modules/index";
 import ExampleContent from "./examples/index";

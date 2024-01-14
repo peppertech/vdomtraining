@@ -11,18 +11,12 @@ const ButtonSetMany = () => {
     setSelectedValues(event.detail.value ? event.detail.value : []);
     console.log("ButtonSetMany Values: ", event.detail.value);
   };
-  // const handleChange = (event: {
-  // 	detail: { value: string[] | ((prevState: string[]) => string[]) };
-  // }) => {
-  // 	setSelectedValues(event.detail.value);
-  // };
 
   return (
     <oj-buttonset-many
       id="formatsetMultipleButtons"
       value={selectedValues}
       onvalueChanged={handleChange}
-      // on-oj-value-updated={handleChange}
       aria-label="Choose one or more format options.">
       <oj-option value="bold">Bold</oj-option>
       <oj-option value="italic">Italic</oj-option>

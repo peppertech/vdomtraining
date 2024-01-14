@@ -1,40 +1,46 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
+import { ComponentProps } from "preact";
 import "ojs/ojfilmstrip";
 import Avatar from "./avatar";
+import * as peopleData from "text!./data/peopleData.json";
+
+type FilmStripProps = ComponentProps<"oj-film-strip">;
+type Person = {
+  id: number;
+  name: string;
+  title: string;
+  image: string;
+  department: string;
+};
+const navArrowPlacement: FilmStripProps["arrowPlacement"] = "adjacent";
+const navArrowVisibility: FilmStripProps["arrowVisibility"] = "auto";
+const people = JSON.parse(peopleData);
+
+const getInitials = (name: string) => {
+  let firstlast = name.split(" ");
+  let firstInitial = firstlast[0].charAt(0).toUpperCase();
+  let lastInital = firstlast[firstlast.length - 1].charAt(0).toUpperCase();
+  return firstInitial + lastInital;
+};
 
 const FilmStrip = () => {
-	const [avatars] = useState([
-		{ src: "images/hcm/placeholder-female-01.png", ariaLabel: "Person 1" },
-		{ src: "images/hcm/placeholder-male-03.png", ariaLabel: "Person 2" },
-		{ src: "images/hcm/placeholder-female-01.png", ariaLabel: "Person 3" },
-		{ src: "images/hcm/placeholder-male-03.png", ariaLabel: "Person 4" },
-		{ src: "images/hcm/placeholder-male-04.png", ariaLabel: "Person 5" },
-		{ src: "images/hcm/placeholder-male-05.png", ariaLabel: "Person 6" },
-		{ src: "images/hcm/placeholder-male-06.png", ariaLabel: "Person 7" },
-	]);
-	const [navArrowPlacement, setNavArrowPlacement] = useState("adjacent");
-	const [navArrowVisibility, setNavArrowVisibility] = useState("auto");
-
-	return (
-		<oj-film-strip
-			id="filmStrip"
-			aria-label="Set of avatars"
-			arrow-placement={navArrowPlacement}
-			arrow-visibility={navArrowVisibility}
-		>
-			{avatars.map((avatar, index) => (
-				<Avatar
-					key={index}
-					src={avatar.src}
-					initials="AB"
-					size="md"
-					shape="square"
-					ariaLabel={avatar.ariaLabel}
-				/>
-			))}
-		</oj-film-strip>
-	);
+  return (
+    <oj-film-strip
+      id="filmStrip"
+      aria-label="Set of avatars"
+      arrowPlacement={navArrowPlacement}
+      arrowVisibility={navArrowVisibility}>
+      {people.map((person: Person, index: number) => (
+        <Avatar
+          key={index}
+          src={person.image}
+          initials={person.image ? "" : getInitials(person.name)}
+          size="xxl"
+          shape="square"
+          ariaLabel={person.name}
+        />
+      ))}
+    </oj-film-strip>
+  );
 };
 
 export default FilmStrip;

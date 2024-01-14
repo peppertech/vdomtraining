@@ -1,77 +1,58 @@
-import { h } from "preact";
+import { ComponentProps } from "preact";
 import { useState, useCallback } from "preact/hooks";
 import "ojs/ojfilepicker";
+import { FilePickerElement } from "ojs/ojfilepicker";
 
-interface FileDetails {
-	name: string;
-	size: number;
-	type: string;
-}
+type FilePickerProps = ComponentProps<"oj-file-picker">;
 
-interface FilePickerProps {
-	onFileSelect: (files: FileDetails[]) => void;
-	onInvalidFileSelect: (message: string) => void;
-}
+type modes = FilePickerProps["selectionMode"];
 
-const FilePicker = ({ onFileSelect, onInvalidFileSelect }: FilePickerProps) => {
-	const [accept, setAccept] = useState<string[]>(["image/*"]);
-	const [selectionMode, setSelectionMode] = useState<"single" | "multiple">(
-		"multiple"
-	);
-	const [disabled, setDisabled] = useState<boolean>(false);
-	const [selectedFiles, setSelectedFiles] = useState<FileDetails[]>([]); // State for storing file details
+const FilePicker = () => {
+  const [accept, setAccept] = useState<string[]>(["image/*"]);
+  const [selectionMode, setSelectionMode] = useState<modes>("multiple");
+  const [disabled, setDisabled] = useState<boolean>(false);
+  const [selectedFiles, setSelectedFiles] = useState<Array<File>>(); // State for storing file details
 
-	const selectListener = useCallback(
-		(event: CustomEvent<{ files: File[] }>) => {
-			const files = event.detail.files;
-			const fileDetails = files.map((file) => ({
-				name: file.name,
-				size: file.size,
-				type: file.type,
-			}));
-			setSelectedFiles(fileDetails); // Update state with file details
-			onFileSelect(fileDetails);
-		},
-		[onFileSelect]
-	);
+  const selectListener = (event: FilePickerElement.ojSelect) => {
+    const files = event.detail.files;
+    setSelectedFiles(Array.from(files));
+  };
 
-	const invalidSelectListener = useCallback(
-		(
-			event: CustomEvent<{
-				messages: Array<{ severity: string; summary: string }>;
-			}>
-		) => {
-			const message = event.detail.messages
-				.map((msg) => `${msg.severity}: ${msg.summary}`)
-				.join(", ");
-			onInvalidFileSelect(message);
-		},
-		[onInvalidFileSelect]
-	);
+  const invalidSelectListener = (event: any) => {
+    const message = event.detail.messages;
+    setSelectedFiles([]);
+    alert(
+      `${
+        message[0].severity.charAt(0).toUpperCase() +
+        message[0].severity.slice(1)
+      } \n ${message[0].summary}`
+    );
+  };
 
-	return (
-		<>
-			<oj-file-picker
-				accept={accept}
-				selection-mode={selectionMode}
-				on-oj-select={selectListener}
-				disabled={disabled}
-				on-oj-invalid-select={invalidSelectListener}
-			></oj-file-picker>
-			<div>
-				{/* Display selected file details */}
-				{selectedFiles.length > 0 && (
-					<ul>
-						{selectedFiles.map((file, index) => (
-							<li key={index}>
-								{file.name} ({file.type}), Size: {file.size} bytes
-							</li>
-						))}
-					</ul>
-				)}
-			</div>
-		</>
-	);
+  return (
+    <>
+      <oj-file-picker
+        accept={accept}
+        selectionMode={selectionMode}
+        onojSelect={selectListener}
+        disabled={disabled}
+        onojInvalidSelect={invalidSelectListener}></oj-file-picker>
+      <div>
+        {/* Display selected file details */}
+        {selectedFiles && selectedFiles.length > 0 && (
+          <ul>
+            {selectedFiles.map((file, index) => (
+              <li key={index}>
+                {`Name: ${file.name} (${file.type})`}
+                <br />
+                {`Size: ${file.size} bytes`}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </>
+  );
 };
 
 export default FilePicker;
