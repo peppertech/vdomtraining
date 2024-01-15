@@ -1,40 +1,47 @@
 import { ComponentProps } from "preact";
 import "ojs/ojavatar";
+import * as PeopleData from "text!./data/peopleData.json";
 
+const people = JSON.parse(PeopleData);
 type AvatarProps = ComponentProps<"oj-avatar">;
+const sizes: Array<Partial<AvatarProps["size"]>> = ["lg", "md", "sm", "xs"];
 
-type Props = {
-	src?: AvatarProps["src"];
-	iconClass?: AvatarProps["iconClass"];
-	initials?: AvatarProps["initials"];
-	size?: AvatarProps["size"];
-	shape?: AvatarProps["shape"];
-	ariaLabel?: string;
-	background?: AvatarProps["background"];
+const getInitials = (name: string) => {
+  let firstlast = name.split(" ");
+  let firstInitial = firstlast[0].charAt(0).toUpperCase();
+  let lastInital = firstlast[firstlast.length - 1].charAt(0).toUpperCase();
+  return firstInitial + lastInital;
 };
 
-const Avatar = ({
-	src,
-	iconClass,
-	initials,
-	size = "md",
-	shape,
-	ariaLabel,
-	background,
-}: Props) => {
-	return (
-		<oj-avatar
-			role={ariaLabel ? "img" : undefined}
-			src={src}
-			icon-class={iconClass}
-			initials={initials}
-			size={size}
-			shape={shape}
-			aria-label={ariaLabel}
-			title={ariaLabel}
-			background={background}
-		></oj-avatar>
-	);
+const Avatar = () => {
+  return (
+    <>
+      {sizes.map((item, idx) => {
+        return (
+          <oj-avatar
+            role="img"
+            src={people[idx].image}
+            initials={getInitials(people[idx].name)}
+            size={item}
+            shape="square"
+            aria-label={people[idx].name}
+            title={people[idx].image}></oj-avatar>
+        );
+      })}
+      {sizes.map((item, idx) => {
+        return (
+          <oj-avatar
+            role="img"
+            src={people[idx].image}
+            initials={getInitials(people[idx].name)}
+            size={item}
+            shape="circle"
+            aria-label={people[idx].name}
+            title={people[idx].image}></oj-avatar>
+        );
+      })}
+    </>
+  );
 };
 
 export default Avatar;
