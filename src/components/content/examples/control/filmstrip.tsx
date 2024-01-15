@@ -1,6 +1,5 @@
 import { ComponentProps } from "preact";
 import "ojs/ojfilmstrip";
-import Avatar from "./avatar";
 import * as peopleData from "text!./data/peopleData.json";
 
 type FilmStripProps = ComponentProps<"oj-film-strip">;
@@ -30,14 +29,13 @@ const FilmStrip = () => {
       arrowPlacement={navArrowPlacement}
       arrowVisibility={navArrowVisibility}>
       {people.map((person: Person, index: number) => (
-        <Avatar
+        <oj-avatar
           key={index}
           src={person.image}
           initials={person.image ? "" : getInitials(person.name)}
           size="xxl"
           shape="square"
-          ariaLabel={person.name}
-        />
+          aria-label={person.name}></oj-avatar>
       ))}
     </oj-film-strip>
   );

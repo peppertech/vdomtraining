@@ -25,79 +25,7 @@ const Control = () => {
         <MasonryItem sizeClass="oj-masonrylayout-tile-2x2">
           <h2 class="oj-typography-heading-sm">Avatar</h2>
           <div>
-            <Avatar
-              src="images/hcm/placeholder-female-01.png"
-              initials="AB"
-              size="lg"
-              shape="square"
-              ariaLabel="Amy Bartlett"
-            />
-            <Avatar
-              src="images/hcm/placeholder-male-03.png"
-              initials="AB"
-              size="md"
-              shape="square"
-              ariaLabel="Amy Bartlett"
-            />
-            <Avatar
-              src="images/hcm/placeholder-male-04.png"
-              initials="AB"
-              size="sm"
-              shape="square"
-              ariaLabel="Amy Bartlett"
-            />
-            <Avatar
-              src="images/hcm/placeholder-male-05.png"
-              initials="AB"
-              size="xs"
-              shape="square"
-              ariaLabel="Amy Bartlett"
-            />
-            <Avatar
-              src="images/hcm/placeholder-male-06.png"
-              initials="AB"
-              size="2xs"
-              shape="square"
-              ariaLabel="Amy Bartlett"
-            />
-          </div>
-          <br />
-          <div>
-            <Avatar
-              src="images/hcm/placeholder-female-01.png"
-              initials="AB"
-              size="lg"
-              shape="circle"
-              ariaLabel="Amy Bartlett"
-            />
-            <Avatar
-              src="images/hcm/placeholder-male-03.png"
-              initials="AB"
-              size="md"
-              shape="circle"
-              ariaLabel="Amy Bartlett"
-            />
-            <Avatar
-              src="images/hcm/placeholder-male-04.png"
-              initials="AB"
-              size="sm"
-              shape="circle"
-              ariaLabel="Amy Bartlett"
-            />
-            <Avatar
-              src="images/hcm/placeholder-male-05.png"
-              initials="AB"
-              size="xs"
-              shape="circle"
-              ariaLabel="Amy Bartlett"
-            />
-            <Avatar
-              src="images/hcm/placeholder-male-06.png"
-              initials="AB"
-              size="2xs"
-              shape="circle"
-              ariaLabel="Amy Bartlett"
-            />
+            <Avatar />
           </div>
         </MasonryItem>
         <MasonryItem sizeClass="oj-masonrylayout-tile-2x1">
@@ -109,40 +37,12 @@ const Control = () => {
         </MasonryItem>
         <MasonryItem sizeClass="oj-masonrylayout-tile-3x1">
           <h2 class="oj-typography-heading-sm">Conveyor Belt</h2>
-          <ConveyorBelt>
-            <Button label="Button 1" />
-            &nbsp;
-            <Button label="Button 2" />
-            &nbsp;
-            <Button label="Button 3" />
-            &nbsp;
-            <Button label="Button 4" />
-            &nbsp;
-            <Button label="Button 5" />
-            &nbsp;
-            <Button label="Button 6" />
-          </ConveyorBelt>
+          <ConveyorBelt />
         </MasonryItem>
         <MasonryItem sizeClass="oj-masonrylayout-tile-2x3">
           <h2 class="oj-typography-heading-sm">Button</h2>
           <div>
-            <Button label="Button Text 1" />
-            <br />
-            <br />
-            <Button
-              label="Icon Button"
-              iconStartClass="oj-ux-ico-information"
-            />
-            <br />
-            <br />
-            <Button label="Disabled Button" disabled={true} />
-            <br />
-            <br />
-            <Button
-              label="Call To Action"
-              chroming="callToAction"
-              fullWidth={true}
-            />
+            <Button />
           </div>
           <br />
           <div>

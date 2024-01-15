@@ -1,56 +1,35 @@
-import { ComponentProps } from "preact";
-import { ButtonElement, ojButton } from "ojs/ojbutton"; // import the types for ojButton
+import "preact";
+import { ButtonElement } from "ojs/ojbutton"; // import the types for oj-button
 import "ojs/ojbutton"; // Import Oracle JET Button component
-import { ojBindDom } from "@oracle/oraclejet/ojbinddom";
 
-type ButtonProps = ComponentProps<"oj-button">;
-
-type Props = {
-  label?: string; // Text label for the button, overrides default slot if provided
-  iconStartClass?: string;
-  iconEndClass?: string;
-  disabled?: ButtonProps["disabled"];
-  chroming?: ButtonProps["chroming"];
-  size?: "sm" | "md" | "lg"; // Assuming 'md' is the default size
-  fullWidth?: boolean; // This could be used for 'oj-button-full-width'
-  ariaLabel?: string; // For accessibility
-};
-
-const Button = ({
-  label,
-  iconStartClass,
-  iconEndClass,
-  disabled = false,
-  chroming = "solid",
-  size = "md",
-  fullWidth = false,
-  ariaLabel,
-}: Props) => {
-  const buttonClasses = `oj-button ${size === "sm" ? "oj-button-sm" : ""} ${
-    size === "lg" ? "oj-button-lg" : ""
-  } ${fullWidth ? "oj-button-full-width" : ""}`;
-
-  const handleOjAction = (event: ojButton.ojAction) => {
+const Button = () => {
+  const handleOjAction = (event: ButtonElement.ojAction) => {
     const label = event.detail.originalEvent.currentTarget.innerText;
     console.log("Button clicked: ", label ? label : "Icon Only");
   };
 
   return (
-    <oj-button
-      onojAction={handleOjAction}
-      disabled={disabled}
-      class={buttonClasses}
-      chroming={chroming}
-      display={iconStartClass || iconEndClass ? "icons" : "all"}
-      aria-label={
-        ariaLabel ||
-        label ||
-        (iconStartClass || iconEndClass ? "Button" : undefined)
-      }
-      label={label}>
-      {iconStartClass && <span slot="startIcon" class={iconStartClass}></span>}
-      {iconEndClass && <span slot="endIcon" class={iconEndClass}></span>}
-    </oj-button>
+    <div>
+      <oj-button label="Button Text 1" onojAction={handleOjAction} />
+      <br />
+      <br />
+      <oj-button
+        label="Icon Button"
+        display="icons"
+        onojAction={handleOjAction}>
+        <span slot="startIcon" class="oj-ux-ico-information"></span>
+      </oj-button>
+      <br />
+      <br />
+      <oj-button label="Disabled Button" disabled={true}></oj-button>
+      <br />
+      <br />
+      <oj-button
+        label="Call To Action"
+        chroming="callToAction"
+        class="oj-button-full-width"
+        onojAction={handleOjAction}></oj-button>
+    </div>
   );
 };
 
