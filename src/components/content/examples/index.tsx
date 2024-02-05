@@ -20,7 +20,7 @@ const ExampleContent = () => {
 
   const tabs = [
     { value: "collection", label: "Collection" },
-    { value: "form", label: "Form" },
+    { value: "form", label: "Forms" },
     { value: "dataviz", label: "Data Visualization" },
     { value: "control", label: "Control" },
     { value: "navlayout", label: "Navigation and Layout" },

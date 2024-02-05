@@ -52,3 +52,25 @@
 .demo-form-container {
   width: 350px;
 }
+
+.demo-filmstrip-item {
+    box-sizing: border-box;
+    width: 10rem;
+    height: 10rem;
+    border-color: #3a3631;
+    border: 1px solid darkgray;
+    text-align: center;
+    padding-top: 4rem;
+  }
+  .demo-paging-control {
+    display: inline-block;
+  }
+  .comingsoon{
+   box-sizing: border-box;
+    width: 80rem;
+    height: 10rem;
+    border-color: #3a3631;
+    border: 1px solid darkgray;
+    text-align: center;
+    padding-top: 4rem;
+  }

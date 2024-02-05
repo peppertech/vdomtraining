@@ -71,8 +71,7 @@ const FormElements = () => {
   });
 
   const [isDisabled, setIsDisabled] = useState(true);
-  const [density, setDensity] =
-    useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
+  const [density, setDensity] = useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
   const dialogRef = useRef<ojDialog>(null);
 
@@ -106,6 +105,8 @@ const FormElements = () => {
         labelEdge="inside"
         columns={1}
         class="oj-md-margin-4x-horizontal">
+       <h4 class="oj-typography-heading-sm"> Form Elements </h4>
+       
         <oj-input-text
           id="itemName"
           value={formData.itemName}
