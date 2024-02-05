@@ -33,13 +33,24 @@ const employeeData = new MutableArrayDataProvider<Employee["value"], Employee>(e
 
 const SelectSingle = () => {
 
-const [formData, setFormData] = useState({selectedEmployee: "Chris Black"});
-const [comboData, setComboboxData] = useState({selectedValue: "FF"});
+const [selectSingleData, setSelectSingleValue] = useState({selectedValue: "Chris Black"});
+const [comboboxData, setComboboxData] = useState({selectedValue: "FF"});
 const [density, setDensity] = useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
-  const onSelectionChange = (event: any) => {
-   console.log(event.detail.value);
+const onSelectionChange = (event: any) => {
+    setSelectSingleValue({
+      ...selectSingleData,
+      selectedValue: event.detail.value
+    });
   };
+
+  const onComboboxChange = (event:any) =>{
+    //console.log(event.detail.value);
+     setComboboxData({
+      ...comboboxData,
+      selectedValue: event.detail.value
+    });
+  }
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
@@ -47,22 +58,25 @@ const [density, setDensity] = useState<FormLayoutProps["userAssistanceDensity"]>
         userAssistanceDensity={density}
         labelEdge="inside"
         columns={1}
-        class="oj-md-margin-4x-horizontal">
+        class="oj-md-margin-4x-horizontal" direction="row" maxColumns={3}>
         <h6 class="oj-typography-heading-sm"> Select Single</h6>
         <oj-select-single
           id="empSelector"
           labelHint="Employee"
           data={employeeData}
-          value={formData.selectedEmployee}
+          value={selectSingleData.selectedValue}
           onvalueChanged={onSelectionChange}>
         </oj-select-single>
+        <span>The selected value is: {selectSingleData.selectedValue} </span>
         <hr />
+
         <h6 class="oj-typography-heading-sm"> Combobox one</h6>
           <oj-combobox-one
                 id="combobox1"
-                value={comboData.selectedValue}
+                value={comboboxData.selectedValue}
                 label-hint="Combobox One with Inline Options"
                 label-edge="inside"
+                onvalueChanged={onComboboxChange}
                 class="oj-form-control-max-width-md">
                   <oj-option value="IE">Internet Explorer</oj-option>
                   <oj-option value="FF">Firefox</oj-option>
@@ -70,6 +84,8 @@ const [density, setDensity] = useState<FormLayoutProps["userAssistanceDensity"]>
                   <oj-option value="OP">Opera</oj-option>
                   <oj-option value="SA">Safari</oj-option>
           </oj-combobox-one>
+           <span>The selected value is: {comboboxData.selectedValue} </span>
+        <hr />
       </oj-form-layout>
     </div>
   );
