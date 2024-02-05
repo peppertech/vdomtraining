@@ -74,7 +74,8 @@ const FormElements = () => {
   const [density, setDensity] = useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
   const dialogRef = useRef<ojDialog>(null);
-
+  
+  // 'any' type is being used because method is used by multiple ..
   const onChange = (event: any) => {
     setFormData({
       ...formData,

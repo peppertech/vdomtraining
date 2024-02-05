@@ -68,14 +68,15 @@ const onSelectionChange = (event: any) => {
           onvalueChanged={onSelectionChange}>
         </oj-select-single>
         <span>The selected value is: {selectSingleData.selectedValue} </span>
-        <hr />
 
+        <hr />
         <h6 class="oj-typography-heading-sm"> Combobox one</h6>
           <oj-combobox-one
-                id="combobox1"
+                id="comboboxOne"
                 value={comboboxData.selectedValue}
-                label-hint="Combobox One with Inline Options"
-                label-edge="inside"
+                aria-label="comboboxOne"
+                labelHint="Combobox One with Inline Options"
+                labelEdge="inside"
                 onvalueChanged={onComboboxChange}
                 class="oj-form-control-max-width-md">
                   <oj-option value="IE">Internet Explorer</oj-option>
