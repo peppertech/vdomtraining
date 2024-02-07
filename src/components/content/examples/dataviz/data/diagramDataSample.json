@@ -1,0 +1,90 @@
+{
+  "nodes": [
+    {
+      "id": "N0",
+      "category": "0"
+    },
+    {
+      "id": "N1",
+      "category": "1"
+    },
+    {
+      "id": "N2",
+      "category": "2"
+    },
+    {
+      "id": "N3",
+      "category": "0"
+    },
+    {
+      "id": "N4",
+      "category": "1"
+    },
+    {
+      "id": "N5",
+      "category": "2"
+    },
+    {
+      "id": "N6",
+      "category": "0"
+    },
+    {
+      "id": "N7",
+      "category": "1"
+    },
+    {
+      "id": "N8",
+      "category": "2"
+    }
+  ],
+  "links": [
+    {
+      "id": "L0",
+      "category": "0",
+      "start": "N0",
+      "end": "N1"
+    },
+    {
+      "id": "L1",
+      "category": "1",
+      "start": "N1",
+      "end": "N3"
+    },
+    {
+      "id": "L2",
+      "category": "2",
+      "start": "N2",
+      "end": "N5"
+    },
+    {
+      "id": "L3",
+      "category": "0",
+      "start": "N3",
+      "end": "N7"
+    },
+    {
+      "id": "L4",
+      "category": "2",
+      "start": "N5",
+      "end": "N1"
+    },
+    {
+      "id": "L5",
+      "category": "0",
+      "start": "N6",
+      "end": "N3"
+    },
+    {
+      "id": "L6",
+      "category": "1",
+      "start": "N7",
+      "end": "N5"
+    },
+    {
+      "id": "L7",
+      "category": "2",
+      "start": "N8",
+      "end": "N7"
+    }
+  ]
+}

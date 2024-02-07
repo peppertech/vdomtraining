@@ -1,6 +1,7 @@
 import Chart from "./chart";
 import { DrillChart } from "./chart-drill";
 import Legend from "./legend";
+import Diagram from "./diagram/diagram";
 import { h } from "preact";
 
 const DataViz = () => {
@@ -18,6 +19,10 @@ const DataViz = () => {
         <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-md">
           <h2 class="oj-typography-heading-sm"> Drillable Chart </h2>
           <DrillChart />
+        </div>
+        <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-md">
+          <h2 class="oj-typography-heading-sm"> Diagram </h2>
+          <Diagram />
         </div>
       </div>
     </div>
