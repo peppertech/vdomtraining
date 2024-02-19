@@ -210,7 +210,7 @@ const FormsHome = () => {
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
           <oj-button label=" << Home " onojAction={handleOjAction} />
           {isComponentAvailable ? (
-            { ComponentDetail(); }
+             ComponentDetail() 
           ) : (
             <div class="comingsoon">Coming soon....</div>
           )}
