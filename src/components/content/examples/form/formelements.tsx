@@ -69,12 +69,13 @@ const FormElements = () => {
     itemCost: value,
     salesDate: valDateTime,
   });
-
   const [isDisabled, setIsDisabled] = useState(true);
-  const [density, setDensity] = useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
+  const [density, setDensity] = useState<
+    FormLayoutProps["userAssistanceDensity"]
+  >("efficient");
 
   const dialogRef = useRef<ojDialog>(null);
-  
+
   // 'any' type is being used because method is used by multiple ..
   const onChange = (event: any) => {
     setFormData({
@@ -105,18 +106,21 @@ const FormElements = () => {
         userAssistanceDensity={density}
         labelEdge="inside"
         columns={1}
-        class="oj-md-margin-4x-horizontal">
-       <h4 class="oj-typography-heading-sm"> Form Elements </h4>
-       
+        class="oj-md-margin-4x-horizontal"
+      >
+        {/* <h4 class="oj-typography-heading-sm"> Form Elements </h4> */}
+
         <oj-input-text
           id="itemName"
           value={formData.itemName}
           labelHint="Name"
-          onvalueChanged={onChange}>
+          onvalueChanged={onChange}
+        >
           <span
             slot="end"
             class="oj-text-field-start-end-icon oj-ux-ico-coffee oj-sm-margin-4x-end"
-            role="presentation"></span>
+            role="presentation"
+          ></span>
         </oj-input-text>
         <oj-input-text
           id="itemCost"
@@ -125,23 +129,28 @@ const FormElements = () => {
           labelHint={lblHint}
           helpHints={hintDefinition}
           onvalueChanged={onChange}
-          converter={eurNumberConverter}></oj-input-text>
+          converter={eurNumberConverter}
+        ></oj-input-text>
+
         <oj-input-date-time
           id="salesDate"
           value={formData.salesDate}
           labelHint="Purchase date"
-          onvalueChanged={onChange}></oj-input-date-time>
+          onvalueChanged={onChange}
+        ></oj-input-date-time>
         <oj-select-single
           id="itemBuyer"
           labelHint="Buyer"
           data={buyerData}
           value={formData.itemBuyer}
-          onvalueChanged={onChange}></oj-select-single>
+          onvalueChanged={onChange}
+        ></oj-select-single>
         <oj-checkboxset
           id="checkboxSetAgreeId"
           labelHint="Everything is correct?"
           labelEdge="inside"
-          onvalueChanged={handleAgreement}>
+          onvalueChanged={handleAgreement}
+        >
           <oj-option value={"agree"}>I Agree</oj-option>
         </oj-checkboxset>
         <oj-button onojAction={onSubmit} disabled={isDisabled}>
@@ -155,18 +164,21 @@ const FormElements = () => {
               id="finalName"
               readonly
               value={formData.itemName}
-              labelHint="Name"></oj-input-text>
+              labelHint="Name"
+            ></oj-input-text>
             <oj-input-text
               id="finalPrice"
               readonly
               value={formData.itemCost}
               labelHint="Price"
-              converter={eurNumberConverter}></oj-input-text>
+              converter={eurNumberConverter}
+            ></oj-input-text>
             <oj-input-date-time
               id="salesDate"
               value={formData.salesDate}
               labelHint="Purchase date"
-              readonly></oj-input-date-time>
+              readonly
+            ></oj-input-date-time>
           </oj-form-layout>
         </div>
         <div slot="footer">

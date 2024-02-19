@@ -7,6 +7,9 @@ import FormElements from "./formelements";
 import Color = require("@oracle/oraclejet/dist/types/ojcolor");
 import JobApplicationForm from "./jobapplicationform";
 import SelectSingle from "./selectSingle";
+import FormsHome from "./home";
+import ComboBox from "./combobox";
+import InputText from "./inputtext";
 // style={{ fontWeight: 400 , backgroundColor: "gray"}}>
 
 type Tab = {
@@ -16,18 +19,19 @@ type Tab = {
 };
 
 const FormControls = () => {
-
-const [activeTab, setActiveTab] = useState<string>("collection");
-const tabs = [
-     { value: "selectsingle", label: "Select & Combobox" },
-   {value: 'jobapplicationform', label: "Job Application Form"},
-    { value: "formelements", label: "Form Elements" }
-
+  const [activeTab, setActiveTab] = useState<string>("collection");
+  const tabs = [
+    { value: "homepage", label: "Home Page" },
+    { value: "selectsingle", label: "Select Single" },
+    { value: "inputtext", label: "Input Text" },
+    { value: "combobox", label: "Combo Box" },
+    { value: "formelements", label: "Job Application Form" },
   ];
 
   const tabbarDP = new MutableArrayDataProvider<Tab["value"], Tab>(tabs, {
     keyAttributes: "value",
   });
+
   const loadTabContent = (
     event: ojTabBar.selectionChanged<Tab["value"], Tab>
   ) => {
@@ -36,14 +40,18 @@ const tabs = [
 
   let pageContent = () => {
     switch (activeTab) {
-        case "formelements":
-        return <FormElements />;
+      case "homepage":
+        return <FormsHome />;
       case "selectsingle":
         return <SelectSingle />;
-        case "jobapplicationform":
-          return <JobApplicationForm/>
+      case "inputtext":
+        return <InputText />;
+      case "formelements":
+        return <FormElements />;
+      case "combobox":
+        return <ComboBox />;
       default:
-        return <SelectSingle />;
+        return <FormsHome />;
     }
   };
 
@@ -51,11 +59,12 @@ const tabs = [
     return (
       <li>
         <a href="#">
-          <span >{item.data.label} </span>
+          <span>{item.data.label} </span>
         </a>
       </li>
     );
   };
+
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
       <hr />
@@ -63,10 +72,12 @@ const tabs = [
         edge="top"
         data={tabbarDP}
         selection={activeTab}
-        onselectionChanged={loadTabContent}>
+        onselectionChanged={loadTabContent}
+      >
         <template slot="itemTemplate" render={tabItemTemplate}></template>
       </oj-tab-bar>
-      <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
+
+      <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12 oj-md-12">
         {pageContent()}
       </div>
     </div>

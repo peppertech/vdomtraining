@@ -74,4 +74,18 @@
     text-align: center;
     padding-top: 4rem;
     font-size: 24pt;
+    margin-top:25pt
   }
+  .component-item{
+     width: 150px;
+     height: 150px;
+     background-color: #fff;
+     padding: 5px;
+     float:left;
+     border: 0.25px solid gray;
+     border-radius: 5px;
+  }
+ .component-wrapper{
+  padding-left: 25pt;
+ }
+  
