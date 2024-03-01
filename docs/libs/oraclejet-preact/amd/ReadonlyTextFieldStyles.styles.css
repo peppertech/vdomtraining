@@ -1,0 +1,46 @@
+.ReadonlyTextFieldStyles_readOnlyBase__71tiu80 {
+  font-weight: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-weight-regular);
+  font-size: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size);
+  position: relative;
+  border-style: solid;
+  transition-property: border-color;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+  border-radius: var(--borderRadius__w6gg1y2);
+  flex-direction: row;
+  align-items: center;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+.ReadonlyTextFieldStyles_readonlyInsideEnabledForm__71tiu81 {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-width: var(--borderWidth__w6gg1y1);
+  border-color: var(--borderColorDisabled__w6gg1yh);
+  background-color: transparent;
+  height: var(--height__w6gg1y7);
+  min-width: 1em;
+  display: inline-flex;
+  flex: 1;
+}
+.ReadonlyTextFieldStyles_readonlyTextarea__71tiu82 {
+  height: auto;
+}
+.ReadonlyTextFieldStyles_readonlyInsideEnabledFormLabelInside__71tiu83 {
+  min-height: var(--insideEdgeHeight__w6gg1yb);
+}
+.ReadonlyTextFieldStyles_readonlyNotInsideEnabledForm__71tiu84 {
+  overflow-x: visible;
+  overflow-y: visible;
+  border-width: 0;
+  background-color: transparent;
+  height: auto;
+}
+.ReadonlyTextFieldStyles_readonlyTextareaNotInsideEnabledForm__71tiu85 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.ReadonlyTextFieldStyles_readonlyLabelInside__71tiu86 {
+  max-width: 100%;
+}

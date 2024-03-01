@@ -19,7 +19,7 @@
         "./node_modules/@oracle/oraclejet-preact/*"
       ],
       "oj-c/*": ["./node_modules/@oracle/oraclejet-core-pack/oj-c/types/*"],
-      "preact": ["./node_modules/@oracle/oraclejet/dist/js/libs/preact"]
+      "preact": ["./node_modules/preact"]
     },
     "declaration": true,
     "noEmitOnError": true,

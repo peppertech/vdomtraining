@@ -1,0 +1,2 @@
+define(['exports', 'css!./../../TableRowStyles.styles.css'], (function(e,t){"use strict";e.compoundVariants=[],e.tableRowStyles={base:"TableRowStyles_tableRowStyles_base__zfh7v10",rowHeight:"TableRowStyles_tableRowStyles_rowHeight__zfh7v11",lastRowHeight:"TableRowStyles_tableRowStyles_lastRowHeight__zfh7v12"},e.variants={lastRow:{isLastRow:"TableRowStyles_tableRowStyles_lastRowHeight__zfh7v12",notLastRow:"TableRowStyles_tableRowStyles_rowHeight__zfh7v11"}},Object.defineProperty(e,"__esModule",{value:!0})}));
+//# sourceMappingURL=TableRowStyles.css.js.map

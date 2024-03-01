@@ -1,0 +1,35 @@
+.SheetMenuStyles_modalWrapper__15qcc340 {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+.SheetMenuStyles_modalContainer__15qcc341 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.SheetMenuStyles_sheetMenuContainerWrapper__15qcc342 {
+  border-radius: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) 0 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: calc(100% - 96px);
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+.SheetMenuStyles_modalBackdrop__15qcc343 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.SheetMenuStyles_modalBackdropVisible__15qcc344 {
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-scrim);
+}

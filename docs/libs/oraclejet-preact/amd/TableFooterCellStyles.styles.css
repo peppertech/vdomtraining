@@ -1,0 +1,222 @@
+.TableFooterCellStyles_tableFooterCellStyles_base__1axh81o0 {
+  background-color: inherit;
+  border-top: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  bottom: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: sticky;
+  z-index: 100005;
+}
+.TableFooterCellStyles_tableFooterCellStyles_defaultRenderer__1axh81o1 {
+  padding-bottom: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-cell-padding-vertical);
+  padding-top: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-cell-padding-vertical);
+  text-align: start;
+}
+.TableFooterCellStyles_tableFooterCellStyles_rendererBottomPadding__1axh81o2 {
+  padding-bottom: 0;
+}
+.TableFooterCellStyles_tableFooterCellStyles_endPadding__1axh81o3 {
+  padding-inline-end: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+}
+.TableFooterCellStyles_tableFooterCellStyles_rendererEndPadding__1axh81o4 {
+  padding-inline-end: 0;
+}
+.TableFooterCellStyles_tableFooterCellStyles_borderEndSpacerPadding__1axh81o5 {
+  padding-inline-end: calc(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal) + 1px);
+}
+.TableFooterCellStyles_tableFooterCellStyles_rendererBorderEndSpacerPadding__1axh81o6 {
+  padding-inline-end: 1px;
+}
+.TableFooterCellStyles_tableFooterCellStyles_startPadding__1axh81o7 {
+  padding-inline-start: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+}
+.TableFooterCellStyles_tableFooterCellStyles_rendererStartPadding__1axh81o8 {
+  padding-inline-start: 0;
+}
+.TableFooterCellStyles_tableFooterCellStyles_borderStartSpacerPadding__1axh81o9 {
+  padding-inline-start: calc(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal) + 1px);
+}
+.TableFooterCellStyles_tableFooterCellStyles_rendererBorderStartSpacerPadding__1axh81oa {
+  padding-inline-start: 1px;
+}
+.TableFooterCellStyles_tableFooterCellStyles_rendererTopPadding__1axh81ob {
+  padding-top: 0;
+}
+.TableFooterCellStyles_tableFooterCellStyles_verticalGridStart__1axh81oc {
+  border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+}
+.TableFooterCellStyles_tableFooterCellStyles_verticalSelectedGridStart__1axh81od {
+  border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected);
+}
+.TableFooterCellStyles_tableFooterCellStyles_verticalSelectedGridEnd__1axh81oe {
+  border-inline-end: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected);
+}
+.TableFooterCellStyles_tableFooterCellStyles_selected__1axh81of {
+  background-image: 
+      linear-gradient(
+        var(--oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-surface-selected),
+        var(--oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-surface-selected)
+      );
+  border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected);
+}
+.TableFooterCellStyles_tableFooterCellStyles_stickyStartColumn__1axh81og {
+  z-index: 100006;
+}
+.TableFooterCellStyles_tableFooterCellStyles_stickyEndColumn__1axh81oh {
+  z-index: 100008;
+}
+.TableFooterCellStyles_tableFooterCellStyles_stickyEdgeStart__1axh81oi {
+  z-index: 100007;
+}
+.TableFooterCellStyles_tableFooterCellStyles_stickyEdgeEnd__1axh81oj {
+  z-index: 100009;
+}
+.TableFooterCellStyles_tableFooterCellStyles_stickyEdgeLeft__1axh81ok {
+  box-shadow: -2px 0px 0px var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+}
+.TableFooterCellStyles_tableFooterCellStyles_stickyEdgeRight__1axh81ol {
+  box-shadow: 2px 0px 0px var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+}
+.TableFooterCellStyles_tableFooterCellStyles_focused__1axh81om {
+  outline-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);
+  outline-offset: -1px;
+  outline-style: dotted;
+  outline-width: 1px;
+}
+.TableFooterCellStyles_tableFooterCellStyles_active__1axh81on {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  border-inline-end: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  padding-inline-end: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+  padding-inline-start: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+}
+.TableFooterCellStyles_tableFooterCellStyles_activeRenderer__1axh81oo {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  border-inline-end: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  padding-inline-end: 0;
+  padding-inline-start: 0;
+}
+.TableFooterCellStyles_tableFooterCellStyles_activeGrid__1axh81op {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+}
+.TableFooterCellStyles_tableFooterCellStyles_activeStartGrid__1axh81oq {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  border-inline-end: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  padding-inline-end: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+}
+.TableFooterCellStyles_tableFooterCellStyles_activeRendererStartGrid__1axh81or {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  border-inline-end: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  padding-inline-end: 0;
+}
+.TableFooterCellStyles_tableFooterCellStyles_activeEndGrid__1axh81os {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  padding-inline-start: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+}
+.TableFooterCellStyles_tableFooterCellStyles_activeRendererEndGrid__1axh81ot {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  padding-inline-start: 0;
+}
+.TableFooterCellStyles_tableFooterCellStyles_activeSelected__1axh81ou {
+  background-image: 
+    linear-gradient(
+      var(--oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-surface-selected),
+      var(--oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-surface-selected)
+    ),
+    linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+}
+.TableFooterCellStyles_tableFooterCellStyles_hover__1axh81ov:not(:active) {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  border-inline-end: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  padding-inline-end: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+  padding-inline-start: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+}
+.TableFooterCellStyles_tableFooterCellStyles_hoverRenderer__1axh81ow:not(:active) {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  border-inline-end: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  padding-inline-end: 0;
+  padding-inline-start: 0;
+}
+.TableFooterCellStyles_tableFooterCellStyles_hoverGrid__1axh81ox:not(:active) {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+}
+.TableFooterCellStyles_tableFooterCellStyles_hoverStartGrid__1axh81oy:not(:active) {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  border-inline-end: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  padding-inline-end: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+}
+.TableFooterCellStyles_tableFooterCellStyles_hoverRendererStartGrid__1axh81oz:not(:active) {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  border-inline-end: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  padding-inline-end: 0;
+}
+.TableFooterCellStyles_tableFooterCellStyles_hoverEndGrid__1axh81o10:not(:active) {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  padding-inline-start: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+}
+.TableFooterCellStyles_tableFooterCellStyles_hoverRendererEndGrid__1axh81o11:not(:active) {
+  background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+  padding-inline-start: 0;
+}
+.TableFooterCellStyles_tableFooterCellStyles_hoverSelected__1axh81o12:not(:active) {
+  background-image: 
+    linear-gradient(
+      var(--oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-surface-selected),
+      var(--oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-surface-selected)
+    ),
+    linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+}
+@media (hover: hover) {
+  .TableFooterCellStyles_tableFooterCellStyles_pseudoHover__1axh81o13:hover:not(:active) {
+    background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+    border-inline-end: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+    border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+    padding-inline-end: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+    padding-inline-start: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+  }
+  .TableFooterCellStyles_tableFooterCellStyles_pseudoHoverRenderer__1axh81o14:hover:not(:active) {
+    background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+    border-inline-end: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+    border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+    padding-inline-end: 0;
+    padding-inline-start: 0;
+  }
+  .TableFooterCellStyles_tableFooterCellStyles_pseudoHoverGrid__1axh81o15:hover:not(:active) {
+    background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  }
+  .TableFooterCellStyles_tableFooterCellStyles_pseudoHoverStartGrid__1axh81o16:hover:not(:active) {
+    background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+    border-inline-end: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+    padding-inline-end: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+  }
+  .TableFooterCellStyles_tableFooterCellStyles_pseudoHoverRendererStartGrid__1axh81o17:hover:not(:active) {
+    background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+    border-inline-end: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+    padding-inline-end: 0;
+  }
+  .TableFooterCellStyles_tableFooterCellStyles_pseudoHoverEndGrid__1axh81o18:hover:not(:active) {
+    background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+    border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+    padding-inline-start: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+  }
+  .TableFooterCellStyles_tableFooterCellStyles_pseudoHoverRendererEndGrid__1axh81o19:hover:not(:active) {
+    background-image: linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+    border-inline-start: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
+    padding-inline-start: 0;
+  }
+  .TableFooterCellStyles_tableFooterCellStyles_pseudoHoverSelected__1axh81o1a:hover:not(:active) {
+    background-image: 
+    linear-gradient(
+      var(--oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-surface-selected),
+      var(--oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-surface-selected)
+    ),
+    linear-gradient(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover), var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover));
+  }
+}

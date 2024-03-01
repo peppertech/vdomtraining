@@ -1,0 +1,18 @@
+.AxisStyles_outlineRing__15u9pqv0 {
+  stroke-dasharray: 1.5;
+  stroke-width: 1px;
+  fill: transparent;
+  stroke: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);
+}
+.AxisStyles_isInteractive__15u9pqv1 {
+  cursor: pointer;
+}
+.AxisStyles_axisLabel__15u9pqv2 {
+  fill: var(--axisTickLabelTextColor__bb9djh1);
+}
+.AxisStyles_axisTitle__15u9pqv3 {
+  fill: var(--axisTitleTextColor__bb9djh0);
+}
+.AxisStyles_middleBaseline__15u9pqv4 {
+  dominant-baseline: middle;
+}

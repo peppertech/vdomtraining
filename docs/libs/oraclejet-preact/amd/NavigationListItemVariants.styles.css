@@ -1,0 +1,28 @@
+.NavigationListItemVariants_multiVariantStyles_selected_isSelected__16ggl234 {
+  background-color: var(--backgroundColorSelected__1497t56b);
+  border-color: var(--borderColorSelected__1497t56c);
+  color: var(--labelColorSelected__1497t56a);
+}
+.NavigationListItemVariants_multiVariantStyles_compound_0__16ggl23c:not(:active) {
+  background-color: var(--backgroundColorHover__1497t568);
+  border-color: var(--borderColorHover__1497t569);
+  color: var(--labelColorHover__1497t567);
+}
+.NavigationListItemVariants_multiVariantStyles_compound_2__16ggl23e {
+  background-color: var(--backgroundColorHover__1497t568);
+  border-color: var(--borderColorHover__1497t569);
+  color: var(--labelColorHover__1497t567);
+}
+.NavigationListItemVariants_multiVariantStyles_compound_3__16ggl23f {
+  outline-style: dotted;
+  outline-offset: -1px;
+  outline-width: 1px;
+  outline-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);
+}
+@media (hover: hover) {
+  .NavigationListItemVariants_multiVariantStyles_compound_1__16ggl23d:hover:not(:active) {
+    background-color: var(--backgroundColorHover__1497t568);
+    border-color: var(--borderColorHover__1497t569);
+    color: var(--labelColorHover__1497t567);
+  }
+}

@@ -1,0 +1,48 @@
+.LinkVariants_multiVariantStyles_variant_primary__18dr6fk1 {
+  --textColor__1w21kyl5: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --textColorVisited__1w21kyl7: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --textColorActive__1w21kyl6: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+}
+.LinkVariants_multiVariantStyles_variant_secondary__18dr6fk2 {
+  --textColor__1w21kyl5: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary);
+  --textColorVisited__1w21kyl7: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary);
+  --textColorActive__1w21kyl6: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary);
+}
+.LinkVariants_multiVariantStyles_placement_standalone__18dr6fk3 {
+  -webkit-text-decoration-line: var(--standaloneTextDecoration__1w21kyl0);
+          text-decoration-line: var(--standaloneTextDecoration__1w21kyl0);
+}
+.LinkVariants_multiVariantStyles_placement_standalone__18dr6fk3:active {
+  -webkit-text-decoration-line: var(--standaloneTextDecorationHover__1w21kyl1);
+          text-decoration-line: var(--standaloneTextDecorationHover__1w21kyl1);
+}
+.LinkVariants_multiVariantStyles_placement_embedded__18dr6fk4 {
+  -webkit-text-decoration-line: var(--embeddedTextDecoration__1w21kyl2);
+          text-decoration-line: var(--embeddedTextDecoration__1w21kyl2);
+}
+.LinkVariants_multiVariantStyles_placement_embedded__18dr6fk4:active {
+  -webkit-text-decoration-line: var(--embeddedTextDecorationHover__1w21kyl3);
+          text-decoration-line: var(--embeddedTextDecorationHover__1w21kyl3);
+}
+.LinkVariants_multiVariantStyles_compound_0__18dr6fk9 {
+  &:not(:active) {
+    -webkit-text-decoration-line: var(--standaloneTextDecorationHover__1w21kyl1);
+            text-decoration-line: var(--standaloneTextDecorationHover__1w21kyl1);
+  }
+}
+.LinkVariants_multiVariantStyles_compound_1__18dr6fka {
+  &:not(:active) {
+    -webkit-text-decoration-line: var(--embeddedTextDecorationHover__1w21kyl3);
+            text-decoration-line: var(--embeddedTextDecorationHover__1w21kyl3);
+  }
+}
+@media (hover: hover) {
+  .LinkVariants_multiVariantStyles_compound_2__18dr6fkb:hover:not(:active) {
+    -webkit-text-decoration-line: var(--standaloneTextDecorationHover__1w21kyl1);
+            text-decoration-line: var(--standaloneTextDecorationHover__1w21kyl1);
+  }
+  .LinkVariants_multiVariantStyles_compound_3__18dr6fkc:hover:not(:active) {
+    -webkit-text-decoration-line: var(--embeddedTextDecorationHover__1w21kyl3);
+            text-decoration-line: var(--embeddedTextDecorationHover__1w21kyl3);
+  }
+}

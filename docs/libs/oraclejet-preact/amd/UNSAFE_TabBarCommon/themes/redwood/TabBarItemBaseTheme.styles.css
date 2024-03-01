@@ -1,0 +1,8 @@
+.TabBarItemBaseTheme_baseTheme__1izcbv90 {
+  --labelColor__1vg465e0: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary);
+  --labelColorSelected__1vg465e1: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --labelColorHover__1vg465e2: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --iconSize__1vg465e3: calc(5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --borderWidthBottom__1vg465e4: 3px;
+  --borderWidthLeftRight__1vg465e5: 3px;
+}

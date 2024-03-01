@@ -1,0 +1,29 @@
+.CardGridStyles_baseStyle__odmuiq0 {
+  height: 100%;
+  padding: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem);
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  overflow-y: inherit;
+  overflow-anchor: none;
+}
+.CardGridStyles_baseStyle__odmuiq0:focus {
+  outline-style: none;
+}
+.CardGridStyles_itemStyle__odmuiq1 {
+  display: inline-grid;
+  width: -moz-max-content;
+  width: max-content;
+}
+.CardGridStyles_itemInGridLayout__odmuiq2 {
+  width: auto;
+}
+.CardGridStyles_multiVariantStyles_itemFocused_isItemFocused__odmuiq3 {
+  outline-style: dotted;
+  outline-width: 1px;
+  outline-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);
+}
+.CardGridStyles_multiVariantStyles_itemInitialOpacity_isTransparent__odmuiq5 {
+  opacity: 0;
+}

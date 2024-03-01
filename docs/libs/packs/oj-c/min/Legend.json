@@ -1,0 +1,1496 @@
+[
+  {
+    "pack": "oj-c",
+    "id": "oj-c.Legend",
+    "name": "Legend",
+    "memberof": "oj-c",
+    "longname": "oj-c.Legend",
+    "kind": "class",
+    "classdesc": "<h3 id=\"legendOverview-section\">\n  JET Legend\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#legendOverview-section\"></a>\n</h3>\nA legend displays an interactive description of symbols, colors, etc used in graphical information representations.\n<pre class=\"prettyprint\"><code>&lt;oj-c-legend orientation='vertical' data='[[dataProvider]]'>&lt;/oj-c-legend></code></pre>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\nTo make your component accessible, the application is required to include contextual information for screender readers using one or more the following methods as appropriate:\n <ul>\n  <li>aria-describedby</li>\n  <li>aria-labelledby</li>\n  <li>aria-label</li>\n  <li>short-desc property of your items</li>\n </ul>\n<p>\n When setting color, applications are responsible for making sure that the color meets the\n<a href=\"https://www.w3.org/TR/WCAG21/#non-text-contrast\">minimum contrast ratio</a>\n</p>\n<p>\n If your application has custom keyboard and touch shortcuts implemented for the component, these shortcuts can conflict with those of the component. It is the application's responsibility to disclose these custom shortcuts, possibly via a datatip or help popup.\n</p>\n<p>\n In the case of the text truncating, applications should provide the untruncated string or contextual text to the datatip to make the component accessible.\n</p>\n\n<h3 id=\"perf-section\">\n  Performance\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#perf-section\"></a>\n</h3>\n\n<h4>Shaped Data</h4>\n<p>As a rule of thumb, it's recommended that applications use <a href=\"https://jet.oraclecorp.com/trunk/jetCookbook.html?component=legendCorepack&demo=shapedData\">shaped data</a> if possible for performance gains.</p>\n\n<h3 id=\"keyboardSection\">\n  Keyboard\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboardSection\"></a>\n</h3>\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus to previous item.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus to next item.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus to previous item (on left).</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus to next item (on right).</td>\n    </tr>\n    <tr>\n      <td><kbd>Enter or Space</kbd></td>\n      <td>Hides or unhides the data associated with the current item.</td>\n    </tr>\n  </tbody>\n</table>\n<h3 id=\"touch-section\">\nTouch End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#touch-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Legend Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n  </tbody>\n</table>",
+    "scope": "static",
+    "tagWithoutBrackets": "oj-c-legend",
+    "tagWithBrackets": "<oj-c-legend>",
+    "domInterface": "CLegendElement",
+    "ojPageTitle": "&lt;oj-c-legend>",
+    "ojcomponent": true,
+    "isvcomponent": true,
+    "camelCaseName": "Legend",
+    "ojPageTitlePrefix": "Element: ",
+    "ojtsvcomponent": true,
+    "tstype": {
+      "target": "Type",
+      "value": "interface CLegendElement<K extends string | number,D extends oj-c.Legend.Item<K> | oj-c.Legend.Section<K> | any> extends JetElement<LegendElementSettableProperties<K,D>>"
+    },
+    "ojsignature": [
+      {
+        "target": "Type",
+        "value": "interface CLegendElement<K extends string | number,D extends oj-c.Legend.Item<K> | oj-c.Legend.Section<K> | any> extends JetElement<LegendElementSettableProperties<K,D>>"
+      }
+    ],
+    "since": "15.0.0",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "ojmodule": "legend"
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#data",
+    "name": "data",
+    "kind": "member",
+    "longname": "oj-c.Legend#data",
+    "optional": false,
+    "scope": "instance",
+    "description": "The DataProvider for the sections and items of the legend. It should provide a data tree where each node in the data tree corresponds to a section or item in the legend.\nNodes that are leaves will be treated as items. The row key will be used as the id for legend sections and items. Note that when using this attribute, a template for the itemTemplate and optionally sectionTemplate slots should be provided.\nThe DataProvider can either have an arbitrary data shape, in which case an element (and an element for hierarchical data) must be specified in the itemTemplate (and sectionTemplate) slot\nor it can have oj.ojCLegend.Item (and oj.ojCLegend.Section) as its data shape, in which case no template is required.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "defaultvalue": null,
+    "type": {
+      "names": [
+        "DataProvider|null"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "DataProvider<K, D>|null",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#drilling",
+    "name": "drilling",
+    "kind": "member",
+    "longname": "oj-c.Legend#drilling",
+    "optional": true,
+    "scope": "instance",
+    "description": "Whether drilling is enabled on all legend items.\nDrillable objects will show a background opacity, a pointer cursor on hover, and fire ojDrill event on click.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "ojvalues": [
+      {
+        "name": "on",
+        "description": "Legend items will be drillable",
+        "displayName": "On",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "off",
+        "description": "Legend items will not be drillable",
+        "displayName": "Off",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"off\"",
+    "type": {
+      "names": [
+        "\"off\"",
+        "\"on\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#halign",
+    "name": "halign",
+    "kind": "member",
+    "longname": "oj-c.Legend#halign",
+    "optional": true,
+    "scope": "instance",
+    "description": "Defines the horizontal alignment of the legend contents.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "ojvalues": [
+      {
+        "name": "center",
+        "description": "Legend contents will be center aligned",
+        "displayName": "Center",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "end",
+        "description": "Legend contents will be end aligned",
+        "displayName": "End",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "start",
+        "description": "Legend contents will be start aligned",
+        "displayName": "Start",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"start\"",
+    "type": {
+      "names": [
+        "\"center\"",
+        "\"end\"",
+        "\"start\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#hiddenCategories",
+    "name": "hiddenCategories",
+    "kind": "member",
+    "longname": "oj-c.Legend#hiddenCategories",
+    "optional": true,
+    "scope": "instance",
+    "ojwriteback": true,
+    "description": "An array of categories that will be hidden.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "defaultvalue": "[]",
+    "type": {
+      "names": [
+        "Array<string>"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Array<string>",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#hideAndShowBehavior",
+    "name": "hideAndShowBehavior",
+    "kind": "member",
+    "longname": "oj-c.Legend#hideAndShowBehavior",
+    "optional": true,
+    "scope": "instance",
+    "description": "Defines whether the legend can be used to initiate hide and show behavior on referenced data items.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "ojvalues": [
+      {
+        "name": "on",
+        "description": "Legend can be used to initiate hide and show behavior on referenced data items.",
+        "displayName": "On",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "off",
+        "description": "legend cannot be used to initiate hide and show behavior on referenced data items.",
+        "displayName": "Off",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"off\"",
+    "type": {
+      "names": [
+        "\"off\"",
+        "\"on\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#highlightedCategories",
+    "name": "highlightedCategories",
+    "kind": "member",
+    "longname": "oj-c.Legend#highlightedCategories",
+    "optional": true,
+    "scope": "instance",
+    "ojwriteback": true,
+    "description": "An array of categories that will be highlighted.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "defaultvalue": "[]",
+    "type": {
+      "names": [
+        "Array<string>"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Array<string>",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#hoverBehavior",
+    "name": "hoverBehavior",
+    "kind": "member",
+    "longname": "oj-c.Legend#hoverBehavior",
+    "optional": true,
+    "scope": "instance",
+    "description": "Defines the behavior applied when hovering over a legend item.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "ojvalues": [
+      {
+        "name": "dim",
+        "description": "Dimming hover behavior is applied.",
+        "displayName": "Dim",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "none",
+        "description": "No hover behavior will be applied.",
+        "displayName": "None",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"none\"",
+    "type": {
+      "names": [
+        "\"none\"",
+        "\"dim\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#orientation",
+    "name": "orientation",
+    "kind": "member",
+    "longname": "oj-c.Legend#orientation",
+    "optional": true,
+    "scope": "instance",
+    "description": "Defines the orientation of the legend, which determines the direction in which the legend items are laid out.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "ojvalues": [
+      {
+        "name": "horizontal",
+        "description": "Legend items will be horizontally placed in available space.",
+        "displayName": "Horizontal",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "vertical",
+        "description": "Legend items will be vertically stacked.",
+        "displayName": "Vertical",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"vertical\"",
+    "type": {
+      "names": [
+        "\"horizontal\"",
+        "\"vertical\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#symbolHeight",
+    "name": "symbolHeight",
+    "kind": "member",
+    "longname": "oj-c.Legend#symbolHeight",
+    "optional": true,
+    "scope": "instance",
+    "description": "The height of the legend symbol in pixels. If the value is 0, it will take the same value as symbolWidth. If both symbolWidth and symbolHeight are 0, then it will use a default value that may vary based on theme.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "defaultvalue": 0,
+    "type": {
+      "names": [
+        "number"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#symbolWidth",
+    "name": "symbolWidth",
+    "kind": "member",
+    "longname": "oj-c.Legend#symbolWidth",
+    "optional": true,
+    "scope": "instance",
+    "description": "The width of the legend symbol in pixels. If the value is 0, it will take the same value as symbolHeight. If both symbolWidth and symbolHeight are 0, then it will use a default value that may vary based on theme",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "defaultvalue": 0,
+    "type": {
+      "names": [
+        "number"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#textStyle",
+    "name": "textStyle",
+    "kind": "member",
+    "longname": "oj-c.Legend#textStyle",
+    "optional": true,
+    "scope": "instance",
+    "description": "The CSS style object defining the style of the legend item text.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "object"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Partial<Pick<CSSStyleDeclaration, \"color\" | \"fontFamily\" | \"fontSize\" | \"fontStyle\" | \"fontWeight\" | \"textDecoration\">>",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#textStyle.color",
+    "name": "textStyle.color",
+    "kind": "member",
+    "longname": "oj-c.Legend#textStyle.color",
+    "optional": true,
+    "scope": "instance",
+    "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color)",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#textStyle.fontFamily",
+    "name": "textStyle.fontFamily",
+    "kind": "member",
+    "longname": "oj-c.Legend#textStyle.fontFamily",
+    "optional": true,
+    "scope": "instance",
+    "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-family)",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#textStyle.fontSize",
+    "name": "textStyle.fontSize",
+    "kind": "member",
+    "longname": "oj-c.Legend#textStyle.fontSize",
+    "optional": true,
+    "scope": "instance",
+    "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-size)",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#textStyle.fontStyle",
+    "name": "textStyle.fontStyle",
+    "kind": "member",
+    "longname": "oj-c.Legend#textStyle.fontStyle",
+    "optional": true,
+    "scope": "instance",
+    "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-style)",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#textStyle.fontWeight",
+    "name": "textStyle.fontWeight",
+    "kind": "member",
+    "longname": "oj-c.Legend#textStyle.fontWeight",
+    "optional": true,
+    "scope": "instance",
+    "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-weight)",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#textStyle.textDecoration",
+    "name": "textStyle.textDecoration",
+    "kind": "member",
+    "longname": "oj-c.Legend#textStyle.textDecoration",
+    "optional": true,
+    "scope": "instance",
+    "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-decoration)",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#valign",
+    "name": "valign",
+    "kind": "member",
+    "longname": "oj-c.Legend#valign",
+    "optional": true,
+    "scope": "instance",
+    "description": "Defines the vertical alignment of the legend contents.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "ojvalues": [
+      {
+        "name": "middle",
+        "description": "The legend items will be middle aligned.",
+        "displayName": "Middle",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "bottom",
+        "description": "The legend items will be bottom aligned.",
+        "displayName": "Bottom",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "top",
+        "description": "The legend items will be top aligned.",
+        "displayName": "Top",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"top\"",
+    "type": {
+      "names": [
+        "\"top\"",
+        "\"bottom\"",
+        "\"middle\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#sectionTitleStyle",
+    "name": "sectionTitleStyle",
+    "kind": "member",
+    "longname": "oj-c.Legend#sectionTitleStyle",
+    "optional": true,
+    "scope": "instance",
+    "description": "The CSS style object defining the style of the section titles' text.\nThe following style properties are supported: color, fontFamily, fontSize, fontStyle, fontWeight, textDecoration",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "object"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Partial<Pick<CSSStyleDeclaration, \"color\" | \"fontFamily\" | \"fontSize\" | \"fontStyle\" | \"fontWeight\" | \"textDecoration\">>",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#sectionTitleStyle.color",
+    "name": "sectionTitleStyle.color",
+    "kind": "member",
+    "longname": "oj-c.Legend#sectionTitleStyle.color",
+    "optional": true,
+    "scope": "instance",
+    "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color)",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#sectionTitleStyle.fontFamily",
+    "name": "sectionTitleStyle.fontFamily",
+    "kind": "member",
+    "longname": "oj-c.Legend#sectionTitleStyle.fontFamily",
+    "optional": true,
+    "scope": "instance",
+    "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-family)",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#sectionTitleStyle.fontSize",
+    "name": "sectionTitleStyle.fontSize",
+    "kind": "member",
+    "longname": "oj-c.Legend#sectionTitleStyle.fontSize",
+    "optional": true,
+    "scope": "instance",
+    "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-size)",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#sectionTitleStyle.fontStyle",
+    "name": "sectionTitleStyle.fontStyle",
+    "kind": "member",
+    "longname": "oj-c.Legend#sectionTitleStyle.fontStyle",
+    "optional": true,
+    "scope": "instance",
+    "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-style)",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#sectionTitleStyle.fontWeight",
+    "name": "sectionTitleStyle.fontWeight",
+    "kind": "member",
+    "longname": "oj-c.Legend#sectionTitleStyle.fontWeight",
+    "optional": true,
+    "scope": "instance",
+    "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-weight)",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#sectionTitleStyle.textDecoration",
+    "name": "sectionTitleStyle.textDecoration",
+    "kind": "member",
+    "longname": "oj-c.Legend#sectionTitleStyle.textDecoration",
+    "optional": true,
+    "scope": "instance",
+    "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-decoration)",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#sectionTitleHalign",
+    "name": "sectionTitleHalign",
+    "kind": "member",
+    "longname": "oj-c.Legend#sectionTitleHalign",
+    "optional": true,
+    "scope": "instance",
+    "description": "The horizontal alignment of the section titles.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "ojvalues": [
+      {
+        "name": "center",
+        "description": "The section title will be center aligned.",
+        "displayName": "Center",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "end",
+        "description": "The section title will be end aligned.",
+        "displayName": "End",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "start",
+        "description": "The section title will be start aligned.",
+        "displayName": "Start",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"start\"",
+    "type": {
+      "names": [
+        "\"center\"",
+        "\"end\"",
+        "\"start\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#setProperty",
+    "name": "setProperty",
+    "kind": "function",
+    "longname": "oj-c.Legend#setProperty",
+    "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to set. Supports dot notation for subproperty access.",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "description": "The new value to set the property to.",
+        "type": "any"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#getProperty",
+    "name": "getProperty",
+    "kind": "function",
+    "longname": "oj-c.Legend#getProperty",
+    "description": "Retrieves the value of a property or a subproperty.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to get. Supports dot notation for subproperty access.",
+        "type": "string"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "any"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#setProperties",
+    "name": "setProperties",
+    "kind": "function",
+    "longname": "oj-c.Legend#setProperties",
+    "description": "Performs a batch set of properties.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "properties",
+        "description": "An object containing the property and value pairs to set.",
+        "type": "object"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#event:ojDrill",
+    "name": "ojDrill",
+    "kind": "event",
+    "longname": "oj-c.Legend#event:ojDrill",
+    "description": "Triggered during a drill gesture (single click on the legend item).",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "scope": "instance",
+    "properties": [
+      {
+        "name": "id",
+        "description": "The id of the drilled item",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "for": "id",
+            "jsdocOverride": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#itemTemplate",
+    "name": "itemTemplate",
+    "kind": "member",
+    "longname": "oj-c.Legend#itemTemplate",
+    "description": "<p>\n The <code class=\"prettyprint\">itemTemplate</code> slot is used to specify the template for\n creating items of the legend. The slot content must be wrapped in a &lt;template>\n element. The content of the template should be a single &lt;oj-c-legend-item> element.\n See the <a target=\"_blank\" href=\"oj-c.LegendItem.html\">oj-c-legend-item</a> doc for more details.\n</p>\n<p>\n When the template is executed for each area, it will have access to the components's\n binding context containing the following properties:\n</p>\n<ul>\n  <li>\n     $current - an object that contains information for the current node.\n     (See the table below for a list of properties available on $current)\n  </li>\n  <li>\n     alias - if 'data-oj-as' attribute was specified, the value will be used to provide an\n     application-named alias for $current.\n  </li>\n</ul>",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "scope": "instance",
+    "ojchild": false,
+    "ojslot": true,
+    "properties": [
+      {
+        "name": "data",
+        "description": "The data object of the current item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "D",
+            "for": "data",
+            "jsdocOverride": true
+          }
+        ]
+      },
+      {
+        "name": "key",
+        "description": "The key of the current item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "for": "key",
+            "jsdocOverride": true
+          }
+        ]
+      },
+      {
+        "name": "index",
+        "description": "The zero-based index of the current item relative to the parent.",
+        "optional": false,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "parentData",
+        "description": "An array of data objects of the outermost to innermost parents of the node",
+        "optional": true,
+        "type": {
+          "names": [
+            "Array<any>"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Array<D>",
+            "for": "parentData",
+            "jsdocOverride": true
+          }
+        ]
+      },
+      {
+        "name": "parentKey",
+        "description": "The key of the parent node",
+        "optional": true,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "for": "parentKey",
+            "jsdocOverride": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#sectionTemplate",
+    "name": "sectionTemplate",
+    "kind": "member",
+    "longname": "oj-c.Legend#sectionTemplate",
+    "description": " <p>\n The <code class=\"prettyprint\">sectionTemplate</code> slot is used to specify the template for\n creating sections of the legend. The slot content must be wrapped in a &lt;template>\n element. The content of the template should be a single &lt;oj-c-legend-section> element.\n See the <a target=\"_blank\" href=\"oj-c.LegendSection.html\">oj-c-legend-section</a> doc for more details.\n</p>\n<p>\n When the template is executed for each area, it will have access to the components's\n binding context containing the following properties:\n</p>\n<ul>\n  <li>\n     $current - an object that contains information for the current node.\n     (See the table below for a list of properties available on $current)\n  </li>\n  <li>\n     alias - if 'data-oj-as' attribute was specified, the value will be used to provide an\n     application-named alias for $current.\n  </li>\n</ul>",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "scope": "instance",
+    "ojchild": false,
+    "ojslot": true,
+    "properties": [
+      {
+        "name": "data",
+        "description": "The data object of the current section.",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "D",
+            "for": "data",
+            "jsdocOverride": true
+          }
+        ]
+      },
+      {
+        "name": "key",
+        "description": "The key of the current section.",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "for": "key",
+            "jsdocOverride": true
+          }
+        ]
+      },
+      {
+        "name": "index",
+        "description": "The zero-based index of the current section.",
+        "optional": false,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "oj-c.Legend.touchDoc",
+    "name": "touchDoc",
+    "kind": "member",
+    "longname": "oj-c.Legend.touchDoc",
+    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Legend Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n  </tbody>\n</table>",
+    "memberof": "oj-c.Legend",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "ojfragment": true
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend.Item",
+    "name": "Item",
+    "kind": "typedef",
+    "longname": "oj-c.Legend.Item",
+    "scope": "static",
+    "description": "Object type that defines a legend data item.",
+    "tsgenerictype": {
+      "target": "Type",
+      "value": "<K>",
+      "for": "genericTypeParameters"
+    },
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "properties": [
+      {
+        "name": "id",
+        "description": "The id of the legend item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "for": "id",
+            "jsdocOverride": true
+          }
+        ]
+      },
+      {
+        "name": "text",
+        "description": "The legend item text.",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "categories",
+        "description": "An array of categories for the legend item. Legend items currently only support a single category.",
+        "optional": true,
+        "type": {
+          "names": [
+            "Array<string>"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Array<string>",
+            "for": "categories",
+            "jsdocOverride": true
+          }
+        ]
+      },
+      {
+        "name": "symbolType",
+        "description": "The type of legend symbol to display.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"marker\"",
+            "\"image\"",
+            "\"line\"",
+            "\"lineWithMarker\""
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "line",
+            "description": "The legend symbol will be a line.",
+            "displayName": "Line",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lineWithMarker",
+            "description": "The legend symbol will be a line and a marker.",
+            "displayName": "LineWithMarker",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "image",
+            "description": "The legend symbol will be an image.",
+            "displayName": "Image",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "marker",
+            "description": "The legend symbol will be a marker.",
+            "displayName": "Marker",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "source",
+        "description": "The URI of the image of the legend symbol.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "color",
+        "description": "The color of the legend symbol (line or marker). When symbolType is \"lineWithMarker\", this attribute defines the line color and the markerColor attribute defines the marker color.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "borderColor",
+        "description": "The border color of the marker. Only applies if symbolType is \"marker\" or \"lineWithMarker",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "lineStyle",
+        "description": "The line style. Only applies when the symbolType is \"line\" or \"lineWithMarker\".",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"dashed\"",
+            "\"dotted\"",
+            "\"solid\""
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "dotted",
+            "description": "Line will have dotted strokes.",
+            "displayName": "Dotted",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "dashed",
+            "description": "Line will have dashed strokes.",
+            "displayName": "Dashed",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "solid",
+            "description": "Line will have a solid stroke.",
+            "displayName": "Solid",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "lineWidth",
+        "description": "The line width in pixels. Only applies when the symbolType is \"line\" or \"lineWithMarker.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "markerShape",
+        "description": "The shape of the marker. Only applies if symbolType is \"marker\" or \"lineWithMarker\". Does not apply if a custom image is specified.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"square\"",
+            "\"circle\"",
+            "\"ellipse\"",
+            "\"diamond\"",
+            "\"human\"",
+            "\"plus\"",
+            "\"star\"",
+            "\"triangleDown\"",
+            "\"triangleUp\"",
+            "\"rectangle\""
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "circle",
+            "description": "The marker will be of circular shape.",
+            "displayName": "Circle",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "diamond",
+            "description": "The marker will be of diamond shape.",
+            "displayName": "Diamond",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ellipse",
+            "description": "The marker will be of ellipse shape.",
+            "displayName": "Ellipse",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "human",
+            "description": "The marker will be of human shape.",
+            "displayName": "Human",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "plus",
+            "description": "The marker will be of plus shape.",
+            "displayName": "Plus",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "rectangle",
+            "description": "The marker will be of rectangular shape.",
+            "displayName": "Rectangle",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "square",
+            "description": "The marker will be of square shape.",
+            "displayName": "Square",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "star",
+            "description": "The marker will be of star shape.",
+            "displayName": "Star",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "triangleDown",
+            "description": "The  marker will be of triangular shape facing down.",
+            "displayName": "Triangle Down",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "triangleUp",
+            "description": "The  marker will be of triangular shape facing up.",
+            "displayName": "Triangle Up",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "markerColor",
+        "description": "The color of the marker, if different than the line color. Only applies if the symbolType is \"lineWithMarker\".",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "shortDesc",
+        "description": "The description of this legend item. This is used for accessibility and for customizing the tooltip text.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend.Section",
+    "name": "Section",
+    "kind": "typedef",
+    "longname": "oj-c.Legend.Section",
+    "scope": "static",
+    "description": "Object type that defines a section data item.",
+    "tsgenerictype": {
+      "target": "Type",
+      "value": "<K>",
+      "for": "genericTypeParameters"
+    },
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+    },
+    "properties": [
+      {
+        "name": "id",
+        "description": "The id of the legend section. For the DataProvider case, the key for the node will be used as the id.",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "for": "id",
+            "jsdocOverride": true
+          }
+        ]
+      },
+      {
+        "name": "items",
+        "description": "The id of the legend section. For the DataProvider case, the key for the node will be used as the id.",
+        "optional": false,
+        "type": {
+          "names": [
+            "Array<object>"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Array<oj-c.Legend.Item>",
+            "for": "items",
+            "jsdocOverride": true
+          }
+        ]
+      },
+      {
+        "name": "title",
+        "description": "The title of the legend section.",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ]
+  }
+]

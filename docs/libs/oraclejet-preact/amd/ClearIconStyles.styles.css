@@ -1,0 +1,19 @@
+.ClearIconStyles_clearIconStyles__8wwy0m0 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-cursor-clickable);
+  padding-inline: 0;
+  padding-block: 0;
+  border-radius: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-border-radius);
+  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-variants-borderless-base-color);
+  width: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-sizes-md-height);
+  height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-sizes-md-height);
+  line-height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-sizes-md-height);
+  font-size: var(--sizes-md-iconSize__rt5x5jc);
+}
+.ClearIconStyles_clearIconStyles__8wwy0m0:hover {
+  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-variants-borderless-base-color);
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-variants-borderless-hover-background-overlay-color);
+  border-color: transparent;
+}

@@ -1,0 +1,23 @@
+.TableNoDataStyles_tableNoDataStyles_base__l9789o0 {
+  background-color: inherit;
+  box-sizing: border-box;
+  position: relative;
+}
+.TableNoDataStyles_tableNoDataStyles_defaultRenderer__l9789o1 {
+  overflow: hidden;
+  padding-bottom: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-cell-padding-vertical);
+  padding-inline-end: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+  padding-inline-start: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal);
+  padding-top: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-cell-padding-vertical);
+  text-align: start;
+  vertical-align: top;
+}
+.TableNoDataStyles_tableNoDataStyles_renderer__l9789o2 {
+  padding: 0;
+}
+.TableNoDataStyles_tableNoDataStyles_focused__l9789o3 {
+  outline-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);
+  outline-offset: -1px;
+  outline-style: dotted;
+  outline-width: 1px;
+}

@@ -1,0 +1,2 @@
+define(['exports', 'css!./../../SvgShapesStyles.styles.css'], (function(e,s){"use strict";e.styles={lineBaseStyle:"SvgShapesStyles_lineBaseStyle__yqoiok0",lineDottedStyle:"SvgShapesStyles_lineDottedStyle__yqoiok1",lineDashedStyle:"SvgShapesStyles_lineDashedStyle__yqoiok2",svgAbsolutePos:"SvgShapesStyles_svgAbsolutePos__yqoiok3",svgSymbolBase:"SvgShapesStyles_svgSymbolBase__yqoiok4"},Object.defineProperty(e,"__esModule",{value:!0})}));
+//# sourceMappingURL=SvgShapesStyles.css.js.map

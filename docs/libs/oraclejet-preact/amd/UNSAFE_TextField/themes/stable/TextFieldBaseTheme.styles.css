@@ -1,0 +1,22 @@
+.TextFieldBaseTheme_baseTheme__tcmxi50 {
+  --borderColor__w6gg1y0: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.5);
+  --borderWidth__w6gg1y1: 1px;
+  --borderRadius__w6gg1y2: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-md);
+  --bgColor__w6gg1y3: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
+  --borderColorFocus__w6gg1y4: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-100));
+  --boxShadowFocus__w6gg1y5: none;
+  --fontSize__w6gg1y6: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size);
+  --height__w6gg1y7: 2.5rem;
+  --iconToTextPadding__w6gg1y8: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --iconToEdgePadding__w6gg1y9: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --insideEdgeLabelColorFocus__w6gg1yd: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-110));
+  --textToEdgePadding__w6gg1ya: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --insideEdgeHeight__w6gg1yb: 3rem;
+  --insideEdgePaddingTop__w6gg1yc: 0.8125rem;
+  --insideEdgeDivPaddingTop__w6gg1ye: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --textColor__w6gg1yf: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --bgColorDisabled__w6gg1yg: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-disabled);
+  --borderColorDisabled__w6gg1yh: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-disabled);
+  --textColorDisabled__w6gg1yi: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-disabled);
+  --placeholderAnimationName__w6gg1yj: TextFieldStyles_placeholderAnimation__952vaf0;
+}

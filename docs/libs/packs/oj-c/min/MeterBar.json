@@ -1,0 +1,783 @@
+[
+  {
+    "pack": "oj-c",
+    "id": "oj-c.MeterBar",
+    "name": "MeterBar",
+    "memberof": "oj-c",
+    "longname": "oj-c.MeterBar",
+    "kind": "class",
+    "classdesc": "<h3 id=\"meterBarOverview-section\">\n  JET meter bar\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#meterBarOverview-section\"></a>\n</h3>\nA meter bar is typically used to display or accept user feedback on a product or service.\n<pre class=\"prettyprint\"><code>&lt;oj-c-meter-bar value='4'>&lt;/oj-c-meter-bar></code></pre>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n<p>\nThe application is strongly encouraged, even though it is not required, to populate the aria-label attribute on the element with meaningful descriptors as\nthe oj-c-meter-bar element does not provide a default descriptor.\n</p>\n<p>\nIf an application is using thresholds or reference lines, they need to include the information for screender readers using the following methods:\n <ul>\n  <li>aria-describedby</li>\n  <li>aria-labelledby</li>\n  <li>aria-label</li>\n </ul>\n</p>\n<p>\nIf you are using indicatorColor, applications are responsible for making sure that the color meets the\n<a href=\"https://www.w3.org/TR/WCAG21/#contrast-minimum\">minimum contrast ratio</a>.\n</p>\n\n<h3 id=\"keyboardSection\">\n  Keyboard\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboardSection\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Enter</kbd></td>\n      <td>Submit the current value of the meter bar.</td>\n    </tr>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element and submit the current value of the meter bar.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>End</kbd></td>\n      <td>Increase the meter bar's transient value to max value. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>Home</kbd></td>\n      <td>Decrease the meter bar's transient value to zero. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Increase the meter bar's transient value. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Decrease the meter bar's transient value. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Decrease the meter bar's transient value in left-to-right locales. Increase the meter bar's transient value in right-to-left locales. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Increase the meter bar's transient value in left-to-right locales. Decrease the meter bar's transient value in right-to-left locales. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"touch-section\">\nTouch End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#touch-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Drag</kbd></td>\n      <td>Value change when <code class=\"prettyprint\">readonly</code> is <code class=\"prettyprint\">false</code>.</td>\n    </tr>\n  </tbody>\n</table>",
+    "scope": "static",
+    "tagWithoutBrackets": "oj-c-meter-bar",
+    "tagWithBrackets": "<oj-c-meter-bar>",
+    "domInterface": "CMeterBarElement",
+    "ojPageTitle": "&lt;oj-c-meter-bar>",
+    "ojcomponent": true,
+    "isvcomponent": true,
+    "camelCaseName": "MeterBar",
+    "ojPageTitlePrefix": "Element: ",
+    "ojtsvcomponent": true,
+    "tstype": {
+      "target": "Type",
+      "value": "interface CMeterBarElement extends JetElement<MeterBarElementSettableProperties>"
+    },
+    "ojsignature": [
+      {
+        "target": "Type",
+        "value": "interface CMeterBarElement extends JetElement<MeterBarElementSettableProperties>"
+      }
+    ],
+    "since": "14.0.0",
+    "tsdeprecated": [
+      {
+        "type": "supersedes",
+        "since": "15.0.0",
+        "value": [
+          "oj-status-meter-gauge"
+        ]
+      }
+    ],
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "ojmodule": "meter-bar"
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#max",
+    "name": "max",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#max",
+    "optional": true,
+    "scope": "instance",
+    "description": "Integer value specifying the maximum value of the meter bar.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "defaultvalue": 100,
+    "type": {
+      "names": [
+        "number"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#min",
+    "name": "min",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#min",
+    "optional": true,
+    "scope": "instance",
+    "description": "Integer value specifying the minimum value of the meter bar.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "defaultvalue": 0,
+    "type": {
+      "names": [
+        "number"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#readonly",
+    "name": "readonly",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#readonly",
+    "optional": true,
+    "scope": "instance",
+    "description": "Defines whether the value of the meter bar can be changed by the end user.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "defaultvalue": false,
+    "type": {
+      "names": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#value",
+    "name": "value",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#value",
+    "optional": true,
+    "scope": "instance",
+    "ojwriteback": true,
+    "description": "The value of the meter bar.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "defaultvalue": 0,
+    "type": {
+      "names": [
+        "number|null"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#step",
+    "name": "step",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#step",
+    "optional": true,
+    "scope": "instance",
+    "description": "Specifies the increment by which values can be changed by the end user when readonly is false. The step must be a positive value that is smaller than the difference between the min and max.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "defaultvalue": 1,
+    "type": {
+      "names": [
+        "number"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#color",
+    "name": "color",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#color",
+    "optional": true,
+    "scope": "instance",
+    "description": "Specifies the color of the meter bar indicator. Only applies when thresholdDisplay is not set to indicator.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "tsdeprecated": [],
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#indicatorSize",
+    "name": "indicatorSize",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#indicatorSize",
+    "optional": true,
+    "scope": "instance",
+    "description": "Specifies the ratio of relative thickness of the indicator to the plot area.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "tsdeprecated": [],
+    "defaultvalue": 1,
+    "type": {
+      "names": [
+        "number"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#plotArea",
+    "name": "plotArea",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#plotArea",
+    "optional": true,
+    "scope": "instance",
+    "description": "Specifies the plot area of the meter bar.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "type": {
+      "names": [
+        "object"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "oj-c.MeterBar.PlotArea",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#orientation",
+    "name": "orientation",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#orientation",
+    "optional": true,
+    "scope": "instance",
+    "description": "Specifies the orientation of the meter bar to render.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "defaultvalue": "\"horizontal\"",
+    "type": {
+      "names": [
+        "\"horizontal\"",
+        "\"vertical\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#referenceLines",
+    "name": "referenceLines",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#referenceLines",
+    "optional": true,
+    "scope": "instance",
+    "description": "Specifies the array of objects defining the reference lines for the meter bar.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "type": {
+      "names": [
+        "Array<object>"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Array<oj-c.MeterBar.ReferenceLine>",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#thresholdDisplay",
+    "name": "thresholdDisplay",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#thresholdDisplay",
+    "optional": true,
+    "scope": "instance",
+    "description": "Controls whether the current threshold is displayed on the indicator, in the plot area, or if all the thresholds are displayed in the plot area.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "defaultvalue": "\"indicator\"",
+    "type": {
+      "names": [
+        "\"all\"",
+        "\"plotArea\"",
+        "\"indicator\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#thresholds",
+    "name": "thresholds",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#thresholds",
+    "optional": true,
+    "scope": "instance",
+    "description": "An array of objects defining the thresholds for the meter bar.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "type": {
+      "names": [
+        "Array<object>"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Array<oj-c.MeterBar.Threshold>",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#describedBy",
+    "name": "describedBy",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#describedBy",
+    "optional": true,
+    "scope": "instance",
+    "description": "Used to establish a relationship between this component and another element.\nTo facilitate correct screen reader behavior, the described-by attribute is\ncopied to the aria-describedby attribute on the component's dom.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "type": {
+      "names": [
+        "string|null"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#labelledBy",
+    "name": "labelledBy",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#labelledBy",
+    "optional": true,
+    "scope": "instance",
+    "description": "Used to establish a relationship between this component and another element.\nA common use is to tie a label, which a text in a div or some other HTML element, and the oj-c-meter-bar together for accessibility.\nThe label element has an id, which is used by the labelled-by attribute to tie the two components together to facilitate correct screen reader behavior.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "type": {
+      "names": [
+        "string|null"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#size",
+    "name": "size",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#size",
+    "optional": true,
+    "scope": "instance",
+    "description": "Specifies the size of the meter bar.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "ojvalues": [
+      {
+        "name": "sm",
+        "description": "small Meter Bar",
+        "displayName": "Small",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "md",
+        "description": "medium Meter Bar (default, if unspecified)",
+        "displayName": "Medium",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "lg",
+        "description": "large Meter Bar",
+        "displayName": "Large",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"md\"",
+    "type": {
+      "names": [
+        "\"sm\"",
+        "\"md\"",
+        "\"lg\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#datatip",
+    "name": "datatip",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#datatip",
+    "optional": true,
+    "scope": "instance",
+    "description": "The function that returns a custom datatip string for given value of meter bar. The function is called with DatatipContext as context. If datatip is undefined,\nmeter bar will use the default datatip. If the returned value of the function is null, no datatip is shown.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "type": {
+      "names": [
+        "function"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "(context: DatatipContext) => string | null",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#transientValue",
+    "name": "transientValue",
+    "kind": "member",
+    "longname": "oj-c.MeterBar#transientValue",
+    "optional": true,
+    "scope": "instance",
+    "ojwriteback": true,
+    "readonly": true,
+    "description": "A read-only property for retrieving the transient value from the meter bar. It is triggered when dragging over the meter bar.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "type": {
+      "names": [
+        "number"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#setProperty",
+    "name": "setProperty",
+    "kind": "function",
+    "longname": "oj-c.MeterBar#setProperty",
+    "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to set. Supports dot notation for subproperty access.",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "description": "The new value to set the property to.",
+        "type": "any"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#getProperty",
+    "name": "getProperty",
+    "kind": "function",
+    "longname": "oj-c.MeterBar#getProperty",
+    "description": "Retrieves the value of a property or a subproperty.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to get. Supports dot notation for subproperty access.",
+        "type": "string"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "any"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar#setProperties",
+    "name": "setProperties",
+    "kind": "function",
+    "longname": "oj-c.MeterBar#setProperties",
+    "description": "Performs a batch set of properties.",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "properties",
+        "description": "An object containing the property and value pairs to set.",
+        "type": "object"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "oj-c.MeterBar.touchDoc",
+    "name": "touchDoc",
+    "kind": "member",
+    "longname": "oj-c.MeterBar.touchDoc",
+    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Drag</kbd></td>\n      <td>Value change when <code class=\"prettyprint\">readonly</code> is <code class=\"prettyprint\">false</code>.</td>\n    </tr>\n  </tbody>\n</table>",
+    "memberof": "oj-c.MeterBar",
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "ojfragment": true
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar.PlotArea",
+    "name": "PlotArea",
+    "kind": "typedef",
+    "longname": "oj-c.MeterBar.PlotArea",
+    "scope": "static",
+    "description": "",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "properties": [
+      {
+        "name": "color",
+        "description": "The color of the plot area.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "rendered",
+        "description": "Defines if the plot area is to be rendered. The default value is on.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"off\"",
+            "\"on\""
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar.ReferenceLine",
+    "name": "ReferenceLine",
+    "kind": "typedef",
+    "longname": "oj-c.MeterBar.ReferenceLine",
+    "scope": "static",
+    "description": "",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "properties": [
+      {
+        "name": "color",
+        "description": "<p>The color of the reference line.</p>\n<p>In addition to standard CSS color values, special enumerated values 'danger', 'warning',\nand 'success' are also supported. These special values are mapped to corresponding CSS color values\nbased upon the current theme.</p>",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "danger",
+            "description": "Maps to theme-specific color indicating a danger condition",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "warning",
+            "description": "Maps to theme-specific color indicating a warning condition",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "success",
+            "description": "Maps to theme-specific color indicating a success condition",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "position",
+        "description": "The position of the reference line.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"end\"",
+            "\"start\""
+          ]
+        }
+      },
+      {
+        "name": "value",
+        "description": "The value of the reference line.",
+        "optional": false,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar.Threshold",
+    "name": "Threshold",
+    "kind": "typedef",
+    "longname": "oj-c.MeterBar.Threshold",
+    "scope": "static",
+    "description": "",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "properties": [
+      {
+        "name": "accessibleLabel",
+        "description": "A label for the threshold used for accessibility purposes.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "color",
+        "description": "<p>The color of the threshold.</p>\n<p>In addition to standard CSS color values, special enumerated values 'danger', 'warning',\nand 'success' are also supported. These special values are mapped to corresponding CSS color values\nbased upon the current theme.</p>",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "danger",
+            "description": "Maps to theme-specific color indicating a danger condition",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "warning",
+            "description": "Maps to theme-specific color indicating a warning condition",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "success",
+            "description": "Maps to theme-specific color indicating a success condition",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "max",
+        "description": "The maximum value of the threshold.",
+        "optional": false,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.MeterBar",
+    "id": "oj-c.MeterBar.DatatipContext",
+    "name": "DatatipContext",
+    "kind": "typedef",
+    "longname": "oj-c.MeterBar.DatatipContext",
+    "scope": "static",
+    "description": "Context for datatip function.",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "meter-bar.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+    },
+    "properties": [
+      {
+        "name": "value",
+        "description": "The current value of the meter bar.",
+        "optional": false,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      }
+    ]
+  }
+]

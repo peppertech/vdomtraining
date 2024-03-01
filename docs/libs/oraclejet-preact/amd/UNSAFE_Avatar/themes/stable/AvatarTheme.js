@@ -1,0 +1,2 @@
+define(['exports', '../AvatarStyles.css', './AvatarBaseTheme.css', './AvatarVariants.css', 'css!./../../../AvatarStyles.styles.css', 'module', 'css!./../../../AvatarVariants.styles2.css', '../../../vanilla-extract-recipes-createRuntimeFn.esm-103a441d'], (function(e,s,a,t,r,l,i,n){"use strict";const c={baseTheme:a.baseTheme,multiVariantStyles:t.multiVariantStyles,variants:s.variants,styles:s.styles};e.AvatarStableTheme=c,Object.defineProperty(e,"__esModule",{value:!0})}));
+//# sourceMappingURL=AvatarTheme.js.map

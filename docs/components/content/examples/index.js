@@ -33,9 +33,9 @@ define(["require", "exports", "preact/jsx-runtime", "./collection/index", "./for
             }
         };
         const tabItemTemplate = (item) => {
-            return ((0, jsx_runtime_1.jsx)("li", { children: (0, jsx_runtime_1.jsxs)("a", Object.assign({ href: "#" }, { children: [(0, jsx_runtime_1.jsx)("span", {}), item.data.label] })) }));
+            return ((0, jsx_runtime_1.jsx)("li", { children: (0, jsx_runtime_1.jsxs)("a", { href: "#", children: [(0, jsx_runtime_1.jsx)("span", {}), item.data.label] }) }));
         };
-        return ((0, jsx_runtime_1.jsxs)("div", Object.assign({ class: "oj-web-applayout-max-width oj-web-applayout-content" }, { children: [(0, jsx_runtime_1.jsx)("h1", Object.assign({ class: "oj-typography-heading-lg" }, { children: " Examples " })), (0, jsx_runtime_1.jsx)("hr", {}), (0, jsx_runtime_1.jsx)("oj-tab-bar", Object.assign({ edge: "top", data: tabbarDP, selection: activeTab, onselectionChanged: loadTabContent }, { children: (0, jsx_runtime_1.jsx)("template", { slot: "itemTemplate", render: tabItemTemplate }) })), (0, jsx_runtime_1.jsx)("div", Object.assign({ class: "oj-flex-item oj-sm-margin-6x-bottom oj-sm-12" }, { children: pageContent() }))] })));
+        return ((0, jsx_runtime_1.jsxs)("div", { class: "oj-web-applayout-max-width oj-web-applayout-content", children: [(0, jsx_runtime_1.jsx)("h1", { class: "oj-typography-heading-lg", children: " Examples " }), (0, jsx_runtime_1.jsx)("hr", {}), (0, jsx_runtime_1.jsx)("oj-tab-bar", { edge: "top", data: tabbarDP, selection: activeTab, onselectionChanged: loadTabContent, children: (0, jsx_runtime_1.jsx)("template", { slot: "itemTemplate", render: tabItemTemplate }) }), (0, jsx_runtime_1.jsx)("div", { class: "oj-flex-item oj-sm-margin-6x-bottom oj-sm-12", children: pageContent() })] }));
     };
     exports.default = ExampleContent;
 });

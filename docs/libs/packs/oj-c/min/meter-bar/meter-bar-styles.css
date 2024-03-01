@@ -1,0 +1,21 @@
+oj-c-meter-bar:not(.oj-complete) {
+    visibility: hidden;
+}
+
+oj-c-meter-bar[hidden] {
+    display: none;
+}
+
+oj-c-meter-bar {
+    display: block;
+}
+
+oj-c-meter-bar.oj-c-meter-bar-horizontal {
+    width: 100%;
+    line-height: 0;
+}
+
+oj-c-meter-bar.oj-c-meter-bar-vertical {
+    height: 100%;
+    min-height: 154px;
+}

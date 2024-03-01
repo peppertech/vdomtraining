@@ -1,0 +1,28 @@
+.FormLayoutStyles_rootWrapperStyle__1h1o9fy0 {
+  container-type: inline-size;
+  max-width: calc(var(--layoutLocalVars_columnCount__5qy13b0) * var(--maxColumnWidth__pa4rfz0));
+}
+.FormLayoutStyles_rootWrapperFullWidthStyle__1h1o9fy1 {
+  max-width: 100%;
+}
+.FormLayoutStyles_baseRowDirectionStyle__1h1o9fy2 {
+  display: grid;
+  grid-gap: var(--columnGapWidthSm__pa4rfz2);
+}
+.FormLayoutStyles_baseColumnDirectionStyle__1h1o9fy3 {
+  -moz-column-gap: var(--columnGapWidthSm__pa4rfz2);
+       column-gap: var(--columnGapWidthSm__pa4rfz2);
+}
+.FormLayoutStyles_baseColumnDirectionStyle__1h1o9fy3 > * {
+  margin-top: 0 !important;
+  margin-bottom: var(--rowGapWidth__pa4rfz3) !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  -moz-column-break-inside: avoid;
+       break-inside: avoid;
+}
+@container (min-width: 600px) {
+  .FormLayoutStyles_baseRowDirectionStyle__1h1o9fy2 {
+    grid-column-gap: var(--columnGapWidthMd__pa4rfz1);
+  }
+}

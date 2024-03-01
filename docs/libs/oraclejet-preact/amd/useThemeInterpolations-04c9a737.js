@@ -1,0 +1,2 @@
+define(['exports', './useColorScheme-fd9da662', './useScale-57db0ae7', './theme-e50f9baa', './mergeInterpolations-8339fdb7', './TopLayerHost-06d05670'], (function(e,o,t,s,n,a){"use strict";e.useThemeInterpolations=function(){const e=o.useColorScheme(),r=t.useScale(),c=r!==a.DefaultEnvironment.scale?r:void 0,l=n.mergeInterpolations([...Object.values(s.themeInterpolations)]),{class:u}=l({colorScheme:e,scale:c});return u}}));
+//# sourceMappingURL=useThemeInterpolations-04c9a737.js.map

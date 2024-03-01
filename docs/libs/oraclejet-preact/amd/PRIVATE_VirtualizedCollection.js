@@ -1,0 +1,2 @@
+define(['exports', './VirtualizedCollection-b0f95707', 'preact/jsx-runtime', 'preact/hooks', './Collection-7018c53f', 'preact', './useViewportIntersect-800c1cb2'], (function(e,t,i,r,o,c,l){"use strict";e.PLACEHOLDER_STYLE_CLASS=t.PLACEHOLDER_STYLE_CLASS,e.VirtualizedCollection=t.VirtualizedCollection,e.getVirtualizedRangeExtractor=t.getVirtualizedRangeExtractor,Object.defineProperty(e,"__esModule",{value:!0})}));
+//# sourceMappingURL=PRIVATE_VirtualizedCollection.js.map

@@ -1,0 +1,40 @@
+.NavigationListItemStyles_baseStyle__13sgy010 {
+  border-width: 0;
+  border-inline-start-width: var(--borderWidth__1497t564);
+  border-style: solid;
+  min-height: var(--minHeight__1497t563);
+  border-color: transparent;
+  cursor: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-cursor-clickable);
+  box-sizing: border-box;
+  outline-style: none;
+  display: flex;
+  gap: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem);
+  color: var(--labelColor__1497t566);
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+  padding-inline-start: calc(var(--paddingHorizontal__1497t565) - var(--borderWidth__1497t564));
+  padding-inline-end: var(--paddingHorizontal__1497t565);
+}
+.NavigationListItemStyles_iconLabelContainer__13sgy011 {
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.NavigationListItemStyles_iconContainer__13sgy012 {
+  font-size: var(--iconSize__1497t562);
+}
+.NavigationListItemStyles_navigationItemMetadata__13sgy013 {
+  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary);
+  display: inline-flex;
+}
+.NavigationListItemStyles_navigationlistRemoveIcon__13sgy014 {
+  align-self: center;
+  display: inline-flex;
+}
+.NavigationListItemStyles_labelContainerClasses__13sgy015 {
+  padding: calc(0.75 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) 0;
+  font-size: var(--fontSize__1497t560);
+  font-weight: var(--fontWeight__1497t561);
+  line-height: normal;
+}

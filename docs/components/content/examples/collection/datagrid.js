@@ -89,7 +89,7 @@ define(["require", "exports", "preact/jsx-runtime", "text!./data/population.json
         const resetPopulation = () => {
             mutableArrayDataProvider.data = populationData;
         };
-        return ((0, jsx_runtime_1.jsxs)("div", Object.assign({ class: "oj-md-margin-4x-horizontal" }, { children: [(0, jsx_runtime_1.jsx)("h3", Object.assign({ id: "dataGridLabel", class: "oj-typography-heading-xs" }, { children: "State Population by Year" })), (0, jsx_runtime_1.jsx)("oj-data-grid", Object.assign({ id: "datagrid", class: "demo-data-grid", "aria-labelledby": "dataGridLabel", header: headerStyle, cell: cellStyle, data: dataDP }, { children: (0, jsx_runtime_1.jsx)("template", { slot: "cellTemplate", render: cellRenderer }) })), (0, jsx_runtime_1.jsxs)("oj-toolbar", { children: [(0, jsx_runtime_1.jsx)("oj-button", { onojAction: changePopulation, label: "Add new State" }), (0, jsx_runtime_1.jsx)("oj-button", { onojAction: resetPopulation, label: "Reset" })] })] })));
+        return ((0, jsx_runtime_1.jsxs)("div", { class: "oj-md-margin-4x-horizontal", children: [(0, jsx_runtime_1.jsx)("h3", { id: "dataGridLabel", class: "oj-typography-heading-xs", children: "State Population by Year" }), (0, jsx_runtime_1.jsx)("oj-data-grid", { id: "datagrid", class: "demo-data-grid", "aria-labelledby": "dataGridLabel", header: headerStyle, cell: cellStyle, data: dataDP, children: (0, jsx_runtime_1.jsx)("template", { slot: "cellTemplate", render: cellRenderer }) }), (0, jsx_runtime_1.jsxs)("oj-toolbar", { children: [(0, jsx_runtime_1.jsx)("oj-button", { onojAction: changePopulation, label: "Add new State" }), (0, jsx_runtime_1.jsx)("oj-button", { onojAction: resetPopulation, label: "Reset" })] })] }));
     };
     exports.default = DataGrid;
 });

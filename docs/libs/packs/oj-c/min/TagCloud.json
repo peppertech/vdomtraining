@@ -1,0 +1,539 @@
+[
+  {
+    "pack": "oj-c",
+    "id": "oj-c.TagCloud",
+    "name": "TagCloud",
+    "memberof": "oj-c",
+    "longname": "oj-c.TagCloud",
+    "kind": "class",
+    "classdesc": "<h3 id=\"tagCloudOverview-section\">\n  JET Tag Cloud\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#tagCloudOverview-section\"></a>\n</h3>\n*\n<p>Tag clouds are used to display text data with\nthe importance of each tag shown with font size or color.</p>\n\n\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-tag-cloud\n  data=\"[[dataProvider]]\">\n&lt;/oj-c-tag-cloud>\n</code>\n</pre>\n\n\n<p>When using font colors as a data dimension for tag clouds, the application\nneeds to ensure that they meet minimum contrast requirements. Not all colors\nin the default value ramp provided by oj.ColorAttributeGroupHandler\nwill meet minimum contrast requirements.</p>\n\n<h3 id=\"keyboard-section\">\n  Keyboard End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboard-section\"></a>\n</h3>\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + UpArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + DownArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + LeftArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + RightArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + UpArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + DownArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + LeftArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + RightArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + Spacebar</kbd></td>\n      <td>Multi-select data item with focus.</td>\n    </tr>\n    <tr>\n      <td><kbd>Enter</kbd></td>\n      <td>Open a link when the <code class=\"prettyprint\">url</code> for a data item is set.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\nTo make your component accessible, the application is required to include contextual information for screender readers using one or more the following methods as appropriate:\n <ul>\n  <li>aria-describedby</li>\n  <li>aria-labelledby</li>\n  <li>aria-label</li>\n  <li>short-desc property of your items</li>\n </ul>\n<p>\n If your application has custom keyboard and touch shortcuts implemented for the component, these shortcuts can conflict with those of the component. It is the application's responsibility to disclose these custom shortcuts, possibly via a datatip or help popup.\n</p>\n<p>\n When using colors as a data dimension for tag clouds, the application needs to ensure that they meet <a target=\"_blank\" href=\"https://www.w3.org/TR/WCAG21/#contrast-minimum\">minimum contrast requirements</a>.\n</p>\n\n<h3 id=\"perf-section\">\n  Performance\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#perf-section\"></a>\n</h3>\n\n<h4>Shaped Data</h4>\n<p>As a rule of thumb, it's recommended that applications use <a href=\"https://jet.oraclecorp.com/trunk/jetCookbook.html?component=tagCloudCorepack&demo=shapedData\">shaped data</a> if possible for performance gains.</p>\n\n<h4>Layout</h4>\n<p>Rectangular layouts are faster than cloud layouts and are recommended for larger data sets.\n</p>\n\n\n<h3 id=\"touch-section\">\nTouch End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#touch-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan=\"4\">Data Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Select when <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n       <td>Open a link when the <code class=\"prettyprint\">url</code> for a data item is set.</td>\n    </tr>\n  </tbody>\n</table>",
+    "scope": "static",
+    "tagWithoutBrackets": "oj-c-tag-cloud",
+    "tagWithBrackets": "<oj-c-tag-cloud>",
+    "domInterface": "CTagCloudElement",
+    "ojPageTitle": "&lt;oj-c-tag-cloud>",
+    "ojcomponent": true,
+    "isvcomponent": true,
+    "camelCaseName": "TagCloud",
+    "ojPageTitlePrefix": "Element: ",
+    "ojtsvcomponent": true,
+    "tstype": {
+      "target": "Type",
+      "value": "interface CTagCloudElement<K extends string | number,D extends any> extends JetElement<TagCloudElementSettableProperties<K,D>>"
+    },
+    "ojsignature": [
+      {
+        "target": "Type",
+        "value": "interface CTagCloudElement<K extends string | number,D extends any> extends JetElement<TagCloudElementSettableProperties<K,D>>"
+      }
+    ],
+    "since": "15.0.0",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "ojmodule": "tag-cloud"
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#data",
+    "name": "data",
+    "kind": "member",
+    "longname": "oj-c.TagCloud#data",
+    "optional": false,
+    "scope": "instance",
+    "description": "Specifies the DataProvider for the sections and items of the tag-cloud.",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "defaultvalue": null,
+    "type": {
+      "names": [
+        "DataProvider|null"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "DataProvider<K, D>|null",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#datatip",
+    "name": "datatip",
+    "kind": "member",
+    "longname": "oj-c.TagCloud#datatip",
+    "optional": true,
+    "scope": "instance",
+    "description": "The tagcloud datatip string.",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "type": {
+      "names": [
+        "function"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "(context: DatatipContext<K>) => string",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#hiddenCategories",
+    "name": "hiddenCategories",
+    "kind": "member",
+    "longname": "oj-c.TagCloud#hiddenCategories",
+    "optional": true,
+    "scope": "instance",
+    "ojwriteback": true,
+    "description": "An array of category strings used for highlighting. Data items matching categories in this array will be highlighted.",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "defaultvalue": "[]",
+    "type": {
+      "names": [
+        "Array<string>"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Array<string>",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#touchResponse",
+    "name": "touchResponse",
+    "kind": "member",
+    "longname": "oj-c.TagCloud#touchResponse",
+    "optional": true,
+    "scope": "instance",
+    "description": "Data visualizations require a press and hold delay before triggering tooltips and rollover effects on mobile devices to avoid interfering with page panning, but these hold delays can make applications seem slower and less responsive. For a better user experience, the application can remove the touch and hold \\delay when data visualizations are used within a non scrolling container or if there is sufficient space outside of the visualization for panning. If touchResponse is touchStart the element will instantly trigger the touch gesture and consume the page pan events. If touchResponse is auto, the element will behave like touchStart if it determines that it is not rendered within scrolling content and if element panning is not available for those elements that support the feature.",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "type": {
+      "names": [
+        "\"auto\"",
+        "\"touchStart\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#highlightMatch",
+    "name": "highlightMatch",
+    "kind": "member",
+    "longname": "oj-c.TagCloud#highlightMatch",
+    "optional": true,
+    "scope": "instance",
+    "description": "The matching condition for the highlightedCategories option. By default, highlightMatch is 'all' and only items whose categories match all of the values specified in the highlightedCategories array will be highlighted. If highlightMatch is 'any', then items that match at least one of the highlightedCategories values will be highlighted.",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "defaultvalue": "\"all\"",
+    "type": {
+      "names": [
+        "\"all\"",
+        "\"any\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#highlightedCategories",
+    "name": "highlightedCategories",
+    "kind": "member",
+    "longname": "oj-c.TagCloud#highlightedCategories",
+    "optional": true,
+    "scope": "instance",
+    "ojwriteback": true,
+    "description": "An array of categories that will be highlighted.",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "defaultvalue": "[]",
+    "type": {
+      "names": [
+        "Array<string>"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Array<string>",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#hoverBehavior",
+    "name": "hoverBehavior",
+    "kind": "member",
+    "longname": "oj-c.TagCloud#hoverBehavior",
+    "optional": true,
+    "scope": "instance",
+    "description": "Defines the behavior applied when hovering over a tagcloud item.",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "ojvalues": [
+      {
+        "name": "dim",
+        "description": "Dimming hover behavior is applied.",
+        "displayName": "Dim",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "none",
+        "description": "No hover behavior will be applied.",
+        "displayName": "None",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"none\"",
+    "type": {
+      "names": [
+        "\"none\"",
+        "\"dim\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#layout",
+    "name": "layout",
+    "kind": "member",
+    "longname": "oj-c.TagCloud#layout",
+    "optional": true,
+    "scope": "instance",
+    "description": "The layout to use for tag display.",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "ojvalues": [
+      {
+        "name": "cloud",
+        "description": "Items will be horizontally placed in available space.",
+        "displayName": "Cloud",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "rectangular",
+        "description": "Items will be vertically stacked.",
+        "displayName": "Rectangular",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"rectangular\"",
+    "type": {
+      "names": [
+        "\"cloud\"",
+        "\"rectangular\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#selectionMode",
+    "name": "selectionMode",
+    "kind": "member",
+    "longname": "oj-c.TagCloud#selectionMode",
+    "optional": true,
+    "scope": "instance",
+    "description": "The type of selection behavior that is enabled on the tag cloud. This attribute controls the number of selections that can be made via selection gestures at any given time.",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "defaultvalue": "\"none\"",
+    "type": {
+      "names": [
+        "\"none\"",
+        "\"multiple\"",
+        "\"single\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#selection",
+    "name": "selection",
+    "kind": "member",
+    "longname": "oj-c.TagCloud#selection",
+    "optional": true,
+    "scope": "instance",
+    "ojwriteback": true,
+    "description": "An array containing the ids of the initially selected data items.",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "defaultvalue": "[]",
+    "type": {
+      "names": [
+        "Array<any>"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Array<K>",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#setProperty",
+    "name": "setProperty",
+    "kind": "function",
+    "longname": "oj-c.TagCloud#setProperty",
+    "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to set. Supports dot notation for subproperty access.",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "description": "The new value to set the property to.",
+        "type": "any"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#getProperty",
+    "name": "getProperty",
+    "kind": "function",
+    "longname": "oj-c.TagCloud#getProperty",
+    "description": "Retrieves the value of a property or a subproperty.",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to get. Supports dot notation for subproperty access.",
+        "type": "string"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "any"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#setProperties",
+    "name": "setProperties",
+    "kind": "function",
+    "longname": "oj-c.TagCloud#setProperties",
+    "description": "Performs a batch set of properties.",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "properties",
+        "description": "An object containing the property and value pairs to set.",
+        "type": "object"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud#itemTemplate",
+    "name": "itemTemplate",
+    "kind": "member",
+    "longname": "oj-c.TagCloud#itemTemplate",
+    "description": "<p>\n The <code class=\"prettyprint\">itemTemplate</code> slot is used to specify the template for\n creating items. The slot content must be a single  &lt;template>\n element.\n</p>\n<p>\n When the template is executed for each area, it will have access to the tag cloud's binding context and the following properties:\n</p>\n<ul>\n  <li>\n     $current - an object that contains information for the current item.\n     (See the table below for a list of properties available on $current)\n  </li>\n  <li>\n     alias - if as attribute was specified, the value will be used to provide an application-named alias for $current.\n  </li>\n</ul>\n<p>\nThe content of the template should only be one &lt;oj-c-tag-cloud-item> element. See the oj-tag-cloud-item doc for more details.\n</p>",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "scope": "instance",
+    "ojchild": false,
+    "ojslot": true,
+    "properties": [
+      {
+        "name": "data",
+        "description": "The data object of the current item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "D",
+            "for": "data",
+            "jsdocOverride": true
+          }
+        ]
+      },
+      {
+        "name": "key",
+        "description": "The key of the current item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "for": "key",
+            "jsdocOverride": true
+          }
+        ]
+      },
+      {
+        "name": "index",
+        "description": "The zero-based index of the current item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "oj-c.TagCloud.touchDoc",
+    "name": "touchDoc",
+    "kind": "member",
+    "longname": "oj-c.TagCloud.touchDoc",
+    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan=\"4\">Data Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Select when <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n       <td>Open a link when the <code class=\"prettyprint\">url</code> for a data item is set.</td>\n    </tr>\n  </tbody>\n</table>",
+    "memberof": "oj-c.TagCloud",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "ojfragment": true
+  },
+  {
+    "id": "oj-c.TagCloud.keyboardDoc",
+    "name": "keyboardDoc",
+    "kind": "member",
+    "longname": "oj-c.TagCloud.keyboardDoc",
+    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + UpArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + DownArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + LeftArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + RightArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + UpArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + DownArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + LeftArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + RightArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + Spacebar</kbd></td>\n      <td>Multi-select data item with focus.</td>\n    </tr>\n    <tr>\n      <td><kbd>Enter</kbd></td>\n      <td>Open a link when the <code class=\"prettyprint\">url</code> for a data item is set.</td>\n    </tr>\n  </tbody>\n</table>",
+    "memberof": "oj-c.TagCloud",
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "ojfragment": true
+  },
+  {
+    "memberof": "oj-c.TagCloud",
+    "id": "oj-c.TagCloud.DatatipContext",
+    "name": "DatatipContext",
+    "kind": "typedef",
+    "longname": "oj-c.TagCloud.DatatipContext",
+    "scope": "static",
+    "description": "Context for datatip function.",
+    "tsgenerictype": {
+      "target": "Type",
+      "value": "<K>",
+      "for": "genericTypeParameters"
+    },
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "tag-cloud.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+    },
+    "properties": [
+      {
+        "name": "id",
+        "description": "The id of the currently active tag cloud item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        }
+      }
+    ]
+  }
+]

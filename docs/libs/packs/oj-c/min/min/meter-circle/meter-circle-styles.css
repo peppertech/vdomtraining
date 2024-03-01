@@ -1,0 +1,14 @@
+oj-c-meter-circle:not(.oj-complete) {
+    visibility: hidden;
+}
+
+oj-c-meter-circle[hidden] {
+    display: none;
+}
+
+oj-c-meter-circle {
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    line-height: 0;
+}

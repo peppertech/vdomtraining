@@ -1,0 +1,38 @@
+.ButtonLayoutBaseTheme_baseTheme__8fzs170 {
+  --textToEdgePadding__rt5x5j3: ;
+  --iconToTextPadding__rt5x5j2: ;
+  --iconToEdgePadding__rt5x5j1: ;
+  --iconSize__rt5x5j0: ;
+  --sizes-xs-iconSize__rt5x5j4: calc(5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-xs-iconToTextPadding__rt5x5j6: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-xs-iconToEdgePadding__rt5x5j5: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-xs-textToEdgePadding__rt5x5j7: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-sm-iconSize__rt5x5j8: calc(5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-sm-iconToTextPadding__rt5x5j9: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-sm-iconToEdgePadding__rt5x5ja: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-sm-textToEdgePadding__rt5x5jb: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-md-iconSize__rt5x5jc: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-md-iconToTextPadding__rt5x5je: calc(2.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-md-iconToEdgePadding__rt5x5jd: calc(2.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-md-textToEdgePadding__rt5x5jf: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-lg-iconSize__rt5x5jg: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-lg-iconToTextPadding__rt5x5ji: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-lg-iconToEdgePadding__rt5x5jh: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-lg-textToEdgePadding__rt5x5jj: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedxs-iconSize__rt5x5jk: calc(5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedxs-iconToTextPadding__rt5x5jm: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedxs-iconToEdgePadding__rt5x5jl: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedxs-textToEdgePadding__rt5x5jn: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedsm-iconSize__rt5x5jo: calc(5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedsm-iconToTextPadding__rt5x5jp: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedsm-iconToEdgePadding__rt5x5jq: calc(1.875 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedsm-textToEdgePadding__rt5x5jr: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedmd-iconSize__rt5x5js: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedmd-iconToTextPadding__rt5x5ju: calc(2.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedmd-iconToEdgePadding__rt5x5jt: calc(2.375 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedmd-textToEdgePadding__rt5x5jv: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedlg-iconSize__rt5x5jw: calc(6 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedlg-iconToTextPadding__rt5x5jy: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedlg-iconToEdgePadding__rt5x5jx: calc(3.375 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --sizes-embeddedlg-textToEdgePadding__rt5x5jz: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}

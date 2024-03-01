@@ -1,0 +1,19 @@
+.ChartStyles_outline__1c1bk1y0 {
+  outline: none;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+}
+.ChartStyles_interactiveStyle__1c1bk1y1 {
+  cursor: pointer;
+}
+.ChartStyles_dimmed__1c1bk1y2 {
+  opacity: 0.3;
+}
+.ChartStyles_selectedBorder__1c1bk1y3 {
+  fill: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected-neutral);
+}
+.ChartStyles_contrastBorder__1c1bk1y4 {
+  stroke: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-contrast-line);
+  stroke-width: 1px;
+}

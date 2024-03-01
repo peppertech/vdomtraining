@@ -1,0 +1,23 @@
+.CheckboxStyles_checkboxBaseStyle__13w91qj0 {
+  line-height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-line-height);
+  min-height: var(--rowHeight__1qyga5a1);
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--iconToTextGap__1qyga5a2);
+}
+.CheckboxStyles_checkboxBaseStyle__13w91qj0:focus {
+  outline: none;
+}
+.CheckboxStyles_checkboxBaseStyle__13w91qj0:focus-visible {
+  outline: none;
+}
+.CheckboxStyles_checkboxBaseStyle__13w91qj0:hover {
+  cursor: pointer;
+}
+.CheckboxStyles_valueLabelStyle__13w91qj1 {
+  font-family: inherit;
+  font-weight: inherit;
+  padding-block-start: calc((var(--rowHeight__1qyga5a1) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-line-height) * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size) + 1px) / 2);
+  padding-block-end: calc((var(--rowHeight__1qyga5a1) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-line-height) * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size) - 1px) / 2);
+  font-size: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size);
+}

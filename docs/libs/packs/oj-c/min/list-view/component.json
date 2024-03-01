@@ -1,0 +1,319 @@
+{
+  "name": "list-view",
+  "version": "16.0.0",
+  "jetVersion": "^16.0.0",
+  "pack": "oj-c",
+  "type": "composite",
+  "dependencyScope": "runtime",
+  "license": "https://opensource.org/licenses/UPL",
+  "implements": [
+    "CListViewElement"
+  ],
+  "displayName": "List View",
+  "description": "A list view displays data items as a list or a grid with highly interactive features.",
+  "help": "oj-c.ListView.html",
+  "main": "oj-c/list-view",
+  "extension": {
+    "catalog": {
+      "category": "Collections"
+    },
+    "vbdt": {
+      "module": "oj-c/list-view"
+    },
+    "oracle": {
+      "uxSpecs": [
+        "list-view"
+      ]
+    }
+  },
+  "propertyLayout": [
+    {
+      "propertyGroup": "common",
+      "items": [
+        "selectionMode"
+      ]
+    },
+    {
+      "propertyGroup": "data",
+      "items": [
+        "data",
+        "selected"
+      ]
+    }
+  ],
+  "since": "15.0.0",
+  "properties": {
+    "currentItem": {
+      "type": "any",
+      "description": "The item that currently has keyboard focus",
+      "displayName": "Current Item",
+      "help": "#currentItem",
+      "readOnly": true,
+      "writeback": true
+    },
+    "data": {
+      "type": "DataProvider|null",
+      "description": "The data source for ListView.",
+      "displayName": "Data",
+      "help": "#data",
+      "extension": {
+        "webelement": {
+          "exceptionStatus": [
+            {
+              "type": "unsupported"
+            }
+          ]
+        }
+      }
+    },
+    "gridlines": {
+      "type": "object",
+      "description": "Specifies whether the grid lines should be visible.",
+      "displayName": "Gridlines",
+      "help": "#gridlines",
+      "properties": {
+        "item": {
+          "type": "string",
+          "enumValues": [
+            "hidden",
+            "visible"
+          ]
+        },
+        "top": {
+          "type": "string",
+          "enumValues": [
+            "hidden",
+            "visible"
+          ]
+        },
+        "bottom": {
+          "type": "string",
+          "enumValues": [
+            "hidden",
+            "visible"
+          ]
+        }
+      }
+    },
+    "scrollPolicyOptions": {
+      "type": "object",
+      "description": "Specifies fetch options for scrolling behaviors that trigger data fetches.",
+      "displayName": "Scroll Policy Options",
+      "help": "#scrollPolicyOptions",
+      "properties": {
+        "fetchSize": {
+          "type": "number"
+        },
+        "scroller": {
+          "type": "string"
+        }
+      }
+    },
+    "selected": {
+      "type": "object",
+      "description": "The selected property",
+      "displayName": "Selected Items Changed",
+      "help": "#selected",
+      "writeback": true
+    },
+    "selectionMode": {
+      "type": "string",
+      "description": "Type of selection behavior for the ListView",
+      "displayName": "Selection Mode",
+      "help": "#selectionMode",
+      "propertyEditorValues": {
+        "multiple": {
+          "description": "Multiple items can be selected at the same time.",
+          "displayName": "Multiple"
+        },
+        "none": {
+          "description": "Selection is disabled.",
+          "displayName": "None"
+        },
+        "single": {
+          "description": "Only a single item can be selected at a time.",
+          "displayName": "Single"
+        }
+      },
+      "enumValues": [
+        "none",
+        "multiple",
+        "single"
+      ],
+      "value": "none"
+    }
+  },
+  "slots": {
+    "itemTemplate": {
+      "description": "The itemTemplate slot is used to specify the template for rendering each item in the component. See the Help documentation for more information.",
+      "displayName": "itemTemplate",
+      "help": "#itemTemplate",
+      "maxItems": 1,
+      "data": {
+        "data": {
+          "type": "any"
+        },
+        "item": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "any"
+            },
+            "metadata": {
+              "type": "object",
+              "properties": {
+                "indexFromParent": {
+                  "type": "number"
+                },
+                "isLeaf": {
+                  "type": "boolean"
+                },
+                "key": {
+                  "type": "any"
+                },
+                "message": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "string"
+                    },
+                    "severity": {
+                      "type": "string|number"
+                    },
+                    "summary": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "parentKey": {
+                  "type": "any"
+                },
+                "suggestion": {
+                  "type": "object"
+                },
+                "treeDepth": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "isTabbable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "noData": {
+      "description": "The noData slot is used to specify the content to show when there is no data. See the Help documentation for more information.",
+      "displayName": "noData",
+      "help": "#noData",
+      "maxItems": 1,
+      "data": {}
+    }
+  },
+  "events": {
+    "ojItemAction": {
+      "description": "Triggered when user performs an action gesture on an item.",
+      "displayName": "Item Action",
+      "help": "#event:itemAction",
+      "detail": {
+        "context": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "any"
+            },
+            "item": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "any"
+                },
+                "metadata": {
+                  "type": "object",
+                  "properties": {
+                    "indexFromParent": {
+                      "type": "number"
+                    },
+                    "isLeaf": {
+                      "type": "boolean"
+                    },
+                    "key": {
+                      "type": "any"
+                    },
+                    "message": {
+                      "type": "object",
+                      "properties": {
+                        "detail": {
+                          "type": "string"
+                        },
+                        "severity": {
+                          "type": "string|number"
+                        },
+                        "summary": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "parentKey": {
+                      "type": "any"
+                    },
+                    "suggestion": {
+                      "type": "object"
+                    },
+                    "treeDepth": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "methods": {
+    "setProperty": {
+      "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
+      "help": "#setProperty",
+      "params": [
+        {
+          "name": "property",
+          "description": "The property name to set. Supports dot notation for subproperty access.",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "The new value to set the property to.",
+          "type": "any"
+        }
+      ],
+      "return": "void"
+    },
+    "getProperty": {
+      "description": "Retrieves the value of a property or a subproperty.",
+      "help": "#getProperty",
+      "params": [
+        {
+          "name": "property",
+          "description": "The property name to get. Supports dot notation for subproperty access.",
+          "type": "string"
+        }
+      ],
+      "return": "any"
+    },
+    "setProperties": {
+      "description": "Performs a batch set of properties.",
+      "help": "#setProperties",
+      "params": [
+        {
+          "name": "properties",
+          "description": "An object containing the property and value pairs to set.",
+          "type": "object"
+        }
+      ],
+      "return": "void"
+    }
+  }
+}

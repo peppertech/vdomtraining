@@ -1,0 +1,35 @@
+.DiagramStyles_outerStyles__1ep4hfg0 {
+  position: relative;
+  overflow: hidden;
+}
+.DiagramStyles_outerStyles__1ep4hfg0:focus-visible {
+  outline-width: 0px;
+}
+.DiagramStyles_layerStyles__1ep4hfg1 {
+  display: inline-block;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.DiagramStyles_nodeStyles__1ep4hfg2 {
+  position: absolute;
+  pointer-events: auto;
+}
+.DiagramStyles_linkStyles__1ep4hfg3 {
+  pointer-events: auto;
+}
+.DiagramStyles_labelStyle__1ep4hfg4 {
+  position: absolute;
+}
+.DiagramStyles_labelBorderStyle__1ep4hfg5 {
+  border-style: solid;
+}
+.DiagramStyles_dimmedItemStyle__1ep4hfg6 {
+  opacity: 0.35;
+}
+.DiagramStyles_panZoomStyles__1ep4hfg7 {
+  transform-origin: top left;
+  position: relative;
+  pointer-events: none;
+}

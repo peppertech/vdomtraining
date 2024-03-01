@@ -1,4 +1,4 @@
-define(["require", "exports", "preact/jsx-runtime", "./bindings/index", "./modules/index", "./examples/index"], function (require, exports, jsx_runtime_1, index_1, index_2, index_3) {
+define(["require", "exports", "preact/jsx-runtime", "./bindings/index", "./modules/index", "./examples/index", "preact"], function (require, exports, jsx_runtime_1, index_1, index_2, index_3) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     const Content = (props) => {
@@ -12,7 +12,7 @@ define(["require", "exports", "preact/jsx-runtime", "./bindings/index", "./modul
                     return (0, jsx_runtime_1.jsx)(index_3.default, {});
             }
         };
-        return ((0, jsx_runtime_1.jsx)("div", Object.assign({ class: "oj-web-applayout-max-width oj-web-applayout-content" }, { children: pageContent(props.page) })));
+        return ((0, jsx_runtime_1.jsx)("div", { class: "oj-web-applayout-max-width oj-web-applayout-content", children: pageContent(props.page) }));
     };
     exports.default = Content;
 });

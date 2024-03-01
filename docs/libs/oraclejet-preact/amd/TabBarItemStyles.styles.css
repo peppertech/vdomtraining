@@ -1,0 +1,45 @@
+.TabBarItemStyles_tabBarItemBase__1jor8oq0 {
+  color: var(--labelColor__1vg465e0);
+  cursor: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-cursor-clickable);
+  box-sizing: border-box;
+  border-left: var(--borderWidthLeftRight__1vg465e5) solid transparent;
+  border-bottom: var(--borderWidthBottom__1vg465e4) solid transparent;
+  border-right: var(--borderWidthLeftRight__1vg465e5) solid transparent;
+  border-top: var(--borderWidthBottom__1vg465e4) solid transparent;
+  display: flex;
+  outline-style: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  scroll-snap-align: start;
+  scroll-margin-inline-start: 3rem;
+}
+.TabBarItemStyles_tabBarItemBase__1jor8oq0:hover {
+  color: var(--labelColorHover__1vg465e2);
+}
+.TabBarItemStyles_tabBarItemIcon__1jor8oq1 {
+  font-size: var(--iconSize__1vg465e3);
+  display: inline-flex;
+}
+.TabBarItemStyles_tabBarItemIconStacked__1jor8oq2 {
+  position: relative;
+  height: var(--iconSize__1vg465e3);
+  width: var(--iconSize__1vg465e3);
+}
+.TabBarItemStyles_tabBarItemRemoveIcon__1jor8oq3 {
+  align-self: center;
+  display: inline-flex;
+}
+.TabBarItemStyles_tabBarItemMetadata__1jor8oq4 {
+  color: var(--labelColor__1vg465e0);
+  display: inline-flex;
+}
+.TabBarItemStyles_tabBarItemStackedBadge__1jor8oq5 {
+  position: absolute;
+  left: calc(var(--iconSize__1vg465e3) * 0.40);
+  bottom: calc(var(--iconSize__1vg465e3) * 0.40);
+}
+.TabBarItemStyles_tabBarItemStackedBadgeRtl__1jor8oq6 {
+  left: 0;
+  right: calc(var(--iconSize__1vg465e3) * 0.40);
+}

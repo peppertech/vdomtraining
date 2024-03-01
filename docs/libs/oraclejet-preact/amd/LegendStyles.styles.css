@@ -1,0 +1,125 @@
+.LegendStyles_legendStyle__xn8e5i0 {
+  overflow-y: auto;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-x: hidden;
+  outline-width: 0px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.LegendStyles_sectionalLegendBaseStyles__xn8e5i1 {
+  overflow-y: auto;
+  max-width: 100%;
+  max-height: 100%;
+  outline-width: 0px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.LegendStyles_preRenderedLegendStyle__xn8e5i2 {
+  width: 100%;
+  height: 100%;
+}
+.LegendStyles_renderedLegendStyle__xn8e5i3 {
+  width: -moz-max-content;
+  width: max-content;
+}
+.LegendStyles_baseLegendStyles__xn8e5i4 {
+  display: grid;
+  padding-top: calc(0.75 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  padding-bottom: calc(0.75 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.LegendStyles_baseLegendHorizontal__xn8e5i5 {
+  grid-auto-flow: column;
+  width: -moz-max-content;
+  width: max-content;
+}
+.LegendStyles_baseLegendVertical__xn8e5i6 {
+  grid-auto-flow: row;
+  max-width: 100%;
+}
+.LegendStyles_baseLegendVerticalItem__xn8e5i7 {
+  max-width: 100%;
+  width: -moz-max-content;
+  width: max-content;
+}
+.LegendStyles_baseLegendPaddingBottom__xn8e5i8 {
+  padding-bottom: calc(0.4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.LegendStyles_baseLegendPaddingTop__xn8e5i9 {
+  padding-top: calc(0.4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.LegendStyles_baseLegendPaddingEnd__xn8e5ia {
+  padding-inline-end: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem);
+}
+.LegendStyles_legendItemBaseStyle__xn8e5ib {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  box-sizing: border-box;
+  max-width: -moz-max-content;
+  max-width: max-content;
+}
+.LegendStyles_legendItemIsCurrent__xn8e5ic {
+  cursor: pointer;
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-hover);
+  border-radius: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-radius-md);
+}
+.LegendStyles_legendItemOpacity__xn8e5id {
+  opacity: 0.35;
+}
+.LegendStyles_legendItemFocusRing__xn8e5ie {
+  outline-style: dotted;
+  outline-width: 1px;
+  outline-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);
+  outline-offset: -1px;
+}
+.LegendStyles_imageMarkerStyle__xn8e5if {
+  width: 100%;
+  height: 100%;
+}
+.LegendStyles_legendSymbolBaseStyle__xn8e5ig {
+  position: relative;
+  pointer-events: none;
+  flex-shrink: 0;
+  height: calc(2.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  width: calc(2.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  margin-bottom: calc(0.85 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  margin-inline-end: calc(0.75 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  margin-inline-start: calc(0.75 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  margin-top: calc(0.85 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.LegendStyles_legendTextBaseStyle__xn8e5ih {
+  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  pointer-events: none;
+  padding-inline-start: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem);
+  padding-inline-end: calc(0.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  max-width: 100%;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-label-sm-font-size);
+  min-width: 0;
+  line-height: normal;
+  display: inherit;
+}
+.LegendStyles_legendTextTitle__xn8e5ii {
+  font-weight: 600;
+  text-align: right;
+  padding-top: calc(0.75 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  padding-bottom: calc(1.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  padding-inline-end: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  padding-inline-start: calc(0.75 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.LegendStyles_legendTitleStartAlign__xn8e5ij {
+  align-self: flex-start;
+}
+.LegendStyles_legendTitleCenterAlign__xn8e5ik {
+  align-self: center;
+}
+.LegendStyles_legendTitleEndAlign__xn8e5il {
+  align-self: flex-end;
+}
+.LegendStyles_svgSymbolBaseStyle__xn8e5im {
+  position: absolute;
+}

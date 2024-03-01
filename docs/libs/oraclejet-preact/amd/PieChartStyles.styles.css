@@ -1,0 +1,23 @@
+.PieChartStyles_chart__1a5vzfm0 {
+  position: relative;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+}
+.PieChartStyles_chart__1a5vzfm0:focus-visible {
+  outline: none;
+}
+.PieChartStyles_innerShapes__1a5vzfm1 {
+  pointer-events: none;
+}
+.PieChartStyles_selectedBorder__1a5vzfm2 {
+  fill: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-130));
+}
+.PieChartStyles_svg__1a5vzfm3 {
+  width: 100%;
+  height: 100%;
+}
+.PieChartStyles_contrastBorder__1a5vzfm4 {
+  stroke: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-contrast-line);
+  stroke-width: 1px;
+}

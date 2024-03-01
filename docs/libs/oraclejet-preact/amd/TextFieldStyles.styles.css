@@ -1,0 +1,108 @@
+@keyframes TextFieldStyles_placeholderAnimation__952vaf0 {
+  from {
+    opacity: 0.001;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.TextFieldStyles_textFieldContainerBase__952vaf1 {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transition-property: border-color;
+  transition-duration: .1s;
+  transition-timing-function: linear;
+}
+.TextFieldStyles_textFieldContainerDefault__952vaf2 {
+  background-color: var(--bgColor__w6gg1y3);
+  border-color: var(--borderColor__w6gg1y0);
+  border-radius: var(--borderRadius__w6gg1y2);
+  height: var(--height__w6gg1y7);
+}
+.TextFieldStyles_textFieldContainerEmbedded__952vaf3 {
+  background-color: inherit;
+  height: 100%;
+  width: 100%;
+}
+.TextFieldStyles_textFieldContainerShowBorder__952vaf4 {
+  border-style: solid;
+  border-width: var(--borderWidth__w6gg1y1);
+}
+.TextFieldStyles_textFieldContainerTextarea__952vaf5 {
+  height: auto;
+}
+.TextFieldStyles_textFieldContainerLabelInside__952vaf6 {
+  min-height: var(--insideEdgeHeight__w6gg1yb);
+}
+.TextFieldStyles_textFieldContainerFocused__952vaf7 {
+  border-color: var(--borderColorFocus__w6gg1y4);
+  box-shadow: var(--boxShadowFocus__w6gg1y5);
+}
+.TextFieldStyles_textFieldContainerResizeBoth__952vaf8 {
+  resize: both;
+}
+.TextFieldStyles_textFieldContainerResizeHorizontal__952vaf9 {
+  resize: horizontal;
+}
+.TextFieldStyles_textFieldContainerResizeVertical__952vafa {
+  resize: vertical;
+}
+.TextFieldStyles_textFieldContainerDisabled__952vafb {
+  background-color: var(--bgColorDisabled__w6gg1yg);
+  border-color: var(--borderColorDisabled__w6gg1yh);
+}
+.TextFieldStyles_textFieldContainerError__952vafc {
+  border-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-danger);
+}
+.TextFieldStyles_textFieldContainerErrorFocused__952vafd {
+  --boxShadowFocus__w6gg1y5: 0 0 0 1px var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-danger) inset !important;
+}
+.TextFieldStyles_textFieldContainerWarning__952vafe {
+  border-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-warning);
+}
+.TextFieldStyles_textFieldContainerWarningFocused__952vaff {
+  --boxShadowFocus__w6gg1y5: 0 0 0 1px var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-warning) inset !important;
+}
+.TextFieldStyles_textFieldMiddleBase__952vafg {
+  position: relative;
+  display: inline-flex;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.TextFieldStyles_textFieldMiddleTextarea__952vafh {
+  padding-inline-end: 1px;
+  flex-direction: column;
+}
+.TextFieldStyles_textFieldEndContentBase__952vafi {
+  padding-inline-end: calc((var(--height__w6gg1y7) - calc(9 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) - 2px) / 2);
+}
+.TextFieldStyles_textFieldEndContentLabelInside__952vafj {
+  padding-inline-end: calc((var(--insideEdgeHeight__w6gg1yb) - calc(11 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) - 2px) / 2);
+}
+.TextFieldStyles_textFieldBase__952vafk {
+  display: inline-block;
+  line-height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-line-height);
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+.TextFieldStyles_textFieldEmbedded__952vafl {
+  height: 100%;
+}
+.TextFieldStyles_textFieldNotReadonly__952vafm {
+  font-weight: 400;
+  font-size: var(--fontSize__w6gg1y6);
+}
+.TextFieldStyles_formControlBase__952vafn {
+  vertical-align: top;
+}
+.TextFieldStyles_formControlLabelInside__952vafo {
+  max-width: 100%;
+}

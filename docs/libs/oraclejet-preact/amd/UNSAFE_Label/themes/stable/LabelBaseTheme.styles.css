@@ -1,0 +1,25 @@
+.LabelBaseTheme_baseTheme__1ccwp6l0 {
+  --fontSize__kn3t7f0: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-font-size);
+  --fontWeight__kn3t7f1: 600;
+  --lineHeight__kn3t7f2: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-line-height);
+  --color__kn3t7f3: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
+  --colorDisabled__kn3t7f4: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-disabled);
+  --insideEdgeFontSize__kn3t7f5: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-size);
+  --insideEdgeFontWeight__kn3t7f6: 600;
+  --insideEdgeLineHeight__kn3t7f7: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-line-height);
+  --insideEdgeColor__kn3t7f8: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-secondary);
+  --formLayoutTopEdgeLabelToValuePadding__kn3t7f9: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  --formLayoutTopEdgeLabelTextAlign__kn3t7fa: end;
+}
+.oj-scale-sm, :root.oj-scale-sm {
+  --insideEdgePositionTop__kn3t7fb: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem);
+}
+.oj-scale-md, :root.oj-scale-md {
+  --insideEdgePositionTop__kn3t7fb: calc(1.14 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.oj-scale-lg {
+  --insideEdgePositionTop__kn3t7fb: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+:root {
+  --insideEdgePositionTop__kn3t7fb: 0.5rem;
+}

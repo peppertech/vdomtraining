@@ -1,0 +1,104 @@
+.TextFieldInputStyles_textFieldInputBase__lkfh4l0 {
+  outline-style: none;
+  outline-width: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  border: 0;
+  background-color: transparent;
+  width: 100%;
+}
+.TextFieldInputStyles_textFieldInputBase__lkfh4l0::-moz-selection {
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-selected);
+}
+.TextFieldInputStyles_textFieldInputBase__lkfh4l0::selection {
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-selected);
+}
+.TextFieldInputStyles_textFieldInputBase__lkfh4l0::-webkit-search-decoration {
+  display: none;
+}
+.TextFieldInputStyles_textFieldInputBase__lkfh4l0::-webkit-search-cancel-button {
+  display: none;
+}
+.TextFieldInputStyles_textFieldInputBase__lkfh4l0::-webkit-search-results-button {
+  display: none;
+}
+.TextFieldInputStyles_textFieldInputBase__lkfh4l0::-webkit-search-results-decoration {
+  display: none;
+}
+.TextFieldInputStyles_textFieldInput__lkfh4l1 {
+  margin: 0;
+}
+.TextFieldInputStyles_textFieldTextarea__lkfh4l2 {
+  padding-top: calc((var(--height__w6gg1y7) - 1rem * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-line-height))/ 2 - 1px);
+  padding-bottom: calc((var(--height__w6gg1y7) - 1rem * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-line-height))/ 2 - 1px);
+  resize: none;
+}
+.TextFieldInputStyles_textFieldPassword__lkfh4l3::-ms-reveal {
+  display: none;
+}
+.TextFieldInputStyles_labelDefaultPadding__lkfh4l4 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.TextFieldInputStyles_labelInsideBase__lkfh4l5 {
+  min-height: var(--insideEdgeHeight__w6gg1yb);
+  padding-top: var(--insideEdgePaddingTop__w6gg1yc);
+  padding-bottom: 0;
+}
+.TextFieldInputStyles_labelInsideBase__lkfh4l5:hover {
+  background-color: transparent;
+}
+.TextFieldInputStyles_textareaLabelInsideBase__lkfh4l6 {
+  padding-top: 0;
+  padding-bottom: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-block-start-width: calc(var(--insideEdgeFontSize__kn3t7f5) * var(--insideEdgeLineHeight__kn3t7f7) + var(--insideEdgePositionTop__kn3t7fb));
+  border-block-end-width: 0.25rem;
+}
+.TextFieldInputStyles_labelInsideNoValueAndHasFocus__lkfh4l7 {
+  animation-name: var(--placeholderAnimationName__w6gg1yj);
+  animation-duration: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-duration-2xl);
+  animation-timing-function: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-easing-exit);
+}
+.TextFieldInputStyles_hasStartContent__lkfh4l8 {
+  padding-inline-start: var(--iconToTextPadding__w6gg1y8);
+}
+.TextFieldInputStyles_hasEndContent__lkfh4l9 {
+  padding-inline-end: var(--iconToTextPadding__w6gg1y8);
+}
+.TextFieldInputStyles_textFieldInputDefaultColor__lkfh4la {
+  color: var(--textColor__w6gg1yf);
+}
+.TextFieldInputStyles_textFieldInputDisabledColor__lkfh4lb {
+  color: var(--textColorDisabled__w6gg1yi);
+}
+.TextFieldInputStyles_hasPrefix__lkfh4lc {
+  padding-inline-start: .25em;
+}
+.TextFieldInputStyles_hasSuffix__lkfh4ld {
+  padding-inline-end: .25em;
+}
+.TextFieldInputStyles_textFieldInputDefault__lkfh4le {
+  font-size: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size);
+}
+.TextFieldInputStyles_defaultPaddingStart__lkfh4lf {
+  padding-inline-start: var(--textToEdgePadding__w6gg1ya);
+}
+.TextFieldInputStyles_defaultPaddingEnd__lkfh4lg {
+  padding-inline-end: var(--textToEdgePadding__w6gg1ya);
+}
+.TextFieldInputStyles_textFieldInputEmbedded__lkfh4lh {
+  color: inherit;
+  font-size: inherit;
+  height: 100%;
+  margin: 0;
+  padding-block: 0;
+  padding-inline: var(--textToEdgePadding__w6gg1ya);
+  resize: none;
+}
+.TextFieldInputStyles_textFieldInputEmbedded__lkfh4lh::-ms-reveal {
+  display: none;
+}

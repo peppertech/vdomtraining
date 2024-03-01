@@ -1,0 +1,2 @@
+define(['exports', 'css!./../../ConveyorBeltStyles.styles.css'], (function(e,t){"use strict";e.styles={baseStyle:"ConveyorBeltStyles_baseStyle__1u3kg3i0",buttonContainer:"ConveyorBeltStyles_buttonContainer__1u3kg3i1",overflowContainer:"ConveyorBeltStyles_overflowContainer__1u3kg3i2",contentContainer:"ConveyorBeltStyles_contentContainer__1u3kg3i3",previousButton:"ConveyorBeltStyles_previousButton__1u3kg3i4",nextButton:"ConveyorBeltStyles_nextButton__1u3kg3i5"},Object.defineProperty(e,"__esModule",{value:!0})}));
+//# sourceMappingURL=ConveyorBeltStyles.css.js.map

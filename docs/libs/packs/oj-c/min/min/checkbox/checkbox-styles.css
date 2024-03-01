@@ -1,0 +1,11 @@
+oj-c-checkbox:not(.oj-complete){
+  visibility: hidden;
+}
+
+oj-c-checkbox{
+  display: inline-block;
+}
+
+oj-c-checkbox[hidden]{
+  display: none;
+}

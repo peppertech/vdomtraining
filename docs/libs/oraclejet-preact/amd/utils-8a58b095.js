@@ -1,0 +1,2 @@
+define(['exports', './Common/themes/themeContract.css', './colorUtils-709e88cf'], (function(e,r,t){"use strict";const a=(...e)=>e.reverse().reduce(((e,r)=>{if(""===e)e=String(r);else{if("string"!=typeof r||!/^var\(--.*\)$/.test(r))throw new Error(`Invalid variable name: ${r}`);e=r.replace(/\)$/,`, ${e})`)}return e}),""),s=()=>a(r.scaleVars.size.units,"0.25rem");e.fallbackVar=a,e.max=(e,r)=>`max(${e},${r})`,e.min=(e,r)=>`min(${e},${r})`,e.rgb=e=>t.rgb(e),e.rgba=(e,r)=>`rgba(${e}, ${r})`,e.xUnits=e=>1===e?s():`calc(${e} * ${s()})`}));
+//# sourceMappingURL=utils-8a58b095.js.map

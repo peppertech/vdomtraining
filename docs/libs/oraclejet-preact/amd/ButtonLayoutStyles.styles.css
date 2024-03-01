@@ -1,0 +1,58 @@
+.ButtonLayoutStyles_text__kvn4il0 {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  & > * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+.ButtonLayoutStyles_suffix__kvn4il1 {
+  font-weight: 400;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-inline-start: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem);
+  display: inline-flex;
+}
+.ButtonLayoutStyles_icon__kvn4il2 {
+  display: inline-flex;
+  font-size: var(--iconSize__rt5x5j0);
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.ButtonLayoutStyles_startIcon__kvn4il3 {
+  margin-inline-end: var(--iconToTextPadding__rt5x5j2);
+  margin-inline-start: var(--iconToEdgePadding__rt5x5j1);
+}
+.ButtonLayoutStyles_endIcon__kvn4il4 {
+  margin-inline-start: var(--iconToTextPadding__rt5x5j2);
+  margin-inline-end: var(--iconToEdgePadding__rt5x5j1);
+}
+.ButtonLayoutStyles_startText__kvn4il5 {
+  margin-inline-start: var(--textToEdgePadding__rt5x5j3);
+}
+.ButtonLayoutStyles_endText__kvn4il6 {
+  margin-inline-end: var(--textToEdgePadding__rt5x5j3);
+}
+.ButtonLayoutStyles_startIconWhenBothIconsOnly__kvn4il7 {
+  margin-inline-end: 0;
+}
+.ButtonLayoutStyles_container__kvn4il8 {
+  cursor: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.ButtonLayoutStyles_base__kvn4il9 {
+  display: inline-flex;
+  cursor: inherit;
+}

@@ -1,0 +1,157 @@
+[
+  {
+    "pack": "oj-c",
+    "id": "oj-c.ActionCard",
+    "name": "ActionCard",
+    "memberof": "oj-c",
+    "longname": "oj-c.ActionCard",
+    "kind": "class",
+    "classdesc": "<h3 id=\"ActionCardOverview-section\">\n  JET Action\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#CardOverview-section\"></a>\n</h3>\n<p>Description: Themeable, WAI-ARIA-compliant element that represents a card.</p>\n<p>Action Card provides a styled rectangular area with hover/focus/active state rendering,\nalong with an ojAction event.\n\n\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-action-card onAction=\"[[actionHandler]]\">\n  Sample Text\n&lt;/oj-c-action-card>\n\n</code></pre>\n\n<p> As oj-c-action-card is intended to fire actions, it should not be used for the purpose of selection. That role is delegated to oj-c-selection-card.\n\n\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>A clarification in a11y rules states that any element with role of button should not have interactive elements inside: https://www.w3.org/TR/html-aria/#allowed-descendants-of-aria-roles </p>",
+    "scope": "static",
+    "tagWithoutBrackets": "oj-c-action-card",
+    "tagWithBrackets": "<oj-c-action-card>",
+    "domInterface": "CActionCardElement",
+    "ojPageTitle": "&lt;oj-c-action-card>",
+    "ojcomponent": true,
+    "isvcomponent": true,
+    "camelCaseName": "ActionCard",
+    "ojPageTitlePrefix": "Element: ",
+    "ojtsvcomponent": true,
+    "tstype": {
+      "target": "Type",
+      "value": "interface CActionCardElement extends JetElement<ActionCardElementSettableProperties>"
+    },
+    "ojsignature": [
+      {
+        "target": "Type",
+        "value": "interface CActionCardElement extends JetElement<ActionCardElementSettableProperties>"
+      }
+    ],
+    "since": "16.0.0",
+    "meta": {
+      "filename": "action-card.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/action-card"
+    },
+    "ojmodule": "action-card"
+  },
+  {
+    "memberof": "oj-c.ActionCard",
+    "id": "oj-c.ActionCard#setProperty",
+    "name": "setProperty",
+    "kind": "function",
+    "longname": "oj-c.ActionCard#setProperty",
+    "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
+    "meta": {
+      "filename": "action-card.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/action-card"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to set. Supports dot notation for subproperty access.",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "description": "The new value to set the property to.",
+        "type": "any"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.ActionCard",
+    "id": "oj-c.ActionCard#getProperty",
+    "name": "getProperty",
+    "kind": "function",
+    "longname": "oj-c.ActionCard#getProperty",
+    "description": "Retrieves the value of a property or a subproperty.",
+    "meta": {
+      "filename": "action-card.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/action-card"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to get. Supports dot notation for subproperty access.",
+        "type": "string"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "any"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.ActionCard",
+    "id": "oj-c.ActionCard#setProperties",
+    "name": "setProperties",
+    "kind": "function",
+    "longname": "oj-c.ActionCard#setProperties",
+    "description": "Performs a batch set of properties.",
+    "meta": {
+      "filename": "action-card.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/action-card"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "properties",
+        "description": "An object containing the property and value pairs to set.",
+        "type": "object"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.ActionCard",
+    "id": "oj-c.ActionCard#event:ojAction",
+    "name": "ojAction",
+    "kind": "event",
+    "longname": "oj-c.ActionCard#event:ojAction",
+    "description": "Triggered when a card is clicked, whether by keyboard, mouse, or touch events. To meet accessibility requirements, the only supported way to react to the click is to listen for this event.",
+    "meta": {
+      "filename": "action-card.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/action-card"
+    },
+    "scope": "instance"
+  },
+  {
+    "memberof": "oj-c.ActionCard",
+    "id": "oj-c.ActionCard#Default",
+    "name": "Default",
+    "kind": "member",
+    "longname": "oj-c.ActionCard#Default",
+    "description": "The default slot is the content of the card.",
+    "meta": {
+      "filename": "action-card.tsx",
+      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/action-card"
+    },
+    "scope": "instance",
+    "ojchild": true,
+    "ojslot": false
+  }
+]

@@ -1,0 +1,15 @@
+
+oj-c-list-view:not(.oj-complete){
+  visibility: hidden;
+}
+
+oj-c-list-view {
+  display: block;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+oj-c-list-view[hidden]
+{
+  display: none;
+}

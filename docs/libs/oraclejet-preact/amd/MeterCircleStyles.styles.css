@@ -1,0 +1,156 @@
+.MeterCircleStyles_baseStyle__dfqfbg0 {
+  display: inline-block;
+  pointer-events: none;
+}
+.MeterCircleStyles_interactiveStyle__dfqfbg1 {
+  touch-action: none;
+}
+.MeterCircleStyles_interactiveStyle__dfqfbg1:focus-visible {
+  outline-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);
+  outline-style: dotted;
+  outline-width: 1px;
+}
+.MeterCircleStyles_fullStyle__dfqfbg2 {
+  border-radius: 50%;
+}
+.MeterCircleStyles_topStyle__dfqfbg3 {
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  border-bottom: 0;
+}
+.MeterCircleStyles_bottomStyle__dfqfbg4 {
+  border-radius: 0% 0% 50% 50% / 0% 0% 100% 100%;
+  border-top: 0;
+}
+.MeterCircleStyles_rightStyle__dfqfbg5 {
+  border-radius: 0 100% 100% 0 / 0% 50% 50% 0%;
+  border-left: 0;
+}
+.MeterCircleStyles_leftStyle__dfqfbg6 {
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  border-right: 0;
+}
+.MeterCircleStyles_smtopStyle__dfqfbg7 {
+  margin: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) 0 calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.MeterCircleStyles_mdtopStyle__dfqfbg8 {
+  margin: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) 0 calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.MeterCircleStyles_lgtopStyle__dfqfbg9 {
+  margin: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) 0 calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.MeterCircleStyles_smbottomStyle__dfqfbga {
+  margin: 0 calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.MeterCircleStyles_mdbottomStyle__dfqfbgb {
+  margin: 0 calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.MeterCircleStyles_lgbottomStyle__dfqfbgc {
+  margin: 0 calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.MeterCircleStyles_smleftStyle__dfqfbgd {
+  margin: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) 0 calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.MeterCircleStyles_mdleftStyle__dfqfbge {
+  margin: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) 0 calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.MeterCircleStyles_lgleftStyle__dfqfbgf {
+  margin: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) 0 calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.MeterCircleStyles_smrightStyle__dfqfbgg {
+  margin: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) 0;
+}
+.MeterCircleStyles_mdrightStyle__dfqfbgh {
+  margin: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) 0;
+}
+.MeterCircleStyles_lgrightStyle__dfqfbgi {
+  margin: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) 0;
+}
+.MeterCircleStyles_smfullStyle__dfqfbgj {
+  margin: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.MeterCircleStyles_mdfullStyle__dfqfbgk {
+  margin: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.MeterCircleStyles_lgfullStyle__dfqfbgl {
+  margin: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+}
+.MeterCircleStyles_meterCircleHorizontalSizeStyle__dfqfbgm {
+  height: calc(var(--size__1qest1m0) / 2 );
+  width: var(--size__1qest1m0);
+}
+.MeterCircleStyles_meterCircleVerticalSizeStyle__dfqfbgn {
+  width: calc(var(--size__1qest1m0) / 2 );
+  height: var(--size__1qest1m0);
+}
+.MeterCircleStyles_meterCircleFullSizeStyle__dfqfbgo {
+  width: var(--size__1qest1m0);
+  height: var(--size__1qest1m0);
+}
+.MeterCircleStyles_meterCircleCenterContent__dfqfbgp {
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  line-height: initial;
+}
+.MeterCircleStyles_meterCircleCenterContent__dfqfbgp > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.MeterCircleStyles_circleWrapperBaseStyle__dfqfbgq {
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.MeterCircleStyles_circleTrackBaseStyle__dfqfbgr {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-style: solid;
+  box-sizing: border-box;
+  pointer-events: none;
+  border-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-measure-track-enabled);
+}
+.MeterCircleStyles_circleValueBaseStyle__dfqfbgs {
+  border-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-measure-fill-enabled);
+  border-style: solid;
+  box-sizing: border-box;
+  position: absolute;
+  pointer-events: none;
+}
+.MeterCircleStyles_circleValuefullStyle__dfqfbgt {
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+.MeterCircleStyles_circleValuetopStyle__dfqfbgu {
+  top: 100%;
+  left: 50%;
+  translate: -50% -100%;
+}
+.MeterCircleStyles_circleValuerightStyle__dfqfbgv {
+  top: 50%;
+  translate: 0 -50%;
+}
+.MeterCircleStyles_circleValueleftStyle__dfqfbgw {
+  left: 100%;
+  top: 50%;
+  translate: -100% -50%;
+}
+.MeterCircleStyles_circleValuebottomStyle__dfqfbgx {
+  left: 50%;
+  translate: -50% 0;
+}
+.MeterCircleStyles_referenceBaseLineStyle__dfqfbgy {
+  height: 2px;
+  position: absolute;
+  transform-origin: 0 50%;
+  background-clip: padding-box;
+  border-bottom: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-contrast-line);
+}
+.MeterCircleStyles_referenceBorderStyle__dfqfbgz {
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dvt-reference-object-line);
+}

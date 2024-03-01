@@ -1,0 +1,56 @@
+.Table_innerTableStyles_base__2dfh9v0 {
+  background-color: inherit;
+  border-spacing: 0;
+  box-sizing: border-box;
+}
+.Table_collectionStyles_base__2dfh9v1 {
+  background-color: inherit;
+}
+.Table_focusTrackerStyles_base__2dfh9v2 {
+  background-color: inherit;
+  min-height: 100%;
+  min-width: 100%;
+  position: relative;
+}
+.Table_tableHeaderRowStyles_base__2dfh9v3 {
+  background-color: inherit;
+  box-sizing: border-box;
+  height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-row-height);
+}
+.Table_tableHeaderRowContainerStyles_base__2dfh9v4 {
+  background-color: inherit;
+}
+.Table_tableHeaderSortContainerStyles_base__2dfh9v5 {
+  align-items: center;
+  display: flex;
+}
+.Table_tableFooterRowStyles_base__2dfh9v6 {
+  background-color: inherit;
+  box-sizing: border-box;
+  height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-row-height);
+}
+.Table_tableFooterRowContainerStyles_base__2dfh9v7 {
+  background-color: inherit;
+}
+.Table_tableSkeletonCellStyles_base__2dfh9v8 {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.Table_tableSkeletonBarContainerStyles_base__2dfh9v9 {
+  align-items: center;
+  background-color: inherit;
+  box-sizing: border-box;
+  display: flex;
+  height: calc(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-row-height) - 1px);
+  padding-inline-end: calc(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal) + 1px);
+  padding-inline-start: calc(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal) + 1px);
+}
+.Table_tableDragIndicatorStyles_base__2dfh9va {
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-drop-line);
+  bottom: 0;
+  position: absolute;
+  top: 0;
+  width: 2px;
+  z-index: 100015;
+}

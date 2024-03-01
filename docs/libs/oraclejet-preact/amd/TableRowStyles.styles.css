@@ -1,0 +1,10 @@
+.TableRowStyles_tableRowStyles_base__zfh7v10 {
+  background-color: inherit;
+  box-sizing: border-box;
+}
+.TableRowStyles_tableRowStyles_rowHeight__zfh7v11 {
+  height: calc(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-row-height) - 1px);
+}
+.TableRowStyles_tableRowStyles_lastRowHeight__zfh7v12 {
+  height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-row-height);
+}
