@@ -42,6 +42,10 @@
   min-width: 25rem;
   max-width: 50rem;
 }
+.demo-panel-xl {
+  min-width: 50rem;
+  max-width: 75rem;
+}
 .demo-collection-panel {
   min-width: 50rem;
   max-width: 50rem;
