@@ -10,6 +10,7 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import * as peopleData from "text!./data/peopleData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { ojListView } from "ojs/ojlistview";
+import { SelectorElement } from "ojs/ojselector";
 
 type Employee = {
   id: number;
@@ -33,9 +34,17 @@ const ListView = () => {
   const [selectedItems, setselectedItems] =
     useState<KeySet<Employee["id"]>>(INIT_SELECTEDITEMS);
 
-  /* TODO:  workout the proper type for this event */
-  const handleSelectedChanged = (event: any) => {
-    setselectedItems(event.detail.value);
+  const handleSelectedChanged = (
+    event: ojListView.selectedChanged<Employee["id"], Employee>
+  ) => {
+    setselectedItems(event.detail.value as KeySet<number>);
+    console.log("Selected: ", selectedItems);
+  };
+
+  const handleSelectedKeyChanged = (
+    event: SelectorElement.selectedKeysChanged<Employee["id"]>
+  ) => {
+    setselectedItems(event.detail.value as KeySet<number>);
   };
 
   const renderListItem = useCallback(
@@ -47,15 +56,17 @@ const ListView = () => {
               aria-label="selector"
               slot="selector"
               selectedKeys={selectedItems}
-              onselectedKeysChanged={handleSelectedChanged}
+              onselectedKeysChanged={handleSelectedKeyChanged}
               selectionMode="multiple"
               rowKey={item.data.id}
-              id={"listview_checkboxset" + item.data.id}></oj-selector>
+              id={"listview_checkboxset" + item.data.id}
+            ></oj-selector>
             <oj-avatar
               slot="leading"
               shape="square"
               size="sm"
-              src={item.data.image}></oj-avatar>
+              src={item.data.image}
+            ></oj-avatar>
             <div class="oj-typography-body-md oj-typography-bold">
               {item.data.name}
             </div>
@@ -67,21 +78,24 @@ const ListView = () => {
                 <oj-button
                   id={"save" + item.data.id}
                   display="icons"
-                  class="oj-button-sm">
+                  class="oj-button-sm"
+                >
                   <span slot="startIcon" class="oj-ux-ico-save"></span>
                   Save
                 </oj-button>
                 <oj-button
                   id={"download" + item.data.id}
                   display="icons"
-                  class="oj-button-sm">
+                  class="oj-button-sm"
+                >
                   <span slot="startIcon" class="oj-ux-ico-download"></span>
                   Download
                 </oj-button>
                 <oj-button
                   id={"print" + item.data.id}
                   display="icons"
-                  class="oj-button-sm">
+                  class="oj-button-sm"
+                >
                   <span slot="startIcon" class="oj-ux-ico-print"></span>
                   Print
                 </oj-button>
@@ -104,7 +118,8 @@ const ListView = () => {
         selectionMode="multiple"
         onselectedChanged={handleSelectedChanged}
         selected={selectedItems}
-        class="listview-sizing">
+        class="listview-sizing"
+      >
         <template slot="itemTemplate" render={renderListItem}></template>
       </oj-list-view>
     </div>
