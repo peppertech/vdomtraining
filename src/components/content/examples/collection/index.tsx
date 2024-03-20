@@ -3,6 +3,7 @@ import GroupByTable from "./group-by-table";
 import Treeview from "./treeview";
 import ListView from "./listview";
 import DataGrid from "./datagrid";
+import { RowExpanderTable } from "./rowexpander-table";
 import "preact";
 
 const Collection = () => {
@@ -28,6 +29,10 @@ const Collection = () => {
         <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-xl">
           <h2 class="oj-typography-heading-sm"> Group By Table </h2>
           <GroupByTable />
+        </div>
+        <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-xl">
+          <h2 class="oj-typography-heading-sm"> Row Expander Table </h2>
+          <RowExpanderTable />
         </div>
       </div>
     </div>
