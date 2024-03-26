@@ -380,6 +380,39 @@
         "path": "libs/chai/chai.js",
         "cdnPath": "chai/chai-4.3.10.min"
       }
+    },
+    "react-router-dom": {
+      "cwd": "node_modules/react-router-dom/dist/umd",
+      "debug": {
+        "src": "react-router-dom.development.js",
+        "path": "libs/react-router-dom/react-router-dom.development.js"
+      },
+      "release": {
+        "src": "react-router-dom.production.min.js",
+        "path": "libs/react-router-dom/react-router-dom.production.min.js"
+      }
+    },
+    "react-router": {
+      "cwd": "node_modules/react-router/dist/umd",
+      "debug": {
+        "src": "react-router.development.js",
+        "path": "libs/react-router/react-router.development.js"
+      },
+      "release": {
+        "src": "react-router.production.min.js",
+        "path": "libs/react-router/react-router.production.min.js"
+      }
+    },
+    "@remix-run/router": {
+      "cwd": "node_modules/@remix-run/router/dist",
+      "debug": {
+        "src": "router.umd.js",
+        "path": "libs/router/router.umd.js"
+      },
+      "release": {
+        "src": "router.umd.min.js",
+        "path": "libs/router/router.umd.min.js"
+      }
     }
   }
 }
