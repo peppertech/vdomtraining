@@ -23,6 +23,7 @@ type JETComponent = {
   image: string;
   isAvailable?: boolean;
 };
+
 const allFormsComponents = [
   {
     id: 1,
@@ -115,6 +116,7 @@ const allFormsComponents = [
     isAvailable: true,
   },
 ];
+
 const dataProvider = new MutableArrayDataProvider<
   JETComponent["id"],
   JETComponent
@@ -127,9 +129,7 @@ const gridlinesItemVisible: ListViewProps["gridlines"] = { item: "visible" };
 const INIT_SELECTEDITEMS = new KeySetImpl([]) as KeySet<JETComponent["id"]>;
 
 const FormsHome = () => {
-  const [selectedItems, setselectedItems] = useState<
-    KeySet<JETComponent["id"]>
-  >(INIT_SELECTEDITEMS);
+  const [selectedItems, setselectedItems] = useState<KeySet<JETComponent["id"]>>(INIT_SELECTEDITEMS);
   const [showComponentDetail, setComponentDetailVal] = useState(false);
   const [activeTab, setActiveTab] = useState<Number>(0);
   const [isComponentAvailable, setComponentAvvailability] = useState(false);
