@@ -226,7 +226,7 @@ const SelectSingle = () => {
       >
         <template
           slot="itemTemplate"
-          render={collectionItemRenderer.bind}
+          render={collectionItemRenderer}
         ></template>
       </oj-list-view>
     );
