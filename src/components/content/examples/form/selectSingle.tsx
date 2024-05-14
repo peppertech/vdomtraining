@@ -12,7 +12,7 @@ import "ojs/ojlistitemlayout";
 import "ojs/ojavatar";
 import { ojSelectSingle } from "ojs/ojselectsingle";
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
-import { ojListView } from "@oracle/oraclejet/dist/types/ojlistview";
+import { ojListView } from "ojs/ojlistview";
 
 //  data types
 type Person = {
@@ -87,9 +87,6 @@ const SelectSingle = () => {
   const [density, setDensity] = useState<
     FormLayoutProps["userAssistanceDensity"]
   >("efficient");
-  // const [selectedItem, setselectedItems] = useState<
-  //   KeySet<OracleEmployee["EMPLOYEE_ID"]>
-  // >(INIT_SELECTEDITEMS);
 
   const onBasicSelectSingleChange = (event: any) => {
     setSelectSingleValue({
