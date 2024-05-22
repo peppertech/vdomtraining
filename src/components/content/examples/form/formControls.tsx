@@ -1,16 +1,13 @@
-import { h } from "preact";
+
 import { useState } from "preact/hooks";
 import "ojs/ojnavigationlist";
 import { ojTabBar } from "ojs/ojnavigationlist";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import FormElements from "./formelements";
-//import Color = require("@oracle/oraclejet/dist/types/ojcolor");
-//import JobApplicationForm from "./jobapplicationform";
 import SelectSingle from "./selectSingle";
 import FormsHome from "./home";
 import ComboBox from "./combobox";
-import InputText from "./inputtext";
-// style={{ fontWeight: 400 , backgroundColor: "gray"}}>
+import InputText from "./inputText";
 
 type Tab = {
   value: string;

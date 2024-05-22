@@ -14,6 +14,15 @@ import { ojSelectSingle } from "ojs/ojselectsingle";
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
+import 'oj-c/select-single';
+ import 'oj-c/list-item-layout';
+import { CSelectSingleElement } from "oj-c/select-single";
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import 'oj-c/form-layout';
+import 'oj-c/avatar';
+import 'oj-c/highlight-text';
+
+
 //  data types
 type Person = {
   id: number;
@@ -72,7 +81,7 @@ const INIT_SELECTEDITEMS = new KeySetImpl([]) as KeySet<
   OracleEmployee["EMPLOYEE_ID"]
 >;
 
-const SelectSingle = () => {
+const SelectSingleCorePack = () => {
   const [selectSingleData, setSelectSingleValue] = useState({
     selectedValue: "Chris Black",
   });
@@ -114,40 +123,40 @@ const SelectSingle = () => {
       >
     ) => {
       return (
-        <oj-list-item-layout class="oj-listitemlayout-padding-off">
-          <span className="oj-typography-body-md oj-text-color-primary">
-            <oj-highlight-text
+       <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
+         <span className="oj-typography-body-md oj-text-color-primary">
+            <oj-c-highlight-text
               text={item.data.FIRST_NAME + " " + item.data.LAST_NAME}
               matchText={item.searchText}
-            ></oj-highlight-text>
+            ></oj-c-highlight-text>
           </span>
-          <oj-avatar
+          <oj-c-avatar
             slot="leading"
             role="img"
             size="xs"
             shape="circle"
             src={item.data.IMAGE}
             title={"Avatar of " + item.data.FIRST_NAME}
-          ></oj-avatar>
+          ></oj-c-avatar>
           <span
             slot="secondary"
             className="oj-typography-body-sm oj-text-color-secondary"
           >
-            <oj-highlight-text
+            <oj-c-highlight-text
               text={item.data.TITLE}
               matchText={item.searchText}
-            ></oj-highlight-text>
+            ></oj-c-highlight-text>
           </span>
           <span
             slot="metadata"
             className="oj-typography-body-sm oj-text-color-secondary"
           >
-            <oj-highlight-text
+            <oj-c-highlight-text
               text={item.data.PHONE_NUMBER}
               matchText={item.searchText}
-            ></oj-highlight-text>
+            ></oj-c-highlight-text>
           </span>
-        </oj-list-item-layout>
+        </oj-c-list-item-layout> 
       );
     },
     []
@@ -239,19 +248,23 @@ const SelectSingle = () => {
         direction="row"
         maxColumns={3}
       >
-        <h6 class="oj-typography-heading-sm"> Select Single (Basic)</h6>
-        <oj-select-single
+
+        <h6 class="oj-typography-heading-sm"> Select Single - Core Pack (Basic)</h6>
+        <oj-c-select-single
           id="employeeSelector"
-          aria-label="Employee Selector"
-          labelHint="Select single "
+          label-hint="Select Single with ArrayDataProvider"
+          label-edge="inside"
+          class="oj-form-control-max-width-md"
           data={employeeDataProvider}
           value={selectSingleData.selectedValue}
           onvalueChanged={onBasicSelectSingleChange}
-        ></oj-select-single>
-        <span>The selected value is: {selectSingleData.selectedValue} </span>
+          itemText="label"
+        ></oj-c-select-single>
 
-        <h6 class="oj-typography-heading-sm"> Select Single (Item Text)</h6>
-        <oj-select-single
+        <span>The selected values are: {selectSingleData.selectedValue} </span>
+
+        <h6 class="oj-typography-heading-sm"> Select Single Core pack (Item Text)</h6>
+        <oj-c-select-single
           id="itemTextSelector"
           aria-label="Employee Selector"
           labelHint="Select single Item text"
@@ -259,14 +272,14 @@ const SelectSingle = () => {
           value={selectedOracleEmployee.selectedValue}
           onvalueChanged={onItemTextSelectionChange}
           itemText={getItemText}
-        ></oj-select-single>
+        ></oj-c-select-single>
         <span>
           The selected value is: {selectedOracleEmployee.selectedValue}{" "}
         </span>
 
         <h6 class="oj-typography-heading-sm"> Select Single (Item Template)</h6>
          
-        <oj-select-single
+        <oj-c-select-single
           id="itemTemplateSelector"
           aria-label="Employee Selector item template"
           labelHint="Select single Item Template"
@@ -279,15 +292,17 @@ const SelectSingle = () => {
             slot="itemTemplate"
             render={itemTemplateRenderer}
           ></template>
-        </oj-select-single>
+        </oj-c-select-single>
         <span>
           The selected value is: {selectedOracleEmployee.selectedValue}
         </span>
 
-        <h6 class="oj-typography-heading-sm">
-          Select Single (Collection Template - List View)
+    
+        {/* <h6 class="oj-typography-heading-sm">
+          Select Single (Collection Template - List View) 
+          collection template is yet to be implemented in core pack 
         </h6>
-        <oj-select-single
+        <oj-c-select-single
           id="collectionTemplateSelector"
           aria-label="Employee Selector Collection template"
           labelHint="Select single Item Template"
@@ -300,11 +315,12 @@ const SelectSingle = () => {
             slot="collectionTemplate"
             render={collectionTemplateRenderer}
           ></template>
-        </oj-select-single>
-        <span>The selected value is: {selectedListViewItem.selectedValue}</span>
+        </oj-c-select-single>
+        <span>The selected value is: {selectedListViewItem.selectedValue}</span> */}
         
       </oj-form-layout>
     </div>
   );
 };
-export default SelectSingle;
+
+export default SelectSingleCorePack;

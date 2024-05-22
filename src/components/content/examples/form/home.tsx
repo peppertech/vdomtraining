@@ -12,16 +12,20 @@ import { ActionCardElement } from "ojs/ojactioncard";
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import SelectSingle from "./selectSingle";
 import ComboBox from "./combobox";
-import InputText from "./inputtext";
+import InputText from "./inputText";
 import FormElements from "./formelements";
 import { ButtonElement } from "ojs/ojbutton";
 import "ojs/ojbutton";
+import SelectMultiple from "./selectMultipleCorePack";
+import SelectSingleCorePack from "./selectSingleCorePack";
+import InputTextCorePack from "./inputTextCorePack";
 
 type JETComponent = {
   id: number;
   name: string;
   image: string;
   isAvailable?: boolean;
+  isCorePack?:boolean;
 };
 
 const allFormsComponents = [
@@ -78,6 +82,14 @@ const allFormsComponents = [
     name: "Input Text",
     image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
     isAvailable: true,
+    isCorePack: false
+  },
+  {
+    id: 18,
+    name: "Input Text",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
+    isAvailable: true,
+    isCorePack: true
   },
   {
     id: 10,
@@ -90,12 +102,21 @@ const allFormsComponents = [
     name: "Select Single",
     image: "oj-ux-icon-size-12x  oj-ux-ico-select-tab",
     isAvailable: true,
+    isCorePack:false,
+  },
+  {
+    id: 17,
+    name: "Select Single",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-select-tab",
+    isAvailable: true,
+    isCorePack:true,
   },
   {
     id: 12,
     name: "RadioSet",
     image: "oj-ux-icon-size-12x  oj-ux-ico-radio-set",
     isAvailable: false,
+    isCorePack:false,
   },
   {
     id: 13,
@@ -114,6 +135,13 @@ const allFormsComponents = [
     name: "Job Application Form",
     image: "oj-ux-icon-size-12x  oj-ux-ico-form-layout-jet",
     isAvailable: true,
+  },
+  {
+    id: 16,
+    name: "Select Multiple",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-select",
+    isAvailable: true,
+    isCorePack:true,
   },
 ];
 
@@ -138,12 +166,18 @@ const FormsHome = () => {
     switch (activeTab) {
       case 11:
         return <SelectSingle />;
+      case 16:
+        return <SelectMultiple />;
       case 14:
         return <ComboBox />;
       case 15:
         return <FormElements />;
+      case 17:
+        return <SelectSingleCorePack/>;
       case 9:
         return <InputText />;
+      case 18:
+        return <InputTextCorePack />;
       default:
         return <FormsHome />;
     }
@@ -155,13 +189,14 @@ const FormsHome = () => {
     setComponentDetailVal(false);
     //console.log("Button clicked: ", label ? label : "Icon Only");
   };
+  
   const handleSelectedChanged = (event: any) => {
     setActiveTab(event.detail.items[0]["key"]);
     setselectedItems(event.detail.value);
     setComponentDetailVal(true);
     //console.log(event.detail.items[0].innerText);
     let filteredComponent = allFormsComponents.filter(
-      (component) => component.name === event.detail.items[0].innerText
+      (component) => component.id === event.detail.items[0].key
     );
     let flag = filteredComponent[0].isAvailable;
     setComponentAvvailability(flag);
@@ -176,8 +211,11 @@ const FormsHome = () => {
         <li>
           <oj-action-card>
             <div class="component-item" key={item.data.id}>
-              <div style={{ paddingTop: "25px" }} class="componentImage">
-                <div class="oj-helper-text-align-center">
+              <div class="componentImage">
+                {item.data.isCorePack ?
+                <span class="demo-badge-position oj-sm-margin-2x-vertical oj-badge oj-badge-end oj-badge-success oj-badge-sm">Core Pack</span>
+                :null}
+                <div class="oj-helper-text-align-center" style={{ paddingTop: "25px" }} >
                   <div className={item.data.image}></div>
                 </div>
                 <div class="oj-flex-item  oj-text-sm componentInfo oj-typography-body-md oj-typography-bold">

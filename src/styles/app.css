@@ -86,6 +86,13 @@
      border-radius: 5px;
   }
  .component-wrapper{
-  padding-left: 25pt;
+  padding-left: 50pt;
  }
+
+  .demo-badge-position {
+    right: 0px;
+    position: absolute;
+    z-index: 1;
+}
+    
   
