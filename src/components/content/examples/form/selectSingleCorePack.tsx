@@ -13,15 +13,13 @@ import "ojs/ojavatar";
 import { ojSelectSingle } from "ojs/ojselectsingle";
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
-
-import 'oj-c/select-single';
- import 'oj-c/list-item-layout';
+import "oj-c/select-single";
+import "oj-c/list-item-layout";
 import { CSelectSingleElement } from "oj-c/select-single";
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'oj-c/form-layout';
-import 'oj-c/avatar';
-import 'oj-c/highlight-text';
-
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
+import "oj-c/form-layout";
+import "oj-c/avatar";
+import "oj-c/highlight-text";
 
 //  data types
 type Person = {
@@ -93,9 +91,8 @@ const SelectSingleCorePack = () => {
     selectedValue: 103,
   });
 
-  const [density, setDensity] = useState<
-    FormLayoutProps["userAssistanceDensity"]
-  >("efficient");
+  const [density, setDensity] =
+    useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
   const onBasicSelectSingleChange = (event: any) => {
     setSelectSingleValue({
@@ -123,8 +120,8 @@ const SelectSingleCorePack = () => {
       >
     ) => {
       return (
-       <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
-         <span className="oj-typography-body-md oj-text-color-primary">
+        <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
+          <span className="oj-typography-body-md oj-text-color-primary">
             <oj-c-highlight-text
               text={item.data.FIRST_NAME + " " + item.data.LAST_NAME}
               matchText={item.searchText}
@@ -156,7 +153,7 @@ const SelectSingleCorePack = () => {
               matchText={item.searchText}
             ></oj-c-highlight-text>
           </span>
-        </oj-c-list-item-layout> 
+        </oj-c-list-item-layout>
       );
     },
     []
@@ -248,8 +245,10 @@ const SelectSingleCorePack = () => {
         direction="row"
         maxColumns={3}
       >
-
-        <h6 class="oj-typography-heading-sm"> Select Single - Core Pack (Basic)</h6>
+        <h6 class="oj-typography-heading-sm">
+          {" "}
+          Select Single - Core Pack (Basic)
+        </h6>
         <oj-c-select-single
           id="employeeSelector"
           label-hint="Select Single with ArrayDataProvider"
@@ -263,7 +262,10 @@ const SelectSingleCorePack = () => {
 
         <span>The selected values are: {selectSingleData.selectedValue} </span>
 
-        <h6 class="oj-typography-heading-sm"> Select Single Core pack (Item Text)</h6>
+        <h6 class="oj-typography-heading-sm">
+          {" "}
+          Select Single Core pack (Item Text)
+        </h6>
         <oj-c-select-single
           id="itemTextSelector"
           aria-label="Employee Selector"
@@ -278,9 +280,10 @@ const SelectSingleCorePack = () => {
         </span>
 
         <h6 class="oj-typography-heading-sm"> Select Single (Item Template)</h6>
-         
+
         <oj-c-select-single
           id="itemTemplateSelector"
+          disabled={true}
           aria-label="Employee Selector item template"
           labelHint="Select single Item Template"
           data={oracleEmployeeDataProvider}
@@ -293,17 +296,14 @@ const SelectSingleCorePack = () => {
             render={itemTemplateRenderer}
           ></template>
         </oj-c-select-single>
-        <span>
-          The selected value is: {selectedOracleEmployee.selectedValue}
-        </span>
+        <span>It will be available from JET 17.0.0 onwards</span>
 
-    
-        {/* <h6 class="oj-typography-heading-sm">
-          Select Single (Collection Template - List View) 
-          collection template is yet to be implemented in core pack 
+        <h6 class="oj-typography-heading-sm">
+          Select Single (Collection Template)
         </h6>
         <oj-c-select-single
           id="collectionTemplateSelector"
+          disabled={true}
           aria-label="Employee Selector Collection template"
           labelHint="Select single Item Template"
           labelEdge="inside"
@@ -316,8 +316,8 @@ const SelectSingleCorePack = () => {
             render={collectionTemplateRenderer}
           ></template>
         </oj-c-select-single>
-        <span>The selected value is: {selectedListViewItem.selectedValue}</span> */}
-        
+        {/* <span>The selected value is: {selectedListViewItem.selectedValue}</span> */}
+        <span>It will be available from JET 17.0.0 onwards</span>
       </oj-form-layout>
     </div>
   );
