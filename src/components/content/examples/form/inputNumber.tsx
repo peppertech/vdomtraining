@@ -48,6 +48,15 @@ const InputNumber = () => {
     //   [event.currentTarget.id]: event.detail.value,
     // });
   };
+  const eatNonNumbers = (event: KeyboardEvent) => {
+    let charCode = event.which ? event.which : event.keyCode;
+    let char = String.fromCharCode(charCode);
+    // Only allow ".0123456789" (and non-display characters)
+    let replacedValue = char.replace(/[^0-9\.]/g, "");
+    if (char !== replacedValue) {
+      event.preventDefault();
+    }
+  };
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
@@ -56,7 +65,6 @@ const InputNumber = () => {
         userAssistanceDensity={density}
         columns={3}
         labelEdge="inside"
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         direction="row"
       >
@@ -142,7 +150,6 @@ const InputNumber = () => {
         userAssistanceDensity={density}
         columns={3}
         labelEdge="inside"
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         direction="row"
       >
@@ -187,6 +194,21 @@ const InputNumber = () => {
           value={20}
           labelEdge="provided"
           labelHint="confirmation"
+        ></oj-input-number>
+      </oj-form-layout>
+      <h6 class="oj-typography-heading-sm">Eat Non Numbers </h6>
+      <oj-form-layout
+        columns={3}
+        labelEdge="inside"
+        maxColumns={3}
+        direction="row"
+      >
+        <oj-input-number
+          id="inputnumber-id"
+          value={formData.currentValue}
+          onKeyPress={eatNonNumbers}
+          labelHint="Eat Non-numbers"
+          labelEdge="inside"
         ></oj-input-number>
       </oj-form-layout>
     </div>

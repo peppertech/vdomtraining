@@ -20,6 +20,8 @@ import SelectSingleCorePack from "./selectSingleCorePack";
 import InputTextCorePack from "./inputTextCorePack";
 import InputNumber from "./inputNumber";
 import InputNumberCorePack from "./inputNumberCorePack";
+import InputDateTime from "./inputDateTime";
+import TextArea from "./textArea";
 
 type JETComponent = {
   id: number;
@@ -54,12 +56,13 @@ const allFormsComponents = [
   //   image: "oj-ux-icon-size-12x  oj-ux-ico-form-layout-jet",
   //   isAvailable: false,
   // },
-  // {
-  //   id: 5,
-  //   name: "Input Date Time",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-calendar-clock",
-  //   isAvailable: false,
-  // },
+  {
+    id: 5,
+    name: "Input Date Time",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-calendar-clock",
+    isAvailable: true,
+    isCorePack: false,
+  },
   {
     id: 6,
     name: "Input Number",
@@ -104,7 +107,8 @@ const allFormsComponents = [
     id: 10,
     name: "Text Area",
     image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-area",
-    isAvailable: false,
+    isAvailable: true,
+    isCorePack: false,
   },
   {
     id: 11,
@@ -176,6 +180,10 @@ const FormsHome = () => {
     switch (activeTab) {
       case 6:
         return <InputNumber />;
+      case 10:
+        return <TextArea />;
+      case 5:
+        return <InputDateTime />;
       case 20:
         return <InputNumberCorePack />;
       case 11:
@@ -214,7 +222,7 @@ const FormsHome = () => {
     );
     let flag = filteredComponent[0].isAvailable;
     setComponentAvvailability(flag);
-    console.log(isComponentAvailable);
+    // console.log(isComponentAvailable);
   };
   // <div class="comingsoon">Coming soon....</div>
   const renderListItem = useCallback(

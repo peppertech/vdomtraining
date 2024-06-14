@@ -5,6 +5,7 @@ import * as ConverterUtilsI18n from "ojs/ojconverterutils-i18n";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
 import Message = require("ojs/ojmessaging");
+import "ojs/ojdatetimepicker";
 
 type InputTextProps = ComponentProps<"oj-input-text">;
 type FormLayoutProps = ComponentProps<"oj-form-layout">;
@@ -39,6 +40,7 @@ const confirmation = [
 ];
 // 'any' type is being used because method is used by multiple ..
 const InputText = () => {
+  //-- for date
   const [formData, setFormData] = useState({
     itemName: "Kopi Luwak beans (2 lbs)",
     itemBuyer: "",
@@ -47,6 +49,7 @@ const InputText = () => {
     value: "",
     creditCardVal: "Enter credit card details",
     emailVal: "Enter email address",
+    currentValue: 10,
   });
 
   const [isDisabled, setIsDisabled] = useState(true);
