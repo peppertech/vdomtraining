@@ -2,12 +2,14 @@ import "preact";
 import BindingContent from "./bindings/index";
 import ModulesContent from "./modules/index";
 import ExampleContent from "./examples/index";
+import CoreRouter = require("ojs/ojcorerouter");
 
 type Props = {
   page: string;
+  router: CoreRouter;
 };
 
-const Content = (props: Props) => {
+const Content = ({ router, page }: Props) => {
   let pageContent = (page: string) => {
     switch (page) {
       case "modules":
@@ -15,13 +17,13 @@ const Content = (props: Props) => {
       case "bindings":
         return <BindingContent />;
       case "examples":
-        return <ExampleContent />;
+        return <ExampleContent router={router} />;
     }
   };
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
-      {pageContent(props.page as string)}
+      {pageContent(page as string)}
     </div>
   );
 };

@@ -3,36 +3,68 @@ import Form from "./form/index";
 import DataViz from "./dataviz/index";
 import Control from "./control/index";
 import NavLayout from "./navlayout/index";
-import { h } from "preact";
-import { useState } from "preact/hooks";
+import "preact";
+import { useState, useEffect } from "preact/hooks";
 import "ojs/ojnavigationlist";
 import { ojTabBar } from "ojs/ojnavigationlist";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import CoreRouter = require("ojs/ojcorerouter");
+import UrlParamAdapter = require("ojs/ojurlparamadapter");
+
+type Props = {
+  router: CoreRouter;
+};
 
 type Tab = {
-  value: string;
+  path: string;
   label: string;
   icon?: string;
 };
 
-const ExampleContent = () => {
+let exampleRouter: any = null;
+const ExampleContent = (props: Props) => {
   const [activeTab, setActiveTab] = useState<string>("collection");
 
   const tabs = [
-    { value: "collection", label: "Collection" },
-    { value: "form", label: "Form" },
-    { value: "dataviz", label: "Data Visualization" },
-    { value: "control", label: "Control" },
-    { value: "navlayout", label: "Navigation and Layout" },
+    { path: "", redirect: "collection" },
+    { path: "collection", label: "Collection", detail: {} },
+    { path: "form", label: "Form", detail: {} },
+    { path: "dataviz", label: "Data Visualization", detail: {} },
+    { path: "control", label: "Control", detail: {} },
+    { path: "navlayout", label: "Navigation and Layout", detail: {} },
   ];
+  if (!props.router.childRouter) {
+    exampleRouter = props.router.createChildRouter(tabs, {
+      urlAdapter: new UrlParamAdapter(),
+    });
+  }
 
-  const tabbarDP = new MutableArrayDataProvider<Tab["value"], Tab>(tabs, {
-    keyAttributes: "value",
-  });
+  useEffect(() => {
+    if (exampleRouter) {
+      exampleRouter.currentState.subscribe(routerUpdated);
+      exampleRouter.sync();
+    }
+  }, []);
+
+  const routerUpdated = (
+    actionable: CoreRouter.ActionableState<CoreRouter.DetailedRouteConfig>
+  ): void => {
+    // Update our state based on new router state
+    const newPath = actionable.state?.path;
+    setActiveTab(newPath);
+  };
+
+  const tabbarDP = new MutableArrayDataProvider<Tab["path"], Tab>(
+    tabs.slice(0),
+    {
+      keyAttributes: "path",
+    }
+  );
   const loadTabContent = (
-    event: ojTabBar.selectionChanged<Tab["value"], Tab>
+    event: ojTabBar.selectionChanged<Tab["path"], Tab>
   ) => {
     setActiveTab(event.detail.value);
+    exampleRouter.go({ path: event.detail.value });
   };
 
   let pageContent = () => {
@@ -52,7 +84,7 @@ const ExampleContent = () => {
     }
   };
 
-  const tabItemTemplate = (item: ojTabBar.ItemContext<Tab["value"], Tab>) => {
+  const tabItemTemplate = (item: ojTabBar.ItemContext<Tab["path"], Tab>) => {
     return (
       <li>
         <a href="#">
@@ -70,7 +102,8 @@ const ExampleContent = () => {
         edge="top"
         data={tabbarDP}
         selection={activeTab}
-        onselectionChanged={loadTabContent}>
+        onselectionChanged={loadTabContent}
+      >
         <template slot="itemTemplate" render={tabItemTemplate}></template>
       </oj-tab-bar>
       <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
