@@ -140,12 +140,12 @@ const SelectMultiple = () => {
 
         <h6 class="oj-typography-heading-sm"> Select Multiple - Core Pack (Basic)</h6>
          <oj-c-select-multiple
-                 id="basicSelect"
+                id="basicSelect"
                 data={employeeDataProvider}
-                item-text="label"
+                itemText="label"
                 value={selectMultipleData.selectedValue}
                 onvalueChanged={onBasicSelectMultipleChange}
-                label-hint="enabled">
+                labelHint="enabled">
         </oj-c-select-multiple>
 
         <span>The selected values are: {selectMultipleData.selectedValue? Array.from(selectMultipleData.selectedValue).join(', ') : ''} </span>
