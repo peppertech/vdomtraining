@@ -49,8 +49,26 @@
         chai: "libs/chai/chai-4.2.0"
       }
     // endinjector
-    
   });
+      // locale-begin
+  const localeOverride = window.localStorage.getItem("mylocale");
+   if (localeOverride) {
+     // set dir attribute on <html> element.
+     if(localeOverride === "ar-EG"){
+       document.getElementsByTagName('html')[0].setAttribute('dir','rtl');
+     } else {
+       document.getElementsByTagName('html')[0].setAttribute('dir','ltr');
+     }
+     requirejs.config({
+       config: {
+         ojL10n: {
+           locale: localeOverride,
+         },
+       },
+     });
+   }  
+  // locale-end
+
 })();
 
 require(["index"]);

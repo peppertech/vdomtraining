@@ -42,6 +42,12 @@ const routeArray: Array<Route> = [
       iconClass:
         "oj-navigationlist-item-icon oj-ux-ico-instructor-training-plus",
     },
+  }, {
+    path: "localization",
+    detail: {
+      label: "Localization",
+      iconClass: "oj-navigationlist-item-icon oj-ux-ico-languages",
+    },
   },
 ];
 

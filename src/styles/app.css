@@ -68,3 +68,78 @@
 .demo-form-container {
   width: 350px;
 }
+
+
+/* Localization app's CSS content goes below. (wegan-JET-69937-localization-vdom)  */
+
+.demo-oracle-icon {
+  width: 137px;
+  height: 18px
+}
+
+.demo-en-flag-icon:before {
+  content: url("./images/flg-us.svg");
+}
+
+html[dir="rtl"] .demo-en-flag-icon:before {
+  content: url("./images/flg-us.svg");
+}
+
+.demo-fr-flag-icon:before {
+  content: url("./images/flg-fr.svg");
+}
+
+html[dir="rtl"] .demo-fr-flag-icon:before {
+  content: url("./images/flg-fr.svg");
+}
+
+.demo-cz-flag-icon:before {
+  content: url("./images/flg-cz.svg");
+}
+
+html[dir="rtl"] .demo-cz-flag-icon:before {
+  content: url("./images/flg-cz.svg");
+}
+
+.demo-eg-flag-icon:before {
+  content: url("./images/flg-eg.svg");
+}
+
+html[dir="rtl"] .demo-eg-flag-icon:before {
+  content: url("./images/flg-eg.svg");
+}
+
+.demo-oracle-icon:before {
+  content: url("./images/oracle_logo.svg")
+}
+
+html:not([dir="rtl"]) .demo-oracle-icon {
+  padding-right: 4px
+}
+
+html[dir="rtl"] .demo-oracle-icon {
+  padding-left: 4px
+}
+
+.demo-oracle-icon:before {
+  display: inline
+}
+
+.demo-appheader-avatar {
+  width: 24px;
+  height: 24px
+}
+
+.demo-appheader-avatar:before {
+  content: url("./images/avatar_24px.png")
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5),
+(min-resolution: 144dpi),
+(min-resolution: 1.5dppx) {
+  .demo-appheader-avatar:before {
+    content: url("./images/avatar_24px_2x.png");
+    -webkit-transform: translate(-25%, -25%) scale(0.5);
+    transform: translate(-25%, -25%) scale(0.5)
+  }
+}

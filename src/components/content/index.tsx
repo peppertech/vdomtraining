@@ -2,6 +2,7 @@ import "preact";
 import BindingContent from "./bindings/index";
 import ModulesContent from "./modules/index";
 import ExampleContent from "./examples/index";
+import Localization from "./localization/index";
 import CoreRouter = require("ojs/ojcorerouter");
 
 type Props = {
@@ -16,6 +17,8 @@ const Content = ({ router, page }: Props) => {
         return <ModulesContent />;
       case "bindings":
         return <BindingContent />;
+      case "localization":
+        return <Localization />;
       case "examples":
         return <ExampleContent router={router} />;
     }
