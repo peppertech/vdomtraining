@@ -1,6 +1,5 @@
 import { h } from "preact";
-import { useState, useEffect } from 'preact/hooks';
-import { ojButtonsetOne } from "ojs/ojbutton";
+import { useState } from 'preact/hooks';
 import * as MenuBundle from "ojL10n!../../resources/nls/menu";
 import * as Translations from "ojs/ojtranslation";
 import "ojs/ojformlayout";
@@ -11,23 +10,8 @@ import { MenuButtonElement } from "ojs/ojbutton";
 const Localization = () => {
 
 
-  console.log("Content renders");
 
   const [btnLocaleLabel, setBtnLocaleLabel] = useState(MenuBundle.label);
-  const [buttonVal, setButtonVal] = useState(window.localStorage.getItem('mylang'));
-
-  // Use useEffect to load value from localStorage
-  useEffect(() => {
-    const savedLang = window.localStorage.getItem('mylang');
-    if (savedLang) {
-      setButtonVal(savedLang);
-    }
-    else {
-      setButtonVal('English');
-      window.localStorage.setItem('mylang', 'English');
-    }
-  }, []);
-
 
   // Named message token example
   const parMyUserKey = { username: 'Foo', groupname: 'Test' };
@@ -74,56 +58,7 @@ const Localization = () => {
     setBtnLocaleLabel(val);
   };
 
-  const toolbarData = {
-    // user name in toolbar
-    userName: "john.hancock@oracle.com",
-    toolbar_buttons: [
-      {
-        label: "English",
-        iconClass: "demo-en-flag-icon",
-        url: "#"
-      },
-      {
-        label: "Français",
-        iconClass: "demo-fr-flag-icon",
-        url: "fr/index.html"
-      },
-      {
-        label: "Čeština",
-        iconClass: "demo-cz-flag-icon",
-        url: "#"
-      },
-      {
-        label: "عربي",
-        iconClass: "demo-eg-flag-icon",
-        url: "#"
-      }
-    ]
-  };
 
-  const langChangeHandler = (event: ojButtonsetOne.valueChanged) => {
-    /**
-     * Code to update localStorage and reload the app
-     */
-    let newLocale = "";
-    let lang = event.detail.value;
-    switch (lang) {
-      case "Čeština":
-        newLocale = "cs-CZ";
-        break;
-      case "Français":
-        newLocale = "fr-FR";
-        break;
-      case "عربي":
-        newLocale = "ar-EG";
-        break;
-      default:
-        newLocale = "en-US";
-    }
-    window.localStorage.setItem('mylocale', newLocale);
-    window.localStorage.setItem('mylang', lang);
-    location.reload();
-  };
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
@@ -133,34 +68,13 @@ const Localization = () => {
 
       <p>
         This component (<strong>Localization</strong>) renders a number of UI components that use string values from the resource bundle in <code>./ vdomtraining/src/components/resources</code>{' '}
-        for the selected locale. The flag toolbar (English, French, and so on) sets the locale in the browser's local storage and reloads the app. On reload, the app's <code>./src/main.js</code> file
+        for the selected locale. The flag menu at the top of the screen (English, French, and so on) sets the locale in the browser's local storage and reloads the app. On reload, the app's <code>./src/main.js</code> file
         uses an <code>localeOverride</code> function to get the current specified locale.
       </p>
 
       <p>Select a flag to see the language and locale changes below</p>
       <hr />
       <div>
-        <div className="toolbar">
-          <oj-buttonset-one
-            id="formatsetWidth1"
-            value={buttonVal}
-            aria-label="Choose only one language"
-            chroming="borderless"
-            onvalueChanged={langChangeHandler}>
-            {toolbarData.toolbar_buttons.map((button, index) => (
-              <oj-option key={index} value={button.label}>
-                <span>
-                  <span>{button.label}</span>
-                </span>
-                <span
-                  slot="startIcon"
-                  className={`${button.iconClass} oj-ux-icon-size-4x`}
-                ></span>
-              </oj-option>
-            ))}
-          </oj-buttonset-one>
-        </div>
-        <hr></hr>
         <div>
           <div id="buttons-container">
             <oj-form-layout columns={1}>
