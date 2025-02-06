@@ -17,6 +17,7 @@ import IconFont from "./image/iconfont";
 import MenuSelectMany from "./menu/menuselectmany";
 import ProgressCircle from "./progress/progresscircle";
 import { MasonryItem, MasonryLayout } from "../navlayout/masonry";
+import { Counter } from "./counter";
 
 const Control = () => {
   return (
@@ -100,6 +101,7 @@ const Control = () => {
           <Train />
         </MasonryItem>
       </MasonryLayout>
+      <Counter initialCount={0}/>
     </div>
   );
 };

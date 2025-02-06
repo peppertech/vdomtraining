@@ -1,2 +1,0 @@
-define(['exports', '../LabelStyles.css', './LabelBaseTheme.css', './LabelVariants.css', 'css!./../../../LabelStyles.styles.css', 'module', '../../../vanilla-extract-recipes-createRuntimeFn.esm-103a441d'], (function(e,s,a,t,l,i,n){"use strict";const c={baseTheme:a.baseTheme,multiVariantStyles:t.multiVariantStyles,variants:s.variants,styles:s.styles};e.LabelStableTheme=c,Object.defineProperty(e,"__esModule",{value:!0})}));
-//# sourceMappingURL=LabelTheme.js.map

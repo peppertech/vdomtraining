@@ -1,12 +1,18 @@
-import "preact";
+import {ComponentProps} from "preact";
 import { ButtonElement } from "ojs/ojbutton"; // import the types for oj-button
 import "ojs/ojbutton"; // Import Oracle JET Button component
+import "oj-c/button"
+import { CButtonElement } from "oj-c/button";
 
 const Button = () => {
   const handleOjAction = (event: ButtonElement.ojAction) => {
     const label = event.detail.originalEvent.currentTarget.innerText;
     console.log("Button clicked: ", label ? label : "Icon Only");
   };
+  const handleOjActionCore = (event:CButtonElement.ojAction) => {
+    console.log("Reason: ", event.detail.reason)  
+    console.log("CoreButtonID: ", (event.target as HTMLElement).id)  
+  }
 
   return (
     <div>
@@ -29,6 +35,7 @@ const Button = () => {
         chroming="callToAction"
         class="oj-button-full-width"
         onojAction={handleOjAction}></oj-button>
+      <oj-c-button id="ReasonBtn" label="Check Reason" onojAction={handleOjActionCore}></oj-c-button>
     </div>
   );
 };

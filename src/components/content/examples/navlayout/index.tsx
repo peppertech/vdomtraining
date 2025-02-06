@@ -10,6 +10,7 @@ import "ojs/ojbutton";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
 import "ojs/ojdrawerlayout";
+import { Test1 } from "./test1";
 
 const NavLayout = () => {
   const [opened, setOpened] = useState<boolean>(false);
@@ -41,7 +42,7 @@ const NavLayout = () => {
             <h2 class="oj-typography-heading-sm"> Action Card </h2>
             <ActionCard />
           </div>
-          <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-sm">
+          <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-xl">
             <h2 class="oj-typography-heading-sm"> Tabbar </h2>
             <TabBar />
           </div>
@@ -52,6 +53,10 @@ const NavLayout = () => {
           <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-sm">
             <h2 class="oj-typography-heading-sm"> Popup </h2>
             <Popup />
+          </div>
+          <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-sm">
+            <h2 class="oj-typography-heading-sm"> Andy Sefkow </h2>
+            <Test1 />
           </div>
         </div>
         <div

@@ -62,6 +62,20 @@ export const App = registerCustomElement("app-root", (props: Props) => {
     Context.getPageContext().getBusyContext().applicationBootstrapComplete();
     router.currentState.subscribe(routerUpdated);
     router.sync();
+
+    // Intro of a potential keyboard info feature for Accessibility discoverability.
+    document.addEventListener("keyup", (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === "?") {
+        
+        // If Ctrl/Shift/? is pressed get the currently active element.
+        // this will allow us to lookup that elements keyboard usage
+        // and display that in the future.
+        const elem = document.activeElement;
+        const elemType = elem?.tagName;
+        console.log(elemType + " : " + elem?.id);
+      }
+    });
+
   }, []);
 
   const routerUpdated = (

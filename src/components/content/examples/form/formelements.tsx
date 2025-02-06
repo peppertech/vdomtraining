@@ -1,5 +1,5 @@
 import { h, ComponentProps } from "preact";
-import { useState, useRef } from "preact/hooks";
+import { useState, useRef, useEffect } from "preact/hooks";
 import * as NumberConverter from "ojs/ojconverter-number";
 import * as ConverterUtilsI18n from "ojs/ojconverterutils-i18n";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
@@ -10,6 +10,8 @@ import "ojs/ojinputtext";
 import "ojs/ojdatetimepicker";
 import "ojs/ojselectsingle";
 import "ojs/ojdialog";
+import "oj-c/radioset"
+import "ojs/ojtreeview"
 import * as peopleData from "text!./data/peopleData.json";
 import { ojButton } from "ojs/ojbutton";
 import { ojDialog } from "ojs/ojdialog";
@@ -17,6 +19,8 @@ import { ojCheckboxset } from "ojs/ojcheckboxset";
 import { ojInputText } from "ojs/ojinputtext";
 import { ojInputDate } from "ojs/ojdatetimepicker";
 import { ojSelectSingle } from "ojs/ojselectsingle";
+import ArrayTreeDataProvider = require("ojs/ojarraytreedataprovider");
+import * as Logger from "ojs/ojlogger";
 
 const buyers: Array<object> = [];
 
@@ -69,12 +73,24 @@ const FormElements = () => {
     itemCost: value,
     salesDate: valDateTime,
   });
-
+  useEffect(()=>{
+    Logger.option("level",  Logger.LEVEL_WARN);
+    Logger.warn("Testing if this works");
+  },[])
   const [isDisabled, setIsDisabled] = useState(true);
   const [density, setDensity] =
     useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
   const dialogRef = useRef<ojDialog>(null);
+
+  const currentColor = "red";
+  const colorOptions = [
+    { value: "blue", label: "Blue" },
+    { value: "green", label: "Green" },
+    { value: "red", label: "Red" },
+    { value: "lime", label: "Lime" },
+    { value: "aqua", label: "Aqua" },
+  ];
 
   const onChange = (event: any) => {
     setFormData({
@@ -98,6 +114,23 @@ const FormElements = () => {
   ) => {
     event.detail.value!.length < 1 ? setIsDisabled(true) : setIsDisabled(false);
   };
+  const dataProvider = new ArrayTreeDataProvider([
+    { title: 1, id: 1 },
+    { title: 2, id: 2 }
+  ], { keyAttributes: 'id' });
+
+
+  const renderItems = (item: any) => {
+    return (
+      <>
+        <span class="oj-treeview-item-icon"></span>
+        <span class="oj-treeview-item-text">
+          {item.data.title}
+        </span>
+      </>
+    );
+  }
+
 
   return (
     <div>
@@ -142,6 +175,13 @@ const FormElements = () => {
           onvalueChanged={handleAgreement}>
           <oj-option value={"agree"}>I Agree</oj-option>
         </oj-checkboxset>
+        <oj-c-radioset
+          id="radiosetBasicDemoId"
+          label-hint="Colors"
+          label-edge="inside"
+          options={colorOptions}
+          value={currentColor}>
+        </oj-c-radioset>
         <oj-button onojAction={onSubmit} disabled={isDisabled}>
           Send this stuff
         </oj-button>
@@ -173,6 +213,16 @@ const FormElements = () => {
           </oj-button>
         </div>
       </oj-dialog>
+
+      <oj-tree-view
+        id="treeview"
+        data={dataProvider}
+        selectionMode="multiple"
+        aria-label="Tree View with JSON Data">
+        <template slot="itemTemplate" render={renderItems}>
+        </template>
+      </oj-tree-view>
+
     </div>
   );
 };

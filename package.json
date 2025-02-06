@@ -3,22 +3,21 @@
   "version": "1.0.0",
   "description": "Oracle JET sample app for Virtual DOM (VDOM) architecture",
   "dependencies": {
-    "@oracle/oraclejet": "~16.0.0",
-    "@oracle/oraclejet-core-pack": "~16.0.0",
-    "@oracle/oraclejet-preact": "~16.0.0",
-    "react-router-dom": "^6.22.3"
+    "@oracle/oraclejet": "~17.0.0",
+    "@oracle/oraclejet-core-pack": "~17.0.0",
+    "@oracle/oraclejet-preact": "~17.0.0"
   },
   "devDependencies": {
-    "@oracle/ojet-cli": "~16.0.0",
+    "@oracle/ojet-cli": "~17.0.0",
     "extract-zip": "^1.7.0",
     "fs-extra": "^8.1.0",
-    "glob": "7.2.0",
-    "typescript": "5.3.2",
+    "glob": "10.4.5",
+    "typescript": "5.4.5",
     "underscore": "^1.10.2",
     "yargs-parser": "13.1.2"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   },
   "private": true
 }
