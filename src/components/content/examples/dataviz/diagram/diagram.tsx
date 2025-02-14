@@ -5,6 +5,7 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import * as data from "text!../data/diagramDataSample.json";
 import layout = require("./DemoCircleLayout");
 import { ColorAttributeGroupHandler } from "ojs/ojattributegrouphandler";
+import { DialogIntrinsicProps } from "ojs/ojdialog";
 
 type Node = {
   id: string;
@@ -21,7 +22,7 @@ const colorHandler = new ColorAttributeGroupHandler();
 const layoutFunc = layout.circleLayoutWithLayoutArgs(150);
 const getShape = (category: string) => {
   const shape =
-    category === "0" ? "star" : category === "1" ? "diamond" : "circle";
+    category === "0" ? "square" : category === "1" ? "rectangle" : "circle";
   return shape;
 };
 
