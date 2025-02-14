@@ -10,7 +10,7 @@ const Button = () => {
     console.log("Button clicked: ", label ? label : "Icon Only");
   };
   const handleOjActionCore = (event:CButtonElement.ojAction) => {
-    console.log("Reason: ", event.detail.reason)  
+    // console.log("Reason: ", event.detail.reason)  
     console.log("CoreButtonID: ", (event.target as HTMLElement).id)  
   }
 

@@ -122,11 +122,13 @@ const dataprovider = new MutableArrayTreeDataProvider<NavItem["id"], NavItem>(
 
 export const NavList = () => {
   const [selectedItem, setSelectedItem] = useState<string>("home");
+  
   const changeHandler = (
     event: ojNavigationList.selectionChanged<NavItem["id"], NavItem>
   ) => {
     if (event.detail.updatedFrom === "internal")
       setSelectedItem(event.detail.value);
+    console.log("selected: ",event.detail.value);
   };
 
   const navItemTemplate = (
@@ -146,7 +148,7 @@ export const NavList = () => {
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
       <oj-navigation-list
         style="max-width:20rem"
-        drillMode="collapsible"
+        drillMode="sliding"
         aria-label="Choose a navigation item"
         selection={selectedItem}
         data={dataprovider}
