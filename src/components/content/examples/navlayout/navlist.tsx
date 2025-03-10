@@ -1,7 +1,7 @@
 import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
 import "ojs/ojnavigationlist";
 import "preact";
-import { useState } from "preact/hooks";
+import { useCallback, useState } from "preact/hooks";
 import { ojNavigationList } from "ojs/ojnavigationlist";
 
 type NavItem = {
@@ -122,27 +122,27 @@ const dataprovider = new MutableArrayTreeDataProvider<NavItem["id"], NavItem>(
 
 export const NavList = () => {
   const [selectedItem, setSelectedItem] = useState<string>("home");
-  
+
   const changeHandler = (
     event: ojNavigationList.selectionChanged<NavItem["id"], NavItem>
   ) => {
     if (event.detail.updatedFrom === "internal")
       setSelectedItem(event.detail.value);
-    console.log("selected: ",event.detail.value);
+    console.log("selected: ", event.detail.value);
   };
 
-  const navItemTemplate = (
+  const navItemTemplate = useCallback((
     item: ojNavigationList.ItemContext<NavItem["id"], NavItem>
   ) => {
     return (
       <li id={item.data.id}>
         <a href="">
           <span class={"oj-navigationlist-item-icon " + item.data.icons}></span>
-          {item.data.name}
+            {item.data.name}
         </a>
       </li>
     );
-  };
+  },[]);
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">

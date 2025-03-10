@@ -4,7 +4,9 @@ import GroupByTable from "./group-by-table";
 import Treeview from "./treeview";
 import ListView from "./listview";
 import DataGrid from "./datagrid";
+import CardView from "./cardview";
 import { RowExpanderTable } from "./rowexpander-table";
+import { Content } from "./test1";
 import "preact";
 
 const Collection = () => {
@@ -39,6 +41,11 @@ const Collection = () => {
           <h2 class="oj-typography-heading-sm"> Row Expander Table </h2>
           <RowExpanderTable />
         </div>
+        <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-xl">
+          <h2 class="oj-typography-heading-sm"> Card View </h2>
+          <CardView />
+        </div>
+        {/* <Content/> */}
       </div>
     </div>
   );

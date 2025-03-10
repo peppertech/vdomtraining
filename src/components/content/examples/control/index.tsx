@@ -5,6 +5,7 @@ import Button from "./button/button";
 import ConveyorBelt from "./conveyorbelt";
 import FilePicker from "./filepicker";
 import FilmStrip from "./filmstrip";
+import FilmStripTest from "./filmstrip-pagingdots";
 import Menu from "./menu/menu";
 import ProgressBar from "./progress/progressbar";
 import Toolbar from "./toolbar";
@@ -87,6 +88,10 @@ const Control = () => {
         <MasonryItem sizeClass="oj-masonrylayout-tile-2x2">
           <h2 class="oj-typography-heading-sm">Film Strip</h2>
           <FilmStrip />
+        </MasonryItem>
+        <MasonryItem sizeClass="oj-masonrylayout-tile-2x2">
+          <h2 class="oj-typography-heading-sm">Film Strip with paging</h2>
+          <FilmStripTest />
         </MasonryItem>
       </MasonryLayout>
       <MasonryLayout>

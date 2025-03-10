@@ -1,5 +1,5 @@
-import { h, ComponentProps } from "preact";
-import { useState, useRef } from "preact/hooks";
+import { ComponentProps } from "preact";
+import { useState, useRef, useCallback } from "preact/hooks";
 import 'ojs/ojvalidationgroup';
 import 'ojs/ojknockout';
 import 'oj-c/input-text';
@@ -15,12 +15,14 @@ import 'oj-c/select-multiple';
 import 'oj-c/select-single';
 import 'ojs/ojformlayout';
 import 'ojs/ojlabelvalue';
+import 'ojs/ojinputtext';
 import { ojMenu } from "ojs/ojmenu";
 import { ojTable } from "ojs/ojtable";
 import { ojButton, ojButtonsetOne } from "ojs/ojbutton";
 import { ojInputText } from "ojs/ojinputtext";
 import * as deptData from "text!./data/departmentData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import { FormVariantContext } from '@oracle/oraclejet-preact/hooks/UNSAFE_useFormVariantContext'
 
 type Dept = {
   DepartmentId: number;
@@ -191,10 +193,10 @@ const TableWithFormEdit = () => {
     );
   };
 
-  const handleCancel = () => {}
-  const handleDone = () => {}
-  const handleUpdate = () => {}
-  const editRowTemplate = (row: ojTable.RowTemplateContext<Dept["DepartmentId"], Dept>) => {
+  const handleCancel = () => { }
+  const handleDone = () => { }
+  const handleUpdate = () => { }
+  const editRowTemplate = useCallback((row: ojTable.RowTemplateContext<Dept["DepartmentId"], Dept>) => {
 
     return (
       <>
@@ -226,41 +228,45 @@ const TableWithFormEdit = () => {
         {row.mode === 'edit' && (
           <>
             <td colspan={3} class="oj-form-control-default oj-sm-padding-2x oj-table-data-cell-padding">
-              <oj-validation-group id="tracker">
-                <oj-form-layout id="ofl1" maxColumns={4} direction="row">
-                  <oj-c-input-text
-                    id="it1"
-                    labelHint="Dept Name"
-                    value={row.item.data.DepartmentId}
-                    class="editable"></oj-c-input-text>
-                  <oj-c-input-text
-                    id="it2"
-                    value={row.item.data.LocationId}
-                    labelHint="Location Id"
-                    class="editable"></oj-c-input-text>
-                </oj-form-layout>
-              </oj-validation-group>
-              <oj-c-button
-                id="cancel"
-                size="sm"
-                label="Cancel"
-                chroming="borderless"
-                onojAction={handleCancel}
-                data-oj-clickthrough="disabled">
-              </oj-c-button>
-              <oj-c-button
-                id="update"
-                size="sm"
-                label="Apply"
-                chroming="outlined"
-                onojAction={handleDone}
-                data-oj-clickthrough="disabled">
-              </oj-c-button>
+               <FormVariantContext.Provider value={'default'}> {/* This is not ideal, but it works for development.  Not for production. */}
+                <oj-validation-group id="tracker">
+                  <oj-form-layout id="ofl1" maxColumns={4} direction="row">
+                    <span>
+                      <oj-c-input-text
+                        id="it1"
+                        labelHint="Dept Name"
+                        value={row.item.data.DepartmentId}
+                        class="editable"></oj-c-input-text>
+                      <oj-c-input-text
+                        id="it2"
+                        value={row.item.data.LocationId}
+                        labelHint="Location Id"
+                        class="editable"></oj-c-input-text>
+                    </span>
+                  </oj-form-layout>
+                </oj-validation-group>
+                <oj-c-button
+                  id="cancel"
+                  size="sm"
+                  label="Cancel"
+                  chroming="borderless"
+                  onojAction={handleCancel}
+                  data-oj-clickthrough="disabled">
+                </oj-c-button>
+                <oj-c-button
+                  id="update"
+                  size="sm"
+                  label="Apply"
+                  chroming="outlined"
+                  onojAction={handleDone}
+                  data-oj-clickthrough="disabled">
+                </oj-c-button>
+              </FormVariantContext.Provider>
             </td>
           </>
         )}
       </>)
-  }
+  }, [])
 
   return (
     <div>

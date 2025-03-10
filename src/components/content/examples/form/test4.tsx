@@ -2,7 +2,9 @@ import { h } from "preact";
 import { ojMenu } from "ojs/ojmenu";
 import "ojs/ojmenu";
 import "ojs/ojbutton";
+import "ojs/ojcheckboxset"
 import "ojs/ojoption";
+import "oj-c/checkboxset"
 import {
   useEffect,
   useState,
@@ -11,9 +13,37 @@ import {
   MutableRef,
   useMemo,
 } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+
+type Class = {
+  id:number
+  label:string
+}
+
+const data:Array<Class> = [
+  {id:388, label:"Blood donation - 388"},
+  {id:389, label:"Emergency - 389"},
+  {id:390, label:"Home health - 390"},
+  {id:391, label:"Inpatient - 391"},
+  {id:392, label:"Observation - 392"},
+]
+
+const browsers = [
+  { value: 'IE', label: 'Internet Explorer' },
+  { value: 'FF', label: 'Firefox' },
+  { value: 'CH', label: 'Chrome' },
+  { value: 'OP', label: 'Opera' },
+  { value: 'SA', label: 'Safari' }
+];
+const encounterClassTypesProvider = new MutableArrayDataProvider<Class["id"],Class>(data, {keyAttributes:"id"})
+const browserDP = new MutableArrayDataProvider(browsers, {keyAttributes:"value"})
+
+
 export function Test4() {
   console.log("Component rendered");
-  let [disableMenu, setDisableMenu] = useState<boolean>(false);
+  const [disableMenu, setDisableMenu] = useState<boolean>(false);
+  const [val, setVal] = useState<string[]>();
+  const [filterEncntrCodes, setFilterEncntrCodes] = useState<Array<number>>([]);
   function waitForSeconds(seconds: number) {
     return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
   }
@@ -46,6 +76,21 @@ export function Test4() {
           </oj-option>
         </oj-menu>
       </oj-menu-button>
+      <oj-checkboxset
+            // label-hint="Exclude Selected Encounter Classes"
+            labelEdge="inside"
+            options={encounterClassTypesProvider}
+            value={filterEncntrCodes}
+            optionsKeys={{value:"id"}}
+            disabled={false}
+          ></oj-checkboxset>
+      <oj-checkboxset
+            // label-hint="Exclude Selected Encounter Classes"
+            labelEdge="inside"
+            options={browserDP}
+            value={val}
+            disabled={false}
+          ></oj-checkboxset>
     </div>
   );
 }

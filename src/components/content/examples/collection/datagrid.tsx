@@ -43,6 +43,7 @@ const numberConverter = new IntlNumberConverter({ useGrouping: true });
 const headerStyle: DataGridProps["header"] = {
   column: {
     className: getColumnHeaderClassName,
+    hidable:"disable",
     resizable: {
       height: "disable",
     },
@@ -56,6 +57,7 @@ const headerStyle: DataGridProps["header"] = {
   },
   row: {
     label: {},
+    hidable:"disable",
     style: "width:165px",
     resizable: {
       width: "disable",
