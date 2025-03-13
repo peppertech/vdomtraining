@@ -1,4 +1,4 @@
-define(["require", "exports", "./collapsible/collapsible"], function (require, exports, collapsible_1) {
+define(["require", "exports", "oj-c/collapsible/collapsible"], function (require, exports, collapsible_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Collapsible = void 0;

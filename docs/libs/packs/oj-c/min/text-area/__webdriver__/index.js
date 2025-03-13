@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findTextArea = exports.TextAreaWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var TextAreaWebElement_1 = require("./TextAreaWebElement");
+exports.TextAreaWebElement = void 0;
+exports.findTextArea = findTextArea;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const TextAreaWebElement_1 = require("./TextAreaWebElement");
 Object.defineProperty(exports, "TextAreaWebElement", { enumerable: true, get: function () { return TextAreaWebElement_1.TextAreaWebElement; } });
 /**
  * Retrieve an instance of [TextAreaWebElement](../classes/TextAreaWebElement.html).
@@ -29,6 +30,5 @@ async function findTextArea(driver, by) {
     }
     return webEl;
 }
-exports.findTextArea = findTextArea;
 (0, oraclejet_webdriver_1.register)('oj-c-text-area', TextAreaWebElement_1.TextAreaWebElement);
 //# sourceMappingURL=index.js.map

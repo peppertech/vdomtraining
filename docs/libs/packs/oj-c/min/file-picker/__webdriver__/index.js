@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findFilePicker = exports.FilePickerWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var FilePickerWebElement_1 = require("./FilePickerWebElement");
+exports.FilePickerWebElement = void 0;
+exports.findFilePicker = findFilePicker;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const FilePickerWebElement_1 = require("./FilePickerWebElement");
 Object.defineProperty(exports, "FilePickerWebElement", { enumerable: true, get: function () { return FilePickerWebElement_1.FilePickerWebElement; } });
 /**
  * Retrieve an instance of [FilePickerWebElement](../classes/FilePickerWebElement.html).
@@ -29,6 +30,5 @@ async function findFilePicker(driver, by) {
     }
     return webEl;
 }
-exports.findFilePicker = findFilePicker;
 (0, oraclejet_webdriver_1.register)('oj-c-file-picker', FilePickerWebElement_1.FilePickerWebElement);
 //# sourceMappingURL=index.js.map

@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findInputDateText = exports.InputDateTextWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var InputDateTextWebElement_1 = require("./InputDateTextWebElement");
+exports.InputDateTextWebElement = void 0;
+exports.findInputDateText = findInputDateText;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const InputDateTextWebElement_1 = require("./InputDateTextWebElement");
 Object.defineProperty(exports, "InputDateTextWebElement", { enumerable: true, get: function () { return InputDateTextWebElement_1.InputDateTextWebElement; } });
 /**
  * Retrieve an instance of [InputDateTextWebElement](../classes/InputDateTextWebElement.html).
@@ -29,6 +30,5 @@ async function findInputDateText(driver, by) {
     }
     return webEl;
 }
-exports.findInputDateText = findInputDateText;
 (0, oraclejet_webdriver_1.register)('oj-c-input-date-text', InputDateTextWebElement_1.InputDateTextWebElement);
 //# sourceMappingURL=index.js.map

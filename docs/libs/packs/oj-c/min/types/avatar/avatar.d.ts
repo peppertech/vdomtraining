@@ -7,12 +7,12 @@ import { ObservedGlobalProps } from 'ojs/ojvcomponent';
 import 'css!oj-c/avatar/avatar-styles.css';
 type PreactAvatarProps = ComponentProps<typeof PreactAvatar>;
 export declare const Avatar: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<ObservedGlobalProps<"aria-label"> & {
-    background?: PreactAvatarProps['background'];
-    initials?: string | null | undefined;
-    size?: PreactAvatarProps['size'];
-    src?: string | null | undefined;
-    iconClass?: string | undefined;
-    shape?: PreactAvatarProps['shape'];
+    background?: PreactAvatarProps["background"];
+    initials?: string | null;
+    size?: PreactAvatarProps["size"];
+    src?: string | null;
+    iconClass?: string;
+    shape?: PreactAvatarProps["shape"];
 }>>;
 export {};
 export interface CAvatarElement extends JetElement<CAvatarElementSettableProperties>, CAvatarElementSettableProperties {

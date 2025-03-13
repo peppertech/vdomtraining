@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CollapsibleWebElement = void 0;
-var selenium_webdriver_1 = require("selenium-webdriver");
-var CollapsibleWebElementBase_1 = require("./CollapsibleWebElementBase");
+const selenium_webdriver_1 = require("selenium-webdriver");
+const CollapsibleWebElementBase_1 = require("./CollapsibleWebElementBase");
 /**
  * The component WebElement for [oj-c-collapsible](../../../oj-c/docs/oj.Collapsible.html).
  * Do not instantiate this class directly, instead, use

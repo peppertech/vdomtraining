@@ -2,18 +2,12 @@
 /node_modules
 /bower_components
 /dist
+/jaftmp@
 /web
 /staged-themes
 /themes
-/jaftmp@
-
-/hybrid/node_modules
-/hybrid/platforms
-/hybrid/www/*
-
-!hybrid/plugins
-hybrid/plugins/*
-!hybrid/plugins/fetch.json
+migrator.log
+migratorConfig.json
 
 .DS_Store
 Thumbs.db

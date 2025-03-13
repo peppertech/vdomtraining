@@ -1,79 +1,52 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "@oracle/oraclejet-preact/UNSAFE_Button", "@oracle/oraclejet-preact/UNSAFE_IconButton", "@oracle/oraclejet-preact/hooks/UNSAFE_useTabbableMode", "preact", "preact/hooks", "preact/compat", "@oracle/oraclejet-preact/hooks/UNSAFE_useTooltip", "ojs/ojvcomponent-binding", "ojs/ojvcomponent", "css!oj-c/button/button-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, UNSAFE_Button_1, UNSAFE_IconButton_1, UNSAFE_useTabbableMode_1, preact_1, hooks_1, compat_1, UNSAFE_useTooltip_1, ojvcomponent_binding_1, ojvcomponent_1) {
+define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "ojs/ojvcomponent", "@oracle/oraclejet-preact/UNSAFE_Button", "@oracle/oraclejet-preact/UNSAFE_IconButton", "@oracle/oraclejet-preact/hooks/UNSAFE_useTabbableMode", "@oracle/oraclejet-preact/hooks/UNSAFE_useTooltip", "@oracle/oraclejet-preact/utils/UNSAFE_mergeProps", "preact/hooks", "preact/compat", "css!oj-c/button/button-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, ojvcomponent_1, UNSAFE_Button_1, UNSAFE_IconButton_1, UNSAFE_useTabbableMode_1, UNSAFE_useTooltip_1, UNSAFE_mergeProps_1, hooks_1, compat_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Button = void 0;
+    function ButtonImpl({ chroming = 'outlined', disabled = false, size = 'md', display = 'all', endIcon, startIcon, edge = 'none', tooltip, width, label, onOjAction, 'aria-label': accessibleLabel, 'aria-describedby': ariaDescribedBy, ...otherProps }, ref) {
+        const rootRef = (0, hooks_1.useRef)();
+        const buttonRef = (0, hooks_1.useRef)();
+        const iconButtonRef = (0, hooks_1.useRef)();
+        const isLabelButton = display != 'icons' ||
+            (startIcon && endIcon && display == 'icons') ||
+            (!startIcon && !endIcon && display == 'icons');
+        const widthSize = { width: edge === 'bottom' ? '100%' : width };
+        const widthProps = width || edge !== 'none' ? { style: widthSize } : {};
+        const ariaProps = { 'aria-describedby': ariaDescribedBy, 'aria-label': accessibleLabel };
+        (0, hooks_1.useImperativeHandle)(ref, () => ({
+            blur: () => (isLabelButton ? buttonRef.current?.blur() : iconButtonRef?.current?.blur()),
+            focus: () => (isLabelButton ? buttonRef.current?.focus() : iconButtonRef?.current?.focus()),
+            click: () => (isLabelButton ? buttonRef.current?.click() : iconButtonRef?.current?.click())
+        }), [isLabelButton, buttonRef, iconButtonRef]);
+        if (isLabelButton) {
+            return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, ...widthProps, "aria-describedby": ariaDescribedBy, children: (0, jsx_runtime_1.jsx)(FunctionalButton, { ref: buttonRef, type: "submit", variant: chroming, tooltip: tooltip, isDisabled: disabled, width: '100%', onAction: onOjAction, startIcon: startIcon, endIcon: endIcon, size: size, label: display == 'icons' ? (!startIcon && !endIcon ? label : '') : label, display: display != 'icons' ? display : 'all', ...ariaProps, ...otherProps }) }));
+        }
+        else {
+            return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, ...widthProps, "aria-describedby": ariaDescribedBy, children: (0, jsx_runtime_1.jsx)(FunctionalIconButton, { width: '100%', ref: iconButtonRef, type: "submit", variant: chroming, isDisabled: disabled, tooltip: tooltip && tooltip !== '' ? tooltip : label, onAction: onOjAction, "aria-label": accessibleLabel && accessibleLabel !== '' ? accessibleLabel : label, "aria-describedby": ariaDescribedBy, size: size, ...otherProps, children: startIcon ?? endIcon }) }));
+        }
+    }
+    exports.Button = (0, ojvcomponent_1.registerCustomElement)('oj-c-button', (0, compat_1.forwardRef)(ButtonImpl), "Button", { "properties": { "label": { "type": "string" }, "tooltip": { "type": "string" }, "disabled": { "type": "boolean" }, "width": { "type": "number|string" }, "display": { "type": "string", "enumValues": ["all", "label", "icons"] }, "size": { "type": "string", "enumValues": ["xs", "sm", "md", "lg"] }, "edge": { "type": "string", "enumValues": ["none", "bottom"] }, "chroming": { "type": "string", "enumValues": ["solid", "ghost", "borderless", "outlined", "callToAction", "danger"], "binding": { "consume": { "name": "containerChroming" } } } }, "slots": { "startIcon": {}, "endIcon": {} }, "events": { "ojAction": { "bubbles": true } }, "extension": { "_OBSERVED_GLOBAL_PROPS": ["aria-describedby", "aria-label"] }, "methods": { "focus": {}, "blur": {}, "click": {} } }, { "chroming": "outlined", "disabled": false, "size": "md", "display": "all", "edge": "none" }, {
+        '@oracle/oraclejet-preact': translationBundle_1.default
+    }, { consume: [UNSAFE_useTabbableMode_1.TabbableModeContext] });
     const FunctionalButton = (0, compat_1.forwardRef)((props, ref) => {
         const buttonRef = (0, hooks_1.useRef)();
         (0, hooks_1.useImperativeHandle)(ref, () => ({
             focus: () => buttonRef.current?.focus(),
-            blur: () => buttonRef.current?.blur()
+            blur: () => buttonRef.current?.blur(),
+            click: () => buttonRef.current?.click()
         }), []);
-        return (0, jsx_runtime_1.jsx)(UNSAFE_Button_1.Button, { ref: buttonRef, ...props });
+        const { tooltipContent, tooltipProps } = (0, UNSAFE_useTooltip_1.useTooltip)({
+            text: props.tooltip,
+            isDisabled: props.isDisabled
+        });
+        return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(UNSAFE_Button_1.Button, { ref: buttonRef, ...(0, UNSAFE_mergeProps_1.mergeProps)(props, tooltipProps) }), tooltipContent] }));
     });
     const FunctionalIconButton = (0, compat_1.forwardRef)((props, ref) => {
         const iconButtonRef = (0, hooks_1.useRef)();
         (0, hooks_1.useImperativeHandle)(ref, () => ({
             focus: () => iconButtonRef.current?.focus(),
-            blur: () => iconButtonRef.current?.blur()
+            blur: () => iconButtonRef.current?.blur(),
+            click: () => iconButtonRef.current?.click()
         }), []);
         return (0, jsx_runtime_1.jsx)(UNSAFE_IconButton_1.IconButton, { ref: iconButtonRef, ...props });
     });
-    let Button = class Button extends preact_1.Component {
-        constructor() {
-            super(...arguments);
-            this.buttonRef = (0, preact_1.createRef)();
-        }
-        render(props) {
-            const widthSize = { width: props.edge === 'bottom' ? '100%' : props.width };
-            const { chroming: variant, disabled: isDisabled, onOjAction: onAction, 'aria-label': accessibleLabel, 'aria-describedby': ariaDescribedBy, width: throwAwayWidth, display: display, label: label, ...otherProps } = { ...props };
-            const { tooltipContent, tooltipProps } = (0, UNSAFE_useTooltip_1.useTooltip)({
-                text: props.tooltip,
-                isDisabled
-            });
-            if (props.display != 'icons' ||
-                (props.startIcon && props.endIcon && props.display == 'icons') ||
-                (!props.startIcon && !props.endIcon && props.display == 'icons')) {
-                const buttonContent = () => ((0, jsx_runtime_1.jsx)(FunctionalButton, { ref: this.buttonRef, type: "submit", variant: variant, isDisabled: isDisabled, width: '100%', onAction: onAction, "aria-label": accessibleLabel, "aria-describedby": ariaDescribedBy, startIcon: props.startIcon, endIcon: props.endIcon, size: props.size, label: props.display == 'icons'
-                        ? !props.startIcon && !props.endIcon
-                            ? props.label
-                            : ''
-                        : props.label, display: props.display != 'icons' ? props.display : 'all', ...tooltipProps, ...otherProps }));
-                return props.width || props.edge !== 'none' ? ((0, jsx_runtime_1.jsxs)(ojvcomponent_1.Root, { style: widthSize, children: [buttonContent(), tooltipContent] })) : ((0, jsx_runtime_1.jsxs)(ojvcomponent_1.Root, { children: [buttonContent(), tooltipContent] }));
-            }
-            else {
-                return ((0, jsx_runtime_1.jsx)(FunctionalIconButton, { ref: this.buttonRef, type: "submit", variant: variant, isDisabled: isDisabled, tooltip: props.tooltip && props.tooltip !== '' ? props.tooltip : props.label, onAction: onAction, "aria-label": accessibleLabel && accessibleLabel !== '' ? accessibleLabel : props.label, "aria-describedby": ariaDescribedBy, size: props.size, ...otherProps, children: props.startIcon ?? props.endIcon }));
-            }
-        }
-        blur() {
-            this.buttonRef.current?.blur();
-        }
-        focus() {
-            this.buttonRef.current?.focus();
-        }
-    };
-    exports.Button = Button;
-    Button.defaultProps = {
-        chroming: 'outlined',
-        disabled: false,
-        size: 'md',
-        display: 'all',
-        endIcon: null,
-        startIcon: null,
-        edge: 'none',
-        tooltip: ''
-    };
-    Button._metadata = { "properties": { "label": { "type": "string" }, "tooltip": { "type": "string" }, "disabled": { "type": "boolean" }, "width": { "type": "number|string" }, "display": { "type": "string", "enumValues": ["all", "label", "icons"] }, "size": { "type": "string", "enumValues": ["sm", "md", "lg"] }, "edge": { "type": "string", "enumValues": ["none", "bottom"] }, "chroming": { "type": "string", "enumValues": ["solid", "ghost", "borderless", "outlined", "callToAction", "danger"], "binding": { "consume": { "name": "containerChroming" } } } }, "slots": { "startIcon": {}, "endIcon": {} }, "events": { "ojAction": { "bubbles": true } }, "extension": { "_OBSERVED_GLOBAL_PROPS": ["aria-describedby", "aria-label"] }, "methods": { "blur": {}, "focus": {} } };
-    Button._translationBundleMap = {
-        '@oracle/oraclejet-preact': translationBundle_1.default
-    };
-    Button._consumedContexts = [UNSAFE_useTabbableMode_1.TabbableModeContext];
-    exports.Button = Button = __decorate([
-        (0, ojvcomponent_1.customElement)('oj-c-button')
-    ], Button);
 });

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SelectorAllWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-selector-all WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -26,6 +26,15 @@ class SelectorAllWebElementBase extends elements_1.OjWebElement {
      */
     getSelectedKeys() {
         return this.getProperty('selectedKeys');
+    }
+    /**
+     * Gets the value of <code>showTooltip</code> property.
+     * Specifies whether tooltip should be shown on the SelectorAll checkbox
+     * @return The value of <code>showTooltip</code> property.
+     *
+     */
+    getShowTooltip() {
+        return this.getProperty('showTooltip');
     }
 }
 exports.SelectorAllWebElementBase = SelectorAllWebElementBase;

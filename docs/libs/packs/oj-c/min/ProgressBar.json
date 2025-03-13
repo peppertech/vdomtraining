@@ -6,7 +6,7 @@
     "memberof": "oj-c",
     "longname": "oj-c.ProgressBar",
     "kind": "class",
-    "classdesc": "<h3 id=\"progressBarOverview-section\">\n  JET Progress Bar\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#progressBarOverview-section\"></a>\n</h3>\nThe oj-c-progress-bar element allows a user to display progress of an operation in a rectangular horizontal meter.\nIf a developer does not wish to display the exact value, a value of '-1' can be passed in to display an indeterminate value.\n\n<pre class=\"prettyprint\"><code>&lt;oj-c-progress-bar value='{{progressValue}}'>&lt;/oj-c-progress-bar></code></pre>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>If this element is being used to describe the loading process of a particular region of a page, then the <code class=\"prettyprint\">aria-describedby</code>\n   attribute of the region must point to the id of the oj-c-progress-bar and <code class=\"prettyprint\">aria-busy = \"true\"</code> must be added to the region until the loading is complete.</p>",
+    "classdesc": "<h3 id=\"progressBarOverview-section\">\n  JET Progress Bar\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#progressBarOverview-section\"></a>\n</h3>\nThe oj-c-progress-bar element allows a user to display progress of an operation in a rectangular horizontal meter.\nIf a developer does not wish to display the exact value, a value of '-1' can be passed in to display an indeterminate value.\n\n<pre class=\"prettyprint\"><code>&lt;oj-c-progress-bar value='{{progressValue}}'>&lt;/oj-c-progress-bar></code></pre>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>\nThe application is required to populate the aria-label or aria-labelledby attribute on the element with meaningful descriptors as\nthe oj-c-progress-bar element does not provide a default descriptor.\n</p>\n\n<p>If this element is being used to describe the loading process of a particular region of a page, then the <code class=\"prettyprint\">aria-describedby</code>\n   attribute of the region must point to the id of the oj-c-progress-bar and <code class=\"prettyprint\">aria-busy = \"true\"</code> must be added to the region until the loading is complete.</p>",
     "scope": "static",
     "tagWithoutBrackets": "oj-c-progress-bar",
     "tagWithBrackets": "<oj-c-progress-bar>",
@@ -39,7 +39,7 @@
     ],
     "meta": {
       "filename": "progress-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/progress-bar"
+      "path": "web/components/oj-c/progress-bar"
     },
     "ojmodule": "progress-bar"
   },
@@ -54,7 +54,7 @@
     "description": "The maximum allowed value. The element's max attribute is used if it\nis provided, otherwise the default value of 100 is used.",
     "meta": {
       "filename": "progress-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/progress-bar"
+      "path": "web/components/oj-c/progress-bar"
     },
     "defaultvalue": 100,
     "type": {
@@ -74,7 +74,7 @@
     "description": "The value of the Progress Bar. The element's value attribute is used if it\nis provided, otherwise the default value of 0 is used. For indeterminate Progress, set value to -1.\nAny other negative value will default to 0.",
     "meta": {
       "filename": "progress-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/progress-bar"
+      "path": "web/components/oj-c/progress-bar"
     },
     "defaultvalue": 0,
     "type": {
@@ -94,7 +94,7 @@
     "description": "Whether the progress bar is positioned at the top edge of a container or not.\nIf set to 'top', the curved borders will be removed.",
     "meta": {
       "filename": "progress-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/progress-bar"
+      "path": "web/components/oj-c/progress-bar"
     },
     "ojvalues": [
       {
@@ -135,7 +135,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "progress-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/progress-bar"
+      "path": "web/components/oj-c/progress-bar"
     },
     "scope": "instance",
     "params": [
@@ -169,7 +169,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "progress-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/progress-bar"
+      "path": "web/components/oj-c/progress-bar"
     },
     "scope": "instance",
     "params": [
@@ -198,7 +198,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "progress-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/progress-bar"
+      "path": "web/components/oj-c/progress-bar"
     },
     "scope": "instance",
     "params": [

@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findLegend = exports.LegendWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var LegendWebElement_1 = require("./LegendWebElement");
+exports.LegendWebElement = void 0;
+exports.findLegend = findLegend;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const LegendWebElement_1 = require("./LegendWebElement");
 Object.defineProperty(exports, "LegendWebElement", { enumerable: true, get: function () { return LegendWebElement_1.LegendWebElement; } });
 /**
  * Retrieve an instance of [LegendWebElement](../classes/LegendWebElement.html).
@@ -29,6 +30,5 @@ async function findLegend(driver, by) {
     }
     return webEl;
 }
-exports.findLegend = findLegend;
 (0, oraclejet_webdriver_1.register)('oj-c-legend', LegendWebElement_1.LegendWebElement);
 //# sourceMappingURL=index.js.map

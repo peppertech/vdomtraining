@@ -1,7 +1,7 @@
-define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], function (require, exports, ojdataproviderfactory_1, hooks_1) {
+define(["require", "exports", "ojs/ojdatacollection-common", "ojs/ojdataproviderfactory", "preact/hooks"], function (require, exports, ojdatacollection_common_1, ojdataproviderfactory_1, hooks_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useListData = void 0;
+    exports.getEmptyState = exports.useListData = void 0;
     const initialState = Object.freeze({
         status: 'loading',
         data: null
@@ -17,13 +17,12 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
         const iteratorRef = (0, hooks_1.useRef)(null);
         const abortControllerRef = (0, hooks_1.useRef)(null);
         const fetchSize = options.fetchSize && options.fetchSize > 0 ? options.fetchSize : DEFAULT_FETCH_SIZE;
-        if (!data) {
-            const emptyListState = getEmptyState('exact');
-            return [emptyListState, (_) => Promise.resolve()];
-        }
         const dataProvider = (0, hooks_1.useMemo)(() => wrapData(data), [data]);
-        const [state, dispatch] = (0, hooks_1.useReducer)(reducer, options.initialRowsFetched === 0 ? getEmptyState('atLeast') : initialState);
+        const [state, dispatch] = (0, hooks_1.useReducer)(reducer, options.initialRowsFetched === 0 ? (0, exports.getEmptyState)('atLeast') : initialState);
         const fetchRange = (0, hooks_1.useCallback)(async (range, resultsCallback) => {
+            if (dataProvider == null) {
+                return;
+            }
             const fetchOptions = {
                 attributes: options.attributes,
                 sortCriteria: options.sortCriteria,
@@ -68,6 +67,12 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
             }
         }, [dataProvider, options.attributes, options.filterCriterion, options.sortCriteria]);
         const loadInitial = (0, hooks_1.useCallback)(async () => {
+            if (dataProvider == null) {
+                return;
+            }
+            if (state.status === 'loading') {
+                abortControllerRef.current?.abort((0, ojdatacollection_common_1.getAbortReason)());
+            }
             dispatch({ status: 'loading', data: null });
             const controller = new AbortController();
             abortControllerRef.current = controller;
@@ -82,6 +87,9 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
             iteratorRef.current = iterator;
             try {
                 const result = await iterator.next();
+                if (iterator !== iteratorRef.current) {
+                    return;
+                }
                 const fetchParameters = result.value.fetchParameters;
                 if (fetchParameters.signal && fetchParameters.signal.aborted) {
                     return;
@@ -108,8 +116,10 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
         }, [
             dataProvider,
             fetchRange,
+            fetchSize,
             options.attributes,
             options.filterCriterion,
+            options.initialRowsFetched,
             options.sortCriteria,
             options.fetchSize
         ]);
@@ -129,7 +139,7 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
                                 isDoneRef.current = value.done;
                             }
                             const total = value.total;
-                            if (total > 0) {
+                            if (total > 0 || (total === 0 && isDoneRef.current)) {
                                 totalSizeRef.current = total;
                                 fetchRange({
                                     offset: range.offset,
@@ -151,14 +161,14 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
                     fetchRange(range);
                 }
             }
-        }, [state, loadInitial, fetchRange]);
+        }, [loadInitial, fetchRange]);
         const resetAndLoad = (0, hooks_1.useCallback)(() => {
             iteratorRef.current = null;
             fetchNextRef.current = null;
             totalSizeRef.current = 0;
             isDoneRef.current = false;
             if (options.initialRowsFetched === 0) {
-                dispatch(getEmptyState('atLeast'));
+                dispatch((0, exports.getEmptyState)('atLeast'));
             }
             else if (!options.isInitialFetchDeferred) {
                 loadInitial();
@@ -168,23 +178,28 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
             }
         }, [loadInitial, options.isInitialFetchDeferred, options.initialRowsFetched]);
         (0, hooks_1.useEffect)(() => {
-            resetAndLoad();
-        }, [resetAndLoad]);
+            if (dataProvider) {
+                resetAndLoad();
+            }
+        }, [dataProvider, resetAndLoad]);
         const handleMutation = (0, hooks_1.useCallback)((event) => {
             if (state.status === 'success' && state.data) {
                 const dataState = state.data;
+                let count = dataState.data.length;
                 let shouldUpdate = false;
                 if (event.detail.add) {
                     const itemsInserted = handleAddRemoveMutation(event.detail.add, dataState, options, true);
                     totalSizeRef.current = totalSizeRef.current + itemsInserted;
+                    count = count + itemsInserted;
                     shouldUpdate = itemsInserted > 0 || dataState.sizePrecision === 'exact';
-                    if (itemsInserted === 0) {
+                    if (itemsInserted < event.detail.add.data.length) {
                         isDoneRef.current = false;
                     }
                 }
                 if (event.detail.remove) {
                     const itemsRemoved = handleAddRemoveMutation(event.detail.remove, dataState, options, false);
-                    totalSizeRef.current = totalSizeRef.current - itemsRemoved;
+                    totalSizeRef.current = Math.max(0, totalSizeRef.current - itemsRemoved);
+                    count = Math.max(0, count - itemsRemoved);
                     shouldUpdate = shouldUpdate || itemsRemoved > 0;
                 }
                 let callback;
@@ -196,7 +211,7 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
                     };
                 }
                 if (shouldUpdate) {
-                    fetchRange({ offset: dataState.offset, count: dataState.data.length }, callback);
+                    fetchRange({ offset: dataState.offset, count }, callback);
                 }
             }
         }, [state, options, fetchRange]);
@@ -227,19 +242,30 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
                 }
                 resetAndLoad();
             }
-        }, [state, resetAndLoad]);
+        }, [state, fetchSize, loadRange, resetAndLoad]);
         (0, hooks_1.useEffect)(() => {
-            dataProvider.addEventListener('refresh', handleRefresh);
-            dataProvider.addEventListener('mutate', handleMutation);
+            if (dataProvider) {
+                dataProvider.addEventListener('refresh', handleRefresh);
+                dataProvider.addEventListener('mutate', handleMutation);
+            }
             return () => {
-                dataProvider.removeEventListener('refresh', handleRefresh);
-                dataProvider.removeEventListener('mutate', handleMutation);
+                if (dataProvider) {
+                    dataProvider.removeEventListener('refresh', handleRefresh);
+                    dataProvider.removeEventListener('mutate', handleMutation);
+                }
             };
-        }, [dataProvider, resetAndLoad, handleMutation]);
+        }, [dataProvider, resetAndLoad, handleMutation, handleRefresh]);
+        if (!data) {
+            const emptyListState = (0, exports.getEmptyState)('exact');
+            return [emptyListState, (_) => Promise.resolve()];
+        }
         return [state, loadRange];
     };
     exports.useListData = useListData;
     const wrapData = (data) => {
+        if (data == null) {
+            return null;
+        }
         const configuration = {
             fetchFirst: { caching: 'visitedByCurrentIterator' }
         };
@@ -272,6 +298,7 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
     const getEmptyState = (precision) => {
         return (precision === 'atLeast' ? emptyStateAtLeast : emptyStateExact);
     };
+    exports.getEmptyState = getEmptyState;
     const emptyStateAtLeast = Object.freeze({
         status: 'success',
         data: {
@@ -293,7 +320,7 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
     const handleAddRemoveMutation = (detail, dataState, options, isAdd) => {
         let itemCount = 0;
         if (isIndexesAvailable(detail, options)) {
-            const indexes = isAdd ? detail.indexes?.sort() : detail.indexes;
+            const indexes = isAdd ? detail.indexes?.sort((a, b) => a - b) : detail.indexes;
             let endIndex = dataState.totalSize - 1;
             indexes?.forEach((index) => {
                 if (index <= endIndex) {
@@ -305,6 +332,16 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
             });
         }
         else {
+            if (isAdd) {
+            }
+            else {
+                const allKeys = dataState.data.map((d) => d.metadata.key);
+                detail.keys.forEach((key) => {
+                    if (allKeys.includes(key)) {
+                        itemCount += 1;
+                    }
+                });
+            }
         }
         return itemCount;
     };
@@ -320,6 +357,14 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
             }
         }
         else {
+            const detailKeys = Array.from(detail.keys);
+            const allKeys = dataState.data.map((d) => d.metadata.key);
+            for (let i = 0; i < detailKeys.length; i++) {
+                const key = detailKeys[i];
+                if (allKeys.includes(key)) {
+                    return true;
+                }
+            }
         }
         return false;
     };

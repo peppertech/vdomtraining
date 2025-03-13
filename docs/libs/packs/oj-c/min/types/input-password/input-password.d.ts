@@ -5,7 +5,7 @@ import { DisplayOptions, Help, HelpHints } from 'oj-c/editable-value/UNSAFE_useA
 import Validator = require('ojs/ojvalidator');
 import AsyncValidator = require('ojs/ojvalidator-async');
 import { ExtendGlobalProps, GlobalProps, ObservedGlobalProps, PropertyChanged, ReadOnlyPropertyChanged } from 'ojs/ojvcomponent';
-import { Component, ComponentProps } from 'preact';
+import { ComponentProps, ComponentType, Ref } from 'preact';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
 import 'css!oj-c/input-password/input-password-styles.css';
@@ -32,29 +32,23 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     required?: boolean;
     requiredMessageDetail?: string;
     textAlign?: PreactInputPasswordProps['textAlign'];
-    unsafe_labelledBy?: string;
     userAssistanceDensity?: PreactInputPasswordProps['userAssistanceDensity'];
     validators?: (AsyncValidator<string> | Validator<string>)[] | null;
     value?: string | null;
     onMessagesCustomChanged?: PropertyChanged<PreactInputPasswordProps['messages']>;
     onRawValueChanged?: ReadOnlyPropertyChanged<string>;
     onValidChanged?: ReadOnlyPropertyChanged<ValidState>;
-    onValueChanged?: PropertyChanged<string>;
+    onValueChanged?: PropertyChanged<string | null>;
 };
-export declare class InputPassword extends Component<ExtendGlobalProps<Props>> {
-    static defaultProps: Partial<Props>;
-    private busyContextRef;
-    private inputPasswordRef;
-    private rootRef;
-    componentDidMount(): void;
-    render({ columnSpan, ...props }: ExtendGlobalProps<Props>): import("preact").JSX.Element;
-    componentWillUnmount(): void;
-    reset(): void;
-    showMessages(): void;
-    validate(): Promise<'valid' | 'invalid'>;
-    blur(): void;
-    focus(): void;
-}
+type InputPasswordHandle = {
+    blur: () => void;
+    focus: () => void;
+    showMessages: () => void;
+    reset: () => void;
+    validate: () => Promise<'valid' | 'invalid'>;
+};
+declare function InputPasswordImpl({ autocomplete, clearIcon, columnSpan, containerReadonly: propContainerReadonly, disabled, displayOptions, help, helpHints, id, labelWrapping: propLabelWrapping, maskIcon, messagesCustom, readonly: propReadonly, required, userAssistanceDensity: propUserAssistanceDensity, validators, value, ...otherProps }: Props, ref: Ref<InputPasswordHandle>): import("preact").JSX.Element;
+export declare const InputPassword: ComponentType<ExtendGlobalProps<ComponentProps<typeof InputPasswordImpl>>>;
 export type InputPasswordProps = Props;
 export {};
 export interface CInputPasswordElement extends JetElement<CInputPasswordElementSettableProperties>, CInputPasswordElementSettableProperties {
@@ -67,11 +61,11 @@ export interface CInputPasswordElement extends JetElement<CInputPasswordElementS
     setProperty<T extends keyof CInputPasswordElementSettableProperties>(property: T, value: CInputPasswordElementSettableProperties[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CInputPasswordElementSettableProperties>): void;
     setProperties(properties: CInputPasswordElementSettablePropertiesLenient): void;
-    blur: InputPassword['blur'];
-    focus: InputPassword['focus'];
-    reset: InputPassword['reset'];
-    showMessages: InputPassword['showMessages'];
-    validate: InputPassword['validate'];
+    blur: () => void;
+    focus: () => void;
+    reset: () => void;
+    showMessages: () => void;
+    validate: () => Promise<'invalid' | 'valid'>;
 }
 export namespace CInputPasswordElement {
     type autocompleteChanged = JetElementCustomEventStrict<CInputPasswordElement['autocomplete']>;
@@ -94,7 +88,6 @@ export namespace CInputPasswordElement {
     type requiredChanged = JetElementCustomEventStrict<CInputPasswordElement['required']>;
     type requiredMessageDetailChanged = JetElementCustomEventStrict<CInputPasswordElement['requiredMessageDetail']>;
     type textAlignChanged = JetElementCustomEventStrict<CInputPasswordElement['textAlign']>;
-    type unsafe_labelledByChanged = JetElementCustomEventStrict<CInputPasswordElement['unsafe_labelledBy']>;
     type userAssistanceDensityChanged = JetElementCustomEventStrict<CInputPasswordElement['userAssistanceDensity']>;
     type validChanged = JetElementCustomEventStrict<CInputPasswordElement['valid']>;
     type validatorsChanged = JetElementCustomEventStrict<CInputPasswordElement['validators']>;
@@ -121,7 +114,6 @@ export interface CInputPasswordElementEventMap extends HTMLElementEventMap {
     'requiredChanged': JetElementCustomEventStrict<CInputPasswordElement['required']>;
     'requiredMessageDetailChanged': JetElementCustomEventStrict<CInputPasswordElement['requiredMessageDetail']>;
     'textAlignChanged': JetElementCustomEventStrict<CInputPasswordElement['textAlign']>;
-    'unsafe_labelledByChanged': JetElementCustomEventStrict<CInputPasswordElement['unsafe_labelledBy']>;
     'userAssistanceDensityChanged': JetElementCustomEventStrict<CInputPasswordElement['userAssistanceDensity']>;
     'validChanged': JetElementCustomEventStrict<CInputPasswordElement['valid']>;
     'validatorsChanged': JetElementCustomEventStrict<CInputPasswordElement['validators']>;
@@ -147,7 +139,6 @@ export interface CInputPasswordElementSettableProperties extends JetSettableProp
     required?: Props['required'];
     requiredMessageDetail?: Props['requiredMessageDetail'];
     textAlign?: Props['textAlign'];
-    unsafe_labelledBy?: Props['unsafe_labelledBy'];
     userAssistanceDensity?: Props['userAssistanceDensity'];
     validators?: Props['validators'];
     value?: Props['value'];
@@ -178,7 +169,6 @@ export interface InputPasswordIntrinsicProps extends Partial<Readonly<CInputPass
     onrequiredChanged?: (value: CInputPasswordElementEventMap['requiredChanged']) => void;
     onrequiredMessageDetailChanged?: (value: CInputPasswordElementEventMap['requiredMessageDetailChanged']) => void;
     ontextAlignChanged?: (value: CInputPasswordElementEventMap['textAlignChanged']) => void;
-    onunsafe_labelledByChanged?: (value: CInputPasswordElementEventMap['unsafe_labelledByChanged']) => void;
     onuserAssistanceDensityChanged?: (value: CInputPasswordElementEventMap['userAssistanceDensityChanged']) => void;
     onvalidChanged?: (value: CInputPasswordElementEventMap['validChanged']) => void;
     onvalidatorsChanged?: (value: CInputPasswordElementEventMap['validatorsChanged']) => void;

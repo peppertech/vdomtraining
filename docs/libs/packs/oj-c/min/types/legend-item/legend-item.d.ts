@@ -1,7 +1,7 @@
 import { JetElement, JetSettableProperties, JetElementCustomEventStrict, JetSetPropertyType } from 'ojs/index';
 import { GlobalProps } from 'ojs/ojvcomponent';
 import 'ojs/oj-jsx-interfaces';
-import { LineStyle, MarkerShapes } from '@oracle/oraclejet-preact/UNSAFE_SvgShapes';
+import { LineStyle, MarkerShapes } from '@oracle/oraclejet-preact/utils/UNSAFE_visTypes/common';
 export declare const LegendItemDefaults: Partial<LegendItemProps>;
 export type LegendItemProps = {
     text: string;
@@ -15,6 +15,7 @@ export type LegendItemProps = {
     markerShape?: MarkerShapes;
     markerColor?: string;
     shortDesc?: string;
+    drilling?: 'on' | 'off' | 'inherit';
 };
 export declare const LegendItem: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<LegendItemProps>>;
 export interface CLegendItemElement extends JetElement<CLegendItemElementSettableProperties>, CLegendItemElementSettableProperties {
@@ -30,6 +31,7 @@ export namespace CLegendItemElement {
     type borderColorChanged = JetElementCustomEventStrict<CLegendItemElement['borderColor']>;
     type categoriesChanged = JetElementCustomEventStrict<CLegendItemElement['categories']>;
     type colorChanged = JetElementCustomEventStrict<CLegendItemElement['color']>;
+    type drillingChanged = JetElementCustomEventStrict<CLegendItemElement['drilling']>;
     type lineStyleChanged = JetElementCustomEventStrict<CLegendItemElement['lineStyle']>;
     type lineWidthChanged = JetElementCustomEventStrict<CLegendItemElement['lineWidth']>;
     type markerColorChanged = JetElementCustomEventStrict<CLegendItemElement['markerColor']>;
@@ -43,6 +45,7 @@ export interface CLegendItemElementEventMap extends HTMLElementEventMap {
     'borderColorChanged': JetElementCustomEventStrict<CLegendItemElement['borderColor']>;
     'categoriesChanged': JetElementCustomEventStrict<CLegendItemElement['categories']>;
     'colorChanged': JetElementCustomEventStrict<CLegendItemElement['color']>;
+    'drillingChanged': JetElementCustomEventStrict<CLegendItemElement['drilling']>;
     'lineStyleChanged': JetElementCustomEventStrict<CLegendItemElement['lineStyle']>;
     'lineWidthChanged': JetElementCustomEventStrict<CLegendItemElement['lineWidth']>;
     'markerColorChanged': JetElementCustomEventStrict<CLegendItemElement['markerColor']>;
@@ -56,6 +59,7 @@ export interface CLegendItemElementSettableProperties extends JetSettablePropert
     borderColor?: LegendItemProps['borderColor'];
     categories?: LegendItemProps['categories'];
     color?: LegendItemProps['color'];
+    drilling?: LegendItemProps['drilling'];
     lineStyle?: LegendItemProps['lineStyle'];
     lineWidth?: LegendItemProps['lineWidth'];
     markerColor?: LegendItemProps['markerColor'];
@@ -72,6 +76,7 @@ export interface LegendItemIntrinsicProps extends Partial<Readonly<CLegendItemEl
     onborderColorChanged?: (value: CLegendItemElementEventMap['borderColorChanged']) => void;
     oncategoriesChanged?: (value: CLegendItemElementEventMap['categoriesChanged']) => void;
     oncolorChanged?: (value: CLegendItemElementEventMap['colorChanged']) => void;
+    ondrillingChanged?: (value: CLegendItemElementEventMap['drillingChanged']) => void;
     onlineStyleChanged?: (value: CLegendItemElementEventMap['lineStyleChanged']) => void;
     onlineWidthChanged?: (value: CLegendItemElementEventMap['lineWidthChanged']) => void;
     onmarkerColorChanged?: (value: CLegendItemElementEventMap['markerColorChanged']) => void;

@@ -1,24 +1,29 @@
 import { JetElement, JetSettableProperties, JetElementCustomEventStrict, JetSetPropertyType } from 'ojs/index';
 import { GlobalProps } from 'ojs/ojvcomponent';
 import 'ojs/oj-jsx-interfaces';
-import { MenuButton as PreactMenuButton } from '@oracle/oraclejet-preact/UNSAFE_MenuButton';
-import { ComponentProps, Component } from 'preact';
 import { ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, Slot, Action, Bubbles } from 'ojs/ojvcomponent';
-import 'css!oj-c/menu-button/menu-button-styles.css';
+import { MenuButton as PreactMenuButton } from '@oracle/oraclejet-preact/UNSAFE_MenuButton';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
+import { ItemsMenu, MenuItemSelectionDetail, SelectMenuItemDetail, MenuSelection, MenuItems } from 'oj-c/utils/PRIVATE_ItemsMenu/items-menu';
 export type { MenuValueUpdateDetail } from '@oracle/oraclejet-preact/UNSAFE_Menu/menuUtils';
-import { ItemsMenu, MenuItemSelectionDetail } from 'oj-c/utils/PRIVATE_ItemsMenu/items-menu';
-export type { MenuSelection, MenuItems, MenuItemSelectionDetail } from 'oj-c/utils/PRIVATE_ItemsMenu/items-menu';
+export type { MenuSelection, MenuItems, MenuItemSelectionDetail, SelectMenuItemDetail } from 'oj-c/utils/PRIVATE_ItemsMenu/items-menu';
 export type PreactMenuButtonProps = ComponentProps<typeof PreactMenuButton>;
+import { ComponentProps, Ref, ComponentType } from 'preact';
+import 'css!oj-c/menu-button/menu-button-styles.css';
 type ItemsMenuProps = ComponentProps<typeof ItemsMenu>;
+type ItemsMenuButtonProps = {
+    items: MenuItems[];
+};
+type MenuButtonMenuSelectionDetail = SelectMenuItemDetail<MenuSelection>;
 type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label'> & {
     label: string;
     suffix?: string;
     tooltip?: string;
     startIcon?: Slot;
     endIcon?: Slot;
-    items?: ItemsMenuProps['items'];
+    items?: ItemsMenuButtonProps['items'];
     onOjMenuAction?: Action<MenuItemSelectionDetail> & Bubbles;
+    onOjMenuSelection?: Action<MenuButtonMenuSelectionDetail> & Bubbles;
     selection?: ItemsMenuProps['selection'];
     onSelectionChanged?: PropertyChanged<ItemsMenuProps['selection']>;
     display?: 'all' | 'icons' | 'label';
@@ -27,14 +32,13 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label'> & {
     width?: Size;
     chroming?: PreactMenuButtonProps['variant'];
 };
-export declare class MenuButton extends Component<ExtendGlobalProps<Props>> {
-    static defaultProps: Partial<Props>;
-    private buttonRef;
-    render(props: ExtendGlobalProps<Props>): import("preact").JSX.Element;
-    private OverFlowIcon;
-    blur(): void;
-    focus(): void;
-}
+type MenuButtonHandle = {
+    focus: () => void;
+    blur: () => void;
+    click: () => void;
+};
+declare function MenuButtonImpl({ label, chroming, disabled, size, display, items, tooltip, suffix, startIcon, endIcon, selection, onSelectionChanged, onOjMenuAction, onOjMenuSelection, 'aria-label': accessibleLabel, 'aria-describedby': ariaDescribedBy, width }: Props, ref: Ref<MenuButtonHandle>): import("preact").JSX.Element;
+export declare const MenuButton: ComponentType<ExtendGlobalProps<ComponentProps<typeof MenuButtonImpl>>>;
 export interface CMenuButtonElement extends JetElement<CMenuButtonElementSettableProperties>, CMenuButtonElementSettableProperties {
     addEventListener<T extends keyof CMenuButtonElementEventMap>(type: T, listener: (this: HTMLElement, ev: CMenuButtonElementEventMap[T]) => any, options?: (boolean | AddEventListenerOptions)): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: (boolean | AddEventListenerOptions)): void;
@@ -43,13 +47,14 @@ export interface CMenuButtonElement extends JetElement<CMenuButtonElementSettabl
     setProperty<T extends keyof CMenuButtonElementSettableProperties>(property: T, value: CMenuButtonElementSettableProperties[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CMenuButtonElementSettableProperties>): void;
     setProperties(properties: CMenuButtonElementSettablePropertiesLenient): void;
-    blur: MenuButton['blur'];
-    focus: MenuButton['focus'];
+    blur: () => void;
+    click: () => void;
+    focus: () => void;
 }
 export namespace CMenuButtonElement {
-    interface ojMenuAction extends CustomEvent<{
-        key: string;
-    }> {
+    interface ojMenuAction extends CustomEvent<MenuItemSelectionDetail & {}> {
+    }
+    interface ojMenuSelection extends CustomEvent<MenuButtonMenuSelectionDetail & {}> {
     }
     type chromingChanged = JetElementCustomEventStrict<CMenuButtonElement['chroming']>;
     type disabledChanged = JetElementCustomEventStrict<CMenuButtonElement['disabled']>;
@@ -64,6 +69,7 @@ export namespace CMenuButtonElement {
 }
 export interface CMenuButtonElementEventMap extends HTMLElementEventMap {
     'ojMenuAction': CMenuButtonElement.ojMenuAction;
+    'ojMenuSelection': CMenuButtonElement.ojMenuSelection;
     'chromingChanged': JetElementCustomEventStrict<CMenuButtonElement['chroming']>;
     'disabledChanged': JetElementCustomEventStrict<CMenuButtonElement['disabled']>;
     'displayChanged': JetElementCustomEventStrict<CMenuButtonElement['display']>;
@@ -93,6 +99,7 @@ export interface CMenuButtonElementSettablePropertiesLenient extends Partial<CMe
 export interface MenuButtonIntrinsicProps extends Partial<Readonly<CMenuButtonElementSettableProperties>>, GlobalProps, Pick<preact.JSX.HTMLAttributes, 'ref' | 'key'> {
     children?: import('preact').ComponentChildren;
     onojMenuAction?: (value: CMenuButtonElementEventMap['ojMenuAction']) => void;
+    onojMenuSelection?: (value: CMenuButtonElementEventMap['ojMenuSelection']) => void;
     onchromingChanged?: (value: CMenuButtonElementEventMap['chromingChanged']) => void;
     ondisabledChanged?: (value: CMenuButtonElementEventMap['disabledChanged']) => void;
     ondisplayChanged?: (value: CMenuButtonElementEventMap['displayChanged']) => void;

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LabelledLinkWebElement = void 0;
-var LabelledLinkWebElementBase_1 = require("./LabelledLinkWebElementBase");
+const LabelledLinkWebElementBase_1 = require("./LabelledLinkWebElementBase");
 /**
  * The component WebElement for [oj-c-labelled-link](../../../oj-c/docs/oj.LabelledLink.html).
  * Do not instantiate this class directly, instead, use

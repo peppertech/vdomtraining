@@ -1,18 +1,22 @@
-.AxisStyles_outlineRing__15u9pqv0 {
+.AxisStyles_outlineRing__zsz5r0 {
   stroke-dasharray: 1.5;
   stroke-width: 1px;
   fill: transparent;
   stroke: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);
 }
-.AxisStyles_isInteractive__15u9pqv1 {
+.AxisStyles_isInteractive__zsz5r1 {
   cursor: pointer;
 }
-.AxisStyles_axisLabel__15u9pqv2 {
-  fill: var(--axisTickLabelTextColor__bb9djh1);
+.AxisStyles_axisLabel__zsz5r2 {
+  fill: var(--axisTickLabelTextColor__1veqowy1);
 }
-.AxisStyles_axisTitle__15u9pqv3 {
-  fill: var(--axisTitleTextColor__bb9djh0);
+.AxisStyles_axisTitle__zsz5r3 {
+  fill: var(--axisTitleTextColor__1veqowy0);
+  text-anchor: middle;
 }
-.AxisStyles_middleBaseline__15u9pqv4 {
+.AxisStyles_middleBaseline__zsz5r4 {
   dominant-baseline: middle;
+}
+.AxisStyles_axisBackground__zsz5r5 {
+  fill: transparent;
 }

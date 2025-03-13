@@ -1,4 +1,4 @@
-define(["require", "exports", "./avatar/avatar"], function (require, exports, avatar_1) {
+define(["require", "exports", "oj-c/avatar/avatar"], function (require, exports, avatar_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Avatar = void 0;

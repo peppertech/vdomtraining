@@ -1,14 +1,15 @@
-define(["require", "exports", "oj-c/editable-value/UNSAFE_useEditableValueRawValueObject/useEditableValueRawValueObject", "./CalendarDateConverter", "preact/hooks", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "ojs/ojconverter-preferences", "@oracle/oraclejet-preact/utils/UNSAFE_calendarDateUtils", "oj-c/input-date-text/useImplicitDateRangeValidator", "ojs/ojconfig", "oj-c/editable-value/utils/utils"], function (require, exports, useEditableValueRawValueObject_1, CalendarDateConverter_1, hooks_1, UNSAFE_useTranslationBundle_1, ojconverter_preferences_1, UNSAFE_calendarDateUtils_1, useImplicitDateRangeValidator_1, ojconfig_1, utils_1) {
+define(["require", "exports", "./CalendarDateConverter", "preact/hooks", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "ojs/ojconverter-preferences", "@oracle/oraclejet-preact/utils/UNSAFE_calendarDateUtils", "oj-c/input-date-text/useImplicitDateRangeValidator", "ojs/ojconfig", "oj-c/hooks/UNSAFE_useEditableValue/index", "oj-c/editable-value/UNSAFE_useDeferredValidators/useDeferredValidators"], function (require, exports, CalendarDateConverter_1, hooks_1, UNSAFE_useTranslationBundle_1, ojconverter_preferences_1, UNSAFE_calendarDateUtils_1, useImplicitDateRangeValidator_1, ojconfig_1, index_1, useDeferredValidators_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useInputDateMaskPreact = void 0;
+    exports.getMasksFromDatePatternPreferences = void 0;
+    exports.useInputDateMaskPreact = useInputDateMaskPreact;
     function useInputDateMaskPreact({ dateRangeOverflowMessageDetail, dateRangeUnderflowMessageDetail, disabled, displayOptions, labelEdge, labelHint, labelStartWidth, max, messagesCustom, min, readonly, required, requiredMessageDetail, textAlign, userAssistanceDensity, validators, value: propValue, onMessagesCustomChanged, onRawValueChanged, onValidChanged, onValueChanged, ...otherProps }, addBusyState) {
-        const minTreatNull = (0, utils_1.treatNull)(min);
-        const maxTreatNull = (0, utils_1.treatNull)(max);
+        const minTreatNull = (0, index_1.treatNull)(min);
+        const maxTreatNull = (0, index_1.treatNull)(max);
         const translations = (0, UNSAFE_useTranslationBundle_1.useTranslationBundle)('@oracle/oraclejet-preact');
         const calendarDateConverter_parseErrorFn = translations.calendarDateConverter_parseError;
         const masksFromUserPref = (0, hooks_1.useMemo)(() => {
-            return getMasksFromDatePatternPreferences();
+            return (0, exports.getMasksFromDatePatternPreferences)();
         }, []);
         const implicitConverter = (0, hooks_1.useMemo)(() => {
             return new CalendarDateConverter_1.CalendarDateConverter({
@@ -30,29 +31,35 @@ define(["require", "exports", "oj-c/editable-value/UNSAFE_useEditableValueRawVal
             max: maxTreatNull,
             min: minTreatNull
         });
-        const { methods, textFieldProps, value, setValue } = (0, useEditableValueRawValueObject_1.useEditableValueRawValueObject)({
+        const combinedValidators = (0, hooks_1.useMemo)(() => {
+            const v1 = implicitComponentValidator ? [implicitComponentValidator] : [];
+            const v2 = validators ? validators : [];
+            return [...v1, ...v2];
+        }, [implicitComponentValidator, validators]);
+        const deferredValidators = (0, useDeferredValidators_1.useDeferredValidators)({
+            labelHint,
+            required,
+            requiredMessageDetail
+        });
+        const { methods, textFieldProps, value } = (0, index_1.useEditableValue)({
+            addBusyState,
             ariaDescribedBy: otherProps['aria-describedby'],
             converter: implicitConverter,
+            defaultDisplayValue: undefined,
+            deferredValidators,
             disabled,
             displayOptions,
-            implicitComponentValidator,
-            labelHint,
             messagesCustom,
-            readonly,
-            required,
-            requiredMessageDetail,
-            validators,
-            value: propValue,
-            addBusyState,
             onMessagesCustomChanged,
             onRawValueChanged,
             onValidChanged,
-            onValueChanged
+            onValueChanged,
+            readonly,
+            validators: combinedValidators,
+            value: propValue
         });
         const hasNoValue = value === undefined || !isPartialDate(textFieldProps.value);
         return {
-            value,
-            setValue,
             methods,
             inputDateMaskProps: {
                 isDisabled: disabled,
@@ -69,7 +76,6 @@ define(["require", "exports", "oj-c/editable-value/UNSAFE_useEditableValueRawVal
             }
         };
     }
-    exports.useInputDateMaskPreact = useInputDateMaskPreact;
     const isPartialDate = (value) => {
         if (value === undefined)
             return false;
@@ -83,4 +89,5 @@ define(["require", "exports", "oj-c/editable-value/UNSAFE_useEditableValueRawVal
         }
         return (0, UNSAFE_calendarDateUtils_1.getDatePlaceholdersFromPattern)(pattern);
     };
+    exports.getMasksFromDatePatternPreferences = getMasksFromDatePatternPreferences;
 });

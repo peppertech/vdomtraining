@@ -1,7 +1,10 @@
 define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_visUtils"], function (require, exports, UNSAFE_visUtils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.transformValueFormats = exports.transformGroup = exports.transformSeries = exports.transformItem = void 0;
+    exports.transformItem = transformItem;
+    exports.transformSeries = transformSeries;
+    exports.transformGroup = transformGroup;
+    exports.transformValueFormats = transformValueFormats;
     const colorRamp = (0, UNSAFE_visUtils_1.getColorRamp)();
     function transformItem(item, series) {
         return {
@@ -18,7 +21,6 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_visUtils"],
             markerSize: (item.markerSize !== undefined && item.markerSize) || series.markerSize
         };
     }
-    exports.transformItem = transformItem;
     function transformSeries(series, seriesIndex) {
         return {
             lineColor: series.color || colorRamp[seriesIndex % colorRamp.length],
@@ -37,7 +39,6 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_visUtils"],
             items: series.items
         };
     }
-    exports.transformSeries = transformSeries;
     function transformGroup(group) {
         return {
             drilling: group.drilling,
@@ -46,7 +47,6 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_visUtils"],
             accessibleLabel: group.shortDesc
         };
     }
-    exports.transformGroup = transformGroup;
     function transformValueFormats(valueFormats) {
         if (!valueFormats)
             return;
@@ -72,5 +72,4 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_visUtils"],
         }
         return formats;
     }
-    exports.transformValueFormats = transformValueFormats;
 });

@@ -1,10 +1,14 @@
 .SelectorStyles_base__l80isg0 {
+  cursor: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-cursor-clickable);
   position: relative;
-  width: 44px;
-  height: 44px;
+  width: calc(9 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  height: calc(9 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
   display: flex;
   justify-content: center;
   align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .SelectorStyles_container__l80isg1 {
   display: inline-block;

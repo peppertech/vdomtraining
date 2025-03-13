@@ -1,7 +1,7 @@
 {
   "name": "split-menu-button",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,6 +13,12 @@
   "displayName": "Split Menu Button",
   "help": "oj-c.SplitMenuButton.html",
   "main": "oj-c/split-menu-button",
+  "status": [
+    {
+      "type": "production",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Controls"
@@ -25,6 +31,9 @@
       "uxSpecs": [
         "menu-button"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/SplitMenuButtonWebElement.html"
     }
   },
   "propertyLayout": [
@@ -32,10 +41,12 @@
       "propertyGroup": "common",
       "items": [
         "label",
-        "disabled",
-        "width",
+        "tooltip",
+        "display",
         "chroming",
         "size",
+        "width",
+        "disabled",
         "items"
       ]
     }
@@ -47,27 +58,156 @@
       "description": "Text to show in the button.",
       "displayName": "label",
       "help": "#label",
-      "translatable": true,
-      "value": ""
+      "required": true,
+      "translatable": true
     },
     "items": {
       "type": "Array<object>",
       "description": "Items describe the menu items rendered by the menu button.",
-      "displayName": "items",
       "help": "#items",
+      "extension": {
+        "vbdt": {
+          "pi": {
+            "events": {
+              "suggestions": [
+                {
+                  "type": "component",
+                  "name": "ojMenuAction",
+                  "mappings": [
+                    {
+                      "variableName": "menuItemKey",
+                      "expression": "{{$event.detail.key}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "itemProperties": {
+            "type": {
+              "description": "Specifies the type of the menu item.",
+              "type": "string",
+              "status": [
+                {
+                  "type": "deprecated",
+                  "target": "propertyValue",
+                  "since": "17.0.0",
+                  "value": [
+                    "divider"
+                  ],
+                  "description": "Use 'separator' instead."
+                }
+              ],
+              "enumValues": [
+                "item",
+                "separator",
+                "divider"
+              ],
+              "propertyEditorValues": {
+                "item": {
+                  "description": "A selectable menu item that triggers an action."
+                },
+                "separator": {
+                  "description": "A non-selectable menu item that visibly separates menu items (no other properties apply)."
+                },
+                "divider": {
+                  "description": "A divider that visibly separates menu items (deprecated)."
+                }
+              }
+            },
+            "label": {
+              "description": "Specifies the text to show for the menu item.",
+              "type": "string",
+              "required": true,
+              "translatable": true
+            },
+            "key": {
+              "description": "Specifes a key value associated with the menu item.",
+              "type": "string"
+            },
+            "disabled": {
+              "description": "Specifies whether the menu item should be disabled.",
+              "type": "boolean"
+            },
+            "onAction": {
+              "description": "A callback function invoked when the menu item is selected.",
+              "type": "function"
+            },
+            "startIcon": {
+              "description": "Specifies an icon to show at the start position of the menu item.",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enumValues": [
+                    "class",
+                    "img"
+                  ]
+                },
+                "class": {
+                  "type": "string"
+                },
+                "src": {
+                  "type": "string"
+                }
+              }
+            },
+            "endIcon": {
+              "description": "Specifies an icon to show at the end position of the menu item.",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enumValues": [
+                    "class",
+                    "img"
+                  ]
+                },
+                "class": {
+                  "type": "string"
+                },
+                "src": {
+                  "type": "string"
+                }
+              }
+            },
+            "variant": {
+              "description": "Specifies styling for the menu item based upon its associated action.",
+              "type": "string",
+              "enumValues": [
+                "standard",
+                "destructive"
+              ],
+              "propertyEditorValues": {
+                "standard": {
+                  "description": "Styling for a standard menu item"
+                },
+                "destructive": {
+                  "description": "Styling for a menu item associated with a non-reversible action"
+                }
+              }
+            }
+          }
+        }
+      },
       "value": []
+    },
+    "tooltip": {
+      "type": "string",
+      "description": "Text to show in the tooltip.",
+      "help": "#tooltip",
+      "translatable": true
     },
     "disabled": {
       "type": "boolean",
       "description": "Specifies that the button element should be disabled.",
-      "displayName": "disabled",
       "help": "#disabled",
       "value": false
     },
     "size": {
       "type": "string",
       "description": "Size of button",
-      "displayName": "size",
       "help": "#size",
       "propertyEditorValues": {
         "sm": {
@@ -83,7 +223,6 @@
           "displayName": "Large"
         }
       },
-      "translatable": true,
       "enumValues": [
         "sm",
         "md",
@@ -94,13 +233,11 @@
     "width": {
       "type": "number|string",
       "description": "Specifies that the button style width",
-      "displayName": "width",
       "help": "#width"
     },
     "chroming": {
       "type": "string",
       "description": "Indicates in what states the button has chromings in background and border.",
-      "displayName": "chroming",
       "help": "#chroming",
       "propertyEditorValues": {
         "outlined": {
@@ -121,27 +258,42 @@
         "outlined",
         "callToAction"
       ],
+      "binding": {
+        "consume": {
+          "name": "containerChroming"
+        }
+      },
       "value": "outlined"
     }
   },
   "events": {
+    "ojMenuAction": {
+      "bubbles": true,
+      "description": "Triggered when a menu item is clicked, whether by keyboard, mouse, or touch events. Detail indicates which menu item was clicked.",
+      "eventGroup": "common",
+      "help": "#event:ojMenuAction",
+      "detail": {
+        "key": {
+          "type": "string"
+        }
+      }
+    },
     "ojAction": {
       "bubbles": true,
       "description": "Triggered when a button is clicked, whether by keyboard, mouse, or touch events. To meet accessibility requirements, the only supported way to react to the click of a button is to listen for this event.",
       "eventGroup": "common",
-      "displayName": "onOjAction",
       "help": "#event:action"
     }
   },
   "methods": {
-    "blur": {
-      "return": "any"
-    },
     "focus": {
-      "return": "any"
+      "return": "void"
     },
-    "doAction": {
-      "return": "any"
+    "blur": {
+      "return": "void"
+    },
+    "click": {
+      "return": "void"
     },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",

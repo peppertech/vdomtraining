@@ -3,11 +3,11 @@
   overflow-x: scroll;
   overflow-y: hidden;
   scrollbar-width: none;
-  padding-inline: var(--textToEdgePadding__w6gg1ya);
+  padding-inline: var(--textToEdgePadding__w6gg1y9);
 }
 .LabelledLinkVariants_multiVariantStyles_compound_1__19wz0pf7 {
   height: 100%;
-  padding-top: calc(var(--insideEdgePaddingTop__w6gg1yc) + 0.1875rem);
+  padding-top: calc(var(--insideEdgePaddingTop__w6gg1yi) + 0.1875rem);
   display: flex;
   align-items: center;
 }

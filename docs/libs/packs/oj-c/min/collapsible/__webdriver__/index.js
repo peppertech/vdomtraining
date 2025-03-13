@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findCollapsible = exports.CollapsibleWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var CollapsibleWebElement_1 = require("./CollapsibleWebElement");
+exports.CollapsibleWebElement = void 0;
+exports.findCollapsible = findCollapsible;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const CollapsibleWebElement_1 = require("./CollapsibleWebElement");
 Object.defineProperty(exports, "CollapsibleWebElement", { enumerable: true, get: function () { return CollapsibleWebElement_1.CollapsibleWebElement; } });
 /**
  * Retrieve an instance of [CollapsibleWebElement](../classes/CollapsibleWebElement.html).
@@ -29,6 +30,5 @@ async function findCollapsible(driver, by) {
     }
     return webEl;
 }
-exports.findCollapsible = findCollapsible;
 (0, oraclejet_webdriver_1.register)('oj-c-collapsible', CollapsibleWebElement_1.CollapsibleWebElement);
 //# sourceMappingURL=index.js.map

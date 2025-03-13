@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findLabelledLink = exports.LabelledLinkWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var LabelledLinkWebElement_1 = require("./LabelledLinkWebElement");
+exports.LabelledLinkWebElement = void 0;
+exports.findLabelledLink = findLabelledLink;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const LabelledLinkWebElement_1 = require("./LabelledLinkWebElement");
 Object.defineProperty(exports, "LabelledLinkWebElement", { enumerable: true, get: function () { return LabelledLinkWebElement_1.LabelledLinkWebElement; } });
 /**
  * Retrieve an instance of [LabelledLinkWebElement](../classes/LabelledLinkWebElement.html).
@@ -29,6 +30,5 @@ async function findLabelledLink(driver, by) {
     }
     return webEl;
 }
-exports.findLabelledLink = findLabelledLink;
 (0, oraclejet_webdriver_1.register)('oj-c-labelled-link', LabelledLinkWebElement_1.LabelledLinkWebElement);
 //# sourceMappingURL=index.js.map

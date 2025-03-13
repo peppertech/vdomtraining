@@ -1,3 +1,4 @@
+import { MenuValueUpdateDetail } from '@oracle/oraclejet-preact/UNSAFE_Menu/menuUtils';
 export type { MenuValueUpdateDetail } from '@oracle/oraclejet-preact/UNSAFE_Menu/menuUtils';
 export type MenuIcon = {
     type?: 'class';
@@ -13,7 +14,7 @@ export type MenuSelectItem = {
     value: string;
 };
 export interface MenuItemSelectionDetail {
-    key?: string;
+    key: string;
 }
 export type MenuSelection = string | Array<string>;
 export type MenuSeparator = {
@@ -30,6 +31,7 @@ export type MenuItem = {
     variant?: 'standard' | 'destructive';
 };
 export type MenuSubMenu = {
+    key?: string;
     type: 'submenu';
     label?: string;
     disabled?: boolean;
@@ -47,3 +49,22 @@ export type MenuSelectMultiple = {
     items?: Array<MenuSelectItem>;
 };
 export type MenuItems = MenuSeparator | MenuItem | MenuSubMenu | MenuSelectSingle | MenuSelectMultiple;
+type ContextMenuSeparator = {
+    type: 'separator';
+};
+type ContextMenuSubMenu = Omit<MenuSubMenu, 'items'> & {
+    items?: Array<ContextMenuItems>;
+};
+export type ContextMenuSelectSingle = MenuSelectSingle & {
+    selection?: string;
+    onSelection?: (detail: SelectMenuItemDetail<string>) => void;
+};
+export type ContextMenuSelectMultiple = MenuSelectMultiple & {
+    selection?: Array<string>;
+    onSelection?: (detail: SelectMenuItemDetail<Array<string>>) => void;
+};
+export type SelectMenuItemDetail<T extends MenuSelection> = {
+    value: MenuValueUpdateDetail<T>['value'];
+    menuSelectionGroupKey: string;
+};
+export type ContextMenuItems = ContextMenuSeparator | MenuItem | ContextMenuSubMenu | ContextMenuSelectSingle | ContextMenuSelectMultiple;

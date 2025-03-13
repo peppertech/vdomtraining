@@ -1,7 +1,7 @@
 {
   "name": "selection-card",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -11,6 +11,12 @@
   ],
   "description": "A Selection Card is a container that can be set as selected with a collection",
   "displayName": "Selection Card",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Collections"
@@ -23,8 +29,11 @@
     },
     "vbdt": {
       "module": "oj-c/selection-card",
-      "defaultColumns": "1",
-      "minColumns": "1"
+      "defaultColumns": 1,
+      "minColumns": 1
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/SelectionCardWebElement.html"
     }
   },
   "since": "16.0.0",

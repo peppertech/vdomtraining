@@ -1,7 +1,7 @@
 define(["require", "exports", "preact/hooks"], function (require, exports, hooks_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useLabelledLinkPreact = void 0;
+    exports.useLabelledLinkPreact = useLabelledLinkPreact;
     function useLabelledLinkPreact({ 'aria-describedby': ariaDescribedBy, href, labelEdge, labelHint, labelStartWidth, target, text, textAlign, userAssistanceDensity, onOjAction }) {
         const onClickHandler = (0, hooks_1.useCallback)((event) => {
             if (href === undefined) {
@@ -22,5 +22,4 @@ define(["require", "exports", "preact/hooks"], function (require, exports, hooks
             onClick: onClickHandler
         };
     }
-    exports.useLabelledLinkPreact = useLabelledLinkPreact;
 });

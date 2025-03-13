@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageBannerWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-message-banner WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -26,6 +26,15 @@ class MessageBannerWebElementBase extends elements_1.OjWebElement {
      */
     getDetailTemplateValue() {
         return this.getProperty('detailTemplateValue');
+    }
+    /**
+     * Gets the value of <code>sorting</code> property.
+     * Specifies how to sort the messages from the dataprovider.
+     * @return The value of <code>sorting</code> property.
+     *
+     */
+    getSorting() {
+        return this.getProperty('sorting');
     }
 }
 exports.MessageBannerWebElementBase = MessageBannerWebElementBase;

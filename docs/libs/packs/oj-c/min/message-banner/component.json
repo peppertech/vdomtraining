@@ -1,7 +1,7 @@
 {
   "name": "message-banner",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -20,13 +20,16 @@
     "oracle": {
       "icon": "oj-ux-ico-message-banner",
       "uxSpecs": [
-        "banner-messages"
+        "bannerMessages"
       ]
     },
     "vbdt": {
-      "defaultColumns": "2",
-      "minColumns": "1",
+      "defaultColumns": 2,
+      "minColumns": 1,
       "module": "oj-c/message-banner"
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/MessageBannerWebElement.html"
     }
   },
   "propertyLayout": [
@@ -96,7 +99,29 @@
       "description": "The function that determines the detail template for the current row.",
       "displayName": "Current Detail Template",
       "help": "#detailTemplateValue",
-      "dynamicSlotDef": "MessageBannerTemplateContext"
+      "dynamicSlotDef": "MessageBannerTemplateContext",
+      "templateSlotRenderType": "RenderDetailTemplate"
+    },
+    "sorting": {
+      "type": "string",
+      "description": "Specifies how to sort the messages from the dataprovider.",
+      "displayName": "Sorting",
+      "help": "#sorting",
+      "propertyEditorValues": {
+        "severity": {
+          "description": "Sort the messages in the decreasing order of severity: error, warning, info, confirmation, and none. Then sort the messages of the same severity in reverse chronological order using the timestamp property.",
+          "displayName": "Severity"
+        },
+        "off": {
+          "description": "Messages appear in the order they are supplied with no additional sorting.",
+          "displayName": "Off"
+        }
+      },
+      "enumValues": [
+        "off",
+        "severity"
+      ],
+      "value": "severity"
     }
   },
   "dynamicSlots": {
@@ -109,7 +134,7 @@
           "type": "any"
         },
         "key": {
-          "type": "any"
+          "type": "string|number"
         },
         "metadata": {
           "type": "object",
@@ -161,7 +186,7 @@
           "description": "The data that was used to render the message."
         },
         "key": {
-          "type": "any",
+          "type": "string|number",
           "description": "The key for the message."
         },
         "metadata": {

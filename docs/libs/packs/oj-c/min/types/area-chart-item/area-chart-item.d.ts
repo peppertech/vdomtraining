@@ -5,6 +5,7 @@ export type AreaChartItemProps = {
     seriesId: string;
     groupId: Array<string>;
     value: number;
+    x?: string;
     color?: string;
     markerDisplayed?: 'on' | 'off' | 'auto';
     markerShape?: 'circle' | 'diamond' | 'human' | 'plus' | 'square' | 'star' | 'triangleDown' | 'triangleUp' | 'auto';
@@ -34,6 +35,7 @@ export namespace CAreaChartItemElement {
     type seriesIdChanged = JetElementCustomEventStrict<CAreaChartItemElement['seriesId']>;
     type shortDescChanged = JetElementCustomEventStrict<CAreaChartItemElement['shortDesc']>;
     type valueChanged = JetElementCustomEventStrict<CAreaChartItemElement['value']>;
+    type xChanged = JetElementCustomEventStrict<CAreaChartItemElement['x']>;
 }
 export interface CAreaChartItemElementEventMap extends HTMLElementEventMap {
     'categoriesChanged': JetElementCustomEventStrict<CAreaChartItemElement['categories']>;
@@ -46,6 +48,7 @@ export interface CAreaChartItemElementEventMap extends HTMLElementEventMap {
     'seriesIdChanged': JetElementCustomEventStrict<CAreaChartItemElement['seriesId']>;
     'shortDescChanged': JetElementCustomEventStrict<CAreaChartItemElement['shortDesc']>;
     'valueChanged': JetElementCustomEventStrict<CAreaChartItemElement['value']>;
+    'xChanged': JetElementCustomEventStrict<CAreaChartItemElement['x']>;
 }
 export interface CAreaChartItemElementSettableProperties extends JetSettableProperties {
     categories?: AreaChartItemProps['categories'];
@@ -58,6 +61,7 @@ export interface CAreaChartItemElementSettableProperties extends JetSettableProp
     seriesId: AreaChartItemProps['seriesId'];
     shortDesc?: AreaChartItemProps['shortDesc'];
     value: AreaChartItemProps['value'];
+    x?: AreaChartItemProps['x'];
 }
 export interface CAreaChartItemElementSettablePropertiesLenient extends Partial<CAreaChartItemElementSettableProperties> {
     [key: string]: any;
@@ -73,6 +77,7 @@ export interface AreaChartItemIntrinsicProps extends Partial<Readonly<CAreaChart
     onseriesIdChanged?: (value: CAreaChartItemElementEventMap['seriesIdChanged']) => void;
     onshortDescChanged?: (value: CAreaChartItemElementEventMap['shortDescChanged']) => void;
     onvalueChanged?: (value: CAreaChartItemElementEventMap['valueChanged']) => void;
+    onxChanged?: (value: CAreaChartItemElementEventMap['xChanged']) => void;
 }
 declare global {
     namespace preact.JSX {

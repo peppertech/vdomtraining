@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findMessageBanner = exports.MessageBannerWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var MessageBannerWebElement_1 = require("./MessageBannerWebElement");
+exports.MessageBannerWebElement = void 0;
+exports.findMessageBanner = findMessageBanner;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const MessageBannerWebElement_1 = require("./MessageBannerWebElement");
 Object.defineProperty(exports, "MessageBannerWebElement", { enumerable: true, get: function () { return MessageBannerWebElement_1.MessageBannerWebElement; } });
 /**
  * Retrieve an instance of [MessageBannerWebElement](../classes/MessageBannerWebElement.html).
@@ -29,6 +30,5 @@ async function findMessageBanner(driver, by) {
     }
     return webEl;
 }
-exports.findMessageBanner = findMessageBanner;
 (0, oraclejet_webdriver_1.register)('oj-c-message-banner', MessageBannerWebElement_1.MessageBannerWebElement);
 //# sourceMappingURL=index.js.map

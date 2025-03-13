@@ -1,7 +1,7 @@
 {
   "name": "line-chart",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,6 +13,12 @@
   "displayName": "Line Chart",
   "main": "oj-c/line-chart",
   "help": "oj-c.LineChart.html",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Visualizations"
@@ -27,15 +33,16 @@
       "uxSpecs": [
         "line-chart"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/LineChartWebElement.html"
     }
   },
   "propertyLayout": [
     {
       "propertyGroup": "common",
       "items": [
-        "type",
         "orientation",
-        "legend.title",
         "legend.position",
         "legend.rendered",
         "stack",
@@ -132,215 +139,115 @@
       ],
       "value": "vertical"
     },
+    "timeAxisType": {
+      "type": "string",
+      "description": "The time axis type of the chart x axis.",
+      "displayName": "TimeAxisType",
+      "help": "#timeAxisType",
+      "propertyEditorValues": {
+        "enabled": {
+          "description": "The regular time axis type. Time values are passed using <a target='_blank' href='oj-c.LineChartItem.html'>oj-c-line-chart-item</a> group-id attribute.",
+          "displayName": "Regular"
+        },
+        "mixedFrequency": {
+          "description": "The mixed frequency time axis type. The mixed frequency time axis type is used when different series have different sampling frequencies. Time values are passed using <a target='_blank' href='oj-c.LineChartItem.html'>oj-c-line-chart-item</a> x attribute.",
+          "displayName": "MixedFrequency"
+        },
+        "skipGaps": {
+          "description": "The regular time axis type. Time values are passed using <a target='_blank' href='oj-c.LineChartItem.html'>oj-c-line-chart-item</a> group-id attribute. Gap between time values will be ignored.",
+          "displayName": "SkipGaps"
+        }
+      },
+      "enumValues": [
+        "enabled",
+        "mixedFrequency",
+        "skipGaps"
+      ]
+    },
     "yAxis": {
       "type": "object",
       "description": "The yAxis options for the chart.",
+      "displayName": "Y Axis",
+      "help": "#yAxis",
       "properties": {
+        "dataMax": {
+          "type": "number",
+          "description": "The maximum value of the chart data.",
+          "displayName": "Data Max"
+        },
+        "dataMin": {
+          "type": "number",
+          "description": "The minimum value of the chart data.",
+          "displayName": "Data Min"
+        },
+        "max": {
+          "type": "number",
+          "description": "The maximum value of the y axis.",
+          "displayName": "Max"
+        },
+        "min": {
+          "type": "number",
+          "description": "The minimum value of the y axis.",
+          "displayName": "Min"
+        },
         "majorTick": {
           "type": "object",
+          "description": "The y axis major tick properties.",
+          "displayName": "Major Tick",
           "properties": {
+            "lineColor": {
+              "type": "string",
+              "description": "The color of the line.",
+              "displayName": "Line Color",
+              "format": "color"
+            },
             "lineStyle": {
               "type": "string",
+              "description": "The style of the line.",
+              "displayName": "Line Style",
+              "propertyEditorValues": {
+                "dashed": {
+                  "description": "Renders dashed major tick.",
+                  "displayName": "Dashed"
+                },
+                "dotted": {
+                  "description": "Renders dotted major tick.",
+                  "displayName": "Dotted"
+                },
+                "solid": {
+                  "description": "Renders solid major tick.",
+                  "displayName": "Solid"
+                }
+              },
               "enumValues": [
                 "dashed",
-                "dotted",
-                "solid"
+                "solid",
+                "dotted"
               ]
             },
             "lineWidth": {
-              "type": "number"
-            },
-            "lineColor": {
-              "type": "string",
-              "propertyEditorValues": {
-                "transparent": {},
-                "inherit": {},
-                "initial": {},
-                "-moz-initial": {},
-                "revert": {},
-                "revert-layer": {},
-                "unset": {},
-                "aliceblue": {},
-                "antiquewhite": {},
-                "aqua": {},
-                "aquamarine": {},
-                "azure": {},
-                "beige": {},
-                "bisque": {},
-                "black": {},
-                "blanchedalmond": {},
-                "blue": {},
-                "blueviolet": {},
-                "brown": {},
-                "burlywood": {},
-                "cadetblue": {},
-                "chartreuse": {},
-                "chocolate": {},
-                "coral": {},
-                "cornflowerblue": {},
-                "cornsilk": {},
-                "crimson": {},
-                "cyan": {},
-                "darkblue": {},
-                "darkcyan": {},
-                "darkgoldenrod": {},
-                "darkgray": {},
-                "darkgreen": {},
-                "darkgrey": {},
-                "darkkhaki": {},
-                "darkmagenta": {},
-                "darkolivegreen": {},
-                "darkorange": {},
-                "darkorchid": {},
-                "darkred": {},
-                "darksalmon": {},
-                "darkseagreen": {},
-                "darkslateblue": {},
-                "darkslategray": {},
-                "darkslategrey": {},
-                "darkturquoise": {},
-                "darkviolet": {},
-                "deeppink": {},
-                "deepskyblue": {},
-                "dimgray": {},
-                "dimgrey": {},
-                "dodgerblue": {},
-                "firebrick": {},
-                "floralwhite": {},
-                "forestgreen": {},
-                "fuchsia": {},
-                "gainsboro": {},
-                "ghostwhite": {},
-                "gold": {},
-                "goldenrod": {},
-                "gray": {},
-                "green": {},
-                "greenyellow": {},
-                "grey": {},
-                "honeydew": {},
-                "hotpink": {},
-                "indianred": {},
-                "indigo": {},
-                "ivory": {},
-                "khaki": {},
-                "lavender": {},
-                "lavenderblush": {},
-                "lawngreen": {},
-                "lemonchiffon": {},
-                "lightblue": {},
-                "lightcoral": {},
-                "lightcyan": {},
-                "lightgoldenrodyellow": {},
-                "lightgray": {},
-                "lightgreen": {},
-                "lightgrey": {},
-                "lightpink": {},
-                "lightsalmon": {},
-                "lightseagreen": {},
-                "lightskyblue": {},
-                "lightslategray": {},
-                "lightslategrey": {},
-                "lightsteelblue": {},
-                "lightyellow": {},
-                "lime": {},
-                "limegreen": {},
-                "linen": {},
-                "magenta": {},
-                "maroon": {},
-                "mediumaquamarine": {},
-                "mediumblue": {},
-                "mediumorchid": {},
-                "mediumpurple": {},
-                "mediumseagreen": {},
-                "mediumslateblue": {},
-                "mediumspringgreen": {},
-                "mediumturquoise": {},
-                "mediumvioletred": {},
-                "midnightblue": {},
-                "mintcream": {},
-                "mistyrose": {},
-                "moccasin": {},
-                "navajowhite": {},
-                "navy": {},
-                "oldlace": {},
-                "olive": {},
-                "olivedrab": {},
-                "orange": {},
-                "orangered": {},
-                "orchid": {},
-                "palegoldenrod": {},
-                "palegreen": {},
-                "paleturquoise": {},
-                "palevioletred": {},
-                "papayawhip": {},
-                "peachpuff": {},
-                "peru": {},
-                "pink": {},
-                "plum": {},
-                "powderblue": {},
-                "purple": {},
-                "rebeccapurple": {},
-                "red": {},
-                "rosybrown": {},
-                "royalblue": {},
-                "saddlebrown": {},
-                "salmon": {},
-                "sandybrown": {},
-                "seagreen": {},
-                "seashell": {},
-                "sienna": {},
-                "silver": {},
-                "skyblue": {},
-                "slateblue": {},
-                "slategray": {},
-                "slategrey": {},
-                "snow": {},
-                "springgreen": {},
-                "steelblue": {},
-                "tan": {},
-                "teal": {},
-                "thistle": {},
-                "tomato": {},
-                "turquoise": {},
-                "violet": {},
-                "wheat": {},
-                "white": {},
-                "whitesmoke": {},
-                "yellow": {},
-                "yellowgreen": {},
-                "ActiveBorder": {},
-                "ActiveCaption": {},
-                "AppWorkspace": {},
-                "Background": {},
-                "ButtonFace": {},
-                "ButtonHighlight": {},
-                "ButtonShadow": {},
-                "ButtonText": {},
-                "CaptionText": {},
-                "GrayText": {},
-                "Highlight": {},
-                "HighlightText": {},
-                "InactiveBorder": {},
-                "InactiveCaption": {},
-                "InactiveCaptionText": {},
-                "InfoBackground": {},
-                "InfoText": {},
-                "Menu": {},
-                "MenuText": {},
-                "Scrollbar": {},
-                "ThreeDDarkShadow": {},
-                "ThreeDFace": {},
-                "ThreeDHighlight": {},
-                "ThreeDLightShadow": {},
-                "ThreeDShadow": {},
-                "Window": {},
-                "WindowFrame": {},
-                "WindowText": {},
-                "currentcolor": {}
-              }
+              "type": "number",
+              "description": "The width of the line.",
+              "displayName": "Line Width"
             },
             "rendered": {
               "type": "string",
+              "description": "The color of the line.",
+              "displayName": "Rendered",
+              "propertyEditorValues": {
+                "off": {
+                  "description": "Renders the minor tick.",
+                  "displayName": "Off"
+                },
+                "on": {
+                  "description": "Does not render the minor tick.",
+                  "displayName": "On"
+                },
+                "auto": {
+                  "description": "Renders the minor tick for log scale.",
+                  "displayName": "Auto"
+                }
+              },
               "enumValues": [
                 "auto",
                 "off",
@@ -351,209 +258,62 @@
         },
         "minorTick": {
           "type": "object",
+          "description": "The y axis minor tick properties.",
+          "displayName": "Minor Tick",
           "properties": {
+            "lineColor": {
+              "type": "string",
+              "description": "The color of the line.",
+              "displayName": "Line Color",
+              "format": "color"
+            },
             "lineStyle": {
               "type": "string",
+              "description": "The style of the line.",
+              "displayName": "Line Style",
+              "propertyEditorValues": {
+                "dashed": {
+                  "description": "Renders dashed major tick.",
+                  "displayName": "Dashed"
+                },
+                "dotted": {
+                  "description": "Renders dotted major tick.",
+                  "displayName": "Dotted"
+                },
+                "solid": {
+                  "description": "Renders solid major tick.",
+                  "displayName": "Solid"
+                }
+              },
               "enumValues": [
                 "dashed",
-                "dotted",
-                "solid"
+                "solid",
+                "dotted"
               ]
             },
             "lineWidth": {
-              "type": "number"
-            },
-            "lineColor": {
-              "type": "string",
-              "propertyEditorValues": {
-                "transparent": {},
-                "inherit": {},
-                "initial": {},
-                "-moz-initial": {},
-                "revert": {},
-                "revert-layer": {},
-                "unset": {},
-                "aliceblue": {},
-                "antiquewhite": {},
-                "aqua": {},
-                "aquamarine": {},
-                "azure": {},
-                "beige": {},
-                "bisque": {},
-                "black": {},
-                "blanchedalmond": {},
-                "blue": {},
-                "blueviolet": {},
-                "brown": {},
-                "burlywood": {},
-                "cadetblue": {},
-                "chartreuse": {},
-                "chocolate": {},
-                "coral": {},
-                "cornflowerblue": {},
-                "cornsilk": {},
-                "crimson": {},
-                "cyan": {},
-                "darkblue": {},
-                "darkcyan": {},
-                "darkgoldenrod": {},
-                "darkgray": {},
-                "darkgreen": {},
-                "darkgrey": {},
-                "darkkhaki": {},
-                "darkmagenta": {},
-                "darkolivegreen": {},
-                "darkorange": {},
-                "darkorchid": {},
-                "darkred": {},
-                "darksalmon": {},
-                "darkseagreen": {},
-                "darkslateblue": {},
-                "darkslategray": {},
-                "darkslategrey": {},
-                "darkturquoise": {},
-                "darkviolet": {},
-                "deeppink": {},
-                "deepskyblue": {},
-                "dimgray": {},
-                "dimgrey": {},
-                "dodgerblue": {},
-                "firebrick": {},
-                "floralwhite": {},
-                "forestgreen": {},
-                "fuchsia": {},
-                "gainsboro": {},
-                "ghostwhite": {},
-                "gold": {},
-                "goldenrod": {},
-                "gray": {},
-                "green": {},
-                "greenyellow": {},
-                "grey": {},
-                "honeydew": {},
-                "hotpink": {},
-                "indianred": {},
-                "indigo": {},
-                "ivory": {},
-                "khaki": {},
-                "lavender": {},
-                "lavenderblush": {},
-                "lawngreen": {},
-                "lemonchiffon": {},
-                "lightblue": {},
-                "lightcoral": {},
-                "lightcyan": {},
-                "lightgoldenrodyellow": {},
-                "lightgray": {},
-                "lightgreen": {},
-                "lightgrey": {},
-                "lightpink": {},
-                "lightsalmon": {},
-                "lightseagreen": {},
-                "lightskyblue": {},
-                "lightslategray": {},
-                "lightslategrey": {},
-                "lightsteelblue": {},
-                "lightyellow": {},
-                "lime": {},
-                "limegreen": {},
-                "linen": {},
-                "magenta": {},
-                "maroon": {},
-                "mediumaquamarine": {},
-                "mediumblue": {},
-                "mediumorchid": {},
-                "mediumpurple": {},
-                "mediumseagreen": {},
-                "mediumslateblue": {},
-                "mediumspringgreen": {},
-                "mediumturquoise": {},
-                "mediumvioletred": {},
-                "midnightblue": {},
-                "mintcream": {},
-                "mistyrose": {},
-                "moccasin": {},
-                "navajowhite": {},
-                "navy": {},
-                "oldlace": {},
-                "olive": {},
-                "olivedrab": {},
-                "orange": {},
-                "orangered": {},
-                "orchid": {},
-                "palegoldenrod": {},
-                "palegreen": {},
-                "paleturquoise": {},
-                "palevioletred": {},
-                "papayawhip": {},
-                "peachpuff": {},
-                "peru": {},
-                "pink": {},
-                "plum": {},
-                "powderblue": {},
-                "purple": {},
-                "rebeccapurple": {},
-                "red": {},
-                "rosybrown": {},
-                "royalblue": {},
-                "saddlebrown": {},
-                "salmon": {},
-                "sandybrown": {},
-                "seagreen": {},
-                "seashell": {},
-                "sienna": {},
-                "silver": {},
-                "skyblue": {},
-                "slateblue": {},
-                "slategray": {},
-                "slategrey": {},
-                "snow": {},
-                "springgreen": {},
-                "steelblue": {},
-                "tan": {},
-                "teal": {},
-                "thistle": {},
-                "tomato": {},
-                "turquoise": {},
-                "violet": {},
-                "wheat": {},
-                "white": {},
-                "whitesmoke": {},
-                "yellow": {},
-                "yellowgreen": {},
-                "ActiveBorder": {},
-                "ActiveCaption": {},
-                "AppWorkspace": {},
-                "Background": {},
-                "ButtonFace": {},
-                "ButtonHighlight": {},
-                "ButtonShadow": {},
-                "ButtonText": {},
-                "CaptionText": {},
-                "GrayText": {},
-                "Highlight": {},
-                "HighlightText": {},
-                "InactiveBorder": {},
-                "InactiveCaption": {},
-                "InactiveCaptionText": {},
-                "InfoBackground": {},
-                "InfoText": {},
-                "Menu": {},
-                "MenuText": {},
-                "Scrollbar": {},
-                "ThreeDDarkShadow": {},
-                "ThreeDFace": {},
-                "ThreeDHighlight": {},
-                "ThreeDLightShadow": {},
-                "ThreeDShadow": {},
-                "Window": {},
-                "WindowFrame": {},
-                "WindowText": {},
-                "currentcolor": {}
-              }
+              "type": "number",
+              "description": "The width of the line.",
+              "displayName": "Line Width"
             },
             "rendered": {
               "type": "string",
+              "description": "Whether the minor tick are rendered.",
+              "displayName": "Rendered",
+              "propertyEditorValues": {
+                "off": {
+                  "description": "Renders the minor tick.",
+                  "displayName": "Off"
+                },
+                "on": {
+                  "description": "Does not render the minor tick.",
+                  "displayName": "On"
+                },
+                "auto": {
+                  "description": "Renders the minor tick for log scale.",
+                  "displayName": "Auto"
+                }
+              },
               "enumValues": [
                 "auto",
                 "off",
@@ -561,218 +321,158 @@
               ]
             }
           }
+        },
+        "tickLabel": {
+          "type": "object",
+          "description": "The y axis tick label properties.",
+          "displayName": "Tick Label",
+          "properties": {
+            "converter": {
+              "type": "object",
+              "description": "The converter to format the axis tick labels.",
+              "displayName": "Converter"
+            },
+            "rendered": {
+              "type": "string",
+              "description": "Whether the tick labels are rendered or not.",
+              "displayName": "Rendered",
+              "propertyEditorValues": {
+                "on": {
+                  "description": "Renders the axis tick label.",
+                  "displayName": "On"
+                },
+                "off": {
+                  "description": "Axis tick labels won't be rendered.",
+                  "displayName": "Off"
+                }
+              },
+              "enumValues": [
+                "off",
+                "on"
+              ]
+            },
+            "style": {
+              "type": "object",
+              "description": "The style of the tick labels.",
+              "displayName": "Style"
+            }
+          }
+        },
+        "viewportMin": {
+          "type": "number",
+          "description": "The current minimum value of y axis viewport.",
+          "displayName": "Viewport Min"
+        },
+        "viewportMax": {
+          "type": "number",
+          "description": "The current maximum value of y axis viewport.",
+          "displayName": "Viewport Max"
+        },
+        "step": {
+          "type": "number",
+          "description": "The increment between major tick marks in y axis.",
+          "displayName": "Step"
+        },
+        "size": {
+          "type": "number",
+          "description": "The size of the axis.",
+          "displayName": "Size"
+        },
+        "scale": {
+          "type": "string",
+          "description": "The scale of the axis.",
+          "displayName": "Scale",
+          "propertyEditorValues": {
+            "linear": {
+              "description": "Renders linear y axis.",
+              "displayName": "Linear"
+            },
+            "log": {
+              "description": "Renders log y axis.",
+              "displayName": "Log"
+            }
+          },
+          "enumValues": [
+            "linear",
+            "log"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "description": "The axis title.",
+          "displayName": "Title"
+        },
+        "titleStyle": {
+          "type": "object",
+          "description": "The axis title style.",
+          "displayName": "Title Style"
         }
       }
     },
     "xAxis": {
       "type": "object",
       "description": "The xAxis options for the chart.",
+      "displayName": "X Axis",
+      "help": "#xAxis",
       "properties": {
         "majorTick": {
           "type": "object",
+          "description": "The x axis major tick properties.",
+          "displayName": "Major Tick",
           "properties": {
+            "lineColor": {
+              "type": "string",
+              "description": "The color of the line.",
+              "displayName": "Line Color",
+              "format": "color"
+            },
             "lineStyle": {
               "type": "string",
+              "description": "The style of the line.",
+              "displayName": "Line Style",
+              "propertyEditorValues": {
+                "dashed": {
+                  "description": "Renders dashed major tick.",
+                  "displayName": "Dashed"
+                },
+                "dotted": {
+                  "description": "Renders dotted major tick.",
+                  "displayName": "Dotted"
+                },
+                "solid": {
+                  "description": "Renders solid major tick.",
+                  "displayName": "Solid"
+                }
+              },
               "enumValues": [
                 "dashed",
-                "dotted",
-                "solid"
+                "solid",
+                "dotted"
               ]
             },
             "lineWidth": {
-              "type": "number"
-            },
-            "lineColor": {
-              "type": "string",
-              "propertyEditorValues": {
-                "transparent": {},
-                "inherit": {},
-                "initial": {},
-                "-moz-initial": {},
-                "revert": {},
-                "revert-layer": {},
-                "unset": {},
-                "aliceblue": {},
-                "antiquewhite": {},
-                "aqua": {},
-                "aquamarine": {},
-                "azure": {},
-                "beige": {},
-                "bisque": {},
-                "black": {},
-                "blanchedalmond": {},
-                "blue": {},
-                "blueviolet": {},
-                "brown": {},
-                "burlywood": {},
-                "cadetblue": {},
-                "chartreuse": {},
-                "chocolate": {},
-                "coral": {},
-                "cornflowerblue": {},
-                "cornsilk": {},
-                "crimson": {},
-                "cyan": {},
-                "darkblue": {},
-                "darkcyan": {},
-                "darkgoldenrod": {},
-                "darkgray": {},
-                "darkgreen": {},
-                "darkgrey": {},
-                "darkkhaki": {},
-                "darkmagenta": {},
-                "darkolivegreen": {},
-                "darkorange": {},
-                "darkorchid": {},
-                "darkred": {},
-                "darksalmon": {},
-                "darkseagreen": {},
-                "darkslateblue": {},
-                "darkslategray": {},
-                "darkslategrey": {},
-                "darkturquoise": {},
-                "darkviolet": {},
-                "deeppink": {},
-                "deepskyblue": {},
-                "dimgray": {},
-                "dimgrey": {},
-                "dodgerblue": {},
-                "firebrick": {},
-                "floralwhite": {},
-                "forestgreen": {},
-                "fuchsia": {},
-                "gainsboro": {},
-                "ghostwhite": {},
-                "gold": {},
-                "goldenrod": {},
-                "gray": {},
-                "green": {},
-                "greenyellow": {},
-                "grey": {},
-                "honeydew": {},
-                "hotpink": {},
-                "indianred": {},
-                "indigo": {},
-                "ivory": {},
-                "khaki": {},
-                "lavender": {},
-                "lavenderblush": {},
-                "lawngreen": {},
-                "lemonchiffon": {},
-                "lightblue": {},
-                "lightcoral": {},
-                "lightcyan": {},
-                "lightgoldenrodyellow": {},
-                "lightgray": {},
-                "lightgreen": {},
-                "lightgrey": {},
-                "lightpink": {},
-                "lightsalmon": {},
-                "lightseagreen": {},
-                "lightskyblue": {},
-                "lightslategray": {},
-                "lightslategrey": {},
-                "lightsteelblue": {},
-                "lightyellow": {},
-                "lime": {},
-                "limegreen": {},
-                "linen": {},
-                "magenta": {},
-                "maroon": {},
-                "mediumaquamarine": {},
-                "mediumblue": {},
-                "mediumorchid": {},
-                "mediumpurple": {},
-                "mediumseagreen": {},
-                "mediumslateblue": {},
-                "mediumspringgreen": {},
-                "mediumturquoise": {},
-                "mediumvioletred": {},
-                "midnightblue": {},
-                "mintcream": {},
-                "mistyrose": {},
-                "moccasin": {},
-                "navajowhite": {},
-                "navy": {},
-                "oldlace": {},
-                "olive": {},
-                "olivedrab": {},
-                "orange": {},
-                "orangered": {},
-                "orchid": {},
-                "palegoldenrod": {},
-                "palegreen": {},
-                "paleturquoise": {},
-                "palevioletred": {},
-                "papayawhip": {},
-                "peachpuff": {},
-                "peru": {},
-                "pink": {},
-                "plum": {},
-                "powderblue": {},
-                "purple": {},
-                "rebeccapurple": {},
-                "red": {},
-                "rosybrown": {},
-                "royalblue": {},
-                "saddlebrown": {},
-                "salmon": {},
-                "sandybrown": {},
-                "seagreen": {},
-                "seashell": {},
-                "sienna": {},
-                "silver": {},
-                "skyblue": {},
-                "slateblue": {},
-                "slategray": {},
-                "slategrey": {},
-                "snow": {},
-                "springgreen": {},
-                "steelblue": {},
-                "tan": {},
-                "teal": {},
-                "thistle": {},
-                "tomato": {},
-                "turquoise": {},
-                "violet": {},
-                "wheat": {},
-                "white": {},
-                "whitesmoke": {},
-                "yellow": {},
-                "yellowgreen": {},
-                "ActiveBorder": {},
-                "ActiveCaption": {},
-                "AppWorkspace": {},
-                "Background": {},
-                "ButtonFace": {},
-                "ButtonHighlight": {},
-                "ButtonShadow": {},
-                "ButtonText": {},
-                "CaptionText": {},
-                "GrayText": {},
-                "Highlight": {},
-                "HighlightText": {},
-                "InactiveBorder": {},
-                "InactiveCaption": {},
-                "InactiveCaptionText": {},
-                "InfoBackground": {},
-                "InfoText": {},
-                "Menu": {},
-                "MenuText": {},
-                "Scrollbar": {},
-                "ThreeDDarkShadow": {},
-                "ThreeDFace": {},
-                "ThreeDHighlight": {},
-                "ThreeDLightShadow": {},
-                "ThreeDShadow": {},
-                "Window": {},
-                "WindowFrame": {},
-                "WindowText": {},
-                "currentcolor": {}
-              }
+              "type": "number",
+              "description": "The width of the line.",
+              "displayName": "Line Width"
             },
             "rendered": {
               "type": "string",
+              "description": "The color of the line.",
+              "displayName": "Rendered",
+              "propertyEditorValues": {
+                "off": {
+                  "description": "Renders the minor tick.",
+                  "displayName": "Off"
+                },
+                "on": {
+                  "description": "Does not render the minor tick.",
+                  "displayName": "On"
+                },
+                "auto": {
+                  "description": "Renders the minor tick for log scale.",
+                  "displayName": "Auto"
+                }
+              },
               "enumValues": [
                 "auto",
                 "off",
@@ -780,207 +480,188 @@
               ]
             }
           }
+        },
+        "minorTick": {
+          "type": "object",
+          "description": "The x axis minor tick properties.",
+          "displayName": "Minor Tick",
+          "properties": {
+            "lineColor": {
+              "type": "string",
+              "description": "The color of the line.",
+              "displayName": "Line Color",
+              "format": "color"
+            },
+            "lineStyle": {
+              "type": "string",
+              "description": "The style of the line.",
+              "displayName": "Line Style",
+              "propertyEditorValues": {
+                "dashed": {
+                  "description": "Renders dashed major tick.",
+                  "displayName": "Dashed"
+                },
+                "dotted": {
+                  "description": "Renders dotted major tick.",
+                  "displayName": "Dotted"
+                },
+                "solid": {
+                  "description": "Renders solid major tick.",
+                  "displayName": "Solid"
+                }
+              },
+              "enumValues": [
+                "dashed",
+                "solid",
+                "dotted"
+              ]
+            },
+            "lineWidth": {
+              "type": "number",
+              "description": "The width of the line.",
+              "displayName": "Line Width"
+            },
+            "rendered": {
+              "type": "string",
+              "description": "Whether the minor tick are rendered.",
+              "displayName": "Rendered",
+              "propertyEditorValues": {
+                "off": {
+                  "description": "Renders the minor tick.",
+                  "displayName": "Off"
+                },
+                "on": {
+                  "description": "Does not render the minor tick.",
+                  "displayName": "On"
+                },
+                "auto": {
+                  "description": "Renders the minor tick for log scale.",
+                  "displayName": "Auto"
+                }
+              },
+              "enumValues": [
+                "auto",
+                "off",
+                "on"
+              ]
+            }
+          }
+        },
+        "tickLabel": {
+          "type": "object",
+          "description": "The x axis tick label properties.",
+          "displayName": "Tick Label",
+          "properties": {
+            "converter": {
+              "type": "object|Array<object>",
+              "description": "The converter to format the axis tick labels.",
+              "displayName": "Converter"
+            },
+            "rendered": {
+              "type": "string",
+              "description": "Whether the tick labels are rendered or not.",
+              "displayName": "Rendered",
+              "propertyEditorValues": {
+                "on": {
+                  "description": "Renders the axis tick label.",
+                  "displayName": "On"
+                },
+                "off": {
+                  "description": "Axis tick labels won't be rendered.",
+                  "displayName": "Off"
+                }
+              },
+              "enumValues": [
+                "off",
+                "on"
+              ]
+            },
+            "rotation": {
+              "type": "string",
+              "description": "Whether the ticklabels can be rotated.",
+              "displayName": "Rotation",
+              "propertyEditorValues": {
+                "none": {
+                  "description": "The axis labels will not be rotated.",
+                  "displayName": "On"
+                },
+                "off": {
+                  "description": "The axis labels might be rotated in order to fit more labels.",
+                  "displayName": "auto"
+                }
+              },
+              "enumValues": [
+                "auto",
+                "none"
+              ]
+            },
+            "style": {
+              "type": "object",
+              "description": "The style of the tick labels.",
+              "displayName": "Style"
+            }
+          }
+        },
+        "viewportMin": {
+          "type": "number",
+          "description": "The current minimum value of x axis viewport.",
+          "displayName": "Viewport Min"
+        },
+        "viewportMax": {
+          "type": "number",
+          "description": "The current maximum value of x axis viewport.",
+          "displayName": "Viewport Max"
+        },
+        "step": {
+          "type": "number",
+          "description": "The increment between major tick marks in x axis.",
+          "displayName": "Step"
+        },
+        "size": {
+          "type": "number",
+          "description": "The size of the axis.",
+          "displayName": "Size"
+        },
+        "scale": {
+          "type": "string",
+          "description": "The scale of the axis.",
+          "displayName": "Scale",
+          "enumValues": [
+            "linear",
+            "log"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "description": "The axis title.",
+          "displayName": "Title"
+        },
+        "titleStyle": {
+          "type": "object",
+          "description": "The axis title style.",
+          "displayName": "Title Style"
         }
       }
     },
     "plotArea": {
       "type": "object",
       "description": "The plot area of the chart.",
+      "displayName": "Plot Area",
+      "help": "#plotArea",
       "properties": {
         "backgroundColor": {
           "type": "string",
-          "propertyEditorValues": {
-            "transparent": {},
-            "inherit": {},
-            "initial": {},
-            "-moz-initial": {},
-            "revert": {},
-            "revert-layer": {},
-            "unset": {},
-            "aliceblue": {},
-            "antiquewhite": {},
-            "aqua": {},
-            "aquamarine": {},
-            "azure": {},
-            "beige": {},
-            "bisque": {},
-            "black": {},
-            "blanchedalmond": {},
-            "blue": {},
-            "blueviolet": {},
-            "brown": {},
-            "burlywood": {},
-            "cadetblue": {},
-            "chartreuse": {},
-            "chocolate": {},
-            "coral": {},
-            "cornflowerblue": {},
-            "cornsilk": {},
-            "crimson": {},
-            "cyan": {},
-            "darkblue": {},
-            "darkcyan": {},
-            "darkgoldenrod": {},
-            "darkgray": {},
-            "darkgreen": {},
-            "darkgrey": {},
-            "darkkhaki": {},
-            "darkmagenta": {},
-            "darkolivegreen": {},
-            "darkorange": {},
-            "darkorchid": {},
-            "darkred": {},
-            "darksalmon": {},
-            "darkseagreen": {},
-            "darkslateblue": {},
-            "darkslategray": {},
-            "darkslategrey": {},
-            "darkturquoise": {},
-            "darkviolet": {},
-            "deeppink": {},
-            "deepskyblue": {},
-            "dimgray": {},
-            "dimgrey": {},
-            "dodgerblue": {},
-            "firebrick": {},
-            "floralwhite": {},
-            "forestgreen": {},
-            "fuchsia": {},
-            "gainsboro": {},
-            "ghostwhite": {},
-            "gold": {},
-            "goldenrod": {},
-            "gray": {},
-            "green": {},
-            "greenyellow": {},
-            "grey": {},
-            "honeydew": {},
-            "hotpink": {},
-            "indianred": {},
-            "indigo": {},
-            "ivory": {},
-            "khaki": {},
-            "lavender": {},
-            "lavenderblush": {},
-            "lawngreen": {},
-            "lemonchiffon": {},
-            "lightblue": {},
-            "lightcoral": {},
-            "lightcyan": {},
-            "lightgoldenrodyellow": {},
-            "lightgray": {},
-            "lightgreen": {},
-            "lightgrey": {},
-            "lightpink": {},
-            "lightsalmon": {},
-            "lightseagreen": {},
-            "lightskyblue": {},
-            "lightslategray": {},
-            "lightslategrey": {},
-            "lightsteelblue": {},
-            "lightyellow": {},
-            "lime": {},
-            "limegreen": {},
-            "linen": {},
-            "magenta": {},
-            "maroon": {},
-            "mediumaquamarine": {},
-            "mediumblue": {},
-            "mediumorchid": {},
-            "mediumpurple": {},
-            "mediumseagreen": {},
-            "mediumslateblue": {},
-            "mediumspringgreen": {},
-            "mediumturquoise": {},
-            "mediumvioletred": {},
-            "midnightblue": {},
-            "mintcream": {},
-            "mistyrose": {},
-            "moccasin": {},
-            "navajowhite": {},
-            "navy": {},
-            "oldlace": {},
-            "olive": {},
-            "olivedrab": {},
-            "orange": {},
-            "orangered": {},
-            "orchid": {},
-            "palegoldenrod": {},
-            "palegreen": {},
-            "paleturquoise": {},
-            "palevioletred": {},
-            "papayawhip": {},
-            "peachpuff": {},
-            "peru": {},
-            "pink": {},
-            "plum": {},
-            "powderblue": {},
-            "purple": {},
-            "rebeccapurple": {},
-            "red": {},
-            "rosybrown": {},
-            "royalblue": {},
-            "saddlebrown": {},
-            "salmon": {},
-            "sandybrown": {},
-            "seagreen": {},
-            "seashell": {},
-            "sienna": {},
-            "silver": {},
-            "skyblue": {},
-            "slateblue": {},
-            "slategray": {},
-            "slategrey": {},
-            "snow": {},
-            "springgreen": {},
-            "steelblue": {},
-            "tan": {},
-            "teal": {},
-            "thistle": {},
-            "tomato": {},
-            "turquoise": {},
-            "violet": {},
-            "wheat": {},
-            "white": {},
-            "whitesmoke": {},
-            "yellow": {},
-            "yellowgreen": {},
-            "ActiveBorder": {},
-            "ActiveCaption": {},
-            "AppWorkspace": {},
-            "Background": {},
-            "ButtonFace": {},
-            "ButtonHighlight": {},
-            "ButtonShadow": {},
-            "ButtonText": {},
-            "CaptionText": {},
-            "GrayText": {},
-            "Highlight": {},
-            "HighlightText": {},
-            "InactiveBorder": {},
-            "InactiveCaption": {},
-            "InactiveCaptionText": {},
-            "InfoBackground": {},
-            "InfoText": {},
-            "Menu": {},
-            "MenuText": {},
-            "Scrollbar": {},
-            "ThreeDDarkShadow": {},
-            "ThreeDFace": {},
-            "ThreeDHighlight": {},
-            "ThreeDLightShadow": {},
-            "ThreeDShadow": {},
-            "Window": {},
-            "WindowFrame": {},
-            "WindowText": {},
-            "currentcolor": {}
-          }
+          "description": "The background color of the plot area.",
+          "format": "color",
+          "displayName": "Background Color"
         }
       }
     },
     "zoomAndScroll": {
       "type": "string",
       "description": "The zoom and scroll behavior.",
+      "displayName": "Zoom And Scroll",
+      "help": "#zoomAndScroll",
       "enumValues": [
         "off",
         "live"
@@ -989,15 +670,32 @@
     "valueFormats": {
       "type": "object",
       "description": "An object specifying value formatting and tooltip behavior, whose keys generally correspond to the attribute names on the data items.",
+      "displayName": "Value Formats",
+      "help": "#valueFormats",
       "properties": {
         "group": {
           "type": "object",
+          "description": "The object defining formatting and tooltip behavior for the group.",
           "properties": {
             "tooltipLabel": {
-              "type": "string"
+              "type": "string",
+              "description": "A string representing the label that is displayed before the value in the tooltip.",
+              "displayName": "Tooltip Label"
             },
             "tooltipDisplay": {
               "type": "string",
+              "description": "Whether the value is displayed in the tooltip.",
+              "displayName": "Tooltip Display",
+              "propertyEditorValues": {
+                "off": {
+                  "description": "The property will not be displayed in tooltip.",
+                  "displayName": "Off"
+                },
+                "on": {
+                  "description": "The property will be displayed in tooltip.",
+                  "displayName": "On"
+                }
+              },
               "enumValues": [
                 "auto",
                 "off"
@@ -1007,12 +705,27 @@
         },
         "series": {
           "type": "object",
+          "description": "The object defining formatting and tooltip behavior for the series.",
           "properties": {
             "tooltipLabel": {
-              "type": "string"
+              "type": "string",
+              "description": "A string representing the label that is displayed before the value in the tooltip.",
+              "displayName": "Tooltip Label"
             },
             "tooltipDisplay": {
               "type": "string",
+              "description": "Whether the value is displayed in the tooltip.",
+              "displayName": "Tooltip Display",
+              "propertyEditorValues": {
+                "off": {
+                  "description": "The property will not be displayed in tooltip.",
+                  "displayName": "Off"
+                },
+                "on": {
+                  "description": "The property will be displayed in tooltip.",
+                  "displayName": "On"
+                }
+              },
               "enumValues": [
                 "auto",
                 "off"
@@ -1022,15 +735,31 @@
         },
         "value": {
           "type": "object",
+          "description": "The object defining formatting and tooltip behavior for the value.",
           "properties": {
             "converter": {
-              "type": "any"
+              "type": "object",
+              "description": "The converter to format the numerical value for the tooltip."
             },
             "tooltipLabel": {
-              "type": "string"
+              "type": "string",
+              "description": "A string representing the label that is displayed before the value in the tooltip.",
+              "displayName": "Tooltip Label"
             },
             "tooltipDisplay": {
               "type": "string",
+              "description": "Whether the value is displayed in the tooltip.",
+              "displayName": "Tooltip Display",
+              "propertyEditorValues": {
+                "off": {
+                  "description": "The property will not be displayed in tooltip.",
+                  "displayName": "Off"
+                },
+                "on": {
+                  "description": "The property will be displayed in tooltip.",
+                  "displayName": "On"
+                }
+              },
               "enumValues": [
                 "auto",
                 "off"
@@ -1050,13 +779,38 @@
       "type": "DataProvider|null",
       "description": "Specifies the DataProvider for the sections and items of the line-chart.",
       "displayName": "Data",
-      "help": "#data"
+      "help": "#data",
+      "extension": {
+        "webelement": {
+          "exceptionStatus": [
+            {
+              "type": "deprecated",
+              "since": "17.1.0",
+              "description": "Data sets from a DataProvider cannot be sent to WebDriverJS; use ViewModels or page variables instead."
+            }
+          ]
+        }
+      }
     },
     "selectionMode": {
       "type": "string",
       "description": "Specifies the selection mode.",
       "displayName": "Selection Mode",
       "help": "#selectionMode",
+      "propertyEditorValues": {
+        "none": {
+          "description": "No item can be selected.",
+          "displayName": "None"
+        },
+        "single": {
+          "description": "Single item can be selected.",
+          "displayName": "Single"
+        },
+        "multiple": {
+          "description": "Multiple items can be selected.",
+          "displayName": "Multiple"
+        }
+      },
       "enumValues": [
         "none",
         "multiple",
@@ -1072,14 +826,30 @@
       "writeback": true,
       "value": []
     },
+    "dragMode": {
+      "type": "string",
+      "description": "The action that is performed when a drag occurs on the chart.",
+      "displayName": "Drag Mode",
+      "help": "#dragMode",
+      "enumValues": [
+        "pan",
+        "zoom",
+        "select",
+        "off",
+        "user"
+      ]
+    },
     "hiddenCategories": {
       "type": "Array<string>",
+      "description": "An array of category strings used for filtering.",
+      "displayName": "Hidden Categories",
+      "help": "#hiddenCategories",
       "writeback": true,
       "value": []
     },
     "highlightedCategories": {
       "type": "Array<string>",
-      "description": "An array of category string used for highlighting.",
+      "description": "An array of category strings used for highlighting.",
       "displayName": "Highlighted Categories",
       "help": "#highlightedCategories",
       "writeback": true,
@@ -1089,6 +859,21 @@
       "type": "string",
       "description": "Defines the hide and show behavior that is performed when clicking on a leegnd item.",
       "displayName": "Hide and Show Behavior",
+      "help": "#hideAndShowBehavior",
+      "propertyEditorValues": {
+        "withRescale": {
+          "description": "Rescaling of y axis when items are hidden.",
+          "displayName": "With Rescale"
+        },
+        "withoutRescale": {
+          "description": "No rescaling of y axis when items are hidden.",
+          "displayName": "Without Rescale"
+        },
+        "none": {
+          "description": "No hide and show behavior.",
+          "displayName": "None"
+        }
+      },
       "enumValues": [
         "none",
         "withoutRescale",
@@ -1100,6 +885,17 @@
       "type": "string",
       "description": "Defines the behavior applied when hovering over data items.",
       "displayName": "Hover Behavior",
+      "help": "#hoverBehavior",
+      "propertyEditorValues": {
+        "dim": {
+          "description": "Hovered items will be dimmed.",
+          "displayName": "Dim"
+        },
+        "none": {
+          "description": "No hover behavior.",
+          "displayName": "None"
+        }
+      },
       "enumValues": [
         "none",
         "dim"
@@ -1110,6 +906,17 @@
       "type": "string",
       "description": "The matching condition for the highlighted property.",
       "displayName": "Highlight Match",
+      "help": "#highlightMatch",
+      "propertyEditorValues": {
+        "any": {
+          "description": "Any matching categories will be highlighted.",
+          "displayName": "Dim"
+        },
+        "all": {
+          "description": "Items only with all matching categories will be highlighted.",
+          "displayName": "None"
+        }
+      },
       "enumValues": [
         "all",
         "any"
@@ -1119,6 +926,8 @@
     "legend": {
       "type": "object",
       "description": "An object defining the style, positioning, and behavior of the legend.",
+      "displayName": "Legend",
+      "help": "#legend",
       "properties": {
         "position": {
           "type": "string",
@@ -1151,6 +960,20 @@
         },
         "symbolWidth": {
           "type": "number"
+        }
+      }
+    },
+    "contextMenuConfig": {
+      "type": "object",
+      "description": "Specifies a context menu configuration.",
+      "displayName": "Context Menu Config",
+      "help": "#contextMenuConfig",
+      "properties": {
+        "accessibleLabel": {
+          "type": "string"
+        },
+        "items": {
+          "type": "function"
         }
       }
     }
@@ -1244,6 +1067,7 @@
   "events": {
     "ojItemDrill": {
       "description": "Triggered on a chart item (double click if selection is enabled, single click otherwise).",
+      "displayName": "Item Drill",
       "help": "#event:ItemDrill",
       "detail": {
         "id": {
@@ -1271,11 +1095,15 @@
             },
             "groupId": {
               "type": "Array<string>",
-              "description": "The array of id(s) for the group(s) the item belongs to"
+              "description": "The array of ids for the groups the item belongs to"
             },
             "value": {
               "type": "number",
-              "description": "The array of id(s) for the group(s) the item belongs to"
+              "description": "The value of the data item."
+            },
+            "x": {
+              "type": "string",
+              "description": "The x value of the data item."
             },
             "color": {
               "type": "string",
@@ -1337,11 +1165,13 @@
           "properties": {
             "items": {
               "type": "Array<object>",
+              "description": "The line chart items belonging to this line series.",
               "extension": {
                 "vbdt": {
                   "itemProperties": {
                     "id": {
-                      "type": "any"
+                      "type": "any",
+                      "displayName": "Id"
                     },
                     "seriesId": {
                       "type": "string",
@@ -1351,15 +1181,21 @@
                     },
                     "groupId": {
                       "type": "Array<string>",
-                      "description": "The array of id(s) for the group(s) the item belongs to",
+                      "description": "The array of ids for the groups the item belongs to",
                       "displayName": "Group Id",
                       "help": "#groupId"
                     },
                     "value": {
                       "type": "number",
-                      "description": "The array of id(s) for the group(s) the item belongs to",
-                      "displayName": "Valus",
+                      "description": "The value of the data item.",
+                      "displayName": "Value",
                       "help": "#value"
+                    },
+                    "x": {
+                      "type": "string",
+                      "description": "The x value of the data item.",
+                      "displayName": "X",
+                      "help": "#x"
                     },
                     "color": {
                       "type": "string",
@@ -1449,8 +1285,8 @@
               "description": "The line style of the data line.",
               "enumValues": [
                 "dashed",
-                "dotted",
-                "solid"
+                "solid",
+                "dotted"
               ]
             },
             "lineType": {
@@ -1529,6 +1365,7 @@
     },
     "ojSeriesDrill": {
       "description": "Triggered on a chart series drill gesture (double click if selection is enabled, single click otherwise).",
+      "displayName": "Series Drill",
       "help": "#event:SeriesDrill",
       "detail": {
         "id": {
@@ -1545,11 +1382,13 @@
           "properties": {
             "items": {
               "type": "Array<object>",
+              "description": "The line chart items belonging to this line series.",
               "extension": {
                 "vbdt": {
                   "itemProperties": {
                     "id": {
-                      "type": "any"
+                      "type": "any",
+                      "displayName": "Id"
                     },
                     "seriesId": {
                       "type": "string",
@@ -1559,15 +1398,21 @@
                     },
                     "groupId": {
                       "type": "Array<string>",
-                      "description": "The array of id(s) for the group(s) the item belongs to",
+                      "description": "The array of ids for the groups the item belongs to",
                       "displayName": "Group Id",
                       "help": "#groupId"
                     },
                     "value": {
                       "type": "number",
-                      "description": "The array of id(s) for the group(s) the item belongs to",
-                      "displayName": "Valus",
+                      "description": "The value of the data item.",
+                      "displayName": "Value",
                       "help": "#value"
+                    },
+                    "x": {
+                      "type": "string",
+                      "description": "The x value of the data item.",
+                      "displayName": "X",
+                      "help": "#x"
                     },
                     "color": {
                       "type": "string",
@@ -1657,8 +1502,8 @@
               "description": "The line style of the data line.",
               "enumValues": [
                 "dashed",
-                "dotted",
-                "solid"
+                "solid",
+                "dotted"
               ]
             },
             "lineType": {
@@ -1717,7 +1562,8 @@
             "vbdt": {
               "itemProperties": {
                 "id": {
-                  "type": "any"
+                  "type": "any",
+                  "displayName": "Id"
                 },
                 "seriesId": {
                   "type": "string",
@@ -1727,15 +1573,21 @@
                 },
                 "groupId": {
                   "type": "Array<string>",
-                  "description": "The array of id(s) for the group(s) the item belongs to",
+                  "description": "The array of ids for the groups the item belongs to",
                   "displayName": "Group Id",
                   "help": "#groupId"
                 },
                 "value": {
                   "type": "number",
-                  "description": "The array of id(s) for the group(s) the item belongs to",
-                  "displayName": "Valus",
+                  "description": "The value of the data item.",
+                  "displayName": "Value",
                   "help": "#value"
+                },
+                "x": {
+                  "type": "string",
+                  "description": "The x value of the data item.",
+                  "displayName": "X",
+                  "help": "#x"
                 },
                 "color": {
                   "type": "string",
@@ -1807,6 +1659,7 @@
     },
     "ojGroupDrill": {
       "description": "Triggered on a chart group drill gesture (double click if selection is enabled, single click otherwise).",
+      "displayName": "Group Drill",
       "help": "#event:GroupDrill",
       "detail": {
         "id": {
@@ -1847,7 +1700,8 @@
             "vbdt": {
               "itemProperties": {
                 "id": {
-                  "type": "any"
+                  "type": "any",
+                  "displayName": "Id"
                 },
                 "seriesId": {
                   "type": "string",
@@ -1857,15 +1711,21 @@
                 },
                 "groupId": {
                   "type": "Array<string>",
-                  "description": "The array of id(s) for the group(s) the item belongs to",
+                  "description": "The array of ids for the groups the item belongs to",
                   "displayName": "Group Id",
                   "help": "#groupId"
                 },
                 "value": {
                   "type": "number",
-                  "description": "The array of id(s) for the group(s) the item belongs to",
-                  "displayName": "Valus",
+                  "description": "The value of the data item.",
+                  "displayName": "Value",
                   "help": "#value"
+                },
+                "x": {
+                  "type": "string",
+                  "description": "The x value of the data item.",
+                  "displayName": "X",
+                  "help": "#x"
                 },
                 "color": {
                   "type": "string",
@@ -1937,6 +1797,7 @@
     },
     "ojViewportChange": {
       "description": "Triggered after the viewport is changed due to a zoom or scroll operation.",
+      "displayName": "Viewport Change",
       "help": "#event:ViewportChange",
       "detail": {
         "startGroup": {
@@ -1962,6 +1823,39 @@
         "yMin": {
           "type": "number",
           "description": "The minimum y value of the new viewport."
+        }
+      }
+    },
+    "ojContextMenuAction": {
+      "bubbles": true,
+      "description": "Triggered when a menu item is clicked, whether by keyboard, mouse, or touch events.",
+      "eventGroup": "common",
+      "displayName": "onOjContextMenuAction",
+      "help": "#event:ojContextMenuAction",
+      "detail": {
+        "menuItemKey": {
+          "type": "string"
+        },
+        "contextMenuContext": {
+          "type": "any"
+        }
+      }
+    },
+    "ojContextMenuSelection": {
+      "bubbles": true,
+      "description": "Triggered when a select menu item is clicked, whether by keyboard, mouse, or touch events.",
+      "eventGroup": "common",
+      "displayName": "onOjContextMenuSelection",
+      "help": "#event:ojContextMenuSelection",
+      "detail": {
+        "value": {
+          "type": "string|Array<string>"
+        },
+        "contextMenuContext": {
+          "type": "any"
+        },
+        "menuSelectionGroupKey": {
+          "type": "string"
         }
       }
     }

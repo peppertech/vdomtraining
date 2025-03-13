@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RadiosetWebElement = void 0;
-var RadiosetWebElementBase_1 = require("./RadiosetWebElementBase");
-var selenium_webdriver_1 = require("selenium-webdriver");
+const RadiosetWebElementBase_1 = require("./RadiosetWebElementBase");
+const selenium_webdriver_1 = require("selenium-webdriver");
 /**
  * The component WebElement for [oj-c-radioset](../../../oj-c/docs/oj.Radioset.html).
  * Do not instantiate this class directly, instead, use
@@ -46,13 +46,10 @@ class RadiosetWebElement extends RadiosetWebElementBase_1.RadiosetWebElementBase
      * @returns The corresponding label of the input element if it exists, null otherwise
      */
     async getRadioItemLabel(value) {
-        return await this.getDriver().executeScript(`
-      var element = arguments[0];
-      var searchValue = arguments[1];
-      const result = element.querySelector('input[type="radio"][value="' + searchValue + '"]');
-      const label = result.closest('label');
-      return label;
-      `, this, value);
+        return await this.getDriver().executeScript((element, searchValue) => {
+            const result = element.querySelector(`input[type="radio"][value="${searchValue}"]`);
+            return result?.closest('label');
+        }, this, value);
     }
 }
 exports.RadiosetWebElement = RadiosetWebElement;

@@ -1,0 +1,2 @@
+define(['exports', 'preact/jsx-runtime', 'preact/compat', './LayerHost-639b3284'], (function(e,t,r,s){"use strict";e.LayerManager=function({children:e}){const[a,n]=r.useState(),o=r.useCallback((e=>{null!==e&&n(e)}),[]);return t.jsx(s.LayerContext.Consumer,{children:r=>{let n={};a&&(n={getRootLayerHost:()=>a,getLayerHost:()=>a});const c=r.getLayerHost?r:n;return t.jsxs(s.LayerContext.Provider,{value:c,children:[e,!r.getLayerHost&&t.jsx(s.LayerHost,{ref:o})]})}})}}));
+//# sourceMappingURL=LayerManager-2972de92.js.map

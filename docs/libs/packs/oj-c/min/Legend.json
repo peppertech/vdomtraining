@@ -6,7 +6,7 @@
     "memberof": "oj-c",
     "longname": "oj-c.Legend",
     "kind": "class",
-    "classdesc": "<h3 id=\"legendOverview-section\">\n  JET Legend\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#legendOverview-section\"></a>\n</h3>\nA legend displays an interactive description of symbols, colors, etc used in graphical information representations.\n<pre class=\"prettyprint\"><code>&lt;oj-c-legend orientation='vertical' data='[[dataProvider]]'>&lt;/oj-c-legend></code></pre>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\nTo make your component accessible, the application is required to include contextual information for screender readers using one or more the following methods as appropriate:\n <ul>\n  <li>aria-describedby</li>\n  <li>aria-labelledby</li>\n  <li>aria-label</li>\n  <li>short-desc property of your items</li>\n </ul>\n<p>\n When setting color, applications are responsible for making sure that the color meets the\n<a href=\"https://www.w3.org/TR/WCAG21/#non-text-contrast\">minimum contrast ratio</a>\n</p>\n<p>\n If your application has custom keyboard and touch shortcuts implemented for the component, these shortcuts can conflict with those of the component. It is the application's responsibility to disclose these custom shortcuts, possibly via a datatip or help popup.\n</p>\n<p>\n In the case of the text truncating, applications should provide the untruncated string or contextual text to the datatip to make the component accessible.\n</p>\n\n<h3 id=\"perf-section\">\n  Performance\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#perf-section\"></a>\n</h3>\n\n<h4>Shaped Data</h4>\n<p>As a rule of thumb, it's recommended that applications use <a href=\"https://jet.oraclecorp.com/trunk/jetCookbook.html?component=legendCorepack&demo=shapedData\">shaped data</a> if possible for performance gains.</p>\n\n<h3 id=\"keyboardSection\">\n  Keyboard\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboardSection\"></a>\n</h3>\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus to previous item.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus to next item.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus to previous item (on left).</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus to next item (on right).</td>\n    </tr>\n    <tr>\n      <td><kbd>Enter or Space</kbd></td>\n      <td>Hides or unhides the data associated with the current item.</td>\n    </tr>\n  </tbody>\n</table>\n<h3 id=\"touch-section\">\nTouch End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#touch-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Legend Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n  </tbody>\n</table>",
+    "classdesc": "<h3 id=\"legendOverview-section\">\n  JET Legend\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#legendOverview-section\"></a>\n</h3>\nA legend displays an interactive description of symbols, colors, etc used in graphical information representations.\n<pre class=\"prettyprint\"><code>&lt;oj-c-legend orientation='vertical' data='[[dataProvider]]'>&lt;/oj-c-legend></code></pre>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\nTo make your component accessible, the application is required to include contextual information for screender readers using one or more the following methods as appropriate:\n <ul>\n  <li>aria-describedby</li>\n  <li>aria-labelledby</li>\n  <li>aria-label</li>\n  <li>short-desc property of your items</li>\n </ul>\n<p>\n When setting color, applications are responsible for making sure that the color meets the\n<a href=\"https://www.w3.org/TR/WCAG21/#non-text-contrast\">minimum contrast ratio</a>\n</p>\n<p>\n If your application has custom keyboard and touch shortcuts implemented for the component, these shortcuts can conflict with those of the component. It is the application's responsibility to disclose these custom shortcuts, possibly via a datatip or help popup.\n</p>\n<p>\n In the case of the text truncating, applications should provide the untruncated string or contextual text to the datatip to make the component accessible.\n</p>\n\n<h3 id=\"perf-section\">\n  Performance\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#perf-section\"></a>\n</h3>\n\n<h4>Shaped Data</h4>\n<p>As a rule of thumb, it's recommended that applications use <a href=\"https://jet.oraclecorp.com/trunk/jetCookbook.html?component=legendCorepack&demo=shapedData\">shaped data</a> if possible for performance gains.</p>\n\n<h3 id=\"keyboardSection\">\n  Keyboard\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboardSection\"></a>\n</h3>\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus to previous item.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus to next item.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus to previous item (on left).</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus to next item (on right).</td>\n    </tr>\n    <tr>\n      <td><kbd>Enter or Space</kbd></td>\n      <td>Hides or unhides the data associated with the current item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+F10</kbd></td>\n      <td>Launch the context menu if there is one associated with the current item.</td>\n    </tr>\n  </tbody>\n</table>\n<h3 id=\"touch-section\">\nTouch End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#touch-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan=\"2\">Legend Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n    <tr>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n       <td>Background</td>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n  </tbody>\n</table>",
     "scope": "static",
     "tagWithoutBrackets": "oj-c-legend",
     "tagWithBrackets": "<oj-c-legend>",
@@ -28,9 +28,15 @@
       }
     ],
     "since": "15.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "ojmodule": "legend"
   },
@@ -40,12 +46,12 @@
     "name": "data",
     "kind": "member",
     "longname": "oj-c.Legend#data",
-    "optional": false,
+    "optional": true,
     "scope": "instance",
-    "description": "The DataProvider for the sections and items of the legend. It should provide a data tree where each node in the data tree corresponds to a section or item in the legend.\nNodes that are leaves will be treated as items. The row key will be used as the id for legend sections and items. Note that when using this attribute, a template for the itemTemplate and optionally sectionTemplate slots should be provided.\nThe DataProvider can either have an arbitrary data shape, in which case an element (and an element for hierarchical data) must be specified in the itemTemplate (and sectionTemplate) slot\nor it can have oj.ojCLegend.Item (and oj.ojCLegend.Section) as its data shape, in which case no template is required.",
+    "description": "The DataProvider for the sections and items of the legend. It should provide a data tree where each node in the data tree corresponds to a section or item in the legend.\nNodes that are leaves will be treated as items. The row key will be used as the id for legend sections and items.\nThe DataProvider can either have data shape specified by <a target=\"_blank\" href=\"oj-c.LegendItem.html\">oj-c-legend-item</a> (or <a target=\"_blank\" href=\"oj-c.LegendSection.html\">oj-c-legend-section</a>) as its data shape,\nin which case no template is required or it can have an arbitrary data shape, in which case an <a target=\"_blank\" href=\"oj-c.LegendItem.html\">oj-c-legend-item</a> element\n(and <a target=\"_blank\" href=\"oj-c.LegendSection.html\">oj-c-legend-section</a> element for hierarchical data) must be specified in the itemTemplate (and sectionTemplate) slot",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "defaultvalue": null,
     "type": {
@@ -57,7 +63,10 @@
       {
         "target": "Type",
         "value": "DataProvider<K, D>|null",
-        "jsdocOverride": true
+        "jsdocOverride": true,
+        "module": {
+          "DataProvider": "ojdataprovider"
+        }
       }
     ]
   },
@@ -72,7 +81,7 @@
     "description": "Whether drilling is enabled on all legend items.\nDrillable objects will show a background opacity, a pointer cursor on hover, and fire ojDrill event on click.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "ojvalues": [
       {
@@ -115,7 +124,7 @@
     "description": "Defines the horizontal alignment of the legend contents.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "ojvalues": [
       {
@@ -170,21 +179,14 @@
     "description": "An array of categories that will be hidden.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "defaultvalue": "[]",
     "type": {
       "names": [
         "Array<string>"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "Array<string>",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.Legend",
@@ -197,7 +199,7 @@
     "description": "Defines whether the legend can be used to initiate hide and show behavior on referenced data items.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "ojvalues": [
       {
@@ -241,21 +243,14 @@
     "description": "An array of categories that will be highlighted.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "defaultvalue": "[]",
     "type": {
       "names": [
         "Array<string>"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "Array<string>",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.Legend",
@@ -268,7 +263,7 @@
     "description": "Defines the behavior applied when hovering over a legend item.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "ojvalues": [
       {
@@ -311,7 +306,7 @@
     "description": "Defines the orientation of the legend, which determines the direction in which the legend items are laid out.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "ojvalues": [
       {
@@ -354,7 +349,7 @@
     "description": "The height of the legend symbol in pixels. If the value is 0, it will take the same value as symbolWidth. If both symbolWidth and symbolHeight are 0, then it will use a default value that may vary based on theme.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "defaultvalue": 0,
     "type": {
@@ -374,7 +369,7 @@
     "description": "The width of the legend symbol in pixels. If the value is 0, it will take the same value as symbolHeight. If both symbolWidth and symbolHeight are 0, then it will use a default value that may vary based on theme",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "defaultvalue": 0,
     "type": {
@@ -394,7 +389,7 @@
     "description": "The CSS style object defining the style of the legend item text.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -420,7 +415,7 @@
     "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color)",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -439,7 +434,7 @@
     "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-family)",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -458,7 +453,7 @@
     "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-size)",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -477,7 +472,7 @@
     "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-style)",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -496,7 +491,7 @@
     "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-weight)",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -515,7 +510,7 @@
     "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-decoration)",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -534,7 +529,7 @@
     "description": "Defines the vertical alignment of the legend contents.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "ojvalues": [
       {
@@ -588,7 +583,7 @@
     "description": "The CSS style object defining the style of the section titles' text.\nThe following style properties are supported: color, fontFamily, fontSize, fontStyle, fontWeight, textDecoration",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -614,7 +609,7 @@
     "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color)",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -633,7 +628,7 @@
     "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-family)",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -652,7 +647,7 @@
     "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-size)",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -671,7 +666,7 @@
     "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-style)",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -690,7 +685,7 @@
     "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-weight)",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -709,7 +704,7 @@
     "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-decoration)",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "type": {
       "names": [
@@ -728,7 +723,7 @@
     "description": "The horizontal alignment of the section titles.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "ojvalues": [
       {
@@ -773,6 +768,65 @@
   },
   {
     "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#contextMenuConfig",
+    "name": "contextMenuConfig",
+    "kind": "member",
+    "longname": "oj-c.Legend#contextMenuConfig",
+    "optional": true,
+    "scope": "instance",
+    "description": "Specifies a context menu configuration.\nIt takes the keys `accessibleLabel` and `items`,\nwhere `accessibleLabel` is optional and items required .`items` function returns an array\nof menu item object representations that indicates what menu items are going to be part of\nmenu based on some specific context menu context.\n<table>\n<tr><th align='left'>Context Menu Item Type</th><th align='left'>Def</th></tr>\n<tr><td>ContextMenuSeparator</td><td>{ type: 'separator'}</td></tr>\n<tr><td>MenuItem</td><td>{\ntype?: 'item';\nlabel: string;\nkey: string;\ndisabled?: boolean;\nonAction?: () => void;\nstartIcon?: MenuIcon;\nendIcon?: MenuIcon;\nvariant?: 'standard' | 'destructive';\n};</td></tr>\n<tr><td>ContextMenuSubMenu</td><td>{\ntype: 'submenu';\nlabel?: string;\ndisabled?: boolean;\nstartIcon?: string;\nitems?: Array&lt;ContextMenuItems&gt;;\n};</td></tr>\n<tr><td>ContextMenuSelectSingle</td><td>{\ntype: 'selectsingle';\nkey?: string;\nitems?: Array&lt;MenuSelectItem&gt;;\nselection?: string;\nonSelection?: (detail: { value: string }) => void;\n};</td></tr>\n<tr><td>ContextMenuSelectMultiple</td><td>{\ntype: 'selectmultiple';\nkey?: string;\nitems?: Array&lt;MenuSelectItem&gt;;\nselection?: Array&lt;string&gt;;\nonSelection?: (detail: { value: Array&lt;string&gt; }) => void;\n};</td></tr>\n<tr><td>MenuIcon</td><td>{\ntype?: 'class';\n    class: string;\n  }\n| {\n    type: 'img';\n   src: string;\n  };</td></tr>\n<tr><td>MenuSelectItem</td><td>{\nlabel: string;\ndisabled?: boolean;\nendIcon?: MenuIcon;\nvalue: string;\n}</td></tr>\n</table>",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "web/components/oj-c/legend"
+    },
+    "type": {
+      "names": [
+        "object"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "oj-c.Legend.LegendContextMenuConfig<K, D>",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#_getPreferredSize",
+    "name": "_getPreferredSize",
+    "kind": "function",
+    "longname": "oj-c.Legend#_getPreferredSize",
+    "description": "",
+    "ojhidden": true,
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "web/components/oj-c/legend"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "_width",
+        "type": "number"
+      },
+      {
+        "name": "_height",
+        "type": "number"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "object"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
     "id": "oj-c.Legend#setProperty",
     "name": "setProperty",
     "kind": "function",
@@ -780,7 +834,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "scope": "instance",
     "params": [
@@ -814,7 +868,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "scope": "instance",
     "params": [
@@ -843,7 +897,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "scope": "instance",
     "params": [
@@ -872,7 +926,7 @@
     "description": "Triggered during a drill gesture (single click on the legend item).",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "scope": "instance",
     "properties": [
@@ -889,10 +943,101 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "id",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "id"
           }
         ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#event:ojContextMenuAction",
+    "name": "ojContextMenuAction",
+    "kind": "event",
+    "longname": "oj-c.Legend#event:ojContextMenuAction",
+    "description": "Triggered when a menu item is clicked, whether by keyboard, mouse, or touch events.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "web/components/oj-c/legend"
+    },
+    "scope": "instance",
+    "properties": [
+      {
+        "name": "menuItemKey",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "contextMenuContext",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "C",
+            "jsdocOverride": true,
+            "for": "contextMenuContext"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend#event:ojContextMenuSelection",
+    "name": "ojContextMenuSelection",
+    "kind": "event",
+    "longname": "oj-c.Legend#event:ojContextMenuSelection",
+    "description": "Triggered when a select menu item is clicked, whether by keyboard, mouse, or touch events.",
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "web/components/oj-c/legend"
+    },
+    "scope": "instance",
+    "properties": [
+      {
+        "name": "value",
+        "optional": false,
+        "type": {
+          "names": [
+            "string|Array<string>"
+          ]
+        }
+      },
+      {
+        "name": "contextMenuContext",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "C",
+            "jsdocOverride": true,
+            "for": "contextMenuContext"
+          }
+        ]
+      },
+      {
+        "name": "menuSelectionGroupKey",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
       }
     ]
   },
@@ -902,10 +1047,10 @@
     "name": "itemTemplate",
     "kind": "member",
     "longname": "oj-c.Legend#itemTemplate",
-    "description": "<p>\n The <code class=\"prettyprint\">itemTemplate</code> slot is used to specify the template for\n creating items of the legend. The slot content must be wrapped in a &lt;template>\n element. The content of the template should be a single &lt;oj-c-legend-item> element.\n See the <a target=\"_blank\" href=\"oj-c.LegendItem.html\">oj-c-legend-item</a> doc for more details.\n</p>\n<p>\n When the template is executed for each area, it will have access to the components's\n binding context containing the following properties:\n</p>\n<ul>\n  <li>\n     $current - an object that contains information for the current node.\n     (See the table below for a list of properties available on $current)\n  </li>\n  <li>\n     alias - if 'data-oj-as' attribute was specified, the value will be used to provide an\n     application-named alias for $current.\n  </li>\n</ul>",
+    "description": "<p>\n The <code class=\"prettyprint\">itemTemplate</code> slot is used to specify the template for\n creating items of the legend. The slot content must be wrapped in a &lt;template>\n element. The content of the template should be a single &lt;oj-c-legend-item> element.\n See the <a target=\"_blank\" href=\"oj-c.LegendItem.html\">oj-c-legend-item</a> doc for more details.\n</p>\n<p>\n When the template is executed for each area, it will have access to the components's\n binding context containing the following properties:\n</p>\n<ul>\n  <li>\n     $current - an object that contains information for the current node.\n     (See the table below for a list of properties available on $current)\n  </li>\n  <li>\n     alias - if data-oj-as attribute was specified, the value will be used to provide an\n     application-named alias for $current.\n  </li>\n</ul>",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "scope": "instance",
     "ojchild": false,
@@ -924,8 +1069,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -942,8 +1087,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "key",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       },
@@ -970,8 +1115,8 @@
           {
             "target": "Type",
             "value": "Array<D>",
-            "for": "parentData",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "parentData"
           }
         ]
       },
@@ -988,8 +1133,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "parentKey",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "parentKey"
           }
         ]
       }
@@ -1001,10 +1146,10 @@
     "name": "sectionTemplate",
     "kind": "member",
     "longname": "oj-c.Legend#sectionTemplate",
-    "description": " <p>\n The <code class=\"prettyprint\">sectionTemplate</code> slot is used to specify the template for\n creating sections of the legend. The slot content must be wrapped in a &lt;template>\n element. The content of the template should be a single &lt;oj-c-legend-section> element.\n See the <a target=\"_blank\" href=\"oj-c.LegendSection.html\">oj-c-legend-section</a> doc for more details.\n</p>\n<p>\n When the template is executed for each area, it will have access to the components's\n binding context containing the following properties:\n</p>\n<ul>\n  <li>\n     $current - an object that contains information for the current node.\n     (See the table below for a list of properties available on $current)\n  </li>\n  <li>\n     alias - if 'data-oj-as' attribute was specified, the value will be used to provide an\n     application-named alias for $current.\n  </li>\n</ul>",
+    "description": " <p>\n The <code class=\"prettyprint\">sectionTemplate</code> slot is used to specify the template for\n creating sections of the legend. The slot content must be wrapped in a &lt;template>\n element. The content of the template should be a single &lt;oj-c-legend-section> element.\n See the <a target=\"_blank\" href=\"oj-c.LegendSection.html\">oj-c-legend-section</a> doc for more details.\n</p>\n<p>\n When the template is executed for each area, it will have access to the components's\n binding context containing the following properties:\n</p>\n<ul>\n  <li>\n     $current - an object that contains information for the current node.\n     (See the table below for a list of properties available on $current)\n  </li>\n  <li>\n     alias - if data-oj-as attribute was specified, the value will be used to provide an\n     application-named alias for $current.\n  </li>\n</ul>",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "scope": "instance",
     "ojchild": false,
@@ -1023,8 +1168,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -1041,8 +1186,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "key",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       },
@@ -1063,11 +1208,11 @@
     "name": "touchDoc",
     "kind": "member",
     "longname": "oj-c.Legend.touchDoc",
-    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Legend Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n  </tbody>\n</table>",
+    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan=\"2\">Legend Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n    <tr>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n       <td>Background</td>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n  </tbody>\n</table>",
     "memberof": "oj-c.Legend",
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "ojfragment": true
   },
@@ -1091,7 +1236,7 @@
     },
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "properties": [
       {
@@ -1107,14 +1252,14 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "id",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "id"
           }
         ]
       },
       {
         "name": "text",
-        "description": "The legend item text.",
+        "description": "The legend item text. Also used as item aria label if short-desc is not provided.",
         "optional": false,
         "type": {
           "names": [
@@ -1130,15 +1275,7 @@
           "names": [
             "Array<string>"
           ]
-        },
-        "tstype": [
-          {
-            "target": "Type",
-            "value": "Array<string>",
-            "for": "categories",
-            "jsdocOverride": true
-          }
-        ]
+        }
       },
       {
         "name": "symbolType",
@@ -1232,8 +1369,8 @@
         "type": {
           "names": [
             "\"dashed\"",
-            "\"dotted\"",
-            "\"solid\""
+            "\"solid\"",
+            "\"dotted\""
           ]
         },
         "ojvalues": [
@@ -1419,6 +1556,50 @@
             "string"
           ]
         }
+      },
+      {
+        "name": "drilling",
+        "description": "Whether drilling is enabled on the legend item. Drillable objects will show a pointer cursor on hover and fire ojDrill event on click. To enable drilling for all legend items at once, use the drilling attribute in the top level.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"inherit\"",
+            "\"off\"",
+            "\"on\""
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "inherit",
+            "description": "The drilling behavior is inherited from legend.",
+            "displayName": "Inherit",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "off",
+            "description": "The legend item will not be drillable.",
+            "displayName": "Off",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "on",
+            "description": "The legend item will be drillable.",
+            "displayName": "On",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
       }
     ]
   },
@@ -1442,7 +1623,7 @@
     },
     "meta": {
       "filename": "legend.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend"
+      "path": "web/components/oj-c/legend"
     },
     "properties": [
       {
@@ -1458,8 +1639,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "id",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "id"
           }
         ]
       },
@@ -1475,9 +1656,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "Array<oj-c.Legend.Item>",
-            "for": "items",
-            "jsdocOverride": true
+            "value": "Array<oj-c.Legend.Item<K>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       },
@@ -1490,6 +1671,57 @@
             "string"
           ]
         }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Legend",
+    "id": "oj-c.Legend.LegendContextMenuConfig",
+    "name": "LegendContextMenuConfig",
+    "kind": "typedef",
+    "longname": "oj-c.Legend.LegendContextMenuConfig",
+    "scope": "static",
+    "description": "",
+    "tsgenerictype": {
+      "target": "Type",
+      "value": "<K,D>",
+      "for": "genericTypeParameters"
+    },
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "legend.tsx",
+      "path": "web/components/oj-c/legend"
+    },
+    "properties": [
+      {
+        "name": "accessibleLabel",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "items",
+        "optional": false,
+        "type": {
+          "names": [
+            "function"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "(context: C) => ContextMenuItems[]",
+            "jsdocOverride": true,
+            "for": "items"
+          }
+        ]
       }
     ]
   }

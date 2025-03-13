@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CheckboxWebElement = void 0;
-var CheckboxWebElementBase_1 = require("./CheckboxWebElementBase");
-var selenium_webdriver_1 = require("selenium-webdriver");
+const CheckboxWebElementBase_1 = require("./CheckboxWebElementBase");
+const selenium_webdriver_1 = require("selenium-webdriver");
 /**
  * The component WebElement for [oj-c-checkbox](../../../oj-c/docs/oj.Checkbox.html).
  * Do not instantiate this class directly, instead, use

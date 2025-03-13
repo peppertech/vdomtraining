@@ -6,7 +6,7 @@
     "memberof": "oj-c",
     "longname": "oj-c.MeterCircle",
     "kind": "class",
-    "classdesc": "<h3 id=\"meterCircleOverview-section\">\n  JET meter circle\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#meterCircleOverview-section\"></a>\n</h3>\nA meter circle displays information graphically in a circular bar, highlighting a specific metric value's progress in relation to its min, max and thresholds.\n<pre class=\"prettyprint\"><code>&lt;oj-c-meter-circle value='4'>&lt;/oj-c-meter-circle></code></pre>\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n<p>\nThe application is strongly encouraged, even though it is not required, to populate the aria-label attribute on the element with meaningful descriptors as\nthe oj-c-meter-circle element does not provide a default descriptor.\n</p>\n<p>\nIf an application is using center content with visible text, thresholds, or reference lines, they need to include the information for screender readers using the following methods:\n <ul>\n  <li>aria-describedby</li>\n  <li>aria-labelledby</li>\n  <li>aria-label</li>\n </ul>\n</p>\n<p>\nIf you are using indicatorColor, applications are responsible for making sure that the color meets the\n<a href=\"https://www.w3.org/TR/WCAG21/#contrast-minimum\">minimum contrast ratio</a>.\n</p>\n\n<h3 id=\"keyboardSection\">\n  Keyboard\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboardSection\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Enter</kbd></td>\n      <td>Submit the current value of the meter circle.</td>\n    </tr>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element and submit the current value of the meter circle.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>End</kbd></td>\n      <td>Increase the meter circle's transient value to max value. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>Home</kbd></td>\n      <td>Decrease the meter circle's transient value to zero. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Increase the meter circle's transient value. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Decrease the meter circle's transient value. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Decrease the meter circle's transient value in left-to-right locales. Increase the meter circle's transient value in right-to-left locales. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Increase the meter circle's transient value in left-to-right locales. Decrease the meter circle's transient value in right-to-left locales. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"touch-section\">\nTouch End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#touch-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Drag</kbd></td>\n      <td>Value change when <code class=\"prettyprint\">readonly</code> is <code class=\"prettyprint\">false</code>.</td>\n    </tr>\n  </tbody>\n</table>",
+    "classdesc": "<h3 id=\"meterCircleOverview-section\">\n  JET meter circle\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#meterCircleOverview-section\"></a>\n</h3>\nA meter circle displays information graphically in a circular bar, highlighting a specific metric value's progress in relation to its min, max and thresholds.\n<pre class=\"prettyprint\"><code>&lt;oj-c-meter-circle value='4'>&lt;/oj-c-meter-circle></code></pre>\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n<p>\nThe application is strongly encouraged, even though it is not required, to populate the aria-label attribute on the element with meaningful descriptors as\nthe oj-c-meter-circle element does not provide a default descriptor.\n</p>\n<p>\nIf an application is using center content with visible text, thresholds, or reference lines, they need to include the information for screender readers using the following methods:\n <ul>\n  <li>aria-describedby</li>\n  <li>aria-labelledby</li>\n  <li>aria-label</li>\n  <li>datatip</li>\n </ul>\n</p>\n<p>\nIf you are using indicatorColor, applications are responsible for making sure that the color meets the\n<a href=\"https://www.w3.org/TR/WCAG21/#contrast-minimum\">minimum contrast ratio</a>.\n</p>\n\n<h3 id=\"keyboardSection\">\n  Keyboard\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboardSection\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Enter</kbd></td>\n      <td>Submit the current value of the meter circle.</td>\n    </tr>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element and submit the current value of the meter circle.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>End</kbd></td>\n      <td>Increase the meter circle's transient value to max value. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>Home</kbd></td>\n      <td>Decrease the meter circle's transient value to zero. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Increase the meter circle's transient value. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Decrease the meter circle's transient value. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Decrease the meter circle's transient value in left-to-right locales. Increase the meter circle's transient value in right-to-left locales. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Increase the meter circle's transient value in left-to-right locales. Decrease the meter circle's transient value in right-to-left locales. Value is set after using <kbd>Enter</kbd> or <kbd>Tab</kbd> to submit.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"touch-section\">\nTouch End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#touch-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Drag</kbd></td>\n      <td>Value change when <code class=\"prettyprint\">readonly</code> is <code class=\"prettyprint\">false</code>.</td>\n    </tr>\n  </tbody>\n</table>",
     "scope": "static",
     "tagWithoutBrackets": "oj-c-meter-circle",
     "tagWithBrackets": "<oj-c-meter-circle>",
@@ -39,7 +39,7 @@
     ],
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "ojmodule": "meter-circle"
   },
@@ -54,7 +54,7 @@
     "description": "Integer value specifying the maximum value of the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": 100,
     "type": {
@@ -74,7 +74,7 @@
     "description": "Integer value specifying the minimum value of the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": 0,
     "type": {
@@ -94,7 +94,7 @@
     "description": "Defines whether the value of the meter circle can be changed by the end user.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": false,
     "type": {
@@ -115,7 +115,7 @@
     "description": "The value of the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": 0,
     "type": {
@@ -135,7 +135,7 @@
     "description": "Specifies the increment by which values can be changed by the end user when readonly is false. The step must be a positive value that is smaller than the difference between the min and max.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": 1,
     "type": {
@@ -155,7 +155,7 @@
     "description": "Specifies the color of the meter circle indicator. Only applies when thresholdDisplay is not set to indicator.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "tsdeprecated": [],
     "type": {
@@ -175,7 +175,7 @@
     "description": "Specifies the ratio of relative thickness of the indicator to the plot area.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "tsdeprecated": [],
     "defaultvalue": 1,
@@ -196,7 +196,7 @@
     "description": "Specifies the inner radius, defined by the ratio of the distance from the center of the gauge to the innermost edge of the indicator to plot area. Valid values are ratios from 0 to 1. Depends on the size of the gauge and theme.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "tsdeprecated": [],
     "type": {
@@ -216,7 +216,7 @@
     "description": "Specifies the plot area of the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -242,7 +242,7 @@
     "description": "Specifies the angle extent of a meter circle. Value should be provided in degrees.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": 360,
     "type": {
@@ -262,7 +262,7 @@
     "description": "Specifies the start angle of the plot area relative to the positive x axis. Value should be provided in degrees.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": 90,
     "type": {
@@ -282,7 +282,7 @@
     "description": "Specifies the array of objects defining the reference lines for the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -308,7 +308,7 @@
     "description": "Controls whether the current threshold is displayed on the indicator, in the plot area, or if all the thresholds are displayed in the plot area.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": "\"indicator\"",
     "type": {
@@ -330,7 +330,7 @@
     "description": "An array of objects defining the thresholds for the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -353,10 +353,10 @@
     "longname": "oj-c.MeterCircle#describedBy",
     "optional": true,
     "scope": "instance",
-    "description": "Used to establish a relationship between this component and another element.\nTo facilitate correct screen reader behavior, the described-by attribute is\ncopied to the aria-describedby attribute on the component's dom.",
+    "description": "Used to establish a relationship between this component and another element.\nA common use is to tie a label, which can be a text in a div or some other HTML element, and the oj-c-meter-circle together for accessibility.\nThe oj-label element has a label-id, which is used by the described-by attribute to tie the two components together to facilitate correct screen reader behavior.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -372,10 +372,10 @@
     "longname": "oj-c.MeterCircle#labelledBy",
     "optional": true,
     "scope": "instance",
-    "description": "Used to establish a relationship between this component and another element.\nA common use is to tie a label, which a text in a div or some other HTML element, and the oj-c-meter-circle together for accessibility.\nThe label element has an id, which is used by the labelled-by attribute to tie the two components together to facilitate correct screen reader behavior.",
+    "description": "Used to establish a relationship between this component and another element.\nA common use is to tie a label, which can be a text in a div or some other HTML element, and the oj-c-meter-circle together for accessibility.\nThe oj-label element has a label-id, which is used by the labelled-by attribute to tie the two components together to facilitate correct screen reader behavior.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -394,7 +394,7 @@
     "description": "Specifies the size of the meter var.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "ojvalues": [
       {
@@ -426,6 +426,16 @@
             "string"
           ]
         }
+      },
+      {
+        "name": "fit",
+        "description": "Meter Circle that fills available width and height.",
+        "displayName": "Fit",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
       }
     ],
     "defaultvalue": "\"md\"",
@@ -433,7 +443,8 @@
       "names": [
         "\"sm\"",
         "\"md\"",
-        "\"lg\""
+        "\"lg\"",
+        "\"fit\""
       ]
     }
   },
@@ -448,7 +459,7 @@
     "description": "The function that returns a custom datatip string for given value of meter circle. The function is called with DatatipContext as context. If datatip is undefined,\nmeter circle will use the default datatip. If the returned value of the function is null, no datatip is shown.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -458,7 +469,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "(context: DatatipContext) => string | null",
+        "value": "(context: oj-c.MeterCircle.DatatipContext) => string | null",
         "jsdocOverride": true
       }
     ]
@@ -476,7 +487,7 @@
     "description": "A read-only property for retrieving the transient value from the meter circle. It is triggered when dragging over the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -493,7 +504,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "scope": "instance",
     "params": [
@@ -527,7 +538,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "scope": "instance",
     "params": [
@@ -556,7 +567,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "scope": "instance",
     "params": [
@@ -585,7 +596,7 @@
     "description": "The centerTemplate slot is used to specify center content. When the template is executed, the component's binding context is extended with the following properties:",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "scope": "instance",
     "ojchild": false,
@@ -604,8 +615,8 @@
           {
             "target": "Type",
             "value": "oj-c.MeterCircle.Bounds",
-            "for": "innerBounds",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "innerBounds"
           }
         ]
       },
@@ -622,8 +633,8 @@
           {
             "target": "Type",
             "value": "oj-c.MeterCircle.Bounds",
-            "for": "outerBounds",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "outerBounds"
           }
         ]
       },
@@ -648,7 +659,7 @@
     "memberof": "oj-c.MeterCircle",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "ojfragment": true
   },
@@ -667,7 +678,7 @@
     },
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "properties": [
       {
@@ -695,6 +706,1551 @@
   },
   {
     "memberof": "oj-c.MeterCircle",
+    "id": "oj-c.MeterCircle.VisTextStyle",
+    "name": "VisTextStyle",
+    "kind": "typedef",
+    "longname": "oj-c.MeterCircle.VisTextStyle",
+    "scope": "static",
+    "description": "",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "meter-circle.tsx",
+      "path": "web/components/oj-c/meter-circle"
+    },
+    "properties": [
+      {
+        "name": "color",
+        "description": "The color of the text.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "transparent",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "inherit",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "initial",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "-moz-initial",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "revert",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "revert-layer",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "unset",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "aliceblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "antiquewhite",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "aqua",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "aquamarine",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "azure",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "beige",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "bisque",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "black",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "blanchedalmond",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "blue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "blueviolet",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "brown",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "burlywood",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "cadetblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "chartreuse",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "chocolate",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "coral",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "cornflowerblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "cornsilk",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "crimson",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "cyan",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkcyan",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkgoldenrod",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkgray",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkgreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkgrey",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkkhaki",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkmagenta",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkolivegreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkorange",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkorchid",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkred",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darksalmon",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkseagreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkslateblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkslategray",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkslategrey",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkturquoise",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "darkviolet",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "deeppink",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "deepskyblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "dimgray",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "dimgrey",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "dodgerblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "firebrick",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "floralwhite",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "forestgreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "fuchsia",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "gainsboro",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ghostwhite",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "gold",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "goldenrod",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "gray",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "green",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "greenyellow",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "grey",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "honeydew",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "hotpink",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "indianred",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "indigo",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ivory",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "khaki",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lavender",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lavenderblush",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lawngreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lemonchiffon",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightcoral",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightcyan",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightgoldenrodyellow",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightgray",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightgreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightgrey",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightpink",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightsalmon",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightseagreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightskyblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightslategray",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightslategrey",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightsteelblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lightyellow",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "lime",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "limegreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "linen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "magenta",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "maroon",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "mediumaquamarine",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "mediumblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "mediumorchid",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "mediumpurple",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "mediumseagreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "mediumslateblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "mediumspringgreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "mediumturquoise",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "mediumvioletred",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "midnightblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "mintcream",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "mistyrose",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "moccasin",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "navajowhite",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "navy",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "oldlace",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "olive",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "olivedrab",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "orange",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "orangered",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "orchid",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "palegoldenrod",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "palegreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "paleturquoise",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "palevioletred",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "papayawhip",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "peachpuff",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "peru",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "pink",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "plum",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "powderblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "purple",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "rebeccapurple",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "red",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "rosybrown",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "royalblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "saddlebrown",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "salmon",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "sandybrown",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "seagreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "seashell",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "sienna",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "silver",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "skyblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "slateblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "slategray",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "slategrey",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "snow",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "springgreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "steelblue",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "tan",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "teal",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "thistle",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "tomato",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "turquoise",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "violet",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "wheat",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "white",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "whitesmoke",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "yellow",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "yellowgreen",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ActiveBorder",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ActiveCaption",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "AppWorkspace",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "Background",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ButtonFace",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ButtonHighlight",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ButtonShadow",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ButtonText",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "CaptionText",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "GrayText",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "Highlight",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "HighlightText",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "InactiveBorder",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "InactiveCaption",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "InactiveCaptionText",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "InfoBackground",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "InfoText",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "Menu",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "MenuText",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "Scrollbar",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ThreeDDarkShadow",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ThreeDFace",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ThreeDHighlight",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ThreeDLightShadow",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "ThreeDShadow",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "Window",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "WindowFrame",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "WindowText",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "currentcolor",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "fontSize",
+        "description": "The font size of the text.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "fontWeight",
+        "description": "The font weight of the text.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "fontStyle",
+        "description": "The font style of the text.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "whiteSpace",
+        "description": "Whether the text wrap is enabled or not.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"normal\"",
+            "\"nowrap\""
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.MeterCircle",
     "id": "oj-c.MeterCircle.ReferenceLine",
     "name": "ReferenceLine",
     "kind": "typedef",
@@ -708,7 +2264,7 @@
     },
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "properties": [
       {
@@ -759,6 +2315,34 @@
             "number"
           ]
         }
+      },
+      {
+        "name": "label",
+        "description": "The label for the reference line.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "style",
+        "description": "The style of the label for the reference line.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Omit<oj-c.MeterCircle.VisTextStyle, \"whiteSpace\">",
+            "jsdocOverride": true,
+            "for": "style"
+          }
+        ]
       }
     ]
   },
@@ -777,7 +2361,7 @@
     },
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "properties": [
       {
@@ -856,7 +2440,7 @@
     },
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "properties": [
       {
@@ -886,7 +2470,7 @@
     },
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "properties": [
       {

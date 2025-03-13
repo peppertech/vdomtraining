@@ -1,7 +1,7 @@
 {
   "name": "button",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -25,6 +25,9 @@
       "uxSpecs": [
         "button"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/ButtonWebElement.html"
     }
   },
   "propertyLayout": [
@@ -32,13 +35,13 @@
       "propertyGroup": "common",
       "items": [
         "label",
+        "tooltip",
         "display",
         "chroming",
-        "disabled",
-        "width",
         "size",
+        "width",
         "edge",
-        "tooltip"
+        "disabled"
       ]
     }
   ],
@@ -56,35 +59,30 @@
     "label": {
       "type": "string",
       "description": "Text to show in the button.",
-      "displayName": "label",
       "help": "#label",
+      "required": true,
       "translatable": true
     },
     "tooltip": {
       "type": "string",
       "description": "Text to show in the tooltip. This overrides the default tooltip that renders the label when in icon mode.",
-      "displayName": "tooltip",
       "help": "#tooltip",
-      "translatable": true,
-      "value": ""
+      "translatable": true
     },
     "disabled": {
       "type": "boolean",
       "description": "Specifies that the button element should be disabled.",
-      "displayName": "disabled",
       "help": "#disabled",
       "value": false
     },
     "width": {
       "type": "number|string",
       "description": "Specifies that the button style width",
-      "displayName": "width",
       "help": "#width"
     },
     "display": {
       "type": "string",
       "description": "Display just the label, the icons, or all. Label is used as tooltip and should be set in all cases.",
-      "displayName": "display",
       "help": "#display",
       "propertyEditorValues": {
         "all": {
@@ -110,9 +108,12 @@
     "size": {
       "type": "string",
       "description": "Size of button",
-      "displayName": "size",
       "help": "#size",
       "propertyEditorValues": {
+        "xs": {
+          "description": "Display an extra small button.  Only supported for component developers with ghost chroming in icon display mode.",
+          "displayName": "Extra Small"
+        },
         "sm": {
           "description": "Display a small button.",
           "displayName": "Small"
@@ -126,8 +127,8 @@
           "displayName": "Large"
         }
       },
-      "translatable": true,
       "enumValues": [
+        "xs",
         "sm",
         "md",
         "lg"
@@ -137,7 +138,6 @@
     "edge": {
       "type": "string",
       "description": "Specifies whether the button is attached to an edge. For example setting edge='bottom' can be used to attach a button to the bottom of a card. The button is then stretched to 100% width, and borders adjusted.",
-      "displayName": "edge",
       "help": "#edge",
       "propertyEditorValues": {
         "none": {
@@ -146,10 +146,9 @@
         },
         "bottom": {
           "description": "Stretch the button to 100% width and adjust borders for usage at bottom of container.",
-          "displayName": "bottom"
+          "displayName": "Bottom"
         }
       },
-      "translatable": true,
       "enumValues": [
         "none",
         "bottom"
@@ -159,7 +158,6 @@
     "chroming": {
       "type": "string",
       "description": "Indicates in what states the button has variants in background and border.",
-      "displayName": "chroming",
       "help": "#chroming",
       "propertyEditorValues": {
         "ghost": {
@@ -206,12 +204,10 @@
   "slots": {
     "startIcon": {
       "description": "The startIcon slot is the button's start icon. The oj-c-button element accepts DOM nodes as children with the startIcon slot.",
-      "displayName": "startIcon",
       "help": "#startIcon"
     },
     "endIcon": {
       "description": "The endIcon slot is the button's end icon. The oj-c-button element accepts DOM nodes as children with the endIcon slot.",
-      "displayName": "endIcon",
       "help": "#endIcon"
     }
   },
@@ -220,16 +216,18 @@
       "bubbles": true,
       "description": "Triggered when a button is clicked, whether by keyboard, mouse, or touch events. To meet accessibility requirements, the only supported way to react to the click of a button is to listen for this event.",
       "eventGroup": "common",
-      "displayName": "onOjAction",
       "help": "#event:action"
     }
   },
   "methods": {
-    "blur": {
-      "return": "any"
-    },
     "focus": {
-      "return": "any"
+      "return": "void"
+    },
+    "blur": {
+      "return": "void"
+    },
+    "click": {
+      "return": "void"
     },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",

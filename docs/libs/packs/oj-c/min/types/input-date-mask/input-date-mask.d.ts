@@ -6,20 +6,21 @@ import { DisplayOptions, Help, HelpHints } from 'oj-c/editable-value/UNSAFE_useA
 import Validator = require('ojs/ojvalidator');
 import AsyncValidator = require('ojs/ojvalidator-async');
 import { ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, ReadOnlyPropertyChanged } from 'ojs/ojvcomponent';
-import { Component, ComponentProps } from 'preact';
+import { ComponentProps, ComponentType, Ref } from 'preact';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
 import 'css!oj-c/input-date-mask/input-date-mask-styles.css';
 import { DateISOStr } from '@oracle/oraclejet-preact/UNSAFE_IntlDateTime';
 type PreactInputDateMaskProps = ComponentProps<typeof PreactInputDateMask>;
 type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
+type DisplayOptionsProps = Omit<DisplayOptions, 'converterHint'>;
 type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     columnSpan?: LayoutColumnSpan;
     containerReadonly?: boolean;
     dateRangeOverflowMessageDetail?: string;
     dateRangeUnderflowMessageDetail?: string;
     disabled?: boolean;
-    displayOptions?: Omit<DisplayOptions, 'converterHint'>;
+    displayOptions?: DisplayOptionsProps;
     help?: Help;
     helpHints?: HelpHints;
     labelEdge?: PreactInputDateMaskProps['labelEdge'];
@@ -37,24 +38,19 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     validators?: (AsyncValidator<DateISOStr> | Validator<DateISOStr>)[] | null;
     value?: DateISOStr | null;
     onMessagesCustomChanged?: PropertyChanged<PreactInputDateMaskProps['messages']>;
-    onRawValueChanged?: ReadOnlyPropertyChanged<CalendarDate>;
+    onRawValueChanged?: ReadOnlyPropertyChanged<CalendarDate | undefined>;
     onValidChanged?: ReadOnlyPropertyChanged<ValidState>;
-    onValueChanged?: PropertyChanged<string>;
+    onValueChanged?: PropertyChanged<string | null>;
 };
-export declare class InputDateMask extends Component<ExtendGlobalProps<Props>> {
-    static defaultProps: Partial<Props>;
-    private busyContextRef;
-    private inputDateMaskRef;
-    private rootRef;
-    componentDidMount(): void;
-    render({ columnSpan, ...props }: ExtendGlobalProps<Props>): import("preact").JSX.Element;
-    componentWillUnmount(): void;
-    reset(): void;
-    showMessages(): void;
-    validate(): Promise<'valid' | 'invalid'>;
-    blur(): void;
-    focus(): void;
-}
+type InputDateMaskHandle = {
+    blur: () => void;
+    focus: () => void;
+    showMessages: () => void;
+    reset: () => void;
+    validate: () => Promise<'valid' | 'invalid'>;
+};
+declare const InputDateMaskImpl: ({ columnSpan, containerReadonly: propContainerReadonly, disabled, displayOptions, help, helpHints, labelWrapping: propLabelWrapping, messagesCustom, readonly: propReadonly, required, userAssistanceDensity: propUserAssistanceDensity, validators, value, ...otherProps }: Props, ref: Ref<InputDateMaskHandle>) => import("preact").JSX.Element;
+export declare const InputDateMask: ComponentType<ExtendGlobalProps<ComponentProps<typeof InputDateMaskImpl>>>;
 export type InputDateMaskProps = Props;
 export {};
 export interface CInputDateMaskElement extends JetElement<CInputDateMaskElementSettableProperties>, CInputDateMaskElementSettableProperties {
@@ -67,11 +63,11 @@ export interface CInputDateMaskElement extends JetElement<CInputDateMaskElementS
     setProperty<T extends keyof CInputDateMaskElementSettableProperties>(property: T, value: CInputDateMaskElementSettableProperties[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CInputDateMaskElementSettableProperties>): void;
     setProperties(properties: CInputDateMaskElementSettablePropertiesLenient): void;
-    blur: InputDateMask['blur'];
-    focus: InputDateMask['focus'];
-    reset: InputDateMask['reset'];
-    showMessages: InputDateMask['showMessages'];
-    validate: InputDateMask['validate'];
+    blur: () => void;
+    focus: () => void;
+    reset: () => void;
+    showMessages: () => void;
+    validate: () => Promise<'invalid' | 'valid'>;
 }
 export namespace CInputDateMaskElement {
     type columnSpanChanged = JetElementCustomEventStrict<CInputDateMaskElement['columnSpan']>;

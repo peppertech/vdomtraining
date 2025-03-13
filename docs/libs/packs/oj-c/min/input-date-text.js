@@ -1,4 +1,4 @@
-define(["require", "exports", "./input-date-text/input-date-text"], function (require, exports, input_date_text_1) {
+define(["require", "exports", "oj-c/input-date-text/input-date-text"], function (require, exports, input_date_text_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.InputDateText = void 0;

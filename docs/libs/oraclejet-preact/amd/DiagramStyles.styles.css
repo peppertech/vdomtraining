@@ -1,6 +1,9 @@
 .DiagramStyles_outerStyles__1ep4hfg0 {
   position: relative;
   overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .DiagramStyles_outerStyles__1ep4hfg0:focus-visible {
   outline-width: 0px;
@@ -26,10 +29,14 @@
   border-style: solid;
 }
 .DiagramStyles_dimmedItemStyle__1ep4hfg6 {
-  opacity: 0.35;
+  opacity: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-dimmed-opacity);
 }
 .DiagramStyles_panZoomStyles__1ep4hfg7 {
   transform-origin: top left;
   position: relative;
   pointer-events: none;
+}
+.DiagramStyles_dimensionStyle__1ep4hfg8 {
+  width: 100%;
+  height: calc(140 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
 }

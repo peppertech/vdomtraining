@@ -1,7 +1,7 @@
 {
   "name": "list-item-layout",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -23,19 +23,15 @@
     }
   ],
   "extension": {
-    "catalog": {
-      "category": "Collections"
-    },
-    "oracle": {
-      "uxSpecs": [
-        "list-item-layout"
+    "webelement": {
+      "exceptionStatus": [
+        {
+          "type": "deprecated",
+          "since": "16.0.0",
+          "description": "Not accessible to WebDriverJS."
+        }
       ],
-      "icon": "oj-ux-ico-list-item-layout"
-    },
-    "vbdt": {
-      "module": "oj-c/list-item-layout",
-      "defaultColumns": "12",
-      "minColumns": "2"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/ListItemLayoutWebElement.html"
     }
   },
   "since": "14.0.0",
@@ -105,6 +101,16 @@
       "enumValues": [
         "none",
         "listInset"
+      ]
+    },
+    "verticalAlignment": {
+      "type": "string",
+      "description": "Default is 'middle' which vertically aligns layout content to center of the row.",
+      "displayName": "verticalAlignment",
+      "help": "#verticalAlignment",
+      "enumValues": [
+        "top",
+        "middle"
       ]
     }
   },

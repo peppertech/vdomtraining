@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findSelectSingle = exports.SelectSingleWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var SelectSingleWebElement_1 = require("./SelectSingleWebElement");
+exports.SelectSingleWebElement = void 0;
+exports.findSelectSingle = findSelectSingle;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const SelectSingleWebElement_1 = require("./SelectSingleWebElement");
 Object.defineProperty(exports, "SelectSingleWebElement", { enumerable: true, get: function () { return SelectSingleWebElement_1.SelectSingleWebElement; } });
 /**
  * Retrieve an instance of [SelectSingleWebElement](../classes/SelectSingleWebElement.html).
@@ -29,6 +30,5 @@ async function findSelectSingle(driver, by) {
     }
     return webEl;
 }
-exports.findSelectSingle = findSelectSingle;
 (0, oraclejet_webdriver_1.register)('oj-c-select-single', SelectSingleWebElement_1.SelectSingleWebElement);
 //# sourceMappingURL=index.js.map

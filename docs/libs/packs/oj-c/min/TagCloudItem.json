@@ -28,9 +28,15 @@
       }
     ],
     "since": "15.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
     "meta": {
       "filename": "tag-cloud-item.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud-item"
+      "path": "web/components/oj-c/tag-cloud-item"
     },
     "ojmodule": "tag-cloud-item",
     "ojslotcomponent": true
@@ -46,20 +52,14 @@
     "description": "An array of category strings corresponding to the tag cloud items. This allows highlighting and filtering of items.",
     "meta": {
       "filename": "tag-cloud-item.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud-item"
+      "path": "web/components/oj-c/tag-cloud-item"
     },
+    "defaultvalue": "[]",
     "type": {
       "names": [
         "Array<string>"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "Array<string>",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.TagCloudItem",
@@ -72,7 +72,7 @@
     "description": "The color of the text. Will be overridden by any color defined in the style option. The default value comes from the CSS and varies based on theme.",
     "meta": {
       "filename": "tag-cloud-item.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud-item"
+      "path": "web/components/oj-c/tag-cloud-item"
     },
     "type": {
       "names": [
@@ -91,7 +91,7 @@
     "description": "The text of the item.",
     "meta": {
       "filename": "tag-cloud-item.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud-item"
+      "path": "web/components/oj-c/tag-cloud-item"
     },
     "type": {
       "names": [
@@ -110,7 +110,7 @@
     "description": "The value of this item is used to scale its font size within the tag cloud.",
     "meta": {
       "filename": "tag-cloud-item.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud-item"
+      "path": "web/components/oj-c/tag-cloud-item"
     },
     "type": {
       "names": [
@@ -129,7 +129,7 @@
     "description": "The url this item references.",
     "meta": {
       "filename": "tag-cloud-item.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud-item"
+      "path": "web/components/oj-c/tag-cloud-item"
     },
     "type": {
       "names": [
@@ -148,7 +148,7 @@
     "description": "The description of the item. This is used for customizing the tooltip text.",
     "meta": {
       "filename": "tag-cloud-item.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud-item"
+      "path": "web/components/oj-c/tag-cloud-item"
     },
     "type": {
       "names": [
@@ -165,7 +165,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "tag-cloud-item.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud-item"
+      "path": "web/components/oj-c/tag-cloud-item"
     },
     "scope": "instance",
     "params": [
@@ -199,7 +199,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "tag-cloud-item.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud-item"
+      "path": "web/components/oj-c/tag-cloud-item"
     },
     "scope": "instance",
     "params": [
@@ -228,7 +228,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "tag-cloud-item.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud-item"
+      "path": "web/components/oj-c/tag-cloud-item"
     },
     "scope": "instance",
     "params": [

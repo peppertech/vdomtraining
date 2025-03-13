@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findLineChart = exports.LineChartWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var LineChartWebElement_1 = require("./LineChartWebElement");
+exports.LineChartWebElement = void 0;
+exports.findLineChart = findLineChart;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const LineChartWebElement_1 = require("./LineChartWebElement");
 Object.defineProperty(exports, "LineChartWebElement", { enumerable: true, get: function () { return LineChartWebElement_1.LineChartWebElement; } });
 /**
  * Retrieve an instance of [LineChartWebElement](../classes/LineChartWebElement.html).
@@ -29,6 +30,5 @@ async function findLineChart(driver, by) {
     }
     return webEl;
 }
-exports.findLineChart = findLineChart;
 (0, oraclejet_webdriver_1.register)('oj-c-line-chart', LineChartWebElement_1.LineChartWebElement);
 //# sourceMappingURL=index.js.map

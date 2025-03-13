@@ -11,6 +11,7 @@ import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/L
 type RadiosetArrayDataItem<V extends string | number> = RadiosetDataItem & {
     value: V;
 };
+type DisplayOptionsProps = Pick<DisplayOptions, 'messages'>;
 type RadiosetDataItem = {
     label: string;
     assistiveText?: string;
@@ -24,7 +25,7 @@ type RadiosetProps<V extends string | number, D extends RadiosetDataItem> = Obse
     columnSpan?: LayoutColumnSpan;
     direction?: PreactRadioSetProps['direction'];
     disabled?: boolean;
-    displayOptions?: Pick<DisplayOptions, 'messages'>;
+    displayOptions?: DisplayOptionsProps;
     help?: Help;
     helpHints?: HelpHints;
     labelHint: string;
@@ -43,7 +44,7 @@ type RadiosetProps<V extends string | number, D extends RadiosetDataItem> = Obse
     value?: V | null;
 };
 export declare const Radioset: ComponentType<ExtendGlobalProps<RadiosetProps<string | number, RadiosetDataItem>>>;
-export {};
+export type { RadiosetDataItem, RadiosetProps };
 export interface CRadiosetElement<V extends string | number, D extends RadiosetDataItem> extends JetElement<CRadiosetElementSettableProperties<V, D>>, CRadiosetElementSettableProperties<V, D> {
     readonly valid?: Parameters<Required<RadiosetProps<V, D>>['onValidChanged']>[0];
     addEventListener<T extends keyof CRadiosetElementEventMap<V, D>>(type: T, listener: (this: HTMLElement, ev: CRadiosetElementEventMap<V, D>[T]) => any, options?: (boolean | AddEventListenerOptions)): void;

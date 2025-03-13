@@ -1,0 +1,1 @@
+export { getPreferredSize } from './legendUtils';

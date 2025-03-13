@@ -1,7 +1,7 @@
 define(["require", "exports", "preact/compat", "../utils/UNSAFE_vizUtils/TemplateHandler", "../hooks/UNSAFE_useDataProvider/useDataProvider", "ojs/ojflattenedtreedataproviderview", "ojs/ojkeyset"], function (require, exports, compat_1, TemplateHandler_1, useDataProvider_1, FlattenedTreeDataProviderView, ojkeyset_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useSectionData = void 0;
+    exports.useSectionData = useSectionData;
     function useSectionData(dataProvider, addBusyState, sectionTemplate, itemTemplate) {
         const dpRef = (0, compat_1.useRef)(dataProvider);
         const flatDpRef = (0, compat_1.useRef)(new FlattenedTreeDataProviderView(dataProvider, {
@@ -52,7 +52,10 @@ define(["require", "exports", "preact/compat", "../utils/UNSAFE_vizUtils/Templat
                 }
             }
         }
-        return sections;
+        const idToDPItemMap = new Map(data.map((item) => [item.key, item.data]));
+        return {
+            sections,
+            idToDPItemMap
+        };
     }
-    exports.useSectionData = useSectionData;
 });

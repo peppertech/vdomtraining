@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findInputDateMask = exports.InputDateMaskWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var InputDateMaskWebElement_1 = require("./InputDateMaskWebElement");
+exports.InputDateMaskWebElement = void 0;
+exports.findInputDateMask = findInputDateMask;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const InputDateMaskWebElement_1 = require("./InputDateMaskWebElement");
 Object.defineProperty(exports, "InputDateMaskWebElement", { enumerable: true, get: function () { return InputDateMaskWebElement_1.InputDateMaskWebElement; } });
 /**
  * Retrieve an instance of [InputDateMaskWebElement](../classes/InputDateMaskWebElement.html).
@@ -29,6 +30,5 @@ async function findInputDateMask(driver, by) {
     }
     return webEl;
 }
-exports.findInputDateMask = findInputDateMask;
 (0, oraclejet_webdriver_1.register)('oj-c-input-date-mask', InputDateMaskWebElement_1.InputDateMaskWebElement);
 //# sourceMappingURL=index.js.map

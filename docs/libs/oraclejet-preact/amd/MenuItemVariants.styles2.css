@@ -2,8 +2,8 @@
   background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-active);
 }
 .MenuItemVariants_multiVariantStyles_variant_destructive__ggzxwb1 {
-  --textColor__1qbg5hn5: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger-low);
-  --iconColor__1qbg5hn6: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger-low);
+  --textColor__1qbg5hn5: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger);
+  --iconColor__1qbg5hn6: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger);
 }
 .MenuItemVariants_multiVariantStyles_variant_destructive__ggzxwb1:active {
   --textColor__1qbg5hn5: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger);

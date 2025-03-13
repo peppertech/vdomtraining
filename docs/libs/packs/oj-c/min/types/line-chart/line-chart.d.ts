@@ -5,14 +5,35 @@ import { ComponentProps, ComponentType } from 'preact';
 import { LineAreaChart as PreactLineChart } from '@oracle/oraclejet-preact/UNSAFE_LineAreaChart';
 import { LineChartItemProps } from '../line-chart-item/line-chart-item';
 import 'css!oj-c/line-chart/line-chart-styles.css';
-import { Action, ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, TemplateSlot } from 'ojs/ojvcomponent';
+import { Action, Bubbles, ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, TemplateSlot } from 'ojs/ojvcomponent';
 import { ChartItemTemplateContext, ChartSeriesTemplateContext, ChartGroupTemplateContext } from '../hooks/UNSAFE_useChartData/useChartData';
-import { Group } from '@oracle/oraclejet-preact/UNSAFE_Axis/axis.types';
-import { ViewPortDetail, PlotArea, YAxis, XAxis, ValueFormats } from '../utils/UNSAFE_vizTypes/chartTypes';
+import { Group } from '@oracle/oraclejet-preact/utils/UNSAFE_visTypes/chart';
+import type { ViewPortDetail, PlotArea, YAxis, XAxis, ValueFormats } from '../utils/UNSAFE_vizTypes/chartTypes';
 import type { ChartLegend } from '../utils/UNSAFE_vizTypes';
 import { DataProvider } from 'ojs/ojdataprovider';
 import { LineChartSeriesProps } from 'oj-c/line-chart-series/line-chart-series';
+import { type ContextMenuConfig, type ContextMenuSelectionDetail, type ContextMenuActionDetail } from 'oj-c/hooks/PRIVATE_useVisContextMenu/useVisContextMenu';
+import { AreaChartSeries } from 'oj-c/area-chart/area-chart';
 type PreactLineChartProps = ComponentProps<typeof PreactLineChart>;
+export type LineChartContextMenuConfig<K, D> = ContextMenuConfig<LineContextMenuContext<K, D>>;
+export type LineChartContextMenuSelectionDetail<K, D> = ContextMenuSelectionDetail<LineContextMenuContext<K, D>>;
+export type LineChartContextMenuActionDetail<K, D> = ContextMenuActionDetail<LineContextMenuContext<K, D>>;
+export type LineContextMenuContext<K, D> = {
+    data?: LineItem<K>;
+    itemData?: D;
+    type: 'item';
+} | {
+    type: 'background';
+} | {
+    type: 'xAxisTickLabel';
+    data: Group;
+} | {
+    type: 'series';
+    data: AreaChartSeries<K>;
+} | {
+    type: 'axisTitle';
+    axis: 'x' | 'y';
+};
 export type LineItem<K> = {
     id: K;
 } & LineChartItemProps;
@@ -48,6 +69,7 @@ export type LineChartProps<K, D extends LineItem<K> | any> = ObservedGlobalProps
     seriesTemplate?: TemplateSlot<ChartSeriesTemplateContext<K, D>>;
     groupTemplate?: TemplateSlot<ChartGroupTemplateContext<K, D>>;
     orientation?: PreactLineChartProps['orientation'];
+    timeAxisType?: 'enabled' | 'mixedFrequency' | 'skipGaps';
     yAxis?: YAxis;
     xAxis?: XAxis;
     plotArea?: PlotArea;
@@ -61,6 +83,7 @@ export type LineChartProps<K, D extends LineItem<K> | any> = ObservedGlobalProps
     data?: DataProvider<K, D> | null;
     selectionMode?: 'none' | 'single' | 'multiple';
     selection?: K[];
+    dragMode?: 'user' | 'select' | 'zoom' | 'pan' | 'off';
     onSelectionChanged?: PropertyChanged<(string | number)[]>;
     hiddenCategories?: string[];
     onHiddenCategoriesChanged?: PropertyChanged<string[]>;
@@ -70,8 +93,11 @@ export type LineChartProps<K, D extends LineItem<K> | any> = ObservedGlobalProps
     hoverBehavior?: 'dim' | 'none';
     highlightMatch?: 'any' | 'all';
     legend?: ChartLegend;
+    contextMenuConfig?: LineChartContextMenuConfig<K, D>;
+    onOjContextMenuAction?: Action<LineChartContextMenuActionDetail<K, D>> & Bubbles;
+    onOjContextMenuSelection?: Action<LineChartContextMenuSelectionDetail<K, D>> & Bubbles;
 };
-declare function LineChartComp<K extends string | number, D extends LineItem<K> | any>({ data, hideAndShowBehavior, orientation, xAxis, yAxis, hoverBehavior, valueFormats, plotArea, zoomAndScroll, itemTemplate, seriesTemplate, groupTemplate, seriesComparator, groupComparator, drilling, hiddenCategories, highlightedCategories, highlightMatch, selection, selectionMode, stack, legend, ...props }: LineChartProps<K, D>): import("preact").JSX.Element;
+declare function LineChartComp<K extends string | number, D extends LineItem<K> | any>({ data, hideAndShowBehavior, orientation, xAxis, yAxis, hoverBehavior, valueFormats, plotArea, zoomAndScroll, itemTemplate, seriesTemplate, groupTemplate, seriesComparator, groupComparator, drilling, hiddenCategories, timeAxisType, highlightedCategories, highlightMatch, selection, selectionMode, stack, legend, contextMenuConfig, onOjContextMenuAction, onOjContextMenuSelection, ...props }: LineChartProps<K, D>): import("preact").JSX.Element;
 export declare const LineChart: ComponentType<ExtendGlobalProps<ComponentProps<typeof LineChartComp>>>;
 export {};
 export interface CLineChartElement<K extends string | number, D extends LineItem<K> | any> extends JetElement<CLineChartElementSettableProperties<K, D>>, CLineChartElementSettableProperties<K, D> {
@@ -92,7 +118,13 @@ export namespace CLineChartElement {
     }
     interface ojViewportChange extends CustomEvent<ViewPortDetail & {}> {
     }
+    interface ojContextMenuAction<K extends string | number, D extends LineItem<K> | any> extends CustomEvent<LineChartContextMenuActionDetail<K, D> & {}> {
+    }
+    interface ojContextMenuSelection<K extends string | number, D extends LineItem<K> | any> extends CustomEvent<LineChartContextMenuSelectionDetail<K, D> & {}> {
+    }
+    type contextMenuConfigChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['contextMenuConfig']>;
     type dataChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['data']>;
+    type dragModeChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['dragMode']>;
     type drillingChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['drilling']>;
     type groupComparatorChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['groupComparator']>;
     type hiddenCategoriesChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['hiddenCategories']>;
@@ -107,17 +139,25 @@ export namespace CLineChartElement {
     type selectionModeChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['selectionMode']>;
     type seriesComparatorChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['seriesComparator']>;
     type stackChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['stack']>;
+    type timeAxisTypeChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['timeAxisType']>;
     type valueFormatsChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['valueFormats']>;
     type xAxisChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['xAxis']>;
     type yAxisChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['yAxis']>;
     type zoomAndScrollChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['zoomAndScroll']>;
+    type RenderItemTemplate<K extends string | number, D extends LineItem<K> | any> = import('ojs/ojvcomponent').TemplateSlot<ChartItemTemplateContext<K, D>>;
+    type RenderSeriesTemplate<K extends string | number, D extends LineItem<K> | any> = import('ojs/ojvcomponent').TemplateSlot<ChartSeriesTemplateContext<K, D>>;
+    type RenderGroupTemplate<K extends string | number, D extends LineItem<K> | any> = import('ojs/ojvcomponent').TemplateSlot<ChartGroupTemplateContext<K, D>>;
 }
 export interface CLineChartElementEventMap<K extends string | number, D extends LineItem<K> | any> extends HTMLElementEventMap {
     'ojItemDrill': CLineChartElement.ojItemDrill<K, D>;
     'ojSeriesDrill': CLineChartElement.ojSeriesDrill<K>;
     'ojGroupDrill': CLineChartElement.ojGroupDrill<K>;
     'ojViewportChange': CLineChartElement.ojViewportChange;
+    'ojContextMenuAction': CLineChartElement.ojContextMenuAction<K, D>;
+    'ojContextMenuSelection': CLineChartElement.ojContextMenuSelection<K, D>;
+    'contextMenuConfigChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['contextMenuConfig']>;
     'dataChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['data']>;
+    'dragModeChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['dragMode']>;
     'drillingChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['drilling']>;
     'groupComparatorChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['groupComparator']>;
     'hiddenCategoriesChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['hiddenCategories']>;
@@ -132,13 +172,16 @@ export interface CLineChartElementEventMap<K extends string | number, D extends 
     'selectionModeChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['selectionMode']>;
     'seriesComparatorChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['seriesComparator']>;
     'stackChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['stack']>;
+    'timeAxisTypeChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['timeAxisType']>;
     'valueFormatsChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['valueFormats']>;
     'xAxisChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['xAxis']>;
     'yAxisChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['yAxis']>;
     'zoomAndScrollChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['zoomAndScroll']>;
 }
 export interface CLineChartElementSettableProperties<K, D extends LineItem<K> | any> extends JetSettableProperties {
+    contextMenuConfig?: LineChartProps<K, D>['contextMenuConfig'];
     data?: LineChartProps<K, D>['data'];
+    dragMode?: LineChartProps<K, D>['dragMode'];
     drilling?: LineChartProps<K, D>['drilling'];
     groupComparator?: LineChartProps<K, D>['groupComparator'];
     hiddenCategories?: LineChartProps<K, D>['hiddenCategories'];
@@ -153,6 +196,7 @@ export interface CLineChartElementSettableProperties<K, D extends LineItem<K> | 
     selectionMode?: LineChartProps<K, D>['selectionMode'];
     seriesComparator?: LineChartProps<K, D>['seriesComparator'];
     stack?: LineChartProps<K, D>['stack'];
+    timeAxisType?: LineChartProps<K, D>['timeAxisType'];
     valueFormats?: LineChartProps<K, D>['valueFormats'];
     xAxis?: LineChartProps<K, D>['xAxis'];
     yAxis?: LineChartProps<K, D>['yAxis'];
@@ -163,11 +207,15 @@ export interface CLineChartElementSettablePropertiesLenient<K, D extends LineIte
 }
 export interface LineChartIntrinsicProps extends Partial<Readonly<CLineChartElementSettableProperties<any, any>>>, GlobalProps, Pick<preact.JSX.HTMLAttributes, 'ref' | 'key'> {
     children?: import('preact').ComponentChildren;
+    onojContextMenuAction?: (value: CLineChartElementEventMap<any, any>['ojContextMenuAction']) => void;
+    onojContextMenuSelection?: (value: CLineChartElementEventMap<any, any>['ojContextMenuSelection']) => void;
     onojGroupDrill?: (value: CLineChartElementEventMap<any, any>['ojGroupDrill']) => void;
     onojItemDrill?: (value: CLineChartElementEventMap<any, any>['ojItemDrill']) => void;
     onojSeriesDrill?: (value: CLineChartElementEventMap<any, any>['ojSeriesDrill']) => void;
     onojViewportChange?: (value: CLineChartElementEventMap<any, any>['ojViewportChange']) => void;
+    oncontextMenuConfigChanged?: (value: CLineChartElementEventMap<any, any>['contextMenuConfigChanged']) => void;
     ondataChanged?: (value: CLineChartElementEventMap<any, any>['dataChanged']) => void;
+    ondragModeChanged?: (value: CLineChartElementEventMap<any, any>['dragModeChanged']) => void;
     ondrillingChanged?: (value: CLineChartElementEventMap<any, any>['drillingChanged']) => void;
     ongroupComparatorChanged?: (value: CLineChartElementEventMap<any, any>['groupComparatorChanged']) => void;
     onhiddenCategoriesChanged?: (value: CLineChartElementEventMap<any, any>['hiddenCategoriesChanged']) => void;
@@ -182,6 +230,7 @@ export interface LineChartIntrinsicProps extends Partial<Readonly<CLineChartElem
     onselectionModeChanged?: (value: CLineChartElementEventMap<any, any>['selectionModeChanged']) => void;
     onseriesComparatorChanged?: (value: CLineChartElementEventMap<any, any>['seriesComparatorChanged']) => void;
     onstackChanged?: (value: CLineChartElementEventMap<any, any>['stackChanged']) => void;
+    ontimeAxisTypeChanged?: (value: CLineChartElementEventMap<any, any>['timeAxisTypeChanged']) => void;
     onvalueFormatsChanged?: (value: CLineChartElementEventMap<any, any>['valueFormatsChanged']) => void;
     onxAxisChanged?: (value: CLineChartElementEventMap<any, any>['xAxisChanged']) => void;
     onyAxisChanged?: (value: CLineChartElementEventMap<any, any>['yAxisChanged']) => void;

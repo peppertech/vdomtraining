@@ -10,23 +10,23 @@ type PreactRatingGaugeProps = ComponentProps<typeof PreactRatingGauge>;
 type DatatipContext = {
     value: number;
 };
-export declare const RatingGauge: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<ObservedGlobalProps<"aria-label"> & {
-    max?: number | undefined;
-    readonly?: boolean | undefined;
-    disabled?: boolean | undefined;
-    changed?: boolean | undefined;
-    onChangedChanged?: PropertyChanged<boolean> | undefined;
-    value?: number | null | undefined;
-    onValueChanged?: PropertyChanged<number | null> | undefined;
-    step?: number | undefined;
-    describedBy?: string | null | undefined;
-    labelledBy?: string | null | undefined;
-    size?: PreactRatingGaugeProps['size'];
-    color?: PreactRatingGaugeProps['color'];
-    thresholds?: Threshold[] | undefined;
-    datatip?: ((context: DatatipContext) => string) | undefined;
-    tooltip?: string | undefined;
-    onTransientValueChanged?: ReadOnlyPropertyChanged<number | undefined> | undefined;
+export declare const RatingGauge: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<ObservedGlobalProps<"aria-describedby" | "aria-label" | "aria-labelledby"> & {
+    max?: number;
+    readonly?: boolean;
+    disabled?: boolean;
+    changed?: boolean;
+    onChangedChanged?: PropertyChanged<boolean>;
+    value?: number | null;
+    onValueChanged?: PropertyChanged<number | null>;
+    step?: number;
+    describedBy?: string | null;
+    labelledBy?: string | null;
+    size?: PreactRatingGaugeProps["size"];
+    color?: PreactRatingGaugeProps["color"];
+    thresholds?: Array<Threshold>;
+    datatip?: (context: DatatipContext) => string;
+    tooltip?: string;
+    onTransientValueChanged?: ReadOnlyPropertyChanged<number | undefined>;
 }>>;
 export {};
 export interface CRatingGaugeElement extends JetElement<CRatingGaugeElementSettableProperties>, CRatingGaugeElementSettableProperties {

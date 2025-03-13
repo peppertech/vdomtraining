@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AreaChartWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-area-chart WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -13,7 +13,7 @@ class AreaChartWebElementBase extends elements_1.OjWebElement {
      * Gets the value of <code>data</code> property.
      * Specifies the DataProvider for the sections and items of the area-chart.
      * @return The value of <code>data</code> property.
-     *
+     * @deprecated Since 17.1.0. Data sets from a DataProvider cannot be sent to WebDriverJS; use ViewModels or page variables instead.
      */
     getData() {
         return this.getProperty('data');
@@ -64,8 +64,17 @@ class AreaChartWebElementBase extends elements_1.OjWebElement {
         return this.getProperty('orientation');
     }
     /**
-     * Gets the value of <code>yAxis</code> property.
+     * Gets the value of <code>timeAxisType</code> property.
+     * The time axis type of the chart x axis.
+     * @return The value of <code>timeAxisType</code> property.
      *
+     */
+    getTimeAxisType() {
+        return this.getProperty('timeAxisType');
+    }
+    /**
+     * Gets the value of <code>yAxis</code> property.
+     * An object defining y axis properties.
      * @return The value of <code>yAxis</code> property.
      *
      */
@@ -74,7 +83,7 @@ class AreaChartWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Gets the value of <code>xAxis</code> property.
-     *
+     * An object defining x axis properties.
      * @return The value of <code>xAxis</code> property.
      *
      */
@@ -83,7 +92,7 @@ class AreaChartWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Gets the value of <code>plotArea</code> property.
-     *
+     * An object defining the style of the plot area.
      * @return The value of <code>plotArea</code> property.
      *
      */
@@ -92,7 +101,7 @@ class AreaChartWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Gets the value of <code>zoomAndScroll</code> property.
-     *
+     * Specifies the zoom and scroll behavior of the chart.
      * @return The value of <code>zoomAndScroll</code> property.
      *
      */
@@ -101,7 +110,7 @@ class AreaChartWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Gets the value of <code>valueFormats</code> property.
-     *
+     * An object specifying value formatting and tooltip behavior.
      * @return The value of <code>valueFormats</code> property.
      *
      */
@@ -137,7 +146,7 @@ class AreaChartWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Sets the value of <code>hiddenCategories</code> property.
-     *
+     * An array of category string used for filtering.
      * @param hiddenCategories The value to set for <code>hiddenCategories</code>
      *
      */
@@ -146,12 +155,21 @@ class AreaChartWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Gets the value of <code>hiddenCategories</code> property.
-     *
+     * An array of category string used for filtering.
      * @return The value of <code>hiddenCategories</code> property.
      *
      */
     getHiddenCategories() {
         return this.getProperty('hiddenCategories');
+    }
+    /**
+     * Gets the value of <code>dragMode</code> property.
+     * The action that is performed when a drag occurs on the chart.
+     * @return The value of <code>dragMode</code> property.
+     *
+     */
+    getDragMode() {
+        return this.getProperty('dragMode');
     }
     /**
      * Sets the value of <code>highlightedCategories</code> property.
@@ -206,6 +224,15 @@ class AreaChartWebElementBase extends elements_1.OjWebElement {
      */
     getLegend() {
         return this.getProperty('legend');
+    }
+    /**
+     * Gets the value of <code>contextMenuConfig</code> property.
+     * Specifies a context menu configuration.
+     * @return The value of <code>contextMenuConfig</code> property.
+     *
+     */
+    getContextMenuConfig() {
+        return this.getProperty('contextMenuConfig');
     }
 }
 exports.AreaChartWebElementBase = AreaChartWebElementBase;

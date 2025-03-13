@@ -1,33 +1,51 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "preact", "preact/hooks", "preact/compat", "ojs/ojcontext", "@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout", "ojs/ojvcomponent", "ojs/ojvcomponent-binding", "@oracle/oraclejet-preact/UNSAFE_CheckboxSet", "@oracle/oraclejet-preact/UNSAFE_CheckboxItem", "@oracle/oraclejet-preact/hooks/UNSAFE_useFormContext", "@oracle/oraclejet-preact/hooks/UNSAFE_useTabbableMode", "oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText", "oj-c/hooks/UNSAFE_useDataProvider/useDataProvider", "./useCheckboxsetPreact", "css!oj-c/checkboxset/checkboxset-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, preact_1, hooks_1, compat_1, Context, Layout_1, ojvcomponent_1, ojvcomponent_binding_1, UNSAFE_CheckboxSet_1, UNSAFE_CheckboxItem_1, UNSAFE_useFormContext_1, UNSAFE_useTabbableMode_1, useAssistiveText_1, useDataProvider_1, useCheckboxsetPreact_1) {
+define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "preact/hooks", "preact/compat", "ojs/ojcontext", "@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout", "ojs/ojvcomponent", "@oracle/oraclejet-preact/UNSAFE_CheckboxSet", "@oracle/oraclejet-preact/UNSAFE_CheckboxItem", "@oracle/oraclejet-preact/hooks/UNSAFE_useFormContext", "oj-c/hooks/UNSAFE_useMergedFormContext/useMergedFormContext", "@oracle/oraclejet-preact/hooks/UNSAFE_useTabbableMode", "oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText", "oj-c/hooks/UNSAFE_useDataProvider/useDataProvider", "./useCheckboxsetPreact", "css!oj-c/checkboxset/checkboxset-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, hooks_1, compat_1, Context, Layout_1, ojvcomponent_1, UNSAFE_CheckboxSet_1, UNSAFE_CheckboxItem_1, UNSAFE_useFormContext_1, useMergedFormContext_1, UNSAFE_useTabbableMode_1, useAssistiveText_1, useDataProvider_1, useCheckboxsetPreact_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Checkboxset = void 0;
     function isDataProvider(options) {
         return options && 'fetchFirst' in options;
     }
-    const FunctionalCheckboxset = (0, compat_1.forwardRef)(({ busyContextRef, displayOptions, help, helpHints, id, direction, options, ...otherProps }, ref) => {
+    const displayOptionsDefault = {
+        messages: 'display'
+    };
+    const helpDefault = {
+        instruction: ''
+    };
+    const helpHintsDefault = {
+        definition: '',
+        source: ''
+    };
+    const messagesCustomDefault = [];
+    const FunctionalCheckboxset = (0, compat_1.forwardRef)(({ id, options, containerReadonly: propContainerReadonly, displayOptions = displayOptionsDefault, help = helpDefault, helpHints = helpHintsDefault, disabled = false, direction = 'column', labelWrapping: propLabelWrapping, messagesCustom = messagesCustomDefault, columnSpan = 1, readonly: propReadonly, userAssistanceDensity: propUserAssistanceDensity, required = false, value = null, ...otherProps }, ref) => {
+        const rootRef = (0, hooks_1.useRef)();
         const checkboxsetRef = (0, hooks_1.useRef)();
-        const addBusyState = (0, hooks_1.useCallback)((desc) => {
-            return busyContextRef.current?.addBusyState({
-                description: `oj-c-checkboxset id=${id} is ${desc}`
-            });
-        }, [busyContextRef, id]);
+        const addBusyState = (0, hooks_1.useCallback)((description = 'Checkboxset: busyState') => {
+            return rootRef.current
+                ? Context.getContext(rootRef.current).getBusyContext().addBusyState({ description })
+                : () => { };
+        }, []);
         const isFromDataProvider = isDataProvider(options);
+        const { containerProps, uadValue, readonlyValue } = (0, useMergedFormContext_1.useMergedFormContext)({
+            propContainerReadonly,
+            propLabelWrapping,
+            propReadonly,
+            propUserAssistanceDensity
+        });
         const { checkboxsetProps, methods } = (0, useCheckboxsetPreact_1.useCheckboxsetPreact)({
             displayOptions,
+            readonly: readonlyValue,
+            required,
+            messagesCustom,
+            disabled,
+            value,
+            userAssistanceDensity: uadValue,
             ...otherProps
         }, addBusyState);
+        const { value: hookValue, ...checkboxsetRest } = checkboxsetProps;
         const { data } = (0, useDataProvider_1.useDataProvider)({
             data: isFromDataProvider ? options : undefined,
             addBusyState
         });
-        const { value, userAssistanceDensity, ...checkboxsetRest } = checkboxsetProps;
         const dataArr = (0, hooks_1.useMemo)(() => {
             const clonedOptions = !isFromDataProvider && options ? [...options] : [];
             return isFromDataProvider
@@ -45,70 +63,13 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
             displayOptions,
             help,
             helpHints,
-            userAssistanceDensity
+            userAssistanceDensity: uadValue
         });
-        const memoizedSetValue = (0, hooks_1.useMemo)(() => (value ? new Set(value) : undefined), [value]);
-        return ((0, jsx_runtime_1.jsx)(UNSAFE_CheckboxSet_1.CheckboxSet, { ref: checkboxsetRef, direction: direction, ...assistiveTextProps, ...checkboxsetRest, userAssistanceDensity: userAssistanceDensity, value: memoizedSetValue, children: dataArr.map(({ assistiveText, helpSourceLink, helpSourceText, label, value }) => ((0, jsx_runtime_1.jsx)(UNSAFE_CheckboxItem_1.CheckboxItem, { assistiveText: assistiveText, helpSourceLink: helpSourceLink, helpSourceText: helpSourceText, value: value, children: label }, value))) }));
+        const memoizedSetValue = (0, hooks_1.useMemo)(() => (hookValue ? new Set(hookValue) : undefined), [hookValue]);
+        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { id: id, ref: rootRef, class: Layout_1.layoutSpanStyles.layoutSpanColumn[columnSpan], children: (0, jsx_runtime_1.jsx)(UNSAFE_useFormContext_1.FormContext.Provider, { value: containerProps, children: (0, jsx_runtime_1.jsx)(UNSAFE_CheckboxSet_1.CheckboxSet, { ref: checkboxsetRef, direction: direction, ...assistiveTextProps, ...checkboxsetRest, userAssistanceDensity: uadValue, value: memoizedSetValue, children: dataArr.map(({ assistiveText, helpSourceLink, helpSourceText, label, value }) => ((0, jsx_runtime_1.jsx)(UNSAFE_CheckboxItem_1.CheckboxItem, { assistiveText: assistiveText, helpSourceLink: helpSourceLink, helpSourceText: helpSourceText, value: value, children: label }, value))) }) }) }));
     });
-    let Checkboxset = class Checkboxset extends preact_1.Component {
-        constructor() {
-            super(...arguments);
-            this.busyContextRef = (0, preact_1.createRef)();
-            this.checkboxSetRef = (0, preact_1.createRef)();
-            this.rootRef = (0, preact_1.createRef)();
-        }
-        componentDidMount() {
-            this.busyContextRef.current = Context.getContext(this.rootRef.current).getBusyContext();
-        }
-        render(props) {
-            const containerProps = {
-                isFormLayout: props.containerReadonly !== undefined,
-                isReadonly: props.containerReadonly,
-                labelWrapping: props.labelWrapping
-            };
-            return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { id: props.id, ref: this.rootRef, class: Layout_1.layoutSpanStyles.layoutSpanColumn[props.columnSpan || 1], children: (0, jsx_runtime_1.jsx)(UNSAFE_useFormContext_1.FormContext.Provider, { value: containerProps, children: (0, jsx_runtime_1.jsx)(FunctionalCheckboxset, { ...props, busyContextRef: this.busyContextRef, ref: this.checkboxSetRef }) }) }));
-        }
-        componentWillUnmount() {
-            this.busyContextRef.current = null;
-        }
-        reset() {
-            this.checkboxSetRef.current?.reset();
-        }
-        showMessages() {
-            this.checkboxSetRef.current?.showMessages();
-        }
-        validate() {
-            return this.checkboxSetRef.current?.validate();
-        }
-        blur() {
-            this.checkboxSetRef.current?.blur();
-        }
-        focus() {
-            this.checkboxSetRef.current?.focus();
-        }
-    };
-    exports.Checkboxset = Checkboxset;
-    Checkboxset.defaultProps = {
-        columnSpan: 1,
-        disabled: false,
-        displayOptions: {
-            messages: 'display'
-        },
-        help: {
-            instruction: ''
-        },
-        messagesCustom: [],
-        readonly: false,
-        required: false,
-        userAssistanceDensity: 'reflow',
-        value: null
-    };
-    Checkboxset._metadata = { "properties": { "containerReadonly": { "type": "boolean", "binding": { "consume": { "name": "containerReadonly" } } }, "columnSpan": { "type": "number" }, "disabled": { "type": "boolean" }, "direction": { "type": "string", "enumValues": ["row", "column"] }, "displayOptions": { "type": "object", "properties": { "messages": { "type": "string", "enumValues": ["none", "display"] } } }, "help": { "type": "object", "properties": { "instruction": { "type": "string" } } }, "helpHints": { "type": "object", "properties": { "definition": { "type": "string" }, "source": { "type": "string" }, "sourceText": { "type": "string" } } }, "labelEdge": { "type": "string", "enumValues": ["none", "start", "top", "inside"], "binding": { "consume": { "name": "containerLabelEdge" } } }, "labelHint": { "type": "string" }, "labelStartWidth": { "type": "number|string", "binding": { "consume": { "name": "labelWidth" } } }, "messagesCustom": { "type": "Array<object>", "writeback": true }, "readonly": { "type": "boolean", "binding": { "consume": { "name": "containerReadonly" } } }, "required": { "type": "boolean" }, "userAssistanceDensity": { "type": "string", "enumValues": ["compact", "reflow", "efficient"], "binding": { "consume": { "name": "containerUserAssistanceDensity" } } }, "options": { "type": "Array<object>|DataProvider" }, "labelWrapping": { "type": "string", "enumValues": ["truncate", "wrap"], "binding": { "consume": { "name": "labelWrapping" } } }, "requiredMessageDetail": { "type": "string" }, "valid": { "type": "string", "enumValues": ["pending", "valid", "invalidHidden", "invalidShown"], "readOnly": true, "writeback": true }, "value": { "type": "Array<any>|null", "writeback": true } }, "extension": { "_WRITEBACK_PROPS": ["messagesCustom", "valid", "value"], "_READ_ONLY_PROPS": ["valid"], "_OBSERVED_GLOBAL_PROPS": ["aria-describedby", "id"] }, "methods": { "reset": {}, "showMessages": {}, "validate": {}, "blur": {}, "focus": {} } };
-    Checkboxset._translationBundleMap = {
+    const Checkboxset = (0, ojvcomponent_1.registerCustomElement)('oj-c-checkboxset', FunctionalCheckboxset, "Checkboxset", { "properties": { "containerReadonly": { "type": "boolean", "binding": { "consume": { "name": "containerReadonly" } } }, "columnSpan": { "type": "number" }, "disabled": { "type": "boolean" }, "direction": { "type": "string", "enumValues": ["row", "column"] }, "displayOptions": { "type": "object", "properties": { "messages": { "type": "string", "enumValues": ["none", "display"] } } }, "help": { "type": "object", "properties": { "instruction": { "type": "string" } } }, "helpHints": { "type": "object", "properties": { "definition": { "type": "string" }, "source": { "type": "string" }, "sourceText": { "type": "string" } } }, "labelEdge": { "type": "string", "enumValues": ["none", "start", "top", "inside"], "binding": { "consume": { "name": "containerLabelEdge" } } }, "labelHint": { "type": "string" }, "labelStartWidth": { "type": "number|string", "binding": { "consume": { "name": "labelWidth" } } }, "messagesCustom": { "type": "Array<object>", "writeback": true }, "readonly": { "type": "boolean", "binding": { "consume": { "name": "containerReadonly" } } }, "required": { "type": "boolean" }, "userAssistanceDensity": { "type": "string", "enumValues": ["compact", "reflow", "efficient"], "binding": { "consume": { "name": "containerUserAssistanceDensity" } } }, "options": { "type": "Array<object>|DataProvider" }, "labelWrapping": { "type": "string", "enumValues": ["truncate", "wrap"], "binding": { "consume": { "name": "labelWrapping" } } }, "requiredMessageDetail": { "type": "string" }, "valid": { "type": "string", "enumValues": ["pending", "valid", "invalidHidden", "invalidShown"], "readOnly": true, "writeback": true }, "value": { "type": "Array<string|number>|null", "writeback": true } }, "extension": { "_WRITEBACK_PROPS": ["messagesCustom", "valid", "value"], "_READ_ONLY_PROPS": ["valid"], "_OBSERVED_GLOBAL_PROPS": ["aria-describedby", "id"] }, "methods": { "blur": {}, "focus": {}, "showMessages": {}, "reset": {}, "validate": {} } }, { "displayOptions": { "messages": "display" }, "help": { "instruction": "" }, "helpHints": { "definition": "", "source": "" }, "disabled": false, "direction": "column", "messagesCustom": [], "columnSpan": 1, "required": false, "value": null }, {
         '@oracle/oraclejet-preact': translationBundle_1.default
-    };
-    Checkboxset._consumedContexts = [UNSAFE_useTabbableMode_1.TabbableModeContext];
-    exports.Checkboxset = Checkboxset = __decorate([
-        (0, ojvcomponent_1.customElement)('oj-c-checkboxset')
-    ], Checkboxset);
+    }, { consume: [UNSAFE_useTabbableMode_1.TabbableModeContext] });
+    exports.Checkboxset = Checkboxset;
 });

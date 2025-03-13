@@ -17,7 +17,7 @@ export type GroupsProps = {
     groups?: GroupsProps[];
     symbol?: symbol;
 } & AreaChartGroupProps;
-declare const createGroupsAndSeries: <K, D>(data: ItemContext<K, D>[], itemTemplate?: TemplateSlot<ChartItemTemplateContext<K, D>> | undefined, seriesTemplate?: TemplateSlot<ChartSeriesTemplateContext<K, D>> | undefined, groupTemplate?: TemplateSlot<ChartGroupTemplateContext<K, D>> | undefined, itemElementName?: string, seriesElementName?: string, groupElementName?: string, seriesComparator?: ((context1: ChartSeriesTemplateContext<K, D>, context2: ChartSeriesTemplateContext<K, D>) => number) | undefined, groupComparator?: ((context1: ChartGroupTemplateContext<K, D>, context2: ChartGroupTemplateContext<K, D>) => number) | undefined) => {
+declare const createGroupsAndSeries: <K, D>(data: ItemContext<K, D>[], itemTemplate?: TemplateSlot<ChartItemTemplateContext<K, D>>, seriesTemplate?: TemplateSlot<ChartSeriesTemplateContext<K, D>>, groupTemplate?: TemplateSlot<ChartGroupTemplateContext<K, D>>, itemElementName?: string, seriesElementName?: string, groupElementName?: string, seriesComparator?: (context1: ChartSeriesTemplateContext<K, D>, context2: ChartSeriesTemplateContext<K, D>) => number, groupComparator?: (context1: ChartGroupTemplateContext<K, D>, context2: ChartGroupTemplateContext<K, D>) => number) => {
     groups: (Record<string, any> | {
         drilling: any;
         name: any;

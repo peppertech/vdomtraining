@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findMeterBar = exports.MeterBarWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var MeterBarWebElement_1 = require("./MeterBarWebElement");
+exports.MeterBarWebElement = void 0;
+exports.findMeterBar = findMeterBar;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const MeterBarWebElement_1 = require("./MeterBarWebElement");
 Object.defineProperty(exports, "MeterBarWebElement", { enumerable: true, get: function () { return MeterBarWebElement_1.MeterBarWebElement; } });
 /**
  * Retrieve an instance of [MeterBarWebElement](../classes/MeterBarWebElement.html).
@@ -29,6 +30,5 @@ async function findMeterBar(driver, by) {
     }
     return webEl;
 }
-exports.findMeterBar = findMeterBar;
 (0, oraclejet_webdriver_1.register)('oj-c-meter-bar', MeterBarWebElement_1.MeterBarWebElement);
 //# sourceMappingURL=index.js.map

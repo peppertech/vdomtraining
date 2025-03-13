@@ -1,0 +1,2 @@
+define(['exports'], (function(e){"use strict";function n(e,n){let t=n;for(;t!=e.current;){if(t.dataset.ojObject)return t.dataset;t=t.parentElement}return null}e.cancelEvent=function(e){e.preventDefault(),e.stopPropagation()},e.getElementData=n,e.getInfo=function(e,t){const r=n(e,t);var o;if(r)return{groupIndex:(o=r).ojGroupIndex?parseInt(o.ojGroupIndex,10):void 0,seriesIndex:o.ojSeriesIndex?parseInt(o.ojSeriesIndex,10):void 0}},e.isEqual=(e,n)=>e.size===n.size&&[...e].every((e=>n.has(e)))}));
+//# sourceMappingURL=eventsUtils-5d567a9d.js.map

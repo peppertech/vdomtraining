@@ -1,4 +1,4 @@
-define(["require", "exports", "./input-text/input-text"], function (require, exports, input_text_1) {
+define(["require", "exports", "oj-c/input-text/input-text"], function (require, exports, input_text_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.InputText = void 0;

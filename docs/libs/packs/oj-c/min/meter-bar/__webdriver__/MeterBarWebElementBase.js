@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MeterBarWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-meter-bar WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -53,6 +53,15 @@ class MeterBarWebElementBase extends elements_1.OjWebElement {
      */
     getValue() {
         return this.getProperty('value');
+    }
+    /**
+     * Gets the value of <code>baseline</code> property.
+     * Define the baseline value of the bar. If undefined, defaults to minimum value of the meter bar.
+     * @return The value of <code>baseline</code> property.
+     *
+     */
+    getBaseline() {
+        return this.getProperty('baseline');
     }
     /**
      * Gets the value of <code>step</code> property.

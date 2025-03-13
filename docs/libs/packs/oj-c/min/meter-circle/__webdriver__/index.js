@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findMeterCircle = exports.MeterCircleWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var MeterCircleWebElement_1 = require("./MeterCircleWebElement");
+exports.MeterCircleWebElement = void 0;
+exports.findMeterCircle = findMeterCircle;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const MeterCircleWebElement_1 = require("./MeterCircleWebElement");
 Object.defineProperty(exports, "MeterCircleWebElement", { enumerable: true, get: function () { return MeterCircleWebElement_1.MeterCircleWebElement; } });
 /**
  * Retrieve an instance of [MeterCircleWebElement](../classes/MeterCircleWebElement.html).
@@ -29,6 +30,5 @@ async function findMeterCircle(driver, by) {
     }
     return webEl;
 }
-exports.findMeterCircle = findMeterCircle;
 (0, oraclejet_webdriver_1.register)('oj-c-meter-circle', MeterCircleWebElement_1.MeterCircleWebElement);
 //# sourceMappingURL=index.js.map

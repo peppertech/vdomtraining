@@ -1,7 +1,7 @@
 define(["require", "exports", "preact/hooks"], function (require, exports, hooks_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useLegendPosition = void 0;
+    exports.useLegendPosition = useLegendPosition;
     function useLegendPosition(rootRef, position) {
         const [legendPosition, setLegendPosition] = (0, hooks_1.useState)(position === 'auto' ? 'end' : position);
         (0, hooks_1.useLayoutEffect)(() => {
@@ -14,5 +14,4 @@ define(["require", "exports", "preact/hooks"], function (require, exports, hooks
         }, [position, rootRef]);
         return legendPosition;
     }
-    exports.useLegendPosition = useLegendPosition;
 });

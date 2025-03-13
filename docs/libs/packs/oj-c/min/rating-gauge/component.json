@@ -1,7 +1,7 @@
 {
   "name": "rating-gauge",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -32,8 +32,11 @@
     "oracle": {
       "icon": "oj-ux-ico-gauge-rating",
       "uxSpecs": [
-        "rating-gauge"
+        "gauge"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/RatingGaugeWebElement.html"
     }
   },
   "propertyLayout": [

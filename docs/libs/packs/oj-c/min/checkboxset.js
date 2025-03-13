@@ -1,4 +1,4 @@
-define(["require", "exports", "./checkboxset/checkboxset"], function (require, exports, checkboxset_1) {
+define(["require", "exports", "oj-c/checkboxset/checkboxset"], function (require, exports, checkboxset_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Checkboxset = void 0;

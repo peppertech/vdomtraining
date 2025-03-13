@@ -1,8 +1,8 @@
 define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "oj-c/select-common/utils/utils", "preact/hooks"], function (require, exports, UNSAFE_logger_1, utils_1, hooks_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useSyncValueAndValueItems = void 0;
-    function useSyncValueAndValueItems({ addBusyState, dataProvider, setIsLoading, setValue, setValueItems, value, valueItems }) {
+    exports.useSyncValueAndValueItems = useSyncValueAndValueItems;
+    function useSyncValueAndValueItems({ addBusyState, dataProvider, setDisplayValue, setIsLoading, setValue, setValueItems, value, valueItems, validateValueOnExternalChange }) {
         const prevValueRef = (0, hooks_1.useRef)(value);
         const prevValueItemsRef = (0, hooks_1.useRef)(valueItems);
         const hasValue = value && value instanceof Set && value.size > 0;
@@ -58,26 +58,50 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "o
                 }
                 afterFetch();
             });
-        }, [dataProvider, hasValue, hasValueItems, value, valueItems]);
+        }, [
+            addBusyState,
+            dataProvider,
+            hasValue,
+            hasValueItems,
+            setIsLoading,
+            setValueItems,
+            value,
+            valueItems
+        ]);
         const syncValueToValueItems = (0, hooks_1.useCallback)(() => {
+            const updateValue = (nextValue) => {
+                const validationSucceeded = validateValueOnExternalChange(nextValue);
+                if (validationSucceeded) {
+                    setValue(nextValue);
+                    setDisplayValue(nextValue);
+                }
+            };
             if (!hasValueItems) {
                 if (hasValue) {
-                    setValue(utils_1.DEFAULT_VALUE);
+                    updateValue(utils_1.DEFAULT_VALUE);
                 }
                 return;
             }
             const arValueItemsKeys = Array.from(valueItems.keys());
             const valueItemsKeys = new Set(arValueItemsKeys);
             if (!value || !(value instanceof Set) || value.size !== valueItemsKeys.size) {
-                setValue(valueItemsKeys);
+                updateValue(valueItemsKeys);
                 return;
             }
             const arValueKeys = Array.from(value.keys());
             const isDifferent = arValueItemsKeys.some((key, index) => key !== arValueKeys[index]);
             if (isDifferent) {
-                setValue(valueItemsKeys);
+                updateValue(valueItemsKeys);
             }
-        }, [hasValue, hasValueItems, value, valueItems]);
+        }, [
+            hasValue,
+            hasValueItems,
+            setDisplayValue,
+            setValue,
+            validateValueOnExternalChange,
+            value,
+            valueItems
+        ]);
         (0, hooks_1.useEffect)(() => {
             if (hasValue) {
                 syncValueItemsToValue();
@@ -105,9 +129,8 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "o
                 prevValueItemsRef.current = valueItems;
                 syncValueToValueItems();
             }
-        }, [value, valueItems]);
+        }, [syncValueItemsToValue, syncValueToValueItems, value, valueItems]);
     }
-    exports.useSyncValueAndValueItems = useSyncValueAndValueItems;
     function handleFetchByKeysResults(value, valueItems, fetchByKeysResults) {
         const arKeys = Array.from(value.keys());
         return arKeys.reduce((accumMap, currKey) => {

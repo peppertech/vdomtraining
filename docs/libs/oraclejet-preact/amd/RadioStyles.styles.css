@@ -1,9 +1,10 @@
 .RadioStyles_radioBaseStyle__o9of5r0 {
   line-height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-line-height);
-  min-height: var(--rowHeight__11tjnon1);
+  min-height: var(--rowHeight__11tjnon2);
   display: inline-flex;
   align-items: flex-start;
-  gap: var(--iconToTextGap__11tjnon2);
+  gap: var(--iconToTextGap__11tjnon1);
+  position: relative;
 }
 .RadioStyles_radioBaseStyle__o9of5r0:focus {
   outline: none;
@@ -17,8 +18,8 @@
 .RadioStyles_valueLabelStyle__o9of5r1 {
   font-family: inherit;
   font-weight: inherit;
-  padding-block-start: calc((var(--rowHeight__11tjnon1) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-line-height) * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size) + 1px) / 2);
-  padding-block-end: calc((var(--rowHeight__11tjnon1) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-line-height) * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size) - 1px) / 2);
+  padding-block-start: calc((var(--rowHeight__11tjnon2) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-line-height) * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size) + 1px) * 0.5);
+  padding-block-end: calc((var(--rowHeight__11tjnon2) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-line-height) * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size) - 1px) * 0.5);
   font-size: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size);
 }
 .RadioStyles_radioDefaultColor__o9of5r2 {

@@ -1,20 +1,39 @@
-define(["require", "exports", "preact/jsx-runtime", "./collection/index", "./form/index", "./dataviz/index", "./control/index", "./navlayout/index", "preact/hooks", "ojs/ojmutablearraydataprovider", "ojs/ojnavigationlist"], function (require, exports, jsx_runtime_1, index_1, index_2, index_3, index_4, index_5, hooks_1, MutableArrayDataProvider) {
+define(["require", "exports", "preact/jsx-runtime", "./collection/index", "./form/index", "./dataviz/index", "./control/index", "./navlayout/index", "preact/hooks", "ojs/ojmutablearraydataprovider", "ojs/ojurlparamadapter", "preact", "ojs/ojnavigationlist"], function (require, exports, jsx_runtime_1, index_1, index_2, index_3, index_4, index_5, hooks_1, MutableArrayDataProvider, UrlParamAdapter) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    const ExampleContent = () => {
+    let exampleRouter = null;
+    const ExampleContent = (props) => {
         const [activeTab, setActiveTab] = (0, hooks_1.useState)("collection");
         const tabs = [
-            { value: "collection", label: "Collection" },
-            { value: "form", label: "Form" },
-            { value: "dataviz", label: "Data Visualization" },
-            { value: "control", label: "Control" },
-            { value: "navlayout", label: "Navigation and Layout" },
+            { path: "", redirect: "collection" },
+            { path: "collection", label: "Collection", detail: {} },
+            { path: "form", label: "Form", detail: {} },
+            { path: "dataviz", label: "Data Visualization", detail: {} },
+            { path: "control", label: "Control", detail: {} },
+            { path: "navlayout", label: "Navigation and Layout", detail: {} },
         ];
-        const tabbarDP = new MutableArrayDataProvider(tabs, {
-            keyAttributes: "value",
+        if (!props.router.childRouter) {
+            exampleRouter = props.router.createChildRouter(tabs, {
+                urlAdapter: new UrlParamAdapter(),
+            });
+        }
+        (0, hooks_1.useEffect)(() => {
+            if (exampleRouter) {
+                exampleRouter.currentState.subscribe(routerUpdated);
+                exampleRouter.sync();
+            }
+        }, []);
+        const routerUpdated = (actionable) => {
+            var _a;
+            const newPath = (_a = actionable.state) === null || _a === void 0 ? void 0 : _a.path;
+            setActiveTab(newPath);
+        };
+        const tabbarDP = new MutableArrayDataProvider(tabs.slice(0), {
+            keyAttributes: "path",
         });
         const loadTabContent = (event) => {
             setActiveTab(event.detail.value);
+            exampleRouter.go({ path: event.detail.value });
         };
         let pageContent = () => {
             switch (activeTab) {

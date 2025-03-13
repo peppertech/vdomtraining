@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findProgressCircle = exports.ProgressCircleWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var ProgressCircleWebElement_1 = require("./ProgressCircleWebElement");
+exports.ProgressCircleWebElement = void 0;
+exports.findProgressCircle = findProgressCircle;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const ProgressCircleWebElement_1 = require("./ProgressCircleWebElement");
 Object.defineProperty(exports, "ProgressCircleWebElement", { enumerable: true, get: function () { return ProgressCircleWebElement_1.ProgressCircleWebElement; } });
 /**
  * Retrieve an instance of [ProgressCircleWebElement](../classes/ProgressCircleWebElement.html).
@@ -29,6 +30,5 @@ async function findProgressCircle(driver, by) {
     }
     return webEl;
 }
-exports.findProgressCircle = findProgressCircle;
 (0, oraclejet_webdriver_1.register)('oj-c-progress-circle', ProgressCircleWebElement_1.ProgressCircleWebElement);
 //# sourceMappingURL=index.js.map

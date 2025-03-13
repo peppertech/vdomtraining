@@ -28,9 +28,15 @@
       }
     ],
     "since": "16.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
     "meta": {
       "filename": "line-chart-group.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/line-chart-group"
+      "path": "web/components/oj-c/line-chart-group"
     },
     "ojmodule": "line-chart-group",
     "ojslotcomponent": true
@@ -46,8 +52,9 @@
     "description": "Whether drilling is enabled on the group label. Drillable objects will show a pointer cursor on hover and fire an <code class=\"prettyprint\">ojDrill</code> event on click. To enable drilling for all group labels at once, use the drilling attribute in the top level.",
     "meta": {
       "filename": "line-chart-group.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/line-chart-group"
+      "path": "web/components/oj-c/line-chart-group"
     },
+    "defaultvalue": "\"inherit\"",
     "type": {
       "names": [
         "\"inherit\"",
@@ -67,7 +74,7 @@
     "description": "The name of the group.",
     "meta": {
       "filename": "line-chart-group.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/line-chart-group"
+      "path": "web/components/oj-c/line-chart-group"
     },
     "type": {
       "names": [
@@ -86,7 +93,7 @@
     "description": "The description of the group. This is used for customizing the tooltip text and only applies to a categorical axis.",
     "meta": {
       "filename": "line-chart-group.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/line-chart-group"
+      "path": "web/components/oj-c/line-chart-group"
     },
     "type": {
       "names": [
@@ -103,7 +110,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "line-chart-group.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/line-chart-group"
+      "path": "web/components/oj-c/line-chart-group"
     },
     "scope": "instance",
     "params": [
@@ -137,7 +144,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "line-chart-group.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/line-chart-group"
+      "path": "web/components/oj-c/line-chart-group"
     },
     "scope": "instance",
     "params": [
@@ -166,7 +173,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "line-chart-group.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/line-chart-group"
+      "path": "web/components/oj-c/line-chart-group"
     },
     "scope": "instance",
     "params": [

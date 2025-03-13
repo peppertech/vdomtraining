@@ -6,7 +6,7 @@ import Converter = require('ojs/ojconverter');
 import Validator = require('ojs/ojvalidator');
 import AsyncValidator = require('ojs/ojvalidator-async');
 import { ExtendGlobalProps, GlobalProps, ObservedGlobalProps, PropertyChanged, ReadOnlyPropertyChanged, Slot } from 'ojs/ojvcomponent';
-import { Component, ComponentProps } from 'preact';
+import { ComponentProps, ComponentType, Ref } from 'preact';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
 import 'css!oj-c/input-text/input-text-styles.css';
@@ -50,22 +50,17 @@ type Props<V> = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     onMessagesCustomChanged?: PropertyChanged<PreactInputTextProps['messages']>;
     onRawValueChanged?: ReadOnlyPropertyChanged<string>;
     onValidChanged?: ReadOnlyPropertyChanged<ValidState>;
-    onValueChanged?: PropertyChanged<V>;
+    onValueChanged?: PropertyChanged<V | null>;
 };
-export declare class InputText<V> extends Component<ExtendGlobalProps<Props<V>>> {
-    static defaultProps: Partial<Props<any>>;
-    private busyContextRef;
-    private inputTextRef;
-    private rootRef;
-    componentDidMount(): void;
-    render({ columnSpan, ...props }: ExtendGlobalProps<Props<V>>): import("preact").JSX.Element;
-    componentWillUnmount(): void;
-    reset(): void;
-    showMessages(): void;
-    validate(): Promise<'valid' | 'invalid'>;
-    blur(): void;
-    focus(): void;
-}
+type InputTextHandle = {
+    blur: () => void;
+    focus: () => void;
+    showMessages: () => void;
+    reset: () => void;
+    validate: () => Promise<'valid' | 'invalid'>;
+};
+declare function InputTextImpl<V>({ autocomplete, clearIcon, columnSpan, containerReadonly: propContainerReadonly, converter, disabled, displayOptions, help, helpHints, id, labelWrapping: propLabelWrapping, length, messagesCustom, readonly: propReadonly, required, userAssistanceDensity: propUserAssistanceDensity, validators, value, virtualKeyboard, ...otherProps }: Props<V>, ref: Ref<InputTextHandle>): import("preact").JSX.Element;
+export declare const InputText: ComponentType<ExtendGlobalProps<ComponentProps<typeof InputTextImpl<any>>>>;
 export type InputTextProps<V> = Props<V>;
 export {};
 export interface CInputTextElement<V> extends JetElement<CInputTextElementSettableProperties<V>>, CInputTextElementSettableProperties<V> {
@@ -78,11 +73,11 @@ export interface CInputTextElement<V> extends JetElement<CInputTextElementSettab
     setProperty<T extends keyof CInputTextElementSettableProperties<V>>(property: T, value: CInputTextElementSettableProperties<V>[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CInputTextElementSettableProperties<V>>): void;
     setProperties(properties: CInputTextElementSettablePropertiesLenient<V>): void;
-    blur: InputText<V>['blur'];
-    focus: InputText<V>['focus'];
-    reset: InputText<V>['reset'];
-    showMessages: InputText<V>['showMessages'];
-    validate: InputText<V>['validate'];
+    blur: () => void;
+    focus: () => void;
+    reset: () => void;
+    showMessages: () => void;
+    validate: () => Promise<'invalid' | 'valid'>;
 }
 export namespace CInputTextElement {
     type autocompleteChanged<V> = JetElementCustomEventStrict<CInputTextElement<V>['autocomplete']>;

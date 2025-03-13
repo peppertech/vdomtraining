@@ -1,7 +1,7 @@
 define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useUncontrolledState", "preact/hooks"], function (require, exports, UNSAFE_useUncontrolledState_1, hooks_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useValueItems = void 0;
+    exports.useValueItems = useValueItems;
     function useValueItems(propValueItems, onValueItemsChanged) {
         const [valueItems, setValueItems] = (0, UNSAFE_useUncontrolledState_1.useUncontrolledState)(propValueItems, onValueItemsChanged);
         const [prevPropValueItems, setPrevPropValueItems] = (0, hooks_1.useState)(propValueItems);
@@ -25,5 +25,4 @@ define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useUncontro
             preactValueItems
         };
     }
-    exports.useValueItems = useValueItems;
 });

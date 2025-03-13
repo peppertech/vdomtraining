@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findMessageToast = exports.MessageToastWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var MessageToastWebElement_1 = require("./MessageToastWebElement");
+exports.MessageToastWebElement = void 0;
+exports.findMessageToast = findMessageToast;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const MessageToastWebElement_1 = require("./MessageToastWebElement");
 Object.defineProperty(exports, "MessageToastWebElement", { enumerable: true, get: function () { return MessageToastWebElement_1.MessageToastWebElement; } });
 /**
  * Retrieve an instance of [MessageToastWebElement](../classes/MessageToastWebElement.html).
@@ -29,6 +30,5 @@ async function findMessageToast(driver, by) {
     }
     return webEl;
 }
-exports.findMessageToast = findMessageToast;
 (0, oraclejet_webdriver_1.register)('oj-c-message-toast', MessageToastWebElement_1.MessageToastWebElement);
 //# sourceMappingURL=index.js.map

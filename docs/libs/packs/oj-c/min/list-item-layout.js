@@ -1,4 +1,4 @@
-define(["require", "exports", "./list-item-layout/list-item-layout"], function (require, exports, list_item_layout_1) {
+define(["require", "exports", "oj-c/list-item-layout/list-item-layout"], function (require, exports, list_item_layout_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ListItemLayout = void 0;

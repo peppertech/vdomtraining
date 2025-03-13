@@ -21,45 +21,44 @@
 }
 .LabelValueLayoutStyles_labelInnerStyles_base__z3rxc55 {
   display: block;
-  color: var(--color__kn3t7f3);
-  font-size: var(--fontSize__kn3t7f0);
-  line-height: var(--lineHeight__kn3t7f2);
+  color: var(--color__kn3t7f2);
+  font-size: var(--fontSize__kn3t7f9);
+  line-height: var(--lineHeight__kn3t7f1);
   width: 100%;
 }
 .LabelValueLayoutStyles_labelInnerStyles_start__z3rxc56 {
   display: inline-flex;
-  align-items: center;
 }
 .LabelValueLayoutStyles_labelInnerStyles_startNotPureReadonly__z3rxc57 {
-  min-height: var(--height__w6gg1y7);
+  padding-block-start: calc((var(--height__w6gg1yg) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1))*0.5);
 }
 .LabelValueLayoutStyles_labelInnerStyles_startWithNoTopRadioSetUA__z3rxc58 {
-  padding-block-start: calc(
-      (var(--rowHeight__11tjnon1) - var(--fontSize__kn3t7f0) * var(--lineHeight__kn3t7f2))/2
-    );
+  padding-block-start: calc((var(--rowHeight__11tjnon2) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1))*0.5);
 }
 .LabelValueLayoutStyles_labelInnerStyles_insideRadioSet__z3rxc59 {
-  padding-block-start: calc(
-      (var(--rowHeight__11tjnon1) - var(--fontSize__kn3t7f0) * var(--lineHeight__kn3t7f2))/2
-    );
+  padding-block-start: calc((var(--rowHeight__11tjnon2) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1))*0.5 + var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px));
 }
 .LabelValueLayoutStyles_labelInnerStyles_startWithNoTopCheckboxSetUA__z3rxc5a {
-  padding-block-start: calc(
-      (var(--rowHeight__1qyga5a1) - var(--fontSize__kn3t7f0) * var(--lineHeight__kn3t7f2))/2
-    );
+  padding-block-start: calc((var(--rowHeight__1qyga5a2) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1))*0.5);
 }
 .LabelValueLayoutStyles_labelInnerStyles_insideCheckboxSet__z3rxc5b {
+  padding-block-start: calc((var(--rowHeight__1qyga5a2) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1))*0.5 + var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px));
+}
+.LabelValueLayoutStyles_labelInnerStyles_startWithNoTopFormComponentWrapperUA__z3rxc5c {
+  padding-block-start: calc((calc(calc(9 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) + calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px))) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1)) * 0.5);
+}
+.LabelValueLayoutStyles_labelInnerStyles_insideFormComponentWrapper__z3rxc5d {
   padding-block-start: calc(
-      (var(--rowHeight__1qyga5a1) - var(--fontSize__kn3t7f0) * var(--lineHeight__kn3t7f2))/2
+      (calc(calc(9 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) + calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px))) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1))*0.5 + var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px)
     );
 }
-.LabelValueLayoutStyles_labelInnerStyles_noWrap__z3rxc5c {
+.LabelValueLayoutStyles_labelInnerStyles_noWrap__z3rxc5e {
   white-space: nowrap;
   overflow-x: hidden;
   overflow-y: hidden;
   text-overflow: ellipsis;
 }
-.LabelValueLayoutStyles_valueSlotStyles__z3rxc5d {
+.LabelValueLayoutStyles_valueSlotStyles__z3rxc5f {
   flex: 1 1 100%;
   width: 100%;
   max-width: 100%;

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DrawerPopupWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-drawer-popup WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -62,6 +62,15 @@ class DrawerPopupWebElementBase extends elements_1.OjWebElement {
      */
     getCloseGesture() {
         return this.getProperty('closeGesture');
+    }
+    /**
+     * Gets the value of <code>backgroundColor</code> property.
+     * Specifies background color of the Drawer.
+     * @return The value of <code>backgroundColor</code> property.
+     *
+     */
+    getBackgroundColor() {
+        return this.getProperty('backgroundColor');
     }
 }
 exports.DrawerPopupWebElementBase = DrawerPopupWebElementBase;

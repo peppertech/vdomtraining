@@ -6,10 +6,10 @@ import { ComponentProps } from 'preact';
 import { ObservedGlobalProps } from 'ojs/ojvcomponent';
 import 'css!oj-c/progress-bar/progress-bar-styles.css';
 type PreactProgressBarProps = ComponentProps<typeof PreactProgressBar>;
-export declare const ProgressBar: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<ObservedGlobalProps<"aria-valuetext"> & {
-    max?: number | undefined;
-    value?: number | undefined;
-    edge?: PreactProgressBarProps['edge'];
+export declare const ProgressBar: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<ObservedGlobalProps<"aria-label" | "aria-labelledby" | "aria-valuetext"> & {
+    max?: number;
+    value?: number;
+    edge?: PreactProgressBarProps["edge"];
 }>>;
 export {};
 export interface CProgressBarElement extends JetElement<CProgressBarElementSettableProperties>, CProgressBarElementSettableProperties {

@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findTagCloud = exports.TagCloudWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var TagCloudWebElement_1 = require("./TagCloudWebElement");
+exports.TagCloudWebElement = void 0;
+exports.findTagCloud = findTagCloud;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const TagCloudWebElement_1 = require("./TagCloudWebElement");
 Object.defineProperty(exports, "TagCloudWebElement", { enumerable: true, get: function () { return TagCloudWebElement_1.TagCloudWebElement; } });
 /**
  * Retrieve an instance of [TagCloudWebElement](../classes/TagCloudWebElement.html).
@@ -29,6 +30,5 @@ async function findTagCloud(driver, by) {
     }
     return webEl;
 }
-exports.findTagCloud = findTagCloud;
 (0, oraclejet_webdriver_1.register)('oj-c-tag-cloud', TagCloudWebElement_1.TagCloudWebElement);
 //# sourceMappingURL=index.js.map

@@ -1,15 +1,17 @@
-define(["require", "exports", "preact/hooks", "../utils/UNSAFE_keyUtils/keySetUtils", "../hooks/UNSAFE_useListData/useListData", "./useHandleRemoveCurrentKey"], function (require, exports, hooks_1, keySetUtils_1, useListData_1, useHandleRemoveCurrentKey_1) {
+define(["require", "exports", "preact/hooks", "../utils/PRIVATE_keyUtils/keySetUtils", "../hooks/UNSAFE_useListData/useListData", "./useHandleRemoveCurrentKey", "./useCurrentItemOverride", "ojs/ojlogger", "../utils/PRIVATE_collectionUtils/collectionUtils"], function (require, exports, hooks_1, keySetUtils_1, useListData_1, useHandleRemoveCurrentKey_1, useCurrentItemOverride_1, Logger, collectionUtils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.useListViewPreact = void 0;
-    const useListViewPreact = ({ 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledBy, data: propData, gridlines, onCurrentItemChanged, selectionMode, selected, scrollPolicyOptions, onSelectedChanged, onOjItemAction }, addBusyState, isClickthroughDisabled) => {
+    const useListViewPreact = ({ 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledBy, data: propData, gridlines, currentItemOverride, onCurrentItemChanged, selectionMode, selected, scrollPolicyOptions, onSelectedChanged, onOjItemAction, onOjFirstSelectedItem, reorderable, onOjReorder, item }, addBusyState, isClickthroughDisabled) => {
+        const currentPromiseRef = (0, hooks_1.useRef)();
         const resolveBusyState = (0, hooks_1.useRef)();
         const [listDataState, onLoadRange] = (0, useListData_1.useListData)(propData, {
             fetchSize: scrollPolicyOptions?.fetchSize
         });
-        const selectedKeys = (0, keySetUtils_1.keySetToKeys)(selected);
         const listData = listDataState.status !== 'error' ? listDataState.data : null;
-        const [currentItem, setCurrentItem] = (0, hooks_1.useState)();
+        const { preactCurrentItemOverride, updateCurrentItemOverride } = (0, useCurrentItemOverride_1.useCurrentItemOverride)(currentItemOverride);
+        const firstSelectedItemRef = (0, hooks_1.useRef)();
+        const selectedKeys = (0, collectionUtils_1.getSelectedKeys)(selected, listData, selectionMode, onSelectedChanged);
         (0, hooks_1.useEffect)(() => {
             if (listDataState.status === 'loading') {
                 resolveBusyState.current = addBusyState('list data is in fetch state');
@@ -21,12 +23,81 @@ define(["require", "exports", "preact/hooks", "../utils/UNSAFE_keyUtils/keySetUt
                 }
             }
         }, [listDataState.status, addBusyState]);
-        const handleOnCurrentItemChanged = (detail) => {
-            setCurrentItem(detail.value);
-            onCurrentItemChanged && onCurrentItemChanged(detail.value);
+        const handleOnOjFirstSelectedItem = (0, hooks_1.useCallback)((data) => {
+            if (selected && onOjFirstSelectedItem && propData) {
+                const selectedKeys = (0, keySetUtils_1.keySetToKeys)(selected);
+                if (!(0, keySetUtils_1.isEmpty)(selectedKeys)) {
+                    const firstSelectedKey = (0, keySetUtils_1.getFirstKey)(selectedKeys, data);
+                    const firstSelectedItem = data.find((listItem) => firstSelectedKey === listItem.metadata.key);
+                    if (firstSelectedItem) {
+                        const data = firstSelectedItem.data;
+                        if (firstSelectedItemRef.current === undefined ||
+                            data !== firstSelectedItemRef.current.data) {
+                            const detail = { key: firstSelectedKey, data };
+                            firstSelectedItemRef.current = { ...detail };
+                            onOjFirstSelectedItem(detail);
+                        }
+                    }
+                    else {
+                        const initialPromise = propData.fetchByKeys({
+                            keys: new Set([firstSelectedKey])
+                        });
+                        currentPromiseRef.current = initialPromise;
+                        initialPromise.then((value) => {
+                            if (initialPromise === currentPromiseRef.current) {
+                                const item = value.results.get(firstSelectedKey);
+                                if (item === undefined) {
+                                    Logger.warn(`Item with '${firstSelectedKey}' key couldn't be found `);
+                                }
+                                else {
+                                    const detail = { key: firstSelectedKey, data: item.data };
+                                    firstSelectedItemRef.current = { ...detail };
+                                    onOjFirstSelectedItem(detail);
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+        }, [selected, onOjFirstSelectedItem, propData, listData]);
+        (0, hooks_1.useEffect)(() => {
+            if (selectionMode === 'singleRequired' && listData && listData.data.length > 0) {
+                handleOnOjFirstSelectedItem(listData.data);
+            }
+        }, [selectionMode, listData, handleOnOjFirstSelectedItem]);
+        const handleOnSelectionChange = (detail) => {
+            (0, collectionUtils_1.handleOnSelectionChanged)(selectionMode, detail, onSelectedChanged, isClickthroughDisabled);
         };
+        (0, hooks_1.useEffect)(() => {
+            const _listener = (event) => {
+                if (onOjFirstSelectedItem && event.detail.update && firstSelectedItemRef.current) {
+                    const detail = event.detail.update;
+                    const index = Array.from(detail.keys).indexOf(firstSelectedItemRef.current.key);
+                    if (index > -1 && detail.data && index < detail.data.length) {
+                        const newData = detail.data[index];
+                        if (firstSelectedItemRef.current.data !== newData) {
+                            firstSelectedItemRef.current.data = newData;
+                            const detail = { ...firstSelectedItemRef.current };
+                            onOjFirstSelectedItem(detail);
+                        }
+                    }
+                }
+            };
+            if (propData) {
+                propData.addEventListener('mutate', _listener);
+            }
+            return () => {
+                if (propData) {
+                    propData.removeEventListener('mutate', _listener);
+                }
+            };
+        }, [propData, onOjFirstSelectedItem]);
         const dataState = listDataState.status === 'error' ? null : listDataState.data;
-        (0, useHandleRemoveCurrentKey_1.useHandleRemoveCurrentKey)(dataState, currentItem, handleOnCurrentItemChanged);
+        const { notifyCurrentKeyChanged } = (0, useHandleRemoveCurrentKey_1.useHandleRemoveCurrentKey)(dataState, updateCurrentItemOverride);
+        const preactOnPersistCurrentItem = (detail) => {
+            onCurrentItemChanged?.(detail.value);
+            notifyCurrentKeyChanged(detail);
+        };
         const viewportConfig = scrollPolicyOptions?.scroller
             ? {
                 scroller: () => {
@@ -53,26 +124,30 @@ define(["require", "exports", "preact/hooks", "../utils/UNSAFE_keyUtils/keySetUt
                 'aria-label': ariaLabel,
                 'aria-labelledby': ariaLabelledBy,
                 data: listData ? listData.data : null,
-                currentKey: currentItem,
+                currentItemOverride: preactCurrentItemOverride,
                 getRowKey,
                 gridlines,
-                onCurrentKeyChange: handleOnCurrentItemChanged,
+                onPersistCurrentItem: preactOnPersistCurrentItem,
                 hasMore: listData ? listData.sizePrecision === 'atLeast' : false,
                 onLoadMore,
-                onSelectionChange: (detail) => {
-                    onSelectedChanged &&
-                        !isClickthroughDisabled(detail.target) &&
-                        onSelectedChanged((0, keySetUtils_1.keysToKeySet)(detail.value));
-                },
+                onSelectionChange: handleOnSelectionChange,
                 selectedKeys,
-                selectionMode,
+                selectionMode: selectionMode === 'singleRequired' ? 'single' : selectionMode,
                 promotedSection: suggestions,
                 onItemAction: (detail) => {
                     const item = detail.context.data;
                     const itemActionDetail = { context: { item, data: item.data } };
-                    onOjItemAction && onOjItemAction(itemActionDetail);
+                    onOjItemAction &&
+                        !isClickthroughDisabled(detail.target) &&
+                        onOjItemAction(itemActionDetail);
                 },
-                viewportConfig
+                onReorder: reorderable?.items === 'enabled'
+                    ? (detail) => {
+                        onOjReorder && onOjReorder(detail);
+                    }
+                    : null,
+                viewportConfig,
+                itemPadding: item?.padding
             }
         };
     };

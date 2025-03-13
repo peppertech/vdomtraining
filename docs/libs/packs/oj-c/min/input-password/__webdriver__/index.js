@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findInputPassword = exports.InputPasswordWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var InputPasswordWebElement_1 = require("./InputPasswordWebElement");
+exports.InputPasswordWebElement = void 0;
+exports.findInputPassword = findInputPassword;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const InputPasswordWebElement_1 = require("./InputPasswordWebElement");
 Object.defineProperty(exports, "InputPasswordWebElement", { enumerable: true, get: function () { return InputPasswordWebElement_1.InputPasswordWebElement; } });
 /**
  * Retrieve an instance of [InputPasswordWebElement](../classes/InputPasswordWebElement.html).
@@ -29,6 +30,5 @@ async function findInputPassword(driver, by) {
     }
     return webEl;
 }
-exports.findInputPassword = findInputPassword;
 (0, oraclejet_webdriver_1.register)('oj-c-input-password', InputPasswordWebElement_1.InputPasswordWebElement);
 //# sourceMappingURL=index.js.map

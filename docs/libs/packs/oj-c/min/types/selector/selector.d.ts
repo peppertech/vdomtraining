@@ -7,8 +7,8 @@ import { ExtendGlobalProps, ObservedGlobalProps, PropertyChanged } from 'ojs/ojv
 import { ImmutableKeySet } from 'ojs/ojkeyset';
 type PreactSelectorProps = ComponentProps<typeof PreactSelector>;
 type Props<K extends string | number> = ObservedGlobalProps<'aria-label'> & {
-    rowKey: K;
-    selectedKeys: ImmutableKeySet<K>;
+    rowKey?: K;
+    selectedKeys?: ImmutableKeySet<K>;
     onSelectedKeysChanged?: PropertyChanged<ImmutableKeySet<K>>;
     indeterminate?: PreactSelectorProps['isPartial'];
     selectionMode?: PreactSelectorProps['selectionMode'];
@@ -39,8 +39,8 @@ export interface CSelectorElementEventMap<K extends string | number> extends HTM
 }
 export interface CSelectorElementSettableProperties<K extends string | number> extends JetSettableProperties {
     indeterminate?: Props<K>['indeterminate'];
-    rowKey: Props<K>['rowKey'];
-    selectedKeys: Props<K>['selectedKeys'];
+    rowKey?: Props<K>['rowKey'];
+    selectedKeys?: Props<K>['selectedKeys'];
     selectionMode?: Props<K>['selectionMode'];
 }
 export interface CSelectorElementSettablePropertiesLenient<K extends string | number> extends Partial<CSelectorElementSettableProperties<K>> {

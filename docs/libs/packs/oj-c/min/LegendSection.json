@@ -28,9 +28,15 @@
       }
     ],
     "since": "15.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
     "meta": {
       "filename": "legend-section.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend-section"
+      "path": "web/components/oj-c/legend-section"
     },
     "ojmodule": "legend-section",
     "ojslotcomponent": true
@@ -41,13 +47,14 @@
     "name": "text",
     "kind": "member",
     "longname": "oj-c.LegendSection#text",
-    "optional": false,
+    "optional": true,
     "scope": "instance",
     "description": "The title of the legend section.",
     "meta": {
       "filename": "legend-section.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend-section"
+      "path": "web/components/oj-c/legend-section"
     },
+    "defaultvalue": "\"\"",
     "type": {
       "names": [
         "string"
@@ -63,7 +70,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "legend-section.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend-section"
+      "path": "web/components/oj-c/legend-section"
     },
     "scope": "instance",
     "params": [
@@ -97,7 +104,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "legend-section.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend-section"
+      "path": "web/components/oj-c/legend-section"
     },
     "scope": "instance",
     "params": [
@@ -126,7 +133,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "legend-section.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/legend-section"
+      "path": "web/components/oj-c/legend-section"
     },
     "scope": "instance",
     "params": [

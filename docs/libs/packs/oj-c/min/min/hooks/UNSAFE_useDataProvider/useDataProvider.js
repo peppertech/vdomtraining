@@ -1,7 +1,7 @@
 define(["require", "exports", "preact/hooks", "./DataProviderHandler"], function (require, exports, hooks_1, DataProviderHandler_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useDataProvider = void 0;
+    exports.useDataProvider = useDataProvider;
     function useDataProvider({ addBusyState, data }) {
         const [fetchedData, setFetchedData] = (0, hooks_1.useState)([]);
         const dataProviderHandler = (0, hooks_1.useRef)();
@@ -20,5 +20,4 @@ define(["require", "exports", "preact/hooks", "./DataProviderHandler"], function
             data: fetchedData
         };
     }
-    exports.useDataProvider = useDataProvider;
 });

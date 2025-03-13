@@ -14,9 +14,9 @@ export declare function getSectionStyles(styles?: Partial<CSSStyleDeclaration>):
     sectionTitleFontWeight: string | undefined;
     sectionTitleTextDecoration: string | undefined;
 };
-export declare function isLegendInteractive(drilling?: 'on' | 'off', hideAndShowBehavior?: 'on' | 'off', hoverBehavior?: 'dim' | 'none'): boolean;
-export declare function parseItemId(id: string): number[];
-export declare function transformItem(dataItem: any, sectionIndex: number, itemIndex: number, ariaLabelSuffix: string): {
+export declare function isLegendInteractive(drilling?: 'on' | 'off', hideAndShowBehavior?: 'on' | 'off', hoverBehavior?: 'dim' | 'none', hasDrillableItem?: boolean, isContextMenuEnabled?: boolean): boolean | undefined;
+export declare function parseItemIdx(id: string): number[];
+export declare function transformItem(dataItem: any, sectionIndex: number, itemIndex: number, ariaLabelSuffix: string, drilling?: 'on' | 'off', hideAndShowBehavior?: 'on' | 'off', isContextMenuEnabled?: boolean): {
     borderColor: any;
     lineWidth: any;
     markerColor: any;
@@ -27,9 +27,10 @@ export declare function transformItem(dataItem: any, sectionIndex: number, itemI
     datatip: any;
     source: any;
     text: any;
+    actionable: "inherit" | "off";
     id: string;
 };
-export declare function transformSection(dataSection: any, ariaLabelSuffix: string, sectionIndex: number): {
+export declare function transformSection(dataSection: any, ariaLabelSuffix: string, sectionIndex: number, drilling?: 'on' | 'off'): {
     items: any;
     title: any;
     id: string;
@@ -42,3 +43,4 @@ export declare const getDefaultSymbolDims: (symbolHeight: number, symbolWidth: n
     width: number;
     height: number;
 };
+export declare function isLegendItemDrillable(drilling?: 'on' | 'off', itemDrilling?: 'on' | 'off' | 'inherit'): string;

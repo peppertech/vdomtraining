@@ -306,6 +306,8 @@
   --oj-c-EXPERIMENTAL-DO-NOT-USE-border-enabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.5);
   --oj-c-EXPERIMENTAL-DO-NOT-USE-border-disabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.2);
   --oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.12);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider-opaque-color: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider-opaque-percent: 12%;
   --oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-110));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-border-drop-line: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-100));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected-neutral: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190));
@@ -322,10 +324,6 @@
   --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-info: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-120));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-warning: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-120));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-120));
-  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-success-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-100));
-  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-info-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-100));
-  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-warning-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-100));
-  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-100));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-on-color: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-textfield-surface-enabled: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral0);
   --oj-c-EXPERIMENTAL-DO-NOT-USE-textfield-border-enabled: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-enabled);
@@ -519,6 +517,8 @@
   --oj-c-EXPERIMENTAL-DO-NOT-USE-border-enabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.5);
   --oj-c-EXPERIMENTAL-DO-NOT-USE-border-disabled: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.2);
   --oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.12);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider-opaque-color: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200));
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider-opaque-percent: 12%;
   --oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-170));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-border-drop-line: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-170));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-border-selected-neutral: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200));
@@ -535,10 +535,6 @@
   --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-info: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-120));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-warning: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-120));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-120));
-  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-success-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-success-100));
-  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-info-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-info-100));
-  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-warning-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-warning-100));
-  --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger-low: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-danger-100));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-on-color: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-textfield-surface-enabled: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral20);
   --oj-c-EXPERIMENTAL-DO-NOT-USE-textfield-border-enabled: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-enabled);
@@ -590,6 +586,12 @@
 :root {
   --oj-c-EXPERIMENTAL-DO-NOT-USE-size-units: 0.25rem;
 }
+:root, .oj-density-standard {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-density-units: 0px;
+}
+.oj-density-compact {
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-density-units: -1 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units);
+}
 :root {
   --oj-c-EXPERIMENTAL-DO-NOT-USE-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --oj-c-EXPERIMENTAL-DO-NOT-USE-font-size: 1em;
@@ -598,12 +600,8 @@
   --oj-c-EXPERIMENTAL-DO-NOT-USE-bg-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral10);
 }
 :root, ..oj-scale-dependent, :root.oj-scale-sm, :root.oj-scale-md {
-  --oj-c-EXPERIMENTAL-DO-NOT-USE-list-row-height: calc(10 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
-  --oj-c-EXPERIMENTAL-DO-NOT-USE-list-cell-padding-vertical: calc(3 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
-  --oj-c-EXPERIMENTAL-DO-NOT-USE-table-cell-padding-horizontal: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
-}
-:root, ..oj-scale-dependent, :root.oj-scale-sm, :root.oj-scale-md {
   --oj-c-EXPERIMENTAL-DO-NOT-USE-label-sm-font-size: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-xs-font-size);
   --oj-c-EXPERIMENTAL-DO-NOT-USE-label-md-font-size: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-font-size);
   --oj-c-EXPERIMENTAL-DO-NOT-USE-label-lg-font-size: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-dimmed-opacity: 0.35;
 }

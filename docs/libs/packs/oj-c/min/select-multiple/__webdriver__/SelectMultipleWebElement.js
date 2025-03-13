@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SelectMultipleWebElement = void 0;
-var SelectMultipleWebElementBase_1 = require("./SelectMultipleWebElementBase");
+const SelectMultipleWebElementBase_1 = require("./SelectMultipleWebElementBase");
 /**
  * The component WebElement for [oj-c-select-multiple](../../../oj-c/docs/oj.SelectMultiple.html).
  * Do not instantiate this class directly, instead, use
@@ -16,26 +16,17 @@ class SelectMultipleWebElement extends SelectMultipleWebElementBase_1.SelectMult
      * @override
      */
     async changeValue(value) {
-        // Call focus() on the root element
-        await this.getDriver().executeScript('arguments[0].focus()', this);
         // Only mutate if not readonly/disabled
         const readonly = await this.getReadonly();
         const disabled = await this.getDisabled();
         if (!(readonly || disabled)) {
+            await this.getDriver().executeScript((element) => element.focus(), this);
             await this.whenBusyContextReady();
-            await this.getDriver().executeAsyncScript(`
-        var element = arguments[0];
-        var arValue = arguments[1];
-        // the value is passed as an array, not a Set
-        var value = arValue != null ? new Set(arValue) : arValue;
-
-        // Last argument will be the done function
-        var doneFunc = arguments[arguments.length - 1];
-        
-        element._selectItemsByValue(value)
-          .then(doneFunc, doneFunc)
-          .catch(doneFunc);
-      `, this, 
+            await this.getDriver().executeScript((element, arValue) => {
+                // the value is passed as an array, not a Set
+                const value = arValue != null ? new Set(arValue) : arValue;
+                return element._selectItemsByValue(value);
+            }, this, 
             // pass the value as an array, not a Set
             value != null ? Array.from(value.values()) : value);
         }

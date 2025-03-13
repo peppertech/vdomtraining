@@ -1,4 +1,4 @@
-define(["require", "exports", "./text-area/text-area"], function (require, exports, text_area_1) {
+define(["require", "exports", "oj-c/text-area/text-area"], function (require, exports, text_area_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TextArea = void 0;

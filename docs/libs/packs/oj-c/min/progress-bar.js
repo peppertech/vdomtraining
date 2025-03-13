@@ -1,4 +1,4 @@
-define(["require", "exports", "./progress-bar/progress-bar"], function (require, exports, progress_bar_1) {
+define(["require", "exports", "oj-c/progress-bar/progress-bar"], function (require, exports, progress_bar_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ProgressBar = void 0;

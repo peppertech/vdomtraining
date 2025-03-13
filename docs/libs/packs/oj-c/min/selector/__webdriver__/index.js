@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findSelector = exports.SelectorWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var SelectorWebElement_1 = require("./SelectorWebElement");
+exports.SelectorWebElement = void 0;
+exports.findSelector = findSelector;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const SelectorWebElement_1 = require("./SelectorWebElement");
 Object.defineProperty(exports, "SelectorWebElement", { enumerable: true, get: function () { return SelectorWebElement_1.SelectorWebElement; } });
 /**
  * Retrieve an instance of [SelectorWebElement](../classes/SelectorWebElement.html).
@@ -29,6 +30,5 @@ async function findSelector(driver, by) {
     }
     return webEl;
 }
-exports.findSelector = findSelector;
 (0, oraclejet_webdriver_1.register)('oj-c-selector', SelectorWebElement_1.SelectorWebElement);
 //# sourceMappingURL=index.js.map

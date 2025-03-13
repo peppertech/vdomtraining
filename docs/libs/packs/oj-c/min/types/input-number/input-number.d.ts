@@ -6,7 +6,7 @@ import Converter = require('ojs/ojconverter');
 import Validator = require('ojs/ojvalidator');
 import AsyncValidator = require('ojs/ojvalidator-async');
 import { ExtendGlobalProps, GlobalProps, ObservedGlobalProps, PropertyChanged, ReadOnlyPropertyChanged } from 'ojs/ojvcomponent';
-import { Component, ComponentProps } from 'preact';
+import { ComponentProps, ComponentType, Ref } from 'preact';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
 import 'css!oj-c/input-number/input-number-styles.css';
@@ -41,31 +41,25 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     step?: number;
     stepperVariant?: PreactNumberInputTextProps['stepperVariant'];
     textAlign?: PreactNumberInputTextProps['textAlign'];
-    unsafe_labelledBy?: string;
     userAssistanceDensity?: PreactNumberInputTextProps['userAssistanceDensity'];
     validators?: (AsyncValidator<number> | Validator<number>)[] | null;
     value?: number | null;
     virtualKeyboard?: PreactNumberInputTextProps['virtualKeyboard'];
     onMessagesCustomChanged?: PropertyChanged<PreactNumberInputTextProps['messages']>;
     onRawValueChanged?: ReadOnlyPropertyChanged<string>;
-    onTransientValueChanged?: ReadOnlyPropertyChanged<number>;
+    onTransientValueChanged?: ReadOnlyPropertyChanged<number | null>;
     onValidChanged?: ReadOnlyPropertyChanged<ValidState>;
-    onValueChanged?: PropertyChanged<number>;
+    onValueChanged?: PropertyChanged<number | null>;
 };
-export declare class InputNumber extends Component<ExtendGlobalProps<Props>> {
-    static defaultProps: Partial<Props>;
-    private busyContextRef;
-    private inputNumberRef;
-    private rootRef;
-    componentDidMount(): void;
-    render({ columnSpan, ...props }: ExtendGlobalProps<Props>): import("preact").JSX.Element;
-    componentWillUnmount(): void;
-    reset(): void;
-    showMessages(): void;
-    validate(): Promise<'valid' | 'invalid'>;
-    blur(): void;
-    focus(): void;
-}
+type InputNumberHandle = {
+    blur: () => void;
+    focus: () => void;
+    showMessages: () => void;
+    reset: () => void;
+    validate: () => Promise<'valid' | 'invalid'>;
+};
+declare const InputNumberImpl: ({ autocomplete, columnSpan, converter, containerReadonly: propContainerReadonly, disabled, displayOptions, help, helpHints, id, labelWrapping: propLabelWrapping, messagesCustom, readonly: propReadonly, required, stepperVariant, userAssistanceDensity: propUserAssistanceDensity, validators, virtualKeyboard, value, ...otherProps }: Props, ref: Ref<InputNumberHandle>) => import("preact").JSX.Element;
+export declare const InputNumber: ComponentType<ExtendGlobalProps<ComponentProps<typeof InputNumberImpl>>>;
 export type InputNumberProps = Props;
 export {};
 export interface CInputNumberElement extends JetElement<CInputNumberElementSettableProperties>, CInputNumberElementSettableProperties {
@@ -79,11 +73,11 @@ export interface CInputNumberElement extends JetElement<CInputNumberElementSetta
     setProperty<T extends keyof CInputNumberElementSettableProperties>(property: T, value: CInputNumberElementSettableProperties[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CInputNumberElementSettableProperties>): void;
     setProperties(properties: CInputNumberElementSettablePropertiesLenient): void;
-    blur: InputNumber['blur'];
-    focus: InputNumber['focus'];
-    reset: InputNumber['reset'];
-    showMessages: InputNumber['showMessages'];
-    validate: InputNumber['validate'];
+    blur: () => void;
+    focus: () => void;
+    reset: () => void;
+    showMessages: () => void;
+    validate: () => Promise<'invalid' | 'valid'>;
 }
 export namespace CInputNumberElement {
     type autocompleteChanged = JetElementCustomEventStrict<CInputNumberElement['autocomplete']>;
@@ -115,7 +109,6 @@ export namespace CInputNumberElement {
     type stepperVariantChanged = JetElementCustomEventStrict<CInputNumberElement['stepperVariant']>;
     type textAlignChanged = JetElementCustomEventStrict<CInputNumberElement['textAlign']>;
     type transientValueChanged = JetElementCustomEventStrict<CInputNumberElement['transientValue']>;
-    type unsafe_labelledByChanged = JetElementCustomEventStrict<CInputNumberElement['unsafe_labelledBy']>;
     type userAssistanceDensityChanged = JetElementCustomEventStrict<CInputNumberElement['userAssistanceDensity']>;
     type validChanged = JetElementCustomEventStrict<CInputNumberElement['valid']>;
     type validatorsChanged = JetElementCustomEventStrict<CInputNumberElement['validators']>;
@@ -152,7 +145,6 @@ export interface CInputNumberElementEventMap extends HTMLElementEventMap {
     'stepperVariantChanged': JetElementCustomEventStrict<CInputNumberElement['stepperVariant']>;
     'textAlignChanged': JetElementCustomEventStrict<CInputNumberElement['textAlign']>;
     'transientValueChanged': JetElementCustomEventStrict<CInputNumberElement['transientValue']>;
-    'unsafe_labelledByChanged': JetElementCustomEventStrict<CInputNumberElement['unsafe_labelledBy']>;
     'userAssistanceDensityChanged': JetElementCustomEventStrict<CInputNumberElement['userAssistanceDensity']>;
     'validChanged': JetElementCustomEventStrict<CInputNumberElement['valid']>;
     'validatorsChanged': JetElementCustomEventStrict<CInputNumberElement['validators']>;
@@ -187,7 +179,6 @@ export interface CInputNumberElementSettableProperties extends JetSettableProper
     step?: Props['step'];
     stepperVariant?: Props['stepperVariant'];
     textAlign?: Props['textAlign'];
-    unsafe_labelledBy?: Props['unsafe_labelledBy'];
     userAssistanceDensity?: Props['userAssistanceDensity'];
     validators?: Props['validators'];
     value?: Props['value'];
@@ -229,7 +220,6 @@ export interface InputNumberIntrinsicProps extends Partial<Readonly<CInputNumber
     onstepperVariantChanged?: (value: CInputNumberElementEventMap['stepperVariantChanged']) => void;
     ontextAlignChanged?: (value: CInputNumberElementEventMap['textAlignChanged']) => void;
     ontransientValueChanged?: (value: CInputNumberElementEventMap['transientValueChanged']) => void;
-    onunsafe_labelledByChanged?: (value: CInputNumberElementEventMap['unsafe_labelledByChanged']) => void;
     onuserAssistanceDensityChanged?: (value: CInputNumberElementEventMap['userAssistanceDensityChanged']) => void;
     onvalidChanged?: (value: CInputNumberElementEventMap['validChanged']) => void;
     onvalidatorsChanged?: (value: CInputNumberElementEventMap['validatorsChanged']) => void;

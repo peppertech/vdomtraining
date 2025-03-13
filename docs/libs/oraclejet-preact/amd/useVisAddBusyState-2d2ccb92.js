@@ -1,0 +1,2 @@
+define(['exports', './VisBusyStateContext-63467849', './useVisBusyStateContext-7b0606e7', 'preact/hooks'], (function(t,e,s,u){"use strict";t.useVisAddBusyState=function(t){const{addBusyState:e}=s.useVisBusyStateContext(),n=u.useRef(),a=u.useCallback((()=>{n.current?.(),n.current=void 0}),[]),o=u.useCallback((()=>{a(),n.current=e(t)}),[t,a,e]);return u.useLayoutEffect((()=>a()),[a]),{onBusyStart:o,onBusyEnd:a}}}));
+//# sourceMappingURL=useVisAddBusyState-2d2ccb92.js.map

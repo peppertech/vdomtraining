@@ -2,12 +2,12 @@
   "use": "local",
   "cdns": {
     "jet": {
-      "prefix": "https://static.oracle.com/cdn/jet/16.0.0/default/js",
-      "css": "https://static.oracle.com/cdn/jet/16.0.0/default/css",
-      "csspreact": "https://static.oracle.com/cdn/jet/16.0.0/3rdparty/oraclejet-preact/amd",
+      "prefix": "https://static.oracle.com/cdn/jet/18.0.0/default/js",
+      "css": "https://static.oracle.com/cdn/jet/18.0.0/default/css",
+      "csspreact": "https://static.oracle.com/cdn/jet/18.0.0/3rdparty/oraclejet-preact/amd",
       "config": "bundles-config.js"
     },
-    "3rdparty": "https://static.oracle.com/cdn/jet/16.0.0/3rdparty"
+    "3rdparty": "https://static.oracle.com/cdn/jet/18.0.0/3rdparty"
   },
   "libs": {
     "knockout": {
@@ -30,12 +30,12 @@
       "debug": {
         "src": "jquery.js",
         "path": "libs/jquery/jquery-#{version}.js",
-        "cdnPath": "jquery/jquery-3.6.4"
+        "cdnPath": "jquery/jquery-3.7.1"
       },
       "release": {
         "src": "jquery.min.js",
         "path": "libs/jquery/jquery-#{version}.min.js",
-        "cdnPath": "jquery/jquery-3.6.4.min"
+        "cdnPath": "jquery/jquery-3.7.1.min"
       }
     },
     "jqueryui-amd": {
@@ -50,7 +50,7 @@
           "vendor/jquery-color/jquery.color.js"
         ],
         "path": "libs/jquery/jqueryui-amd-#{version}",
-        "cdnPath": "jquery/jqueryui-amd-1.13.2"
+        "cdnPath": "jquery/jqueryui-amd-1.14.1"
       },
       "release": {
         "src": [
@@ -61,7 +61,7 @@
           "vendor/jquery-color/jquery.color.js"
         ],
         "path": "libs/jquery/jqueryui-amd-#{version}.min",
-        "cdnPath": "jquery/jqueryui-amd-1.13.2.min"
+        "cdnPath": "jquery/jqueryui-amd-1.14.1.min"
       }
     },
     "hammerjs": {
@@ -96,13 +96,17 @@
       "cdn": "jet",
       "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/oj",
       "debug": {
-        "src": ["debug*/**"],
+        "src": [
+          "debug*/**"
+        ],
         "path": "libs/oj/#{version}",
         "pathSuffix": "/debug'",
         "cdnPath": ""
       },
       "release": {
-        "src": ["min*/**"],
+        "src": [
+          "min*/**"
+        ],
         "path": "libs/oj/#{version}",
         "pathSuffix": "/min'",
         "cdnPath": ""
@@ -126,12 +130,16 @@
       "cdn": "jet",
       "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/oj/resources",
       "debug": {
-        "src": ["**"],
+        "src": [
+          "**"
+        ],
         "path": "libs/oj/#{version}/resources",
         "cdnPath": "resources"
       },
       "release": {
-        "src": ["**"],
+        "src": [
+          "**"
+        ],
         "path": "libs/oj/#{version}/resources",
         "cdnPath": "resources"
       }
@@ -140,12 +148,16 @@
       "cdn": "3rdparty",
       "cwd": "node_modules/@oracle/oraclejet-preact/amd",
       "debug": {
-        "src": ["**"],
+        "src": [
+          "**"
+        ],
         "path": "libs/oraclejet-preact/amd",
         "cdnPath": "oraclejet-preact/amd"
       },
       "release": {
-        "src": ["**"],
+        "src": [
+          "**"
+        ],
         "path": "libs/oraclejet-preact/amd",
         "cdnPath": "oraclejet-preact/amd"
       }
@@ -154,12 +166,16 @@
       "cdn": "3rdparty",
       "cwd": "node_modules/@oracle/oraclejet-core-pack/oj-c",
       "debug": {
-        "src": ["**"],
+        "src": [
+          "**"
+        ],
         "path": "libs/packs/oj-c",
         "cdnPath": "../../packs/oj-c/#{version}/min"
       },
       "release": {
-        "src": ["**"],
+        "src": [
+          "**"
+        ],
         "path": "libs/packs/oj-c/min",
         "cdnPath": "../../packs/oj-c/#{version}/min"
       }
@@ -169,13 +185,17 @@
       "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/persist",
       "debug": {
         "cwd": "debug",
-        "src": ["**"],
+        "src": [
+          "**"
+        ],
         "path": "libs/persist/debug",
         "cdnPath": "persist/debug"
       },
       "release": {
         "cwd": "min",
-        "src": ["**"],
+        "src": [
+          "**"
+        ],
         "path": "libs/persist/min",
         "cdnPath": "persist/min"
       }
@@ -226,12 +246,18 @@
       "cdn": "3rdparty",
       "cwd": "node_modules/preact/dist",
       "debug": {
-        "src": ["preact.umd.js", "preact.umd.js.map"],
+        "src": [
+          "preact.umd.js",
+          "preact.umd.js.map"
+        ],
         "path": "libs/preact/dist/preact.umd.js",
         "cdnPath": "preact/dist/preact.umd"
       },
       "release": {
-        "src": ["preact.umd.js", "preact.umd.js.map"],
+        "src": [
+          "preact.umd.js",
+          "preact.umd.js.map"
+        ],
         "path": "libs/preact/dist/preact.umd.js",
         "cdnPath": "preact/dist/preact.umd"
       }
@@ -240,12 +266,18 @@
       "cdn": "3rdparty",
       "cwd": "node_modules/preact/hooks/dist",
       "debug": {
-        "src": ["hooks.umd.js", "hooks.umd.js.map"],
+        "src": [
+          "hooks.umd.js",
+          "hooks.umd.js.map"
+        ],
         "path": "libs/preact/hooks/dist/hooks.umd.js",
         "cdnPath": "preact/hooks/dist/hooks.umd"
       },
       "release": {
-        "src": ["hooks.umd.js", "hooks.umd.js.map"],
+        "src": [
+          "hooks.umd.js",
+          "hooks.umd.js.map"
+        ],
         "path": "libs/preact/hooks/dist/hooks.umd.js",
         "cdnPath": "preact/hooks/dist/hooks.umd"
       }
@@ -254,12 +286,18 @@
       "cdn": "3rdparty",
       "cwd": "node_modules/preact/compat/dist",
       "debug": {
-        "src": ["compat.umd.js", "compat.umd.js.map"],
+        "src": [
+          "compat.umd.js",
+          "compat.umd.js.map"
+        ],
         "path": "libs/preact/compat/dist/compat.umd.js",
         "cdnPath": "preact/compat/dist/compat.umd"
       },
       "release": {
-        "src": ["compat.umd.js", "compat.umd.js.map"],
+        "src": [
+          "compat.umd.js",
+          "compat.umd.js.map"
+        ],
         "path": "libs/preact/compat/dist/compat.umd.js",
         "cdnPath": "preact/compat/dist/compat.umd"
       },
@@ -269,12 +307,18 @@
       "cdn": "3rdparty",
       "cwd": "node_modules/preact/jsx-runtime/dist",
       "debug": {
-        "src": ["jsxRuntime.umd.js", "jsxRuntime.umd.js.map"],
+        "src": [
+          "jsxRuntime.umd.js",
+          "jsxRuntime.umd.js.map"
+        ],
         "path": "libs/preact/jsx-runtime/dist/jsxRuntime.umd.js",
         "cdnPath": "preact/jsx-runtime/dist/jsxRuntime.umd"
       },
       "release": {
-        "src": ["jsxRuntime.umd.js", "jsxRuntime.umd.js.map"],
+        "src": [
+          "jsxRuntime.umd.js",
+          "jsxRuntime.umd.js.map"
+        ],
         "path": "libs/preact/jsx-runtime/dist/jsxRuntime.umd.js",
         "cdnPath": "preact/jsx-runtime/dist/jsxRuntime.umd"
       }
@@ -283,12 +327,18 @@
       "cdn": "3rdparty",
       "cwd": "node_modules/preact/debug/dist",
       "debug": {
-        "src": ["debug.umd.js", "debug.umd.js.map"],
+        "src": [
+          "debug.umd.js",
+          "debug.umd.js.map"
+        ],
         "path": "libs/preact/debug/dist/debug.umd.js",
         "cdnPath": "preact/debug/dist/debug.umd"
       },
       "release": {
-        "src": ["debug.umd.js", "debug.umd.js.map"],
+        "src": [
+          "debug.umd.js",
+          "debug.umd.js.map"
+        ],
         "path": "libs/preact/debug/dist/debug.umd.js",
         "cdnPath": "preact/debug/dist/debug.umd"
       }
@@ -297,12 +347,18 @@
       "cdn": "3rdparty",
       "cwd": "node_modules/preact/devtools/dist",
       "debug": {
-        "src": ["devtools.umd.js", "devtools.umd.js.map"],
+        "src": [
+          "devtools.umd.js",
+          "devtools.umd.js.map"
+        ],
         "path": "libs/preact/devtools/dist/devtools.umd.js",
         "cdnPath": "preact/devtools/dist/devtools.umd"
       },
       "release": {
-        "src": ["devtools.umd.js", "devtools.umd.js.map"],
+        "src": [
+          "devtools.umd.js",
+          "devtools.umd.js.map"
+        ],
         "path": "libs/preact/devtools/dist/devtools.umd.js",
         "cdnPath": "preact/devtools/dist/devtools.umd"
       }
@@ -325,12 +381,20 @@
       "cdn": "3rdparty",
       "cwd": "node_modules/require-css",
       "debug": {
-        "src": ["css.js", "css-builder.js", "normalize.js"],
+        "src": [
+          "css.js",
+          "css-builder.js",
+          "normalize.js"
+        ],
         "path": "libs/require-css/css.js",
         "cdnPath": "require-css/css"
       },
       "release": {
-        "src": ["css.min.js", "css-builder.js", "normalize.js"],
+        "src": [
+          "css.min.js",
+          "css-builder.js",
+          "normalize.js"
+        ],
         "path": "libs/require-css/css.min.js",
         "cdnPath": "require-css/css.min"
       }
@@ -339,13 +403,17 @@
       "cdn": "jet",
       "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/oj",
       "debug": {
-        "src": ["debug/ojcss.js"],
+        "src": [
+          "debug/ojcss.js"
+        ],
         "path": "libs/oj/#{version}",
         "pathSuffix": "/debug/ojcss'",
         "cdnPath": "ojcss"
       },
       "release": {
-        "src": ["min/ojcss.js"],
+        "src": [
+          "min/ojcss.js"
+        ],
         "path": "libs/oj/#{version}",
         "pathSuffix": "/min/ojcss'",
         "cdnPath": "ojcss"
@@ -355,13 +423,17 @@
       "cdn": "jet",
       "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/oj",
       "debug": {
-        "src": ["debug/ojcss.js"],
+        "src": [
+          "debug/ojcss.js"
+        ],
         "path": "libs/oj/#{version}",
         "pathSuffix": "/debug/ojcss'",
         "cdnPath": "ojcss"
       },
       "release": {
-        "src": ["min/ojcss.js"],
+        "src": [
+          "min/ojcss.js"
+        ],
         "path": "libs/oj/#{version}",
         "pathSuffix": "/min/ojcss'",
         "cdnPath": "ojcss"
@@ -373,12 +445,12 @@
       "debug": {
         "src": "chai.js",
         "path": "libs/chai/chai.js",
-        "cdnPath": "chai/chai-4.3.10"
+        "cdnPath": "chai/chai-4.5.0"
       },
       "release": {
         "src": "chai.js",
         "path": "libs/chai/chai.js",
-        "cdnPath": "chai/chai-4.3.10.min"
+        "cdnPath": "chai/chai-4.5.0.min"
       }
     },
     "react-router-dom": {

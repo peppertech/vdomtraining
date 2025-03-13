@@ -1,4 +1,4 @@
-define(["require", "exports", "./form-layout/form-layout"], function (require, exports, form_layout_1) {
+define(["require", "exports", "oj-c/form-layout/form-layout"], function (require, exports, form_layout_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FormLayout = void 0;

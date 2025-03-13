@@ -1,4 +1,4 @@
-define(["require", "exports", "./file-picker/file-picker"], function (require, exports, file_picker_1) {
+define(["require", "exports", "oj-c/file-picker/file-picker"], function (require, exports, file_picker_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FilePicker = void 0;

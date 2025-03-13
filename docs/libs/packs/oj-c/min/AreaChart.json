@@ -6,7 +6,7 @@
     "memberof": "oj-c",
     "longname": "oj-c.AreaChart",
     "kind": "class",
-    "classdesc": "<h3 id=\"areaChartOverview-section\">\n  JET Area Chart\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#areaChartOverview-section\"></a>\n</h3>\n<p>An area chart displays information graphically using lines and filled areas, making relationships among the data easier to understand.</p>\n\n\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-area-chart\n  data=\"[[dataProvider]]\">\n&lt;/oj-c-area-chart>\n</code>\n</pre>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\nTo make your component accessible, the application is required to include contextual information for screender readers using one or more the following methods as appropriate:\n <ul>\n  <li>aria-describedby</li>\n  <li>aria-labelledby</li>\n  <li>aria-label</li>\n  <li>short-desc property of your items</li>\n </ul>\n<p>\n If your application has custom keyboard and touch shortcuts implemented for the component, these shortcuts can conflict with those of the component. It is the application's responsibility to disclose these custom shortcuts, possibly via a datatip or help popup.\n</p>\n<p>\n When setting color, applications are responsible for making sure that the color meets the <a target=\"_blank\" href=\"https://www.w3.org/TR/WCAG21/#contrast-minimum\">minimum contrast requirements</a>.\n</p>\n\n<h3 id=\"keyboard-section\">\n  Keyboard End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboard-section\"></a>\n</h3>\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + UpArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + DownArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + LeftArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + RightArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + UpArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + DownArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + LeftArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + RightArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + Spacebar</kbd></td>\n      <td>Multi-select data item with focus.</td>\n    </tr>\n    <tr>\n      <td><kbd>= or +</kbd></td>\n      <td>Zoom in one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>- or _</kbd></td>\n      <td>Zoom out one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>PageUp</kbd></td>\n      <td>Pan up if scrolling is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>PageDown</kbd></td>\n      <td>Pan down if scrolling is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + PageUp</kbd></td>\n      <td>Pan left in left-to-right locales. Pan right in right-to-left locales.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + PageDown</kbd></td>\n      <td>Pan right in left-to-right locales. Pan left in right-to-left locales.</td>\n    </tr>\n    <tr>\n      <td><kbd>Enter</kbd></td>\n      <td>Drill on data item, categorical axis label, or legend item when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"perf-section\">\n  Performance\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#perf-section\"></a>\n</h3>\n\n<h4>Data Set Size</h4>\n<p>As a rule of thumb, it's recommended that applications only set usable data densities on the chart. For example,\n   it's not recommended to show more than 500 area series on a 500 pixel wide chart, since the areas will be unusably thin.\n   While there are several optimizations within the chart to deal with large data sets, it's always more efficient to\n   reduce the data set size as early as possible. Future optimizations will focus on improving end user experience as\n   well as developer productivity for common use cases.\n</p>\n\n<h4>Styling</h4>\n<p>Use the highest level property available. For example, consider setting styling properties on\n   <code class=\"prettyprint\">styleDefaults</code> or <code class=\"prettyprint\">series</code>, instead of styling properties\n   on the individual data items. The chart can take advantage of these higher level properties to apply the style properties on\n   containers, saving expensive DOM calls.\n</p>\n\n\n<h3 id=\"touch-section\">\nTouch End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#touch-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan=\"5\">Data Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Select when <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">none</code>.</td>\n    </tr>\n    <tr>\n      <td><kbd>Double Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\"><kbd>Press & Hold</kbd></td>\n      <td>Display tooltip.</td>\n    </tr>\n    <tr>\n      <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n      <td>Categorical Axis Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\">Legend Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"4\">Plot Area</td>\n      <td rowspan=\"2\"><kbd>Drag</kbd></td>\n      <td>Pan when panning is enabled and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td>Marquee select when <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">multiple</code> and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Pinch-close</kbd></td>\n      <td>Zoom out when zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Spread-open</kbd></td>\n      <td>Zoom in when zooming is enabled.</td>\n    </tr>\n  </tbody>\n</table>",
+    "classdesc": "<h3 id=\"areaChartOverview-section\">\n  JET Area Chart\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#areaChartOverview-section\"></a>\n</h3>\n<p>An area chart displays information graphically using lines and filled areas, making relationships among the data easier to understand.</p>\n\n\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-area-chart\n  data=\"[[dataProvider]]\">\n&lt;/oj-c-area-chart>\n</code>\n</pre>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\nTo make your component accessible, the application is required to include contextual information for screender readers using one or more the following methods as appropriate:\n <ul>\n  <li>aria-describedby</li>\n  <li>aria-labelledby</li>\n  <li>aria-label</li>\n  <li>short-desc property of your items</li>\n </ul>\n<p>\n If your application has custom keyboard and touch shortcuts implemented for the component, these shortcuts can conflict with those of the component. It is the application's responsibility to disclose these custom shortcuts, possibly via a datatip or help popup.\n</p>\n<p>\n When setting color, applications are responsible for making sure that the color meets the <a target=\"_blank\" href=\"https://www.w3.org/TR/WCAG21/#contrast-minimum\">minimum contrast requirements</a>.\n</p>\n\n<h3 id=\"keyboard-section\">\n  Keyboard End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboard-section\"></a>\n</h3>\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + UpArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + DownArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + LeftArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + RightArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + UpArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + DownArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + LeftArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + RightArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + Spacebar</kbd></td>\n      <td>Multi-select data item with focus.</td>\n    </tr>\n    <tr>\n      <td><kbd>= or +</kbd></td>\n      <td>Zoom in one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>- or _</kbd></td>\n      <td>Zoom out one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>PageUp or Shift + PageUp</kbd></td>\n      <td>Pan left in left-to-right locales. Pan right in right-to-left locales.</td>\n    </tr>\n    <tr>\n      <td><kbd>PageDown or Shift + PageDown</kbd></td>\n      <td>Pan right in left-to-right locales. Pan left in right-to-left locales.</td>\n    </tr>\n    <tr>\n      <td><kbd>Enter</kbd></td>\n      <td>Drill on data item, categorical axis label, or legend item when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+F10</kbd></td>\n      <td>Launch the context menu if there is one associated with the current item.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"perf-section\">\n  Performance\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#perf-section\"></a>\n</h3>\n\n<h4>Data Set Size</h4>\n<p>As a rule of thumb, it's recommended that applications only set usable data densities on the chart. For example,\n   it's not recommended to show more than 500 area series on a 500 pixel wide chart, since the areas will be unusably thin.\n   While there are several optimizations within the chart to deal with large data sets, it's always more efficient to\n   reduce the data set size as early as possible. Future optimizations will focus on improving end user experience as\n   well as developer productivity for common use cases.\n</p>\n\n<h4>Styling</h4>\n<p>Use the highest level property available. For example, consider setting styling properties on\n   <code class=\"prettyprint\">styleDefaults</code> or <code class=\"prettyprint\">series</code>, instead of styling properties\n   on the individual data items. The chart can take advantage of these higher level properties to apply the style properties on\n   containers, saving expensive DOM calls.\n</p>\n\n\n<h3 id=\"touch-section\">\nTouch End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#touch-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan=\"5\">Data Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Select when <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">none</code>.</td>\n    </tr>\n    <tr>\n      <td><kbd>Double Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\"><kbd>Press & Hold</kbd></td>\n      <td>Display tooltip.</td>\n    </tr>\n    <tr>\n      <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\">Categorical Axis Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n     <tr>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\">Legend Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"5\">Plot Area</td>\n      <td rowspan=\"2\"><kbd>Drag</kbd></td>\n      <td>Pan when panning is enabled and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td>Marquee select when <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">multiple</code> and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Pinch-close</kbd></td>\n      <td>Zoom out when zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Spread-open</kbd></td>\n      <td>Zoom in when zooming is enabled.</td>\n    </tr>\n    <tr>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n       <td>Series Area</td>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n       <td>Axis Title</td>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n  </tbody>\n</table>",
     "scope": "static",
     "tagWithoutBrackets": "oj-c-area-chart",
     "tagWithBrackets": "<oj-c-area-chart>",
@@ -28,9 +28,15 @@
       }
     ],
     "since": "16.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "ojmodule": "area-chart"
   },
@@ -42,10 +48,10 @@
     "longname": "oj-c.AreaChart#data",
     "optional": true,
     "scope": "instance",
-    "description": "Specifies the DataProvider for the sections and items of the area-chart.",
+    "description": "Specifies the DataProvider for the sections and items of the area-chart.\nA progressive loading indicator is shown by the component when the data provider fetch takes longer than a certain time.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "type": {
       "names": [
@@ -56,7 +62,10 @@
       {
         "target": "Type",
         "value": "DataProvider<K, D>|null",
-        "jsdocOverride": true
+        "jsdocOverride": true,
+        "module": {
+          "DataProvider": "ojdataprovider"
+        }
       }
     ]
   },
@@ -71,7 +80,7 @@
     "description": "A comparator function that determines the ordering of the chart series when using a DataProvider.\nIf undefined, the series will follow the order in which they are found in the data. The series objects will have the same properties as the context for <a href=\"#seriesTemplate\">seriesTemplate's $current</a>.\nIf seriesComparator(a, b) is less than 0, chart series a comes before chart series b.\nIf seriesComparator(a, b) is 0, the original order is preserved.\nIf seriesComparator(a, b) is greater than 0, chart series b comes before chart series a.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "type": {
       "names": [
@@ -81,7 +90,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "(context1: ChartSeriesTemplateContext<K, D>, context2: ChartSeriesTemplateContext<K, D>) => number",
+        "value": "(context1: oj-c.AreaChart.ChartSeriesTemplateContext<K, D>, context2: oj-c.AreaChart.ChartSeriesTemplateContext<K, D>) => number",
         "jsdocOverride": true
       }
     ]
@@ -97,7 +106,7 @@
     "description": "A comparator function that determines the ordering of the chart groups when using a DataProvider.\nIf undefined, the group will follow the order in which they are found in the data. The group objects will have the same properties as the context for <a href=\"#groupTemplate\">groupTemplate's $current</a>.\nIf groupComparator(a, b) is less than 0, chart group a comes before chart group b.\nIf groupComparator(a, b) is 0, the original order is preserved.\nIf groupComparator(a, b) is greater than 0, chart group b comes before chart group a.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "type": {
       "names": [
@@ -107,7 +116,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "(context1: ChartGroupTemplateContext<K, D>, context2: ChartGroupTemplateContext<K, D>) => number",
+        "value": "(context1: oj-c.AreaChart.ChartGroupTemplateContext<K, D>, context2: oj-c.AreaChart.ChartGroupTemplateContext<K, D>) => number",
         "jsdocOverride": true
       }
     ]
@@ -123,7 +132,7 @@
     "description": "Defines whether the data items are stacked.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "ojvalues": [
       {
@@ -166,7 +175,7 @@
     "description": "Whether drilling is enabled. Drillable objects will show a pointer cursor on hover and fire an <code class=\"prettyprint\">ojItemDrill</code>,  <code class=\"prettyprint\">ojSeriesDrill</code> and  <code class=\"prettyprint\">ojGroupDrill</code>  event on click (double click if selection is enabled). Use \"on\" to enable drilling for all series objects (legend items), group objects (x-axis labels), and data items. To enable or disable drilling on individual series, group, or data item, use the drilling attribute in each series, group, or data item.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "ojvalues": [
       {
@@ -209,7 +218,7 @@
     "description": "The orientation of the chart.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "ojvalues": [
       {
@@ -243,6 +252,59 @@
   },
   {
     "memberof": "oj-c.AreaChart",
+    "id": "oj-c.AreaChart#timeAxisType",
+    "name": "timeAxisType",
+    "kind": "member",
+    "longname": "oj-c.AreaChart#timeAxisType",
+    "optional": true,
+    "scope": "instance",
+    "description": "The type of time axis to display in the chart. If the value is \"enabled\" or \"skipGaps\", the time values must be provided through the \"group-id\" attribute of the <a target=\"_blank\" href=\"oj-c.AreaChartItem.html\">oj-c-area-chart-item</a>  element. In this case, stacking is supported. If the value is \"skipGaps\", the groups will be rendered at a regular interval regardless of any time gaps that may exist in the data.\nIf the value is \"mixedFrequency\", the time values must be provided through the \"x\" attribute of the <a target=\"_blank\" href=\"oj-c.AreaChartItem.html\">oj-c-area-chart-item</a> element. In this case stacking is not supported.\nThe time values provided must be an ISO date string.",
+    "meta": {
+      "filename": "area-chart.tsx",
+      "path": "web/components/oj-c/area-chart"
+    },
+    "ojvalues": [
+      {
+        "name": "enabled",
+        "description": "The regular time axis type. Time values are passed using <a target='_blank' href='oj-c.AreaChartItem.html'>oj-c-area-chart-item</a> group-id attribute.",
+        "displayName": "Regular",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "mixedFrequency",
+        "description": "The mixed frequency time axis type. The mixed frequency time axis type is used when different series have different sampling frequencies. Time values are passed using <a target='_blank' href='oj-c.AreaChartItem.html'>oj-c-area-chart-item</a> x attribute.",
+        "displayName": "MixedFrequency",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "skipGaps",
+        "description": "The regular time axis type. Time values are passed using <a target='_blank' href='oj-c.AreaChartItem.html'>oj-c-area-chart-item</a> group-id attribute. Gap between time values will be ignored.",
+        "displayName": "SkipGaps",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "type": {
+      "names": [
+        "\"enabled\"",
+        "\"mixedFrequency\"",
+        "\"skipGaps\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.AreaChart",
     "id": "oj-c.AreaChart#yAxis",
     "name": "yAxis",
     "kind": "member",
@@ -252,7 +314,7 @@
     "description": "An object defining properties for the y axis, tick marks, tick labels, and axis titles.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "type": {
       "names": [
@@ -278,7 +340,7 @@
     "description": "An object defining properties for the x axis, tick marks, tick labels, and axis titles.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "type": {
       "names": [
@@ -304,7 +366,7 @@
     "description": "An object defining the style of the plot area.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "type": {
       "names": [
@@ -330,7 +392,7 @@
     "description": "Specifies the zoom and scroll behavior of the chart. \"Live\" behavior means that the chart will be updated continuously as it is being manipulated.\nWhile \"live\" zoom and scroll provides the best end user experience, no guarantess are made about the rendering performance or usability for large data sets or slow client environments.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "type": {
       "names": [
@@ -350,7 +412,7 @@
     "description": "An object specifying value formatting and tooltip behavior, whose keys generally correspond to the attribute names on the data items.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "type": {
       "names": [
@@ -373,11 +435,43 @@
     "longname": "oj-c.AreaChart#selectionMode",
     "optional": true,
     "scope": "instance",
-    "description": "The type of selection behavior that is enabled on the tag cloud. This attribute controls the number of selections that can be made via selection gestures at any given time.",
+    "description": "The type of selection behavior that is enabled on the area chart This attribute controls the number of selections that can be made via selection gestures at any given time.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
+    "ojvalues": [
+      {
+        "name": "none",
+        "description": "No item can be selected.",
+        "displayName": "None",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "single",
+        "description": "Single item can be selected.",
+        "displayName": "Single",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "multiple",
+        "description": "Multiple items can be selected.",
+        "displayName": "Multiple",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
     "defaultvalue": "\"none\"",
     "type": {
       "names": [
@@ -399,7 +493,7 @@
     "description": "An array containing the ids of the initially selected data items.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "defaultvalue": "[]",
     "type": {
@@ -424,24 +518,40 @@
     "optional": true,
     "scope": "instance",
     "ojwriteback": true,
-    "description": "",
+    "description": "An array of category strings used for filtering. Series or data items with any category matching an item in this array will be filtered.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "defaultvalue": "[]",
     "type": {
       "names": [
         "Array<string>"
       ]
+    }
+  },
+  {
+    "memberof": "oj-c.AreaChart",
+    "id": "oj-c.AreaChart#dragMode",
+    "name": "dragMode",
+    "kind": "member",
+    "longname": "oj-c.AreaChart#dragMode",
+    "optional": true,
+    "scope": "instance",
+    "description": "The action that is performed when a drag occurs on the chart. Pan and marquee zoom are only available if zoom and scroll is turned on.\nMarquee select is only available if multiple selection is turned on. If the value is set to \"user\" and multiple actions are available,\nbuttons will be displayed on the plot area to let users switch between modes. Only 'select' and 'pan' buttons are shown in mobile, as\nzoom in or out can be performed with 2 finger pinch gesture.",
+    "meta": {
+      "filename": "area-chart.tsx",
+      "path": "web/components/oj-c/area-chart"
     },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "Array<string>",
-        "jsdocOverride": true
-      }
-    ]
+    "type": {
+      "names": [
+        "\"pan\"",
+        "\"zoom\"",
+        "\"select\"",
+        "\"off\"",
+        "\"user\""
+      ]
+    }
   },
   {
     "memberof": "oj-c.AreaChart",
@@ -455,21 +565,14 @@
     "description": "An array of category strings used for highlighting. Series or data items matching categories in this array will be highlighted.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "defaultvalue": "[]",
     "type": {
       "names": [
         "Array<string>"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "Array<string>",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.AreaChart",
@@ -482,8 +585,40 @@
     "description": "Defines the hide and show behavior that is performed when clicking on a legend item. When data items are hidden, the y axes can be optionally rescaled to fit to the remaining data.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
+    "ojvalues": [
+      {
+        "name": "withRescale",
+        "description": "Rescaling of y axis when items are hidden.",
+        "displayName": "With Rescale",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "withoutRescale",
+        "description": "No rescaling of y axis when items are hidden.",
+        "displayName": "Without Rescale",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "none",
+        "description": "No hide and show behavior.",
+        "displayName": "None",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
     "defaultvalue": "\"none\"",
     "type": {
       "names": [
@@ -504,8 +639,30 @@
     "description": "Defines the behavior applied when hovering over data items.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
+    "ojvalues": [
+      {
+        "name": "dim",
+        "description": "Hovered items will be dimmed.",
+        "displayName": "Dim",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "none",
+        "description": "No hover behavior.",
+        "displayName": "None",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
     "defaultvalue": "\"none\"",
     "type": {
       "names": [
@@ -525,8 +682,30 @@
     "description": "The matching condition for the highlightedCategories property.\nBy default, highlightMatch is 'all' and only items whose categories match all of the values specified in the highlightedCategories array will be highlighted.\nIf highlightMatch is 'any', then items that match at least one of the highlightedCategories values will be highlighted.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
+    "ojvalues": [
+      {
+        "name": "any",
+        "description": "Any matching categories will be highlighted.",
+        "displayName": "Dim",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "all",
+        "description": "Items only with all matching categories will be highlighted.",
+        "displayName": "None",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
     "defaultvalue": "\"any\"",
     "type": {
       "names": [
@@ -546,7 +725,7 @@
     "description": "An object defining the style, positioning, and behavior of the legend.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "type": {
       "names": [
@@ -563,6 +742,32 @@
   },
   {
     "memberof": "oj-c.AreaChart",
+    "id": "oj-c.AreaChart#contextMenuConfig",
+    "name": "contextMenuConfig",
+    "kind": "member",
+    "longname": "oj-c.AreaChart#contextMenuConfig",
+    "optional": true,
+    "scope": "instance",
+    "description": "Specifies a context menu configuration.\nIt takes the keys `accessibleLabel` and `items`,\nwhere `accessibleLabel` is optional and items required . `items` function returns an array\nof menu item object representations that indicates what menu items are going to be part of\nmenu based on some specific context menu context.\n<table>\n<tr><th align='left'>Context Menu Item Type</th><th align='left'>Def</th></tr>\n<tr><td>ContextMenuSeparator</td><td>{ type: 'separator'}</td></tr>\n<tr><td>MenuItem</td><td>{\ntype?: 'item';\nlabel: string;\nkey: string;\ndisabled?: boolean;\nonAction?: () => void;\nstartIcon?: MenuIcon;\nendIcon?: MenuIcon;\nvariant?: 'standard' | 'destructive';\n};</td></tr>\n<tr><td>ContextMenuSubMenu</td><td>{\ntype: 'submenu';\nlabel?: string;\ndisabled?: boolean;\nstartIcon?: string;\nitems?: Array&lt;ContextMenuItems&gt;;\n};</td></tr>\n<tr><td>ContextMenuSelectSingle</td><td>{\ntype: 'selectsingle';\nkey?: string;\nitems?: Array&lt;MenuSelectItem&gt;;\nselection?: string;\nonSelection?: (detail: { value: string }) => void;\n};</td></tr>\n<tr><td>ContextMenuSelectMultiple</td><td>{\ntype: 'selectmultiple';\nkey?: string;\nitems?: Array&lt;MenuSelectItem&gt;;\nselection?: Array&lt;string&gt;;\nonSelection?: (detail: { value: Array&lt;string&gt; }) => void;\n};</td></tr>\n<tr><td>MenuIcon</td><td>{\ntype?: 'class';\n    class: string;\n  }\n| {\n    type: 'img';\n   src: string;\n  };</td></tr>\n<tr><td>MenuSelectItem</td><td>{\nlabel: string;\ndisabled?: boolean;\nendIcon?: MenuIcon;\nvalue: string;\n}</td></tr>\n</table>",
+    "meta": {
+      "filename": "area-chart.tsx",
+      "path": "web/components/oj-c/area-chart"
+    },
+    "type": {
+      "names": [
+        "object"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "oj-c.AreaChart.AreaChartContextMenuConfig<K, D>",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.AreaChart",
     "id": "oj-c.AreaChart#setProperty",
     "name": "setProperty",
     "kind": "function",
@@ -570,7 +775,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "scope": "instance",
     "params": [
@@ -604,7 +809,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "scope": "instance",
     "params": [
@@ -633,7 +838,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "scope": "instance",
     "params": [
@@ -662,7 +867,7 @@
     "description": "Triggered after the viewport is changed due to a zoom or scroll operation.",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "scope": "instance",
     "properties": [
@@ -737,7 +942,7 @@
     "description": "Triggered on a chart item (double click if selection is enabled, single click otherwise).",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "scope": "instance",
     "properties": [
@@ -754,8 +959,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "id",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "id"
           }
         ]
       },
@@ -772,8 +977,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "series",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "series"
           }
         ]
       },
@@ -790,8 +995,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "group",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "group"
           }
         ]
       },
@@ -807,9 +1012,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "oj-c.AreaChart.AreaItem",
-            "for": "data",
-            "jsdocOverride": true
+            "value": "oj-c.AreaChart.AreaItem<K>",
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -826,8 +1031,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "itemData",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "itemData"
           }
         ]
       },
@@ -843,9 +1048,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "oj-c.AreaChart.LineChartSeries",
-            "for": "seriesData",
-            "jsdocOverride": true
+            "value": "oj-c.AreaChart.AreaChartSeries<K>",
+            "jsdocOverride": true,
+            "for": "seriesData"
           }
         ]
       },
@@ -862,8 +1067,8 @@
           {
             "target": "Type",
             "value": "oj-c.AreaChart.Group",
-            "for": "groupData",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "groupData"
           }
         ]
       }
@@ -878,7 +1083,7 @@
     "description": "Triggered on a chart group drill gesture (double click if selection is enabled, single click otherwise).",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "scope": "instance",
     "properties": [
@@ -895,8 +1100,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "id",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "id"
           }
         ]
       },
@@ -913,8 +1118,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "group",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "group"
           }
         ]
       },
@@ -931,8 +1136,8 @@
           {
             "target": "Type",
             "value": "oj-c.AreaChart.Group",
-            "for": "groupData",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "groupData"
           }
         ]
       },
@@ -948,9 +1153,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "Array<oj-c.AreaChart.AreaItem>",
-            "for": "items",
-            "jsdocOverride": true
+            "value": "Array<oj-c.AreaChart.AreaItem<K>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       }
@@ -965,7 +1170,7 @@
     "description": "Triggered on a chart series drill gesture (double click if selection is enabled, single click otherwise).",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "scope": "instance",
     "properties": [
@@ -982,8 +1187,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "id",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "id"
           }
         ]
       },
@@ -1000,8 +1205,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "series",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "series"
           }
         ]
       },
@@ -1017,9 +1222,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "oj-c.AreaChart.LineChartSeries",
-            "for": "seriesData",
-            "jsdocOverride": true
+            "value": "oj-c.AreaChart.AreaChartSeries<K>",
+            "jsdocOverride": true,
+            "for": "seriesData"
           }
         ]
       },
@@ -1035,11 +1240,102 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "Array<oj-c.AreaChart.AreaItem>",
-            "for": "items",
-            "jsdocOverride": true
+            "value": "Array<oj-c.AreaChart.AreaItem<K>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.AreaChart",
+    "id": "oj-c.AreaChart#event:ojContextMenuAction",
+    "name": "ojContextMenuAction",
+    "kind": "event",
+    "longname": "oj-c.AreaChart#event:ojContextMenuAction",
+    "description": "Triggered when a menu item is clicked, whether by keyboard, mouse, or touch events.",
+    "meta": {
+      "filename": "area-chart.tsx",
+      "path": "web/components/oj-c/area-chart"
+    },
+    "scope": "instance",
+    "properties": [
+      {
+        "name": "menuItemKey",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "contextMenuContext",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "C",
+            "jsdocOverride": true,
+            "for": "contextMenuContext"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.AreaChart",
+    "id": "oj-c.AreaChart#event:ojContextMenuSelection",
+    "name": "ojContextMenuSelection",
+    "kind": "event",
+    "longname": "oj-c.AreaChart#event:ojContextMenuSelection",
+    "description": "Triggered when a select menu item is clicked, whether by keyboard, mouse, or touch events.",
+    "meta": {
+      "filename": "area-chart.tsx",
+      "path": "web/components/oj-c/area-chart"
+    },
+    "scope": "instance",
+    "properties": [
+      {
+        "name": "value",
+        "optional": false,
+        "type": {
+          "names": [
+            "string|Array<string>"
+          ]
+        }
+      },
+      {
+        "name": "contextMenuContext",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "C",
+            "jsdocOverride": true,
+            "for": "contextMenuContext"
+          }
+        ]
+      },
+      {
+        "name": "menuSelectionGroupKey",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
       }
     ]
   },
@@ -1049,10 +1345,10 @@
     "name": "itemTemplate",
     "kind": "member",
     "longname": "oj-c.AreaChart#itemTemplate",
-    "description": "<p>The <code class=\"prettyprint\">itemTemplate</code> slot is used to specify the template for creating each item of the chart. The slot content must be a &lt;template> element.\nThe content of the template should only be one &lt;oj-c-area-chart-item> element. See the <a target=\"_blank\" href=\"oj-c.AreaChartItem.html\">oj-c-area-chart-item</a> doc for more details. A <b>series-id</b> and <b>group-id</b> must be specified.</p>\n<p>When the template is executed for each item, it will have access to the chart's binding context containing the following properties:</p>\n<ul>\n  <li>$current - an object that contains information for the current item. (See the table below for a list of properties available on $current) </li>\n  <li>alias - if as attribute was specified, the value will be used to provide an application-named alias for $current.</li>\n</ul>",
+    "description": "<p>The <code class=\"prettyprint\">itemTemplate</code> slot is used to specify the template for creating each item of the chart. The slot content must be a &lt;template> element.\nThe content of the template should only be one &lt;oj-c-area-chart-item> element. See the <a target=\"_blank\" href=\"oj-c.AreaChartItem.html\">oj-c-area-chart-item</a> doc for more details. A <b>series-id</b> and <b>group-id</b> must be specified.</p>\n<p>When the template is executed for each item, it will have access to the chart's binding context containing the following properties:</p>\n<ul>\n  <li>$current - an object that contains information for the current item. (See the table below for a list of properties available on $current) </li>\n  <li>alias - if data-oj-as attribute was specified, the value will be used to provide an application-named alias for $current.</li>\n</ul>",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "scope": "instance",
     "ojchild": false,
@@ -1071,8 +1367,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -1089,8 +1385,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "key",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       },
@@ -1112,10 +1408,10 @@
     "name": "seriesTemplate",
     "kind": "member",
     "longname": "oj-c.AreaChart#seriesTemplate",
-    "description": "<p>The <code class=\"prettyprint\">seriesTemplate</code> slot is used to specify the template for generating the series properties of the chart. The slot content must be a single &lt;template> element.\nThe content of the template should only be one &lt;oj-c-area-chart-series> element.See the <a target=\"_blank\" href=\"oj-c.AreaChartSeries.html\">oj-c-area-chart-series</a> doc for more details.</p>\n<p>When the template is executed for each series, it will have access to the chart's binding context containing the following properties:</p>\n<ul>\n  <li>$current - an object that contains information for the current item. (See the table below for a list of properties available on $current) </li>\n  <li>alias - if as attribute was specified, the value will be used to provide an application-named alias for $current.</li>\n</ul>",
+    "description": "<p>The <code class=\"prettyprint\">seriesTemplate</code> slot is used to specify the template for generating the series properties of the chart. The slot content must be a single &lt;template> element.\nThe content of the template should only be one &lt;oj-c-area-chart-series> element.See the <a target=\"_blank\" href=\"oj-c.AreaChartSeries.html\">oj-c-area-chart-series</a> doc for more details.</p>\n<p>When the template is executed for each series, it will have access to the chart's binding context containing the following properties:</p>\n<ul>\n  <li>$current - an object that contains information for the current item. (See the table below for a list of properties available on $current) </li>\n  <li>alias - if data-oj-as attribute was specified, the value will be used to provide an application-named alias for $current.</li>\n</ul>",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "scope": "instance",
     "ojchild": false,
@@ -1133,9 +1429,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "Array<oj-c.AreaChart.ChartItemTemplateContext>",
-            "for": "items",
-            "jsdocOverride": true
+            "value": "Array<oj-c.AreaChart.ChartItemTemplateContext<K, D>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       },
@@ -1167,10 +1463,10 @@
     "name": "groupTemplate",
     "kind": "member",
     "longname": "oj-c.AreaChart#groupTemplate",
-    "description": "<p>The <code class=\"prettyprint\">groupTemplate</code> slot is used to specify the template for generating the group properties of the chart. The slot content must be a single &lt;template> element.\nThe content of the template should only be one &lt;oj-c-area-chart-group> element. See the <a target=\"_blank\" href=\"oj-c.AreaChartGroup.html\">oj-c-area-chart-group</a> doc for more details.</p>\n<p>When the template is executed for each group, it will have access to the chart's binding context containing the following properties:</p>\n<ul>\n  <li>$current - an object that contains information for the current item. (See the table below for a list of properties available on $current) </li>\n  <li>alias - if as attribute was specified, the value will be used to provide an application-named alias for $current.</li>\n</ul>",
+    "description": "<p>The <code class=\"prettyprint\">groupTemplate</code> slot is used to specify the template for generating the group properties of the chart. The slot content must be a single &lt;template> element.\nThe content of the template should only be one &lt;oj-c-area-chart-group> element. See the <a target=\"_blank\" href=\"oj-c.AreaChartGroup.html\">oj-c-area-chart-group</a> doc for more details.</p>\n<p>When the template is executed for each group, it will have access to the chart's binding context containing the following properties:</p>\n<ul>\n  <li>$current - an object that contains information for the current item. (See the table below for a list of properties available on $current) </li>\n  <li>alias - if data-oj-as attribute was specified, the value will be used to provide an application-named alias for $current.</li>\n</ul>",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "scope": "instance",
     "ojchild": false,
@@ -1188,9 +1484,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "Array<oj-c.AreaChart.ChartItemTemplateContext>",
-            "for": "items",
-            "jsdocOverride": true
+            "value": "Array<oj-c.AreaChart.ChartItemTemplateContext<K, D>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       },
@@ -1202,15 +1498,7 @@
           "names": [
             "Array<string>"
           ]
-        },
-        "tstype": [
-          {
-            "target": "Type",
-            "value": "Array<string>",
-            "for": "ids",
-            "jsdocOverride": true
-          }
-        ]
+        }
       },
       {
         "name": "index",
@@ -1239,11 +1527,11 @@
     "name": "touchDoc",
     "kind": "member",
     "longname": "oj-c.AreaChart.touchDoc",
-    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan=\"5\">Data Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Select when <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">none</code>.</td>\n    </tr>\n    <tr>\n      <td><kbd>Double Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\"><kbd>Press & Hold</kbd></td>\n      <td>Display tooltip.</td>\n    </tr>\n    <tr>\n      <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n      <td>Categorical Axis Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\">Legend Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"4\">Plot Area</td>\n      <td rowspan=\"2\"><kbd>Drag</kbd></td>\n      <td>Pan when panning is enabled and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td>Marquee select when <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">multiple</code> and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Pinch-close</kbd></td>\n      <td>Zoom out when zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Spread-open</kbd></td>\n      <td>Zoom in when zooming is enabled.</td>\n    </tr>\n  </tbody>\n</table>",
+    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan=\"5\">Data Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Select when <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">none</code>.</td>\n    </tr>\n    <tr>\n      <td><kbd>Double Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\"><kbd>Press & Hold</kbd></td>\n      <td>Display tooltip.</td>\n    </tr>\n    <tr>\n      <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\">Categorical Axis Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n     <tr>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\">Legend Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"5\">Plot Area</td>\n      <td rowspan=\"2\"><kbd>Drag</kbd></td>\n      <td>Pan when panning is enabled and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td>Marquee select when <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">multiple</code> and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Pinch-close</kbd></td>\n      <td>Zoom out when zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Spread-open</kbd></td>\n      <td>Zoom in when zooming is enabled.</td>\n    </tr>\n    <tr>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n       <td>Series Area</td>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n       <td>Axis Title</td>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n  </tbody>\n</table>",
     "memberof": "oj-c.AreaChart",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "ojfragment": true
   },
@@ -1252,11 +1540,11 @@
     "name": "keyboardDoc",
     "kind": "member",
     "longname": "oj-c.AreaChart.keyboardDoc",
-    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + UpArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + DownArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + LeftArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + RightArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + UpArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + DownArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + LeftArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + RightArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + Spacebar</kbd></td>\n      <td>Multi-select data item with focus.</td>\n    </tr>\n    <tr>\n      <td><kbd>= or +</kbd></td>\n      <td>Zoom in one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>- or _</kbd></td>\n      <td>Zoom out one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>PageUp</kbd></td>\n      <td>Pan up if scrolling is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>PageDown</kbd></td>\n      <td>Pan down if scrolling is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + PageUp</kbd></td>\n      <td>Pan left in left-to-right locales. Pan right in right-to-left locales.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + PageDown</kbd></td>\n      <td>Pan right in left-to-right locales. Pan left in right-to-left locales.</td>\n    </tr>\n    <tr>\n      <td><kbd>Enter</kbd></td>\n      <td>Drill on data item, categorical axis label, or legend item when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n  </tbody>\n</table>",
+    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + UpArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + DownArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + LeftArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + RightArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + UpArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + DownArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + LeftArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + RightArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + Spacebar</kbd></td>\n      <td>Multi-select data item with focus.</td>\n    </tr>\n    <tr>\n      <td><kbd>= or +</kbd></td>\n      <td>Zoom in one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>- or _</kbd></td>\n      <td>Zoom out one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>PageUp or Shift + PageUp</kbd></td>\n      <td>Pan left in left-to-right locales. Pan right in right-to-left locales.</td>\n    </tr>\n    <tr>\n      <td><kbd>PageDown or Shift + PageDown</kbd></td>\n      <td>Pan right in left-to-right locales. Pan left in right-to-left locales.</td>\n    </tr>\n    <tr>\n      <td><kbd>Enter</kbd></td>\n      <td>Drill on data item, categorical axis label, or legend item when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+F10</kbd></td>\n      <td>Launch the context menu if there is one associated with the current item.</td>\n    </tr>\n  </tbody>\n</table>",
     "memberof": "oj-c.AreaChart",
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "ojfragment": true
   },
@@ -1280,7 +1568,7 @@
     },
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "properties": [
       {
@@ -1296,8 +1584,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "id",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "id"
           }
         ]
       },
@@ -1313,21 +1601,13 @@
       },
       {
         "name": "groupId",
-        "description": "The array of id(s) for the group(s) the item belongs to. For hierarchical groups, it will be an array of outermost to innermost group ids. This is also used to specify the date for non mixed frequency time axes. The specified date for non mixed frequency time axes must be an ISO string.",
+        "description": "The array of ids for the groups the item belongs to. For hierarchical groups, it will be an array of outermost to innermost group ids. This is also used to specify the date for non mixed frequency time axes. The specified date for non mixed frequency time axes must be an ISO string.",
         "optional": false,
         "type": {
           "names": [
             "Array<string>"
           ]
-        },
-        "tstype": [
-          {
-            "target": "Type",
-            "value": "Array<string>",
-            "for": "groupId",
-            "jsdocOverride": true
-          }
-        ]
+        }
       },
       {
         "name": "value",
@@ -1336,6 +1616,16 @@
         "type": {
           "names": [
             "number"
+          ]
+        }
+      },
+      {
+        "name": "x",
+        "description": "The x value. Mainly used to specify the date for mixed-frequency time axis. The date specified in the x value must be an ISO date string.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
           ]
         }
       },
@@ -1397,15 +1687,7 @@
           "names": [
             "Array<string>"
           ]
-        },
-        "tstype": [
-          {
-            "target": "Type",
-            "value": "Array<string>",
-            "for": "categories",
-            "jsdocOverride": true
-          }
-        ]
+        }
       },
       {
         "name": "drilling",
@@ -1421,11 +1703,82 @@
       },
       {
         "name": "shortDesc",
-        "description": "TThe description of this object. This is used for accessibility and also for customizing the tooltip text.",
+        "description": "The description of this object. This is used for accessibility and also for customizing the tooltip text.",
         "optional": true,
         "type": {
           "names": [
             "string"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.AreaChart",
+    "id": "oj-c.AreaChart.ChartItemTemplateContext",
+    "name": "ChartItemTemplateContext",
+    "kind": "typedef",
+    "longname": "oj-c.AreaChart.ChartItemTemplateContext",
+    "scope": "static",
+    "description": "",
+    "tsgenerictype": {
+      "target": "Type",
+      "value": "<K,D>",
+      "for": "genericTypeParameters"
+    },
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "area-chart.tsx",
+      "path": "web/components/oj-c/area-chart"
+    },
+    "properties": [
+      {
+        "name": "data",
+        "description": "The data object of the current item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "D",
+            "jsdocOverride": true,
+            "for": "data"
+          }
+        ]
+      },
+      {
+        "name": "key",
+        "description": "The key of the current item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "jsdocOverride": true,
+            "for": "key"
+          }
+        ]
+      },
+      {
+        "name": "index",
+        "description": "The zero-based index of the current item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "number"
           ]
         }
       }
@@ -1451,7 +1804,7 @@
     },
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "properties": [
       {
@@ -1463,36 +1816,12 @@
             "Array<object>"
           ]
         },
-        "properties": [
+        "tstype": [
           {
-            "name": "data",
-            "description": "The data object of the current item.",
-            "optional": false,
-            "type": {
-              "names": [
-                "any"
-              ]
-            }
-          },
-          {
-            "name": "key",
-            "description": "The key of the current item.",
-            "optional": false,
-            "type": {
-              "names": [
-                "any"
-              ]
-            }
-          },
-          {
-            "name": "index",
-            "description": "The zero-based index of the current item.",
-            "optional": false,
-            "type": {
-              "names": [
-                "number"
-              ]
-            }
+            "target": "Type",
+            "value": "Array<oj-c.AreaChart.ChartItemTemplateContext<K, D>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       },
@@ -1538,7 +1867,7 @@
     },
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "properties": [
       {
@@ -1550,36 +1879,12 @@
             "Array<object>"
           ]
         },
-        "properties": [
+        "tstype": [
           {
-            "name": "data",
-            "description": "The data object of the current item.",
-            "optional": false,
-            "type": {
-              "names": [
-                "any"
-              ]
-            }
-          },
-          {
-            "name": "key",
-            "description": "The key of the current item.",
-            "optional": false,
-            "type": {
-              "names": [
-                "any"
-              ]
-            }
-          },
-          {
-            "name": "index",
-            "description": "The zero-based index of the current item.",
-            "optional": false,
-            "type": {
-              "names": [
-                "number"
-              ]
-            }
+            "target": "Type",
+            "value": "Array<oj-c.AreaChart.ChartItemTemplateContext<K, D>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       },
@@ -1617,6 +1922,354 @@
   },
   {
     "memberof": "oj-c.AreaChart",
+    "id": "oj-c.AreaChart.MajorTick",
+    "name": "MajorTick",
+    "kind": "typedef",
+    "longname": "oj-c.AreaChart.MajorTick",
+    "scope": "static",
+    "description": "",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "area-chart.tsx",
+      "path": "web/components/oj-c/area-chart"
+    },
+    "properties": [
+      {
+        "name": "lineColor",
+        "description": "The color of the line.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "lineStyle",
+        "description": "The style of the line.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"dashed\"",
+            "\"solid\"",
+            "\"dotted\""
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "dashed",
+            "description": "Renders dashed major tick.",
+            "displayName": "Dashed",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "dotted",
+            "description": "Renders dotted major tick.",
+            "displayName": "Dotted",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "solid",
+            "description": "Renders solid major tick.",
+            "displayName": "Solid",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "lineWidth",
+        "description": "The width of the line.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "rendered",
+        "description": "Whether the tick is rendered or not.",
+        "optional": false,
+        "type": {
+          "names": [
+            "\"auto\"",
+            "\"off\"",
+            "\"on\""
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "off",
+            "description": "Renders the minor tick.",
+            "displayName": "Off",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "on",
+            "description": "Does not render the minor tick.",
+            "displayName": "On",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "auto",
+            "description": "Renders the minor tick for log scale.",
+            "displayName": "Auto",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.AreaChart",
+    "id": "oj-c.AreaChart.MinorTick",
+    "name": "MinorTick",
+    "kind": "typedef",
+    "longname": "oj-c.AreaChart.MinorTick",
+    "scope": "static",
+    "description": "",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "area-chart.tsx",
+      "path": "web/components/oj-c/area-chart"
+    },
+    "properties": [
+      {
+        "name": "lineColor",
+        "description": "The color of the line.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "lineStyle",
+        "description": "The style of the line.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"dashed\"",
+            "\"solid\"",
+            "\"dotted\""
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "dashed",
+            "description": "Renders dashed major tick.",
+            "displayName": "Dashed",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "dotted",
+            "description": "Renders dotted major tick.",
+            "displayName": "Dotted",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "solid",
+            "description": "Renders solid major tick.",
+            "displayName": "Solid",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "lineWidth",
+        "description": "The width of the line.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "rendered",
+        "description": "Whether the tick is rendered.",
+        "optional": false,
+        "type": {
+          "names": [
+            "\"auto\"",
+            "\"off\"",
+            "\"on\""
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "off",
+            "description": "Renders the minor tick.",
+            "displayName": "Off",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "on",
+            "description": "Does not render the minor tick.",
+            "displayName": "On",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "auto",
+            "description": "Renders the minor tick for log scale.",
+            "displayName": "Auto",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.AreaChart",
+    "id": "oj-c.AreaChart.YAxisTickLabel",
+    "name": "YAxisTickLabel",
+    "kind": "typedef",
+    "longname": "oj-c.AreaChart.YAxisTickLabel",
+    "scope": "static",
+    "description": "",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "area-chart.tsx",
+      "path": "web/components/oj-c/area-chart"
+    },
+    "properties": [
+      {
+        "name": "converter",
+        "description": "The converter used to format the tick label of the axis.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Converter<number>",
+            "jsdocOverride": true,
+            "for": "converter",
+            "module": {
+              "Converter": "ojconverter"
+            }
+          }
+        ]
+      },
+      {
+        "name": "rendered",
+        "description": "Whether the tick labels are rendered or not.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"off\"",
+            "\"on\""
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "on",
+            "description": "Renders the axis tick label.",
+            "displayName": "On",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "off",
+            "description": "Axis tick labels won't be rendered.",
+            "displayName": "Off",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "style",
+        "description": "The object defining the style of the labels. The following style properties are supported: color, cursor, fontFamily, fontSize, fontStyle, fontWeight, textDecoration.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Partial<CSSStyleDeclaration>",
+            "jsdocOverride": true,
+            "for": "style"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.AreaChart",
     "id": "oj-c.AreaChart.YAxis",
     "name": "YAxis",
     "kind": "typedef",
@@ -1630,26 +2283,328 @@
     },
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "properties": [
       {
-        "name": "majorTick",
+        "name": "dataMax",
+        "description": "The maximum data value corresponding to an axis. If specified, the automatic axis extent calculation will use this value.",
         "optional": true,
         "type": {
           "names": [
-            "object"
+            "number"
           ]
         }
       },
       {
-        "name": "minorTick",
+        "name": "dataMin",
+        "description": "The minimum data value corresponding to an axis. If specified, the automatic axis extent calculation will use this value.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "max",
+        "description": "The maximum value of the axis. Defaults to null for automatic calculation based on the data.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "min",
+        "description": "The minumum value of the axis. Defaults to null for automatic calculation based on the data.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "majorTick",
+        "description": "The object defining the properties of the major tick of the y axis.",
         "optional": true,
         "type": {
           "names": [
             "object"
           ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "oj-c.AreaChart.MajorTick",
+            "jsdocOverride": true,
+            "for": "majorTick"
+          }
+        ]
+      },
+      {
+        "name": "minorTick",
+        "description": "The object defining the properties of the minor tick of the y axis.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "oj-c.AreaChart.MinorTick",
+            "jsdocOverride": true,
+            "for": "minorTick"
+          }
+        ]
+      },
+      {
+        "name": "tickLabel",
+        "description": "The object defining the properties of tick labels of the y axis.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "oj-c.AreaChart.YAxisTickLabel",
+            "jsdocOverride": true,
+            "for": "tickLabel"
+          }
+        ]
+      },
+      {
+        "name": "viewportMin",
+        "description": "Specifies the minimum y coordinate of the current viewport for zoom and scroll.\nIf not specified, this value will be the axis min.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
         }
+      },
+      {
+        "name": "viewportMax",
+        "description": "Specifies the maximum y coordinate of the current viewport for zoom and scroll.\nIf not specified, this value will be the axis max.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "step",
+        "description": "The increment between major tick marks in y axis. Defaults to null for automatic calculation based on the data.\nFor log axis, the step is a multiplier, for example, if the step is 2, the major tick marks will be rendered at 1, 2, 4, 8, and so on.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "size",
+        "description": "Defines the size of the axis in terms of ratio of the width (for vertical charts) or height (for horizontal charts).",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "scale",
+        "description": "Defines the axis scale. If set to log, major ticks will rendered will be incremented in logarithmic ratio.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"linear\"",
+            "\"log\""
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "linear",
+            "description": "Renders linear y axis.",
+            "displayName": "Linear",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "log",
+            "description": "Renders log y axis.",
+            "displayName": "Log",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "title",
+        "description": "The title of the axis.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "titleStyle",
+        "description": "The object defining the css properties of the axis title.\nThe following style properties are supported: color, cursor, fontFamily, fontSize, fontStyle, fontWeight, textDecoration.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Partial<CSSStyleDeclaration>",
+            "jsdocOverride": true,
+            "for": "titleStyle"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.AreaChart",
+    "id": "oj-c.AreaChart.XAxisTickLabel",
+    "name": "XAxisTickLabel",
+    "kind": "typedef",
+    "longname": "oj-c.AreaChart.XAxisTickLabel",
+    "scope": "static",
+    "description": "",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "area-chart.tsx",
+      "path": "web/components/oj-c/area-chart"
+    },
+    "properties": [
+      {
+        "name": "converter",
+        "description": "The converter used to format the tick label of the axis. When using a time axis, this attribute also takes an array of two converters, which apply respectively to the first and second label levels.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object|Array<object>"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Converter<string>|[Converter<string>,Converter<string>]",
+            "jsdocOverride": true,
+            "for": "converter",
+            "module": {
+              "Converter": "ojconverter"
+            }
+          }
+        ]
+      },
+      {
+        "name": "rendered",
+        "description": "Whether the tick labels are rendered or not.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"off\"",
+            "\"on\""
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "on",
+            "description": "Renders the axis tick label.",
+            "displayName": "On",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "off",
+            "description": "Axis tick labels won't be rendered.",
+            "displayName": "Off",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "rotation",
+        "description": "Defines whether the chart will automatically rotate the labels by 90 degrees in order to fit more labels on the axis.\nThe rotation will only be applied to categorical labels for a horizontal axis.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"auto\"",
+            "\"none\""
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "none",
+            "description": "The axis labels will not be rotated.",
+            "displayName": "On",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "off",
+            "description": "The axis labels might be rotated in order to fit more labels.",
+            "displayName": "auto",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "style",
+        "description": "The object defining the style of the labels. The following style properties are supported: color, cursor, fontFamily, fontSize, fontStyle, fontWeight, textDecoration, whiteSpace.\nThe CSS white-space property can be defined with value \"nowrap\" to disable default text wrapping of categorical labels",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Partial<CSSStyleDeclaration>",
+            "jsdocOverride": true,
+            "for": "style"
+          }
+        ]
       }
     ]
   },
@@ -1668,17 +2623,141 @@
     },
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "properties": [
       {
         "name": "majorTick",
+        "description": "The object defining the properties of the major tick of the x axis.",
         "optional": true,
         "type": {
           "names": [
             "object"
           ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "oj-c.AreaChart.MajorTick",
+            "jsdocOverride": true,
+            "for": "majorTick"
+          }
+        ]
+      },
+      {
+        "name": "minorTick",
+        "description": "The object defining the properties of the minor tick of the x axis.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "oj-c.AreaChart.MinorTick",
+            "jsdocOverride": true,
+            "for": "minorTick"
+          }
+        ]
+      },
+      {
+        "name": "tickLabel",
+        "description": "The object defining the properties of tick labels of the x axis.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "oj-c.AreaChart.XAxisTickLabel",
+            "jsdocOverride": true,
+            "for": "tickLabel"
+          }
+        ]
+      },
+      {
+        "name": "viewportMin",
+        "description": "Specifies the minimum y coordinate of the current viewport for zoom and scroll.\nIf not specified, this value will be the axis min.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
         }
+      },
+      {
+        "name": "viewportMax",
+        "description": "Specifies the maximum y coordinate of the current viewport for zoom and scroll.\nIf not specified, this value will be the axis max.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "step",
+        "description": "The increment between major tick marks in y axis. Defaults to null for automatic calculation based on the data.\nFor log axis, the step is a multiplier, for example, if the step is 2, the major tick marks will be rendered at 1, 2, 4, 8, and so on.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "size",
+        "description": "Defines the size of the axis in terms of ratio of the width (for vertical charts) or height (for horizontal charts).",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "scale",
+        "description": "Defines the axis scale. If set to log, major ticks will rendered will be incremented in logarithmic ratio.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"linear\"",
+            "\"log\""
+          ]
+        }
+      },
+      {
+        "name": "title",
+        "description": "The title of the axis.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "titleStyle",
+        "description": "The object defining the css properties of the axis title.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Partial<CSSStyleDeclaration>",
+            "jsdocOverride": true,
+            "for": "titleStyle"
+          }
+        ]
       }
     ]
   },
@@ -1697,7 +2776,7 @@
     },
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "properties": [
       {
@@ -1708,1474 +2787,147 @@
           "names": [
             "string"
           ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.AreaChart",
+    "id": "oj-c.AreaChart.TextValueFormat",
+    "name": "TextValueFormat",
+    "kind": "typedef",
+    "longname": "oj-c.AreaChart.TextValueFormat",
+    "scope": "static",
+    "description": "",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "area-chart.tsx",
+      "path": "web/components/oj-c/area-chart"
+    },
+    "properties": [
+      {
+        "name": "tooltipLabel",
+        "description": "A string representing the label that is displayed before the value in the tooltip.\nThis value can also take an array of strings to be applied to hierarchical group names, from outermost to innermost.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "tooltipDisplay",
+        "description": "Whether the value is displayed in the tooltip.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"auto\"",
+            "\"off\""
+          ]
         },
         "ojvalues": [
           {
-            "name": "transparent",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "inherit",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "initial",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "-moz-initial",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "revert",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "revert-layer",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "unset",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "aliceblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "antiquewhite",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "aqua",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "aquamarine",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "azure",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "beige",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "bisque",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "black",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "blanchedalmond",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "blue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "blueviolet",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "brown",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "burlywood",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "cadetblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "chartreuse",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "chocolate",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "coral",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "cornflowerblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "cornsilk",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "crimson",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "cyan",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkcyan",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkgoldenrod",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkgray",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkgreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkgrey",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkkhaki",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkmagenta",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkolivegreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkorange",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkorchid",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkred",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darksalmon",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkseagreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkslateblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkslategray",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkslategrey",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkturquoise",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "darkviolet",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "deeppink",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "deepskyblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "dimgray",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "dimgrey",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "dodgerblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "firebrick",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "floralwhite",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "forestgreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "fuchsia",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "gainsboro",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "ghostwhite",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "gold",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "goldenrod",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "gray",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "green",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "greenyellow",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "grey",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "honeydew",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "hotpink",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "indianred",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "indigo",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "ivory",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "khaki",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lavender",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lavenderblush",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lawngreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lemonchiffon",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightcoral",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightcyan",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightgoldenrodyellow",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightgray",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightgreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightgrey",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightpink",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightsalmon",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightseagreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightskyblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightslategray",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightslategrey",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightsteelblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lightyellow",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "lime",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "limegreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "linen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "magenta",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "maroon",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "mediumaquamarine",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "mediumblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "mediumorchid",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "mediumpurple",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "mediumseagreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "mediumslateblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "mediumspringgreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "mediumturquoise",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "mediumvioletred",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "midnightblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "mintcream",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "mistyrose",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "moccasin",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "navajowhite",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "navy",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "oldlace",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "olive",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "olivedrab",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "orange",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "orangered",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "orchid",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "palegoldenrod",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "palegreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "paleturquoise",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "palevioletred",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "papayawhip",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "peachpuff",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "peru",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "pink",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "plum",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "powderblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "purple",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "rebeccapurple",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "red",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "rosybrown",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "royalblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "saddlebrown",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "salmon",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "sandybrown",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "seagreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "seashell",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "sienna",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "silver",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "skyblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "slateblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "slategray",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "slategrey",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "snow",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "springgreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "steelblue",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "tan",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "teal",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "thistle",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "tomato",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "turquoise",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "violet",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "wheat",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "white",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "whitesmoke",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "yellow",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "yellowgreen",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "ActiveBorder",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "ActiveCaption",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "AppWorkspace",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "Background",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "ButtonFace",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "ButtonHighlight",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "ButtonShadow",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "ButtonText",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "CaptionText",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "GrayText",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "Highlight",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "HighlightText",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "InactiveBorder",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "InactiveCaption",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "InactiveCaptionText",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "InfoBackground",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "InfoText",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "Menu",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "MenuText",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "Scrollbar",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "ThreeDDarkShadow",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "ThreeDFace",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "ThreeDHighlight",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "ThreeDLightShadow",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "ThreeDShadow",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "Window",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "WindowFrame",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "WindowText",
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "currentcolor",
+            "name": "off",
+            "description": "The property will not be displayed in tooltip.",
+            "displayName": "Off",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "on",
+            "description": "The property will be displayed in tooltip.",
+            "displayName": "On",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.AreaChart",
+    "id": "oj-c.AreaChart.NumericalValueFormat",
+    "name": "NumericalValueFormat",
+    "kind": "typedef",
+    "longname": "oj-c.AreaChart.NumericalValueFormat",
+    "scope": "static",
+    "description": "",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "area-chart.tsx",
+      "path": "web/components/oj-c/area-chart"
+    },
+    "properties": [
+      {
+        "name": "converter",
+        "description": "The converter to format the numerical value for the tooltip.",
+        "optional": false,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Converter<number>",
+            "jsdocOverride": true,
+            "for": "converter",
+            "module": {
+              "Converter": "ojconverter"
+            }
+          }
+        ]
+      },
+      {
+        "name": "tooltipLabel",
+        "description": "A string representing the label that is displayed before the value in the tooltip.\nThis value can also take an array of strings to be applied to hierarchical group names, from outermost to innermost.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "tooltipDisplay",
+        "description": "Whether the value is displayed in the tooltip.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"auto\"",
+            "\"off\""
+          ]
+        },
+        "ojvalues": [
+          {
+            "name": "off",
+            "description": "The property will not be displayed in tooltip.",
+            "displayName": "Off",
+            "type": {
+              "names": [
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "on",
+            "description": "The property will be displayed in tooltip.",
+            "displayName": "On",
             "type": {
               "names": [
                 "string"
@@ -3201,7 +2953,7 @@
     },
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "properties": [
       {
@@ -3212,7 +2964,15 @@
           "names": [
             "object"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "oj-c.AreaChart.TextValueFormat",
+            "jsdocOverride": true,
+            "for": "group"
+          }
+        ]
       },
       {
         "name": "series",
@@ -3222,7 +2982,15 @@
           "names": [
             "object"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "oj-c.AreaChart.TextValueFormat",
+            "jsdocOverride": true,
+            "for": "series"
+          }
+        ]
       },
       {
         "name": "value",
@@ -3232,104 +3000,24 @@
           "names": [
             "object"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "oj-c.AreaChart.NumericalValueFormat",
+            "jsdocOverride": true,
+            "for": "value"
+          }
+        ]
       }
     ]
   },
   {
     "memberof": "oj-c.AreaChart",
-    "id": "oj-c.AreaChart.ChartLegend",
-    "name": "ChartLegend",
+    "id": "oj-c.AreaChart.AreaChartSeries",
+    "name": "AreaChartSeries",
     "kind": "typedef",
-    "longname": "oj-c.AreaChart.ChartLegend",
-    "scope": "static",
-    "description": "The chart legend type.",
-    "type": {
-      "names": [
-        "Object"
-      ]
-    },
-    "meta": {
-      "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
-    },
-    "properties": [
-      {
-        "name": "position",
-        "description": "The position of the legend within the chart. By default, the legend will be placed on the side or bottom\nof the chart.",
-        "optional": false,
-        "type": {
-          "names": [
-            "\"auto\"",
-            "\"end\"",
-            "\"start\"",
-            "\"top\"",
-            "\"bottom\""
-          ]
-        },
-        "defaultvalue": "\"auto\""
-      },
-      {
-        "name": "rendered",
-        "description": "Defines whether the legend is rendered. If set to auto, the legend will be hidden for charts with a large bunber of series.",
-        "optional": false,
-        "type": {
-          "names": [
-            "\"auto\"",
-            "\"off\"",
-            "\"on\""
-          ]
-        },
-        "defaultvalue": "\"on\""
-      },
-      {
-        "name": "maxSize",
-        "description": "The max size of the legend in pixels or in percentage.",
-        "optional": true,
-        "type": {
-          "names": [
-            "number|string"
-          ]
-        }
-      },
-      {
-        "name": "size",
-        "description": "Defines the size of legend in pixel or percent.",
-        "optional": true,
-        "type": {
-          "names": [
-            "number|string"
-          ]
-        }
-      },
-      {
-        "name": "symbolHeight",
-        "description": "The height of the legend symbol (line or marker) in pixels.",
-        "optional": true,
-        "type": {
-          "names": [
-            "number"
-          ]
-        }
-      },
-      {
-        "name": "symbolWidth",
-        "description": "The width of the legend symbol (line or marker) in pixels.",
-        "optional": true,
-        "type": {
-          "names": [
-            "number"
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "memberof": "oj-c.AreaChart",
-    "id": "oj-c.AreaChart.LineChartSeries",
-    "name": "LineChartSeries",
-    "kind": "typedef",
-    "longname": "oj-c.AreaChart.LineChartSeries",
+    "longname": "oj-c.AreaChart.AreaChartSeries",
     "scope": "static",
     "description": "",
     "tsgenerictype": {
@@ -3344,7 +3032,7 @@
     },
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "properties": [
       {
@@ -3355,128 +3043,12 @@
             "Array<object>"
           ]
         },
-        "properties": [
+        "tstype": [
           {
-            "name": "id",
-            "description": "The item id should be set by the application if the DataProvider is not being used. The row key will be used as id in the DataProvider case.",
-            "optional": false,
-            "type": {
-              "names": [
-                "any"
-              ]
-            }
-          },
-          {
-            "name": "seriesId",
-            "description": "The id for the series the item belongs to.",
-            "optional": false,
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "groupId",
-            "description": "The array of id(s) for the group(s) the item belongs to. For hierarchical groups, it will be an array of outermost to innermost group ids. This is also used to specify the date for non mixed frequency time axes. The specified date for non mixed frequency time axes must be an ISO string.",
-            "optional": false,
-            "type": {
-              "names": [
-                "Array<string>"
-              ]
-            }
-          },
-          {
-            "name": "value",
-            "description": "The value for this data item. Null can be specified to skip a data point.",
-            "optional": false,
-            "type": {
-              "names": [
-                "number"
-              ]
-            }
-          },
-          {
-            "name": "color",
-            "description": "The color of the data item. This color value is not inherited by chart legend. See chart <a href=\"oj.ojChartSeries.html#color\">series color</a> and <a href=\"oj.ojChartSeries.html#displayInLegend\">display-in-legend</a> for more details.",
-            "optional": true,
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
-          },
-          {
-            "name": "markerDisplayed",
-            "description": "Defines whether the data marker is displayed. Only applies to line, area, scatter, and bubble series. If auto, the markers will be displayed whenever the data points are not connected by a line.",
-            "optional": true,
-            "type": {
-              "names": [
-                "\"auto\"",
-                "\"off\"",
-                "\"on\""
-              ]
-            }
-          },
-          {
-            "name": "markerShape",
-            "description": "The shape of the data markers. Only applies to line, area, scatter, and bubble series. In addition to the built-in shapes, it may also take SVG path commands to specify a custom shape. The chart will style the custom shapes the same way as built-in shapes, supporting properties like color and borderColor and applying hover and selection effects. Only 'auto' is supported for range series.",
-            "optional": true,
-            "type": {
-              "names": [
-                "\"auto\"",
-                "\"square\"",
-                "\"circle\"",
-                "\"diamond\"",
-                "\"human\"",
-                "\"plus\"",
-                "\"star\"",
-                "\"triangleDown\"",
-                "\"triangleUp\""
-              ]
-            }
-          },
-          {
-            "name": "markerSize",
-            "description": "The size of the data markers. Only applies to line, area, and scatter series. Does not apply to bubble charts, which calculate marker size based on the z values.",
-            "optional": true,
-            "type": {
-              "names": [
-                "number"
-              ]
-            }
-          },
-          {
-            "name": "categories",
-            "description": "An optional array of category strings corresponding to this data item. This enables highlighting and filtering of individual data items through interactions with the legend or other visualization elements. If not defined, series categories are used.",
-            "optional": true,
-            "type": {
-              "names": [
-                "Array<string>"
-              ]
-            }
-          },
-          {
-            "name": "drilling",
-            "description": "Whether drilling is enabled for the data item. Drillable objects will show a pointer cursor on hover and fire an <code class=\"prettyprint\">ojDrill</code> event on click (double click if selection is enabled). To enable drilling for all data items at once, use the drilling attribute in the top level.",
-            "optional": true,
-            "type": {
-              "names": [
-                "\"inherit\"",
-                "\"off\"",
-                "\"on\""
-              ]
-            }
-          },
-          {
-            "name": "shortDesc",
-            "description": "TThe description of this object. This is used for accessibility and also for customizing the tooltip text.",
-            "optional": true,
-            "type": {
-              "names": [
-                "string"
-              ]
-            }
+            "target": "Type",
+            "value": "Array<oj-c.AreaChart.AreaItem<K>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       },
@@ -3608,7 +3180,7 @@
     },
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "properties": [
       {
@@ -3657,10 +3229,98 @@
   },
   {
     "memberof": "oj-c.AreaChart",
-    "id": "oj-c.AreaChart.ChartItemTemplateContext",
-    "name": "ChartItemTemplateContext",
+    "id": "oj-c.AreaChart.ChartLegend",
+    "name": "ChartLegend",
     "kind": "typedef",
-    "longname": "oj-c.AreaChart.ChartItemTemplateContext",
+    "longname": "oj-c.AreaChart.ChartLegend",
+    "scope": "static",
+    "description": "The chart legend type.",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "area-chart.tsx",
+      "path": "web/components/oj-c/area-chart"
+    },
+    "properties": [
+      {
+        "name": "position",
+        "description": "The position of the legend within the chart. By default, the legend will be placed on the side or bottom\nof the chart.",
+        "optional": false,
+        "type": {
+          "names": [
+            "\"auto\"",
+            "\"end\"",
+            "\"start\"",
+            "\"top\"",
+            "\"bottom\""
+          ]
+        },
+        "defaultvalue": "\"auto\""
+      },
+      {
+        "name": "rendered",
+        "description": "Defines whether the legend is rendered. If set to auto, the legend will be hidden for charts with a large bunber of series.",
+        "optional": false,
+        "type": {
+          "names": [
+            "\"auto\"",
+            "\"off\"",
+            "\"on\""
+          ]
+        },
+        "defaultvalue": "\"on\""
+      },
+      {
+        "name": "maxSize",
+        "description": "The max size of the legend in pixels or in percentage.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number|string"
+          ]
+        }
+      },
+      {
+        "name": "size",
+        "description": "Defines the size of legend in pixel or percent.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number|string"
+          ]
+        }
+      },
+      {
+        "name": "symbolHeight",
+        "description": "The height of the legend symbol (line or marker) in pixels.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "symbolWidth",
+        "description": "The width of the legend symbol (line or marker) in pixels.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.AreaChart",
+    "id": "oj-c.AreaChart.AreaChartContextMenuConfig",
+    "name": "AreaChartContextMenuConfig",
+    "kind": "typedef",
+    "longname": "oj-c.AreaChart.AreaChartContextMenuConfig",
     "scope": "static",
     "description": "",
     "tsgenerictype": {
@@ -3675,38 +3335,34 @@
     },
     "meta": {
       "filename": "area-chart.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/area-chart"
+      "path": "web/components/oj-c/area-chart"
     },
     "properties": [
       {
-        "name": "data",
-        "description": "The data object of the current item.",
-        "optional": false,
+        "name": "accessibleLabel",
+        "optional": true,
         "type": {
           "names": [
-            "any"
+            "string"
           ]
         }
       },
       {
-        "name": "key",
-        "description": "The key of the current item.",
+        "name": "items",
         "optional": false,
         "type": {
           "names": [
-            "any"
+            "function"
           ]
-        }
-      },
-      {
-        "name": "index",
-        "description": "The zero-based index of the current item.",
-        "optional": false,
-        "type": {
-          "names": [
-            "number"
-          ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "(context: C) => ContextMenuItems[]",
+            "jsdocOverride": true,
+            "for": "items"
+          }
+        ]
       }
     ]
   }

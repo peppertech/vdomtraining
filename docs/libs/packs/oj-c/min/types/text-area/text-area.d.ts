@@ -6,7 +6,7 @@ import Converter = require('ojs/ojconverter');
 import Validator = require('ojs/ojvalidator');
 import AsyncValidator = require('ojs/ojvalidator-async');
 import { ExtendGlobalProps, GlobalProps, ObservedGlobalProps, PropertyChanged, ReadOnlyPropertyChanged } from 'ojs/ojvcomponent';
-import { Component, ComponentProps } from 'preact';
+import { ComponentProps, ComponentType, Ref } from 'preact';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
 import 'css!oj-c/text-area/text-area-styles.css';
@@ -46,29 +46,23 @@ type Props<V> = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     resizeBehavior?: PreactTextAreaProps['resize'] | 'none';
     rows?: number;
     textAlign?: PreactTextAreaProps['textAlign'];
-    unsafe_labelledBy?: string;
     userAssistanceDensity?: PreactTextAreaProps['userAssistanceDensity'];
     validators?: (AsyncValidator<V> | Validator<V>)[] | null;
     value?: V | null;
     onMessagesCustomChanged?: PropertyChanged<PreactTextAreaProps['messages']>;
     onRawValueChanged?: ReadOnlyPropertyChanged<string>;
     onValidChanged?: ReadOnlyPropertyChanged<ValidState>;
-    onValueChanged?: PropertyChanged<V>;
+    onValueChanged?: PropertyChanged<V | null>;
 };
-export declare class TextArea<V> extends Component<ExtendGlobalProps<Props<V>>> {
-    static defaultProps: Partial<Props<any>>;
-    private busyContextRef;
-    private textAreaRef;
-    private rootRef;
-    componentDidMount(): void;
-    render({ columnSpan, ...props }: ExtendGlobalProps<Props<V>>): import("preact").JSX.Element;
-    componentWillUnmount(): void;
-    reset(): void;
-    showMessages(): void;
-    validate(): Promise<'valid' | 'invalid'>;
-    blur(): void;
-    focus(): void;
-}
+type TextAreaHandle = {
+    blur: () => void;
+    focus: () => void;
+    showMessages: () => void;
+    reset: () => void;
+    validate: () => Promise<'valid' | 'invalid'>;
+};
+declare function TextAreaImpl<V>({ autocomplete, columnSpan, converter, containerReadonly: propContainerReadonly, disabled, displayOptions, help, helpHints, id, labelWrapping: propLabelWrapping, length, messagesCustom, readonly: propReadonly, required, resizeBehavior, userAssistanceDensity: propUserAssistanceDensity, validators, value, ...otherProps }: Props<V>, ref: Ref<TextAreaHandle>): import("preact").JSX.Element;
+export declare const TextArea: ComponentType<ExtendGlobalProps<ComponentProps<typeof TextAreaImpl<any>>>>;
 export {};
 export interface CTextAreaElement<V> extends JetElement<CTextAreaElementSettableProperties<V>>, CTextAreaElementSettableProperties<V> {
     readonly rawValue?: Parameters<Required<Props<V>>['onRawValueChanged']>[0];
@@ -80,11 +74,11 @@ export interface CTextAreaElement<V> extends JetElement<CTextAreaElementSettable
     setProperty<T extends keyof CTextAreaElementSettableProperties<V>>(property: T, value: CTextAreaElementSettableProperties<V>[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CTextAreaElementSettableProperties<V>>): void;
     setProperties(properties: CTextAreaElementSettablePropertiesLenient<V>): void;
-    blur: TextArea<V>['blur'];
-    focus: TextArea<V>['focus'];
-    reset: TextArea<V>['reset'];
-    showMessages: TextArea<V>['showMessages'];
-    validate: TextArea<V>['validate'];
+    blur: () => void;
+    focus: () => void;
+    reset: () => void;
+    showMessages: () => void;
+    validate: () => Promise<'invalid' | 'valid'>;
 }
 export namespace CTextAreaElement {
     type autocompleteChanged<V> = JetElementCustomEventStrict<CTextAreaElement<V>['autocomplete']>;
@@ -110,7 +104,6 @@ export namespace CTextAreaElement {
     type resizeBehaviorChanged<V> = JetElementCustomEventStrict<CTextAreaElement<V>['resizeBehavior']>;
     type rowsChanged<V> = JetElementCustomEventStrict<CTextAreaElement<V>['rows']>;
     type textAlignChanged<V> = JetElementCustomEventStrict<CTextAreaElement<V>['textAlign']>;
-    type unsafe_labelledByChanged<V> = JetElementCustomEventStrict<CTextAreaElement<V>['unsafe_labelledBy']>;
     type userAssistanceDensityChanged<V> = JetElementCustomEventStrict<CTextAreaElement<V>['userAssistanceDensity']>;
     type validChanged<V> = JetElementCustomEventStrict<CTextAreaElement<V>['valid']>;
     type validatorsChanged<V> = JetElementCustomEventStrict<CTextAreaElement<V>['validators']>;
@@ -140,7 +133,6 @@ export interface CTextAreaElementEventMap<V> extends HTMLElementEventMap {
     'resizeBehaviorChanged': JetElementCustomEventStrict<CTextAreaElement<V>['resizeBehavior']>;
     'rowsChanged': JetElementCustomEventStrict<CTextAreaElement<V>['rows']>;
     'textAlignChanged': JetElementCustomEventStrict<CTextAreaElement<V>['textAlign']>;
-    'unsafe_labelledByChanged': JetElementCustomEventStrict<CTextAreaElement<V>['unsafe_labelledBy']>;
     'userAssistanceDensityChanged': JetElementCustomEventStrict<CTextAreaElement<V>['userAssistanceDensity']>;
     'validChanged': JetElementCustomEventStrict<CTextAreaElement<V>['valid']>;
     'validatorsChanged': JetElementCustomEventStrict<CTextAreaElement<V>['validators']>;
@@ -169,7 +161,6 @@ export interface CTextAreaElementSettableProperties<V> extends JetSettableProper
     resizeBehavior?: Props<V>['resizeBehavior'];
     rows?: Props<V>['rows'];
     textAlign?: Props<V>['textAlign'];
-    unsafe_labelledBy?: Props<V>['unsafe_labelledBy'];
     userAssistanceDensity?: Props<V>['userAssistanceDensity'];
     validators?: Props<V>['validators'];
     value?: Props<V>['value'];
@@ -203,7 +194,6 @@ export interface TextAreaIntrinsicProps extends Partial<Readonly<CTextAreaElemen
     onresizeBehaviorChanged?: (value: CTextAreaElementEventMap<any>['resizeBehaviorChanged']) => void;
     onrowsChanged?: (value: CTextAreaElementEventMap<any>['rowsChanged']) => void;
     ontextAlignChanged?: (value: CTextAreaElementEventMap<any>['textAlignChanged']) => void;
-    onunsafe_labelledByChanged?: (value: CTextAreaElementEventMap<any>['unsafe_labelledByChanged']) => void;
     onuserAssistanceDensityChanged?: (value: CTextAreaElementEventMap<any>['userAssistanceDensityChanged']) => void;
     onvalidChanged?: (value: CTextAreaElementEventMap<any>['validChanged']) => void;
     onvalidatorsChanged?: (value: CTextAreaElementEventMap<any>['validatorsChanged']) => void;

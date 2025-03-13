@@ -1,4 +1,4 @@
-define(["require", "exports", "./drawer-popup/drawer-popup"], function (require, exports, drawer_popup_1) {
+define(["require", "exports", "oj-c/drawer-popup/drawer-popup"], function (require, exports, drawer_popup_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DrawerPopup = void 0;

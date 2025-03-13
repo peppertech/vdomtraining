@@ -1,4 +1,4 @@
-define(["require", "exports", "./menu-button/menu-button"], function (require, exports, menu_button_1) {
+define(["require", "exports", "oj-c/menu-button/menu-button"], function (require, exports, menu_button_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MenuButton = void 0;

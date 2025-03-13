@@ -1,7 +1,7 @@
 {
   "name": "labelled-link",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,6 +13,12 @@
   "description": "The Labelled Link component displays a readonly field that has a link for its content.",
   "help": "oj-c.LabelledLink.html",
   "main": "oj-c/labelled-link",
+  "status": [
+    {
+      "type": "production",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Forms"
@@ -30,6 +36,9 @@
       "uxSpecs": [
         "input-text"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/LabelledLinkWebElement.html"
     }
   },
   "propertyLayout": [
@@ -143,6 +152,13 @@
           "displayName": "Wrap"
         }
       },
+      "status": [
+        {
+          "type": "deprecated",
+          "since": "18.0.0",
+          "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+        }
+      ],
       "enumValues": [
         "truncate",
         "wrap"
@@ -238,7 +254,7 @@
       "return": "void"
     },
     "focus": {
-      "description": "Sets focus on the link.",
+      "description": "Focuses the link.",
       "return": "void"
     },
     "setProperty": {

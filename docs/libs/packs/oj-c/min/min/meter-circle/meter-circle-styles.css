@@ -12,3 +12,8 @@ oj-c-meter-circle {
     height: fit-content;
     line-height: 0;
 }
+
+.oj-c-meter-circle-fit {
+    width: 6rem;
+    height: 6rem;
+}

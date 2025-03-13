@@ -1,18 +1,18 @@
-define(["require", "exports", "../UNSAFE_useDataProvider/useDataProvider", "./dataUtil"], function (require, exports, useDataProvider_1, dataUtil_1) {
+define(["require", "exports", "./dataUtil", "../PRIVATE_useVisData/useVisData"], function (require, exports, dataUtil_1, useVisData_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useChartData = void 0;
+    exports.useChartData = useChartData;
     function useChartData(dataProvider, addBusyState, itemTemplate, seriesTemplate, groupTemplate, itemElementName, seriesElementName, groupElementName, seriesComparator, groupComparator) {
-        const { data } = (0, useDataProvider_1.useDataProvider)({
-            data: dataProvider,
+        const { data, isLoading } = (0, useVisData_1.useVisData)({
+            dataProvider,
             addBusyState
         });
         const { series, groups } = (0, dataUtil_1.createGroupsAndSeries)(data, itemTemplate, seriesTemplate, groupTemplate, itemElementName, seriesElementName, groupElementName, seriesComparator, groupComparator);
+        const idToDPItemMap = new Map(data.map((item) => [item.key, item.data]));
         const getDataItem = (seriesIndex, groupIndex) => {
             const seriesItems = series[seriesIndex]['items'];
             return seriesItems[groupIndex];
         };
-        return { series, groups, getDataItem };
+        return { series, groups, getDataItem, isLoading, idToDPItemMap };
     }
-    exports.useChartData = useChartData;
 });

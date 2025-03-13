@@ -1,4 +1,4 @@
-define(["require", "exports", "./message-toast/message-toast"], function (require, exports, message_toast_1) {
+define(["require", "exports", "oj-c/message-toast/message-toast"], function (require, exports, message_toast_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MessageToast = void 0;

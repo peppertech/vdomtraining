@@ -1,7 +1,7 @@
-define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "preact/hooks", "../utils/utils"], function (require, exports, UNSAFE_logger_1, hooks_1, utils_1) {
+define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "preact/hooks", "../PRIVATE_useSelectData/index", "../utils/utils"], function (require, exports, UNSAFE_logger_1, hooks_1, index_1, utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useDataProviderListeners = void 0;
+    exports.useDataProviderListeners = useDataProviderListeners;
     function cloneValue(value) {
         return value instanceof Set ? new Set(value.values()) : value;
     }
@@ -39,12 +39,14 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "p
     }
     function useDataProviderListeners({ dataProvider, setValue, setValueToSync, setValueItemsToSync, value, valueItems }) {
         const isSelectMultiple = value instanceof Set;
-        const handleRefresh = (0, hooks_1.useCallback)(() => {
+        const handleRefresh = (0, hooks_1.useCallback)((event) => {
+            if (!shouldHandleRefreshEvent(event))
+                return;
             if (!(0, utils_1.isEmpty)(value)) {
                 setValueToSync(cloneValue(value));
                 setValueItemsToSync(utils_1.DEFAULT_VALUE_ITEMS);
             }
-        }, [value]);
+        }, [setValueItemsToSync, setValueToSync, value]);
         const handleMutation = (0, hooks_1.useCallback)((event) => {
             if ((0, utils_1.isEmpty)(value)) {
                 return;
@@ -82,7 +84,7 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "p
                     setValueItemsToSync(!(0, utils_1.isEmpty)(newValueItems) ? newValueItems : utils_1.DEFAULT_VALUE_ITEMS);
                 }
             }
-        }, [value, valueItems]);
+        }, [isSelectMultiple, setValue, setValueItemsToSync, setValueToSync, value, valueItems]);
         (0, hooks_1.useEffect)(() => {
             dataProvider?.addEventListener('refresh', handleRefresh);
             dataProvider?.addEventListener('mutate', handleMutation);
@@ -92,5 +94,11 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "p
             };
         }, [dataProvider, handleMutation, handleRefresh]);
     }
-    exports.useDataProviderListeners = useDataProviderListeners;
+    const shouldHandleRefreshEvent = (event) => {
+        if (index_1.SELECT_INTERNALS in event) {
+            const { cause = '' } = event[index_1.SELECT_INTERNALS];
+            return !['filterCriterionChanged', 'dataOverrideChanged'].includes(cause);
+        }
+        return true;
+    };
 });

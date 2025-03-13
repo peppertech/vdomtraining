@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CollapsibleWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-collapsible WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -11,7 +11,7 @@ var elements_1 = require("@oracle/oraclejet-webdriver/elements");
 class CollapsibleWebElementBase extends elements_1.OjWebElement {
     /**
      * Gets the value of <code>disabled</code> property.
-     * Disables the collapsible if set to true
+     * Disables the collapsible if set to true.
      * @return The value of <code>disabled</code> property.
      *
      */

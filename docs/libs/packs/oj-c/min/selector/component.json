@@ -1,7 +1,7 @@
 {
   "name": "selector",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -17,6 +17,9 @@
     },
     "vbdt": {
       "module": "oj-c/selector"
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/SelectorWebElement.html"
     }
   },
   "help": "oj-c.Selector.html",
@@ -33,17 +36,16 @@
   "main": "oj-c/selector",
   "properties": {
     "rowKey": {
-      "type": "any",
+      "type": "string|number",
       "description": "Specifies the row key of each selector.",
       "displayName": "Row Key",
       "help": "#rowKey"
     },
     "selectedKeys": {
       "type": "object",
-      "description": "Specifies the selectedKeys, should be hooked into the collection component.",
+      "description": "Specifies the selectedKeys.",
       "displayName": "Selected Keys",
       "help": "#selectedKeys",
-      "required": true,
       "writeback": true
     },
     "indeterminate": {
@@ -71,8 +73,7 @@
       "enumValues": [
         "multiple",
         "single"
-      ],
-      "value": "multiple"
+      ]
     }
   },
   "methods": {

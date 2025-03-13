@@ -28,9 +28,15 @@
       }
     ],
     "since": "14.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
     "ojmodule": "collapsible"
   },
@@ -45,8 +51,9 @@
     "description": "Disables the collapsible if set to <code class=\"prettyprint\">true</code>.",
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
+    "defaultvalue": false,
     "type": {
       "names": [
         "boolean"
@@ -65,8 +72,9 @@
     "description": "Specifies if the content is expanded.",
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
+    "defaultvalue": false,
     "type": {
       "names": [
         "boolean"
@@ -84,8 +92,31 @@
     "description": "Controls placement of the icon in the header.",
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
+    "ojvalues": [
+      {
+        "name": "start",
+        "description": "icon position is start (default, if unspecified)",
+        "displayName": "Start",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "end",
+        "description": "icon position is end",
+        "displayName": "End",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"start\"",
     "type": {
       "names": [
         "\"end\"",
@@ -104,8 +135,31 @@
     "description": "Controls display of the optional divider below the header.",
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
+    "ojvalues": [
+      {
+        "name": "basic",
+        "description": "basic, no divider (default, if unspecified)",
+        "displayName": "Basic",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "horizontal-rule",
+        "description": "displays a horizontal divider between the header and content",
+        "displayName": "Horizontal Rule",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"basic\"",
     "type": {
       "names": [
         "\"basic\"",
@@ -122,7 +176,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
     "scope": "instance",
     "params": [
@@ -156,7 +210,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
     "scope": "instance",
     "params": [
@@ -185,7 +239,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
     "scope": "instance",
     "params": [
@@ -214,7 +268,7 @@
     "description": "Triggered immediately before the collapsible is collapsed.",
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
     "scope": "instance",
     "properties": [
@@ -225,15 +279,7 @@
           "names": [
             "function"
           ]
-        },
-        "tstype": [
-          {
-            "target": "Type",
-            "value": "(param: Promise<void>) => void",
-            "for": "accept",
-            "jsdocOverride": true
-          }
-        ]
+        }
       },
       {
         "name": "target",
@@ -247,8 +293,8 @@
           {
             "target": "Type",
             "value": "EventTarget|null",
-            "for": "target",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "target"
           }
         ]
       }
@@ -263,7 +309,7 @@
     "description": "Triggered immediately before the collapsible is expanded.",
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
     "scope": "instance",
     "properties": [
@@ -274,15 +320,7 @@
           "names": [
             "function"
           ]
-        },
-        "tstype": [
-          {
-            "target": "Type",
-            "value": "(param: Promise<void>) => void",
-            "for": "accept",
-            "jsdocOverride": true
-          }
-        ]
+        }
       },
       {
         "name": "target",
@@ -296,8 +334,8 @@
           {
             "target": "Type",
             "value": "EventTarget|null",
-            "for": "target",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "target"
           }
         ]
       }
@@ -312,7 +350,7 @@
     "description": "Triggered after the collapsible has been collapsed.",
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
     "scope": "instance",
     "properties": [
@@ -328,8 +366,8 @@
           {
             "target": "Type",
             "value": "EventTarget|null",
-            "for": "target",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "target"
           }
         ]
       }
@@ -344,7 +382,7 @@
     "description": "Triggered after the collapsible has been expanded (after animation completes).",
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
     "scope": "instance",
     "properties": [
@@ -360,8 +398,8 @@
           {
             "target": "Type",
             "value": "EventTarget|null",
-            "for": "target",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "target"
           }
         ]
       }
@@ -376,7 +414,7 @@
     "description": "The default slot is the content of the collapsible. The oj-c-collapsible element accepts plain text or DOM nodes as children for the default slot.",
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
     "scope": "instance",
     "ojchild": true,
@@ -391,7 +429,7 @@
     "description": "The header slot is the collapsible's header. If not specified, the header contains only an open/close icon. Note that the header text is required for JET collapsible for accessibility purposes.",
     "meta": {
       "filename": "collapsible.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/collapsible"
+      "path": "web/components/oj-c/collapsible"
     },
     "scope": "instance",
     "ojchild": false,

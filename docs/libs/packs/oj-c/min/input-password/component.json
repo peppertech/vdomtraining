@@ -1,7 +1,7 @@
 {
   "name": "input-password",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -10,7 +10,7 @@
     "CInputPasswordElement"
   ],
   "displayName": "InputPassword",
-  "description": "An input password displays a field that allows a user to enter a password that will be masked.",
+  "description": "An input password allows the user to enter a password.",
   "help": "oj-c.InputPassword.html",
   "main": "oj-c/input-password",
   "extension": {
@@ -27,6 +27,9 @@
       "uxSpecs": [
         "input-password"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/InputPasswordWebElement.html"
     }
   },
   "propertyLayout": [
@@ -48,6 +51,15 @@
     }
   ],
   "since": "13.0.0",
+  "status": [
+    {
+      "type": "supersedes",
+      "since": "16.0.0",
+      "value": [
+        "oj-input-password"
+      ]
+    }
+  ],
   "properties": {
     "autocomplete": {
       "type": "string",
@@ -239,6 +251,13 @@
           "displayName": "Wrap"
         }
       },
+      "status": [
+        {
+          "type": "deprecated",
+          "since": "18.0.0",
+          "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+        }
+      ],
       "enumValues": [
         "truncate",
         "wrap"
@@ -315,8 +334,7 @@
         "consume": {
           "name": "containerReadonly"
         }
-      },
-      "value": false
+      }
     },
     "required": {
       "type": "boolean",
@@ -357,9 +375,6 @@
         "right"
       ]
     },
-    "unsafe_labelledBy": {
-      "type": "string"
-    },
     "userAssistanceDensity": {
       "type": "string",
       "description": "Specifies the density of the form component's user assistance presentation.",
@@ -388,8 +403,7 @@
         "consume": {
           "name": "containerUserAssistanceDensity"
         }
-      },
-      "value": "reflow"
+      }
     },
     "validators": {
       "type": "Array<object>|null",
@@ -416,9 +430,9 @@
     },
     "valid": {
       "type": "string",
-      "description": "Specifies how the raw value of the component",
-      "displayName": "Raw Value",
-      "help": "#rawValue",
+      "description": "Specifies how the valid state of the component",
+      "displayName": "Valid",
+      "help": "#valid",
       "propertyEditorValues": {
         "valid": {
           "description": "The component is valid",
@@ -448,20 +462,25 @@
     }
   },
   "methods": {
-    "reset": {
-      "return": "any"
-    },
-    "showMessages": {
-      "return": "any"
-    },
-    "validate": {
-      "return": "Promise"
-    },
     "blur": {
-      "return": "any"
+      "description": "Blurs the input field.",
+      "return": "void"
     },
     "focus": {
-      "return": "any"
+      "description": "Focuses the input field.",
+      "return": "void"
+    },
+    "showMessages": {
+      "description": "Takes all deferred messages and shows them.",
+      "return": "void"
+    },
+    "reset": {
+      "description": "Resets the component by clearing all messages and updating the component's display value using the attribute value.",
+      "return": "void"
+    },
+    "validate": {
+      "description": "If enabled, validates the component's display value using the converter and all validators registered on the component. The Promise resolves to 'valid' if there were no converter parse errors and the component passed all validations, or if the component is disabled or readonly.",
+      "return": "Promise"
     },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",

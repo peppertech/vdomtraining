@@ -13,3 +13,8 @@ oj-c-list-view[hidden]
 {
   display: none;
 }
+
+oj-c-list-view:last-child
+{
+  overflow-anchor: none;
+}

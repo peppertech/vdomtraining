@@ -1,7 +1,7 @@
 define(["require", "exports", "preact/hooks", "ojs/ojvalidator-numberrange"], function (require, exports, hooks_1, NumberRangeValidator) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useImplicitNumberRangeValidator = void 0;
+    exports.useImplicitNumberRangeValidator = useImplicitNumberRangeValidator;
     function useImplicitNumberRangeValidator({ converter, max, min, numberRangeExactMessageDetail, numberRangeOverflowMessageDetail, numberRangeUnderflowMessageDetail }) {
         const numberRangeValidator = (0, hooks_1.useMemo)(() => {
             if (min !== undefined || max !== undefined) {
@@ -17,8 +17,14 @@ define(["require", "exports", "preact/hooks", "ojs/ojvalidator-numberrange"], fu
                 });
             }
             return null;
-        }, [converter, min, max]);
+        }, [
+            converter,
+            min,
+            max,
+            numberRangeExactMessageDetail,
+            numberRangeOverflowMessageDetail,
+            numberRangeUnderflowMessageDetail
+        ]);
         return numberRangeValidator;
     }
-    exports.useImplicitNumberRangeValidator = useImplicitNumberRangeValidator;
 });

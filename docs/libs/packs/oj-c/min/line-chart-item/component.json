@@ -1,7 +1,7 @@
 {
   "name": "line-chart-item",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -14,6 +14,12 @@
   "displayName": "LineChartItem",
   "main": "oj-c/line-chart-item",
   "help": "oj-c.LineChartItem.html",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Visualizations"
@@ -29,15 +35,21 @@
     },
     "groupId": {
       "type": "Array<string>",
-      "description": "The array of id(s) for the group(s) the item belongs to",
+      "description": "The array of ids for the groups the item belongs to",
       "displayName": "Group Id",
       "help": "#groupId"
     },
     "value": {
       "type": "number",
-      "description": "The array of id(s) for the group(s) the item belongs to",
-      "displayName": "Valus",
+      "description": "The value of the data item.",
+      "displayName": "Value",
       "help": "#value"
+    },
+    "x": {
+      "type": "string",
+      "description": "The x value of the data item.",
+      "displayName": "X",
+      "help": "#x"
     },
     "color": {
       "type": "string",

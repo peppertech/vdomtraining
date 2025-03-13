@@ -7,7 +7,7 @@ define(["require", "exports", '@oracle/oraclejet-preact/translationBundle', "ojs
     };
     exports.AreaChartGroup = (0, ojvcomponent_1.registerCustomElement)('oj-c-area-chart-group', ({ drilling = exports.AreaChartGroupDefaults.drilling, ...props }) => {
         return null;
-    }, "AreaChartGroup", { "properties": { "drilling": { "type": "string", "enumValues": ["inherit", "off", "on"] }, "name": { "type": "string" }, "shortDesc": { "type": "string" } } }, undefined, {
+    }, "AreaChartGroup", { "properties": { "drilling": { "type": "string", "enumValues": ["inherit", "off", "on"] }, "name": { "type": "string" }, "shortDesc": { "type": "string" } } }, { "drilling": "inherit" }, {
         '@oracle/oraclejet-preact': translationBundle_1.default
     });
 });

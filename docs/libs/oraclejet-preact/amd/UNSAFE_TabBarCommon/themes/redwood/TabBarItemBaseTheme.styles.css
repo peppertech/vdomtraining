@@ -6,3 +6,8 @@
   --borderWidthBottom__1vg465e4: 3px;
   --borderWidthLeftRight__1vg465e5: 3px;
 }
+:root, .oj-density-dependent {
+  --mdHeight__1vg465e6: calc(calc(10.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) + calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px)));
+  --lgHeight__1vg465e7: calc(calc(14.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) + calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px)));
+  --stackedHeight__1vg465e8: calc(calc(18.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) + calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px)));
+}

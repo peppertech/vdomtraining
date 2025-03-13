@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findHighlightText = exports.HighlightTextWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var HighlightTextWebElement_1 = require("./HighlightTextWebElement");
+exports.HighlightTextWebElement = void 0;
+exports.findHighlightText = findHighlightText;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const HighlightTextWebElement_1 = require("./HighlightTextWebElement");
 Object.defineProperty(exports, "HighlightTextWebElement", { enumerable: true, get: function () { return HighlightTextWebElement_1.HighlightTextWebElement; } });
 /**
  * Retrieve an instance of [HighlightTextWebElement](../classes/HighlightTextWebElement.html).
@@ -29,6 +30,5 @@ async function findHighlightText(driver, by) {
     }
     return webEl;
 }
-exports.findHighlightText = findHighlightText;
 (0, oraclejet_webdriver_1.register)('oj-c-highlight-text', HighlightTextWebElement_1.HighlightTextWebElement);
 //# sourceMappingURL=index.js.map

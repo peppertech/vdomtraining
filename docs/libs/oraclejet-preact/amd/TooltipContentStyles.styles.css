@@ -10,6 +10,7 @@
 .TooltipContentStyles_content__40ir7s2 {
   width: -moz-max-content;
   width: max-content;
+  word-wrap: break-word;
 }
 .TooltipContentStyles_baseStyle__40ir7s3 {
   max-width: var(--maxWidth__1x922a00);

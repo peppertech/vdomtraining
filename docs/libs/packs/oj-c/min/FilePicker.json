@@ -39,7 +39,7 @@
     ],
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "ojmodule": "file-picker"
   },
@@ -54,20 +54,13 @@
     "description": "An array of strings of allowed MIME types or file extensions that can be uploaded; this is unlike the accept attribute of the html &lt;input> element that accepts a simple comma-delimited string. If not specified, accept all file types.\n<p>Note: If accept is specified, files with empty string type will be rejected if no match found in the \"accept\" value. Due to browser/OS differences, you may have to specify multiple values for the same value type. For example, for a CSV file, you might need to specify 'text/csv', '.csv', 'application/vnd.ms-excel', 'text/comma-separated-values' and others depending on your target browser/OS. </p>",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "type": {
       "names": [
-        "Array<string>"
+        "Array<string>|null"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "Array<string>",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.FilePicker",
@@ -80,7 +73,7 @@
     "description": "Specifies the preferred facing mode for the device's\n<a href=\"https://www.w3.org/TR/html-media-capture/#dom-htmlinputelement-capture\">media capture</a> mechanism;\nThis is most often used to provide direct camera access on mobile devices.  Note that the accept attribute must\nbe specified and have an associated capture control type (e.g.[\"image/*\"]) for the capture attribute to take effect.  Support may vary by browser.",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "ojvalues": [
       {
@@ -124,7 +117,7 @@
         }
       }
     ],
-    "defaultvalue": "\"none\"",
+    "defaultvalue": "none",
     "type": {
       "names": [
         "\"none\"",
@@ -145,7 +138,7 @@
     "description": "Disables the filepicker if set to <code class=\"prettyprint\">true</code>.",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "defaultvalue": false,
     "type": {
@@ -165,20 +158,13 @@
     "description": "The primary text for the default file picker.  It is either a string or a formatting function that returns the string to be displayed.",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "type": {
       "names": [
         "string|function"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "string|() => string",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.FilePicker",
@@ -191,7 +177,7 @@
     "description": "The secondary text for the default file picker.  It is either a string or a formatting function that returns the string to be displayed.\nThe formatting function takes in a property object that contains the selection mode of the filepicker.",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "type": {
       "names": [
@@ -217,7 +203,7 @@
     "description": "Whether to allow single or multiple file selection.",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "ojvalues": [
       {
@@ -258,7 +244,7 @@
     "description": "Sets focus on the file picker or the first tabbable element for a file picker with custom content.",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "scope": "instance",
     "returns": [
@@ -280,38 +266,9 @@
     "description": "Blurs the file picker.",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "scope": "instance",
-    "returns": [
-      {
-        "type": {
-          "names": [
-            "void"
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "memberof": "oj-c.FilePicker",
-    "id": "oj-c.FilePicker#_doSelectHelper",
-    "name": "_doSelectHelper",
-    "kind": "function",
-    "longname": "oj-c.FilePicker#_doSelectHelper",
-    "description": "This is a private method that should only be called by the webelement API.",
-    "ojhidden": true,
-    "meta": {
-      "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
-    },
-    "scope": "instance",
-    "params": [
-      {
-        "name": "fileList",
-        "type": "FileList"
-      }
-    ],
     "returns": [
       {
         "type": {
@@ -331,7 +288,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "scope": "instance",
     "params": [
@@ -365,7 +322,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "scope": "instance",
     "params": [
@@ -394,7 +351,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "scope": "instance",
     "params": [
@@ -423,7 +380,7 @@
     "description": "Triggered before files are selected to allow for custom validation.  To reject the selected files, the application can either call event.preventDefault() or pass a rejected Promise to the accept detail property. The latter approach is recommended because this allows the application to send a message stating why the files were rejected.",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "scope": "instance",
     "properties": [
@@ -434,15 +391,7 @@
           "names": [
             "function"
           ]
-        },
-        "tstype": [
-          {
-            "target": "Type",
-            "value": "(param: Promise<void>) => void",
-            "for": "accept",
-            "jsdocOverride": true
-          }
-        ]
+        }
       },
       {
         "name": "files",
@@ -457,8 +406,8 @@
           {
             "target": "Type",
             "value": "FileList",
-            "for": "files",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "files"
           }
         ]
       }
@@ -473,7 +422,7 @@
     "description": "Triggered when invalid files are selected.  This event provides the application with a list of messages that should be displayed to give the user feedback about the\nproblems with their selection.  This feedback can be safely cleared when a subsequent ojBeforeSelect, ojInvalidSelect, or ojSelect event is received.  Additionally the\nevent.detail.until property may be populated with a Promise to provide short-term feedback during a user interaction (typically drag and drop); the feedback should be cleared upon resolution\nof this Promise.",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "scope": "instance",
     "properties": [
@@ -490,8 +439,8 @@
           {
             "target": "Type",
             "value": "Array<oj-c.FilePicker.ComponentMessageItem>",
-            "for": "messages",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "messages"
           }
         ]
       },
@@ -503,15 +452,7 @@
           "names": [
             "Promise|null"
           ]
-        },
-        "tstype": [
-          {
-            "target": "Type",
-            "value": "Promise<void>|null",
-            "for": "until",
-            "jsdocOverride": true
-          }
-        ]
+        }
       }
     ]
   },
@@ -524,7 +465,7 @@
     "description": "Triggered after the files are selected",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "scope": "instance",
     "properties": [
@@ -541,8 +482,8 @@
           {
             "target": "Type",
             "value": "FileList",
-            "for": "files",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "files"
           }
         ]
       }
@@ -557,7 +498,7 @@
     "description": "<p>The <code class=\"prettyprint\">trigger</code> slot is used to replace the default content of the file picker.\nFile picker will add click and drag and drop listeners to the slot content.\nThe application is responsible for setting the tabindex attribute for keyboard accessibility.</p>",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "scope": "instance",
     "ojchild": false,
@@ -572,7 +513,7 @@
     "memberof": "oj-c.FilePicker",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "ojfragment": true
   },
@@ -585,7 +526,7 @@
     "memberof": "oj-c.FilePicker",
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "ojfragment": true
   },
@@ -596,7 +537,7 @@
     "kind": "typedef",
     "longname": "oj-c.FilePicker.ComponentMessageItem",
     "scope": "static",
-    "description": "",
+    "description": "A type for a single component message",
     "type": {
       "names": [
         "Object"
@@ -604,7 +545,7 @@
     },
     "meta": {
       "filename": "file-picker.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/file-picker"
+      "path": "web/components/oj-c/file-picker"
     },
     "properties": [
       {

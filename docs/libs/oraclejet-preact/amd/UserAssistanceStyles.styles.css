@@ -53,8 +53,8 @@
   float: right;
   margin-left: calc(1.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
   margin-right: 0;
-  margin-top: calc((var(--fontSize__kn3t7f0) * var(--lineHeight__kn3t7f2) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size))/ 2);
-  margin-bottom: calc((var(--fontSize__kn3t7f0) * var(--lineHeight__kn3t7f2) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size))/ -2);
+  margin-top: calc((var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size))/ 2);
+  margin-bottom: calc((var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size))/ -2);
   color: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200));
   font-size: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size);
   font-weight: 400;
@@ -85,8 +85,8 @@
   display: inline-block;
   margin-left: calc(1.5 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
   margin-right: 0;
-  margin-top: calc((var(--fontSize__kn3t7f0) * var(--lineHeight__kn3t7f2) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size))/ 2);
-  margin-bottom: calc((var(--fontSize__kn3t7f0) * var(--lineHeight__kn3t7f2) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size))/ -2);
+  margin-top: calc((var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size))/ 2);
+  margin-bottom: calc((var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1) - var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size))/ -2);
   color: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-110));
   font-size: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-font-size);
   font-weight: 400;

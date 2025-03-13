@@ -1,4 +1,4 @@
-define(["require", "exports", "./line-chart-series/line-chart-series"], function (require, exports, line_chart_series_1) {
+define(["require", "exports", "oj-c/line-chart-series/line-chart-series"], function (require, exports, line_chart_series_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.LineChartSeries = void 0;

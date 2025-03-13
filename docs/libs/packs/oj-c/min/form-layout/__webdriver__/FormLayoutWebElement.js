@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FormLayoutWebElement = void 0;
-var FormLayoutWebElementBase_1 = require("./FormLayoutWebElementBase");
+const FormLayoutWebElementBase_1 = require("./FormLayoutWebElementBase");
 /**
  * The component WebElement for [oj-c-form-layout](../../../oj-c/docs/oj.FormLayout.html).
  * Do not instantiate this class directly, instead, use

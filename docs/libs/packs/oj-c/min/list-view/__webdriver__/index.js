@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findListView = exports.ListViewWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var ListViewWebElement_1 = require("./ListViewWebElement");
+exports.ListViewWebElement = void 0;
+exports.findListView = findListView;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const ListViewWebElement_1 = require("./ListViewWebElement");
 Object.defineProperty(exports, "ListViewWebElement", { enumerable: true, get: function () { return ListViewWebElement_1.ListViewWebElement; } });
 /**
  * Retrieve an instance of [ListViewWebElement](../classes/ListViewWebElement.html).
@@ -29,6 +30,5 @@ async function findListView(driver, by) {
     }
     return webEl;
 }
-exports.findListView = findListView;
 (0, oraclejet_webdriver_1.register)('oj-c-list-view', ListViewWebElement_1.ListViewWebElement);
 //# sourceMappingURL=index.js.map

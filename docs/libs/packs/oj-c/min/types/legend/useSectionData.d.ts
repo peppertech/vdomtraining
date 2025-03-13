@@ -12,4 +12,7 @@ export type LegendSectionTemplateContext<K, D> = {
     key: K;
     index: number;
 };
-export declare function useSectionData<K, D extends any>(dataProvider: ArrayTreeDataProvider<K, D>, addBusyState: (description: string) => () => void, sectionTemplate?: TemplateSlot<LegendSectionTemplateContext<K, D>>, itemTemplate?: TemplateSlot<LegendItemTemplateContext<K, D>>): any[];
+export declare function useSectionData<K, D extends any>(dataProvider: ArrayTreeDataProvider<K, D>, addBusyState: (description: string) => () => void, sectionTemplate?: TemplateSlot<LegendSectionTemplateContext<K, D>>, itemTemplate?: TemplateSlot<LegendItemTemplateContext<K, D>>): {
+    sections: any[];
+    idToDPItemMap: Map<K, D>;
+};

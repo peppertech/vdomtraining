@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findCheckboxset = exports.CheckboxsetWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var CheckboxsetWebElement_1 = require("./CheckboxsetWebElement");
+exports.CheckboxsetWebElement = void 0;
+exports.findCheckboxset = findCheckboxset;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const CheckboxsetWebElement_1 = require("./CheckboxsetWebElement");
 Object.defineProperty(exports, "CheckboxsetWebElement", { enumerable: true, get: function () { return CheckboxsetWebElement_1.CheckboxsetWebElement; } });
 /**
  * Retrieve an instance of [CheckboxsetWebElement](../classes/CheckboxsetWebElement.html).
@@ -29,6 +30,5 @@ async function findCheckboxset(driver, by) {
     }
     return webEl;
 }
-exports.findCheckboxset = findCheckboxset;
 (0, oraclejet_webdriver_1.register)('oj-c-checkboxset', CheckboxsetWebElement_1.CheckboxsetWebElement);
 //# sourceMappingURL=index.js.map

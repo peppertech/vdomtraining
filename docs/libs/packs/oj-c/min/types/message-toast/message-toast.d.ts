@@ -51,6 +51,8 @@ export namespace CMessageToastElement {
     type iconTemplateValueChanged<K extends string | number, D extends MessageToastItem> = JetElementCustomEventStrict<CMessageToastElement<K, D>['iconTemplateValue']>;
     type offsetChanged<K extends string | number, D extends MessageToastItem> = JetElementCustomEventStrict<CMessageToastElement<K, D>['offset']>;
     type positionChanged<K extends string | number, D extends MessageToastItem> = JetElementCustomEventStrict<CMessageToastElement<K, D>['position']>;
+    type RenderDetailTemplate<K extends string | number, D extends MessageToastItem> = import('ojs/ojvcomponent').TemplateSlot<MessageToastTemplateContext<K, D>>;
+    type RenderIconTemplate<K extends string | number, D extends MessageToastItem> = import('ojs/ojvcomponent').TemplateSlot<MessageToastTemplateContext<K, D>>;
 }
 export interface CMessageToastElementEventMap<K extends string | number, D extends MessageToastItem> extends HTMLElementEventMap {
     'ojClose': CMessageToastElement.ojClose<K, D>;

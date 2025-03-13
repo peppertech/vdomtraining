@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findRatingGauge = exports.RatingGaugeWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var RatingGaugeWebElement_1 = require("./RatingGaugeWebElement");
+exports.RatingGaugeWebElement = void 0;
+exports.findRatingGauge = findRatingGauge;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const RatingGaugeWebElement_1 = require("./RatingGaugeWebElement");
 Object.defineProperty(exports, "RatingGaugeWebElement", { enumerable: true, get: function () { return RatingGaugeWebElement_1.RatingGaugeWebElement; } });
 /**
  * Retrieve an instance of [RatingGaugeWebElement](../classes/RatingGaugeWebElement.html).
@@ -29,6 +30,5 @@ async function findRatingGauge(driver, by) {
     }
     return webEl;
 }
-exports.findRatingGauge = findRatingGauge;
 (0, oraclejet_webdriver_1.register)('oj-c-rating-gauge', RatingGaugeWebElement_1.RatingGaugeWebElement);
 //# sourceMappingURL=index.js.map

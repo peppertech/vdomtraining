@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SelectorAllWebElement = void 0;
-var selenium_webdriver_1 = require("selenium-webdriver");
-var SelectorAllWebElementBase_1 = require("./SelectorAllWebElementBase");
+const selenium_webdriver_1 = require("selenium-webdriver");
+const SelectorAllWebElementBase_1 = require("./SelectorAllWebElementBase");
 /**
  * The component WebElement for [oj-c-selector-all](../../../oj-c/docs/oj.SelectorAll.html).
  * Do not instantiate this class directly, instead, use

@@ -6,7 +6,7 @@
     "memberof": "oj-c",
     "longname": "oj-c.ActionCard",
     "kind": "class",
-    "classdesc": "<h3 id=\"ActionCardOverview-section\">\n  JET Action\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#CardOverview-section\"></a>\n</h3>\n<p>Description: Themeable, WAI-ARIA-compliant element that represents a card.</p>\n<p>Action Card provides a styled rectangular area with hover/focus/active state rendering,\nalong with an ojAction event.\n\n\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-action-card onAction=\"[[actionHandler]]\">\n  Sample Text\n&lt;/oj-c-action-card>\n\n</code></pre>\n\n<p> As oj-c-action-card is intended to fire actions, it should not be used for the purpose of selection. That role is delegated to oj-c-selection-card.\n\n\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>A clarification in a11y rules states that any element with role of button should not have interactive elements inside: https://www.w3.org/TR/html-aria/#allowed-descendants-of-aria-roles </p>",
+    "classdesc": "<h3 id=\"ActionCardOverview-section\">\n  JET Action\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#CardOverview-section\"></a>\n</h3>\n<p>Description: Themeable, WAI-ARIA-compliant element that represents a card.</p>\n<p>Action Card provides a styled rectangular area with hover/focus/active state rendering,\nalong with an ojAction event.\n\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-action-card onAction=\"[[actionHandler]]\">\n  Sample Text\n&lt;/oj-c-action-card>\n\n</code></pre>\n\n<h3 id=\"diff-section\">\n  Differences between Cards in JET\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#diff-section\"></a>\n</h3>\n\n<p>\nThere are several different options for creating cards in JET applications.\n</p>\n<ul>\n<li><strong>oj-c-action-card:</strong> ActionCard fires action events and is supported for use stand alone or in oj-c-card-view. For accessibility reasons nothing interactive (for example links or buttons) can be put in an action card.</li>\n<li><strong>oj-c-selection-card:</strong> SelectionCard is supported for use in oj-c-card-view, with single or multiple selection.</li>\n<li><strong>oj-panel CSS class:</strong> For simple cases with no associated action or selection. Panel is supported for use in standalone or in oj-c-card-view.</li>\n</ul>\n\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>A clarification in a11y rules states that any element with role of ActionCard should not have interactive elements inside: https://www.w3.org/TR/html-aria/#allowed-descendants-of-aria-roles </p>",
     "scope": "static",
     "tagWithoutBrackets": "oj-c-action-card",
     "tagWithBrackets": "<oj-c-action-card>",
@@ -28,11 +28,86 @@
       }
     ],
     "since": "16.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
     "meta": {
       "filename": "action-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/action-card"
+      "path": "web/components/oj-c/action-card"
     },
     "ojmodule": "action-card"
+  },
+  {
+    "memberof": "oj-c.ActionCard",
+    "id": "oj-c.ActionCard#click",
+    "name": "click",
+    "kind": "function",
+    "longname": "oj-c.ActionCard#click",
+    "description": "blurs the card",
+    "ojhidden": true,
+    "meta": {
+      "filename": "action-card.tsx",
+      "path": "web/components/oj-c/action-card"
+    },
+    "scope": "instance",
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "any"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.ActionCard",
+    "id": "oj-c.ActionCard#blur",
+    "name": "blur",
+    "kind": "function",
+    "longname": "oj-c.ActionCard#blur",
+    "description": "blurs the card",
+    "ojhidden": true,
+    "meta": {
+      "filename": "action-card.tsx",
+      "path": "web/components/oj-c/action-card"
+    },
+    "scope": "instance",
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "any"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.ActionCard",
+    "id": "oj-c.ActionCard#focus",
+    "name": "focus",
+    "kind": "function",
+    "longname": "oj-c.ActionCard#focus",
+    "description": "focuses the card",
+    "ojhidden": true,
+    "meta": {
+      "filename": "action-card.tsx",
+      "path": "web/components/oj-c/action-card"
+    },
+    "scope": "instance",
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "any"
+          ]
+        }
+      }
+    ]
   },
   {
     "memberof": "oj-c.ActionCard",
@@ -43,7 +118,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "action-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/action-card"
+      "path": "web/components/oj-c/action-card"
     },
     "scope": "instance",
     "params": [
@@ -77,7 +152,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "action-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/action-card"
+      "path": "web/components/oj-c/action-card"
     },
     "scope": "instance",
     "params": [
@@ -106,7 +181,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "action-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/action-card"
+      "path": "web/components/oj-c/action-card"
     },
     "scope": "instance",
     "params": [
@@ -135,7 +210,7 @@
     "description": "Triggered when a card is clicked, whether by keyboard, mouse, or touch events. To meet accessibility requirements, the only supported way to react to the click is to listen for this event.",
     "meta": {
       "filename": "action-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/action-card"
+      "path": "web/components/oj-c/action-card"
     },
     "scope": "instance"
   },
@@ -148,7 +223,7 @@
     "description": "The default slot is the content of the card.",
     "meta": {
       "filename": "action-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/action-card"
+      "path": "web/components/oj-c/action-card"
     },
     "scope": "instance",
     "ojchild": true,

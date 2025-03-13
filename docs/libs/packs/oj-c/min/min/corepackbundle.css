@@ -9,7 +9,18 @@ oj-c-area-chart[hidden] {
 oj-c-area-chart {
   display: block;
   width: 100%;
-  height: 448px;
+  height: 28rem;
+}oj-c-dialog:not(.oj-complete){
+    visibility: hidden;
+}
+
+oj-c-dialog {
+    display: none;
+}
+
+oj-c-dialog[hidden]
+{
+    display: none;
 }oj-c-highlight-text:not(.oj-complete) {
   visibility: hidden;
 }
@@ -19,6 +30,31 @@ oj-c-highlight-text {
 }
 
 oj-c-highlight-text[hidden] {
+  display: none;
+}oj-c-input-date-mask:not(.oj-complete){
+  visibility: hidden;
+}
+
+oj-c-input-date-mask{
+  display: inline-block;
+  max-width: 100%;
+  width: 100%;
+}
+
+oj-c-input-date-mask[hidden]
+{
+  display: none;
+}oj-c-input-date-picker:not(.oj-complete) {
+  visibility: hidden;
+}
+
+oj-c-input-date-picker {
+  display: inline-block;
+  max-width: 100%;
+  width: 100%;
+}
+
+oj-c-input-date-picker[hidden] {
   display: none;
 }oj-c-input-date-text:not(.oj-complete) {
   visibility: hidden;
@@ -33,20 +69,21 @@ oj-c-input-date-text{
 oj-c-input-date-text[hidden] {
   display: none;
 }
-oj-c-input-date-mask:not(.oj-complete){
+oj-c-input-month-mask:not(.oj-complete){
   visibility: hidden;
 }
 
-oj-c-input-date-mask{
+oj-c-input-month-mask{
   display: inline-block;
   max-width: 100%;
   width: 100%;
 }
 
-oj-c-input-date-mask[hidden]
+oj-c-input-month-mask[hidden]
 {
   display: none;
-}oj-c-input-number:not(.oj-complete) {
+}
+oj-c-input-number:not(.oj-complete) {
   visibility: hidden;
 }
 
@@ -69,6 +106,18 @@ oj-c-input-password {
 }
 
 oj-c-input-password[hidden] {
+  display: none;
+}oj-c-input-sensitive-text:not(.oj-complete) {
+  visibility: hidden;
+}
+
+oj-c-input-sensitive-text {
+	display: inline-block;
+  max-width: 100%;
+  width: 100%;
+}
+
+oj-c-input-sensitive-text[hidden] {
   display: none;
 }oj-c-input-text:not(.oj-complete) {
   visibility: hidden;
@@ -135,6 +184,7 @@ oj-c-avatar[hidden] {
 }
 oj-c-avatar {
   display: inline-block;
+  font-size: 0;
 }
 oj-c-button:not(.oj-complete) {
   visibility: hidden;
@@ -252,13 +302,25 @@ oj-c-meter-bar {
     display: block;
 }
 
-oj-c-meter-bar.oj-c-meter-bar-horizontal {
+.oj-c-meter-bar-horizontal {
     width: 100%;
     line-height: 0;
 }
 
-oj-c-meter-bar.oj-c-meter-bar-vertical {
+.oj-c-meter-bar-vertical {
     height: 100%;
+    min-height: 154px;
+}
+
+.oj-c-meter-bar-horizontal-fit {
+    width: 1.5625rem;
+    height: 13.75rem;
+    line-height: 0;
+}
+
+.oj-c-meter-bar-vertical-fit {
+    width: 13.75rem;
+    height: 1.5625rem;
     min-height: 154px;
 }oj-c-meter-circle:not(.oj-complete) {
     visibility: hidden;
@@ -273,6 +335,11 @@ oj-c-meter-circle {
     width: fit-content;
     height: fit-content;
     line-height: 0;
+}
+
+.oj-c-meter-circle-fit {
+    width: 6rem;
+    height: 6rem;
 }oj-c-line-chart:not(.oj-complete) {
   visibility: hidden;
 }
@@ -284,7 +351,7 @@ oj-c-line-chart[hidden] {
 oj-c-line-chart {
   display: block;
   width: 100%;
-  height: 448px;
+  height: 28rem;
 }oj-c-list-item-layout:not(.oj-complete){
   visibility: hidden;
 }
@@ -310,18 +377,22 @@ oj-c-list-view {
 oj-c-list-view[hidden]
 {
   display: none;
+}
+
+oj-c-list-view:last-child
+{
+  overflow-anchor: none;
 }oj-c-radioset:not(.oj-complete){
   visibility: hidden;
 }
 
-oj-c-radioset{
-	display: inline-block;
-  max-width: 100%;
-  width: 100%;
+oj-c-radioset {
+  display: inline-block; 
+  box-sizing: border-box; 
+  width: auto;
 }
 
-oj-c-radioset[hidden]
-{
+oj-c-radioset[hidden] {
   display: none;
 }oj-c-split-menu-button:not(.oj-complete) {
   visibility: hidden;
@@ -344,32 +415,9 @@ oj-c-legend[hidden] {
 
 oj-c-legend {
     box-sizing: border-box;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.oj-c-legend-start {
-    justify-content: start;
-}
-
-.oj-c-legend-center {
-    justify-content: center;
-}
-
-.oj-c-legend-end {
-    justify-content: end;
-}
-
-.oj-c-legend-top {
-    align-items: start;
-}
-
-.oj-c-legend-middle {
-    align-items: center;
-}
-
-.oj-c-legend-bottom {
-    align-items: end;
+    display: block;
+    position: relative;
+    width: 100%;
 }oj-c-tag-cloud:not(.oj-complete) {
   visibility: hidden;
 }
@@ -381,7 +429,7 @@ oj-c-tag-cloud[hidden] {
 oj-c-tag-cloud {
   display: block;
   width: 100%;
-  height: 448px;
+  height: 28rem;
 }oj-c-message-banner:not(.oj-complete) {
   visibility: hidden;
 }
@@ -415,17 +463,49 @@ oj-c-selection-card {
 oj-c-selection-card[hidden]
 {
   display: none;
+}oj-c-popup:not(.oj-complete){
+  visibility: hidden;
+}
+
+oj-c-popup {
+  display: none;
+}
+
+oj-c-popup[hidden]
+{
+  display: none;
 }oj-c-drawer-popup:not(.oj-complete) {
   visibility: hidden;
 }
 
 oj-c-drawer-popup {
-  display: block;
+  display: none;
 }
 
 oj-c-drawer-popup[hidden] {
   display: none;
-}oj-c-labelled-link:not(.oj-complete) {
+}oj-c-drawer-layout:not(.oj-complete) {
+    visibility: hidden;
+}
+
+oj-c-drawer-layout {
+    display: block;
+}
+
+oj-c-drawer-layout[hidden] {
+    display: none;
+}oj-c-form-layout:not(.oj-complete) {
+  visibility: hidden;
+}
+
+oj-c-form-layout {
+  display: block;
+}
+
+oj-c-form-layout[hidden] {
+  display: none;
+}
+oj-c-labelled-link:not(.oj-complete) {
   visibility: hidden;
 }
 
@@ -447,5 +527,97 @@ oj-c-menu-button {
 }
 
 oj-c-menu-button[hidden] {
+  display: none;
+}
+oj-c-card-view:not(.oj-complete){
+  visibility: hidden;
+}
+  
+oj-c-card-view {
+  display: block;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+oj-c-card-view[hidden]
+{
+  display: none;
+}oj-c-conveyor-belt:not(.oj-complete){
+  visibility: hidden;
+}
+
+oj-c-conveyor-belt
+{
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+oj-c-conveyor-belt[hidden]
+{
+  display: none;
+}
+
+oj-c-conveyor-belt[orientation='vertical']
+{
+  display: inline-flex;
+}oj-c-buttonset-single:not(.oj-complete) {
+  visibility: hidden;
+}
+
+oj-c-buttonset-single {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+oj-c-buttonset-single[hidden] {
+  display: none;
+}oj-c-buttonset-multiple:not(.oj-complete) {
+  visibility: hidden;
+}
+
+oj-c-buttonset-multiple {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+oj-c-buttonset-multiple[hidden] {
+  display: none;
+}/* This file is where css selectors for the component go.
+   There will be hard coded properties and properties controlled by variables, for example
+
+   oj-c-table .oj-c-table-value-text {
+     color: var(--oj-c-table-value-text-color);
+     display: inline-block;
+	 }
+*/
+
+oj-c-table:not(.oj-complete) {
+  visibility: hidden;
+}
+
+oj-c-table {
+  align-items: stretch;
+  box-sizing: border-box;
+  clear: both;
+  display: inline-flex;
+  min-height: 24px;
+  min-width: 240px;
+  position: relative;
+}
+
+oj-c-table[hidden] {
+  display: none;
+}
+oj-c-progress-button:not(.oj-complete) {
+  visibility: hidden;
+}
+
+oj-c-progress-button {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+oj-c-progress-button[hidden] {
   display: none;
 }

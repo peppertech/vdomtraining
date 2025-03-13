@@ -1,4 +1,4 @@
-import { ValueFormats } from '@oracle/oraclejet-preact/UNSAFE_Chart/chart.types';
+import { ValueFormats } from '@oracle/oraclejet-preact/utils/UNSAFE_visTypes/chart';
 export declare function transformItem(item: any, series: any): {
     markerColor: any;
     accessibleLabel: any;

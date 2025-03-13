@@ -1,4 +1,4 @@
-define(["require", "exports", "./area-chart/area-chart"], function (require, exports, area_chart_1) {
+define(["require", "exports", "oj-c/area-chart/area-chart"], function (require, exports, area_chart_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AreaChart = void 0;

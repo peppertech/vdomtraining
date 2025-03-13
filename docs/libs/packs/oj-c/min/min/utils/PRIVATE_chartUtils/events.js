@@ -1,7 +1,8 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.getChartEventsHandler = exports.getIdFromDetail = void 0;
+    exports.getChartEventsHandler = void 0;
+    exports.getIdFromDetail = getIdFromDetail;
     const getItemDrillDetail = (series, groups, detail) => {
         const data = series[detail.seriesIndex];
         const group = groups[detail.groupIndex].id;
@@ -40,7 +41,6 @@ define(["require", "exports"], function (require, exports) {
         }
         return getDataItem(seriesIndex, groupIndex).id;
     }
-    exports.getIdFromDetail = getIdFromDetail;
     const getChartEventsHandler = (series, groups, drilling, onOjItemDrill, onOjGroupDrill, onOjSeriesDrill) => {
         const itemDrillHandler = (detail) => {
             if (drilling === 'on') {

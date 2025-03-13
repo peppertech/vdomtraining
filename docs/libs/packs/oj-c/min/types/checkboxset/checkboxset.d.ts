@@ -1,7 +1,7 @@
 import { JetElement, JetSettableProperties, JetElementCustomEventStrict, JetSetPropertyType } from 'ojs/index';
 import { GlobalProps } from 'ojs/ojvcomponent';
 import 'ojs/oj-jsx-interfaces';
-import { Component, ComponentProps } from 'preact';
+import { ComponentProps } from 'preact';
 import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
 import { ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, ReadOnlyPropertyChanged } from 'ojs/ojvcomponent';
 import { DataProvider } from 'ojs/ojdataprovider';
@@ -9,8 +9,10 @@ import { CheckboxSet as PreactCheckboxSet } from '@oracle/oraclejet-preact/UNSAF
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 import { DisplayOptions, Help, HelpHints } from 'oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText';
 import 'css!oj-c/checkboxset/checkboxset-styles.css';
+import { ComponentType } from 'preact';
 type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
 type PreactCheckboxSetProps = ComponentProps<typeof PreactCheckboxSet>;
+type DisplayOptionsProps = Pick<DisplayOptions, 'messages'>;
 type CheckboxsetArrayDataItem<V extends string | number> = CheckboxsetDataItem & {
     value: V;
 };
@@ -20,12 +22,12 @@ type CheckboxsetDataItem = {
     helpSourceLink?: string;
     helpSourceText?: string;
 };
-type Props<V extends string | number, D extends CheckboxsetDataItem> = ObservedGlobalProps<'aria-describedby' | 'id'> & {
+type CheckboxsetProps<V extends string | number, D extends CheckboxsetDataItem> = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     containerReadonly?: boolean;
     columnSpan?: LayoutColumnSpan;
     disabled?: boolean;
     direction?: PreactCheckboxSetProps['direction'];
-    displayOptions?: Pick<DisplayOptions, 'messages'>;
+    displayOptions?: DisplayOptionsProps;
     help?: Help;
     helpHints?: HelpHints;
     labelEdge?: PreactCheckboxSetProps['labelEdge'];
@@ -43,24 +45,11 @@ type Props<V extends string | number, D extends CheckboxsetDataItem> = ObservedG
     onValueChanged?: PropertyChanged<Array<V> | null | undefined>;
     value?: Array<V> | null;
 };
-declare class Checkboxset<V extends string | number, D extends CheckboxsetDataItem> extends Component<ExtendGlobalProps<Props<V, D>>> {
-    static defaultProps: Partial<Props<string | number, CheckboxsetDataItem>>;
-    private busyContextRef;
-    private checkboxSetRef;
-    private rootRef;
-    componentDidMount(): void;
-    render(props: ExtendGlobalProps<Props<V, D>>): import("preact").JSX.Element;
-    componentWillUnmount(): void;
-    reset(): void;
-    showMessages(): void;
-    validate(): Promise<ValidState>;
-    blur(): void;
-    focus(): void;
-}
+declare const Checkboxset: ComponentType<ExtendGlobalProps<CheckboxsetProps<string | number, CheckboxsetDataItem>>>;
 export { Checkboxset };
-export type { Props as CheckboxsetProps, CheckboxsetArrayDataItem, CheckboxsetDataItem };
+export type { CheckboxsetDataItem, CheckboxsetArrayDataItem, CheckboxsetProps };
 export interface CCheckboxsetElement<V extends string | number, D extends CheckboxsetDataItem> extends JetElement<CCheckboxsetElementSettableProperties<V, D>>, CCheckboxsetElementSettableProperties<V, D> {
-    readonly valid?: Parameters<Required<Props<V, D>>['onValidChanged']>[0];
+    readonly valid?: Parameters<Required<CheckboxsetProps<V, D>>['onValidChanged']>[0];
     addEventListener<T extends keyof CCheckboxsetElementEventMap<V, D>>(type: T, listener: (this: HTMLElement, ev: CCheckboxsetElementEventMap<V, D>[T]) => any, options?: (boolean | AddEventListenerOptions)): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: (boolean | AddEventListenerOptions)): void;
     getProperty<T extends keyof CCheckboxsetElementSettableProperties<V, D>>(property: T): CCheckboxsetElement<V, D>[T];
@@ -68,11 +57,11 @@ export interface CCheckboxsetElement<V extends string | number, D extends Checkb
     setProperty<T extends keyof CCheckboxsetElementSettableProperties<V, D>>(property: T, value: CCheckboxsetElementSettableProperties<V, D>[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CCheckboxsetElementSettableProperties<V, D>>): void;
     setProperties(properties: CCheckboxsetElementSettablePropertiesLenient<V, D>): void;
-    blur: Checkboxset<V, D>['blur'];
-    focus: Checkboxset<V, D>['focus'];
-    reset: Checkboxset<V, D>['reset'];
-    showMessages: Checkboxset<V, D>['showMessages'];
-    validate: Checkboxset<V, D>['validate'];
+    blur: () => void;
+    focus: () => void;
+    reset: () => void;
+    showMessages: () => void;
+    validate: () => Promise<'invalid' | 'valid'>;
 }
 export namespace CCheckboxsetElement {
     type columnSpanChanged<V extends string | number, D extends CheckboxsetDataItem> = JetElementCustomEventStrict<CCheckboxsetElement<V, D>['columnSpan']>;
@@ -117,24 +106,24 @@ export interface CCheckboxsetElementEventMap<V extends string | number, D extend
     'valueChanged': JetElementCustomEventStrict<CCheckboxsetElement<V, D>['value']>;
 }
 export interface CCheckboxsetElementSettableProperties<V extends string | number, D extends CheckboxsetDataItem> extends JetSettableProperties {
-    columnSpan?: Props<V, D>['columnSpan'];
-    containerReadonly?: Props<V, D>['containerReadonly'];
-    direction?: Props<V, D>['direction'];
-    disabled?: Props<V, D>['disabled'];
-    displayOptions?: Props<V, D>['displayOptions'];
-    help?: Props<V, D>['help'];
-    helpHints?: Props<V, D>['helpHints'];
-    labelEdge?: Props<V, D>['labelEdge'];
-    labelHint: Props<V, D>['labelHint'];
-    labelStartWidth?: Props<V, D>['labelStartWidth'];
-    labelWrapping?: Props<V, D>['labelWrapping'];
-    messagesCustom?: Props<V, D>['messagesCustom'];
-    options: Props<V, D>['options'];
-    readonly?: Props<V, D>['readonly'];
-    required?: Props<V, D>['required'];
-    requiredMessageDetail?: Props<V, D>['requiredMessageDetail'];
-    userAssistanceDensity?: Props<V, D>['userAssistanceDensity'];
-    value?: Props<V, D>['value'];
+    columnSpan?: CheckboxsetProps<V, D>['columnSpan'];
+    containerReadonly?: CheckboxsetProps<V, D>['containerReadonly'];
+    direction?: CheckboxsetProps<V, D>['direction'];
+    disabled?: CheckboxsetProps<V, D>['disabled'];
+    displayOptions?: CheckboxsetProps<V, D>['displayOptions'];
+    help?: CheckboxsetProps<V, D>['help'];
+    helpHints?: CheckboxsetProps<V, D>['helpHints'];
+    labelEdge?: CheckboxsetProps<V, D>['labelEdge'];
+    labelHint: CheckboxsetProps<V, D>['labelHint'];
+    labelStartWidth?: CheckboxsetProps<V, D>['labelStartWidth'];
+    labelWrapping?: CheckboxsetProps<V, D>['labelWrapping'];
+    messagesCustom?: CheckboxsetProps<V, D>['messagesCustom'];
+    options: CheckboxsetProps<V, D>['options'];
+    readonly?: CheckboxsetProps<V, D>['readonly'];
+    required?: CheckboxsetProps<V, D>['required'];
+    requiredMessageDetail?: CheckboxsetProps<V, D>['requiredMessageDetail'];
+    userAssistanceDensity?: CheckboxsetProps<V, D>['userAssistanceDensity'];
+    value?: CheckboxsetProps<V, D>['value'];
 }
 export interface CCheckboxsetElementSettablePropertiesLenient<V extends string | number, D extends CheckboxsetDataItem> extends Partial<CCheckboxsetElementSettableProperties<V, D>> {
     [key: string]: any;

@@ -6,8 +6,7 @@
     "memberof": "oj-c",
     "longname": "oj-c.SelectionCard",
     "kind": "class",
-    "classdesc": "<h3 id=\"SelectionCardOverview-section\">\n  JET Selection\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#CardOverview-section\"></a>\n</h3>\n<p>Description: Themeable, WAI-ARIA-compliant element that represents a card.</p>\n<p>Selection Card provides a styled rectangular area for use in collections.\n\n\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-selection-card\">\n  Sample Text\n&lt;/oj-c-selection-card>\n\n</code></pre>",
-    "ojhidden": true,
+    "classdesc": "<h3 id=\"SelectionCardOverview-section\">\n  JET Selection\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#SelectionCardOverview-section\"></a>\n</h3>\n<p>Description: Themeable, WAI-ARIA-compliant element that represents a card.</p>\n<p>Selection Card provides a styled rectangular area for use in collections.\n\n\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-selection-card\" selected=\"[[isSelected]]\">\n  Sample Text\n&lt;/oj-c-selection-card>\n\n</code></pre>\n\n<h3 id=\"diff-section\">\n  Differences between Cards in JET\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#diff-section\"></a>\n</h3>\n\n<p>\nThere are several different options for creating cards in JET applications.\n</p>\n<ul>\n<li><strong>oj-c-action-card:</strong> ActionCard fires action events and is supported for use stand alone or in oj-c-card-view. For accessibility reasons nothing interactive (for example links or buttons) can be put in an action card.</li>\n<li><strong>oj-c-selection-card:</strong> SelectionCard is supported for use in oj-c-card-view, with single or multiple selection.</li>\n<li><strong>oj-panel CSS class:</strong> For simple cases with no associated action or selection. Panel is supported for use in standalone or in oj-c-card-view.</li>\n</ul>",
     "scope": "static",
     "tagWithoutBrackets": "oj-c-selection-card",
     "tagWithBrackets": "<oj-c-selection-card>",
@@ -29,9 +28,15 @@
       }
     ],
     "since": "16.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
     "meta": {
       "filename": "selection-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selection-card"
+      "path": "web/components/oj-c/selection-card"
     },
     "ojmodule": "selection-card"
   },
@@ -47,7 +52,7 @@
     "ojhidden": true,
     "meta": {
       "filename": "selection-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selection-card"
+      "path": "web/components/oj-c/selection-card"
     },
     "type": {
       "names": [
@@ -64,7 +69,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "selection-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selection-card"
+      "path": "web/components/oj-c/selection-card"
     },
     "scope": "instance",
     "params": [
@@ -98,7 +103,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "selection-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selection-card"
+      "path": "web/components/oj-c/selection-card"
     },
     "scope": "instance",
     "params": [
@@ -127,7 +132,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "selection-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selection-card"
+      "path": "web/components/oj-c/selection-card"
     },
     "scope": "instance",
     "params": [
@@ -157,7 +162,7 @@
     "ojhidden": true,
     "meta": {
       "filename": "selection-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selection-card"
+      "path": "web/components/oj-c/selection-card"
     },
     "scope": "instance",
     "ojchild": true,

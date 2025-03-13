@@ -1,0 +1,2 @@
+define(['exports', './useVisAddBusyState-2d2ccb92', 'preact/hooks'], (function(e,s,r){"use strict";e.useResizeObserver=(e,t,n)=>{const{box:o,isDisabled:u=!1}=n||{},{onBusyStart:i,onBusyEnd:c}=s.useVisAddBusyState("useResizeObserver: resizing");r.useLayoutEffect((()=>{if(!e?.current||u)return;i();const s=e.current,r=new ResizeObserver((e=>{for(const s of e)t(s);c()}));return r.observe(s,{box:o}),()=>{r.disconnect(),c()}}),[e,t,o,u,i,c])}}));
+//# sourceMappingURL=useResizeObserver-275c3e83.js.map

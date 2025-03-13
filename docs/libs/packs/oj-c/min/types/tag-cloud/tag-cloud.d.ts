@@ -6,8 +6,19 @@ import { TagCloud as PreactTagCloud } from '@oracle/oraclejet-preact/UNSAFE_TagC
 import 'css!oj-c/tag-cloud/tag-cloud-styles.css';
 import { DataProvider } from 'ojs/ojdataprovider';
 import { TagCloudItemProps } from '../tag-cloud-item/tag-cloud-item';
-import { ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, TemplateSlot } from 'ojs/ojvcomponent';
+import { Action, Bubbles, ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, TemplateSlot } from 'ojs/ojvcomponent';
+import { type ContextMenuConfig, type ContextMenuSelectionDetail, type ContextMenuActionDetail } from 'oj-c/hooks/PRIVATE_useVisContextMenu/useVisContextMenu';
 type PreactTagCloudProps = ComponentProps<typeof PreactTagCloud>;
+export type TagCloudContextMenuConfig<K, D> = ContextMenuConfig<TagcloudContextMenuContext<K, D>>;
+export type TagCloudContextMenuSelectionDetail<K, D> = ContextMenuSelectionDetail<TagcloudContextMenuContext<K, D>>;
+export type TagCloudContextMenuActionDetail<K, D> = ContextMenuActionDetail<TagcloudContextMenuContext<K, D>>;
+export type TagcloudContextMenuContext<K, D> = {
+    data?: Item<K>;
+    itemData?: D;
+    type: 'item';
+} | {
+    type: 'background';
+};
 type DatatipContext<K> = {
     id: K;
 };
@@ -34,8 +45,11 @@ export type TagCloudProps<K, D extends Item<K> | any> = ObservedGlobalProps<'ari
     selection?: K[];
     onSelectionChanged?: PropertyChanged<K[]>;
     itemTemplate?: TemplateSlot<TagCloudItemTemplateContext<K, D>>;
+    contextMenuConfig?: TagCloudContextMenuConfig<K, D>;
+    onOjContextMenuAction?: Action<TagCloudContextMenuActionDetail<K, D>> & Bubbles;
+    onOjContextMenuSelection?: Action<TagCloudContextMenuSelectionDetail<K, D>> & Bubbles;
 };
-declare function TagCloudComp<K extends string | number, D extends any>({ hiddenCategories, data, highlightedCategories, hoverBehavior, layout, selection, selectionMode, highlightMatch, ...props }: TagCloudProps<K, D>): import("preact").JSX.Element;
+declare function TagCloudComp<K extends string | number, D extends any>({ hiddenCategories, data, highlightedCategories, hoverBehavior, layout, selection, selectionMode, highlightMatch, contextMenuConfig, onOjContextMenuAction, onOjContextMenuSelection, ...props }: TagCloudProps<K, D>): import("preact").JSX.Element;
 export declare const TagCloud: ComponentType<ExtendGlobalProps<ComponentProps<typeof TagCloudComp>>>;
 export {};
 export interface CTagCloudElement<K extends string | number, D extends any> extends JetElement<CTagCloudElementSettableProperties<K, D>>, CTagCloudElementSettableProperties<K, D> {
@@ -48,6 +62,11 @@ export interface CTagCloudElement<K extends string | number, D extends any> exte
     setProperties(properties: CTagCloudElementSettablePropertiesLenient<K, D>): void;
 }
 export namespace CTagCloudElement {
+    interface ojContextMenuAction<K extends string | number, D extends any> extends CustomEvent<TagCloudContextMenuActionDetail<K, D> & {}> {
+    }
+    interface ojContextMenuSelection<K extends string | number, D extends any> extends CustomEvent<TagCloudContextMenuSelectionDetail<K, D> & {}> {
+    }
+    type contextMenuConfigChanged<K extends string | number, D extends any> = JetElementCustomEventStrict<CTagCloudElement<K, D>['contextMenuConfig']>;
     type dataChanged<K extends string | number, D extends any> = JetElementCustomEventStrict<CTagCloudElement<K, D>['data']>;
     type datatipChanged<K extends string | number, D extends any> = JetElementCustomEventStrict<CTagCloudElement<K, D>['datatip']>;
     type hiddenCategoriesChanged<K extends string | number, D extends any> = JetElementCustomEventStrict<CTagCloudElement<K, D>['hiddenCategories']>;
@@ -58,8 +77,12 @@ export namespace CTagCloudElement {
     type selectionChanged<K extends string | number, D extends any> = JetElementCustomEventStrict<CTagCloudElement<K, D>['selection']>;
     type selectionModeChanged<K extends string | number, D extends any> = JetElementCustomEventStrict<CTagCloudElement<K, D>['selectionMode']>;
     type touchResponseChanged<K extends string | number, D extends any> = JetElementCustomEventStrict<CTagCloudElement<K, D>['touchResponse']>;
+    type RenderItemTemplate<K extends string | number, D extends any> = import('ojs/ojvcomponent').TemplateSlot<TagCloudItemTemplateContext<K, D>>;
 }
 export interface CTagCloudElementEventMap<K extends string | number, D extends any> extends HTMLElementEventMap {
+    'ojContextMenuAction': CTagCloudElement.ojContextMenuAction<K, D>;
+    'ojContextMenuSelection': CTagCloudElement.ojContextMenuSelection<K, D>;
+    'contextMenuConfigChanged': JetElementCustomEventStrict<CTagCloudElement<K, D>['contextMenuConfig']>;
     'dataChanged': JetElementCustomEventStrict<CTagCloudElement<K, D>['data']>;
     'datatipChanged': JetElementCustomEventStrict<CTagCloudElement<K, D>['datatip']>;
     'hiddenCategoriesChanged': JetElementCustomEventStrict<CTagCloudElement<K, D>['hiddenCategories']>;
@@ -72,6 +95,7 @@ export interface CTagCloudElementEventMap<K extends string | number, D extends a
     'touchResponseChanged': JetElementCustomEventStrict<CTagCloudElement<K, D>['touchResponse']>;
 }
 export interface CTagCloudElementSettableProperties<K, D extends Item<K> | any> extends JetSettableProperties {
+    contextMenuConfig?: TagCloudProps<K, D>['contextMenuConfig'];
     data: TagCloudProps<K, D>['data'];
     datatip?: TagCloudProps<K, D>['datatip'];
     hiddenCategories?: TagCloudProps<K, D>['hiddenCategories'];
@@ -88,6 +112,9 @@ export interface CTagCloudElementSettablePropertiesLenient<K, D extends Item<K> 
 }
 export interface TagCloudIntrinsicProps extends Partial<Readonly<CTagCloudElementSettableProperties<any, any>>>, GlobalProps, Pick<preact.JSX.HTMLAttributes, 'ref' | 'key'> {
     children?: import('preact').ComponentChildren;
+    onojContextMenuAction?: (value: CTagCloudElementEventMap<any, any>['ojContextMenuAction']) => void;
+    onojContextMenuSelection?: (value: CTagCloudElementEventMap<any, any>['ojContextMenuSelection']) => void;
+    oncontextMenuConfigChanged?: (value: CTagCloudElementEventMap<any, any>['contextMenuConfigChanged']) => void;
     ondataChanged?: (value: CTagCloudElementEventMap<any, any>['dataChanged']) => void;
     ondatatipChanged?: (value: CTagCloudElementEventMap<any, any>['datatipChanged']) => void;
     onhiddenCategoriesChanged?: (value: CTagCloudElementEventMap<any, any>['hiddenCategoriesChanged']) => void;

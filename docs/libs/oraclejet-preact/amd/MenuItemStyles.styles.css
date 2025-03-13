@@ -1,12 +1,12 @@
 .MenuItemStyles_baseStyle__735dwf0 {
   cursor: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-cursor-clickable) !important;
   width: 100%;
-  padding-top: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-cell-padding-vertical);
-  padding-bottom: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-cell-padding-vertical);
+  padding-top: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-item-padding-vertical);
+  padding-bottom: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-item-padding-vertical);
   padding-inline-start: var(--startEdgeToStartIconPadding__1qbg5hn1);
   padding-inline-end: var(--endIconToEndEdgePadding__1qbg5hn2);
   box-sizing: border-box;
-  min-height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-row-height);
+  min-height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-item-height);
   display: flex;
   -webkit-text-decoration-line: none !important;
           text-decoration-line: none !important;

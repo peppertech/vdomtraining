@@ -1,4 +1,6 @@
-import { ValidatorLike } from '../UNSAFE_useValidators/useValidators';
+import Validator = require('ojs/ojvalidator');
+import AsyncValidator = require('ojs/ojvalidator-async');
+type ValidatorLike<V> = Validator<V> | AsyncValidator<V>;
 type UseDeferredValidatorsProps = {
     labelHint?: string;
     required?: boolean;

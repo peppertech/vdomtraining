@@ -1,4 +1,4 @@
-define(["require", "exports", "./tag-cloud/tag-cloud"], function (require, exports, tag_cloud_1) {
+define(["require", "exports", "oj-c/tag-cloud/tag-cloud"], function (require, exports, tag_cloud_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TagCloud = void 0;

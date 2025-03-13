@@ -4,5 +4,5 @@ type InputDateTextProps = ComponentProps<typeof InputDateText>;
 type UseImplicitDateConverterProps = {
     converter?: InputDateTextProps['converter'];
 };
-export declare function useImplicitDateConverter({ converter }: UseImplicitDateConverterProps): import("@oracle/oraclejet-preact/UNSAFE_IntlFormatParse").FormatObj<string> & import("@oracle/oraclejet-preact/UNSAFE_IntlFormatParse").ParseObj<string>;
+export declare function useImplicitDateConverter({ converter }: UseImplicitDateConverterProps): import("@oracle/oraclejet-preact/dist/types/UNSAFE_IntlFormatParse").FormatObj<string> & import("@oracle/oraclejet-preact/dist/types/UNSAFE_IntlFormatParse").ParseObj<string>;
 export {};

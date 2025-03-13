@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findAreaChart = exports.AreaChartWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var AreaChartWebElement_1 = require("./AreaChartWebElement");
+exports.AreaChartWebElement = void 0;
+exports.findAreaChart = findAreaChart;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const AreaChartWebElement_1 = require("./AreaChartWebElement");
 Object.defineProperty(exports, "AreaChartWebElement", { enumerable: true, get: function () { return AreaChartWebElement_1.AreaChartWebElement; } });
 /**
  * Retrieve an instance of [AreaChartWebElement](../classes/AreaChartWebElement.html).
@@ -29,6 +30,5 @@ async function findAreaChart(driver, by) {
     }
     return webEl;
 }
-exports.findAreaChart = findAreaChart;
 (0, oraclejet_webdriver_1.register)('oj-c-area-chart', AreaChartWebElement_1.AreaChartWebElement);
 //# sourceMappingURL=index.js.map

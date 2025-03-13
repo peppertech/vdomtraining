@@ -1,1 +1,1 @@
-export { MenuItem, MenuSelection, MenuItemSelectionDetail, ItemsMenu } from './items-menu';
+export { MenuItem, MenuItems, ContextMenuItems, MenuSeparator, MenuSelection, MenuItemSelectionDetail, ItemsMenu } from './items-menu';

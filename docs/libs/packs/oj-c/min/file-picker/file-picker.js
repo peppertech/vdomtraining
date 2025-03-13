@@ -42,21 +42,13 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
                 if (rootRef.current?.contains(focusElement)) {
                     focusElement.blur();
                 }
-            },
-            _doSelectHelper: (fileList) => {
-                const promise = new Promise((resolve) => {
-                    elementPromiseResolverRef.current = resolve;
-                });
-                const ref = preactRef.current;
-                ref.onClickSelected(fileList);
-                return promise;
             }
         }));
         const rootRef = (0, hooks_1.useRef)(null);
         const preactRef = (0, hooks_1.useRef)(null);
         const BaseFilePicker = UNSAFE_FilePicker_1.FilePicker;
-        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, class: trigger ? 'oj-c-file-picker-with-trigger' : undefined, children: (0, jsx_runtime_1.jsx)(BaseFilePicker, { __testHandlerSymbol: preactRef, capture: capture, isDisabled: disabled, selectionMode: selectionMode, onCommit: onCommit, onReject: onReject, accept: accept, primaryText: getPrimaryText(primaryText), secondaryText: getSecondaryText(secondaryText, selectionMode), "aria-label": otherProps['aria-label'], width: "100%", children: trigger }) }));
-    }), "FilePicker", { "properties": { "accept": { "type": "Array<string>" }, "capture": { "type": "string", "enumValues": ["none", "environment", "user", "implementation"] }, "disabled": { "type": "boolean" }, "primaryText": { "type": "string|function" }, "secondaryText": { "type": "string|function" }, "selectionMode": { "type": "string", "enumValues": ["multiple", "single"] } }, "slots": { "trigger": {} }, "events": { "ojBeforeSelect": { "cancelable": true }, "ojInvalidSelect": {}, "ojSelect": {} }, "extension": { "_OBSERVED_GLOBAL_PROPS": ["aria-label"] }, "methods": { "focus": {}, "blur": {}, "_doSelectHelper": {} } }, { "capture": "none", "disabled": false, "selectionMode": "multiple" }, {
+        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, class: trigger ? 'oj-c-file-picker-with-trigger' : undefined, children: (0, jsx_runtime_1.jsx)(BaseFilePicker, { __testHandlerSymbol: preactRef, capture: capture === null ? undefined : capture, isDisabled: disabled, selectionMode: selectionMode, onCommit: onCommit, onReject: onReject, accept: accept === null ? undefined : accept, primaryText: getPrimaryText(primaryText), secondaryText: getSecondaryText(secondaryText, selectionMode), "aria-label": otherProps['aria-label'], width: "100%", children: trigger }) }));
+    }), "FilePicker", { "properties": { "accept": { "type": "Array<string>|null" }, "capture": { "type": "string|null", "enumValues": ["none", "environment", "user", "implementation"] }, "disabled": { "type": "boolean" }, "primaryText": { "type": "string|function" }, "secondaryText": { "type": "string|function" }, "selectionMode": { "type": "string", "enumValues": ["multiple", "single"] } }, "slots": { "trigger": {} }, "events": { "ojBeforeSelect": { "cancelable": true }, "ojInvalidSelect": {}, "ojSelect": {} }, "extension": { "_OBSERVED_GLOBAL_PROPS": ["aria-label"] }, "methods": { "focus": {}, "blur": {} } }, { "capture": "none", "disabled": false, "selectionMode": "multiple" }, {
         '@oracle/oraclejet-preact': translationBundle_1.default
     }, { consume: [UNSAFE_useTabbableMode_1.TabbableModeContext] });
 });

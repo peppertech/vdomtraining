@@ -59,7 +59,7 @@
     ],
     "meta": {
       "filename": "message-toast.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-toast"
+      "path": "web/components/oj-c/message-toast"
     },
     "ojmodule": "message-toast"
   },
@@ -74,7 +74,7 @@
     "description": "<p>Data for the Message Toast component. This data is used for rendering each toast message.\nThis is a required attribute. If an application needs to initialize the component with\nno initial messages, it would need to provide an empty DataProvider. When the application\nwants to show messages, it can then add new data to the existing DataProvider.</p>\n\n<p>When specifying a DataProvider for the data attribute, you need to provide the keyAttributes\nfor the DataProvider. The oj-c-message-toast component expects a single attribute of type\nstring or number as the key of the DataProvider. When the data is updated this key attribute\nwill be used to determine whether a new message is being added or an existing message is being\nupdated. This is required for performing necessary animations. When the application replaces\nthe DataProvider, the component assumes that all the messages are newly added irrespective of their\nkeys and performs animation accordingly.</p>",
     "meta": {
       "filename": "message-toast.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-toast"
+      "path": "web/components/oj-c/message-toast"
     },
     "type": {
       "names": [
@@ -85,7 +85,10 @@
       {
         "target": "Type",
         "value": "DataProvider<K, D>",
-        "jsdocOverride": true
+        "jsdocOverride": true,
+        "module": {
+          "DataProvider": "ojdataprovider"
+        }
       }
     ]
   },
@@ -97,10 +100,11 @@
     "longname": "oj-c.MessageToast#detailTemplateValue",
     "optional": true,
     "scope": "instance",
-    "description": "Applications can use this property to provide the name of a template or a function that\nreturns the name of a template to use for rendering the detail content.\n\nWhen a template name is provided as a value for this property, the corresponding template\nwill be used for rendering the detail content for all the messages. If applications want\nto use a different template for different messages, they can provide a function that\nreturns a template name instead.\n\nThe provided function should accept an object of type MessageToastTemplateValueParameters\nand return a key to a template for rendering the corresponding message's detail content.\nThe value returned from this function should be a key to one of the dynamic template slots\nprovided. If the returned value is not one of the keys of the provided dynamic template slots,\nthe component will throw an Error.\n\nIf the function returns null or undefined, the component then will perform default rendering\nof the detail content using the detail property of the corresponding message.\n\nIf an application specifies both detail and a valid detail-template-value, the detail-template-value\nwill take precedence and the corresponding template will be used for rendering the detail content.",
+    "description": "Applications can use this property to provide the name of a template or a function that\nreturns the name of a template to use for rendering the detail content.\n\nWhen a template name is provided as a value for this property, the corresponding template\nwill be used for rendering the detail content for all the messages. If applications want\nto use a different template for different messages, they can provide a function that\nreturns a template name instead.\n\nThe provided function should accept an object of type MessageToastTemplateValueParameters\nand return a key to a template for rendering the corresponding message's detail content.\nThe value returned from this function should be a key to one of the dynamic template slots\nprovided. If the returned value is not one of the keys of the provided dynamic template slots,\nthe component will throw an Error.\n\nIf the function returns null or undefined, the component then will perform default rendering\nof the detail content using the detail property of the corresponding message.\n\nIf an application specifies both detail and a valid detail-template-value, the detail-template-value\nwill take precedence and the corresponding template will be used for rendering the detail content.<p><span style=\"font-weight: bold\">Note:</span> For additional information see <a href=\"#DynamicSlots.MessageToastTemplateContext\">DynamicSlots.MessageToastTemplateContext</a>.</p>",
+    "dynamicSlotDef": "MessageToastTemplateContext",
     "meta": {
       "filename": "message-toast.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-toast"
+      "path": "web/components/oj-c/message-toast"
     },
     "type": {
       "names": [
@@ -110,7 +114,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "string|(parameters: MessageToastTemplateValueParameters<K, D>) => string | undefined",
+        "value": "string|(parameters: oj-c.MessageToast.MessageToastTemplateValueParameters<K, D>) => string | undefined",
         "jsdocOverride": true
       }
     ]
@@ -123,10 +127,11 @@
     "longname": "oj-c.MessageToast#iconTemplateValue",
     "optional": true,
     "scope": "instance",
-    "description": "Applications can use this property to provide the name of a template or a function that\nreturns the name of a template to use for rendering the icon content.\n\nWhen a template name is provided as a value for this property, the corresponding template\nwill be used for rendering the icon content for all the messages. If applications want\nto use a different template for different messages, they can provide a function that\nreturns a template name instead.\n\nThe provided function should accept an object of type MessageToastTemplateValueParameters\nand return a key to a template for rendering the corresponding message's icon content.\nThe value returned from this function should be a key to one of the dynamic template slots\nprovided. If the returned value is not one of the keys of the provided dynamic template slots,\nthe component will throw an Error.\n\nIf the function returns null or undefined, the component then will perform default rendering\nof the icon content using the icon property of the corresponding message.\n\nIf an application specifies both icon and a valid icon-template-value, the icon-template-value\nwill take precedence and the corresponding template will be used for rendering the icon content.",
+    "description": "Applications can use this property to provide the name of a template or a function that\nreturns the name of a template to use for rendering the icon content.\n\nWhen a template name is provided as a value for this property, the corresponding template\nwill be used for rendering the icon content for all the messages. If applications want\nto use a different template for different messages, they can provide a function that\nreturns a template name instead.\n\nThe provided function should accept an object of type MessageToastTemplateValueParameters\nand return a key to a template for rendering the corresponding message's icon content.\nThe value returned from this function should be a key to one of the dynamic template slots\nprovided. If the returned value is not one of the keys of the provided dynamic template slots,\nthe component will throw an Error.\n\nIf the function returns null or undefined, the component then will perform default rendering\nof the icon content using the icon property of the corresponding message.\n\nIf an application specifies both icon and a valid icon-template-value, the icon-template-value\nwill take precedence and the corresponding template will be used for rendering the icon content.<p><span style=\"font-weight: bold\">Note:</span> For additional information see <a href=\"#DynamicSlots.MessageToastTemplateContext\">DynamicSlots.MessageToastTemplateContext</a>.</p>",
+    "dynamicSlotDef": "MessageToastTemplateContext",
     "meta": {
       "filename": "message-toast.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-toast"
+      "path": "web/components/oj-c/message-toast"
     },
     "type": {
       "names": [
@@ -136,7 +141,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "string|(parameters: MessageToastTemplateValueParameters<K, D>) => string | undefined",
+        "value": "string|(parameters: oj-c.MessageToast.MessageToastTemplateValueParameters<K, D>) => string | undefined",
         "jsdocOverride": true
       }
     ]
@@ -152,7 +157,7 @@
     "description": "Defines an offset (in pixels) in the placement. Value can be supplied as a number or\nan object with horizontal and vertical values.",
     "meta": {
       "filename": "message-toast.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-toast"
+      "path": "web/components/oj-c/message-toast"
     },
     "defaultvalue": 0,
     "type": {
@@ -179,7 +184,7 @@
     "description": "Defines the fixed position where the messages will be positioned on the screen.\n- top-start resolves to top-left in LTR (top-right in RTL)\n- top-end resolves to top-right in LTR (top-left in RTL)\n- bottom-start resolves to bottom-left in LTR (bottom-right in RTL)\n- bottom-end resolves to bottom-right in LTR (bottom-left in RTL)",
     "meta": {
       "filename": "message-toast.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-toast"
+      "path": "web/components/oj-c/message-toast"
     },
     "defaultvalue": "\"bottom\"",
     "type": {
@@ -188,8 +193,8 @@
         "\"bottom\"",
         "\"top-start\"",
         "\"top-end\"",
-        "\"bottom-end\"",
         "\"bottom-start\"",
+        "\"bottom-end\"",
         "\"top-left\"",
         "\"top-right\"",
         "\"bottom-left\"",
@@ -206,7 +211,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "message-toast.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-toast"
+      "path": "web/components/oj-c/message-toast"
     },
     "scope": "instance",
     "params": [
@@ -240,7 +245,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "message-toast.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-toast"
+      "path": "web/components/oj-c/message-toast"
     },
     "scope": "instance",
     "params": [
@@ -269,7 +274,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "message-toast.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-toast"
+      "path": "web/components/oj-c/message-toast"
     },
     "scope": "instance",
     "params": [
@@ -298,7 +303,7 @@
     "description": "Triggered when a user tries to close a message through UI interaction. The application\nshould listen to this event and remove the corresponding message item from the data\nwhich would then result in the message being closed. If the application\nfails to remove the message item from the data, then no change will be done in the\nUI by the component and the message will stay in the UI opened.",
     "meta": {
       "filename": "message-toast.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-toast"
+      "path": "web/components/oj-c/message-toast"
     },
     "scope": "instance",
     "properties": [
@@ -315,8 +320,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -326,15 +331,15 @@
         "optional": false,
         "type": {
           "names": [
-            "any"
+            "string|number"
           ]
         },
         "tstype": [
           {
             "target": "Type",
             "value": "K",
-            "for": "key",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       },
@@ -351,8 +356,84 @@
           {
             "target": "Type",
             "value": "ItemMetadata<K>",
-            "for": "metadata",
             "jsdocOverride": true,
+            "for": "metadata",
+            "module": {
+              "ItemMetadata": "ojdataprovider"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.MessageToast",
+    "dynamicSlot": true,
+    "id": "oj-c.MessageToast#DynamicSlots.MessageToastTemplateContext",
+    "name": "DynamicSlots.MessageToastTemplateContext",
+    "kind": "member",
+    "longname": "oj-c.MessageToast#DynamicSlots.MessageToastTemplateContext",
+    "description": "Structure of template context used for dynamic templates \n    <p><span style=\"font-weight: bold\">Note:</span> For additional information see <a href=\"#detailTemplateValue\">detail-template-value</a>, <a href=\"#iconTemplateValue\">icon-template-value</a>.</p>",
+    "meta": {
+      "filename": "message-toast.tsx",
+      "path": "web/components/oj-c/message-toast"
+    },
+    "scope": "instance",
+    "ojchild": false,
+    "ojslot": true,
+    "ojtemplateslotprops": "MessageToastTemplateContext",
+    "properties": [
+      {
+        "name": "data",
+        "description": "The data for the current message",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "D",
+            "jsdocOverride": true,
+            "for": "data"
+          }
+        ]
+      },
+      {
+        "name": "key",
+        "description": "The key for the current message",
+        "optional": false,
+        "type": {
+          "names": [
+            "string|number"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "jsdocOverride": true,
+            "for": "key"
+          }
+        ]
+      },
+      {
+        "name": "metadata",
+        "description": "The metadata for the current message",
+        "optional": false,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "ItemMetadata<K>",
+            "jsdocOverride": true,
+            "for": "metadata",
             "module": {
               "ItemMetadata": "ojdataprovider"
             }
@@ -370,7 +451,7 @@
     "memberof": "oj-c.MessageToast",
     "meta": {
       "filename": "message-toast.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-toast"
+      "path": "web/components/oj-c/message-toast"
     },
     "ojfragment": true
   },
@@ -389,7 +470,7 @@
     },
     "meta": {
       "filename": "message-toast.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-toast"
+      "path": "web/components/oj-c/message-toast"
     },
     "properties": [
       {
@@ -456,14 +537,6 @@
             "number|string"
           ]
         },
-        "tstype": [
-          {
-            "target": "Type",
-            "value": "number|string",
-            "for": "autoTimeout",
-            "jsdocOverride": true
-          }
-        ],
         "ojvalues": [
           {
             "name": "off",
@@ -505,7 +578,7 @@
     },
     "meta": {
       "filename": "message-toast.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-toast"
+      "path": "web/components/oj-c/message-toast"
     },
     "properties": [
       {
@@ -516,7 +589,15 @@
           "names": [
             "any"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "D",
+            "jsdocOverride": true,
+            "for": "data"
+          }
+        ]
       },
       {
         "name": "key",
@@ -524,9 +605,17 @@
         "optional": false,
         "type": {
           "names": [
-            "any"
+            "string|number"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "jsdocOverride": true,
+            "for": "key"
+          }
+        ]
       },
       {
         "name": "metadata",
@@ -536,7 +625,18 @@
           "names": [
             "object"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "ItemMetadata<K>",
+            "jsdocOverride": true,
+            "for": "metadata",
+            "module": {
+              "ItemMetadata": "ojdataprovider"
+            }
+          }
+        ]
       }
     ]
   }

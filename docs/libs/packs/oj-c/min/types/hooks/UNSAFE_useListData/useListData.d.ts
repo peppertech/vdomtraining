@@ -18,4 +18,5 @@ export type FetchOptions<D> = {
     initialRowsFetched?: number;
     fetchSize?: number;
 };
-export declare const useListData: <K, D>(data: DataProvider<K, D>, options?: FetchOptions<D>) => [ListDataState<K, D>, (range: Range) => void];
+export declare const useListData: <K, D>(data: DataProvider<K, D> | null, options?: FetchOptions<D>) => [ListDataState<K, D>, (range: Range) => void];
+export declare const getEmptyState: <K, D>(precision: "exact" | "atLeast") => ListDataState<K, D>;

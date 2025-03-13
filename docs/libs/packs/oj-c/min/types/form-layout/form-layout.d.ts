@@ -1,11 +1,12 @@
 import { JetElement, JetSettableProperties, JetElementCustomEventStrict, JetSetPropertyType } from 'ojs/index';
 import { GlobalProps } from 'ojs/ojvcomponent';
 import 'ojs/oj-jsx-interfaces';
-import { Component, ComponentProps, ComponentChildren } from 'preact';
+import { ComponentType, ComponentProps, ComponentChildren } from 'preact';
 import { FormLayout as PreactFormLayout } from '@oracle/oraclejet-preact/UNSAFE_FormLayout';
 import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
 import { ExtendGlobalProps, ObservedGlobalProps } from 'ojs/ojvcomponent';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
+import 'css!oj-c/form-layout/form-layout-styles.css';
 type PreactFormLayoutProps = ComponentProps<typeof PreactFormLayout>;
 type Props = ObservedGlobalProps<'id'> & {
     children: ComponentChildren;
@@ -20,13 +21,8 @@ type Props = ObservedGlobalProps<'id'> & {
     readonly?: boolean;
     userAssistanceDensity?: PreactFormLayoutProps['userAssistanceDensity'];
 };
-export declare class FormLayout extends Component<ExtendGlobalProps<Props>> {
-    static defaultProps: Partial<Props>;
-    private busyContextRef;
-    private rootRef;
-    componentDidMount(): void;
-    render({ columnSpan, ...props }: ExtendGlobalProps<Props>): import("preact").JSX.Element;
-}
+declare function FormLayoutImpl({ columns, columnSpan, direction, fullWidth, id, maxColumns, ...otherProps }: Props): import("preact").JSX.Element;
+export declare const FormLayout: ComponentType<ExtendGlobalProps<ComponentProps<typeof FormLayoutImpl>>>;
 export type FormLayoutProps = Props;
 export {};
 export interface CFormLayoutElement extends JetElement<CFormLayoutElementSettableProperties>, CFormLayoutElementSettableProperties {

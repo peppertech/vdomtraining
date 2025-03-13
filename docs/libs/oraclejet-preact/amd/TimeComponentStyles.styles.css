@@ -101,13 +101,13 @@
 .TimeComponentStyles_horizontalScrollbarStyles_track__1qjsdbyi {
   width: 100%;
   height: calc(0.75 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
-  background-color: rgba(240, 240, 240);
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral30);
   pointer-events: none;
 }
 .TimeComponentStyles_horizontalScrollbarStyles_thumb__1qjsdbyj {
   position: relative;
   height: calc(0.75 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
-  background-color: rgba(158, 158, 158);
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral-strong);
   pointer-events: none;
 }
 .TimeComponentStyles_verticalScrollbarStyles_base__1qjsdbyk {
@@ -122,13 +122,13 @@
 .TimeComponentStyles_verticalScrollbarStyles_track__1qjsdbym {
   height: 100%;
   width: calc(0.75 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
-  background-color: rgba(240, 240, 240);
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral30);
   pointer-events: none;
 }
 .TimeComponentStyles_verticalScrollbarStyles_thumb__1qjsdbyn {
   position: relative;
   width: calc(0.75 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
-  background-color: rgba(158, 158, 158);
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral-strong);
   pointer-events: none;
 }
 .TimeComponentStyles_verticalGridlinesStyles_major__1qjsdbyo {

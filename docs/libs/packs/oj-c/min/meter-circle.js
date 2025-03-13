@@ -1,4 +1,4 @@
-define(["require", "exports", "./meter-circle/meter-circle"], function (require, exports, meter_circle_1) {
+define(["require", "exports", "oj-c/meter-circle/meter-circle"], function (require, exports, meter_circle_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MeterCircle = void 0;

@@ -28,9 +28,15 @@
       }
     ],
     "since": "14.0.0",
+    "tsdeprecated": [
+      {
+        "type": "production",
+        "since": "17.0.0"
+      }
+    ],
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "ojmodule": "split-menu-button"
   },
@@ -45,9 +51,8 @@
     "description": "Text to show in the button.",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
-    "defaultvalue": "\"\"",
     "type": {
       "names": [
         "string"
@@ -65,7 +70,7 @@
     "description": "Items describe the menu items rendered by the menu button.",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "defaultvalue": "[]",
     "type": {
@@ -76,10 +81,29 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "Array<SplitMenuButtonMenuItem>",
+        "value": "Array<oj-c.SplitMenuButton.MenuSeparator|oj-c.SplitMenuButton.MenuItem>",
         "jsdocOverride": true
       }
     ]
+  },
+  {
+    "memberof": "oj-c.SplitMenuButton",
+    "id": "oj-c.SplitMenuButton#tooltip",
+    "name": "tooltip",
+    "kind": "member",
+    "longname": "oj-c.SplitMenuButton#tooltip",
+    "optional": true,
+    "scope": "instance",
+    "description": "Text to show in the tooltip.",
+    "meta": {
+      "filename": "split-menu-button.tsx",
+      "path": "web/components/oj-c/split-menu-button"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
   },
   {
     "memberof": "oj-c.SplitMenuButton",
@@ -92,7 +116,7 @@
     "description": "Specifies that the button element should be disabled.",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "defaultvalue": false,
     "type": {
@@ -112,7 +136,7 @@
     "description": "Size of button",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "ojvalues": [
       {
@@ -166,20 +190,13 @@
     "description": "Specifies that the button style width",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "type": {
       "names": [
         "number|string"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "Size",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.SplitMenuButton",
@@ -192,7 +209,7 @@
     "description": "Indicates in what states the button has chromings in background and border.",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "ojvalues": [
       {
@@ -237,45 +254,21 @@
   },
   {
     "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#blur",
-    "name": "blur",
-    "kind": "function",
-    "longname": "oj-c.SplitMenuButton#blur",
-    "description": "blurs the button",
-    "ojhidden": true,
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
-    },
-    "scope": "instance",
-    "returns": [
-      {
-        "type": {
-          "names": [
-            "any"
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
     "id": "oj-c.SplitMenuButton#focus",
     "name": "focus",
     "kind": "function",
     "longname": "oj-c.SplitMenuButton#focus",
-    "description": "focuses the button",
-    "ojhidden": true,
+    "description": "",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "scope": "instance",
     "returns": [
       {
         "type": {
           "names": [
-            "any"
+            "void"
           ]
         }
       }
@@ -283,22 +276,43 @@
   },
   {
     "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#doAction",
-    "name": "doAction",
+    "id": "oj-c.SplitMenuButton#blur",
+    "name": "blur",
     "kind": "function",
-    "longname": "oj-c.SplitMenuButton#doAction",
-    "description": "invokes button action",
-    "ojhidden": true,
+    "longname": "oj-c.SplitMenuButton#blur",
+    "description": "",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "scope": "instance",
     "returns": [
       {
         "type": {
           "names": [
-            "any"
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.SplitMenuButton",
+    "id": "oj-c.SplitMenuButton#click",
+    "name": "click",
+    "kind": "function",
+    "longname": "oj-c.SplitMenuButton#click",
+    "description": "",
+    "meta": {
+      "filename": "split-menu-button.tsx",
+      "path": "web/components/oj-c/split-menu-button"
+    },
+    "scope": "instance",
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
           ]
         }
       }
@@ -313,7 +327,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "scope": "instance",
     "params": [
@@ -347,7 +361,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "scope": "instance",
     "params": [
@@ -376,7 +390,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "scope": "instance",
     "params": [
@@ -398,6 +412,30 @@
   },
   {
     "memberof": "oj-c.SplitMenuButton",
+    "id": "oj-c.SplitMenuButton#event:ojMenuAction",
+    "name": "ojMenuAction",
+    "kind": "event",
+    "longname": "oj-c.SplitMenuButton#event:ojMenuAction",
+    "description": "Triggered when a menu item is clicked, whether by keyboard, mouse, or touch events. Detail indicates which menu item was clicked.",
+    "meta": {
+      "filename": "split-menu-button.tsx",
+      "path": "web/components/oj-c/split-menu-button"
+    },
+    "scope": "instance",
+    "properties": [
+      {
+        "name": "key",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.SplitMenuButton",
     "id": "oj-c.SplitMenuButton#event:ojAction",
     "name": "ojAction",
     "kind": "event",
@@ -405,7 +443,7 @@
     "description": "Triggered when a button is clicked, whether by keyboard, mouse, or touch events. To meet accessibility requirements, the only supported way to react to the click of a button is to listen for this event.",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "scope": "instance"
   },
@@ -418,7 +456,7 @@
     "memberof": "oj-c.SplitMenuButton",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "ojfragment": true
   },
@@ -431,8 +469,167 @@
     "memberof": "oj-c.SplitMenuButton",
     "meta": {
       "filename": "split-menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/split-menu-button"
+      "path": "web/components/oj-c/split-menu-button"
     },
     "ojfragment": true
+  },
+  {
+    "memberof": "oj-c.SplitMenuButton",
+    "id": "oj-c.SplitMenuButton.MenuSeparator",
+    "name": "MenuSeparator",
+    "kind": "typedef",
+    "longname": "oj-c.SplitMenuButton.MenuSeparator",
+    "scope": "static",
+    "description": "Specifies a menu separator:  <code>{ type: \"separator\" }</code>.",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "split-menu-button.tsx",
+      "path": "web/components/oj-c/split-menu-button"
+    },
+    "properties": [
+      {
+        "name": "type",
+        "description": "Specifies a separator menu item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "\"separator\"",
+            "\"divider\""
+          ]
+        },
+        "tsdeprecated": [
+          {
+            "type": "deprecated",
+            "since": "17.0.0",
+            "target": "propertyValue",
+            "value": [
+              "divider"
+            ],
+            "description": "Use 'separator' instead."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.SplitMenuButton",
+    "id": "oj-c.SplitMenuButton.MenuItem",
+    "name": "MenuItem",
+    "kind": "typedef",
+    "longname": "oj-c.SplitMenuButton.MenuItem",
+    "scope": "static",
+    "description": "Specifies a standard menu item.",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "split-menu-button.tsx",
+      "path": "web/components/oj-c/split-menu-button"
+    },
+    "properties": [
+      {
+        "name": "type",
+        "description": "Specifies a standard menu item.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"item\""
+          ]
+        }
+      },
+      {
+        "name": "label",
+        "description": "The menu item label.",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "key",
+        "description": "A unique key associated with the menu item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "disabled",
+        "description": "Specifies if the menu item is disabled (enabled by default).",
+        "optional": true,
+        "type": {
+          "names": [
+            "boolean"
+          ]
+        }
+      },
+      {
+        "name": "onAction",
+        "description": "Optional callback function associated with the menu item.",
+        "optional": true,
+        "type": {
+          "names": [
+            "function"
+          ]
+        }
+      },
+      {
+        "name": "startIcon",
+        "description": "Optional icon to render at the start of the menu item.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "{ type?: 'class'; class: string; }|{ type: 'img'; src: string; }",
+            "jsdocOverride": true,
+            "for": "startIcon"
+          }
+        ]
+      },
+      {
+        "name": "endIcon",
+        "description": "Optional icon to render at the end of the menu item.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "{ type?: 'class'; class: string; }|{ type: 'img'; src: string; }",
+            "jsdocOverride": true,
+            "for": "endIcon"
+          }
+        ]
+      },
+      {
+        "name": "variant",
+        "description": "Specifies the menu item behavior.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"standard\"",
+            "\"destructive\""
+          ]
+        }
+      }
+    ]
   }
 ]

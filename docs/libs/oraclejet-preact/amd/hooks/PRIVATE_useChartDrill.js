@@ -1,2 +1,2 @@
-define(['exports', '../useChartDrill-fb4fb6f9', '../eventsUtils-0fae65ca', '../accUtils-3fffc1bb', '../clientHints-aa2ccdd3'], (function(e,t,i,l,s){"use strict";e.useChartDrill=t.useChartDrill,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(['exports', '../useChartDrill-307602e0', 'preact/hooks', '../eventsUtils-edf8f4e5', '../accUtils-530bdb90', '../clientHints-4f5a07b0', '../useVisDrill-7f811101', '../useDoubleTap-b6bf5458', '../clientUtils-009e930e', '../mergeProps-bcfa6a92'], (function(e,s,t,l,i,r,a,u,c,f){"use strict";e.useChartDrill=s.useChartDrill,Object.defineProperty(e,"__esModule",{value:!0})}));
 //# sourceMappingURL=PRIVATE_useChartDrill.js.map

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SelectorWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-selector WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -20,7 +20,7 @@ class SelectorWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Sets the value of <code>selectedKeys</code> property.
-     * Specifies the selectedKeys, should be hooked into the collection component.
+     * Specifies the selectedKeys.
      * @param selectedKeys The value to set for <code>selectedKeys</code>
      *
      */
@@ -29,7 +29,7 @@ class SelectorWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Gets the value of <code>selectedKeys</code> property.
-     * Specifies the selectedKeys, should be hooked into the collection component.
+     * Specifies the selectedKeys.
      * @return The value of <code>selectedKeys</code> property.
      *
      */

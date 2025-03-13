@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findSelectorAll = exports.SelectorAllWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var SelectorAllWebElement_1 = require("./SelectorAllWebElement");
+exports.SelectorAllWebElement = void 0;
+exports.findSelectorAll = findSelectorAll;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const SelectorAllWebElement_1 = require("./SelectorAllWebElement");
 Object.defineProperty(exports, "SelectorAllWebElement", { enumerable: true, get: function () { return SelectorAllWebElement_1.SelectorAllWebElement; } });
 /**
  * Retrieve an instance of [SelectorAllWebElement](../classes/SelectorAllWebElement.html).
@@ -29,6 +30,5 @@ async function findSelectorAll(driver, by) {
     }
     return webEl;
 }
-exports.findSelectorAll = findSelectorAll;
 (0, oraclejet_webdriver_1.register)('oj-c-selector-all', SelectorAllWebElement_1.SelectorAllWebElement);
 //# sourceMappingURL=index.js.map

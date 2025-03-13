@@ -1,4 +1,4 @@
-define(["require", "exports", "./split-menu-button/split-menu-button"], function (require, exports, split_menu_button_1) {
+define(["require", "exports", "oj-c/split-menu-button/split-menu-button"], function (require, exports, split_menu_button_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SplitMenuButton = void 0;

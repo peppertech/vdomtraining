@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findListItemLayout = exports.ListItemLayoutWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var ListItemLayoutWebElement_1 = require("./ListItemLayoutWebElement");
+exports.ListItemLayoutWebElement = void 0;
+exports.findListItemLayout = findListItemLayout;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const ListItemLayoutWebElement_1 = require("./ListItemLayoutWebElement");
 Object.defineProperty(exports, "ListItemLayoutWebElement", { enumerable: true, get: function () { return ListItemLayoutWebElement_1.ListItemLayoutWebElement; } });
 /**
  * Retrieve an instance of [ListItemLayoutWebElement](../classes/ListItemLayoutWebElement.html).
@@ -29,6 +30,5 @@ async function findListItemLayout(driver, by) {
     }
     return webEl;
 }
-exports.findListItemLayout = findListItemLayout;
 (0, oraclejet_webdriver_1.register)('oj-c-list-item-layout', ListItemLayoutWebElement_1.ListItemLayoutWebElement);
 //# sourceMappingURL=index.js.map

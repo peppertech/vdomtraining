@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findAvatar = exports.AvatarWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var AvatarWebElement_1 = require("./AvatarWebElement");
+exports.AvatarWebElement = void 0;
+exports.findAvatar = findAvatar;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const AvatarWebElement_1 = require("./AvatarWebElement");
 Object.defineProperty(exports, "AvatarWebElement", { enumerable: true, get: function () { return AvatarWebElement_1.AvatarWebElement; } });
 /**
  * Retrieve an instance of [AvatarWebElement](../classes/AvatarWebElement.html).
@@ -29,6 +30,5 @@ async function findAvatar(driver, by) {
     }
     return webEl;
 }
-exports.findAvatar = findAvatar;
 (0, oraclejet_webdriver_1.register)('oj-c-avatar', AvatarWebElement_1.AvatarWebElement);
 //# sourceMappingURL=index.js.map

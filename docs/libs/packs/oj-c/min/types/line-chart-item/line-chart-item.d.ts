@@ -5,6 +5,7 @@ export type LineChartItemProps = {
     seriesId: string;
     groupId: Array<string>;
     value: number;
+    x?: string;
     color?: string;
     markerDisplayed?: 'on' | 'off' | 'auto';
     markerShape?: 'circle' | 'diamond' | 'human' | 'plus' | 'square' | 'star' | 'triangleDown' | 'triangleUp' | 'auto';
@@ -34,6 +35,7 @@ export namespace CLineChartItemElement {
     type seriesIdChanged = JetElementCustomEventStrict<CLineChartItemElement['seriesId']>;
     type shortDescChanged = JetElementCustomEventStrict<CLineChartItemElement['shortDesc']>;
     type valueChanged = JetElementCustomEventStrict<CLineChartItemElement['value']>;
+    type xChanged = JetElementCustomEventStrict<CLineChartItemElement['x']>;
 }
 export interface CLineChartItemElementEventMap extends HTMLElementEventMap {
     'categoriesChanged': JetElementCustomEventStrict<CLineChartItemElement['categories']>;
@@ -46,6 +48,7 @@ export interface CLineChartItemElementEventMap extends HTMLElementEventMap {
     'seriesIdChanged': JetElementCustomEventStrict<CLineChartItemElement['seriesId']>;
     'shortDescChanged': JetElementCustomEventStrict<CLineChartItemElement['shortDesc']>;
     'valueChanged': JetElementCustomEventStrict<CLineChartItemElement['value']>;
+    'xChanged': JetElementCustomEventStrict<CLineChartItemElement['x']>;
 }
 export interface CLineChartItemElementSettableProperties extends JetSettableProperties {
     categories?: LineChartItemProps['categories'];
@@ -58,6 +61,7 @@ export interface CLineChartItemElementSettableProperties extends JetSettableProp
     seriesId: LineChartItemProps['seriesId'];
     shortDesc?: LineChartItemProps['shortDesc'];
     value: LineChartItemProps['value'];
+    x?: LineChartItemProps['x'];
 }
 export interface CLineChartItemElementSettablePropertiesLenient extends Partial<CLineChartItemElementSettableProperties> {
     [key: string]: any;
@@ -73,6 +77,7 @@ export interface LineChartItemIntrinsicProps extends Partial<Readonly<CLineChart
     onseriesIdChanged?: (value: CLineChartItemElementEventMap['seriesIdChanged']) => void;
     onshortDescChanged?: (value: CLineChartItemElementEventMap['shortDescChanged']) => void;
     onvalueChanged?: (value: CLineChartItemElementEventMap['valueChanged']) => void;
+    onxChanged?: (value: CLineChartItemElementEventMap['xChanged']) => void;
 }
 declare global {
     namespace preact.JSX {

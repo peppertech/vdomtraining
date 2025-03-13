@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageToastWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var selenium_webdriver_1 = require("selenium-webdriver");
-var MessageToastWebElementBase_1 = require("./MessageToastWebElementBase");
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const selenium_webdriver_1 = require("selenium-webdriver");
+const MessageToastWebElementBase_1 = require("./MessageToastWebElementBase");
 /**
  * The component WebElement for [oj-c-message-toast](../../../oj-c/docs/oj.MessageToast.html).
  * Do not instantiate this class directly, instead, use

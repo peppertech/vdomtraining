@@ -1,7 +1,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.determineSteppedValue = void 0;
+    exports.determineSteppedValue = determineSteppedValue;
     function determineSteppedValue(step, stepOpt, currentParsedValue, initialValue, maxOpt, minOpt) {
         const precision = _precision(stepOpt, initialValue, minOpt);
         if (precision > 0) {
@@ -16,7 +16,6 @@ define(["require", "exports"], function (require, exports) {
         }
         return _adjustValueForZeroPrecision(step, stepOpt, currentParsedValue, initialValue, maxOpt, minOpt);
     }
-    exports.determineSteppedValue = determineSteppedValue;
     function _adjustValueForZeroPrecision(step, stepOpt, currentParsedValue, initialValue, maxOpt, minOpt) {
         let stepBase = minOpt != null ? minOpt : initialValue;
         if (stepBase === null || stepBase === undefined) {

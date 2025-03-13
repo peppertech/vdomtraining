@@ -1,5 +1,6 @@
 .RatingGaugeStyles_baseStyle__5rd6cv0 {
   display: inline-flex;
+  -webkit-tap-highlight-color: transparent;
 }
 .RatingGaugeStyles_baseStyle__5rd6cv0:focus-visible {
   outline-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);

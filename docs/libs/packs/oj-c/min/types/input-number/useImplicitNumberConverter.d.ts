@@ -5,5 +5,5 @@ type InputNumberProps = ComponentProps<typeof InputNumber>;
 type UseImplicitNumberConverterProps = {
     converter?: InputNumberProps['converter'];
 };
-export declare function useImplicitNumberConverter({ converter }: UseImplicitNumberConverterProps): NumberConverter | import("@oracle/oraclejet/ojconverter")<number>;
+export declare function useImplicitNumberConverter({ converter }: UseImplicitNumberConverterProps): import("ojs/ojconverter")<number> | NumberConverter;
 export {};

@@ -7,7 +7,7 @@ define(["require", "exports", '@oracle/oraclejet-preact/translationBundle', "ojs
     };
     exports.LineChartGroup = (0, ojvcomponent_1.registerCustomElement)('oj-c-line-chart-group', ({ drilling = exports.LineChartGroupDefaults.drilling, ...props }) => {
         return null;
-    }, "LineChartGroup", { "properties": { "drilling": { "type": "string", "enumValues": ["inherit", "off", "on"] }, "name": { "type": "string" }, "shortDesc": { "type": "string" } } }, undefined, {
+    }, "LineChartGroup", { "properties": { "drilling": { "type": "string", "enumValues": ["inherit", "off", "on"] }, "name": { "type": "string" }, "shortDesc": { "type": "string" } } }, { "drilling": "inherit" }, {
         '@oracle/oraclejet-preact': translationBundle_1.default
     });
 });

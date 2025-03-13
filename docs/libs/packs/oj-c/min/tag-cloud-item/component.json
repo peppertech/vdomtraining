@@ -1,7 +1,7 @@
 {
   "name": "tag-cloud-item",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -14,6 +14,12 @@
   "displayName": "TagCloudItem",
   "main": "oj-c/tag-cloud-item",
   "help": "oj-c.TagCloudItem.html",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Visualizations"
@@ -25,7 +31,8 @@
       "type": "Array<string>",
       "description": "An array of category strings corresponding to the tag cloud items.",
       "displayName": "Categories",
-      "help": "#categories"
+      "help": "#categories",
+      "value": []
     },
     "color": {
       "type": "string",

@@ -39,7 +39,7 @@
     ],
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "ojmodule": "button"
   },
@@ -54,7 +54,7 @@
     "description": "Text to show in the button.",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "type": {
       "names": [
@@ -73,9 +73,8 @@
     "description": "Text to show in the tooltip. This overrides the default tooltip that renders the label when in icon mode.",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
-    "defaultvalue": "\"\"",
     "type": {
       "names": [
         "string"
@@ -93,7 +92,7 @@
     "description": "Specifies that the button element should be disabled.",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "defaultvalue": false,
     "type": {
@@ -113,20 +112,13 @@
     "description": "Specifies that the button style width",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "type": {
       "names": [
         "number|string"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "Size",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.Button",
@@ -139,7 +131,7 @@
     "description": "Display just the label, the icons, or all. Label is used as tooltip and should be set in all cases.",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "ojvalues": [
       {
@@ -193,9 +185,19 @@
     "description": "Size of button",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "ojvalues": [
+      {
+        "name": "xs",
+        "description": "Display an extra small button.  Only supported for component developers with ghost chroming in icon display mode.",
+        "displayName": "Extra Small",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
       {
         "name": "sm",
         "description": "Display a small button.",
@@ -230,6 +232,7 @@
     "defaultvalue": "\"md\"",
     "type": {
       "names": [
+        "\"xs\"",
         "\"sm\"",
         "\"md\"",
         "\"lg\""
@@ -247,7 +250,7 @@
     "description": "Specifies whether the button is attached to an edge. For example setting edge='bottom' can be used to attach a button to the bottom of a card. The button is then stretched to 100% width, and borders adjusted.",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "ojvalues": [
       {
@@ -263,7 +266,7 @@
       {
         "name": "bottom",
         "description": "Stretch the button to 100% width and adjust borders for usage at bottom of container.",
-        "displayName": "bottom",
+        "displayName": "Bottom",
         "type": {
           "names": [
             "string"
@@ -290,7 +293,7 @@
     "description": "Indicates in what states the button has variants in background and border.",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "ojvalues": [
       {
@@ -368,22 +371,21 @@
   },
   {
     "memberof": "oj-c.Button",
-    "id": "oj-c.Button#blur",
-    "name": "blur",
+    "id": "oj-c.Button#focus",
+    "name": "focus",
     "kind": "function",
-    "longname": "oj-c.Button#blur",
-    "description": "blurs the button",
-    "ojhidden": true,
+    "longname": "oj-c.Button#focus",
+    "description": "",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "scope": "instance",
     "returns": [
       {
         "type": {
           "names": [
-            "any"
+            "void"
           ]
         }
       }
@@ -391,22 +393,43 @@
   },
   {
     "memberof": "oj-c.Button",
-    "id": "oj-c.Button#focus",
-    "name": "focus",
+    "id": "oj-c.Button#blur",
+    "name": "blur",
     "kind": "function",
-    "longname": "oj-c.Button#focus",
-    "description": "focuses the button",
-    "ojhidden": true,
+    "longname": "oj-c.Button#blur",
+    "description": "",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "scope": "instance",
     "returns": [
       {
         "type": {
           "names": [
-            "any"
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Button",
+    "id": "oj-c.Button#click",
+    "name": "click",
+    "kind": "function",
+    "longname": "oj-c.Button#click",
+    "description": "",
+    "meta": {
+      "filename": "button.tsx",
+      "path": "web/components/oj-c/button"
+    },
+    "scope": "instance",
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
           ]
         }
       }
@@ -421,7 +444,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "scope": "instance",
     "params": [
@@ -455,7 +478,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "scope": "instance",
     "params": [
@@ -484,7 +507,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "scope": "instance",
     "params": [
@@ -513,7 +536,7 @@
     "description": "Triggered when a button is clicked, whether by keyboard, mouse, or touch events. To meet accessibility requirements, the only supported way to react to the click of a button is to listen for this event.",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "scope": "instance"
   },
@@ -526,7 +549,7 @@
     "description": "The startIcon slot is the button's start icon. The oj-c-button element accepts DOM nodes as children with the startIcon slot.",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "scope": "instance",
     "ojchild": false,
@@ -541,7 +564,7 @@
     "description": "The endIcon slot is the button's end icon. The oj-c-button element accepts DOM nodes as children with the endIcon slot.",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "scope": "instance",
     "ojchild": false,
@@ -556,7 +579,7 @@
     "memberof": "oj-c.Button",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "ojfragment": true
   },
@@ -569,7 +592,7 @@
     "memberof": "oj-c.Button",
     "meta": {
       "filename": "button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/button"
+      "path": "web/components/oj-c/button"
     },
     "ojfragment": true
   }

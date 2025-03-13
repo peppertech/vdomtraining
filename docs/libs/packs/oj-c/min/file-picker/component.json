@@ -1,7 +1,7 @@
 {
   "name": "file-picker",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -34,32 +34,33 @@
       "uxSpecs": [
         "file-picker"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/FilePickerWebElement.html"
     }
   },
   "propertyLayout": [
     {
       "propertyGroup": "common",
       "items": [
-        "max"
-      ]
-    },
-    {
-      "propertyGroup": "data",
-      "items": [
-        "value"
+        "accept",
+        "selectionMode",
+        "disabled",
+        "primaryText",
+        "secondaryText"
       ]
     }
   ],
   "since": "14.0.0",
   "properties": {
     "accept": {
-      "type": "Array<string>",
+      "type": "Array<string>|null",
       "description": "An array of strings of allowed MIME types or file extensions that can be uploaded. If not specified, accept all file types",
       "displayName": "Accept",
       "help": "#accept"
     },
     "capture": {
-      "type": "string",
+      "type": "string|null",
       "description": "Specifies the preferred facing mode for the device's media capture mechanism.",
       "displayName": "Capture",
       "help": "#capture",
@@ -205,16 +206,6 @@
     },
     "blur": {
       "description": "Blurs the file picker.",
-      "return": "void"
-    },
-    "_doSelectHelper": {
-      "description": "This is a private method that should only be called by the webelement API.",
-      "params": [
-        {
-          "name": "fileList",
-          "type": "FileList"
-        }
-      ],
       "return": "void"
     },
     "setProperty": {

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SplitMenuButtonWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-split-menu-button WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -26,6 +26,15 @@ class SplitMenuButtonWebElementBase extends elements_1.OjWebElement {
      */
     getItems() {
         return this.getProperty('items');
+    }
+    /**
+     * Gets the value of <code>tooltip</code> property.
+     * Text to show in the tooltip.
+     * @return The value of <code>tooltip</code> property.
+     *
+     */
+    getTooltip() {
+        return this.getProperty('tooltip');
     }
     /**
      * Gets the value of <code>disabled</code> property.

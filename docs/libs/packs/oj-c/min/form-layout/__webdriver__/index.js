@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findFormLayout = exports.FormLayoutWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var FormLayoutWebElement_1 = require("./FormLayoutWebElement");
+exports.FormLayoutWebElement = void 0;
+exports.findFormLayout = findFormLayout;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const FormLayoutWebElement_1 = require("./FormLayoutWebElement");
 Object.defineProperty(exports, "FormLayoutWebElement", { enumerable: true, get: function () { return FormLayoutWebElement_1.FormLayoutWebElement; } });
 /**
  * Retrieve an instance of [FormLayoutWebElement](../classes/FormLayoutWebElement.html).
@@ -29,6 +30,5 @@ async function findFormLayout(driver, by) {
     }
     return webEl;
 }
-exports.findFormLayout = findFormLayout;
 (0, oraclejet_webdriver_1.register)('oj-c-form-layout', FormLayoutWebElement_1.FormLayoutWebElement);
 //# sourceMappingURL=index.js.map

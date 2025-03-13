@@ -1,7 +1,7 @@
 {
   "name": "input-number",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -10,7 +10,7 @@
     "CInputNumberElement"
   ],
   "displayName": "InputNumber",
-  "description": "An input number displays a field that allows a user to enter a number value.",
+  "description": "An input number allows the user to enter a number value.",
   "help": "oj-c.InputNumber.html",
   "main": "oj-c/input-number",
   "status": [
@@ -36,6 +36,9 @@
       "uxSpecs": [
         "input-number"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/InputNumberWebElement.html"
     }
   },
   "propertyLayout": [
@@ -244,6 +247,13 @@
           "displayName": "Wrap"
         }
       },
+      "status": [
+        {
+          "type": "deprecated",
+          "since": "18.0.0",
+          "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+        }
+      ],
       "enumValues": [
         "truncate",
         "wrap"
@@ -262,9 +272,9 @@
     },
     "min": {
       "type": "number|null",
-      "description": "The maximum allowed value",
-      "displayName": "Max",
-      "help": "#max"
+      "description": "The minimum allowed value",
+      "displayName": "Min",
+      "help": "#min"
     },
     "messagesCustom": {
       "type": "Array<object>",
@@ -332,8 +342,7 @@
         "consume": {
           "name": "containerReadonly"
         }
-      },
-      "value": false
+      }
     },
     "required": {
       "type": "boolean",
@@ -401,9 +410,6 @@
         "right"
       ]
     },
-    "unsafe_labelledBy": {
-      "type": "string"
-    },
     "userAssistanceDensity": {
       "type": "string",
       "description": "Specifies the density of the form component's user assistance presentation.",
@@ -432,8 +438,7 @@
         "consume": {
           "name": "containerUserAssistanceDensity"
         }
-      },
-      "value": "reflow"
+      }
     },
     "validators": {
       "type": "Array<object>|null",
@@ -485,7 +490,7 @@
       "writeback": true
     },
     "transientValue": {
-      "type": "number",
+      "type": "number|null",
       "description": "Specifies the transient value of the component",
       "displayName": "Transient Value",
       "help": "#transientValue",
@@ -526,20 +531,25 @@
     }
   },
   "methods": {
-    "reset": {
-      "return": "any"
-    },
-    "showMessages": {
-      "return": "any"
-    },
-    "validate": {
-      "return": "Promise"
-    },
     "blur": {
-      "return": "any"
+      "description": "Blurs the input field.",
+      "return": "void"
     },
     "focus": {
-      "return": "any"
+      "description": "Focuses the input field.",
+      "return": "void"
+    },
+    "showMessages": {
+      "description": "Takes all deferred messages and shows them.",
+      "return": "void"
+    },
+    "reset": {
+      "description": "Resets the component by clearing all messages and updating the component's display value using the attribute value.",
+      "return": "void"
+    },
+    "validate": {
+      "description": "If enabled, validates the component's display value using the converter and all validators registered on the component. The Promise resolves to 'valid' if there were no converter parse errors and the component passed all validations, or if the component is disabled or readonly.",
+      "return": "Promise"
     },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",

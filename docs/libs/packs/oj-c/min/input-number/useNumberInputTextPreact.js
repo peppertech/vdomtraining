@@ -1,10 +1,10 @@
-define(["require", "exports", "oj-c/editable-value/UNSAFE_useEditableValue/useEditableValue", "oj-c/editable-value/UNSAFE_useValidators/useValidators", "./useImplicitNumberConverter", "./useImplicitNumberRangeValidator", "preact/hooks", "oj-c/editable-value/utils/utils", "./stepBasisUtils"], function (require, exports, useEditableValue_1, useValidators_1, useImplicitNumberConverter_1, useImplicitNumberRangeValidator_1, hooks_1, utils_1, stepBasisUtils_1) {
+define(["require", "exports", "preact/hooks", "oj-c/hooks/UNSAFE_useEditableValue/index", "oj-c/editable-value/UNSAFE_useDeferredValidators/useDeferredValidators", "./useImplicitNumberConverter", "./useImplicitNumberRangeValidator", "preact/hooks", "./stepBasisUtils", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "ojs/ojconverter-nativenumber"], function (require, exports, hooks_1, index_1, useDeferredValidators_1, useImplicitNumberConverter_1, useImplicitNumberRangeValidator_1, hooks_2, stepBasisUtils_1, UNSAFE_useTranslationBundle_1, ojconverter_nativenumber_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useNumberInputTextPreact = void 0;
+    exports.useNumberInputTextPreact = useNumberInputTextPreact;
     function useNumberInputTextPreact({ autocomplete = 'on', autofocus, converter: propConverter, disabled, displayOptions, inputPrefix, inputSuffix, labelEdge, labelHint, labelStartWidth, max, messagesCustom, min, numberRangeExactMessageDetail, numberRangeOverflowMessageDetail, numberRangeUnderflowMessageDetail, placeholder, readonly, required, requiredMessageDetail, step, stepperVariant, textAlign, userAssistanceDensity, validators, value: propValue, virtualKeyboard, onMessagesCustomChanged, onRawValueChanged, onTransientValueChanged, onValidChanged, onValueChanged, ...otherProps }, addBusyState) {
-        const minTreatNull = (0, utils_1.treatNull)(min);
-        const maxTreatNull = (0, utils_1.treatNull)(max);
+        const minTreatNull = (0, index_1.treatNull)(min);
+        const maxTreatNull = (0, index_1.treatNull)(max);
         const converter = (0, useImplicitNumberConverter_1.useImplicitNumberConverter)({
             converter: propConverter
         });
@@ -16,75 +16,92 @@ define(["require", "exports", "oj-c/editable-value/UNSAFE_useEditableValue/useEd
             numberRangeOverflowMessageDetail,
             numberRangeUnderflowMessageDetail
         });
-        const { onCommitValue, format, normalizeAndParseValue, methods, textFieldProps, value, setValue, displayValue, setDisplayValue, setTransientValue } = (0, useEditableValue_1.useEditableValue)({
+        const combinedValidators = (0, hooks_1.useMemo)(() => {
+            const v1 = implicitComponentValidator ? [implicitComponentValidator] : [];
+            const v2 = validators ? validators : [];
+            return [...v1, ...v2];
+        }, [implicitComponentValidator, validators]);
+        const deferredValidators = (0, useDeferredValidators_1.useDeferredValidators)({
+            labelHint,
+            required,
+            requiredMessageDetail
+        });
+        const translations = (0, UNSAFE_useTranslationBundle_1.useTranslationBundle)('@oracle/oraclejet-preact');
+        const converterParseError = translations.inputNumber_converterParseError();
+        const translateConverterParseError = (0, hooks_2.useCallback)((error) => {
+            return error?.cause === ojconverter_nativenumber_1.USER_INPUT_ERROR
+                ? { severity: 'error', detail: converterParseError }
+                : undefined;
+        }, [converterParseError]);
+        const { onCommitValue, formatValue, parseValue, methods, textFieldProps, value, setValue, displayValue, setDisplayValue, setTransientValue } = (0, index_1.useEditableValue)({
+            addBusyState,
             ariaDescribedBy: otherProps['aria-describedby'],
-            converter,
+            converter: converter,
+            defaultDisplayValue: '',
+            deferredValidators,
             disabled,
             displayOptions,
-            implicitComponentValidator,
             messagesCustom,
-            readonly,
-            required,
-            requiredMessageDetail,
-            validators,
-            value: propValue,
-            addBusyState,
             onMessagesCustomChanged,
             onRawValueChanged,
             onTransientValueChanged,
             onValidChanged,
-            onValueChanged
+            onValueChanged,
+            readonly,
+            translateConverterParseError,
+            validators: combinedValidators,
+            value: propValue
         });
         const hasMin = minTreatNull !== undefined;
         const hasMax = maxTreatNull !== undefined;
-        const isValidating = (0, hooks_1.useRef)(false);
-        const stepQueue = (0, hooks_1.useRef)(new Array());
-        const currentDisplayValueInStep = (0, hooks_1.useRef)(displayValue);
-        const initialValue = (0, hooks_1.useRef)((0, utils_1.treatNull)(propValue));
+        const isValidating = (0, hooks_2.useRef)(false);
+        const stepQueue = (0, hooks_2.useRef)(new Array());
+        const currentDisplayValueInStep = (0, hooks_2.useRef)(displayValue);
+        const initialValue = (0, hooks_2.useRef)((0, index_1.treatNull)(propValue));
         if (propValue !== value) {
-            initialValue.current = (0, utils_1.treatNull)(propValue);
+            initialValue.current = (0, index_1.treatNull)(propValue);
         }
-        const [valueNow, setValueNow] = (0, hooks_1.useState)((0, utils_1.treatNull)(value));
-        const [prevValue, setPrevValue] = (0, hooks_1.useState)(value);
+        const [valueNow, setValueNow] = (0, hooks_2.useState)((0, index_1.treatNull)(value));
+        const [prevValue, setPrevValue] = (0, hooks_2.useState)(value);
         if (value !== prevValue) {
             setPrevValue(value);
-            setValueNow((0, utils_1.treatNull)(value));
+            setValueNow((0, index_1.treatNull)(value));
             setTransientValue(value);
         }
-        const [hasUncommittedDisplayValue, setHasUncommittedDisplayValue] = (0, hooks_1.useState)(false);
+        const [hasUncommittedDisplayValue, setHasUncommittedDisplayValue] = (0, hooks_2.useState)(false);
         currentDisplayValueInStep.current = displayValue;
-        const onCommit = (0, hooks_1.useCallback)(async ({ value }) => {
+        const onCommit = (0, hooks_2.useCallback)(async ({ value }) => {
             setHasUncommittedDisplayValue(false);
-            const parsedValueOrSymbol = normalizeAndParseValue(value);
-            const parsedValue = parsedValueOrSymbol;
-            if (typeof parsedValueOrSymbol === 'symbol') {
+            const conversion = parseValue(value);
+            if (conversion.result === 'failure') {
                 setValueNow(undefined);
                 return;
             }
-            const validationResult = await onCommitValue(parsedValue);
-            if (validationResult === useValidators_1.ValidationResult.VALID) {
-                const formattedValue = format(parsedValue);
+            const parsedValue = conversion.value;
+            const commitSucceeded = await onCommitValue(parsedValue);
+            if (commitSucceeded) {
+                const formattedValue = formatValue(parsedValue);
                 setDisplayValue(formattedValue);
             }
             else {
-                setValueNow(parsedValue);
+                setValueNow(parsedValue ?? undefined);
             }
-        }, [format, normalizeAndParseValue, onCommitValue]);
-        const onInput = (0, hooks_1.useCallback)(({ value }) => {
+        }, [formatValue, parseValue, onCommitValue, setDisplayValue]);
+        const onInput = (0, hooks_2.useCallback)(({ value }) => {
             setDisplayValue(value ?? '');
             setHasUncommittedDisplayValue(true);
-        }, []);
+        }, [setDisplayValue]);
         const textFieldPropsWithOverride = { ...textFieldProps, onCommit, onInput };
-        const doStep = (0, hooks_1.useCallback)(async (direction, doCommit) => {
+        const doStep = (0, hooks_2.useCallback)(async (direction, doCommit) => {
             if (step === undefined || isValidating.current) {
                 return;
             }
             const displayValueToStep = currentDisplayValueInStep.current || '0';
-            const parsedValueOrSymbol = normalizeAndParseValue(displayValueToStep);
-            if (typeof parsedValueOrSymbol === 'symbol') {
+            const conversion = parseValue(displayValueToStep);
+            if (conversion.result === 'failure') {
                 return;
             }
-            const parsedValue = parsedValueOrSymbol;
+            const parsedValue = conversion.value;
             let newSteppedValue;
             if (direction !== undefined) {
                 const stepValue = direction === 'increase' ? step : -1 * step;
@@ -94,28 +111,37 @@ define(["require", "exports", "oj-c/editable-value/UNSAFE_useEditableValue/useEd
                 newSteppedValue = parsedValue;
             }
             isValidating.current = true;
-            const formattedValue = format(newSteppedValue);
+            const formattedValue = formatValue(newSteppedValue);
             setDisplayValue(formattedValue);
             currentDisplayValueInStep.current = formattedValue;
-            const validationResult = await onCommitValue(newSteppedValue, doCommit);
+            const commitSucceeded = await onCommitValue(newSteppedValue, doCommit);
             const isSpinning = doCommit === false;
-            const valueCommitted = doCommit && validationResult === useValidators_1.ValidationResult.VALID;
-            if (isSpinning && validationResult === useValidators_1.ValidationResult.VALID) {
+            const valueCommitted = doCommit && commitSucceeded;
+            if (isSpinning && commitSucceeded) {
                 setTransientValue(newSteppedValue);
             }
             if (!valueCommitted) {
                 setValueNow(newSteppedValue);
             }
             isValidating.current = false;
-        }, [value, displayValue, format, normalizeAndParseValue, onCommitValue]);
-        const processStepQueue = (0, hooks_1.useCallback)(async (direction) => {
+        }, [
+            formatValue,
+            maxTreatNull,
+            minTreatNull,
+            parseValue,
+            onCommitValue,
+            setDisplayValue,
+            setTransientValue,
+            step
+        ]);
+        const processStepQueue = (0, hooks_2.useCallback)(async (direction) => {
             await doStep(direction, true);
             if (stepQueue.current.length > 0) {
                 const direction = stepQueue.current.shift();
                 processStepQueue(direction);
             }
         }, [doStep]);
-        const handleStep = (0, hooks_1.useCallback)(async ({ direction }) => {
+        const handleStep = (0, hooks_2.useCallback)(async ({ direction }) => {
             if (isValidating.current) {
                 stepQueue.current.push(direction);
             }
@@ -123,20 +149,36 @@ define(["require", "exports", "oj-c/editable-value/UNSAFE_useEditableValue/useEd
                 processStepQueue(direction);
             }
         }, [processStepQueue]);
-        const handleSpin = (0, hooks_1.useCallback)(async ({ direction }) => {
+        const handleSpin = (0, hooks_2.useCallback)(async ({ direction }) => {
             const doCommit = false;
             stepQueue.current = [];
             doStep(direction, doCommit);
         }, [doStep]);
-        const handleSpinComplete = (0, hooks_1.useCallback)(async () => {
-            const parsedValueOrSymbol = normalizeAndParseValue(currentDisplayValueInStep.current);
-            const parsedValue = parsedValueOrSymbol;
-            if (typeof parsedValueOrSymbol === 'symbol') {
+        const handleSpinComplete = (0, hooks_2.useCallback)(async () => {
+            const conversion = parseValue(currentDisplayValueInStep.current);
+            if (conversion.result === 'failure') {
                 return;
             }
-            await onCommitValue(parsedValue);
-        }, [onCommitValue, normalizeAndParseValue]);
-        const valueText = calculateValueText(hasUncommittedDisplayValue, displayValue, valueNow, format);
+            await onCommitValue(conversion.value);
+        }, [onCommitValue, parseValue]);
+        const lastValueNow = (0, hooks_2.useRef)();
+        const lastDisplayValue = (0, hooks_2.useRef)();
+        const lastHasUncommittedDisplayValue = (0, hooks_2.useRef)();
+        const lastValueText = (0, hooks_2.useRef)();
+        let valueText;
+        if (hasUncommittedDisplayValue !== lastHasUncommittedDisplayValue.current ||
+            displayValue !== lastDisplayValue.current ||
+            valueNow !== lastValueNow.current) {
+            valueText = calculateValueText(hasUncommittedDisplayValue, displayValue, valueNow, formatValue);
+            lastHasUncommittedDisplayValue.current = hasUncommittedDisplayValue;
+            lastDisplayValue.current = displayValue;
+            lastValueNow.current = valueNow;
+            lastValueText.current = valueText;
+        }
+        else {
+            valueText = lastValueText.current;
+        }
+        const normalizedVirtualKeyboard = virtualKeyboard === 'auto' ? (0, index_1.getVirtualKeyboardHintFromConverter)(converter) : virtualKeyboard;
         return {
             value,
             setValue,
@@ -152,7 +194,7 @@ define(["require", "exports", "oj-c/editable-value/UNSAFE_useEditableValue/useEd
                 isDisabled: disabled,
                 isReadonly: readonly,
                 isRequired: required,
-                isRequiredShown: required && (userAssistanceDensity === 'compact' || (0, utils_1.treatNull)(value) === undefined),
+                isRequiredShown: required && (userAssistanceDensity === 'compact' || (0, index_1.treatNull)(value) === undefined),
                 label: labelHint,
                 labelEdge,
                 labelStartWidth,
@@ -173,12 +215,11 @@ define(["require", "exports", "oj-c/editable-value/UNSAFE_useEditableValue/useEd
                             (displayValue === '' && maxTreatNull === 0))),
                 textAlign,
                 userAssistanceDensity,
-                virtualKeyboard,
+                virtualKeyboard: normalizedVirtualKeyboard,
                 ...textFieldPropsWithOverride
             }
         };
     }
-    exports.useNumberInputTextPreact = useNumberInputTextPreact;
     function calculateValueText(hasUncommittedDisplayValue, displayValue, valueNow, format) {
         if (!hasUncommittedDisplayValue) {
             return displayValue !== '' ? displayValue : undefined;

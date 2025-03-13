@@ -51,7 +51,7 @@
     ],
     "meta": {
       "filename": "selector-all.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selector-all"
+      "path": "web/components/oj-c/selector-all"
     },
     "ojmodule": "selector-all"
   },
@@ -67,7 +67,7 @@
     "description": "Specifies the selectedKeys, should be hooked into the collection component.",
     "meta": {
       "filename": "selector-all.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selector-all"
+      "path": "web/components/oj-c/selector-all"
     },
     "type": {
       "names": [
@@ -78,9 +78,32 @@
       {
         "target": "Type",
         "value": "ImmutableKeySet<K>",
-        "jsdocOverride": true
+        "jsdocOverride": true,
+        "module": {
+          "ImmutableKeySet": "ojkeyset"
+        }
       }
     ]
+  },
+  {
+    "memberof": "oj-c.SelectorAll",
+    "id": "oj-c.SelectorAll#showTooltip",
+    "name": "showTooltip",
+    "kind": "member",
+    "longname": "oj-c.SelectorAll#showTooltip",
+    "optional": true,
+    "scope": "instance",
+    "description": "Specifies whether tooltip should be shown on the SelectorAll checkbox",
+    "meta": {
+      "filename": "selector-all.tsx",
+      "path": "web/components/oj-c/selector-all"
+    },
+    "type": {
+      "names": [
+        "\"disabled\"",
+        "\"enabled\""
+      ]
+    }
   },
   {
     "memberof": "oj-c.SelectorAll",
@@ -91,7 +114,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "selector-all.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selector-all"
+      "path": "web/components/oj-c/selector-all"
     },
     "scope": "instance",
     "params": [
@@ -125,7 +148,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "selector-all.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selector-all"
+      "path": "web/components/oj-c/selector-all"
     },
     "scope": "instance",
     "params": [
@@ -154,7 +177,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "selector-all.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selector-all"
+      "path": "web/components/oj-c/selector-all"
     },
     "scope": "instance",
     "params": [

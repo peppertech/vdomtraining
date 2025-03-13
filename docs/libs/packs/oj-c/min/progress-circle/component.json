@@ -1,7 +1,7 @@
 {
   "name": "progress-circle",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -32,8 +32,11 @@
     "oracle": {
       "icon": "oj-ux-ico-circular-progress-7",
       "uxSpecs": [
-        "progress-indicator"
+        "progress-bar"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/ProgressCircleWebElement.html"
     }
   },
   "propertyLayout": [

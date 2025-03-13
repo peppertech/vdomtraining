@@ -1,7 +1,7 @@
 {
   "name": "input-date-text",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -10,9 +10,15 @@
     "CInputDateTextElement"
   ],
   "displayName": "InputDateText",
-  "description": "An input date text field allows a user to enter a date value. Input date text fields should have labels that explicitly identify the input as a date.",
+  "description": "An input date text allows the user to enter a date value.",
   "help": "oj-c.InputDateText.html",
   "main": "oj-c/input-date-text",
+  "status": [
+    {
+      "type": "production",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Forms"
@@ -25,8 +31,11 @@
     "oracle": {
       "icon": "oj-ux-ico-date",
       "uxSpecs": [
-        "input-date"
+        "input-date-text"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/InputDateTextWebElement.html"
     }
   },
   "propertyLayout": [
@@ -94,7 +103,8 @@
         "parse": {
           "type": "function"
         }
-      }
+      },
+      "value": null
     },
     "dateRangeOverflowMessageDetail": {
       "type": "string",
@@ -249,6 +259,13 @@
           "displayName": "Wrap"
         }
       },
+      "status": [
+        {
+          "type": "deprecated",
+          "since": "18.0.0",
+          "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+        }
+      ],
       "enumValues": [
         "truncate",
         "wrap"
@@ -311,8 +328,7 @@
         "consume": {
           "name": "containerReadonly"
         }
-      },
-      "value": false
+      }
     },
     "required": {
       "type": "boolean",
@@ -353,9 +369,6 @@
         "right"
       ]
     },
-    "unsafe_labelledBy": {
-      "type": "string"
-    },
     "userAssistanceDensity": {
       "type": "string",
       "description": "Specifies the density of the form component's user assistance presentation.",
@@ -384,8 +397,7 @@
         "consume": {
           "name": "containerUserAssistanceDensity"
         }
-      },
-      "value": "reflow"
+      }
     },
     "validators": {
       "type": "Array<object>|null",
@@ -445,20 +457,25 @@
     }
   },
   "methods": {
-    "reset": {
-      "return": "any"
-    },
-    "showMessages": {
-      "return": "any"
-    },
-    "validate": {
-      "return": "Promise"
-    },
     "blur": {
-      "return": "any"
+      "description": "Blurs the date field.",
+      "return": "void"
     },
     "focus": {
-      "return": "any"
+      "description": "Focuses the date field.",
+      "return": "void"
+    },
+    "showMessages": {
+      "description": "Takes all deferred messages and shows them.",
+      "return": "void"
+    },
+    "reset": {
+      "description": "Resets the component by clearing all messages and updating the component's display value using the attribute value.",
+      "return": "void"
+    },
+    "validate": {
+      "description": "If enabled, validates the component's display value using the converter and all validators registered on the component. The Promise resolves to 'valid' if there were no converter parse errors and the component passed all validations, or if the component is disabled or readonly.",
+      "return": "Promise"
     },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",

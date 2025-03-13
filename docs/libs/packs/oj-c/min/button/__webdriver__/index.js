@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findButton = exports.ButtonWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var ButtonWebElement_1 = require("./ButtonWebElement");
+exports.ButtonWebElement = void 0;
+exports.findButton = findButton;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const ButtonWebElement_1 = require("./ButtonWebElement");
 Object.defineProperty(exports, "ButtonWebElement", { enumerable: true, get: function () { return ButtonWebElement_1.ButtonWebElement; } });
 /**
  * Retrieve an instance of [ButtonWebElement](../classes/ButtonWebElement.html).
@@ -29,6 +30,5 @@ async function findButton(driver, by) {
     }
     return webEl;
 }
-exports.findButton = findButton;
 (0, oraclejet_webdriver_1.register)('oj-c-button', ButtonWebElement_1.ButtonWebElement);
 //# sourceMappingURL=index.js.map

@@ -1,30 +1,41 @@
-define(["require", "exports", "preact/hooks", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "oj-c/editable-value/UNSAFE_useEditableValue/useEditableValue", "oj-c/editable-value/UNSAFE_useValidators/useValidators"], function (require, exports, hooks_1, UNSAFE_useTranslationBundle_1, useEditableValue_1, useValidators_1) {
+define(["require", "exports", "preact/hooks", "oj-c/hooks/UNSAFE_useEditableValue/index", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle"], function (require, exports, hooks_1, index_1, UNSAFE_useTranslationBundle_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useCheckboxPreact = void 0;
-    function useCheckboxPreact({ ['aria-describedby']: ariaDescribedBy, disabled, displayOptions, messagesCustom, readonly, requiredMessageDetail: propRequiredMessageDetail, required, userAssistanceDensity, value: propValue, onMessagesCustomChanged, onValidChanged, onValueChanged, validators }, addBusyState) {
+    exports.useCheckboxPreact = useCheckboxPreact;
+    function useCheckboxPreact({ ['aria-describedby']: ariaDescribedBy, disabled, displayOptions, messagesCustom, readonly, requiredMessageDetail: propRequiredMessageDetail, required, userAssistanceDensity, value: propValue, onMessagesCustomChanged, onValidChanged, onValueChanged }, addBusyState) {
         const translations = (0, UNSAFE_useTranslationBundle_1.useTranslationBundle)('@oracle/oraclejet-preact');
         const requiredMessageDetail = propRequiredMessageDetail || translations.checkbox_requiredMessageDetail();
-        const { methods, onCommitValue, displayValue, setDisplayValue, textFieldProps } = (0, useEditableValue_1.useEditableValue)({
+        const deferredValidators = (0, hooks_1.useMemo)(() => {
+            return [
+                {
+                    validate: (value) => {
+                        if (required && value !== true) {
+                            throw new Error(requiredMessageDetail);
+                        }
+                        return;
+                    }
+                }
+            ];
+        }, [requiredMessageDetail, required]);
+        const { methods, onCommitValue, displayValue, refreshDisplayValue, textFieldProps } = (0, index_1.useEditableValue)({
+            addBusyState,
             ariaDescribedBy,
+            defaultDisplayValue: false,
+            deferredValidators,
             disabled,
             displayOptions,
             messagesCustom,
-            readonly,
-            required,
-            requiredMessageDetail,
-            value: propValue,
-            addBusyState,
             onMessagesCustomChanged,
             onValidChanged,
             onValueChanged,
-            validators
+            readonly,
+            value: propValue
         });
         const onCommitHandler = (0, hooks_1.useCallback)(async ({ value }) => {
-            const validationResult = await onCommitValue(value);
-            const newValue = validationResult === useValidators_1.ValidationResult.INVALID ? false : value;
-            setDisplayValue(newValue);
-        }, [onCommitValue]);
+            const commitSucceeded = await onCommitValue(value);
+            const newValue = commitSucceeded ? value : false;
+            refreshDisplayValue(newValue);
+        }, [onCommitValue, refreshDisplayValue]);
         const checkboxProps = {
             'aria-describedby': textFieldProps['aria-describedby'],
             isRequired: required,
@@ -40,5 +51,4 @@ define(["require", "exports", "preact/hooks", "@oracle/oraclejet-preact/hooks/UN
             checkboxProps
         };
     }
-    exports.useCheckboxPreact = useCheckboxPreact;
 });

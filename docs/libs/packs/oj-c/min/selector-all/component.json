@@ -1,7 +1,7 @@
 {
   "name": "selector-all",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -17,6 +17,9 @@
     },
     "vbdt": {
       "module": "oj-c/selectorAll"
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/SelectorAllWebElement.html"
     }
   },
   "help": "oj-c.SelectorAll.html",
@@ -39,6 +42,16 @@
       "help": "#selectedKeys",
       "required": true,
       "writeback": true
+    },
+    "showTooltip": {
+      "type": "string",
+      "description": "Specifies whether tooltip should be shown on the SelectorAll checkbox",
+      "displayName": "Show Tooltip",
+      "help": "#showTooltip",
+      "enumValues": [
+        "disabled",
+        "enabled"
+      ]
     }
   },
   "methods": {

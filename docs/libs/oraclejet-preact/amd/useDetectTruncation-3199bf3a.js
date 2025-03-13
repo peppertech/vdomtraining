@@ -1,0 +1,2 @@
+define(['exports', './useResizeObserver-275c3e83', 'preact/hooks'], (function(e,t,r){"use strict";e.useDetectTruncation=(e=!1)=>{const s=r.useRef(null),[u,c]=r.useState(!1),n=r.useCallback((()=>{s.current&&!e&&c(s.current.scrollWidth>s.current.offsetWidth)}),[e]);t.useResizeObserver(s,n,{isDisabled:e});return{detectTruncationProps:{ref:s},isTextTruncated:u}}}));
+//# sourceMappingURL=useDetectTruncation-3199bf3a.js.map

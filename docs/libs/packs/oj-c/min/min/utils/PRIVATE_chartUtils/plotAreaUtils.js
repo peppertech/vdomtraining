@@ -1,7 +1,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.getPlotArea = void 0;
+    exports.getPlotArea = getPlotArea;
     function getPlotArea(plotArea, yMajorTick, yMinorTick, xMajorTick) {
         return {
             color: plotArea?.backgroundColor,
@@ -16,5 +16,4 @@ define(["require", "exports"], function (require, exports) {
                 : xMajorTick
         };
     }
-    exports.getPlotArea = getPlotArea;
 });

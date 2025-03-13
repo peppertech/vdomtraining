@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InputPasswordWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-input-password WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -112,7 +112,7 @@ class InputPasswordWebElementBase extends elements_1.OjWebElement {
      * Gets the value of <code>labelWrapping</code> property.
      * Should the labels wrap or truncate when there is not enough available space.
      * @return The value of <code>labelWrapping</code> property.
-     *
+     * @deprecated Since 18.0.0. Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value.
      */
     getLabelWrapping() {
         return this.getProperty('labelWrapping');
@@ -190,15 +190,6 @@ class InputPasswordWebElementBase extends elements_1.OjWebElement {
         return this.getProperty('textAlign');
     }
     /**
-     * Gets the value of <code>unsafe_labelledBy</code> property.
-     *
-     * @return The value of <code>unsafe_labelledBy</code> property.
-     *
-     */
-    getUnsafeLabelledBy() {
-        return this.getProperty('unsafe_labelledBy');
-    }
-    /**
      * Gets the value of <code>userAssistanceDensity</code> property.
      * Specifies the density of the form component's user assistance presentation.
      * @return The value of <code>userAssistanceDensity</code> property.
@@ -245,7 +236,7 @@ class InputPasswordWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Gets the value of <code>valid</code> property.
-     * Specifies how the raw value of the component
+     * Specifies how the valid state of the component
      * @return The value of <code>valid</code> property.
      *
      */

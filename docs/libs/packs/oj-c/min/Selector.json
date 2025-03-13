@@ -6,7 +6,7 @@
     "memberof": "oj-c",
     "longname": "oj-c.Selector",
     "kind": "class",
-    "classdesc": "<h3 id=\"selectorOverview-section\">\n  JET Selector\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#selectorOverview-section\"></a>\n</h3>\n<p>Description: A checkbox to support selection in Collection Components</p>\n<p>The oj-c-selector is a component that may be placed within a template for Table, ListView.\nIt presents as a checkbox when the Collection Component is configured for multi-selection.\n\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-list-view\n   id=\"listview\"\n   data=\"[[dataProvider]]\"\n   selected=\"{{selectedItems}}\"\n   selection-mode=\"[[selectedSelectionMode]]\">\n &lt;template slot=\"itemTemplate\" data-oj-as=\"item\">\n   &lt;oj-c-list-item-layout>\n     &lt;oj-c-selector\n       selected-keys=\"{{selectedItems}}\"\n       selection-mode=\"[[selectedSelectionMode]]\"\n       row-key='[[item.key]]'\n       slot=\"selector\">\n     &lt;/oj-c-selector>\n     &lt;span>\n       &lt;oj-bind-text value=\"[[item.data.name]]\">&lt;/oj-bind-text>\n     &lt;/span>\n   &lt;/oj-c-list-item-layout>\n &lt;/template>\n&lt;/oj-c-list-view>\n</code></pre>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>Application must specify a value for the aria-label attribute with a meaningful description of the purpose of this selector in order for this to be accessible.</p>",
+    "classdesc": "<h3 id=\"selectorOverview-section\">\n  JET Selector\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#selectorOverview-section\"></a>\n</h3>\n<p>Description: A checkbox to support selection in Collection Components</p>\n<p>The oj-c-selector is a component that may be placed within a template for Table, ListView.\nIt presents as a checkbox when the Collection Component is configured for multi-selection.\n\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-list-view\n   id=\"listview\"\n   data=\"[[dataProvider]]\"\n   selected=\"{{selectedItems}}\"\n   selection-mode=\"[[selectedSelectionMode]]\">\n &lt;template slot=\"itemTemplate\" data-oj-as=\"item\">\n   &lt;oj-c-list-item-layout>\n     &lt;oj-c-selector\n       slot=\"selector\">\n     &lt;/oj-c-selector>\n     &lt;span>\n       &lt;oj-bind-text value=\"[[item.data.name]]\">&lt;/oj-bind-text>\n     &lt;/span>\n   &lt;/oj-c-list-item-layout>\n &lt;/template>\n&lt;/oj-c-list-view>\n</code></pre>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>Application must specify a value for the aria-label attribute with a meaningful description of the purpose of this selector in order for this to be accessible.</p>",
     "scope": "static",
     "tagWithoutBrackets": "oj-c-selector",
     "tagWithBrackets": "<oj-c-selector>",
@@ -51,7 +51,7 @@
     ],
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "ojmodule": "selector"
   },
@@ -61,16 +61,16 @@
     "name": "rowKey",
     "kind": "member",
     "longname": "oj-c.Selector#rowKey",
-    "optional": false,
+    "optional": true,
     "scope": "instance",
-    "description": "Specifies the row key of each selector.",
+    "description": "Specifies the row key of each selector.\nNote that if the selector is used inside one of these components:\n<ul>\n<li>oj-c-card-view</li>\n<li>oj-c-list-view</li>\n</ul>\nThen the selector will retrieve this directly from the above component and\ntherefore this attribute should not be set.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "type": {
       "names": [
-        "any"
+        "string|number"
       ]
     },
     "tstype": [
@@ -87,13 +87,13 @@
     "name": "selectedKeys",
     "kind": "member",
     "longname": "oj-c.Selector#selectedKeys",
-    "optional": false,
+    "optional": true,
     "scope": "instance",
     "ojwriteback": true,
-    "description": "Specifies the selectedKeys, should be hooked into the collection component.",
+    "description": "Specifies the selectedKeys.\nNote that if the selector is used inside one of these components:\n<ul>\n<li>oj-c-card-view</li>\n<li>oj-c-list-view</li>\n</ul>\nThen the selector will retrieve this directly from the above component and\ntherefore this attribute should not be set.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "type": {
       "names": [
@@ -104,7 +104,10 @@
       {
         "target": "Type",
         "value": "ImmutableKeySet<K>",
-        "jsdocOverride": true
+        "jsdocOverride": true,
+        "module": {
+          "ImmutableKeySet": "ojkeyset"
+        }
       }
     ]
   },
@@ -119,7 +122,7 @@
     "description": "Specifies if the selector should show the visual partial state.\nThe original checked state of the selector will still be maintained.\nUser selection of checkboxes will remove the indeterminate state and reveal the checkbox state.\nOtherwise, programmatically changing the checkbox state will not change the indeterminate state.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "defaultvalue": false,
     "type": {
@@ -136,10 +139,10 @@
     "longname": "oj-c.Selector#selectionMode",
     "optional": true,
     "scope": "instance",
-    "description": "Specifies the selection mode ('single', 'multiple'). For selection mode 'all', please refer to oj-c-selector-all component.",
+    "description": "Specifies the selection mode ('single', 'multiple'). For selection mode 'all', please refer to oj-c-selector-all component.\nNote that if the selector is used inside one of these components:\n<ul>\n<li>oj-c-card-view</li>\n<li>oj-c-list-view</li>\n</ul>\nThen the selector will retrieve this directly from the above component and\ntherefore this attribute should not be set.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "ojvalues": [
       {
@@ -163,7 +166,6 @@
         }
       }
     ],
-    "defaultvalue": "\"multiple\"",
     "type": {
       "names": [
         "\"multiple\"",
@@ -180,7 +182,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "scope": "instance",
     "params": [
@@ -214,7 +216,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "scope": "instance",
     "params": [
@@ -243,7 +245,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "scope": "instance",
     "params": [

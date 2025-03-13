@@ -1,4 +1,4 @@
-define(["require", "exports", "./meter-bar/meter-bar"], function (require, exports, meter_bar_1) {
+define(["require", "exports", "oj-c/meter-bar/meter-bar"], function (require, exports, meter_bar_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MeterBar = void 0;

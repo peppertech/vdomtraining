@@ -3,6 +3,8 @@ export type ReferenceLine = {
     color?: PreactReferenceLine['color'];
     position?: PreactReferenceLine['position'];
     value: PreactReferenceLine['value'];
+    label?: PreactReferenceLine['label'];
+    style?: PreactReferenceLine['labelStyle'];
 };
 export type Threshold = {
     accessibleLabel?: PreactThreshold['accessibleLabel'];

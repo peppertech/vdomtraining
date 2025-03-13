@@ -1,7 +1,7 @@
 define(["require", "exports", "preact/hooks"], function (require, exports, hooks_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useAssistiveText = void 0;
+    exports.useAssistiveText = useAssistiveText;
     function determineAssistiveText(help, validatorHint, helpHints, converterHint, displayOptions, userAssistanceDensity) {
         const helpHintsDef = userAssistanceDensity !== 'compact' ? helpHints?.definition : undefined;
         return (help?.instruction ||
@@ -56,5 +56,4 @@ define(["require", "exports", "preact/hooks"], function (require, exports, hooks
             helpSourceText
         };
     }
-    exports.useAssistiveText = useAssistiveText;
 });

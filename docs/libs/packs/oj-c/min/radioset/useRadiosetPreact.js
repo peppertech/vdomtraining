@@ -1,19 +1,23 @@
-define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "oj-c/editable-value/UNSAFE_useEditableValue/useEditableValue"], function (require, exports, UNSAFE_useTranslationBundle_1, useEditableValue_1) {
+define(["require", "exports", "oj-c/editable-value/UNSAFE_useDeferredValidators/useDeferredValidators", "oj-c/hooks/UNSAFE_useEditableValue/index", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle"], function (require, exports, useDeferredValidators_1, index_1, UNSAFE_useTranslationBundle_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useRadiosetPreact = void 0;
+    exports.useRadiosetPreact = useRadiosetPreact;
     function useRadiosetPreact({ direction, disabled, displayOptions, labelEdge, labelHint, labelStartWidth, messagesCustom, readonly, requiredMessageDetail: propRequiredMessageDetail, required, userAssistanceDensity, value: propValue, onMessagesCustomChanged, onValidChanged, onValueChanged, ...otherProps }, addBusyState) {
         const translations = (0, UNSAFE_useTranslationBundle_1.useTranslationBundle)('@oracle/oraclejet-preact');
         const requiredMessageDetail = propRequiredMessageDetail || translations.radio_requiredMessageDetail();
-        const { value, methods, textFieldProps } = (0, useEditableValue_1.useEditableValue)({
+        const deferredValidators = (0, useDeferredValidators_1.useDeferredValidators)({
+            labelHint,
+            required,
+            requiredMessageDetail
+        });
+        const { value, methods, textFieldProps } = (0, index_1.useEditableValue)({
             ariaDescribedBy: otherProps['aria-describedby'],
+            deferredValidators,
+            defaultDisplayValue: null,
             disabled,
             displayOptions,
-            labelHint,
             messagesCustom,
             readonly,
-            required,
-            requiredMessageDetail,
             value: propValue,
             addBusyState,
             onMessagesCustomChanged,
@@ -37,5 +41,4 @@ define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslat
             }
         };
     }
-    exports.useRadiosetPreact = useRadiosetPreact;
 });

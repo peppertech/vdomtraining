@@ -1,4 +1,4 @@
-define(["require", "exports", "./list-view/list-view"], function (require, exports, list_view_1) {
+define(["require", "exports", "oj-c/list-view/list-view"], function (require, exports, list_view_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ListView = void 0;

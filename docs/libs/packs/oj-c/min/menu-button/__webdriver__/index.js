@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findMenuButton = exports.MenuButtonWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var MenuButtonWebElement_1 = require("./MenuButtonWebElement");
+exports.MenuButtonWebElement = void 0;
+exports.findMenuButton = findMenuButton;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const MenuButtonWebElement_1 = require("./MenuButtonWebElement");
 Object.defineProperty(exports, "MenuButtonWebElement", { enumerable: true, get: function () { return MenuButtonWebElement_1.MenuButtonWebElement; } });
 /**
  * Retrieve an instance of [MenuButtonWebElement](../classes/MenuButtonWebElement.html).
@@ -29,6 +30,5 @@ async function findMenuButton(driver, by) {
     }
     return webEl;
 }
-exports.findMenuButton = findMenuButton;
 (0, oraclejet_webdriver_1.register)('oj-c-menu-button', MenuButtonWebElement_1.MenuButtonWebElement);
 //# sourceMappingURL=index.js.map

@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findInputText = exports.InputTextWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var InputTextWebElement_1 = require("./InputTextWebElement");
+exports.InputTextWebElement = void 0;
+exports.findInputText = findInputText;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const InputTextWebElement_1 = require("./InputTextWebElement");
 Object.defineProperty(exports, "InputTextWebElement", { enumerable: true, get: function () { return InputTextWebElement_1.InputTextWebElement; } });
 /**
  * Retrieve an instance of [InputTextWebElement](../classes/InputTextWebElement.html).
@@ -29,6 +30,5 @@ async function findInputText(driver, by) {
     }
     return webEl;
 }
-exports.findInputText = findInputText;
 (0, oraclejet_webdriver_1.register)('oj-c-input-text', InputTextWebElement_1.InputTextWebElement);
 //# sourceMappingURL=index.js.map

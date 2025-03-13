@@ -1,7 +1,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.getUpdatedItemsFromMutationDetail = void 0;
+    exports.getUpdatedItemsFromMutationDetail = getUpdatedItemsFromMutationDetail;
     async function getUpdatedItemsFromMutationDetail(detail, currentData, dataProvider) {
         const { add, remove, update } = detail ?? {};
         const keyIndexMap = new Map();
@@ -20,7 +20,6 @@ define(["require", "exports"], function (require, exports) {
         }
         return mutatedData;
     }
-    exports.getUpdatedItemsFromMutationDetail = getUpdatedItemsFromMutationDetail;
     function addItemsAtEnd(itemsToAdd, itemMetadataToAdd, items) {
         const indices = new Array(itemsToAdd.length).fill(-1);
         return addItemsAtIndices(indices, itemsToAdd, itemMetadataToAdd, items);

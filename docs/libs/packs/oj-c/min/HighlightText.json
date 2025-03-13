@@ -39,7 +39,7 @@
     ],
     "meta": {
       "filename": "highlight-text.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/highlight-text"
+      "path": "web/components/oj-c/highlight-text"
     },
     "ojmodule": "highlight-text"
   },
@@ -54,7 +54,7 @@
     "description": "The text string to match.",
     "meta": {
       "filename": "highlight-text.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/highlight-text"
+      "path": "web/components/oj-c/highlight-text"
     },
     "type": {
       "names": [
@@ -73,7 +73,7 @@
     "description": "The text string to apply highlighting to.",
     "meta": {
       "filename": "highlight-text.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/highlight-text"
+      "path": "web/components/oj-c/highlight-text"
     },
     "type": {
       "names": [
@@ -90,7 +90,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "highlight-text.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/highlight-text"
+      "path": "web/components/oj-c/highlight-text"
     },
     "scope": "instance",
     "params": [
@@ -124,7 +124,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "highlight-text.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/highlight-text"
+      "path": "web/components/oj-c/highlight-text"
     },
     "scope": "instance",
     "params": [
@@ -153,7 +153,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "highlight-text.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/highlight-text"
+      "path": "web/components/oj-c/highlight-text"
     },
     "scope": "instance",
     "params": [

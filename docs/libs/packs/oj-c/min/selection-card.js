@@ -1,4 +1,4 @@
-define(["require", "exports", "./selection-card/selection-card"], function (require, exports, selection_card_1) {
+define(["require", "exports", "oj-c/selection-card/selection-card"], function (require, exports, selection_card_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SelectionCard = void 0;

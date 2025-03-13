@@ -1,8 +1,8 @@
 define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "oj-c/editable-value/UNSAFE_useStaleIdentity/useStaleIdentity", "oj-c/select-common/utils/utils", "preact/hooks"], function (require, exports, UNSAFE_logger_1, useStaleIdentity_1, utils_1, hooks_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useSyncValueAndValueItem = void 0;
-    function useSyncValueAndValueItem({ addBusyState, dataProvider, setIsLoading, setValue, setValueItem, value, valueItem }) {
+    exports.useSyncValueAndValueItem = useSyncValueAndValueItem;
+    function useSyncValueAndValueItem({ addBusyState, dataProvider, setDisplayValue, setIsLoading, setValue, setValueItem, value, valueItem, validateValueOnExternalChange }) {
         const prevValueRef = (0, hooks_1.useRef)(value);
         const prevValueItemsRef = (0, hooks_1.useRef)(valueItem);
         const { setStaleIdentity } = (0, useStaleIdentity_1.useStaleIdentity)();
@@ -41,19 +41,44 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "o
                 setIsLoading(false);
             }
             resolveBusyState();
-        }, [dataProvider, hasValue, hasValueItem, value, valueItem]);
+        }, [
+            addBusyState,
+            dataProvider,
+            hasValue,
+            hasValueItem,
+            setIsLoading,
+            setStaleIdentity,
+            setValueItem,
+            value,
+            valueItem
+        ]);
         const syncValueToValueItem = (0, hooks_1.useCallback)(() => {
+            const updateValue = (nextValue) => {
+                const validationSucceeded = validateValueOnExternalChange(nextValue);
+                if (validationSucceeded) {
+                    setValue(nextValue);
+                    setDisplayValue(nextValue);
+                }
+            };
             if (!hasValueItem) {
                 if (hasValue) {
-                    setValue(utils_1.DEFAULT_VALUE);
+                    updateValue(utils_1.DEFAULT_VALUE);
                 }
                 return;
             }
             if (valueItem.key !== value) {
-                setValue(valueItem.key);
+                updateValue(valueItem.key);
                 return;
             }
-        }, [hasValue, hasValueItem, value, valueItem]);
+        }, [
+            hasValue,
+            hasValueItem,
+            setDisplayValue,
+            setValue,
+            validateValueOnExternalChange,
+            value,
+            valueItem
+        ]);
         (0, hooks_1.useEffect)(() => {
             if (hasValue) {
                 syncValueItemToValue();
@@ -81,9 +106,8 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "o
                 prevValueItemsRef.current = valueItem;
                 syncValueToValueItem();
             }
-        }, [value, valueItem]);
+        }, [syncValueItemToValue, syncValueToValueItem, value, valueItem]);
     }
-    exports.useSyncValueAndValueItem = useSyncValueAndValueItem;
     function handleFetchByKeysResults(value, valueItem, fetchByKeysResults) {
         if (valueItem && valueItem.key === value) {
             return valueItem;

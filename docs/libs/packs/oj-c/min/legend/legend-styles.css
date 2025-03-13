@@ -8,30 +8,7 @@ oj-c-legend[hidden] {
 
 oj-c-legend {
     box-sizing: border-box;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.oj-c-legend-start {
-    justify-content: start;
-}
-
-.oj-c-legend-center {
-    justify-content: center;
-}
-
-.oj-c-legend-end {
-    justify-content: end;
-}
-
-.oj-c-legend-top {
-    align-items: start;
-}
-
-.oj-c-legend-middle {
-    align-items: center;
-}
-
-.oj-c-legend-bottom {
-    align-items: end;
+    display: block;
+    position: relative;
+    width: 100%;
 }

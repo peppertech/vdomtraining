@@ -7,4 +7,5 @@ oj-c-avatar[hidden] {
 }
 oj-c-avatar {
   display: inline-block;
+  font-size: 0;
 }

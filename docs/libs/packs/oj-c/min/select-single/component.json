@@ -1,7 +1,7 @@
 {
   "name": "select-single",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -10,9 +10,15 @@
     "CSelectSingleElement"
   ],
   "displayName": "SelectSingle",
-  "description": "A select single provides support for single-select and search filtering",
+  "description": "A select single is a dropdown list that supports single selection and search filtering.",
   "help": "oj-c.SelectSingle.html",
   "main": "oj-c/select-single",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Forms"
@@ -27,6 +33,9 @@
       "uxSpecs": [
         "select-single-items"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/SelectSingleWebElement.html"
     }
   },
   "propertyLayout": [
@@ -230,6 +239,13 @@
           "displayName": "Wrap"
         }
       },
+      "status": [
+        {
+          "type": "deprecated",
+          "since": "18.0.0",
+          "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+        }
+      ],
       "enumValues": [
         "truncate",
         "wrap"
@@ -239,6 +255,13 @@
           "name": "labelWrapping"
         }
       }
+    },
+    "matchBy": {
+      "type": "Array<string>|null",
+      "description": "List of text filter matching behaviors to use when filtering.",
+      "displayName": "Match By",
+      "help": "#matchBy",
+      "value": null
     },
     "messagesCustom": {
       "type": "Array<object>",
@@ -285,8 +308,7 @@
         "consume": {
           "name": "containerReadonly"
         }
-      },
-      "value": false
+      }
     },
     "required": {
       "type": "boolean",
@@ -327,9 +349,6 @@
         "right"
       ]
     },
-    "unsafe_labelledBy": {
-      "type": "string"
-    },
     "userAssistanceDensity": {
       "type": "string",
       "description": "Specifies the density of the form component's user assistance presentation.",
@@ -358,11 +377,10 @@
         "consume": {
           "name": "containerUserAssistanceDensity"
         }
-      },
-      "value": "reflow"
+      }
     },
     "value": {
-      "type": "any",
+      "type": "string|number|null",
       "description": "The value of the component.",
       "displayName": "Value",
       "help": "#value",
@@ -509,6 +527,40 @@
     }
   },
   "slots": {
+    "collectionTemplate": {
+      "description": "The collectionTemplate slot is used to specify the template for rendering the items in the dropdown.",
+      "displayName": "collectionTemplate",
+      "help": "#collectionTemplate",
+      "maxItems": 1,
+      "preferredContent": [
+        "CTableElement"
+      ],
+      "data": {
+        "data": {
+          "type": "DataProvider|null"
+        },
+        "searchText": {
+          "type": "string"
+        },
+        "currentRowOverride": {
+          "type": "object",
+          "properties": {
+            "rowKey": {
+              "type": "string|number"
+            }
+          }
+        },
+        "onCurrentRowChanged": {
+          "type": "function"
+        },
+        "selected": {
+          "type": "object"
+        },
+        "onRowAction": {
+          "type": "function"
+        }
+      }
+    },
     "itemTemplate": {
       "description": "The itemTemplate slot is used to specify the template for rendering each item in the dropdown. See the Help documentation for more information.",
       "displayName": "itemTemplate",
@@ -640,22 +692,28 @@
     }
   },
   "methods": {
-    "reset": {
-      "return": "any"
-    },
-    "showMessages": {
-      "return": "any"
-    },
-    "validate": {
-      "return": "Promise"
-    },
     "blur": {
-      "return": "any"
+      "description": "Blurs the input field.",
+      "return": "void"
     },
     "focus": {
-      "return": "any"
+      "description": "Focuses the input field.",
+      "return": "void"
+    },
+    "showMessages": {
+      "description": "Takes all deferred messages and shows them.",
+      "return": "void"
+    },
+    "reset": {
+      "description": "Resets the component by clearing all messages and updating the component's display value using the attribute value.",
+      "return": "void"
+    },
+    "validate": {
+      "description": "If enabled, validates the component's display value using the converter and all validators registered on the component. The Promise resolves to 'valid' if there were no converter parse errors and the component passed all validations, or if the component is disabled or readonly.",
+      "return": "Promise"
     },
     "_doAdvancedSearchAction": {
+      "description": "This method imitates triggering the advanced search link in the dropdown. This is used by the WebElement implementation of oj-c-select-single.",
       "params": [
         {
           "name": "searchText",
@@ -663,9 +721,10 @@
           "type": "string"
         }
       ],
-      "return": "any"
+      "return": "void"
     },
     "_selectItemByValue": {
+      "description": "This method imitates an option selection from the dropdown by using the key of an item. This is used by the WebElement implementation of oj-c-select-single.",
       "params": [
         {
           "name": "value",
@@ -673,7 +732,10 @@
           "type": "any"
         }
       ],
-      "return": "any"
+      "return": "Promise"
+    },
+    "UNSAFE_focusAndOpenDropdown": {
+      "return": "void"
     },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",

@@ -2,16 +2,28 @@ define(["require", "exports", "preact/compat"], function (require, exports, comp
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.processTemplate = exports.processNodeTemplate = void 0;
+    const PRIVATE_VALUE_KEY = '__oj_private_do_not_use_value';
+    const PRIVATE_CHECKED_KEY = '__oj_private_do_not_use_checked';
+    const convertPrivatePropFromPreact = (prop, value) => {
+        if (prop === PRIVATE_VALUE_KEY) {
+            return { prop: 'value', value: typeof value !== 'symbol' ? value : undefined };
+        }
+        if (prop === PRIVATE_CHECKED_KEY) {
+            return { prop: 'checked', value: typeof value !== 'symbol' ? value : undefined };
+        }
+        return { prop, value };
+    };
     const getValidProp = (prop) => {
         return prop[0].toLowerCase() !== prop[0]
             ? prop.toLowerCase().replace(/-./g, (c) => c[1].toUpperCase())
             : prop;
     };
     const resolveProps = (props) => {
-        return Object.keys(props).reduce((resolvedProps, prop) => {
-            if (prop === 'children')
+        return Object.keys(props).reduce((resolvedProps, origProp) => {
+            if (origProp === 'children')
                 return resolvedProps;
-            resolvedProps[getValidProp(prop)] = props[prop];
+            const { prop, value } = convertPrivatePropFromPreact(origProp, props[origProp]);
+            resolvedProps[getValidProp(prop)] = value;
             return resolvedProps;
         }, {});
     };

@@ -1,7 +1,7 @@
 {
   "name": "action-card",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,6 +13,12 @@
   "displayName": "Action Card",
   "help": "oj-c.ActionCard.html",
   "main": "oj-c/action-card",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Layout & Nav"
@@ -25,8 +31,11 @@
     },
     "vbdt": {
       "module": "oj-c/action-card",
-      "defaultColumns": "1",
-      "minColumns": "1"
+      "defaultColumns": 1,
+      "minColumns": 1
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/ActionCardWebElement.html"
     }
   },
   "since": "16.0.0",
@@ -47,6 +56,15 @@
     }
   },
   "methods": {
+    "click": {
+      "return": "any"
+    },
+    "blur": {
+      "return": "any"
+    },
+    "focus": {
+      "return": "any"
+    },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
       "help": "#setProperty",

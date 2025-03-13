@@ -5,7 +5,6 @@
      -moz-user-select: none;
           user-select: none;
   touch-action: pan-y;
-  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral0);
 }
 .MenuStyles_dropdownMenuContainerStyle__10o3ulj1 {
   padding-top: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));

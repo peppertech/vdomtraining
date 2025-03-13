@@ -1,10 +1,10 @@
 import { JetElement, JetSettableProperties, JetElementCustomEventStrict, JetSetPropertyType } from 'ojs/index';
 import { GlobalProps } from 'ojs/ojvcomponent';
 import 'ojs/oj-jsx-interfaces';
-import { CancelableAction, ExtendGlobalProps, PropertyChanged, ObservedGlobalProps } from 'ojs/ojvcomponent';
+import { Action, CancelableAction, ExtendGlobalProps, PropertyChanged, ObservedGlobalProps } from 'ojs/ojvcomponent';
 import { ComponentChildren, ComponentType } from 'preact';
 import 'css!oj-c/drawer-popup/drawer-popup-styles.css';
-type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label' | 'aria-labelledby'> & {
+type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label' | 'aria-labelledby' | 'id'> & {
     children: ComponentChildren;
     opened: boolean;
     modality?: 'modal' | 'modeless';
@@ -12,7 +12,9 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label' | 'aria-label
     autoDismiss?: 'focus-loss' | 'none';
     closeGesture?: 'swipe' | 'none';
     onOjBeforeClose?: CancelableAction<object>;
+    onOjClose?: Action;
     onOpenedChanged?: PropertyChanged<boolean>;
+    backgroundColor?: string;
 };
 export declare const DrawerPopup: ComponentType<ExtendGlobalProps<Props>>;
 export {};
@@ -30,7 +32,10 @@ export namespace CDrawerPopupElement {
         accept: (param: Promise<void>) => void;
     }> {
     }
+    interface ojClose extends CustomEvent<{}> {
+    }
     type autoDismissChanged = JetElementCustomEventStrict<CDrawerPopupElement['autoDismiss']>;
+    type backgroundColorChanged = JetElementCustomEventStrict<CDrawerPopupElement['backgroundColor']>;
     type closeGestureChanged = JetElementCustomEventStrict<CDrawerPopupElement['closeGesture']>;
     type edgeChanged = JetElementCustomEventStrict<CDrawerPopupElement['edge']>;
     type modalityChanged = JetElementCustomEventStrict<CDrawerPopupElement['modality']>;
@@ -38,7 +43,9 @@ export namespace CDrawerPopupElement {
 }
 export interface CDrawerPopupElementEventMap extends HTMLElementEventMap {
     'ojBeforeClose': CDrawerPopupElement.ojBeforeClose;
+    'ojClose': CDrawerPopupElement.ojClose;
     'autoDismissChanged': JetElementCustomEventStrict<CDrawerPopupElement['autoDismiss']>;
+    'backgroundColorChanged': JetElementCustomEventStrict<CDrawerPopupElement['backgroundColor']>;
     'closeGestureChanged': JetElementCustomEventStrict<CDrawerPopupElement['closeGesture']>;
     'edgeChanged': JetElementCustomEventStrict<CDrawerPopupElement['edge']>;
     'modalityChanged': JetElementCustomEventStrict<CDrawerPopupElement['modality']>;
@@ -46,6 +53,7 @@ export interface CDrawerPopupElementEventMap extends HTMLElementEventMap {
 }
 export interface CDrawerPopupElementSettableProperties extends JetSettableProperties {
     autoDismiss?: Props['autoDismiss'];
+    backgroundColor?: Props['backgroundColor'];
     closeGesture?: Props['closeGesture'];
     edge?: Props['edge'];
     modality?: Props['modality'];
@@ -57,7 +65,9 @@ export interface CDrawerPopupElementSettablePropertiesLenient extends Partial<CD
 export interface DrawerPopupIntrinsicProps extends Partial<Readonly<CDrawerPopupElementSettableProperties>>, GlobalProps, Pick<preact.JSX.HTMLAttributes, 'ref' | 'key'> {
     children?: import('preact').ComponentChildren;
     onojBeforeClose?: (value: CDrawerPopupElementEventMap['ojBeforeClose']) => void;
+    onojClose?: (value: CDrawerPopupElementEventMap['ojClose']) => void;
     onautoDismissChanged?: (value: CDrawerPopupElementEventMap['autoDismissChanged']) => void;
+    onbackgroundColorChanged?: (value: CDrawerPopupElementEventMap['backgroundColorChanged']) => void;
     oncloseGestureChanged?: (value: CDrawerPopupElementEventMap['closeGestureChanged']) => void;
     onedgeChanged?: (value: CDrawerPopupElementEventMap['edgeChanged']) => void;
     onmodalityChanged?: (value: CDrawerPopupElementEventMap['modalityChanged']) => void;

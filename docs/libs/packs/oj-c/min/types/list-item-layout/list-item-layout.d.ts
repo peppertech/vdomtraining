@@ -17,7 +17,8 @@ export declare const ListItemLayout: import("preact").ComponentType<import("ojs/
     action?: Slot;
     quaternary?: Slot;
     navigation?: Slot;
-    inset?: "none" | "listInset" | undefined;
+    inset?: "none" | "listInset";
+    verticalAlignment?: "middle" | "top";
 }>>;
 export interface CListItemLayoutElement extends JetElement<CListItemLayoutElementSettableProperties>, CListItemLayoutElementSettableProperties {
     addEventListener<T extends keyof CListItemLayoutElementEventMap>(type: T, listener: (this: HTMLElement, ev: CListItemLayoutElementEventMap[T]) => any, options?: (boolean | AddEventListenerOptions)): void;
@@ -30,12 +31,15 @@ export interface CListItemLayoutElement extends JetElement<CListItemLayoutElemen
 }
 export namespace CListItemLayoutElement {
     type insetChanged = JetElementCustomEventStrict<CListItemLayoutElement['inset']>;
+    type verticalAlignmentChanged = JetElementCustomEventStrict<CListItemLayoutElement['verticalAlignment']>;
 }
 export interface CListItemLayoutElementEventMap extends HTMLElementEventMap {
     'insetChanged': JetElementCustomEventStrict<CListItemLayoutElement['inset']>;
+    'verticalAlignmentChanged': JetElementCustomEventStrict<CListItemLayoutElement['verticalAlignment']>;
 }
 export interface CListItemLayoutElementSettableProperties extends JetSettableProperties {
     inset?: ComponentProps<typeof ListItemLayout>['inset'];
+    verticalAlignment?: ComponentProps<typeof ListItemLayout>['verticalAlignment'];
 }
 export interface CListItemLayoutElementSettablePropertiesLenient extends Partial<CListItemLayoutElementSettableProperties> {
     [key: string]: any;
@@ -43,6 +47,7 @@ export interface CListItemLayoutElementSettablePropertiesLenient extends Partial
 export interface ListItemLayoutIntrinsicProps extends Partial<Readonly<CListItemLayoutElementSettableProperties>>, GlobalProps, Pick<preact.JSX.HTMLAttributes, 'ref' | 'key'> {
     children?: import('preact').ComponentChildren;
     oninsetChanged?: (value: CListItemLayoutElementEventMap['insetChanged']) => void;
+    onverticalAlignmentChanged?: (value: CListItemLayoutElementEventMap['verticalAlignmentChanged']) => void;
 }
 declare global {
     namespace preact.JSX {

@@ -1,4 +1,4 @@
-define(["require", "exports", "./select-multiple/select-multiple"], function (require, exports, select_multiple_1) {
+define(["require", "exports", "oj-c/select-multiple/select-multiple"], function (require, exports, select_multiple_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SelectMultiple = void 0;

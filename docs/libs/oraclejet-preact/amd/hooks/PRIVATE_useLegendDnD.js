@@ -1,0 +1,2 @@
+define(['exports', '../useLegendDnd-6ab55c11', '../useDnd-33ec1cdf', 'preact/jsx-runtime', 'preact/hooks', '../Common/themes/themeContract.css', '../utils-5077c092', '../colorUtils-7c069766', '../_curry1-df649359', '../PRIVATE_BaseLegend/themes/LegendStyles.css', 'css!./../LegendStyles.styles.css', '../eventsUtils-edf8f4e5'], (function(e,s,t,n,c,d,o,r,u,l,i,f){"use strict";e.useLegendDnd=s.useLegendDnd,Object.defineProperty(e,"__esModule",{value:!0})}));
+//# sourceMappingURL=PRIVATE_useLegendDnD.js.map

@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findSelectMultiple = exports.SelectMultipleWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var SelectMultipleWebElement_1 = require("./SelectMultipleWebElement");
+exports.SelectMultipleWebElement = void 0;
+exports.findSelectMultiple = findSelectMultiple;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const SelectMultipleWebElement_1 = require("./SelectMultipleWebElement");
 Object.defineProperty(exports, "SelectMultipleWebElement", { enumerable: true, get: function () { return SelectMultipleWebElement_1.SelectMultipleWebElement; } });
 /**
  * Retrieve an instance of [SelectMultipleWebElement](../classes/SelectMultipleWebElement.html).
@@ -29,6 +30,5 @@ async function findSelectMultiple(driver, by) {
     }
     return webEl;
 }
-exports.findSelectMultiple = findSelectMultiple;
 (0, oraclejet_webdriver_1.register)('oj-c-select-multiple', SelectMultipleWebElement_1.SelectMultipleWebElement);
 //# sourceMappingURL=index.js.map

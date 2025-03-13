@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findProgressBar = exports.ProgressBarWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var ProgressBarWebElement_1 = require("./ProgressBarWebElement");
+exports.ProgressBarWebElement = void 0;
+exports.findProgressBar = findProgressBar;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const ProgressBarWebElement_1 = require("./ProgressBarWebElement");
 Object.defineProperty(exports, "ProgressBarWebElement", { enumerable: true, get: function () { return ProgressBarWebElement_1.ProgressBarWebElement; } });
 /**
  * Retrieve an instance of [ProgressBarWebElement](../classes/ProgressBarWebElement.html).
@@ -29,6 +30,5 @@ async function findProgressBar(driver, by) {
     }
     return webEl;
 }
-exports.findProgressBar = findProgressBar;
 (0, oraclejet_webdriver_1.register)('oj-c-progress-bar', ProgressBarWebElement_1.ProgressBarWebElement);
 //# sourceMappingURL=index.js.map

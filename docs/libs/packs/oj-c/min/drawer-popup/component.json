@@ -1,7 +1,7 @@
 {
   "name": "drawer-popup",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -9,35 +9,63 @@
   "implements": [
     "CDrawerPopupElement"
   ],
-  "description": "Drawer Popup adds a single slide-in side content alongside some primary content to an application window.",
+  "description": "A Drawer Popup is a panel that slides into the viewport.",
   "displayName": "Drawer Popup",
   "help": "oj-c.DrawerPopup.html",
   "main": "oj-c/drawer-popup",
+  "status": [
+    {
+      "type": "supersedes",
+      "since": "17.0.0",
+      "value": [
+        "oj-drawer-popup"
+      ]
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Layout & Nav"
     },
     "vbdt": {
-      "module": "oj-c/drawer-popup"
+      "module": "oj-c/drawer-popup",
+      "pi": {
+        "layouts": {
+          "general": {
+            "customizers": [
+              {
+                "propertyName": "closeGesture",
+                "type": "enumeration"
+              },
+              {
+                "propertyName": "autoDismiss",
+                "type": "enumeration"
+              },
+              {
+                "propertyName": "edge",
+                "type": "enumeration"
+              },
+              {
+                "propertyName": "modality",
+                "type": "enumeration"
+              },
+              {
+                "propertyName": "opened"
+              }
+            ]
+          }
+        }
+      }
     },
     "oracle": {
       "icon": "oj-ux-ico-drawer",
       "uxSpecs": [
         "drawer"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/DrawerPopupWebElement.html"
     }
   },
-  "propertyLayout": [
-    {
-      "propertyGroup": "common",
-      "items": [
-        "opened",
-        "modality",
-        "edge",
-        "autoDismiss"
-      ]
-    }
-  ],
   "since": "16.0.0",
   "slots": {
     "": {
@@ -52,6 +80,11 @@
       "description": "Specifies whether the Drawer is open.",
       "displayName": "Opened",
       "help": "#opened",
+      "extension": {
+        "vbdt": {
+          "temporaryOverride": {}
+        }
+      },
       "writeback": true,
       "value": false
     },
@@ -99,6 +132,12 @@
         "swipe"
       ],
       "value": "swipe"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "description": "Specifies background color of the Drawer.",
+      "displayName": "backgroundColor",
+      "help": "#backgroundColor"
     }
   },
   "events": {
@@ -113,6 +152,11 @@
           "type": "function"
         }
       }
+    },
+    "ojClose": {
+      "description": "Triggered immediately after the drawer closes",
+      "displayName": "Close",
+      "help": "#event:close"
     }
   },
   "methods": {

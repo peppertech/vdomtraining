@@ -5,7 +5,7 @@ import { DisplayOptions, Help, HelpHints } from 'oj-c/editable-value/UNSAFE_useA
 import Validator = require('ojs/ojvalidator');
 import AsyncValidator = require('ojs/ojvalidator-async');
 import { ExtendGlobalProps, GlobalProps, ObservedGlobalProps, PropertyChanged, ReadOnlyPropertyChanged } from 'ojs/ojvcomponent';
-import { Component, ComponentProps } from 'preact';
+import { ComponentProps, ComponentType, Ref } from 'preact';
 import { FormatObj, ParseObj } from '@oracle/oraclejet-preact/UNSAFE_IntlFormatParse';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
@@ -37,29 +37,23 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     required?: boolean;
     requiredMessageDetail?: string;
     textAlign?: PreactInputTextProps['textAlign'];
-    unsafe_labelledBy?: string;
     userAssistanceDensity?: PreactInputTextProps['userAssistanceDensity'];
     validators?: (AsyncValidator<DateISOStr> | Validator<DateISOStr>)[] | null;
     value?: DateISOStr | null;
     onMessagesCustomChanged?: PropertyChanged<PreactInputTextProps['messages']>;
     onRawValueChanged?: ReadOnlyPropertyChanged<string>;
     onValidChanged?: ReadOnlyPropertyChanged<ValidState>;
-    onValueChanged?: PropertyChanged<string>;
+    onValueChanged?: PropertyChanged<string | null>;
 };
-export declare class InputDateText extends Component<ExtendGlobalProps<Props>> {
-    static defaultProps: Partial<Props>;
-    private busyContextRef;
-    private inputDateTextRef;
-    private rootRef;
-    componentDidMount(): void;
-    render({ columnSpan, ...props }: ExtendGlobalProps<Props>): import("preact").JSX.Element;
-    componentWillUnmount(): void;
-    reset(): void;
-    showMessages(): void;
-    validate(): Promise<'valid' | 'invalid'>;
-    blur(): void;
-    focus(): void;
-}
+type InputDateTextHandle = {
+    blur: () => void;
+    focus: () => void;
+    showMessages: () => void;
+    reset: () => void;
+    validate: () => Promise<'valid' | 'invalid'>;
+};
+declare const InputDateTextImpl: ({ autocomplete, columnSpan, containerReadonly: propContainerReadonly, converter, disabled, displayOptions, help, helpHints, id, labelWrapping: propLabelWrapping, messagesCustom, readonly: propReadonly, required, userAssistanceDensity: propUserAssistanceDensity, validators, value, ...otherProps }: Props, ref: Ref<InputDateTextHandle>) => import("preact").JSX.Element;
+export declare const InputDateText: ComponentType<ExtendGlobalProps<ComponentProps<typeof InputDateTextImpl>>>;
 export type InputDateTextProps = Props;
 export {};
 export interface CInputDateTextElement extends JetElement<CInputDateTextElementSettableProperties>, CInputDateTextElementSettableProperties {
@@ -72,11 +66,11 @@ export interface CInputDateTextElement extends JetElement<CInputDateTextElementS
     setProperty<T extends keyof CInputDateTextElementSettableProperties>(property: T, value: CInputDateTextElementSettableProperties[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CInputDateTextElementSettableProperties>): void;
     setProperties(properties: CInputDateTextElementSettablePropertiesLenient): void;
-    blur: InputDateText['blur'];
-    focus: InputDateText['focus'];
-    reset: InputDateText['reset'];
-    showMessages: InputDateText['showMessages'];
-    validate: InputDateText['validate'];
+    blur: () => void;
+    focus: () => void;
+    reset: () => void;
+    showMessages: () => void;
+    validate: () => Promise<'invalid' | 'valid'>;
 }
 export namespace CInputDateTextElement {
     type autocompleteChanged = JetElementCustomEventStrict<CInputDateTextElement['autocomplete']>;
@@ -101,7 +95,6 @@ export namespace CInputDateTextElement {
     type requiredChanged = JetElementCustomEventStrict<CInputDateTextElement['required']>;
     type requiredMessageDetailChanged = JetElementCustomEventStrict<CInputDateTextElement['requiredMessageDetail']>;
     type textAlignChanged = JetElementCustomEventStrict<CInputDateTextElement['textAlign']>;
-    type unsafe_labelledByChanged = JetElementCustomEventStrict<CInputDateTextElement['unsafe_labelledBy']>;
     type userAssistanceDensityChanged = JetElementCustomEventStrict<CInputDateTextElement['userAssistanceDensity']>;
     type validChanged = JetElementCustomEventStrict<CInputDateTextElement['valid']>;
     type validatorsChanged = JetElementCustomEventStrict<CInputDateTextElement['validators']>;
@@ -130,7 +123,6 @@ export interface CInputDateTextElementEventMap extends HTMLElementEventMap {
     'requiredChanged': JetElementCustomEventStrict<CInputDateTextElement['required']>;
     'requiredMessageDetailChanged': JetElementCustomEventStrict<CInputDateTextElement['requiredMessageDetail']>;
     'textAlignChanged': JetElementCustomEventStrict<CInputDateTextElement['textAlign']>;
-    'unsafe_labelledByChanged': JetElementCustomEventStrict<CInputDateTextElement['unsafe_labelledBy']>;
     'userAssistanceDensityChanged': JetElementCustomEventStrict<CInputDateTextElement['userAssistanceDensity']>;
     'validChanged': JetElementCustomEventStrict<CInputDateTextElement['valid']>;
     'validatorsChanged': JetElementCustomEventStrict<CInputDateTextElement['validators']>;
@@ -158,7 +150,6 @@ export interface CInputDateTextElementSettableProperties extends JetSettableProp
     required?: Props['required'];
     requiredMessageDetail?: Props['requiredMessageDetail'];
     textAlign?: Props['textAlign'];
-    unsafe_labelledBy?: Props['unsafe_labelledBy'];
     userAssistanceDensity?: Props['userAssistanceDensity'];
     validators?: Props['validators'];
     value?: Props['value'];
@@ -191,7 +182,6 @@ export interface InputDateTextIntrinsicProps extends Partial<Readonly<CInputDate
     onrequiredChanged?: (value: CInputDateTextElementEventMap['requiredChanged']) => void;
     onrequiredMessageDetailChanged?: (value: CInputDateTextElementEventMap['requiredMessageDetailChanged']) => void;
     ontextAlignChanged?: (value: CInputDateTextElementEventMap['textAlignChanged']) => void;
-    onunsafe_labelledByChanged?: (value: CInputDateTextElementEventMap['unsafe_labelledByChanged']) => void;
     onuserAssistanceDensityChanged?: (value: CInputDateTextElementEventMap['userAssistanceDensityChanged']) => void;
     onvalidChanged?: (value: CInputDateTextElementEventMap['validChanged']) => void;
     onvalidatorsChanged?: (value: CInputDateTextElementEventMap['validatorsChanged']) => void;

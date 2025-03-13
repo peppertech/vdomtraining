@@ -1,7 +1,7 @@
 define(["require", "exports", "preact/jsx-runtime", "preact", "@oracle/oraclejet-preact/hooks/UNSAFE_useId", "@oracle/oraclejet-preact/hooks/UNSAFE_useFormContext", "@oracle/oraclejet-preact/hooks/UNSAFE_useInputGroupContext", "@oracle/oraclejet-preact/UNSAFE_UserAssistance", "@oracle/oraclejet-preact/hooks/UNSAFE_useFormFieldContext", "@oracle/oraclejet-preact/UNSAFE_Flex", "@oracle/oraclejet-preact/UNSAFE_Label", "@oracle/oraclejet-preact/UNSAFE_LabelValueLayout", "@oracle/oraclejet-preact/hooks/UNSAFE_useFocusWithin", "../../editable-value/UNSAFE_useAssistiveText/useAssistiveText"], function (require, exports, jsx_runtime_1, preact_1, UNSAFE_useId_1, UNSAFE_useFormContext_1, UNSAFE_useInputGroupContext_1, UNSAFE_UserAssistance_1, UNSAFE_useFormFieldContext_1, UNSAFE_Flex_1, UNSAFE_Label_1, UNSAFE_LabelValueLayout_1, UNSAFE_useFocusWithin_1, useAssistiveText_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.InputGroup = void 0;
+    exports.InputGroup = InputGroup;
     const normalizeLabelEdge = (edge) => (edge === 'inside' ? 'top' : edge);
     const normalizeDensity = (density) => {
         return density === 'efficient' || density === 'reflow' ? density : undefined;
@@ -40,5 +40,4 @@ define(["require", "exports", "preact/jsx-runtime", "preact", "@oracle/oraclejet
                     ? { 'aria-describedby': otherProps['aria-describedby'] }
                     : {}), children: inputGroupChildren }) }));
     }
-    exports.InputGroup = InputGroup;
 });

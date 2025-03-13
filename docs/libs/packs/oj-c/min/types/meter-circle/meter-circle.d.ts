@@ -8,7 +8,7 @@ import 'css!oj-c/meter-circle/meter-circle-styles.css';
 import { ReferenceLine as CommonReferenceLine, Threshold } from '../utils/UNSAFE_vizTypes';
 type ReferenceLine = Omit<CommonReferenceLine, 'position'>;
 type PreactMeterCircleProps = ComponentProps<typeof PreactMeterCircle>;
-export type Context = CenterContext & {
+type CenterTemplateContext = CenterContext & {
     value: number | null;
 };
 type PlotArea = {
@@ -19,28 +19,28 @@ export type DatatipContext = {
     value: number;
 };
 export type ThresholdDisplay = 'all' | 'plotArea' | 'indicator';
-export declare const MeterCircle: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<ObservedGlobalProps<"aria-label"> & {
-    max?: number | undefined;
-    min?: number | undefined;
-    readonly?: boolean | undefined;
-    value?: number | null | undefined;
-    onValueChanged?: PropertyChanged<number | null> | undefined;
-    step?: number | undefined;
-    color?: PreactMeterCircleProps['indicatorColor'];
-    indicatorSize?: number | undefined;
+export declare const MeterCircle: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<ObservedGlobalProps<"aria-describedby" | "aria-label" | "aria-labelledby"> & {
+    max?: number;
+    min?: number;
+    readonly?: boolean;
+    value?: number | null;
+    onValueChanged?: PropertyChanged<number | null>;
+    step?: number;
+    color?: PreactMeterCircleProps["indicatorColor"];
+    indicatorSize?: number;
     innerRadius?: number | undefined;
     plotArea: PlotArea;
-    angleExtent?: PreactMeterCircleProps['angleExtent'];
-    startAngle?: PreactMeterCircleProps['startAngle'];
-    referenceLines?: ReferenceLine[] | undefined;
-    thresholdDisplay?: ThresholdDisplay | undefined;
-    thresholds?: Threshold[] | undefined;
-    describedBy?: string | null | undefined;
-    labelledBy?: string | null | undefined;
-    size?: PreactMeterCircleProps['size'];
-    datatip?: ((context: DatatipContext) => string | null) | undefined;
-    onTransientValueChanged?: ReadOnlyPropertyChanged<number | undefined> | undefined;
-    centerTemplate?: TemplateSlot<Context> | undefined;
+    angleExtent?: PreactMeterCircleProps["angleExtent"];
+    startAngle?: PreactMeterCircleProps["startAngle"];
+    referenceLines?: Array<ReferenceLine>;
+    thresholdDisplay?: ThresholdDisplay;
+    thresholds?: Array<Threshold>;
+    describedBy?: string | null;
+    labelledBy?: string | null;
+    size?: PreactMeterCircleProps["size"];
+    datatip?: (context: DatatipContext) => string | null;
+    onTransientValueChanged?: ReadOnlyPropertyChanged<number | undefined>;
+    centerTemplate?: TemplateSlot<CenterTemplateContext>;
 }>>;
 export {};
 export interface CMeterCircleElement extends JetElement<CMeterCircleElementSettableProperties>, CMeterCircleElementSettableProperties {
@@ -73,6 +73,7 @@ export namespace CMeterCircleElement {
     type thresholdsChanged = JetElementCustomEventStrict<CMeterCircleElement['thresholds']>;
     type transientValueChanged = JetElementCustomEventStrict<CMeterCircleElement['transientValue']>;
     type valueChanged = JetElementCustomEventStrict<CMeterCircleElement['value']>;
+    type RenderCenterTemplate = import('ojs/ojvcomponent').TemplateSlot<CenterTemplateContext>;
 }
 export interface CMeterCircleElementEventMap extends HTMLElementEventMap {
     'angleExtentChanged': JetElementCustomEventStrict<CMeterCircleElement['angleExtent']>;

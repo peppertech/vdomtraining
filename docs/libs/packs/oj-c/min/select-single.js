@@ -1,4 +1,4 @@
-define(["require", "exports", "./select-single/select-single"], function (require, exports, select_single_1) {
+define(["require", "exports", "oj-c/select-single/select-single"], function (require, exports, select_single_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SelectSingle = void 0;

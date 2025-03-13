@@ -27,8 +27,9 @@ type MessageBannerProps<K extends string | number, D extends MessageBannerItem> 
     detailTemplateValue?: string | ((parameters: MessageBannerTemplateValueParameters<K, D>) => string | undefined);
     messageTemplates?: DynamicTemplateSlots<MessageBannerTemplateContext<K, D>>;
     onOjClose?: Action<CloseActionDetail<K, D>>;
+    sorting?: 'severity' | 'off';
 };
-declare function MessageBannerImpl<K extends string | number, D extends MessageBannerItem>({ data, detailTemplateValue, messageTemplates, type, onOjClose }: MessageBannerProps<K, D>): import("preact").JSX.Element;
+declare function MessageBannerImpl<K extends string | number, D extends MessageBannerItem>({ data, detailTemplateValue, messageTemplates, type, sorting, onOjClose }: MessageBannerProps<K, D>): import("preact").JSX.Element;
 export declare const MessageBanner: ComponentType<ExtendGlobalProps<ComponentProps<typeof MessageBannerImpl>>>;
 export type { MessageBannerItem, MessageBannerProps, MessageBannerTemplateContext, MessageBannerTemplateValueParameters };
 export interface CMessageBannerElement<K extends string | number, D extends MessageBannerItem> extends JetElement<CMessageBannerElementSettableProperties<K, D>>, CMessageBannerElementSettableProperties<K, D> {
@@ -45,17 +46,21 @@ export namespace CMessageBannerElement {
     }
     type dataChanged<K extends string | number, D extends MessageBannerItem> = JetElementCustomEventStrict<CMessageBannerElement<K, D>['data']>;
     type detailTemplateValueChanged<K extends string | number, D extends MessageBannerItem> = JetElementCustomEventStrict<CMessageBannerElement<K, D>['detailTemplateValue']>;
+    type sortingChanged<K extends string | number, D extends MessageBannerItem> = JetElementCustomEventStrict<CMessageBannerElement<K, D>['sorting']>;
     type typeChanged<K extends string | number, D extends MessageBannerItem> = JetElementCustomEventStrict<CMessageBannerElement<K, D>['type']>;
+    type RenderDetailTemplate<K extends string | number, D extends MessageBannerItem> = import('ojs/ojvcomponent').TemplateSlot<MessageBannerTemplateContext<K, D>>;
 }
 export interface CMessageBannerElementEventMap<K extends string | number, D extends MessageBannerItem> extends HTMLElementEventMap {
     'ojClose': CMessageBannerElement.ojClose<K, D>;
     'dataChanged': JetElementCustomEventStrict<CMessageBannerElement<K, D>['data']>;
     'detailTemplateValueChanged': JetElementCustomEventStrict<CMessageBannerElement<K, D>['detailTemplateValue']>;
+    'sortingChanged': JetElementCustomEventStrict<CMessageBannerElement<K, D>['sorting']>;
     'typeChanged': JetElementCustomEventStrict<CMessageBannerElement<K, D>['type']>;
 }
 export interface CMessageBannerElementSettableProperties<K extends string | number, D extends MessageBannerItem> extends JetSettableProperties {
     data: MessageBannerProps<K, D>['data'];
     detailTemplateValue?: MessageBannerProps<K, D>['detailTemplateValue'];
+    sorting?: MessageBannerProps<K, D>['sorting'];
     type?: MessageBannerProps<K, D>['type'];
 }
 export interface CMessageBannerElementSettablePropertiesLenient<K extends string | number, D extends MessageBannerItem> extends Partial<CMessageBannerElementSettableProperties<K, D>> {
@@ -66,6 +71,7 @@ export interface MessageBannerIntrinsicProps extends Partial<Readonly<CMessageBa
     onojClose?: (value: CMessageBannerElementEventMap<any, any>['ojClose']) => void;
     ondataChanged?: (value: CMessageBannerElementEventMap<any, any>['dataChanged']) => void;
     ondetailTemplateValueChanged?: (value: CMessageBannerElementEventMap<any, any>['detailTemplateValueChanged']) => void;
+    onsortingChanged?: (value: CMessageBannerElementEventMap<any, any>['sortingChanged']) => void;
     ontypeChanged?: (value: CMessageBannerElementEventMap<any, any>['typeChanged']) => void;
 }
 declare global {

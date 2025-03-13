@@ -1,4 +1,4 @@
-define(["require", "exports", "./legend-item/legend-item"], function (require, exports, legend_item_1) {
+define(["require", "exports", "oj-c/legend-item/legend-item"], function (require, exports, legend_item_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.LegendItem = void 0;

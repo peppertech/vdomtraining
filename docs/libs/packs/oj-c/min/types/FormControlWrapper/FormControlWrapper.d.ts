@@ -1,0 +1,36 @@
+import { ComponentChildren } from 'preact';
+import { ComponentMessageItem } from '@oracle/oraclejet-preact/UNSAFE_ComponentMessage';
+import type { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
+import { type ValidState } from 'oj-c/hooks/UNSAFE_useEditableValue/index';
+import type { ValueUpdateDetail } from '@oracle/oraclejet-preact/utils/UNSAFE_valueUpdateDetail';
+import Validator = require('ojs/ojvalidator');
+type ContentRendererContext<V> = {
+    isReadonly: boolean;
+    labelId: string;
+    userAssistanceId: string;
+    onCommit: (detail: ValueUpdateDetail<V | undefined>) => Promise<boolean>;
+    showMessages: () => void;
+    validate: () => Promise<'valid' | 'invalid'>;
+};
+type FormControlWrapperProps<V> = {
+    children: (rendererContext: ContentRendererContext<V>) => ComponentChildren;
+    containerReadonly?: boolean;
+    deferredValidators?: Validator<V>[];
+    disabled?: boolean;
+    labelHint: string;
+    labelEdge?: 'start' | 'top' | 'inside';
+    labelStartWidth?: Size;
+    labelWrapping?: 'truncate' | 'wrap';
+    messagesCustom?: ComponentMessageItem[];
+    readonly?: boolean;
+    required?: boolean;
+    userAssistanceDensity?: 'reflow' | 'efficient' | 'compact';
+    value?: V;
+    onLabelClick?: (e: MouseEvent) => void;
+    onMessagesCustomChanged?: (messagesCustom: ComponentMessageItem[] | undefined) => void;
+    onValidChanged?: (valid: ValidState) => void;
+    onValueChanged?: (value: V | undefined) => void;
+};
+declare function FormControlWrapper<V>({ children, containerReadonly: propContainerReadonly, deferredValidators, disabled, labelHint, labelEdge: propLabelEdge, labelStartWidth: propLabelStartWidth, labelWrapping: propLabelWrapping, messagesCustom, onLabelClick, onMessagesCustomChanged, onValidChanged, onValueChanged, readonly: propReadonly, required, userAssistanceDensity: propUserAssistanceDensity, value: propValue }: FormControlWrapperProps<V>): import("preact").JSX.Element;
+export type { ContentRendererContext, FormControlWrapperProps, ValidState };
+export { FormControlWrapper };

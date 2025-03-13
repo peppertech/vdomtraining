@@ -1,6 +1,6 @@
-export declare const getLegendEventsHandler: (isHideShowOn: boolean, isHighlightOn: boolean, updateHidden: (id: string) => void, updateHighlighted: (id?: string) => void, getDrillDetail: (arr: number[]) => any, drilling?: 'on' | 'off', onOjDrill?: ((detail: {
+export declare const getLegendEventsHandler: (isHideShowOn: boolean, isHighlightOn: boolean, updateHidden: (id: string) => void, updateHighlighted: (id?: string) => void, getDrillDetail: (arr: number[]) => any, drilling: "on" | "off" | undefined, getItemDrilling: (itemIdx: number, sectionIdx: number) => "on" | "off" | "inherit", onOjDrill?: (detail: {
     id: any;
-}) => void) | undefined) => {
+}) => void) => {
     itemActionHandler: (detail: {
         itemId: string;
     }) => void;

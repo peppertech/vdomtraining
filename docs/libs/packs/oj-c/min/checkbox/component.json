@@ -1,7 +1,7 @@
 {
   "name": "checkbox",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,6 +13,12 @@
   "description": "Checkbox is a single standalone checkbox control. It represents a boolean value.",
   "help": "oj-c.Checkbox.html",
   "main": "oj-c/checkbox",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Forms"
@@ -27,6 +33,9 @@
       "uxSpecs": [
         "checkbox"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/CheckboxWebElement.html"
     }
   },
   "propertyLayout": [
@@ -35,8 +44,7 @@
       "items": [
         "disabled",
         "readonly",
-        "required",
-        "virtualKeyboard"
+        "required"
       ]
     },
     {
@@ -115,10 +123,12 @@
       "help": "#helpHints",
       "properties": {
         "definition": {
-          "type": "string"
+          "type": "string",
+          "value": ""
         },
         "source": {
-          "type": "string"
+          "type": "string",
+          "value": ""
         },
         "sourceText": {
           "type": "string"
@@ -163,8 +173,7 @@
         "consume": {
           "name": "containerReadonly"
         }
-      },
-      "value": false
+      }
     },
     "required": {
       "type": "boolean",
@@ -201,8 +210,7 @@
         "consume": {
           "name": "containerUserAssistanceDensity"
         }
-      },
-      "value": "reflow"
+      }
     },
     "requiredMessageDetail": {
       "type": "string",
@@ -253,20 +261,25 @@
     }
   },
   "methods": {
-    "reset": {
-      "return": "any"
-    },
-    "showMessages": {
-      "return": "any"
-    },
-    "validate": {
-      "return": "Promise"
-    },
     "blur": {
-      "return": "any"
+      "description": "focuses the input field.",
+      "return": "void"
     },
     "focus": {
-      "return": "any"
+      "description": "blurs the input field.",
+      "return": "void"
+    },
+    "showMessages": {
+      "description": "Takes all deferred messages and shows them.",
+      "return": "void"
+    },
+    "reset": {
+      "description": "Resets the component by clearing all messages.",
+      "return": "void"
+    },
+    "validate": {
+      "description": "If enabled, validates the component's display value.",
+      "return": "Promise"
     },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",

@@ -1,8 +1,5 @@
-import { LineAreaChart as PreactLineAreaChart } from '@oracle/oraclejet-preact/UNSAFE_LineAreaChart';
-import { ComponentProps } from 'preact';
 import { ColorProps } from '@oracle/oraclejet-preact/utils/UNSAFE_interpolations/colors';
-import { MajorTick, MinorTick } from '@oracle/oraclejet-preact/UNSAFE_PlotArea/PlotArea.types';
-type PreactLineAreaChartProps = ComponentProps<typeof PreactLineAreaChart>;
+import Converter = require('ojs/ojconverter');
 export type ViewPortDetail = {
     startGroup: string;
     endGroup: string;
@@ -14,29 +11,69 @@ export type ViewPortDetail = {
 export type PlotArea = {
     backgroundColor?: ColorProps['color'];
 };
+export type ChartAxisConverter = {
+    format: (value: number) => string;
+};
+export type YAxisTickLabel = {
+    converter?: Converter<number>;
+    rendered?: 'on' | 'off';
+    style?: Partial<CSSStyleDeclaration>;
+};
+export type XAxisTickLabel = {
+    converter?: Converter<string> | [Converter<string>, Converter<string>];
+    rendered?: 'on' | 'off';
+    rotation?: 'auto' | 'none';
+    style?: Partial<CSSStyleDeclaration>;
+};
+export type MajorTick = {
+    lineColor?: ColorProps['color'];
+    lineStyle?: 'dashed' | 'dotted' | 'solid';
+    lineWidth?: number;
+    rendered: 'off' | 'on' | 'auto';
+};
+export type MinorTick = {
+    lineColor?: ColorProps['color'];
+    lineStyle?: 'dashed' | 'dotted' | 'solid';
+    lineWidth?: number;
+    rendered: 'off' | 'on' | 'auto';
+};
 export type YAxis = {
-    majorTick?: Omit<MajorTick, 'isRendered'> & {
-        rendered: 'off' | 'on' | 'auto';
-    };
-    minorTick?: Omit<MinorTick, 'isRendered'> & {
-        rendered: 'off' | 'on' | 'auto';
-    };
-} & Omit<PreactLineAreaChartProps['yAxis'], 'position'>;
+    dataMax?: number;
+    dataMin?: number;
+    max?: number;
+    min?: number;
+    majorTick?: MajorTick;
+    minorTick?: MinorTick;
+    tickLabel?: YAxisTickLabel;
+    viewportMin?: number;
+    viewportMax?: number;
+    step?: number;
+    size?: number;
+    scale?: 'log' | 'linear';
+    title?: string;
+    titleStyle?: Partial<CSSStyleDeclaration>;
+};
 export type XAxis = {
-    majorTick?: Omit<MajorTick, 'isRendered'> & {
-        rendered: 'off' | 'on' | 'auto';
-    };
-} & Omit<PreactLineAreaChartProps['xAxis'], 'timeAxisType' | 'groups' | 'offset'>;
-type TextValueFormat = {
+    majorTick?: MajorTick;
+    minorTick?: MinorTick;
+    tickLabel?: XAxisTickLabel;
+    viewportMin?: number;
+    viewportMax?: number;
+    step?: number;
+    size?: number;
+    scale?: 'log' | 'linear';
+    title?: string;
+    titleStyle?: Partial<CSSStyleDeclaration>;
+};
+export type TextValueFormat = {
     tooltipLabel?: string;
     tooltipDisplay?: 'off' | 'auto';
 };
-type NumericalValueFormat = {
-    converter: any;
+export type NumericalValueFormat = {
+    converter: Converter<number>;
 } & TextValueFormat;
 export type ValueFormats = {
     group: TextValueFormat;
     series: TextValueFormat;
     value: NumericalValueFormat;
 };
-export {};

@@ -109,9 +109,9 @@
   border-color: var(--labelColorDisabled__wmjnh613);
 }
 .TrainStyles_stepIconCurrentStyle__s507m1g {
-  background-color: var(--buttonBgColorActive__wmjnh6o);
-  border-color: var(--buttonBorderColorActive__wmjnh6p);
-  color: var(--buttonTextColorActive__wmjnh6q);
+  background-color: var(--buttonBgColorSelected__wmjnh6t);
+  border-color: var(--buttonBorderColorSelected__wmjnh6u);
+  color: var(--buttonTextColorSelected__wmjnh6v);
   pointer-events: none;
 }
 .TrainStyles_stepIconVisitedStyle__s507m1h {
@@ -128,17 +128,17 @@
   font-size: var(--buttonDiameter__wmjnh66);
 }
 .TrainStyles_messageTypeIconConfirmation__s507m1k {
-  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-success-low);
+  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-success);
 }
 .TrainStyles_messageTypeIconError__s507m1l {
-  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger-low);
+  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger);
 }
 .TrainStyles_messageTypeIconFatal__s507m1m {
-  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger-low);
+  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-danger);
 }
 .TrainStyles_messageTypeIconInfo__s507m1n {
-  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-info-low);
+  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-info);
 }
 .TrainStyles_messageTypeIconWarning__s507m1o {
-  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-warning-low);
+  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-warning);
 }

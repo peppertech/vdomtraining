@@ -4,6 +4,7 @@
   border-radius: var(--borderRadius__2ugez72);
   background-color: var(--backgroundColor__2ugez70);
   padding: var(--padding__2ugez74);
+  overflow-y: auto;
 }
 .PopupStyles_baseStyle__1xjjaoy0:focus-visible {
   outline-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);

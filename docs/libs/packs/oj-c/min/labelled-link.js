@@ -1,4 +1,4 @@
-define(["require", "exports", "./labelled-link/labelled-link"], function (require, exports, labelled_link_1) {
+define(["require", "exports", "oj-c/labelled-link/labelled-link"], function (require, exports, labelled_link_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.LabelledLink = void 0;

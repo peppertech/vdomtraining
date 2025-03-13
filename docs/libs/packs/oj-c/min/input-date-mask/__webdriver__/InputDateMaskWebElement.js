@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InputDateMaskWebElement = void 0;
-var InputDateMaskWebElementBase_1 = require("./InputDateMaskWebElementBase");
+const InputDateMaskWebElementBase_1 = require("./InputDateMaskWebElementBase");
 /**
  * The component WebElement for [oj-c-input-date-mask](../../../oj-c/docs/oj.InputDateMask.html).
  * Do not instantiate this class directly, instead, use

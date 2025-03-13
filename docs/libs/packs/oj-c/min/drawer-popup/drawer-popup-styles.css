@@ -3,7 +3,7 @@ oj-c-drawer-popup:not(.oj-complete) {
 }
 
 oj-c-drawer-popup {
-  display: block;
+  display: none;
 }
 
 oj-c-drawer-popup[hidden] {

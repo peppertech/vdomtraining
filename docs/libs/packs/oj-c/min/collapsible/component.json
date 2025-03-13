@@ -1,7 +1,7 @@
 {
   "name": "collapsible",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,6 +13,12 @@
   "displayName": "Collapsible",
   "help": "oj-c.Collapsible.html",
   "main": "oj-c/collapsible",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Layout & Nav"
@@ -25,6 +31,9 @@
       "uxSpecs": [
         "collapsible"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/CollapsibleWebElement.html"
     }
   },
   "propertyLayout": [
@@ -42,26 +51,23 @@
   "slots": {
     "": {
       "description": "The default slot is the content of the collapsible. The oj-c-collapsible element accepts plain text or DOM nodes as children for the default slot.",
-      "displayName": "default",
       "help": "#Default"
     },
     "header": {
       "description": "The header slot is the collapsible's header. If not specified, the header contains only an open/close icon. Note that the header text is required for JET collapsible for accessibility purposes.",
-      "displayName": "Header",
       "help": "#header"
     }
   },
   "properties": {
     "disabled": {
       "type": "boolean",
-      "description": "Disables the collapsible if set to true",
-      "displayName": "Disabled",
-      "help": "#disabled"
+      "description": "Disables the collapsible if set to true.",
+      "help": "#disabled",
+      "value": false
     },
     "expanded": {
       "type": "boolean",
       "description": "Specifies if the content is expanded.",
-      "displayName": "Expanded",
       "help": "#expanded",
       "extension": {
         "webelement": {
@@ -72,27 +78,48 @@
           ]
         }
       },
-      "writeback": true
+      "writeback": true,
+      "value": false
     },
     "iconPosition": {
       "type": "string",
       "description": "Controls placement of the icon in the header.",
-      "displayName": "iconPosition",
       "help": "#iconPosition",
+      "propertyEditorValues": {
+        "start": {
+          "description": "icon position is start (default, if unspecified)",
+          "displayName": "Start"
+        },
+        "end": {
+          "description": "icon position is end",
+          "displayName": "End"
+        }
+      },
       "enumValues": [
         "end",
         "start"
-      ]
+      ],
+      "value": "start"
     },
     "variant": {
       "type": "string",
       "description": "Controls display of the optional divider below the header.",
-      "displayName": "variant",
       "help": "#variant",
+      "propertyEditorValues": {
+        "basic": {
+          "description": "basic, no divider (default, if unspecified)",
+          "displayName": "Basic"
+        },
+        "horizontal-rule": {
+          "description": "displays a horizontal divider between the header and content",
+          "displayName": "Horizontal Rule"
+        }
+      },
       "enumValues": [
         "basic",
         "horizontal-rule"
-      ]
+      ],
+      "value": "basic"
     }
   },
   "events": {

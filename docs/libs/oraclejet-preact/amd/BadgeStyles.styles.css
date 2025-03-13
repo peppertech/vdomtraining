@@ -13,6 +13,7 @@
   border-bottom-left-radius: var(--borderRadius__88ut8n7);
   height: var(--height__88ut8n6);
   line-height: var(--height__88ut8n6);
+  max-width: 100%;
   min-width: var(--height__88ut8n6);
   font-size: var(--fontSize__88ut8n2);
   font-weight: var(--fontWeight__88ut8n3);
@@ -23,6 +24,16 @@
   text-overflow: ellipsis;
   text-align: center;
   vertical-align: middle;
+}
+.BadgeStyles_base__r1bnwu0:focus-visible {
+  outline-style: dotted;
+  outline-offset: 1px;
+  outline-width: 1px;
+  outline-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);
+}
+.BadgeStyles_base__r1bnwu0::after {
+  content: "";
+  display: block;
 }
 .BadgeStyles_base__r1bnwu0 > * {
   margin-top: 0 !important;

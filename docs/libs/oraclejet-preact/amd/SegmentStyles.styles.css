@@ -1,5 +1,9 @@
 .SegmentStyles_base__kzheun0 {
   caret-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
 }
 .SegmentStyles_base__kzheun0:focus-visible {
   outline: none;

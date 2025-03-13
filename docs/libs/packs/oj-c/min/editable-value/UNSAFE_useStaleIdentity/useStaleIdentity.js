@@ -1,7 +1,7 @@
 define(["require", "exports", "preact/hooks"], function (require, exports, hooks_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useStaleIdentity = void 0;
+    exports.useStaleIdentity = useStaleIdentity;
     function useStaleIdentity() {
         const staleIdentityMap = (0, hooks_1.useRef)(new Map());
         const setStaleIdentity = (0, hooks_1.useCallback)((id) => {
@@ -13,5 +13,4 @@ define(["require", "exports", "preact/hooks"], function (require, exports, hooks
         }, []);
         return { setStaleIdentity };
     }
-    exports.useStaleIdentity = useStaleIdentity;
 });

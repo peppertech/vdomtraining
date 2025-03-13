@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findRadioset = exports.RadiosetWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var RadiosetWebElement_1 = require("./RadiosetWebElement");
+exports.RadiosetWebElement = void 0;
+exports.findRadioset = findRadioset;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const RadiosetWebElement_1 = require("./RadiosetWebElement");
 Object.defineProperty(exports, "RadiosetWebElement", { enumerable: true, get: function () { return RadiosetWebElement_1.RadiosetWebElement; } });
 /**
  * Retrieve an instance of [RadiosetWebElement](../classes/RadiosetWebElement.html).
@@ -29,6 +30,5 @@ async function findRadioset(driver, by) {
     }
     return webEl;
 }
-exports.findRadioset = findRadioset;
 (0, oraclejet_webdriver_1.register)('oj-c-radioset', RadiosetWebElement_1.RadiosetWebElement);
 //# sourceMappingURL=index.js.map

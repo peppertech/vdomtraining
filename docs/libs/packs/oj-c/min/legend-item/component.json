@@ -1,7 +1,7 @@
 {
   "name": "legend-item",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -14,6 +14,12 @@
   "displayName": "LegendItem",
   "main": "oj-c/legend-item",
   "help": "oj-c.LegendItem.html",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Visualizations"
@@ -25,13 +31,16 @@
       "type": "string",
       "description": "The legend item text.",
       "displayName": "Text",
-      "help": "#text"
+      "help": "#text",
+      "required": true,
+      "translatable": true
     },
     "categories": {
       "type": "Array<string>",
       "description": "An array of categories for the legend item. Legend items currently only support a single category.",
       "displayName": "Categories",
-      "help": "#categories"
+      "help": "#categories",
+      "value": []
     },
     "symbolType": {
       "type": "string",
@@ -61,7 +70,8 @@
         "image",
         "line",
         "lineWithMarker"
-      ]
+      ],
+      "value": "marker"
     },
     "source": {
       "type": "string",
@@ -79,7 +89,8 @@
       "type": "string",
       "description": "The border color of the marker. Only applies if symbolType is \"marker\" or \"lineWithMarker.",
       "displayName": "Border Color",
-      "help": "#borderColor"
+      "help": "#borderColor",
+      "value": ""
     },
     "lineStyle": {
       "type": "string",
@@ -102,9 +113,10 @@
       },
       "enumValues": [
         "dashed",
-        "dotted",
-        "solid"
-      ]
+        "solid",
+        "dotted"
+      ],
+      "value": "solid"
     },
     "lineWidth": {
       "type": "number",
@@ -170,7 +182,8 @@
         "triangleDown",
         "triangleUp",
         "rectangle"
-      ]
+      ],
+      "value": "square"
     },
     "markerColor": {
       "type": "string",
@@ -182,7 +195,34 @@
       "type": "string",
       "description": "The description of this legend item. This is used for accessibility and for customizing the tooltip text.",
       "displayName": "Short Desc",
-      "help": "#shortDesc"
+      "help": "#shortDesc",
+      "translatable": true
+    },
+    "drilling": {
+      "type": "string",
+      "description": "Whether drilling is enabled on the legend item.",
+      "displayName": "Drilling",
+      "help": "#drilling",
+      "propertyEditorValues": {
+        "inherit": {
+          "description": "The drilling behavior is inherited from legend.",
+          "displayName": "Inherit"
+        },
+        "off": {
+          "description": "The legend item will not be drillable.",
+          "displayName": "Off"
+        },
+        "on": {
+          "description": "The legend item will be drillable.",
+          "displayName": "On"
+        }
+      },
+      "enumValues": [
+        "inherit",
+        "off",
+        "on"
+      ],
+      "value": "inherit"
     }
   },
   "methods": {

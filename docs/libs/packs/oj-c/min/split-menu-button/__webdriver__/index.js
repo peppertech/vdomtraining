@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findSplitMenuButton = exports.SplitMenuButtonWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var SplitMenuButtonWebElement_1 = require("./SplitMenuButtonWebElement");
+exports.SplitMenuButtonWebElement = void 0;
+exports.findSplitMenuButton = findSplitMenuButton;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const SplitMenuButtonWebElement_1 = require("./SplitMenuButtonWebElement");
 Object.defineProperty(exports, "SplitMenuButtonWebElement", { enumerable: true, get: function () { return SplitMenuButtonWebElement_1.SplitMenuButtonWebElement; } });
 /**
  * Retrieve an instance of [SplitMenuButtonWebElement](../classes/SplitMenuButtonWebElement.html).
@@ -29,6 +30,5 @@ async function findSplitMenuButton(driver, by) {
     }
     return webEl;
 }
-exports.findSplitMenuButton = findSplitMenuButton;
 (0, oraclejet_webdriver_1.register)('oj-c-split-menu-button', SplitMenuButtonWebElement_1.SplitMenuButtonWebElement);
 //# sourceMappingURL=index.js.map

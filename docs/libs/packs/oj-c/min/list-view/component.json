@@ -1,7 +1,7 @@
 {
   "name": "list-view",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,6 +13,12 @@
   "description": "A list view displays data items as a list or a grid with highly interactive features.",
   "help": "oj-c.ListView.html",
   "main": "oj-c/list-view",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Collections"
@@ -24,6 +30,9 @@
       "uxSpecs": [
         "list-view"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/ListViewWebElement.html"
     }
   },
   "propertyLayout": [
@@ -44,12 +53,23 @@
   "since": "15.0.0",
   "properties": {
     "currentItem": {
-      "type": "any",
-      "description": "The item that currently has keyboard focus",
+      "type": "string|number",
+      "description": "The key of the item that currently has keyboard focus",
       "displayName": "Current Item",
       "help": "#currentItem",
       "readOnly": true,
       "writeback": true
+    },
+    "currentItemOverride": {
+      "type": "object",
+      "description": "The key of the item that will have keyboard focus",
+      "displayName": "Current Item Override",
+      "help": "#currentItemOverride",
+      "properties": {
+        "rowKey": {
+          "type": "string|number"
+        }
+      }
     },
     "data": {
       "type": "DataProvider|null",
@@ -133,14 +153,68 @@
         "single": {
           "description": "Only a single item can be selected at a time.",
           "displayName": "Single"
+        },
+        "singleRequired": {
+          "description": "Only a single item can be selected at a time. In addition, ListView will also ensure that an item is selected at all time.",
+          "displayName": "Single Required"
         }
       },
       "enumValues": [
         "none",
         "multiple",
-        "single"
+        "single",
+        "singleRequired"
       ],
       "value": "none"
+    },
+    "contextMenuConfig": {
+      "type": "object",
+      "description": "Specifies a context menu configuration.",
+      "displayName": "Context Menu Config",
+      "help": "#contextMenuConfig",
+      "properties": {
+        "accessibleLabel": {
+          "type": "string"
+        },
+        "items": {
+          "type": "function"
+        }
+      }
+    },
+    "reorderable": {
+      "type": "object",
+      "description": "Specify the item reordering functionality.",
+      "displayName": "Reorderable",
+      "help": "#reorderable",
+      "properties": {
+        "items": {
+          "type": "string",
+          "enumValues": [
+            "disabled",
+            "enabled"
+          ],
+          "value": "disabled"
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "description": "The item option contains a subset of options for items.",
+      "displayName": "Item",
+      "help": "#item",
+      "properties": {
+        "padding": {
+          "type": "string|object",
+          "description": "It controls the padding around the list item",
+          "displayName": "item.padding",
+          "help": "#item.padding",
+          "propertyEditorValues": {
+            "disabled": {},
+            "enabled": {}
+          },
+          "value": "disabled"
+        }
+      }
     }
   },
   "slots": {
@@ -208,6 +282,7 @@
       "displayName": "noData",
       "help": "#noData",
       "maxItems": 1,
+      "templateSlotRenderType": "RenderNoDataTemplate",
       "data": {}
     }
   },
@@ -269,6 +344,168 @@
               }
             }
           }
+        }
+      }
+    },
+    "ojFirstSelectedItem": {
+      "description": "Triggered when data for the first selected item is available.",
+      "displayName": "First Selected Item",
+      "help": "#event:firstSelectedItem",
+      "detail": {
+        "key": {
+          "type": "any"
+        },
+        "data": {
+          "type": "any"
+        }
+      }
+    },
+    "ojContextMenuAction": {
+      "bubbles": true,
+      "description": "Triggered when a menu item is clicked, whether by keyboard, mouse, or touch events.",
+      "eventGroup": "common",
+      "displayName": "onOjContextMenuAction",
+      "help": "#event:ojContextMenuAction",
+      "detail": {
+        "menuItemKey": {
+          "type": "string"
+        },
+        "contextMenuContext": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "any"
+            },
+            "item": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "any"
+                },
+                "metadata": {
+                  "type": "object",
+                  "properties": {
+                    "indexFromParent": {
+                      "type": "number"
+                    },
+                    "isLeaf": {
+                      "type": "boolean"
+                    },
+                    "key": {
+                      "type": "any"
+                    },
+                    "message": {
+                      "type": "object",
+                      "properties": {
+                        "detail": {
+                          "type": "string"
+                        },
+                        "severity": {
+                          "type": "string|number"
+                        },
+                        "summary": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "parentKey": {
+                      "type": "any"
+                    },
+                    "suggestion": {
+                      "type": "object"
+                    },
+                    "treeDepth": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ojContextMenuSelection": {
+      "bubbles": true,
+      "description": "Triggered when a select menu item is clicked, whether by keyboard, mouse, or touch events.",
+      "eventGroup": "common",
+      "displayName": "onOjContextMenuSelection",
+      "help": "#event:ojContextMenuSelection",
+      "detail": {
+        "value": {
+          "type": "string|Array<string>"
+        },
+        "menuSelectionGroupKey": {
+          "type": "string"
+        },
+        "contextMenuContext": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "any"
+            },
+            "item": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "any"
+                },
+                "metadata": {
+                  "type": "object",
+                  "properties": {
+                    "indexFromParent": {
+                      "type": "number"
+                    },
+                    "isLeaf": {
+                      "type": "boolean"
+                    },
+                    "key": {
+                      "type": "any"
+                    },
+                    "message": {
+                      "type": "object",
+                      "properties": {
+                        "detail": {
+                          "type": "string"
+                        },
+                        "severity": {
+                          "type": "string|number"
+                        },
+                        "summary": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "parentKey": {
+                      "type": "any"
+                    },
+                    "suggestion": {
+                      "type": "object"
+                    },
+                    "treeDepth": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ojReorder": {
+      "description": "Triggered after items are reordered within ListView via drag and drop or keyboard.",
+      "displayName": "Reorder",
+      "help": "#event:reorder",
+      "detail": {
+        "reorderedKeys": {
+          "type": "Array<any>"
+        },
+        "itemKeys": {
+          "type": "Array<any>"
+        },
+        "referenceKey": {
+          "type": "any"
         }
       }
     }

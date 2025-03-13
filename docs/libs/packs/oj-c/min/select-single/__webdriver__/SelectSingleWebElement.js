@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SelectSingleWebElement = void 0;
-var SelectSingleWebElementBase_1 = require("./SelectSingleWebElementBase");
+const SelectSingleWebElementBase_1 = require("./SelectSingleWebElementBase");
 /**
  * The component WebElement for [oj-c-select-single](../../../oj-c/docs/oj.SelectSingle.html).
  * Do not instantiate this class directly, instead, use
@@ -16,24 +16,15 @@ class SelectSingleWebElement extends SelectSingleWebElementBase_1.SelectSingleWe
      * @override
      */
     async changeValue(value) {
-        // Call focus() on the root element
-        await this.getDriver().executeScript('arguments[0].focus()', this);
         // Only mutate if not readonly/disabled
         const readonly = await this.getReadonly();
         const disabled = await this.getDisabled();
         if (!(readonly || disabled)) {
+            await this.getDriver().executeScript((element) => element.focus(), this);
             await this.whenBusyContextReady();
-            await this.getDriver().executeAsyncScript(`
-        var element = arguments[0];
-        var value = arguments[1];
-
-        // Last argument will be the done function
-        var doneFunc = arguments[arguments.length - 1];
-        
-        element._selectItemByValue(value)
-          .then(doneFunc, doneFunc)
-          .catch(doneFunc);
-      `, this, value);
+            await this.getDriver().executeScript((element, value) => {
+                return element._selectItemByValue(value);
+            }, this, value);
         }
     }
     /**
@@ -78,25 +69,16 @@ class SelectSingleWebElement extends SelectSingleWebElementBase_1.SelectSingleWe
      * <code>ojAdvancedSearchAction</code> event.
      */
     async doAdvancedSearchAction(searchText) {
-        // Call focus() on the root element
-        await this.getDriver().executeScript('arguments[0].focus()', this);
         // Only fire event if advanced search is on and component is not readonly/disabled
         const readonly = await this.getReadonly();
         const disabled = await this.getDisabled();
         const advancedSearch = await this.getAdvancedSearch();
         if (!(readonly || disabled) && advancedSearch === 'on') {
+            await this.getDriver().executeScript((element) => element.focus(), this);
             await this.whenBusyContextReady();
-            await this.getDriver().executeAsyncScript(`
-        var element = arguments[0];
-        var searchText = arguments[1];
-
-        // Last argument will be the done function
-        var doneFunc = arguments[arguments.length - 1];
-        
-        element._doAdvancedSearchAction(searchText)
-          .then(doneFunc, doneFunc)
-          .catch(doneFunc);
-      `, this, searchText);
+            await this.getDriver().executeScript((element, searchText) => {
+                return element._doAdvancedSearchAction(searchText);
+            }, this, searchText);
         }
     }
 }

@@ -1,12 +1,12 @@
-import { ItemContext } from 'ojs/ojcommontypes';
-import { DataProvider } from 'ojs/ojdataprovider';
-import { StateUpdater } from 'preact/hooks';
-import { Optional } from '../utils/utils';
+import type { ItemContext } from 'ojs/ojcommontypes';
+import type { DataProvider } from 'ojs/ojdataprovider';
+import { type Dispatch, type StateUpdater } from 'preact/hooks';
+import { type Optional } from '../utils/utils';
 export type UseDataProviderListenerProps<K extends string | number, D extends Record<string, any>, V extends K | Set<K>, VI extends ItemContext<K, D> | Map<K, ItemContext<K, D>>> = {
     dataProvider?: Optional<DataProvider<K, D>>;
-    setValue: StateUpdater<Optional<V>>;
-    setValueToSync: StateUpdater<Optional<V>>;
-    setValueItemsToSync: StateUpdater<Optional<VI>>;
+    setValue: Dispatch<StateUpdater<Optional<V>>>;
+    setValueToSync: Dispatch<StateUpdater<Optional<V>>>;
+    setValueItemsToSync: Dispatch<StateUpdater<Optional<VI>>>;
     value?: Optional<V>;
     valueItems?: Optional<VI>;
 };

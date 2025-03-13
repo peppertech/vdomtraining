@@ -6,10 +6,10 @@ import { ComponentProps } from 'preact';
 import { ObservedGlobalProps } from 'ojs/ojvcomponent';
 import 'css!oj-c/progress-circle/progress-circle-styles.css';
 type PreactProgressCircleProps = ComponentProps<typeof PreactProgressCircle>;
-export declare const ProgressCircle: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<ObservedGlobalProps<"aria-valuetext"> & {
-    max?: number | undefined;
-    value?: number | undefined;
-    size?: PreactProgressCircleProps['size'];
+export declare const ProgressCircle: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<ObservedGlobalProps<"aria-label" | "aria-labelledby" | "aria-valuetext"> & {
+    max?: number;
+    value?: number;
+    size?: PreactProgressCircleProps["size"];
 }>>;
 export {};
 export interface CProgressCircleElement extends JetElement<CProgressCircleElementSettableProperties>, CProgressCircleElementSettableProperties {

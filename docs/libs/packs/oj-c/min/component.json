@@ -1,7 +1,7 @@
 {
   "name": "oj-c",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "type": "mono-pack",
   "displayName": "Oracle JET Core pack",
   "description": "Core Oracle JET components implemented using virtual DOM technology",
@@ -9,7 +9,7 @@
   "license": "https://opensource.org/licenses/UPL",
   "dependencyScope": "runtime",
   "dependencies": {
-    "oj-ref-oraclejet-preact": "16.0.0"
+    "oj-ref-oraclejet-preact": "18.0.2"
   },
   "bundles": {
     "oj-c/corepackbundle": [
@@ -17,11 +17,16 @@
       "oj-c/area-chart-item",
       "oj-c/area-chart-series",
       "oj-c/area-chart-group",
+      "oj-c/date-picker",
+      "oj-c/dialog",
       "oj-c/highlight-text",
-      "oj-c/input-date-text",
       "oj-c/input-date-mask",
+      "oj-c/input-date-picker",
+      "oj-c/input-date-text",
+      "oj-c/input-month-mask",
       "oj-c/input-number",
       "oj-c/input-password",
+      "oj-c/input-sensitive-text",
       "oj-c/input-text",
       "oj-c/message-toast",
       "oj-c/text-area",
@@ -56,10 +61,24 @@
       "oj-c/message-banner",
       "oj-c/action-card",
       "oj-c/selection-card",
+      "oj-c/popup",
       "oj-c/drawer-popup",
+      "oj-c/drawer-layout",
       "oj-c/form-layout",
       "oj-c/labelled-link",
-      "oj-c/menu-button"
+      "oj-c/menu-button",
+      "oj-c/tab-bar",
+      "oj-c/tab-bar-mixed",
+      "oj-c/card-view",
+      "oj-c/conveyor-belt",
+      "oj-c/drag-handle",
+      "oj-c/toggle-button",
+      "oj-c/buttonset-single",
+      "oj-c/buttonset-multiple",
+      "oj-c/table",
+      "oj-c/progress-button",
+      "oj-c/skeleton",
+      "oj-c/toolbar"
     ]
   },
   "contents": [
@@ -76,6 +95,12 @@
       "name": "area-chart-group"
     },
     {
+      "name": "date-picker"
+    },
+    {
+      "name": "dialog"
+    },
+    {
       "name": "highlight-text"
     },
     {
@@ -83,6 +108,9 @@
     },
     {
       "name": "input-password"
+    },
+    {
+      "name": "input-sensitive-text"
     },
     {
       "name": "input-text"
@@ -193,7 +221,13 @@
       "name": "checkboxset"
     },
     {
+      "name": "popup"
+    },
+    {
       "name": "drawer-popup"
+    },
+    {
+      "name": "drawer-layout"
     },
     {
       "name": "form-layout"
@@ -203,6 +237,48 @@
     },
     {
       "name": "menu-button"
+    },
+    {
+      "name": "input-month-mask"
+    },
+    {
+      "name": "tab-bar"
+    },
+    {
+      "name": "tab-bar-mixed"
+    },
+    {
+      "name": "card-view"
+    },
+    {
+      "name": "conveyor-belt"
+    },
+    {
+      "name": "input-date-picker"
+    },
+    {
+      "name": "drag-handle"
+    },
+    {
+      "name": "toggle-button"
+    },
+    {
+      "name": "buttonset-single"
+    },
+    {
+      "name": "buttonset-multiple"
+    },
+    {
+      "name": "table"
+    },
+    {
+      "name": "progress-button"
+    },
+    {
+      "name": "skeleton"
+    },
+    {
+      "name": "toolbar"
     }
   ]
 }

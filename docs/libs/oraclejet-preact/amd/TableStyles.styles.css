@@ -1,27 +1,22 @@
 .TableStyles_tableStyles_base__k2noww0 {
   background-color: inherit;
-  height: 100%;
-  overflow-x: auto;
+  box-sizing: border-box;
   position: relative;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
   width: 100%;
   z-index: 0;
 }
 .TableStyles_tableStyles_base__k2noww0:focus {
   outline-style: none;
 }
-.TableStyles_tableStyles_disableWrapping__k2noww1 {
-  white-space: nowrap;
-}
-.TableStyles_tableStyles_forceScroll__k2noww2 {
-  overflow-x: scroll;
-  overflow-y: scroll;
-}
-.TableStyles_tableStyles_verticalScroll__k2noww3 {
-  overflow-y: scroll;
-}
-.TableStyles_tableStyles_noVerticalScroll__k2noww4 {
-  overflow-y: hidden;
+.TableStyles_tableStyles_focused__k2noww1::before {
+  content: "";
+  display: block;
+  inset: 0;
+  outline-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);
+  outline-offset: -1px;
+  outline-style: dotted;
+  outline-width: 1px;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
 }

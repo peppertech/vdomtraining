@@ -1,6 +1,7 @@
 .GanttStyles_baseStyle__ikhdhw0 {
   width: 100%;
   height: calc(140 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  -webkit-tap-highlight-color: transparent;
 }
 .GanttStyles_rowAxisLayoutStyles_base__ikhdhw1 {
   display: grid;

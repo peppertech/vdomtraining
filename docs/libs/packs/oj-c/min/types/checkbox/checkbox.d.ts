@@ -1,22 +1,21 @@
 import { JetElement, JetSettableProperties, JetElementCustomEventStrict, JetSetPropertyType } from 'ojs/index';
 import { GlobalProps } from 'ojs/ojvcomponent';
 import 'ojs/oj-jsx-interfaces';
-import { Component, ComponentProps, ComponentChildren } from 'preact';
-import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
+import { ComponentType, ComponentProps, ComponentChildren } from 'preact';
 import { ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, ReadOnlyPropertyChanged } from 'ojs/ojvcomponent';
 import { Checkbox as PreactCheckbox } from '@oracle/oraclejet-preact/UNSAFE_Checkbox';
+import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
 import { DisplayOptions, Help, HelpHints } from 'oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText';
 import 'css!oj-c/checkbox/checkbox-styles.css';
 type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
 type PreactCheckboxProps = ComponentProps<typeof PreactCheckbox>;
-type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
+type DisplayOptionsProps = Pick<DisplayOptions, 'messages'>;
+type CheckboxProps = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     children: ComponentChildren;
     containerReadonly?: boolean;
     columnSpan?: LayoutColumnSpan;
     disabled?: boolean;
-    displayOptions?: {
-        messages: DisplayOptions['messages'];
-    };
+    displayOptions?: DisplayOptionsProps;
     help?: Help;
     helpHints?: HelpHints;
     messagesCustom?: PreactCheckboxProps['messages'];
@@ -29,24 +28,10 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     onValueChanged?: PropertyChanged<boolean | undefined>;
     value?: boolean;
 };
-declare class Checkbox extends Component<ExtendGlobalProps<Props>> {
-    static defaultProps: Partial<Props>;
-    private busyContextRef;
-    private checkboxRef;
-    private rootRef;
-    componentDidMount(): void;
-    render(props: ExtendGlobalProps<Props>): import("preact").JSX.Element;
-    componentWillUnmount(): void;
-    reset(): void;
-    showMessages(): void;
-    validate(): Promise<ValidState>;
-    blur(): void;
-    focus(): void;
-}
+declare const Checkbox: ComponentType<ExtendGlobalProps<CheckboxProps>>;
 export { Checkbox };
-export type { Props as CheckboxProps };
 export interface CCheckboxElement extends JetElement<CCheckboxElementSettableProperties>, CCheckboxElementSettableProperties {
-    readonly valid?: Parameters<Required<Props>['onValidChanged']>[0];
+    readonly valid?: Parameters<Required<CheckboxProps>['onValidChanged']>[0];
     addEventListener<T extends keyof CCheckboxElementEventMap>(type: T, listener: (this: HTMLElement, ev: CCheckboxElementEventMap[T]) => any, options?: (boolean | AddEventListenerOptions)): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: (boolean | AddEventListenerOptions)): void;
     getProperty<T extends keyof CCheckboxElementSettableProperties>(property: T): CCheckboxElement[T];
@@ -54,11 +39,11 @@ export interface CCheckboxElement extends JetElement<CCheckboxElementSettablePro
     setProperty<T extends keyof CCheckboxElementSettableProperties>(property: T, value: CCheckboxElementSettableProperties[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CCheckboxElementSettableProperties>): void;
     setProperties(properties: CCheckboxElementSettablePropertiesLenient): void;
-    blur: Checkbox['blur'];
-    focus: Checkbox['focus'];
-    reset: Checkbox['reset'];
-    showMessages: Checkbox['showMessages'];
-    validate: Checkbox['validate'];
+    blur: () => void;
+    focus: () => void;
+    reset: () => void;
+    showMessages: () => void;
+    validate: () => Promise<'invalid' | 'valid'>;
 }
 export namespace CCheckboxElement {
     type columnSpanChanged = JetElementCustomEventStrict<CCheckboxElement['columnSpan']>;
@@ -91,18 +76,18 @@ export interface CCheckboxElementEventMap extends HTMLElementEventMap {
     'valueChanged': JetElementCustomEventStrict<CCheckboxElement['value']>;
 }
 export interface CCheckboxElementSettableProperties extends JetSettableProperties {
-    columnSpan?: Props['columnSpan'];
-    containerReadonly?: Props['containerReadonly'];
-    disabled?: Props['disabled'];
-    displayOptions?: Props['displayOptions'];
-    help?: Props['help'];
-    helpHints?: Props['helpHints'];
-    messagesCustom?: Props['messagesCustom'];
-    readonly?: Props['readonly'];
-    required?: Props['required'];
-    requiredMessageDetail?: Props['requiredMessageDetail'];
-    userAssistanceDensity?: Props['userAssistanceDensity'];
-    value?: Props['value'];
+    columnSpan?: CheckboxProps['columnSpan'];
+    containerReadonly?: CheckboxProps['containerReadonly'];
+    disabled?: CheckboxProps['disabled'];
+    displayOptions?: CheckboxProps['displayOptions'];
+    help?: CheckboxProps['help'];
+    helpHints?: CheckboxProps['helpHints'];
+    messagesCustom?: CheckboxProps['messagesCustom'];
+    readonly?: CheckboxProps['readonly'];
+    required?: CheckboxProps['required'];
+    requiredMessageDetail?: CheckboxProps['requiredMessageDetail'];
+    userAssistanceDensity?: CheckboxProps['userAssistanceDensity'];
+    value?: CheckboxProps['value'];
 }
 export interface CCheckboxElementSettablePropertiesLenient extends Partial<CCheckboxElementSettableProperties> {
     [key: string]: any;

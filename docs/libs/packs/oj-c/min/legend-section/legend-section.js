@@ -7,7 +7,7 @@ define(["require", "exports", '@oracle/oraclejet-preact/translationBundle', "ojs
     };
     exports.LegendSection = (0, ojvcomponent_1.registerCustomElement)('oj-c-legend-section', ({ text = exports.LegendSectionDefaults.text, ...props }) => {
         return null;
-    }, "LegendSection", { "properties": { "text": { "type": "string" } } }, undefined, {
+    }, "LegendSection", { "properties": { "text": { "type": "string" } } }, { "text": "" }, {
         '@oracle/oraclejet-preact': translationBundle_1.default
     });
 });

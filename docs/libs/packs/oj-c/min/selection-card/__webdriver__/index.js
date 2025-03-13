@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findSelectionCard = exports.SelectionCardWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var SelectionCardWebElement_1 = require("./SelectionCardWebElement");
+exports.SelectionCardWebElement = void 0;
+exports.findSelectionCard = findSelectionCard;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const SelectionCardWebElement_1 = require("./SelectionCardWebElement");
 Object.defineProperty(exports, "SelectionCardWebElement", { enumerable: true, get: function () { return SelectionCardWebElement_1.SelectionCardWebElement; } });
 /**
  * Retrieve an instance of [SelectionCardWebElement](../classes/SelectionCardWebElement.html).
@@ -29,6 +30,5 @@ async function findSelectionCard(driver, by) {
     }
     return webEl;
 }
-exports.findSelectionCard = findSelectionCard;
 (0, oraclejet_webdriver_1.register)('oj-c-selection-card', SelectionCardWebElement_1.SelectionCardWebElement);
 //# sourceMappingURL=index.js.map

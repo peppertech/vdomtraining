@@ -6,7 +6,7 @@ export declare const LegendSectionDefaults: {
     text: string;
 };
 type LegendSectionProps = {
-    text: string;
+    text?: string;
 };
 export declare const LegendSection: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<LegendSectionProps>>;
 export {};
@@ -26,7 +26,7 @@ export interface CLegendSectionElementEventMap extends HTMLElementEventMap {
     'textChanged': JetElementCustomEventStrict<CLegendSectionElement['text']>;
 }
 export interface CLegendSectionElementSettableProperties extends JetSettableProperties {
-    text: ComponentProps<typeof LegendSection>['text'];
+    text?: ComponentProps<typeof LegendSection>['text'];
 }
 export interface CLegendSectionElementSettablePropertiesLenient extends Partial<CLegendSectionElementSettableProperties> {
     [key: string]: any;

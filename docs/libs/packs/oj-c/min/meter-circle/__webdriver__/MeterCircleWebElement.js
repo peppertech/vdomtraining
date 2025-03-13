@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MeterCircleWebElement = void 0;
-var MeterCircleWebElementBase_1 = require("./MeterCircleWebElementBase");
+const MeterCircleWebElementBase_1 = require("./MeterCircleWebElementBase");
 /**
  * The component WebElement for [oj-c-meter-circle](../../../oj-c/docs/oj.MeterCircle.html).
  * Do not instantiate this class directly, instead, use

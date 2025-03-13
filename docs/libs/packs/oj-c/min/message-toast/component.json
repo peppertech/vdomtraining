@@ -1,7 +1,7 @@
 {
   "name": "message-toast",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -25,8 +25,11 @@
     "oracle": {
       "icon": "oj-ux-ico-messages",
       "uxSpecs": [
-        "toast-messages"
+        "messages-toast-jet"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/MessageToastWebElement.html"
     }
   },
   "propertyLayout": [
@@ -70,14 +73,16 @@
       "description": "A dynamic template key or a function that determines the detail template for the current row.",
       "displayName": "Current Detail Template",
       "help": "#detailTemplateValue",
-      "dynamicSlotDef": "MessageToastTemplateContext"
+      "dynamicSlotDef": "MessageToastTemplateContext",
+      "templateSlotRenderType": "RenderDetailTemplate"
     },
     "iconTemplateValue": {
       "type": "string|function",
       "description": "A dynamic template key or a function that determines the icon template for the current row.",
       "displayName": "Current Icon Template",
       "help": "#iconTemplateValue",
-      "dynamicSlotDef": "MessageToastTemplateContext"
+      "dynamicSlotDef": "MessageToastTemplateContext",
+      "templateSlotRenderType": "RenderIconTemplate"
     },
     "offset": {
       "type": "number|object",
@@ -96,8 +101,8 @@
         "bottom",
         "top-start",
         "top-end",
-        "bottom-end",
         "bottom-start",
+        "bottom-end",
         "top-left",
         "top-right",
         "bottom-left",
@@ -116,7 +121,7 @@
           "type": "any"
         },
         "key": {
-          "type": "any"
+          "type": "string|number"
         },
         "metadata": {
           "type": "object",
@@ -167,7 +172,7 @@
           "type": "any"
         },
         "key": {
-          "type": "any"
+          "type": "string|number"
         },
         "metadata": {
           "type": "object",

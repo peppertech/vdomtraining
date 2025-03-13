@@ -1,7 +1,9 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.getBLACCategoriesItems = exports.getLegendData = exports.LegendDefaults = void 0;
+    exports.LegendDefaults = void 0;
+    exports.getLegendData = getLegendData;
+    exports.getBLACCategoriesItems = getBLACCategoriesItems;
     exports.LegendDefaults = {
         rendered: 'off',
         position: 'auto'
@@ -16,7 +18,6 @@ define(["require", "exports"], function (require, exports) {
             };
         });
     }
-    exports.getLegendData = getLegendData;
     function getBLACCategoriesItems(series, groups, getDataItem, hoverBehavior, hideAndShowBehavior) {
         const categoriesItem = [];
         if (hoverBehavior === 'none' && hideAndShowBehavior === 'none') {
@@ -37,5 +38,4 @@ define(["require", "exports"], function (require, exports) {
         });
         return categoriesItem;
     }
-    exports.getBLACCategoriesItems = getBLACCategoriesItems;
 });

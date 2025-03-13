@@ -39,7 +39,7 @@
     ],
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "ojmodule": "list-item-layout"
   },
@@ -54,12 +54,32 @@
     "description": "Controls padding around outside of list item layouts.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "type": {
       "names": [
         "\"none\"",
         "\"listInset\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.ListItemLayout",
+    "id": "oj-c.ListItemLayout#verticalAlignment",
+    "name": "verticalAlignment",
+    "kind": "member",
+    "longname": "oj-c.ListItemLayout#verticalAlignment",
+    "optional": true,
+    "scope": "instance",
+    "description": "Default is 'middle' which vertically aligns layout content to center of the row.",
+    "meta": {
+      "filename": "list-item-layout.tsx",
+      "path": "web/components/oj-c/list-item-layout"
+    },
+    "type": {
+      "names": [
+        "\"top\"",
+        "\"middle\""
       ]
     }
   },
@@ -72,7 +92,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "params": [
@@ -106,7 +126,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "params": [
@@ -135,7 +155,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "params": [
@@ -164,7 +184,7 @@
     "description": "The default slot accepts the primary data to be displayed.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "ojchild": true,
@@ -179,7 +199,7 @@
     "description": "The overline slot is for adding a overline text above the default slot.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "ojchild": false,
@@ -194,7 +214,7 @@
     "description": "The selector slot can accept a oj-selector component and is optional.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "ojchild": false,
@@ -209,7 +229,7 @@
     "description": "The leading slot is used for adding a leading visual next to the selector.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "ojchild": false,
@@ -224,7 +244,7 @@
     "description": "The secondary slot is for adding a secondary text below the default text.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "ojchild": false,
@@ -239,7 +259,7 @@
     "description": "The tertiary slot is for adding a tertiary text below the secondary text.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "ojchild": false,
@@ -254,7 +274,7 @@
     "description": "The metadata for adding extra trailing information. Examples of metadata are author, date etc.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "ojchild": false,
@@ -269,7 +289,7 @@
     "description": "The trailing slot is used for adding a trailing visual.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "ojchild": false,
@@ -284,7 +304,7 @@
     "description": "Action slot often uses a toolbar. In general, the action slot should display either one primary action or one or more secondary actions.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "ojchild": false,
@@ -299,7 +319,7 @@
     "description": "The quaternary slot is for adding a quaternary text below the tertiary text.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "ojchild": false,
@@ -314,7 +334,7 @@
     "description": "The navigation slot is used for adding links below the trailing slot.",
     "meta": {
       "filename": "list-item-layout.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/list-item-layout"
+      "path": "web/components/oj-c/list-item-layout"
     },
     "scope": "instance",
     "ojchild": false,

@@ -46,6 +46,6 @@ define(["require", "exports", "preact/jsx-runtime", "./header", "./footer", "./c
             const newPath = (_a = actionable.state) === null || _a === void 0 ? void 0 : _a.path;
             setRoutePath(newPath);
         };
-        return ((0, jsx_runtime_1.jsxs)("div", { id: "appContainer", class: "oj-web-applayout-page", children: [(0, jsx_runtime_1.jsx)(header_1.Header, { appName: props.appName, page: routePath, onPageChanged: pageChangeHandler, userLogin: props.userLogin, routes: routeArray }), (0, jsx_runtime_1.jsx)(index_1.default, { page: routePath }), (0, jsx_runtime_1.jsx)(footer_1.default, {})] }));
+        return ((0, jsx_runtime_1.jsxs)("div", { id: "appContainer", class: "oj-web-applayout-page", children: [(0, jsx_runtime_1.jsx)(header_1.Header, { appName: props.appName, page: routePath, onPageChanged: pageChangeHandler, userLogin: props.userLogin, routes: routeArray }), (0, jsx_runtime_1.jsx)(index_1.default, { page: routePath, router: router }), (0, jsx_runtime_1.jsx)(footer_1.default, {})] }));
     }, "App", { "properties": { "appName": { "type": "string" }, "userLogin": { "type": "string" } } });
 });

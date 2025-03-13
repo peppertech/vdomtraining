@@ -60,7 +60,7 @@
     ],
     "meta": {
       "filename": "message-banner.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-banner"
+      "path": "web/components/oj-c/message-banner"
     },
     "ojmodule": "message-banner"
   },
@@ -75,7 +75,7 @@
     "description": "<p>Data for the Message Banner component. This data is used for rendering each banner message.\nThis is a required attribute. If an application needs to initialize the component with\nno initial messages, it would need to provide an empty DataProvider. When the application\nwants to show messages, it can then add new data to the existing DataProvider.\nSee <a href=\"MutableArrayDataProvider.html\">MutableArrayDataProvider</a> for more details.</p>\n\n<p>When specifying a DataProvider for the data attribute, you need to provide the keyAttributes\nfor the DataProvider. The oj-c-message-banner component expects a single attribute of type\nstring or number as the key of the DataProvider. When the data is updated this key attribute\nwill be used to determine whether a new message is being added or an existing message is being\nupdated. This is required for performing necessary animations. When the application replaces\nthe DataProvider, the component assumes that all the messages are newly added irrespective of their\nkeys and performs animation accordingly.</p>",
     "meta": {
       "filename": "message-banner.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-banner"
+      "path": "web/components/oj-c/message-banner"
     },
     "type": {
       "names": [
@@ -86,7 +86,10 @@
       {
         "target": "Type",
         "value": "DataProvider<K, D>",
-        "jsdocOverride": true
+        "jsdocOverride": true,
+        "module": {
+          "DataProvider": "ojdataprovider"
+        }
       }
     ]
   },
@@ -101,7 +104,7 @@
     "description": "A Banner message can have a different look and feel. For example, when using page-level\nmessaging the messages need to be rendered from edge to edge without any outline. On the other\nhand, when they are being used in a section of a page or a dialog, they need to be rendered\nwith an outline. This attribute can be used to specify where the component is being used so that\nit will render the messages accordingly.",
     "meta": {
       "filename": "message-banner.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-banner"
+      "path": "web/components/oj-c/message-banner"
     },
     "ojvalues": [
       {
@@ -141,10 +144,11 @@
     "longname": "oj-c.MessageBanner#detailTemplateValue",
     "optional": true,
     "scope": "instance",
-    "description": "Applications can use this property to provide the name of a template or a function that\nreturns the name of a template to use for rendering the detail content.\n\nWhen a template name is provided as a value for this property, the corresponding template\nwill be used for rendering the detail content for all the messages. If applications want\nto use a different template for different messages, they can provide a function that\nreturns a template name instead.\n\nThe provided function should accept an object of type MessageBannerTemplateValueParameters\nand return a key to a template for rendering the corresponding message's detail content.\nThe value returned from this function should be a key to one of the dynamic template slots\nprovided. If the returned value is not one of the keys of the provided dynamic template slots,\nthe component will throw an Error.\n\nIf the function returns undefined, the component then will perform default rendering\nof the detail content using the detail property of the corresponding message.\n\nIf an application specifies both detail and a valid detail-template-value, the detail-template-value\nwill take precedence and the corresponding template will be used for rendering the detail content.",
+    "description": "Applications can use this property to provide the name of a template or a function that\nreturns the name of a template to use for rendering the detail content.\n\nWhen a template name is provided as a value for this property, the corresponding template\nwill be used for rendering the detail content for all the messages. If applications want\nto use a different template for different messages, they can provide a function that\nreturns a template name instead.\n\nThe provided function should accept an object of type MessageBannerTemplateValueParameters\nand return a key to a template for rendering the corresponding message's detail content.\nThe value returned from this function should be a key to one of the dynamic template slots\nprovided. If the returned value is not one of the keys of the provided dynamic template slots,\nthe component will throw an Error.\n\nIf the function returns undefined, the component then will perform default rendering\nof the detail content using the detail property of the corresponding message.\n\nIf an application specifies both detail and a valid detail-template-value, the detail-template-value\nwill take precedence and the corresponding template will be used for rendering the detail content.<p><span style=\"font-weight: bold\">Note:</span> For additional information see <a href=\"#DynamicSlots.MessageBannerTemplateContext\">DynamicSlots.MessageBannerTemplateContext</a>.</p>",
+    "dynamicSlotDef": "MessageBannerTemplateContext",
     "meta": {
       "filename": "message-banner.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-banner"
+      "path": "web/components/oj-c/message-banner"
     },
     "type": {
       "names": [
@@ -154,10 +158,53 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "string|(parameters: MessageBannerTemplateValueParameters<K, D>) => string | undefined",
+        "value": "string|(parameters: oj-c.MessageBanner.MessageBannerTemplateValueParameters<K, D>) => string | undefined",
         "jsdocOverride": true
       }
     ]
+  },
+  {
+    "memberof": "oj-c.MessageBanner",
+    "id": "oj-c.MessageBanner#sorting",
+    "name": "sorting",
+    "kind": "member",
+    "longname": "oj-c.MessageBanner#sorting",
+    "optional": true,
+    "scope": "instance",
+    "description": "Specifies how to sort the messages from the dataprovider.",
+    "meta": {
+      "filename": "message-banner.tsx",
+      "path": "web/components/oj-c/message-banner"
+    },
+    "ojvalues": [
+      {
+        "name": "severity",
+        "description": "Sort the messages in the decreasing order of severity: error, warning, info, confirmation, and none. Then sort the messages of the same severity in reverse chronological order using the timestamp property.",
+        "displayName": "Severity",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "off",
+        "description": "Messages appear in the order they are supplied with no additional sorting.",
+        "displayName": "Off",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"severity\"",
+    "type": {
+      "names": [
+        "\"off\"",
+        "\"severity\""
+      ]
+    }
   },
   {
     "memberof": "oj-c.MessageBanner",
@@ -168,7 +215,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "message-banner.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-banner"
+      "path": "web/components/oj-c/message-banner"
     },
     "scope": "instance",
     "params": [
@@ -202,7 +249,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "message-banner.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-banner"
+      "path": "web/components/oj-c/message-banner"
     },
     "scope": "instance",
     "params": [
@@ -231,7 +278,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "message-banner.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-banner"
+      "path": "web/components/oj-c/message-banner"
     },
     "scope": "instance",
     "params": [
@@ -260,7 +307,7 @@
     "description": "Triggered when a user tries to close a message through UI interaction. The application\nshould listen to this event and remove the corresponding message item from the data\nwhich would then result in the message being closed. If the application\nfails to remove the message item from the data, then no change will be done in the\nUI by the component and the message will stay in the UI opened.",
     "meta": {
       "filename": "message-banner.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-banner"
+      "path": "web/components/oj-c/message-banner"
     },
     "scope": "instance",
     "properties": [
@@ -277,8 +324,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -288,15 +335,15 @@
         "optional": false,
         "type": {
           "names": [
-            "any"
+            "string|number"
           ]
         },
         "tstype": [
           {
             "target": "Type",
             "value": "K",
-            "for": "key",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       },
@@ -313,8 +360,84 @@
           {
             "target": "Type",
             "value": "ItemMetadata<K>",
-            "for": "metadata",
             "jsdocOverride": true,
+            "for": "metadata",
+            "module": {
+              "ItemMetadata": "ojdataprovider"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.MessageBanner",
+    "dynamicSlot": true,
+    "id": "oj-c.MessageBanner#DynamicSlots.MessageBannerTemplateContext",
+    "name": "DynamicSlots.MessageBannerTemplateContext",
+    "kind": "member",
+    "longname": "oj-c.MessageBanner#DynamicSlots.MessageBannerTemplateContext",
+    "description": "Structure of template context used for dynamic templates \n    <p><span style=\"font-weight: bold\">Note:</span> For additional information see <a href=\"#detailTemplateValue\">detail-template-value</a>.</p>",
+    "meta": {
+      "filename": "message-banner.tsx",
+      "path": "web/components/oj-c/message-banner"
+    },
+    "scope": "instance",
+    "ojchild": false,
+    "ojslot": true,
+    "ojtemplateslotprops": "MessageBannerTemplateContext",
+    "properties": [
+      {
+        "name": "data",
+        "description": "The data for the current message",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "D",
+            "jsdocOverride": true,
+            "for": "data"
+          }
+        ]
+      },
+      {
+        "name": "key",
+        "description": "The key for the current message",
+        "optional": false,
+        "type": {
+          "names": [
+            "string|number"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "jsdocOverride": true,
+            "for": "key"
+          }
+        ]
+      },
+      {
+        "name": "metadata",
+        "description": "The metadata for the current message",
+        "optional": false,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "ItemMetadata<K>",
+            "jsdocOverride": true,
+            "for": "metadata",
             "module": {
               "ItemMetadata": "ojdataprovider"
             }
@@ -332,7 +455,7 @@
     "memberof": "oj-c.MessageBanner",
     "meta": {
       "filename": "message-banner.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-banner"
+      "path": "web/components/oj-c/message-banner"
     },
     "ojfragment": true
   },
@@ -351,7 +474,7 @@
     },
     "meta": {
       "filename": "message-banner.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-banner"
+      "path": "web/components/oj-c/message-banner"
     },
     "properties": [
       {
@@ -441,7 +564,7 @@
     },
     "meta": {
       "filename": "message-banner.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.0.0/packages/oraclejet-core-pack/web/components/oj-c/message-banner"
+      "path": "web/components/oj-c/message-banner"
     },
     "properties": [
       {
@@ -452,7 +575,15 @@
           "names": [
             "any"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "D",
+            "jsdocOverride": true,
+            "for": "data"
+          }
+        ]
       },
       {
         "name": "key",
@@ -460,9 +591,17 @@
         "optional": false,
         "type": {
           "names": [
-            "any"
+            "string|number"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "jsdocOverride": true,
+            "for": "key"
+          }
+        ]
       },
       {
         "name": "metadata",
@@ -472,7 +611,18 @@
           "names": [
             "object"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "ItemMetadata<K>",
+            "jsdocOverride": true,
+            "for": "metadata",
+            "module": {
+              "ItemMetadata": "ojdataprovider"
+            }
+          }
+        ]
       }
     ]
   }

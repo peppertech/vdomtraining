@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageBannerWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var selenium_webdriver_1 = require("selenium-webdriver");
-var MessageBannerWebElementBase_1 = require("./MessageBannerWebElementBase");
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const selenium_webdriver_1 = require("selenium-webdriver");
+const MessageBannerWebElementBase_1 = require("./MessageBannerWebElementBase");
 /**
  * The component WebElement for [oj-c-message-banner](../../../oj-c/docs/oj.MessageBanner.html).
  * Do not instantiate this class directly, instead, use

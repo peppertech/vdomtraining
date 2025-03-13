@@ -1,13 +1,14 @@
 .FormLayoutStyles_rootWrapperStyle__1h1o9fy0 {
   container-type: inline-size;
-  max-width: calc(var(--layoutLocalVars_columnCount__5qy13b0) * var(--maxColumnWidth__pa4rfz0));
+  max-width: calc(var(--layoutLocalVars_maxColumnCount__5qy13b0) * var(--maxColumnWidth__pa4rfz0));
 }
 .FormLayoutStyles_rootWrapperFullWidthStyle__1h1o9fy1 {
   max-width: 100%;
 }
 .FormLayoutStyles_baseRowDirectionStyle__1h1o9fy2 {
   display: grid;
-  grid-gap: var(--columnGapWidthSm__pa4rfz2);
+  grid-column-gap: var(--columnGapWidthSm__pa4rfz2);
+  grid-row-gap: var(--rowGapWidth__pa4rfz3);
 }
 .FormLayoutStyles_baseColumnDirectionStyle__1h1o9fy3 {
   -moz-column-gap: var(--columnGapWidthSm__pa4rfz2);

@@ -1,4 +1,4 @@
-define(["require", "exports", "./progress-circle/progress-circle"], function (require, exports, progress_circle_1) {
+define(["require", "exports", "oj-c/progress-circle/progress-circle"], function (require, exports, progress_circle_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ProgressCircle = void 0;

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LineChartWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-line-chart WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -44,6 +44,15 @@ class LineChartWebElementBase extends elements_1.OjWebElement {
      */
     getOrientation() {
         return this.getProperty('orientation');
+    }
+    /**
+     * Gets the value of <code>timeAxisType</code> property.
+     * The time axis type of the chart x axis.
+     * @return The value of <code>timeAxisType</code> property.
+     *
+     */
+    getTimeAxisType() {
+        return this.getProperty('timeAxisType');
     }
     /**
      * Gets the value of <code>yAxis</code> property.
@@ -103,7 +112,7 @@ class LineChartWebElementBase extends elements_1.OjWebElement {
      * Gets the value of <code>data</code> property.
      * Specifies the DataProvider for the sections and items of the line-chart.
      * @return The value of <code>data</code> property.
-     *
+     * @deprecated Since 17.1.0. Data sets from a DataProvider cannot be sent to WebDriverJS; use ViewModels or page variables instead.
      */
     getData() {
         return this.getProperty('data');
@@ -136,8 +145,17 @@ class LineChartWebElementBase extends elements_1.OjWebElement {
         return this.getProperty('selection');
     }
     /**
-     * Sets the value of <code>hiddenCategories</code> property.
+     * Gets the value of <code>dragMode</code> property.
+     * The action that is performed when a drag occurs on the chart.
+     * @return The value of <code>dragMode</code> property.
      *
+     */
+    getDragMode() {
+        return this.getProperty('dragMode');
+    }
+    /**
+     * Sets the value of <code>hiddenCategories</code> property.
+     * An array of category strings used for filtering.
      * @param hiddenCategories The value to set for <code>hiddenCategories</code>
      *
      */
@@ -146,7 +164,7 @@ class LineChartWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Gets the value of <code>hiddenCategories</code> property.
-     *
+     * An array of category strings used for filtering.
      * @return The value of <code>hiddenCategories</code> property.
      *
      */
@@ -155,7 +173,7 @@ class LineChartWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Sets the value of <code>highlightedCategories</code> property.
-     * An array of category string used for highlighting.
+     * An array of category strings used for highlighting.
      * @param highlightedCategories The value to set for <code>highlightedCategories</code>
      *
      */
@@ -164,7 +182,7 @@ class LineChartWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Gets the value of <code>highlightedCategories</code> property.
-     * An array of category string used for highlighting.
+     * An array of category strings used for highlighting.
      * @return The value of <code>highlightedCategories</code> property.
      *
      */
@@ -206,6 +224,15 @@ class LineChartWebElementBase extends elements_1.OjWebElement {
      */
     getLegend() {
         return this.getProperty('legend');
+    }
+    /**
+     * Gets the value of <code>contextMenuConfig</code> property.
+     * Specifies a context menu configuration.
+     * @return The value of <code>contextMenuConfig</code> property.
+     *
+     */
+    getContextMenuConfig() {
+        return this.getProperty('contextMenuConfig');
     }
 }
 exports.LineChartWebElementBase = LineChartWebElementBase;

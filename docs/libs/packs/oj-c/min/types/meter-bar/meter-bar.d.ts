@@ -15,25 +15,26 @@ export type ThresholdDisplay = 'all' | 'plotArea' | 'indicator';
 type DatatipContext = {
     value: number;
 };
-export declare const MeterBar: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<ObservedGlobalProps<"aria-label"> & {
-    max?: number | undefined;
-    min?: number | undefined;
-    readonly?: boolean | undefined;
-    value?: number | null | undefined;
-    onValueChanged?: PropertyChanged<number | null> | undefined;
-    step?: number | undefined;
-    color?: PreactMeterBarProps['indicatorColor'];
-    indicatorSize?: number | undefined;
-    plotArea?: PlotArea | undefined;
-    orientation?: PreactMeterBarProps['orientation'];
-    referenceLines?: ReferenceLine[] | undefined;
-    thresholdDisplay?: ThresholdDisplay | undefined;
-    thresholds?: Threshold[] | undefined;
-    describedBy?: string | null | undefined;
-    labelledBy?: string | null | undefined;
-    size?: PreactMeterBarProps['size'];
-    datatip?: ((context: DatatipContext) => string | null) | undefined;
-    onTransientValueChanged?: ReadOnlyPropertyChanged<number | undefined> | undefined;
+export declare const MeterBar: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<ObservedGlobalProps<"aria-describedby" | "aria-label" | "aria-labelledby"> & {
+    max?: number;
+    min?: number;
+    readonly?: boolean;
+    value?: number | null;
+    baseline?: number;
+    onValueChanged?: PropertyChanged<number | null>;
+    step?: number;
+    color?: PreactMeterBarProps["indicatorColor"];
+    indicatorSize?: number;
+    plotArea?: PlotArea;
+    orientation?: PreactMeterBarProps["orientation"];
+    referenceLines?: Array<ReferenceLine>;
+    thresholdDisplay?: ThresholdDisplay;
+    thresholds?: Array<Threshold>;
+    describedBy?: string | null;
+    labelledBy?: string | null;
+    size?: PreactMeterBarProps["size"];
+    datatip?: (context: DatatipContext) => string | null;
+    onTransientValueChanged?: ReadOnlyPropertyChanged<number | undefined>;
 }>>;
 export {};
 export interface CMeterBarElement extends JetElement<CMeterBarElementSettableProperties>, CMeterBarElementSettableProperties {
@@ -47,6 +48,7 @@ export interface CMeterBarElement extends JetElement<CMeterBarElementSettablePro
     setProperties(properties: CMeterBarElementSettablePropertiesLenient): void;
 }
 export namespace CMeterBarElement {
+    type baselineChanged = JetElementCustomEventStrict<CMeterBarElement['baseline']>;
     type colorChanged = JetElementCustomEventStrict<CMeterBarElement['color']>;
     type datatipChanged = JetElementCustomEventStrict<CMeterBarElement['datatip']>;
     type describedByChanged = JetElementCustomEventStrict<CMeterBarElement['describedBy']>;
@@ -66,6 +68,7 @@ export namespace CMeterBarElement {
     type valueChanged = JetElementCustomEventStrict<CMeterBarElement['value']>;
 }
 export interface CMeterBarElementEventMap extends HTMLElementEventMap {
+    'baselineChanged': JetElementCustomEventStrict<CMeterBarElement['baseline']>;
     'colorChanged': JetElementCustomEventStrict<CMeterBarElement['color']>;
     'datatipChanged': JetElementCustomEventStrict<CMeterBarElement['datatip']>;
     'describedByChanged': JetElementCustomEventStrict<CMeterBarElement['describedBy']>;
@@ -85,6 +88,7 @@ export interface CMeterBarElementEventMap extends HTMLElementEventMap {
     'valueChanged': JetElementCustomEventStrict<CMeterBarElement['value']>;
 }
 export interface CMeterBarElementSettableProperties extends JetSettableProperties {
+    baseline?: ComponentProps<typeof MeterBar>['baseline'];
     color?: ComponentProps<typeof MeterBar>['color'];
     datatip?: ComponentProps<typeof MeterBar>['datatip'];
     describedBy?: ComponentProps<typeof MeterBar>['describedBy'];
@@ -107,6 +111,7 @@ export interface CMeterBarElementSettablePropertiesLenient extends Partial<CMete
 }
 export interface MeterBarIntrinsicProps extends Partial<Readonly<CMeterBarElementSettableProperties>>, GlobalProps, Pick<preact.JSX.HTMLAttributes, 'ref' | 'key'> {
     transientValue?: never;
+    onbaselineChanged?: (value: CMeterBarElementEventMap['baselineChanged']) => void;
     oncolorChanged?: (value: CMeterBarElementEventMap['colorChanged']) => void;
     ondatatipChanged?: (value: CMeterBarElementEventMap['datatipChanged']) => void;
     ondescribedByChanged?: (value: CMeterBarElementEventMap['describedByChanged']) => void;

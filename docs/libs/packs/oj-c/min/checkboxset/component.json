@@ -1,7 +1,7 @@
 {
   "name": "checkboxset",
-  "version": "16.0.0",
-  "jetVersion": "^16.0.0",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -10,7 +10,7 @@
     "CCheckboxsetElement"
   ],
   "displayName": "Checkboxset",
-  "description": "A checkbox set allows the user to select one or more options from a set and creates the necessary dom elements for the actual checkboxes.",
+  "description": "A checkbox set allows the user to select one or more options from a set.",
   "help": "oj-c.Checkboxset.html",
   "main": "oj-c/checkboxset",
   "status": [
@@ -36,6 +36,9 @@
       "uxSpecs": [
         "checkboxset"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/CheckboxsetWebElement.html"
     }
   },
   "propertyLayout": [
@@ -45,8 +48,7 @@
         "disabled",
         "labelHint",
         "readonly",
-        "required",
-        "virtualKeyboard"
+        "required"
       ]
     },
     {
@@ -91,7 +93,8 @@
       "enumValues": [
         "row",
         "column"
-      ]
+      ],
+      "value": "column"
     },
     "displayOptions": {
       "type": "object",
@@ -128,10 +131,12 @@
       "help": "#helpHints",
       "properties": {
         "definition": {
-          "type": "string"
+          "type": "string",
+          "value": ""
         },
         "source": {
-          "type": "string"
+          "type": "string",
+          "value": ""
         },
         "sourceText": {
           "type": "string"
@@ -230,8 +235,7 @@
         "consume": {
           "name": "containerReadonly"
         }
-      },
-      "value": false
+      }
     },
     "required": {
       "type": "boolean",
@@ -247,15 +251,15 @@
       "help": "#userAssistanceDensity",
       "propertyEditorValues": {
         "reflow": {
-          "description": "Help and hints are shown above under the field. Messages and required are shown inline under the field with no reserved space.",
+          "description": "Help and hints are shown above the field. Messages and required are shown inline under the field with no reserved space.",
           "displayName": "Reflow"
         },
         "efficient": {
-          "description": "Help and hints are shown above under the field. Messages and required are shown inline under the field with reserved space.",
+          "description": "Help and hints are shown above the field. Messages and required are shown inline under the field with reserved space.",
           "displayName": "Efficient"
         },
         "compact": {
-          "description": "Help and hints are shown above under the field. Messages and required are shown inline under the field with reserved space.",
+          "description": "Help and hints are shown above the field. Messages and required are shown inline under the field with reserved space.",
           "displayName": "Compact"
         }
       },
@@ -268,8 +272,7 @@
         "consume": {
           "name": "containerUserAssistanceDensity"
         }
-      },
-      "value": "reflow"
+      }
     },
     "options": {
       "type": "Array<object>|DataProvider",
@@ -292,6 +295,13 @@
           "displayName": "Wrap"
         }
       },
+      "status": [
+        {
+          "type": "deprecated",
+          "since": "18.0.0",
+          "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+        }
+      ],
       "enumValues": [
         "truncate",
         "wrap"
@@ -342,7 +352,7 @@
       "writeback": true
     },
     "value": {
-      "type": "Array<any>|null",
+      "type": "Array<string|number>|null",
       "description": "The value of the component.",
       "displayName": "Value",
       "help": "#value",
@@ -351,20 +361,25 @@
     }
   },
   "methods": {
-    "reset": {
-      "return": "any"
-    },
-    "showMessages": {
-      "return": "any"
-    },
-    "validate": {
-      "return": "Promise"
-    },
     "blur": {
-      "return": "any"
+      "description": "Sets focus on the checkboxset or the first tabbable checkbox.",
+      "return": "void"
     },
     "focus": {
-      "return": "any"
+      "description": "Blurs the checkboxset.",
+      "return": "void"
+    },
+    "showMessages": {
+      "description": "Takes all deferred messages and shows them.",
+      "return": "void"
+    },
+    "reset": {
+      "description": "Resets the component by clearing all messages.",
+      "return": "void"
+    },
+    "validate": {
+      "description": "If enabled, validates the component's display value.",
+      "return": "Promise"
     },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
