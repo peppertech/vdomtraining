@@ -1,0 +1,29 @@
+{
+    "jetVersion": "18.0.0",
+    "excludeFolders": [
+        "C:\\Users\\JABROCK\\Documents\\JET_Projects\\vdomtraining\\docs",
+        "C:\\Users\\JABROCK\\Documents\\JET_Projects\\vdomtraining\\node_modules",
+        "C:\\Users\\JABROCK\\Documents\\JET_Projects\\vdomtraining\\scripts",
+        "C:\\Users\\JABROCK\\Documents\\JET_Projects\\vdomtraining\\web",
+        "C:\\Users\\JABROCK\\Documents\\JET_Projects\\vdomtraining\\jaftmp@"
+    ],
+    "fileTypes": [
+        "ts",
+        "js",
+        "tsx",
+        "html",
+        "jsx",
+        "json",
+        "css"
+    ],
+    "excludeFiles": [],
+    "excludeComponents": [],
+    "includeFiles": [],
+    "includeFolders": [],
+    "includeComponents": [],
+    "forceMigration": [],
+    "excludeAttributeExpressions": {},
+    "baseMigrationDir": "",
+    "logFileName": "",
+    "logFilePath": ""
+}

@@ -1,0 +1,396 @@
+Migrator is in Dry Run Mode.
+	File changes will not occur.
+
+Overall metrics
+  	Files Updated: 25
+  	Component Instances Migrated: 68
+  	Time for migration: 1.272s
+
+Component Migration Metrics
+	"oj-button": 45/45 100%
+	"oj-list-item-layout": 3/3 100%
+	"oj-selector": 2/2 100%
+	"oj-avatar": 6/6 100%
+	"oj-conveyor-belt": 1/1 100%
+	"oj-file-picker": 1/1 100%
+	"oj-progress-bar": 2/2 100%
+	"oj-progress-circle": 2/2 100%
+	"oj-rating-gauge": 1/1 100%
+	"oj-input-text": 4/8 50%
+	"oj-drawer-layout": 1/1 100%
+	"oj-input-number": 0/1 0%
+	Total: 68/73 93%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\collection\datagrid.tsx
+	"oj-button": 2/2 100%
+	File total: 2/2 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\collection\listview-hierarchical.tsx
+	"oj-list-item-layout": 1/1 100%
+	"oj-selector": 1/1 100%
+	"oj-avatar": 1/1 100%
+	"oj-button": 3/3 100%
+	File total: 6/6 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\collection\listview.tsx
+	"oj-list-item-layout": 1/1 100%
+	"oj-selector": 1/1 100%
+	"oj-avatar": 1/1 100%
+	"oj-button": 3/3 100%
+	File total: 6/6 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\collection\table-form-edit.tsx
+	"oj-button": 2/2 100%
+	"oj-input-text": 0/1 0%
+	File total: 2/3 66%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\collection\table.tsx
+	"oj-button": 1/1 100%
+	"oj-input-text": 0/1 0%
+	File total: 1/2 50%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\collection\test1.tsx
+	"oj-button": 2/2 100%
+	File total: 2/2 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\avatar.tsx
+	"oj-avatar": 2/2 100%
+	File total: 2/2 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\button\button.tsx
+	"oj-button": 4/4 100%
+	File total: 4/4 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\conveyorbelt.tsx
+	"oj-conveyor-belt": 1/1 100%
+	"oj-button": 12/12 100%
+	File total: 13/13 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\filepicker.tsx
+	"oj-file-picker": 1/1 100%
+	File total: 1/1 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\filmstrip-pagingdots.tsx
+	"oj-avatar": 1/1 100%
+	"oj-button": 1/1 100%
+	File total: 2/2 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\filmstrip.tsx
+	"oj-avatar": 1/1 100%
+	File total: 1/1 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\progress\progressbar.tsx
+	"oj-progress-bar": 2/2 100%
+	File total: 2/2 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\progress\progresscircle.tsx
+	"oj-progress-circle": 2/2 100%
+	File total: 2/2 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\toolbar.tsx
+	"oj-button": 4/4 100%
+	File total: 4/4 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\dataviz\chart-drill.tsx
+	"oj-button": 1/1 100%
+	File total: 1/1 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\dataviz\rating-gauge.tsx
+	"oj-rating-gauge": 1/1 100%
+	File total: 1/1 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\form\formelements.tsx
+	"oj-input-text": 2/4 50%
+	"oj-button": 2/2 100%
+	File total: 4/6 66%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\form\test.tsx
+	"oj-button": 1/1 100%
+	"oj-input-text": 1/1 100%
+	File total: 2/2 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\form\test3.tsx
+	"oj-list-item-layout": 1/1 100%
+	File total: 1/1 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\form\test5.tsx
+	"oj-input-text": 1/1 100%
+	"oj-button": 1/1 100%
+	"oj-input-number": 0/1 0%
+	File total: 2/3 66%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\navlayout\dialog.tsx
+	"oj-button": 2/2 100%
+	File total: 2/2 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\navlayout\index.tsx
+	"oj-button": 2/2 100%
+	"oj-drawer-layout": 1/1 100%
+	File total: 3/3 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\navlayout\popup.tsx
+	"oj-button": 1/1 100%
+	File total: 1/1 100%
+
+File in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\modules\modules.tsx
+	"oj-button": 1/1 100%
+	File total: 1/1 100%
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\collection\datagrid.tsx
+	Tag migrated from "oj-button" to "oj-c-button"
+	Tag migrated from "oj-button" to "oj-c-button"
+	Import: Updated from "ojs/ojbutton" to "oj-c/button"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\collection\listview-hierarchical.tsx
+	Tag migrated from "oj-list-item-layout" to "oj-c-list-item-layout"
+	Tag migrated from "oj-selector" to "oj-c-selector"
+	Tag migrated from "oj-avatar" to "oj-c-avatar"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Save"
+		Class name of "oj-button-sm" migrated to "size" attribute with value of "sm"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Download"
+		Class name of "oj-button-sm" migrated to "size" attribute with value of "sm"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Print"
+		Class name of "oj-button-sm" migrated to "size" attribute with value of "sm"
+	Import: Updated from "ojs/ojavatar" to "oj-c/avatar"
+	Import: Updated from "ojs/ojbutton" to "oj-c/button"
+	Import: Updated from "ojs/ojlistitemlayout" to "oj-c/list-item-layout"
+	Import: Updated from "ojs/ojselector" to "oj-c/selector"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\collection\listview.tsx
+	Tag migrated from "oj-list-item-layout" to "oj-c-list-item-layout"
+	Tag migrated from "oj-selector" to "oj-c-selector"
+	Tag migrated from "oj-avatar" to "oj-c-avatar"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Save"
+		Class name of "oj-button-sm" migrated to "size" attribute with value of "sm"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Download"
+		Class name of "oj-button-sm" migrated to "size" attribute with value of "sm"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Print"
+		Class name of "oj-button-sm" migrated to "size" attribute with value of "sm"
+	Import: Updated from "ojs/ojavatar" to "oj-c/avatar"
+	Import: Updated from "ojs/ojbutton" to "oj-c/button"
+	Import: Updated from "ojs/ojlistitemlayout" to "oj-c/list-item-layout"
+	Import: Updated from "ojs/ojselector" to "oj-c/selector"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\collection\table-form-edit.tsx
+	Rule to ignore: "oj-input-text" filtered out due to missing attribute "label-hint"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Edit"
+	"oj-buttonset-one" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Edit"
+		Class name of "oj-button-sm" migrated to "size" attribute with value of "sm"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\collection\table.tsx
+	Rule to ignore: "oj-input-text" filtered out due to missing attribute "label-hint"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Edit"
+	"oj-buttonset-one" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+	Import: Appended "oj-c/button" to "ojs/ojbutton"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\collection\test1.tsx
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Switch to view A"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Switch to view B"
+	Import: Added "oj-c/button" for "oj-c-button" to top of file due to missing import
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\avatar.tsx
+	Tag migrated from "oj-avatar" to "oj-c-avatar"
+		Attribute deprecated, removed "role" 
+	Tag migrated from "oj-avatar" to "oj-c-avatar"
+		Attribute deprecated, removed "role" 
+	Import: Updated from "ojs/ojavatar" to "oj-c/avatar"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\button\button.tsx
+	Tag migrated from "oj-button" to "oj-c-button"
+	Tag migrated from "oj-button" to "oj-c-button"
+	Tag migrated from "oj-button" to "oj-c-button"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Class name of "oj-button-full-width" migrated to "edge" attribute with value of "bottom"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\button\buttonsetmany.tsx
+	"oj-buttonset-many" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\button\buttonsetone.tsx
+	"oj-buttonset-one" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\button\menubutton.tsx
+	"oj-menu-button" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\conveyorbelt.tsx
+	Tag migrated from "oj-conveyor-belt" to "oj-c-conveyor-belt"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Hydrogen"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Helium"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Lithium"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Beryllium"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Boron"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Carbon"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Nitrogen"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Oxygen"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Fluorine"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Neon"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Sodium"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Magnesium"
+	Import: Added "oj-c/button" for "oj-c-button" to top of file due to missing import
+	Import: Updated from "ojs/ojconveyorbelt" to "oj-c/conveyor-belt"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\filepicker.tsx
+	Tag migrated from "oj-file-picker" to "oj-c-file-picker"
+	Import: Updated from "ojs/ojfilepicker" to "oj-c/file-picker"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\filmstrip-pagingdots.tsx
+	Tag migrated from "oj-avatar" to "oj-c-avatar"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "{person.name}"
+		Class name of "oj-button-sm" migrated to "size" attribute with value of "sm"
+	Import: Added "oj-c/avatar" for "oj-c-avatar" to top of file due to missing import
+	Import: Added "oj-c/button" for "oj-c-button" to top of file due to missing import
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\filmstrip.tsx
+	Tag migrated from "oj-avatar" to "oj-c-avatar"
+		Attribute migrated from "size" with a value of "xxl" to "size" with a value of "2xl"
+	Import: Added "oj-c/avatar" for "oj-c-avatar" to top of file due to missing import
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\menu\menu.tsx
+	"oj-menu-button" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\menu\menuselectmany.tsx
+	"oj-menu-button" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+	"oj-menu-select-many" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\progress\progressbar.tsx
+	Tag migrated from "oj-progress-bar" to "oj-c-progress-bar"
+	Tag migrated from "oj-progress-bar" to "oj-c-progress-bar"
+	Import: Updated from "ojs/ojprogress-bar" to "oj-c/progress-bar"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\progress\progresscircle.tsx
+	Tag migrated from "oj-progress-circle" to "oj-c-progress-circle"
+	Tag migrated from "oj-progress-circle" to "oj-c-progress-circle"
+	Import: Updated from "ojs/ojprogress-circle" to "oj-c/progress-circle"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\control\toolbar.tsx
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Chat"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Paint"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Bookmark"
+	"oj-menu-button" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Additional Paint"
+	Import: Updated from "ojs/ojbutton" to "oj-c/button"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\dataviz\chart-drill.tsx
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Return"
+	Import: Updated from "ojs/ojbutton" to "oj-c/button"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\dataviz\rating-gauge.tsx
+	Tag migrated from "oj-rating-gauge" to "oj-c-rating-gauge"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\form\formelements.tsx
+	Tag migrated from "oj-input-text" to "oj-c-input-text"
+	Rule to ignore: "oj-input-text" filtered out due to attribute "converter"
+	"oj-checkboxset" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Send this stuff"
+	Tag migrated from "oj-input-text" to "oj-c-input-text"
+	Rule to ignore: "oj-input-text" filtered out due to attribute "converter"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "OK"
+	Import: Updated from "ojs/ojbutton" to "oj-c/button"
+	Import: Appended "oj-c/input-text" to "ojs/ojinputtext"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\form\test.tsx
+	Tag migrated from "oj-button" to "oj-c-button"
+	Tag migrated from "oj-input-text" to "oj-c-input-text"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\form\test3.tsx
+	Tag migrated from "oj-list-item-layout" to "oj-c-list-item-layout"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\form\test4.tsx
+	"oj-menu-button" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+	"oj-checkboxset" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+	"oj-checkboxset" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\form\test5.tsx
+	Rule to ignore: "oj-input-number" filtered out due to missing attribute "label-hint"
+	Tag migrated from "oj-input-text" to "oj-c-input-text"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Update Input Value"
+	Import: Updated from "ojs/ojbutton" to "oj-c/button"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\navlayout\accordion.tsx
+	"oj-radioset" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\navlayout\dialog.tsx
+	Tag migrated from "oj-button" to "oj-c-button"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "OK"
+	Import: Updated from "ojs/ojbutton" to "oj-c/button"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\navlayout\index.tsx
+	Tag migrated from "oj-button" to "oj-c-button"
+	Tag migrated from "oj-drawer-layout" to "oj-c-drawer-layout"
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Close"
+	Import: Updated from "ojs/ojbutton" to "oj-c/button"
+	Import: Updated from "ojs/ojdrawerlayout" to "oj-c/drawer-layout"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\examples\navlayout\popup.tsx
+	Tag migrated from "oj-button" to "oj-c-button"
+	Import: Updated from "ojs/ojbutton" to "oj-c/button"
+
+Migrating in: C:\Users\JABROCK\Documents\JET_Projects\vdomtraining\src\components\content\modules\modules.tsx
+	Tag migrated from "oj-button" to "oj-c-button"
+		Slot migrated: "oj-c-button" added attribute "label" with value of "Toggle Active State"
+	"oj-buttonset-one" migration ignored due to being data driven. Manual migration is required until the component migration is supported.
+	Import: Appended "oj-c/button" to "ojs/ojbutton"
+
+Component API Migration Sections
+	oj-avatar: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojAvatar.html#migration-section
+	oj-button: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojButton.html#migration-section
+	oj-buttonset-many: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojButtonsetMany.html#migration-section
+	oj-buttonset-one: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojButtonsetOne.html#migration-section
+	oj-checkboxset: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojCheckboxset.html#migration-section
+	oj-conveyor-belt: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojConveyorBelt.html#migration-section
+	oj-date-picker: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojDatePicker.html#migration-section
+	oj-drawer-layout: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojDrawerLayout.html#migration-section
+	oj-drawer-popup: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojDrawerPopup.html#migration-section
+	oj-file-picker: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojFilePicker.html#migration-section
+	oj-highlight-text: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojHighlightText.html#migration-section
+	oj-input-date: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojInputDate.html#migration-section
+	oj-input-number: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojInputNumber.html#migration-section
+	oj-input-password: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojInputPassword.html#migration-section
+	oj-input-text: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojInputText.html#migration-section
+	oj-list-item-layout: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojListItemLayout.html#migration-section
+	oj-menu-button: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojMenuButton.html#migration-section
+	oj-menu-select-many: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojMenuSelectMany.html#migration-section
+	oj-messages: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojMessages.html#migration-section
+	oj-message-banner: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojMessageBanner.html#migration-section
+	oj-progress-circle: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojProgressCircle.html#migration-section
+	oj-progress-bar: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojProgressBar.html#migration-section
+	oj-rating-gauge: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojRatingGauge.html#migration-section
+	oj-radioset: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojRadioset.html#migration-section
+	oj-select-many: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojSelectMany.html#migration-section
+	oj-selector: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojSelector.html#migration-section
+	oj-status-meter-gauge: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojStatusMeterGauge.html#migration-section
+	oj-text-area: https://jet.oraclecorp.com/trunk/jsdocs/oj.ojTextArea.html#migration-section
