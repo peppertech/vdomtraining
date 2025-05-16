@@ -55,6 +55,8 @@ const Test5 = (props: Props) => {
 
     return (
         <oj-form-layout>
+            <oj-input-text help={{instruction:"help.instruction text"}} labelHint="Remark"
+          value="Test"length={{max:100}}></oj-input-text>
             <oj-input-number
                 ref={inputRef}
                 style={{ maxWidth: "3.125rem" }}

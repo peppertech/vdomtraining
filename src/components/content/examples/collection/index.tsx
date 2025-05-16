@@ -7,6 +7,8 @@ import DataGrid from "./datagrid";
 import CardView from "./cardview";
 import { RowExpanderTable } from "./rowexpander-table";
 import { Content } from "./test1";
+import  ListViewTest1 from "./listviewTest1";
+import  {ListViewTest2} from "./listviewTest2";
 import "preact";
 
 const Collection = () => {
@@ -45,7 +47,7 @@ const Collection = () => {
           <h2 class="oj-typography-heading-sm"> Card View </h2>
           <CardView />
         </div>
-        {/* <Content/> */}
+        <ListViewTest2/>
       </div>
     </div>
   );

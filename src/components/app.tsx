@@ -5,8 +5,9 @@ import { registerCustomElement } from "ojs/ojvcomponent";
 import "preact";
 import { useEffect, useState } from "preact/hooks";
 import CoreRouter = require("ojs/ojcorerouter");
-import UrlParamAdapter = require("ojs/ojurlparamadapter");
 import Context = require("ojs/ojcontext");
+import UrlPathAdapter = require("ojs/ojurlpathadapter");
+import UrlParamAdapter = require("ojs/ojurlparamadapter");
 
 type Props = {
   appName: string;
@@ -47,6 +48,7 @@ const routeArray: Array<Route> = [
 
 // const router = new CoreRouter<CoreRouter.DetailedRouteConfig>(routeArray);
 const router = new CoreRouter<CoreRouter.DetailedRouteConfig>(routeArray, {
+  //urlAdapter: new UrlPathAdapter("/"),
   urlAdapter: new UrlParamAdapter(),
 });
 
@@ -66,7 +68,7 @@ export const App = registerCustomElement("app-root", (props: Props) => {
     // Intro of a potential keyboard info feature for Accessibility discoverability.
     document.addEventListener("keyup", (e) => {
       if (e.ctrlKey && e.shiftKey && e.key === "?") {
-        
+
         // If Ctrl/Shift/? is pressed get the currently active element.
         // this will allow us to lookup that elements keyboard usage
         // and display that in the future.

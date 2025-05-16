@@ -2,13 +2,13 @@
   "compileOnSave": true,
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es6",
+    "target": "es2022",
     "strict": true,
     "module": "amd",
     "moduleResolution": "node",
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
-    "lib": ["es2021", "dom", "esnext.asynciterable"],
+    "lib": ["es2022", "dom", "esnext.asynciterable"],
     "typeRoots": [
       "./node_modules/@oracle/oraclejet/dist/types",
       "./node_modules/@types"

@@ -4,7 +4,10 @@
     "name": "Chris Black",
     "title": "Oracle Cloud Infrastructure GTM Channel Director EMEA",
     "image": "images/hcm/placeholder-male-01.png",
-    "department": "Engineering"
+    "department": "Engineering",
+    "isNew":false,
+    "isRename":true,
+    "numberOfChildren":0
   },
   {
     "id": 2,

@@ -1,6 +1,7 @@
 import "ojs/ojaccordion";
 import "ojs/ojradioset";
 import "ojs/ojlabel";
+import "oj-c/collapsible"
 import "preact";
 
 export const Accordion = () => {
@@ -39,6 +40,15 @@ export const Accordion = () => {
           <p>Content 3.</p>
         </oj-collapsible>
       </oj-accordion>
+
+      <oj-c-collapsible iconPosition="end">
+        <h2 id="h2" slot="header" class="oj-typography-heading-sm">Header one</h2>
+        <p id="p1">I'm a Collapsible with h2 header</p>
+      </oj-c-collapsible>
+      <oj-c-collapsible iconPosition="end">
+        <h2 id="h22" slot="header" class="oj-typography-heading-sm">Header two</h2>
+        <p id="p1">I'm a Collapsible with h2 header</p>
+      </oj-c-collapsible>
     </div>
   );
 };

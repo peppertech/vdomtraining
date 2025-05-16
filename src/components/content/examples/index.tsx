@@ -95,7 +95,7 @@ const ExampleContent = (props: Props) => {
     );
   };
   return (
-    <div class="oj-web-applayout-max-width oj-web-applayout-content">
+    <div class="oj-web-applayout-content">
       <h1 class="oj-typography-heading-lg"> Examples </h1>
       <hr />
       <oj-tab-bar

@@ -22,7 +22,7 @@ const Content = ({ router, page }: Props) => {
   };
 
   return (
-    <div class="oj-web-applayout-max-width oj-web-applayout-content">
+    <div class="oj-web-applayout-content">
       {pageContent(page as string)}
     </div>
   );
