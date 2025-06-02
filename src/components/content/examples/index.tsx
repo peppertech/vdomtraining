@@ -1,5 +1,5 @@
 import Collection from "./collection/index";
-import Form from "./form/index";
+import { Form } from "./form/index";
 import DataViz from "./dataviz/index";
 import Control from "./control/index";
 import NavLayout from "./navlayout/index";

@@ -5,25 +5,95 @@ import { TabBar } from "./tabbar";
 import { Dialog } from "./dialog";
 import { Popup } from "./popup";
 import "preact";
-import { useState } from "preact/hooks";
+import { useState, useRef } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
 import "ojs/ojdrawerlayout";
+import "oj-c/drawer-popup";
+import "oj-c/select-multiple";
 import { Test1 } from "./test1";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
+
+const ColumnsSelectionView = () => {
+
+  const selectedDataSet = useRef(null)
+  const handleSearchSelectionChanged = () => { }
+
+  const colData = [{
+    headerText: "measureStatusId",
+    sortProperty: "status",
+    sortable: "enabled",
+    headerClassName: "",
+    id: "measureStatusId",
+    // headerRenderer: customHeaderSortableRenderer,
+    columnGroup: "patient-info",
+    regions: ["us",
+      "emea",
+      "gov"],
+    width: '16rem'
+  },
+  {
+    headerText: "latestSupportingFactId",
+    sortProperty: "supportingFactDisplayName",
+    sortable: "enabled",
+    headerClassName: "",
+    id: "latestSupportingFactId",
+    // headerRenderer: customHeaderSortableRenderer,
+    columnGroup: "patient-info",
+    regions: ["us",
+      "emea",
+      "gov"],
+    width: '16rem'
+  }]
+
+  const allColumns = new MutableArrayDataProvider(colData, { keyAttributes: "id" })
+  return (
+    <>
+      <oj-c-select-multiple
+        labelHint="testing the close methods with click"
+        labelEdge="inside"
+        class="oj-form-control-max-width-md"
+        data={allColumns}
+        value={selectedDataSet.current}
+        itemText="headerText"
+        onvalueChanged={handleSearchSelectionChanged}
+      >
+      </oj-c-select-multiple>
+
+    </>
+  )
+}
 const NavLayout = () => {
   const [opened, setOpened] = useState<boolean>(false);
+  const [isColumnsSelectionViewOpen, setIsColumnsSelectionViewOpen] = useState<boolean>(false);
 
   const toggleDrawer = () => {
     setOpened(!opened);
   };
+  const togglePopDrawer = () => {
+    setIsColumnsSelectionViewOpen(!isColumnsSelectionViewOpen);
+  };
+
+  const handleColumnsSelectionViewDrawerClosed = () => {
+    //setColumnsToShow(shownColumns);
+    if (isColumnsSelectionViewOpen) {
+      setIsColumnsSelectionViewOpen(false);
+    }
+  }
   return (
-    <div class="oj-web-applayout-max-width oj-web-applayout-content">
+    <div class="oj-web-applayout-content">
       <oj-button
         onojAction={toggleDrawer}
         aria-label="To go to drawer content, locate header with name Drawer Content"
         label="Toggle End Drawer"
+        chroming="callToAction"
+      ></oj-button>
+      <oj-button
+        onojAction={togglePopDrawer}
+        aria-label="To go to drawer content, locate header with name Drawer Content"
+        label="Toggle Popup Drawer"
         chroming="callToAction"
       ></oj-button>
       <oj-drawer-layout endOpened={opened} class="demo-full-height">
@@ -87,6 +157,17 @@ const NavLayout = () => {
           </div>
         </div>
       </oj-drawer-layout>
+      <oj-c-drawer-popup
+        id='column-selection-drawer'
+        edge="end"
+        opened={isColumnsSelectionViewOpen}
+        modality="modeless"
+        autoDismiss="none"
+        onojClose={handleColumnsSelectionViewDrawerClosed}>
+        <div class="common-drawer">
+          <ColumnsSelectionView />
+        </div>
+      </oj-c-drawer-popup>
     </div>
   );
 };

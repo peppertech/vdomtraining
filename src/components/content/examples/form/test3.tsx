@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "preact/hooks";
+import { useState, useEffect, useRef, useCallback } from "preact/hooks";
 import "oj-c/list-view";
 import "oj-c/list-item-layout";
 import "ojs/ojlistview";
@@ -35,10 +35,10 @@ const items2 = [
   },
 ];
 
-export function Test3() {
+export const Test3 = () => {
   const [val, setVal] = useState<boolean>(false);
   const revisionsDP = useRef(
-    new MutableArrayDataProvider<string, Item>(items1, {
+    new MutableArrayDataProvider<Item['id'], Item>(items1, {
       keyAttributes: "id",
     })
   );
@@ -46,25 +46,31 @@ export function Test3() {
   // Respond to state change by mutating the data in the DP
   useEffect(() => {
     revisionsDP.current.data = val ? items2 : items1;
-  }, [revisionsDP, val]);
+  }, [val]);
 
   // Button click handler triggers a re-render
   const toggle = () => {
     setVal(!val);
   };
 
-  const renderItemC = (
-    item: ojListView.ItemTemplateContext<Item["id"], Item>
-  ) => <oj-c-list-item-layout>{item.data.label}</oj-c-list-item-layout>;
+  const renderItemC: CListViewElement.RenderItemTemplate<Item["id"], Item> = useCallback(
+    (item
+    ) => {
+      return (<oj-c-list-item-layout>{item.data.label}</oj-c-list-item-layout>)
+    }, [])
 
-  const renderItem = (
-    item: ojListView.ItemTemplateContext<Item["id"], Item>
-  ) => <oj-list-item-layout>{item.data.label}</oj-list-item-layout>;
+  const renderItem = useCallback(
+    (item: ojListView.ItemTemplateContext<Item["id"], Item>
+    ) => {
+      return (<oj-list-item-layout>{item.data.label}</oj-list-item-layout>)
+    }, [])
 
   return (
     <div>
-      Click the button to toggle between "0" and "1,2,3" in each list view. The
-      two lists should be the same
+      <h2>Test3 Content</h2>
+      <p>Click the button to toggle between "0" and "1,2,3" in each list view. The
+        two lists should be the same</p>
+      <oj-c-button onojAction={toggle} label="toggle"></oj-c-button><br />
       <div class="oj-flex">
         <div class="oj-sm-flex-1  oj-sm-margin-4x">
           <div>oj-c-list-view</div>
@@ -79,8 +85,6 @@ export function Test3() {
           </oj-list-view>
         </div>
       </div>
-      <hr></hr>
-      <oj-c-button onojAction={toggle} label="toggle"></oj-c-button>
     </div>
   );
 }

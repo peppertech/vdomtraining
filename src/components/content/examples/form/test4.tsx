@@ -16,16 +16,16 @@ import {
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type Class = {
-  id:number
-  label:string
+  id: number
+  label: string
 }
 
-const data:Array<Class> = [
-  {id:388, label:"Blood donation - 388"},
-  {id:389, label:"Emergency - 389"},
-  {id:390, label:"Home health - 390"},
-  {id:391, label:"Inpatient - 391"},
-  {id:392, label:"Observation - 392"},
+const data: Array<Class> = [
+  { id: 388, label: "Blood donation - 388" },
+  { id: 389, label: "Emergency - 389" },
+  { id: 390, label: "Home health - 390" },
+  { id: 391, label: "Inpatient - 391" },
+  { id: 392, label: "Observation - 392" },
 ]
 
 const browsers = [
@@ -35,11 +35,11 @@ const browsers = [
   { value: 'OP', label: 'Opera' },
   { value: 'SA', label: 'Safari' }
 ];
-const encounterClassTypesProvider = new MutableArrayDataProvider<Class["id"],Class>(data, {keyAttributes:"id"})
-const browserDP = new MutableArrayDataProvider(browsers, {keyAttributes:"value"})
+const encounterClassTypesProvider = new MutableArrayDataProvider<Class["id"], Class>(data, { keyAttributes: "id" })
+const browserDP = new MutableArrayDataProvider(browsers, { keyAttributes: "value" })
 
 
-export function Test4() {
+export const Test4 = () => {
   console.log("Component rendered");
   const [disableMenu, setDisableMenu] = useState<boolean>(false);
   const [val, setVal] = useState<string[]>();
@@ -56,7 +56,8 @@ export function Test4() {
     setDisableMenu(false);
   };
   return (
-    <div class="oj-web-applayout-max-width oj-web-applayout-content">
+    <div>
+      <h2>Test4 Content</h2>
       <h4>Menu standalone test App</h4>
       <oj-menu-button id="menuButton5" chroming="borderless">
         {"Test Menu Button"}
@@ -77,20 +78,20 @@ export function Test4() {
         </oj-menu>
       </oj-menu-button>
       <oj-checkboxset
-            // label-hint="Exclude Selected Encounter Classes"
-            labelEdge="inside"
-            options={encounterClassTypesProvider}
-            value={filterEncntrCodes}
-            optionsKeys={{value:"id"}}
-            disabled={false}
-          ></oj-checkboxset>
+        // label-hint="Exclude Selected Encounter Classes"
+        labelEdge="inside"
+        options={encounterClassTypesProvider}
+        value={filterEncntrCodes}
+        optionsKeys={{ value: "id" }}
+        disabled={false}
+      ></oj-checkboxset>
       <oj-checkboxset
-            // label-hint="Exclude Selected Encounter Classes"
-            labelEdge="inside"
-            options={browserDP}
-            value={val}
-            disabled={false}
-          ></oj-checkboxset>
+        // label-hint="Exclude Selected Encounter Classes"
+        labelEdge="inside"
+        options={browserDP}
+        value={val}
+        disabled={false}
+      ></oj-checkboxset>
     </div>
   );
 }

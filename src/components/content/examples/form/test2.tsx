@@ -6,7 +6,7 @@ import "oj-c/button";
 import "ojs/ojdialog";
 import type { ojDialog } from "ojs/ojdialog";
 
-export function Content() {
+export const Test2 = () => {
   const helloDialogRef = useRef<ojDialog>(null);
 
   const onLinkAction = () => {
@@ -19,6 +19,7 @@ export function Content() {
 
   return (
     <>
+      <h2>Test2 Content</h2>
       <oj-c-button
         onojAction={onLinkAction}
         size="lg"

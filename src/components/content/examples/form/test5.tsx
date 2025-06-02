@@ -19,7 +19,7 @@ type Props = {
 type InputNumberProps = ComponentProps<'oj-input-number'>;
 const displayOptions: InputNumberProps["displayOptions"] = { validatorHint: "display", messages: "display" };
 
-const Test5 = (props: Props) => {
+export const Test5 = (props: Props) => {
 
     const [page, setPage] = useState<number>(props.minPage);
     const [timeVal, setTimeVal] = useState();
@@ -54,24 +54,26 @@ const Test5 = (props: Props) => {
     }
 
     return (
-        <oj-form-layout>
-            <oj-input-text help={{instruction:"help.instruction text"}} labelHint="Remark"
-          value="Test"length={{max:100}}></oj-input-text>
-            <oj-input-number
-                ref={inputRef}
-                style={{ maxWidth: "3.125rem" }}
-                value={page}
-                userAssistanceDensity={'compact'}
-                validators={validators}
-                displayOptions={displayOptions}
-                onvalidChanged={validStateHandler}
-                onvalueChanged={handlePageInputChange}>
-            </oj-input-number>
-            <oj-c-input-text labelHint={"Testing CorePack"} value={inputVal}></oj-c-input-text>
-            <oj-input-text labelHint={"Testing Legacy"} value={inputVal}></oj-input-text>
-            <oj-input-time value={timeVal} labelHint="Enter start time" converter={timeConverter}></oj-input-time>
-            <oj-button onojAction={updateinputVal}>Update Input Value</oj-button>
-        </oj-form-layout>
+        <>
+            <h2>Test5 Content</h2>
+            <oj-form-layout>
+                <oj-input-text help={{ instruction: "help.instruction text" }} labelHint="Remark"
+                    value="Test" length={{ max: 100 }}></oj-input-text>
+                <oj-input-number
+                    ref={inputRef}
+                    style={{ maxWidth: "3.125rem" }}
+                    value={page}
+                    userAssistanceDensity={'compact'}
+                    validators={validators}
+                    displayOptions={displayOptions}
+                    onvalidChanged={validStateHandler}
+                    onvalueChanged={handlePageInputChange}>
+                </oj-input-number>
+                <oj-c-input-text labelHint={"Testing CorePack"} value={inputVal}></oj-c-input-text>
+                <oj-input-text labelHint={"Testing Legacy"} value={inputVal}></oj-input-text>
+                <oj-input-time value={timeVal} labelHint="Enter start time" converter={timeConverter}></oj-input-time>
+                <oj-button onojAction={updateinputVal}>Update Input Value</oj-button>
+            </oj-form-layout>
+        </>
     )
 }
-export default Test5
