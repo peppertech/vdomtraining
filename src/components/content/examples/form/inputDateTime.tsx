@@ -12,7 +12,7 @@ import "ojs/ojformlayout";
 type InputDateTimeProps = ComponentProps<"oj-input-date-time">;
 
 const helpHintDefinition: InputDateTimeProps["helpHints"] = {
-  definition: "cost of a single item",
+  definition: "help hints definition",
 };
 const helpHintSource: InputDateTimeProps["helpHints"] = {
   source: "https://www.oracle.com",
@@ -69,7 +69,7 @@ const InputDateTime = () => {
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
-      <h6 class="oj-sm-margin-4x-top">States</h6>
+      <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom">States</h5>
       <oj-form-layout max-columns={3} labelEdge="inside" direction="row">
         <oj-input-date-time
           labelHint="Enabled no value"
@@ -102,7 +102,8 @@ const InputDateTime = () => {
         ></oj-input-date-time>
       </oj-form-layout>
 
-      <h6 class="oj-sm-margin-4x-top">Required & Placeholder</h6>
+    
+       <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom">Required & Placeholder</h5>
       <oj-form-layout max-columns={3} direction="row">
         <oj-input-date-time
           required={true}
@@ -113,7 +114,8 @@ const InputDateTime = () => {
           labelHint="placeholder"
         ></oj-input-date-time>
       </oj-form-layout>
-      <h6 class="oj-sm-margin-4x-top"> Date Picker Variations</h6>
+         
+       <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom"> Date Picker Variations</h5>
       <oj-form-layout max-columns={3} labelEdge="inside" direction="row">
         <oj-input-date-time
           value={value}
@@ -129,7 +131,8 @@ const InputDateTime = () => {
         ></oj-input-date-time>
       </oj-form-layout>
 
-      <h6 class="oj-sm-margin-4x-top">Time Picker Variations</h6>
+      
+      <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom"> Time Picker Variations</h5>
       <oj-form-layout max-columns={3} labelEdge="inside" direction="row">
         <oj-input-date-time
           value={value}
@@ -161,7 +164,8 @@ const InputDateTime = () => {
           autocomplete="off"
         ></oj-input-date-time>
       </oj-form-layout>
-      <h6 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom">Messages</h6>
+      
+       <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom"> Messages </h5>
       <oj-form-layout max-columns={3} labelEdge="inside" direction="row">
         <oj-input-date-time
           value={value}

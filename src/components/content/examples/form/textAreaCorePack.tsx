@@ -1,11 +1,10 @@
 import { ComponentProps } from "preact";
 import { useState, useRef } from "preact/hooks";
 import Message = require("ojs/ojmessaging");
-//import "ojs/ojinputtext";
-import "ojs/ojlabel";
-import "ojs/ojformlayout";
-import { CTextAreaElement } from "oj-c/text-area";
-type TextAreaProps = ComponentProps<"oj-text-area">;
+import 'oj-c/text-area';
+import "oj-c/form-layout";
+
+type TextAreaProps = ComponentProps<"oj-c-text-area">;
 const hintHintDefinition: TextAreaProps["helpHints"] = {
   definition: "cost of a single item",
 };
@@ -15,7 +14,7 @@ const helpHintSource: TextAreaProps["helpHints"] = {
 const length: TextAreaProps["length"] = {
   countBy: "codePoint",
   max: 15,
-  counter: "remaining",
+  counter: "remaining"
 };
 const error: Message[] = [
   { summary: "summary", detail: "detail", severity: "error" },
@@ -30,169 +29,170 @@ const confirmation: Message[] = [
   { summary: "summary", detail: "detail", severity: "confirmation" },
 ];
 
-const TextArea = () => {
+const TextAreaCorePack = () => {
   const [formData, setFormData] = useState({
     rawValue: "",
     value: "",
   });
   return (
     <div>
-      <h4>States inside oj-form-layout</h4>
-      <oj-form-layout maxColumns={3} labelEdge="inside" direction="row">
-        <oj-text-area
+      <h4>States inside oj-c-form-layout</h4>
+      <oj-c-form-layout maxColumns={3} labelEdge="inside" direction="row">
+        <oj-c-text-area
           value="This is a really long sample text to show text area value."
           labelHint="enabled"
           rows={3}
-        ></oj-text-area>
-        <oj-text-area
+        ></oj-c-text-area>
+        <oj-c-text-area
           id="disabled1"
           value="This is a really long sample text to show text area value."
           labelHint="disabled"
           disabled={true}
           rows={3}
-        ></oj-text-area>
-        <oj-text-area
+        ></oj-c-text-area>
+        <oj-c-text-area
           id="readonly1"
           value="This is a really long sample text to show text area value."
           labelHint="readonly"
           readonly={true}
           rows={3}
-        ></oj-text-area>
-        <oj-text-area labelHint="enabled no value"></oj-text-area>
-        <oj-text-area
+        ></oj-c-text-area>
+        <oj-c-text-area labelHint="enabled no value"></oj-c-text-area>
+        <oj-c-text-area
           labelHint="disabled no value"
           disabled={true}
-        ></oj-text-area>
-        <oj-text-area
+        ></oj-c-text-area>
+        <oj-c-text-area
           labelHint="readonly no value"
           readonly={true}
-        ></oj-text-area>
-      </oj-form-layout>
-        <h4>States outside form-layout</h4>
+        ></oj-c-text-area>
+      </oj-c-form-layout>
+
+        <h4>States outside oj-c-form-layout</h4>
         <div class="oj-flex oj-sm-padding-2x-vertical">
-          <oj-text-area
+          <oj-c-text-area
            class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal"
           value="This is a really long sample text to show text area value."
           labelHint="enabled"
           rows={3}
-        ></oj-text-area>
-        <oj-text-area
+        ></oj-c-text-area>
+        <oj-c-text-area
           class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal"
           id="disabled1"
           value="This is a really long sample text to show text area value."
           labelHint="disabled"
           disabled={true}
           rows={3}
-        ></oj-text-area>
-        <oj-text-area
+        ></oj-c-text-area>
+        <oj-c-text-area
           class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal"
           id="readonly1"
           value="This is a really long sample text to show text area value."
           labelHint="readonly"
           readonly={true}
           rows={3}
-        ></oj-text-area>
+        ></oj-c-text-area>
          </div>
          <div class="oj-flex oj-sm-padding-2x-vertical">
-           <oj-text-area 
+           <oj-c-text-area 
            class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal"
-           labelHint="enabled no value"></oj-text-area>
-        <oj-text-area
+           labelHint="enabled no value"></oj-c-text-area>
+        <oj-c-text-area
           class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal"
           labelHint="disabled no value"
           disabled={true}
-        ></oj-text-area>
-        <oj-text-area
+        ></oj-c-text-area>
+        <oj-c-text-area
           class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal"
           labelHint="readonly no value"
           readonly={true}
-        ></oj-text-area>
+        ></oj-c-text-area>
          </div>
 
       <h4 class="oj-sm-margin-4x-top">Required, Placeholder & Max Length</h4>
-      <oj-form-layout maxColumns={3} labelEdge="inside" direction="row">
-        <oj-text-area required={true} labelHint="required"></oj-text-area>
-        <oj-text-area
+      <oj-c-form-layout maxColumns={3} labelEdge="inside" direction="row">
+        <oj-c-text-area required={true} labelHint="required"></oj-c-text-area>
+        <oj-c-text-area
           placeholder="placeholder text"
           labelHint="placeholder"
-        ></oj-text-area>
-        <oj-text-area
+        ></oj-c-text-area>
+        <oj-c-text-area
           id="text-area"
           value={formData.value}
-          rawValue={formData.rawValue}
+          rawValue={formData.rawValue as any}
           length={length}
           labelHint="max length"
-        ></oj-text-area>
-      </oj-form-layout>
+        ></oj-c-text-area>
+      </oj-c-form-layout>
 
       <h4 class="oj-sm-margin-4x-top">Help</h4>
-      <oj-form-layout maxColumns={3} direction="row" labelEdge="inside">
-        <oj-text-area
+      <oj-c-form-layout maxColumns={3} direction="row" labelEdge="inside">
+        <oj-c-text-area
           helpHints={hintHintDefinition}
           labelHint="help.instruction"
-        ></oj-text-area>
+        ></oj-c-text-area>
 
-        <oj-text-area
+        <oj-c-text-area
           helpHints={helpHintSource}
           labelHint="help-hints.source"
-        ></oj-text-area>
-      </oj-form-layout>
+        ></oj-c-text-area>
+      </oj-c-form-layout>
 
       <h4 class="oj-sm-margin-4x-top">Messages</h4>
-      <oj-form-layout maxColumns={3} direction="row" labelEdge="inside">
-        <oj-text-area
-          messagesCustom={error}
+      <oj-c-form-layout maxColumns={3} direction="row" labelEdge="inside">
+        <oj-c-text-area
+          messagesCustom={error as any}
           value="This is a really long sample text to show text area value."
           labelHint="error"
           rows={3}
-        ></oj-text-area>
-        <oj-text-area
-          messagesCustom={warning}
+        ></oj-c-text-area>
+        <oj-c-text-area
+          messagesCustom={warning as any}
           value="This is a really long sample text to show text area value."
           labelHint="warning"
           rows={3}
-        ></oj-text-area>
-        <oj-text-area
-          messagesCustom={info}
+        ></oj-c-text-area>
+        <oj-c-text-area
+          messagesCustom={info as any}
           value="This is a really long sample text to show text area value."
           labelHint="info"
           rows={3}
-        ></oj-text-area>
-        <oj-text-area
-          messagesCustom={confirmation}
+        ></oj-c-text-area>
+        <oj-c-text-area
+           messagesCustom={confirmation as any}
           value="This is a really long sample text to show text area value."
           labelHint="confirmation"
           rows={3}
-        ></oj-text-area>
-      </oj-form-layout>
+        ></oj-c-text-area>
+      </oj-c-form-layout>
       <h4 class="oj-sm-margin-4x-top">Resize behaviour</h4>
-      <oj-form-layout maxColumns={3} direction="row" labelEdge="inside">
-        <oj-text-area
+      <oj-c-form-layout maxColumns={3} direction="row" labelEdge="inside">
+        <oj-c-text-area
           id="none"
           value={formData.value}
           labelHint="This text area has the default resize-behavior of 'none'"
-        ></oj-text-area>
-        <oj-text-area
+        ></oj-c-text-area>
+        <oj-c-text-area
           id="both"
           value={formData.value}
           resizeBehavior="both"
           labelHint="This text area has resize-behavior of 'both'"
-        ></oj-text-area>
-        <oj-text-area
+        ></oj-c-text-area>
+        <oj-c-text-area
           id="horizontal"
           value={formData.value}
           resizeBehavior="horizontal"
           labelHint="This text area has resize-behavior of 'horizontal'"
-        ></oj-text-area>
-        <oj-text-area
+        ></oj-c-text-area>
+        <oj-c-text-area
           id="vertical"
           value={formData.value}
           resizeBehavior="vertical"
           labelHint="This text area has resize-behavior of 'vertical'"
-        ></oj-text-area>
-      </oj-form-layout>
+        ></oj-c-text-area>
+      </oj-c-form-layout>
     </div>
   );
 };
 
-export default TextArea;
+export default TextAreaCorePack;

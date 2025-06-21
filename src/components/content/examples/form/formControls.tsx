@@ -6,8 +6,9 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import FormElements from "./formelements";
 import SelectSingle from "./selectSingle";
 import FormsHome from "./home";
-import ComboBox from "./combobox";
+import ComboboxOne from "./comboBoxOne";
 import InputText from "./inputText";
+import ComboBoxOne from "./comboBoxOne";
 
 type Tab = {
   value: string;
@@ -46,7 +47,7 @@ const FormControls = () => {
       case "formelements":
         return <FormElements />;
       case "combobox":
-        return <ComboBox />;
+        return <ComboBoxOne />;
       default:
         return <FormsHome />;
     }

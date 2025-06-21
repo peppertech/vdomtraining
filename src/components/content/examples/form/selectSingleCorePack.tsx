@@ -1,5 +1,5 @@
 import { h, ComponentProps } from "preact";
-import { useState, useCallback } from "preact/hooks";
+import { useState, useEffect, useCallback } from "preact/hooks";
 import * as peopleData from "text!./data/peopleData.json";
 import * as employeeData from "text!./data/employeeData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
@@ -49,12 +49,25 @@ type OracleEmployee = {
   IMAGE: string;
 };
 
+const browsers = [
+  { value: 'IE', label: 'Internet Explorer' },
+  { value: 'FF', label: 'Firefox' },
+  { value: 'CH', label: 'Chrome' },
+  { value: 'OP', label: 'Opera' },
+  { value: 'SA', label: 'Safari' },
+];
+const browsersDP = new ArrayDataProvider(browsers, {
+  keyAttributes: 'value',
+});
+
 // basic select single data
 const employeesData: Array<Person> = [];
 
 JSON.parse(peopleData).map((item: Employee) => {
   employeesData.push({ id: item.id, value: item.name, label: item.name });
 });
+
+
 
 const employeeDataProvider = new MutableArrayDataProvider<
   Person["value"],
@@ -79,7 +92,19 @@ const INIT_SELECTEDITEMS = new KeySetImpl([]) as KeySet<
   OracleEmployee["EMPLOYEE_ID"]
 >;
 
+
 const SelectSingleCorePack = () => {
+  
+  // const [value, setValue] = useState("CH");
+  // const valueItem = {
+  //   key: value,
+  //   data: browsers.find((item,) => item.value === value),
+  // }
+  // const onValueChanged = () => {
+  //   setValue("SA");
+  //   setTimeout(() => setValue("IE"));
+  // }
+
   const [selectSingleData, setSelectSingleValue] = useState({
     selectedValue: "Chris Black",
   });
@@ -101,6 +126,7 @@ const SelectSingleCorePack = () => {
   };
 
   const onItemTextSelectionChange = (event: any) => {
+    console.log(event.detail);
     setOracleEmployeeSelectSingle({
       selectedValue: event.detail.value,
     });
@@ -247,8 +273,16 @@ const SelectSingleCorePack = () => {
       >
         <h6 class="oj-typography-heading-sm">
           {" "}
-          Select Single - Core Pack (Basic)
+          Select Single - Core Pack (Basic) 
         </h6>
+        {/* <oj-c-select-single
+            data={browsersDP}
+            item-text="label"
+            label-hint="Browser"
+            value={value}
+            valueItem={valueItem}
+            onvalueChanged={onValueChanged}
+        /> */}
         <oj-c-select-single
           id="employeeSelector"
           label-hint="Select Single with ArrayDataProvider"

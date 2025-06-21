@@ -94,5 +94,8 @@
     position: absolute;
     z-index: 1;
 }
+.componentInfo{
+text-align: center;
+}
     
   

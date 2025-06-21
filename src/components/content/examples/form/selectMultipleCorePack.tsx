@@ -50,7 +50,7 @@ JSON.parse(peopleData).map((item: Employee) => {
   employeesData.push({ id: item.id, value: item.name, label: item.name });
 });
 
-let selectVal = new Set([]);
+let selectVal = new Set(['Chris Black', 'Christine Cooper', 'Chris Benalamore']);
 
 const employeeDataProvider = new MutableArrayDataProvider<
   Person["value"],
@@ -114,6 +114,7 @@ const SelectMultiple = () => {
   };
 
   const onItemTextSelectMultipleChange = (event: any) => {
+    console.log(event.detail.value);
     setItemTextSelectSingleData({
       selectedValue: event.detail.value,
     });
@@ -148,7 +149,7 @@ const SelectMultiple = () => {
                 label-hint="enabled">
         </oj-c-select-multiple>
 
-        <span>The selected values are: {selectMultipleData.selectedValue? Array.from(selectMultipleData.selectedValue).join(', ') : ''} </span>
+        <span>The selected values are: {selectMultipleData.selectedValue? Array.from(selectMultipleData.selectedValue).join(', ') : ''} </span> 
 
 
         <h6 class="oj-typography-heading-sm"> Select Multiple - Core Pack (Item Text)</h6>

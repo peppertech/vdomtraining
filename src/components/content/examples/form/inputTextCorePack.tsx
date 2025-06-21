@@ -52,18 +52,34 @@ const InputTextCorePack = () => {
     itemCost: "598.42",
     rawValue: "",
     value: "",
+    emailID: 'abrakababra@gmail.com'
   });
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [density, setDensity] =
     useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
-  const onvalueChange = (event: any) => {
+    //please change the variable depending upon the control that you are using
+  const onTextvalueChange = (event: any) => {
+    console.log(event.detail);
+    //alert(event.detail);
+    //  setFormData({
+    //    ...formData,
+    //   itemBuyer: event.detail.value
+    // });
+   if(event.detail.updatedFrom =='external'){
     setFormData({
       ...formData,
       [event.currentTarget.id]: event.detail.value,
     });
+   }
+    
   };
+
+   const onvalChange = (event: any) => {
+    //console.log(event.detail);
+    //alert(event.detail);
+   }
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
@@ -77,27 +93,37 @@ const InputTextCorePack = () => {
         direction="row"
       >
         <oj-c-input-text
-          value="value text"
+          id="ITC-1"
+          value={formData.itemBuyer}
+          onvalueChanged={onvalChange} 
+          clear-icon="always"  
           labelHint="Input text - enabled with value "
         ></oj-c-input-text>
-        <oj-c-input-text labelHint="Input text - enabled no value"></oj-c-input-text>
+
+        <oj-c-input-text 
+         id="ITC-2"
+         labelHint="Input text - enabled no value">
+        </oj-c-input-text>
+
         <oj-c-input-text
-          id="itdis"
+          id="ITC-3"
           value="value text"
           labelHint="Input text - disabled"
           disabled={true}
         ></oj-c-input-text>
         <oj-c-input-text
+          id="ITC-4"
           labelHint="disabled no value"
           disabled={true}
         ></oj-c-input-text>
         <oj-c-input-text
-          id="itro"
+         id="ITC-5"
           value="value text"
           labelHint="readonly"
           readonly={true}
         ></oj-c-input-text>
         <oj-c-input-text
+          id="ITC-6"
           labelHint="readonly no value"
           readonly={true}
         ></oj-c-input-text>
@@ -115,7 +141,7 @@ const InputTextCorePack = () => {
           id="itemSlot1"
           value={formData.itemName}
           labelHint="Input text - using start slots"
-          onvalueChanged={onvalueChange}
+          onvalueChanged={onTextvalueChange}
         >
           <span
             slot="start"
@@ -125,9 +151,10 @@ const InputTextCorePack = () => {
         </oj-c-input-text>
         <oj-c-input-text
           id="itemSlot2"
-          value={formData.itemName}
-          labelHint="Input text - using end slots"
-          onvalueChanged={onvalueChange}
+          value={formData.emailID}
+          labelHint="Input text - using end slots KK"
+          //readonly={true}
+           //onvalueChanged={onTextvalueChange}
         >
           <span
             slot="end"
@@ -147,18 +174,19 @@ const InputTextCorePack = () => {
         direction="row"
       >
         <oj-c-input-text
-          id="itemCost"
+           id="ITC-7"
           value={formData.itemCost}
           labelHint={lblHint}
           helpHints={hintDefinition}
-          onvalueChanged={onvalueChange}
+          //onvalueChanged={onTextvalueChange}
           converter={eurNumberConverter}
         ></oj-c-input-text>
         <oj-c-input-text
+          id="ITC-8"
           value={formData.itemCost}
           labelHint="Input text - using help hint source"
           helpHints={helpHintSource}
-          onvalueChanged={onvalueChange}
+          //onvalueChanged={onTextvalueChange}
         ></oj-c-input-text>
 
         {/* <span>The selected value is: {formData.itemCost} </span> */}
@@ -176,20 +204,23 @@ const InputTextCorePack = () => {
         direction="row"
       >
         <oj-c-input-text
+           id="ITC-9"
           required={true}
           labelHint="Input text using required"
         ></oj-c-input-text>
         <oj-c-input-text
+           id="ITC-10"
           clearIcon="always"
           labelHint="Input text using clear icon"
           value="value text"
         ></oj-c-input-text>
         <oj-c-input-text
+          id="ITC-11"
           placeholder="what you want to become in your life"
           labelHint="Input text using placeholder"
         ></oj-c-input-text>
         <oj-c-input-text
-          id="text input"
+          id="ITC-12"
           value={formData.value}
           rawValue={rawValue}
           length={length}
@@ -206,11 +237,13 @@ const InputTextCorePack = () => {
         direction="row"
       >
         <oj-c-input-text
+          id="ITC-13"
           labelHint="input-text using prefix"
           inputPrefix="$"
           value="10.00"
         ></oj-c-input-text>
         <oj-c-input-text
+           id="ITC-14"
           labelHint="input-text using suffix"
           inputSuffix="lbs"
           value="150"
@@ -228,21 +261,25 @@ const InputTextCorePack = () => {
         direction="row"
       >
         <oj-c-input-text
+           id="ITC-15"
           messagesCustom={error as any}
           value="value text"
           labelHint="Input text - with error message"
         ></oj-c-input-text>
         <oj-c-input-text
+           id="ITC-16"
           messagesCustom={warning as any}
           value="value text"
           labelHint="Input text - with warning"
         ></oj-c-input-text>
         <oj-c-input-text
+           id="ITC-17"
           messagesCustom={info as any}
           value="value text"
           labelHint="Input text - with info"
         ></oj-c-input-text>
         <oj-c-input-text
+          id="ITC-18"
           messagesCustom={confirmation as any}
           value="value text"
           labelHint="Input text - with confirmation"

@@ -122,6 +122,7 @@ const FormElements = () => {
             role="presentation"
           ></span>
         </oj-input-text>
+
         <oj-input-text
           id="itemCost"
           value={formData.itemCost}
@@ -138,6 +139,7 @@ const FormElements = () => {
           labelHint="Purchase date"
           onvalueChanged={onChange}
         ></oj-input-date-time>
+
         <oj-select-single
           id="itemBuyer"
           labelHint="Buyer"
@@ -145,6 +147,7 @@ const FormElements = () => {
           value={formData.itemBuyer}
           onvalueChanged={onChange}
         ></oj-select-single>
+
         <oj-checkboxset
           id="checkboxSetAgreeId"
           labelHint="Everything is correct?"
@@ -156,6 +159,7 @@ const FormElements = () => {
         <oj-button onojAction={onSubmit} disabled={isDisabled}>
           Send this stuff
         </oj-button>
+        
       </oj-form-layout>
       <oj-dialog ref={dialogRef} dialogTitle="Form Data Submitted">
         <div slot="body">

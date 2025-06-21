@@ -10,7 +10,7 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import "ojs/ojactioncard";
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import SelectSingle from "./selectSingle";
-import ComboBox from "./combobox";
+import ComboBoxOne from "./comboBoxOne";
 import InputText from "./inputText";
 import FormElements from "./formelements";
 import { ButtonElement } from "ojs/ojbutton";
@@ -22,6 +22,10 @@ import InputNumber from "./inputNumber";
 import InputNumberCorePack from "./inputNumberCorePack";
 import InputDateTime from "./inputDateTime";
 import TextArea from "./textArea";
+import TextAreaCorePack from "./textAreaCorePack";
+import CheckBoxSet from "./checkBoxSet";
+import InputDate from "./inputDate";
+import InputDatePicker from "./inputDatePicker";
 
 type JETComponent = {
   id: number;
@@ -32,30 +36,34 @@ type JETComponent = {
 };
 
 const allFormsComponents = [
-  // {
-  //   id: 1,
-  //   name: "Checkbox",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-checkbox-on",
-  //   isAvailable: false,
-  // },
-  // {
-  //   id: 2,
-  //   name: "Color palette",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-color-palette",
-  //   isAvailable: false,
-  // },
-  // {
-  //   id: 3,
-  //   name: "color Spectrum",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-color-spectrum",
-  //   isAvailable: false,
-  // },
-  // {
-  //   id: 4,
-  //   name: "Form Layout",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-form-layout-jet",
-  //   isAvailable: false,
-  // },
+  {
+    id: 1,
+    name: "Checkbox",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-checkbox-on",
+    isAvailable: true,
+     isCorePack: false,
+  },
+  {
+    id: 2,
+    name: "Color Palette",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-color-palette",
+    isAvailable: false,
+     isCorePack: false,
+  },
+  {
+    id: 3,
+    name: "Color Spectrum",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-color-spectrum",
+    isAvailable: false,
+    isCorePack: false,
+  },
+  {
+    id: 4,
+    name: "Form Layout",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-form-layout-jet",
+    isAvailable: false,
+     isCorePack: false,
+  },
   {
     id: 5,
     name: "Input Date Time",
@@ -65,96 +73,199 @@ const allFormsComponents = [
   },
   {
     id: 6,
-    name: "Input Number",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
+    name: "Input Date",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-date-range-input",
     isAvailable: true,
     isCorePack: false,
   },
   {
-    id: 20,
-    name: "Input Number",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
+    id: 7,
+    name: "Date Picker",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-date-range-input",
     isAvailable: true,
-    isCorePack: true,
+    isCorePack: false,
   },
-  // {
-  //   id: 7,
-  //   name: "Input Password",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-password",
-  //   isAvailable: false,
-  // },
-  // {
-  //   id: 8,
-  //   name: "Input Search",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-input-search",
-  //   isAvailable: false,
-  // },
+  {
+    id: 8,
+    name: "Date Time",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-calendar",
+    isAvailable: false,
+    isCorePack: false,
+  },
   {
     id: 9,
-    name: "Input Text",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
-    isAvailable: true,
+    name: "Input Time",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-calendar",
+    isAvailable: false,
     isCorePack: false,
-  },
-  {
-    id: 18,
-    name: "Input Text",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
-    isAvailable: true,
-    isCorePack: true,
   },
   {
     id: 10,
+    name: "Input Number",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
+    isAvailable: true,
+    isCorePack: false,
+  },
+  
+  {
+    id: 11,
+    name: "Input Password",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-password",
+    isAvailable: false,
+    isCorePack: false,
+  },
+  {
+    id: 12,
+    name: "Input Search",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-input-search",
+    isAvailable: false,
+     isCorePack: false,
+  },
+  {
+    id: 13,
+    name: "Input Text",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
+    isAvailable: true,
+    isCorePack: false,
+  },
+  
+  {
+    id: 14,
     name: "Text Area",
     image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-area",
     isAvailable: true,
     isCorePack: false,
   },
+  
   {
-    id: 11,
+    id: 15,
     name: "Select Single",
     image: "oj-ux-icon-size-12x  oj-ux-ico-select-tab",
     isAvailable: true,
     isCorePack: false,
   },
   {
+    id: 16,
+    name: "Slider",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-slider",
+    isAvailable: false,
+    isCorePack: false,
+  },
+   {
     id: 17,
+    name: "Switch",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-switch-on",
+    isAvailable: false,
+    isCorePack: false,
+  },
+  
+  {
+    id: 18,
+    name: "Select Many",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-select-all",
+    isAvailable: false,
+    isCorePack: false, 
+  },
+  {
+    id: 19,
+    name: "Combobox One",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-combo",
+    isAvailable: true,
+    isCorePack: false,
+  },
+  
+  {
+    id: 20,
+    name: "Combobox Many",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-combo-many",
+    isAvailable: false,
+    isCorePack:false,
+  },
+  {
+    id: 21,
+    name: "User Assistance",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-user-assistance",
+    isAvailable: false,
+    isCorePack:false,
+  },
+  {
+    id: 22,
+    name: "Validation",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-user-assistance",
+    isAvailable: false,
+    isCorePack:false,
+  },
+ 
+  {
+    id: 23,
+    name: "Input Number",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
+    id: 24,
+    name: "Input Text",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  
+  {
+    id: 25,
+    name: "Select Multiple",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-select",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
+    id: 26,
     name: "Select Single",
     image: "oj-ux-icon-size-12x  oj-ux-ico-select-tab",
     isAvailable: true,
     isCorePack: true,
   },
-  // {
-  //   id: 12,
-  //   name: "RadioSet",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-radio-set",
-  //   isAvailable: false,
-  //   isCorePack:false,
-  // },
-  // {
-  //   id: 13,
-  //   name: "User Assistance",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-user-assistance",
-  //   isAvailable: false,
-  // },
-  // {
-  //   id: 14,
-  //   name: "Combobox",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-combo",
-  //   isAvailable: true,
-  // },
-  // {
-  //   id: 15,
-  //   name: "Job Application Form",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-form-layout-jet",
-  //   isAvailable: true,
-  // },
   {
-    id: 16,
-    name: "Select Multiple",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-select",
+    id: 27,
+    name: "Text Area",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-area",
     isAvailable: true,
     isCorePack: true,
+  },
+  //
+  // {
+  //   id: 28,
+  //   name: "Input Date Mask",
+  //   image: "oj-ux-icon-size-12x  oj-ux-ico-masked-text-input",
+  //   isAvailable: true,
+  //   isCorePack: true,
+  // },
+  // {
+  //   id: 29,
+  //   name: "Input Date Text",
+  //   image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
+  //   isAvailable: true,
+  //   isCorePack: true,
+  // },
+  // {
+  //   id: 30,
+  //   name: "Input Month Mask",
+  //   image: "oj-ux-icon-size-12x  oj-ux-ico-masked-text-input",
+  //   isAvailable: true,
+  //   isCorePack: true,
+  // },
+  // {
+  //   id: 31,
+  //   name: "Input Sensitive Text",
+  //   image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-password",
+  //   isAvailable: true,
+  //   isCorePack: true,
+  // },
+  {
+    id: 32,
+    name: "Job Application Form",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-form-layout-jet",
+    isAvailable: true,
   },
 ];
 
@@ -178,28 +289,36 @@ const FormsHome = () => {
 
   let ComponentDetail = () => {
     switch (activeTab) {
-      case 6:
-        return <InputNumber />;
-      case 10:
-        return <TextArea />;
+      case 1:
+        return <CheckBoxSet />;
       case 5:
         return <InputDateTime />;
-      case 20:
-        return <InputNumberCorePack />;
+      case 6:
+        return <InputDate />;
+       case 7:
+        return <InputDatePicker />;
+      case 10:
+        return <InputNumber />;
       case 11:
         return <SelectSingle />;
-      case 16:
-        return <SelectMultiple />;
-      case 14:
-        return <ComboBox />;
-      case 15:
-        return <FormElements />;
-      case 17:
-        return <SelectSingleCorePack />;
-      case 9:
+      case 13:
         return <InputText />;
-      case 18:
+      case 14:
+        return <TextArea />;
+      case 19:
+        return <ComboBoxOne />;
+      case 23:
+        return <InputNumberCorePack />;
+      case 24:
         return <InputTextCorePack />;
+      case 25:
+        return <SelectMultiple />;
+     case 26:
+        return <SelectSingleCorePack />;
+      case 27:
+        return <TextAreaCorePack />;
+      case 32:
+        return <FormElements />;
       default:
         return <FormsHome />;
     }
