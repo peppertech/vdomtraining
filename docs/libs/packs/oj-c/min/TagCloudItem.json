@@ -1,0 +1,251 @@
+[
+  {
+    "pack": "oj-c",
+    "id": "oj-c.TagCloudItem",
+    "name": "TagCloudItem",
+    "memberof": "oj-c",
+    "longname": "oj-c.TagCloudItem",
+    "kind": "class",
+    "classdesc": "<h3 id=\"tagCloudItemOverview-section\">\n   JET Tag Cloud Item\n   <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#tagCloudItemOverview-section\"></a>\n </h3>\n\n <p>The oj-c-tag-cloud-item element is used to declare properties for tag cloud items and is only valid as the\n  child of a template element for the <a target=\"_blank\" href=\"oj-c.TagCloud.html#itemTemplate\">itemTemplate</a> slot of oj-c-tag-cloud.</p>\n\n <pre class=\"prettyprint\">\n <code>\n &lt;oj-c-tag-cloud data='[[dataProvider]]'>\n  &lt;template slot='itemTemplate' data-oj-as='item'>\n    &lt;oj-c-tag-cloud-item  label='[[item.data.id]]' value='[[item.data.total]]'>&lt;/oj-c-tag-cloud-item>\n  &lt;/template>\n &lt;/oj-c-tag-cloud>\n </code>\n </pre>\n\n <h3 id=\"a11y-section\">\n   Accessibility\n   <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n </h3>\n <p>\n  Read the <a target=\"_blank\" href=\"oj-c.TagCloud.html#a11y-section\">Accessibility Section</a> of the oj-c-tagcloud component for details about making this component accessible.\n </p>",
+    "scope": "static",
+    "tagWithoutBrackets": "oj-c-tag-cloud-item",
+    "tagWithBrackets": "<oj-c-tag-cloud-item>",
+    "domInterface": "CTagCloudItemElement",
+    "ojPageTitle": "&lt;oj-c-tag-cloud-item>",
+    "ojcomponent": true,
+    "isvcomponent": true,
+    "camelCaseName": "TagCloudItem",
+    "ojPageTitlePrefix": "Element: ",
+    "ojtsvcomponent": true,
+    "tstype": {
+      "target": "Type",
+      "value": "interface CTagCloudItemElement extends JetElement<TagCloudItemElementSettableProperties>"
+    },
+    "ojsignature": [
+      {
+        "target": "Type",
+        "value": "interface CTagCloudItemElement extends JetElement<TagCloudItemElementSettableProperties>"
+      }
+    ],
+    "since": "15.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
+    "meta": {
+      "filename": "tag-cloud-item.tsx",
+      "path": "web/components/oj-c/tag-cloud-item"
+    },
+    "ojmodule": "tag-cloud-item",
+    "ojslotcomponent": true
+  },
+  {
+    "memberof": "oj-c.TagCloudItem",
+    "id": "oj-c.TagCloudItem#categories",
+    "name": "categories",
+    "kind": "member",
+    "longname": "oj-c.TagCloudItem#categories",
+    "optional": true,
+    "scope": "instance",
+    "description": "An array of category strings corresponding to the tag cloud items. This allows highlighting and filtering of items.",
+    "meta": {
+      "filename": "tag-cloud-item.tsx",
+      "path": "web/components/oj-c/tag-cloud-item"
+    },
+    "defaultvalue": "[]",
+    "type": {
+      "names": [
+        "Array<string>"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.TagCloudItem",
+    "id": "oj-c.TagCloudItem#color",
+    "name": "color",
+    "kind": "member",
+    "longname": "oj-c.TagCloudItem#color",
+    "optional": true,
+    "scope": "instance",
+    "description": "The color of the text. Will be overridden by any color defined in the style option. The default value comes from the CSS and varies based on theme.",
+    "meta": {
+      "filename": "tag-cloud-item.tsx",
+      "path": "web/components/oj-c/tag-cloud-item"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.TagCloudItem",
+    "id": "oj-c.TagCloudItem#label",
+    "name": "label",
+    "kind": "member",
+    "longname": "oj-c.TagCloudItem#label",
+    "optional": false,
+    "scope": "instance",
+    "description": "The text of the item.",
+    "meta": {
+      "filename": "tag-cloud-item.tsx",
+      "path": "web/components/oj-c/tag-cloud-item"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.TagCloudItem",
+    "id": "oj-c.TagCloudItem#value",
+    "name": "value",
+    "kind": "member",
+    "longname": "oj-c.TagCloudItem#value",
+    "optional": false,
+    "scope": "instance",
+    "description": "The value of this item is used to scale its font size within the tag cloud.",
+    "meta": {
+      "filename": "tag-cloud-item.tsx",
+      "path": "web/components/oj-c/tag-cloud-item"
+    },
+    "type": {
+      "names": [
+        "number|null"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.TagCloudItem",
+    "id": "oj-c.TagCloudItem#url",
+    "name": "url",
+    "kind": "member",
+    "longname": "oj-c.TagCloudItem#url",
+    "optional": true,
+    "scope": "instance",
+    "description": "The url this item references.",
+    "meta": {
+      "filename": "tag-cloud-item.tsx",
+      "path": "web/components/oj-c/tag-cloud-item"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.TagCloudItem",
+    "id": "oj-c.TagCloudItem#shortDesc",
+    "name": "shortDesc",
+    "kind": "member",
+    "longname": "oj-c.TagCloudItem#shortDesc",
+    "optional": true,
+    "scope": "instance",
+    "description": "The description of the item. This is used for customizing the tooltip text.",
+    "meta": {
+      "filename": "tag-cloud-item.tsx",
+      "path": "web/components/oj-c/tag-cloud-item"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.TagCloudItem",
+    "id": "oj-c.TagCloudItem#setProperty",
+    "name": "setProperty",
+    "kind": "function",
+    "longname": "oj-c.TagCloudItem#setProperty",
+    "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
+    "meta": {
+      "filename": "tag-cloud-item.tsx",
+      "path": "web/components/oj-c/tag-cloud-item"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to set. Supports dot notation for subproperty access.",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "description": "The new value to set the property to.",
+        "type": "any"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.TagCloudItem",
+    "id": "oj-c.TagCloudItem#getProperty",
+    "name": "getProperty",
+    "kind": "function",
+    "longname": "oj-c.TagCloudItem#getProperty",
+    "description": "Retrieves the value of a property or a subproperty.",
+    "meta": {
+      "filename": "tag-cloud-item.tsx",
+      "path": "web/components/oj-c/tag-cloud-item"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to get. Supports dot notation for subproperty access.",
+        "type": "string"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "any"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.TagCloudItem",
+    "id": "oj-c.TagCloudItem#setProperties",
+    "name": "setProperties",
+    "kind": "function",
+    "longname": "oj-c.TagCloudItem#setProperties",
+    "description": "Performs a batch set of properties.",
+    "meta": {
+      "filename": "tag-cloud-item.tsx",
+      "path": "web/components/oj-c/tag-cloud-item"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "properties",
+        "description": "An object containing the property and value pairs to set.",
+        "type": "object"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  }
+]

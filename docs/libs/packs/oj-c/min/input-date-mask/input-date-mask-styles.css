@@ -1,0 +1,14 @@
+oj-c-input-date-mask:not(.oj-complete){
+  visibility: hidden;
+}
+
+oj-c-input-date-mask{
+  display: inline-block;
+  max-width: 100%;
+  width: 100%;
+}
+
+oj-c-input-date-mask[hidden]
+{
+  display: none;
+}

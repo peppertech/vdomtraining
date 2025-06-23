@@ -1,0 +1,13 @@
+oj-c-radioset:not(.oj-complete){
+  visibility: hidden;
+}
+
+oj-c-radioset {
+  display: inline-block; 
+  box-sizing: border-box; 
+  width: auto;
+}
+
+oj-c-radioset[hidden] {
+  display: none;
+}

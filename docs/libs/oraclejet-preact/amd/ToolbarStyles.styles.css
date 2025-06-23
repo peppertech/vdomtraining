@@ -1,0 +1,9 @@
+.ToolbarStyles_base__vceuqv0 {
+  display: flex;
+  align-items: center;
+  overflow: auto;
+  flex-flow: wrap;
+  row-gap: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  -moz-column-gap: var(--columnGap__1nctr0e0);
+       column-gap: var(--columnGap__1nctr0e0);
+}

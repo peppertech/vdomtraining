@@ -21,7 +21,7 @@ define(["require", "exports", "preact/jsx-runtime", "ojs/ojattributegrouphandler
         }
     };
     const Legend = () => {
-        return ((0, jsx_runtime_1.jsx)("div", Object.assign({ class: "oj-md-margin-4x-horizontal" }, { children: (0, jsx_runtime_1.jsx)("oj-legend", Object.assign({ id: "legend1", orientation: "vertical", data: dataProvider, symbolHeight: 20, symbolWidth: 20 }, { children: (0, jsx_runtime_1.jsx)("template", { slot: "itemTemplate", render: renderLegendItem }) })) })));
+        return ((0, jsx_runtime_1.jsx)("div", { class: "oj-md-margin-4x-horizontal", children: (0, jsx_runtime_1.jsx)("oj-legend", { id: "legend1", orientation: "vertical", data: dataProvider, symbolHeight: 20, symbolWidth: 20, children: (0, jsx_runtime_1.jsx)("template", { slot: "itemTemplate", render: renderLegendItem }) }) }));
     };
     exports.default = Legend;
 });

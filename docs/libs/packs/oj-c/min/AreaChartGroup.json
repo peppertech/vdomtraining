@@ -1,0 +1,196 @@
+[
+  {
+    "pack": "oj-c",
+    "id": "oj-c.AreaChartGroup",
+    "name": "AreaChartGroup",
+    "memberof": "oj-c",
+    "longname": "oj-c.AreaChartGroup",
+    "kind": "class",
+    "classdesc": "<h3 id=\"areaChartGroupOverview-section\">\n   JET Area Chart Group\n   <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#areaChartGroupOverview-section\"></a>\n </h3>\n\n <p>The oj-c-area-chart-group element is used to declare group properties. See the Help documentation for more information.</p>\n\n<pre class=\"prettyprint\">\n <code>\n &lt;oj-c-area-chart data=\"[[dataProvider]]\">\n  &lt;template slot='groupTemplate'>\n    &lt;oj-c-area-chart-group\n      drilling='on'\n      label-style='[[$current.depth == 1 ? {\"fontWeight\":\"bold\"} : {\"fontStyle\":\"italic\"}]]'>\n    &lt;/oj-c-area-chart-group>\n  &lt;/template>\n &lt;/oj-c-area-chart>\n </code>\n </pre>\n\n <h3 id=\"a11y-section\">\n   Accessibility\n   <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n </h3>\n <p>\n  Read the <a target=\"_blank\" href=\"oj-c.AreaChart.html#a11y-section\">Accessibility Section</a> of the oj-c-area-chart component for details about making this component accessible.\n </p>",
+    "scope": "static",
+    "tagWithoutBrackets": "oj-c-area-chart-group",
+    "tagWithBrackets": "<oj-c-area-chart-group>",
+    "domInterface": "CAreaChartGroupElement",
+    "ojPageTitle": "&lt;oj-c-area-chart-group>",
+    "ojcomponent": true,
+    "isvcomponent": true,
+    "camelCaseName": "AreaChartGroup",
+    "ojPageTitlePrefix": "Element: ",
+    "ojtsvcomponent": true,
+    "tstype": {
+      "target": "Type",
+      "value": "interface CAreaChartGroupElement extends JetElement<AreaChartGroupElementSettableProperties>"
+    },
+    "ojsignature": [
+      {
+        "target": "Type",
+        "value": "interface CAreaChartGroupElement extends JetElement<AreaChartGroupElementSettableProperties>"
+      }
+    ],
+    "since": "16.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
+    "meta": {
+      "filename": "area-chart-group.tsx",
+      "path": "web/components/oj-c/area-chart-group"
+    },
+    "ojmodule": "area-chart-group",
+    "ojslotcomponent": true
+  },
+  {
+    "memberof": "oj-c.AreaChartGroup",
+    "id": "oj-c.AreaChartGroup#drilling",
+    "name": "drilling",
+    "kind": "member",
+    "longname": "oj-c.AreaChartGroup#drilling",
+    "optional": true,
+    "scope": "instance",
+    "description": "Whether drilling is enabled on the group label. Drillable objects will show a pointer cursor on hover and fire an <code class=\"prettyprint\">ojDrill</code> event on click. To enable drilling for all group labels at once, use the drilling attribute in the top level.",
+    "meta": {
+      "filename": "area-chart-group.tsx",
+      "path": "web/components/oj-c/area-chart-group"
+    },
+    "defaultvalue": "\"inherit\"",
+    "type": {
+      "names": [
+        "\"inherit\"",
+        "\"off\"",
+        "\"on\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.AreaChartGroup",
+    "id": "oj-c.AreaChartGroup#name",
+    "name": "name",
+    "kind": "member",
+    "longname": "oj-c.AreaChartGroup#name",
+    "optional": true,
+    "scope": "instance",
+    "description": "The name of the group.",
+    "meta": {
+      "filename": "area-chart-group.tsx",
+      "path": "web/components/oj-c/area-chart-group"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.AreaChartGroup",
+    "id": "oj-c.AreaChartGroup#shortDesc",
+    "name": "shortDesc",
+    "kind": "member",
+    "longname": "oj-c.AreaChartGroup#shortDesc",
+    "optional": true,
+    "scope": "instance",
+    "description": "The description of the group. This is used for customizing the tooltip text and only applies to a categorical axis.",
+    "meta": {
+      "filename": "area-chart-group.tsx",
+      "path": "web/components/oj-c/area-chart-group"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.AreaChartGroup",
+    "id": "oj-c.AreaChartGroup#setProperty",
+    "name": "setProperty",
+    "kind": "function",
+    "longname": "oj-c.AreaChartGroup#setProperty",
+    "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
+    "meta": {
+      "filename": "area-chart-group.tsx",
+      "path": "web/components/oj-c/area-chart-group"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to set. Supports dot notation for subproperty access.",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "description": "The new value to set the property to.",
+        "type": "any"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.AreaChartGroup",
+    "id": "oj-c.AreaChartGroup#getProperty",
+    "name": "getProperty",
+    "kind": "function",
+    "longname": "oj-c.AreaChartGroup#getProperty",
+    "description": "Retrieves the value of a property or a subproperty.",
+    "meta": {
+      "filename": "area-chart-group.tsx",
+      "path": "web/components/oj-c/area-chart-group"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to get. Supports dot notation for subproperty access.",
+        "type": "string"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "any"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.AreaChartGroup",
+    "id": "oj-c.AreaChartGroup#setProperties",
+    "name": "setProperties",
+    "kind": "function",
+    "longname": "oj-c.AreaChartGroup#setProperties",
+    "description": "Performs a batch set of properties.",
+    "meta": {
+      "filename": "area-chart-group.tsx",
+      "path": "web/components/oj-c/area-chart-group"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "properties",
+        "description": "An object containing the property and value pairs to set.",
+        "type": "object"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  }
+]

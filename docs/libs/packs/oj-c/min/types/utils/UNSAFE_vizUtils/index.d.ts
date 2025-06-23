@@ -1,0 +1,1 @@
+export { processTemplate } from './TemplateHandler';

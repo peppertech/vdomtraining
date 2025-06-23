@@ -1,0 +1,594 @@
+[
+  {
+    "pack": "oj-c",
+    "id": "oj-c.LegendItem",
+    "name": "LegendItem",
+    "memberof": "oj-c",
+    "longname": "oj-c.LegendItem",
+    "kind": "class",
+    "classdesc": " <h3 id=\"overview\">\n   JET Legend Item\n   <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#overview\"></a>\n </h3>\n\n <p>\n  The oj-c-legend-item element is used to declare properties for legend items and is only valid as the\n  child of a template element for the <a target=\"_blank\" href=\"oj-c.Legend.html#itemTemplate\">itemTemplate</a>\n  slot of oj-c-legend.\n </p>\n\n <pre class=\"prettyprint\">\n <code>\n &lt;oj-c-legend data='[[dataProvider]]'>\n  &lt;template slot='itemTemplate'>\n    &lt;oj-c-legend-item  text='[[$current.data.text]]' color='[[$current.data.color]]'>\n    &lt;/oj-c-legend-item>\n  &lt;/template>\n &lt;/oj-c-legend>\n </code>\n </pre>\n\n <h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n </h3>\n <p>\n  Read the <a target=\"_blank\" href=\"oj-c.Legend.html#a11y-section\">Accessibility Section</a> of the oj-c-legend component for details about making this component accessible.\n </p>",
+    "scope": "static",
+    "tagWithoutBrackets": "oj-c-legend-item",
+    "tagWithBrackets": "<oj-c-legend-item>",
+    "domInterface": "CLegendItemElement",
+    "ojPageTitle": "&lt;oj-c-legend-item>",
+    "ojcomponent": true,
+    "isvcomponent": true,
+    "camelCaseName": "LegendItem",
+    "ojPageTitlePrefix": "Element: ",
+    "ojtsvcomponent": true,
+    "tstype": {
+      "target": "Type",
+      "value": "interface CLegendItemElement extends JetElement<LegendItemElementSettableProperties>"
+    },
+    "ojsignature": [
+      {
+        "target": "Type",
+        "value": "interface CLegendItemElement extends JetElement<LegendItemElementSettableProperties>"
+      }
+    ],
+    "since": "15.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "ojmodule": "legend-item",
+    "ojslotcomponent": true
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#text",
+    "name": "text",
+    "kind": "member",
+    "longname": "oj-c.LegendItem#text",
+    "optional": false,
+    "scope": "instance",
+    "description": "The legend item text. Also used as item aria label if short-desc is not provided.",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#categories",
+    "name": "categories",
+    "kind": "member",
+    "longname": "oj-c.LegendItem#categories",
+    "optional": true,
+    "scope": "instance",
+    "description": "An array of categories for the legend item. Legend items currently only support a single category.",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "defaultvalue": "[]",
+    "type": {
+      "names": [
+        "Array<string>"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#symbolType",
+    "name": "symbolType",
+    "kind": "member",
+    "longname": "oj-c.LegendItem#symbolType",
+    "optional": true,
+    "scope": "instance",
+    "description": "The type of legend symbol to display.",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "ojvalues": [
+      {
+        "name": "line",
+        "description": "The legend symbol will be a line.",
+        "displayName": "Line",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "lineWithMarker",
+        "description": "The legend symbol will be a line and a marker.",
+        "displayName": "LineWithMarker",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "image",
+        "description": "The legend symbol will be an image.",
+        "displayName": "Image",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "marker",
+        "description": "The legend symbol will be a marker.",
+        "displayName": "Marker",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"marker\"",
+    "type": {
+      "names": [
+        "\"marker\"",
+        "\"image\"",
+        "\"line\"",
+        "\"lineWithMarker\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#source",
+    "name": "source",
+    "kind": "member",
+    "longname": "oj-c.LegendItem#source",
+    "optional": true,
+    "scope": "instance",
+    "description": "The URI of the image of the legend symbol.",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#color",
+    "name": "color",
+    "kind": "member",
+    "longname": "oj-c.LegendItem#color",
+    "optional": true,
+    "scope": "instance",
+    "description": "The color of the legend symbol (line or marker). When symbolType is \"lineWithMarker\", this attribute defines the line color and the markerColor attribute defines the marker color.",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#borderColor",
+    "name": "borderColor",
+    "kind": "member",
+    "longname": "oj-c.LegendItem#borderColor",
+    "optional": true,
+    "scope": "instance",
+    "description": "The border color of the marker. Only applies if symbolType is \"marker\" or \"lineWithMarker",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "defaultvalue": "\"\"",
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#lineStyle",
+    "name": "lineStyle",
+    "kind": "member",
+    "longname": "oj-c.LegendItem#lineStyle",
+    "optional": true,
+    "scope": "instance",
+    "description": "The line style. Only applies when the symbolType is \"line\" or \"lineWithMarker\".",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "ojvalues": [
+      {
+        "name": "dotted",
+        "description": "Line will have dotted strokes.",
+        "displayName": "Dotted",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "dashed",
+        "description": "Line will have dashed strokes.",
+        "displayName": "Dashed",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "solid",
+        "description": "Line will have a solid stroke.",
+        "displayName": "Solid",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"solid\"",
+    "type": {
+      "names": [
+        "\"dashed\"",
+        "\"solid\"",
+        "\"dotted\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#lineWidth",
+    "name": "lineWidth",
+    "kind": "member",
+    "longname": "oj-c.LegendItem#lineWidth",
+    "optional": true,
+    "scope": "instance",
+    "description": "The line width in pixels. Only applies when the symbolType is \"line\" or \"lineWithMarker.",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "type": {
+      "names": [
+        "number"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#markerShape",
+    "name": "markerShape",
+    "kind": "member",
+    "longname": "oj-c.LegendItem#markerShape",
+    "optional": true,
+    "scope": "instance",
+    "description": "The shape of the marker. Only applies if symbolType is \"marker\" or \"lineWithMarker\". Does not apply if a custom image is specified.",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "ojvalues": [
+      {
+        "name": "circle",
+        "description": "The marker will be of circular shape.",
+        "displayName": "Circle",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "diamond",
+        "description": "The marker will be of diamond shape.",
+        "displayName": "Diamond",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "ellipse",
+        "description": "The marker will be of ellipse shape.",
+        "displayName": "Ellipse",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "human",
+        "description": "The marker will be of human shape.",
+        "displayName": "Human",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "plus",
+        "description": "The marker will be of plus shape.",
+        "displayName": "Plus",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "rectangle",
+        "description": "The marker will be of rectangular shape.",
+        "displayName": "Rectangle",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "square",
+        "description": "The marker will be of square shape.",
+        "displayName": "Square",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "star",
+        "description": "The marker will be of star shape.",
+        "displayName": "Star",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "triangleDown",
+        "description": "The  marker will be of triangular shape facing down.",
+        "displayName": "Triangle Down",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "triangleUp",
+        "description": "The  marker will be of triangular shape facing up.",
+        "displayName": "Triangle Up",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"square\"",
+    "type": {
+      "names": [
+        "\"square\"",
+        "\"circle\"",
+        "\"ellipse\"",
+        "\"diamond\"",
+        "\"human\"",
+        "\"plus\"",
+        "\"star\"",
+        "\"triangleDown\"",
+        "\"triangleUp\"",
+        "\"rectangle\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#markerColor",
+    "name": "markerColor",
+    "kind": "member",
+    "longname": "oj-c.LegendItem#markerColor",
+    "optional": true,
+    "scope": "instance",
+    "description": "The color of the marker, if different than the line color. Only applies if the symbolType is \"lineWithMarker\".",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#shortDesc",
+    "name": "shortDesc",
+    "kind": "member",
+    "longname": "oj-c.LegendItem#shortDesc",
+    "optional": true,
+    "scope": "instance",
+    "description": "The description of this legend item. This is used for accessibility and for customizing the tooltip text.",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#drilling",
+    "name": "drilling",
+    "kind": "member",
+    "longname": "oj-c.LegendItem#drilling",
+    "optional": true,
+    "scope": "instance",
+    "description": "Whether drilling is enabled on the legend item. Drillable objects will show a pointer cursor on hover and fire ojDrill event on click. To enable drilling for all legend items at once, use the drilling attribute in the top level.",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "ojvalues": [
+      {
+        "name": "inherit",
+        "description": "The drilling behavior is inherited from legend.",
+        "displayName": "Inherit",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "off",
+        "description": "The legend item will not be drillable.",
+        "displayName": "Off",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "on",
+        "description": "The legend item will be drillable.",
+        "displayName": "On",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"inherit\"",
+    "type": {
+      "names": [
+        "\"inherit\"",
+        "\"off\"",
+        "\"on\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#setProperty",
+    "name": "setProperty",
+    "kind": "function",
+    "longname": "oj-c.LegendItem#setProperty",
+    "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to set. Supports dot notation for subproperty access.",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "description": "The new value to set the property to.",
+        "type": "any"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#getProperty",
+    "name": "getProperty",
+    "kind": "function",
+    "longname": "oj-c.LegendItem#getProperty",
+    "description": "Retrieves the value of a property or a subproperty.",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to get. Supports dot notation for subproperty access.",
+        "type": "string"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "any"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.LegendItem",
+    "id": "oj-c.LegendItem#setProperties",
+    "name": "setProperties",
+    "kind": "function",
+    "longname": "oj-c.LegendItem#setProperties",
+    "description": "Performs a batch set of properties.",
+    "meta": {
+      "filename": "legend-item.tsx",
+      "path": "web/components/oj-c/legend-item"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "properties",
+        "description": "An object containing the property and value pairs to set.",
+        "type": "object"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  }
+]

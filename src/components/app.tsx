@@ -45,6 +45,7 @@ const routeArray: Array<Route> = [
   },
 ];
 
+// const router = new CoreRouter<CoreRouter.DetailedRouteConfig>(routeArray);
 const router = new CoreRouter<CoreRouter.DetailedRouteConfig>(routeArray, {
   urlAdapter: new UrlParamAdapter(),
 });
@@ -52,7 +53,6 @@ const router = new CoreRouter<CoreRouter.DetailedRouteConfig>(routeArray, {
 const pageChangeHandler = (value: string) => {
   router.go({ path: value });
 };
-
 export const App = registerCustomElement("app-root", (props: Props) => {
   props.appName = "VDOM Training";
   props.userLogin = "some.person@oracle.com";
@@ -81,7 +81,7 @@ export const App = registerCustomElement("app-root", (props: Props) => {
         userLogin={props.userLogin}
         routes={routeArray}
       />
-      <Content page={routePath} />
+      <Content page={routePath} router={router} />
       <Footer />
     </div>
   );

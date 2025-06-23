@@ -1,0 +1,2 @@
+define(['exports', 'css!./../../PieChartStyles.styles.css'], (function(e,t){"use strict";e.dimensionStyle="PieChartStyles_dimensionStyle__1a5vzfm5",e.styles={svg:"PieChartStyles_svg__1a5vzfm3",chart:"PieChartStyles_chart__1a5vzfm0",selectedBorder:"PieChartStyles_selectedBorder__1a5vzfm2",contrastBorder:"PieChartStyles_contrastBorder__1a5vzfm4",innerShapes:"PieChartStyles_innerShapes__1a5vzfm1"},Object.defineProperty(e,"__esModule",{value:!0})}));
+//# sourceMappingURL=PieChartStyles.css.js.map

@@ -112,9 +112,9 @@ define(["require", "exports", "preact/jsx-runtime", "ojs/ojmutablearraytreedatap
                 setSelectedItem(event.detail.value);
         };
         const navItemTemplate = (item) => {
-            return ((0, jsx_runtime_1.jsx)("li", Object.assign({ id: item.data.id }, { children: (0, jsx_runtime_1.jsxs)("a", Object.assign({ href: "" }, { children: [(0, jsx_runtime_1.jsx)("span", { class: "oj-navigationlist-item-icon " + item.data.icons }), item.data.name] })) })));
+            return ((0, jsx_runtime_1.jsx)("li", { id: item.data.id, children: (0, jsx_runtime_1.jsxs)("a", { href: "", children: [(0, jsx_runtime_1.jsx)("span", { class: "oj-navigationlist-item-icon " + item.data.icons }), item.data.name] }) }));
         };
-        return ((0, jsx_runtime_1.jsx)("div", Object.assign({ class: "oj-web-applayout-max-width oj-web-applayout-content" }, { children: (0, jsx_runtime_1.jsx)("oj-navigation-list", Object.assign({ style: "max-width:20rem", drillMode: "collapsible", "aria-label": "Choose a navigation item", selection: selectedItem, data: dataprovider, onselectionChanged: changeHandler, id: "navlist" }, { children: (0, jsx_runtime_1.jsx)("template", { slot: "itemTemplate", render: navItemTemplate }) })) })));
+        return ((0, jsx_runtime_1.jsx)("div", { class: "oj-web-applayout-max-width oj-web-applayout-content", children: (0, jsx_runtime_1.jsx)("oj-navigation-list", { style: "max-width:20rem", drillMode: "collapsible", "aria-label": "Choose a navigation item", selection: selectedItem, data: dataprovider, onselectionChanged: changeHandler, id: "navlist", children: (0, jsx_runtime_1.jsx)("template", { slot: "itemTemplate", render: navItemTemplate }) }) }));
     };
     exports.NavList = NavList;
 });

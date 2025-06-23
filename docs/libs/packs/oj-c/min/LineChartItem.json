@@ -1,0 +1,357 @@
+[
+  {
+    "pack": "oj-c",
+    "id": "oj-c.LineChartItem",
+    "name": "LineChartItem",
+    "memberof": "oj-c",
+    "longname": "oj-c.LineChartItem",
+    "kind": "class",
+    "classdesc": "<h3 id=\"lineChartItemOverview-section\">\n   JET Line Chart Item\n   <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#lineChartItemOverview-section\"></a>\n </h3>\n\n <p>The oj-c-line-chart-item element is used to declare item properties. See the Help documentation for more information.</p>\n\n <pre class=\"prettyprint\">\n <code>\n &lt;oj-c-line-chart data=\"[[dataProvider]]\">\n  &lt;template slot='itemTemplate'>\n    &lt;oj-c-line-chart-item\n      value=\"[[$current.data.value]]\"\n      series-id=\"[[$current.data.productName]]\"\n      group-id=\"[[ [$current.data.year] ]]\">\n    &lt;/oj-c-line-chart-item>\n  &lt;/template>\n &lt;/oj-c-line-chart>\n </code>\n </pre>\n\n <h3 id=\"a11y-section\">\n   Accessibility\n   <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n </h3>\n <p>\n  Read the <a target=\"_blank\" href=\"oj-c.LineChart.html#a11y-section\">Accessibility Section</a> of the oj-c-line-chart component for details about making this component accessible.\n </p>",
+    "scope": "static",
+    "tagWithoutBrackets": "oj-c-line-chart-item",
+    "tagWithBrackets": "<oj-c-line-chart-item>",
+    "domInterface": "CLineChartItemElement",
+    "ojPageTitle": "&lt;oj-c-line-chart-item>",
+    "ojcomponent": true,
+    "isvcomponent": true,
+    "camelCaseName": "LineChartItem",
+    "ojPageTitlePrefix": "Element: ",
+    "ojtsvcomponent": true,
+    "tstype": {
+      "target": "Type",
+      "value": "interface CLineChartItemElement extends JetElement<LineChartItemElementSettableProperties>"
+    },
+    "ojsignature": [
+      {
+        "target": "Type",
+        "value": "interface CLineChartItemElement extends JetElement<LineChartItemElementSettableProperties>"
+      }
+    ],
+    "since": "16.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "ojmodule": "line-chart-item",
+    "ojslotcomponent": true
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#seriesId",
+    "name": "seriesId",
+    "kind": "member",
+    "longname": "oj-c.LineChartItem#seriesId",
+    "optional": false,
+    "scope": "instance",
+    "description": "The id for the series the item belongs to.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#groupId",
+    "name": "groupId",
+    "kind": "member",
+    "longname": "oj-c.LineChartItem#groupId",
+    "optional": false,
+    "scope": "instance",
+    "description": "The array of ids for the groups the item belongs to. For hierarchical groups, it will be an array of outermost to innermost group ids. This is also used to specify the date for non mixed frequency time axes. The specified date for non mixed frequency time axes must be an ISO string.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "type": {
+      "names": [
+        "Array<string>"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#value",
+    "name": "value",
+    "kind": "member",
+    "longname": "oj-c.LineChartItem#value",
+    "optional": false,
+    "scope": "instance",
+    "description": "The value for this data item. Null can be specified to skip a data point.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "type": {
+      "names": [
+        "number"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#x",
+    "name": "x",
+    "kind": "member",
+    "longname": "oj-c.LineChartItem#x",
+    "optional": true,
+    "scope": "instance",
+    "description": "The x value. Mainly used to specify the date for mixed-frequency time axis. The date specified in the x value must be an ISO date string.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#color",
+    "name": "color",
+    "kind": "member",
+    "longname": "oj-c.LineChartItem#color",
+    "optional": true,
+    "scope": "instance",
+    "description": "The color of the data item. This color value is not inherited by chart legend. See chart <a href=\"oj.ojChartSeries.html#color\">series color</a> and <a href=\"oj.ojChartSeries.html#displayInLegend\">display-in-legend</a> for more details.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#markerDisplayed",
+    "name": "markerDisplayed",
+    "kind": "member",
+    "longname": "oj-c.LineChartItem#markerDisplayed",
+    "optional": true,
+    "scope": "instance",
+    "description": "Defines whether the data marker is displayed. Only applies to line, area, scatter, and bubble series. If auto, the markers will be displayed whenever the data points are not connected by a line.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "type": {
+      "names": [
+        "\"auto\"",
+        "\"off\"",
+        "\"on\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#markerShape",
+    "name": "markerShape",
+    "kind": "member",
+    "longname": "oj-c.LineChartItem#markerShape",
+    "optional": true,
+    "scope": "instance",
+    "description": "The shape of the data markers. Only applies to line, area, scatter, and bubble series. In addition to the built-in shapes, it may also take SVG path commands to specify a custom shape. The chart will style the custom shapes the same way as built-in shapes, supporting properties like color and borderColor and applying hover and selection effects. Only 'auto' is supported for range series.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "type": {
+      "names": [
+        "\"auto\"",
+        "\"square\"",
+        "\"circle\"",
+        "\"diamond\"",
+        "\"human\"",
+        "\"plus\"",
+        "\"star\"",
+        "\"triangleDown\"",
+        "\"triangleUp\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#markerSize",
+    "name": "markerSize",
+    "kind": "member",
+    "longname": "oj-c.LineChartItem#markerSize",
+    "optional": true,
+    "scope": "instance",
+    "description": "The size of the data markers. Only applies to line, area, and scatter series. Does not apply to bubble charts, which calculate marker size based on the z values.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "type": {
+      "names": [
+        "number"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#categories",
+    "name": "categories",
+    "kind": "member",
+    "longname": "oj-c.LineChartItem#categories",
+    "optional": true,
+    "scope": "instance",
+    "description": "An optional array of category strings corresponding to this data item. This enables highlighting and filtering of individual data items through interactions with the legend or other visualization elements. If not defined, series categories are used.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "type": {
+      "names": [
+        "Array<string>"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#drilling",
+    "name": "drilling",
+    "kind": "member",
+    "longname": "oj-c.LineChartItem#drilling",
+    "optional": true,
+    "scope": "instance",
+    "description": "Whether drilling is enabled for the data item. Drillable objects will show a pointer cursor on hover and fire an <code class=\"prettyprint\">ojDrill</code> event on click (double click if selection is enabled). To enable drilling for all data items at once, use the drilling attribute in the top level.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "type": {
+      "names": [
+        "\"inherit\"",
+        "\"off\"",
+        "\"on\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#shortDesc",
+    "name": "shortDesc",
+    "kind": "member",
+    "longname": "oj-c.LineChartItem#shortDesc",
+    "optional": true,
+    "scope": "instance",
+    "description": "The description of this object. This is used for accessibility and also for customizing the tooltip text.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#setProperty",
+    "name": "setProperty",
+    "kind": "function",
+    "longname": "oj-c.LineChartItem#setProperty",
+    "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to set. Supports dot notation for subproperty access.",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "description": "The new value to set the property to.",
+        "type": "any"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#getProperty",
+    "name": "getProperty",
+    "kind": "function",
+    "longname": "oj-c.LineChartItem#getProperty",
+    "description": "Retrieves the value of a property or a subproperty.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to get. Supports dot notation for subproperty access.",
+        "type": "string"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "any"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.LineChartItem",
+    "id": "oj-c.LineChartItem#setProperties",
+    "name": "setProperties",
+    "kind": "function",
+    "longname": "oj-c.LineChartItem#setProperties",
+    "description": "Performs a batch set of properties.",
+    "meta": {
+      "filename": "line-chart-item.tsx",
+      "path": "web/components/oj-c/line-chart-item"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "properties",
+        "description": "An object containing the property and value pairs to set.",
+        "type": "object"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  }
+]

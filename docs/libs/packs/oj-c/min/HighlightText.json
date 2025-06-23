@@ -1,0 +1,176 @@
+[
+  {
+    "pack": "oj-c",
+    "id": "oj-c.HighlightText",
+    "name": "HighlightText",
+    "memberof": "oj-c",
+    "longname": "oj-c.HighlightText",
+    "kind": "class",
+    "classdesc": "<h3 id=\"highlightTextOverview-section\">\n  JET Highlight Text\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#highlightTextOverview-section\"></a>\n</h3>\n<p>Description: JET Highlight Text renders text with highlighting applied.</p>\n\n<p>JET Highlight Text renders a text string with highlighting applied to the given text to match.</p>\n\nA Highlight Text can be created with the following markup.</p>\n\n<pre class=\"prettyprint\"><code>\n&lt;oj-c-highlight-text\n  text='My text to apply highlighting to.'\n  match-text='igh'>\n&lt;/oj-c-highlight-text>\n</code></pre>",
+    "scope": "static",
+    "tagWithoutBrackets": "oj-c-highlight-text",
+    "tagWithBrackets": "<oj-c-highlight-text>",
+    "domInterface": "CHighlightTextElement",
+    "ojPageTitle": "&lt;oj-c-highlight-text>",
+    "ojcomponent": true,
+    "isvcomponent": true,
+    "camelCaseName": "HighlightText",
+    "ojPageTitlePrefix": "Element: ",
+    "ojtsvcomponent": true,
+    "tstype": {
+      "target": "Type",
+      "value": "interface CHighlightTextElement extends JetElement<HighlightTextElementSettableProperties>"
+    },
+    "ojsignature": [
+      {
+        "target": "Type",
+        "value": "interface CHighlightTextElement extends JetElement<HighlightTextElementSettableProperties>"
+      }
+    ],
+    "since": "15.0.0",
+    "tsdeprecated": [
+      {
+        "type": "supersedes",
+        "since": "16.0.0",
+        "value": [
+          "oj-highlight-text"
+        ]
+      }
+    ],
+    "meta": {
+      "filename": "highlight-text.tsx",
+      "path": "web/components/oj-c/highlight-text"
+    },
+    "ojmodule": "highlight-text"
+  },
+  {
+    "memberof": "oj-c.HighlightText",
+    "id": "oj-c.HighlightText#matchText",
+    "name": "matchText",
+    "kind": "member",
+    "longname": "oj-c.HighlightText#matchText",
+    "optional": true,
+    "scope": "instance",
+    "description": "The text string to match.",
+    "meta": {
+      "filename": "highlight-text.tsx",
+      "path": "web/components/oj-c/highlight-text"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.HighlightText",
+    "id": "oj-c.HighlightText#text",
+    "name": "text",
+    "kind": "member",
+    "longname": "oj-c.HighlightText#text",
+    "optional": true,
+    "scope": "instance",
+    "description": "The text string to apply highlighting to.",
+    "meta": {
+      "filename": "highlight-text.tsx",
+      "path": "web/components/oj-c/highlight-text"
+    },
+    "type": {
+      "names": [
+        "string"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.HighlightText",
+    "id": "oj-c.HighlightText#setProperty",
+    "name": "setProperty",
+    "kind": "function",
+    "longname": "oj-c.HighlightText#setProperty",
+    "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
+    "meta": {
+      "filename": "highlight-text.tsx",
+      "path": "web/components/oj-c/highlight-text"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to set. Supports dot notation for subproperty access.",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "description": "The new value to set the property to.",
+        "type": "any"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.HighlightText",
+    "id": "oj-c.HighlightText#getProperty",
+    "name": "getProperty",
+    "kind": "function",
+    "longname": "oj-c.HighlightText#getProperty",
+    "description": "Retrieves the value of a property or a subproperty.",
+    "meta": {
+      "filename": "highlight-text.tsx",
+      "path": "web/components/oj-c/highlight-text"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "property",
+        "description": "The property name to get. Supports dot notation for subproperty access.",
+        "type": "string"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "any"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.HighlightText",
+    "id": "oj-c.HighlightText#setProperties",
+    "name": "setProperties",
+    "kind": "function",
+    "longname": "oj-c.HighlightText#setProperties",
+    "description": "Performs a batch set of properties.",
+    "meta": {
+      "filename": "highlight-text.tsx",
+      "path": "web/components/oj-c/highlight-text"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "properties",
+        "description": "An object containing the property and value pairs to set.",
+        "type": "object"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  }
+]

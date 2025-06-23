@@ -1,0 +1,13 @@
+import { DataProvider, TextFilter } from 'ojs/ojdataprovider';
+export type Optional<T> = T | null | undefined;
+export type MaybeMap<K, T> = Optional<T> | Map<K, T>;
+export type MaybeSet<T> = Optional<T> | Set<T>;
+type MaybeArray<T> = Optional<T | T[]>;
+export declare const DEFAULT_ITEM_CONTEXT: null;
+export declare const DEFAULT_VALUE: null;
+export declare const DEFAULT_VALUE_ITEM: null;
+export declare const DEFAULT_VALUE_ITEMS: null;
+export declare function isEmpty<K, T>(value: MaybeArray<K> | MaybeMap<K, T> | MaybeSet<K>): boolean;
+export declare function isSetEqual<K>(a: Set<K>, b: Set<K>): boolean;
+export declare function getFilterCriterion<K, D>(dataProvider?: DataProvider<K, D> | null, searchText?: string, paramMatchBy?: Array<TextFilter<D>['matchBy']> | null): import("ojs/ojdataprovider").AttributeFilter<any> | import("ojs/ojdataprovider").AttributeExprFilter<any> | import("ojs/ojdataprovider").ExtendedCompoundFilter<any> | import("ojs/ojdataprovider").NestedFilter<any> | TextFilter<any> | undefined;
+export {};

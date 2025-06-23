@@ -1,0 +1,2 @@
+define(['exports', 'preact/jsx-runtime', './Icon-1c51c520'], (function(e,n,c){"use strict";e.SvgCaretLeft=e=>n.jsx(c.Icon,{viewBox:"0 0 24 24",...e,children:n.jsx("g",{fill:"none",children:n.jsx("path",{d:"m15 6-6 6 6 6V6z",fill:"currentcolor"})})}),e.SvgCaretRight=e=>n.jsx(c.Icon,{viewBox:"0 0 24 24",...e,children:n.jsx("g",{fill:"none",children:n.jsx("path",{d:"m9 6 6 6-6 6V6z",fill:"currentcolor"})})})}));
+//# sourceMappingURL=CaretLeft-62049340.js.map

@@ -1,0 +1,2 @@
+define(['exports', '../../boxalignment-905057dc', '../../size-a75b3f13', '../../utils-5077c092', '../../Common/themes/themeContract.css', '../../colorUtils-7c069766', '../../_curry1-df649359', '../../arrayUtils-6ee96a35', 'css!./../../boxalignment.styles.css', '../../vanilla-extract-sprinkles-createRuntimeSprinkles.esm-84d30764'], (function(e,t,s,i,n,l,o,a,r,c){"use strict";e.aligns=t.aligns,e.boxAlignmentInterpolations=t.boxAlignmentInterpolations,e.justifies=t.justifies,Object.defineProperty(e,"__esModule",{value:!0})}));
+//# sourceMappingURL=boxalignment.js.map

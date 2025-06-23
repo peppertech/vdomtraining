@@ -1,0 +1,2 @@
+define(['exports', '../TableHeaderCellStyles.css', './TableHeaderCellVariants.css', 'css!./../../../Table.styles.css', 'css!./../../../TableHeaderCellStyles.styles.css', '../../../vanilla-extract-recipes-createRuntimeFn.esm-103a441d'], (function(e,l,s,a,t,r){"use strict";const i={multiVariantStyles:s.multiVariantStyles,variants:l.variants,styles:l.tableHeaderCellStyles};e.TableHeaderCellStableTheme=i,Object.defineProperty(e,"__esModule",{value:!0})}));
+//# sourceMappingURL=TableHeaderCellTheme.js.map

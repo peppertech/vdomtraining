@@ -1,0 +1,21 @@
+.RevealToggleIconStyles_revealToggleIconBaseStyles__ghwny10 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-cursor-clickable);
+  padding-inline: 0;
+  padding-block: 0;
+  border-radius: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-border-radius);
+  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-variants-borderless-base-color);
+  border-color: transparent;
+  background-color: transparent;
+  width: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-sizes-md-height);
+  height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-sizes-md-height);
+  line-height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-sizes-md-height);
+  font-size: var(--sizes-md-iconSize__rt5x5jc);
+}
+.RevealToggleIconStyles_revealToggleIconBaseStyles__ghwny10:hover {
+  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-variants-borderless-base-color);
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-base-button-variants-borderless-hover-background-overlay-color);
+  border-color: transparent;
+}

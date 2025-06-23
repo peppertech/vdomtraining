@@ -1,0 +1,6 @@
+define(["require", "exports", "./drawer-popup"], function (require, exports, drawer_popup_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.DrawerPopup = void 0;
+    Object.defineProperty(exports, "DrawerPopup", { enumerable: true, get: function () { return drawer_popup_1.DrawerPopup; } });
+});

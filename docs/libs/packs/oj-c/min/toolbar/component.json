@@ -1,0 +1,183 @@
+{
+  "name": "toolbar",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
+  "pack": "oj-c",
+  "type": "composite",
+  "dependencyScope": "runtime",
+  "license": "https://opensource.org/licenses/UPL",
+  "implements": [
+    "CToolbarElement"
+  ],
+  "description": "A toolbar displays a strip of control elements such as buttons and menu buttons, often grouped by separators.",
+  "displayName": "Toolbar",
+  "help": "oj-c.Toolbar.html",
+  "main": "oj-c/toolbar",
+  "since": "18.0.0",
+  "status": [
+    {
+      "type": "supersedes",
+      "since": "18.0.0",
+      "value": [
+        "oj-toolbar"
+      ]
+    }
+  ],
+  "extension": {
+    "catalog": {
+      "category": "Controls"
+    },
+    "vbdt": {
+      "module": "oj-c/toolbar"
+    },
+    "oracle": {
+      "icon": "oj-ux-ico-toolbar",
+      "uxSpecs": [
+        "toolbar"
+      ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/ToolbarWebElement.html"
+    }
+  },
+  "properties": {
+    "spacing": {
+      "type": "string",
+      "description": "Specifies the spacing between content. 'sm' spacing is recommended for button variants that don't have a background or border, for example borderless buttons. 'lg' spacing is recommended for button variants that have a background or border, for example outlined or solid buttons.",
+      "displayName": "spacing",
+      "help": "#spacing",
+      "propertyEditorValues": {
+        "sm": {
+          "description": "Compact spacing between content.",
+          "displayName": "Small"
+        },
+        "lg": {
+          "description": "Default spacing between content.",
+          "displayName": "Large"
+        }
+      },
+      "enumValues": [
+        "sm",
+        "lg"
+      ]
+    },
+    "chroming": {
+      "type": "string",
+      "description": "Specifies the chroming to be set on content to be placed into the toolbar.",
+      "displayName": "chroming",
+      "help": "#chroming",
+      "enumValues": [
+        "borderless",
+        "outlined"
+      ]
+    },
+    "size": {
+      "type": "string",
+      "description": "Specifies the size of content to be placed into the toolbar.",
+      "displayName": "size",
+      "help": "#size",
+      "enumValues": [
+        "sm",
+        "md",
+        "lg"
+      ]
+    },
+    "items": {
+      "type": "Array<object>",
+      "description": "Specifies the content to be placed into the toolbar.",
+      "displayName": "items",
+      "help": "#items",
+      "value": []
+    },
+    "toolbarSelection": {
+      "type": "object",
+      "description": "An array containing key/value objects for selection groups.",
+      "displayName": "toolbarSelection",
+      "help": "#toolbarSelection",
+      "extension": {
+        "vbdt": {
+          "keyedProperties": {
+            "keys": {
+              "type": "string"
+            },
+            "values": {
+              "type": "string|boolean|Array<string>|object"
+            }
+          }
+        }
+      },
+      "writeback": true,
+      "value": {}
+    }
+  },
+  "events": {
+    "ojToolbarAction": {
+      "bubbles": true,
+      "description": "Triggered when a toolbar item is clicked, whether by keyboard, mouse, or touch events. Detail indicates which toolbar item was clicked.",
+      "eventGroup": "common",
+      "help": "#event:ojToolbarAction",
+      "detail": {
+        "key": {
+          "type": "string"
+        }
+      }
+    },
+    "ojToolbarSelection": {
+      "bubbles": true,
+      "description": "Triggered when a toolbar selection group item is clicked, whether by keyboard, mouse, or touch events. Detail indicates new selection value for group.",
+      "eventGroup": "common",
+      "help": "#event:ojToolbarSelection",
+      "detail": {
+        "value": {
+          "type": "any"
+        },
+        "toolbarSelectionGroupKey": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "methods": {
+    "setProperty": {
+      "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
+      "help": "#setProperty",
+      "params": [
+        {
+          "name": "property",
+          "description": "The property name to set. Supports dot notation for subproperty access.",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "The new value to set the property to.",
+          "type": "any"
+        }
+      ],
+      "return": "void"
+    },
+    "getProperty": {
+      "description": "Retrieves the value of a property or a subproperty.",
+      "help": "#getProperty",
+      "params": [
+        {
+          "name": "property",
+          "description": "The property name to get. Supports dot notation for subproperty access.",
+          "type": "string"
+        }
+      ],
+      "return": "any"
+    },
+    "setProperties": {
+      "description": "Performs a batch set of properties.",
+      "help": "#setProperties",
+      "params": [
+        {
+          "name": "properties",
+          "description": "An object containing the property and value pairs to set.",
+          "type": "object"
+        }
+      ],
+      "return": "void"
+    }
+  }
+}

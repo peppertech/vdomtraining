@@ -2,7 +2,7 @@ define(["require", "exports", "preact/jsx-runtime", "./modules"], function (requ
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     const ModulesContent = () => {
-        return ((0, jsx_runtime_1.jsxs)("div", Object.assign({ class: "oj-web-applayout-max-width oj-web-applayout-content" }, { children: [(0, jsx_runtime_1.jsx)("h1", Object.assign({ class: "oj-typography-heading-lg" }, { children: " Modules " })), (0, jsx_runtime_1.jsx)("h2", Object.assign({ class: "oj-typography-heading-sm" }, { children: "oj-module element is replaced by components." })), (0, jsx_runtime_1.jsx)("hr", {}), (0, jsx_runtime_1.jsx)("h3", Object.assign({ class: "oj-typography-heading-xs" }, { children: "Modules / Templates" })), (0, jsx_runtime_1.jsx)(modules_1.default, {})] })));
+        return ((0, jsx_runtime_1.jsxs)("div", { class: "oj-web-applayout-max-width oj-web-applayout-content", children: [(0, jsx_runtime_1.jsx)("h1", { class: "oj-typography-heading-lg", children: " Modules " }), (0, jsx_runtime_1.jsx)("h2", { class: "oj-typography-heading-sm", children: "oj-module element is replaced by components." }), (0, jsx_runtime_1.jsx)("hr", {}), (0, jsx_runtime_1.jsx)("h3", { class: "oj-typography-heading-xs", children: "Modules / Templates" }), (0, jsx_runtime_1.jsx)(modules_1.default, {})] }));
     };
     exports.default = ModulesContent;
 });

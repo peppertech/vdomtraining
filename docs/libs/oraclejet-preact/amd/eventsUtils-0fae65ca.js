@@ -1,0 +1,2 @@
+define(['exports'], (function(e){"use strict";function t(e,t){let n=t;for(;n!=e.current;){if(n.dataset.ojObject)return n.dataset;n=n.parentElement}return null}e.cancelEvent=function(e){e.preventDefault(),e.stopPropagation()},e.getElementData=t,e.getInfo=function(e,n){const r=t(e,n.target);var o;if(r)return{groupIndex:(o=r).ojGroupIndex?parseInt(o.ojGroupIndex,10):void 0,seriesIndex:o.ojSeriesIndex?parseInt(o.ojSeriesIndex,10):void 0}}}));
+//# sourceMappingURL=eventsUtils-0fae65ca.js.map
