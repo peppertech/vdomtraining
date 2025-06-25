@@ -2,21 +2,12 @@
   "use": "local",
   "cdns": {
     "jet": {
-<<<<<<< HEAD
-      "prefix": "https://static.oracle.com/cdn/jet/16.0.0/default/js",
-      "css": "https://static.oracle.com/cdn/jet/16.0.0/default/css",
-      "csspreact": "https://static.oracle.com/cdn/jet/16.0.0/3rdparty/oraclejet-preact/amd",
-      "config": "bundles-config.js"
-    },
-    "3rdparty": "https://static.oracle.com/cdn/jet/16.0.0/3rdparty"
-=======
       "prefix": "https://static.oracle.com/cdn/jet/18.0.0/default/js",
       "css": "https://static.oracle.com/cdn/jet/18.0.0/default/css",
       "csspreact": "https://static.oracle.com/cdn/jet/18.0.0/3rdparty/oraclejet-preact/amd",
       "config": "bundles-config.js"
     },
     "3rdparty": "https://static.oracle.com/cdn/jet/18.0.0/3rdparty"
->>>>>>> main
   },
   "libs": {
     "knockout": {
@@ -454,20 +445,12 @@
       "debug": {
         "src": "chai.js",
         "path": "libs/chai/chai.js",
-<<<<<<< HEAD
-        "cdnPath": "chai/chai-4.3.10"
-=======
         "cdnPath": "chai/chai-4.5.0"
->>>>>>> main
       },
       "release": {
         "src": "chai.js",
         "path": "libs/chai/chai.js",
-<<<<<<< HEAD
-        "cdnPath": "chai/chai-4.3.10.min"
-=======
         "cdnPath": "chai/chai-4.5.0.min"
->>>>>>> main
       }
     },
     "react-router-dom": {
