@@ -10,7 +10,7 @@ Oracle JET VDOM architecture leverages a Virtual DOM engine, powered by Preact, 
 - **Reactivity**: Components update efficiently in response to state changes, ensuring a smooth user experience.
 - **Modularity**: Encourages the creation of reusable UI components, promoting a modular design.
 
-For detailed information, refer to the official Oracle JET documentation on VDOM architecture, which provides extensive guidance on building responsive web apps and components.
+For detailed information, refer to the official [Oracle JET documentation on VDOM architecture](https://www.oracle.com/pls/topic/lookup?ctx=jetlatest&id=JETVD), which provides extensive guidance on building responsive web apps and components.
 
 ## Project Setup
 
@@ -40,6 +40,51 @@ The typical directory structure for a VDOM app includes:
 - `node_modules/`: Dependencies installed via npm, including Oracle JET libraries.
 
 Understanding this structure is crucial for organizing your codebase effectively.
+
+## Importing Components and Types
+
+### Legacy JET Components
+
+**Register legacy components via side-effect imports and import types separately:**
+```tsx
+import "ojs/ojbutton";
+import "ojs/ojlistview";
+import { ojListView } from "ojs/ojlistview";
+import { ButtonElement } from "ojs/ojbutton";
+```
+- _Always_ register the HTML custom element first.
+- Import event and template types as needed.
+
+---
+
+### CorePack (oj-c) JET Components
+
+**For CorePack, use module paths and named imports for types:**
+```tsx
+import 'oj-c/button';
+import { CButtonElement } from 'oj-c/button';
+
+import 'oj-c/message-toast';
+import { CMessageToastElement, MessageToastItem } from 'oj-c/message-toast';
+```
+- Register components using the `'oj-c/<component>'` side-effect import.
+- Import all types, events, and interfaces from the same module as the component.
+
+---
+
+### DO & DON'T: Imports
+
+- **DO:** Explicitly import both component registration and types:
+ ```tsx
+  import "ojs/ojlistview";
+  import { ojListView } from "ojs/ojlistview";
+  ```
+- **DO:** For CorePack, import types directly:
+ ```tsx
+  import { CButtonElement } from "oj-c/button";
+  ```
+- **DO NOT:** Skip registration of custom elements.
+
 
 ## Component Structure and Naming Conventions
 
@@ -188,32 +233,39 @@ export const ResponsiveLayout = () => {
   );
 };
 ```
-## Data Providers and Dynamic Content
+## DataProvider Usage
 
-### Using Data Providers
+### Guidelines
 
-Oracle JET provides data providers for managing dynamic content in components like lists and tables. Use `MutableArrayDataProvider` for simple arrays:
+- **ALWAYS** create and initialize DataProviders outside of the component function, _or_ use `useMemo` for memoization when the data source can change due to props or state.
 
-```typescript
-import { h } from 'preact';
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
-import 'oj-c/select-single';
+#### ✔️ Correct Usage: Module scope
+```tsx
+const dataProvider = new MutableArrayDataProvider<Employee["id"], Employee>(
+  JSON.parse(peopleData),
+  { keyAttributes: "id" }
+);
 
-const data = [
-  { value: 1, label: 'Option 1' },
-  { value: 2, label: 'Option 2' }
-];
-const dataProvider = new MutableArrayDataProvider(data, { keyAttributes: 'value' });
-
-export const SelectComponent = () => {
-  return (
-    <oj-c-select-single data={dataProvider} labelHint="Select Option" />
-  );
-};
+<oj-list-view data={dataProvider} ... />
 ```
-### Performance Considerations
+#### ✔️ Correct Usage: useMemo (when dynamic)
+```tsx
+const dataProvider = useMemo(
+  () => new MutableArrayDataProvider<Employee["id"], Employee>(sourceData, { keyAttributes: "id" }),
+  [sourceData]
+);
+```
+#### ❌ Incorrect Usage: Inline Instantiation in JSX
+```tsx
+// NEVER do this:
+<oj-list-view data={new MutableArrayDataProvider(...)} ... />
+```
+> **Why?**  
+> Inline instantiation causes a new DataProvider instance on every render, which can lead to performance issues, excessive fetches, and component state reset.  
 
-Avoid re-creating data providers on every render by using `useMemo` or maintaining them in state to prevent unnecessary updates and maintain scroll positions in collection components.
+**Rule:**  
+_Instantiate DataProviders once per logical data lifetime, NOT per render cycle!_
+
 
 ## Accessibility
 
@@ -349,7 +401,7 @@ const handleStateChange = useCallback((e: CSelectSingleElement.valueChanged<stri
 ```
 This practice reduces runtime errors and improves code maintainability, complementing the use of `ComponentProps` for property typing.
 
-#### Complex Form Layout and Data Providers
+#### Complex Form Layout
 
 The form uses `oj-c-form-layout` for organizing fields into a responsive grid and employs data providers for dropdown selections, adhering to best practices for dynamic content:
 
