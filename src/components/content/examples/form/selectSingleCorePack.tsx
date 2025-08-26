@@ -318,7 +318,6 @@ const SelectSingleCorePack = () => {
         <oj-c-select-single
           id="itemTemplateSelector"
           disabled={true}
-          aria-label="Employee Selector item template"
           labelHint="Select single Item Template"
           data={oracleEmployeeDataProvider}
           value={selectedOracleEmployee.selectedValue}
@@ -330,7 +329,7 @@ const SelectSingleCorePack = () => {
             render={itemTemplateRenderer}
           ></template>
         </oj-c-select-single>
-        <span>It will be available from JET 17.0.0 onwards</span>
+       
 
         <h6 class="oj-typography-heading-sm">
           Select Single (Collection Template)
@@ -338,7 +337,6 @@ const SelectSingleCorePack = () => {
         <oj-c-select-single
           id="collectionTemplateSelector"
           disabled={true}
-          aria-label="Employee Selector Collection template"
           labelHint="Select single Item Template"
           labelEdge="inside"
           data={oracleEmployeeDataProvider}
@@ -350,8 +348,8 @@ const SelectSingleCorePack = () => {
             render={collectionTemplateRenderer}
           ></template>
         </oj-c-select-single>
-        {/* <span>The selected value is: {selectedListViewItem.selectedValue}</span> */}
-        <span>It will be available from JET 17.0.0 onwards</span>
+         <span>The selected value is: {selectedListViewItem.selectedValue}</span> 
+       
       </oj-form-layout>
     </div>
   );
