@@ -299,7 +299,7 @@ const FormsHome = () => {
         return <InputDatePicker />;
       case 10:
         return <InputNumber />;
-      case 11:
+      case 15:
         return <SelectSingle />;
       case 13:
         return <InputText />;

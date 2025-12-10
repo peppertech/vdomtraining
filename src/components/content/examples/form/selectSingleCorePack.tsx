@@ -3,10 +3,8 @@ import { useState, useEffect, useCallback } from "preact/hooks";
 import * as peopleData from "text!./data/peopleData.json";
 import * as employeeData from "text!./data/employeeData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import "ojs/ojselectsingle";
 import { ItemContext } from "ojs/ojcommontypes";
 import "ojs/ojknockout";
-import "ojs/ojselectsingle";
 import "ojs/ojhighlighttext";
 import "ojs/ojlistitemlayout";
 import "ojs/ojavatar";
@@ -15,11 +13,16 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 import "oj-c/select-single";
 import "oj-c/list-item-layout";
-import { CSelectSingleElement } from "oj-c/select-single";
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import "oj-c/form-layout";
 import "oj-c/avatar";
 import "oj-c/highlight-text";
+import { CSelectSingleElement } from "oj-c/select-single";
+import Collection from "../collection";
+import { data } from "@remix-run/router";
+//import "oj-c/button";
+
+//type RenderItemTemplate<V extends string | number, D extends Record<string, any>> = import('ojs/ojvcomponent').TemplateSlot<ItemTemplateContext<V, D>>;
 
 //  data types
 type Person = {
@@ -56,6 +59,7 @@ const browsers = [
   { value: 'OP', label: 'Opera' },
   { value: 'SA', label: 'Safari' },
 ];
+
 const browsersDP = new ArrayDataProvider(browsers, {
   keyAttributes: 'value',
 });
@@ -66,8 +70,6 @@ const employeesData: Array<Person> = [];
 JSON.parse(peopleData).map((item: Employee) => {
   employeesData.push({ id: item.id, value: item.name, label: item.name });
 });
-
-
 
 const employeeDataProvider = new MutableArrayDataProvider<
   Person["value"],
@@ -81,7 +83,7 @@ const oracleEmployeeDataProvider = new MutableArrayDataProvider(
   JSON.parse(employeeData),
   {
     keyAttributes: "EMPLOYEE_ID",
-    textFilterAttributes: ["FIRST_NAME", "LAST_NAME", "PHONE_NUMBER"],
+    textFilterAttributes: ["FIRST_NAME", "LAST_NAME", "EMAIL"],
   }
 );
 
@@ -126,7 +128,7 @@ const SelectSingleCorePack = () => {
   };
 
   const onItemTextSelectionChange = (event: any) => {
-    console.log(event.detail);
+    //console.log(event.detail);
     setOracleEmployeeSelectSingle({
       selectedValue: event.detail.value,
     });
@@ -137,20 +139,20 @@ const SelectSingleCorePack = () => {
   ) => {
     return `${itemContext.data.FIRST_NAME} ${itemContext.data.LAST_NAME}`;
   };
-
-  const itemTemplateRenderer = useCallback(
-    (
-      item: ojSelectSingle.ItemTemplateContext<
-        OracleEmployee["EMPLOYEE_ID"],
-        OracleEmployee
-      >
-    ) => {
+  
+//CSelectSingleElement.RenderItemTemplate
+// ojSelectSingle.ItemTemplateContext
+  const itemTemplateRenderer = (
+      itemCtx: ojSelectSingle.ItemTemplateContext<
+      OracleEmployee["EMPLOYEE_ID"],
+      OracleEmployee>
+  ) => {
       return (
         <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
           <span className="oj-typography-body-md oj-text-color-primary">
             <oj-c-highlight-text
-              text={item.data.FIRST_NAME + " " + item.data.LAST_NAME}
-              matchText={item.searchText}
+              text={itemCtx.data.FIRST_NAME +  " " + itemCtx.data.LAST_NAME }
+              matchText={itemCtx.searchText}
             ></oj-c-highlight-text>
           </span>
           <oj-c-avatar
@@ -158,16 +160,16 @@ const SelectSingleCorePack = () => {
             role="img"
             size="xs"
             shape="circle"
-            src={item.data.IMAGE}
-            title={"Avatar of " + item.data.FIRST_NAME}
+            src={itemCtx.data.IMAGE}
+            title={"Avatar of " + itemCtx.data.FIRST_NAME}
           ></oj-c-avatar>
           <span
             slot="secondary"
             className="oj-typography-body-sm oj-text-color-secondary"
           >
             <oj-c-highlight-text
-              text={item.data.TITLE}
-              matchText={item.searchText}
+              text={itemCtx.data.TITLE}
+              matchText={itemCtx.searchText}
             ></oj-c-highlight-text>
           </span>
           <span
@@ -175,15 +177,14 @@ const SelectSingleCorePack = () => {
             className="oj-typography-body-sm oj-text-color-secondary"
           >
             <oj-c-highlight-text
-              text={item.data.PHONE_NUMBER}
-              matchText={item.searchText}
+              text={itemCtx.data.PHONE_NUMBER}
+              matchText={itemCtx.searchText}
             ></oj-c-highlight-text>
           </span>
         </oj-c-list-item-layout>
       );
-    },
-    []
-  );
+  };
+ 
 
   const collectionTemplateRenderer = (
     collection: ojSelectSingle.CollectionTemplateContext<
@@ -191,7 +192,7 @@ const SelectSingleCorePack = () => {
       OracleEmployee
     >
   ) => {
-    const collectionItemRenderer = (
+    const itemRenderer = (
       item: ojSelectSingle.ItemTemplateContext<
         OracleEmployee["EMPLOYEE_ID"],
         OracleEmployee
@@ -242,6 +243,7 @@ const SelectSingleCorePack = () => {
       });
     };
 
+    
     return (
       <oj-list-view
         id="listview"
@@ -255,7 +257,7 @@ const SelectSingleCorePack = () => {
       >
         <template
           slot="itemTemplate"
-          render={collectionItemRenderer}
+          render={itemRenderer}
         ></template>
       </oj-list-view>
     );
@@ -275,18 +277,10 @@ const SelectSingleCorePack = () => {
           {" "}
           Select Single - Core Pack (Basic) 
         </h6>
-        {/* <oj-c-select-single
-            data={browsersDP}
-            item-text="label"
-            label-hint="Browser"
-            value={value}
-            valueItem={valueItem}
-            onvalueChanged={onValueChanged}
-        /> */}
         <oj-c-select-single
           id="employeeSelector"
-          label-hint="Select Single with ArrayDataProvider"
-          label-edge="inside"
+          labelHint="Select Single with ArrayDataProvider"
+          labelEdge="inside"
           class="oj-form-control-max-width-md"
           data={employeeDataProvider}
           value={selectSingleData.selectedValue}
@@ -299,11 +293,10 @@ const SelectSingleCorePack = () => {
         <h6 class="oj-typography-heading-sm">
           {" "}
           Select Single Core pack (Item Text)
-        </h6>
+        </h6>  
         <oj-c-select-single
           id="itemTextSelector"
-          aria-label="Employee Selector"
-          labelHint="Select single Item text"
+          labelHint="Select Single - Item text"
           data={oracleEmployeeDataProvider}
           value={selectedOracleEmployee.selectedValue}
           onvalueChanged={onItemTextSelectionChange}
@@ -317,8 +310,8 @@ const SelectSingleCorePack = () => {
 
         <oj-c-select-single
           id="itemTemplateSelector"
-          disabled={true}
-          labelHint="Select single Item Template"
+          labelHint="Select single - Item Template"
+          labelEdge="inside"
           data={oracleEmployeeDataProvider}
           value={selectedOracleEmployee.selectedValue}
           onvalueChanged={onItemTextSelectionChange}
@@ -336,9 +329,9 @@ const SelectSingleCorePack = () => {
         </h6>
         <oj-c-select-single
           id="collectionTemplateSelector"
-          disabled={true}
           labelHint="Select single Item Template"
           labelEdge="inside"
+          disabled={true}
           data={oracleEmployeeDataProvider}
           value={selectedListViewItem.selectedValue}
           itemText={getItemText}
@@ -351,6 +344,7 @@ const SelectSingleCorePack = () => {
          <span>The selected value is: {selectedListViewItem.selectedValue}</span> 
        
       </oj-form-layout>
+  
     </div>
   );
 };

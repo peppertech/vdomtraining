@@ -2,6 +2,7 @@ import { h, ComponentProps } from "preact";
 import { useState, useCallback } from "preact/hooks";
 import * as peopleData from "text!./data/peopleData.json";
 import * as employeeData from "text!./data/employeeData.json";
+import * as countryData from "text!./data/componentList.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import "ojs/ojselectsingle";
 import { ItemContext } from "ojs/ojcommontypes";
@@ -13,8 +14,9 @@ import "ojs/ojavatar";
 import { ojSelectSingle } from "ojs/ojselectsingle";
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import 'ojs/ojtable';
+import Collection from "../collection";
 
-//  data types
 type Person = {
   id: number;
   value: string;
@@ -42,7 +44,6 @@ type OracleEmployee = {
   IMAGE: string;
 };
 
-// basic select single data
 const employeesData: Array<Person> = [];
 
 JSON.parse(peopleData).map((item: Employee) => {
@@ -64,18 +65,25 @@ const oracleEmployeeDataProvider = new MutableArrayDataProvider(
     textFilterAttributes: ["FIRST_NAME", "LAST_NAME", "PHONE_NUMBER"],
   }
 );
+ const tableColumns = [
+      { headerText: 'First Name', field: 'FIRST_NAME', template: 'cellTemplate', id: 'first' },
+      { headerText: 'Last Name', field: 'LAST_NAME', template: 'cellTemplate', id: 'last' },
+      {
+        headerText: 'Department',
+        field: 'DEPARTMENT_ID',
+        template: 'cellTemplate',
+        id: 'depId'
+      },
+      { headerText: 'Salary', field: 'SALARY', template: 'cellTemplate', id: 'salary' }
+ ];
 
-type FormLayoutProps = ComponentProps<"oj-form-layout">;
-type ListViewProps = ComponentProps<"oj-list-view">;
-const gridlinesItemVisible: ListViewProps["gridlines"] = { item: "visible" };
-const INIT_SELECTEDITEMS = new KeySetImpl([]) as KeySet<
-  OracleEmployee["EMPLOYEE_ID"]
->;
 
 const SelectSingle = () => {
+
   const [selectSingleData, setSelectSingleValue] = useState({
     selectedValue: "Chris Black",
   });
+  
   const [selectedOracleEmployee, setOracleEmployeeSelectSingle] = useState<any>(
     { selectedValue: 102 }
   );
@@ -84,9 +92,6 @@ const SelectSingle = () => {
     selectedValue: 103,
   });
 
-  const [density, setDensity] = useState<
-    FormLayoutProps["userAssistanceDensity"]
-  >("efficient");
 
   const onBasicSelectSingleChange = (event: any) => {
     setSelectSingleValue({
@@ -153,7 +158,7 @@ const SelectSingle = () => {
     []
   );
 
-  const collectionTemplateRenderer = (
+  const collectionTemplateRendererForListView = (
     collection: ojSelectSingle.CollectionTemplateContext<
       OracleEmployee["EMPLOYEE_ID"],
       OracleEmployee
@@ -173,7 +178,7 @@ const SelectSingle = () => {
               matchText={collection.searchText}
             ></oj-highlight-text>
           </span>
-          <oj-avatar
+           <oj-avatar
             slot="leading"
             role="img"
             size="xs"
@@ -187,9 +192,10 @@ const SelectSingle = () => {
           >
             <oj-highlight-text
               text={item.data.TITLE}
-              matchText={collection.searchText}
+              matchText={item.searchText}
             ></oj-highlight-text>
           </span>
+         
           <span
             slot="metadata"
             className="oj-typography-body-sm oj-text-color-secondary"
@@ -229,10 +235,61 @@ const SelectSingle = () => {
     );
   };
 
+  const collectionTemplateRendererForTabularView = (
+    collection: ojSelectSingle.CollectionTemplateContext<
+      OracleEmployee["EMPLOYEE_ID"],
+      OracleEmployee
+    >
+  ) => {
+    const tableCollectionItemRenderer = (
+      itemCollection: ojSelectSingle.ItemTemplateContext<
+        OracleEmployee["EMPLOYEE_ID"],
+        OracleEmployee
+      >
+    ) => {
+      return (
+      
+        <oj-highlight-text
+            text={String(itemCollection.data)}
+          matchText={collection.searchText}></oj-highlight-text>
+      );
+    };
+
+    const handleTabularRowAction = (value: ojListView.ojItemAction<any, any>) => {
+      collection.handleRowAction(value, value.detail.context);
+      setListViewItem({
+        selectedValue: value.detail.context.data["EMPLOYEE_ID"],
+      });
+    };
+
+    return (
+       <oj-table
+                 id="table1"
+                 aria-label="select results"
+                 // accessibility.row-header="[[['first', 'last']]]"
+                 horizontalGridVisible="disabled"
+                 verticalGridVisible="disabled"
+                 selectionMode={{"row": "single"}}
+                 columnsDefault={{"resizable": "disabled", "sortable": "disabled"}}            
+                 columns={tableColumns}
+                 class="oj-select-results"
+                 data={collection.data}
+                 selected={{"row": collection.selected}}
+                 currentRow={collection.currentRow}
+                 onojRowAction={handleTabularRowAction}
+                 >
+                  <template
+                   slot="itemTemplate"
+                   render={tableCollectionItemRenderer}
+                  ></template>
+        </oj-table>
+    );
+  };
+  
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
       <oj-form-layout
-        userAssistanceDensity={density}
+        userAssistanceDensity="efficient"
         labelEdge="inside"
         columns={1}
         class="oj-md-margin-4x-horizontal"
@@ -242,19 +299,20 @@ const SelectSingle = () => {
         <h6 class="oj-typography-heading-sm"> Select Single (Basic)</h6>
         <oj-select-single
           id="employeeSelector"
-          aria-label="Employee Selector"
-          labelHint="Select single "
+          aria-label="Select Single - Basic Example"
+          labelHint="Select Single - Basic"
           data={employeeDataProvider}
           value={selectSingleData.selectedValue}
           onvalueChanged={onBasicSelectSingleChange}
-        ></oj-select-single>
-        <span>The selected value is: {selectSingleData.selectedValue} </span>
+        ></oj-select-single> 
+
+       <span>The selected value is: {selectSingleData.selectedValue} </span>
 
         <h6 class="oj-typography-heading-sm"> Select Single (Item Text)</h6>
         <oj-select-single
           id="itemTextSelector"
-          aria-label="Employee Selector"
-          labelHint="Select single Item text"
+          aria-label="Select Single - Item Text"
+          labelHint="Select Single - Item Text"
           data={oracleEmployeeDataProvider}
           value={selectedOracleEmployee.selectedValue}
           onvalueChanged={onItemTextSelectionChange}
@@ -264,12 +322,11 @@ const SelectSingle = () => {
           The selected value is: {selectedOracleEmployee.selectedValue}{" "}
         </span>
 
-        <h6 class="oj-typography-heading-sm"> Select Single (Item Template)</h6>
-         
+        <h6 class="oj-typography-heading-sm"> Select Single (Item Template)</h6>   
         <oj-select-single
           id="itemTemplateSelector"
-          aria-label="Employee Selector item template"
-          labelHint="Select single Item Template"
+          aria-label="Select Single - Item Template"
+          labelHint="Select Single - Item Template"
           data={oracleEmployeeDataProvider}
           value={selectedOracleEmployee.selectedValue}
           onvalueChanged={onItemTextSelectionChange}
@@ -279,7 +336,7 @@ const SelectSingle = () => {
             slot="itemTemplate"
             render={itemTemplateRenderer}
           ></template>
-        </oj-select-single>
+        </oj-select-single> 
         <span>
           The selected value is: {selectedOracleEmployee.selectedValue}
         </span>
@@ -289,8 +346,8 @@ const SelectSingle = () => {
         </h6>
         <oj-select-single
           id="collectionTemplateSelector"
-          aria-label="Employee Selector Collection template"
-          labelHint="Select single Item Template"
+          aria-label="Select Single Collection Template for List View"
+          labelHint="Select Single Collection Template for List View"
           labelEdge="inside"
           data={oracleEmployeeDataProvider}
           value={selectedListViewItem.selectedValue}
@@ -298,13 +355,31 @@ const SelectSingle = () => {
         >
           <template
             slot="collectionTemplate"
-            render={collectionTemplateRenderer}
+            render={collectionTemplateRendererForListView}
           ></template>
-        </oj-select-single>
-        <span>The selected value is: {selectedListViewItem.selectedValue}</span>
-        
+        </oj-select-single> 
+       <span>The selected value is: {selectedListViewItem.selectedValue}</span>
+
+        <h6 class="oj-typography-heading-sm">
+          Select Single (Collection Template - Table)
+        </h6>
+         <oj-select-single
+          id="tableCollectionTemplateSelector"
+          aria-label="Select Single Collection Template for Tabular View"
+          labelHint="Select Single Collection Template for Tabular View"
+          labelEdge="inside"
+          data={oracleEmployeeDataProvider}
+          value={selectedListViewItem.selectedValue}
+          itemText={getItemText}
+        >
+          <template
+            slot="collectionTemplate"
+            render={collectionTemplateRendererForTabularView}
+          ></template>
+        </oj-select-single> 
       </oj-form-layout>
     </div>
   );
 };
+
 export default SelectSingle;

@@ -15,6 +15,13 @@ import 'oj-c/select-multiple';
 import 'oj-c/select-single';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'oj-c/form-layout';
+import 'oj-c/list-item-layout';
+import 'oj-c/avatar';
+import 'oj-c/selector';
+import 'oj-c/highlight-text';
+import { CSelectMultipleElement } from "oj-c/select-multiple";
+import { ojSelectSingle } from "ojs/ojselectsingle";
+
 
 //  data types
 type Person = {
@@ -76,8 +83,9 @@ const INIT_SELECTEDITEMS = new KeySetImpl([]) as KeySet<
 >;
 
 const SelectMultiple = () => {
+
   const [selectSingleData, setSelectSingleValue] = useState({
-    selectedValue: "Chris Black",
+    selectedValue: 103, //"Chris Black",
   });
  // for select multiple
   const [selectMultipleData, setSelectMultipleValue] = useState({
@@ -87,9 +95,9 @@ const SelectMultiple = () => {
     { selectedValue: selectVal }
   );
 
-  const [selectedListViewItem, setListViewItem] = useState<any>({
-    selectedValue: 103,
-  });
+  // const [selectedListViewItem, setListViewItem] = useState<any>({
+  //   selectedValue: 103,
+  // });
 
   const [density, setDensity] = useState<
     FormLayoutProps["userAssistanceDensity"]
@@ -120,13 +128,66 @@ const SelectMultiple = () => {
     });
   };
 
-  const getItemText = (
+   const getItemTextLabel = (
     itemContext: ItemContext<string, Record<string, string | number>>
   ) => {
     return `${itemContext.data.label}`;
   };
 
- 
+  const getItemText = (
+    itemContext: ItemContext<string, Record<string, string | number>>
+  ) => {
+    return `${itemContext.data.FIRST_NAME} ${itemContext.data.LAST_NAME}`;
+  };
+
+  const itemTemplateRenderer = useCallback(
+    (
+      item: ojSelectSingle.ItemTemplateContext<
+        OracleEmployee["EMPLOYEE_ID"],
+        OracleEmployee
+      >
+    ) => {
+      return (
+        <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
+          <span className="oj-typography-body-md oj-text-color-primary">
+            <oj-c-highlight-text
+              text={item.data.FIRST_NAME + " " + item.data.LAST_NAME}
+              matchText={item.searchText}
+            ></oj-c-highlight-text>
+          </span>
+          <oj-c-avatar
+            slot="leading"
+            role="img"
+            size="xs"
+            shape="circle"
+            src={item.data.IMAGE}
+            title={"Avatar of " + item.data.FIRST_NAME}
+          ></oj-c-avatar>
+          <span
+            slot="secondary"
+            className="oj-typography-body-sm oj-text-color-secondary"
+          >
+            <oj-c-highlight-text
+              text={item.data.TITLE}
+              matchText={item.searchText}
+            ></oj-c-highlight-text>
+          </span>
+          <span
+            slot="metadata"
+            className="oj-typography-body-sm oj-text-color-secondary"
+          >
+            <oj-c-highlight-text
+              text={item.data.PHONE_NUMBER}
+              matchText={item.searchText}
+            ></oj-c-highlight-text>
+          </span>
+        </oj-c-list-item-layout>
+      );
+    },
+    []
+  );
+
+
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
@@ -153,7 +214,7 @@ const SelectMultiple = () => {
 
 
         <h6 class="oj-typography-heading-sm"> Select Multiple - Core Pack (Item Text)</h6>
-         <oj-c-select-multiple
+        <oj-c-select-multiple
               id="itemtextSelect"
               labelHint="Select Multiple with item-text"
               labelEdge="inside"
@@ -161,9 +222,26 @@ const SelectMultiple = () => {
               data={employeeDataProvider}
               value={selectMultipleItemTextData.selectedValue}
               onvalueChanged={onItemTextSelectMultipleChange}
+              itemText={getItemTextLabel}>
+        </oj-c-select-multiple>
+        <span>The selected values are: {selectMultipleItemTextData.selectedValue? Array.from(selectMultipleItemTextData.selectedValue).join(', ') : ''} </span>
+
+        <h6 class="oj-typography-heading-sm"> Select Multiple - Core Pack (Item Template)</h6>
+        {/* <oj-c-select-multiple
+              id="select1"
+              labelHint="Select Multiple"
+              labelEdge="inside"
+              data={employeeDataProvider}
+             value={selectMultipleItemTextData.selectVal}
               itemText={getItemText}>
-          </oj-c-select-multiple>
-           <span>The selected values are: {selectMultipleItemTextData.selectedValue? Array.from(selectMultipleItemTextData.selectedValue).join(', ') : ''} </span>
+              <template
+                  slot="itemTemplate"
+                  render={itemTemplateRenderer}>
+             </template>       
+            </oj-c-select-multiple> */}
+
+
+      <h6 class="oj-typography-heading-sm"> Select Multiple - Core Pack (Collection Template)</h6>   
 
       </oj-c-form-layout>
     </div>

@@ -1,125 +1,1782 @@
-// [
-//   // {
-//   //   id: 1,
-//   //   name: "Checkbox",
-//   //   image: "oj-ux-icon-size-12x  oj-ux-ico-checkbox-on",
-//   //   isAvailable: false,
-//   // },
-//   // {
-//   //   id: 2,
-//   //   name: "Color palette",
-//   //   image: "oj-ux-icon-size-12x  oj-ux-ico-color-palette",
-//   //   isAvailable: false,
-//   // },
-//   // {
-//   //   id: 3,
-//   //   name: "color Spectrum",
-//   //   image: "oj-ux-icon-size-12x  oj-ux-ico-color-spectrum",
-//   //   isAvailable: false,
-//   // },
-//   // {
-//   //   id: 4,
-//   //   name: "Form Layout",
-//   //   image: "oj-ux-icon-size-12x  oj-ux-ico-form-layout-jet",
-//   //   isAvailable: false,
-//   // },
-//   {
-//     id: 5,
-//     name: "Input Date Time",
-//     image: "oj-ux-icon-size-12x  oj-ux-ico-calendar-clock",
-//     isAvailable: false,
-//     isCorePack: false,
-//   },
-//   {
-//     id: 6,
-//     name: "Input Number",
-//     image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
-//     isAvailable: true,
-//     isCorePack: false,
-//   },
-//   {
-//     id: 20,
-//     name: "Input Number",
-//     image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
-//     isAvailable: true,
-//     isCorePack: true,
-//   },
-//   // {
-//   //   id: 7,
-//   //   name: "Input Password",
-//   //   image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-password",
-//   //   isAvailable: false,
-//   // },
-//   // {
-//   //   id: 8,
-//   //   name: "Input Search",
-//   //   image: "oj-ux-icon-size-12x  oj-ux-ico-input-search",
-//   //   isAvailable: false,
-//   // },
-//   {
-//     id: 9,
-//     name: "Input Text",
-//     image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
-//     isAvailable: true,
-//     isCorePack: false,
-//   },
-//   {
-//     id: 18,
-//     name: "Input Text",
-//     image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
-//     isAvailable: true,
-//     isCorePack: true,
-//   },
-//   {
-//     id: 10,
-//     name: "Text Area",
-//     image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-area",
-//     isAvailable: false,
-//   },
-//   {
-//     id: 11,
-//     name: "Select Single",
-//     image: "oj-ux-icon-size-12x  oj-ux-ico-select-tab",
-//     isAvailable: true,
-//     isCorePack: false,
-//   },
-//   {
-//     id: 17,
-//     name: "Select Single",
-//     image: "oj-ux-icon-size-12x  oj-ux-ico-select-tab",
-//     isAvailable: true,
-//     isCorePack: true,
-//   },
-//   // {
-//   //   id: 12,
-//   //   name: "RadioSet",
-//   //   image: "oj-ux-icon-size-12x  oj-ux-ico-radio-set",
-//   //   isAvailable: false,
-//   //   isCorePack:false,
-//   // },
-//   // {
-//   //   id: 13,
-//   //   name: "User Assistance",
-//   //   image: "oj-ux-icon-size-12x  oj-ux-ico-user-assistance",
-//   //   isAvailable: false,
-//   // },
-//   // {
-//   //   id: 14,
-//   //   name: "Combobox",
-//   //   image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-combo",
-//   //   isAvailable: true,
-//   // },
-//   // {
-//   //   id: 15,
-//   //   name: "Job Application Form",
-//   //   image: "oj-ux-icon-size-12x  oj-ux-ico-form-layout-jet",
-//   //   isAvailable: true,
-//   // },
-//   {
-//     id: 16,
-//     name: "Select Multiple",
-//     image: "oj-ux-icon-size-12x  oj-ux-ico-select",
-//     isAvailable: true,
-//     isCorePack: true,
-//   },
-// ];
+[ {
+    "TerritoryCode" : "AF",
+    "PhoneCountryCodeId" : "100000020962004",
+    "CountryName" : "Afghanistan",
+    "@context" : {
+      "key" : "AF,100000020962004"
+    }
+  }, {
+    "TerritoryCode" : "AX",
+    "PhoneCountryCodeId" : "100000020962029",
+    "CountryName" : "Aland Islands",
+    "@context" : {
+      "key" : "AX,100000020962029"
+    }
+  }, {
+    "TerritoryCode" : "AL",
+    "PhoneCountryCodeId" : "100000020962010",
+    "CountryName" : "Albania",
+    "@context" : {
+      "key" : "AL,100000020962010"
+    }
+  }, {
+    "TerritoryCode" : "DZ",
+    "PhoneCountryCodeId" : "100000020962123",
+    "CountryName" : "Algeria",
+    "@context" : {
+      "key" : "DZ,100000020962123"
+    }
+  }, {
+    "TerritoryCode" : "AS",
+    "PhoneCountryCodeId" : "100000020962024",
+    "CountryName" : "American Samoa",
+    "@context" : {
+      "key" : "AS,100000020962024"
+    }
+  }, {
+    "TerritoryCode" : "AD",
+    "PhoneCountryCodeId" : "100000020962001",
+    "CountryName" : "Andorra",
+    "@context" : {
+      "key" : "AD,100000020962001"
+    }
+  }, {
+    "TerritoryCode" : "AO",
+    "PhoneCountryCodeId" : "100000020962014",
+    "CountryName" : "Angola",
+    "@context" : {
+      "key" : "AO,100000020962014"
+    }
+  }, {
+    "TerritoryCode" : "AI",
+    "PhoneCountryCodeId" : "100000020962008",
+    "CountryName" : "Anguilla",
+    "@context" : {
+      "key" : "AI,100000020962008"
+    }
+  }, {
+    "TerritoryCode" : "AQ",
+    "PhoneCountryCodeId" : "100000020962017",
+    "CountryName" : "Antarctica",
+    "@context" : {
+      "key" : "AQ,100000020962017"
+    }
+  }, {
+    "TerritoryCode" : "AG",
+    "PhoneCountryCodeId" : "100000020962006",
+    "CountryName" : "Antigua and Barbuda",
+    "@context" : {
+      "key" : "AG,100000020962006"
+    }
+  }, {
+    "TerritoryCode" : "AR",
+    "PhoneCountryCodeId" : "100000020962018",
+    "CountryName" : "Argentina",
+    "@context" : {
+      "key" : "AR,100000020962018"
+    }
+  }, {
+    "TerritoryCode" : "AM",
+    "PhoneCountryCodeId" : "100000020962012",
+    "CountryName" : "Armenia",
+    "@context" : {
+      "key" : "AM,100000020962012"
+    }
+  }, {
+    "TerritoryCode" : "AW",
+    "PhoneCountryCodeId" : "100000020962028",
+    "CountryName" : "Aruba",
+    "@context" : {
+      "key" : "AW,100000020962028"
+    }
+  }, {
+    "TerritoryCode" : "AU",
+    "PhoneCountryCodeId" : "100000020962026",
+    "CountryName" : "Australia",
+    "@context" : {
+      "key" : "AU,100000020962026"
+    }
+  }, {
+    "TerritoryCode" : "AT",
+    "PhoneCountryCodeId" : "100000020962025",
+    "CountryName" : "Austria",
+    "@context" : {
+      "key" : "AT,100000020962025"
+    }
+  }, {
+    "TerritoryCode" : "AZ",
+    "PhoneCountryCodeId" : "100000020962030",
+    "CountryName" : "Azerbaijan",
+    "@context" : {
+      "key" : "AZ,100000020962030"
+    }
+  }, {
+    "TerritoryCode" : "BS",
+    "PhoneCountryCodeId" : "100000020962050",
+    "CountryName" : "Bahamas",
+    "@context" : {
+      "key" : "BS,100000020962050"
+    }
+  }, {
+    "TerritoryCode" : "BH",
+    "PhoneCountryCodeId" : "100000020962041",
+    "CountryName" : "Bahrain",
+    "@context" : {
+      "key" : "BH,100000020962041"
+    }
+  }, {
+    "TerritoryCode" : "BD",
+    "PhoneCountryCodeId" : "100000020962034",
+    "CountryName" : "Bangladesh",
+    "@context" : {
+      "key" : "BD,100000020962034"
+    }
+  }, {
+    "TerritoryCode" : "BB",
+    "PhoneCountryCodeId" : "100000020962032",
+    "CountryName" : "Barbados",
+    "@context" : {
+      "key" : "BB,100000020962032"
+    }
+  }, {
+    "TerritoryCode" : "BY",
+    "PhoneCountryCodeId" : "100000020962055",
+    "CountryName" : "Belarus",
+    "@context" : {
+      "key" : "BY,100000020962055"
+    }
+  }, {
+    "TerritoryCode" : "BE",
+    "PhoneCountryCodeId" : "100000020962035",
+    "CountryName" : "Belgium",
+    "@context" : {
+      "key" : "BE,100000020962035"
+    }
+  }, {
+    "TerritoryCode" : "BZ",
+    "PhoneCountryCodeId" : "100000020962056",
+    "CountryName" : "Belize",
+    "@context" : {
+      "key" : "BZ,100000020962056"
+    }
+  }, {
+    "TerritoryCode" : "BJ",
+    "PhoneCountryCodeId" : "100000020962043",
+    "CountryName" : "Benin",
+    "@context" : {
+      "key" : "BJ,100000020962043"
+    }
+  }, {
+    "TerritoryCode" : "BM",
+    "PhoneCountryCodeId" : "100000020962044",
+    "CountryName" : "Bermuda",
+    "@context" : {
+      "key" : "BM,100000020962044"
+    }
+  }, {
+    "TerritoryCode" : "BT",
+    "PhoneCountryCodeId" : "100000020962052",
+    "CountryName" : "Bhutan",
+    "@context" : {
+      "key" : "BT,100000020962052"
+    }
+  }, {
+    "TerritoryCode" : "BO",
+    "PhoneCountryCodeId" : "100000020962047",
+    "CountryName" : "Bolivia",
+    "@context" : {
+      "key" : "BO,100000020962047"
+    }
+  }, {
+    "TerritoryCode" : "BA",
+    "PhoneCountryCodeId" : "100000020962031",
+    "CountryName" : "Bosnia and Herzegovina",
+    "@context" : {
+      "key" : "BA,100000020962031"
+    }
+  }, {
+    "TerritoryCode" : "BW",
+    "PhoneCountryCodeId" : "100000020962054",
+    "CountryName" : "Botswana",
+    "@context" : {
+      "key" : "BW,100000020962054"
+    }
+  }, {
+    "TerritoryCode" : "BV",
+    "PhoneCountryCodeId" : "100000020962053",
+    "CountryName" : "Bouvet Island",
+    "@context" : {
+      "key" : "BV,100000020962053"
+    }
+  }, {
+    "TerritoryCode" : "BR",
+    "PhoneCountryCodeId" : "100000020962048",
+    "CountryName" : "Brazil",
+    "@context" : {
+      "key" : "BR,100000020962048"
+    }
+  }, {
+    "TerritoryCode" : "IO",
+    "PhoneCountryCodeId" : "100000020962173",
+    "CountryName" : "British Indian Ocean Territory",
+    "@context" : {
+      "key" : "IO,100000020962173"
+    }
+  }, {
+    "TerritoryCode" : "BN",
+    "PhoneCountryCodeId" : "100000020962046",
+    "CountryName" : "Brunei Darussalam",
+    "@context" : {
+      "key" : "BN,100000020962046"
+    }
+  }, {
+    "TerritoryCode" : "BG",
+    "PhoneCountryCodeId" : "100000020962040",
+    "CountryName" : "Bulgaria",
+    "@context" : {
+      "key" : "BG,100000020962040"
+    }
+  }, {
+    "TerritoryCode" : "BF",
+    "PhoneCountryCodeId" : "100000020962039",
+    "CountryName" : "Burkina Faso",
+    "@context" : {
+      "key" : "BF,100000020962039"
+    }
+  }, {
+    "TerritoryCode" : "BI",
+    "PhoneCountryCodeId" : "100000020962042",
+    "CountryName" : "Burundi",
+    "@context" : {
+      "key" : "BI,100000020962042"
+    }
+  }, {
+    "TerritoryCode" : "CV",
+    "PhoneCountryCodeId" : "100000020962105",
+    "CountryName" : "Cabo Verde",
+    "@context" : {
+      "key" : "CV,100000020962105"
+    }
+  }, {
+    "TerritoryCode" : "KH",
+    "PhoneCountryCodeId" : "100000020962191",
+    "CountryName" : "Cambodia",
+    "@context" : {
+      "key" : "KH,100000020962191"
+    }
+  }, {
+    "TerritoryCode" : "CM",
+    "PhoneCountryCodeId" : "100000020962097",
+    "CountryName" : "Cameroon",
+    "@context" : {
+      "key" : "CM,100000020962097"
+    }
+  }, {
+    "TerritoryCode" : "CA",
+    "PhoneCountryCodeId" : "100000020962057",
+    "CountryName" : "Canada",
+    "@context" : {
+      "key" : "CA,100000020962057"
+    }
+  }, {
+    "TerritoryCode" : "BQ",
+    "PhoneCountryCodeId" : null,
+    "CountryName" : "Caribbean Netherlands",
+    "@context" : {
+      "key" : "BQ,"
+    }
+  }, {
+    "TerritoryCode" : "KY",
+    "PhoneCountryCodeId" : "100000020962199",
+    "CountryName" : "Cayman Islands",
+    "@context" : {
+      "key" : "KY,100000020962199"
+    }
+  }, {
+    "TerritoryCode" : "CF",
+    "PhoneCountryCodeId" : "100000020962090",
+    "CountryName" : "Central African Republic",
+    "@context" : {
+      "key" : "CF,100000020962090"
+    }
+  }, {
+    "TerritoryCode" : "TD",
+    "PhoneCountryCodeId" : "100000020962347",
+    "CountryName" : "Chad",
+    "@context" : {
+      "key" : "TD,100000020962347"
+    }
+  }, {
+    "TerritoryCode" : "CL",
+    "PhoneCountryCodeId" : "100000020962096",
+    "CountryName" : "Chile",
+    "@context" : {
+      "key" : "CL,100000020962096"
+    }
+  }, {
+    "TerritoryCode" : "CN",
+    "PhoneCountryCodeId" : "100000020962098",
+    "CountryName" : "China",
+    "@context" : {
+      "key" : "CN,100000020962098"
+    }
+  }, {
+    "TerritoryCode" : "CX",
+    "PhoneCountryCodeId" : "100000020962106",
+    "CountryName" : "Christmas Island",
+    "@context" : {
+      "key" : "CX,100000020962106"
+    }
+  }, {
+    "TerritoryCode" : "CC",
+    "PhoneCountryCodeId" : "100000020962088",
+    "CountryName" : "Cocos (Keeling) Islands",
+    "@context" : {
+      "key" : "CC,100000020962088"
+    }
+  }, {
+    "TerritoryCode" : "CO",
+    "PhoneCountryCodeId" : "100000020962101",
+    "CountryName" : "Colombia",
+    "@context" : {
+      "key" : "CO,100000020962101"
+    }
+  }, {
+    "TerritoryCode" : "KM",
+    "PhoneCountryCodeId" : "100000020962193",
+    "CountryName" : "Comoros",
+    "@context" : {
+      "key" : "KM,100000020962193"
+    }
+  }, {
+    "TerritoryCode" : "CG",
+    "PhoneCountryCodeId" : "100000020962091",
+    "CountryName" : "Congo-Brazzaville",
+    "@context" : {
+      "key" : "CG,100000020962091"
+    }
+  }, {
+    "TerritoryCode" : "CK",
+    "PhoneCountryCodeId" : "100000020962095",
+    "CountryName" : "Cook Islands",
+    "@context" : {
+      "key" : "CK,100000020962095"
+    }
+  }, {
+    "TerritoryCode" : "CR",
+    "PhoneCountryCodeId" : "100000020962102",
+    "CountryName" : "Costa Rica",
+    "@context" : {
+      "key" : "CR,100000020962102"
+    }
+  }, {
+    "TerritoryCode" : "CI",
+    "PhoneCountryCodeId" : "100000020962094",
+    "CountryName" : "Cote d'Ivoire",
+    "@context" : {
+      "key" : "CI,100000020962094"
+    }
+  }, {
+    "TerritoryCode" : "HR",
+    "PhoneCountryCodeId" : "100000020962165",
+    "CountryName" : "Croatia",
+    "@context" : {
+      "key" : "HR,100000020962165"
+    }
+  }, {
+    "TerritoryCode" : "CU",
+    "PhoneCountryCodeId" : "100000020962104",
+    "CountryName" : "Cuba",
+    "@context" : {
+      "key" : "CU,100000020962104"
+    }
+  }, {
+    "TerritoryCode" : "CW",
+    "PhoneCountryCodeId" : null,
+    "CountryName" : "Curacao",
+    "@context" : {
+      "key" : "CW,"
+    }
+  }, {
+    "TerritoryCode" : "CY",
+    "PhoneCountryCodeId" : "100000020962107",
+    "CountryName" : "Cyprus",
+    "@context" : {
+      "key" : "CY,100000020962107"
+    }
+  }, {
+    "TerritoryCode" : "CZ",
+    "PhoneCountryCodeId" : "100000020962108",
+    "CountryName" : "Czech Republic",
+    "@context" : {
+      "key" : "CZ,100000020962108"
+    }
+  }, {
+    "TerritoryCode" : "CD",
+    "PhoneCountryCodeId" : "100000020962089",
+    "CountryName" : "DR Congo-Kinshasa",
+    "@context" : {
+      "key" : "CD,100000020962089"
+    }
+  }, {
+    "TerritoryCode" : "DK",
+    "PhoneCountryCodeId" : "100000020962114",
+    "CountryName" : "Denmark",
+    "@context" : {
+      "key" : "DK,100000020962114"
+    }
+  }, {
+    "TerritoryCode" : "DJ",
+    "PhoneCountryCodeId" : "100000020962113",
+    "CountryName" : "Djibouti",
+    "@context" : {
+      "key" : "DJ,100000020962113"
+    }
+  }, {
+    "TerritoryCode" : "DM",
+    "PhoneCountryCodeId" : "100000020962117",
+    "CountryName" : "Dominica",
+    "@context" : {
+      "key" : "DM,100000020962117"
+    }
+  }, {
+    "TerritoryCode" : "DO",
+    "PhoneCountryCodeId" : "100000020962119",
+    "CountryName" : "Dominican Republic",
+    "@context" : {
+      "key" : "DO,100000020962119"
+    }
+  }, {
+    "TerritoryCode" : "EC",
+    "PhoneCountryCodeId" : "100000020962124",
+    "CountryName" : "Ecuador",
+    "@context" : {
+      "key" : "EC,100000020962124"
+    }
+  }, {
+    "TerritoryCode" : "EG",
+    "PhoneCountryCodeId" : "100000020962126",
+    "CountryName" : "Egypt",
+    "@context" : {
+      "key" : "EG,100000020962126"
+    }
+  }, {
+    "TerritoryCode" : "SV",
+    "PhoneCountryCodeId" : "100000020962341",
+    "CountryName" : "El Salvador",
+    "@context" : {
+      "key" : "SV,100000020962341"
+    }
+  }, {
+    "TerritoryCode" : "GQ",
+    "PhoneCountryCodeId" : "100000020962152",
+    "CountryName" : "Equatorial Guinea",
+    "@context" : {
+      "key" : "GQ,100000020962152"
+    }
+  }, {
+    "TerritoryCode" : "ER",
+    "PhoneCountryCodeId" : "100000020962128",
+    "CountryName" : "Eritrea",
+    "@context" : {
+      "key" : "ER,100000020962128"
+    }
+  }, {
+    "TerritoryCode" : "EE",
+    "PhoneCountryCodeId" : "100000020962125",
+    "CountryName" : "Estonia",
+    "@context" : {
+      "key" : "EE,100000020962125"
+    }
+  }, {
+    "TerritoryCode" : "SZ",
+    "PhoneCountryCodeId" : "100000020962344",
+    "CountryName" : "Eswatini",
+    "@context" : {
+      "key" : "SZ,100000020962344"
+    }
+  }, {
+    "TerritoryCode" : "ET",
+    "PhoneCountryCodeId" : "100000020962131",
+    "CountryName" : "Ethiopia",
+    "@context" : {
+      "key" : "ET,100000020962131"
+    }
+  }, {
+    "TerritoryCode" : "FK",
+    "PhoneCountryCodeId" : "100000020962134",
+    "CountryName" : "Falkland Islands (Malvinas)",
+    "@context" : {
+      "key" : "FK,100000020962134"
+    }
+  }, {
+    "TerritoryCode" : "FO",
+    "PhoneCountryCodeId" : "100000020962136",
+    "CountryName" : "Faroe Islands",
+    "@context" : {
+      "key" : "FO,100000020962136"
+    }
+  }, {
+    "TerritoryCode" : "FJ",
+    "PhoneCountryCodeId" : "100000020962133",
+    "CountryName" : "Fiji",
+    "@context" : {
+      "key" : "FJ,100000020962133"
+    }
+  }, {
+    "TerritoryCode" : "FI",
+    "PhoneCountryCodeId" : "100000020962132",
+    "CountryName" : "Finland",
+    "@context" : {
+      "key" : "FI,100000020962132"
+    }
+  }, {
+    "TerritoryCode" : "FR",
+    "PhoneCountryCodeId" : "100000020962137",
+    "CountryName" : "France",
+    "@context" : {
+      "key" : "FR,100000020962137"
+    }
+  }, {
+    "TerritoryCode" : "GF",
+    "PhoneCountryCodeId" : "100000020962144",
+    "CountryName" : "French Guiana",
+    "@context" : {
+      "key" : "GF,100000020962144"
+    }
+  }, {
+    "TerritoryCode" : "PF",
+    "PhoneCountryCodeId" : "100000020962274",
+    "CountryName" : "French Polynesia",
+    "@context" : {
+      "key" : "PF,100000020962274"
+    }
+  }, {
+    "TerritoryCode" : "TF",
+    "PhoneCountryCodeId" : "100000020962348",
+    "CountryName" : "French Southern Territories",
+    "@context" : {
+      "key" : "TF,100000020962348"
+    }
+  }, {
+    "TerritoryCode" : "GA",
+    "PhoneCountryCodeId" : "100000020962139",
+    "CountryName" : "Gabon",
+    "@context" : {
+      "key" : "GA,100000020962139"
+    }
+  }, {
+    "TerritoryCode" : "GM",
+    "PhoneCountryCodeId" : "100000020962149",
+    "CountryName" : "Gambia",
+    "@context" : {
+      "key" : "GM,100000020962149"
+    }
+  }, {
+    "TerritoryCode" : "GE",
+    "PhoneCountryCodeId" : "100000020962143",
+    "CountryName" : "Georgia",
+    "@context" : {
+      "key" : "GE,100000020962143"
+    }
+  }, {
+    "TerritoryCode" : "DE",
+    "PhoneCountryCodeId" : "100000020962109",
+    "CountryName" : "Germany",
+    "@context" : {
+      "key" : "DE,100000020962109"
+    }
+  }, {
+    "TerritoryCode" : "GH",
+    "PhoneCountryCodeId" : "100000020962146",
+    "CountryName" : "Ghana",
+    "@context" : {
+      "key" : "GH,100000020962146"
+    }
+  }, {
+    "TerritoryCode" : "GI",
+    "PhoneCountryCodeId" : "100000020962147",
+    "CountryName" : "Gibraltar",
+    "@context" : {
+      "key" : "GI,100000020962147"
+    }
+  }, {
+    "TerritoryCode" : "GR",
+    "PhoneCountryCodeId" : "100000020962153",
+    "CountryName" : "Greece",
+    "@context" : {
+      "key" : "GR,100000020962153"
+    }
+  }, {
+    "TerritoryCode" : "GL",
+    "PhoneCountryCodeId" : "100000020962148",
+    "CountryName" : "Greenland",
+    "@context" : {
+      "key" : "GL,100000020962148"
+    }
+  }, {
+    "TerritoryCode" : "GD",
+    "PhoneCountryCodeId" : "100000020962141",
+    "CountryName" : "Grenada",
+    "@context" : {
+      "key" : "GD,100000020962141"
+    }
+  }, {
+    "TerritoryCode" : "GP",
+    "PhoneCountryCodeId" : "100000020962151",
+    "CountryName" : "Guadeloupe",
+    "@context" : {
+      "key" : "GP,100000020962151"
+    }
+  }, {
+    "TerritoryCode" : "GU",
+    "PhoneCountryCodeId" : "100000020962156",
+    "CountryName" : "Guam",
+    "@context" : {
+      "key" : "GU,100000020962156"
+    }
+  }, {
+    "TerritoryCode" : "GT",
+    "PhoneCountryCodeId" : "100000020962155",
+    "CountryName" : "Guatemala",
+    "@context" : {
+      "key" : "GT,100000020962155"
+    }
+  }, {
+    "TerritoryCode" : "GG",
+    "PhoneCountryCodeId" : "100000020962145",
+    "CountryName" : "Guernsey",
+    "@context" : {
+      "key" : "GG,100000020962145"
+    }
+  }, {
+    "TerritoryCode" : "GN",
+    "PhoneCountryCodeId" : "100000020962150",
+    "CountryName" : "Guinea",
+    "@context" : {
+      "key" : "GN,100000020962150"
+    }
+  }, {
+    "TerritoryCode" : "GW",
+    "PhoneCountryCodeId" : "100000020962158",
+    "CountryName" : "Guinea-Bissau",
+    "@context" : {
+      "key" : "GW,100000020962158"
+    }
+  }, {
+    "TerritoryCode" : "GY",
+    "PhoneCountryCodeId" : "100000020962159",
+    "CountryName" : "Guyana",
+    "@context" : {
+      "key" : "GY,100000020962159"
+    }
+  }, {
+    "TerritoryCode" : "HT",
+    "PhoneCountryCodeId" : "100000020962166",
+    "CountryName" : "Haiti",
+    "@context" : {
+      "key" : "HT,100000020962166"
+    }
+  }, {
+    "TerritoryCode" : "HM",
+    "PhoneCountryCodeId" : null,
+    "CountryName" : "Heard Island and McDonald Islands",
+    "@context" : {
+      "key" : "HM,"
+    }
+  }, {
+    "TerritoryCode" : "VA",
+    "PhoneCountryCodeId" : "100000020962656",
+    "CountryName" : "Holy See (Vatican City State)",
+    "@context" : {
+      "key" : "VA,100000020962656"
+    }
+  }, {
+    "TerritoryCode" : "HN",
+    "PhoneCountryCodeId" : "100000020962162",
+    "CountryName" : "Honduras",
+    "@context" : {
+      "key" : "HN,100000020962162"
+    }
+  }, {
+    "TerritoryCode" : "HK",
+    "PhoneCountryCodeId" : "100000020962160",
+    "CountryName" : "Hong Kong",
+    "@context" : {
+      "key" : "HK,100000020962160"
+    }
+  }, {
+    "TerritoryCode" : "HU",
+    "PhoneCountryCodeId" : "100000020962167",
+    "CountryName" : "Hungary",
+    "@context" : {
+      "key" : "HU,100000020962167"
+    }
+  }, {
+    "TerritoryCode" : "IS",
+    "PhoneCountryCodeId" : "100000020962176",
+    "CountryName" : "Iceland",
+    "@context" : {
+      "key" : "IS,100000020962176"
+    }
+  }, {
+    "TerritoryCode" : "IN",
+    "PhoneCountryCodeId" : "100000020962172",
+    "CountryName" : "India",
+    "@context" : {
+      "key" : "IN,100000020962172"
+    }
+  }, {
+    "TerritoryCode" : "ID",
+    "PhoneCountryCodeId" : "100000020962168",
+    "CountryName" : "Indonesia",
+    "@context" : {
+      "key" : "ID,100000020962168"
+    }
+  }, {
+    "TerritoryCode" : "IR",
+    "PhoneCountryCodeId" : "100000020962175",
+    "CountryName" : "Iran, Islamic Republic of",
+    "@context" : {
+      "key" : "IR,100000020962175"
+    }
+  }, {
+    "TerritoryCode" : "IQ",
+    "PhoneCountryCodeId" : "100000020962174",
+    "CountryName" : "Iraq",
+    "@context" : {
+      "key" : "IQ,100000020962174"
+    }
+  }, {
+    "TerritoryCode" : "IE",
+    "PhoneCountryCodeId" : "100000020962169",
+    "CountryName" : "Ireland",
+    "@context" : {
+      "key" : "IE,100000020962169"
+    }
+  }, {
+    "TerritoryCode" : "IM",
+    "PhoneCountryCodeId" : "100000020962171",
+    "CountryName" : "Isle of Man",
+    "@context" : {
+      "key" : "IM,100000020962171"
+    }
+  }, {
+    "TerritoryCode" : "IL",
+    "PhoneCountryCodeId" : "100000020962170",
+    "CountryName" : "Israel",
+    "@context" : {
+      "key" : "IL,100000020962170"
+    }
+  }, {
+    "TerritoryCode" : "IT",
+    "PhoneCountryCodeId" : "100000020962177",
+    "CountryName" : "Italy",
+    "@context" : {
+      "key" : "IT,100000020962177"
+    }
+  }, {
+    "TerritoryCode" : "JM",
+    "PhoneCountryCodeId" : "100000020962179",
+    "CountryName" : "Jamaica",
+    "@context" : {
+      "key" : "JM,100000020962179"
+    }
+  }, {
+    "TerritoryCode" : "JP",
+    "PhoneCountryCodeId" : "100000020962182",
+    "CountryName" : "Japan",
+    "@context" : {
+      "key" : "JP,100000020962182"
+    }
+  }, {
+    "TerritoryCode" : "JE",
+    "PhoneCountryCodeId" : "100000020962178",
+    "CountryName" : "Jersey",
+    "@context" : {
+      "key" : "JE,100000020962178"
+    }
+  }, {
+    "TerritoryCode" : "JO",
+    "PhoneCountryCodeId" : "100000020962181",
+    "CountryName" : "Jordan",
+    "@context" : {
+      "key" : "JO,100000020962181"
+    }
+  }, {
+    "TerritoryCode" : "KZ",
+    "PhoneCountryCodeId" : "100000020962201",
+    "CountryName" : "Kazakhstan",
+    "@context" : {
+      "key" : "KZ,100000020962201"
+    }
+  }, {
+    "TerritoryCode" : "KE",
+    "PhoneCountryCodeId" : "100000020962189",
+    "CountryName" : "Kenya",
+    "@context" : {
+      "key" : "KE,100000020962189"
+    }
+  }, {
+    "TerritoryCode" : "KI",
+    "PhoneCountryCodeId" : "100000020962192",
+    "CountryName" : "Kiribati",
+    "@context" : {
+      "key" : "KI,100000020962192"
+    }
+  }, {
+    "TerritoryCode" : "KP",
+    "PhoneCountryCodeId" : "100000020962196",
+    "CountryName" : "Korea, Democratic People's Republic of",
+    "@context" : {
+      "key" : "KP,100000020962196"
+    }
+  }, {
+    "TerritoryCode" : "KR",
+    "PhoneCountryCodeId" : "100000020962197",
+    "CountryName" : "Korea, Republic of",
+    "@context" : {
+      "key" : "KR,100000020962197"
+    }
+  }, {
+    "TerritoryCode" : "XK",
+    "PhoneCountryCodeId" : "100105679716683",
+    "CountryName" : "Kosovo",
+    "@context" : {
+      "key" : "XK,100105679716683"
+    }
+  }, {
+    "TerritoryCode" : "KW",
+    "PhoneCountryCodeId" : "100000020962198",
+    "CountryName" : "Kuwait",
+    "@context" : {
+      "key" : "KW,100000020962198"
+    }
+  }, {
+    "TerritoryCode" : "KG",
+    "PhoneCountryCodeId" : "100000020962190",
+    "CountryName" : "Kyrgyzstan",
+    "@context" : {
+      "key" : "KG,100000020962190"
+    }
+  }, {
+    "TerritoryCode" : "LA",
+    "PhoneCountryCodeId" : "100000020962202",
+    "CountryName" : "Lao People's Democratic Republic",
+    "@context" : {
+      "key" : "LA,100000020962202"
+    }
+  }, {
+    "TerritoryCode" : "LV",
+    "PhoneCountryCodeId" : "100000020962212",
+    "CountryName" : "Latvia",
+    "@context" : {
+      "key" : "LV,100000020962212"
+    }
+  }, {
+    "TerritoryCode" : "LB",
+    "PhoneCountryCodeId" : "100000020962203",
+    "CountryName" : "Lebanon",
+    "@context" : {
+      "key" : "LB,100000020962203"
+    }
+  }, {
+    "TerritoryCode" : "LS",
+    "PhoneCountryCodeId" : "100000020962209",
+    "CountryName" : "Lesotho",
+    "@context" : {
+      "key" : "LS,100000020962209"
+    }
+  }, {
+    "TerritoryCode" : "LR",
+    "PhoneCountryCodeId" : "100000020962208",
+    "CountryName" : "Liberia",
+    "@context" : {
+      "key" : "LR,100000020962208"
+    }
+  }, {
+    "TerritoryCode" : "LY",
+    "PhoneCountryCodeId" : "100000020962213",
+    "CountryName" : "Libya",
+    "@context" : {
+      "key" : "LY,100000020962213"
+    }
+  }, {
+    "TerritoryCode" : "LI",
+    "PhoneCountryCodeId" : "100000020962206",
+    "CountryName" : "Liechtenstein",
+    "@context" : {
+      "key" : "LI,100000020962206"
+    }
+  }, {
+    "TerritoryCode" : "LT",
+    "PhoneCountryCodeId" : "100000020962210",
+    "CountryName" : "Lithuania",
+    "@context" : {
+      "key" : "LT,100000020962210"
+    }
+  }, {
+    "TerritoryCode" : "LU",
+    "PhoneCountryCodeId" : "100000020962211",
+    "CountryName" : "Luxembourg",
+    "@context" : {
+      "key" : "LU,100000020962211"
+    }
+  }, {
+    "TerritoryCode" : "MO",
+    "PhoneCountryCodeId" : "100000020962234",
+    "CountryName" : "Macao",
+    "@context" : {
+      "key" : "MO,100000020962234"
+    }
+  }, {
+    "TerritoryCode" : "MG",
+    "PhoneCountryCodeId" : "100000020962228",
+    "CountryName" : "Madagascar",
+    "@context" : {
+      "key" : "MG,100000020962228"
+    }
+  }, {
+    "TerritoryCode" : "MW",
+    "PhoneCountryCodeId" : "100000020962244",
+    "CountryName" : "Malawi",
+    "@context" : {
+      "key" : "MW,100000020962244"
+    }
+  }, {
+    "TerritoryCode" : "MY",
+    "PhoneCountryCodeId" : "100000020962249",
+    "CountryName" : "Malaysia",
+    "@context" : {
+      "key" : "MY,100000020962249"
+    }
+  }, {
+    "TerritoryCode" : "MV",
+    "PhoneCountryCodeId" : "100000020962243",
+    "CountryName" : "Maldives",
+    "@context" : {
+      "key" : "MV,100000020962243"
+    }
+  }, {
+    "TerritoryCode" : "ML",
+    "PhoneCountryCodeId" : "100000020962231",
+    "CountryName" : "Mali",
+    "@context" : {
+      "key" : "ML,100000020962231"
+    }
+  }, {
+    "TerritoryCode" : "MT",
+    "PhoneCountryCodeId" : "100000020962241",
+    "CountryName" : "Malta",
+    "@context" : {
+      "key" : "MT,100000020962241"
+    }
+  }, {
+    "TerritoryCode" : "MH",
+    "PhoneCountryCodeId" : "100000020962229",
+    "CountryName" : "Marshall Islands",
+    "@context" : {
+      "key" : "MH,100000020962229"
+    }
+  }, {
+    "TerritoryCode" : "MQ",
+    "PhoneCountryCodeId" : "100000020962237",
+    "CountryName" : "Martinique",
+    "@context" : {
+      "key" : "MQ,100000020962237"
+    }
+  }, {
+    "TerritoryCode" : "MR",
+    "PhoneCountryCodeId" : "100000020962238",
+    "CountryName" : "Mauritania",
+    "@context" : {
+      "key" : "MR,100000020962238"
+    }
+  }, {
+    "TerritoryCode" : "MU",
+    "PhoneCountryCodeId" : "100000020962242",
+    "CountryName" : "Mauritius",
+    "@context" : {
+      "key" : "MU,100000020962242"
+    }
+  }, {
+    "TerritoryCode" : "YT",
+    "PhoneCountryCodeId" : "100000020962669",
+    "CountryName" : "Mayotte",
+    "@context" : {
+      "key" : "YT,100000020962669"
+    }
+  }, {
+    "TerritoryCode" : "MX",
+    "PhoneCountryCodeId" : "100000020962245",
+    "CountryName" : "Mexico1234",
+    "@context" : {
+      "key" : "MX,100000020962245"
+    }
+  }, {
+    "TerritoryCode" : "FM",
+    "PhoneCountryCodeId" : "100000020962135",
+    "CountryName" : "Micronesia, Federated States of",
+    "@context" : {
+      "key" : "FM,100000020962135"
+    }
+  }, {
+    "TerritoryCode" : "MD",
+    "PhoneCountryCodeId" : "100000020962216",
+    "CountryName" : "Moldova",
+    "@context" : {
+      "key" : "MD,100000020962216"
+    }
+  }, {
+    "TerritoryCode" : "MC",
+    "PhoneCountryCodeId" : "100000020962215",
+    "CountryName" : "Monaco",
+    "@context" : {
+      "key" : "MC,100000020962215"
+    }
+  }, {
+    "TerritoryCode" : "MN",
+    "PhoneCountryCodeId" : "100000020962233",
+    "CountryName" : "Mongolia",
+    "@context" : {
+      "key" : "MN,100000020962233"
+    }
+  }, {
+    "TerritoryCode" : "ME",
+    "PhoneCountryCodeId" : "100000020962217",
+    "CountryName" : "Montenegro",
+    "@context" : {
+      "key" : "ME,100000020962217"
+    }
+  }, {
+    "TerritoryCode" : "MS",
+    "PhoneCountryCodeId" : "100000020962239",
+    "CountryName" : "Montserrat",
+    "@context" : {
+      "key" : "MS,100000020962239"
+    }
+  }, {
+    "TerritoryCode" : "MA",
+    "PhoneCountryCodeId" : "100000020962214",
+    "CountryName" : "Morocco",
+    "@context" : {
+      "key" : "MA,100000020962214"
+    }
+  }, {
+    "TerritoryCode" : "MZ",
+    "PhoneCountryCodeId" : "100000020962250",
+    "CountryName" : "Mozambique",
+    "@context" : {
+      "key" : "MZ,100000020962250"
+    }
+  }, {
+    "TerritoryCode" : "MM",
+    "PhoneCountryCodeId" : "100000020962232",
+    "CountryName" : "Myanmar",
+    "@context" : {
+      "key" : "MM,100000020962232"
+    }
+  }, {
+    "TerritoryCode" : "NA",
+    "PhoneCountryCodeId" : "100000020962251",
+    "CountryName" : "Namibia",
+    "@context" : {
+      "key" : "NA,100000020962251"
+    }
+  }, {
+    "TerritoryCode" : "NR",
+    "PhoneCountryCodeId" : "100000020962264",
+    "CountryName" : "Nauru",
+    "@context" : {
+      "key" : "NR,100000020962264"
+    }
+  }, {
+    "TerritoryCode" : "NP",
+    "PhoneCountryCodeId" : "100000020962263",
+    "CountryName" : "Nepal",
+    "@context" : {
+      "key" : "NP,100000020962263"
+    }
+  }, {
+    "TerritoryCode" : "NL",
+    "PhoneCountryCodeId" : "100000020962257",
+    "CountryName" : "Netherlands",
+    "@context" : {
+      "key" : "NL,100000020962257"
+    }
+  }, {
+    "TerritoryCode" : "NC",
+    "PhoneCountryCodeId" : "100000020962252",
+    "CountryName" : "New Caledonia",
+    "@context" : {
+      "key" : "NC,100000020962252"
+    }
+  }, {
+    "TerritoryCode" : "NZ",
+    "PhoneCountryCodeId" : "100000020962266",
+    "CountryName" : "New Zealand",
+    "@context" : {
+      "key" : "NZ,100000020962266"
+    }
+  }, {
+    "TerritoryCode" : "NI",
+    "PhoneCountryCodeId" : "100000020962256",
+    "CountryName" : "Nicaragua",
+    "@context" : {
+      "key" : "NI,100000020962256"
+    }
+  }, {
+    "TerritoryCode" : "NE",
+    "PhoneCountryCodeId" : "100000020962253",
+    "CountryName" : "Niger",
+    "@context" : {
+      "key" : "NE,100000020962253"
+    }
+  }, {
+    "TerritoryCode" : "NG",
+    "PhoneCountryCodeId" : "100000020962255",
+    "CountryName" : "Nigeria",
+    "@context" : {
+      "key" : "NG,100000020962255"
+    }
+  }, {
+    "TerritoryCode" : "NU",
+    "PhoneCountryCodeId" : "100000020962265",
+    "CountryName" : "Niue",
+    "@context" : {
+      "key" : "NU,100000020962265"
+    }
+  }, {
+    "TerritoryCode" : "NF",
+    "PhoneCountryCodeId" : "100000020962254",
+    "CountryName" : "Norfolk Island",
+    "@context" : {
+      "key" : "NF,100000020962254"
+    }
+  }, {
+    "TerritoryCode" : "MK",
+    "PhoneCountryCodeId" : "100000020962230",
+    "CountryName" : "North Macedonia",
+    "@context" : {
+      "key" : "MK,100000020962230"
+    }
+  }, {
+    "TerritoryCode" : "MP",
+    "PhoneCountryCodeId" : "100000020962235",
+    "CountryName" : "Northern Mariana Islands",
+    "@context" : {
+      "key" : "MP,100000020962235"
+    }
+  }, {
+    "TerritoryCode" : "NO",
+    "PhoneCountryCodeId" : "100000020962260",
+    "CountryName" : "Norway",
+    "@context" : {
+      "key" : "NO,100000020962260"
+    }
+  }, {
+    "TerritoryCode" : "OM",
+    "PhoneCountryCodeId" : "100000020962271",
+    "CountryName" : "Oman",
+    "@context" : {
+      "key" : "OM,100000020962271"
+    }
+  }, {
+    "TerritoryCode" : "PZ",
+    "PhoneCountryCodeId" : null,
+    "CountryName" : "POZ_TEST_COUNTRY",
+    "@context" : {
+      "key" : "PZ,"
+    }
+  }, {
+    "TerritoryCode" : "PK",
+    "PhoneCountryCodeId" : "100000020962277",
+    "CountryName" : "Pakistan",
+    "@context" : {
+      "key" : "PK,100000020962277"
+    }
+  }, {
+    "TerritoryCode" : "PW",
+    "PhoneCountryCodeId" : "100000020962286",
+    "CountryName" : "Palau",
+    "@context" : {
+      "key" : "PW,100000020962286"
+    }
+  }, {
+    "TerritoryCode" : "PS",
+    "PhoneCountryCodeId" : "100000020962284",
+    "CountryName" : "Palestine, State of",
+    "@context" : {
+      "key" : "PS,100000020962284"
+    }
+  }, {
+    "TerritoryCode" : "PA",
+    "PhoneCountryCodeId" : "100000020962272",
+    "CountryName" : "Panama",
+    "@context" : {
+      "key" : "PA,100000020962272"
+    }
+  }, {
+    "TerritoryCode" : "PG",
+    "PhoneCountryCodeId" : "100000020962275",
+    "CountryName" : "Papua New Guinea",
+    "@context" : {
+      "key" : "PG,100000020962275"
+    }
+  }, {
+    "TerritoryCode" : "PY",
+    "PhoneCountryCodeId" : "100000020962287",
+    "CountryName" : "Paraguay",
+    "@context" : {
+      "key" : "PY,100000020962287"
+    }
+  }, {
+    "TerritoryCode" : "PE",
+    "PhoneCountryCodeId" : "100000020962273",
+    "CountryName" : "Peru",
+    "@context" : {
+      "key" : "PE,100000020962273"
+    }
+  }, {
+    "TerritoryCode" : "PH",
+    "PhoneCountryCodeId" : "100000020962276",
+    "CountryName" : "Philippines",
+    "@context" : {
+      "key" : "PH,100000020962276"
+    }
+  }, {
+    "TerritoryCode" : "PN",
+    "PhoneCountryCodeId" : "100000020962280",
+    "CountryName" : "Pitcairn",
+    "@context" : {
+      "key" : "PN,100000020962280"
+    }
+  }, {
+    "TerritoryCode" : "PL",
+    "PhoneCountryCodeId" : "100000020962278",
+    "CountryName" : "Poland",
+    "@context" : {
+      "key" : "PL,100000020962278"
+    }
+  }, {
+    "TerritoryCode" : "PT",
+    "PhoneCountryCodeId" : "100000020962285",
+    "CountryName" : "Portugal",
+    "@context" : {
+      "key" : "PT,100000020962285"
+    }
+  }, {
+    "TerritoryCode" : "PR",
+    "PhoneCountryCodeId" : "100000020962281",
+    "CountryName" : "Puerto Rico",
+    "@context" : {
+      "key" : "PR,100000020962281"
+    }
+  }, {
+    "TerritoryCode" : "QA",
+    "PhoneCountryCodeId" : "100000020962288",
+    "CountryName" : "Qatar",
+    "@context" : {
+      "key" : "QA,100000020962288"
+    }
+  }, {
+    "TerritoryCode" : "RE",
+    "PhoneCountryCodeId" : "100000020962289",
+    "CountryName" : "Reunion",
+    "@context" : {
+      "key" : "RE,100000020962289"
+    }
+  }, {
+    "TerritoryCode" : "RO",
+    "PhoneCountryCodeId" : "100000020962290",
+    "CountryName" : "Romania",
+    "@context" : {
+      "key" : "RO,100000020962290"
+    }
+  }, {
+    "TerritoryCode" : "RU",
+    "PhoneCountryCodeId" : "100000020962323",
+    "CountryName" : "Russian Federation",
+    "@context" : {
+      "key" : "RU,100000020962323"
+    }
+  }, {
+    "TerritoryCode" : "RW",
+    "PhoneCountryCodeId" : "100000020962324",
+    "CountryName" : "Rwanda",
+    "@context" : {
+      "key" : "RW,100000020962324"
+    }
+  }, {
+    "TerritoryCode" : "BL",
+    "PhoneCountryCodeId" : null,
+    "CountryName" : "Saint Barthelemy",
+    "@context" : {
+      "key" : "BL,"
+    }
+  }, {
+    "TerritoryCode" : "SH",
+    "PhoneCountryCodeId" : "100000020962331",
+    "CountryName" : "Saint Helena, Ascension and Tristan da Cunha",
+    "@context" : {
+      "key" : "SH,100000020962331"
+    }
+  }, {
+    "TerritoryCode" : "KN",
+    "PhoneCountryCodeId" : "100000020962194",
+    "CountryName" : "Saint Kitts and Nevis",
+    "@context" : {
+      "key" : "KN,100000020962194"
+    }
+  }, {
+    "TerritoryCode" : "LC",
+    "PhoneCountryCodeId" : "100000020962204",
+    "CountryName" : "Saint Lucia",
+    "@context" : {
+      "key" : "LC,100000020962204"
+    }
+  }, {
+    "TerritoryCode" : "MF",
+    "PhoneCountryCodeId" : null,
+    "CountryName" : "Saint Martin (French part)",
+    "@context" : {
+      "key" : "MF,"
+    }
+  }, {
+    "TerritoryCode" : "PM",
+    "PhoneCountryCodeId" : "100000020962279",
+    "CountryName" : "Saint Pierre and Miquelon",
+    "@context" : {
+      "key" : "PM,100000020962279"
+    }
+  }, {
+    "TerritoryCode" : "VC",
+    "PhoneCountryCodeId" : "100000020962657",
+    "CountryName" : "Saint Vincent and the Grenadines",
+    "@context" : {
+      "key" : "VC,100000020962657"
+    }
+  }, {
+    "TerritoryCode" : "WS",
+    "PhoneCountryCodeId" : "100000020962667",
+    "CountryName" : "Samoa",
+    "@context" : {
+      "key" : "WS,100000020962667"
+    }
+  }, {
+    "TerritoryCode" : "SM",
+    "PhoneCountryCodeId" : "100000020962336",
+    "CountryName" : "San Marino",
+    "@context" : {
+      "key" : "SM,100000020962336"
+    }
+  }, {
+    "TerritoryCode" : "ST",
+    "PhoneCountryCodeId" : "100000020962340",
+    "CountryName" : "Sao Tome and Principe",
+    "@context" : {
+      "key" : "ST,100000020962340"
+    }
+  }, {
+    "TerritoryCode" : "SA",
+    "PhoneCountryCodeId" : "100000020962325",
+    "CountryName" : "Saudi Arabia",
+    "@context" : {
+      "key" : "SA,100000020962325"
+    }
+  }, {
+    "TerritoryCode" : "SN",
+    "PhoneCountryCodeId" : "100000020962337",
+    "CountryName" : "Senegal",
+    "@context" : {
+      "key" : "SN,100000020962337"
+    }
+  }, {
+    "TerritoryCode" : "RS",
+    "PhoneCountryCodeId" : "100000020962291",
+    "CountryName" : "Serbia",
+    "@context" : {
+      "key" : "RS,100000020962291"
+    }
+  }, {
+    "TerritoryCode" : "CS",
+    "PhoneCountryCodeId" : null,
+    "CountryName" : "Serbia and Montenegro",
+    "@context" : {
+      "key" : "CS,"
+    }
+  }, {
+    "TerritoryCode" : "SC",
+    "PhoneCountryCodeId" : "100000020962327",
+    "CountryName" : "Seychelles",
+    "@context" : {
+      "key" : "SC,100000020962327"
+    }
+  }, {
+    "TerritoryCode" : "SL",
+    "PhoneCountryCodeId" : "100000020962335",
+    "CountryName" : "Sierra Leone",
+    "@context" : {
+      "key" : "SL,100000020962335"
+    }
+  }, {
+    "TerritoryCode" : "SG",
+    "PhoneCountryCodeId" : "100000020962330",
+    "CountryName" : "Singapore",
+    "@context" : {
+      "key" : "SG,100000020962330"
+    }
+  }, {
+    "TerritoryCode" : "SX",
+    "PhoneCountryCodeId" : null,
+    "CountryName" : "Sint Maarten",
+    "@context" : {
+      "key" : "SX,"
+    }
+  }, {
+    "TerritoryCode" : "SK",
+    "PhoneCountryCodeId" : "100000020962334",
+    "CountryName" : "Slovakia",
+    "@context" : {
+      "key" : "SK,100000020962334"
+    }
+  }, {
+    "TerritoryCode" : "SI",
+    "PhoneCountryCodeId" : "100000020962332",
+    "CountryName" : "Slovenia",
+    "@context" : {
+      "key" : "SI,100000020962332"
+    }
+  }, {
+    "TerritoryCode" : "SB",
+    "PhoneCountryCodeId" : "100000020962326",
+    "CountryName" : "Solomon Islands",
+    "@context" : {
+      "key" : "SB,100000020962326"
+    }
+  }, {
+    "TerritoryCode" : "SO",
+    "PhoneCountryCodeId" : "100000020962338",
+    "CountryName" : "Somalia",
+    "@context" : {
+      "key" : "SO,100000020962338"
+    }
+  }, {
+    "TerritoryCode" : "ZA",
+    "PhoneCountryCodeId" : "100000020962670",
+    "CountryName" : "South Africa",
+    "@context" : {
+      "key" : "ZA,100000020962670"
+    }
+  }, {
+    "TerritoryCode" : "GS",
+    "PhoneCountryCodeId" : "100000020962154",
+    "CountryName" : "South Georgia and the South Sandwich Islands",
+    "@context" : {
+      "key" : "GS,100000020962154"
+    }
+  }, {
+    "TerritoryCode" : "SS",
+    "PhoneCountryCodeId" : "100106775576354",
+    "CountryName" : "South Sudan",
+    "@context" : {
+      "key" : "SS,100106775576354"
+    }
+  }, {
+    "TerritoryCode" : "ES",
+    "PhoneCountryCodeId" : "100000020962129",
+    "CountryName" : "Spain",
+    "@context" : {
+      "key" : "ES,100000020962129"
+    }
+  }, {
+    "TerritoryCode" : "LK",
+    "PhoneCountryCodeId" : "100000020962207",
+    "CountryName" : "Sri Lanka",
+    "@context" : {
+      "key" : "LK,100000020962207"
+    }
+  }, {
+    "TerritoryCode" : "SD",
+    "PhoneCountryCodeId" : "100000020962328",
+    "CountryName" : "Sudan",
+    "@context" : {
+      "key" : "SD,100000020962328"
+    }
+  }, {
+    "TerritoryCode" : "SR",
+    "PhoneCountryCodeId" : "100000020962339",
+    "CountryName" : "Suriname",
+    "@context" : {
+      "key" : "SR,100000020962339"
+    }
+  }, {
+    "TerritoryCode" : "SJ",
+    "PhoneCountryCodeId" : "100000020962333",
+    "CountryName" : "Svalbard and Jan Mayen",
+    "@context" : {
+      "key" : "SJ,100000020962333"
+    }
+  }, {
+    "TerritoryCode" : "SE",
+    "PhoneCountryCodeId" : "100000020962329",
+    "CountryName" : "Sweden",
+    "@context" : {
+      "key" : "SE,100000020962329"
+    }
+  }, {
+    "TerritoryCode" : "CH",
+    "PhoneCountryCodeId" : "100000020962092",
+    "CountryName" : "Switzerland",
+    "@context" : {
+      "key" : "CH,100000020962092"
+    }
+  }, {
+    "TerritoryCode" : "SY",
+    "PhoneCountryCodeId" : "100000020962343",
+    "CountryName" : "Syrian Arab Republic",
+    "@context" : {
+      "key" : "SY,100000020962343"
+    }
+  }, {
+    "TerritoryCode" : "TW",
+    "PhoneCountryCodeId" : "100000020962361",
+    "CountryName" : "Taiwan",
+    "@context" : {
+      "key" : "TW,100000020962361"
+    }
+  }, {
+    "TerritoryCode" : "TJ",
+    "PhoneCountryCodeId" : "100000020962351",
+    "CountryName" : "Tajikistan",
+    "@context" : {
+      "key" : "TJ,100000020962351"
+    }
+  }, {
+    "TerritoryCode" : "TZ",
+    "PhoneCountryCodeId" : "100000020962362",
+    "CountryName" : "Tanzania, United Republic of",
+    "@context" : {
+      "key" : "TZ,100000020962362"
+    }
+  }, {
+    "TerritoryCode" : "TH",
+    "PhoneCountryCodeId" : "100000020962350",
+    "CountryName" : "Thailand",
+    "@context" : {
+      "key" : "TH,100000020962350"
+    }
+  }, {
+    "TerritoryCode" : "11",
+    "PhoneCountryCodeId" : null,
+    "CountryName" : "The tail",
+    "@context" : {
+      "key" : "11,"
+    }
+  }, {
+    "TerritoryCode" : "TL",
+    "PhoneCountryCodeId" : "100000020962353",
+    "CountryName" : "Timor-Leste",
+    "@context" : {
+      "key" : "TL,100000020962353"
+    }
+  }, {
+    "TerritoryCode" : "TG",
+    "PhoneCountryCodeId" : "100000020962349",
+    "CountryName" : "Togo",
+    "@context" : {
+      "key" : "TG,100000020962349"
+    }
+  }, {
+    "TerritoryCode" : "TK",
+    "PhoneCountryCodeId" : "100000020962352",
+    "CountryName" : "Tokelau",
+    "@context" : {
+      "key" : "TK,100000020962352"
+    }
+  }, {
+    "TerritoryCode" : "TO",
+    "PhoneCountryCodeId" : "100000020962356",
+    "CountryName" : "Tonga",
+    "@context" : {
+      "key" : "TO,100000020962356"
+    }
+  }, {
+    "TerritoryCode" : "TT",
+    "PhoneCountryCodeId" : "100000020962358",
+    "CountryName" : "Trinidad and Tobago",
+    "@context" : {
+      "key" : "TT,100000020962358"
+    }
+  }, {
+    "TerritoryCode" : "TN",
+    "PhoneCountryCodeId" : "100000020962355",
+    "CountryName" : "Tunisia",
+    "@context" : {
+      "key" : "TN,100000020962355"
+    }
+  }, {
+    "TerritoryCode" : "TM",
+    "PhoneCountryCodeId" : "100000020962354",
+    "CountryName" : "Turkmenistan",
+    "@context" : {
+      "key" : "TM,100000020962354"
+    }
+  }, {
+    "TerritoryCode" : "TC",
+    "PhoneCountryCodeId" : "100000020962345",
+    "CountryName" : "Turks and Caicos Islands",
+    "@context" : {
+      "key" : "TC,100000020962345"
+    }
+  }, {
+    "TerritoryCode" : "TV",
+    "PhoneCountryCodeId" : "100000020962360",
+    "CountryName" : "Tuvalu",
+    "@context" : {
+      "key" : "TV,100000020962360"
+    }
+  }, {
+    "TerritoryCode" : "TR",
+    "PhoneCountryCodeId" : "100000020962357",
+    "CountryName" : "Türkiye",
+    "@context" : {
+      "key" : "TR,100000020962357"
+    }
+  }, {
+    "TerritoryCode" : "UG",
+    "PhoneCountryCodeId" : "100000020962364",
+    "CountryName" : "Uganda",
+    "@context" : {
+      "key" : "UG,100000020962364"
+    }
+  }, {
+    "TerritoryCode" : "UA",
+    "PhoneCountryCodeId" : "100000020962363",
+    "CountryName" : "Ukraine",
+    "@context" : {
+      "key" : "UA,100000020962363"
+    }
+  }, {
+    "TerritoryCode" : "AE",
+    "PhoneCountryCodeId" : "100000020962003",
+    "CountryName" : "United Arab Emirates",
+    "@context" : {
+      "key" : "AE,100000020962003"
+    }
+  }, {
+    "TerritoryCode" : "GB",
+    "PhoneCountryCodeId" : "100000020962140",
+    "CountryName" : "United Kingdom",
+    "@context" : {
+      "key" : "GB,100000020962140"
+    }
+  }, {
+    "TerritoryCode" : "UN",
+    "PhoneCountryCodeId" : null,
+    "CountryName" : "United Nations",
+    "@context" : {
+      "key" : "UN,"
+    }
+  }, {
+    "TerritoryCode" : "US",
+    "PhoneCountryCodeId" : "100000020962366",
+    "CountryName" : "United States",
+    "@context" : {
+      "key" : "US,100000020962366"
+    }
+  }, {
+    "TerritoryCode" : "UM",
+    "PhoneCountryCodeId" : "100000020962365",
+    "CountryName" : "United States Minor Outlying Islands",
+    "@context" : {
+      "key" : "UM,100000020962365"
+    }
+  }, {
+    "TerritoryCode" : "UY",
+    "PhoneCountryCodeId" : "100000020962654",
+    "CountryName" : "Uruguay",
+    "@context" : {
+      "key" : "UY,100000020962654"
+    }
+  }, {
+    "TerritoryCode" : "UZ",
+    "PhoneCountryCodeId" : "100000020962655",
+    "CountryName" : "Uzbekistan",
+    "@context" : {
+      "key" : "UZ,100000020962655"
+    }
+  }, {
+    "TerritoryCode" : "VU",
+    "PhoneCountryCodeId" : "100000020962665",
+    "CountryName" : "Vanuatu",
+    "@context" : {
+      "key" : "VU,100000020962665"
+    }
+  }, {
+    "TerritoryCode" : "VE",
+    "PhoneCountryCodeId" : "100000020962659",
+    "CountryName" : "Venezuela",
+    "@context" : {
+      "key" : "VE,100000020962659"
+    }
+  }, {
+    "TerritoryCode" : "VN",
+    "PhoneCountryCodeId" : "100000020962664",
+    "CountryName" : "Viet Nam",
+    "@context" : {
+      "key" : "VN,100000020962664"
+    }
+  }, {
+    "TerritoryCode" : "VG",
+    "PhoneCountryCodeId" : "100000020962660",
+    "CountryName" : "Virgin Islands, British",
+    "@context" : {
+      "key" : "VG,100000020962660"
+    }
+  }, {
+    "TerritoryCode" : "VI",
+    "PhoneCountryCodeId" : "100000020962662",
+    "CountryName" : "Virgin Islands, U.S.",
+    "@context" : {
+      "key" : "VI,100000020962662"
+    }
+  }, {
+    "TerritoryCode" : "WF",
+    "PhoneCountryCodeId" : "100000020962666",
+    "CountryName" : "Wallis and Futuna",
+    "@context" : {
+      "key" : "WF,100000020962666"
+    }
+  }, {
+    "TerritoryCode" : "EH",
+    "PhoneCountryCodeId" : "100000020962127",
+    "CountryName" : "Western Sahara",
+    "@context" : {
+      "key" : "EH,100000020962127"
+    }
+  }, {
+    "TerritoryCode" : "YE",
+    "PhoneCountryCodeId" : "100000020962668",
+    "CountryName" : "Yemen",
+    "@context" : {
+      "key" : "YE,100000020962668"
+    }
+  }, 
+  {
+    "TerritoryCode" : "ZM",
+    "PhoneCountryCodeId" : "100000020962671",
+    "CountryName" : "Zambia",
+    "@context" : {
+      "key" : "ZM,100000020962671"
+    }
+  }, 
+  {
+    "TerritoryCode" : "ZW",
+    "PhoneCountryCodeId" : "100000020962672",
+    "CountryName" : "Zimbabwe",
+    "@context" : {
+      "key" : "ZW,100000020962672"
+    }
+  } 
+]
