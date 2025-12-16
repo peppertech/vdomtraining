@@ -18,11 +18,8 @@ import "oj-c/form-layout";
 import "oj-c/avatar";
 import "oj-c/highlight-text";
 import { CSelectSingleElement } from "oj-c/select-single";
-import Collection from "../collection";
-import { data } from "@remix-run/router";
-//import "oj-c/button";
-
-//type RenderItemTemplate<V extends string | number, D extends Record<string, any>> = import('ojs/ojvcomponent').TemplateSlot<ItemTemplateContext<V, D>>;
+import "oj-c/list-view";
+import { CListViewElement } from "oj-c/list-view";
 
 //  data types
 type Person = {
@@ -96,20 +93,11 @@ const INIT_SELECTEDITEMS = new KeySetImpl([]) as KeySet<
 
 
 const SelectSingleCorePack = () => {
-  
-  // const [value, setValue] = useState("CH");
-  // const valueItem = {
-  //   key: value,
-  //   data: browsers.find((item,) => item.value === value),
-  // }
-  // const onValueChanged = () => {
-  //   setValue("SA");
-  //   setTimeout(() => setValue("IE"));
-  // }
 
   const [selectSingleData, setSelectSingleValue] = useState({
     selectedValue: "Chris Black",
   });
+
   const [selectedOracleEmployee, setOracleEmployeeSelectSingle] = useState<any>(
     { selectedValue: 102 }
   );
@@ -128,7 +116,6 @@ const SelectSingleCorePack = () => {
   };
 
   const onItemTextSelectionChange = (event: any) => {
-    //console.log(event.detail);
     setOracleEmployeeSelectSingle({
       selectedValue: event.detail.value,
     });
@@ -140,10 +127,9 @@ const SelectSingleCorePack = () => {
     return `${itemContext.data.FIRST_NAME} ${itemContext.data.LAST_NAME}`;
   };
   
-//CSelectSingleElement.RenderItemTemplate
-// ojSelectSingle.ItemTemplateContext
+
   const itemTemplateRenderer = (
-      itemCtx: ojSelectSingle.ItemTemplateContext<
+      itemCtx: CSelectSingleElement.ItemTemplateContext<
       OracleEmployee["EMPLOYEE_ID"],
       OracleEmployee>
   ) => {
@@ -151,7 +137,7 @@ const SelectSingleCorePack = () => {
         <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
           <span className="oj-typography-body-md oj-text-color-primary">
             <oj-c-highlight-text
-              text={itemCtx.data.FIRST_NAME +  " " + itemCtx.data.LAST_NAME }
+              text={itemCtx.item.data.FIRST_NAME +  " " + itemCtx.item.data.LAST_NAME }
               matchText={itemCtx.searchText}
             ></oj-c-highlight-text>
           </span>
@@ -160,15 +146,15 @@ const SelectSingleCorePack = () => {
             role="img"
             size="xs"
             shape="circle"
-            src={itemCtx.data.IMAGE}
-            title={"Avatar of " + itemCtx.data.FIRST_NAME}
+            src={itemCtx.item.data.IMAGE}
+            title={"Avatar of " + itemCtx.item.data.FIRST_NAME}
           ></oj-c-avatar>
           <span
             slot="secondary"
             className="oj-typography-body-sm oj-text-color-secondary"
           >
             <oj-c-highlight-text
-              text={itemCtx.data.TITLE}
+              text={itemCtx.item.data.TITLE}
               matchText={itemCtx.searchText}
             ></oj-c-highlight-text>
           </span>
@@ -177,7 +163,7 @@ const SelectSingleCorePack = () => {
             className="oj-typography-body-sm oj-text-color-secondary"
           >
             <oj-c-highlight-text
-              text={itemCtx.data.PHONE_NUMBER}
+              text={itemCtx.item.data.PHONE_NUMBER}
               matchText={itemCtx.searchText}
             ></oj-c-highlight-text>
           </span>
@@ -187,22 +173,22 @@ const SelectSingleCorePack = () => {
  
 
   const collectionTemplateRenderer = (
-    collection: ojSelectSingle.CollectionTemplateContext<
+    collection: CSelectSingleElement.CollectionTemplateContext< 
       OracleEmployee["EMPLOYEE_ID"],
       OracleEmployee
     >
   ) => {
     const itemRenderer = (
-      item: ojSelectSingle.ItemTemplateContext<
+      itemCtx: CSelectSingleElement.ItemTemplateContext<
         OracleEmployee["EMPLOYEE_ID"],
         OracleEmployee
       >
     ) => {
       return (
-        <oj-list-item-layout class="oj-listitemlayout-padding-off">
+        <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
           <span className="oj-typography-body-md oj-text-color-primary">
             <oj-highlight-text
-              text={item.data.FIRST_NAME + " " + item.data.LAST_NAME}
+              text={itemCtx.item.data.FIRST_NAME + " " + itemCtx.item.data.LAST_NAME}
               matchText={collection.searchText}
             ></oj-highlight-text>
           </span>
@@ -211,15 +197,15 @@ const SelectSingleCorePack = () => {
             role="img"
             size="xs"
             shape="circle"
-            src={item.data.IMAGE}
-            title={"Avatar of " + item.data.FIRST_NAME}
+            src={itemCtx.item.data.IMAGE}
+            title={"Avatar of " + itemCtx.item.data.FIRST_NAME}
           ></oj-avatar>
           <span
             slot="secondary"
             className="oj-typography-body-sm oj-text-color-secondary"
           >
             <oj-highlight-text
-              text={item.data.TITLE}
+              text={itemCtx.item.data.TITLE}
               matchText={collection.searchText}
             ></oj-highlight-text>
           </span>
@@ -228,38 +214,45 @@ const SelectSingleCorePack = () => {
             className="oj-typography-body-sm oj-text-color-secondary"
           >
             <oj-highlight-text
-              text={item.data.PHONE_NUMBER}
+              text={itemCtx.item.data.PHONE_NUMBER}
               matchText={collection.searchText}
             ></oj-highlight-text>
           </span>
-        </oj-list-item-layout>
+        </oj-c-list-item-layout>
       );
     };
 
-    const handleRowAction = (value: ojListView.ojItemAction<any, any>) => {
-      collection.handleRowAction(value, value.detail.context);
-      setListViewItem({
-        selectedValue: value.detail.context.data["EMPLOYEE_ID"],
+    const handleRowAction = (
+      event: CListViewElement.currentItemChanged<
+      OracleEmployee["EMPLOYEE_ID"],
+      OracleEmployee>
+      ) => {
+      collection.onCurrentRowChanged({
+        rowKey: event.detail.value 
       });
-    };
+      setListViewItem({
+        selectedValue: event.detail.value
+      });
+     };
 
-    
     return (
-      <oj-list-view
+      <oj-c-list-view
         id="listview"
         aria-label="list of employees"
         data={collection.data}
         selectionMode={"single"}
-        selected={collection.selected}
-        currentItem={collection.currentRow.rowKey}
-        onojItemAction={handleRowAction as any}
+        selected={collection.selected} 
+        currentItemOverride={collection.currentRowOverride}
+        oncurrentItemChanged={handleRowAction}
+        //oncurrentItemChanged={event => event.detail.value && collection.onCurrentRowChanged({ rowKey: event.detail.value })}
+        onojItemAction={ event => collection.onRowAction({ item: event.detail.context.item }) }
         class="oj-select-results oj-group-header-sm"
       >
         <template
           slot="itemTemplate"
           render={itemRenderer}
         ></template>
-      </oj-list-view>
+      </oj-c-list-view>
     );
   };
 
@@ -322,7 +315,9 @@ const SelectSingleCorePack = () => {
             render={itemTemplateRenderer}
           ></template>
         </oj-c-select-single>
-       
+       <span>
+          The selected value is: {selectedOracleEmployee.selectedValue}{" "}
+        </span>
 
         <h6 class="oj-typography-heading-sm">
           Select Single (Collection Template)
@@ -331,7 +326,6 @@ const SelectSingleCorePack = () => {
           id="collectionTemplateSelector"
           labelHint="Select single Item Template"
           labelEdge="inside"
-          disabled={true}
           data={oracleEmployeeDataProvider}
           value={selectedListViewItem.selectedValue}
           itemText={getItemText}

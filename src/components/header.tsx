@@ -80,7 +80,7 @@ export const Header = (props: Props) => {
             role="img"
             class="oj-icon demo-oracle-icon"
             title="Oracle Logo"
-            alt="Oracle Logo"
+            aria-label="Oracle Logo"
           ></span>
           <h1
             class="oj-sm-only-hide oj-web-applayout-header-title"

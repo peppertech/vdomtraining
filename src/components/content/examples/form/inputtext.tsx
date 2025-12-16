@@ -6,14 +6,11 @@ import "ojs/ojformlayout";
 import "ojs/ojinputtext";
 import Message = require("ojs/ojmessaging");
 import "ojs/ojdatetimepicker";
-import 'ojs/ojbutton';
-  
+import "ojs/ojbutton";
+import * as customMessages from "../form/data/messages";
 
 type InputTextProps = ComponentProps<"oj-input-text">;
 type FormLayoutProps = ComponentProps<"oj-form-layout">;
-
-// const requiredTranslation :InputTextProps["required"] = {
-// hint:"custom hint for required", messageDetail: "custom message detail"};
 
 const length: InputTextProps["length"] = {
   countBy: "codePoint",
@@ -27,16 +24,14 @@ const helpHintSource: InputTextProps["helpHints"] = {
 };
 const lblHint: InputTextProps["labelHint"] =
   "Input text - using converter and help hint definiton";
-  
+
 const eurNumberConverter = new NumberConverter.IntlNumberConverter({
   style: "currency",
   currency: "INR",
   currencyDisplay: "symbol",
 });
 
-let rawValue: any;
 let currentRawValue: any;
-
 
 const error: Message[] = [
   { summary: "summary", detail: "detail", severity: "error" },
@@ -48,7 +43,6 @@ const confirmation = [
 ];
 // 'any' type is being used because method is used by multiple ..
 const InputText = () => {
-  //-- for date
   const [formData, setFormData] = useState({
     itemName: "Kopi Luwak beans (2 lbs)",
     itemBuyer: "",
@@ -61,16 +55,16 @@ const InputText = () => {
   });
 
   const [isDisabled, setIsDisabled] = useState(true);
-  const [density, setDensity] = useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
+  const [density, setDensity] =
+    useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
- 
   const onValueChange = (event: any) => {
-    //console.log(event.detail.value);
+    console.log(customMessages);
     console.log(currentRawValue);
     setFormData({
       ...formData,
       itemCost: event.detail.value,
-      rawValue: event.detail.value
+      rawValue: event.detail.value,
       //[event.currentTarget.id]: event.detail.value,
     });
   };
@@ -85,7 +79,6 @@ const InputText = () => {
         class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         direction="row"
-        
       >
         <oj-input-text
           required={true}
@@ -94,7 +87,6 @@ const InputText = () => {
         ></oj-input-text>
         <oj-input-text
           id="enabledNoVal"
-          
           labelHint="Input text - enabled no value"
         ></oj-input-text>
         <oj-input-text
@@ -119,18 +111,16 @@ const InputText = () => {
           readonly={true}
         ></oj-input-text>
 
-         <span>Current component rawValue is:</span>
-            <span>
-              {currentRawValue}
-            </span>
-            <div id="button-container">
-              <oj-button
-                id="buttonId1"
-                disabled={currentRawValue == null || currentRawValue.trim() === ''}
-                >
-                Submit
-              </oj-button>
-            </div>
+        <span>Current component rawValue is:</span>
+        <span>{currentRawValue}</span>
+        <div id="button-container">
+          <oj-button
+            id="buttonId1"
+            disabled={currentRawValue == null || currentRawValue.trim() === ""}
+          >
+            Submit
+          </oj-button>
+        </div>
       </oj-form-layout>
       <h6 class="oj-typography-heading-sm"> Start and End Slots </h6>
       <oj-form-layout
@@ -156,7 +146,7 @@ const InputText = () => {
           id="itemName2"
           value={formData.emailVal}
           labelHint="Input text - using slots KK"
-           //readonly={true}
+          //readonly={true}
         >
           <span
             slot="end"
@@ -174,7 +164,7 @@ const InputText = () => {
         maxColumns={3}
         direction="row"
       >
-        <oj-input-text 
+        <oj-input-text
           value={formData.itemCost}
           labelHint={lblHint}
           helpHints={hintDefinition}
@@ -199,13 +189,12 @@ const InputText = () => {
         maxColumns={3}
         direction="row"
       >
-        {/* <span>The selected value is: {formData.itemCost} </span> */}
         <oj-input-text
-            required={true}
-            rawValue={currentRawValue}
-            onvalueChanged={onValueChange}
-            clear-icon="always"   
-            labelHint="Input text using required"
+          required={true}
+          rawValue={currentRawValue}
+          onvalueChanged={onValueChange}
+          clear-icon="always"
+          labelHint="Input text using required"
         ></oj-input-text>
         <oj-input-text
           clearIcon="always"
@@ -219,7 +208,7 @@ const InputText = () => {
         <oj-input-text
           id="text input"
           value={formData.value}
-          onrawValueChanged={onValueChange}
+          //onrawValueChanged={onValueChange}
           length={length}
           labelEdge="provided"
           labelHint="Input text with max length, raw value"
@@ -230,7 +219,6 @@ const InputText = () => {
         userAssistanceDensity={density}
         columns={3}
         labelEdge="inside"
-    
         class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         direction="row"

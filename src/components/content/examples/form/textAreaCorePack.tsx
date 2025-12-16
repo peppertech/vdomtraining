@@ -1,9 +1,11 @@
 import { ComponentProps } from "preact";
 import { useState, useRef } from "preact/hooks";
 import Message = require("ojs/ojmessaging");
-import 'oj-c/text-area';
+import "oj-c/text-area";
 import "oj-c/form-layout";
 
+const draftMessage: string =
+  "This is a really long sample text to show text area value. This is a really long sample text to show text area value.";
 type TextAreaProps = ComponentProps<"oj-c-text-area">;
 const hintHintDefinition: TextAreaProps["helpHints"] = {
   definition: "cost of a single item",
@@ -14,7 +16,7 @@ const helpHintSource: TextAreaProps["helpHints"] = {
 const length: TextAreaProps["length"] = {
   countBy: "codePoint",
   max: 15,
-  counter: "remaining"
+  counter: "remaining",
 };
 const error: Message[] = [
   { summary: "summary", detail: "detail", severity: "error" },
@@ -38,6 +40,19 @@ const TextAreaCorePack = () => {
     <div>
       <h4>States inside oj-c-form-layout</h4>
       <oj-c-form-layout maxColumns={3} labelEdge="inside" direction="row">
+        <oj-c-text-area
+          class="oj-sm-width-1"
+          length={{
+            max: 4000,
+            counter: "remaining",
+          }}
+          rows={3}
+          maxRows={5}
+          value={draftMessage}
+          aria-label="Edit instructions"
+      
+        ></oj-c-text-area>
+
         <oj-c-text-area
           value="This is a really long sample text to show text area value."
           labelHint="enabled"
@@ -68,10 +83,10 @@ const TextAreaCorePack = () => {
         ></oj-c-text-area>
       </oj-c-form-layout>
 
-        <h4>States outside oj-c-form-layout</h4>
-        <div class="oj-flex oj-sm-padding-2x-vertical">
-          <oj-c-text-area
-           class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal"
+      <h4>States outside oj-c-form-layout</h4>
+      <div class="oj-flex oj-sm-padding-2x-vertical">
+        <oj-c-text-area
+          class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal"
           value="This is a really long sample text to show text area value."
           labelHint="enabled"
           rows={3}
@@ -92,11 +107,12 @@ const TextAreaCorePack = () => {
           readonly={true}
           rows={3}
         ></oj-c-text-area>
-         </div>
-         <div class="oj-flex oj-sm-padding-2x-vertical">
-           <oj-c-text-area 
-           class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal"
-           labelHint="enabled no value"></oj-c-text-area>
+      </div>
+      <div class="oj-flex oj-sm-padding-2x-vertical">
+        <oj-c-text-area
+          class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal"
+          labelHint="enabled no value"
+        ></oj-c-text-area>
         <oj-c-text-area
           class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal"
           labelHint="disabled no value"
@@ -107,7 +123,7 @@ const TextAreaCorePack = () => {
           labelHint="readonly no value"
           readonly={true}
         ></oj-c-text-area>
-         </div>
+      </div>
 
       <h4 class="oj-sm-margin-4x-top">Required, Placeholder & Max Length</h4>
       <oj-c-form-layout maxColumns={3} labelEdge="inside" direction="row">
@@ -159,7 +175,7 @@ const TextAreaCorePack = () => {
           rows={3}
         ></oj-c-text-area>
         <oj-c-text-area
-           messagesCustom={confirmation as any}
+          messagesCustom={confirmation as any}
           value="This is a really long sample text to show text area value."
           labelHint="confirmation"
           rows={3}

@@ -103,6 +103,7 @@ const SelectMultiple = () => {
     FormLayoutProps["userAssistanceDensity"]
   >("efficient");
 
+  // set select 
   const onBasicSelectSingleChange = (event: any) => {
     setSelectSingleValue({
       selectedValue: event.detail.value,
@@ -227,21 +228,22 @@ const SelectMultiple = () => {
         <span>The selected values are: {selectMultipleItemTextData.selectedValue? Array.from(selectMultipleItemTextData.selectedValue).join(', ') : ''} </span>
 
         <h6 class="oj-typography-heading-sm"> Select Multiple - Core Pack (Item Template)</h6>
-        {/* <oj-c-select-multiple
+        <oj-c-select-multiple
               id="select1"
               labelHint="Select Multiple"
               labelEdge="inside"
+              disabled={true}
               data={employeeDataProvider}
-             value={selectMultipleItemTextData.selectVal}
+              value={selectMultipleItemTextData.selectVal}
               itemText={getItemText}>
               <template
                   slot="itemTemplate"
                   render={itemTemplateRenderer}>
              </template>       
-            </oj-c-select-multiple> */}
+            </oj-c-select-multiple>
 
 
-      <h6 class="oj-typography-heading-sm"> Select Multiple - Core Pack (Collection Template)</h6>   
+      {/* <h6 class="oj-typography-heading-sm"> Select Multiple - Core Pack (Collection Template)</h6>    */}
 
       </oj-c-form-layout>
     </div>
