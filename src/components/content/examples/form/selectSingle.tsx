@@ -1,5 +1,5 @@
 import { h, ComponentProps } from "preact";
-import { useState, useCallback } from "preact/hooks";
+import { useState, useCallback,useMemo } from "preact/hooks";
 import * as peopleData from "text!./data/peopleData.json";
 import * as employeeData from "text!./data/employeeData.json";
 import * as countryData from "text!./data/componentList.json";
@@ -12,10 +12,9 @@ import "ojs/ojhighlighttext";
 import "ojs/ojlistitemlayout";
 import "ojs/ojavatar";
 import { ojSelectSingle } from "ojs/ojselectsingle";
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 import 'ojs/ojtable';
-import Collection from "../collection";
+
 
 type Person = {
   id: number;
@@ -50,12 +49,7 @@ JSON.parse(peopleData).map((item: Employee) => {
   employeesData.push({ id: item.id, value: item.name, label: item.name });
 });
 
-const employeeDataProvider = new MutableArrayDataProvider<
-  Person["value"],
-  Person
->(employeesData, {
-  keyAttributes: "value",
-});
+const employeeDataProvider = new MutableArrayDataProvider<Person["value"],Person>(employeesData, {keyAttributes: "value"});
 
 // item text data
 const oracleEmployeeDataProvider = new MutableArrayDataProvider(
@@ -248,10 +242,9 @@ const SelectSingle = () => {
       >
     ) => {
       return (
-      
         <oj-highlight-text
             text={String(itemCollection.data)}
-          matchText={collection.searchText}></oj-highlight-text>
+             matchText={collection.searchText}></oj-highlight-text>
       );
     };
 
@@ -377,6 +370,7 @@ const SelectSingle = () => {
             render={collectionTemplateRendererForTabularView}
           ></template>
         </oj-select-single> 
+       <span>The selected value is: {selectedListViewItem.selectedValue} </span>
       </oj-form-layout>
     </div>
   );
