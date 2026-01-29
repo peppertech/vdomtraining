@@ -20,6 +20,10 @@ import "oj-c/highlight-text";
 import { CSelectSingleElement } from "oj-c/select-single";
 import "oj-c/list-view";
 import { CListViewElement } from "oj-c/list-view";
+import "ojs/ojtable";
+import 'oj-c/table';
+import { ojTable } from "ojs/ojtable";
+
 
 //  data types
 type Person = {
@@ -91,6 +95,17 @@ const INIT_SELECTEDITEMS = new KeySetImpl([]) as KeySet<
   OracleEmployee["EMPLOYEE_ID"]
 >;
 
+ const tableColumns = [
+      { headerText: 'First Name', field: 'FIRST_NAME', template: 'cellTemplate', id: 'first' },
+      { headerText: 'Last Name', field: 'LAST_NAME', template: 'cellTemplate', id: 'last' },
+      {
+        headerText: 'Department',
+        field: 'DEPARTMENT_ID',
+        template: 'cellTemplate',
+        id: 'depId'
+      },
+      { headerText: 'Salary', field: 'SALARY', template: 'cellTemplate', id: 'salary' }
+ ];
 
 const SelectSingleCorePack = () => {
 
@@ -106,6 +121,10 @@ const SelectSingleCorePack = () => {
     selectedValue: 103,
   });
 
+   const [selectedCollTemplateItem, setCollectionTemplateValue] = useState<any>({
+    selectedValue: 101,
+  });
+
   const [density, setDensity] =
     useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
@@ -117,6 +136,12 @@ const SelectSingleCorePack = () => {
 
   const onItemTextSelectionChange = (event: any) => {
     setOracleEmployeeSelectSingle({
+      selectedValue: event.detail.value,
+    });
+  };
+
+   const onColTemplateValueChange = (event: any) => {
+    setCollectionTemplateValue({
       selectedValue: event.detail.value,
     });
   };
@@ -172,7 +197,7 @@ const SelectSingleCorePack = () => {
   };
  
 
-  const collectionTemplateRenderer = (
+  const collectionTemplateRendererForListView = (
     collection: CSelectSingleElement.CollectionTemplateContext< 
       OracleEmployee["EMPLOYEE_ID"],
       OracleEmployee
@@ -256,6 +281,52 @@ const SelectSingleCorePack = () => {
     );
   };
 
+  const collectionTemplateRendererForTabularView = (
+    colCtx: CSelectSingleElement.CollectionTemplateContext< 
+      OracleEmployee["EMPLOYEE_ID"],
+      OracleEmployee
+    >
+  ) => {
+   
+    const cellRenderer =(cellCtx: ojTable.CellTemplateContext<any, any>) =>{
+    return (
+       <oj-c-highlight-text 
+                text={String(cellCtx.data)}
+                matchText={colCtx.searchText}
+       ></oj-c-highlight-text> 
+     );
+    };
+
+    const handleTabularRowAction = (value: ojListView.ojItemAction<any, any>) => {
+      //colCtx.handleRowAction(value, value.detail.context);
+      setCollectionTemplateValue({
+        selectedValue: value.detail.context.data["EMPLOYEE_ID"],
+      });
+    };
+
+    return ( 
+            <oj-c-table
+                  aria-label='select results'
+                  horizontal-grid-visible="disabled"
+                  verticalGridVisible="disabled"
+                  selectAllControl="hidden"
+                  selectionMode ={{row: "single"}}
+                  columns={tableColumns as any}
+                  data={colCtx.data as any}
+                  selected={{ row: colCtx.selected}}
+                  currentCellOverride={colCtx.currentRowOverride}
+                  oncurrentCellChanged= { (event) => event.detail.value && colCtx.onCurrentRowChanged({ rowKey: event.detail.value.type === 'data' ? event.detail.value.rowKey : undefined })}
+                  //onselectedChanged={ (event) => colCtx.onSelectedChanged({ value: event.detail.value?.row }) }                  
+                  >
+                <template
+                  slot="cellTemplate"
+                  render={cellRenderer}>
+                </template>
+             </oj-c-table>
+           );
+  };
+
+
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
       <oj-form-layout
@@ -319,12 +390,12 @@ const SelectSingleCorePack = () => {
           The selected value is: {selectedOracleEmployee.selectedValue}{" "}
         </span>
 
-        <h6 class="oj-typography-heading-sm">
-          Select Single (Collection Template)
-        </h6>
+        <h4 class="oj-typography-heading-sm">
+          Select Single (Collection Template - List View)
+        </h4>
         <oj-c-select-single
           id="collectionTemplateSelector"
-          labelHint="Select single Item Template"
+          labelHint="Select Single Collection Template for List View"
           labelEdge="inside"
           data={oracleEmployeeDataProvider}
           value={selectedListViewItem.selectedValue}
@@ -332,10 +403,30 @@ const SelectSingleCorePack = () => {
         >
           <template
             slot="collectionTemplate"
-            render={collectionTemplateRenderer}
+            render={collectionTemplateRendererForListView}
           ></template>
         </oj-c-select-single>
          <span>The selected value is: {selectedListViewItem.selectedValue}</span> 
+
+
+         <h6 class="oj-typography-heading-sm">
+          Select Single (Collection Template - Tabular View)
+        </h6>
+        <oj-c-select-single
+          id="tableCollectionTemplateSelector"
+          labelHint="Select Single Collection Template for Tabular View"
+          labelEdge="inside"
+          data={oracleEmployeeDataProvider}
+          value={selectedCollTemplateItem.selectedValue}
+          itemText={getItemText}
+          onvalueChanged={onColTemplateValueChange}
+        >
+          <template
+            slot="collectionTemplate"
+            render={collectionTemplateRendererForTabularView}
+          ></template>
+        </oj-c-select-single>
+         <span>The selected value is: {selectedCollTemplateItem.selectedValue}</span> 
        
       </oj-form-layout>
   
