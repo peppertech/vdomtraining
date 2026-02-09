@@ -61,12 +61,8 @@ const InputTextCorePack = () => {
 
     //please change the variable depending upon the control that you are using
   const onTextvalueChange = (event: any) => {
-    console.log(event.detail);
-    //alert(event.detail);
-    //  setFormData({
-    //    ...formData,
-    //   itemBuyer: event.detail.value
-    // });
+    //console.log(event.detail);
+   
    if(event.detail.updatedFrom =='external'){
     setFormData({
       ...formData,

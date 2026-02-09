@@ -341,6 +341,11 @@ const SelectSingleCorePack = () => {
           {" "}
           Select Single - Core Pack (Basic) 
         </h6>
+         <oj-c-select-single
+                data={browsersDP}
+                itemText="label"
+                labelHint="Select Single enabled with no value"></oj-c-select-single>
+
         <oj-c-select-single
           id="employeeSelector"
           labelHint="Select Single with ArrayDataProvider"

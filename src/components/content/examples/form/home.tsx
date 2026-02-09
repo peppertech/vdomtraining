@@ -28,6 +28,15 @@ import InputDate from "./inputDate";
 import InputDatePicker from "./inputDatePicker";
 import InputSearch from "./InputSearch";
 import { JobApplicationForm } from "./jobApplicationForm";
+import { InputPasswordCorePack } from "./inputPasswordCorePack";
+import { FormLayoutCorePack } from "./formLayoutCorePack";
+import { SelectMany } from "./selectMany";
+import { SwitchExample } from "./switch";
+import { Slider } from "./slider";
+import { ComboboxMany } from "./comboboxMany";
+import { InputDateMask } from "./inputDateMask";
+import { InputDateText } from "./inputDateText";
+
 
 type JETComponent = {
   id: number;
@@ -49,23 +58,23 @@ const allFormsComponents = [
   //   id: 2,
   //   name: "Color Palette",
   //   image: "oj-ux-icon-size-12x  oj-ux-ico-color-palette",
-  //   isAvailable: false,
+  //   isAvailable: true,
   //   isCorePack: false,
   // },
   // {
   //   id: 3,
   //   name: "Color Spectrum",
   //   image: "oj-ux-icon-size-12x  oj-ux-ico-color-spectrum",
-  //   isAvailable: false,
+  //   isAvailable: true,
   //   isCorePack: false,
   // },
-  // {
-  //   id: 4,
-  //   name: "Form Layout",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-form-layout-jet",
-  //   isAvailable: false,
-  //   isCorePack: false,
-  // },
+  {
+    id: 4,
+    name: "Form Layout",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-form-layout-jet",
+    isAvailable: true,
+    isCorePack: true,
+  },
   {
     id: 5,
     name: "Input Date Time",
@@ -91,14 +100,14 @@ const allFormsComponents = [
   //   id: 8,
   //   name: "Date Time",
   //   image: "oj-ux-icon-size-12x  oj-ux-ico-calendar",
-  //   isAvailable: false,
+  //   isAvailable: true,
   //   isCorePack: false,
   // },
   // {
   //   id: 9,
   //   name: "Input Time",
   //   image: "oj-ux-icon-size-12x  oj-ux-ico-calendar",
-  //   isAvailable: false,
+  //   isAvailable: true,
   //   isCorePack: false,
   // },
   {
@@ -109,13 +118,13 @@ const allFormsComponents = [
     isCorePack: false,
   },
 
-  // {
-  //   id: 11,
-  //   name: "Input Password",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-password",
-  //   isAvailable: false,
-  //   isCorePack: false,
-  // },
+  {
+    id: 11,
+    name: "Input Password",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-password",
+    isAvailable: true,
+    isCorePack: true,
+  },
   {
     id: 12,
     name: "Input Search",
@@ -146,28 +155,28 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: false,
   },
-  // {
-  //   id: 16,
-  //   name: "Slider",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-slider",
-  //   isAvailable: false,
-  //   isCorePack: false,
-  // },
-  // {
-  //   id: 17,
-  //   name: "Switch",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-switch-on",
-  //   isAvailable: false,
-  //   isCorePack: false,
-  // },
+  {
+    id: 16,
+    name: "Slider",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-slider",
+    isAvailable: true,
+    isCorePack: false,
+  },
+  {
+    id: 17,
+    name: "Switch",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-switch-on",
+    isAvailable: true,
+    isCorePack: false,
+  },
 
-  // {
-  //   id: 18,
-  //   name: "Select Many",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-select-all",
-  //   isAvailable: false,
-  //   isCorePack: false,
-  // },
+  {
+    id: 18,
+    name: "Select Many",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-select-all",
+    isAvailable: true,
+    isCorePack: false,
+  },
   {
     id: 19,
     name: "Combobox One",
@@ -176,13 +185,13 @@ const allFormsComponents = [
     isCorePack: false,
   },
 
-  // {
-  //   id: 20,
-  //   name: "Combobox Many",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-combo-many",
-  //   isAvailable: false,
-  //   isCorePack: false,
-  // },
+  {
+    id: 20,
+    name: "Combobox Many",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-combo-many",
+    isAvailable: true,
+    isCorePack: false,
+  },
   // {
   //   id: 21,
   //   name: "User Assistance",
@@ -235,20 +244,20 @@ const allFormsComponents = [
     isCorePack: true,
   },
 
-  // {
-  //   id: 28,
-  //   name: "Input Date Mask",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-masked-text-input",
-  //   isAvailable: true,
-  //   isCorePack: true,
-  // },
-  // {
-  //   id: 29,
-  //   name: "Input Date Text",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
-  //   isAvailable: true,
-  //   isCorePack: true,
-  // },
+  {
+    id: 28,
+    name: "Input Date Mask",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-masked-text-input",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
+    id: 29,
+    name: "Input Date Text",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
+    isAvailable: true,
+    isCorePack: true,
+  },
   // {
   //   id: 30,
   //   name: "Input Month Mask",
@@ -291,9 +300,11 @@ const FormsHome = () => {
   const [isComponentAvailable, setComponentAvvailability] = useState(false);
 
   let ComponentDetail = () => {
-    switch (activeTab) {
+    switch (activeTab) {//
       case 1:
         return <CheckBoxSet />;
+      case 4:
+        return <FormLayoutCorePack />;
       case 5:
         return <InputDateTime />;
       case 6:
@@ -302,18 +313,28 @@ const FormsHome = () => {
         return <InputDatePicker />;
       case 10:
         return <InputNumber />;
+      case 11:
+        return <InputPasswordCorePack />;  
       case 12:
         return <InputSearch />;
       case 15:
         return <SelectSingle />;
+        case 16:
+        return <Slider />;
       case 13:
         return <InputText />;
       case 14:
         return <TextArea />;
+      case 17:
+        return <SwitchExample/>;
+      case 18:
+        return <SelectMany />;
       case 19:
-        return <ComboBoxOne />;
+        return <ComboBoxOne />; 
       case 23:
         return <InputNumberCorePack />;
+      case 20:
+        return <ComboboxMany/>;
       case 24:
         return <InputTextCorePack />;
       case 25:
@@ -322,6 +343,10 @@ const FormsHome = () => {
         return <SelectSingleCorePack />;
       case 27:
         return <TextAreaCorePack />;
+       case 28:
+        return <InputDateMask />;  
+       case 29:
+        return <InputDateText />;    
       case 32:
         return <JobApplicationForm />;
       default:
