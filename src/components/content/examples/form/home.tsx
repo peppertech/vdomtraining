@@ -10,7 +10,6 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import "ojs/ojactioncard";
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import SelectSingle from "./selectSingle";
-import ComboBoxOne from "./comboBoxOne";
 import InputText from "./inputText";
 import FormElements from "./formelements";
 import { ButtonElement } from "ojs/ojbutton";
@@ -36,7 +35,14 @@ import { Slider } from "./slider";
 import { ComboboxMany } from "./comboboxMany";
 import { InputDateMask } from "./inputDateMask";
 import { InputDateText } from "./inputDateText";
-
+import { ComboboxOneExample } from "./comboBoxOne";
+import { InputTime } from "./inputTime";
+import { InputMonthMask } from "./inputMonthMask";
+import { InputSensitiveText } from "./inputSensitiveText";
+import { ColorPalette } from "./colorPalette";
+import { ColorSpectrum } from "./colorSpectrum";
+import { UserAssistance } from "./userAssistance";
+import { ValidationGroupExample } from "./validationGroup";
 
 type JETComponent = {
   id: number;
@@ -54,20 +60,20 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: false,
   },
-  // {
-  //   id: 2,
-  //   name: "Color Palette",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-color-palette",
-  //   isAvailable: true,
-  //   isCorePack: false,
-  // },
-  // {
-  //   id: 3,
-  //   name: "Color Spectrum",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-color-spectrum",
-  //   isAvailable: true,
-  //   isCorePack: false,
-  // },
+  {
+    id: 2,
+    name: "Color Palette",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-color-palette",
+    isAvailable: true,
+    isCorePack: false,
+  },
+  {
+    id: 3,
+    name: "Color Spectrum",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-color-spectrum",
+    isAvailable: true,
+    isCorePack: false,
+  },
   {
     id: 4,
     name: "Form Layout",
@@ -96,20 +102,14 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: false,
   },
-  // {
-  //   id: 8,
-  //   name: "Date Time",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-calendar",
-  //   isAvailable: true,
-  //   isCorePack: false,
-  // },
-  // {
-  //   id: 9,
-  //   name: "Input Time",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-calendar",
-  //   isAvailable: true,
-  //   isCorePack: false,
-  // },
+
+  {
+    id: 9,
+    name: "Input Time",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-calendar",
+    isAvailable: true,
+    isCorePack: false,
+  },
   {
     id: 10,
     name: "Input Number",
@@ -139,6 +139,20 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: false,
   },
+  {
+    id: 24,
+    name: "Input Text",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
+    id: 23,
+    name: "Input Number",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
+    isAvailable: true,
+    isCorePack: true,
+  },
 
   {
     id: 14,
@@ -148,13 +162,6 @@ const allFormsComponents = [
     isCorePack: false,
   },
 
-  {
-    id: 15,
-    name: "Select Single",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-select-tab",
-    isAvailable: true,
-    isCorePack: false,
-  },
   {
     id: 16,
     name: "Slider",
@@ -192,32 +199,18 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: false,
   },
-  // {
-  //   id: 21,
-  //   name: "User Assistance",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-user-assistance",
-  //   isAvailable: false,
-  //   isCorePack: false,
-  // },
-  // {
-  //   id: 22,
-  //   name: "Validation",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-user-assistance",
-  //   isAvailable: false,
-  //   isCorePack: false,
-  // },
 
   {
-    id: 23,
-    name: "Input Number",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
+    id: 15,
+    name: "Select Single",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-select-tab",
     isAvailable: true,
-    isCorePack: true,
+    isCorePack: false,
   },
   {
-    id: 24,
-    name: "Input Text",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
+    id: 26,
+    name: "Select Single",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-select-tab",
     isAvailable: true,
     isCorePack: true,
   },
@@ -229,13 +222,7 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: true,
   },
-  {
-    id: 26,
-    name: "Select Single",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-select-tab",
-    isAvailable: true,
-    isCorePack: true,
-  },
+
   {
     id: 27,
     name: "Text Area",
@@ -258,24 +245,38 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: true,
   },
-  // {
-  //   id: 30,
-  //   name: "Input Month Mask",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-masked-text-input",
-  //   isAvailable: true,
-  //   isCorePack: true,
-  // },
-  // {
-  //   id: 31,
-  //   name: "Input Sensitive Text",
-  //   image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-password",
-  //   isAvailable: true,
-  //   isCorePack: true,
-  // },
+  {
+    id: 30,
+    name: "Input Month Mask",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-masked-text-input",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
+    id: 31,
+    name: "Input Sensitive Text",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-password",
+    isAvailable: true,
+    isCorePack: true,
+  },
   {
     id: 32,
     name: "Job Application Form",
     image: "oj-ux-icon-size-12x  oj-ux-ico-form-layout-jet",
+    isAvailable: true,
+    isCorePack: false,
+  },
+  {
+    id: 21,
+    name: "User Assistance",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-user-assistance",
+    isAvailable: true,
+    isCorePack: false,
+  },
+  {
+    id: 22,
+    name: "Validation",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-user-assistance",
     isAvailable: true,
     isCorePack: false,
   },
@@ -300,9 +301,15 @@ const FormsHome = () => {
   const [isComponentAvailable, setComponentAvvailability] = useState(false);
 
   let ComponentDetail = () => {
-    switch (activeTab) {//
+    switch (
+      activeTab //
+    ) {
       case 1:
         return <CheckBoxSet />;
+      case 2:
+        return <ColorPalette />;
+      case 3:
+        return <ColorSpectrum />;
       case 4:
         return <FormLayoutCorePack />;
       case 5:
@@ -311,30 +318,36 @@ const FormsHome = () => {
         return <InputDate />;
       case 7:
         return <InputDatePicker />;
+      case 9:
+        return <InputTime />;
       case 10:
         return <InputNumber />;
       case 11:
-        return <InputPasswordCorePack />;  
+        return <InputPasswordCorePack />;
       case 12:
         return <InputSearch />;
       case 15:
         return <SelectSingle />;
-        case 16:
+      case 16:
         return <Slider />;
       case 13:
         return <InputText />;
       case 14:
         return <TextArea />;
       case 17:
-        return <SwitchExample/>;
+        return <SwitchExample />;
       case 18:
         return <SelectMany />;
       case 19:
-        return <ComboBoxOne />; 
+        return <ComboboxOneExample />;
       case 23:
         return <InputNumberCorePack />;
       case 20:
-        return <ComboboxMany/>;
+        return <ComboboxMany />;
+      case 21:
+        return <UserAssistance />;
+      case 22:
+        return <ValidationGroupExample />;
       case 24:
         return <InputTextCorePack />;
       case 25:
@@ -343,10 +356,14 @@ const FormsHome = () => {
         return <SelectSingleCorePack />;
       case 27:
         return <TextAreaCorePack />;
-       case 28:
-        return <InputDateMask />;  
-       case 29:
-        return <InputDateText />;    
+      case 28:
+        return <InputDateMask />;
+      case 29:
+        return <InputDateText />;
+      case 30:
+        return <InputMonthMask />;
+      case 31:
+        return <InputSensitiveText />;
       case 32:
         return <JobApplicationForm />;
       default:
@@ -367,7 +384,7 @@ const FormsHome = () => {
     setComponentDetailVal(true);
     //console.log(event.detail.items[0].innerText);
     let filteredComponent = allFormsComponents.filter(
-      (component) => component.id === event.detail.items[0].key
+      (component) => component.id === event.detail.items[0].key,
     );
     let flag = filteredComponent[0].isAvailable;
     setComponentAvvailability(flag);
@@ -376,7 +393,7 @@ const FormsHome = () => {
   // <div class="comingsoon">Coming soon....</div>
   const renderListItem = useCallback(
     (
-      item: ojListView.ItemTemplateContext<JETComponent["id"], JETComponent>
+      item: ojListView.ItemTemplateContext<JETComponent["id"], JETComponent>,
     ) => {
       return (
         <li>
@@ -403,7 +420,7 @@ const FormsHome = () => {
         </li>
       );
     },
-    [selectedItems]
+    [selectedItems],
   );
   return (
     <div class="component-wrapper">
