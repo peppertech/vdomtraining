@@ -113,5 +113,56 @@
 .componentInfo{
 text-align: center;
 }
+
+
+/* Custom styles for color palette */
+  .demo-palette-preview {
+    margin-left: 0.625rem;
+    width: 5rem;
+    height: 2.5rem;
+    border: 1px solid;
+    margin-bottom: 1.875rem;
+  }
+  
+  .demo-palette-panel {
+    margin-left: 0.625rem;
+    display: inline-block;
+    width: 17.25rem;
+    height: auto;
+    padding: 0.75rem;
+    box-sizing: border-box;
+  }
+  
+  .demo-text {
+    display: inline-block;
+    line-height: 2.5rem;
+  }
+  
+  .demo-palette-panel .demo-palette-picker {
+    width: 100%;
+  }
+  
+  .demo-container-size-xs {
+    width: 18.5rem;
+  }
+  .demo-container-size-sm {
+    width: 18.125rem;
+  }
+
+  /* Custom styles for color spectrum */
+    .demo-color-preview {
+    width: 3.125rem;
+    height: 2.5rem;
+    border: 1px solid;
+  }
+  
+  .demo-color-preview.demo-pointer {
+    cursor: pointer;
+  }
+  
+  .demo-color-panel {
+    width: 18.438rem;
+    height: 18.438rem;
+  }
     
   

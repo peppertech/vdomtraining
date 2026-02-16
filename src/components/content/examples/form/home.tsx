@@ -43,6 +43,9 @@ import { ColorPalette } from "./colorPalette";
 import { ColorSpectrum } from "./colorSpectrum";
 import { UserAssistance } from "./userAssistance";
 import { ValidationGroupExample } from "./validationGroup";
+import { CheckBoxCorePack } from "./checkBoxCorePack";
+import { CheckBoxSetCorePack } from "./checkBoxSetCorePack";
+import { RichCheckBoxsetCorePack } from "./richCheckBoxsetCorePack";
 
 type JETComponent = {
   id: number;
@@ -55,10 +58,31 @@ type JETComponent = {
 const allFormsComponents = [
   {
     id: 1,
-    name: "Checkbox",
+    name: "CheckboxSet",
     image: "oj-ux-icon-size-12x  oj-ux-ico-checkbox-on",
     isAvailable: true,
     isCorePack: false,
+  },
+  {
+    id: 111,
+    name: "Checkbox",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-checkbox-on",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
+    id: 112,
+    name: "CheckboxSet",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-checkbox-on",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
+    id: 113,
+    name: "RichCheckboxSet",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-checkbox-on",
+    isAvailable: true,
+    isCorePack: true,
   },
   {
     id: 2,
@@ -111,11 +135,39 @@ const allFormsComponents = [
     isCorePack: false,
   },
   {
+    id: 28,
+    name: "Input Date Mask",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-masked-text-input",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
+    id: 29,
+    name: "Input Date Text",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
+    id: 30,
+    name: "Input Month Mask",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-masked-text-input",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
     id: 10,
     name: "Input Number",
     image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
     isAvailable: true,
     isCorePack: false,
+  },
+  {
+    id: 23,
+    name: "Input Number",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
+    isAvailable: true,
+    isCorePack: true,
   },
 
   {
@@ -125,6 +177,14 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: true,
   },
+  {
+    id: 31,
+    name: "Input Sensitive Text",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-password",
+    isAvailable: true,
+    isCorePack: true,
+  },
+
   {
     id: 12,
     name: "Input Search",
@@ -146,13 +206,7 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: true,
   },
-  {
-    id: 23,
-    name: "Input Number",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
-    isAvailable: true,
-    isCorePack: true,
-  },
+  
 
   {
     id: 14,
@@ -160,6 +214,13 @@ const allFormsComponents = [
     image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-area",
     isAvailable: true,
     isCorePack: false,
+  },
+   {
+    id: 27,
+    name: "Text Area",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-area",
+    isAvailable: true,
+    isCorePack: true,
   },
 
   {
@@ -223,42 +284,8 @@ const allFormsComponents = [
     isCorePack: true,
   },
 
-  {
-    id: 27,
-    name: "Text Area",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-area",
-    isAvailable: true,
-    isCorePack: true,
-  },
-
-  {
-    id: 28,
-    name: "Input Date Mask",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-masked-text-input",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 29,
-    name: "Input Date Text",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 30,
-    name: "Input Month Mask",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-masked-text-input",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 31,
-    name: "Input Sensitive Text",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-password",
-    isAvailable: true,
-    isCorePack: true,
-  },
+  
+  
   {
     id: 32,
     name: "Job Application Form",
@@ -302,10 +329,16 @@ const FormsHome = () => {
 
   let ComponentDetail = () => {
     switch (
-      activeTab //
+      activeTab 
     ) {
       case 1:
         return <CheckBoxSet />;
+      case 111:
+         return <CheckBoxCorePack />;  
+      case 112:
+        return <CheckBoxSetCorePack />;  
+      case 113:
+        return <RichCheckBoxsetCorePack />;  
       case 2:
         return <ColorPalette />;
       case 3:
