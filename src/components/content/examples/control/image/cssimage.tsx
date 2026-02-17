@@ -11,7 +11,7 @@ const CSSImage = () => {
         role="img"
         class="demo-bulletlist-bg"
         title="background image"
-        alt="background image" // a role of img requires an alt attribute
+        aria-label="background image" // a role of img requires an alt attribute
       ></div>
 
       <hr />
@@ -21,7 +21,7 @@ const CSSImage = () => {
         role="img"
         class="oj-icon bulletlist"
         title="bulleted list image"
-        alt="background image" // a role of img requires an alt attribute
+        aria-label="background image" // a role of img requires an alt attribute
       ></div>
 
       <hr />
@@ -33,7 +33,7 @@ const CSSImage = () => {
         role="img"
         class="oj-icon bulletlist-hc"
         title="bulleted list image"
-        alt="bulleted list image" // a role of img requires an alt attribute
+        aria-label="bulleted list image" // a role of img requires an alt attribute
       ></div>
 
       <hr />
@@ -46,7 +46,7 @@ const CSSImage = () => {
         role="img"
         class="oj-icon bulletlist-hc-font"
         title="bulleted list image"
-        alt="bulleted list image" // a role of img requires an alt attribute
+        aria-label="bulleted list image" // a role of img requires an alt attribute
       ></div>
     </>
   );
