@@ -10,6 +10,8 @@ import { ojInputNumber } from "ojs/ojinputnumber"
 import AsyncNumberRangeValidator = require("ojs/ojasyncvalidator-numberrange")
 import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
 import 'ojs/ojconverterutils-i18n';
+import 'oj-c/input-date-picker';
+import {CInputDatePickerElement} from 'oj-c/input-date-picker';
 type Props = {
     minPage: number,
     maxPage: number,
@@ -23,6 +25,7 @@ export const Test5 = (props: Props) => {
 
     const [page, setPage] = useState<number>(props.minPage);
     const [timeVal, setTimeVal] = useState();
+    const [dtValue, setDtValue] = useState<string | null>(null);
     const [inputVal, setInputVal] = useState<string>();
     const inputRef = useRef(null);
 
@@ -72,6 +75,11 @@ export const Test5 = (props: Props) => {
                 <oj-c-input-text labelHint={"Testing CorePack"} value={inputVal}></oj-c-input-text>
                 <oj-input-text labelHint={"Testing Legacy"} value={inputVal}></oj-input-text>
                 <oj-input-time value={timeVal} labelHint="Enter start time" converter={timeConverter}></oj-input-time>
+                <oj-c-input-date-picker
+                    value={dtValue ?? undefined}
+                    onvalueChanged={(e: CInputDatePickerElement.valueChanged) => setDtValue(e.detail.value ?? null)}
+                    style="width: 100%"
+                />
                 <oj-button onojAction={updateinputVal}>Update Input Value</oj-button>
             </oj-form-layout>
         </>

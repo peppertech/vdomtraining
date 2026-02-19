@@ -8,6 +8,7 @@ import "oj-c/button";
 import "oj-c/form-layout";
 import "oj-c/checkboxset";
 import "oj-c/input-password";
+import "oj-c/labelled-link";
 import "ojs/ojactioncard";
 import { ojInputText } from "ojs/ojinputtext";
 
@@ -57,6 +58,14 @@ export const Test1 = (props: Props) => {
       <oj-input-text labelHint={myLabel}></oj-input-text>
       <oj-c-input-text labelHint="username" autocomplete="on"></oj-c-input-text>
       <oj-action-card >{myLabel}</oj-action-card>
+      <oj-c-form-layout>
+        <oj-c-labelled-link
+          containerReadonly={false}
+          labelHint="Testing"
+          href={'mailto:john.brock@oracle.com'}
+          text={'john.brock@oracle.com'}>
+        </oj-c-labelled-link>
+      </oj-c-form-layout>
       <oj-c-form-layout labelEdge="start" readonly>
         <oj-c-input-text labelHint="Testing" onvalueChanged={testingHandler}></oj-c-input-text>
         <oj-c-input-number labelHint="Test number" onvalueChanged={testingHandler}></oj-c-input-number>

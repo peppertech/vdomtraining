@@ -4,10 +4,34 @@ import "ojs/ojlabel";
 import "oj-c/collapsible"
 import "preact";
 
+const loaded = [
+  {
+    id: "1",
+    label: "Charge Missing Modifier - 1",
+    description: "Documentation supports"
+  },
+  {
+    id: "2",
+    label: "Charge Missing Modifier - 2",
+    description: "Documentation supports"
+  },
+  {
+    id: "3",
+    label: "Charge Missing Modifier - 3",
+    description: "Documentation supports"
+  },
+  {
+    id: "4",
+    label: "Charge Missing Modifier - 4",
+    description: "Documentation supports"
+  }
+]
+
+
 export const Accordion = () => {
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
-      <oj-accordion id="a1">
+      {/* <oj-accordion id="a1">
         <oj-collapsible id="c1">
           <h3 slot="header">
             <span class="oj-ux-ico-cart oj-ux-icon-size-5x oj-sm-padding-2x-end"></span>
@@ -48,7 +72,16 @@ export const Accordion = () => {
       <oj-c-collapsible iconPosition="end">
         <h2 id="h22" slot="header" class="oj-typography-heading-sm">Header two</h2>
         <p id="p1">I'm a Collapsible with h2 header</p>
-      </oj-c-collapsible>
+      </oj-c-collapsible> */}
+      <oj-accordion id="groups" multiple={false}>
+        {loaded.map((group) => (
+          <oj-collapsible key={group.id} id={group.id}>
+            <div slot="header">{group.label}</div>
+            <p>{group.description}</p>
+          </oj-collapsible>
+        ))}
+      </oj-accordion>
+
     </div>
   );
 };

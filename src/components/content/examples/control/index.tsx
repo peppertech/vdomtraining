@@ -20,11 +20,14 @@ import ProgressCircle from "./progress/progresscircle";
 import { MasonryItem, MasonryLayout } from "../navlayout/masonry";
 import { Counter } from "./counter";
 import { CMessageToast } from "./message/message-toast-corepack";
+import { Test1 } from "./test1";
+import { Test2 } from "./test2";
 
 const Control = () => {
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
-      <CMessageToast/>
+      <Test2 orderType="prescription" encounterType="normal" />
+      {/* <CMessageToast/>
       <MasonryLayout>
         <MasonryItem sizeClass="oj-masonrylayout-tile-2x2">
           <h2 class="oj-typography-heading-sm">Avatar</h2>
@@ -107,7 +110,7 @@ const Control = () => {
           <h2 class="oj-typography-heading-sm">Linear Train</h2>
           <Train />
         </MasonryItem>
-      </MasonryLayout>
+      </MasonryLayout> */}
       {/* <Counter initialCount={0}/> */}
     </div>
   );

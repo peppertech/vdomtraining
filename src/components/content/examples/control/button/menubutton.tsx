@@ -2,6 +2,22 @@ import "preact";
 import "ojs/ojmenu";
 import "ojs/ojbutton";
 import { MenuButtonElement } from "ojs/ojbutton";
+import 'oj-c/menu-button';
+import {MenuItems} from 'oj-c/menu-button';
+
+type MenuItem = {
+  label:string
+  key:string
+}
+
+const actionItems: MenuItems[] = [
+    {
+        label: 'new',
+        key: 'new',
+    },
+];
+
+
 
 const MenuButton = () => {
   const menuItems = [
@@ -26,6 +42,8 @@ const MenuButton = () => {
   };
 
   return (
+    <>
+    <oj-c-menu-button items={actionItems}/>
     <oj-menu-button id="menuButton1">
       Action
       <oj-menu id="myMenu1" slot="menu" onojMenuAction={handleMenuSelection}>
@@ -37,6 +55,7 @@ const MenuButton = () => {
         ))}
       </oj-menu>
     </oj-menu-button>
+    </>
   );
 };
 

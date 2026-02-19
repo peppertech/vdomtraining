@@ -1,0 +1,30 @@
+/* This file is where css selectors for the component go.
+   There will be hard coded properties and properties controlled by variables, for example
+
+   my-test .my-test-value-text {
+   color: var(--my-test-value-text-color);
+   display: inline-block;
+	 }
+*/
+
+my-test:not(.oj-complete){
+  visibility: hidden;
+}
+
+.test-image {
+  background-image: url('./resources/images/test.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 50px;
+}
+
+my-test{
+	min-height: 50px;
+	width: 50px;
+}
+
+my-test[hidden]
+{
+  display: none;
+}

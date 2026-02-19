@@ -7,15 +7,17 @@ import DataGrid from "./datagrid";
 import CardView from "./cardview";
 import { RowExpanderTable } from "./rowexpander-table";
 import { Content } from "./test1";
-import  ListViewTest1 from "./listviewTest1";
-import  {ListViewTest2} from "./listviewTest2";
+import ListViewTest1 from "./listviewTest1";
+import { ListViewTest2 } from "./listviewTest2";
 import "preact";
+import { ListViewTest3 } from "./listviewTest3";
+import DataGridContextMenu from "./datagrid-context-menu"
 
 const Collection = () => {
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
       <div class="oj-flex oj-sm-flex-items-1">
-        <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-xl">
+        {/* <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-xl">
           <h2 class="oj-typography-heading-sm"> Table </h2>
           <Table />
         </div>
@@ -46,8 +48,12 @@ const Collection = () => {
         <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-xl">
           <h2 class="oj-typography-heading-sm"> Card View </h2>
           <CardView />
+        </div> */}
+        {/* <ListViewTest1 level={{id:"test"}} handleAdd={()=>{}}/> */}
+        <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-x5">
+          <h2 class="oj-typography-heading-sm"> Data Grid with Context Menu </h2>
+          <DataGridContextMenu></DataGridContextMenu>
         </div>
-        <ListViewTest2/>
       </div>
     </div>
   );

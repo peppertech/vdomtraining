@@ -7,6 +7,7 @@ import { Popup } from "./popup";
 import "preact";
 import { useState, useRef } from "preact/hooks";
 import "ojs/ojbutton";
+import "oj-c/button";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
 import "ojs/ojdrawerlayout";
@@ -82,6 +83,8 @@ const NavLayout = () => {
       setIsColumnsSelectionViewOpen(false);
     }
   }
+
+  const testing = () => {}
   return (
     <div class="oj-web-applayout-content">
       <oj-button
@@ -142,7 +145,10 @@ const NavLayout = () => {
             >
               <span slot="startIcon" class="oj-ux-ico-close"></span>
               Close
-            </oj-button>
+            </oj-button>          <oj-c-button id="editRecommendationButton" display="icons" label="Edit Recommendation"
+            size="sm" chroming="borderless" onojAction={testing}>
+            <span className="oj-ux-ico-edit-inline-s" slot="startIcon"></span>
+          </oj-c-button>
           </div>
           <div class="demo-padding demo-form-container oj-typography-body-md">
             <p>Add any kind of content that you like in here.</p>

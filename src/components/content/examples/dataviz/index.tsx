@@ -1,8 +1,11 @@
 import Chart from "./chart";
 import { DrillChart } from "./chart-drill";
+import GanttOverview from "./gantt-overview";
 import Legend from "./legend";
+import MeterCircle from "./meter-circle";
 import RatingGaugeComp from "./rating-gauge";
 import "preact";
+import { LSChart } from "./test1";
 
 const DataViz = () => {
   return (
@@ -22,7 +25,15 @@ const DataViz = () => {
         </div>
         <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-md">
           <h2 class="oj-typography-heading-sm"> Rating Gauge (CorePack) </h2>
-          <RatingGaugeComp />
+          <RatingGaugeComp/>
+        </div>
+        <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-md">
+          <h2 class="oj-typography-heading-sm"> Rating Gauge (CorePack) </h2>
+          <MeterCircle cpuCores={8} metricName="Testing" />
+        </div>
+        <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-md">
+          <h2 class="oj-typography-heading-sm"> Gantt </h2>
+          <GanttOverview />
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@
 module.exports = function (configObj) {
   return new Promise((resolve, reject) => {
     console.log("Running before_build hook.");
+    if(configObj.buildType === "dev") console.log(`Build type: ${configObj.buildType} | Env Proxy: ${process.env.PROXY}`)
     resolve(configObj);
   });
 };

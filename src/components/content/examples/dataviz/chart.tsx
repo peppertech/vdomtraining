@@ -1,8 +1,10 @@
-import { h, ComponentProps } from "preact";
+import { ComponentProps } from "preact";
 import "ojs/ojchart";
 import { ojChart } from "ojs/ojchart";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import * as data from "text!./data/basicData.json";
+import data from "text!./data/basicData.json";
+// import * as data from "text!./data/basicData.json";
+import { useCallback } from "preact/hooks";
 
 type chartItem = {
   id: number;
@@ -18,6 +20,7 @@ const xaxisConfig: ChartProps["xAxis"] = {
 
 const dataProvider: MutableArrayDataProvider<chartItem["id"], chartItem> =
   new MutableArrayDataProvider(JSON.parse(data), {
+  // new MutableArrayDataProvider(JSON.parse(data), {
     keyAttributes: "id",
   });
 
@@ -31,6 +34,10 @@ const renderChartItem = (
       seriesId={item.data.series}></oj-chart-item>
   );
 };
+
+const selectionChangedHandler = (item:any)=>{
+  console.log("I'm in the selection changed event handler: ", item.detail.selectionData[0].itemData)
+}
 
 const Chart = () => {
   return (
@@ -47,6 +54,8 @@ const Chart = () => {
         hoverBehavior="dim"
         hideAndShowBehavior="withRescale"
         xAxis={xaxisConfig}
+        selectionMode="single"
+        onselectionChanged={selectionChangedHandler}
         class="chart-sizing">
         <template slot="itemTemplate" render={renderChartItem}></template>
       </oj-chart>

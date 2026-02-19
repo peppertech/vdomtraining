@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "description": "Oracle JET sample app for Virtual DOM (VDOM) architecture",
   "dependencies": {
-    "@oracle/oraclejet": "~18.1.0",
-    "@oracle/oraclejet-audit": "~18.1.0",
-    "@oracle/oraclejet-core-pack": "~18.1.0",
-    "@oracle/oraclejet-preact": "~18.1.0"
+    "@oracle/oraclejet": "~20.0.0",
+    "@oracle/oraclejet-core-pack": "~20.0.0",
+    "moment": "^2.30.1"
   },
   "devDependencies": {
-    "@oracle/ojet-cli": "~18.1.0",
+    "@oracle/ojet-cli": "~20.0.0",
+    "@preact/preset-vite": "^2.10.2",
     "@prefresh/babel-plugin": "0.5.1",
     "@prefresh/webpack": "4.0.2",
-    "@types/node": "18.16.3",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/preact": "^3.2.4",
+    "@vitest/browser": "^3.2.4",
     "clean-webpack-plugin": "4.0.0",
     "compression-webpack-plugin": "11.1.0",
     "copy-webpack-plugin": "13.0.0",
@@ -25,13 +27,15 @@
     "html-webpack-plugin": "5.6.3",
     "mini-css-extract-plugin": "2.9.2",
     "noop-loader": "1.0.0",
+    "playwright": "^1.56.0",
     "raw-loader": "4.0.2",
     "sass": "1.86.3",
     "sass-loader": "16.0.5",
     "style-loader": "4.0.0",
     "ts-loader": "8.4.0",
-    "typescript": "5.7.2",
+    "typescript": "5.8.3",
     "underscore": "^1.10.2",
+    "vitest-browser-preact": "^0.1.2",
     "webpack": "5.76.0",
     "webpack-dev-server": "5.2.1",
     "webpack-merge": "6.0.1",
@@ -40,5 +44,8 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "private": true
+  "private": true,
+  "scripts": {
+    "test:browser": "vitest"
+  }
 }

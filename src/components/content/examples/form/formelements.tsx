@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "preact/hooks";
 import * as NumberConverter from "ojs/ojconverter-number";
 import * as ConverterUtilsI18n from "ojs/ojconverterutils-i18n";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
 import "ojs/ojbutton";
 import "ojs/ojcheckboxset";
 import "ojs/ojformlayout";
@@ -12,15 +13,12 @@ import "ojs/ojselectsingle";
 import "ojs/ojdialog";
 import "oj-c/radioset"
 import "ojs/ojtreeview"
-import * as peopleData from "text!./data/peopleData.json";
+import "ojs/ojvalidationgroup";
+import peopleData from "text!./data/peopleData.json";
 import { ojButton } from "ojs/ojbutton";
 import { ojDialog } from "ojs/ojdialog";
 import { ojCheckboxset } from "ojs/ojcheckboxset";
-import { ojInputText } from "ojs/ojinputtext";
-import { ojInputDate } from "ojs/ojdatetimepicker";
-import { ojSelectSingle } from "ojs/ojselectsingle";
-import ArrayTreeDataProvider = require("ojs/ojarraytreedataprovider");
-import * as Logger from "ojs/ojlogger";
+import { ojValidationGroup } from "ojs/ojvalidationgroup";
 
 const buyers: Array<object> = [];
 
@@ -73,15 +71,14 @@ const FormElements = () => {
     itemCost: value,
     salesDate: valDateTime,
   });
-  useEffect(()=>{
-    Logger.option("level",  Logger.LEVEL_WARN);
-    Logger.warn("Testing if this works");
-  },[])
+  
   const [isDisabled, setIsDisabled] = useState(true);
+  const [newState, setNewState] = useState(false);
   const [density, setDensity] =
     useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
   const dialogRef = useRef<ojDialog>(null);
+  const valGroupRef = useRef<ojValidationGroup>(null);
 
   const currentColor = "red";
   const colorOptions = [
@@ -101,6 +98,8 @@ const FormElements = () => {
 
   const onSubmit = (event: ojButton.ojAction) => {
     event.preventDefault();
+    const valid = _checkValidationGroup();
+    if (!valid) return;
     dialogRef.current!.open();
     console.log("formData: " + JSON.stringify(formData));
   };
@@ -114,10 +113,12 @@ const FormElements = () => {
   ) => {
     event.detail.value!.length < 1 ? setIsDisabled(true) : setIsDisabled(false);
   };
-  const dataProvider = new ArrayTreeDataProvider([
+  const dataProvider = new MutableArrayTreeDataProvider([
     { title: 1, id: 1 },
     { title: 2, id: 2 }
-  ], { keyAttributes: 'id' });
+  ], 'id', {
+    keyAttributeScope: 'global'
+  });
 
 
   const renderItems = (item: any) => {
@@ -131,98 +132,111 @@ const FormElements = () => {
     );
   }
 
-
+  const addField = () => { setNewState(true) };
+  const _checkValidationGroup = () => {
+    const tracker = valGroupRef.current;
+    if (tracker?.valid === 'valid') {
+      return true;
+    } else {
+      // show messages on all the components
+      // that have messages hidden.
+      tracker?.showMessages();
+      tracker?.focusOn('@firstInvalidShown');
+      return false;
+    }
+  }
   return (
     <div>
-      <oj-form-layout
-        userAssistanceDensity={density}
-        labelEdge="inside"
-        columns={1}
-        class="oj-md-margin-4x-horizontal">
-        <oj-input-text
-          id="itemName"
-          value={formData.itemName}
-          labelHint="Name"
-          onvalueChanged={onChange}>
-          <span
-            slot="end"
-            class="oj-text-field-start-end-icon oj-ux-ico-coffee oj-sm-margin-4x-end"
-            role="presentation"></span>
-        </oj-input-text>
-        <oj-input-text
-          id="itemCost"
-          value={formData.itemCost}
-          placeholder={placeholder}
-          labelHint={lblHint}
-          helpHints={hintDefinition}
-          onvalueChanged={onChange}
-          converter={eurNumberConverter}></oj-input-text>
-        <oj-input-date-time
-          id="salesDate"
-          value={formData.salesDate}
-          labelHint="Purchase date"
-          onvalueChanged={onChange}></oj-input-date-time>
-        <oj-select-single
-          id="itemBuyer"
-          labelHint="Buyer"
-          data={buyerData}
-          value={formData.itemBuyer}
-          onvalueChanged={onChange}></oj-select-single>
-        <oj-checkboxset
-          id="checkboxSetAgreeId"
-          labelHint="Everything is correct?"
+      <oj-validation-group id="tracker" ref={valGroupRef}>
+        <oj-form-layout
+          userAssistanceDensity={density}
           labelEdge="inside"
-          onvalueChanged={handleAgreement}>
-          <oj-option value={"agree"}>I Agree</oj-option>
-        </oj-checkboxset>
-        <oj-c-radioset
-          id="radiosetBasicDemoId"
-          label-hint="Colors"
-          label-edge="inside"
-          options={colorOptions}
-          value={currentColor}>
-        </oj-c-radioset>
-        <oj-button onojAction={onSubmit} disabled={isDisabled}>
-          Send this stuff
-        </oj-button>
-      </oj-form-layout>
-      <oj-dialog ref={dialogRef} dialogTitle="Form Data Submitted">
-        <div slot="body">
-          <oj-form-layout id="desc">
-            <oj-input-text
-              id="finalName"
-              readonly
-              value={formData.itemName}
-              labelHint="Name"></oj-input-text>
-            <oj-input-text
-              id="finalPrice"
-              readonly
-              value={formData.itemCost}
-              labelHint="Price"
-              converter={eurNumberConverter}></oj-input-text>
-            <oj-input-date-time
-              id="salesDate"
-              value={formData.salesDate}
-              labelHint="Purchase date"
-              readonly></oj-input-date-time>
-          </oj-form-layout>
-        </div>
-        <div slot="footer">
-          <oj-button id="okButton" onojAction={close}>
-            OK
+          columns={1}
+          class="oj-md-margin-4x-horizontal">
+          <oj-input-text
+            id="itemName"
+            value={formData.itemName}
+            labelHint="Name"
+            onvalueChanged={onChange}>
+            <span
+              slot="end"
+              class="oj-text-field-start-end-icon oj-ux-ico-coffee oj-sm-margin-4x-end"
+              role="presentation"></span>
+          </oj-input-text>
+          <div style="margin-top:-14">
+            {newState && (
+              <oj-input-text required labelHint="Testing"></oj-input-text>
+            )}
+          </div>
+          <oj-input-text
+            id="itemCost"
+            value={formData.itemCost}
+            placeholder={placeholder}
+            labelHint={lblHint}
+            helpHints={hintDefinition}
+            required
+            onvalueChanged={onChange}
+            converter={eurNumberConverter}></oj-input-text>
+          <oj-input-date-time
+            id="salesDate"
+            value={formData.salesDate}
+            labelHint="Purchase date"
+            onvalueChanged={onChange}></oj-input-date-time>
+          <oj-select-single
+            id="itemBuyer"
+            labelHint="Buyer"
+            data={buyerData}
+            value={formData.itemBuyer}
+            onvalueChanged={onChange}></oj-select-single>
+          <oj-checkboxset
+            id="checkboxSetAgreeId"
+            labelHint="Everything is correct?"
+            labelEdge="inside"
+            onvalueChanged={handleAgreement}>
+            <oj-option value={"agree"}>I Agree</oj-option>
+          </oj-checkboxset>
+          <oj-c-radioset
+            id="radiosetBasicDemoId"
+            label-hint="Colors"
+            label-edge="inside"
+            options={colorOptions}
+            value={currentColor}>
+          </oj-c-radioset>
+          <oj-button onojAction={onSubmit} disabled={isDisabled}>
+            Send this stuff
           </oj-button>
-        </div>
-      </oj-dialog>
-
-      <oj-tree-view
-        id="treeview"
-        data={dataProvider}
-        selectionMode="multiple"
-        aria-label="Tree View with JSON Data">
-        <template slot="itemTemplate" render={renderItems}>
-        </template>
-      </oj-tree-view>
-
+          <oj-button onojAction={addField} disabled={isDisabled}>
+            Add a field
+          </oj-button>
+        </oj-form-layout>
+        <oj-dialog ref={dialogRef} dialogTitle="Form Data Submitted">
+          <div slot="body">
+            <oj-form-layout id="desc">
+              <oj-input-text
+                id="finalName"
+                readonly
+                value={formData.itemName}
+                labelHint="Name"></oj-input-text>
+              <oj-input-text
+                id="finalPrice"
+                readonly
+                value={formData.itemCost}
+                labelHint="Price"
+                converter={eurNumberConverter}></oj-input-text>
+              <oj-input-date-time
+                id="salesDate"
+                value={formData.salesDate}
+                labelHint="Purchase date"
+                readonly></oj-input-date-time>
+            </oj-form-layout>
+          </div>
+          <div slot="footer">
+            <oj-button id="okButton" onojAction={close}>
+              OK
+            </oj-button>
+          </div>
+        </oj-dialog>
+      </oj-validation-group>
     </div>
   );
 };
