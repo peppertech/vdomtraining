@@ -26,7 +26,7 @@ import CheckBoxSet from "./checkBoxSet";
 import InputDate from "./inputDate";
 import InputDatePicker from "./inputDatePicker";
 import InputSearch from "./InputSearch";
-import { JobApplicationForm } from "./jobApplicationForm";
+import { JobApplicationForm } from './jobApplicationform'
 import { InputPasswordCorePack } from "./inputPasswordCorePack";
 import { FormLayoutCorePack } from "./formLayoutCorePack";
 import { SelectMany } from "./selectMany";
