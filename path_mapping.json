@@ -486,6 +486,5 @@
         "path": "libs/router/router.umd.min.js"
       }
     }
-  },
-  "baseUrl": "js"
+  }
 }
