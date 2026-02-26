@@ -12,7 +12,7 @@ import Toolbar from "./toolbar";
 import Train from "./train";
 import ButtonSetMany from "./button/buttonsetmany";
 import ButtonSetOne from "./button/buttonsetone";
-import MenuButton from "./button/menubutton";
+import MenuButton2 from "./button/menubutton";
 import CSSImage from "./image/cssimage";
 import IconFont from "./image/iconfont";
 import MenuSelectMany from "./menu/menuselectmany";
@@ -26,7 +26,8 @@ import { Test2 } from "./test2";
 const Control = () => {
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
-      <Test2 orderType="prescription" encounterType="normal" />
+      <div><MenuButton2 /></div>
+      {/* <Test2 orderType="prescription" encounterType="normal" /> */}
       {/* <CMessageToast/>
       <MasonryLayout>
         <MasonryItem sizeClass="oj-masonrylayout-tile-2x2">
