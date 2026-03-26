@@ -99,7 +99,7 @@ const CheckBoxSet = () => {
   
       </oj-form-layout>
 
-    <oj-form-layout  maxColumns={1}direction="row">
+       <oj-form-layout  maxColumns={1}direction="row">
         <oj-checkboxset
          onvalueChanged={onCheckBoxSelectionChange}
           labelHint="Exclude Selected Encounter Classes"
@@ -151,9 +151,9 @@ const CheckBoxSet = () => {
                 <oj-option value="tablet">Tablet</oj-option>
               </oj-checkboxset>
 
-            </oj-form-layout>
-            <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom"> Required &amp; Help</h5>
-            <oj-form-layout maxColumns={3} direction="row">
+       </oj-form-layout>
+       <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom"> Required &amp; Help</h5>
+       <oj-form-layout maxColumns={3} direction="row">
               <oj-checkboxset required labelHint="Label for Required Checkboxset">
                 <oj-option value="desktop">Desktop</oj-option>
                 <oj-option value="laptop">Laptop</oj-option>
@@ -180,10 +180,10 @@ const CheckBoxSet = () => {
                 <oj-option value="laptop">Laptop</oj-option>
                 <oj-option value="tablet">Tablet</oj-option>
               </oj-checkboxset>
-            </oj-form-layout>
+       </oj-form-layout>
 
-            <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom"> Messages</h5>
-            <oj-form-layout maxColumns={3} direction="row">
+        <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom"> Messages</h5>
+        <oj-form-layout maxColumns={3} direction="row">
               <oj-checkboxset messagesCustom={error} value={["laptop","tablet"]} labelHint="Error">
                 <oj-option value="desktop">Desktop</oj-option>
                 <oj-option value="laptop">Laptop</oj-option>
@@ -204,10 +204,10 @@ const CheckBoxSet = () => {
                 <oj-option value="laptop">Laptop</oj-option>
                 <oj-option value="tablet">Tablet</oj-option>
               </oj-checkboxset>
-            </oj-form-layout>
+        </oj-form-layout>
 
-            <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom">Wrapping</h5>
-            <oj-form-layout class="oj-sm-padding-2x-horizontal demo-form-layout oj-form-layout oj-complete oj-formlayout-max-cols-1">
+        <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom">Wrapping</h5>
+        <oj-form-layout class="oj-sm-padding-2x-horizontal demo-form-layout oj-form-layout oj-complete oj-formlayout-max-cols-1">
               <oj-checkboxset labelHint="Direction Column" value={["laptop","tablet"]}>
                 <oj-option value="desktop">Desktop</oj-option>
                 <oj-option value="laptop">Laptop</oj-option>
@@ -225,7 +225,7 @@ const CheckBoxSet = () => {
                 <oj-option value="phone">Phone</oj-option>
               </oj-checkboxset>
 
-            </oj-form-layout>
+        </oj-form-layout>
     </div>
   );
 };

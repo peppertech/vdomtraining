@@ -10,7 +10,7 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import "ojs/ojactioncard";
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import SelectSingle from "./selectSingle";
-import InputText from "./inputText";
+import InputText from "./inputTextLegacy";
 import FormElements from "./formelements";
 import { ButtonElement } from "ojs/ojbutton";
 import "ojs/ojbutton";
@@ -26,7 +26,7 @@ import CheckBoxSet from "./checkBoxSet";
 import InputDate from "./inputDate";
 import InputDatePicker from "./inputDatePicker";
 import InputSearch from "./InputSearch";
-import { JobApplicationForm } from './jobApplicationform'
+import { JobApplicationForm } from './jobApplicationFormExample'
 import { InputPasswordCorePack } from "./inputPasswordCorePack";
 import { FormLayoutCorePack } from "./formLayoutCorePack";
 import { SelectMany } from "./selectMany";

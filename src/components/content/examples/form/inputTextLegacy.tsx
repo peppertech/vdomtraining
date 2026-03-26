@@ -9,6 +9,7 @@ import "ojs/ojdatetimepicker";
 import "ojs/ojbutton";
 import * as customMessages from "../form/data/messages";
 
+//component props types
 type InputTextProps = ComponentProps<"oj-input-text">;
 type FormLayoutProps = ComponentProps<"oj-form-layout">;
 
@@ -59,9 +60,7 @@ const InputText = () => {
   const [density, setDensity] =
     useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
-  const onValueChange = (event: any) => {
-    console.log(customMessages);
-    console.log(currentRawValue);
+  const onValueChange = (event: any) => { 
     setFormData({
       ...formData,
       itemCost: event.detail.value,
@@ -72,12 +71,10 @@ const InputText = () => {
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
-      <h6 class="oj-typography-heading-sm"> States inside oj-form-layout </h6>
+    <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom"> States </h5>
       <oj-form-layout
         userAssistanceDensity={density}
         columns={3}
-        labelEdge="top"
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         direction="row"
       >
@@ -124,12 +121,10 @@ const InputText = () => {
           </oj-button>
         </div>
       </oj-form-layout>
-      <h6 class="oj-typography-heading-sm"> Start and End Slots </h6>
+      <h5 class="oj-typography-heading-sm"> Start and End Slots </h5>
       <oj-form-layout
         userAssistanceDensity={density}
         columns={2}
-        labelEdge="inside"
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         direction="row"
       >
@@ -147,7 +142,7 @@ const InputText = () => {
         <oj-input-text
           id="itemName2"
           value={formData.emailVal}
-          labelHint="Input text - using slots KK"
+          labelHint="Input text - using slots for icons"
           //readonly={true}
         >
           <span
@@ -157,12 +152,10 @@ const InputText = () => {
           ></span>
         </oj-input-text>
       </oj-form-layout>
-      <h6 class="oj-typography-heading-sm"> Help </h6>
+      <h5 class="oj-typography-heading-sm"> Help </h5>
       <oj-form-layout
         userAssistanceDensity={density}
-        columns={2}
-        labelEdge="inside"
-        class="oj-md-margin-4x-horizontal"
+        columns={3}
         maxColumns={3}
         direction="row"
       >
@@ -180,14 +173,12 @@ const InputText = () => {
         ></oj-input-text>
       </oj-form-layout>
       {/* <span>The selected value is: {formData.itemName} </span> */}
-      <h6 class="oj-typography-heading-sm">
+      <h5 class="oj-typography-heading-sm">
         Required, Clear Icon, Placeholder & Max Length{" "}
-      </h6>
+      </h5>
       <oj-form-layout
         userAssistanceDensity={density}
         columns={3}
-        labelEdge="inside"
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         direction="row"
       >
@@ -216,12 +207,10 @@ const InputText = () => {
           labelHint="Input text with max length, raw value"
         ></oj-input-text>
       </oj-form-layout>
-      <h6 class="oj-typography-heading-sm">Messages </h6>
+      <h5 class="oj-typography-heading-sm">Messages </h5>
       <oj-form-layout
         userAssistanceDensity={density}
         columns={3}
-        labelEdge="inside"
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         direction="row"
       >

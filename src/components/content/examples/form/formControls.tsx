@@ -7,7 +7,7 @@ import FormElements from "./formelements";
 import SelectSingle from "./selectSingle";
 import FormsHome from "./home";
 import ComboboxOne from "./comboBoxOne";
-import InputText from "./inputText";
+import InputText from "./inputTextLegacy";
 import ComboBoxOne from "./comboBoxOne";
 
 type Tab = {

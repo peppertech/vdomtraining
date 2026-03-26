@@ -22,6 +22,7 @@ import 'ojs/ojselectcombobox';
 import 'ojs/ojselectsingle';
 import 'ojs/ojformlayout';
 
+// Define the structure of our form data
 interface Datatype {
   firstname: string;
   lastname: string;
@@ -248,7 +249,7 @@ export const JobApplicationForm = () => {
 
   return (
     <div class="oj-sm-padding-4x">
-      <h3 class="oj-typography-heading-sm">Job Application Form</h3>
+      <h3 class="oj-typography-heading-sm">Job Application - Example Form </h3>
 
       <div class="oj-sm-margin-bottom-2x">
         <oj-button onojAction={() => setFormState('editable')}>Editable</oj-button>

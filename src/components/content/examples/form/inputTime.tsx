@@ -124,7 +124,6 @@ export const InputTime = () => {
       <oj-form-layout
         maxColumns={3}
         direction="row"
-        class="oj-sm-margin-4x-horizontal"
       >
         <oj-input-time labelHint="Enabled no value"></oj-input-time>
         <oj-input-time labelHint="Disabled no value" disabled></oj-input-time>

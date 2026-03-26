@@ -73,8 +73,7 @@ const InputTextCorePack = () => {
   };
 
    const onvalChange = (event: any) => {
-    //console.log(event.detail);
-    //alert(event.detail);
+    alert(event.detail);
    }
 
   return (
@@ -83,7 +82,6 @@ const InputTextCorePack = () => {
       <oj-c-form-layout
         userAssistanceDensity={density}
         columns={3}
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         labelEdge="inside"
         direction="row"
@@ -117,18 +115,19 @@ const InputTextCorePack = () => {
           value="value text"
           labelHint="readonly"
           readonly={true}
+          containerReadonly={false}
         ></oj-c-input-text>
         <oj-c-input-text
           id="ITC-6"
           labelHint="readonly no value"
           readonly={true}
+          containerReadonly={false}
         ></oj-c-input-text>
       </oj-c-form-layout>
       <h6 class="oj-typography-heading-sm"> Start and End slots</h6>
       <oj-c-form-layout
         userAssistanceDensity={density}
         columns={2}
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         labelEdge="inside"
         direction="row"
@@ -164,7 +163,6 @@ const InputTextCorePack = () => {
       <oj-c-form-layout
         userAssistanceDensity={density}
         columns={2}
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         labelEdge="inside"
         direction="row"
@@ -194,7 +192,6 @@ const InputTextCorePack = () => {
       <oj-c-form-layout
         userAssistanceDensity={density}
         columns={3}
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         labelEdge="inside"
         direction="row"
@@ -227,7 +224,6 @@ const InputTextCorePack = () => {
       <oj-c-form-layout
         userAssistanceDensity={density}
         columns={2}
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         labelEdge="inside"
         direction="row"
@@ -251,7 +247,6 @@ const InputTextCorePack = () => {
       <oj-c-form-layout
         userAssistanceDensity={density}
         columns={3}
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         labelEdge="inside"
         direction="row"

@@ -50,8 +50,6 @@ const InputNumberCorePack = () => {
       <oj-c-form-layout
         userAssistanceDensity={density}
         columns={3}
-        labelEdge="inside"
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         direction="row"
       >
@@ -137,7 +135,6 @@ const InputNumberCorePack = () => {
         userAssistanceDensity={density}
         columns={3}
         labelEdge="inside"
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         direction="row"
       >
@@ -161,7 +158,10 @@ const InputNumberCorePack = () => {
       </oj-c-form-layout>
 
       <h4 class="oj-sm-margin-4x-top">Messages</h4>
-      <oj-c-form-layout max-columns={3} direction="row" labelEdge="inside">
+      <oj-c-form-layout
+       max-columns={3} 
+       direction="row"
+       labelEdge="inside">
         <oj-c-input-number
           messagesCustom={error as any}
           value={20}
