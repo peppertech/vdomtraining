@@ -43,6 +43,7 @@ const confirmation = [
 ];
 // 'any' type is being used because method is used by multiple ..
 const InputText = () => {
+  const [edge, setEdge] = useState<InputTextProps["labelEdge"] >('none');
   const [formData, setFormData] = useState({
     itemName: "Kopi Luwak beans (2 lbs)",
     itemBuyer: "",
@@ -75,13 +76,14 @@ const InputText = () => {
       <oj-form-layout
         userAssistanceDensity={density}
         columns={3}
-        labelEdge="inside"
+        labelEdge="top"
         class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         direction="row"
       >
         <oj-input-text
           required={true}
+          labelEdge={edge}
           rawValue={currentRawValue}
           labelHint="Input text - enabled with value"
         ></oj-input-text>

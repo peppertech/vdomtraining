@@ -53,8 +53,8 @@ export const CheckBoxCorePack = () => {
   };
 
   return (
-    <div class="oj-sm-padding-2x-horizontal">
-      <h5 class="oj-sm-padding-2x-bottom">States</h5>
+  <div class="oj-web-applayout-max-width oj-web-applayout-content">
+    <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom"> States </h5>
       <oj-c-form-layout maxColumns={3} direction="row">
         <oj-c-checkbox id="enabledCheckboxOn" value={true}>
           Enabled value true

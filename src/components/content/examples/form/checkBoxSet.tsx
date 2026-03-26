@@ -72,13 +72,10 @@ const CheckBoxSet = () => {
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
-    
-      <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom"> States inside oj-form-layout</h5>
+      <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom"> States </h5>
       <oj-form-layout
         userAssistanceDensity={density}
         columns={3}
-        labelEdge="inside"
-        class="oj-md-margin-4x-horizontal"
         maxColumns={3}
         direction="row"
       >
@@ -105,7 +102,7 @@ const CheckBoxSet = () => {
     <oj-form-layout  maxColumns={1}direction="row">
         <oj-checkboxset
          onvalueChanged={onCheckBoxSelectionChange}
-          label-hint="Exclude Selected Encounter Classes"
+          labelHint="Exclude Selected Encounter Classes"
           labelEdge="inside"
           options={browsersDP}
           value={formDatas.selectedValue}
@@ -145,7 +142,7 @@ const CheckBoxSet = () => {
               <oj-checkboxset
                 value={[]}
                 class="oj-choice-direction-row"
-                label-hint="Readonly No Value Customized Text"
+                labelHint="Readonly No Value Customized Text"
                 readonly
                 //translations.readonly-no-value="Nothing selected"
                 >

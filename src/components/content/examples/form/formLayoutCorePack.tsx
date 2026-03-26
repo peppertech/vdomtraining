@@ -27,6 +27,9 @@ import 'oj-c/select-single';
 import 'oj-c/select-multiple';
 import 'oj-c/text-area';
 import 'oj-c/checkbox';
+import 'oj-c/labelled-link';
+import 'oj-c/rich-checkboxset';
+import 'oj-c/rich-radioset';
 
 // Type imports
 import { CCollapsibleElement } from 'oj-c/collapsible';
@@ -47,10 +50,40 @@ import { CTextAreaElement } from 'oj-c/text-area';
 import { CCheckboxElement } from 'oj-c/checkbox';
 
 // Data provider
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+//import { MutableArrayDataProvider } from 'ojs/ojmutablearraydataprovider';
 import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
 
+type monthMaskValueType = CInputMonthMaskElement['value'];
+type timeMaskValueType = CInputTimeMaskElement['value'];
+
+type InputTextProps = ComponentProps<"oj-c-input-text">;
+
+const hintDefinition: InputTextProps["helpHints"] = {
+  definition: "help hints definition",
+};
+//hintDefinition. helpHintSource
+const helpHintSource: InputTextProps["helpHints"] = {
+  source: "https://www.oracle.com",
+};
+
+type RadiosetArrayDataItem = {
+    value: string;
+    label: string;
+    assistiveText?: string;
+    helpSourceLink?: string;
+    helpSourceText?: string;
+  };
+
+ const setItems: RadiosetArrayDataItem[] = [
+    { value: 'blueopt', label: 'Blue' },
+    { value: 'greenopt', label: 'Green' },
+    { value: 'redopt', label: 'Red' }
+  ];
+  
+
 export const FormLayoutCorePack = () => {
+
   // Form layout control states
   const [labelEdge, setLabelEdge] = useState<string>('inside');
   const [direction, setDirection] = useState<string>('row');
@@ -66,26 +99,26 @@ export const FormLayoutCorePack = () => {
   const [formControlMessages, setFormControlMessages] = useState<string[]>([]);
   const [label, setLabel] = useState<string>('label');
   const [controlsState, setControlsState] = useState<string>('enabled');
-  const [readonlyUserAssistanceShown, setReadonlyUserAssistanceShown] = useState<string>('false');
+  const [readonlyUserAssistanceShown, setReadonlyUserAssistanceShown] = useState<string>('none');
 
   // Form field values
-  const [inputTextValue, setInputTextValue] = useState<string>('');
-  const [inputPasswordValue, setInputPasswordValue] = useState<string>('');
-  const [inputSensitiveValue, setInputSensitiveValue] = useState<string>('');
-  const [inputNumberValue, setInputNumberValue] = useState<number | null>(null);
-  const [inputDateMaskValue, setInputDateMaskValue] = useState<string>('');
-  const [inputMonthMaskValue, setInputMonthMaskValue] = useState<any>(null);
-  const [inputDateValue, setInputDateValue] = useState<string>('');
+  const [inputTextValue, setInputTextValue] = useState<string>('This is a form layout example');
+  const [inputPasswordValue, setInputPasswordValue] = useState<string>('abrakadabra');
+  const [inputSensitiveValue, setInputSensitiveValue] = useState<string>('abrakadabra');
+  const [inputNumberValue, setInputNumberValue] = useState<number | null>(10);
+  const [inputDateMaskValue, setInputDateMaskValue] = useState<string>((IntlConverterUtils.dateToLocalIsoDateString(new Date(2026, 0, 1))) || '');
+  const [inputMonthMaskValue, setInputMonthMaskValue] = useState<monthMaskValueType>({year:2026, month:3});
+  const [inputDateValue, setInputDateValue] = useState<string>('2026-03-01');
   const [inputDatePickerValue, setInputDatePickerValue] = useState<string>((IntlConverterUtils.dateToLocalIsoDateString(new Date(2026, 0, 1))) || '');
-  const [inputTimeMaskValue, setInputTimeMaskValue] = useState<string>('');
+  const [inputTimeMaskValue, setInputTimeMaskValue] = useState<timeMaskValueType>('T20:11');
   const [selectMultipleValue, setSelectMultipleValue] = useState<Set<string>>(new Set());
-  const [textareaValue3, setTextareaValue3] = useState<string>('');
-  const [textareaValue3b, setTextareaValue3b] = useState<string>('');
-  const [textareaValue3c, setTextareaValue3c] = useState<string>('');
+  const [textareaValue3, setTextareaValue3] = useState<string>('textarea is a field that has rows so that a user can see more text than an input text without needing to scroll.');
+  const [textareaValue3b, setTextareaValue3b] = useState<string>('textarea is a field that has rows so that a user can see more text than an input text without needing to scroll.');
+  const [textareaValue3c, setTextareaValue3c] = useState<string>('textarea is a field that has rows so that a user can see more text than an input text without needing to scroll.');
   const [radioValue, setRadioValue] = useState<string>('');
-  const [checkboxsetValue, setCheckboxsetValue] = useState<string[]>([]);
-  const [richRadioValue, setRichRadioValue] = useState<string>('');
-  const [richCheckboxsetValue, setRichCheckboxsetValue] = useState<string[]>([]);
+  const [checkboxsetValue, setCheckboxsetValue] = useState<string[]>(['blueopt']);
+  const [richCheckboxsetValue, setRichCheckboxsetValue] = useState<string[]>(['automotive']);
+  const [richRadiosetValue, setRichRadiosetValue] = useState<string>('communications');
   const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
 
   // Computed values
@@ -95,12 +128,12 @@ export const FormLayoutCorePack = () => {
   const readonlyFormLayout = useMemo(() => formState === 'readonly', [formState]);
   const disableFormControls = useMemo(() => formState === 'disabled', [formState]);
   const readonlyFormControls = useMemo(() => controlsState === 'readonly' || formState === 'readonly', [controlsState, formState]);
-  const required = useMemo(() => false, []); // For demo purposes
+  const required = useMemo(() => userAssistanceBooleans.includes('Required'), [userAssistanceBooleans]);
   const showValue = useMemo(() => valueLength !== 'none', [valueLength]);
-  const placeholder = useMemo(() => valueLength === 'none', [valueLength]);
+  const placeholder = useMemo(() => userAssistanceBooleans.includes('Placeholder'), [userAssistanceBooleans]);
 
   // Help hints
-  const source = useMemo(() => userAssistanceBooleans.includes('help') ? 'Help source text' : undefined, [userAssistanceBooleans]);
+  const source = useMemo(() => userAssistanceBooleans.includes('source') ? 'Help source text' : undefined, [userAssistanceBooleans]);
   const definition = useMemo(() => userAssistanceBooleans.includes('definition') ? 'Definition text' : undefined, [userAssistanceBooleans]);
   const instruction = useMemo(() => userAssistanceBooleans.includes('instruction') ? 'Instruction text' : undefined, [userAssistanceBooleans]);
 
@@ -152,14 +185,13 @@ export const FormLayoutCorePack = () => {
 
   const formStateOptionsDP = useMemo(() => new MutableArrayDataProvider([
     { value: 'enabled', label: 'Enabled' },
-    { value: 'readonly', label: 'Readonly' },
-    { value: 'disabled', label: 'Disabled' }
+    { value: 'readonly', label: 'Readonly' }
   ], { keyAttributes: 'value' }), []);
 
   const userAssistanceDensityOptionsDP = useMemo(() => new MutableArrayDataProvider([
     { value: 'compact', label: 'Compact' },
     { value: 'efficient', label: 'Efficient' },
-    { value: 'spacious', label: 'Spacious' }
+    { value: 'reflow', label: 'Reflow' }
   ], { keyAttributes: 'value' }), []);
 
   const fullWidthOptionsDP = useMemo(() => new MutableArrayDataProvider([
@@ -174,9 +206,11 @@ export const FormLayoutCorePack = () => {
   ], { keyAttributes: 'value' }), []);
 
   const userAssistanceOptionsDP = useMemo(() => new MutableArrayDataProvider([
-    { value: 'help', label: 'Help' },
-    { value: 'definition', label: 'Definition' },
-    { value: 'instruction', label: 'Instruction' }
+    { value: 'Placeholder', label: 'Placeholder' },
+    { value: 'Required', label: 'Required' },
+    { value: 'definition', label: 'help-hints.definition' },
+    { value: 'source', label: 'help-hints.source' },
+    { value: 'instruction', label: 'help.instruction' }
   ], { keyAttributes: 'value' }), []);
 
   const formControlMessagesOptionsDP = useMemo(() => new MutableArrayDataProvider([
@@ -187,8 +221,8 @@ export const FormLayoutCorePack = () => {
   ], { keyAttributes: 'value' }), []);
 
   const labelOptionsDP = useMemo(() => new MutableArrayDataProvider([
-    { value: 'label', label: 'Label' },
-    { value: 'noLabel', label: 'No Label' }
+    { value: 'short', label: 'Short' },
+    { value: 'long', label: 'Long' }
   ], { keyAttributes: 'value' }), []);
 
   const controlsStateOptionsDP = useMemo(() => new MutableArrayDataProvider([
@@ -198,8 +232,8 @@ export const FormLayoutCorePack = () => {
   ], { keyAttributes: 'value' }), []);
 
   const readonlyUserAssistanceShownOptionsDP = useMemo(() => new MutableArrayDataProvider([
-    { value: 'true', label: 'True' },
-    { value: 'false', label: 'False' }
+    { value: 'confirmationAndInfoMessages', label: 'confirmationAndInfoMessages' },
+    { value: 'none', label: 'None' }
   ], { keyAttributes: 'value' }), []);
 
   const browsersDP = useMemo(() => new MutableArrayDataProvider([
@@ -210,13 +244,31 @@ export const FormLayoutCorePack = () => {
   ], { keyAttributes: 'value' }), []);
 
   const optionsDP = useMemo(() => new MutableArrayDataProvider([
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' }
+    { value: 'blueopt', label: 'Blue' },
+    { value: 'greenopt', label: 'Green' },
+    { value: 'redopt', label: 'Red' }
   ], { keyAttributes: 'value' }), []);
 
+  const richOptions = useMemo(() => [
+    {
+      value: 'automotive',
+      label: 'Automotive',
+      secondaryText: 'Industry category for automotive solutions'
+    },
+    {
+      value: 'communications',
+      label: 'Communications',
+      secondaryText: 'Industry category for communication products'
+    },
+    {
+      value: 'construction',
+      label: 'Construction',
+      secondaryText: 'Industry category for construction services'
+    }
+  ], []);
+
   // Computed readonly user assistance shown
-  const readonlyUserAssistanceShownBool = useMemo(() => readonlyUserAssistanceShown === 'true', [readonlyUserAssistanceShown]);
+  const readonlyUserAssistanceShownBool = useMemo(() => readonlyUserAssistanceShown === 'confirmationAndInfoMessages' ? 'confirmationAndInfoMessages' : 'none', [readonlyUserAssistanceShown]);
 
   // Computed disabled state for controls
   const formControlDisabledState = useMemo(() => formState === 'disabled' ? 'yes' : 'no', [formState]);
@@ -238,6 +290,9 @@ export const FormLayoutCorePack = () => {
   const labelHint3c = useMemo(() => label === 'label' ? 'Text Area Max Length' : undefined, [label]);
   const labelHint14 = useMemo(() => label === 'label' ? 'Radioset' : undefined, [label]);
   const labelHint15 = useMemo(() => label === 'label' ? 'Checkboxset' : undefined, [label]);
+  const labelHint16 = useMemo(() => label === 'label' ? 'Labelled Link' : undefined, [label]);
+  const labelHint17 = useMemo(() => label === 'label' ? 'Rich Checkboxset' : undefined, [label]);
+  const labelHint18 = useMemo(() => label === 'label' ? 'Rich Radioset' : undefined, [label]);
   const labelHint21 = useMemo(() => label === 'label' ? 'Rich Radioset' : undefined, [label]);
   const labelHint22 = useMemo(() => label === 'label' ? 'Rich Checkboxset' : undefined, [label]);
 
@@ -291,7 +346,7 @@ export const FormLayoutCorePack = () => {
   }, []);
 
   const handleReadonlyUserAssistanceShownChange = useCallback((event: any) => {
-    setReadonlyUserAssistanceShown(event.detail.value || 'false');
+    setReadonlyUserAssistanceShown(event.detail.value || false);
   }, []);
 
   // Form field event handlers
@@ -357,7 +412,7 @@ export const FormLayoutCorePack = () => {
   }, []);
 
   const handleRichRadioChange = useCallback((event: any) => {
-    setRichRadioValue(event.detail.value || '');
+    setRichRadiosetValue(event.detail.value || '');
   }, []);
 
   const handleRichCheckboxsetChange = useCallback((event: any) => {
@@ -377,36 +432,36 @@ export const FormLayoutCorePack = () => {
             <div class="oj-panel oj-bg-info-30">
               <oj-c-form-layout
                 id="formLayoutOptions"
-                max-columns="4"
+                maxColumns={4}
                 direction="row"
                 user-assistance-density="compact"
               >
                 <oj-c-radioset
-                  label-hint="Label Edge"
+                  labelHint="Label Edge"
                   value={labelEdge}
                   onvalueChanged={handleLabelEdgeChange}
                   options={labelEdgeOptionsDP}
                 />
                 <oj-c-radioset
-                  label-hint="Direction"
+                  labelHint="Direction"
                   value={direction}
                   onvalueChanged={handleDirectionChange}
                   options={directionOptionsDP}
                 />
                 <oj-c-radioset
-                  label-hint="Columns"
+                  labelHint="Columns"
                   value={columnsString}
                   onvalueChanged={handleColumnsChange}
                   options={columnsOptionsDP}
                 />
                 <oj-c-radioset
-                  label-hint="Max Columns"
+                  labelHint="Max Columns"
                   value={maxColumnsString}
                   onvalueChanged={handleMaxColumnsChange}
                   options={maxColumnsOptionsDP}
                 />
                 <oj-c-radioset
-                  label-hint="State"
+                  labelHint="State"
                   id="flSeverityCheckboxButtonSet"
                   value={formState}
                   onvalueChanged={handleFormStateChange}
@@ -414,14 +469,14 @@ export const FormLayoutCorePack = () => {
                   options={formStateOptionsDP}
                 />
                 <oj-c-radioset
-                  label-hint="User Assistance Density"
+                  labelHint="User Assistance Density"
                   id="userAssistance"
                   value={userAssistanceDensity}
                   onvalueChanged={handleUserAssistanceDensityChange}
                   options={userAssistanceDensityOptionsDP}
                 />
                 <oj-c-radioset
-                  label-hint="Full Width"
+                  labelHint="Full Width"
                   id="fullWidth"
                   value={fullWidthString}
                   onvalueChanged={handleFullWidthChange}
@@ -438,7 +493,7 @@ export const FormLayoutCorePack = () => {
                 id="formOptions"
                 max-columns="4"
                 direction="row"
-                user-assistance-density="compact"
+                userAssistanceDensity="efficient"
               >
                 <oj-c-radioset
                   label-hint="Value"
@@ -448,14 +503,14 @@ export const FormLayoutCorePack = () => {
                   options={valueLengthOptionsDP}
                 />
                 <oj-c-checkboxset
-                  label-hint="User Assistance"
+                  labelHint="User Assistance"
                   id="booleans"
                   value={userAssistanceBooleans}
                   onvalueChanged={handleUserAssistanceChange}
                   options={userAssistanceOptionsDP}
                 />
                 <oj-c-checkboxset
-                  label-hint="Messages"
+                  labelHint="Messages"
                   value={formControlMessages}
                   onvalueChanged={handleFormControlMessagesChange}
                   disabled={formState === 'disabled'}
@@ -463,22 +518,22 @@ export const FormLayoutCorePack = () => {
                 />
                 <oj-c-radioset
                   id="labelsradio"
-                  label-hint="Label"
+                  labelHint="Label"
                   value={label}
                   onvalueChanged={handleLabelChange}
-                  options={controlsStateOptionsDP}
+                  options={labelOptionsDP}
                 />
                 <oj-c-radioset
                   id="formStateDisabledCBS"
                   value={controlsState}
-                  label-hint="State"
+                  labelHint="State"
                   onvalueChanged={handleControlsStateChange}
                   disabled={formState !== 'enabled'}
                   options={controlsStateOptionsDP}
                 />
                 <oj-c-radioset
                   id="readonlyUserAssistanceShownRadio"
-                  label-hint="readonlyUserAssistanceShown"
+                  labelHint="readonlyUserAssistanceShown"
                   value={readonlyUserAssistanceShown}
                   onvalueChanged={handleReadonlyUserAssistanceShownChange}
                   options={readonlyUserAssistanceShownOptionsDP}
@@ -487,7 +542,7 @@ export const FormLayoutCorePack = () => {
             </div>
           </oj-c-collapsible>
 
-           <h6>Controls frequently used in a form layout</h6>
+          <h6>Controls frequently used in a form layout</h6>
           <oj-c-form-layout
             id="myform"
             labelEdge={labelEdge as any}
@@ -496,7 +551,7 @@ export const FormLayoutCorePack = () => {
             direction={direction as any}
             fullWidth={fullWidth}
             readonly={readonlyFormLayout}
-            userAssistanceDensity={'efficient'}
+            userAssistanceDensity={userAssistanceDensity as any}
           >
             <oj-c-input-text
               id="f1"
@@ -505,7 +560,7 @@ export const FormLayoutCorePack = () => {
               value={inputTextValue}
               disabled={disableFormControls}
               messagesCustom={messages as any}
-              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool as any}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               readonly={readonlyFormControls}
               required={required}
               helpHints={{ source, definition }}
@@ -519,10 +574,9 @@ export const FormLayoutCorePack = () => {
               disabled={disableFormControls}
               messagesCustom={messages as any}
               readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
               helpHints={{ source, definition }}
-              //helpInstruction={instruction}
               onvalueChanged={handleInputPasswordChange}
             />
              <oj-c-input-sensitive-text
@@ -533,10 +587,9 @@ export const FormLayoutCorePack = () => {
               disabled={disableFormControls}
               messagesCustom={messages as any}
               readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
               helpHints={{ source, definition }}
-              //help-nstruction={instruction}
               onvalueChanged={handleInputSensitiveChange}
             />
             <oj-c-input-number
@@ -550,24 +603,10 @@ export const FormLayoutCorePack = () => {
               disabled={disableFormControls}
               messagesCustom={messages as any}
               readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
+             readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
               helpHints={{ source, definition }}
-             // help-instruction={instruction}
               onvalueChanged={handleInputNumberChange}
-            />
-
-             <oj-c-input-month-mask
-              id="f6a"
-              labelHint={labelHint6a}
-              value={inputMonthMaskValue}
-              disabled={disableFormControls}
-              messagesCustom={messages as any}
-              readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
-              required={required}
-              helpHints={{ source, definition }}
-              onvalueChanged={handleInputMonthMaskChange}
             />
             
             <oj-c-select-single
@@ -578,10 +617,9 @@ export const FormLayoutCorePack = () => {
               disabled={disableFormControls}
               messagesCustom={messages as any}
               readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
               helpHints={{ source, definition }}
-              //helpInstruction={instruction}
               data={browsersDP}
               itemText="label"
             />
@@ -593,15 +631,14 @@ export const FormLayoutCorePack = () => {
               disabled={disableFormControls}
               messagesCustom={messages as any}
               readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
               helpHints={{ source, definition }}
-              //help-instruction={instruction}
               data={browsersDP}
               itemText="label"
               onvalueChanged={handleSelectMultipleChange}
             />
-              <oj-c-text-area
+            <oj-c-text-area
               id="f3"
               labelHint={labelHint3}
               rows={4}
@@ -610,10 +647,9 @@ export const FormLayoutCorePack = () => {
               disabled={disableFormControls}
               messagesCustom={messages as any}
               readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
               helpHints={{ source, definition }}
-              //help-instruction={instruction}
               onvalueChanged={handleTextarea3Change}
             />
              <oj-c-text-area
@@ -625,10 +661,9 @@ export const FormLayoutCorePack = () => {
               disabled={disableFormControls}
               messagesCustom={messages as any}
               readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
               helpHints={{ source, definition }}
-              //help-instruction={instruction}
               onvalueChanged={handleTextarea3bChange}
             />
             <oj-c-text-area
@@ -641,80 +676,59 @@ export const FormLayoutCorePack = () => {
               disabled={disableFormControls}
               messagesCustom={messages as any }
               readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
               helpHints={{ source, definition }}
-              //help-instruction={instruction}
               onvalueChanged={handleTextarea3cChange}
-            />
-            <oj-c-radioset
-              id="f15"
-              labelHint={labelHint14}
-              messagesCustom={messages as any}
-              value={showValue ? radioValue : undefined}
-              disabled={disableFormControls}
-              readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
-              required={required}
-              options={optionsDP}
-              helpHints={{ source, definition }}
-              help-instruction={instruction}
-              onvalueChanged={handleRadioChange}
-            />
-            <oj-c-checkboxset
-              id="f16"
-              labelHint={labelHint15}
-              messagesCustom={messages as any}
-              value={showValue ? checkboxsetValue : undefined}
-              disabled={disableFormControls}
-              readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
-              required={required}
-              options={optionsDP}
-              helpHints={{ source, definition }}
-              //help-instruction={instruction}
-              onvalueChanged={handleCheckboxsetChange}
-            />
-
-            <oj-c-input-time-mask
-              id="f7"
-              labelHint={labelHint7}
-              //value={inputTimeMaskValue}
-              disabled={disableFormControls}
-              messagesCustom={messages as any}
-              readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
-              required={required}
-              helpHints={{ source, definition }}
-              //help-instruction={instruction}
-              onvalueChanged={handleInputTimeMaskChange}
             />
 
              <oj-c-input-date-mask
               id="f6"
               labelHint={labelHint6}
-              //value={inputDateMaskValue}
+              value={inputDateMaskValue}
               disabled={disableFormControls}
               messagesCustom={messages as any}
               readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
               helpHints={{ source, definition }}
-              //help-instruction={instruction}
               onvalueChanged={handleInputDateMaskChange}
             />
-           
+            <oj-c-input-month-mask
+              id="f6a"
+              labelHint={labelHint6a}
+              value={inputMonthMaskValue}
+              disabled={disableFormControls}
+              messagesCustom={messages as any}
+              readonly={readonlyFormControls}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
+              required={required}
+              helpHints={{ source, definition }}
+              onvalueChanged={handleInputMonthMaskChange}
+            />
+
+            <oj-c-input-time-mask
+              id="f7"
+              labelHint={labelHint7}
+              value={inputTimeMaskValue}
+              disabled={disableFormControls}
+              messagesCustom={messages as any}
+              readonly={readonlyFormControls}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
+              required={required}
+              helpHints={{ source, definition }}
+              onvalueChanged={handleInputTimeMaskChange}
+            />
              <oj-c-input-date-text
               id="f5"
               labelHint={labelHint5}
-              //value={inputDateValue}
+              value={inputDateValue}
               disabled={disableFormControls}
               messagesCustom={messages as any}
               readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
               helpHints={{ source, definition }}
-              //help-instruction={instruction}
               onvalueChanged={handleInputDateChange}
             />
              <oj-c-input-date-picker
@@ -724,41 +738,87 @@ export const FormLayoutCorePack = () => {
               disabled={disableFormControls}
               messagesCustom={messages as any}
               readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
               helpHints={{ source, definition }}
-              //help-instruction={instruction}
               onvalueChanged={handleInputDatePickerChange}
             />
-          
-          </oj-c-form-layout>
 
-          <hr />
-          <h6>Controls not frequently used in a form layout</h6>
-          <oj-c-form-layout
-            id="myform2"
-            label-edge={labelEdge}
-            columns={columns as any}
-            max-columns={maxColumns as any}
-            direction={direction as any}
-            readonly={readonlyFormLayout}
-            user-assistance-density={userAssistanceDensity}
-          >
             <oj-c-checkbox
               id="f17"
               messagesCustom={messages as any}
               value={showValue ? checkboxValue : false}
               disabled={disableFormControls}
               readonly={readonlyFormControls}
-              readonly-user-assistance-shown={readonlyUserAssistanceShownBool}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
               helpHints={{ source, definition }}
-              //help-instruction={instruction}
               onvalueChanged={handleCheckboxChange}
             >
               I Agree
             </oj-c-checkbox>
+
+             <oj-c-radioset
+              id="f15"
+              labelHint={labelHint14}
+              messagesCustom={messages as any}
+              value={showValue ? radioValue : undefined}
+              disabled={disableFormControls}
+              readonly={readonlyFormControls}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
+              required={required}
+              options={optionsDP}
+              helpHints={{ source, definition }}
+              onvalueChanged={handleRadioChange}
+            />
+            <oj-c-checkboxset
+              id="f16"
+              labelHint={labelHint15}
+              messagesCustom={messages as any}
+              value={showValue ? checkboxsetValue : undefined}
+              disabled={disableFormControls}
+              readonly={readonlyFormControls}
+              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
+              required={required}
+              options={optionsDP}
+              helpHints={{ definition, source }}
+              onvalueChanged={handleCheckboxsetChange}
+            />
+            <oj-c-labelled-link
+              id="f18"
+              labelHint={labelHint16}
+              href="https://www.oracle.com"
+              text="Visit Oracle"
+              target="_blank"
+            />
+            <oj-c-rich-checkboxset
+              id="f19"
+              layout="md"
+              labelHint={labelHint17}
+              value={showValue ? richCheckboxsetValue : undefined}
+              options={richOptions}
+              disabled={disableFormControls}
+              readonly={readonlyFormControls}
+              required={required}
+              onvalueChanged={handleRichCheckboxsetChange}
+            />
+            <oj-c-rich-radioset
+              id="f21"
+              layout="md"
+              labelHint={labelHint18}
+              value={showValue ? richRadiosetValue : undefined}
+              options={richOptions}
+              disabled={disableFormControls}
+              readonly={readonlyFormControls}
+              required={required}
+              onvalueChanged={handleRichRadioChange}
+            />
+
+          
           </oj-c-form-layout>
+
+          
+         
         </div>
       </div>
     </div>

@@ -46,6 +46,7 @@ import { ValidationGroupExample } from "./validationGroup";
 import { CheckBoxCorePack } from "./checkBoxCorePack";
 import { CheckBoxSetCorePack } from "./checkBoxSetCorePack";
 import { RichCheckBoxsetCorePack } from "./richCheckBoxsetCorePack";
+import {LabelledLink} from './labelledLink';
 
 type JETComponent = {
   id: number;
@@ -134,6 +135,13 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: false,
   },
+   {
+    id: 10,
+    name: "Input Number",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
+    isAvailable: true,
+    isCorePack: false,
+  },
   {
     id: 28,
     name: "Input Date Mask",
@@ -155,13 +163,7 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: true,
   },
-  {
-    id: 10,
-    name: "Input Number",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
-    isAvailable: true,
-    isCorePack: false,
-  },
+ 
   {
     id: 23,
     name: "Input Number",
@@ -169,7 +171,43 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: true,
   },
+   {
+    id: 13,
+    name: "Input Text",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
+    isAvailable: true,
+    isCorePack: false,
+  },
+  {
+    id: 24,
+    name: "Input Text",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  
+  {
+    id: 14,
+    name: "Text Area",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-area",
+    isAvailable: true,
+    isCorePack: false,
+  },
+   {
+    id: 27,
+    name: "Text Area",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-area",
+    isAvailable: true,
+    isCorePack: true,
+  },
 
+  {
+    id: 42,
+    name: "Labelled Link",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-link",
+    isAvailable: true,
+    isCorePack: true,
+  },
   {
     id: 11,
     name: "Input Password",
@@ -192,36 +230,7 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: false,
   },
-  {
-    id: 13,
-    name: "Input Text",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
-    isAvailable: true,
-    isCorePack: false,
-  },
-  {
-    id: 24,
-    name: "Input Text",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  
-
-  {
-    id: 14,
-    name: "Text Area",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-area",
-    isAvailable: true,
-    isCorePack: false,
-  },
-   {
-    id: 27,
-    name: "Text Area",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-area",
-    isAvailable: true,
-    isCorePack: true,
-  },
+ 
 
   {
     id: 16,
@@ -283,8 +292,6 @@ const allFormsComponents = [
     isAvailable: true,
     isCorePack: true,
   },
-
-  
   
   {
     id: 32,
@@ -399,6 +406,8 @@ const FormsHome = () => {
         return <InputSensitiveText />;
       case 32:
         return <JobApplicationForm />;
+      case 42:
+        return <LabelledLink />;
       default:
         return <FormsHome />;
     }

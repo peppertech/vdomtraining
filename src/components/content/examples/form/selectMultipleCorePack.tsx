@@ -97,7 +97,7 @@ const tableColumns = {
       lastName: { headerText: 'Last Name', field: 'LAST_NAME', template: 'cellTemplate' },
       department: { headerText: 'Department', field: 'DEPARTMENT_ID', template: 'cellTemplate' },
       salary: { headerText: 'Salary', field: 'SALARY', template: 'cellTemplate' }
-    };
+  };
 
 const SelectMultiple = () => {
   const [selectSingleData, setSelectSingleValue] = useState({
