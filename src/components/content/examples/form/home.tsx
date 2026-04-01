@@ -26,7 +26,6 @@ import CheckBoxSet from "./checkBoxSet";
 import InputDate from "./inputDate";
 import InputDatePicker from "./inputDatePicker";
 import InputSearch from "./InputSearch";
-import { JobApplicationForm } from './jobApplicationFormExample'
 import { InputPasswordCorePack } from "./inputPasswordCorePack";
 import { FormLayoutCorePack } from "./formLayoutCorePack";
 import { SelectMany } from "./selectMany";
@@ -294,13 +293,6 @@ const allFormsComponents = [
   },
   
   {
-    id: 32,
-    name: "Job Application Form",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-form-layout-jet",
-    isAvailable: true,
-    isCorePack: false,
-  },
-  {
     id: 21,
     name: "User Assistance",
     image: "oj-ux-icon-size-12x  oj-ux-ico-user-assistance",
@@ -404,8 +396,6 @@ const FormsHome = () => {
         return <InputMonthMask />;
       case 31:
         return <InputSensitiveText />;
-      case 32:
-        return <JobApplicationForm />;
       case 42:
         return <LabelledLink />;
       default:

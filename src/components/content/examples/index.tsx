@@ -25,16 +25,15 @@ let exampleRouter: any = null;
 const ExampleContent = (props: Props) => {
   const [activeTab, setActiveTab] = useState<string>("collection");
 
-  const tabs = [
-    { path: "", redirect: "collection" },
-    { path: "collection", label: "Collection", detail: {} },
-    { path: "form", label: "Form", detail: {} },
-    { path: "dataviz", label: "Data Visualization", detail: {} },
-    { path: "control", label: "Control", detail: {} },
-    { path: "navlayout", label: "Navigation and Layout", detail: {} },
+  const tabBarItems: Tab[] = [
+    { path: "collection", label: "Collection" },
+    { path: "form", label: "Form" },
+    { path: "dataviz", label: "Data Visualization" },
+    { path: "control", label: "Control" },
+    { path: "navlayout", label: "Navigation and Layout" },
   ];
   if (!props.router.childRouter) {
-    exampleRouter = props.router.createChildRouter(tabs, {
+    exampleRouter = props.router.createChildRouter(tabBarItems, {
       urlAdapter: new UrlParamAdapter(),
     });
   }
@@ -55,7 +54,7 @@ const ExampleContent = (props: Props) => {
   };
 
   const tabbarDP = new MutableArrayDataProvider<Tab["path"], Tab>(
-    tabs.slice(0),
+    tabBarItems,
     {
       keyAttributes: "path",
     }

@@ -58,12 +58,50 @@ type monthMaskValueType = CInputMonthMaskElement['value'];
 type timeMaskValueType = CInputTimeMaskElement['value'];
 
 type InputTextProps = ComponentProps<"oj-c-input-text">;
+type InputPasswordProps = ComponentProps<"oj-c-input-password">;
+type InputSensitiveTextProps = ComponentProps<"oj-c-input-sensitive-text">;
+type InputNumberProps = ComponentProps<"oj-c-input-number">;
+type InputDateMaskProps = ComponentProps<"oj-c-input-date-mask">;
+type InputMonthMaskProps = ComponentProps<"oj-c-input-month-mask">;
+type InputDateTextProps = ComponentProps<"oj-c-input-date-text">;
+type InputDatePickerProps = ComponentProps<"oj-c-input-date-picker">;
+type InputTimeMaskProps = ComponentProps<"oj-c-input-time-mask">;
+type FormLayoutProps = ComponentProps<"oj-c-form-layout">;
+type SelectSingleProps = ComponentProps<"oj-c-select-single">;
+type SelectMultipleProps = ComponentProps<"oj-c-select-multiple">;
+type TextAreaProps = ComponentProps<"oj-c-text-area">;
+type RadiosetProps = ComponentProps<"oj-c-radioset">;
+type CheckboxsetProps = ComponentProps<"oj-c-checkboxset">;
+type RichCheckboxsetProps = ComponentProps<"oj-c-rich-checkboxset">;
+type RichRadiosetProps = ComponentProps<"oj-c-rich-radioset">;
+type CheckboxProps = ComponentProps<"oj-c-checkbox">;
 
-const hintDefinition: InputTextProps["helpHints"] = {
+type FormControlHelpHints = InputTextProps["helpHints"];
+type ReadonlyUserAssistanceShownType = InputTextProps["readonlyUserAssistanceShown"];
+
+type RadiosetValueChangedEvent = Parameters<NonNullable<RadiosetProps["onvalueChanged"]>>[0];
+type CheckboxsetValueChangedEvent = Parameters<NonNullable<CheckboxsetProps["onvalueChanged"]>>[0];
+type InputTextValueChangedEvent = Parameters<NonNullable<InputTextProps["onvalueChanged"]>>[0];
+type InputPasswordValueChangedEvent = Parameters<NonNullable<InputPasswordProps["onvalueChanged"]>>[0];
+type InputSensitiveTextValueChangedEvent = Parameters<NonNullable<InputSensitiveTextProps["onvalueChanged"]>>[0];
+type InputNumberValueChangedEvent = Parameters<NonNullable<InputNumberProps["onvalueChanged"]>>[0];
+type InputDateMaskValueChangedEvent = Parameters<NonNullable<InputDateMaskProps["onvalueChanged"]>>[0];
+type InputMonthMaskValueChangedEvent = Parameters<NonNullable<InputMonthMaskProps["onvalueChanged"]>>[0];
+type InputDateTextValueChangedEvent = Parameters<NonNullable<InputDateTextProps["onvalueChanged"]>>[0];
+type InputDatePickerValueChangedEvent = Parameters<NonNullable<InputDatePickerProps["onvalueChanged"]>>[0];
+type InputTimeMaskValueChangedEvent = Parameters<NonNullable<InputTimeMaskProps["onvalueChanged"]>>[0];
+type SelectMultipleValueChangedEvent = Parameters<NonNullable<SelectMultipleProps["onvalueChanged"]>>[0];
+type TextAreaValueChangedEvent = Parameters<NonNullable<TextAreaProps["onvalueChanged"]>>[0];
+type RichCheckboxsetValueChangedEvent = Parameters<NonNullable<RichCheckboxsetProps["onvalueChanged"]>>[0];
+type RichRadiosetValueChangedEvent = Parameters<NonNullable<RichRadiosetProps["onvalueChanged"]>>[0];
+type CheckboxValueChangedEvent = Parameters<NonNullable<CheckboxProps["onvalueChanged"]>>[0];
+type FormLayoutLabelEdge = NonNullable<FormLayoutProps["labelEdge"]>;
+
+const hintDefinition: FormControlHelpHints = {
   definition: "help hints definition",
 };
 //hintDefinition. helpHintSource
-const helpHintSource: InputTextProps["helpHints"] = {
+const helpHintSource: FormControlHelpHints = {
   source: "https://www.oracle.com",
 };
 
@@ -85,7 +123,7 @@ type RadiosetArrayDataItem = {
 export const FormLayoutCorePack = () => {
 
   // Form layout control states
-  const [labelEdge, setLabelEdge] = useState<string>('inside');
+  const [labelEdge, setLabelEdge] = useState<FormLayoutLabelEdge>('inside');
   const [direction, setDirection] = useState<string>('row');
   const [columnsString, setColumnsString] = useState<string>('3');
   const [maxColumnsString, setMaxColumnsString] = useState<string>('3');
@@ -97,37 +135,49 @@ export const FormLayoutCorePack = () => {
   const [valueLength, setValueLength] = useState<string>('none');
   const [userAssistanceBooleans, setUserAssistanceBooleans] = useState<string[]>([]);
   const [formControlMessages, setFormControlMessages] = useState<string[]>([]);
-  const [label, setLabel] = useState<string>('label');
+  const [label, setLabel] = useState<string>('short');
   const [controlsState, setControlsState] = useState<string>('enabled');
-  const [readonlyUserAssistanceShown, setReadonlyUserAssistanceShown] = useState<string>('none');
+  const [readonlyUserAssistanceShown, setReadonlyUserAssistanceShown] = useState<ReadonlyUserAssistanceShownType>('none');
 
   // Form field values
   const [inputTextValue, setInputTextValue] = useState<string>('This is a form layout example');
-  const [inputPasswordValue, setInputPasswordValue] = useState<string>('abrakadabra');
-  const [inputSensitiveValue, setInputSensitiveValue] = useState<string>('abrakadabra');
-  const [inputNumberValue, setInputNumberValue] = useState<number | null>(10);
-  const [inputDateMaskValue, setInputDateMaskValue] = useState<string>((IntlConverterUtils.dateToLocalIsoDateString(new Date(2026, 0, 1))) || '');
-  const [inputMonthMaskValue, setInputMonthMaskValue] = useState<monthMaskValueType>({year:2026, month:3});
-  const [inputDateValue, setInputDateValue] = useState<string>('2026-03-01');
-  const [inputDatePickerValue, setInputDatePickerValue] = useState<string>((IntlConverterUtils.dateToLocalIsoDateString(new Date(2026, 0, 1))) || '');
-  const [inputTimeMaskValue, setInputTimeMaskValue] = useState<timeMaskValueType>('T20:11');
-  const [selectMultipleValue, setSelectMultipleValue] = useState<Set<string>>(new Set());
-  const [textareaValue3, setTextareaValue3] = useState<string>('textarea is a field that has rows so that a user can see more text than an input text without needing to scroll.');
-  const [textareaValue3b, setTextareaValue3b] = useState<string>('textarea is a field that has rows so that a user can see more text than an input text without needing to scroll.');
-  const [textareaValue3c, setTextareaValue3c] = useState<string>('textarea is a field that has rows so that a user can see more text than an input text without needing to scroll.');
-  const [radioValue, setRadioValue] = useState<string>('');
-  const [checkboxsetValue, setCheckboxsetValue] = useState<string[]>(['blueopt']);
-  const [richCheckboxsetValue, setRichCheckboxsetValue] = useState<string[]>(['automotive']);
-  const [richRadiosetValue, setRichRadiosetValue] = useState<string>('communications');
-  const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
+  const [inputPasswordValue, setInputPasswordValue] = useState<InputPasswordProps['value']>('abrakadabra');
+  const [inputSensitiveValue, setInputSensitiveValue] = useState<InputSensitiveTextProps['value']>('abrakadabra');
+  const [inputNumberValue, setInputNumberValue] = useState<InputNumberProps['value']>(10);
+  const [inputDateMaskValue, setInputDateMaskValue] = useState<InputDateMaskProps['value']>((IntlConverterUtils.dateToLocalIsoDateString(new Date(2026, 0, 1))) || '');
+  const [inputMonthMaskValue, setInputMonthMaskValue] = useState<InputMonthMaskProps['value']>({year:2026, month:3} as monthMaskValueType);
+  const [inputDateValue, setInputDateValue] = useState<InputDateTextProps['value']>('2026-03-01');
+  const [inputDatePickerValue, setInputDatePickerValue] = useState<InputDatePickerProps['value']>((IntlConverterUtils.dateToLocalIsoDateString(new Date(2026, 0, 1))) || '');
+  const [inputTimeMaskValue, setInputTimeMaskValue] = useState<InputTimeMaskProps['value']>('T20:11' as timeMaskValueType);
+  const [selectMultipleValue, setSelectMultipleValue] = useState<SelectMultipleProps['value']>(new Set());
+  const [textareaValue3, setTextareaValue3] = useState<TextAreaProps['value']>('textarea is a field that has rows so that a user can see more text than an input text without needing to scroll.');
+  const [textareaValue3b, setTextareaValue3b] = useState<TextAreaProps['value']>('textarea is a field that has rows so that a user can see more text than an input text without needing to scroll.');
+  const [textareaValue3c, setTextareaValue3c] = useState<TextAreaProps['value']>('textarea is a field that has rows so that a user can see more text than an input text without needing to scroll.');
+  const [radioValue, setRadioValue] = useState<RadiosetProps['value']>('');
+  const [checkboxsetValue, setCheckboxsetValue] = useState<CheckboxsetProps['value']>(['blueopt']);
+  const [richCheckboxsetValue, setRichCheckboxsetValue] = useState<RichCheckboxsetProps['value']>(['automotive']);
+  const [richRadiosetValue, setRichRadiosetValue] = useState<RichRadiosetProps['value']>('communications');
+  const [checkboxValue, setCheckboxValue] = useState<CheckboxProps['value']>(false);
+
+  const longTextValue = useMemo(
+    () =>
+      'This sample text is intentionally long so that every text box demonstrates how wrapping and scrolling behave when the user selects the long value option in the controls panel. It contains more than one hundred words and mirrors realistic form input such as customer notes, business descriptions, and extended comments that users might provide in enterprise applications. The content is written in plain language, but it is long enough to test layout density, label placement, and field rendering in different form states. You can switch between modes and observe how this value appears across input text and text area fields while the rest of the form controls continue to function as expected for validation, required indicators, and readonly or disabled settings.',
+    []
+  );
 
   // Computed values
   const columns = useMemo(() => parseInt(columnsString), [columnsString]);
   const maxColumns = useMemo(() => parseInt(maxColumnsString), [maxColumnsString]);
   const fullWidth = useMemo(() => fullWidthString === 'true', [fullWidthString]);
   const readonlyFormLayout = useMemo(() => formState === 'readonly', [formState]);
-  const disableFormControls = useMemo(() => formState === 'disabled', [formState]);
-  const readonlyFormControls = useMemo(() => controlsState === 'readonly' || formState === 'readonly', [controlsState, formState]);
+  const disableFormControls = useMemo(
+    () => controlsState === 'disabled' || formState === 'disabled',
+    [controlsState, formState]
+  );
+  const readonlyFormControls = useMemo(
+    () => controlsState === 'readonly' || formState === 'readonly',
+    [controlsState, formState]
+  );
   const required = useMemo(() => userAssistanceBooleans.includes('Required'), [userAssistanceBooleans]);
   const showValue = useMemo(() => valueLength !== 'none', [valueLength]);
   const placeholder = useMemo(() => userAssistanceBooleans.includes('Placeholder'), [userAssistanceBooleans]);
@@ -274,152 +324,173 @@ export const FormLayoutCorePack = () => {
   const formControlDisabledState = useMemo(() => formState === 'disabled' ? 'yes' : 'no', [formState]);
 
   // Label hints based on label state
-  const labelHint1 = useMemo(() => label === 'label' ? 'Input Text' : undefined, [label]);
-  const labelHint2 = useMemo(() => label === 'label' ? 'Input Password' : undefined, [label]);
-  const labelHint2b = useMemo(() => label === 'label' ? 'Input Sensitive Text' : undefined, [label]);
-  const labelHint4 = useMemo(() => label === 'label' ? 'Input Number' : undefined, [label]);
-  const labelHint6 = useMemo(() => label === 'label' ? 'Input Date Mask' : undefined, [label]);
-  const labelHint6a = useMemo(() => label === 'label' ? 'Input Month Mask' : undefined, [label]);
-  const labelHint5 = useMemo(() => label === 'label' ? 'Input Date Text' : undefined, [label]);
-  const labelHint20 = useMemo(() => label === 'label' ? 'Input Date Picker' : undefined, [label]);
-  const labelHint7 = useMemo(() => label === 'label' ? 'Input Time Mask' : undefined, [label]);
-  const labelHint19 = useMemo(() => label === 'label' ? 'Select Single' : undefined, [label]);
-  const labelHint11a = useMemo(() => label === 'label' ? 'Select Multiple' : undefined, [label]);
-  const labelHint3 = useMemo(() => label === 'label' ? 'Text Area' : undefined, [label]);
-  const labelHint3b = useMemo(() => label === 'label' ? 'Text Area Max Rows' : undefined, [label]);
-  const labelHint3c = useMemo(() => label === 'label' ? 'Text Area Max Length' : undefined, [label]);
-  const labelHint14 = useMemo(() => label === 'label' ? 'Radioset' : undefined, [label]);
-  const labelHint15 = useMemo(() => label === 'label' ? 'Checkboxset' : undefined, [label]);
-  const labelHint16 = useMemo(() => label === 'label' ? 'Labelled Link' : undefined, [label]);
-  const labelHint17 = useMemo(() => label === 'label' ? 'Rich Checkboxset' : undefined, [label]);
-  const labelHint18 = useMemo(() => label === 'label' ? 'Rich Radioset' : undefined, [label]);
-  const labelHint21 = useMemo(() => label === 'label' ? 'Rich Radioset' : undefined, [label]);
-  const labelHint22 = useMemo(() => label === 'label' ? 'Rich Checkboxset' : undefined, [label]);
+  const getLabelHint = useCallback(
+    (baseLabel: string) => {
+      if (label === 'none') {
+        return undefined;
+      }
+      if (label === 'long') {
+        return `${baseLabel} label is intentionally long to test form layout behavior across edge positions, wrapping, spacing, and responsiveness in this sample page`;
+      }
+      return baseLabel;
+    },
+    [label]
+  );
+
+  const labelHint1 = useMemo(() => getLabelHint('Input Text'), [getLabelHint]);
+  const labelHint2 = useMemo(() => getLabelHint('Input Password'), [getLabelHint]);
+  const labelHint2b = useMemo(() => getLabelHint('Input Sensitive Text'), [getLabelHint]);
+  const labelHint4 = useMemo(() => getLabelHint('Input Number'), [getLabelHint]);
+  const labelHint6 = useMemo(() => getLabelHint('Input Date Mask'), [getLabelHint]);
+  const labelHint6a = useMemo(() => getLabelHint('Input Month Mask'), [getLabelHint]);
+  const labelHint5 = useMemo(() => getLabelHint('Input Date Text'), [getLabelHint]);
+  const labelHint20 = useMemo(() => getLabelHint('Input Date Picker'), [getLabelHint]);
+  const labelHint7 = useMemo(() => getLabelHint('Input Time Mask'), [getLabelHint]);
+  const labelHint19 = useMemo(() => getLabelHint('Select Single'), [getLabelHint]);
+  const labelHint11a = useMemo(() => getLabelHint('Select Multiple'), [getLabelHint]);
+  const labelHint3 = useMemo(() => getLabelHint('Text Area'), [getLabelHint]);
+  const labelHint3b = useMemo(() => getLabelHint('Text Area Max Rows'), [getLabelHint]);
+  const labelHint3c = useMemo(() => getLabelHint('Text Area Max Length'), [getLabelHint]);
+  const labelHint14 = useMemo(() => getLabelHint('Radioset'), [getLabelHint]);
+  const labelHint15 = useMemo(() => getLabelHint('Checkboxset'), [getLabelHint]);
+  const labelHint16 = useMemo(() => getLabelHint('Labelled Link'), [getLabelHint]);
+  const labelHint17 = useMemo(() => getLabelHint('Rich Checkboxset'), [getLabelHint]);
+  const labelHint18 = useMemo(() => getLabelHint('Rich Radioset'), [getLabelHint]);
+  const labelHint21 = useMemo(() => getLabelHint('Rich Radioset'), [getLabelHint]);
+  const labelHint22 = useMemo(() => getLabelHint('Rich Checkboxset'), [getLabelHint]);
 
   // Event handlers
-  const handleLabelEdgeChange = useCallback((event: any) => {
-    setLabelEdge(event.detail.value || 'inside');
+  const handleLabelEdgeChange = useCallback((event: RadiosetValueChangedEvent) => {
+    setLabelEdge((event.detail.value || 'inside') as FormLayoutLabelEdge);
   }, []);
 
-  const handleDirectionChange = useCallback((event: any) => {
+  const handleDirectionChange = useCallback((event: RadiosetValueChangedEvent) => {
     setDirection(event.detail.value || 'row');
   }, []);
 
-  const handleColumnsChange = useCallback((event: any) => {
+  const handleColumnsChange = useCallback((event: RadiosetValueChangedEvent) => {
     setColumnsString(event.detail.value || '1');
   }, []);
 
-  const handleMaxColumnsChange = useCallback((event: any) => {
+  const handleMaxColumnsChange = useCallback((event: RadiosetValueChangedEvent) => {
     setMaxColumnsString(event.detail.value || '3');
   }, []);
 
-  const handleFormStateChange = useCallback((event: any) => {
+  const handleFormStateChange = useCallback((event: RadiosetValueChangedEvent) => {
     setFormState(event.detail.value || 'enabled');
   }, []);
 
-  const handleUserAssistanceDensityChange = useCallback((event: any) => {
+  const handleUserAssistanceDensityChange = useCallback((event: RadiosetValueChangedEvent) => {
     setUserAssistanceDensity(event.detail.value || 'efficient');
   }, []);
 
-  const handleFullWidthChange = useCallback((event: any) => {
+  const handleFullWidthChange = useCallback((event: RadiosetValueChangedEvent) => {
     setFullWidthString(event.detail.value || 'false');
   }, []);
 
-  const handleValueLengthChange = useCallback((event: any) => {
-    setValueLength(event.detail.value || 'none');
-  }, []);
+  const handleValueLengthChange = useCallback((event: RadiosetValueChangedEvent) => {
+    const newValueLength = event.detail.value || 'none';
+    setValueLength(newValueLength);
 
-  const handleUserAssistanceChange = useCallback((event: any) => {
+    if (newValueLength === 'long') {
+      setInputTextValue(longTextValue);
+      setTextareaValue3(longTextValue);
+      setTextareaValue3b(longTextValue);
+      setTextareaValue3c(longTextValue);
+    }
+  }, [longTextValue]);
+
+  const handleUserAssistanceChange = useCallback((event: CheckboxsetValueChangedEvent) => {
     setUserAssistanceBooleans(event.detail.value || []);
   }, []);
 
-  const handleFormControlMessagesChange = useCallback((event: any) => {
+  const handleFormControlMessagesChange = useCallback((event: CheckboxsetValueChangedEvent) => {
     setFormControlMessages(event.detail.value || []);
   }, []);
 
-  const handleLabelChange = useCallback((event: any) => {
+  const handleLabelChange = useCallback((event: RadiosetValueChangedEvent) => {
     setLabel(event.detail.value || 'label');
   }, []);
 
-  const handleControlsStateChange = useCallback((event: any) => {
+  const handleControlsStateChange = useCallback((event: RadiosetValueChangedEvent) => {
     setControlsState(event.detail.value || 'enabled');
   }, []);
 
-  const handleReadonlyUserAssistanceShownChange = useCallback((event: any) => {
-    setReadonlyUserAssistanceShown(event.detail.value || false);
+  const handleReadonlyUserAssistanceShownChange = useCallback((event: RadiosetValueChangedEvent) => {
+    setReadonlyUserAssistanceShown((event.detail.value || 'none') as ReadonlyUserAssistanceShownType);
   }, []);
 
   // Form field event handlers
-  const handleInputTextChange = useCallback((event: any) => {
+  const handleInputTextChange = useCallback((event: InputTextValueChangedEvent) => {
     setInputTextValue(event.detail.value || '');
   }, []);
 
-  const handleInputPasswordChange = useCallback((event: any) => {
+  const handleInputPasswordChange = useCallback((event: InputPasswordValueChangedEvent) => {
     setInputPasswordValue(event.detail.value || '');
   }, []);
 
-  const handleInputSensitiveChange = useCallback((event: any) => {
+  const handleInputSensitiveChange = useCallback((event: InputSensitiveTextValueChangedEvent) => {
     setInputSensitiveValue(event.detail.value || '');
   }, []);
 
-  const handleInputNumberChange = useCallback((event: any) => {
+  const handleInputNumberChange = useCallback((event: InputNumberValueChangedEvent) => {
     setInputNumberValue(event.detail.value);
   }, []);
 
-  const handleInputDateMaskChange = useCallback((event: any) => {
+  const handleInputDateMaskChange = useCallback((event: InputDateMaskValueChangedEvent) => {
     setInputDateMaskValue(event.detail.value || '');
   }, []);
 
-  const handleInputMonthMaskChange = useCallback((event: any) => {
-    setInputMonthMaskValue(event.detail.value || '');
+  const handleInputMonthMaskChange = useCallback((event: InputMonthMaskValueChangedEvent) => {
+    setInputMonthMaskValue(event.detail.value);
   }, []);
 
-  const handleInputDateChange = useCallback((event: any) => {
+  const handleInputDateChange = useCallback((event: InputDateTextValueChangedEvent) => {
     setInputDateValue(event.detail.value || '');
   }, []);
 
-  const handleInputDatePickerChange = useCallback((event: any) => {
+  const handleInputDatePickerChange = useCallback((event: InputDatePickerValueChangedEvent) => {
     setInputDatePickerValue(event.detail.value || '');
   }, []);
 
-  const handleInputTimeMaskChange = useCallback((event: any) => {
+  const handleInputTimeMaskChange = useCallback((event: InputTimeMaskValueChangedEvent) => {
     setInputTimeMaskValue(event.detail.value || '');
   }, []);
 
-  const handleSelectMultipleChange = useCallback((event: any) => {
+  const handleSelectMultipleChange = useCallback((event: SelectMultipleValueChangedEvent) => {
     const value = event.detail.value;
     setSelectMultipleValue(value instanceof Set ? value : new Set(Array.isArray(value) ? value : []));
   }, []);
 
-  const handleTextarea3Change = useCallback((event: any) => {
+  const handleTextarea3Change = useCallback((event: TextAreaValueChangedEvent) => {
     setTextareaValue3(event.detail.value || '');
   }, []);
 
-  const handleTextarea3bChange = useCallback((event: any) => {
+  const handleTextarea3bChange = useCallback((event: TextAreaValueChangedEvent) => {
     setTextareaValue3b(event.detail.value || '');
   }, []);
 
-  const handleTextarea3cChange = useCallback((event: any) => {
+  const handleTextarea3cChange = useCallback((event: TextAreaValueChangedEvent) => {
     setTextareaValue3c(event.detail.value || '');
   }, []);
 
-  const handleRadioChange = useCallback((event: any) => {
+  const handleRadioChange = useCallback((event: RadiosetValueChangedEvent) => {
     setRadioValue(event.detail.value || '');
   }, []);
 
-  const handleCheckboxsetChange = useCallback((event: any) => {
+  const handleCheckboxsetChange = useCallback((event: CheckboxsetValueChangedEvent) => {
     setCheckboxsetValue(event.detail.value || []);
   }, []);
 
-  const handleRichRadioChange = useCallback((event: any) => {
+  const handleRichRadioChange = useCallback((event: RichRadiosetValueChangedEvent) => {
     setRichRadiosetValue(event.detail.value || '');
   }, []);
 
-  const handleRichCheckboxsetChange = useCallback((event: any) => {
+  const handleRichCheckboxsetChange = useCallback((event: RichCheckboxsetValueChangedEvent) => {
     setRichCheckboxsetValue(event.detail.value || []);
   }, []);
 
-  const handleCheckboxChange = useCallback((event: any) => {
+  const handleCheckboxChange = useCallback((event: CheckboxValueChangedEvent) => {
     setCheckboxValue(event.detail.value || false);
   }, []);
 
@@ -453,12 +524,6 @@ export const FormLayoutCorePack = () => {
                   value={columnsString}
                   onvalueChanged={handleColumnsChange}
                   options={columnsOptionsDP}
-                />
-                <oj-c-radioset
-                  labelHint="Max Columns"
-                  value={maxColumnsString}
-                  onvalueChanged={handleMaxColumnsChange}
-                  options={maxColumnsOptionsDP}
                 />
                 <oj-c-radioset
                   labelHint="State"
@@ -545,7 +610,7 @@ export const FormLayoutCorePack = () => {
           <h6>Controls frequently used in a form layout</h6>
           <oj-c-form-layout
             id="myform"
-            labelEdge={labelEdge as any}
+            labelEdge={labelEdge}
             columns={columns as any}
             maxColumns={maxColumns as any}
             direction={direction as any}

@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, ComponentProps } from "preact";
 import { useState, useCallback, useMemo } from "preact/hooks";
 
 // Legacy component imports
@@ -10,18 +10,23 @@ import "ojs/ojconverterutils-i18n";
 import "ojs/ojdatetimepicker";
 import "ojs/ojmessaging";
 
+type InputTimeProps = ComponentProps<"oj-input-time">;
+type InputTimeValueChangedEvent = Parameters<
+  NonNullable<InputTimeProps["onvalueChanged"]>
+>[0];
+
 export const InputTime = () => {
   // State for input values
-  const [value, setValue] = useState<string>("T18:00:00"); //
-  const [militaryValue, setMilitaryValue] = useState<string>("T18:00:00");
-  const [secondsValue, setSecondsValue] = useState<string>("T18:00:00");
-  const [requiredValue, setRequiredValue] = useState<string>("T18:00:00");
-  const [helpValue, setHelpValue] = useState<string>("T18:00:00");
-  const [errorValue, setErrorValue] = useState<string>("T18:00:00");
-  const [warningValue, setWarningValue] = useState<string>("T18:00:00");
-  const [infoValue, setInfoValue] = useState<string>("T18:00:00");
+  const [value, setValue] = useState<InputTimeProps["value"]>("T18:00:00"); //
+  const [militaryValue, setMilitaryValue] = useState<InputTimeProps["value"]>("T18:00:00");
+  const [secondsValue, setSecondsValue] = useState<InputTimeProps["value"]>("T18:00:00");
+  const [requiredValue, setRequiredValue] = useState<InputTimeProps["value"]>("T18:00:00");
+  const [helpValue, setHelpValue] = useState<InputTimeProps["value"]>("T18:00:00");
+  const [errorValue, setErrorValue] = useState<InputTimeProps["value"]>("T18:00:00");
+  const [warningValue, setWarningValue] = useState<InputTimeProps["value"]>("T18:00:00");
+  const [infoValue, setInfoValue] = useState<InputTimeProps["value"]>("T18:00:00");
   const [confirmationValue, setConfirmationValue] =
-    useState<string>("T18:00:00");
+    useState<InputTimeProps["value"]>("T18:00:00");
 
   // Time converters
 
@@ -82,40 +87,40 @@ export const InputTime = () => {
   );
 
   // Event handlers
-  const handleValueChanged = useCallback((event: any) => {
-    setValue(event.detail.value as string);
+  const handleValueChanged = useCallback((event: InputTimeValueChangedEvent) => {
+    setValue(event.detail.value);
   }, []);
 
-  const handleMilitaryValueChanged = useCallback((event: any) => {
-    setMilitaryValue(event.detail.value as string);
+  const handleMilitaryValueChanged = useCallback((event: InputTimeValueChangedEvent) => {
+    setMilitaryValue(event.detail.value);
   }, []);
 
-  const handleSecondsValueChanged = useCallback((event: any) => {
-    setSecondsValue(event.detail.value as string);
+  const handleSecondsValueChanged = useCallback((event: InputTimeValueChangedEvent) => {
+    setSecondsValue(event.detail.value);
   }, []);
 
-  const handleRequiredValueChanged = useCallback((event: any) => {
-    setRequiredValue(event.detail.value as string);
+  const handleRequiredValueChanged = useCallback((event: InputTimeValueChangedEvent) => {
+    setRequiredValue(event.detail.value);
   }, []);
 
-  const handleHelpValueChanged = useCallback((event: any) => {
-    setHelpValue(event.detail.value as string);
+  const handleHelpValueChanged = useCallback((event: InputTimeValueChangedEvent) => {
+    setHelpValue(event.detail.value);
   }, []);
 
-  const handleErrorValueChanged = useCallback((event: any) => {
-    setErrorValue(event.detail.value as string);
+  const handleErrorValueChanged = useCallback((event: InputTimeValueChangedEvent) => {
+    setErrorValue(event.detail.value);
   }, []);
 
-  const handleWarningValueChanged = useCallback((event: any) => {
-    setWarningValue(event.detail.value as string);
+  const handleWarningValueChanged = useCallback((event: InputTimeValueChangedEvent) => {
+    setWarningValue(event.detail.value);
   }, []);
 
-  const handleInfoValueChanged = useCallback((event: any) => {
-    setInfoValue(event.detail.value as string);
+  const handleInfoValueChanged = useCallback((event: InputTimeValueChangedEvent) => {
+    setInfoValue(event.detail.value);
   }, []);
 
-  const handleConfirmationValueChanged = useCallback((event: any) => {
-    setConfirmationValue(event.detail.value as string);
+  const handleConfirmationValueChanged = useCallback((event: InputTimeValueChangedEvent) => {
+    setConfirmationValue(event.detail.value);
   }, []);
 
   return (
@@ -160,13 +165,13 @@ export const InputTime = () => {
       <oj-form-layout maxColumns={3} direction="row">
         <oj-input-time
           value={militaryValue}
-          converter={timeConverter as any}
+          converter={timeConverter as InputTimeProps["converter"]}
           labelHint="Military Time (no am/pm)"
           onvalueChanged={handleMilitaryValueChanged}
         ></oj-input-time>
         <oj-input-time
           value={secondsValue}
-          converter={timeFullConverter as any}
+          converter={timeFullConverter as InputTimeProps["converter"]}
           labelHint="Time with seconds"
           onvalueChanged={handleSecondsValueChanged}
         ></oj-input-time>

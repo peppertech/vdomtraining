@@ -10,6 +10,9 @@ import Message = require("ojs/ojmessaging");
 
 type InputTextProps = ComponentProps<"oj-c-input-text">;
 type FormLayoutProps = ComponentProps<"oj-c-form-layout">;
+type InputTextValueChangedEvent = Parameters<
+  NonNullable<InputTextProps["onvalueChanged"]>
+>[0];
 
 const hintDefinition: InputTextProps["helpHints"] = {
   definition: "cost of a single item",
@@ -33,16 +36,12 @@ const eurNumberConverter = new NumberConverter.IntlNumberConverter({
 
 let value: string = "598.42";
 let name: string = "Third wave coffee (2 lbs)";
-let rawValue: any;
+let rawValue: InputTextProps["rawValue"];
 
-const error: Message[] = [
-  { summary: "summary", detail: "detail", severity: "error" },
-];
-const warning = [{ summary: "summary", detail: "detail", severity: "warning" }];
-const info = [{ summary: "summary", detail: "detail", severity: "info" }];
-const confirmation = [
-  { summary: "summary", detail: "detail", severity: "confirmation" },
-];
+const error: InputTextProps["messagesCustom"] = [{ summary: "summary", detail: "detail", severity: "error" }];
+const warning: InputTextProps["messagesCustom"] = [{ summary: "summary", detail: "detail", severity: "warning" }];
+const info: InputTextProps["messagesCustom"] = [{ summary: "summary", detail: "detail", severity: "info" }];
+const confirmation: InputTextProps["messagesCustom"] = [{ summary: "summary", detail: "detail", severity: "confirmation" }];
 
 // 'any' type is being used because method is used by multiple ..
 const InputTextCorePack = () => {
@@ -52,7 +51,7 @@ const InputTextCorePack = () => {
     itemCost: "598.42",
     rawValue: "",
     value: "",
-    emailID: 'abrakababra@gmail.com'
+    emailID: 'abrakadabra@gmail.com'
   });
 
   const [isDisabled, setIsDisabled] = useState(true);
@@ -60,19 +59,19 @@ const InputTextCorePack = () => {
     useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
     //please change the variable depending upon the control that you are using
-  const onTextvalueChange = (event: any) => {
+  const onTextvalueChange = (event: InputTextValueChangedEvent) => {
     //console.log(event.detail);
    
    if(event.detail.updatedFrom =='external'){
     setFormData({
       ...formData,
-      [event.currentTarget.id]: event.detail.value,
+      itemName: event.detail.value || "",
     });
    }
     
   };
 
-   const onvalChange = (event: any) => {
+   const onvalChange = (event: InputTextValueChangedEvent) => {
     alert(event.detail);
    }
 
@@ -253,25 +252,25 @@ const InputTextCorePack = () => {
       >
         <oj-c-input-text
            id="ITC-15"
-          messagesCustom={error as any}
+          messagesCustom={error}
           value="value text"
           labelHint="Input text - with error message"
         ></oj-c-input-text>
         <oj-c-input-text
            id="ITC-16"
-          messagesCustom={warning as any}
+          messagesCustom={warning}
           value="value text"
           labelHint="Input text - with warning"
         ></oj-c-input-text>
         <oj-c-input-text
            id="ITC-17"
-          messagesCustom={info as any}
+          messagesCustom={info}
           value="value text"
           labelHint="Input text - with info"
         ></oj-c-input-text>
         <oj-c-input-text
           id="ITC-18"
-          messagesCustom={confirmation as any}
+          messagesCustom={confirmation}
           value="value text"
           labelHint="Input text - with confirmation"
         ></oj-c-input-text>
