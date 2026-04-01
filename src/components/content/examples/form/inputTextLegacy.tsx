@@ -12,6 +12,12 @@ import * as customMessages from "../form/data/messages";
 //component props types
 type InputTextProps = ComponentProps<"oj-input-text">;
 type FormLayoutProps = ComponentProps<"oj-form-layout">;
+type InputTextValueChangedEvent = Parameters<
+  NonNullable<InputTextProps["onvalueChanged"]>
+>[0];
+type InputTextRawValueChangedEvent = Parameters<
+  NonNullable<InputTextProps["onrawValueChanged"]>
+>[0];
 
 const length: InputTextProps["length"] = {
   countBy: "codePoint",
@@ -32,25 +38,28 @@ const eurNumberConverter = new NumberConverter.IntlNumberConverter({
   currencyDisplay: "symbol",
 });
 
-let currentRawValue: any;
-
-const error: Message[] = [
+const error: NonNullable<InputTextProps["messagesCustom"]> = [
   { summary: "summary", detail: "detail", severity: "error" },
 ];
-const warning = [{ summary: "summary", detail: "detail", severity: "warning" }];
-const info = [{ summary: "summary", detail: "detail", severity: "info" }];
-const confirmation = [
+const warning: NonNullable<InputTextProps["messagesCustom"]> = [
+  { summary: "summary", detail: "detail", severity: "warning" },
+];
+const info: NonNullable<InputTextProps["messagesCustom"]> = [
+  { summary: "summary", detail: "detail", severity: "info" },
+];
+const confirmation: NonNullable<InputTextProps["messagesCustom"]> = [
   { summary: "summary", detail: "detail", severity: "confirmation" },
 ];
-// 'any' type is being used because method is used by multiple ..
+
 const InputText = () => {
-  const [edge, setEdge] = useState<InputTextProps["labelEdge"] >('none');
+  const [currentRawValue, setCurrentRawValue] = useState<InputTextProps["rawValue"] >("");
+  const [labelEdgeVal, setEdge] = useState<InputTextProps["labelEdge"] >('inside');
   const [formData, setFormData] = useState({
     itemName: "Kopi Luwak beans (2 lbs)",
     itemBuyer: "",
     itemCost: "598.42",
     rawValue: "",
-    value: "",
+    value: "598.42",
     creditCardVal: "Enter credit card details",
     emailVal: "Enter email address",
     currentValue: 10,
@@ -60,13 +69,17 @@ const InputText = () => {
   const [density, setDensity] =
     useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
-  const onValueChange = (event: any) => { 
+  const onValueChange = (event: InputTextValueChangedEvent) => {
     setFormData({
       ...formData,
       itemCost: event.detail.value,
       rawValue: event.detail.value,
       //[event.currentTarget.id]: event.detail.value,
     });
+  };
+
+  const onRawValueChange = (event: InputTextRawValueChangedEvent) => {
+    setCurrentRawValue(event.detail.value ?? "");
   };
 
   return (
@@ -77,11 +90,14 @@ const InputText = () => {
         columns={3}
         maxColumns={3}
         direction="row"
+       
       >
         <oj-input-text
+          id='enabledVal'
           required={true}
-          labelEdge={edge}
+          labelEdge={labelEdgeVal}
           rawValue={currentRawValue}
+          onrawValueChanged={onRawValueChange}
           labelHint="Input text - enabled with value"
         ></oj-input-text>
         <oj-input-text
@@ -110,16 +126,8 @@ const InputText = () => {
           readonly={true}
         ></oj-input-text>
 
-        <span>Current component rawValue is:</span>
-        <span>{currentRawValue}</span>
-        <div id="button-container">
-          <oj-button
-            id="buttonId1"
-            disabled={currentRawValue == null || currentRawValue.trim() === ""}
-          >
-            Submit
-          </oj-button>
-        </div>
+        <span>Current component rawValue is: {currentRawValue}</span>
+        
       </oj-form-layout>
       <h5 class="oj-typography-heading-sm"> Start and End Slots </h5>
       <oj-form-layout
@@ -185,8 +193,8 @@ const InputText = () => {
         <oj-input-text
           required={true}
           rawValue={currentRawValue}
-          onvalueChanged={onValueChange}
-          clear-icon="always"
+          onrawValueChanged={onRawValueChange}
+          clearIcon="always"
           labelHint="Input text using required"
         ></oj-input-text>
         <oj-input-text
@@ -201,9 +209,8 @@ const InputText = () => {
         <oj-input-text
           id="text input"
           value={formData.value}
-          //onrawValueChanged={onValueChange}
           length={length}
-          labelEdge="provided"
+          labelEdge={labelEdgeVal}
           labelHint="Input text with max length, raw value"
         ></oj-input-text>
       </oj-form-layout>
@@ -215,22 +222,22 @@ const InputText = () => {
         direction="row"
       >
         <oj-input-text
-          messagesCustom={error as any}
+          messagesCustom={error}
           value="value text"
           labelHint="Input text - with error message"
         ></oj-input-text>
         <oj-input-text
-          messagesCustom={warning as any}
+          messagesCustom={warning}
           value="value text"
           labelHint="Input text - with warning"
         ></oj-input-text>
         <oj-input-text
-          messagesCustom={info as any}
+          messagesCustom={info}
           value="value text"
           labelHint="Input text - with info"
         ></oj-input-text>
         <oj-input-text
-          messagesCustom={confirmation as any}
+          messagesCustom={confirmation}
           value="value text"
           labelHint="Input text - with confirmation"
         ></oj-input-text>

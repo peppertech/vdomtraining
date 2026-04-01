@@ -297,11 +297,21 @@ const SelectSingleCorePack = () => {
      );
     };
 
-    const handleTabularRowAction = (value: ojListView.ojItemAction<any, any>) => {
-      //colCtx.handleRowAction(value, value.detail.context);
-      setCollectionTemplateValue({
-        selectedValue: value.detail.context.data["EMPLOYEE_ID"],
+    const handleTableCurrentCellChanged = (event: any) => {
+      const currentCell = event.detail.value as
+        | { type?: string; rowKey?: OracleEmployee["EMPLOYEE_ID"] }
+        | undefined;
+
+      colCtx.onCurrentRowChanged({
+        rowKey:
+          currentCell && currentCell.type === "data"
+            ? currentCell.rowKey
+            : undefined,
       });
+    };
+
+    const handleTableRowAction = (event: any) => {
+      colCtx.onRowAction({ item: event.detail.context.item });
     };
 
     return ( 
@@ -315,8 +325,8 @@ const SelectSingleCorePack = () => {
                   data={colCtx.data as any}
                   selected={{ row: colCtx.selected}}
                   currentCellOverride={colCtx.currentRowOverride}
-                  oncurrentCellChanged= { (event) => event.detail.value && colCtx.onCurrentRowChanged({ rowKey: event.detail.value.type === 'data' ? event.detail.value.rowKey : undefined })}
-                  //onselectedChanged={ (event) => colCtx.onSelectedChanged({ value: event.detail.value?.row }) }                  
+                  oncurrentCellChanged={handleTableCurrentCellChanged}
+                  onojRowAction={handleTableRowAction}
                   >
                 <template
                   slot="cellTemplate"
