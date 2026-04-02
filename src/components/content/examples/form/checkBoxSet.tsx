@@ -3,6 +3,8 @@ import { useState, useRef } from "preact/hooks";
 import * as NumberConverter from "ojs/ojconverter-number";
 import * as ConverterUtilsI18n from "ojs/ojconverterutils-i18n";
 import "ojs/ojformlayout";
+import "ojs/ojcheckboxset";
+import "ojs/ojoption";
 import "ojs/ojinputtext";
 import Message = require("ojs/ojmessaging");
 import "ojs/ojdatetimepicker";
