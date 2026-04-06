@@ -1,0 +1,191 @@
+import { h, ComponentProps } from "preact";
+import { useCallback, useState } from "preact/hooks";
+import "ojs/ojactioncard";
+import "ojs/ojbutton";
+import "ojs/ojlistview";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import { KeySetImpl, KeySet } from "ojs/ojkeyset";
+import { ojListView } from "ojs/ojlistview";
+import { ButtonElement } from "ojs/ojbutton";
+
+import Table from "./table";
+import ListView from "./listview";
+import Treeview from "./treeview";
+import DataGrid from "./datagrid";
+import GroupByTable from "./group-by-table";
+import { RowExpanderTable } from "./rowexpander-table";
+
+type CollectionComponent = {
+  id: number;
+  name: string;
+  image: string;
+  isAvailable?: boolean;
+  isCorePack?: boolean;
+};
+
+const collectionComponents: CollectionComponent[] = [
+  {
+    id: 1,
+    name: "Table",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-tables-basic",
+    isAvailable: true,
+  },
+  {
+    id: 2,
+    name: "List View",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-list",
+    isAvailable: true,
+  },
+  {
+    id: 3,
+    name: "Tree View",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-tree-view",
+    isAvailable: true,
+  },
+  {
+    id: 4,
+    name: "Data Grid",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
+    isAvailable: true,
+  },
+  {
+    id: 5,
+    name: "Group By Table",
+    image: "oj-ux-icon-size-12x oj-ux-ico-group",
+    isAvailable: true,
+  },
+  {
+    id: 6,
+    name: "Row Expander Table",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-row-expander",
+    isAvailable: true,
+  },
+];
+
+const dataProvider = new MutableArrayDataProvider<
+  CollectionComponent["id"],
+  CollectionComponent
+>(collectionComponents, {
+  keyAttributes: "id",
+});
+
+type ListViewProps = ComponentProps<"oj-list-view">;
+const gridlines: ListViewProps["gridlines"] = { item: "visible" };
+const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<CollectionComponent["id"]>;
+
+const CollectionHome = () => {
+  const [selectedItems, setSelectedItems] =
+    useState<KeySet<CollectionComponent["id"]>>(INITIAL_SELECTION);
+  const [showComponentDetail, setShowComponentDetail] = useState(false);
+  const [activeComponentId, setActiveComponentId] = useState<number | null>(
+    null,
+  );
+  const [isComponentAvailable, setIsComponentAvailable] = useState(false);
+
+  const renderListItem = useCallback(
+    (
+      item: ojListView.ItemTemplateContext<
+        CollectionComponent["id"],
+        CollectionComponent
+      >,
+    ) => {
+      return (
+        <li>
+          <oj-action-card>
+            <div class="component-item" key={item.data.id}>
+              <div class="componentImage">
+                {item.data.isCorePack ? (
+                  <span class="demo-badge-position oj-sm-margin-2x-vertical oj-badge oj-badge-end oj-badge-success oj-badge-sm">
+                    Core Pack
+                  </span>
+                ) : null}
+                <div
+                  class="oj-helper-text-align-center"
+                  style={{ paddingTop: "25px" }}
+                >
+                  <div
+                    className={item.data.image}
+                    style={{ fontWeight: 400 }}
+                  ></div>
+                </div>
+                <div class="oj-flex-item oj-text-sm componentInfo oj-typography-body-md oj-typography-bold">
+                  {item.data.name}
+                </div>
+              </div>
+            </div>
+          </oj-action-card>
+        </li>
+      );
+    },
+    [selectedItems],
+  );
+
+  const ComponentDetail = useCallback(() => {
+    switch (activeComponentId) {
+      case 1:
+        return <Table />;
+      case 2:
+        return <ListView />;
+      case 3:
+        return <Treeview />;
+      case 4:
+        return <DataGrid />;
+      case 5:
+        return <GroupByTable />;
+      case 6:
+        return <RowExpanderTable />;
+      default:
+        return null;
+    }
+  }, [activeComponentId]);
+
+  const handleHomeNavigation = (_event: ButtonElement.ojAction) => {
+    setActiveComponentId(null);
+    setShowComponentDetail(false);
+    setSelectedItems(new KeySetImpl([]) as KeySet<CollectionComponent["id"]>);
+  };
+
+  const handleSelectedChanged = (event: any) => {
+    const selectedKey = event.detail.items[0]?.key as CollectionComponent["id"];
+    if (typeof selectedKey === "number") {
+      setActiveComponentId(selectedKey);
+      setShowComponentDetail(true);
+      const selection = event.detail.value as KeySet<CollectionComponent["id"]>;
+      setSelectedItems(selection);
+
+      const selectedComponent = collectionComponents.find(
+        (component) => component.id === selectedKey,
+      );
+      setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
+    }
+  };
+
+  return (
+    <div class="component-wrapper">
+      {!showComponentDetail ? (
+        <oj-list-view
+          data={dataProvider}
+          selectionMode="single"
+          selected={selectedItems}
+          gridlines={gridlines}
+          onselectedChanged={handleSelectedChanged}
+          display="card"
+          class="listview-sizing"
+        >
+          <template slot="itemTemplate" render={renderListItem}></template>
+        </oj-list-view>
+      ) : (
+        <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
+          <oj-button class="breadcrumb-wrapper" label=" << Home " onojAction={handleHomeNavigation} />
+          {isComponentAvailable ? (
+            ComponentDetail()
+          ) : (
+            <div class="comingsoon">Coming soon....</div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default CollectionHome;

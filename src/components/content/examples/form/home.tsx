@@ -471,7 +471,7 @@ const FormsHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button label=" << Home " onojAction={handleOjAction} />
+          <oj-button class="breadcrumb-wrapper" label=" << Home " onojAction={handleOjAction} />
           {isComponentAvailable ? (
             ComponentDetail()
           ) : (

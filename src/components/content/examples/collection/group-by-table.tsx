@@ -171,6 +171,7 @@ const rowItemTemplate = (row: ojTable.RowTemplateContext<Dept["id"], Dept>) => {
 
 const GroupByTable = () => {
   return (
+   <div class="oj-web-applayout-max-width oj-web-applayout-content">
     <oj-table
       id="table"
       class="demo-table-container"
@@ -184,6 +185,7 @@ const GroupByTable = () => {
     >
       <template slot="rowTemplate" render={rowItemTemplate}></template>
     </oj-table>
+    </div>
   );
 };
 export default GroupByTable;

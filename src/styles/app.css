@@ -101,7 +101,10 @@
      border-radius: 5px;
   }
  .component-wrapper{
-  padding-left: 50pt;
+  /* padding-left: 50pt; */
+ }
+ .breadcrumb-wrapper{
+  margin-top: 10pt;
  }
 
   .demo-badge-position {

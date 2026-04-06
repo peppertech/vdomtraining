@@ -26,11 +26,11 @@ const ExampleContent = (props: Props) => {
   const [activeTab, setActiveTab] = useState<string>("collection");
 
   const tabBarItems: Tab[] = [
-    { path: "collection", label: "Collection" },
-    { path: "form", label: "Form" },
+    { path: "collection", label: "Collections" },
+    { path: "form", label: "Forms" },
     { path: "dataviz", label: "Data Visualization" },
-    { path: "control", label: "Control" },
-    { path: "navlayout", label: "Navigation and Layout" },
+    { path: "control", label: "Controls" },
+    { path: "navlayout", label: "Navigations and Layouts" },
   ];
   if (!props.router.childRouter) {
     exampleRouter = props.router.createChildRouter(tabBarItems, {

@@ -109,7 +109,7 @@ const ListView = () => {
   );
 
   return (
-    <div class="oj-md-margin-4x-horizontal">
+     <div class="oj-web-applayout-max-width oj-web-applayout-content">
       <oj-list-view
         id="listview"
         aria-label="list of employees"

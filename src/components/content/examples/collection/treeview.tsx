@@ -50,7 +50,7 @@ const Treeview = () => {
   );
 
   return (
-    <div class="oj-md-margin-4x-horizontal">
+     <div class="oj-web-applayout-max-width oj-web-applayout-content">
       <oj-tree-view
         id="treeview"
         data={data}

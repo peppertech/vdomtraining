@@ -123,7 +123,7 @@ const DataGrid = () => {
   };
 
   return (
-    <div class="oj-md-margin-4x-horizontal">
+    <div class="oj-web-applayout-max-width oj-web-applayout-content">
       <h3 id="dataGridLabel" class="oj-typography-heading-xs">
         State Population by Year
       </h3>
@@ -145,4 +145,5 @@ const DataGrid = () => {
     </div>
   );
 };
+
 export default DataGrid;

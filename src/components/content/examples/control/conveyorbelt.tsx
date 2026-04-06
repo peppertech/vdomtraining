@@ -3,6 +3,7 @@ import "ojs/ojconveyorbelt";
 
 const ConveyorBelt = () => {
   return (
+    <div class="oj-web-applayout-max-width oj-web-applayout-content">
     <oj-conveyor-belt orientation="horizontal" arrowVisibility="auto">
       <oj-button id="hydrogen" class="oj-sm-margin-1x">
         Hydrogen
@@ -41,6 +42,7 @@ const ConveyorBelt = () => {
         Magnesium
       </oj-button>
     </oj-conveyor-belt>
+    </div>
   );
 };
 
