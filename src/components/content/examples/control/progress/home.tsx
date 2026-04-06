@@ -73,9 +73,7 @@ const ProgressHome = () => {
               <div class="oj-flex-item oj-text-sm componentInfo oj-typography-body-md oj-typography-bold">
                 {item.data.name}
               </div>
-              <p class="oj-typography-body-sm oj-text-color-secondary oj-sm-margin-0">
-                {item.data.description}
-              </p>
+              
             </div>
           </div>
         </oj-action-card>

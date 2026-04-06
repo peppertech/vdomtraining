@@ -81,6 +81,7 @@ const controlComponents: ControlComponent[] = [
     name: "Progress Indicators",
     image: "oj-ux-icon-size-12x  oj-ux-ico-progress-linear",
     isAvailable: true,
+    isCorePack: true
   },
   {
     id: 9,

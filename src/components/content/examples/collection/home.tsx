@@ -13,6 +13,7 @@ import ListView from "./listview";
 import Treeview from "./treeview";
 import DataGrid from "./datagrid";
 import GroupByTable from "./group-by-table";
+import CorePackTable from "./core-pack-table";
 import { RowExpanderTable } from "./rowexpander-table";
 
 type CollectionComponent = {
@@ -29,6 +30,13 @@ const collectionComponents: CollectionComponent[] = [
     name: "Table",
     image: "oj-ux-icon-size-12x  oj-ux-ico-tables-basic",
     isAvailable: true,
+  },
+   {
+    id: 7,
+    name: "Table (Core Pack)",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-tables-basic",
+    isAvailable: true,
+    isCorePack: true,
   },
   {
     id: 2,
@@ -59,7 +67,7 @@ const collectionComponents: CollectionComponent[] = [
     name: "Row Expander Table",
     image: "oj-ux-icon-size-12x  oj-ux-ico-row-expander",
     isAvailable: true,
-  },
+  }
 ];
 
 const dataProvider = new MutableArrayDataProvider<
@@ -134,6 +142,8 @@ const CollectionHome = () => {
         return <GroupByTable />;
       case 6:
         return <RowExpanderTable />;
+      case 7:
+        return <CorePackTable />;
       default:
         return null;
     }
