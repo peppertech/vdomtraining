@@ -18,7 +18,7 @@ const asyncButtons: AsyncButton[] = [
     id: "progressButtonSync",
     label: "Sync",
     chroming: "solid",
-    icon: "oj-ux-ico-sync",
+    icon: "oj-ux-ico-button",
   },
 ];
 

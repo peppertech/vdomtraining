@@ -10,6 +10,8 @@ import { ojListView } from "ojs/ojlistview";
 import ProgressBar from "./progressbar";
 import ProgressButton from "./progressbutton";
 import ProgressCircle from "./progresscircle";
+import LegacyProgressBar from "./legacyProgressBar";
+import LegacyProgressCircle from "./legacyProgressCircle";
 
 type ProgressComponent = {
   id: number;
@@ -21,26 +23,40 @@ type ProgressComponent = {
 
 const progressComponents: ProgressComponent[] = [
   {
+    id: 4,
+    name: "Progress Bar",
+    description: "Classic oj-progress-bar with determinate, indeterminate, and size variants.",
+    image: "oj-ux-icon-size-12x oj-ux-ico-progress-linear",
+  },
+  {
     id: 1,
-    name: "Progress Bar (oj-c)",
+    name: "Progress Bar",
     description: "Linear progress with determinate, indeterminate, and status examples.",
     image: "oj-ux-icon-size-12x oj-ux-ico-progress-linear",
     isCorePack: true,
   },
-  {
-    id: 2,
-    name: "Progress Circle (oj-c)",
-    description: "Radial progress indicators across sizes and statuses.",
-    image: "oj-ux-icon-size-12x oj-ux-ico-progress-radial",
-    isCorePack: true,
-  },
+  
   {
     id: 3,
-    name: "Progress Button (oj-c)",
+    name: "Progress Button",
     description: "Buttons with async progress states and sizing variants.",
-    image: "oj-ux-icon-size-12x oj-ux-ico-progress-button",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-button",
     isCorePack: true,
   },
+  
+  {
+    id: 5,
+    name: "Progress Circle",
+    description: "Classic oj-progress-circle with determinate and indeterminate modes.",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-circular-progress-7",
+  },
+  {
+    id: 2,
+    name: "Progress Circle",
+    description: "Radial progress indicators across sizes and statuses.",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-circular-progress-7",
+    isCorePack: true,
+  }
 ];
 
 const dataProvider = new MutableArrayDataProvider<ProgressComponent["id"], ProgressComponent>(progressComponents, {
@@ -98,6 +114,12 @@ const ProgressHome = () => {
         break;
       case 3:
         detailContent = <ProgressButton />;
+        break;
+      case 4:
+        detailContent = <LegacyProgressBar />;
+        break;
+      case 5:
+        detailContent = <LegacyProgressCircle />;
         break;
       default:
         detailContent = null;

@@ -166,5 +166,10 @@ text-align: center;
     width: 18.438rem;
     height: 18.438rem;
   }
-    
+ .demo-progress-embedded-panel {
+    width: 12.5rem;
+    height: 12.5rem;
+    padding: 0;
+  }
+
   
