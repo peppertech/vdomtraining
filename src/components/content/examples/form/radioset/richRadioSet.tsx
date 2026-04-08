@@ -105,8 +105,8 @@ const useWrappingOptions = () =>
   );
 
 const useMessageSets = () =>
-  useMemo(() => {
-    return {
+  useMemo(
+    () => ({
       error: [
         {
           severity: "error" as const,
@@ -135,18 +135,22 @@ const useMessageSets = () =>
           detail: "Selection recorded successfully.",
         },
       ],
-    };
-  }, []);
+    }),
+    [],
+  );
 
 const handleValueChangedFactory =
-  (setValue: (value: string[]) => void) =>
-  (event: CustomEvent<{ value: string | string[] }>) => {
-    const next = event.detail.value;
-    setValue(Array.isArray(next) ? next : [next]);
+  (setValue: (value: string | null) => void) =>
+  (event: CRichRadiosetElement.valueChanged<string>) => {
+    setValue(event.detail.value ?? null);
   };
 
 export const RadiosetCorePackExample = () => {
-  const [value, setValue] = useState<string[]>(["automotive"]);
+  const [statesValue, setStatesValue] = useState<string | null>("automotive");
+  const [labelEdgeValue, setLabelEdgeValue] = useState<string | null>("automotive");
+  const [helpValue, setHelpValue] = useState<string | null>("distribution");
+  const [messagesValue, setMessagesValue] = useState<string | null>("automotive");
+  const [layoutsValue, setLayoutsValue] = useState<string | null>("automotive");
 
   const industryOptions = useIndustryOptions();
   const helpOptions = useHelpOptions();
@@ -154,7 +158,11 @@ export const RadiosetCorePackExample = () => {
   const messages = useMessageSets();
   //const optionsRadioset: CRichRadiosetElement<string>['options'] = industryOptions;
 
-  const handleValueChanged = useCallback(handleValueChangedFactory(setValue), []);
+  const handleStatesChanged = useCallback(handleValueChangedFactory(setStatesValue), []);
+  const handleLabelEdgeChanged = useCallback(handleValueChangedFactory(setLabelEdgeValue), []);
+  const handleHelpChanged = useCallback(handleValueChangedFactory(setHelpValue), []);
+  const handleMessagesChanged = useCallback(handleValueChangedFactory(setMessagesValue), []);
+  const handleLayoutsChanged = useCallback(handleValueChangedFactory(setLayoutsValue), []);
 
   return (
     <div id="div1">
@@ -163,15 +171,15 @@ export const RadiosetCorePackExample = () => {
         <oj-c-rich-radioset
           layout="md"
           id="enabledRadioset"
-          value={value}
+          value={statesValue}
           options={industryOptions}
           labelHint="Enabled"
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleStatesChanged}
         />
         <oj-c-rich-radioset
           layout="md"
           id="disabledRadioset"
-          value={value}
+          value={statesValue}
           labelHint="Disabled"
           options={industryOptions}
           disabled
@@ -179,7 +187,7 @@ export const RadiosetCorePackExample = () => {
         <oj-c-rich-radioset
           layout="md"
           id="readonlyRadioset"
-          value={value}
+          value={statesValue}
           labelHint="Readonly"
           options={industryOptions}
           readonly
@@ -191,57 +199,60 @@ export const RadiosetCorePackExample = () => {
         <oj-c-rich-radioset
           layout="md"
           id="labelEdgeInside"
-          value={value}
+          value={labelEdgeValue}
           labelHint="Label Edge Inside"
           options={industryOptions}
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleLabelEdgeChanged}
         />
         <oj-c-rich-radioset
           layout="md"
           id="labelEdgeTop"
-          value={value}
+          value={labelEdgeValue}
           labelHint="Label Edge Top"
           labelEdge="top"
           options={industryOptions}
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleLabelEdgeChanged}
         />
         <oj-c-rich-radioset
           layout="md"
           id="labelEdgeStart"
-          value={value}
+          value={labelEdgeValue}
           labelHint="Label Edge Start"
           labelEdge="start"
           options={industryOptions}
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleLabelEdgeChanged}
         />
       </oj-c-form-layout>
 
       <h5>Required &amp; Help</h5>
       <oj-c-form-layout fullWidth direction="row">
-        <oj-c-rich-radioset layout="md" required options={helpOptions} labelHint="Required" />
+        <oj-c-rich-radioset layout="md" 
+        required 
+        options={helpOptions} 
+        labelHint="Required" />
         <oj-c-rich-radioset
           layout="md"
-          value={value}
+          value={helpValue}
           help={{ instruction: "help.instruction text" }}
           options={helpOptions}
           labelHint="Help Instruction"
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleHelpChanged}
         />
         <oj-c-rich-radioset
           layout="md"
-          value={value}
+          value={helpValue}
           helpHints={{ definition: "help-hints.definition text" }}
           options={helpOptions}
           labelHint="Help-hints Definition"
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleHelpChanged}
         />
         <oj-c-rich-radioset
           layout="md"
-          value={value}
+          value={helpValue}
           helpHints={{ source: "https://www.oracle.com", sourceText: "Learn More" }}
           options={helpOptions}
           labelHint="Help-hints Source"
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleHelpChanged}
         />
       </oj-c-form-layout>
 
@@ -250,34 +261,34 @@ export const RadiosetCorePackExample = () => {
         <oj-c-rich-radioset
           layout="md"
           messagesCustom={messages.error}
-          value={value}
+          value={messagesValue}
           options={industryOptions}
           labelHint="Error"
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleMessagesChanged}
         />
         <oj-c-rich-radioset
           layout="md"
           messagesCustom={messages.warning}
-          value={value}
+          value={messagesValue}
           options={industryOptions}
           labelHint="Warning"
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleMessagesChanged}
         />
         <oj-c-rich-radioset
           layout="md"
           messagesCustom={messages.info}
-          value={value}
+          value={messagesValue}
           options={industryOptions}
           labelHint="Information"
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleMessagesChanged}
         />
         <oj-c-rich-radioset
           layout="md"
           messagesCustom={messages.confirmation}
-          value={value}
+          value={messagesValue}
           options={industryOptions}
           labelHint="Confirmation"
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleMessagesChanged}
         />
       </oj-c-form-layout>
 
@@ -285,24 +296,24 @@ export const RadiosetCorePackExample = () => {
       <oj-c-form-layout fullWidth direction="row">
         <oj-c-rich-radioset
           layout="xl"
-          value={value}
+          value={layoutsValue}
           options={industryOptions}
           labelHint="XL Layout"
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleLayoutsChanged}
         />
         <oj-c-rich-radioset
           layout="md"
-          value={value}
+          value={layoutsValue}
           options={industryOptions}
           labelHint="MD Layout"
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleLayoutsChanged}
         />
         <oj-c-rich-radioset
           layout="sm"
-          value={value}
+          value={layoutsValue}
           options={industryOptions}
           labelHint="SM Layout"
-          onvalueChanged={handleValueChanged}
+          onvalueChanged={handleLayoutsChanged}
         />
       </oj-c-form-layout>
     </div>
