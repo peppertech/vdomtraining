@@ -9,7 +9,7 @@ import { ojMenu } from "ojs/ojmenu";
 import { ojTable } from "ojs/ojtable";
 import { ojButton, ojButtonsetOne } from "ojs/ojbutton";
 import { ojInputText } from "ojs/ojinputtext";
-import * as deptData from "text!./data/departmentData.json";
+import * as deptData from "text!../data/departmentData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type Dept = {

@@ -36,7 +36,7 @@ const buttonComponents: ButtonComponent[] = [
   },
   {
     id: 6,
-    name: "Button (oj-c)",
+    name: "Button",
     image: "oj-ux-icon-size-12x oj-ux-ico-button",
     isAvailable: true,
     isCorePack: true,
@@ -62,14 +62,14 @@ const buttonComponents: ButtonComponent[] = [
   },
   {
     id: 8,
-    name: "Menu Button (oj-c)",
+    name: "Menu Button ",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
     isAvailable: true,
     isCorePack: true,
   },
   {
     id: 5,
-    name: "Buttonset Single (oj-c)",
+    name: "Buttonset Single ",
     image: "oj-ux-icon-size-12x oj-ux-ico-button-set-one",
     isAvailable: true,
     isCorePack: true,
@@ -77,7 +77,7 @@ const buttonComponents: ButtonComponent[] = [
   
   {
     id: 7,
-    name: "Buttonset Multiple (oj-c)",
+    name: "Buttonset Multiple",
     image: "oj-ux-icon-size-12x oj-ux-ico-button-set-many",
     isAvailable: true,
     isCorePack: true,
@@ -85,21 +85,21 @@ const buttonComponents: ButtonComponent[] = [
   
   {
     id: 9,
-    name: "Progress Button (oj-c)",
+    name: "Progress Button",
     image: "oj-ux-icon-size-12x oj-ux-ico-button",
     isAvailable: true,
     isCorePack: true,
   },
   {
     id: 10,
-    name: "Split Menu Button (oj-c)",
+    name: "Split Menu Button",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
     isAvailable: true,
     isCorePack: true,
   },
   {
     id: 11,
-    name: "Toggle Button (oj-c)",
+    name: "Toggle Button",
     image: "oj-ux-icon-size-12x oj-ux-ico-button",
     isAvailable: true,
     isCorePack: true,

@@ -1,8 +1,8 @@
 import { h, ComponentProps } from "preact";
 import { useState, useCallback,useMemo } from "preact/hooks";
-import * as peopleData from "text!./data/peopleData.json";
-import * as employeeData from "text!./data/employeeData.json";
-import * as countryData from "text!./data/componentList.json";
+import * as peopleData from "text!../data/peopleData.json";
+import * as employeeData from "text!../data/employeeData.json";
+import * as countryData from "text!../data/componentList.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import "ojs/ojselectsingle";
 import { ItemContext } from "ojs/ojcommontypes";

@@ -166,8 +166,8 @@ export const UserAssistance = () => {
     setLastNameVal("");
   }, []);
 
-  return (
-    <div id="userAssistanceDemo" style="width: 1px; min-width: 100%;">
+  return (  
+    <div id="userAssistanceDemo" class="oj-web-applayout-max-width oj-web-applayout-content">
       <div class="oj-sm-padding-2x-horizontal">
         <h4 class="oj-sm-padding-2x-bottom">User Assistance Examples</h4>
 

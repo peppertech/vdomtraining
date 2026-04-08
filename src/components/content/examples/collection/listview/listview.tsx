@@ -7,7 +7,7 @@ import "ojs/ojavatar";
 import "ojs/ojtoolbar";
 import "ojs/ojselector";
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
-import * as peopleData from "text!./data/peopleData.json";
+import * as peopleData from "text!../data/peopleData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { ojListView } from "ojs/ojlistview";
 import { SelectorElement } from "ojs/ojselector";

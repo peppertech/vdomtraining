@@ -1,431 +1,182 @@
 import { h, ComponentProps } from "preact";
-import { useState, useCallback } from "preact/hooks";
-import CoreRouter = require("ojs/ojcorerouter");
-import KnockoutRouterAdapter = require("ojs/ojknockoutrouteradapter");
-import UrlParamAdapter = require("ojs/ojurlparamadapter");
-import "ojs/ojnavigationlist";
-import "ojs/ojlistview";
-import { ojListView } from "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import { useCallback, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
-import SelectSingle from "./selectSingle";
-import InputText from "./inputTextLegacy";
-import FormElements from "./formelements";
-import { ButtonElement } from "ojs/ojbutton";
 import "ojs/ojbutton";
-import SelectMultiple from "./selectMultipleCorePack";
-import SelectSingleCorePack from "./selectSingleCorePack";
-import InputTextCorePack from "./inputTextCorePack";
-import InputNumber from "./inputNumber";
-import InputNumberCorePack from "./inputNumberCorePack";
-import InputDateTime from "./inputDateTime";
-import TextArea from "./textArea";
-import TextAreaCorePack from "./textAreaCorePack";
-import CheckBoxSet from "./checkBoxSet";
-import InputDate from "./inputDate";
-import InputDatePicker from "./inputDatePicker";
-import InputSearch from "./InputSearch";
-import { InputPasswordCorePack } from "./inputPasswordCorePack";
-import { FormLayoutCorePack } from "./formLayoutCorePack";
-import { SelectMany } from "./selectMany";
-import { SwitchExample } from "./switch";
-import { Slider } from "./slider";
-import { ComboboxMany } from "./comboboxMany";
-import { InputDateMask } from "./inputDateMask";
-import { InputDateText } from "./inputDateText";
-import { ComboboxOneExample } from "./comboBoxOne";
-import { InputTime } from "./inputTime";
-import { InputMonthMask } from "./inputMonthMask";
-import { InputSensitiveText } from "./inputSensitiveText";
+import "ojs/ojlistview";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import { KeySetImpl, KeySet } from "ojs/ojkeyset";
+import { ojListView } from "ojs/ojlistview";
+import { ButtonElement } from "ojs/ojbutton";
+
+import CheckboxHome from "./checkbox/home";
 import { ColorPalette } from "./colorPalette";
 import { ColorSpectrum } from "./colorSpectrum";
+import InputDateTimeHome from "./Inputdatetime/home";
+import InputNumberHome from "./inputnumber/home";
+import InputPasswordHome from "./inputpassword/home";
+import InputTextHome from "./inputtext/home";
+import InputSearch from "./InputSearch";
+import { LabelledLink } from "./labelledLink";
+import SelectAndComboboxHome from "./selectandcomobobox/home";
+import { Slider } from "./slider";
+import { SwitchExample } from "./switch";
+import TextAreaHome from "./textarea/home";
+import { FormLayoutCorePack } from "./formLayoutCorePack";
 import { UserAssistance } from "./userAssistance";
 import { ValidationGroupExample } from "./validationGroup";
-import { CheckBoxCorePack } from "./checkBoxCorePack";
-import { CheckBoxSetCorePack } from "./checkBoxSetCorePack";
-import { RichCheckBoxsetCorePack } from "./richCheckBoxsetCorePack";
-import {LabelledLink} from './labelledLink';
+import { RadiosetCorePackExample } from "./radiosetCorePackExample";
 
-type JETComponent = {
-  id: number;
+type FormShowcase = {
+  id: string;
   name: string;
   image: string;
-  isAvailable?: boolean;
   isCorePack?: boolean;
+  render: () => h.JSX.Element | null;
 };
 
-const allFormsComponents = [
+const formExamples: FormShowcase[] = [
   {
-    id: 1,
-    name: "CheckboxSet",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-checkbox-on",
-    isAvailable: true,
-    isCorePack: false,
-  },
-  {
-    id: 111,
-    name: "Checkbox",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-checkbox-on",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 112,
-    name: "CheckboxSet",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-checkbox-on",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 113,
-    name: "RichCheckboxSet",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-checkbox-on",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 2,
+    id: "color-palette",
     name: "Color Palette",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-color-palette",
-    isAvailable: true,
-    isCorePack: false,
+    image: "oj-ux-icon-size-12x oj-ux-ico-color-palette",
+    render: () => <ColorPalette />,
   },
   {
-    id: 3,
+    id: "color-spectrum",
     name: "Color Spectrum",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-color-spectrum",
-    isAvailable: true,
-    isCorePack: false,
-  },
-  {
-    id: 4,
-    name: "Form Layout",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-form-layout-jet",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 5,
-    name: "Input Date Time",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-calendar-clock",
-    isAvailable: true,
-    isCorePack: false,
-  },
-  {
-    id: 6,
-    name: "Input Date",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-date-range-input",
-    isAvailable: true,
-    isCorePack: false,
-  },
-  {
-    id: 7,
-    name: "Date Picker",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-date-range-input",
-    isAvailable: true,
-    isCorePack: false,
-  },
-
-  {
-    id: 9,
-    name: "Input Time",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-calendar",
-    isAvailable: true,
-    isCorePack: false,
-  },
-   {
-    id: 10,
-    name: "Input Number",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
-    isAvailable: true,
-    isCorePack: false,
-  },
-  {
-    id: 28,
-    name: "Input Date Mask",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-masked-text-input",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 29,
-    name: "Input Date Text",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 30,
-    name: "Input Month Mask",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-masked-text-input",
-    isAvailable: true,
-    isCorePack: true,
+    image: "oj-ux-icon-size-12x oj-ux-ico-color-spectrum",
+    render: () => <ColorSpectrum />,
   },
  
   {
-    id: 23,
+    id: "radioset",
+    name: "Radioset",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-radio-set",
+    isCorePack: true,
+    render: () => <RadiosetCorePackExample />,
+  },
+  {
+    id: "checkboxes",
+    name: "Checkboxes",
+    image: "oj-ux-icon-size-12x oj-ux-ico-checkbox-on",
+    isCorePack: true,
+    render: () => <CheckboxHome />,
+  },
+  {
+    id: "date-time",
+    name: "Date & Time Inputs",
+    image: "oj-ux-icon-size-12x oj-ux-ico-calendar-clock",
+    isCorePack: true,
+    render: () => <InputDateTimeHome />,
+  },
+  {
+    id: "input-number",
     name: "Input Number",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-input-number",
-    isAvailable: true,
+    image: "oj-ux-icon-size-12x oj-ux-ico-input-number",
     isCorePack: true,
-  },
-   {
-    id: 13,
-    name: "Input Text",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
-    isAvailable: true,
-    isCorePack: false,
+    render: () => <InputNumberHome />,
   },
   {
-    id: 24,
-    name: "Input Text",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  
-  {
-    id: 14,
-    name: "Text Area",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-area",
-    isAvailable: true,
-    isCorePack: false,
-  },
-   {
-    id: 27,
-    name: "Text Area",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-area",
-    isAvailable: true,
-    isCorePack: true,
-  },
-
-  {
-    id: 42,
-    name: "Labelled Link",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-link",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 11,
+    id: "input-password",
     name: "Input Password",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-password",
-    isAvailable: true,
+    image: "oj-ux-icon-size-12x oj-ux-ico-text-input-password",
     isCorePack: true,
+    render: () => <InputPasswordHome />,
   },
   {
-    id: 31,
-    name: "Input Sensitive Text",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-password",
-    isAvailable: true,
+    id: "input-text",
+    name: "Input Text",
+    image: "oj-ux-icon-size-12x oj-ux-ico-text-input",
+     isCorePack: true,
+    render: () => <InputTextHome />,
+  },
+  {
+    id: "text-area",
+    name: "Text Area",
+    image: "oj-ux-icon-size-12x oj-ux-ico-text-input-area",
+     isCorePack: true,
+    render: () => <TextAreaHome />,
+  },
+  {
+    id: "selects-combobox",
+    name: "Select & Combobox",
+    image: "oj-ux-icon-size-12x oj-ux-ico-select-tab",
     isCorePack: true,
-  },
-
-  {
-    id: 12,
-    name: "Input Search",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-input-search",
-    isAvailable: true,
-    isCorePack: false,
-  },
- 
-
-  {
-    id: 16,
-    name: "Slider",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-slider",
-    isAvailable: true,
-    isCorePack: false,
-  },
-  {
-    id: 17,
-    name: "Switch",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-switch-on",
-    isAvailable: true,
-    isCorePack: false,
-  },
-
-  {
-    id: 18,
-    name: "Select Many",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-select-all",
-    isAvailable: true,
-    isCorePack: false,
-  },
-  {
-    id: 19,
-    name: "Combobox One",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-combo",
-    isAvailable: true,
-    isCorePack: false,
-  },
-
-  {
-    id: 20,
-    name: "Combobox Many",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-text-input-combo-many",
-    isAvailable: true,
-    isCorePack: false,
-  },
-
-  {
-    id: 15,
-    name: "Select Single",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-select-tab",
-    isAvailable: true,
-    isCorePack: false,
-  },
-  {
-    id: 26,
-    name: "Select Single",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-select-tab",
-    isAvailable: true,
-    isCorePack: true,
-  },
-
-  {
-    id: 25,
-    name: "Select Multiple",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-select",
-    isAvailable: true,
-    isCorePack: true,
+    render: () => <SelectAndComboboxHome />,
   },
   
   {
-    id: 21,
-    name: "User Assistance",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-user-assistance",
-    isAvailable: true,
-    isCorePack: false,
+    id: "form-layout",
+    name: "Form Layout",
+    image: "oj-ux-icon-size-12x oj-ux-ico-form-layout-jet",
+    isCorePack: true,
+    render: () => <FormLayoutCorePack />,
   },
   {
-    id: 22,
+    id: "input-search",
+    name: "Input Search",
+    image: "oj-ux-icon-size-12x oj-ux-ico-input-search",
+    render: () => <InputSearch />,
+  },
+  {
+    id: "slider",
+    name: "Slider",
+    image: "oj-ux-icon-size-12x oj-ux-ico-slider",
+    render: () => <Slider />,
+  },
+  {
+    id: "switch",
+    name: "Switch",
+    image: "oj-ux-icon-size-12x oj-ux-ico-switch-on",
+    render: () => <SwitchExample />,
+  },
+  {
+    id: "user-assistance",
+    name: "User Assistance",
+    image: "oj-ux-icon-size-12x oj-ux-ico-user-assistance",
+    render: () => <UserAssistance />,
+  },
+  {
+    id: "validation",
     name: "Validation",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-user-assistance",
-    isAvailable: true,
-    isCorePack: false,
+    image: "oj-ux-icon-size-12x oj-ux-ico-user-assistance",
+    render: () => <ValidationGroupExample />,
+  },
+  {
+    id: "labelled-link",
+    name: "Labelled Link",
+    image: "oj-ux-icon-size-12x oj-ux-ico-link",
+    isCorePack: true,
+    render: () => <LabelledLink />,
   },
 ];
 
 const dataProvider = new MutableArrayDataProvider<
-  JETComponent["id"],
-  JETComponent
->(allFormsComponents, {
+  FormShowcase["id"],
+  FormShowcase
+>(formExamples, {
   keyAttributes: "id",
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
-const gridlinesItemVisible: ListViewProps["gridlines"] = { item: "visible" };
-const INIT_SELECTEDITEMS = new KeySetImpl([]) as KeySet<JETComponent["id"]>;
+const gridlines: ListViewProps["gridlines"] = { item: "visible" };
+const INITIAL_SELECTION =
+  new KeySetImpl<FormShowcase["id"]>([]) as KeySet<FormShowcase["id"]>;
 
 const FormsHome = () => {
-  const [selectedItems, setselectedItems] =
-    useState<KeySet<JETComponent["id"]>>(INIT_SELECTEDITEMS);
-  const [showComponentDetail, setComponentDetailVal] = useState(false);
-  const [activeTab, setActiveTab] = useState<Number>(0);
-  const [isComponentAvailable, setComponentAvvailability] = useState(false);
+  const [selectedItems, setSelectedItems] =
+    useState<KeySet<FormShowcase["id"]>>(INITIAL_SELECTION);
+  const [showComponentDetail, setShowComponentDetail] = useState(false);
+  const [activeComponentId, setActiveComponentId] = useState<
+    FormShowcase["id"] | null
+  >(null);
 
-  let ComponentDetail = () => {
-    switch (
-      activeTab 
-    ) {
-      case 1:
-        return <CheckBoxSet />;
-      case 111:
-         return <CheckBoxCorePack />;  
-      case 112:
-        return <CheckBoxSetCorePack />;  
-      case 113:
-        return <RichCheckBoxsetCorePack />;  
-      case 2:
-        return <ColorPalette />;
-      case 3:
-        return <ColorSpectrum />;
-      case 4:
-        return <FormLayoutCorePack />;
-      case 5:
-        return <InputDateTime />;
-      case 6:
-        return <InputDate />;
-      case 7:
-        return <InputDatePicker />;
-      case 9:
-        return <InputTime />;
-      case 10:
-        return <InputNumber />;
-      case 11:
-        return <InputPasswordCorePack />;
-      case 12:
-        return <InputSearch />;
-      case 15:
-        return <SelectSingle />;
-      case 16:
-        return <Slider />;
-      case 13:
-        return <InputText />;
-      case 14:
-        return <TextArea />;
-      case 17:
-        return <SwitchExample />;
-      case 18:
-        return <SelectMany />;
-      case 19:
-        return <ComboboxOneExample />;
-      case 23:
-        return <InputNumberCorePack />;
-      case 20:
-        return <ComboboxMany />;
-      case 21:
-        return <UserAssistance />;
-      case 22:
-        return <ValidationGroupExample />;
-      case 24:
-        return <InputTextCorePack />;
-      case 25:
-        return <SelectMultiple />;
-      case 26:
-        return <SelectSingleCorePack />;
-      case 27:
-        return <TextAreaCorePack />;
-      case 28:
-        return <InputDateMask />;
-      case 29:
-        return <InputDateText />;
-      case 30:
-        return <InputMonthMask />;
-      case 31:
-        return <InputSensitiveText />;
-      case 42:
-        return <LabelledLink />;
-      default:
-        return <FormsHome />;
-    }
-  };
-
-  const handleOjAction = (event: ButtonElement.ojAction) => {
-    //const label = event.detail.originalEvent.currentTarget.innerText;
-    setActiveTab(0);
-    setComponentDetailVal(false);
-    //console.log("Button clicked: ", label ? label : "Icon Only");
-  };
-
-  const handleSelectedChanged = (event: any) => {
-    setActiveTab(event.detail.items[0]["key"]);
-    setselectedItems(event.detail.value);
-    setComponentDetailVal(true);
-    //console.log(event.detail.items[0].innerText);
-    let filteredComponent = allFormsComponents.filter(
-      (component) => component.id === event.detail.items[0].key,
-    );
-    let flag = filteredComponent[0].isAvailable;
-    setComponentAvvailability(flag);
-    // console.log(isComponentAvailable);
-  };
-  // <div class="comingsoon">Coming soon....</div>
   const renderListItem = useCallback(
     (
-      item: ojListView.ItemTemplateContext<JETComponent["id"], JETComponent>,
+      item: ojListView.ItemTemplateContext<
+        FormShowcase["id"],
+        FormShowcase
+      >,
     ) => {
       return (
         <li>
@@ -443,7 +194,7 @@ const FormsHome = () => {
                 >
                   <div className={item.data.image}></div>
                 </div>
-                <div class="oj-flex-item  oj-text-sm componentInfo oj-typography-body-md oj-typography-bold">
+                <div class="oj-flex-item oj-text-sm componentInfo oj-typography-body-md oj-typography-bold">
                   {item.data.name}
                 </div>
               </div>
@@ -454,31 +205,70 @@ const FormsHome = () => {
     },
     [selectedItems],
   );
+
+  const ComponentDetail = useCallback(() => {
+    const showcase = formExamples.find(
+      (example) => example.id === activeComponentId,
+    );
+    return showcase?.render() ?? null;
+  }, [activeComponentId]);
+
+  const handleHomeNavigation = (_event: ButtonElement.ojAction) => {
+    setActiveComponentId(null);
+    setShowComponentDetail(false);
+    setSelectedItems(
+      new KeySetImpl<FormShowcase["id"]>([]) as KeySet<FormShowcase["id"]>,
+    );
+  };
+
+  const handleSelectedChanged = (
+    event: ojListView.selectedChanged<FormShowcase["id"], FormShowcase>,
+  ) => {
+    const selection = event.detail.value as KeySet<FormShowcase["id"]>;
+    setSelectedItems(selection);
+
+    const selectedKey = event.detail.items[0]?.key as
+      | FormShowcase["id"]
+      | undefined;
+
+    if (selectedKey) {
+      setActiveComponentId(selectedKey);
+      setShowComponentDetail(true);
+    }
+  };
+
   return (
-    <div class="component-wrapper">
-      {!showComponentDetail ? (
-        <oj-list-view
-          id="listview"
-          aria-label="list of employees"
-          data={dataProvider}
-          onselectedChanged={handleSelectedChanged}
-          selectionMode={"single"}
-          selected={selectedItems}
-          display={"card"}
-          class="listview-sizing"
-        >
-          <template slot="itemTemplate" render={renderListItem}></template>
-        </oj-list-view>
-      ) : (
+    <div class="oj-web-applayout-max-width oj-web-applayout-content">
+      <div class="oj-flex">
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button class="breadcrumb-wrapper" label=" << Home " onojAction={handleOjAction} />
-          {isComponentAvailable ? (
-            ComponentDetail()
+          {!showComponentDetail ? (
+            <oj-list-view
+              id="forms-home-listview"
+              aria-label="Form component gallery"
+              class="listview-sizing"
+              data={dataProvider}
+              selectionMode="single"
+              selected={selectedItems}
+              gridlines={gridlines}
+              display="card"
+              onselectedChanged={handleSelectedChanged}
+            >
+              <template slot="itemTemplate" render={renderListItem}></template>
+            </oj-list-view>
           ) : (
-            <div class="comingsoon">Coming soon....</div>
+            <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
+              <oj-button
+                class="breadcrumb-wrapper"
+                label=" Forms Home "
+                onojAction={handleHomeNavigation}
+              />
+              {ComponentDetail() ?? (
+                <div class="comingsoon">Coming soon....</div>
+              )}
+            </div>
           )}
         </div>
-      )}
+      </div>
     </div>
   );
 };

@@ -42,7 +42,7 @@ export const ValidationGroupExample = () => {
   }, []);
 
   return (
-    <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+    <div id="componentDemoContent" class="oj-web-applayout-max-width oj-web-applayout-content">
       <div id="validation-usecase">
         <oj-validation-group
           ref={validationGroupRef}

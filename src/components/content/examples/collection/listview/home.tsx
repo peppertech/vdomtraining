@@ -1,22 +1,15 @@
 import { h, ComponentProps } from "preact";
 import { useCallback, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
-import { ButtonElement } from "ojs/ojbutton";
 
-import TableHome from "./table/home";
-import ListViewHome from "./listview/home";
-import Treeview from "./treeview";
-import DataGrid from "./datagrid";
-import GroupByTable from "./group-by-table";
-import { RowExpanderTable } from "./rowexpander-table";
-import CorePackCardView from "./core-pack-card-view";
+import ListViewExample from "./listview";
+import CorePackListView from "./core-pack-list-view";
 
-type CollectionComponent = {
+type ListViewComponent = {
   id: number;
   name: string;
   image: string;
@@ -24,14 +17,12 @@ type CollectionComponent = {
   isCorePack?: boolean;
 };
 
-const collectionComponents: CollectionComponent[] = [
-  
+const listViewComponents: ListViewComponent[] = [
   {
-    id: 7,
-    name: "Table",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-tables-basic",
+    id: 1,
+    name: "List View",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-list",
     isAvailable: true,
-    isCorePack: true,
   },
   {
     id: 2,
@@ -40,53 +31,24 @@ const collectionComponents: CollectionComponent[] = [
     isAvailable: true,
     isCorePack: true,
   },
-  {
-    id: 9,
-    name: "Card View",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 3,
-    name: "Tree View",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-tree-view",
-    isAvailable: true,
-  },
-  {
-    id: 4,
-    name: "Data Grid",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
-    isAvailable: true,
-  },
-  {
-    id: 5,
-    name: "Group By Table",
-    image: "oj-ux-icon-size-12x oj-ux-ico-group",
-    isAvailable: true,
-  },
-  {
-    id: 6,
-    name: "Row Expander Table",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-row-expander",
-    isAvailable: true,
-  },
 ];
 
 const dataProvider = new MutableArrayDataProvider<
-  CollectionComponent["id"],
-  CollectionComponent
->(collectionComponents, {
+  ListViewComponent["id"],
+  ListViewComponent
+>(listViewComponents, {
   keyAttributes: "id",
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
-const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<CollectionComponent["id"]>;
+const INITIAL_SELECTION = new KeySetImpl(
+  [],
+) as KeySet<ListViewComponent["id"]>;
 
-const CollectionHome = () => {
+const ListViewHome = () => {
   const [selectedItems, setSelectedItems] =
-    useState<KeySet<CollectionComponent["id"]>>(INITIAL_SELECTION);
+    useState<KeySet<ListViewComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
   const [activeComponentId, setActiveComponentId] = useState<number | null>(
     null,
@@ -96,8 +58,8 @@ const CollectionHome = () => {
   const renderListItem = useCallback(
     (
       item: ojListView.ItemTemplateContext<
-        CollectionComponent["id"],
-        CollectionComponent
+        ListViewComponent["id"],
+        ListViewComponent
       >,
     ) => {
       return (
@@ -114,10 +76,7 @@ const CollectionHome = () => {
                   class="oj-helper-text-align-center"
                   style={{ paddingTop: "25px" }}
                 >
-                  <div
-                    className={item.data.image}
-                    style={{ fontWeight: 400 }}
-                  ></div>
+                  <div className={item.data.image}></div>
                 </div>
                 <div class="oj-flex-item oj-text-sm componentInfo oj-typography-body-md oj-typography-bold">
                   {item.data.name}
@@ -133,42 +92,25 @@ const CollectionHome = () => {
 
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
-      // case 1:
-      //   return <TableHome />;
+      case 1:
+        return <ListViewExample />;
       case 2:
-        return <ListViewHome />;
-      case 3:
-        return <Treeview />;
-      case 4:
-        return <DataGrid />;
-      case 7:
-        return <TableHome />;
-      case 5:
-        return <GroupByTable />;
-      case 6:
-        return <RowExpanderTable />;
-      case 9:
-        return <CorePackCardView />;
+        return <CorePackListView />;
       default:
         return null;
     }
   }, [activeComponentId]);
 
-  const handleHomeNavigation = (_event: ButtonElement.ojAction) => {
-    setActiveComponentId(null);
-    setShowComponentDetail(false);
-    setSelectedItems(new KeySetImpl([]) as KeySet<CollectionComponent["id"]>);
-  };
-
   const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as CollectionComponent["id"];
+    const selectedKey =
+      event.detail.items[0]?.key as ListViewComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
-      const selection = event.detail.value as KeySet<CollectionComponent["id"]>;
+      const selection = event.detail.value as KeySet<ListViewComponent["id"]>;
       setSelectedItems(selection);
 
-      const selectedComponent = collectionComponents.find(
+      const selectedComponent = listViewComponents.find(
         (component) => component.id === selectedKey,
       );
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
@@ -191,7 +133,6 @@ const CollectionHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button class="breadcrumb-wrapper" label=" Home " onojAction={handleHomeNavigation} />
           {isComponentAvailable ? (
             ComponentDetail()
           ) : (
@@ -203,4 +144,4 @@ const CollectionHome = () => {
   );
 };
 
-export default CollectionHome;
+export default ListViewHome;

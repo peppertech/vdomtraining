@@ -8,96 +8,56 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 import { ButtonElement } from "ojs/ojbutton";
 
-import TableHome from "./table/home";
-import ListViewHome from "./listview/home";
-import Treeview from "./treeview";
-import DataGrid from "./datagrid";
-import GroupByTable from "./group-by-table";
-import { RowExpanderTable } from "./rowexpander-table";
-import CorePackCardView from "./core-pack-card-view";
+import { InputPasswordCorePack } from "./inputPasswordCorePack";
+import { InputSensitiveText } from "./inputSensitiveText";
 
-type CollectionComponent = {
+type PasswordComponent = {
   id: number;
   name: string;
   image: string;
-  isAvailable?: boolean;
   isCorePack?: boolean;
 };
 
-const collectionComponents: CollectionComponent[] = [
-  
+const passwordComponents: PasswordComponent[] = [
   {
-    id: 7,
-    name: "Table",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-tables-basic",
-    isAvailable: true,
+    id: 1,
+    name: "Input Password",
+    image: "oj-ux-icon-size-12x oj-ux-ico-lock",
     isCorePack: true,
   },
   {
     id: 2,
-    name: "List View",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-list",
-    isAvailable: true,
+    name: "Input Sensitive Text",
+    image: "oj-ux-icon-size-12x oj-ux-ico-text",
     isCorePack: true,
-  },
-  {
-    id: 9,
-    name: "Card View",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 3,
-    name: "Tree View",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-tree-view",
-    isAvailable: true,
-  },
-  {
-    id: 4,
-    name: "Data Grid",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
-    isAvailable: true,
-  },
-  {
-    id: 5,
-    name: "Group By Table",
-    image: "oj-ux-icon-size-12x oj-ux-ico-group",
-    isAvailable: true,
-  },
-  {
-    id: 6,
-    name: "Row Expander Table",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-row-expander",
-    isAvailable: true,
   },
 ];
 
 const dataProvider = new MutableArrayDataProvider<
-  CollectionComponent["id"],
-  CollectionComponent
->(collectionComponents, {
+  PasswordComponent["id"],
+  PasswordComponent
+>(passwordComponents, {
   keyAttributes: "id",
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
-const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<CollectionComponent["id"]>;
+const INITIAL_SELECTION =
+  new KeySetImpl([]) as KeySet<PasswordComponent["id"]>;
 
-const CollectionHome = () => {
+const InputPasswordHome = () => {
   const [selectedItems, setSelectedItems] =
-    useState<KeySet<CollectionComponent["id"]>>(INITIAL_SELECTION);
+    useState<KeySet<PasswordComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
   const [activeComponentId, setActiveComponentId] = useState<number | null>(
     null,
   );
-  const [isComponentAvailable, setIsComponentAvailable] = useState(false);
 
   const renderListItem = useCallback(
     (
       item: ojListView.ItemTemplateContext<
-        CollectionComponent["id"],
-        CollectionComponent
+        PasswordComponent["id"],
+        PasswordComponent
       >,
     ) => {
       return (
@@ -114,10 +74,7 @@ const CollectionHome = () => {
                   class="oj-helper-text-align-center"
                   style={{ paddingTop: "25px" }}
                 >
-                  <div
-                    className={item.data.image}
-                    style={{ fontWeight: 400 }}
-                  ></div>
+                  <div className={item.data.image}></div>
                 </div>
                 <div class="oj-flex-item oj-text-sm componentInfo oj-typography-body-md oj-typography-bold">
                   {item.data.name}
@@ -133,22 +90,10 @@ const CollectionHome = () => {
 
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
-      // case 1:
-      //   return <TableHome />;
+      case 1:
+        return <InputPasswordCorePack />;
       case 2:
-        return <ListViewHome />;
-      case 3:
-        return <Treeview />;
-      case 4:
-        return <DataGrid />;
-      case 7:
-        return <TableHome />;
-      case 5:
-        return <GroupByTable />;
-      case 6:
-        return <RowExpanderTable />;
-      case 9:
-        return <CorePackCardView />;
+        return <InputSensitiveText />;
       default:
         return null;
     }
@@ -157,21 +102,18 @@ const CollectionHome = () => {
   const handleHomeNavigation = (_event: ButtonElement.ojAction) => {
     setActiveComponentId(null);
     setShowComponentDetail(false);
-    setSelectedItems(new KeySetImpl([]) as KeySet<CollectionComponent["id"]>);
+    setSelectedItems(
+      new KeySetImpl([]) as KeySet<PasswordComponent["id"]>,
+    );
   };
 
   const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as CollectionComponent["id"];
+    const selectedKey = event.detail.items[0]?.key as PasswordComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
-      const selection = event.detail.value as KeySet<CollectionComponent["id"]>;
+      const selection = event.detail.value as KeySet<PasswordComponent["id"]>;
       setSelectedItems(selection);
-
-      const selectedComponent = collectionComponents.find(
-        (component) => component.id === selectedKey,
-      );
-      setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
     }
   };
 
@@ -191,10 +133,12 @@ const CollectionHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button class="breadcrumb-wrapper" label=" Home " onojAction={handleHomeNavigation} />
-          {isComponentAvailable ? (
-            ComponentDetail()
-          ) : (
+          <oj-button
+            class="breadcrumb-wrapper"
+            label=" Input Password Home "
+            onojAction={handleHomeNavigation}
+          />
+          {ComponentDetail() ?? (
             <div class="comingsoon">Coming soon....</div>
           )}
         </div>
@@ -203,4 +147,4 @@ const CollectionHome = () => {
   );
 };
 
-export default CollectionHome;
+export default InputPasswordHome;

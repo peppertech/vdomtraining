@@ -8,15 +8,16 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 import { ButtonElement } from "ojs/ojbutton";
 
-import TableHome from "./table/home";
-import ListViewHome from "./listview/home";
-import Treeview from "./treeview";
-import DataGrid from "./datagrid";
-import GroupByTable from "./group-by-table";
-import { RowExpanderTable } from "./rowexpander-table";
-import CorePackCardView from "./core-pack-card-view";
+import InputDate from "./inputDate";
+import { InputDateMask } from "./inputDateMask";
+import InputDatePicker from "./inputDatePicker";
+import InputDateTime from "./inputDateTime";
+import InputDateText from "./inputDateText";
+import { InputMonthMask } from "./inputMonthMask";
+import InputTime from "./inputTime";
+import InputTimeMask from "./inputTimeMask";
 
-type CollectionComponent = {
+type DateTimeComponent = {
   id: number;
   name: string;
   image: string;
@@ -24,69 +25,76 @@ type CollectionComponent = {
   isCorePack?: boolean;
 };
 
-const collectionComponents: CollectionComponent[] = [
-  
+const dateTimeComponents: DateTimeComponent[] = [
   {
-    id: 7,
-    name: "Table",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-tables-basic",
+    id: 1,
+    name: "Input Date",
+    image: "oj-ux-icon-size-12x oj-ux-ico-calendar",
     isAvailable: true,
-    isCorePack: true,
   },
   {
     id: 2,
-    name: "List View",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-list",
-    isAvailable: true,
+    name: "Input Date Mask",
+    image: "oj-ux-icon-size-12x oj-ux-ico-calendar-clock",
     isCorePack: true,
-  },
-  {
-    id: 9,
-    name: "Card View",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
     isAvailable: true,
-    isCorePack: true,
   },
   {
     id: 3,
-    name: "Tree View",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-tree-view",
+    name: "Input Date Picker",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-type-date-input",
+    isCorePack: true,
     isAvailable: true,
   },
   {
     id: 4,
-    name: "Data Grid",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
+    name: "Input Date Text",
+    image: "oj-ux-icon-size-12x oj-ux-ico-text-input",
     isAvailable: true,
   },
   {
     id: 5,
-    name: "Group By Table",
-    image: "oj-ux-icon-size-12x oj-ux-ico-group",
+    name: "Input Date-Time",
+    image: "oj-ux-icon-size-12x oj-ux-ico-calendar-clock",
     isAvailable: true,
   },
   {
     id: 6,
-    name: "Row Expander Table",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-row-expander",
+    name: "Input Month Mask ",
+    image: "oj-ux-icon-size-12x oj-ux-ico-calendar",
+    isCorePack: true,
+    isAvailable: true,
+  },
+  {
+    id: 7,
+    name: "Input Time",
+    image: "oj-ux-icon-size-12x oj-ux-ico-clock",
+    isAvailable: true,
+  },
+  {
+    id: 8,
+    name: "Input Time Mask ",
+    image: "oj-ux-icon-size-12x oj-ux-ico-clock",
+    isCorePack: true,
     isAvailable: true,
   },
 ];
 
 const dataProvider = new MutableArrayDataProvider<
-  CollectionComponent["id"],
-  CollectionComponent
->(collectionComponents, {
+  DateTimeComponent["id"],
+  DateTimeComponent
+>(dateTimeComponents, {
   keyAttributes: "id",
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
-const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<CollectionComponent["id"]>;
+const INITIAL_SELECTION =
+  new KeySetImpl([]) as KeySet<DateTimeComponent["id"]>;
 
-const CollectionHome = () => {
+const InputDateTimeHome = () => {
   const [selectedItems, setSelectedItems] =
-    useState<KeySet<CollectionComponent["id"]>>(INITIAL_SELECTION);
+    useState<KeySet<DateTimeComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
   const [activeComponentId, setActiveComponentId] = useState<number | null>(
     null,
@@ -96,8 +104,8 @@ const CollectionHome = () => {
   const renderListItem = useCallback(
     (
       item: ojListView.ItemTemplateContext<
-        CollectionComponent["id"],
-        CollectionComponent
+        DateTimeComponent["id"],
+        DateTimeComponent
       >,
     ) => {
       return (
@@ -114,10 +122,7 @@ const CollectionHome = () => {
                   class="oj-helper-text-align-center"
                   style={{ paddingTop: "25px" }}
                 >
-                  <div
-                    className={item.data.image}
-                    style={{ fontWeight: 400 }}
-                  ></div>
+                  <div className={item.data.image}></div>
                 </div>
                 <div class="oj-flex-item oj-text-sm componentInfo oj-typography-body-md oj-typography-bold">
                   {item.data.name}
@@ -133,22 +138,22 @@ const CollectionHome = () => {
 
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
-      // case 1:
-      //   return <TableHome />;
+      case 1:
+        return <InputDate />;
       case 2:
-        return <ListViewHome />;
+        return <InputDateMask />;
       case 3:
-        return <Treeview />;
+        return <InputDatePicker />;
       case 4:
-        return <DataGrid />;
-      case 7:
-        return <TableHome />;
+        return <InputDateText />;
       case 5:
-        return <GroupByTable />;
+        return <InputDateTime />;
       case 6:
-        return <RowExpanderTable />;
-      case 9:
-        return <CorePackCardView />;
+        return <InputMonthMask />;
+      case 7:
+        return <InputTime />;
+      case 8:
+        return <InputTimeMask />;
       default:
         return null;
     }
@@ -157,18 +162,21 @@ const CollectionHome = () => {
   const handleHomeNavigation = (_event: ButtonElement.ojAction) => {
     setActiveComponentId(null);
     setShowComponentDetail(false);
-    setSelectedItems(new KeySetImpl([]) as KeySet<CollectionComponent["id"]>);
+    setSelectedItems(
+      new KeySetImpl([]) as KeySet<DateTimeComponent["id"]>,
+    );
+    setIsComponentAvailable(false);
   };
 
   const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as CollectionComponent["id"];
+    const selectedKey = event.detail.items[0]?.key as DateTimeComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
-      const selection = event.detail.value as KeySet<CollectionComponent["id"]>;
+      const selection = event.detail.value as KeySet<DateTimeComponent["id"]>;
       setSelectedItems(selection);
 
-      const selectedComponent = collectionComponents.find(
+      const selectedComponent = dateTimeComponents.find(
         (component) => component.id === selectedKey,
       );
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
@@ -191,7 +199,11 @@ const CollectionHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button class="breadcrumb-wrapper" label=" Home " onojAction={handleHomeNavigation} />
+          <oj-button
+            class="breadcrumb-wrapper"
+            label=" Date & Time Home "
+            onojAction={handleHomeNavigation}
+          />
           {isComponentAvailable ? (
             ComponentDetail()
           ) : (
@@ -203,4 +215,4 @@ const CollectionHome = () => {
   );
 };
 
-export default CollectionHome;
+export default InputDateTimeHome;

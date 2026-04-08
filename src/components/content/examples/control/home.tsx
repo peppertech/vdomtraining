@@ -234,7 +234,7 @@ const ControlHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button class="breadcrumb-wrapper"  label=" << Home " onojAction={handleHomeNavigation} />
+          <oj-button class="breadcrumb-wrapper"  label=" Home " onojAction={handleHomeNavigation} />
           {isComponentAvailable ? (
             ComponentDetail()
           ) : (

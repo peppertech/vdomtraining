@@ -8,12 +8,12 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 import { ButtonElement } from "ojs/ojbutton";
 
-import Chart from "./chart";
-import { DrillChart } from "./chart-drill";
+import Chart from "./charts/chart";
+import { DrillChart } from "./charts/chart-drill";
 import Legend from "./legend";
-import { AreaChartVisualization } from "./areaChartVisualization";
-import { BarChartLegacyExample } from "./barChartLegacyExample";
-import { PieChartLegacyExample } from "./pieChartLegacyExample";
+import { AreaChartVisualization } from "./charts/areaChartVisualization";
+import { BarChartLegacyExample } from "./charts/barChartLegacyExample";
+import { PieChartLegacyExample } from "./charts/pieChartLegacyExample";
 import { LegendCorePackExample } from "./legendCorePackExample";
 import { DiagramExample } from "./diagramExample";
 
@@ -35,7 +35,7 @@ const dataVizComponents: DataVizComponent[] = [
   },
   {
     id: 2,
-    name: "Bar Chart (Legacy)",
+    name: "Bar Chart",
     image: "oj-ux-icon-size-12x oj-ux-ico-bar-chart",
     isAvailable: true,
   },
@@ -47,7 +47,7 @@ const dataVizComponents: DataVizComponent[] = [
   },
   {
     id: 4,
-    name: "Legend (Core Pack)",
+    name: "Legend",
     image: "oj-ux-icon-size-12x  oj-ux-ico-legend",
     isAvailable: true,
     isCorePack: true,
@@ -66,7 +66,7 @@ const dataVizComponents: DataVizComponent[] = [
   },
   {
     id: 7,
-    name: "Standalone Legend",
+    name: "Legend",
     image: "oj-ux-icon-size-12x oj-ux-ico-legend",
     isAvailable: true,
   },
@@ -193,7 +193,7 @@ const DataVizHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button class="breadcrumb-wrapper" label=" << Home " onojAction={handleOjAction} />
+          <oj-button class="breadcrumb-wrapper" label="  Home " onojAction={handleOjAction} />
           {isComponentAvailable ? (
             ComponentDetail()
           ) : (

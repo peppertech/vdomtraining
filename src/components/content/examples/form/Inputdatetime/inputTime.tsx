@@ -228,3 +228,5 @@ export const InputTime = () => {
     </div>
   );
 };
+
+export default InputTime;

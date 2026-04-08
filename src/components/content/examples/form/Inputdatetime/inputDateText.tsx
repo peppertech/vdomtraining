@@ -218,3 +218,5 @@ export const InputDateText = () => {
     </div>
   );
 };
+
+export default InputDateText;

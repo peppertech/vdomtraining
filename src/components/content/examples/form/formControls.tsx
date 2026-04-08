@@ -4,11 +4,10 @@ import "ojs/ojnavigationlist";
 import { ojTabBar } from "ojs/ojnavigationlist";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import FormElements from "./formelements";
-import SelectSingle from "./selectSingle";
+import SelectSingle from "./selectandcomobobox/selectSingle";
 import FormsHome from "./home";
-import ComboboxOne from "./comboBoxOne";
-import InputText from "./inputTextLegacy";
-import ComboBoxOne from "./comboBoxOne";
+import InputText from "./inputtext/inputTextLegacy";
+import ComboBoxOne from "./selectandcomobobox/comboBoxOne";
 
 type Tab = {
   value: string;

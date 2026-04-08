@@ -368,3 +368,5 @@ export const InputTimeMask = () => {
     </div>
   );
 };
+
+export default InputTimeMask;
