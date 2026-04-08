@@ -26,7 +26,7 @@ const tableComponents: TableComponent[] = [
   },
   {
     id: 2,
-    name: "Table (oj-c)",
+    name: "Table",
     image: "oj-ux-icon-size-12x  oj-ux-ico-tables-basic",
     isCorePack: true,
   },
@@ -73,7 +73,7 @@ const TableHome = () => {
                   class="oj-helper-text-align-center"
                   style={{ paddingTop: "25px" }}
                 >
-                  <div className={item.data.image}></div>
+                  <div style="font-weight: 400;" className={item.data.image}></div>
                 </div>
                 <div class="oj-flex-item oj-text-sm componentInfo oj-typography-body-md oj-typography-bold">
                   {item.data.name}

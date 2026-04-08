@@ -20,6 +20,7 @@ import CSSImage from "./image/cssimage";
 import IconFont from "./image/iconfont";
 import AvatarsHome from "./avatars/home";
 import MenuHome from "./menu/home";
+import MessageHome from "./message/home";
 
 type ControlComponent = {
   id: number;
@@ -100,6 +101,13 @@ const controlComponents: ControlComponent[] = [
     name: "Images & Icons",
     image: "oj-ux-icon-size-12x oj-ux-ico-image",
     isAvailable: true,
+  },
+  {
+    id: 12,
+    name: "Messages",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-messages",
+    isAvailable: true,
+    isCorePack: true,
   }
   
 ];
@@ -192,6 +200,8 @@ const ControlHome = () => {
         return <Train />;
       case 11:
         return <ImageShowcase />;
+      case 12:
+        return <MessageHome />;
       default:
         return null;
     }

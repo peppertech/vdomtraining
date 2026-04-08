@@ -76,7 +76,7 @@ const ListViewHome = () => {
                   class="oj-helper-text-align-center"
                   style={{ paddingTop: "25px" }}
                 >
-                  <div className={item.data.image}></div>
+                  <div style="font-weight: 400;" className={item.data.image}></div>
                 </div>
                 <div class="oj-flex-item oj-text-sm componentInfo oj-typography-body-md oj-typography-bold">
                   {item.data.name}

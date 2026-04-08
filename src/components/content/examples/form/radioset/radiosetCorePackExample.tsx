@@ -1,192 +1,237 @@
-import { h } from 'preact';
-import { useState, useCallback } from 'preact/hooks';
-import 'oj-c/radioset';
-import 'oj-c/form-layout';
-import { CRadiosetElement } from 'oj-c/radioset';
+import { h } from "preact";
+import { useCallback, useMemo, useState } from "preact/hooks";
+import "oj-c/form-layout";
+import "oj-c/radioset";
 
-type RadioOption = { value: string; label: string; };
+import type { CRadiosetElement } from "oj-c/radioset";
 
-const laptopOptions: RadioOption[] = [
-  { value: 'laptop', label: 'Laptop' },
-  { value: 'desktop', label: 'Desktop' },
-  { value: 'tablet', label: 'Tablet' }
-];
+interface RadioOption {
+  value: string;
+  label: string;
+}
 
-const laptopOptionsWithHelp: RadioOption[] = [
-  { value: 'laptop', label: 'Laptop' },
-  { value: 'desktop', label: 'Desktop' },
-  { value: 'tablet', label: 'Tablet' }
-];
+const useLaptopOptions = () =>
+  useMemo<RadioOption[]>(
+    () => [
+      { value: "desktop", label: "Desktop" },
+      { value: "laptop", label: "Laptop" },
+      { value: "tablet", label: "Tablet" },
+    ],
+    [],
+  );
 
-const laptopOptionsWrapping: RadioOption[] = [
-  { value: 'laptop', label: 'Laptop with a very long label that should wrap' },
-  { value: 'desktop', label: 'Desktop with a very long label that should wrap' },
-  { value: 'tablet', label: 'Tablet with a very long label that should wrap' }
-];
+const useLaptopOptionsWithHelp = () =>
+  useMemo<RadioOption[]>(
+    () => [
+      { value: "desktop", label: "Desktop" },
+      { value: "laptop", label: "Laptop" },
+      { value: "tablet", label: "Tablet" },
+      { value: "phone", label: "Phone" },
+    ],
+    [],
+  );
 
-const error = [{ severity: 'error' as const, summary: 'Error', detail: 'An error occurred' }];
-const warning = [{ severity: 'warning' as const, summary: 'Warning', detail: 'A warning message' }];
-const info = [{ severity: 'info' as const, summary: 'Information', detail: 'An info message' }];
-const confirmation = [{ severity: 'confirmation' as const, summary: 'Confirmation', detail: 'A confirmation message' }];
+const useLaptopOptionsWrapping = () =>
+  useMemo<RadioOption[]>(
+    () => [
+      { value: "desktop", label: "Desktop" },
+      { value: "laptop", label: "Laptop" },
+      {
+        value: "tablet",
+        label: "Tablet - Apple - iPad with Wi-Fi - 32GB - Space Gray",
+      },
+      { value: "phone", label: "Phone" },
+    ],
+    [],
+  );
+
+const toOptionItems = (options: RadioOption[]) =>
+  options.map(({ value, label }) => ({ value, label }));
+
+const useMessages = () =>
+  useMemo(() => ({
+    error: [
+      { severity: "error" as const, summary: "Error", detail: "error" },
+    ],
+    warning: [
+      { severity: "warning" as const, summary: "Warning", detail: "warning" },
+    ],
+    info: [
+      { severity: "info" as const, summary: "Information", detail: "information" },
+    ],
+    confirmation: [
+      { severity: "confirmation" as const, summary: "Confirmation", detail: "confirmation" },
+    ],
+  }), []);
+
+const handleValueChange = (setValue: (val: string) => void) =>
+  (event: CRadiosetElement.valueChanged<string, RadioOption>) => {
+    setValue(event.detail.value ?? "");
+  };
 
 export const RadiosetCorePackExample = () => {
-  const [value, setValue] = useState('laptop');
+  const [value, setValue] = useState("laptop");
 
-  const handleValueChanged = useCallback((e: CRadiosetElement.valueChanged<string, RadioOption>) => {
-    setValue(e.detail.value || 'laptop');
-  }, []);
+  const laptopOptions = useLaptopOptions();
+  const laptopOptionsWithHelp = useLaptopOptionsWithHelp();
+  const laptopOptionsWrapping = useLaptopOptionsWrapping();
+  const messages = useMessages();
+
+ const onValueChanged = useCallback(handleValueChange(setValue), []);
 
   return (
     <div id="div1">
       <h5>States</h5>
-      <oj-c-form-layout max-columns="3" direction="row">
+      <oj-c-form-layout maxColumns={3} direction="row">
         <oj-c-radioset
           id="enabledRadioset"
           value={value}
-          label-hint="Enabled"
-          options={laptopOptions}
-          onvalueChanged={handleValueChanged}
+          labelHint="Enabled"
+          options={toOptionItems(laptopOptions)}
+          onvalueChanged={onValueChanged}
         />
         <oj-c-radioset
           id="disabledRadioset"
           value={value}
-          label-hint="Disabled"
+          labelHint="Disabled"
           disabled
-          options={laptopOptions}
+          options={toOptionItems(laptopOptions)}
         />
         <oj-c-radioset
           id="readonlyRadioset"
           value={value}
-          label-hint="Readonly"
+          labelHint="Readonly"
           readonly
-          options={laptopOptions}
+          options={toOptionItems(laptopOptions)}
         />
       </oj-c-form-layout>
+
       <h5>Row Direction</h5>
-      <oj-c-form-layout max-columns="1" direction="row">
+      <oj-c-form-layout maxColumns={1} direction="row">
         <oj-c-radioset
           id="rowDirectionEnabledRadioset"
           value={value}
           direction="row"
-          label-hint="Direction Row Enabled"
-          options={laptopOptions}
-          onvalueChanged={handleValueChanged}
+          labelHint="Direction Row Enabled"
+          options={toOptionItems(laptopOptions)}
+          onvalueChanged={onValueChanged}
         />
         <oj-c-radioset
           value={value}
           direction="row"
-          label-hint="Direction Row Disabled"
+          labelHint="Direction Row Disabled"
           disabled
-          options={laptopOptions}
+          options={toOptionItems(laptopOptions)}
         />
         <oj-c-radioset
           value={value}
           direction="row"
-          label-hint="Direction Row Readonly"
+          labelHint="Direction Row Readonly"
           readonly
-          options={laptopOptions}
+          options={toOptionItems(laptopOptions)}
         />
       </oj-c-form-layout>
+
       <h5 class="oj-sm-margin-6x-top">Label Edge</h5>
       <div class="oj-flex">
         <div class="oj-sm-12 oj-md-6 oj-lg-4 oj-flex-item">
           <oj-c-radioset
             id="labelEdgeInside"
             value={value}
-            label-hint="label edge inside"
-            label-edge="inside"
-            options={laptopOptions}
-            onvalueChanged={handleValueChanged}
+            labelHint="label edge inside"
+            labelEdge="inside"
+            options={toOptionItems(laptopOptions)}
+            onvalueChanged={onValueChanged}
           />
         </div>
         <div class="oj-sm-12 oj-md-6 oj-lg-4 oj-flex-item">
           <oj-c-radioset
             id="labelEdgeTop"
             value={value}
-            label-hint="label edge top"
-            label-edge="top"
-            options={laptopOptions}
-            onvalueChanged={handleValueChanged}
+            labelHint="label edge top"
+            labelEdge="top"
+            options={toOptionItems(laptopOptions)}
+            onvalueChanged={onValueChanged}
           />
         </div>
         <div class="oj-sm-12 oj-md-6 oj-lg-4 oj-flex-item">
           <oj-c-radioset
             id="labelEdgeStart"
             value={value}
-            label-hint="label edge start"
-            label-edge="start"
-            options={laptopOptions}
-            onvalueChanged={handleValueChanged}
+            labelHint="label edge start"
+            labelEdge="start"
+            options={toOptionItems(laptopOptions)}
+            onvalueChanged={onValueChanged}
           />
         </div>
       </div>
 
-      <h5 class="oj-sm-margin-6x-top">Required & Help</h5>
-      <oj-c-form-layout max-columns="4" direction="row">
+      <h5 class="oj-sm-margin-6x-top">Required &amp; Help</h5>
+      <oj-c-form-layout maxColumns={4} direction="row">
         <oj-c-radioset
           required
-          label-hint="Required"
-          required-message-detail="Nothing selected"
-          options={laptopOptionsWithHelp}
+          labelHint="Required"
+          requiredMessageDetail="Nothing selected"
+          options={toOptionItems(laptopOptionsWithHelp)}
         />
 
         <oj-c-radioset
           value={value}
           help={{ instruction: "help.instruction text" }}
-          label-hint="Help Instruction"
-          options={laptopOptionsWithHelp}
-          onvalueChanged={handleValueChanged}
+          labelHint="Help Instruction"
+          options={toOptionItems(laptopOptionsWithHelp)}
+          onvalueChanged={onValueChanged}
         />
 
         <oj-c-radioset
           value={value}
           helpHints={{ definition: "help-hints.definition text" }}
-          label-hint="Help-hints Definition"
-          options={laptopOptionsWithHelp}
-          onvalueChanged={handleValueChanged}
+          labelHint="Help-hints Definition"
+          options={toOptionItems(laptopOptionsWithHelp)}
+          onvalueChanged={onValueChanged}
         />
 
         <oj-c-radioset
           value={value}
           helpHints={{ source: "https://www.oracle.com", sourceText: "help-hints.source-text" }}
-          label-hint="Help-hints Source"
-          options={laptopOptionsWithHelp}
-          onvalueChanged={handleValueChanged}
+          labelHint="Help-hints Source"
+          options={toOptionItems(laptopOptionsWithHelp)}
+          onvalueChanged={onValueChanged}
         />
       </oj-c-form-layout>
 
-      <h5 class="oj-sm-margin-6x-top">Standard Messages</h5>
-      <oj-c-form-layout max-columns="4" direction="row">
+      <h5 class="oj-sm-margin-6x-top"> Messages</h5>
+      <oj-c-form-layout maxColumns={4} direction="row">
         <oj-c-radioset
-          messages-custom={error}
+          messagesCustom={messages.error}
           value={value}
-          label-hint="Error"
-          options={laptopOptions}
-          onvalueChanged={handleValueChanged}
+          labelHint="Error"
+          options={toOptionItems(laptopOptions)}
+          onvalueChanged={onValueChanged}
         />
 
         <oj-c-radioset
-          messages-custom={warning}
+          messagesCustom={messages.warning}
           value={value}
-          label-hint="Warning"
-          options={laptopOptions}
-          onvalueChanged={handleValueChanged}
+          labelHint="Warning"
+          options={toOptionItems(laptopOptions)}
+          onvalueChanged={onValueChanged}
         />
 
         <oj-c-radioset
-          messages-custom={info}
+          messagesCustom={messages.info}
           value={value}
-          label-hint="Information"
-          options={laptopOptions}
-          onvalueChanged={handleValueChanged}
+          labelHint="Information"
+          options={toOptionItems(laptopOptions)}
+          onvalueChanged={onValueChanged}
         />
 
         <oj-c-radioset
-          messages-custom={confirmation}
+          messagesCustom={messages.confirmation}
           value={value}
-          label-hint="Confirmation"
-          options={laptopOptions}
-          onvalueChanged={handleValueChanged}
+          labelHint="Confirmation"
+          options={toOptionItems(laptopOptions)}
+          onvalueChanged={onValueChanged}
         />
       </oj-c-form-layout>
 
@@ -194,21 +239,23 @@ export const RadiosetCorePackExample = () => {
       <div class="demo-form-layout oj-text-color-danger">
         <oj-c-form-layout>
           <oj-c-radioset
-            label-hint="Direction Column"
+            labelHint="Direction Column"
             value={value}
-            options={laptopOptionsWrapping}
-            onvalueChanged={handleValueChanged}
+            options={toOptionItems(laptopOptionsWrapping)}
+            onvalueChanged={onValueChanged}
           />
 
           <oj-c-radioset
-            label-hint="Direction Row"
+            labelHint="Direction Row"
             value={value}
             direction="row"
-            options={laptopOptionsWrapping}
-            onvalueChanged={handleValueChanged}
+            options={toOptionItems(laptopOptionsWrapping)}
+            onvalueChanged={onValueChanged}
           />
         </oj-c-form-layout>
       </div>
     </div>
   );
 };
+
+export default RadiosetCorePackExample;

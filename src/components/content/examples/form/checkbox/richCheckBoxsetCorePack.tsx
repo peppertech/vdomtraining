@@ -15,7 +15,6 @@ import "oj-c/form-layout";
 // Type imports
 import { CRichCheckboxsetElement } from "oj-c/rich-checkboxset";
 import type { ojMessage } from "ojs/ojmessage";
-//import Message = require("@oracle/oraclejet/dist/types/ojmessaging");
 
 
 export const RichCheckBoxsetCorePack = () => {

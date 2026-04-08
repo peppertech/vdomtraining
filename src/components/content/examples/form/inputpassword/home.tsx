@@ -9,6 +9,7 @@ import { ojListView } from "ojs/ojlistview";
 import { ButtonElement } from "ojs/ojbutton";
 
 import { InputPasswordCorePack } from "./inputPasswordCorePack";
+import { InputPassword } from "./inputPassword";
 import { InputSensitiveText } from "./inputSensitiveText";
 
 type PasswordComponent = {
@@ -21,7 +22,7 @@ type PasswordComponent = {
 const passwordComponents: PasswordComponent[] = [
   {
     id: 1,
-    name: "Input Password",
+    name: "Input Password (oj-c)",
     image: "oj-ux-icon-size-12x oj-ux-ico-lock",
     isCorePack: true,
   },
@@ -30,6 +31,12 @@ const passwordComponents: PasswordComponent[] = [
     name: "Input Sensitive Text",
     image: "oj-ux-icon-size-12x oj-ux-ico-text",
     isCorePack: true,
+  },
+  {
+    id: 3,
+    name: "Input Password (oj-input-password)",
+    image: "oj-ux-icon-size-12x oj-ux-ico-lock",
+    isCorePack: false,
   },
 ];
 
@@ -94,6 +101,8 @@ const InputPasswordHome = () => {
         return <InputPasswordCorePack />;
       case 2:
         return <InputSensitiveText />;
+      case 3:
+        return <InputPassword />;
       default:
         return null;
     }

@@ -7,75 +7,67 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import Menu from "./menu";
-import MenuButton from "./menuButton";
-import MenuSelectMany from "./menuselectmany";
-import CorePackMenuButton from "./corePackMenuButton";
-import CorePackSplitMenuButton from "./corePackSplitMenuButton";
+import { RadiosetCorePackExample } from "./radiosetCorePackExample";
+import RichRadioset from "./richRadioSet";
+import RadiosetExample from "./radioset";
 
-interface MenuComponent {
+type RadiosetComponent = {
   id: number;
   name: string;
   description: string;
   image: string;
   isCorePack?: boolean;
-}
+};
 
-const menuComponents: MenuComponent[] = [
+const radiosetComponents: RadiosetComponent[] = [
   {
     id: 1,
-    name: "Menu",
-    description: "Classic oj-menu-button with nested oj-menu actions.",
-    image: "oj-ux-icon-size-12x oj-ux-ico-menu-modal",
+    name: "Radioset",
+    description: "Classic oj-radioset with layout, messaging, and help variations.",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-radio-set",
+    isCorePack: false,
   },
   {
     id: 2,
-    name: "Menu Button",
-    description: "Focused oj-menu-button demo including icon, submenu, and disabled scenarios.",
-    image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
-  },
-  {
-    id: 3,
-    name: "Menu Select Many",
-    description: "oj-menu-select-many embedded in an oj-menu for multi-select settings.",
-    image: "oj-ux-icon-size-12x oj-ux-ico-menu-select-many",
-  },
-  {
-    id: 4,
-    name: "Menu Button",
-    description: "Core Pack menu button with selection writeback and chroming variants.",
-    image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
+    name: "Radioset",
+    description: "Core Pack radioset showcasing states, layout variations, messages, and wrap behavior.",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-radio-set",
     isCorePack: true,
   },
   {
-    id: 5,
-    name: "Split Menu Button",
-    description: "Core Pack split menu button illustrating primary vs menu actions.",
-    image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
+    id: 3,
+    name: "Rich Radioset",
+    description: "Card-style rich radioset with responsive layouts and assistive content.",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-radio-set",
     isCorePack: true,
   },
 ];
 
-const dataProvider = new MutableArrayDataProvider<MenuComponent["id"], MenuComponent>(
-  menuComponents,
+const dataProvider = new MutableArrayDataProvider<RadiosetComponent["id"], RadiosetComponent>(
+  radiosetComponents,
   {
     keyAttributes: "id",
   },
 );
 
-const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<MenuComponent["id"]>;
+const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<RadiosetComponent["id"]>;
 
 type ListViewProps = ComponentProps<"oj-list-view">;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
-const MenuHome = () => {
+const RadiosetHome = () => {
   const [selectedItems, setSelectedItems] =
-    useState<KeySet<MenuComponent["id"]>>(INITIAL_SELECTION);
+    useState<KeySet<RadiosetComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
   const [activeComponentId, setActiveComponentId] = useState<number | null>(null);
 
   const renderListItem = useCallback(
-    (item: ojListView.ItemTemplateContext<MenuComponent["id"], MenuComponent>) => (
+    (
+      item: ojListView.ItemTemplateContext<
+        RadiosetComponent["id"],
+        RadiosetComponent
+      >,
+    ) => (
       <li>
         <oj-action-card>
           <div class="component-item" key={item.data.id}>
@@ -85,7 +77,10 @@ const MenuHome = () => {
                   Core Pack
                 </span>
               ) : null}
-              <div class="oj-helper-text-align-center" style={{ paddingTop: "25px" }}>
+              <div
+                class="oj-helper-text-align-center"
+                style={{ paddingTop: "25px" }}
+              >
                 <div className={item.data.image}></div>
               </div>
               <div class="oj-flex-item oj-text-sm componentInfo oj-typography-body-md oj-typography-bold">
@@ -103,28 +98,30 @@ const MenuHome = () => {
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <Menu />;
+        return <RadiosetExample />;
       case 2:
-        return <MenuButton />;
+        return <RadiosetCorePackExample />;
       case 3:
-        return <MenuSelectMany />;
-      case 4:
-        return <CorePackMenuButton />;
-      case 5:
-        return <CorePackSplitMenuButton />;
+        return <RichRadioset />;
       default:
         return null;
     }
   }, [activeComponentId]);
 
   const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as MenuComponent["id"];
+    const selectedKey = event.detail.items[0]?.key as RadiosetComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
-      const selection = event.detail.value as KeySet<MenuComponent["id"]>;
+      const selection = event.detail.value as KeySet<RadiosetComponent["id"]>;
       setSelectedItems(selection);
     }
+  };
+
+  const handleBack = () => {
+    setShowComponentDetail(false);
+    setActiveComponentId(null);
+    setSelectedItems(new KeySetImpl([]) as KeySet<RadiosetComponent["id"]>);
   };
 
   return (
@@ -146,14 +143,10 @@ const MenuHome = () => {
           <oj-button
             chroming="borderless"
             display="icons"
-            onojAction={() => {
-              setShowComponentDetail(false);
-              setActiveComponentId(null);
-              setSelectedItems(new KeySetImpl([]) as KeySet<MenuComponent["id"]>);
-            }}
+            onojAction={handleBack}
           >
             <span slot="startIcon" class="oj-ux-ico-chevron-left"></span>
-            Menu Components
+            Radioset
           </oj-button>
           {ComponentDetail()}
         </div>
@@ -162,4 +155,4 @@ const MenuHome = () => {
   );
 };
 
-export default MenuHome;
+export default RadiosetHome;

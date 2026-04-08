@@ -24,7 +24,7 @@ import TextAreaHome from "./textarea/home";
 import { FormLayoutCorePack } from "./formLayoutCorePack";
 import { UserAssistance } from "./userAssistance";
 import { ValidationGroupExample } from "./validationGroup";
-import { RadiosetCorePackExample } from "./radiosetCorePackExample";
+import RadiosetHome from "./radioset/home";
 
 type FormShowcase = {
   id: string;
@@ -53,7 +53,7 @@ const formExamples: FormShowcase[] = [
     name: "Radioset",
     image: "oj-ux-icon-size-12x  oj-ux-ico-radio-set",
     isCorePack: true,
-    render: () => <RadiosetCorePackExample />,
+    render: () => <RadiosetHome />,
   },
   {
     id: "checkboxes",
