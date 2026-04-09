@@ -17,6 +17,12 @@ type Employee = {
 
 const employees = JSON.parse(peopleData as string) as Employee[];
 
+type ProfileCardLayoutProps = ComponentProps<"demo-profile-card-layout">;
+
+const DemoProfileCardLayout = (props: ProfileCardLayoutProps) => (
+  <demo-profile-card-layout {...props}></demo-profile-card-layout>
+);
+
 const getInitials = (fullName: string) => {
   return fullName
     .split(" ")
@@ -51,14 +57,14 @@ const CorePackCardView = () => {
               const initials = getInitials(person.name);
               return (
                 <div class="oj-panel">
-                  <demo-profile-card-layout
+                  <DemoProfileCardLayout
                     class="oj-complete"
                     name={person.name}
                     work-title={person.title}
                     initials={initials}
                     image={person.image}
                     department={person.department}
-                  ></demo-profile-card-layout>
+                  />
                 </div>
               );
             }}
@@ -70,3 +76,4 @@ const CorePackCardView = () => {
 };
 
 export default CorePackCardView;
+export { DemoProfileCardLayout };

@@ -18,6 +18,8 @@ import { ActionCardCorePack } from "./actionCardCorePack";
 import { TabBar } from "./tabbar";
 import { Dialog } from "./dialog";
 import { Popup } from "./popup";
+import { CorePackTabBar } from "./core-pack-tab-bar";
+import { CorePackTabBarMixed } from "./core-pack-tab-bar-mixed";
 
 type NavLayoutComponent = {
   id: number;
@@ -48,7 +50,7 @@ const navLayoutComponents: NavLayoutComponent[] = [
   },
   {
     id: 8,
-    name: "Action Card (Core Pack)",
+    name: "Action Card",
     image: "oj-ux-icon-size-12x  oj-ux-ico-contact-card",
     isAvailable: true,
     isCorePack: true,
@@ -58,6 +60,20 @@ const navLayoutComponents: NavLayoutComponent[] = [
     name: "Tab Bar",
     image: "oj-ux-icon-size-12x  oj-ux-ico-tab-bar",
     isAvailable: true,
+  },
+  {
+    id: 9,
+    name: "Tab Bar",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-tab-bar",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
+    id: 10,
+    name: "Tab Bar Mixed",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-tab-bar",
+    isAvailable: true,
+    isCorePack: true,
   },
   {
     id: 5,
@@ -214,6 +230,10 @@ const NavLayoutHome = () => {
         return <DrawerLayoutDemo />;
       case 8:
         return <ActionCardCorePack />;
+      case 9:
+        return <CorePackTabBar />;
+      case 10:
+        return <CorePackTabBarMixed />;
       default:
         return null;
     }

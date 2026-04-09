@@ -1,84 +1,152 @@
 import { h } from "preact";
 import { useCallback, useState } from "preact/hooks";
 import "oj-c/action-card";
+import "oj-c/avatar";
+import "../../../shared/demo-profile-card-layout";
+import { DemoProfileCardLayout } from "../collection/core-pack-card-view";
 
-
-type ActionShortcut = {
-  id: number;
+type EmployeeCard = {
+  name: string;
+  initials: string;
+  image: string;
   title: string;
-  subtitle: string;
-  icon: string;
+  department: string;
+  email: string;
+  phone: string;
+  location?: string;
 };
 
-const shortcuts: ActionShortcut[] = [
-  {
-    id: 1,
-    title: "Create Project",
-    subtitle: "Start a new initiative with prebuilt templates.",
-    icon: "oj-ux-icon-size-12x  oj-ux-ico-contact-card",
-  },
-  {
-    id: 2,
-    title: "Share Update",
-    subtitle: "Notify stakeholders with the latest progress.",
-    icon: "oj-ux-icon-size-12x  oj-ux-ico-contact-card",
-  },
-  {
-    id: 3,
-    title: "Schedule Review",
-    subtitle: "Plan the next design or code walkthrough.",
-    icon: "oj-ux-icon-size-12x  oj-ux-ico-contact-card",
-  },
-];
+type DepartmentCard = {
+  deptName: string;
+  deptCount: string;
+  image: string;
+  name: string;
+  managerType: string;
+};
+
+const dept: Readonly<DepartmentCard> = {
+  deptName: "Application Development",
+  deptCount: "75 Employees",
+  name: "Deb Raphaely",
+  managerType: "Purchasing Director",
+  image: "images/hcm/placeholder-female-01.png",
+};
+
+const employee: Readonly<EmployeeCard> = {
+  name: "Deb Raphaely",
+  image: "images/hcm/placeholder-female-01.png",
+  title: "Purchasing Director",
+  initials: "DR",
+  department: "Application Development",
+  email: "deb.raphaely@example.com",
+  phone: "(555) 010-4488",
+  location: "Austin, TX",
+};
+
+const styles = `
+  .demo-card-content {
+    width: 25rem;
+    height: 15rem;
+  }
+
+  .demo-card-2 {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  .demo-application {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    height: 180px;
+    padding: 8px;
+  }
+
+  .demo-scrollable {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .demo-scrollable-content {
+    padding: 8px;
+    overflow: auto;
+  }
+`;
+
+const toDomId = (value: string) => value.toLowerCase().replace(/\s+/g, "-");
 
 const ActionCardCorePack = () => {
-  const [lastAction, setLastAction] = useState<string>("None yet");
+  const [actionHandler, setActionHandler] = useState<string>("None yet");
 
-  const handleAction = useCallback((title: string) => {
-    setLastAction(title);
+  const cardAction = useCallback((source: string) => {
+    setActionHandler(source);
   }, []);
 
   return (
-    <section class="oj-panel oj-panel-alt1 oj-sm-margin-4x-vertical oj-sm-padding-4x">
-      <header class="oj-sm-margin-0">
-        <h2 class="oj-typography-heading-sm oj-sm-margin-0">
-          Quick Actions (oj-c-action-card)
-        </h2>
-        <p class="oj-typography-body-sm oj-text-color-secondary oj-sm-margin-0 oj-sm-margin-1x-top">
-          Redwood Core Pack action cards with rich icons and actionable
-          shortcuts.
-        </p>
-      </header>
-
-      <div class="oj-sm-margin-4x-top oj-sm-flex oj-sm-flex-wrap oj-sm-column-gap-4x oj-sm-row-gap-4x">
-        {shortcuts.map((item) => (
+    <div id="card-container">
+      <style>{styles}</style>
+      <div class="oj-flex oj-sm-flex-items-initial">
+        <oj-c-action-card
+          id={toDomId(employee.name)}
+          class="oj-flex-item oj-sm-margin-2x demo-card-content"
+          onojAction={() => cardAction(employee.name)}
+        >
+          <DemoProfileCardLayout
+            class="oj-complete"
+            name={employee.name}
+            initials={employee.initials}
+            image={employee.image}
+            work-title={employee.title}
+            department={employee.department}
+            email={employee.email}
+            phone={employee.phone}
+            location={employee.location}
+          />
+        </oj-c-action-card>
+        <div class="oj-sm-margin-2x">
           <oj-c-action-card
-            key={item.id}
-            onojAction={() => handleAction(item.title)}
-            class="oj-sm-flex-0"
+            id={toDomId(dept.deptName)}
+            onojAction={() => cardAction(dept.deptName)}
           >
-            <div class="oj-sm-padding-3x oj-sm-width-18">
-              <div class="oj-text-color-secondary oj-typography-body-xs">
-                Shortcut
+            <div class="demo-application">
+              <span class="oj-typography-body-lg">{dept.deptName}</span>
+              <span class="oj-text-color-secondary">{dept.deptCount}</span>
+              <div class="demo-card-2">
+                <oj-c-avatar
+                  class="oj-flex-item"
+                  size="sm"
+                  src={dept.image}
+                ></oj-c-avatar>
+                <div class="oj-flex-item oj-sm-padding-2x oj-sm-align-items-center">
+                  <div>{dept.name}</div>
+                  <span class="oj-text-color-secondary">{dept.managerType}</span>
+                </div>
               </div>
-              <div class="oj-sm-margin-1x-top">
-                <span class={item.icon} aria-hidden="true"></span>
-              </div>
-              <h3 class="oj-typography-heading-xs oj-sm-margin-0 oj-sm-margin-2x-top">
-                {item.title}
-              </h3>
-              <p class="oj-typography-body-sm oj-text-color-secondary oj-sm-margin-0 oj-sm-margin-1x-top">
-                {item.subtitle}
-              </p>
             </div>
           </oj-c-action-card>
-        ))}
+        </div>
+        <div class="oj-sm-margin-2x">
+          <oj-c-action-card
+            id="scrollable"
+            class="demo-scrollable"
+            onojAction={() => cardAction("Scrollable")}
+          >
+            <div class="demo-scrollable-content">
+              <p>
+                This child content is larger than the parent card, so the card
+                automatically becomes scrollable.
+              </p>
+              <p>More text hidden by the overflow.</p>
+            </div>
+          </oj-c-action-card>
+        </div>
       </div>
-
-      <footer class="oj-sm-margin-4x-top oj-typography-body-sm">
-        <strong>Last action:</strong> {lastAction}
-      </footer>
-    </section>
+      <p id="changelog" class="oj-typography-bold oj-sm-padding-4x">
+        Event:
+        <span id="results">{actionHandler}</span>
+      </p>
+    </div>
   );
 };
 
