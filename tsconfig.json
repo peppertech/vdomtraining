@@ -35,9 +35,7 @@
     "noEmitOnError": false,
     "experimentalDecorators": true,
     "skipLibCheck": true,
-    "removeComments": true,
-    "rootDir": "./src",
-    "outDir": "./web"
+    "removeComments": true
   },
   "include": [
     "./src/**/*"

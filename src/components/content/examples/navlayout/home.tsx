@@ -20,6 +20,8 @@ import { Dialog } from "./dialog";
 import { Popup } from "./popup";
 import { CorePackTabBar } from "./core-pack-tab-bar";
 import { CorePackTabBarMixed } from "./core-pack-tab-bar-mixed";
+import ActionCardDemoWrapper from "./actioncard-basic/index";
+
 
 type NavLayoutComponent = {
   id: number;
@@ -219,7 +221,7 @@ const NavLayoutHome = () => {
       case 2:
         return <Accordion />;
       case 3:
-        return <ActionCard />;
+        return <ActionCardDemoWrapper />;
       case 4:
         return <TabBar />;
       case 5:

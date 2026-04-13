@@ -261,15 +261,19 @@ export const MessageBannerCorePackOverview = () => {
       <h4>Section level messages</h4>
       <oj-c-message-banner
         data={sectionMessagesDP}
+        type="section"
       ></oj-c-message-banner>
 
-      <h4>Custom detail</h4>
+      <h4>Custom detail template</h4>
       <oj-c-message-banner
         data={customDetailMessagesDP}
+        detailTemplateValue="actions"
         onojClose={closeCustomDetailMessage}
-      />
+      >
+        <template slot="actions" render={actionsTemplate}></template>
+      </oj-c-message-banner>
 
-      <h4>Close icon</h4>
+      <h4>Close affordance</h4>
       <oj-c-message-banner
         data={closeAffordanceMessagesDP}
         onojClose={closeCloseAffordanceMessage}

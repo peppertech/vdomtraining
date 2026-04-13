@@ -133,8 +133,7 @@ const CollectionHome = () => {
 
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
-      // case 1:
-      //   return <TableHome />;
+     
       case 2:
         return <ListViewHome />;
       case 3:

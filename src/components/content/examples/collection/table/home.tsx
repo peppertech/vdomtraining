@@ -134,7 +134,7 @@ const TableHome = () => {
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
           <oj-button
             class="breadcrumb-wrapper"
-            label=" << Table Home "
+            label=" Table Home "
             onojAction={handleHomeNavigation}
           />
           {ComponentDetail() ?? (

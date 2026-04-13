@@ -7,8 +7,10 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import MessageBannerVDOMExample from "./messagebanner";
-import { MessageBannerCorePackOverview } from "./messageBannerCorePackOverview";
+import MessageBannerVDOMExample from "./message-banner";
+import MessageBannerLegacyExample from "./message-toast-legacy";
+import { MessageBannerCorePackOverview } from "./message-banner-core-pack";
+import MessageToastCorePack from "./message-toast-core-pack";
 
 type MessageComponent = {
   id: number;
@@ -30,6 +32,19 @@ const messageComponents: MessageComponent[] = [
     name: "Message Banner",
     description: "Core Pack overview of message banner variations, custom detail templates, and affordances.",
     image: "oj-ux-icon-size-12x oj-ux-ico-message-banner",
+    isCorePack: true,
+  },
+  {
+    id: 3,
+    name: "Messages Toast",
+    description: "Legacy oj-messages notification example backed by a MutableArrayDataProvider.",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-messages",
+  },
+  {
+    id: 4,
+    name: "Message Toast",
+    description: "Core Pack oj-c-message-toast example with button-triggered toasts and close handling.",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-messages",
     isCorePack: true,
   },
 ];
@@ -92,6 +107,10 @@ const MessageHome = () => {
         return <MessageBannerVDOMExample />;
       case 2:
         return <MessageBannerCorePackOverview />;
+      case 3:
+        return <MessageBannerLegacyExample />;
+      case 4:
+        return <MessageToastCorePack />;
       default:
         return null;
     }

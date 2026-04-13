@@ -16,6 +16,7 @@ import { BarChartLegacyExample } from "./charts/barChartLegacyExample";
 import { PieChartLegacyExample } from "./charts/pieChartLegacyExample";
 import { LegendCorePackExample } from "./legendCorePackExample";
 import { DiagramExample } from "./diagramExample";
+import AreaChartDemoWrapper from "./charts/area-chart-default/index";
 
 type DataVizComponent = {
   id: number;
@@ -136,7 +137,7 @@ const DataVizHome = () => {
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <AreaChartVisualization />;
+        return <AreaChartDemoWrapper />;
       case 2:
         return <BarChartLegacyExample />;
       case 3:
