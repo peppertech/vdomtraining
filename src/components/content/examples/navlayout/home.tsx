@@ -10,19 +10,17 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 import {
   CatalogBreadcrumb,
+  type CatalogBreadcrumbItem,
   formatCorePackLabel,
 } from "../../../shared/catalog-breadcrumb";
 
 import { NavList } from "./navlist";
 import { Accordion } from "./accordion";
-import { ActionCard } from "./actioncard";
-import { ActionCardCorePack } from "./actionCardCorePack";
-import { TabBar } from "./tabbar";
 import { Dialog } from "./dialog";
 import { Popup } from "./popup";
-import { CorePackTabBar } from "./core-pack-tab-bar";
-import { CorePackTabBarMixed } from "./core-pack-tab-bar-mixed";
-import ActionCardDemoWrapper from "./actioncard-basic/index";
+import ActionCardDemoWrapper, { ActioncardBasic } from "./actioncard-basic/index";
+import ActionCardCorePackDemoWrapper from "./actioncard-core-pack/index";
+import TabBarHome from "./tabbar/home";
 
 
 type NavLayoutComponent = {
@@ -64,20 +62,7 @@ const navLayoutComponents: NavLayoutComponent[] = [
     name: "Tab Bar",
     image: "oj-ux-icon-size-12x  oj-ux-ico-tab-bar",
     isAvailable: true,
-  },
-  {
-    id: 9,
-    name: "Tab Bar",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-tab-bar",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 10,
-    name: "Tab Bar Mixed",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-tab-bar",
-    isAvailable: true,
-    isCorePack: true,
+     isCorePack: true,
   },
   {
     id: 5,
@@ -137,7 +122,7 @@ const DrawerLayoutDemo = () => {
           </div>
           <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-md">
             <h2 class="oj-typography-heading-sm"> Action Card </h2>
-            <ActionCard />
+            <ActioncardBasic />
           </div>
         </div>
         <div
@@ -180,6 +165,9 @@ const NavLayoutHome = () => {
     null,
   );
   const [isComponentAvailable, setIsComponentAvailable] = useState(false);
+  const [nestedBreadcrumbItems, setNestedBreadcrumbItems] = useState<
+    CatalogBreadcrumbItem[] | null
+  >(null);
 
   const renderListItem = useCallback(
     (
@@ -225,7 +213,12 @@ const NavLayoutHome = () => {
       case 3:
         return <ActionCardDemoWrapper />;
       case 4:
-        return <TabBar />;
+        return (
+          <TabBarHome
+            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onNavigateRootHome={handleHomeNavigation}
+          />
+        );
       case 5:
         return <Dialog />;
       case 6:
@@ -233,11 +226,7 @@ const NavLayoutHome = () => {
       case 7:
         return <DrawerLayoutDemo />;
       case 8:
-        return <ActionCardCorePack />;
-      case 9:
-        return <CorePackTabBar />;
-      case 10:
-        return <CorePackTabBarMixed />;
+        return <ActionCardCorePackDemoWrapper />;
       default:
         return null;
     }
@@ -246,6 +235,7 @@ const NavLayoutHome = () => {
   const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
     setShowComponentDetail(false);
+    setNestedBreadcrumbItems(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<NavLayoutComponent["id"]>);
   }, []);
 
@@ -256,6 +246,7 @@ const NavLayoutHome = () => {
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<NavLayoutComponent["id"]>;
       setSelectedItems(selection);
+      setNestedBreadcrumbItems(null);
 
       const selectedComponent = navLayoutComponents.find(
         (component) => component.id === selectedKey,
@@ -267,6 +258,23 @@ const NavLayoutHome = () => {
   const activeComponent = navLayoutComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const breadcrumbItems =
+    nestedBreadcrumbItems ??
+    [
+      {
+        label: "Navigation and Layouts",
+        onSelect: handleHomeNavigation,
+      },
+      {
+        label: activeComponent
+          ? formatCorePackLabel(
+              activeComponent.name,
+              activeComponent.isCorePack,
+            )
+          : "Component",
+        current: true,
+      },
+    ];
 
   return (
     <div class="component-wrapper">
@@ -285,21 +293,7 @@ const NavLayoutHome = () => {
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
           <CatalogBreadcrumb
-            items={[
-              {
-                label: "Navigation and Layouts",
-                onSelect: handleHomeNavigation,
-              },
-              {
-                label: activeComponent
-                  ? formatCorePackLabel(
-                      activeComponent.name,
-                      activeComponent.isCorePack,
-                    )
-                  : "Component",
-                current: true,
-              },
-            ]}
+            items={breadcrumbItems}
             ariaLabel="Navigation and layouts breadcrumb"
           />
           {isComponentAvailable ? (

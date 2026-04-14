@@ -59,8 +59,7 @@ const CORE_TABS: CoreTab[] = [
   },
 ];
 
-const coerceSwitchValue = (value: unknown) =>
-  value === true || value === "on";
+const coerceSwitchValue = (value: unknown) => value === true || value === "on";
 
 const CorePackTabBar = () => {
   const [display, setDisplay] = useState<TabDisplay>("standard");
