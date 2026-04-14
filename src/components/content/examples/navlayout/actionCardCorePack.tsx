@@ -93,7 +93,6 @@ const ActionCardCorePack = () => {
           onojAction={() => cardAction(employee.name)}
         >
           <DemoProfileCardLayout
-            class="oj-complete"
             name={employee.name}
             initials={employee.initials}
             image={employee.image}

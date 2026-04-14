@@ -21,8 +21,8 @@ type DemoDefinition = {
 };
 
 const initialDemo: DemoDefinition = {
-  componentType: "oj-c-action-card",
-  packLabel: "Core Pack",
+  componentType: "oj-action-card",
+  packLabel: "",
   title: "Action Card",
   description: actioncardBasicDescription,
   recipe: actioncardBasicRecipe,

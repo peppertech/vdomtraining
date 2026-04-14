@@ -28,6 +28,11 @@ export function DemoLayoutTemplate({
   return (
     <article class="demo-layout-template">
       <header class="demo-layout-template__header">
+        {demoName && (
+          <h1 class="demo-layout-template__title oj-typography-heading-sm">
+            {demoName}
+          </h1>
+        )}
         {(componentType || packLabel) && (
           <div class="demo-layout-template__eyebrow">
             {componentType && (
@@ -40,11 +45,7 @@ export function DemoLayoutTemplate({
             )}
           </div>
         )}
-        {demoName && (
-          <h1 class="demo-layout-template__title oj-typography-heading-lg">
-            {demoName}
-          </h1>
-        )}
+        
         {description && (
           <div class="demo-layout-template__description oj-typography-body-md">
             {description}

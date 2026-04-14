@@ -386,10 +386,7 @@ const CorePackTable = () => {
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
-      <h6 class="oj-typography-heading-sm oj-sm-margin-4x-bottom">
-        Core Pack Table
-      </h6>
-      <oj-c-table
+     <oj-c-table
         aria-label="Department targets"
         data={dataProvider as TableProps["data"]}
         columns={columns}
