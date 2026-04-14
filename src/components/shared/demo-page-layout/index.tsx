@@ -7,9 +7,9 @@
  */
 import type { ComponentChildren, FunctionComponent } from "preact";
 import { DemoLayoutTemplate } from "./demo-layout-template";
-import ActioncardBasic from "../../content/examples/navlayout/actioncard-basic/actioncard-basic";
-import { actioncardBasicDescription } from "../../content/examples/navlayout/actioncard-basic/actioncard-description";
-import { actioncardBasicRecipe } from "../../content/examples/navlayout/actioncard-basic/actioncard-recipe";
+import ActioncardBasic from "../../content/examples/navlayout/actioncard/basic/actioncard-basic";
+import { actioncardBasicDescription } from "../../content/examples/navlayout/actioncard/basic/actioncard-description";
+import { actioncardBasicRecipe } from "../../content/examples/navlayout/actioncard/basic/actioncard-recipe";
 
 type DemoDefinition = {
   componentType: string;

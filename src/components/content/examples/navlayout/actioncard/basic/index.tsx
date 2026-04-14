@@ -6,10 +6,10 @@
  * @ignore
  */
 import type { ComponentChildren, FunctionComponent } from "preact";
-import { DemoLayoutTemplate } from "../../../../shared/demo-page-layout/demo-layout-template";
-import ActionCardCorePack from "./actioncard-core-pack";
-import { actioncardCorePackDescription } from "./actioncard-core-pack-description";
-import { actioncardCorePackRecipe } from "./actioncard-core-pack-recipe";
+import ActioncardBasic from "./actioncard-basic";
+import { actioncardBasicDescription } from "./actioncard-description";
+import { actioncardBasicRecipe } from "./actioncard-recipe";
+import { DemoLayoutTemplate } from "../../../../../shared/demo-page-layout/demo-layout-template";
 
 type DemoDefinition = {
   componentType: string;
@@ -21,15 +21,15 @@ type DemoDefinition = {
 };
 
 const initialDemo: DemoDefinition = {
-  componentType: "oj-c-action-card",
-  packLabel: "Core Pack",
+  componentType: "oj-action-card",
+  packLabel: "",
   title: "Action Card",
-  description: actioncardCorePackDescription,
-  recipe: actioncardCorePackRecipe,
-  Component: ActionCardCorePack,
+  description: actioncardBasicDescription,
+  recipe: actioncardBasicRecipe,
+  Component: ActioncardBasic,
 };
 
-export default function ActionCardCorePackDemoWrapper() {
+export default function ActionCardDemoWrapper() {
   const SelectedDemoComponent = initialDemo.Component;
 
   return (
@@ -45,3 +45,5 @@ export default function ActionCardCorePackDemoWrapper() {
     </main>
   );
 }
+
+export { ActioncardBasic };

@@ -18,8 +18,8 @@ import { NavList } from "./navlist";
 import { Accordion } from "./accordion";
 import { Dialog } from "./dialog";
 import { Popup } from "./popup";
-import ActionCardDemoWrapper, { ActioncardBasic } from "./actioncard-basic/index";
-import ActionCardCorePackDemoWrapper from "./actioncard-core-pack/index";
+import { ActioncardBasic } from "./actioncard/basic/index";
+import ActionCardHome from "./actioncard/home";
 import TabBarHome from "./tabbar/home";
 
 
@@ -49,12 +49,6 @@ const navLayoutComponents: NavLayoutComponent[] = [
     name: "Action Card",
     image: "oj-ux-icon-size-12x  oj-ux-ico-contact-card",
     isAvailable: true,
-  },
-  {
-    id: 8,
-    name: "Action Card",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-contact-card",
-    isAvailable: true,
     isCorePack: true,
   },
   {
@@ -62,7 +56,7 @@ const navLayoutComponents: NavLayoutComponent[] = [
     name: "Tab Bar",
     image: "oj-ux-icon-size-12x  oj-ux-ico-tab-bar",
     isAvailable: true,
-     isCorePack: true,
+    isCorePack: true,
   },
   {
     id: 5,
@@ -211,7 +205,12 @@ const NavLayoutHome = () => {
       case 2:
         return <Accordion />;
       case 3:
-        return <ActionCardDemoWrapper />;
+        return (
+          <ActionCardHome
+            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onNavigateRootHome={handleHomeNavigation}
+          />
+        );
       case 4:
         return (
           <TabBarHome
@@ -225,8 +224,6 @@ const NavLayoutHome = () => {
         return <Popup />;
       case 7:
         return <DrawerLayoutDemo />;
-      case 8:
-        return <ActionCardCorePackDemoWrapper />;
       default:
         return null;
     }
