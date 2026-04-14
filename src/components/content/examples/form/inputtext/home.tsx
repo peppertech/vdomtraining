@@ -1,15 +1,17 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
-import { ButtonElement } from "ojs/ojbutton";
 
 import InputTextLegacy from "./inputTextLegacy";
 import InputTextCorePack from "./inputTextCorePack";
+import {
+  type NestedFormHomeProps,
+  formatCorePackLabel,
+} from "../form-breadcrumb";
 
 type InputTextComponent = {
   id: number;
@@ -44,7 +46,10 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION =
   new KeySetImpl([]) as KeySet<InputTextComponent["id"]>;
 
-const InputTextHome = () => {
+const InputTextHome = ({
+  onBreadcrumbChange,
+  onNavigateFormsHome,
+}: NestedFormHomeProps) => {
   const [selectedItems, setSelectedItems] =
     useState<KeySet<InputTextComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -98,13 +103,45 @@ const InputTextHome = () => {
     }
   }, [activeComponentId]);
 
-  const handleHomeNavigation = (_event: ButtonElement.ojAction) => {
+  const activeComponent = components.find(
+    (component) => component.id === activeComponentId,
+  );
+
+  const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
     setShowComponentDetail(false);
     setSelectedItems(
       new KeySetImpl([]) as KeySet<InputTextComponent["id"]>,
     );
-  };
+    onBreadcrumbChange?.(null);
+  }, [onBreadcrumbChange]);
+
+  useEffect(() => {
+    if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
+      onBreadcrumbChange?.(null);
+      return;
+    }
+
+    onBreadcrumbChange([
+      { label: "Forms", onSelect: onNavigateFormsHome },
+      { label: "Input Text", onSelect: handleHomeNavigation },
+      {
+        label: formatCorePackLabel(
+          activeComponent.name,
+          activeComponent.isCorePack,
+        ),
+        current: true,
+      },
+    ]);
+
+    return () => onBreadcrumbChange(null);
+  }, [
+    activeComponent,
+    handleHomeNavigation,
+    onBreadcrumbChange,
+    onNavigateFormsHome,
+    showComponentDetail,
+  ]);
 
   const handleSelectedChanged = (event: any) => {
     const selectedKey = event.detail.items[0]?.key as InputTextComponent["id"];
@@ -132,11 +169,6 @@ const InputTextHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button
-            class="breadcrumb-wrapper"
-            label=" Input Text Home "
-            onojAction={handleHomeNavigation}
-          />
           {ComponentDetail() ?? (
             <div class="comingsoon">Coming soon....</div>
           )}

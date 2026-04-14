@@ -1,12 +1,10 @@
 import { h, ComponentProps } from "preact";
 import { useCallback, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
-import { ButtonElement } from "ojs/ojbutton";
 
 import CheckboxHome from "./checkbox/home";
 import { ColorPalette } from "./colorPalette";
@@ -26,13 +24,19 @@ import { ValidationGroupExample } from "./validationGroup";
 import RadiosetHome from "./radioset/home";
 import InputSearchDemoWrapper from "./input-search";
 import { FormLayoutCorePack } from "./formLayoutCorePack";
+import {
+  FormBreadcrumb,
+  type FormBreadcrumbItem,
+  type NestedFormHomeProps,
+  formatCorePackLabel,
+} from "./form-breadcrumb";
 
 type FormShowcase = {
   id: string;
   name: string;
   image: string;
   isCorePack?: boolean;
-  render: () => h.JSX.Element | null;
+  render: (props?: NestedFormHomeProps) => h.JSX.Element | null;
 };
 
 const formExamples: FormShowcase[] = [
@@ -54,56 +58,56 @@ const formExamples: FormShowcase[] = [
     name: "Radioset",
     image: "oj-ux-icon-size-12x  oj-ux-ico-radio-set",
     isCorePack: true,
-    render: () => <RadiosetHome />,
+    render: (props) => <RadiosetHome {...props} />,
   },
   {
     id: "checkboxes",
     name: "Checkboxes",
     image: "oj-ux-icon-size-12x oj-ux-ico-checkbox-on",
     isCorePack: true,
-    render: () => <CheckboxHome />,
+    render: (props) => <CheckboxHome {...props} />,
   },
   {
     id: "date-time",
     name: "Date & Time Inputs",
     image: "oj-ux-icon-size-12x oj-ux-ico-calendar-clock",
     isCorePack: true,
-    render: () => <InputDateTimeHome />,
+    render: (props) => <InputDateTimeHome {...props} />,
   },
   {
     id: "input-number",
     name: "Input Number",
     image: "oj-ux-icon-size-12x oj-ux-ico-input-number",
     isCorePack: true,
-    render: () => <InputNumberHome />,
+    render: (props) => <InputNumberHome {...props} />,
   },
   {
     id: "input-password",
     name: "Input Password",
     image: "oj-ux-icon-size-12x oj-ux-ico-text-input-password",
     isCorePack: true,
-    render: () => <InputPasswordHome />,
+    render: (props) => <InputPasswordHome {...props} />,
   },
   {
     id: "input-text",
     name: "Input Text",
     image: "oj-ux-icon-size-12x oj-ux-ico-text-input",
      isCorePack: true,
-    render: () => <InputTextHome />,
+    render: (props) => <InputTextHome {...props} />,
   },
   {
     id: "text-area",
     name: "Text Area",
     image: "oj-ux-icon-size-12x oj-ux-ico-text-input-area",
      isCorePack: true,
-    render: () => <TextAreaHome />,
+    render: (props) => <TextAreaHome {...props} />,
   },
   {
     id: "selects-combobox",
     name: "Select & Combobox",
     image: "oj-ux-icon-size-12x oj-ux-ico-select-tab",
     isCorePack: true,
-    render: () => <SelectAndComboboxHome />,
+    render: (props) => <SelectAndComboboxHome {...props} />,
   },
   
   {
@@ -171,6 +175,9 @@ const FormsHome = () => {
   const [activeComponentId, setActiveComponentId] = useState<
     FormShowcase["id"] | null
   >(null);
+  const [nestedBreadcrumbItems, setNestedBreadcrumbItems] = useState<
+    FormBreadcrumbItem[] | null
+  >(null);
 
   const renderListItem = useCallback(
     (
@@ -207,20 +214,33 @@ const FormsHome = () => {
     [selectedItems],
   );
 
+  const handleHomeNavigation = useCallback(() => {
+    setActiveComponentId(null);
+    setShowComponentDetail(false);
+    setNestedBreadcrumbItems(null);
+    setSelectedItems(
+      new KeySetImpl<FormShowcase["id"]>([]) as KeySet<FormShowcase["id"]>,
+    );
+  }, []);
+
   const ComponentDetail = useCallback(() => {
     const showcase = formExamples.find(
       (example) => example.id === activeComponentId,
     );
-    return showcase?.render() ?? null;
-  }, [activeComponentId]);
-
-  const handleHomeNavigation = (_event: ButtonElement.ojAction) => {
-    setActiveComponentId(null);
-    setShowComponentDetail(false);
-    setSelectedItems(
-      new KeySetImpl<FormShowcase["id"]>([]) as KeySet<FormShowcase["id"]>,
+    return (
+      showcase?.render({
+        onBreadcrumbChange: setNestedBreadcrumbItems,
+        onNavigateFormsHome: handleHomeNavigation,
+      }) ?? null
     );
-  };
+  }, [activeComponentId, handleHomeNavigation]);
+
+  const activeComponent = formExamples.find(
+    (example) => example.id === activeComponentId,
+  );
+  const activeBreadcrumbLabel = activeComponent
+    ? formatCorePackLabel(activeComponent.name, activeComponent.isCorePack)
+    : "Component";
 
   const handleSelectedChanged = (
     event: ojListView.selectedChanged<FormShowcase["id"], FormShowcase>,
@@ -235,8 +255,20 @@ const FormsHome = () => {
     if (selectedKey) {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
+      setNestedBreadcrumbItems(null);
     }
   };
+
+  const breadcrumbItems: FormBreadcrumbItem[] = nestedBreadcrumbItems ?? [
+    {
+      label: "Forms",
+      onSelect: handleHomeNavigation,
+    },
+    {
+      label: activeBreadcrumbLabel,
+      current: true,
+    },
+  ];
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
@@ -258,11 +290,7 @@ const FormsHome = () => {
             </oj-list-view>
           ) : (
             <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-              <oj-button
-                class="breadcrumb-wrapper"
-                label=" Forms Home "
-                onojAction={handleHomeNavigation}
-              />
+              <FormBreadcrumb items={breadcrumbItems} />
               {ComponentDetail() ?? (
                 <div class="comingsoon">Coming soon....</div>
               )}

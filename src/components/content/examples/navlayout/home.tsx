@@ -1,7 +1,6 @@
 import { h, ComponentProps } from "preact";
 import { useCallback, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojdrawerlayout";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
@@ -9,7 +8,10 @@ import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
-import { ButtonElement } from "ojs/ojbutton";
+import {
+  CatalogBreadcrumb,
+  formatCorePackLabel,
+} from "../../../shared/catalog-breadcrumb";
 
 import { NavList } from "./navlist";
 import { Accordion } from "./accordion";
@@ -241,11 +243,11 @@ const NavLayoutHome = () => {
     }
   }, [activeComponentId]);
 
-  const handleHomeNavigation = (_event: ButtonElement.ojAction) => {
+  const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
     setShowComponentDetail(false);
     setSelectedItems(new KeySetImpl([]) as KeySet<NavLayoutComponent["id"]>);
-  };
+  }, []);
 
   const handleSelectedChanged = (event: any) => {
     const selectedKey = event.detail.items[0]?.key as NavLayoutComponent["id"];
@@ -261,6 +263,10 @@ const NavLayoutHome = () => {
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
     }
   };
+
+  const activeComponent = navLayoutComponents.find(
+    (component) => component.id === activeComponentId,
+  );
 
   return (
     <div class="component-wrapper">
@@ -278,7 +284,24 @@ const NavLayoutHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button class="breadcrumb-wrapper"  label=" Home " onojAction={handleHomeNavigation} />
+          <CatalogBreadcrumb
+            items={[
+              {
+                label: "Navigation and Layouts",
+                onSelect: handleHomeNavigation,
+              },
+              {
+                label: activeComponent
+                  ? formatCorePackLabel(
+                      activeComponent.name,
+                      activeComponent.isCorePack,
+                    )
+                  : "Component",
+                current: true,
+              },
+            ]}
+            ariaLabel="Navigation and layouts breadcrumb"
+          />
           {isComponentAvailable ? (
             ComponentDetail()
           ) : (

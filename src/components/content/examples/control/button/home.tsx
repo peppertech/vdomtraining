@@ -1,7 +1,6 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
@@ -18,6 +17,10 @@ import CorePackMenuButton from "./corePackMenuButton";
 import CorePackProgressButton from "./corePackProgressButton";
 import CorePackSplitMenuButton from "./corePackSplitMenuButton";
 import CorePackToggleButton from "./corePackToggleButton";
+import {
+  type NestedCatalogHomeProps,
+  formatCorePackLabel,
+} from "../../../../shared/catalog-breadcrumb";
 
 type ButtonComponent = {
   id: number;
@@ -117,7 +120,10 @@ type ListViewProps = ComponentProps<"oj-list-view">;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<ButtonComponent["id"]>;
 
-const ButtonsHome = () => {
+const ButtonsHome = ({
+  onBreadcrumbChange,
+  onNavigateRootHome,
+}: NestedCatalogHomeProps) => {
   const [selectedItems, setSelectedItems] =
     useState<KeySet<ButtonComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -125,6 +131,9 @@ const ButtonsHome = () => {
     null,
   );
   const [isComponentAvailable, setIsComponentAvailable] = useState(false);
+  const activeComponent = buttonComponents.find(
+    (component) => component.id === activeComponentId,
+  );
 
   const renderListItem = useCallback(
     (
@@ -201,10 +210,40 @@ const ButtonsHome = () => {
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
     }
   };
+  const handleBack = useCallback(() => {
+    setShowComponentDetail(false);
+    setActiveComponentId(null);
+    setIsComponentAvailable(false);
+    setSelectedItems(new KeySetImpl([]) as KeySet<ButtonComponent["id"]>);
+    onBreadcrumbChange?.(null);
+  }, [onBreadcrumbChange]);
 
-  const activeComponent = buttonComponents.find(
-    (component) => component.id === activeComponentId,
-  );
+  useEffect(() => {
+    if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
+      onBreadcrumbChange?.(null);
+      return;
+    }
+
+    onBreadcrumbChange([
+      { label: "Controls", onSelect: onNavigateRootHome },
+      { label: "Buttons", onSelect: handleBack },
+      {
+        label: formatCorePackLabel(
+          activeComponent.name.trim(),
+          activeComponent.isCorePack,
+        ),
+        current: true,
+      },
+    ]);
+
+    return () => onBreadcrumbChange(null);
+  }, [
+    activeComponent,
+    handleBack,
+    onBreadcrumbChange,
+    onNavigateRootHome,
+    showComponentDetail,
+  ]);
 
   return (
     <div class="component-wrapper">

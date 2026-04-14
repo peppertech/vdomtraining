@@ -1,12 +1,10 @@
 import { h, ComponentProps } from "preact";
 import { useCallback, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
-import { ButtonElement } from "ojs/ojbutton";
 
 import Chart from "./charts/chart";
 import { DrillChart } from "./charts/chart-drill";
@@ -17,6 +15,10 @@ import { PieChartLegacyExample } from "./charts/pieChartLegacyExample";
 import { LegendCorePackExample } from "./legendCorePackExample";
 import { DiagramExample } from "./diagramExample";
 import AreaChartDemoWrapper from "./charts/area-chart-default/index";
+import {
+  CatalogBreadcrumb,
+  formatCorePackLabel,
+} from "../../../shared/catalog-breadcrumb";
 
 type DataVizComponent = {
   id: number;
@@ -157,11 +159,11 @@ const DataVizHome = () => {
     }
   }, [activeComponentId]);
 
-  const handleOjAction = (_event: ButtonElement.ojAction) => {
+  const handleOjAction = useCallback(() => {
     setActiveComponentId(null);
     setShowComponentDetail(false);
     setSelectedItems(new KeySetImpl([]) as KeySet<DataVizComponent["id"]>);
-  };
+  }, []);
 
   const handleSelectedChanged = (event: any) => {
     const selectedKey = event.detail.items[0]?.key as DataVizComponent["id"];
@@ -177,6 +179,10 @@ const DataVizHome = () => {
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
     }
   };
+
+  const activeComponent = dataVizComponents.find(
+    (component) => component.id === activeComponentId,
+  );
 
   return (
     <div class="component-wrapper">
@@ -194,7 +200,24 @@ const DataVizHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button class="breadcrumb-wrapper" label="  Home " onojAction={handleOjAction} />
+          <CatalogBreadcrumb
+            items={[
+              {
+                label: "Data Visualization",
+                onSelect: handleOjAction,
+              },
+              {
+                label: activeComponent
+                  ? formatCorePackLabel(
+                      activeComponent.name,
+                      activeComponent.isCorePack,
+                    )
+                  : "Component",
+                current: true,
+              },
+            ]}
+            ariaLabel="Data visualization breadcrumb"
+          />
           {isComponentAvailable ? (
             ComponentDetail()
           ) : (

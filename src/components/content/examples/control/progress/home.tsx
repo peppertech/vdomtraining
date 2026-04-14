@@ -1,7 +1,6 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
@@ -12,6 +11,10 @@ import ProgressButton from "./progressbutton";
 import ProgressCircle from "./progresscircle";
 import LegacyProgressBar from "./legacyProgressBar";
 import LegacyProgressCircle from "./legacyProgressCircle";
+import {
+  type NestedCatalogHomeProps,
+  formatCorePackLabel,
+} from "../../../../shared/catalog-breadcrumb";
 
 type ProgressComponent = {
   id: number;
@@ -67,10 +70,16 @@ type ListViewProps = ComponentProps<"oj-list-view">;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<ProgressComponent["id"]>;
 
-const ProgressHome = () => {
+const ProgressHome = ({
+  onBreadcrumbChange,
+  onNavigateRootHome,
+}: NestedCatalogHomeProps) => {
   const [selectedItems, setSelectedItems] = useState<KeySet<ProgressComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
   const [activeComponentId, setActiveComponentId] = useState<number | null>(null);
+  const activeComponent = progressComponents.find(
+    (component) => component.id === activeComponentId,
+  );
 
   const renderListItem = useCallback(
     (item: ojListView.ItemTemplateContext<ProgressComponent["id"], ProgressComponent>) => (
@@ -146,6 +155,40 @@ const ProgressHome = () => {
     }
   };
 
+  const handleBack = useCallback(() => {
+    setShowComponentDetail(false);
+    setActiveComponentId(null);
+    setSelectedItems(new KeySetImpl([]) as KeySet<ProgressComponent["id"]>);
+    onBreadcrumbChange?.(null);
+  }, [onBreadcrumbChange]);
+
+  useEffect(() => {
+    if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
+      onBreadcrumbChange?.(null);
+      return;
+    }
+
+    onBreadcrumbChange([
+      { label: "Controls", onSelect: onNavigateRootHome },
+      { label: "Progress Indicators", onSelect: handleBack },
+      {
+        label: formatCorePackLabel(
+          activeComponent.name,
+          activeComponent.isCorePack,
+        ),
+        current: true,
+      },
+    ]);
+
+    return () => onBreadcrumbChange(null);
+  }, [
+    activeComponent,
+    handleBack,
+    onBreadcrumbChange,
+    onNavigateRootHome,
+    showComponentDetail,
+  ]);
+
   return (
     <div class="component-wrapper">
       {!showComponentDetail ? (
@@ -162,18 +205,6 @@ const ProgressHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button
-            chroming="borderless"
-            display="icons"
-            onojAction={() => {
-              setShowComponentDetail(false);
-              setActiveComponentId(null);
-              setSelectedItems(new KeySetImpl([]) as KeySet<ProgressComponent["id"]>);
-            }}
-          >
-            <span slot="startIcon" class="oj-ux-ico-chevron-left"></span>
-            Progress Components
-          </oj-button>
           {ComponentDetail()}
         </div>
       )}

@@ -1,12 +1,10 @@
 import { h, ComponentProps } from "preact";
 import { useCallback, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
-import { ButtonElement } from "ojs/ojbutton";
 
 import Badge from "./badge";
 import ButtonsHome from "./button/home";
@@ -21,6 +19,12 @@ import IconFont from "./image/iconfont";
 import AvatarsHome from "./avatars/home";
 import MenuHome from "./menu/home";
 import MessageHome from "./message/home";
+import {
+  CatalogBreadcrumb,
+  type CatalogBreadcrumbItem,
+  type NestedCatalogHomeProps,
+  formatCorePackLabel,
+} from "../../../shared/catalog-breadcrumb";
 
 type ControlComponent = {
   id: number;
@@ -28,6 +32,7 @@ type ControlComponent = {
   image: string;
   isAvailable?: boolean;
   isCorePack?: boolean;
+  render?: (props?: NestedCatalogHomeProps) => h.JSX.Element | null;
 };
 
 const controlComponents: ControlComponent[] = [
@@ -37,6 +42,7 @@ const controlComponents: ControlComponent[] = [
     image: "oj-ux-icon-size-12x  oj-ux-ico-avatar",
     isAvailable: true,
     isCorePack: true,
+    render: (props) => <AvatarsHome {...props} />,
   },
   {
     id: 2,
@@ -49,14 +55,16 @@ const controlComponents: ControlComponent[] = [
     name: "Buttons",
     image: "oj-ux-icon-size-12x oj-ux-ico-button",
     isAvailable: true,
-    isCorePack: true
+    isCorePack: true,
+    render: (props) => <ButtonsHome {...props} />,
   },
   {
     id: 4,
     name: "Menu & Menu Button",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu",
     isAvailable: true,
-    isCorePack: true
+    isCorePack: true,
+    render: (props) => <MenuHome {...props} />,
   },
   {
     id: 5,
@@ -82,7 +90,8 @@ const controlComponents: ControlComponent[] = [
     name: "Progress Indicators",
     image: "oj-ux-icon-size-12x  oj-ux-ico-progress-linear",
     isAvailable: true,
-    isCorePack: true
+    isCorePack: true,
+    render: (props) => <ProgressHome {...props} />,
   },
   {
     id: 9,
@@ -108,6 +117,7 @@ const controlComponents: ControlComponent[] = [
     image: "oj-ux-icon-size-12x  oj-ux-ico-messages",
     isAvailable: true,
     isCorePack: true,
+    render: (props) => <MessageHome {...props} />,
   }
   
 ];
@@ -140,6 +150,9 @@ const ControlHome = () => {
     null,
   );
   const [isComponentAvailable, setIsComponentAvailable] = useState(false);
+  const [nestedBreadcrumbItems, setNestedBreadcrumbItems] = useState<
+    CatalogBreadcrumbItem[] | null
+  >(null);
 
   const renderListItem = useCallback(
     (
@@ -177,47 +190,49 @@ const ControlHome = () => {
   );
 
   const ComponentDetail = useCallback(() => {
+    const activeComponent = controlComponents.find(
+      (component) => component.id === activeComponentId,
+    );
+    if (activeComponent?.render) {
+      return activeComponent.render({
+        onBreadcrumbChange: setNestedBreadcrumbItems,
+        onNavigateRootHome: handleHomeNavigation,
+      });
+    }
+
     switch (activeComponentId) {
-      case 1:
-        return <AvatarsHome />;
       case 2:
         return <BadgeShowcase />;
-      case 3:
-        return <ButtonsHome />;
-      case 4:
-        return <MenuHome />;
       case 5:
         return <ConveyorBelt />;
       case 6:
         return <FilePicker />;
       case 7:
         return <FilmStrip />;
-      case 8:
-        return <ProgressHome />;
       case 9:
         return <Toolbar />;
       case 10:
         return <Train />;
       case 11:
         return <ImageShowcase />;
-      case 12:
-        return <MessageHome />;
       default:
         return null;
     }
   }, [activeComponentId]);
 
-  const handleHomeNavigation = (_event: ButtonElement.ojAction) => {
+  const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
     setShowComponentDetail(false);
+    setNestedBreadcrumbItems(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<ControlComponent["id"]>);
-  };
+  }, []);
 
   const handleSelectedChanged = (event: any) => {
     const selectedKey = event.detail.items[0]?.key as ControlComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
+      setNestedBreadcrumbItems(null);
       const selection = event.detail.value as KeySet<ControlComponent["id"]>;
       setSelectedItems(selection);
 
@@ -227,6 +242,19 @@ const ControlHome = () => {
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
     }
   };
+
+  const activeComponent = controlComponents.find(
+    (component) => component.id === activeComponentId,
+  );
+  const breadcrumbItems: CatalogBreadcrumbItem[] = nestedBreadcrumbItems ?? [
+    { label: "Controls", onSelect: handleHomeNavigation },
+    {
+      label: activeComponent
+        ? formatCorePackLabel(activeComponent.name, activeComponent.isCorePack)
+        : "Component",
+      current: true,
+    },
+  ];
 
   return (
     <div class="component-wrapper">
@@ -244,7 +272,7 @@ const ControlHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button class="breadcrumb-wrapper"  label=" Home " onojAction={handleHomeNavigation} />
+          <CatalogBreadcrumb items={breadcrumbItems} ariaLabel="Control breadcrumb" />
           {isComponentAvailable ? (
             ComponentDetail()
           ) : (

@@ -1,12 +1,10 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
-import { ButtonElement } from "ojs/ojbutton";
 
 import InputDate from "./inputDate";
 import { InputDateMask } from "./inputDateMask";
@@ -16,6 +14,10 @@ import InputDateText from "./inputDateText";
 import { InputMonthMask } from "./inputMonthMask";
 import InputTime from "./inputTime";
 import InputTimeMask from "./inputTimeMask";
+import {
+  type NestedFormHomeProps,
+  formatCorePackLabel,
+} from "../form-breadcrumb";
 
 type DateTimeComponent = {
   id: number;
@@ -92,7 +94,10 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION =
   new KeySetImpl([]) as KeySet<DateTimeComponent["id"]>;
 
-const InputDateTimeHome = () => {
+const InputDateTimeHome = ({
+  onBreadcrumbChange,
+  onNavigateFormsHome,
+}: NestedFormHomeProps) => {
   const [selectedItems, setSelectedItems] =
     useState<KeySet<DateTimeComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -159,14 +164,46 @@ const InputDateTimeHome = () => {
     }
   }, [activeComponentId]);
 
-  const handleHomeNavigation = (_event: ButtonElement.ojAction) => {
+  const activeComponent = dateTimeComponents.find(
+    (component) => component.id === activeComponentId,
+  );
+
+  const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
     setShowComponentDetail(false);
     setSelectedItems(
       new KeySetImpl([]) as KeySet<DateTimeComponent["id"]>,
     );
     setIsComponentAvailable(false);
-  };
+    onBreadcrumbChange?.(null);
+  }, [onBreadcrumbChange]);
+
+  useEffect(() => {
+    if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
+      onBreadcrumbChange?.(null);
+      return;
+    }
+
+    onBreadcrumbChange([
+      { label: "Forms", onSelect: onNavigateFormsHome },
+      { label: "Date & Time Inputs", onSelect: handleHomeNavigation },
+      {
+        label: formatCorePackLabel(
+          activeComponent.name.trim(),
+          activeComponent.isCorePack,
+        ),
+        current: true,
+      },
+    ]);
+
+    return () => onBreadcrumbChange(null);
+  }, [
+    activeComponent,
+    handleHomeNavigation,
+    onBreadcrumbChange,
+    onNavigateFormsHome,
+    showComponentDetail,
+  ]);
 
   const handleSelectedChanged = (event: any) => {
     const selectedKey = event.detail.items[0]?.key as DateTimeComponent["id"];
@@ -199,11 +236,6 @@ const InputDateTimeHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button
-            class="breadcrumb-wrapper"
-            label=" Date & Time Home "
-            onojAction={handleHomeNavigation}
-          />
           {isComponentAvailable ? (
             ComponentDetail()
           ) : (

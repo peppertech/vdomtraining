@@ -1,7 +1,6 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
@@ -12,6 +11,10 @@ import MenuButton from "./menuButton";
 import MenuSelectMany from "./menuselectmany";
 import CorePackMenuButton from "./corePackMenuButton";
 import CorePackSplitMenuButton from "./corePackSplitMenuButton";
+import {
+  type NestedCatalogHomeProps,
+  formatCorePackLabel,
+} from "../../../../shared/catalog-breadcrumb";
 
 interface MenuComponent {
   id: number;
@@ -68,11 +71,17 @@ const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<MenuComponent["id"]>;
 type ListViewProps = ComponentProps<"oj-list-view">;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
-const MenuHome = () => {
+const MenuHome = ({
+  onBreadcrumbChange,
+  onNavigateRootHome,
+}: NestedCatalogHomeProps) => {
   const [selectedItems, setSelectedItems] =
     useState<KeySet<MenuComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
   const [activeComponentId, setActiveComponentId] = useState<number | null>(null);
+  const activeComponent = menuComponents.find(
+    (component) => component.id === activeComponentId,
+  );
 
   const renderListItem = useCallback(
     (item: ojListView.ItemTemplateContext<MenuComponent["id"], MenuComponent>) => (
@@ -127,6 +136,40 @@ const MenuHome = () => {
     }
   };
 
+  const handleBack = useCallback(() => {
+    setShowComponentDetail(false);
+    setActiveComponentId(null);
+    setSelectedItems(new KeySetImpl([]) as KeySet<MenuComponent["id"]>);
+    onBreadcrumbChange?.(null);
+  }, [onBreadcrumbChange]);
+
+  useEffect(() => {
+    if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
+      onBreadcrumbChange?.(null);
+      return;
+    }
+
+    onBreadcrumbChange([
+      { label: "Controls", onSelect: onNavigateRootHome },
+      { label: "Menu & Menu Button", onSelect: handleBack },
+      {
+        label: formatCorePackLabel(
+          activeComponent.name,
+          activeComponent.isCorePack,
+        ),
+        current: true,
+      },
+    ]);
+
+    return () => onBreadcrumbChange(null);
+  }, [
+    activeComponent,
+    handleBack,
+    onBreadcrumbChange,
+    onNavigateRootHome,
+    showComponentDetail,
+  ]);
+
   return (
     <div class="component-wrapper">
       {!showComponentDetail ? (
@@ -143,18 +186,6 @@ const MenuHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button
-            chroming="borderless"
-            display="icons"
-            onojAction={() => {
-              setShowComponentDetail(false);
-              setActiveComponentId(null);
-              setSelectedItems(new KeySetImpl([]) as KeySet<MenuComponent["id"]>);
-            }}
-          >
-            <span slot="startIcon" class="oj-ux-ico-chevron-left"></span>
-            Menu Components
-          </oj-button>
           {ComponentDetail()}
         </div>
       )}

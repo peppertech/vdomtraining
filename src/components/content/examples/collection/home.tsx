@@ -1,12 +1,10 @@
 import { h, ComponentProps } from "preact";
 import { useCallback, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
-import { ButtonElement } from "ojs/ojbutton";
 
 import TableHome from "./table/home";
 import ListViewHome from "./listview/home";
@@ -15,6 +13,12 @@ import DataGrid from "./datagrid";
 import GroupByTable from "./group-by-table";
 import { RowExpanderTable } from "./rowexpander-table";
 import CorePackCardView from "./core-pack-card-view";
+import {
+  CatalogBreadcrumb,
+  type CatalogBreadcrumbItem,
+  type NestedCatalogHomeProps,
+  formatCorePackLabel,
+} from "../../../shared/catalog-breadcrumb";
 
 type CollectionComponent = {
   id: number;
@@ -22,6 +26,7 @@ type CollectionComponent = {
   image: string;
   isAvailable?: boolean;
   isCorePack?: boolean;
+  render?: (props?: NestedCatalogHomeProps) => h.JSX.Element | null;
 };
 
 const collectionComponents: CollectionComponent[] = [
@@ -32,6 +37,7 @@ const collectionComponents: CollectionComponent[] = [
     image: "oj-ux-icon-size-12x  oj-ux-ico-tables-basic",
     isAvailable: true,
     isCorePack: true,
+    render: (props) => <TableHome {...props} />,
   },
   {
     id: 2,
@@ -39,6 +45,7 @@ const collectionComponents: CollectionComponent[] = [
     image: "oj-ux-icon-size-12x  oj-ux-ico-list",
     isAvailable: true,
     isCorePack: true,
+    render: (props) => <ListViewHome {...props} />,
   },
   {
     id: 9,
@@ -92,6 +99,9 @@ const CollectionHome = () => {
     null,
   );
   const [isComponentAvailable, setIsComponentAvailable] = useState(false);
+  const [nestedBreadcrumbItems, setNestedBreadcrumbItems] = useState<
+    CatalogBreadcrumbItem[] | null
+  >(null);
 
   const renderListItem = useCallback(
     (
@@ -132,16 +142,22 @@ const CollectionHome = () => {
   );
 
   const ComponentDetail = useCallback(() => {
+    const activeComponent = collectionComponents.find(
+      (component) => component.id === activeComponentId,
+    );
+
+    if (activeComponent?.render) {
+      return activeComponent.render({
+        onBreadcrumbChange: setNestedBreadcrumbItems,
+        onNavigateRootHome: handleHomeNavigation,
+      });
+    }
+
     switch (activeComponentId) {
-     
-      case 2:
-        return <ListViewHome />;
       case 3:
         return <Treeview />;
       case 4:
         return <DataGrid />;
-      case 7:
-        return <TableHome />;
       case 5:
         return <GroupByTable />;
       case 6:
@@ -153,17 +169,19 @@ const CollectionHome = () => {
     }
   }, [activeComponentId]);
 
-  const handleHomeNavigation = (_event: ButtonElement.ojAction) => {
+  const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
     setShowComponentDetail(false);
+    setNestedBreadcrumbItems(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<CollectionComponent["id"]>);
-  };
+  }, []);
 
   const handleSelectedChanged = (event: any) => {
     const selectedKey = event.detail.items[0]?.key as CollectionComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
+      setNestedBreadcrumbItems(null);
       const selection = event.detail.value as KeySet<CollectionComponent["id"]>;
       setSelectedItems(selection);
 
@@ -173,6 +191,19 @@ const CollectionHome = () => {
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
     }
   };
+
+  const activeComponent = collectionComponents.find(
+    (component) => component.id === activeComponentId,
+  );
+  const breadcrumbItems: CatalogBreadcrumbItem[] = nestedBreadcrumbItems ?? [
+    { label: "Collections", onSelect: handleHomeNavigation },
+    {
+      label: activeComponent
+        ? formatCorePackLabel(activeComponent.name, activeComponent.isCorePack)
+        : "Component",
+      current: true,
+    },
+  ];
 
   return (
     <div class="component-wrapper">
@@ -190,7 +221,10 @@ const CollectionHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button class="breadcrumb-wrapper" label=" Home " onojAction={handleHomeNavigation} />
+          <CatalogBreadcrumb
+            items={breadcrumbItems}
+            ariaLabel="Collection breadcrumb"
+          />
           {isComponentAvailable ? (
             ComponentDetail()
           ) : (

@@ -1,5 +1,5 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
@@ -8,6 +8,10 @@ import { ojListView } from "ojs/ojlistview";
 
 import ListViewExample from "./listview";
 import CorePackListView from "./core-pack-list-view";
+import {
+  type NestedCatalogHomeProps,
+  formatCorePackLabel,
+} from "../../../../shared/catalog-breadcrumb";
 
 type ListViewComponent = {
   id: number;
@@ -46,7 +50,10 @@ const INITIAL_SELECTION = new KeySetImpl(
   [],
 ) as KeySet<ListViewComponent["id"]>;
 
-const ListViewHome = () => {
+const ListViewHome = ({
+  onBreadcrumbChange,
+  onNavigateRootHome,
+}: NestedCatalogHomeProps) => {
   const [selectedItems, setSelectedItems] =
     useState<KeySet<ListViewComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -54,6 +61,9 @@ const ListViewHome = () => {
     null,
   );
   const [isComponentAvailable, setIsComponentAvailable] = useState(false);
+  const activeComponent = listViewComponents.find(
+    (component) => component.id === activeComponentId,
+  );
 
   const renderListItem = useCallback(
     (
@@ -116,6 +126,41 @@ const ListViewHome = () => {
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
     }
   };
+
+  const handleBack = useCallback(() => {
+    setShowComponentDetail(false);
+    setActiveComponentId(null);
+    setIsComponentAvailable(false);
+    setSelectedItems(new KeySetImpl([]) as KeySet<ListViewComponent["id"]>);
+    onBreadcrumbChange?.(null);
+  }, [onBreadcrumbChange]);
+
+  useEffect(() => {
+    if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
+      onBreadcrumbChange?.(null);
+      return;
+    }
+
+    onBreadcrumbChange([
+      { label: "Collections", onSelect: onNavigateRootHome },
+      { label: "List View", onSelect: handleBack },
+      {
+        label: formatCorePackLabel(
+          activeComponent.name,
+          activeComponent.isCorePack,
+        ),
+        current: true,
+      },
+    ]);
+
+    return () => onBreadcrumbChange(null);
+  }, [
+    activeComponent,
+    handleBack,
+    onBreadcrumbChange,
+    onNavigateRootHome,
+    showComponentDetail,
+  ]);
 
   return (
     <div class="component-wrapper">

@@ -1,15 +1,17 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
-import { ButtonElement } from "ojs/ojbutton";
 
 import InputNumber from "./inputNumber";
 import InputNumberCorePack from "./inputNumberCorePack";
+import {
+  type NestedFormHomeProps,
+  formatCorePackLabel,
+} from "../form-breadcrumb";
 
 type NumberComponent = {
   id: number;
@@ -44,7 +46,10 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION =
   new KeySetImpl([]) as KeySet<NumberComponent["id"]>;
 
-const InputNumberHome = () => {
+const InputNumberHome = ({
+  onBreadcrumbChange,
+  onNavigateFormsHome,
+}: NestedFormHomeProps) => {
   const [selectedItems, setSelectedItems] =
     useState<KeySet<NumberComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -98,13 +103,45 @@ const InputNumberHome = () => {
     }
   }, [activeComponentId]);
 
-  const handleHomeNavigation = (_event: ButtonElement.ojAction) => {
+  const activeComponent = numberComponents.find(
+    (component) => component.id === activeComponentId,
+  );
+
+  const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
     setShowComponentDetail(false);
     setSelectedItems(
       new KeySetImpl([]) as KeySet<NumberComponent["id"]>,
     );
-  };
+    onBreadcrumbChange?.(null);
+  }, [onBreadcrumbChange]);
+
+  useEffect(() => {
+    if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
+      onBreadcrumbChange?.(null);
+      return;
+    }
+
+    onBreadcrumbChange([
+      { label: "Forms", onSelect: onNavigateFormsHome },
+      { label: "Input Number", onSelect: handleHomeNavigation },
+      {
+        label: formatCorePackLabel(
+          activeComponent.name,
+          activeComponent.isCorePack,
+        ),
+        current: true,
+      },
+    ]);
+
+    return () => onBreadcrumbChange(null);
+  }, [
+    activeComponent,
+    handleHomeNavigation,
+    onBreadcrumbChange,
+    onNavigateFormsHome,
+    showComponentDetail,
+  ]);
 
   const handleSelectedChanged = (event: any) => {
     const selectedKey = event.detail.items[0]?.key as NumberComponent["id"];
@@ -132,11 +169,6 @@ const InputNumberHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button
-            class="breadcrumb-wrapper"
-            label=" Input Number Home "
-            onojAction={handleHomeNavigation}
-          />
           {ComponentDetail() ?? (
             <div class="comingsoon">Coming soon....</div>
           )}

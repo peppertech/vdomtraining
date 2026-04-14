@@ -1,7 +1,6 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
@@ -10,6 +9,10 @@ import { ojListView } from "ojs/ojlistview";
 import { RadiosetCorePackExample } from "./radiosetCorePackExample";
 import RichRadioset from "./richRadioSet";
 import RadiosetExample from "./radioset";
+import {
+  type NestedFormHomeProps,
+  formatCorePackLabel,
+} from "../form-breadcrumb";
 
 type RadiosetComponent = {
   id: number;
@@ -55,7 +58,10 @@ const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<RadiosetComponent["id"]>;
 type ListViewProps = ComponentProps<"oj-list-view">;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
-const RadiosetHome = () => {
+const RadiosetHome = ({
+  onBreadcrumbChange,
+  onNavigateFormsHome,
+}: NestedFormHomeProps) => {
   const [selectedItems, setSelectedItems] =
     useState<KeySet<RadiosetComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -108,6 +114,10 @@ const RadiosetHome = () => {
     }
   }, [activeComponentId]);
 
+  const activeComponent = radiosetComponents.find(
+    (component) => component.id === activeComponentId,
+  );
+
   const handleSelectedChanged = (event: any) => {
     const selectedKey = event.detail.items[0]?.key as RadiosetComponent["id"];
     if (typeof selectedKey === "number") {
@@ -118,11 +128,39 @@ const RadiosetHome = () => {
     }
   };
 
-  const handleBack = () => {
+  const handleBack = useCallback(() => {
     setShowComponentDetail(false);
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<RadiosetComponent["id"]>);
-  };
+    onBreadcrumbChange?.(null);
+  }, [onBreadcrumbChange]);
+
+  useEffect(() => {
+    if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
+      onBreadcrumbChange?.(null);
+      return;
+    }
+
+    onBreadcrumbChange([
+      { label: "Forms", onSelect: onNavigateFormsHome },
+      { label: "Radioset", onSelect: handleBack },
+      {
+        label: formatCorePackLabel(
+          activeComponent.name,
+          activeComponent.isCorePack,
+        ),
+        current: true,
+      },
+    ]);
+
+    return () => onBreadcrumbChange(null);
+  }, [
+    activeComponent,
+    handleBack,
+    onBreadcrumbChange,
+    onNavigateFormsHome,
+    showComponentDetail,
+  ]);
 
   return (
     <div class="component-wrapper">
@@ -140,14 +178,6 @@ const RadiosetHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button
-            chroming="borderless"
-            display="icons"
-            onojAction={handleBack}
-          >
-            <span slot="startIcon" class="oj-ux-ico-chevron-left"></span>
-            Radioset
-          </oj-button>
           {ComponentDetail()}
         </div>
       )}

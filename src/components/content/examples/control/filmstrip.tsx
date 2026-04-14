@@ -59,8 +59,8 @@ const Filmstrip = () => {
 
   return (
     <div id="filmstrip-navarrows-example" class="oj-web-applayout-max-width oj-web-applayout-content">
-      <div class="oj-sm-margin-4x">
-        <div class="demo-arrow-controls oj-sm-margin-8x-end">
+      <div class="oj-sm-margin-4x demo-filmstrip-controls">
+        <div class="demo-arrow-controls demo-filmstrip-controls__panel">
           <oj-label id="navArrowPlacementLabel">Arrow placement</oj-label>
           <oj-radioset
             id="navArrowPlacementRadioset"
@@ -73,7 +73,7 @@ const Filmstrip = () => {
           </oj-radioset>
         </div>
 
-        <div class="demo-arrow-visibility-controls">
+        <div class="demo-arrow-visibility-controls demo-filmstrip-controls__panel">
           <oj-label id="navArrowVisibilityLabel">Arrow visibility</oj-label>
           <oj-radioset
             id="navArrowVisibilityRadioset"

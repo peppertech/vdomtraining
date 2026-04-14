@@ -77,6 +77,23 @@
     text-align: center;
     padding-top: 4rem;
   }
+
+.demo-filmstrip-controls {
+  display: grid;
+  gap: 1rem;
+}
+
+.demo-filmstrip-controls__panel {
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .demo-filmstrip-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
   .demo-paging-control {
     display: inline-block;
   }
@@ -105,6 +122,39 @@
  }
  .breadcrumb-wrapper{
   margin-top: 10pt;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+ }
+
+ .breadcrumb-wrapper__item{
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.95rem;
+ }
+
+ .breadcrumb-wrapper__item--link{
+  color: var(--oj-core-text-color-primary);
+  cursor: pointer;
+  font-weight: 600;
+ }
+
+ .breadcrumb-wrapper__item--link:hover{
+  text-decoration: underline;
+ }
+
+ .breadcrumb-wrapper__item--current{
+  color: var(--oj-core-text-color-secondary);
+  font-weight: 600;
+ }
+
+ .breadcrumb-wrapper__chevron{
+  color: var(--oj-core-text-color-secondary);
+  font-size: 0.875rem;
+  flex: 0 0 auto;
  }
 
   .demo-badge-position {

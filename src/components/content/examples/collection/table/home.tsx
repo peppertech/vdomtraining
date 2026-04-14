@@ -1,15 +1,17 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojbutton";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
-import { ButtonElement } from "ojs/ojbutton";
 
 import Table from "./table";
 import CorePackTable from "./core-pack-table";
+import {
+  type NestedCatalogHomeProps,
+  formatCorePackLabel,
+} from "../../../../shared/catalog-breadcrumb";
 
 type TableComponent = {
   id: number;
@@ -44,12 +46,18 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION =
   new KeySetImpl([]) as KeySet<TableComponent["id"]>;
 
-const TableHome = () => {
+const TableHome = ({
+  onBreadcrumbChange,
+  onNavigateRootHome,
+}: NestedCatalogHomeProps) => {
   const [selectedItems, setSelectedItems] =
     useState<KeySet<TableComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
   const [activeComponentId, setActiveComponentId] = useState<number | null>(
     null,
+  );
+  const activeComponent = tableComponents.find(
+    (component) => component.id === activeComponentId,
   );
 
   const renderListItem = useCallback(
@@ -98,13 +106,14 @@ const TableHome = () => {
     }
   }, [activeComponentId]);
 
-  const handleHomeNavigation = (_event: ButtonElement.ojAction) => {
+  const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
     setShowComponentDetail(false);
     setSelectedItems(
       new KeySetImpl([]) as KeySet<TableComponent["id"]>,
     );
-  };
+    onBreadcrumbChange?.(null);
+  }, [onBreadcrumbChange]);
 
   const handleSelectedChanged = (event: any) => {
     const selectedKey = event.detail.items[0]?.key as TableComponent["id"];
@@ -115,6 +124,33 @@ const TableHome = () => {
       setSelectedItems(selection);
     }
   };
+
+  useEffect(() => {
+    if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
+      onBreadcrumbChange?.(null);
+      return;
+    }
+
+    onBreadcrumbChange([
+      { label: "Collections", onSelect: onNavigateRootHome },
+      { label: "Table", onSelect: handleHomeNavigation },
+      {
+        label: formatCorePackLabel(
+          activeComponent.name,
+          activeComponent.isCorePack,
+        ),
+        current: true,
+      },
+    ]);
+
+    return () => onBreadcrumbChange(null);
+  }, [
+    activeComponent,
+    handleHomeNavigation,
+    onBreadcrumbChange,
+    onNavigateRootHome,
+    showComponentDetail,
+  ]);
 
   return (
     <div class="component-wrapper">
@@ -132,11 +168,6 @@ const TableHome = () => {
         </oj-list-view>
       ) : (
         <div class="oj-flex-item oj-sm-margin-6x-bottom oj-sm-12">
-          <oj-button
-            class="breadcrumb-wrapper"
-            label=" Table Home "
-            onojAction={handleHomeNavigation}
-          />
           {ComponentDetail() ?? (
             <div class="comingsoon">Coming soon....</div>
           )}
