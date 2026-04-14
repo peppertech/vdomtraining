@@ -15,16 +15,17 @@ import InputDateTimeHome from "./Inputdatetime/home";
 import InputNumberHome from "./inputnumber/home";
 import InputPasswordHome from "./inputpassword/home";
 import InputTextHome from "./inputtext/home";
-import InputSearch from "./InputSearch";
 import { LabelledLink } from "./labelledLink";
 import SelectAndComboboxHome from "./selectandcomobobox/home";
 import { Slider } from "./slider";
 import { SwitchExample } from "./switch";
 import TextAreaHome from "./textarea/home";
-import { FormLayoutCorePack } from "./formLayoutCorePack";
+import FormLayoutDemoWrapper from "./form-layout";
 import { UserAssistance } from "./userAssistance";
 import { ValidationGroupExample } from "./validationGroup";
 import RadiosetHome from "./radioset/home";
+import InputSearchDemoWrapper from "./input-search";
+import { FormLayoutCorePack } from "./formLayoutCorePack";
 
 type FormShowcase = {
   id: string;
@@ -116,7 +117,7 @@ const formExamples: FormShowcase[] = [
     id: "input-search",
     name: "Input Search",
     image: "oj-ux-icon-size-12x oj-ux-ico-input-search",
-    render: () => <InputSearch />,
+    render: () => <InputSearchDemoWrapper />,
   },
   {
     id: "slider",

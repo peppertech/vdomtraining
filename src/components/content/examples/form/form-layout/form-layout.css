@@ -1,0 +1,65 @@
+.form-layout-demo {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.form-layout-demo__hero,
+.form-layout-demo__section,
+.form-layout-demo__surface {
+  border: 1px solid var(--oj-core-divider-color);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: var(--oj-core-bg-color-content);
+}
+
+.form-layout-demo__hero {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-layout-demo__eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--oj-core-text-color-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.form-layout-demo__status {
+  border-top: 1px solid var(--oj-core-divider-color);
+  padding-top: 0.75rem;
+}
+
+.form-layout-demo__subheading {
+  margin: 0.5rem 0 1rem;
+  color: var(--oj-core-text-color-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.form-layout-demo__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.form-layout-demo__summary {
+  border: 1px solid var(--oj-core-divider-color);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: var(--oj-core-bg-color-content);
+}
+
+.form-layout-demo__summary dt {
+  font-weight: 600;
+}
+
+.form-layout-demo__summary dd {
+  margin: 0.25rem 0 0.75rem;
+  word-break: break-word;
+}
+
+.form-layout-demo__summary dd:last-child {
+  margin-bottom: 0;
+}
