@@ -17,10 +17,7 @@ import { Dialog } from "./dialog";
 import { Popup } from "./popup";
 import ActionCardHome from "./actioncard/home";
 import TabBarHome from "./tabbar/home";
-import DrawerLayoutDemo from "./drawer-layout";
-import DrawerLayoutCorePack from "./drawer-layout-core-pack";
-import DrawerPopupDemo from "./drawer-popup";
-import DrawerPopupCorePack from "./drawer-popup-core-pack";
+import DrawerHome from "./drawer/home";
 
 type NavLayoutComponent = {
   id: number;
@@ -72,26 +69,7 @@ const navLayoutComponents: NavLayoutComponent[] = [
   {
     id: 7,
     name: "Drawer Layout",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-drawer",
-    isAvailable: true,
-  },
-  {
-    id: 8,
-    name: "Drawer Layout",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-drawer",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  {
-    id: 9,
-    name: "Drawer Popup",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-drawer-popup",
-    isAvailable: true,
-  },
-  {
-    id: 10,
-    name: "Drawer Popup",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-drawer-popup",
+    image: "oj-ux-icon-size-12x oj-ux-ico-drawer",
     isAvailable: true,
     isCorePack: true,
   },
@@ -180,13 +158,12 @@ const NavLayoutHome = () => {
       case 6:
         return <Popup />;
       case 7:
-        return <DrawerLayoutDemo />;
-      case 8:
-        return <DrawerLayoutCorePack />;
-      case 9:
-        return <DrawerPopupDemo />;
-      case 10:
-        return <DrawerPopupCorePack />;
+        return (
+          <DrawerHome
+            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onNavigateRootHome={handleHomeNavigation}
+          />
+        );
       default:
         return null;
     }
