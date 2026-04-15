@@ -5,7 +5,7 @@ import "oj-c/form-layout";
 export const LabelledLink = () => {
   return (
     <div id="container">
-      <h4>States inside oj-c-form-layout</h4>
+      <h4>States </h4>
       <oj-c-form-layout maxColumns={2} direction="row" >
         <oj-c-labelled-link
           labelHint="Labelled link"

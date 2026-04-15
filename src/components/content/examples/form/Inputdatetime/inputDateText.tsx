@@ -84,7 +84,7 @@ export const InputDateText = () => {
 
   return (
     <div id="div1">
-      <h4 className="oj-sm-padding-2x-bottom">States inside oj-c-form-layout</h4>
+      <h4 className="oj-sm-padding-2x-bottom">States </h4>
       <oj-c-form-layout maxColumns={3} direction="row">
         <oj-c-input-date-text labelHint="Enabled no value" />
         <oj-c-input-date-text labelHint="Disabled no value" disabled />

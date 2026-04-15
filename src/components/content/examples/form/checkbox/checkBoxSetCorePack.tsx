@@ -105,7 +105,7 @@ export const CheckBoxSetCorePack = () => {
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
-      <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom"> States inside oj-form-layout</h5>
+      <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom"> States </h5>
       <oj-c-form-layout maxColumns={3} direction="row">
         <oj-c-checkboxset
           id="enabledCheckboxset"

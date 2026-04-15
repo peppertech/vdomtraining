@@ -119,7 +119,7 @@ export const InputTimeMask = () => {
 
   return (
     <div id="div1">
-      <h4 class="oj-sm-padding-2x-bottom">States inside oj-c-form-layout</h4>
+      <h4 class="oj-sm-padding-2x-bottom">States </h4>
       <oj-c-form-layout maxColumns={3} direction="row">
         <oj-c-input-time-mask labelHint="Enabled no time"></oj-c-input-time-mask>
         <oj-c-input-time-mask

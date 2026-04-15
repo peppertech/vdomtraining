@@ -136,7 +136,7 @@ export const InputSensitiveText = () => {
   return (
     <div id="div1">
       <h4 className="oj-sm-padding-2x-bottom">
-        States inside oj-c-form-layout
+        States 
       </h4>
       <oj-c-form-layout maxColumns={3} direction="row">
         <oj-c-input-sensitive-text labelHint="Enabled no value" />

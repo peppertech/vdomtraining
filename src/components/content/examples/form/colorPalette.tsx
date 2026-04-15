@@ -76,10 +76,9 @@ export const ColorPalette = () => {
   }, [colorValue]);
 
   return (
-    <div id="colorPaletteDemo">
-      <div class="oj-flex">
+    <div id="colorPaletteDemo" class="oj-web-applayout-max-width oj-web-applayout-content">
         <div class="oj-flex-item oj-sm-padding-2x-horizontal">
-          <h5>Swatch size</h5>
+          <p class="bold">Swatch size</p>
           <oj-buttonset-one
             id="swatchSizesSet"
             aria-label="Swatch size"
@@ -98,7 +97,6 @@ export const ColorPalette = () => {
             ))}
           </oj-buttonset-one>
         </div>
-      </div>
       <br />
       <br />
       <div class="oj-sm-padding-2x-horizontal">
@@ -110,7 +108,6 @@ export const ColorPalette = () => {
           <span class="demo-text">{isTransparent() ? "None" : null}</span>
         </div>
       </div>
-
       <div
         class={`demo-palette-panel oj-panel oj-panel-shadow-lg oj-sm-margin-0-horizontal oj-md-margin-2x-horizontal demo-container-size-${swatchSize}`}
       >

@@ -38,7 +38,7 @@ const TextAreaCorePack = () => {
   });
   return (
     <div>
-      <h4>States inside oj-c-form-layout</h4>
+      <h4>States </h4>
       <oj-c-form-layout maxColumns={3} labelEdge="inside" direction="row">
         <oj-c-text-area
           class="oj-sm-width-1"

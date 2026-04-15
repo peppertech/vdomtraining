@@ -94,7 +94,6 @@ const InputText = () => {
       >
         <oj-input-text
           id='enabledVal'
-          required={true}
           labelEdge={labelEdgeVal}
           rawValue={currentRawValue}
           onrawValueChanged={onRawValueChange}
