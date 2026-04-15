@@ -2,7 +2,7 @@ import "preact";
 
 const CSSImage = () => {
   return (
-    <>
+    <div class="component-wrapper">
       <p>
         'bulletlist-bg': this uses a background image and the image disappears
         when printed if background graphics are disabled.
@@ -48,7 +48,7 @@ const CSSImage = () => {
         title="bulleted list image"
         aria-label="bulleted list image" // a role of img requires an alt attribute
       ></div>
-    </>
+    </div>
   );
 };
 export default CSSImage;

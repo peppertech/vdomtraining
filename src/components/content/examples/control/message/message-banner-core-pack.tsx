@@ -10,10 +10,13 @@ import { useState, useCallback, useMemo } from "preact/hooks";
 
 // CorePack component import
 import "oj-c/message-banner";
+import "ojs/ojnavigationlist";
 
 // Type imports
 import { MessageBannerItem, MessageBannerTemplateContext } from "oj-c/message-banner";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
+import { ojNavigationList } from "ojs/ojnavigationlist";
 
 type DemoMessageBannerItem = MessageBannerItem & {
   id: string;
@@ -27,6 +30,11 @@ type CustomAction = {
 type DemoCustomDetailMessageBannerItem = MessageBannerItem & {
   id: string;
   actions?: [CustomAction, CustomAction];
+};
+
+type BannerExampleNavItem = {
+  id: string;
+  name: string;
 };
 
 const sampleMessages: DemoMessageBannerItem[] = [
@@ -121,7 +129,24 @@ const timestampMessagesData: DemoMessageBannerItem[] = [
   }
 ];
 
+const bannerExampleNavItems: BannerExampleNavItem[] = [
+  { id: "page", name: "Page level messages" },
+  { id: "section", name: "Section level messages" },
+  { id: "custom-detail", name: "Custom detail template" },
+  { id: "close-affordance", name: "Close affordance" },
+  { id: "timestamp", name: "Timestamp" }
+];
+
+const bannerExamplesDataProvider = new MutableArrayTreeDataProvider<
+  BannerExampleNavItem["id"],
+  BannerExampleNavItem
+>(bannerExampleNavItems, "id", {
+  keyAttributeScope: "global"
+});
+
 export const MessageBannerCorePackOverview = () => {
+  const [activeExampleId, setActiveExampleId] =
+    useState<BannerExampleNavItem["id"]>("page");
   // Page level messages
   const [pageMessages, setPageMessages] = useState<DemoMessageBannerItem[]>(sampleMessages);
 
@@ -253,37 +278,110 @@ export const MessageBannerCorePackOverview = () => {
     []
   );
 
+  const handleNavigationChange = useCallback(
+    (event: ojNavigationList.selectionChanged<string, BannerExampleNavItem>) => {
+      if (event.detail.updatedFrom === "internal") {
+        setActiveExampleId(event.detail.value);
+      }
+    },
+    []
+  );
+
+  const renderNavigationItem = (
+    item: ojNavigationList.ItemContext<string, BannerExampleNavItem>
+  ) => {
+    return (
+      <li id={item.data.id}>
+        <a href="" style="color: inherit; text-decoration: none;">
+          {item.data.name}
+        </a>
+      </li>
+    );
+  };
+
+  const activeExampleTitle = useMemo(() => {
+    return (
+      bannerExampleNavItems.find((item) => item.id === activeExampleId)?.name ??
+      "Message banner example"
+    );
+  }, [activeExampleId]);
+
+  const renderActiveExample = () => {
+    switch (activeExampleId) {
+      case "page":
+        return (
+          <oj-c-message-banner
+            data={pageMessagesDP}
+            type="page"
+          ></oj-c-message-banner>
+        );
+      case "section":
+        return (
+          <oj-c-message-banner
+            data={sectionMessagesDP}
+            type="section"
+          ></oj-c-message-banner>
+        );
+      case "custom-detail":
+        return (
+          <oj-c-message-banner
+            data={customDetailMessagesDP}
+            detailTemplateValue="actions"
+            onojClose={closeCustomDetailMessage}
+          >
+            <template slot="actions" render={actionsTemplate}></template>
+          </oj-c-message-banner>
+        );
+      case "close-affordance":
+        return (
+          <oj-c-message-banner
+            data={closeAffordanceMessagesDP}
+            onojClose={closeCloseAffordanceMessage}
+          ></oj-c-message-banner>
+        );
+      case "timestamp":
+        return (
+          <oj-c-message-banner
+            data={timestampMessagesDP}
+            onojClose={closeTimestampMessage}
+          ></oj-c-message-banner>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div id="containerDiv">
-      <h6>Page level messages</h6>
-      <oj-c-message-banner data={pageMessagesDP} type="page"></oj-c-message-banner>
-
-      <h6>Section level messages</h6>
-      <oj-c-message-banner
-        data={sectionMessagesDP}
-        type="section"
-      ></oj-c-message-banner>
-
-      <h6>Custom detail template</h6>
-      <oj-c-message-banner
-        data={customDetailMessagesDP}
-        detailTemplateValue="actions"
-        onojClose={closeCustomDetailMessage}
+    <div id="containerDiv" class="oj-flex oj-sm-flex-wrap-nowrap oj-sm-column-gap-4x">
+      <div
+        class="oj-flex-item oj-sm-padding-2x oj-sm-border-radius-md"
+        style="width: 20%; max-width: 20%; flex: 0 0 20%; background-color: #1f2937;"
       >
-        <template slot="actions" render={actionsTemplate}></template>
-      </oj-c-message-banner>
-
-      <h6>Close affordance</h6>
-      <oj-c-message-banner
-        data={closeAffordanceMessagesDP}
-        onojClose={closeCloseAffordanceMessage}
-      ></oj-c-message-banner>
-
-      <h6>Timestamp</h6>
-      <oj-c-message-banner
-        data={timestampMessagesDP}
-        onojClose={closeTimestampMessage}
-      ></oj-c-message-banner>
+        <oj-navigation-list
+          aria-label="Message banner examples"
+          selection={activeExampleId}
+          data={bannerExamplesDataProvider}
+          onselectionChanged={handleNavigationChange}
+          style="
+            --oj-navigation-list-item-label-color: #f9fafb;
+            --oj-navigation-list-item-label-color-hover: #ffffff;
+            --oj-navigation-list-item-label-color-selected: #ffffff;
+            --oj-navigation-list-item-bg-color-hover: rgba(255, 255, 255, 0.08);
+            --oj-navigation-list-item-bg-color-selected: rgba(255, 255, 255, 0.14);
+            --oj-navigation-list-item-border-color-selected: #ffffff;
+            color: #f9fafb;
+          "
+        >
+          <template slot="itemTemplate" render={renderNavigationItem}></template>
+        </oj-navigation-list>
+      </div>
+      <div
+        class="oj-flex-item"
+        style="width: 80%; max-width: 80%; flex: 0 0 80%; padding-left: 25px;"
+      >
+        <h6>{activeExampleTitle}</h6>
+        {renderActiveExample()}
+      </div>
     </div>
   );
 };
