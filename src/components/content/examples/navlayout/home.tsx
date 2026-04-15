@@ -1,9 +1,6 @@
 import { h, ComponentProps } from "preact";
 import { useCallback, useState } from "preact/hooks";
 import "ojs/ojactioncard";
-import "ojs/ojdrawerlayout";
-import "ojs/ojformlayout";
-import "ojs/ojinputtext";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
@@ -18,10 +15,9 @@ import { NavList } from "./navlist";
 import { Accordion } from "./accordion";
 import { Dialog } from "./dialog";
 import { Popup } from "./popup";
-import { ActioncardBasic } from "./actioncard/basic/index";
 import ActionCardHome from "./actioncard/home";
 import TabBarHome from "./tabbar/home";
-
+import DrawerLayoutDemo from "./drawer-layout";
 
 type NavLayoutComponent = {
   id: number;
@@ -88,68 +84,6 @@ const dataProvider = new MutableArrayDataProvider<
 type ListViewProps = ComponentProps<"oj-list-view">;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<NavLayoutComponent["id"]>;
-
-const DrawerLayoutDemo = () => {
-  const [opened, setOpened] = useState(false);
-
-  const toggleDrawer = useCallback(() => {
-    setOpened((prev) => !prev);
-  }, []);
-
-  return (
-    <div class="oj-web-applayout-max-width oj-web-applayout-content demo-full-height">
-      <oj-button
-        onojAction={toggleDrawer}
-        aria-label="Toggle drawer"
-        label="Toggle End Drawer"
-        chroming="callToAction"
-      ></oj-button>
-      <oj-drawer-layout endOpened={opened} class="demo-full-height">
-        <div class="oj-flex oj-sm-flex-items-1">
-          <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-md">
-            <h2 class="oj-typography-heading-sm"> Navigation List </h2>
-            <NavList />
-          </div>
-          <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-md">
-            <h2 class="oj-typography-heading-sm"> Accordion </h2>
-            <Accordion />
-          </div>
-          <div class="oj-flex-item oj-panel oj-sm-margin-2x demo-panel-md">
-            <h2 class="oj-typography-heading-sm"> Action Card </h2>
-            <ActioncardBasic />
-          </div>
-        </div>
-        <div
-          slot="end"
-          class="oj-color-invert nav-drawer-light-bg demo-full-height"
-        >
-          <div class="demo-drawer-header">
-            <h6>Drawer Content</h6>
-            <oj-button
-              display="icons"
-              chroming="borderless"
-              onojAction={toggleDrawer}
-            >
-              <span slot="startIcon" class="oj-ux-ico-close"></span>
-              Close
-            </oj-button>
-          </div>
-          <div class="demo-padding demo-form-container oj-typography-body-md">
-            <p>Add any kind of content that you like in here.</p>
-            <p>
-              You can also set the drawer to overlay instead of reflowing the
-              page content.
-            </p>
-            <p>
-              If you want a drawer that covers the full page instead of this
-              content area, you can use the oj-drawer-popup component.
-            </p>
-          </div>
-        </div>
-      </oj-drawer-layout>
-    </div>
-  );
-};
 
 const NavLayoutHome = () => {
   const [selectedItems, setSelectedItems] =

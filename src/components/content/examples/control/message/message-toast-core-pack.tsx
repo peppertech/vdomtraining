@@ -16,47 +16,39 @@ type MessageToastCloseEvent = MessageToastProps["onojClose"] extends
   ? T
   : CustomEvent;
 
-const initialData: ToastMessage[] = [
+const createNotificationMessages = (): ToastMessage[] => [
   {
-    id: "error1",
-    severity: "error",
-    summary: "Error message summary",
-    detail: "Error message detail.",
-  },
-  {
-    id: "warning1",
+    id: `server-maintenance-${Date.now()}`,
     severity: "warning",
-    summary: "Warning message summary",
-    detail: "Warning message detail.",
+    summary: "Planned maintenance tonight",
+    detail: "Deployment starts at 11:00 PM and may briefly interrupt background sync.",
+    closeAffordance: "on",
+    sound: "none",
   },
   {
-    id: "confirmation1",
-    severity: "confirmation",
-    summary: "Confirmation message summary",
-    detail: "Confirmation message detail",
-  },
-  {
-    id: "info1",
+    id: `quota-${Date.now() + 1}`,
     severity: "info",
-    summary: "Info message summary with no detail",
+    summary: "Storage usage updated",
+    detail: "Your project is using 78% of the shared media quota.",
+    autoTimeout: 8000,
+    closeAffordance: "on",
+    sound: "none",
   },
   {
-    id: "none1",
-    severity: "none",
-    summary: "Message summary with no severity and detail",
-  },
-  {
-    id: "long1",
-    severity: "error",
-    summary:
-      "Error message with really long summary text to show how the text wraps up when it overflows. ",
-    detail:
-      "Error message with really long detail text to show how the text wraps up when it overflows. ",
+    id: `publish-${Date.now() + 2}`,
+    severity: "confirmation",
+    summary: "Publish completed",
+    detail: "The latest training content was published successfully.",
+    autoTimeout: 6000,
+    closeAffordance: "on",
+    sound: "none",
   },
 ];
 
 const MessageToastCorePack = () => {
-  const [messages, setMessages] = useState<ToastMessage[]>(() => initialData);
+  const [messages, setMessages] = useState<ToastMessage[]>(() =>
+    createNotificationMessages(),
+  );
 
   const messagesDataProvider = useMemo(
     () =>
@@ -71,31 +63,39 @@ const MessageToastCorePack = () => {
     setMessages((prev) => prev.filter((message) => message.id !== key));
   }, []);
 
-  const handleTestButton = useCallback(() => {
-    const nextToast: ToastMessage = {
-      id: `test-toast-${Date.now()}`,
-      severity: "confirmation",
-      summary: "Test button clicked",
-      detail: "This oj-c-message-toast item was added from the VDOM example.",
-      autoTimeout: 5000,
-      closeAffordance: "on",
-      sound: "none",
-    };
+  const handleReset = useCallback(() => {
+    setMessages(createNotificationMessages());
+  }, []);
 
-    setMessages((prev) => [nextToast, ...prev]);
+  const handleAddErrorNotification = useCallback(() => {
+    setMessages((prev) => [
+      {
+        id: `error-${Date.now()}`,
+        severity: "error",
+        summary: "Upload failed",
+        detail: "One of the selected assets could not be uploaded. Try again in a few minutes.",
+        closeAffordance: "on",
+        sound: "none",
+      },
+      ...prev,
+    ]);
   }, []);
 
   return (
     <section class="oj-panel oj-panel-alt1 oj-sm-padding-4x">
-      <header class="oj-sm-margin-0">
-        <h2 class="oj-typography-heading-sm oj-sm-margin-0">oj-c-message-toast (VDOM)</h2>
-        <p class="oj-typography-body-sm oj-text-color-secondary oj-sm-margin-0 oj-sm-margin-1x-top">
-          Core Pack VDOM example using a button-triggered toast data provider and close handling.
-        </p>
-      </header>
-
       <div id="containerDiv" class="oj-sm-margin-4x-top">
-        <oj-c-button label="Test Button" onojAction={handleTestButton}></oj-c-button>
+        <div class="oj-sm-flex oj-sm-flex-wrap oj-sm-gap-1x oj-sm-margin-3x-bottom">
+          <oj-c-button
+            label="Reset Notifications"
+            chroming="outlined"
+            onojAction={handleReset}
+          ></oj-c-button>
+          <oj-c-button
+            label="Add Error Notification"
+            chroming="outlined"
+            onojAction={handleAddErrorNotification}
+          ></oj-c-button>
+        </div>
         <oj-c-message-toast
           data={messagesDataProvider}
           onojClose={closeMessage}

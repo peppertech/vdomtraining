@@ -49,6 +49,14 @@ const messageVariants: MessageVariant[] = [
     severity: "confirmation",
     category: "confirmation",
   },
+  {
+    id: 5,
+    label: `Error message with really long detail text to show how the text wraps up when it overflows
+            The component supports having a really long text for the detail region and the text gets wrapped to the next line 
+            when there is not enough space to render the whole text in one line`,
+    severity: "error",
+    category: "error",
+  }
 ];
 
 const initialMessages: BannerMessage[] = messageVariants.map((variant) => ({
@@ -84,15 +92,10 @@ const MessageBannerVDOMExample = () => {
 
   return (
     <section class="oj-panel oj-panel-alt1 oj-sm-padding-4x">
-      <header class="oj-sm-margin-0">
-        <h2 class="oj-typography-heading-sm oj-sm-margin-0">oj-message-banner (VDOM)</h2>
-        <p class="oj-typography-body-sm oj-text-color-secondary oj-sm-margin-0 oj-sm-margin-1x-top">
-          Demonstrates rendering a banner with mixed severities, dismiss affordances, and programmatic reset.
-        </p>
-      </header>
+     
 
       <div class="oj-sm-flex oj-sm-flex-wrap oj-sm-margin-3x-top oj-sm-gap-2x">
-        <oj-button onojAction={handleReset} chroming="outlined" label="Reset Messages" />
+        {/* <oj-button onojAction={handleReset} chroming="outlined" label="Reset Messages" />
         <oj-button
           chroming="borderless"
           display="icons"
@@ -114,9 +117,8 @@ const MessageBannerVDOMExample = () => {
           }}
         >
           <span slot="startIcon" class="oj-ux-ico-plus"></span>
-        </oj-button>
+        </oj-button> */}
       </div>
-
       <div class="oj-sm-margin-3x-top">
         <oj-message-banner
           data={dataProvider}

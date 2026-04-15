@@ -47,14 +47,4 @@ export const Dialog = () => {
   );
 };
 
-export const Popup = () => {
-  const [logMsg, setLogMsg] = useState<string>("none");
 
-  return (
-    <div class="oj-web-applayout-max-width oj-web-applayout-content">
-      <div class="oj-oj-typography-bold">
-        See the /examples/index.tsx file for oj-tab-bar code used above.
-      </div>
-    </div>
-  );
-};

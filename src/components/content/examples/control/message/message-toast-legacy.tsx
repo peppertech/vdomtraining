@@ -88,22 +88,14 @@ const MessageBannerLegacyExample = () => {
 
   return (
     <section class="oj-panel oj-panel-alt1 oj-sm-padding-4x">
-      <header class="oj-sm-margin-0">
-        <h2 class="oj-typography-heading-sm oj-sm-margin-0">oj-messages Notification Banner (Legacy)</h2>
-        <p class="oj-typography-body-sm oj-text-color-secondary oj-sm-margin-0 oj-sm-margin-1x-top">
-          Legacy VDOM example of <code>oj-messages</code> using a DataProvider-backed notification stack.
-        </p>
-      </header>
-
-      <div class="oj-sm-flex oj-sm-flex-wrap oj-sm-gap-2x oj-sm-margin-3x-top">
-        <oj-button chroming="outlined" label="Reset Notifications" onojAction={handleReset} />
+      <div class="oj-sm-flex oj-sm-flex-wrap oj-sm-gap-1x oj-sm-margin-3x-top">
+        <oj-button chroming="outlined" label="Reset Notifications" onojAction={handleReset} /> 
         <oj-button
           chroming="outlined"
           label="Add Error Notification"
           onojAction={handleAddErrorNotification}
         />
       </div>
-
       <div class="oj-sm-margin-4x-top oj-sm-padding-2x oj-color-bg-neutral-170 oj-sm-border-radius-md">
         <div id="notificationMessages">
           <oj-messages

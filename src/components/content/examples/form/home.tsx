@@ -18,11 +18,9 @@ import SelectAndComboboxHome from "./selectandcomobobox/home";
 import { Slider } from "./slider";
 import { SwitchExample } from "./switch";
 import TextAreaHome from "./textarea/home";
-import FormLayoutDemoWrapper from "./form-layout";
 import { UserAssistance } from "./userAssistance";
 import { ValidationGroupExample } from "./validationGroup";
 import RadiosetHome from "./radioset/home";
-import InputSearchDemoWrapper from "./input-search";
 import { FormLayoutCorePack } from "./formLayoutCorePack";
 import {
   FormBreadcrumb,
@@ -30,6 +28,7 @@ import {
   type NestedFormHomeProps,
   formatCorePackLabel,
 } from "./form-breadcrumb";
+import InputSearchDemoWrapper from "./input-search/index";
 
 type FormShowcase = {
   id: string;

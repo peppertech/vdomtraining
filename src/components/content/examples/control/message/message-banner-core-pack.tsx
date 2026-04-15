@@ -255,16 +255,16 @@ export const MessageBannerCorePackOverview = () => {
 
   return (
     <div id="containerDiv">
-      <h4>Page level messages</h4>
+      <h6>Page level messages</h6>
       <oj-c-message-banner data={pageMessagesDP} type="page"></oj-c-message-banner>
 
-      <h4>Section level messages</h4>
+      <h6>Section level messages</h6>
       <oj-c-message-banner
         data={sectionMessagesDP}
         type="section"
       ></oj-c-message-banner>
 
-      <h4>Custom detail template</h4>
+      <h6>Custom detail template</h6>
       <oj-c-message-banner
         data={customDetailMessagesDP}
         detailTemplateValue="actions"
@@ -273,13 +273,13 @@ export const MessageBannerCorePackOverview = () => {
         <template slot="actions" render={actionsTemplate}></template>
       </oj-c-message-banner>
 
-      <h4>Close affordance</h4>
+      <h6>Close affordance</h6>
       <oj-c-message-banner
         data={closeAffordanceMessagesDP}
         onojClose={closeCloseAffordanceMessage}
       ></oj-c-message-banner>
 
-      <h4>Timestamp</h4>
+      <h6>Timestamp</h6>
       <oj-c-message-banner
         data={timestampMessagesDP}
         onojClose={closeTimestampMessage}
