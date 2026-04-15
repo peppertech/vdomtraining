@@ -2,14 +2,14 @@ import "ojs/ojdialog";
 import "ojs/ojpopup";
 import "ojs/ojbutton";
 import "preact";
-import { useState, useRef } from "preact/hooks";
+import { useRef } from "preact/hooks";
 import { ojButton } from "ojs/ojbutton";
 import { ojDialog } from "ojs/ojdialog";
 
 export const Dialog = () => {
   const diag1 = useRef<ojDialog>(null);
 
-  const open = (event: ojButton.ojAction) => {
+  const open = (_event: ojButton.ojAction) => {
     diag1.current?.open();
   };
 
@@ -46,5 +46,3 @@ export const Dialog = () => {
     </div>
   );
 };
-
-

@@ -13,9 +13,9 @@ import {
 
 import { NavList } from "./navlist";
 import { Accordion } from "./accordion";
-import { Dialog } from "./dialog";
-import { Popup } from "./popup";
 import ActionCardHome from "./actioncard/home";
+import DialogHome from "./dialog/home";
+import PopupHome from "./popup/home";
 import TabBarHome from "./tabbar/home";
 import DrawerHome from "./drawer/home";
 
@@ -59,12 +59,14 @@ const navLayoutComponents: NavLayoutComponent[] = [
     name: "Dialog",
     image: "oj-ux-icon-size-12x oj-ux-ico-dialog",
     isAvailable: true,
+    isCorePack: true,
   },
   {
     id: 6,
     name: "Popup",
     image: "oj-ux-icon-size-12x  oj-ux-ico-contact-card",
     isAvailable: true,
+    isCorePack: true,
   },
   {
     id: 7,
@@ -154,9 +156,19 @@ const NavLayoutHome = () => {
           />
         );
       case 5:
-        return <Dialog />;
+        return (
+          <DialogHome
+            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onNavigateRootHome={handleHomeNavigation}
+          />
+        );
       case 6:
-        return <Popup />;
+        return (
+          <PopupHome
+            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onNavigateRootHome={handleHomeNavigation}
+          />
+        );
       case 7:
         return (
           <DrawerHome
