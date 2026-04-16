@@ -10,7 +10,6 @@
 .listview-sizing,
 .chart-sizing {
   width: 100%;
-  height: 300px;
 }
 
 .selected-list {
@@ -67,4 +66,375 @@
 
 .demo-form-container {
   width: 350px;
+}
+
+.demo-filmstrip-item {
+    box-sizing: border-box;
+    width: 10rem;
+    height: 10rem;
+    border-color: #3a3631;
+    border: 1px solid darkgray;
+    text-align: center;
+    padding-top: 4rem;
+  }
+
+.demo-filmstrip-controls {
+  display: grid;
+  gap: 1rem;
+}
+
+.demo-filmstrip-controls__panel {
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .demo-filmstrip-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+  .demo-paging-control {
+    display: inline-block;
+  }
+  .comingsoon{
+   box-sizing: border-box;
+    width: 80rem;
+    height: 10rem;
+    border-color: #3a3631;
+    border: 1px solid darkgray;
+    text-align: center;
+    padding-top: 4rem;
+    font-size: 24pt;
+    margin-top:25pt
+  }
+  .component-item{
+     width: 150px;
+     height: 150px;
+     background-color: #fff;
+     padding: 5px;
+     float:left;
+     border: 0.25px solid gray;
+     border-radius: 5px;
+  }
+ .component-wrapper{
+  padding-top: 10pt;
+ }
+ .breadcrumb-wrapper{
+  margin-top: 10pt;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+ }
+
+ .breadcrumb-wrapper__item{
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.95rem;
+ }
+
+ .breadcrumb-wrapper__item--link{
+  color: var(--oj-core-text-color-primary);
+  cursor: pointer;
+  font-weight: 600;
+ }
+
+ .breadcrumb-wrapper__item--link:hover{
+  text-decoration: underline;
+ }
+
+ .breadcrumb-wrapper__item--current{
+  color: var(--oj-core-text-color-secondary);
+  font-weight: 600;
+ }
+
+ .breadcrumb-wrapper__chevron{
+  color: var(--oj-core-text-color-secondary);
+  font-size: 0.875rem;
+  flex: 0 0 auto;
+ }
+
+  .demo-badge-position {
+    right: 0px;
+    position: absolute;
+    z-index: 1;
+}
+.componentInfo{
+text-align: center;
+}
+
+
+/* Custom styles for color palette */
+  .demo-palette-preview {
+    margin-left: 0.625rem;
+    width: 5rem;
+    height: 2.5rem;
+    border: 1px solid;
+    margin-bottom: 1.875rem;
+  }
+  
+  .demo-palette-panel {
+    margin-left: 0.625rem;
+    display: inline-block;
+    width: 17.25rem;
+    height: auto;
+    padding: 0.75rem;
+    box-sizing: border-box;
+  }
+  
+  .demo-text {
+    display: inline-block;
+    line-height: 2.5rem;
+  }
+  
+  .demo-palette-panel .demo-palette-picker {
+    width: 100%;
+  }
+  
+  .demo-container-size-xs {
+    width: 18.5rem;
+  }
+  .demo-container-size-sm {
+    width: 18.125rem;
+  }
+
+  /* Custom styles for color spectrum */
+    .demo-color-preview {
+    width: 3.125rem;
+    height: 2.5rem;
+    border: 1px solid;
+  }
+  
+  .demo-color-preview.demo-pointer {
+    cursor: pointer;
+  }
+  
+  .demo-color-panel {
+    width: 18.438rem;
+    height: 18.438rem;
+  }
+ .demo-progress-embedded-panel {
+    width: 12.5rem;
+    height: 12.5rem;
+    padding: 0;
+  }
+
+  /* Custom styles for collection component */
+    .demo-container {
+    min-height: 31.25rem;
+    overflow-x: hidden;
+  }
+  
+  #componentDemoContent {
+    overflow: hidden;
+  }
+  
+  .demo-view-container {
+    position: relative;
+    width: 100%;
+    min-height: 32.5rem;
+  }
+  
+  .demo-panel {
+    height: calc(100% - 2.5rem);
+  }
+  
+  .demo-page {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 0.625rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  .demo-list-view-mode {
+    height: calc(100vh - 6.25rem);
+    min-height: 32.5rem;
+  }
+  
+  .demo-list-edit-mode {
+    height: calc(100vh - 9.375rem);
+    min-height: 32.5rem;
+  }
+
+  /* Custom styles for profile card layout */
+demo-profile-card-layout:not(.oj-complete) {
+  visibility: hidden;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-container {
+  width: 330px;
+  height: 395px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-inner {
+  padding-top: 70px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-inner-more {
+  padding-top: 122px;
+  text-align: center;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-more-image {
+  margin: auto;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 94px;
+  content: url("./resources/plus.svg");
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-image {
+  margin-bottom: 16px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-color-surface-2, #f0f0f0);
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-avatar-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-weight: 600;
+  background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-color-surface-3, #d3d3d3);
+  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-color-text-contrast, #1f1f1f);
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-name {
+  overflow: hidden;
+  width: 261px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-title {
+  width: 261px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-more {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-spacer {
+  height: 4px;
+  width: 261px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-contact {
+  list-style: none;
+  padding: 8px 0 0;
+  margin: 4px 0 0;
+  width: 261px;
+  font-size: 0.75rem;
+  color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-color-text-secondary, #5e5e5e);
+  border-top: 1px solid var(--oj-c-EXPERIMENTAL-DO-NOT-USE-color-border-surface, rgba(0,0,0,0.08));
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-contact li {
+  margin: 4px 0;
+  word-break: break-word;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-slot {
+  margin-top: 16px;
+  width: 100%;
+}
+
+/* For IE11 Support */
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  /* For IE11 to load content urls, you must put in :after or :before */
+  demo-profile-card-layout .demo-profile-card-layout-more-image:after {
+    margin: auto;
+    width: 96px;
+    height: 96px;
+    margin-bottom: 94px;
+    content: url("./resources/plus.svg");
+  }
+  /* Use max height to do line clamping */
+  demo-profile-card-layout .demo-profile-card-layout-emp-name {
+    overflow: hidden;
+    width: 261px;
+    max-height: 3rem;
+  }
+  /* Use Max height to do line clamping */
+  demo-profile-card-layout .demo-profile-card-layout-emp-title {
+    width: 261px;
+    overflow: hidden;
+    max-height: 1.25rem;
+  }
+}
+
+/* For reorder layout */
+
+demo-profile-card-layout .demo-profile-card-layout-container.demo-profile-card-layout-reorder {
+  height: 310px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-inner.demo-profile-card-layout-reorder {
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-image.demo-profile-card-layout-reorder,
+demo-profile-card-layout .demo-profile-card-layout-emp-name.demo-profile-card-layout-reorder,
+demo-profile-card-layout .demo-profile-card-layout-emp-title.demo-profile-card-layout-reorder
+{
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center !important;
+  text-align: center;
+}
+
+/* For tabbable layout */
+
+demo-profile-card-layout .demo-profile-card-layout-container.demo-profile-card-layout-tabbable {
+  height: 322px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-inner.demo-profile-card-layout-tabbable {
+  padding-top: 32px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-image.demo-profile-card-layout-tabbable,
+demo-profile-card-layout .demo-profile-card-layout-emp-name.demo-profile-card-layout-tabbable,
+demo-profile-card-layout .demo-profile-card-layout-emp-title.demo-profile-card-layout-tabbable
+{
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start !important;
+  text-align: start;
 }

@@ -82,7 +82,7 @@ export const RowExpanderTable = () => {
   };
 
   return (
-    <div>
+    <div class="oj-web-applayout-max-width oj-web-applayout-content">
       <oj-table
         id="table"
         aria-label="Project tasks"

@@ -1,0 +1,98 @@
+  [
+    {
+      "id": 0,
+      "series": "Series 1",
+      "quarter": "Q1",
+      "value": 74
+    },
+    {
+      "id": 1,
+      "series": "Series 1",
+      "quarter": "Q2",
+      "value": 42
+    },
+    {
+      "id": 2,
+      "series": "Series 1",
+      "quarter": "Q3",
+      "value": 70
+    },
+    {
+      "id": 3,
+      "series": "Series 1",
+      "quarter": "Q4",
+      "value": 46
+    },
+    {
+      "id": 4,
+      "series": "Series 2",
+      "quarter": "Q1",
+      "value": 50
+    },
+    {
+      "id": 5,
+      "series": "Series 2",
+      "quarter": "Q2",
+      "value": 58
+    },
+    {
+      "id": 6,
+      "series": "Series 2",
+      "quarter": "Q3",
+      "value": 46
+    },
+    {
+      "id": 7,
+      "series": "Series 2",
+      "quarter": "Q4",
+      "value": 54
+    },
+    {
+      "id": 8,
+      "series": "Series 3",
+      "quarter": "Q1",
+      "value": 34
+    },
+    {
+      "id": 9,
+      "series": "Series 3",
+      "quarter": "Q2",
+      "value": 22
+    },
+    {
+      "id": 10,
+      "series": "Series 3",
+      "quarter": "Q3",
+      "value": 30
+    },
+    {
+      "id": 11,
+      "series": "Series 3",
+      "quarter": "Q4",
+      "value": 32
+    },
+    {
+      "id": 12,
+      "series": "Series 4",
+      "quarter": "Q1",
+      "value": 18
+    },
+    {
+      "id": 13,
+      "series": "Series 4",
+      "quarter": "Q2",
+      "value": 6
+    },
+    {
+      "id": 14,
+      "series": "Series 4",
+      "quarter": "Q3",
+      "value": 14
+    },
+    {
+      "id": 15,
+      "series": "Series 4",
+      "quarter": "Q4",
+      "value": 22
+    }
+  ]

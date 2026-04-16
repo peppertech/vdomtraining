@@ -31,8 +31,8 @@
         "./node_modules/preact"
       ]
     },
-    "declaration": true,
-    "noEmitOnError": true,
+    "declaration": false,
+    "noEmitOnError": false,
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "removeComments": true

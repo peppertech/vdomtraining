@@ -21,7 +21,7 @@
   "sassVer": "1.80.5",
   "defaultTheme": "redwood",
   "architecture": "vdom",
-  "generatorVersion": "14.1.0",
+  "generatorVersion": "10.1.0",
   "bundler": "require",
   "bundleName": "bundle.js",
   "watchInterval": 1000,

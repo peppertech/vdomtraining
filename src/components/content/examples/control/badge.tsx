@@ -1,37 +1,71 @@
-import "preact";
+import { h } from "preact";
+import "oj-c/badge";
 
-type BadgeProps = {
-  text: string;
-  color?: "danger" | "warning" | "success" | "info";
-  subtle?: boolean;
-  small?: boolean;
-  end?: boolean;
-};
+const strongVariants = [
+  { label: "Neutral", variant: "neutral" },
+  { label: "Danger", variant: "danger" },
+  { label: "Warning", variant: "warning" },
+  { label: "Success", variant: "success" },
+  { label: "Info", variant: "info" },
+] as const;
 
-const Badge = ({ text, color, subtle, small, end }: BadgeProps) => {
-  let classNames = "oj-badge";
+const subtleVariants = [
+  { label: "Neutral", variant: "neutralSubtle" },
+  { label: "Danger", variant: "dangerSubtle" },
+  { label: "Warning", variant: "warningSubtle" },
+  { label: "Success", variant: "successSubtle" },
+  { label: "Info", variant: "infoSubtle" },
+] as const;
 
-  if (color) {
-    classNames += ` oj-badge-${color}`;
-  }
-  if (subtle) {
-    classNames += " oj-badge-subtle";
-  }
-  if (small) {
-    classNames += " oj-badge-sm";
-  }
-  if (end) {
-    classNames += " oj-badge-end";
-  }
+const defaultLabels = ["text", "3", "99+"];
 
+const Badge = () => {
   return (
-    <span className={classNames} aria-label={text}>
-      {text}
-    </span>
+    <div id="demo-container" class="oj-web-applayout-max-width oj-web-applayout-content">
+      <h6>Strong</h6>
+      <p class="oj-sm-margin-0">
+        {strongVariants.map((item) => (
+          <oj-c-badge
+            key={item.variant}
+            variant={item.variant}
+            label={item.label}
+            style={{ marginInlineEnd: "10pt" }}
+          ></oj-c-badge>
+        ))}
+      </p>
+
+      <h6>Subtle</h6>
+      <p class="oj-sm-margin-0">
+        {subtleVariants.map((item) => (
+          <oj-c-badge
+            key={item.variant}
+            variant={item.variant}
+            label={item.label}
+            style={{ marginInlineEnd: "10pt" }}
+          ></oj-c-badge>
+        ))}
+      </p>
+
+      <h6 class="oj-sm-margin-4x-top">Default Size</h6>
+      {defaultLabels.map((label) => (
+        <oj-c-badge
+          key={`default-${label}`}
+          label={label}
+          style={{ marginInlineEnd: "10pt" }}
+        ></oj-c-badge>
+      ))}
+
+      <h6 class="oj-sm-margin-4x-top">Small Size</h6>
+      {defaultLabels.map((label) => (
+        <oj-c-badge
+          key={`small-${label}`}
+          size="sm"
+          label={label}
+          style={{ marginInlineEnd: "10pt" }}
+        ></oj-c-badge>
+      ))}
+    </div>
   );
 };
 
 export default Badge;
-
-// aria-label code addition ensures that the badge's text is also accessible to screen readers,
-// enhancing the accessibility of your application.
