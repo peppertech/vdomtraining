@@ -14,6 +14,7 @@ import {
 import { NavList } from "./navlist";
 import { Accordion } from "./accordion";
 import ActionCardHome from "./actioncard/home";
+import ConveyorBeltHome from "./conveyorbelt/home";
 import DialogHome from "./dialog/home";
 import PopupHome from "./popup/home";
 import TabBarHome from "./tabbar/home";
@@ -72,6 +73,13 @@ const navLayoutComponents: NavLayoutComponent[] = [
     id: 7,
     name: "Drawer Layout",
     image: "oj-ux-icon-size-12x oj-ux-ico-drawer",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
+    id: 8,
+    name: "Conveyor Belt",
+    image: "oj-ux-icon-size-12x oj-ux-ico-carousel",
     isAvailable: true,
     isCorePack: true,
   },
@@ -172,6 +180,13 @@ const NavLayoutHome = () => {
       case 7:
         return (
           <DrawerHome
+            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onNavigateRootHome={handleHomeNavigation}
+          />
+        );
+      case 8:
+        return (
+          <ConveyorBeltHome
             onBreadcrumbChange={setNestedBreadcrumbItems}
             onNavigateRootHome={handleHomeNavigation}
           />

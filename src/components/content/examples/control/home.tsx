@@ -8,7 +8,6 @@ import { ojListView } from "ojs/ojlistview";
 
 import Badge from "./badge";
 import ButtonsHome from "./button/home";
-import ConveyorBelt from "./conveyorbelt";
 import FilePicker from "./filepicker";
 import FilmStrip from "./filmstrip";
 import ProgressHome from "./progress/home";
@@ -65,13 +64,6 @@ const controlComponents: ControlComponent[] = [
     isAvailable: true,
     isCorePack: true,
     render: (props) => <MenuHome {...props} />,
-  },
-  {
-    id: 5,
-    name: "Conveyor Belt",
-    image: "oj-ux-icon-size-12x oj-ux-ico-carousel",
-    isAvailable: true,
-    isCorePack: false
   },
   {
     id: 6,
@@ -203,8 +195,6 @@ const ControlHome = () => {
     switch (activeComponentId) {
       case 2:
         return <BadgeShowcase />;
-      case 5:
-        return <ConveyorBelt />;
       case 6:
         return <FilePicker />;
       case 7:
