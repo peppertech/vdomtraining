@@ -22,7 +22,8 @@ export const Accordion = () => {
             <oj-radioset
               id="radiosetBasicDemoId"
               value="red"
-              labelled-by="mainlabelid">
+              labelled-by="mainlabelid"
+            >
               <oj-option id="blueopt" value="blue">
                 Blue
               </oj-option>

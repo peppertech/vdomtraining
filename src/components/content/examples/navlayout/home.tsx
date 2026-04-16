@@ -12,7 +12,7 @@ import {
 } from "../../../shared/catalog-breadcrumb";
 
 import { NavList } from "./navlist";
-import { Accordion } from "./accordion";
+import AccordionHome from "./accordion/home";
 import ActionCardHome from "./actioncard/home";
 import ConveyorBeltHome from "./conveyorbelt/home";
 import DialogHome from "./dialog/home";
@@ -40,6 +40,7 @@ const navLayoutComponents: NavLayoutComponent[] = [
     name: "Accordion & Collapsible",
     image: "oj-ux-icon-size-12x oj-ux-ico-accordion",
     isAvailable: true,
+    isCorePack: true,
   },
   {
     id: 3,
@@ -148,7 +149,12 @@ const NavLayoutHome = () => {
       case 1:
         return <NavList />;
       case 2:
-        return <Accordion />;
+        return (
+          <AccordionHome
+            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onNavigateRootHome={handleHomeNavigation}
+          />
+        );
       case 3:
         return (
           <ActionCardHome
