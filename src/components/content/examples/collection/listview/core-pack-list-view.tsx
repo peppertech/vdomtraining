@@ -1,15 +1,17 @@
 import { h, ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
+import "oj-c/form-layout";
 import "oj-c/list-view";
 import "oj-c/list-item-layout";
 import "oj-c/selector";
+import "oj-c/selector-all";
 import "oj-c/button";
 import "oj-c/avatar";
+import "oj-c/radioset";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import {
   AllKeySetImpl,
   ImmutableKeySet,
-  KeySet,
   KeySetImpl,
 } from "ojs/ojkeyset";
 import { CListViewElement } from "oj-c/list-view";
@@ -26,36 +28,29 @@ type Employee = {
 const employees = JSON.parse(peopleData as string) as Employee[];
 
 type ListViewProps = ComponentProps<"oj-c-list-view">;
-type SelectorProps = ComponentProps<"oj-c-selector">;
 type ButtonProps = ComponentProps<"oj-c-button">;
+type RadiosetProps = ComponentProps<"oj-c-radioset">;
+type SelectorAllProps = ComponentProps<"oj-c-selector-all">;
+type SelectionMode = Extract<
+  NonNullable<ListViewProps["selectionMode"]>,
+  "multiple" | "multipleToggle"
+>;
+type SelectionModeOption = {
+  value: SelectionMode;
+  label: string;
+};
 
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
+const selectionModeOptions: SelectionModeOption[] = [
+  { value: "multiple", label: "Multiple" },
+  { value: "multipleToggle", label: "Multiple Toggle" },
+];
 
 const emptyKeySet = () =>
   new KeySetImpl<Employee["id"]>([]) as ImmutableKeySet<Employee["id"]>;
 
-const normalizeKeySet = (
-  keySet: KeySet<Employee["id"]>,
-): ImmutableKeySet<Employee["id"]> => {
-  if (!keySet) {
-    return emptyKeySet();
-  }
-
-  if (keySet instanceof AllKeySetImpl) {
-    return keySet as ImmutableKeySet<Employee["id"]>;
-  }
-
-  if (keySet instanceof KeySetImpl) {
-    return new KeySetImpl<Employee["id"]>(
-      Array.from(keySet.values()),
-    ) as ImmutableKeySet<Employee["id"]>;
-  }
-
-  return emptyKeySet();
-};
-
 const keySetToArray = (
-  keySet: KeySet<Employee["id"]> | ImmutableKeySet<Employee["id"]>,
+  keySet: ImmutableKeySet<Employee["id"]> | undefined,
 ) => {
   if (!keySet) {
     return [];
@@ -97,7 +92,17 @@ const CorePackListView = () => {
   const [selectedKeys, setSelectedKeys] = useState<
     ImmutableKeySet<Employee["id"]>
   >(() => emptyKeySet());
+  const [selectionMode, setSelectionMode] = useState<SelectionMode>("multiple");
   const [selectedIds, setSelectedIds] = useState<Employee["id"][]>([]);
+
+  const syncSelection = useCallback(
+    (keySet?: ImmutableKeySet<Employee["id"]>) => {
+      const nextKeySet = keySet ?? emptyKeySet();
+      setSelectedKeys(nextKeySet);
+      setSelectedIds(keySetToArray(nextKeySet));
+    },
+    [],
+  );
 
   const handleSelectedChanged = useCallback(
     (
@@ -105,34 +110,38 @@ const CorePackListView = () => {
         NonNullable<ListViewProps["onselectedChanged"]>
       >[0],
     ) => {
-      const keySet = event.detail.value as KeySet<Employee["id"]>;
-      const normalized = normalizeKeySet(keySet);
-      const ids = keySetToArray(normalized);
-      setSelectedKeys(normalized);
-      setSelectedIds(ids);
+      syncSelection(event.detail.value as ImmutableKeySet<Employee["id"]>);
     },
-    [],
+    [syncSelection],
   );
 
-  const handleSelectorKeyChanged = useCallback(
+  const handleSelectAllChanged = useCallback(
     (
-      event: Parameters<NonNullable<SelectorProps["onselectedKeysChanged"]>>[0],
+      event: Parameters<
+        NonNullable<SelectorAllProps["onselectedKeysChanged"]>
+      >[0],
     ) => {
-      const keySet = event.detail.value as KeySet<Employee["id"]>;
-      const normalized = normalizeKeySet(keySet);
-      const ids = keySetToArray(normalized);
-      setSelectedKeys(normalized);
-      setSelectedIds(ids);
+      syncSelection(event.detail.value as ImmutableKeySet<Employee["id"]>);
     },
-    [],
+    [syncSelection],
+  );
+
+  const handleSelectionModeChanged = useCallback(
+    (event: Parameters<NonNullable<RadiosetProps["onvalueChanged"]>>[0]) => {
+      const value = event.detail.value;
+      if (value === "multiple" || value === "multipleToggle") {
+        setSelectionMode(value);
+      }
+      syncSelection();
+    },
+    [syncSelection],
   );
 
   const clearSelection = useCallback(
     (_event: Parameters<NonNullable<ButtonProps["onojAction"]>>[0]) => {
-      setSelectedKeys(emptyKeySet());
-      setSelectedIds([]);
+      syncSelection();
     },
-    [],
+    [syncSelection],
   );
 
   const renderItem = useCallback(
@@ -145,15 +154,11 @@ const CorePackListView = () => {
       const employee = itemContext.data;
       return (
         <oj-c-list-item-layout>
-          {/* <oj-c-selector
+          <oj-c-selector
             slot="selector"
             aria-label={`Select ${employee.name}`}
-            selectionMode="multiple"
-            selectedKeys={selectedKeys}
-            onselectedKeysChanged={handleSelectorKeyChanged}
-            rowKey={employee.id}
             id={`core-pack-listview-selector-${employee.id}`}
-          ></oj-c-selector> */}
+          ></oj-c-selector>
           <oj-c-avatar
             slot="leading"
             size="xs"
@@ -201,7 +206,7 @@ const CorePackListView = () => {
         </oj-c-list-item-layout>
       );
     },
-    [handleSelectorKeyChanged, selectedKeys],
+    [],
   );
 
   const selectionDisplay = useMemo(() => {
@@ -215,12 +220,40 @@ const CorePackListView = () => {
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
+      <div class="oj-panel oj-bg-neutral-30 oj-sm-margin-4x-bottom">
+        <oj-c-form-layout maxColumns={1} userAssistanceDensity="compact">
+          <oj-c-radioset
+            id="core-pack-listview-selection-mode"
+            labelHint="Selection Mode"
+            options={selectionModeOptions}
+            value={selectionMode}
+            onvalueChanged={handleSelectionModeChanged}
+          ></oj-c-radioset>
+          <div>
+            <oj-c-button
+              size="sm"
+              label="Clear Selection"
+              onojAction={clearSelection}
+            ></oj-c-button>
+          </div>
+        </oj-c-form-layout>
+      </div>
+      <oj-c-list-item-layout>
+        <oj-c-selector-all
+          slot="selector"
+          id="core-pack-listview-select-all"
+          aria-label="Select all employees"
+          selectedKeys={selectedKeys}
+          onselectedKeysChanged={handleSelectAllChanged}
+        ></oj-c-selector-all>
+        <span class="oj-typography-body-md oj-typography-bold">Select All</span>
+      </oj-c-list-item-layout>
       <oj-c-list-view
         id="core-pack-listview"
         aria-label="list of employees"
         data={dataProvider}
         gridlines={gridlines}
-        selectionMode="multiple"
+        selectionMode={selectionMode}
         selected={selectedKeys}
         onselectedChanged={handleSelectedChanged}
         class="listview-sizing"
@@ -228,10 +261,16 @@ const CorePackListView = () => {
         <template slot="itemTemplate" render={renderItem}></template>
       </oj-c-list-view>
       <div class="oj-sm-margin-4x-top">
-        <oj-c-button size="sm" label="Clear Selection" onojAction={clearSelection}></oj-c-button>
         <div class="oj-typography-body-sm oj-sm-margin-2x-top">
           <span class="oj-typography-bold">Current Selection:</span>&nbsp;
           <span>{selectionDisplay}</span>
+        </div>
+        <div class="oj-typography-body-sm oj-sm-margin-2x-top">
+          <span class="oj-typography-bold">
+            IDs from selected change event:
+          </span>
+          &nbsp;
+          <span>{JSON.stringify(selectedIds)}</span>
         </div>
       </div>
     </div>
