@@ -10,6 +10,7 @@ import Badge from "./badge";
 import ButtonsHome from "./button/home";
 import FilePicker from "./filepicker";
 import FilmStrip from "./filmstrip";
+import ListItemLayoutHome from "./list-item-layout/home";
 import ProgressHome from "./progress/home";
 import Toolbar from "./toolbar";
 import Train from "./train";
@@ -110,6 +111,14 @@ const controlComponents: ControlComponent[] = [
     isAvailable: true,
     isCorePack: true,
     render: (props) => <MessageHome {...props} />,
+  },
+  {
+    id: 13,
+    name: "List Item Layout",
+    image: "oj-ux-icon-size-12x oj-ux-ico-list",
+    isAvailable: true,
+    isCorePack: true,
+    render: (props) => <ListItemLayoutHome {...props} />,
   }
   
 ];
