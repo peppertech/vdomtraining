@@ -353,28 +353,14 @@ export const MessageBannerCorePackOverview = () => {
 
   return (
     <div id="containerDiv" class="oj-flex oj-sm-flex-wrap-nowrap oj-sm-column-gap-4x">
-      <div
-        class="oj-flex-item oj-sm-padding-2x oj-sm-border-radius-md"
-        style="width: 20%; max-width: 20%; flex: 0 0 20%; background-color: #1f2937;"
-      >
         <oj-navigation-list
           aria-label="Message banner examples"
           selection={activeExampleId}
           data={bannerExamplesDataProvider}
           onselectionChanged={handleNavigationChange}
-          style="
-            --oj-navigation-list-item-label-color: #f9fafb;
-            --oj-navigation-list-item-label-color-hover: #ffffff;
-            --oj-navigation-list-item-label-color-selected: #ffffff;
-            --oj-navigation-list-item-bg-color-hover: rgba(255, 255, 255, 0.08);
-            --oj-navigation-list-item-bg-color-selected: rgba(255, 255, 255, 0.14);
-            --oj-navigation-list-item-border-color-selected: #ffffff;
-            color: #f9fafb;
-          "
         >
           <template slot="itemTemplate" render={renderNavigationItem}></template>
         </oj-navigation-list>
-      </div>
       <div
         class="oj-flex-item"
         style="width: 80%; max-width: 80%; flex: 0 0 80%; padding-left: 25px;"

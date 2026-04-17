@@ -6,7 +6,7 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import MessageBannerVDOMExample from "./message-banner";
+import MessageBannerVDOMExample from "./message-banner-legacy";
 import MessageBannerLegacyExample from "./message-toast-legacy";
 import { MessageBannerCorePackOverview } from "./message-banner-core-pack";
 import MessageToastCorePack from "./message-toast-core-pack";
