@@ -6,8 +6,8 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import SelectSingle from "./selectSingle";
-import SelectSingleCorePack from "./selectSingleCorePack";
+import SelectSingleLegacyDemoWrapper from "./selectSingleLegacy/index";
+import SelectSingleDemoWrapper from "./selectSingleCorePack/index";
 import SelectMultipleCorePack from "./selectMultipleCorePack";
 import { SelectMany } from "./selectMany";
 import ComboboxOneExample from "./comboBoxOne";
@@ -30,14 +30,14 @@ const selectComponents: SelectComponent[] = [
     id: 1,
     name: "Select Single",
     image: "oj-ux-icon-size-12x oj-ux-ico-select-tab",
-    render: () => <SelectSingle />,
+    render: () => <SelectSingleLegacyDemoWrapper />,
   },
   {
     id: 2,
     name: "Select Single",
     image: "oj-ux-icon-size-12x oj-ux-ico-select-tab",
     isCorePack: true,
-    render: () => <SelectSingleCorePack />,
+    render: () => <SelectSingleDemoWrapper />,
   },
   {
     id: 3,
