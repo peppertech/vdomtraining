@@ -1,0 +1,95 @@
+[
+  {
+    "value": "ATZ",
+    "label": "Alaskan/Hawaiian Time Zone",
+    "children": [
+      {
+        "value": "AK",
+        "label": "Alaska",
+        "children": null
+      },
+      {
+        "value": "HI",
+        "label": "Hawaii",
+        "children": null
+      }
+    ]
+  },
+  {
+    "value": "PTZ",
+    "label": "Pacific Time Zone",
+    "children": [
+      {
+        "value": "CA",
+        "label": "California",
+        "children": null
+      },
+      {
+        "value": "NV",
+        "label": "Nevada",
+        "children": null
+      },
+      {
+        "value": "OR",
+        "label": "Oregon",
+        "children": null
+      },
+      {
+        "value": "WA",
+        "label": "Washington",
+        "children": null
+      }
+    ]
+  },
+  {
+    "value": "MTZ",
+    "label": "Mountain Time Zone",
+    "children": [
+      {
+        "value": "AZ",
+        "label": "Arizona",
+        "children": null
+      },
+      {
+        "value": "CO",
+        "label": "Colorado",
+        "children": null
+      },
+      {
+        "value": "ID",
+        "label": "Idaho",
+        "children": null
+      },
+      {
+        "value": "MT",
+        "label": "Montana",
+        "children": null
+      },
+      {
+        "value": "NE",
+        "label": "Nebraska",
+        "children": null
+      },
+      {
+        "value": "NM",
+        "label": "New Mexico",
+        "children": null
+      },
+      {
+        "value": "ND",
+        "label": "North Dakota",
+        "children": null
+      },
+      {
+        "value": "UT",
+        "label": "Utah",
+        "children": null
+      },
+      {
+        "value": "WY",
+        "label": "Wyoming",
+        "children": null
+      }
+    ]
+  }
+]

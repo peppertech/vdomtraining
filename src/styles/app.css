@@ -438,3 +438,25 @@ demo-profile-card-layout .demo-profile-card-layout-emp-title.demo-profile-card-l
   justify-content: flex-start !important;
   text-align: start;
 }
+.navListDemoLayout{
+  width: 220px
+}
+
+.recipe-actionlog {
+  max-width: 32rem;
+  min-height: 3.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--oj-core-border-color-enabled);
+  border-radius: var(--oj-core-border-radius-md);
+  background-color: var(--oj-core-bg-color-content);
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+.recipe-actionlog > div + div {
+  margin-top: 0.5rem;
+}
+
+.select-multiple-add-to-list-demo oj-c-select-multiple {
+  display: block;
+}

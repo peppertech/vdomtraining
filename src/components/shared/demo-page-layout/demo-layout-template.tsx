@@ -41,11 +41,13 @@ export function DemoLayoutTemplate({
               </span>
             )}
             {packLabel && (
-              <span class="oj-sm-margin-2x-horizontal oj-link-subtle-primary oj-badge oj-badge-sm oj-badge-success">{packLabel}</span>
+              <span class="oj-sm-margin-2x-horizontal oj-link-subtle-primary oj-badge oj-badge-sm oj-badge-success">
+                {packLabel}
+              </span>
             )}
           </div>
         )}
-        
+
         {description && (
           <div class="demo-layout-template__description oj-typography-body-md">
             {description}
@@ -57,13 +59,7 @@ export function DemoLayoutTemplate({
         aria-labelledby="demo-layout-template-demo-heading"
         class="demo-layout-template__demo-section"
       >
-        <h2
-          id="demo-layout-template-demo-heading"
-          class="oj-typography-heading-md"
-        >
-          Demo
-        </h2>
-        <div class="demo-layout-template__demo-surface">{demo}</div>
+        <div>{demo}</div>
       </section>
 
       <section
@@ -75,6 +71,7 @@ export function DemoLayoutTemplate({
           class="oj-typography-heading-md"
         >
           Recipe
+          <hr/>
         </h2>
         <div class="demo-layout-template__recipe-body">{recipe}</div>
       </section>

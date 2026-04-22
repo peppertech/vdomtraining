@@ -6,9 +6,9 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import { RadiosetCorePackExample } from "./radiosetCorePackExample";
-import RichRadioset from "./richRadioSet";
-import RadiosetExample from "./radioset";
+import RadiosetCorePackExample from "./radiosetCorePackExample/index";
+import RichRadioset from "./richRadioSet/index";
+import RadiosetExample from "./radioset/index";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,

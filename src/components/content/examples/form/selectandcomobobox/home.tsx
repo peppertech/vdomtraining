@@ -8,10 +8,10 @@ import { ojListView } from "ojs/ojlistview";
 
 import SelectSingleLegacyDemoWrapper from "./selectSingleLegacy/index";
 import SelectSingleDemoWrapper from "./selectSingleCorePack/index";
-import SelectMultipleCorePack from "./selectMultipleCorePack";
-import { SelectMany } from "./selectMany";
-import ComboboxOneExample from "./comboBoxOne";
-import { ComboboxMany } from "./comboboxMany";
+import SelectMultipleCorePack from "./selectMultipleCorePack/index";
+import  SelectManyIndex from "./selectMany/index";
+import ComboboxOneExample from "./comboBoxOne/index";
+import ComboboxManyDemoWrapper from "./comboboxMany/index";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
@@ -50,7 +50,7 @@ const selectComponents: SelectComponent[] = [
     id: 4,
     name: "Select Many",
     image: "oj-ux-icon-size-12x oj-ux-ico-select-all",
-    render: () => <SelectMany />,
+    render: () => <SelectManyIndex />,
   },
   {
     id: 5,
@@ -62,7 +62,7 @@ const selectComponents: SelectComponent[] = [
     id: 6,
     name: "Combobox Many",
     image: "oj-ux-icon-size-12x oj-ux-ico-text-input-combo-many",
-    render: () => <ComboboxMany />,
+    render: () => <ComboboxManyDemoWrapper />,
   },
 ];
 

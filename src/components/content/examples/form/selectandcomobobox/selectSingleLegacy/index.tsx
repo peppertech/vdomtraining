@@ -1,8 +1,9 @@
-import { h } from "preact";
+import { h, type ComponentChildren, type FunctionComponent } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojnavigationlist";
 import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
 import { ojNavigationList } from "ojs/ojnavigationlist";
+import { DemoLayoutTemplate } from "../../../../../shared/demo-page-layout/demo-layout-template";
 import SelectSingleLegacyAddToListExample from "./selectSingle-addToList";
 import SelectSingleLegacyAdvancedSearchExample from "./selectSingle-advancedSearch";
 import SelectSingleLegacyBasicExample from "./selectSingle-basic";
@@ -15,25 +16,105 @@ import SelectSingleLegacyStatesExample from "./selectSingle-states";
 import SelectSingleLegacyValueItemExample from "./selectSingle-valueItem";
 import SelectSingleLegacyVirtualKeyboardExample from "./selectSingle-virtualKeyboard";
 import SelectSingleLegacyWidthExample from "./selectSingle-width";
+import {
+  selectSingleLegacyDocs,
+  type SelectSingleLegacyDemoId,
+} from "./selectSingle-docs";
 
 type SelectSingleLegacyNavItem = {
-  id: string;
+  id: SelectSingleLegacyDemoId;
   name: string;
+  description: ComponentChildren;
+  recipe: ComponentChildren;
+  Component: FunctionComponent;
 };
 
 const selectSingleLegacyNavItems: SelectSingleLegacyNavItem[] = [
-  { id: "states", name: "Overview" },
-  { id: "basic", name: "Basic" },
-  { id: "add-to-list", name: "Add to List" },
-  { id: "advanced-search", name: "Advanced Search" },
-  { id: "collection-list-view", name: "Collection Template (ListView)" },
-  { id: "collection-table", name: "Collection Template (Table)" },
-  { id: "events", name: "Events" },
-  { id: "item-template", name: "Item Template" },
-  { id: "item-text", name: "Item Text" },
-  { id: "value-item", name: "Page Load Performance" },
-  { id: "virtual-keyboard", name: "Virtual Keyboard" },
-  { id: "width", name: "Width" },
+  {
+    id: "states",
+    name: "Overview",
+    description: selectSingleLegacyDocs.states.description,
+    recipe: selectSingleLegacyDocs.states.recipe,
+    Component: SelectSingleLegacyStatesExample,
+  },
+  {
+    id: "basic",
+    name: "Basic",
+    description: selectSingleLegacyDocs.basic.description,
+    recipe: selectSingleLegacyDocs.basic.recipe,
+    Component: SelectSingleLegacyBasicExample,
+  },
+  
+  {
+    id: "events",
+    name: "Events",
+    description: selectSingleLegacyDocs.events.description,
+    recipe: selectSingleLegacyDocs.events.recipe,
+    Component: SelectSingleLegacyEventsExample,
+  },
+  {
+    id: "item-text",
+    name: "Item Text",
+    description: selectSingleLegacyDocs["item-text"].description,
+    recipe: selectSingleLegacyDocs["item-text"].recipe,
+    Component: SelectSingleLegacyItemTextExample,
+  },
+  {
+    id: "item-template",
+    name: "Item Template",
+    description: selectSingleLegacyDocs["item-template"].description,
+    recipe: selectSingleLegacyDocs["item-template"].recipe,
+    Component: SelectSingleLegacyItemTemplateExample,
+  },
+   {
+    id: "collection-list-view",
+    name: "Collection Template (ListView)",
+    description: selectSingleLegacyDocs["collection-list-view"].description,
+    recipe: selectSingleLegacyDocs["collection-list-view"].recipe,
+    Component: SelectSingleLegacyCollectionTemplateListViewExample,
+  },
+  {
+    id: "collection-table",
+    name: "Collection Template (Table)",
+    description: selectSingleLegacyDocs["collection-table"].description,
+    recipe: selectSingleLegacyDocs["collection-table"].recipe,
+    Component: SelectSingleLegacyCollectionTemplateTableExample,
+  },
+  {
+    id: "value-item",
+    name: "Page Load Performance",
+    description: selectSingleLegacyDocs["value-item"].description,
+    recipe: selectSingleLegacyDocs["value-item"].recipe,
+    Component: SelectSingleLegacyValueItemExample,
+  },
+  {
+    id: "virtual-keyboard",
+    name: "Virtual Keyboard",
+    description: selectSingleLegacyDocs["virtual-keyboard"].description,
+    recipe: selectSingleLegacyDocs["virtual-keyboard"].recipe,
+    Component: SelectSingleLegacyVirtualKeyboardExample,
+  },
+  {
+    id: "width",
+    name: "Width",
+    description: selectSingleLegacyDocs.width.description,
+    recipe: selectSingleLegacyDocs.width.recipe,
+    Component: SelectSingleLegacyWidthExample,
+  },
+  {
+    id: "add-to-list",
+    name: "Add to List",
+    description: selectSingleLegacyDocs["add-to-list"].description,
+    recipe: selectSingleLegacyDocs["add-to-list"].recipe,
+    Component: SelectSingleLegacyAddToListExample,
+  },
+  {
+    id: "advanced-search",
+    name: "Advanced Search",
+    description: selectSingleLegacyDocs["advanced-search"].description,
+    recipe: selectSingleLegacyDocs["advanced-search"].recipe,
+    Component: SelectSingleLegacyAdvancedSearchExample,
+  }
 ];
 
 const selectSingleLegacyNavDataProvider = new MutableArrayTreeDataProvider<
@@ -45,7 +126,7 @@ const selectSingleLegacyNavDataProvider = new MutableArrayTreeDataProvider<
 
 export default function SelectSingleLegacyIndex() {
   const [activeExampleId, setActiveExampleId] =
-    useState<SelectSingleLegacyNavItem["id"]>("states");
+    useState<SelectSingleLegacyDemoId>("states");
 
   const handleNavigationChange = useCallback(
     (
@@ -77,43 +158,14 @@ export default function SelectSingleLegacyIndex() {
     [],
   );
 
-  const activeExampleTitle = useMemo(
+  const activeExample = useMemo(
     () =>
-      selectSingleLegacyNavItems.find((item) => item.id === activeExampleId)
-        ?.name ?? "Select Single",
+      selectSingleLegacyNavItems.find((item) => item.id === activeExampleId) ??
+      selectSingleLegacyNavItems[0],
     [activeExampleId],
   );
 
-  const renderActiveExample = () => {
-    switch (activeExampleId) {
-      case "states":
-        return <SelectSingleLegacyStatesExample />;
-      case "basic":
-        return <SelectSingleLegacyBasicExample />;
-      case "add-to-list":
-        return <SelectSingleLegacyAddToListExample />;
-      case "advanced-search":
-        return <SelectSingleLegacyAdvancedSearchExample />;
-      case "collection-list-view":
-        return <SelectSingleLegacyCollectionTemplateListViewExample />;
-      case "collection-table":
-        return <SelectSingleLegacyCollectionTemplateTableExample />;
-      case "events":
-        return <SelectSingleLegacyEventsExample />;
-      case "item-template":
-        return <SelectSingleLegacyItemTemplateExample />;
-      case "item-text":
-        return <SelectSingleLegacyItemTextExample />;
-      case "value-item":
-        return <SelectSingleLegacyValueItemExample />;
-      case "virtual-keyboard":
-        return <SelectSingleLegacyVirtualKeyboardExample />;
-      case "width":
-        return <SelectSingleLegacyWidthExample />;
-      default:
-        return null;
-    }
-  };
+  const ActiveExampleComponent = activeExample.Component;
 
   return (
     <div
@@ -122,22 +174,12 @@ export default function SelectSingleLegacyIndex() {
     >
       <div
         class="oj-flex-item oj-sm-padding-2x oj-sm-border-radius-md"
-        style="width: 24%; max-width: 24%; flex: 0 0 24%; background-color: #1f2937;"
       >
         <oj-navigation-list
           aria-label="Select Single legacy examples"
           selection={activeExampleId}
           data={selectSingleLegacyNavDataProvider}
           onselectionChanged={handleNavigationChange}
-          style="
-            --oj-navigation-list-item-label-color: #f9fafb;
-            --oj-navigation-list-item-label-color-hover: #ffffff;
-            --oj-navigation-list-item-label-color-selected: #ffffff;
-            --oj-navigation-list-item-bg-color-hover: rgba(255, 255, 255, 0.08);
-            --oj-navigation-list-item-bg-color-selected: rgba(255, 255, 255, 0.14);
-            --oj-navigation-list-item-border-color-selected: #ffffff;
-            color: #f9fafb;
-          "
         >
           <template slot="itemTemplate" render={renderNavigationItem}></template>
         </oj-navigation-list>
@@ -146,8 +188,13 @@ export default function SelectSingleLegacyIndex() {
         class="oj-flex-item"
         style="width: 76%; max-width: 76%; flex: 0 0 76%; padding-left: 25px;"
       >
-        <h6>{activeExampleTitle}</h6>
-        {renderActiveExample()}
+        <DemoLayoutTemplate
+          componentType="oj-select-single"
+          demoName={activeExample.name}
+          description={activeExample.description}
+          recipe={activeExample.recipe}
+          demo={<ActiveExampleComponent />}
+        />
       </div>
     </div>
   );

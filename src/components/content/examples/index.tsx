@@ -21,7 +21,14 @@ type Tab = {
   icon?: string;
 };
 
-let exampleRouter: any = null;
+type ExampleRouter = CoreRouter;
+type ExampleRouterState = Parameters<
+  ExampleRouter["currentState"]["subscribe"]
+>[0] extends (state: infer T) => void
+  ? T
+  : never;
+
+let exampleRouter: ExampleRouter | null = null;
 const ExampleContent = (props: Props) => {
   const [activeTab, setActiveTab] = useState<string>("collection");
 
@@ -45,12 +52,12 @@ const ExampleContent = (props: Props) => {
     }
   }, []);
 
-  const routerUpdated = (
-    actionable: CoreRouter.ActionableState<CoreRouter.DetailedRouteConfig>
-  ): void => {
+  const routerUpdated = (actionable: ExampleRouterState): void => {
     // Update our state based on new router state
-    const newPath = actionable.state?.path;
-    setActiveTab(newPath);
+    const newPath = (actionable.state as { path?: string } | undefined)?.path;
+    if (typeof newPath === "string") {
+      setActiveTab(newPath);
+    }
   };
 
   const tabbarDP = new MutableArrayDataProvider<Tab["path"], Tab>(
@@ -61,9 +68,9 @@ const ExampleContent = (props: Props) => {
   );
   const loadTabContent = (
     event: ojTabBar.selectionChanged<Tab["path"], Tab>
-  ) => {
+  ): void => {
     setActiveTab(event.detail.value);
-    exampleRouter.go({ path: event.detail.value });
+    exampleRouter?.go({ path: event.detail.value });
   };
 
   let pageContent = () => {
@@ -95,8 +102,6 @@ const ExampleContent = (props: Props) => {
   };
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
-      <h1 class="oj-typography-heading-lg"> Examples </h1>
-      <hr />
       <oj-tab-bar
         edge="top"
         data={tabbarDP}

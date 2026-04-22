@@ -6,8 +6,8 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import CheckBoxSet from "./checkBoxSet";
-import { CheckBoxCorePack } from "./checkBoxCorePack";
+import CheckBoxSet from "./checkBoxSet/index";
+import CheckBoxCorePack from "./checkBoxCorePack/index";
 import { CheckBoxSetCorePack } from "./checkBoxSetCorePack";
 import { RichCheckBoxsetCorePack } from "./richCheckBoxsetCorePack";
 import {

@@ -7,21 +7,22 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
 import CheckboxHome from "./checkbox/home";
-import { ColorPalette } from "./colorPalette";
-import { ColorSpectrum } from "./colorSpectrum";
+import ColorPalette from "./colorPalette/index";
+import ColorSpectrum from "./colorSpectrum/index";
 import InputDateTimeHome from "./Inputdatetime/home";
 import InputNumberHome from "./inputnumber/home";
 import InputPasswordHome from "./inputpassword/home";
+import InputSensitiveText from "./inputSensitiveText/index";
 import InputTextHome from "./inputtext/home";
-import { LabelledLink } from "./labelledLink";
+import LabelledLink from "./labelledLink/index";
 import SelectAndComboboxHome from "./selectandcomobobox/home";
-import { Slider } from "./slider";
-import { SwitchExample } from "./switch";
+import Slider from "./slider/index";
+import SwitchExample from "./switch/index";
 import TextAreaHome from "./textarea/home";
-import { UserAssistance } from "./userAssistance";
-import { ValidationGroupExample } from "./validationGroup";
+import UserAssistance from "./userAssistance/index";
+import ValidationHome from "./validation/home";
 import RadiosetHome from "./radioset/home";
-import { FormLayoutCorePack } from "./formLayoutCorePack";
+import FormLayoutHome from "./formLayout/home";
 import {
   FormBreadcrumb,
   type FormBreadcrumbItem,
@@ -88,6 +89,13 @@ const formExamples: FormShowcase[] = [
     render: (props) => <InputPasswordHome {...props} />,
   },
   {
+    id: "input-sensitive-text",
+    name: "Input Sensitive Text",
+    image: "oj-ux-icon-size-12x oj-ux-ico-text",
+    isCorePack: true,
+    render: () => <InputSensitiveText />,
+  },
+  {
     id: "input-text",
     name: "Input Text",
     image: "oj-ux-icon-size-12x oj-ux-ico-text-input",
@@ -114,7 +122,7 @@ const formExamples: FormShowcase[] = [
     name: "Form Layout",
     image: "oj-ux-icon-size-12x oj-ux-ico-form-layout-jet",
     isCorePack: true,
-    render: () => <FormLayoutCorePack />,
+    render: (props) => <FormLayoutHome {...props} />,
   },
   {
     id: "input-search",
@@ -143,8 +151,8 @@ const formExamples: FormShowcase[] = [
   {
     id: "validation",
     name: "Validation",
-    image: "oj-ux-icon-size-12x oj-ux-ico-user-assistance",
-    render: () => <ValidationGroupExample />,
+    image: "oj-ux-icon-size-12x  oj-ux-ico-validation",
+    render: (props) => <ValidationHome {...props} />,
   },
   {
     id: "labelled-link",

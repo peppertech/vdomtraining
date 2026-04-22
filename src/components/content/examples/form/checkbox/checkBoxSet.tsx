@@ -1,31 +1,25 @@
 import { h, ComponentProps } from "preact";
-import { useState, useRef } from "preact/hooks";
-import * as NumberConverter from "ojs/ojconverter-number";
-import * as ConverterUtilsI18n from "ojs/ojconverterutils-i18n";
+import { useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojcheckboxset";
 import "ojs/ojoption";
-import "ojs/ojinputtext";
 import Message = require("ojs/ojmessaging");
-import "ojs/ojdatetimepicker";
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
-type InputTextProps = ComponentProps<"oj-input-text">;
 type FormLayoutProps = ComponentProps<"oj-form-layout">;
+type CheckboxsetProps = ComponentProps<"oj-checkboxset">;
+type CheckboxsetValueChangedEvent = Parameters<
+  NonNullable<CheckboxsetProps["onvalueChanged"]>
+>[0];
 
-const length: InputTextProps["length"] = {
-  countBy: "codePoint",
-  max: 5,
-};
-
-const hintDefinition: InputTextProps["helpHints"] = {
+const hintDefinition: CheckboxsetProps["helpHints"] = {
   definition: "help hint definition",
 };
-const helpHintSource: InputTextProps["helpHints"] = {
+const helpHintSource: CheckboxsetProps["helpHints"] = {
   source: "https://www.oracle.com",
 };
-const lblHint: InputTextProps["labelHint"] =
-  "Input text - using converter and help hint definiton";
+const lblHint: CheckboxsetProps["labelHint"] =
+  "Checkboxset with label hint";
  
  const browsers = [
   { value: 'IE', label: 'Internet Explorer' },
@@ -44,33 +38,22 @@ const info: Message[] = [{ summary: "summary", detail: "detail", severity: "info
 const confirmation: Message[] = [{ summary: "summary", detail: "detail", severity: "confirmation"}];
 // 'any' type is being used because method is used by multiple ..
 const CheckBoxSet = () => {
-  //-- for date
-  const [formData, setFormData] = useState({
-    initialValue: ["laptop","tablet"],
+  const [formData] = useState({
+    initialValue: ["laptop", "tablet"],
   });
 
-   const [formDatas, setFormDatas] = useState({
-    selectedValue: ["FF","CH"],
+  const [formDatas, setFormDatas] = useState({
+    selectedValue: ["FF", "CH"],
   });
 
-  const [isDisabled, setIsDisabled] = useState(true);
-  const [density, setDensity] = useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
+  const [density] = useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
-  const onValueChange = (event: any) => {
-    setFormData({
-      ...formData,
-      //itemCost: event.detail.value
-      //[event.currentTarget.id]: event.detail.value,
-    });
-  };
-
-  const onCheckBoxSelectionChange =(event:any)=>{
-    console.log(event.detail.value);
+  const onCheckBoxSelectionChange = (event: CheckboxsetValueChangedEvent) => {
     setFormDatas({
       ...formDatas,
-      selectedValue: event.detail.value
+      selectedValue: event.detail.value ?? [],
     });
-  }
+  };
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
@@ -87,13 +70,13 @@ const CheckBoxSet = () => {
                 <oj-option value="tablet">Tablet</oj-option>
         </oj-checkboxset>
 
-          <oj-checkboxset id="disabledCheckboxset" value={formData.initialValue} label-hint="Disabled" disabled>
+          <oj-checkboxset id="disabledCheckboxset" value={formData.initialValue} labelHint="Disabled" disabled>
                 <oj-option value="desktop">Desktop</oj-option>
                 <oj-option value="laptop">Laptop</oj-option>
                 <oj-option value="tablet">Tablet</oj-option>
         </oj-checkboxset>
        
-        <oj-checkboxset id="readonlyCheckboxset" value={formData.initialValue} label-hint="Readonly" readonly>
+        <oj-checkboxset id="readonlyCheckboxset" value={formData.initialValue} labelHint="Readonly" readonly>
                 <oj-option value="desktop">Desktop</oj-option>
                 <oj-option value="laptop">Laptop</oj-option>
                 <oj-option value="tablet">Tablet</oj-option>
@@ -201,7 +184,7 @@ const CheckBoxSet = () => {
                 <oj-option value="laptop">Laptop</oj-option>
                 <oj-option value="tablet">Tablet</oj-option>
               </oj-checkboxset>
-              <oj-checkboxset messagesCustom={confirmation} value={["laptop","tablet"]}   label-hint="Confirmation">
+              <oj-checkboxset messagesCustom={confirmation} value={["laptop","tablet"]} labelHint="Confirmation">
                 <oj-option value="desktop">Desktop</oj-option>
                 <oj-option value="laptop">Laptop</oj-option>
                 <oj-option value="tablet">Tablet</oj-option>

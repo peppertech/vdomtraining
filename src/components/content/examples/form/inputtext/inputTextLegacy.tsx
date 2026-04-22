@@ -7,7 +7,6 @@ import "ojs/ojinputtext";
 import Message = require("ojs/ojmessaging");
 import "ojs/ojdatetimepicker";
 import "ojs/ojbutton";
-import * as customMessages from "../data/messages";
 
 //component props types
 type InputTextProps = ComponentProps<"oj-input-text">;

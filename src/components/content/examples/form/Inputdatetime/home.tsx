@@ -6,14 +6,14 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import InputDate from "./inputDate";
-import { InputDateMask } from "./inputDateMask";
-import InputDatePicker from "./inputDatePicker";
-import InputDateTime from "./inputDateTime";
-import InputDateText from "./inputDateText";
-import { InputMonthMask } from "./inputMonthMask";
-import InputTime from "./inputTime";
-import InputTimeMask from "./inputTimeMask";
+import InputDate from "./inputDate/index";
+import InputDateMask from "./inputDateMask/index";
+import InputDatePicker from "./inputDatePicker/index";
+import InputDateTime from "./inputDateTime/index";
+import InputDateText from "./inputDateText/index";
+import InputMonthMask from "./inputMonthMask/index";
+import InputTime from "./inputTime/index";
+import InputTimeMask from "./inputTimeMask/index";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
@@ -53,6 +53,7 @@ const dateTimeComponents: DateTimeComponent[] = [
     name: "Input Date Text",
     image: "oj-ux-icon-size-12x oj-ux-ico-text-input",
     isAvailable: true,
+    isCorePack: true,
   },
   {
     id: 5,

@@ -6,9 +6,8 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import { InputPasswordCorePack } from "./inputPasswordCorePack";
-import { InputPassword } from "./inputPassword";
-import { InputSensitiveText } from "./inputSensitiveText";
+import InputPasswordCorePack from "./inputPasswordCorePack/index";
+import InputPassword from "./inputPassword/index";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
@@ -30,12 +29,6 @@ const passwordComponents: PasswordComponent[] = [
   },
   {
     id: 2,
-    name: "Input Sensitive Text",
-    image: "oj-ux-icon-size-12x oj-ux-ico-text",
-    isCorePack: true,
-  },
-  {
-    id: 3,
     name: "Input Password (oj-input-password)",
     image: "oj-ux-icon-size-12x oj-ux-ico-lock",
     isCorePack: false,
@@ -105,8 +98,6 @@ const InputPasswordHome = ({
       case 1:
         return <InputPasswordCorePack />;
       case 2:
-        return <InputSensitiveText />;
-      case 3:
         return <InputPassword />;
       default:
         return null;

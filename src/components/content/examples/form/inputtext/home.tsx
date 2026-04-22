@@ -6,8 +6,8 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import InputTextLegacy from "./inputTextLegacy";
-import InputTextCorePack from "./inputTextCorePack";
+import InputTextLegacy from "./inputTextLegacy/index";
+import InputTextCorePack from "./inputTextCorePack/index";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
