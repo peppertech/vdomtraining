@@ -8,8 +8,8 @@ import { ojListView } from "ojs/ojlistview";
 
 import CheckBoxSet from "./checkBoxSet/index";
 import CheckBoxCorePack from "./checkBoxCorePack/index";
-import { CheckBoxSetCorePack } from "./checkBoxSetCorePack";
-import { RichCheckBoxsetCorePack } from "./richCheckBoxsetCorePack";
+import CheckBoxSetCorePack  from "./checkBoxSetCorePack/index";
+import  RichCheckBoxsetCorePack  from "./richCheckBoxsetCorePack/index";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,

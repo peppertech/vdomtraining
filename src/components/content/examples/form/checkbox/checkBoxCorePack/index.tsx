@@ -1,10 +1,34 @@
 import { h } from "preact";
-import { CheckBoxCorePack } from "../checkBoxCorePack";
-import {
-  checkBoxCorePackDescription,
-  checkBoxCorePackRecipe,
-} from "./checkBoxCorePack-docs";
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
+import CheckBoxCorePackCrossFieldValidationExample from "./checkBoxCorePack-crossFieldValidation";
+import {
+  checkBoxCorePackDocs,
+  type CheckBoxCorePackDemoId,
+} from "./checkBoxCorePack-docs";
+import CheckBoxCorePackOverviewExample from "./checkBoxCorePack-overview";
+
+const checkBoxCorePackItems: {
+  id: CheckBoxCorePackDemoId;
+  name: string;
+  description: (typeof checkBoxCorePackDocs)[CheckBoxCorePackDemoId]["description"];
+  recipe: (typeof checkBoxCorePackDocs)[CheckBoxCorePackDemoId]["recipe"];
+  Component: () => h.JSX.Element;
+}[] = [
+  {
+    id: "overview",
+    name: "Overview",
+    description: checkBoxCorePackDocs.overview.description,
+    recipe: checkBoxCorePackDocs.overview.recipe,
+    Component: CheckBoxCorePackOverviewExample,
+  },
+  {
+    id: "cross-field-validation",
+    name: "Component Validation",
+    description: checkBoxCorePackDocs["cross-field-validation"].description,
+    recipe: checkBoxCorePackDocs["cross-field-validation"].recipe,
+    Component: CheckBoxCorePackCrossFieldValidationExample,
+  },
+];
 
 export default function CheckBoxCorePackRecipePage() {
   return (
@@ -12,15 +36,9 @@ export default function CheckBoxCorePackRecipePage() {
       ariaLabel="Checkbox core pack examples"
       componentType="oj-c-checkbox"
       packLabel="Core Pack"
-      items={[
-        {
-          id: "overview",
-          name: "Overview",
-          description: checkBoxCorePackDescription,
-          recipe: checkBoxCorePackRecipe,
-          Component: CheckBoxCorePack,
-        },
-      ]}
+      layoutId="checkBoxCorePackNavigationLayout"
+      items={checkBoxCorePackItems}
+      initialItemId="overview"
     />
   );
 }

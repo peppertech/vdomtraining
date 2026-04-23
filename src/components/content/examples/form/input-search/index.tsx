@@ -63,6 +63,7 @@ export default function InputSearchRecipePage() {
       layoutId="inputSearchNavigationLayout"
       items={inputSearchItems}
       initialItemId="basic"
+      navigationTitle="Input Search"
     />
   );
 }

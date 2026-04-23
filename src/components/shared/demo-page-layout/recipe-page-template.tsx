@@ -20,6 +20,7 @@ type RecipePageTemplateProps = {
   items: RecipePageItem[];
   initialItemId?: string;
   layoutId?: string;
+  navigationTitle?: string;
 };
 
 export function RecipePageTemplate({
@@ -29,6 +30,7 @@ export function RecipePageTemplate({
   items,
   initialItemId,
   layoutId,
+  navigationTitle,
 }: RecipePageTemplateProps) {
   const [activeExampleId, setActiveExampleId] = useState<string>(
     initialItemId ?? items[0]?.id ?? "",
@@ -106,6 +108,11 @@ export function RecipePageTemplate({
       class="oj-flex oj-sm-flex-wrap-nowrap oj-sm-column-gap-4x"
     >
       <div class="navListDemoLayout">
+        {navigationTitle && (
+          <div class="recipe-page-template__nav-header">
+            <h2 class="recipe-page-template__nav-title">{navigationTitle}</h2>
+          </div>
+        )}
         <oj-navigation-list
           aria-label={ariaLabel}
           selection={activeExampleId}
