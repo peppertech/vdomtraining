@@ -1,0 +1,11 @@
+.demo-rem-max-width {
+  max-width: 25rem !important;
+}
+
+.demo-percentage-width {
+  width: 50% !important;
+}
+
+.demo-form-control-max-width {
+  max-width: 18.75rem !important;
+}

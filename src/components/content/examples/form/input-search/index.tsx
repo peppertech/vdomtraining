@@ -1,44 +1,68 @@
-/**
- * @license
- * Copyright (c) 2014, 2026, Oracle and/or its affiliates.
- * Licensed under The Universal Permissive License (UPL), Version 1.0
- * as shown at https://oss.oracle.com/licenses/upl/
- * @ignore
- */
-import type { ComponentChildren, FunctionComponent } from "preact";
-import InputSearchBasic from "./input-search";
-import { inputSearchBasicDescription } from "./input-search-description";
-import { inputSearchBasicRecipe } from "./input-search-recipe";
-import { DemoLayoutTemplate } from "../../../../shared/demo-page-layout/demo-layout-template";
+import { h } from "preact";
+import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
+import InputSearchBasicExample from "./input-search-basic";
+import {
+  inputSearchDocs,
+  type InputSearchDemoId,
+} from "./input-search-docs";
+import InputSearchHeroExample from "./input-search-hero";
+import InputSearchSuggestionItemTemplateExample from "./input-search-suggestionItemTemplate";
+import InputSearchSuggestionItemTextExample from "./input-search-suggestionItemText";
+import InputSearchSuggestionsExample from "./input-search-suggestions";
+import "css!./input-search.css";
 
-type DemoDefinition = {
-  componentType: string;
-  title: string;
-  description: ComponentChildren;
-  recipe: ComponentChildren;
-  Component: FunctionComponent;
-};
+const inputSearchItems: {
+  id: InputSearchDemoId;
+  name: string;
+  description: (typeof inputSearchDocs)[InputSearchDemoId]["description"];
+  recipe: (typeof inputSearchDocs)[InputSearchDemoId]["recipe"];
+  Component: () => h.JSX.Element;
+}[] = [
+  {
+    id: "basic",
+    name: "Basic",
+    description: inputSearchDocs.basic.description,
+    recipe: inputSearchDocs.basic.recipe,
+    Component: InputSearchBasicExample,
+  },
+  {
+    id: "suggestions",
+    name: "Suggestions",
+    description: inputSearchDocs.suggestions.description,
+    recipe: inputSearchDocs.suggestions.recipe,
+    Component: InputSearchSuggestionsExample,
+  },
+  {
+    id: "suggestion-item-text",
+    name: "Suggestion Item Text",
+    description: inputSearchDocs["suggestion-item-text"].description,
+    recipe: inputSearchDocs["suggestion-item-text"].recipe,
+    Component: InputSearchSuggestionItemTextExample,
+  },
+  {
+    id: "suggestion-item-template",
+    name: "Suggestion Item Template",
+    description: inputSearchDocs["suggestion-item-template"].description,
+    recipe: inputSearchDocs["suggestion-item-template"].recipe,
+    Component: InputSearchSuggestionItemTemplateExample,
+  },
+  {
+    id: "hero",
+    name: "Hero",
+    description: inputSearchDocs.hero.description,
+    recipe: inputSearchDocs.hero.recipe,
+    Component: InputSearchHeroExample,
+  },
+];
 
-const initialDemo: DemoDefinition = {
-  componentType: "oj-input-search",
-  title: "Input Search",
-  description: inputSearchBasicDescription,
-  recipe: inputSearchBasicRecipe,
-  Component: InputSearchBasic,
-};
-
-export default function InputSearchDemoWrapper() {
-  const SelectedDemoComponent = initialDemo.Component;
-
+export default function InputSearchRecipePage() {
   return (
-    <main class="oj-web-applayout-max-width oj-web-applayout-content oj-sm-padding-4x">
-      <DemoLayoutTemplate
-        componentType={initialDemo.componentType}
-        demoName={initialDemo.title}
-        description={initialDemo.description}
-        recipe={initialDemo.recipe}
-        demo={<SelectedDemoComponent />}
-      />
-    </main>
+    <RecipePageTemplate
+      ariaLabel="Input Search examples"
+      componentType="oj-input-search"
+      layoutId="inputSearchNavigationLayout"
+      items={inputSearchItems}
+      initialItemId="basic"
+    />
   );
 }

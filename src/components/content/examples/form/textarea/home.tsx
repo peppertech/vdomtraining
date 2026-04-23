@@ -6,8 +6,8 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import TextArea from "./textArea";
-import TextAreaCorePack from "./textAreaCorePack";
+import TextArea from "./textAreaLegacy/index";
+import TextAreaCorePack from "./textAreaCorePack/index";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
@@ -46,8 +46,7 @@ const dataProvider = new MutableArrayDataProvider<
 
 type ListViewProps = ComponentProps<"oj-list-view">;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
-const INITIAL_SELECTION =
-  new KeySetImpl([]) as KeySet<TextAreaComponent["id"]>;
+const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<TextAreaComponent["id"]>;
 
 const TextAreaHome = ({
   onBreadcrumbChange,
@@ -176,5 +175,6 @@ const TextAreaHome = ({
     </div>
   );
 };
+
 
 export default TextAreaHome;

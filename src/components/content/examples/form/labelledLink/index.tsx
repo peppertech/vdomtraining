@@ -99,9 +99,7 @@ export default function LabelledLinkIndex() {
       id="labelledLinkNavigationLayout"
       class="oj-flex oj-sm-flex-wrap-nowrap oj-sm-column-gap-4x"
     >
-      <div
-        class="oj-flex-item oj-sm-padding-2x oj-sm-border-radius-md"
-      >
+      <div class="navListDemoLayout">
         <oj-navigation-list
           aria-label="Labelled Link examples"
           selection={activeExampleId}
@@ -111,10 +109,7 @@ export default function LabelledLinkIndex() {
           <template slot="itemTemplate" render={renderNavigationItem}></template>
         </oj-navigation-list>
       </div>
-      <div
-        class="oj-flex-item"
-        style="width: 76%; max-width: 76%; flex: 0 0 76%; padding-left: 25px;"
-      >
+      <div class="oj-flex-item">
         <DemoLayoutTemplate
           componentType="oj-c-labelled-link"
           packLabel="Core Pack"

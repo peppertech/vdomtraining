@@ -1,6 +1,7 @@
 .demo-layout-template {
   display: grid;
   gap: 2rem;
+  padding-left: 2rem;
 }
 
 .demo-layout-template__header {

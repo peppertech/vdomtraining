@@ -1,0 +1,31 @@
+import { h } from "preact";
+import { useMemo, useState } from "preact/hooks";
+import "ojs/ojinputsearch";
+import { createBrowserSuggestionsDataProvider } from "./input-search-shared";
+
+export default function InputSearchHeroExample() {
+  const [value, setValue] = useState("");
+  const suggestions = useMemo(() => createBrowserSuggestionsDataProvider(), []);
+
+  return (
+    <div class="input-search-demo input-search-demo--hero">
+      <div class="input-search-demo__metrics oj-sm-margin-4x-bottom">
+        <div class="input-search-demo__metric">
+          <span class="input-search-demo__metric-label">Value:</span>
+          <span>{value || "None"}</span>
+        </div>
+      </div>
+      <oj-input-search
+        id="search1"
+        class="oj-input-search-hero"
+        suggestions={suggestions}
+        value={value}
+        placeholder="Search..."
+        aria-label="My search field"
+        onvalueChanged={(event: any) => {
+          setValue(event.detail.value ?? "");
+        }}
+      ></oj-input-search>
+    </div>
+  );
+}

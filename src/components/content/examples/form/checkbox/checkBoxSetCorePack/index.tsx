@@ -108,7 +108,7 @@ export default function CheckBoxSetCorePackIndex() {
     [activeExampleId],
   );
 
-  const ActiveExampleComponent = activeExample.Component;
+  const ActiveExampleComponent = activeExample.Component; 
 
   return (
     <div
