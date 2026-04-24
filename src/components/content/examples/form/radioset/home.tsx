@@ -8,7 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import RadiosetCorePackExample from "./radiosetCorePackExample/index";
 import RichRadioset from "./richRadioSet/index";
-import RadiosetExample from "./radioset/index";
+import RadiosetExample from "./radiosetLegacy/index";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
