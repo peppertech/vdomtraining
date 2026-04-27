@@ -7,7 +7,7 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
 import InputPasswordCorePack from "./inputPasswordCorePack/index";
-import InputPassword from "./inputPassword/index";
+import InputPassword from "./inputPasswordLegacy/index";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,

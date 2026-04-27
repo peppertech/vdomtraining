@@ -57,7 +57,7 @@ const dateTimeComponents: DateTimeComponent[] = [
   },
   {
     id: 5,
-    name: "Input Date-Time",
+    name: "Input Date Time",
     image: "oj-ux-icon-size-12x oj-ux-ico-calendar-clock",
     isAvailable: true,
   },

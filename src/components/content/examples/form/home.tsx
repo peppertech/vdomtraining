@@ -16,7 +16,7 @@ import InputSensitiveText from "./inputSensitiveText/index";
 import InputTextHome from "./inputtext/home";
 import LabelledLink from "./labelledLink/index";
 import SelectAndComboboxHome from "./selectandcomobobox/home";
-import Slider from "./slider/index";
+import SliderHome from "./slider/home";
 import SwitchExample from "./switch/index";
 import TextAreaHome from "./textarea/home";
 import UserAssistance from "./userAssistance/index";
@@ -134,7 +134,7 @@ const formExamples: FormShowcase[] = [
     id: "slider",
     name: "Slider",
     image: "oj-ux-icon-size-12x oj-ux-ico-slider",
-    render: () => <Slider />,
+    render: (props) => <SliderHome {...props} />,
   },
   {
     id: "switch",
