@@ -1,0 +1,72 @@
+[
+  { "location": "Alabama", "shortDesc": "58.3 inches of annual rainfall", "color": "#0D4F8B" },
+  { "location": "Alaska", "shortDesc": "22.5 inches of annual rainfall", "color": "#35A4DF" },
+  { "location": "Arizona", "shortDesc": "13.6 inches of annual rainfall", "color": "#42C0FB" },
+  { "location": "Arkansas", "shortDesc": "50.6 inches of annual rainfall", "color": "#0D4F8B" },
+  { "location": "California", "shortDesc": "22.2 inches of annual rainfall", "color": "#35A4DF" },
+  { "location": "Colorado", "shortDesc": "15.9 inches of annual rainfall", "color": "#42C0FB" },
+  { "location": "Connecticut", "shortDesc": "50.3 inches of annual rainfall", "color": "#0D4F8B" },
+  { "location": "Delaware", "shortDesc": "45.7 inches of annual rainfall", "color": "#1A6BA7" },
+  { "location": "Florida", "shortDesc": "54.5 inches of annual rainfall", "color": "#0D4F8B" },
+  { "location": "Georgia", "shortDesc": "50.7 inches of annual rainfall", "color": "#0D4F8B" },
+  { "location": "Hawaii", "shortDesc": "63.7 inches of annual rainfall", "color": "#0D4F8B" },
+  { "location": "Idaho", "shortDesc": "18.9 inches of annual rainfall", "color": "#42C0FB" },
+  { "location": "Illinois", "shortDesc": "39.2 inches of annual rainfall", "color": "#2888C3" },
+  { "location": "Indiana", "shortDesc": "41.7 inches of annual rainfall", "color": "#1A6BA7" },
+  { "location": "Iowa", "shortDesc": "34.0 inches of annual rainfall", "color": "#2888C3" },
+  { "location": "Kansas", "shortDesc": "28.9 inches of annual rainfall", "color": "#35A4DF" },
+  { "location": "Kentucky", "shortDesc": "48.9 inches of annual rainfall", "color": "#1A6BA7" },
+  { "location": "Louisiana", "shortDesc": "60.1 inches of annual rainfall", "color": "#0D4F8B" },
+  { "location": "Maine", "shortDesc": "42.2 inches of annual rainfall", "color": "#1A6BA7" },
+  { "location": "Maryland", "shortDesc": "44.5 inches of annual rainfall", "color": "#1A6BA7" },
+  {
+    "location": "Massachusetts",
+    "shortDesc": "47.7 inches of annual rainfall",
+    "color": "#1A6BA7"
+  },
+  { "location": "Michigan", "shortDesc": "32.8 inches of annual rainfall", "color": "#2888C3" },
+  { "location": "Minnesota", "shortDesc": "27.3 inches of annual rainfall", "color": "#35A4DF" },
+  { "location": "Mississippi", "shortDesc": "59.0 inches of annual rainfall", "color": "#0D4F8B" },
+  { "location": "Missouri", "shortDesc": "42.2 inches of annual rainfall", "color": "#1A6BA7" },
+  { "location": "Montana", "shortDesc": "15.3 inches of annual rainfall", "color": "#42C0FB" },
+  { "location": "Nebraska", "shortDesc": "23.6 inches of annual rainfall", "color": "#35A4DF" },
+  { "location": "Nevada", "shortDesc": "9.5 inches of annual rainfall", "color": "#42C0FB" },
+  {
+    "location": "New Hampshire",
+    "shortDesc": "43.4 inches of annual rainfall",
+    "color": "#1A6BA7"
+  },
+  { "location": "New Jersey", "shortDesc": "47.1 inches of annual rainfall", "color": "#1A6BA7" },
+  { "location": "New Mexico", "shortDesc": "14.6 inches of annual rainfall", "color": "#42C0FB" },
+  { "location": "New York", "shortDesc": "41.8 inches of annual rainfall", "color": "#1A6BA7" },
+  {
+    "location": "North Carolina",
+    "shortDesc": "50.3 inches of annual rainfall",
+    "color": "#0D4F8B"
+  },
+  { "location": "North Dakota", "shortDesc": "17.8 inches of annual rainfall", "color": "#42C0FB" },
+  { "location": "Ohio", "shortDesc": "39.1 inches of annual rainfall", "color": "#2888C3" },
+  { "location": "Oklahoma", "shortDesc": "36.5 inches of annual rainfall", "color": "#2888C3" },
+  { "location": "Oregon", "shortDesc": "27.4 inches of annual rainfall", "color": "#35A4DF" },
+  { "location": "Pennsylvania", "shortDesc": "42.9 inches of annual rainfall", "color": "#1A6BA7" },
+  { "location": "Rhode Island", "shortDesc": "47.9 inches of annual rainfall", "color": "#1A6BA7" },
+  {
+    "location": "South Carolina",
+    "shortDesc": "49.8 inches of annual rainfall",
+    "color": "#1A6BA7"
+  },
+  { "location": "South Dakota", "shortDesc": "20.1 inches of annual rainfall", "color": "#35A4DF" },
+  { "location": "Tennessee", "shortDesc": "54.2 inches of annual rainfall", "color": "#0D4F8B" },
+  { "location": "Texas", "shortDesc": "28.9 inches of annual rainfall", "color": "#35A4DF" },
+  { "location": "Utah", "shortDesc": "12.2 inches of annual rainfall", "color": "#42C0FB" },
+  { "location": "Vermont", "shortDesc": "42.7 inches of annual rainfall", "color": "#1A6BA7" },
+  { "location": "Virginia", "shortDesc": "44.3 inches of annual rainfall", "color": "#1A6BA7" },
+  { "location": "Washington", "shortDesc": "38.4 inches of annual rainfall", "color": "#2888C3" },
+  {
+    "location": "West Virginia",
+    "shortDesc": "45.2 inches of annual rainfall",
+    "color": "#1A6BA7"
+  },
+  { "location": "Wisconsin", "shortDesc": "32.6 inches of annual rainfall", "color": "#2888C3" },
+  { "location": "Wyoming", "shortDesc": "12.9 inches of annual rainfall", "color": "#42C0FB" }
+]

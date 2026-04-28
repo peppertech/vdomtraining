@@ -1,0 +1,98 @@
+{
+  "2015": [
+    {
+      "id": "0",
+      "year": "2015",
+      "product": "Phone",
+      "revenue": 155.5
+    },
+    {
+      "id": "1",
+      "year": "2015",
+      "product": "Tablet",
+      "revenue": 21.326
+    },
+    {
+      "id": "2",
+      "year": "2015",
+      "product": "Computer",
+      "revenue": 25.27
+    },
+    {
+      "id": "3",
+      "year": "2015",
+      "product": "Services",
+      "revenue": 21.17
+    },
+    {
+      "id": "4",
+      "year": "2015",
+      "product": "Other Products",
+      "revenue": 11.73
+    }
+  ],
+  "2014": [
+    {
+      "id": "0",
+      "year": "2014",
+      "product": "Phone",
+      "revenue": 120.68
+    },
+    {
+      "id": "1",
+      "year": "2014",
+      "product": "Tablet",
+      "revenue": 27.8
+    },
+    {
+      "id": "2",
+      "year": "2014",
+      "product": "Computer",
+      "revenue": 24.63
+    },
+    {
+      "id": "3",
+      "year": "2014",
+      "product": "Services",
+      "revenue": 18.47
+    },
+    {
+      "id": "4",
+      "year": "2014",
+      "product": "Other Products",
+      "revenue": 8.23
+    }
+  ],
+  "2013": [
+    {
+      "id": "0",
+      "year": "2013",
+      "product": "Phone",
+      "revenue": 93.12
+    },
+    {
+      "id": "1",
+      "year": "2013",
+      "product": "Tablet",
+      "revenue": 32.77
+    },
+    {
+      "id": "2",
+      "year": "2013",
+      "product": "Computer",
+      "revenue": 22.36
+    },
+    {
+      "id": "3",
+      "year": "2013",
+      "product": "Services",
+      "revenue": 16.76
+    },
+    {
+      "id": "4",
+      "year": "2013",
+      "product": "Other Products",
+      "revenue": 8.98
+    }
+  ]
+}

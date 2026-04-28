@@ -1,0 +1,36 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "name": "Bananas",
+    "count": 27.9
+  },
+  {
+    "name": "Apples",
+    "count": 18.8
+  },
+  {
+    "name": "Oranges",
+    "count": 8.7
+  },
+  {
+    "name": "Strawberries",
+    "count": 7.9
+  },
+  {
+    "name": "Grapes",
+    "count": 7.7
+  },
+  {
+    "name": "Lemons",
+    "count": 3.6
+  },
+  {
+    "name": "Peaches",
+    "count": 3.3
+  },
+  {
+    "name": "Pears",
+    "count": 2.9
+  }
+]
+ }; });
+

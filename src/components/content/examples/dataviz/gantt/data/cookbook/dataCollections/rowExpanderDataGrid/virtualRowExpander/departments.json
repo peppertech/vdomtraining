@@ -1,0 +1,182 @@
+{
+  "Departments": [
+    {
+      "DepartmentId": 50,
+      "DepartmentName": "Department 20",
+      "ManagerId": null,
+      "LocationId": 1500,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/50"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/50"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/50/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 10,
+      "DepartmentName": "Department 10",
+      "ManagerId": null,
+      "LocationId": 1500,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/10"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/10"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/10/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 40,
+      "DepartmentName": "Department 40",
+      "ManagerId": null,
+      "LocationId": 1400,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/40"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/40"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/40/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 70,
+      "DepartmentName": "News Team",
+      "ManagerId": null,
+      "LocationId": 1700,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/70"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/70"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/70/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 110,
+      "DepartmentName": "Department 110",
+      "ManagerId": null,
+      "LocationId": 1700,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/110"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/110"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/110/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 9999,
+      "DepartmentName": "Department 9999",
+      "ManagerId": null,
+      "LocationId": 1700,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/9999"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/9999"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/9999/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 90,
+      "DepartmentName": "Department 90",
+      "ManagerId": null,
+      "LocationId": 1700,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/90"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/90"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/90/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 60,
+      "DepartmentName": "Dept 60",
+      "ManagerId": null,
+      "LocationId": 1700,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/60"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/60"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://slc01qrl:7801/stable/rest/Departments/60/Employees"
+        }
+      }
+    }
+  ],
+  "links": {
+    "self": {
+      "rel": "self",
+      "href": "http://slc01qrl:7801/stable/rest/Departments"
+    }
+  },
+  "_contextInfo": {
+    "limit": 25,
+    "offset": 0
+  }
+}

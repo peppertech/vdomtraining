@@ -1,0 +1,8 @@
+demo-input-json:not(.oj-complete) {
+  visibility: hidden;
+}
+
+demo-input-json {
+  display: inline-block;
+  width: 100%;
+}

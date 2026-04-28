@@ -1,0 +1,156 @@
+define([], function () { return { __esModule: true, default: [
+  { "company": "3M Company", "country": "USA", "industry": "Chemical" },
+  { "company": "ABB", "country": "Switzerland", "industry": "Industrial" },
+  { "company": "Abbott Laboratories", "country": "USA", "industry": "Pharmaceutical" },
+  {
+    "company": "Advanced Micro Devices",
+    "country": "USA",
+    "industry": "Semiconductor & Electronic Components"
+  },
+  { "company": "Aisin Seiki", "country": "Japan", "industry": "Automotive" },
+  { "company": "Alcatel-Lucent", "country": "France", "industry": "Telecommunication & Equipment" },
+  { "company": "Altera", "country": "USA", "industry": "Semiconductor & Electronic Components" },
+  { "company": "Apple", "country": "USA", "industry": "Telecommunication & Equipment" },
+  { "company": "Arkema", "country": "France", "industry": "Chemical" },
+  { "company": "Asahi Glass", "country": "Japan", "industry": "Industrial" },
+  { "company": "AT&T", "country": "USA", "industry": "Telecommunication & Equipment" },
+  { "company": "BASF", "country": "Germany", "industry": "Chemical" },
+  { "company": "BlackBerry", "country": "Canada", "industry": "Telecommunication & Equipment" },
+  { "company": "Boeing", "country": "USA", "industry": "Aerospace" },
+  { "company": "BOSCH", "country": "Germany", "industry": "Automotive" },
+  { "company": "Brother Industries", "country": "Japan", "industry": "Computer Hardware" },
+  { "company": "Canon", "country": "Japan", "industry": "Computer Hardware" },
+  { "company": "Casio", "country": "Japan", "industry": "Computer Hardware" },
+  {
+    "company": "CNRS The French National Center for Scientific Research",
+    "country": "France",
+    "industry": "Scientific Research"
+  },
+  {
+    "company": "Commissariat à l’Energie Atomique",
+    "country": "France",
+    "industry": "Scientific Research"
+  },
+  { "company": "Corning", "country": "USA", "industry": "Semiconductor & Electronic Components" },
+  { "company": "Covidien", "country": "USA", "industry": "Medical Devices" },
+  { "company": "Daikin Industries", "country": "Japan", "industry": "Industrial" },
+  { "company": "Denso Corporation", "country": "Japan", "industry": "Transportation Equipment" },
+  { "company": "Dow Chemical Company", "country": "USA", "industry": "Chemical" },
+  { "company": "DuPont", "country": "USA", "industry": "Chemical" },
+  { "company": "Emerson", "country": "USA", "industry": "Machinery" },
+  { "company": "Ericsson", "country": "Sweden", "industry": "Telecommunication & Equipment" },
+  { "company": "ETRI", "country": "S. Korea", "industry": "Scientific Research" },
+  { "company": "Fraunhofer", "country": "Germany", "industry": "Scientific Research" },
+  {
+    "company": "Freescale Semiconductor",
+    "country": "USA",
+    "industry": "Semiconductor & Electronic Components"
+  },
+  { "company": "FUJIFILM", "country": "Japan", "industry": "Machinery" },
+  { "company": "Fujitsu", "country": "Japan", "industry": "Computer Hardware" },
+  { "company": "Furukawa Electric", "country": "Japan", "industry": "Electrical Products" },
+  { "company": "General Electric", "country": "USA", "industry": "Consumer Products" },
+  {
+    "company": "Google",
+    "country": "USA",
+    "industry": "Media Internet Search & Navigation Systems"
+  },
+  { "company": "Hewlett-Packard", "country": "USA", "industry": "Computer Hardware" },
+  { "company": "Hitachi", "country": "Japan", "industry": "Computer Hardware" },
+  { "company": "Honda Motor Company", "country": "Japan", "industry": "Automotive" },
+  { "company": "Honeywell International", "country": "USA", "industry": "Electrical Products" },
+  { "company": "Huawei", "country": "China", "industry": "Telecommunication & Equipment" },
+  { "company": "IBM", "country": "USA", "industry": "Computer Hardware" },
+  { "company": "IFP Energies Nouvelles", "country": "France", "industry": "Scientific Research" },
+  { "company": "Intel", "country": "USA", "industry": "Semiconductor & Electronic Components" },
+  { "company": "ITRI ", "country": "Taiwan", "industry": "Scientific Research" },
+  { "company": "Johnson & Johnson", "country": "USA", "industry": "Pharmaceutical" },
+  { "company": "Kao Corporation", "country": "Japan", "industry": "Consumer Products" },
+  { "company": "Kobe Steel", "country": "Japan", "industry": "Primary Metals" },
+  { "company": "Komatsu Japan", "country": "Japan", "industry": "Industrial" },
+  { "company": "Kyocera Japan", "country": "Japan", "industry": "Electrical Products" },
+  { "company": "LG Electronics", "country": "S. Korea", "industry": "Consumer Products" },
+  { "company": "Lockheed Martin", "country": "USA", "industry": "Transportation Equipment" },
+  {
+    "company": "LSI Corporation (now Avago)",
+    "country": "USA",
+    "industry": "Semiconductor & Electronic Components"
+  },
+  { "company": "LSIS", "country": "S. Korea", "industry": "Semiconductor & Electronic Components" },
+  { "company": "Marvell", "country": "USA", "industry": "Semiconductor & Electronic Components" },
+  {
+    "company": "MediaTek ",
+    "country": "Taiwan",
+    "industry": "Semiconductor & Electronic Components"
+  },
+  { "company": "Medtronic", "country": "USA", "industry": "Medical Devices" },
+  { "company": "Micron", "country": "USA", "industry": "Semiconductor & Electronic Components" },
+  { "company": "Microsoft USA", "country": "USA", "industry": "Computer Software" },
+  { "company": "Mitsubishi Electric", "country": "Japan", "industry": "Machinery" },
+  { "company": "Mitsubishi Heavy Industries", "country": "Japan", "industry": "Machinery" },
+  { "company": "NEC", "country": "Japan", "industry": "Computer Hardware" },
+  { "company": "NGK Spark Plug", "country": "Japan", "industry": "Automotive" },
+  { "company": "Nike", "country": "USA", "industry": "Consumer Products" },
+  { "company": "Nippon Steel & Sumitomo Metal", "country": "Japan", "industry": "Primary Metals" },
+  { "company": "Nissan Motor Company", "country": "Japan", "industry": "Automotive" },
+  { "company": "Nitto Denko", "country": "Japan", "industry": "Industrial" },
+  { "company": "Novartis", "country": "Switzerland", "industry": "Pharmaceutical" },
+  { "company": "NTT", "country": "Japan", "industry": "Telecommunication & Equipment" },
+  { "company": "Olympus", "country": "Japan", "industry": "Healthcare Products" },
+  { "company": "Oracle", "country": "USA", "industry": "Computer Software" },
+  { "company": "Panasonic", "country": "Japan", "industry": "Consumer Products" },
+  { "company": "Philips ", "country": "Netherlands", "industry": "Electrical Products" },
+  { "company": "Qualcomm", "country": "USA", "industry": "Semiconductor & Electronic Components" },
+  { "company": "Ricoh", "country": "Japan", "industry": "Computer Hardware" },
+  { "company": "Roche", "country": "Switzerland", "industry": "Pharmaceutical" },
+  { "company": "Safran", "country": "France", "industry": "Transportation Equipment" },
+  { "company": "Saint-Gobain", "country": "France", "industry": "Industrial" },
+  {
+    "company": "Samsung Electronics",
+    "country": "S. Korea",
+    "industry": "Semiconductor & Electronic Components"
+  },
+  { "company": "SanDisk", "country": "USA", "industry": "Semiconductor & Electronic Components" },
+  { "company": "Seagate", "country": "USA", "industry": "Computer Hardware" },
+  { "company": "Seiko Epson", "country": "Japan", "industry": "Computer Hardware" },
+  {
+    "company": "Semiconductor Energy Laboratory",
+    "country": "Japan",
+    "industry": "Semiconductor & Electronic Components"
+  },
+  { "company": "Sharp", "country": "Japan", "industry": "Semiconductor & Electronic Components" },
+  { "company": "Shin-Etsu", "country": "Japan", "industry": "Chemical" },
+  { "company": "Siemens", "country": "Germany", "industry": "Electrical Products" },
+  { "company": "Sony", "country": "Japan", "industry": "Consumer Products" },
+  {
+    "company": "STMicroelectronics",
+    "country": "Switzerland",
+    "industry": "Semiconductor & Electronic Components"
+  },
+  { "company": "Sumitomo Electric", "country": "Japan", "industry": "Industrial" },
+  { "company": "Sumitomo Rubber Industries", "country": "Japan", "industry": "Industrial" },
+  { "company": "Symantec", "country": "USA", "industry": "Computer Software" },
+  { "company": "TDK", "country": "Japan", "industry": "Semiconductor & Electronic Components" },
+  {
+    "company": "TE Connectivity",
+    "country": "Switzerland",
+    "industry": "Semiconductor & Electronic Components"
+  },
+  {
+    "company": "Texas Instruments",
+    "country": "USA",
+    "industry": "Semiconductor & Electronic Components"
+  },
+  {
+    "company": "Tokyo Electron",
+    "country": "Japan",
+    "industry": "Semiconductor & Electronic Components"
+  },
+  { "company": "Toshiba", "country": "Japan", "industry": "Computer Hardware" },
+  { "company": "Toyota Motor Corporation", "country": "Japan", "industry": "Automotive" },
+  { "company": "Xerox", "country": "USA", "industry": "Computer Hardware" },
+  { "company": "Xilinx", "country": "USA", "industry": "Semiconductor & Electronic Components" },
+  { "company": "Yamaha Corporation", "country": "Japan", "industry": "Consumer Products" }
+]
+ }; });
+

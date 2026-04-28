@@ -1,0 +1,44 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": "e1",
+    "title": "ISO Format",
+    "begin": "2013-02-04T15:20:00-07:00",
+    "finish": "2013-02-10T15:20:00-07:00",
+    "description": "Used ISO date and time format with zoning.",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e2",
+    "title": "ISO Format with default UTC Time.",
+    "begin": "2013-02-11T15:20:00Z",
+    "finish": "2013-02-17T15:23:00Z",
+    "description": "If the value in the finish of format is omitted, UTC time is used.",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e3",
+    "title": "ISO Format in Short Notation",
+    "begin": "2013-03",
+    "finish": "2013-03-10",
+    "description": "In the short notation day and time can be omitted",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e4",
+    "title": "Non ISO Format",
+    "begin": "03/07/2013",
+    "finish": "Mar 17, 2013",
+    "description": "Allowed 'MM/DD/YYYY' and 'mmm DD, YYYY' notations",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e5",
+    "title": "Non ISO Formats with Conversion to ISO",
+    "begin": "01/07/2013",
+    "finish": "Jan 17, 2013",
+    "description": "Used dateToLocalIso() method from the IntlConverterUtils component",
+    "series": "Oracle Events"
+  }
+]
+ }; });
+

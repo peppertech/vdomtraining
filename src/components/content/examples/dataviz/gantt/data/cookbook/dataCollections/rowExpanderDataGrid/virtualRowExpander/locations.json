@@ -1,0 +1,102 @@
+{
+  "Locations": [
+    {
+      "LocationId": 1700,
+      "StreetAddress": "2004 Charade Rd",
+      "PostalCode": "98199",
+      "City": "Seattle",
+      "State": "WA",
+      "Country": "US",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://slc01qrl:7801/stable/rest/Locations/1700"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://slc01qrl:7801/stable/rest/Locations/1700"
+        },
+        "Departments": {
+          "rel": "child",
+          "href": "http://slc01qrl:7801/stable/rest/Locations/1700/Departments"
+        }
+      }
+    },
+    {
+      "LocationId": 1500,
+      "StreetAddress": "2011 Interiors Blvd",
+      "PostalCode": "99236",
+      "City": "South San Francisco",
+      "State": "CA",
+      "Country": "US",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://slc01qrl:7801/stable/rest/Locations/1500"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://slc01qrl:7801/stable/rest/Locations/1500"
+        },
+        "Departments": {
+          "rel": "child",
+          "href": "http://slc01qrl:7801/stable/rest/Locations/1500/Departments"
+        }
+      }
+    },
+    {
+      "LocationId": 1400,
+      "StreetAddress": "2014 Jabberwocky Rd",
+      "PostalCode": "26192",
+      "City": "Southlake",
+      "State": "TX",
+      "Country": "US",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://slc01qrl:7801/stable/rest/Locations/1400"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://slc01qrl:7801/stable/rest/Locations/1400"
+        },
+        "Departments": {
+          "rel": "child",
+          "href": "http://slc01qrl:7801/stable/rest/Locations/1400/Departments"
+        }
+      }
+    },
+    {
+      "LocationId": 1900,
+      "StreetAddress": "6092 Boxwood St",
+      "PostalCode": "YSW 9T2",
+      "City": "Whitehorse",
+      "State": "Yukon",
+      "Country": "CA",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://slc01qrl:7801/stable/rest/Locations/1900"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://slc01qrl:7801/stable/rest/Locations/1900"
+        },
+        "Departments": {
+          "rel": "child",
+          "href": "http://slc01qrl:7801/stable/rest/Locations/1900/Departments"
+        }
+      }
+    }
+  ],
+  "links": {
+    "self": {
+      "rel": "self",
+      "href": "http://slc01qrl:7801/stable/rest/Departments"
+    }
+  },
+  "_contextInfo": {
+    "limit": 25,
+    "offset": 0
+  }
+}

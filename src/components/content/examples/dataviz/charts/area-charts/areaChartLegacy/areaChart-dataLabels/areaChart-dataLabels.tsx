@@ -1,0 +1,60 @@
+import { Fragment, h } from 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo, useState } from 'preact/hooks';
+import { JetElementCustomEvent } from 'ojs/index';
+import * as quarterDataText from 'text!../../data/cookbook/dataVisualizations/chart/resources/quarterData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import 'ojs/ojchart';
+import 'ojs/ojtoolbar';
+import 'ojs/ojformlayout';
+import '../../../../../../../jet-composites/demo-chart-orientation-control/loader';
+import '../../../../../../../jet-composites/demo-chart-stack-control/loader';
+import '../../../../../../../jet-composites/demo-select-enum/loader';
+type ChartStack = ComponentProps<'oj-chart'>['stack'];
+type ChartOrientation = ComponentProps<'oj-chart'>['orientation'];
+type ChartDataLabelPosition = 'auto' | 'center' | 'aboveMarker' | 'belowMarker' | 'beforeMarker' | 'afterMarker';
+type AreaChartItem = {
+    id: number;
+    quarter: string;
+    series: string;
+    value: number;
+};
+const quarterData = JSON.parse(quarterDataText as string) as AreaChartItem[];
+export const AreaChartDataLabels = () => {
+    const [stackValue, setStackValue] = useState<ChartStack>('off');
+    const [orientationValue, setOrientationValue] = useState<ChartOrientation>('vertical');
+    const [labelPosition, setLabelPosition] = useState<ChartDataLabelPosition>('auto');
+    const dataProvider = useMemo(() => new ArrayDataProvider(quarterData, {
+        keyAttributes: 'id'
+    }), []);
+    const handleLabelPositionValueChanged = (event: JetElementCustomEvent<ChartDataLabelPosition>) => {
+        setLabelPosition(event.detail.value);
+    };
+    const handleOrientationValueOrientationChanged = (event: JetElementCustomEvent<ChartOrientation>) => {
+        setOrientationValue(event.detail.value);
+    };
+    const handleStackValueStackChanged = (event: JetElementCustomEvent<ChartStack>) => {
+        setStackValue(event.detail.value);
+    };
+    const itemTemplateRenderer = (item: any) => {
+        return <oj-chart-item value={item.data.value} groupId={[item.data.quarter]} seriesId={item.data.series} label={(item.data.id === 2 || item.data.id === 5) ? item.data.quarter : ''}/>;
+    };
+    const ojChartProps: Partial<ComponentProps<'oj-chart'>> = { styleDefaults: {
+            dataLabelPosition: labelPosition,
+            dataLabelStyle: "{\"fontSize\": \"12px\"}"
+        } };
+    return (<div id="chart-container">
+            <oj-form-layout aria-controls="areaChart">
+                    <demo-select-enum id="labelPositionId" labelHint="Label Position" onvalueChanged={handleLabelPositionValueChanged} value={labelPosition} enumValues={["auto", "center", "aboveMarker", "belowMarker", "beforeMarker", "afterMarker"]}/>
+                </oj-form-layout>
+            <oj-chart id="areaChart" type="area" orientation={orientationValue} stack={stackValue} data={dataProvider} animationOnDisplay="auto" animationOnDataChange="auto" {...ojChartProps}>
+                    <template slot="itemTemplate" render={itemTemplateRenderer}/>
+                </oj-chart>
+            <oj-toolbar id="myToolbar" aria-label="Chart Display Options Toolbar" aria-controls="areaChart">
+                    <demo-chart-orientation-control id="orientationControl" type="area" focusManagement="none" onorientationChanged={handleOrientationValueOrientationChanged} orientation={orientationValue}/>
+                    <span role="separator" aria-orientation="vertical" class="oj-toolbar-separator"/>
+                    <demo-chart-stack-control id="stackControl" type="area" focusManagement="none" onstackChanged={handleStackValueStackChanged} stack={stackValue}/>
+                </oj-toolbar>
+        </div>);
+};
+export default AreaChartDataLabels;

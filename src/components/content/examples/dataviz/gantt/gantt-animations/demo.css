@@ -1,0 +1,14 @@
+.demo-gantt {
+  width: 100%;
+  height: 25rem;
+}
+
+.demo-task-add-remove {
+  fill: var(--oj-dvt-success-color);
+}
+.demo-task-move {
+  fill: var(--oj-dvt-danger-color);
+}
+.demo-task-row-add-remove {
+  fill: var(--oj-dvt-warning-color);
+}

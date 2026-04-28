@@ -1,0 +1,3 @@
+.demo-diagram-marker {
+  fill: var(--oj-diagram-link-color, #267db3);
+}

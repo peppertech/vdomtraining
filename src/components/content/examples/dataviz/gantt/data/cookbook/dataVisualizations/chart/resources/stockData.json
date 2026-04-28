@@ -1,0 +1,37 @@
+[
+  {
+    "id": 0,
+    "series": "Series 1",
+    "stock": "ORCL",
+    "value": 2.95,
+    "size": 3100
+  },
+  {
+    "id": 1,
+    "series": "Series 1",
+    "stock": "YHOO",
+    "value": -0.85,
+    "size": 2000
+  },
+  {
+    "id": 2,
+    "series": "Series 1",
+    "stock": "MSFT",
+    "value": -0.75,
+    "size": 1700
+  },
+  {
+    "id": 3,
+    "series": "Series 1",
+    "stock": "AAPL",
+    "value": 1.88,
+    "size": 2800
+  },
+  {
+    "id": 4,
+    "series": "Series 1",
+    "stock": "INTC",
+    "value": 2.3,
+    "size": 500
+  }
+]

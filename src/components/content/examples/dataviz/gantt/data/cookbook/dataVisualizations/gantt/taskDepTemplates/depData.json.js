@@ -1,0 +1,100 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": "d1",
+    "predecessor": "requirements",
+    "successor": "ux-wireframes-1",
+    "relation": "finishStart"
+  },
+  {
+    "id": "d2",
+    "predecessor": "ux-wireframes-1",
+    "successor": "templating",
+    "relation": "startStart"
+  },
+  {
+    "id": "d3",
+    "predecessor": "requirements",
+    "successor": "dev-design-review",
+    "relation": "finishStart"
+  },
+  {
+    "id": "d4",
+    "predecessor": "ux-wireframes-1",
+    "successor": "ux-review",
+    "relation": "finishStart"
+  },
+  {
+    "id": "d5",
+    "predecessor": "ux-review",
+    "successor": "ux-wireframes-2",
+    "relation": "finishStart"
+  },
+  {
+    "id": "d6",
+    "predecessor": "ux-wireframes-2",
+    "successor": "ui-phase-1",
+    "relation": "startStart"
+  },
+  {
+    "id": "d7",
+    "predecessor": "ux-wireframes-2",
+    "successor": "ui-design",
+    "relation": "finishStart"
+  },
+  {
+    "id": "d8",
+    "predecessor": "ui-design",
+    "successor": "ui-phase-2",
+    "relation": "finishStart"
+  },
+  {
+    "id": "d9",
+    "predecessor": "ui-phase-1",
+    "successor": "dev-phase-1",
+    "relation": "finishStart"
+  },
+  {
+    "id": "d10",
+    "predecessor": "ui-phase-2",
+    "successor": "dev-phase-2",
+    "relation": "finishStart"
+  },
+  {
+    "id": "d11",
+    "predecessor": "ux-wireframes-1",
+    "successor": "qa-phase-1",
+    "relation": "finishStart"
+  },
+  {
+    "id": "d12",
+    "predecessor": "qa-phase-1",
+    "successor": "dev-phase-1",
+    "relation": "finishStart"
+  },
+  {
+    "id": "d13",
+    "predecessor": "qa-phase-2",
+    "successor": "dev-phase-2",
+    "relation": "finishStart"
+  },
+  {
+    "id": "d14",
+    "predecessor": "qa-phase-3",
+    "successor": "production-transition",
+    "relation": "finishStart"
+  },
+  {
+    "id": "d15",
+    "predecessor": "production-transition",
+    "successor": "production-testing",
+    "relation": "finishStart"
+  },
+  {
+    "id": "d16",
+    "predecessor": "hosting-env-setup",
+    "successor": "production-testing",
+    "relation": "finishStart"
+  }
+]
+ }; });
+

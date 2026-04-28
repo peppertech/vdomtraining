@@ -1,0 +1,32 @@
+[
+  {
+    "long": 0.1278,
+    "lat": 51.5074,
+    "city": "London"
+  },
+  {
+    "long": -1.257677,
+    "lat": 51.752022,
+    "city": "Oxford"
+  },
+  {
+    "long": -0.460739,
+    "lat": 52.136436,
+    "city": "Bedford"
+  },
+  {
+    "long": -7.318268,
+    "lat": 55.006763,
+    "city": "Londonderry"
+  },
+  {
+    "long": -8.630498,
+    "lat": 52.668018,
+    "city": "Limerick"
+  },
+  {
+    "long": -6.251495,
+    "lat": 53.353584,
+    "city": "Dublin"
+  }
+]

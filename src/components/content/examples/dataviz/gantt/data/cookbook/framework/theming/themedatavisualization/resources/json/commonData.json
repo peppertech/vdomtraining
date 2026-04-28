@@ -1,0 +1,74 @@
+[
+  {
+    "id": 0,
+    "series": "Category1",
+    "group": "Deals",
+    "value": 42
+  },
+  {
+    "id": 1,
+    "series": "Category2",
+    "group": "Deals",
+    "value": 55
+  },
+  {
+    "id": 2,
+    "series": "Category3",
+    "group": "Deals",
+    "value": 36
+  },
+  {
+    "id": 3,
+    "series": "Category4",
+    "group": "Deals",
+    "value": 10
+  },
+  {
+    "id": 4,
+    "series": "Category5",
+    "group": "Deals",
+    "value": 5
+  },
+  {
+    "id": 5,
+    "series": "Category6",
+    "group": "Deals",
+    "value": 42
+  },
+  {
+    "id": 6,
+    "series": "Category7",
+    "group": "Deals",
+    "value": 55
+  },
+  {
+    "id": 7,
+    "series": "Category8",
+    "group": "Deals",
+    "value": 36
+  },
+  {
+    "id": 8,
+    "series": "Category9",
+    "group": "Deals",
+    "value": 10
+  },
+  {
+    "id": 9,
+    "series": "Category10",
+    "group": "Deals",
+    "value": 5
+  },
+  {
+    "id": 10,
+    "series": "Category11",
+    "group": "Deals",
+    "value": 42
+  },
+  {
+    "id": 11,
+    "series": "Category12",
+    "group": "Deals",
+    "value": 55
+  }
+]

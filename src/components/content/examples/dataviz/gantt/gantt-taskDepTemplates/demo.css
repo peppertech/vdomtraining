@@ -1,0 +1,37 @@
+.demo-gantt {
+  width: 100%;
+  height: 35rem;
+}
+
+.demo-gantt-dep-line {
+  marker-start: url('#demoCircleMarker');
+  marker-end: url('#demoArrowMarker');
+  stroke: rgb(var(--oj-palette-neutral-rgb-200));
+}
+
+.demo-circle-marker {
+  fill: rgb(var(--oj-palette-neutral-rgb-0));
+  stroke: rgb(var(--oj-palette-neutral-rgb-200));
+}
+.demo-arrow-marker {
+  fill: rgb(var(--oj-palette-neutral-rgb-200));
+  stroke: rgb(var(--oj-palette-neutral-rgb-200));
+}
+
+.demo-gantt-status-done {
+  fill: var(--oj-dvt-success-color);
+}
+
+.demo-gantt-status-progress {
+  fill: var(--oj-dvt-warning-color);
+}
+
+.demo-gantt-avatar {
+  clip-path: inset(0% round 1.5rem);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+html[dir='rtl'] .demo-gantt-avatar {
+  transform: translateX(-1.5rem);
+}

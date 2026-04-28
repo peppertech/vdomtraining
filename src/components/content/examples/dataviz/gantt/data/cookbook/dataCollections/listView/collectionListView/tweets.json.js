@@ -1,0 +1,268 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "name": "Oracle Retail",
+    "screen_name": "OracleRetail",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/119042903/oracleretaillogo_bigger.png",
+    "text": "London's West End set for 3m sq ft of new retail space as area's sales hit 11bn (via @RetailWeek) http://bit.ly/1zXpZHZ  ^SW",
+    "created_at": "2015-03-04 2:40am",
+    "source": "http://t.co/FNlfkr8pED"
+  },
+  {
+    "name": "Oracle Hardware",
+    "screen_name": "oraclehardware",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/471435375026520064/h_era3o9_bigger.jpeg",
+    "text": "How @Accenture deployed their #SAP workloads on #EngineeredSystems? Listen to them on this webcast: http://ora.cl/DAP",
+    "created_at": "2015-03-04 2:00am",
+    "source": "http://t.co/O6PwV9ed5V"
+  },
+  {
+    "name": "Oracle Retail",
+    "screen_name": "OracleRetail",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/119042903/oracleretaillogo_bigger.png",
+    "text": "Sainsbury's launches grocery Click and Collect #ecommerce (via @RetailSystems) http://bit.ly/1wHHQXH  ^SW",
+    "source": "http://t.co/qlJ6pqxtFB",
+    "created_at": "2015-03-04 1:39am"
+  },
+  {
+    "name": "OracleFMS",
+    "screen_name": "OracleFMS",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/568192297607499776/h3jkfdSh_bigger.jpeg",
+    "text": "Close on the Go with @Oracle #EPM #Mobile:  download @AppStore #iOS http://ora.cl/tdO",
+    "source": "http://t.co/RTVz04XR2r",
+    "created_at": "2015-03-04 1:00am"
+  },
+  {
+    "name": "OracleIndia",
+    "screen_name": "Oracle_India",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/626637220577849344/8cjP7y7E_bigger.jpg",
+    "text": "Listen to @rwang0 & @ShawnPrice1000 to learn about the latest #cloud innovations at #CloudWorld. http://bit.ly/1zNUEe9",
+    "source": "http://t.co/44otGQoI4I",
+    "created_at": "2015-03-04 12:34am"
+  },
+  {
+    "name": "Oracle BeLux",
+    "screen_name": "OracleBelux",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/3059524900/7293fb6ba2b438b5c59d563b6c95c6f4_bigger.png",
+    "text": "The rise of Data Capital, and why companies should care http://onforb.es/18jAUE1",
+    "source": "http://t.co/LrMaw8Dipt",
+    "created_at": "2015-03-04 12:27am"
+  },
+  {
+    "name": "OracleHealthSciences",
+    "screen_name": "OracleHealthSci",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/1665757409/Avatar-Twitter-400x400px_bigger.jpg",
+    "text": "Dr. Jonathan Sheldon is the program chair at #PrecisionMedicine World Conf Oxford #PMWCUK15 http://ora.cl/B9D",
+    "source": "http://t.co/UiMzW1sUVW",
+    "created_at": "2015-03-03 11:30pm"
+  },
+  {
+    "name": "Oracle E-Business",
+    "screen_name": "Oracle_EBS",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/3509077710/55f97054cfe5fd5740a4ef1cbd88f382_bigger.gif",
+    "text": "#OracleEBS #Purchasing Logging Receiving Service Requests? We want your feedback on the Guided Resolution http://ora.cl/D9P",
+    "source": "http://t.co/KFEWyHgShF",
+    "created_at": "2015-03-03 11:10pm"
+  },
+  {
+    "name": "OracleIndia",
+    "screen_name": "Oracle_India",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/626637220577849344/8cjP7y7E_bigger.jpg",
+    "text": "How can #CHRO make sure that their organization is transparent? These 3 steps are key: via. @forbes @bertranddussert http://onforb.es/1aKW5kq",
+    "source": "http://t.co/bNBCS2RvhK",
+    "created_at": "2015-03-03 9:51pm"
+  },
+  {
+    "name": "Oracle",
+    "screen_name": "Oracle",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/535165913054445568/jT-HJYJg_bigger.png",
+    "text": "#Mobile is a huge technical + cultural disruptor and companies need to have a plan: http://onforb.es/1EuZ0ZF  #MWC15",
+    "source": "https://twitter.com/hashtag/MWC15?src=hash",
+    "created_at": "2015-03-03 8:22pm"
+  },
+  {
+    "name": "Oracle Security",
+    "screen_name": "OracleSecurity",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/482088235808473088/KR2jmc_H_bigger.jpeg",
+    "text": "Trends in #security: 5 developments to expect in 2015 by Amitava Ghosh, Business Analyst, Insight Global Scalability http://ora.cl/rei",
+    "source": "http://t.co/bBUOZfs1zg",
+    "created_at": "2015-03-03 7:15pm"
+  },
+  {
+    "name": "Oracle",
+    "screen_name": "Oracle",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/535165913054445568/jT-HJYJg_bigger.png",
+    "text": "Speeding up the innovation cycle with #SaaS - http://bit.ly/1DQRRBg  via @stevenrmiranda @Diginomica",
+    "source": "https://twitter.com/diginomica",
+    "created_at": "2015-03-03 6:42pm"
+  },
+  {
+    "name": "Oracle Exalogic",
+    "screen_name": "OracleExalogic",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/1133300101/Exalogic_top_closed_0056_424_bigger.png",
+    "text": "See how @AsianaAirlines Builds PIP System with @Oracle #EngineeredSystems http://bit.ly/1vvbgHU",
+    "source": "http://t.co/DCrrL0XAup",
+    "created_at": "2015-03-03 5:46pm"
+  },
+  {
+    "name": "Oracle Cloud Zone",
+    "screen_name": "OracleCloudZone",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/378800000385662205/77adb981093790b107d5600888d5fc27_bigger.jpeg",
+    "text": "A short testimonial on our customers' success with Oracle Sales Cloud #SaaSsuccess http://ora.cl/hPa",
+    "source": "http://t.co/wuAp7zChkF",
+    "created_at": "2015-03-03 5:40pm"
+  },
+  {
+    "name": "Oracle Analytics",
+    "screen_name": "OracleAnalytics",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/582943335850979328/YABPmCZ8_bigger.png",
+    "text": "Join @Dainsworld, @zedlewski & Jeff Pollock as they discuss #BigData architectures and successes on March 5. http://ora.cl/qoI",
+    "source": "http://t.co/7OwIbg3ahs",
+    "created_at": "2015-03-03 5:15pm"
+  },
+  {
+    "name": "ORCL Dataintegration",
+    "screen_name": "OracleDI",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/378800000419870566/94e095c81c27fec5c373b1692e5b5206_bigger.png",
+    "text": "You can now ingest #realtime data into #Hadoop platforms w/#ORCLGoldenGate for #BigData. Register here to learn more. http://ora.cl/7Bk",
+    "source": "http://t.co/2kEScMElEH",
+    "created_at": "2015-03-03 5:10pm"
+  },
+  {
+    "name": "Oracle Database",
+    "screen_name": "OracleDatabase",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/378800000050225258/c8aaaa5340b591f180d4ddb3acc2f64a_bigger.jpeg",
+    "text": ".@sfonplsql's Practically Perfect PL/SQL series continues: Get rid of hard-coded literals! http://ora.cl/2G8",
+    "source": "http://t.co/52Pl92a8iF",
+    "created_at": "2015-03-03 3:45pm"
+  },
+  {
+    "name": "Oracle_EMEA",
+    "screen_name": "Oracle_EMEAPR",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/267052101/tpic1_bigger.JPG",
+    "text": "The mysterious 80%. What delivers the biggest payoffs when recruiting top talent via @bertranddussert, @forbesv http://www.forbes.com/sites/oracle/2015/03/02/the-big-reveal-hr-in-the-age-of-transparency/",
+    "source": "http://t.co/SllecVMN4x",
+    "created_at": "2015-03-03 3:33pm"
+  },
+  {
+    "name": "Oracle",
+    "screen_name": "Oracle",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/535165913054445568/jT-HJYJg_bigger.png",
+    "text": "As #mobile malware spreads, it's time to take a '#Data First' tack on security: http://onforb.es/17Om20H  #MWC15",
+    "source": "http://t.co/zrthx6Jdrx",
+    "created_at": "2015-03-03 3:00pm"
+  },
+  {
+    "name": "Oracle University",
+    "screen_name": "Oracle_Edu",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/548452106080772096/-Hj71PwB_bigger.png",
+    "text": "Join our 'Software in Silicon Cloud features for developers' Webinar going Live on March 18: http://ora.cl/7ww",
+    "source": "http://t.co/i72APLA7LF",
+    "created_at": "2015-03-03 3:00pm"
+  },
+  {
+    "name": "ORCL PartnerNetwork",
+    "screen_name": "oraclepartners",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/659889248040980480/kJJMdS2r_bigger.jpg",
+    "text": "ERP Cloud PartnerCast replays now live on OMN! Catch what you (may have) missed on Feb 25: http://bit.ly/1NdSKJz",
+    "source": "http://t.co/i72APLA7LG",
+    "created_at": "2015-03-03 2:59pm"
+  },
+  {
+    "name": "Oracle Identity Mgmt",
+    "screen_name": "OracleIDM",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/2657077440/a08efabe6943584c76e50cfecf468337_bigger.png",
+    "text": "How I did on Twitter this week: 10 New Followers, 7 Mentions, 2.1K Mention Reach. How'd your week go? via http://sumall.com/myweek",
+    "source": "http://t.co/nGQzxIXg7H",
+    "created_at": "2015-03-03 2:21pm"
+  },
+  {
+    "name": "ORCL Dataintegration",
+    "screen_name": "OracleDI",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/378800000419870566/94e095c81c27fec5c373b1692e5b5206_bigger.png",
+    "text": "Learn more about #Hadoop #DataGovernance, storage & ingest with @OracleDI & @Cloudera on the 5th of March http://ora.cl/AIL",
+    "source": "http://t.co/UdSd5jn8rO",
+    "created_at": "2015-03-03 2:20pm"
+  },
+  {
+    "name": "ORCL PartnerNetwork",
+    "screen_name": "oraclepartners",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/659889248040980480/kJJMdS2r_bigger.jpg",
+    "text": "The #OPN website has gone mobile! Full scoop: http://bit.ly/1wHjEEP",
+    "source": "http://t.co/opngznyiTv",
+    "created_at": "2015-03-03 2:15pm"
+  },
+  {
+    "name": "Oracle Database",
+    "screen_name": "OracleDatabase",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/378800000050225258/c8aaaa5340b591f180d4ddb3acc2f64a_bigger.jpeg",
+    "text": "Take your business to the cloud w/ #DBaaS from #DB12c experts in our free 3/18 Online Forum! http://ora.cl/dJf",
+    "source": "http://t.co/O1xX6nIMhe",
+    "created_at": "2015-03-03 2:15pm"
+  },
+  {
+    "name": "oraclemidsize",
+    "screen_name": "oraclemidsize",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/2102787792/facebook_avatar_one_bigger.gif",
+    "text": "Open source: .@ORCL_Linux now available as @docker image - http://ora.cl/0Rm  #opensource",
+    "source": "http://t.co/zNogmDEjdV",
+    "created_at": "2015-03-03 2:00pm"
+  },
+  {
+    "name": "Oracle Identity Mgmt",
+    "screen_name": "OracleIDM",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/2657077440/a08efabe6943584c76e50cfecf468337_bigger.png",
+    "text": "Are you using social identities in the workplace?  Read 'Does your company recognize your online identity?' https://www.oracle.com/us/corporate/features/managing-mobile-identities/index.html",
+    "source": "http://t.co/dPzn1iPgpw",
+    "created_at": "2015-03-03 1:37pm"
+  },
+  {
+    "name": "Oracle Cloud Zone",
+    "screen_name": "OracleCloudZone",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/378800000385662205/77adb981093790b107d5600888d5fc27_bigger.jpeg",
+    "text": "Ready to attend @Oracle #CloudDay? Check out 5 best practices for #PaaS success. #Infographic http://ora.cl/jJa",
+    "source": "http://t.co/LpaiFxiliN",
+    "created_at": "2015-03-03 1:27pm"
+  },
+  {
+    "name": "ORCL Dataintegration",
+    "screen_name": "OracleDI",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/378800000419870566/94e095c81c27fec5c373b1692e5b5206_bigger.png",
+    "text": "Learn more about#ODI12c support for #Oozie #Spark & #Sqoop w/@Dainsworld from #Oracle & @zedlewski from @Cloudera http://ora.cl/0K3",
+    "source": "http://t.co/vBcjFppN7D",
+    "created_at": "2015-03-03 1:20pm"
+  },
+  {
+    "name": "My Oracle Support",
+    "screen_name": "myoraclesupport",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/1196713028/myoraclesupport_bigger.jpg",
+    "text": "Oracle Community now offers new user 'levels', badges, and achievements. Join the fun! http://ora.cl/WbW",
+    "source": "http://t.co/Uu64qixcbE",
+    "created_at": "2015-03-03 1:00pm"
+  },
+  {
+    "name": "Oracle Database",
+    "screen_name": "OracleDatabase",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/378800000050225258/c8aaaa5340b591f180d4ddb3acc2f64a_bigger.jpeg",
+    "text": "Are Cloud Databases in YOUR Future? Get #DBaaS insights from Oracle's Andy Mendelsohn http://ora.cl/fDR",
+    "source": "http://t.co/L0ttX6jUuS",
+    "created_at": "2015-03-03 12:43pm"
+  },
+  {
+    "name": "Oracle Utilities",
+    "screen_name": "oracleutilities",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/355519491/oracle_utilities_profile_bigger.jpg",
+    "text": "The @utilanalytics summit begins today in #Phoenix! Don't miss the premier event for #utility #analytics leaders. http://ora.cl/m0s",
+    "source": "http://t.co/9Jvtdk67na",
+    "created_at": "2015-03-03 12:10pm"
+  },
+  {
+    "name": "Oracle Hardware",
+    "screen_name": "oraclehardware",
+    "profile_background_image_url": "https://pbs.twimg.com/profile_images/471435375026520064/h_era3o9_bigger.jpeg",
+    "text": "Here's why mobile shouldn't stand alone: http://ora.cl/71p  via @Forbes #MWC15",
+    "source": "http://t.co/WZz7hwOqk9",
+    "created_at": "2015-03-03 12:00pm"
+  }
+]
+ }; });
+

@@ -1,0 +1,144 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": 0,
+    "series": "Series 1",
+    "group": "Group A",
+    "value": 57,
+    "low": 28,
+    "high": 54,
+    "x": 8,
+    "y": 2
+  },
+  {
+    "id": 1,
+    "series": "Series 1",
+    "group": "Group B",
+    "value": 90,
+    "low": 21,
+    "high": 46,
+    "x": 15,
+    "y": 15
+  },
+  {
+    "id": 2,
+    "series": "Series 1",
+    "group": "Group C",
+    "value": 89,
+    "low": 27,
+    "high": 83,
+    "x": 25,
+    "y": 26
+  },
+  {
+    "id": 3,
+    "series": "Series 1",
+    "group": "Group D",
+    "value": 46,
+    "low": 69,
+    "high": 84,
+    "x": 33,
+    "y": 22
+  },
+  {
+    "id": 4,
+    "series": "Series 1",
+    "group": "Group E",
+    "value": 75,
+    "low": 76,
+    "high": 85,
+    "x": 37,
+    "y": 35
+  },
+  {
+    "id": 5,
+    "series": "Series 1",
+    "group": "Group F",
+    "value": 52,
+    "low": 39,
+    "high": 51,
+    "x": 38,
+    "y": 40
+  },
+  {
+    "id": 6,
+    "series": "Series 1",
+    "group": "Group G",
+    "value": 49,
+    "low": 13,
+    "high": 22,
+    "x": 39,
+    "y": 44
+  },
+  {
+    "id": 7,
+    "series": "Series 2",
+    "group": "Group A",
+    "value": 49,
+    "low": 69,
+    "high": 60,
+    "x": 4,
+    "y": 32
+  },
+  {
+    "id": 8,
+    "series": "Series 2",
+    "group": "Group B",
+    "value": 87,
+    "low": 20,
+    "high": 86,
+    "x": 21,
+    "y": 25
+  },
+  {
+    "id": 9,
+    "series": "Series 2",
+    "group": "Group C",
+    "value": 75,
+    "low": 32,
+    "high": 38,
+    "x": 27,
+    "y": 18
+  },
+  {
+    "id": 10,
+    "series": "Series 2",
+    "group": "Group D",
+    "value": 78,
+    "low": 28,
+    "high": 35,
+    "x": 39,
+    "y": 24
+  },
+  {
+    "id": 11,
+    "series": "Series 2",
+    "group": "Group E",
+    "value": 61,
+    "low": 18,
+    "high": 20,
+    "x": 32,
+    "y": 36
+  },
+  {
+    "id": 12,
+    "series": "Series 2",
+    "group": "Group F",
+    "value": 80,
+    "low": 53,
+    "high": 84,
+    "x": 26,
+    "y": 40
+  },
+  {
+    "id": 13,
+    "series": "Series 2",
+    "group": "Group G",
+    "value": 71,
+    "low": 22,
+    "high": 76,
+    "x": 20,
+    "y": 42
+  }
+]
+ }; });
+

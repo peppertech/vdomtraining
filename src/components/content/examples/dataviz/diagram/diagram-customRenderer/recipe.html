@@ -1,0 +1,67 @@
+<ul>
+  <li>
+    To customize nodes
+    <ol>
+      <li>
+        To create custom SVG content for the diagram node, provide a callback function using the
+        <a target="_blank" href="jsdocs/oj.ojDiagram.html#nodeContent.renderer">
+          <code>node-content.renderer</code>
+        </a>
+        attribute on oj-diagram element.
+      </li>
+      <li>
+        To customize hover, selection and keyboard focus effects for the diagram node with custom
+        content provide callback functions using the&nbsp;
+        <a target="_blank" href="jsdocs/oj.ojDiagram.html#nodeContent.hoverRenderer">
+          <code>node-content.hover-renderer</code>
+        </a>
+        ,
+        <a target="_blank" href="jsdocs/oj.ojDiagram.html#nodeContent.selectionRenderer">
+          <code>node-content.selection-renderer</code>
+        </a>
+        and
+        <a target="_blank" href="jsdocs/oj.ojDiagram.html#nodeContent.focusRenderer">
+          <code>node-content.focus-renderer</code>
+        </a>
+        attributes on oj-diagram element. These functions are called when the node state has
+        changed, and they apply or remove any hover/selection effects based on the passed in node
+        state.
+      </li>
+    </ol>
+  </li>
+  <li>
+    To customize links
+    <ol>
+      <li>
+        To create custom SVG content for the diagram link, provide a callback function using the
+        <a target="_blank" href="jsdocs/oj.ojDiagram.html#linkContent.renderer">
+          <code>link-content.renderer</code>
+        </a>
+        attribute on oj-diagram element.
+      </li>
+      <li>
+        Note, when the
+        <b><i>oj-diagram-link-path</i></b>
+        class is used as a marker for the path element Diagram is responsible for providing path
+        commands as a value for
+        <code>d</code>
+        attribute. The path value will be created using link points populated by the Diagram layout.
+      </li>
+      <li>
+        <b>Link Animation</b>
+        : When the link shape is represented by a single
+        <code>path</code>
+        element and the element is marked by the
+        <b><i>oj-diagram-link-path</i></b>
+        class, Diagram is able to recognize the link path and animate it using built-in path
+        transformation during data change animation.
+        <br />
+        Fade-in animation will be used for other link elements.
+      </li>
+    </ol>
+  </li>
+  <li>
+    <b>Layouts</b>
+    : The application is responsible for providing the layout algorithm used by the Diagram.
+  </li>
+</ul>

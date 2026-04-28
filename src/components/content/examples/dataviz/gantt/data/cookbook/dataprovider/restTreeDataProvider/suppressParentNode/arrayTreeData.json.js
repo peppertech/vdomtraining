@@ -1,0 +1,45 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "label": "Form",
+    "value": "form",
+    "children": []
+  },
+  {
+    "label": "Collection",
+    "value": "collection",
+    "children": [
+      {
+        "label": "Data Grid",
+        "value": "dataGrid"
+      },
+      {
+        "label": "Indexer",
+        "value": "indexer"
+      },
+      {
+        "label": "Selector",
+        "value": "selector"
+      }
+    ]
+  },
+  {
+    "label": "Framework",
+    "value": "framework",
+    "children": [
+      {
+        "label": "Animation",
+        "value": "animation"
+      },
+      {
+        "label": "Data Provider",
+        "value": "dataProvider"
+      },
+      {
+        "label": "Module",
+        "value": "module"
+      }
+    ]
+  }
+]
+ }; });
+

@@ -1,0 +1,215 @@
+[
+  {
+    "FactoryId": 10,
+    "FactoryName": "Rising Star Production",
+    "OrderLines": [
+      {
+        "OrderId": 1001,
+        "ProductDetails": [
+          {
+            "ProductId": "P030",
+            "ProductName": "Apple Magic Keyboard",
+            "Quantity": 1,
+            "UnitPrice": 40
+          },
+          {
+            "ProductId": "P040",
+            "ProductName": "USB to USBC Convertor",
+            "Quantity": 3,
+            "UnitPrice": 20
+          }
+        ],
+        "OrderDate": "01 Oct 2015"
+      },
+      {
+        "OrderId": 1005,
+        "ProductDetails": [
+          { "ProductId": "P010", "ProductName": "iPad Tablet", "Quantity": 1, "UnitPrice": 500 },
+          {
+            "ProductId": "P021",
+            "ProductName": "MacPro 15 Laptop",
+            "Quantity": 1,
+            "UnitPrice": 1600
+          }
+        ],
+        "OrderDate": "10 Oct 2015"
+      },
+      {
+        "OrderId": 1002,
+        "ProductDetails": [
+          {
+            "ProductId": "P030",
+            "ProductName": "Apple Magic Keyboard",
+            "Quantity": 1,
+            "UnitPrice": 40
+          },
+          { "ProductId": "P033", "ProductName": "Dell Keyboard", "Quantity": 1, "UnitPrice": 30 },
+          { "ProductId": "P077", "ProductName": "Universal Mouse", "Quantity": 1, "UnitPrice": 15 }
+        ],
+        "OrderDate": "01 Oct 2019"
+      }
+    ]
+  },
+  {
+    "FactoryId": 80,
+    "FactoryName": "Presice EquipSupplies",
+    "OrderLines": [
+      {
+        "OrderId": 777,
+        "ProductDetails": [
+          { "ProductId": "P010", "ProductName": "iPad Tablet", "Quantity": 1, "UnitPrice": 500 }
+        ],
+        "OrderDate": "05 Mar 2022"
+      }
+    ]
+  },
+  {
+    "FactoryId": 15,
+    "FactoryName": "HP Factory",
+    "OrderLines": [
+      {
+        "OrderId": 1515,
+        "ProductDetails": [
+          { "ProductId": "P029", "ProductName": "HP Laptop", "Quantity": 1, "UnitPrice": 1230 },
+          { "ProductId": "P079", "ProductName": "HP Desktop", "Quantity": 1, "UnitPrice": 1700 }
+        ],
+        "OrderDate": "16 Aug 2020"
+      }
+    ]
+  },
+  {
+    "FactoryId": 20,
+    "FactoryName": "AdvancedEquipment",
+    "OrderLines": [
+      {
+        "OrderId": 244339,
+        "ProductDetails": [
+          { "ProductId": "P077", "ProductName": "Universal Mouse", "Quantity": 5, "UnitPrice": 15 },
+          {
+            "ProductId": "P079",
+            "ProductName": "Mouse for special use",
+            "Quantity": 5,
+            "UnitPrice": 25
+          }
+        ],
+        "OrderDate": "08 Oct 2020"
+      },
+      {
+        "OrderId": 234500,
+        "ProductDetails": [
+          { "ProductId": "P011", "ProductName": "Fire Tablet", "Quantity": 1, "UnitPrice": 200 },
+          { "ProductId": "P012", "ProductName": "Kindle Tablet", "Quantity": 1, "UnitPrice": 80 },
+          { "ProductId": "P010", "ProductName": "iPad Tablet", "Quantity": 1, "UnitPrice": 500 }
+        ],
+        "OrderDate": "05 Jul 2019"
+      },
+      {
+        "OrderId": 211111,
+        "ProductDetails": [
+          {
+            "ProductId": "P020",
+            "ProductName": "MacPro 13 Laptop",
+            "Quantity": 1,
+            "UnitPrice": 1400
+          },
+          { "ProductId": "P050", "ProductName": "iPhone 13 Pro", "Quantity": 1, "UnitPrice": 1500 }
+        ],
+        "OrderDate": "16 Nov 2017"
+      },
+      {
+        "OrderId": 278890,
+        "ProductDetails": [
+          {
+            "ProductId": "P041",
+            "ProductName": "USBC to USB Convertor",
+            "Quantity": 2,
+            "UnitPrice": 20
+          }
+        ],
+        "OrderDate": "20 May 2018"
+      },
+      {
+        "OrderId": 246802,
+        "ProductDetails": [
+          {
+            "ProductId": "P018",
+            "ProductName": "iPad Tablet Accessory Package",
+            "Quantity": 1,
+            "UnitPrice": 50
+          }
+        ],
+        "OrderDate": "20 Jun 2017"
+      },
+      {
+        "OrderId": 200056,
+        "ProductDetails": [
+          {
+            "ProductId": "P085",
+            "ProductName": "iPhone Charging Wire",
+            "Quantity": 3,
+            "UnitPrice": 10
+          }
+        ],
+        "OrderDate": "18 Jan 2018"
+      }
+    ]
+  },
+  {
+    "FactoryId": 75,
+    "FactoryName": "ABC Manufacture",
+    "OrderLines": [
+      {
+        "OrderId": 2500,
+        "ProductDetails": [
+          {
+            "ProductId": "P085",
+            "ProductName": "iPhone Charging Wire",
+            "Quantity": 5,
+            "UnitPrice": 10
+          }
+        ],
+        "OrderDate": "15 Dec 2021"
+      },
+      {
+        "OrderId": 2503,
+        "ProductDetails": [
+          { "ProductId": "P010", "ProductName": "iPad Tablet", "Quantity": 1, "UnitPrice": 500 },
+          {
+            "ProductId": "P085",
+            "ProductName": "iPhone Charging Wire",
+            "Quantity": 5,
+            "UnitPrice": 10
+          }
+        ],
+        "OrderDate": "05 Jan 2022"
+      }
+    ]
+  },
+  {
+    "FactoryId": 30,
+    "FactoryName": "NextGen Supplies & Equipments",
+    "OrderLines": [
+      {
+        "OrderId": 685,
+        "ProductDetails": [
+          { "ProductId": "P023", "ProductName": "Dell Laptop", "Quantity": 1, "UnitPrice": 1530 },
+          { "ProductId": "P077", "ProductName": "Dell Desktop", "Quantity": 1, "UnitPrice": 1800 }
+        ],
+        "OrderDate": "01 Aug 2021"
+      }
+    ]
+  },
+  {
+    "FactoryId": 50,
+    "FactoryName": "New Factory1 -- data not completed yet",
+    "OrderLines": [
+      { "OrderId": 0, "ProductDetails": "Details not available" },
+      { "OrderId": 1, "ProductDetails": [], "OrderDate": "01 Jan 2022" }
+    ]
+  },
+  {
+    "FactoryId": 60,
+    "FactoryName": "Factory2 New -- Orderlines under construction",
+    "OrderLines": []
+  }
+]

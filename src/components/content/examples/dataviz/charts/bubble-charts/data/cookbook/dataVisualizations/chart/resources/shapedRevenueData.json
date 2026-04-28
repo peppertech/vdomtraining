@@ -1,0 +1,98 @@
+{
+  "2015": [
+    {
+      "id": "0",
+      "groupId": ["2015"],
+      "seriesId": "Phone",
+      "value": 155.5
+    },
+    {
+      "id": "1",
+      "groupId": ["2015"],
+      "seriesId": "Tablet",
+      "value": 21.326
+    },
+    {
+      "id": "2",
+      "groupId": ["2015"],
+      "seriesId": "Computer",
+      "value": 25.27
+    },
+    {
+      "id": "3",
+      "groupId": ["2015"],
+      "seriesId": "Services",
+      "value": 21.17
+    },
+    {
+      "id": "4",
+      "groupId": ["2015"],
+      "seriesId": "Other Products",
+      "value": 11.73
+    }
+  ],
+  "2014": [
+    {
+      "id": "0",
+      "groupId": ["2014"],
+      "seriesId": "Phone",
+      "value": 120.68
+    },
+    {
+      "id": "1",
+      "groupId": ["2014"],
+      "seriesId": "Tablet",
+      "value": 27.8
+    },
+    {
+      "id": "2",
+      "groupId": ["2014"],
+      "seriesId": "Computer",
+      "value": 24.63
+    },
+    {
+      "id": "3",
+      "groupId": ["2014"],
+      "seriesId": "Services",
+      "value": 18.47
+    },
+    {
+      "id": "4",
+      "groupId": ["2014"],
+      "seriesId": "Other Products",
+      "value": 8.23
+    }
+  ],
+  "2013": [
+    {
+      "id": "0",
+      "groupId": ["2013"],
+      "seriesId": "Phone",
+      "value": 93.12
+    },
+    {
+      "id": "1",
+      "groupId": ["2013"],
+      "seriesId": "Tablet",
+      "value": 32.77
+    },
+    {
+      "id": "2",
+      "groupId": ["2013"],
+      "seriesId": "Computer",
+      "value": 22.36
+    },
+    {
+      "id": "3",
+      "groupId": ["2013"],
+      "seriesId": "Services",
+      "value": 16.76
+    },
+    {
+      "id": "4",
+      "groupId": ["2013"],
+      "seriesId": "Other Products",
+      "value": 8.98
+    }
+  ]
+}

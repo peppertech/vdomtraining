@@ -1,0 +1,57 @@
+:root {
+  --demo-color-red: #d63b24;
+  --demo-color-green: #508223;
+  --demo-color-blue: #227e9e;
+}
+.demo-diagram-dndevents-width-style {
+  max-width: 37.5rem;
+  width: 98%;
+  border: 0.0625rem solid var(--oj-panel-border-color);
+}
+.demo-diagram-dndevents-droptarget-width-style {
+  max-width: 18.6875rem;
+  width: 50%;
+  height: 10rem;
+  display: inline-block;
+}
+
+.demo-diagram-dndevents-drag-style {
+  max-width: 18.6875rem;
+  width: 50%;
+  height: 10rem;
+  display: inline-block;
+  border-left: 0.0625rem solid var(--oj-panel-border-color);
+  border-right: 0.0625rem solid var(--oj-panel-border-color);
+}
+.demo-diagram-dndevents-circle-style {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 1.25rem;
+  background: var(--demo-color-red);
+  display: inline-block;
+}
+.demo-diagram-dndevents-triangle-style {
+  width: 0rem;
+  height: 0rem;
+  box-sizing: border-box;
+  border-left: 1.25rem solid transparent;
+  border-right: 1.25rem solid transparent;
+  border-bottom: 2.5rem solid var(--demo-color-green);
+  display: inline-block;
+}
+.demo-diagram-dndevents-square-style {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--demo-color-blue);
+  display: inline-block;
+}
+.demo-diagram-dndevents-clear-left-style {
+  clear: left;
+}
+.demo-diagram-dndevents-diagram1-style {
+  max-width: 37.5rem;
+  width: 98%;
+  height: 18.75rem;
+  border: 0.0625rem solid var(--oj-panel-border-color);
+  border-top: 0rem;
+}

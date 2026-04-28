@@ -1,0 +1,15 @@
+.demo-tagCloud-styles-borderStyle {
+  stroke: #c84e3c;
+}
+
+.demo-tagCloud-styles-offset-0 {
+  stop-color: #47bdef;
+}
+
+.demo-tagCloud-styles-offset-70 {
+  stop-color: #267db3;
+}
+
+.demo-tagCloud-styles-max-width {
+  max-width: 50rem;
+}

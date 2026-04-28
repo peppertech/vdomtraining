@@ -1,0 +1,13 @@
+.demo-node-dims {
+  width: 100%;
+  height: 100%;
+}
+
+/* safari browser issue fix */
+.demo-position-static {
+  position: static;
+}
+/* fix for safari transform bug */
+[dir='rtl'] [class*='oj-ux-ico-']:before {
+  -webkit-transform: none !important;
+}

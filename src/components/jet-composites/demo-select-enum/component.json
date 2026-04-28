@@ -1,0 +1,35 @@
+{
+  "name": "demo-select-enum",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "displayName": "Select One component with enums",
+  "description": "A JET Select One web component displaying a set of unique values.",
+  "properties": {
+     "enumValues": {
+        "description": "A set of unique values displayed in a single select",
+        "displayName": "Enum Values",
+        "type": "Array<string>"
+     },
+     "value": {
+        "description": "The currently selected value",
+        "displayName": "Value",
+        "type": "string",
+        "writeback": true
+     },
+     "labelledBy":{
+      "description": "The ID of an oj-label element associated with this component",
+      "displayName": "Labelled By",
+      "type": "string"
+     },
+     "describedBy":{
+      "description": "The ID of an oj-label element associated with this component.  Typically not set by an application, but by oj-label itself",
+      "displayName": "Described By",
+      "type": "string"
+     },
+     "labelHint":{
+        "description": "Represents a hint for oj-form-layout element to render a label on the editable component",
+        "displayName": "Label Hint",
+        "type": "string"
+     }
+  }
+}

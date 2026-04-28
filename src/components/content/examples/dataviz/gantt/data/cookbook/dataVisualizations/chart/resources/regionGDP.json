@@ -1,0 +1,114 @@
+{
+  "gdp": [
+    {
+      "id": 1,
+      "gdp": 3400579000000,
+      "country": "Germany",
+      "region": "EU"
+    },
+    {
+      "id": 2,
+      "gdp": 2608699000000,
+      "country": "France",
+      "region": "EU"
+    },
+    {
+      "id": 3,
+      "gdp": 2440505000000,
+      "country": "The United Kingdom",
+      "region": "EU"
+    },
+    {
+      "id": 4,
+      "gdp": 2014079000000,
+      "country": "Italy",
+      "region": "EU"
+    },
+    {
+      "id": 5,
+      "gdp": 526192000000,
+      "country": "Sweden",
+      "region": "EU"
+    },
+    {
+      "id": 6,
+      "gdp": 501101000000,
+      "country": "Norway",
+      "region": "EU"
+    },
+    {
+      "id": 7,
+      "gdp": 484692000000,
+      "country": "Belgium",
+      "region": "EU"
+    },
+    {
+      "id": 8,
+      "gdp": 398594000000,
+      "country": "Austria",
+      "region": "EU"
+    },
+    {
+      "id": 9,
+      "gdp": 313637000000,
+      "country": "Denmark",
+      "region": "EU"
+    }
+  ],
+  "percent": [
+    {
+      "id": 10,
+      "gdp": 8043000000,
+      "country": "Bahamas, The",
+      "region": "Caribbean"
+    },
+    {
+      "id": 11,
+      "gdp": 4490000000,
+      "country": "Barbados",
+      "region": "Caribbean"
+    },
+    {
+      "id": 12,
+      "gdp": 1554000000,
+      "country": "Belize",
+      "region": "Caribbean"
+    },
+    {
+      "id": 13,
+      "gdp": 58996000000,
+      "country": "Dominican Republic",
+      "region": "Caribbean"
+    },
+    {
+      "id": 14,
+      "gdp": 7902000000,
+      "country": "Haiti",
+      "region": "Caribbean"
+    },
+    {
+      "id": 15,
+      "gdp": 2788000000,
+      "country": "Guyana",
+      "region": "Caribbean"
+    },
+    {
+      "id": 16,
+      "gdp": 4738000000,
+      "country": "Suriname",
+      "region": "Caribbean"
+    },
+    {
+      "id": 17,
+      "gdp": 790000000,
+      "country": "Grenada",
+      "region": "Caribbean"
+    },
+    {
+      "id": 18,
+      "gdp": 25277000000,
+      "country": "Trinidad and Tobago",
+      "region": "Caribbean"
+    }
+  ]
+}

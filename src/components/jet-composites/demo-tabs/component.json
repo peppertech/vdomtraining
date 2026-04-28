@@ -1,0 +1,20 @@
+{
+  "name": "demo-tabs",
+  "description": "This creates tabs and a view switcher based on the labels passed in and it's children divs.",
+  "displayName": "Tabs",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "headers": {
+      "description": "An array of the id and label of headers for the tabs.",
+      "displayName": "Headers",
+      "type": "Array<object>"
+    },
+    "value": {
+      "description": "The id of the current tab.",
+      "displayName": "Value",
+      "type": "string",
+      "writeback": true
+    }
+  }
+}

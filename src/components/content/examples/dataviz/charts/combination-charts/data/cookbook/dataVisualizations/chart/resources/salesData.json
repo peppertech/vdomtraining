@@ -1,0 +1,38 @@
+[
+  {
+    "id": 0,
+    "region": "Northeast",
+    "year": "2010",
+    "value": 42000000
+  },
+  {
+    "id": 1,
+    "region": "Midatlantic",
+    "year": "2010",
+    "value": 55000000
+  },
+  {
+    "id": 2,
+    "region": "Southeast",
+    "year": "2010",
+    "value": 36000000
+  },
+  {
+    "id": 3,
+    "region": "Midwest",
+    "year": "2010",
+    "value": 22000000
+  },
+  {
+    "id": 4,
+    "region": "West",
+    "year": "2010",
+    "value": 32100000
+  },
+  {
+    "id": 5,
+    "region": "Great Lakes",
+    "year": "2010",
+    "value": 25500000
+  }
+]

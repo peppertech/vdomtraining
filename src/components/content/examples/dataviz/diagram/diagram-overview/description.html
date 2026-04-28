@@ -1,0 +1,59 @@
+<p>A diagram displays a set of nodes and the links between them. The node positions and link paths are specified by an application-provided layout function.</p>This demo shows how to configure the overview window rendered within the Diagram.
+<br />
+The
+<i>panning</i>
+attribute specifies the pan behavior of the Diagram component.
+<br />
+<ul>
+  <li>
+    <i>"fixed"</i>
+    : panning is restricted to the visible region when the diagram is rendered at minZoom.
+  </li>
+  <li>
+    <i>"centerContent"</i>
+    : panning is restricted based on the current zoom level to allow any area of the content to be
+    centered. If an overview is being rendered, the overview.fit-area attribute should also be set
+    to 'content' in most situations.
+  </li>
+  <li>
+    <i>"none"</i>
+    : panning is not allowed.
+  </li>
+</ul>
+The
+<i>overview.fit-area</i>
+attribute specifies the region that will be scaled to fit within the overview.
+<br />
+<ul>
+  <li>
+    <i>"canvas"</i>
+    : the canvas (the
+    <a href="oj.ojDiagram.html#panning">pannable</a>
+    area when the diagram is at minZoom) will be scaled to fit within the overview. The diagram
+    panning attribute should also be set to 'fixed' in most situations.
+  </li>
+  <li>
+    <i>"content"</i>
+    : the bounding box of the Diagram nodes will be scaled to fit within the overview.
+  </li>
+</ul>
+The
+<i>preserve-aspect-ratio</i>
+attribute controls how the fit area is scaled within the overview.
+<br />
+<ul>
+  <li>
+    <i>"none"</i>
+    : the aspect ratio of the fit area may not be preserved as it is scaled to fit the overview.
+  </li>
+  <li>
+    <i>"meet"</i>
+    : the aspect ratio of the fit area will be preserved as it is scaled to fit the overview.
+  </li>
+</ul>
+<br />
+The
+<i>overview.valign</i>
+and
+<i>overview.halign</i>
+attributes allow the position of the overview window to be configured.

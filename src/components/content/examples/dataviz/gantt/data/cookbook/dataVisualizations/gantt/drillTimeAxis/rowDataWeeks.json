@@ -1,0 +1,125 @@
+[
+  {
+    "resource": "Charge Nurse",
+    "schedule": [
+      {
+        "id": "task1-1",
+        "begin": "2021-01-04T00:00:00.000",
+        "finish": "2021-01-07T00:00:00.000",
+        "name": "Chris Black"
+      },
+      {
+        "id": "task1-4",
+        "begin": "2021-01-10T00:00:00.000",
+        "finish": "2021-01-13T16:00:00.000",
+        "name": "Chris Black"
+      },
+      {
+        "id": "task1-7",
+        "begin": "2021-01-16T00:00:00.000",
+        "finish": "2021-01-19T00:00:00.000",
+        "name": "Chris Black"
+      }
+    ]
+  },
+  {
+    "resource": "Registered Nurse",
+    "schedule": [
+      {
+        "id": "task2-1",
+        "begin": "2021-01-04T00:00:00.000",
+        "finish": "2021-01-07T00:00:00.000",
+        "name": "Christine Cooper"
+      },
+      {
+        "id": "task2-4",
+        "begin": "2021-01-10T00:00:00.000",
+        "finish": "2021-01-13T00:00:00.000",
+        "name": "Christine Cooper"
+      },
+      {
+        "id": "task2-7",
+        "begin": "2021-01-16T00:00:00.000",
+        "finish": "2021-01-19T08:00:00.000",
+        "name": "Christine Cooper"
+      },
+      {
+        "id": "task3-1",
+        "begin": "2021-01-04T00:00:00.000",
+        "finish": "2021-01-07T00:00:00.000",
+        "name": "Kurt Marchris"
+      },
+      {
+        "id": "task3-4",
+        "begin": "2021-01-10T00:00:00.000",
+        "finish": "2021-01-13T00:00:00.000",
+        "name": "Kurt Marchris"
+      },
+      {
+        "id": "task3-7",
+        "begin": "2021-01-16T00:00:00.000",
+        "finish": "2021-01-19T00:00:00.000",
+        "name": "Kurt Marchris"
+      },
+      {
+        "id": "task4-1",
+        "begin": "2021-01-07T00:00:00.000",
+        "finish": "2021-01-10T00:00:00.000",
+        "name": "Jennifer Christy"
+      },
+      {
+        "id": "task4-4",
+        "begin": "2021-01-13T00:00:00.000",
+        "finish": "2021-01-16T00:00:00.000",
+        "name": "Jennifer Christy"
+      },
+      {
+        "id": "task4-7",
+        "begin": "2021-01-19T00:00:00.000",
+        "finish": "2021-01-22T00:00:00.000",
+        "name": "Jennifer Christy"
+      }
+    ]
+  },
+  {
+    "resource": "Nursing Assistant",
+    "schedule": [
+      {
+        "id": "task5-1",
+        "begin": "2021-01-07T00:00:00.000",
+        "finish": "2021-01-10T00:00:00.000",
+        "name": "Christian Wu"
+      },
+      {
+        "id": "task5-4",
+        "begin": "2021-01-13T00:00:00.000",
+        "finish": "2021-01-16T00:00:00.000",
+        "name": "Christian Wu"
+      },
+      {
+        "id": "task5-7",
+        "begin": "2021-01-19T00:00:00.000",
+        "finish": "2021-01-22T00:00:00.000",
+        "name": "Christian Wu"
+      },
+      {
+        "id": "task6-1",
+        "begin": "2021-01-07T00:00:00.000",
+        "finish": "2021-01-10T00:00:00.000",
+        "name": "Alfred Marchris"
+      },
+      {
+        "id": "task6-4",
+        "begin": "2021-01-13T00:00:00.000",
+        "finish": "2021-01-16T00:00:00.000",
+        "name": "Alfred Marchris"
+      },
+      {
+        "id": "task6-7",
+        "begin": "2021-01-19T00:00:00.000",
+        "finish": "2021-01-22T00:00:00.000",
+        "name": "Alfred Marchris"
+      }
+    ]
+  }
+]

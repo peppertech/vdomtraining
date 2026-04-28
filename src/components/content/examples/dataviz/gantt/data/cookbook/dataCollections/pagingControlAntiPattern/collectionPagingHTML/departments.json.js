@@ -1,0 +1,268 @@
+define([], function () { return { __esModule: true, default: {
+  "Departments": [
+    {
+      "DepartmentId": 10,
+      "DepartmentName": "Administration",
+      "ManagerId": null,
+      "LocationId": null,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://mockrest/stable/rest/Departments/10"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://mockrest/stable/rest/Departments/10"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://mockrest/stable/rest/Departments/10/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 20,
+      "DepartmentName": "Marketing",
+      "ManagerId": null,
+      "LocationId": null,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://mockrest/stable/rest/Departments/20"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://mockrest/stable/rest/Departments/20"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://mockrest/stable/rest/Departments/20/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 30,
+      "DepartmentName": "Transportation",
+      "ManagerId": null,
+      "LocationId": null,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://mockrest/stable/rest/Departments/30"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://mockrest/stable/rest/Departments/30"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://mockrest/stable/rest/Departments/30/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 40,
+      "DepartmentName": "Shipping",
+      "ManagerId": null,
+      "LocationId": null,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://mockrest/stable/rest/Departments/40"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://mockrest/stable/rest/Departments/40"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://mockrest/stable/rest/Departments/40/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 50,
+      "DepartmentName": "Human Resources",
+      "ManagerId": null,
+      "LocationId": null,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://mockrest/stable/rest/Departments/50"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://mockrest/stable/rest/Departments/50"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://mockrest/stable/rest/Departments/50/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 60,
+      "DepartmentName": "Operations",
+      "ManagerId": null,
+      "LocationId": null,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://mockrest/stable/rest/Departments/60"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://mockrest/stable/rest/Departments/60"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://mockrest/stable/rest/Departments/60/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 70,
+      "DepartmentName": "Inventory",
+      "ManagerId": null,
+      "LocationId": null,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://mockrest/stable/rest/Departments/70"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://mockrest/stable/rest/Departments/70"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://mockrest/stable/rest/Departments/70/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 80,
+      "DepartmentName": "Sales",
+      "ManagerId": 145,
+      "LocationId": 2500,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://mockrest/stable/rest/Departments/80"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://mockrest/stable/rest/Departments/80"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://mockrest/stable/rest/Departments/80/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 100,
+      "DepartmentName": "Finance",
+      "ManagerId": null,
+      "LocationId": null,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://mockrest/stable/rest/Departments/100"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://mockrest/stable/rest/Departments/100"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://mockrest/stable/rest/Departments/100/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 110,
+      "DepartmentName": "Documentation",
+      "ManagerId": null,
+      "LocationId": null,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://mockrest/stable/rest/Departments/110"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://mockrest/stable/rest/Departments/110"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://mockrest/stable/rest/Departments/110/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 130,
+      "DepartmentName": "Billing",
+      "ManagerId": null,
+      "LocationId": 1700,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://mockrest/stable/rest/Departments/130"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://mockrest/stable/rest/Departments/130"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://mockrest/stable/rest/Departments/130/Employees"
+        }
+      }
+    },
+    {
+      "DepartmentId": 140,
+      "DepartmentName": "Control And Credit",
+      "ManagerId": null,
+      "LocationId": 1700,
+      "version": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "http://mockrest/stable/rest/Departments/140"
+        },
+        "canonical": {
+          "rel": "canonical",
+          "href": "http://mockrest/stable/rest/Departments/140"
+        },
+        "Employees": {
+          "rel": "child",
+          "href": "http://mockrest/stable/rest/Departments/140/Employees"
+        }
+      }
+    }
+  ],
+  "links": {
+    "self": {
+      "rel": "self",
+      "href": "http://mockrest/stable/rest/Departments"
+    }
+  },
+  "_contextInfo": {
+    "limit": 25,
+    "offset": 0
+  }
+}
+ }; });
+

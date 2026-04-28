@@ -1,0 +1,28 @@
+<ol>
+  <li>
+    Create a tooltip function that takes a
+    <i>dataContext</i>
+    argument. The
+    <i>dataContext</i>
+    contains information on the hovered item, including
+    <i>id</i>
+    ,
+    <i>type</i>
+    and
+    <i>label</i>
+    of the hovered item. It also contains the tooltip
+    <i>parentElement</i>
+    , which the function can modify directly. The function should construct and return the desired
+    tooltip string or a DOM element.
+  </li>
+  <li>
+    Pass the function to the diagram
+    <b><i>tooltip.renderer</i></b>
+    property. The diagram will then call the function on hover to generate the tooltip and append
+    the returned object to itself.
+  </li>
+  <li>
+    <b>Layouts</b>
+    : The application is responsible for providing the layout algorithm used by the Diagram.
+  </li>
+</ol>

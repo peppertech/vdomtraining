@@ -1,0 +1,29 @@
+<p>A diagram displays a set of nodes and the links between them. The node positions and link paths are specified by an application-provided layout function.</p><p>
+  This demo shows how to render custom SVG content for Diagram nodes using the
+  <b>nodeContentTemplate</b>
+  slot and Diagram links using the
+  <b>linkContentTemplate</b>
+  slot. The same template is used for rendering the initial content and for creating custom
+  selection, hover and focus effects. The same slots are used when the states change and the
+  appropriate state is indicated by the
+  <i><b>state</b></i>
+  property in the slot's
+  <a target="_blank" href="jsdocs/oj.ojDiagram.html#RendererContext">context for the node</a>
+  or
+  <a target="_blank" href="jsdocs/oj.ojDiagram.html#LinkRendererContext">context for the link</a>
+  .
+  <br />
+  <br />
+  You can also add
+  <i><b>data-oj-zoom-thresholds</b></i>
+  attribute to the nodeContentTemplate to set thresholds that will trigger a rerender when crossed.
+  For example, additional text content will be shown when zooming in this demo. See the
+  <a target="_blank" href="jsdocs/oj.ojDiagram.html#nodeContentTemplate">nodeContentTemplate</a>
+  doc for more details.
+  <br />
+  <br />
+  Use the
+  <a target="_blank" href="jsdocs/oj.ojDiagramChildContent.html">oj-diagram-child-content</a>
+  element to indicate where the child content of a container node should be. Diagram will replace
+  this element with the child contents of the container node.
+</p>

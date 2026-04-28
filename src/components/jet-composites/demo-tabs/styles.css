@@ -1,0 +1,12 @@
+/* This is to prevent the flash of unstyled content before the composite properties have been setup. */
+demo-tabs:not(.oj-complete) {
+  visibility: hidden;
+}
+
+demo-tabs {
+	display: block;
+}
+
+demo-tabs .tabs-container {
+  height: 100%;
+}

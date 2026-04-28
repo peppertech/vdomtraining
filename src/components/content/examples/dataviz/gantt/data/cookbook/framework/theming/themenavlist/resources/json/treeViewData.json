@@ -1,0 +1,93 @@
+[
+  {
+    "id": "home",
+    "name": "Home",
+    "icons": "oj-ux-ico-home"
+  },
+  {
+    "id": "gettingstarted",
+    "name": "Getting Started",
+    "icons": "oj-ux-ico-education",
+    "children": [
+      {
+        "id": "download",
+        "name": "Download",
+        "icons": ""
+      },
+      {
+        "id": "quickstart",
+        "name": "Quick Start",
+        "icons": ""
+      },
+      {
+        "id": "build",
+        "name": "Build",
+        "icons": ""
+      },
+      {
+        "id": "testing",
+        "name": "Testing",
+        "icons": ""
+      }
+    ]
+  },
+  {
+    "id": "cookbook",
+    "name": "Cookbook",
+    "icons": "oj-ux-ico-book",
+    "children": [
+      {
+        "id": "sample1",
+        "name": "Sample 1",
+        "icons": ""
+      },
+      {
+        "id": "sample",
+        "name": "Sample ",
+        "icons": ""
+      },
+      {
+        "id": "sample3",
+        "name": "Sample 3",
+        "icons": ""
+      },
+      {
+        "id": "sample4",
+        "name": "Sample 4",
+        "icons": ""
+      }
+    ]
+  },
+  {
+    "id": "stylelab",
+    "name": "Style Lab",
+    "icons": "oj-ux-ico-color-palette"
+  },
+  {
+    "id": "library",
+    "name": "Library",
+    "icons": "oj-ux-ico-library",
+    "children": [
+      {
+        "id": "articles",
+        "name": "Articles",
+        "icons": "oj-ux-ico-book"
+      },
+      {
+        "id": "audios",
+        "name": "Audio Books",
+        "icons": "oj-ux-ico-book"
+      },
+      {
+        "id": "videos",
+        "name": "Videos",
+        "icons": "oj-ux-ico-book"
+      },
+      {
+        "id": "next",
+        "name": "Next",
+        "icons": "oj-ux-ico-book"
+      }
+    ]
+  }
+]

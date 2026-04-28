@@ -1,0 +1,98 @@
+[
+  {
+    "id": "pm1",
+    "predecessor": "pm1",
+    "successor": "pm2"
+  },
+  {
+    "id": "pm2",
+    "predecessor": "pm2",
+    "successor": "pm3"
+  },
+  {
+    "id": "ad1",
+    "predecessor": "pm3",
+    "successor": "ad1"
+  },
+  {
+    "id": "ad2",
+    "predecessor": "ad1",
+    "successor": "ad2"
+  },
+  {
+    "id": "dev1",
+    "predecessor": "ad2",
+    "successor": "dev1"
+  },
+  {
+    "id": "dev2",
+    "predecessor": "dev1",
+    "successor": "dev2"
+  },
+  {
+    "id": "dev3",
+    "predecessor": "dev2",
+    "successor": "dev3"
+  },
+  {
+    "id": "dev4",
+    "predecessor": "dev3",
+    "successor": "dev4"
+  },
+  {
+    "id": "dev5",
+    "predecessor": "dev4",
+    "successor": "dev5"
+  },
+  {
+    "id": "doc1",
+    "predecessor": "ad2",
+    "successor": "doc1"
+  },
+  {
+    "id": "doc2",
+    "predecessor": "doc1",
+    "successor": "deploy1",
+    "type": "finishFinish"
+  },
+  {
+    "id": "test1",
+    "predecessor": "ad2",
+    "successor": "test1"
+  },
+  {
+    "id": "test2",
+    "predecessor": "test1",
+    "successor": "test2"
+  },
+  {
+    "id": "test3",
+    "predecessor": "dev5",
+    "successor": "test2"
+  },
+  {
+    "id": "test4",
+    "predecessor": "test2",
+    "successor": "test3"
+  },
+  {
+    "id": "test5",
+    "predecessor": "test3",
+    "successor": "test4"
+  },
+  {
+    "id": "test6",
+    "predecessor": "test4",
+    "successor": "test5"
+  },
+  {
+    "id": "deploy1",
+    "predecessor": "test5",
+    "successor": "deploy1"
+  },
+  {
+    "id": "deploy2",
+    "predecessor": "deploy1",
+    "successor": "deploy2"
+  }
+]

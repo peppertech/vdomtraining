@@ -1,0 +1,17 @@
+.demo-border {
+  stroke-width: 1;
+  stroke-dasharray: 4;
+  animation: dash 5s linear infinite reverse;
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 100;
+  }
+}
+.demo-diagram-styleclass-stop-color0-style {
+  stop-color: #85bbe7;
+}
+
+.demo-diagram-styleclass-stop-color50-style {
+  stop-color: #267db3;
+}

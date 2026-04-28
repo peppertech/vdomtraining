@@ -1,0 +1,21 @@
+{
+  "name": "demo-input-json",
+  "description": "An input text component that handles automatic json to string conversion of the component value.",
+  "displayName": "Input Text",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "labelHint": {
+      "description": "Represents a hint for oj-form-layout element to render a label on the editable component.",
+      "displayName": "Label Hint",
+      "type": "string",
+      "value": ""
+    },
+    "value": {
+      "description": "The value of the component.",
+      "displayName": "Value",
+      "type": "any",
+      "writeback": true
+    }
+  }
+}

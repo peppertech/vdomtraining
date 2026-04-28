@@ -1,0 +1,19 @@
+.demo-diagram-link-underlay {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+  marker-end: url(#endMarker);
+  stroke: #00000000;
+}
+.demo-diagram-link {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+  marker-end: url(#endMarker);
+  stroke: #68c182;
+}
+.demo-diagram-promoted-link {
+  stroke-dasharray: 2;
+}
+.demo-diagram-selected-link {
+  stroke: red;
+  marker-end: url(#endMarkerSelected);
+}

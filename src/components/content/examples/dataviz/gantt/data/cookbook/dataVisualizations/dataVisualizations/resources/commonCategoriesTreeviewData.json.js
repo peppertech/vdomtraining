@@ -1,0 +1,29 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": 0,
+    "label": "Initial",
+    "value": 42
+  },
+  {
+    "id": 1,
+    "label": "Qualification",
+    "value": 55
+  },
+  {
+    "id": 2,
+    "label": "Meeting",
+    "value": 36
+  },
+  {
+    "id": 3,
+    "label": "Proposal",
+    "value": 10
+  },
+  {
+    "id": 4,
+    "label": "Close",
+    "value": 5
+  }
+]
+ }; });
+

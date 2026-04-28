@@ -1,0 +1,3665 @@
+{
+  "name": "New York",
+  "values": [
+    {
+      "date": "1-Jan",
+      "avgLow": 24,
+      "avgHigh": 38,
+      "recLow": 10,
+      "recHigh": 59,
+      "index": 0,
+      "max": 39,
+      "min": 27
+    },
+    {
+      "date": "2-Jan",
+      "avgLow": 24,
+      "avgHigh": 38,
+      "recLow": 6,
+      "recHigh": 58,
+      "index": 1,
+      "max": 42,
+      "min": 35
+    },
+    {
+      "date": "3-Jan",
+      "avgLow": 24,
+      "avgHigh": 37,
+      "recLow": 3,
+      "recHigh": 56,
+      "index": 2,
+      "max": 42,
+      "min": 33
+    },
+    {
+      "date": "4-Jan",
+      "avgLow": 24,
+      "avgHigh": 37,
+      "recLow": 1,
+      "recHigh": 64,
+      "index": 3,
+      "max": 56,
+      "min": 41
+    },
+    {
+      "date": "5-Jan",
+      "avgLow": 24,
+      "avgHigh": 37,
+      "recLow": 1,
+      "recHigh": 60,
+      "index": 4,
+      "max": 49,
+      "min": 21
+    },
+    {
+      "date": "6-Jan",
+      "avgLow": 24,
+      "avgHigh": 37,
+      "recLow": 3,
+      "recHigh": 60,
+      "index": 5,
+      "max": 22,
+      "min": 19
+    },
+    {
+      "date": "7-Jan",
+      "avgLow": 23,
+      "avgHigh": 37,
+      "recLow": 5,
+      "recHigh": 52,
+      "index": 6,
+      "max": 23,
+      "min": 9
+    },
+    {
+      "date": "8-Jan",
+      "avgLow": 23,
+      "avgHigh": 37,
+      "recLow": 0,
+      "recHigh": 57,
+      "index": 7,
+      "max": 21,
+      "min": 8
+    },
+    {
+      "date": "9-Jan",
+      "avgLow": 23,
+      "avgHigh": 36,
+      "recLow": 0,
+      "recHigh": 54,
+      "index": 8,
+      "max": 33,
+      "min": 19
+    },
+    {
+      "date": "10-Jan",
+      "avgLow": 23,
+      "avgHigh": 36,
+      "recLow": 0,
+      "recHigh": 53,
+      "index": 9,
+      "max": 23,
+      "min": 16
+    },
+    {
+      "date": "11-Jan",
+      "avgLow": 23,
+      "avgHigh": 36,
+      "recLow": 0,
+      "recHigh": 62,
+      "index": 10,
+      "max": 37,
+      "min": 18
+    },
+    {
+      "date": "12-Jan",
+      "avgLow": 23,
+      "avgHigh": 36,
+      "recLow": 1,
+      "recHigh": 61,
+      "index": 11,
+      "max": 39,
+      "min": 35
+    },
+    {
+      "date": "13-Jan",
+      "avgLow": 23,
+      "avgHigh": 36,
+      "recLow": 3,
+      "recHigh": 55,
+      "index": 12,
+      "max": 36,
+      "min": 17
+    },
+    {
+      "date": "14-Jan",
+      "avgLow": 23,
+      "avgHigh": 36,
+      "recLow": 5,
+      "recHigh": 60,
+      "index": 13,
+      "max": 32,
+      "min": 16
+    },
+    {
+      "date": "15-Jan",
+      "avgLow": 23,
+      "avgHigh": 36,
+      "recLow": 0,
+      "recHigh": 62,
+      "index": 14,
+      "max": 35,
+      "min": 25
+    },
+    {
+      "date": "16-Jan",
+      "avgLow": 23,
+      "avgHigh": 36,
+      "recLow": 1,
+      "recHigh": 59,
+      "index": 15,
+      "max": 43,
+      "min": 20
+    },
+    {
+      "date": "17-Jan",
+      "avgLow": 22,
+      "avgHigh": 36,
+      "recLow": 0,
+      "recHigh": 59,
+      "index": 16,
+      "max": 32,
+      "min": 17
+    },
+    {
+      "date": "18-Jan",
+      "avgLow": 22,
+      "avgHigh": 36,
+      "recLow": 0,
+      "recHigh": 60,
+      "index": 17,
+      "max": 42,
+      "min": 31
+    },
+    {
+      "date": "19-Jan",
+      "avgLow": 22,
+      "avgHigh": 36,
+      "recLow": 1,
+      "recHigh": 60,
+      "index": 18,
+      "max": 42,
+      "min": 36
+    },
+    {
+      "date": "20-Jan",
+      "avgLow": 22,
+      "avgHigh": 36,
+      "recLow": -4,
+      "recHigh": 55,
+      "index": 19,
+      "max": 40,
+      "min": 32
+    },
+    {
+      "date": "21-Jan",
+      "avgLow": 22,
+      "avgHigh": 36,
+      "recLow": 2,
+      "recHigh": 53,
+      "index": 20,
+      "max": 36,
+      "min": 25
+    },
+    {
+      "date": "22-Jan",
+      "avgLow": 22,
+      "avgHigh": 36,
+      "recLow": 2,
+      "recHigh": 57,
+      "index": 21,
+      "max": 40,
+      "min": 31
+    },
+    {
+      "date": "23-Jan",
+      "avgLow": 22,
+      "avgHigh": 36,
+      "recLow": 1,
+      "recHigh": 60,
+      "index": 22,
+      "max": 39,
+      "min": 28
+    },
+    {
+      "date": "24-Jan",
+      "avgLow": 22,
+      "avgHigh": 36,
+      "recLow": 4,
+      "recHigh": 68,
+      "index": 23,
+      "max": 39,
+      "min": 33
+    },
+    {
+      "date": "25-Jan",
+      "avgLow": 22,
+      "avgHigh": 36,
+      "recLow": 4,
+      "recHigh": 56,
+      "index": 24,
+      "max": 42,
+      "min": 31
+    },
+    {
+      "date": "26-Jan",
+      "avgLow": 22,
+      "avgHigh": 36,
+      "recLow": 8,
+      "recHigh": 70,
+      "index": 25,
+      "max": 31,
+      "min": 22
+    },
+    {
+      "date": "27-Jan",
+      "avgLow": 22,
+      "avgHigh": 36,
+      "recLow": 4,
+      "recHigh": 65,
+      "index": 26,
+      "max": 30,
+      "min": 20
+    },
+    {
+      "date": "28-Jan",
+      "avgLow": 22,
+      "avgHigh": 36,
+      "recLow": 4,
+      "recHigh": 56,
+      "index": 27,
+      "max": 34,
+      "min": 16
+    },
+    {
+      "date": "29-Jan",
+      "avgLow": 22,
+      "avgHigh": 36,
+      "recLow": 1,
+      "recHigh": 55,
+      "index": 28,
+      "max": 36,
+      "min": 19
+    },
+    {
+      "date": "30-Jan",
+      "avgLow": 22,
+      "avgHigh": 37,
+      "recLow": 7,
+      "recHigh": 57,
+      "index": 29,
+      "max": 38,
+      "min": 19
+    },
+    {
+      "date": "31-Jan",
+      "avgLow": 22,
+      "avgHigh": 37,
+      "recLow": 6,
+      "recHigh": 58,
+      "index": 30,
+      "max": 26,
+      "min": 13
+    },
+    {
+      "date": "1-Feb",
+      "avgLow": 22,
+      "avgHigh": 37,
+      "recLow": 4,
+      "recHigh": 62,
+      "index": 31,
+      "max": 36,
+      "min": 20
+    },
+    {
+      "date": "2-Feb",
+      "avgLow": 22,
+      "avgHigh": 37,
+      "recLow": -2,
+      "recHigh": 58,
+      "index": 32,
+      "max": 34,
+      "min": 14
+    },
+    {
+      "date": "3-Feb",
+      "avgLow": 22,
+      "avgHigh": 37,
+      "recLow": 1,
+      "recHigh": 56,
+      "index": 33,
+      "max": 26,
+      "min": 13
+    },
+    {
+      "date": "4-Feb",
+      "avgLow": 22,
+      "avgHigh": 37,
+      "recLow": 4,
+      "recHigh": 50,
+      "index": 34,
+      "max": 43,
+      "min": 24
+    },
+    {
+      "date": "5-Feb",
+      "avgLow": 22,
+      "avgHigh": 38,
+      "recLow": 2,
+      "recHigh": 52,
+      "index": 35,
+      "max": 42,
+      "min": 14
+    },
+    {
+      "date": "6-Feb",
+      "avgLow": 23,
+      "avgHigh": 38,
+      "recLow": 3,
+      "recHigh": 53,
+      "index": 36,
+      "max": 27,
+      "min": 12
+    },
+    {
+      "date": "7-Feb",
+      "avgLow": 23,
+      "avgHigh": 38,
+      "recLow": 5,
+      "recHigh": 50,
+      "index": 37,
+      "max": 40,
+      "min": 25
+    },
+    {
+      "date": "8-Feb",
+      "avgLow": 23,
+      "avgHigh": 38,
+      "recLow": 2,
+      "recHigh": 61,
+      "index": 38,
+      "max": 37,
+      "min": 29
+    },
+    {
+      "date": "9-Feb",
+      "avgLow": 23,
+      "avgHigh": 38,
+      "recLow": 4,
+      "recHigh": 58,
+      "index": 39,
+      "max": 29,
+      "min": 25
+    },
+    {
+      "date": "10-Feb",
+      "avgLow": 23,
+      "avgHigh": 38,
+      "recLow": 0,
+      "recHigh": 55,
+      "index": 40,
+      "max": 40,
+      "min": 26
+    },
+    {
+      "date": "11-Feb",
+      "avgLow": 23,
+      "avgHigh": 39,
+      "recLow": -3,
+      "recHigh": 63,
+      "index": 41,
+      "max": 34,
+      "min": 22
+    },
+    {
+      "date": "12-Feb",
+      "avgLow": 23,
+      "avgHigh": 39,
+      "recLow": 0,
+      "recHigh": 54,
+      "index": 42,
+      "max": 40,
+      "min": 16
+    },
+    {
+      "date": "13-Feb",
+      "avgLow": 23,
+      "avgHigh": 39,
+      "recLow": 0,
+      "recHigh": 60,
+      "index": 43,
+      "max": 21,
+      "min": 8
+    },
+    {
+      "date": "14-Feb",
+      "avgLow": 24,
+      "avgHigh": 39,
+      "recLow": 0,
+      "recHigh": 55,
+      "index": 44,
+      "max": 32,
+      "min": 16
+    },
+    {
+      "date": "15-Feb",
+      "avgLow": 24,
+      "avgHigh": 39,
+      "recLow": 0,
+      "recHigh": 71,
+      "index": 45,
+      "max": 25,
+      "min": 4
+    },
+    {
+      "date": "16-Feb",
+      "avgLow": 24,
+      "avgHigh": 40,
+      "recLow": 2,
+      "recHigh": 66,
+      "index": 46,
+      "max": 21,
+      "min": 3
+    },
+    {
+      "date": "17-Feb",
+      "avgLow": 24,
+      "avgHigh": 40,
+      "recLow": -3,
+      "recHigh": 62,
+      "index": 47,
+      "max": 27,
+      "min": 14
+    },
+    {
+      "date": "18-Feb",
+      "avgLow": 24,
+      "avgHigh": 40,
+      "recLow": -1,
+      "recHigh": 55,
+      "index": 48,
+      "max": 33,
+      "min": 19
+    },
+    {
+      "date": "19-Feb",
+      "avgLow": 25,
+      "avgHigh": 40,
+      "recLow": 10,
+      "recHigh": 58,
+      "index": 49,
+      "max": 27,
+      "min": 8
+    },
+    {
+      "date": "20-Feb",
+      "avgLow": 25,
+      "avgHigh": 41,
+      "recLow": 5,
+      "recHigh": 65,
+      "index": 50,
+      "max": 19,
+      "min": 2
+    },
+    {
+      "date": "21-Feb",
+      "avgLow": 25,
+      "avgHigh": 41,
+      "recLow": 5,
+      "recHigh": 60,
+      "index": 51,
+      "max": 32,
+      "min": 13
+    },
+    {
+      "date": "22-Feb",
+      "avgLow": 25,
+      "avgHigh": 41,
+      "recLow": 8,
+      "recHigh": 64,
+      "index": 52,
+      "max": 43,
+      "min": 32
+    },
+    {
+      "date": "23-Feb",
+      "avgLow": 26,
+      "avgHigh": 41,
+      "recLow": 10,
+      "recHigh": 71,
+      "index": 53,
+      "max": 38,
+      "min": 8
+    },
+    {
+      "date": "24-Feb",
+      "avgLow": 26,
+      "avgHigh": 42,
+      "recLow": 16,
+      "recHigh": 72,
+      "index": 54,
+      "max": 24,
+      "min": 4
+    },
+    {
+      "date": "25-Feb",
+      "avgLow": 26,
+      "avgHigh": 42,
+      "recLow": 13,
+      "recHigh": 65,
+      "index": 55,
+      "max": 37,
+      "min": 20
+    },
+    {
+      "date": "26-Feb",
+      "avgLow": 26,
+      "avgHigh": 42,
+      "recLow": 10,
+      "recHigh": 63,
+      "index": 56,
+      "max": 32,
+      "min": 21
+    },
+    {
+      "date": "27-Feb",
+      "avgLow": 27,
+      "avgHigh": 42,
+      "recLow": 9,
+      "recHigh": 65,
+      "index": 57,
+      "max": 30,
+      "min": 18
+    },
+    {
+      "date": "28-Feb",
+      "avgLow": 27,
+      "avgHigh": 43,
+      "recLow": 11,
+      "recHigh": 72,
+      "index": 58,
+      "max": 29,
+      "min": 13
+    },
+    {
+      "date": "29-Feb",
+      "avgLow": 27,
+      "avgHigh": 43,
+      "recLow": 7,
+      "recHigh": 65,
+      "index": 59,
+      "max": null,
+      "min": null
+    },
+    {
+      "date": "1-Mar",
+      "avgLow": 27,
+      "avgHigh": 43,
+      "recLow": 5,
+      "recHigh": 70,
+      "index": 60,
+      "max": 31,
+      "min": 24
+    },
+    {
+      "date": "2-Mar",
+      "avgLow": 27,
+      "avgHigh": 43,
+      "recLow": 10,
+      "recHigh": 75,
+      "index": 61,
+      "max": 39,
+      "min": 27
+    },
+    {
+      "date": "3-Mar",
+      "avgLow": 28,
+      "avgHigh": 44,
+      "recLow": 10,
+      "recHigh": 61,
+      "index": 62,
+      "max": 37,
+      "min": 22
+    },
+    {
+      "date": "4-Mar",
+      "avgLow": 28,
+      "avgHigh": 44,
+      "recLow": 11,
+      "recHigh": 63,
+      "index": 63,
+      "max": 45,
+      "min": 35
+    },
+    {
+      "date": "5-Mar",
+      "avgLow": 28,
+      "avgHigh": 44,
+      "recLow": 12,
+      "recHigh": 72,
+      "index": 64,
+      "max": 40,
+      "min": 19
+    },
+    {
+      "date": "6-Mar",
+      "avgLow": 29,
+      "avgHigh": 44,
+      "recLow": 16,
+      "recHigh": 61,
+      "index": 65,
+      "max": 27,
+      "min": 12
+    },
+    {
+      "date": "7-Mar",
+      "avgLow": 29,
+      "avgHigh": 45,
+      "recLow": 9,
+      "recHigh": 67,
+      "index": 66,
+      "max": 38,
+      "min": 18
+    },
+    {
+      "date": "8-Mar",
+      "avgLow": 29,
+      "avgHigh": 45,
+      "recLow": 9,
+      "recHigh": 72,
+      "index": 67,
+      "max": 49,
+      "min": 37
+    },
+    {
+      "date": "9-Mar",
+      "avgLow": 30,
+      "avgHigh": 45,
+      "recLow": 10,
+      "recHigh": 62,
+      "index": 68,
+      "max": 54,
+      "min": 40
+    },
+    {
+      "date": "10-Mar",
+      "avgLow": 30,
+      "avgHigh": 46,
+      "recLow": 10,
+      "recHigh": 68,
+      "index": 69,
+      "max": 53,
+      "min": 39
+    },
+    {
+      "date": "11-Mar",
+      "avgLow": 30,
+      "avgHigh": 46,
+      "recLow": 12,
+      "recHigh": 64,
+      "index": 70,
+      "max": 59,
+      "min": 44
+    },
+    {
+      "date": "12-Mar",
+      "avgLow": 31,
+      "avgHigh": 46,
+      "recLow": 12,
+      "recHigh": 62,
+      "index": 71,
+      "max": 47,
+      "min": 36
+    },
+    {
+      "date": "13-Mar",
+      "avgLow": 31,
+      "avgHigh": 47,
+      "recLow": 19,
+      "recHigh": 65,
+      "index": 72,
+      "max": 43,
+      "min": 31
+    },
+    {
+      "date": "14-Mar",
+      "avgLow": 31,
+      "avgHigh": 47,
+      "recLow": 19,
+      "recHigh": 69,
+      "index": 73,
+      "max": 51,
+      "min": 40
+    },
+    {
+      "date": "15-Mar",
+      "avgLow": 32,
+      "avgHigh": 47,
+      "recLow": 17,
+      "recHigh": 64,
+      "index": 74,
+      "max": 44,
+      "min": 36
+    },
+    {
+      "date": "16-Mar",
+      "avgLow": 32,
+      "avgHigh": 48,
+      "recLow": 15,
+      "recHigh": 67,
+      "index": 75,
+      "max": 52,
+      "min": 35
+    },
+    {
+      "date": "17-Mar",
+      "avgLow": 32,
+      "avgHigh": 48,
+      "recLow": 13,
+      "recHigh": 65,
+      "index": 76,
+      "max": 57,
+      "min": 34
+    },
+    {
+      "date": "18-Mar",
+      "avgLow": 33,
+      "avgHigh": 48,
+      "recLow": 5,
+      "recHigh": 69,
+      "index": 77,
+      "max": 39,
+      "min": 29
+    },
+    {
+      "date": "19-Mar",
+      "avgLow": 33,
+      "avgHigh": 48,
+      "recLow": 16,
+      "recHigh": 68,
+      "index": 78,
+      "max": 43,
+      "min": 29
+    },
+    {
+      "date": "20-Mar",
+      "avgLow": 33,
+      "avgHigh": 49,
+      "recLow": 15,
+      "recHigh": 70,
+      "index": 79,
+      "max": 38,
+      "min": 29
+    },
+    {
+      "date": "21-Mar",
+      "avgLow": 34,
+      "avgHigh": 49,
+      "recLow": 12,
+      "recHigh": 67,
+      "index": 80,
+      "max": 47,
+      "min": 29
+    },
+    {
+      "date": "22-Mar",
+      "avgLow": 34,
+      "avgHigh": 49,
+      "recLow": 14,
+      "recHigh": 64,
+      "index": 81,
+      "max": 43,
+      "min": 28
+    },
+    {
+      "date": "23-Mar",
+      "avgLow": 34,
+      "avgHigh": 50,
+      "recLow": 19,
+      "recHigh": 65,
+      "index": 82,
+      "max": 38,
+      "min": 23
+    },
+    {
+      "date": "24-Mar",
+      "avgLow": 35,
+      "avgHigh": 50,
+      "recLow": 23,
+      "recHigh": 74,
+      "index": 83,
+      "max": 45,
+      "min": 26
+    },
+    {
+      "date": "25-Mar",
+      "avgLow": 35,
+      "avgHigh": 50,
+      "recLow": 18,
+      "recHigh": 77,
+      "index": 84,
+      "max": 49,
+      "min": 34
+    },
+    {
+      "date": "26-Mar",
+      "avgLow": 35,
+      "avgHigh": 51,
+      "recLow": 20,
+      "recHigh": 70,
+      "index": 85,
+      "max": 62,
+      "min": 42
+    },
+    {
+      "date": "27-Mar",
+      "avgLow": 36,
+      "avgHigh": 51,
+      "recLow": 24,
+      "recHigh": 74,
+      "index": 86,
+      "max": 46,
+      "min": 39
+    },
+    {
+      "date": "28-Mar",
+      "avgLow": 36,
+      "avgHigh": 52,
+      "recLow": 20,
+      "recHigh": 78,
+      "index": 87,
+      "max": 40,
+      "min": 26
+    },
+    {
+      "date": "29-Mar",
+      "avgLow": 36,
+      "avgHigh": 52,
+      "recLow": 25,
+      "recHigh": 80,
+      "index": 88,
+      "max": 46,
+      "min": 25
+    },
+    {
+      "date": "30-Mar",
+      "avgLow": 37,
+      "avgHigh": 52,
+      "recLow": 22,
+      "recHigh": 76,
+      "index": 89,
+      "max": 54,
+      "min": 36
+    },
+    {
+      "date": "31-Mar",
+      "avgLow": 37,
+      "avgHigh": 53,
+      "recLow": 20,
+      "recHigh": 70,
+      "index": 90,
+      "max": 47,
+      "min": 35
+    },
+    {
+      "date": "1-Apr",
+      "avgLow": 37,
+      "avgHigh": 53,
+      "recLow": 26,
+      "recHigh": 76,
+      "index": 91,
+      "max": 51,
+      "min": 32
+    },
+    {
+      "date": "2-Apr",
+      "avgLow": 38,
+      "avgHigh": 53,
+      "recLow": 29,
+      "recHigh": 74,
+      "index": 92,
+      "max": 67,
+      "min": 41
+    },
+    {
+      "date": "3-Apr",
+      "avgLow": 38,
+      "avgHigh": 54,
+      "recLow": 22,
+      "recHigh": 70,
+      "index": 93,
+      "max": 64,
+      "min": 59
+    },
+    {
+      "date": "4-Apr",
+      "avgLow": 38,
+      "avgHigh": 54,
+      "recLow": 23,
+      "recHigh": 77,
+      "index": 94,
+      "max": 60,
+      "min": 42
+    },
+    {
+      "date": "5-Apr",
+      "avgLow": 39,
+      "avgHigh": 54,
+      "recLow": 22,
+      "recHigh": 74,
+      "index": 95,
+      "max": 61,
+      "min": 42
+    },
+    {
+      "date": "6-Apr",
+      "avgLow": 39,
+      "avgHigh": 55,
+      "recLow": 21,
+      "recHigh": 70,
+      "index": 96,
+      "max": 63,
+      "min": 42
+    },
+    {
+      "date": "7-Apr",
+      "avgLow": 39,
+      "avgHigh": 55,
+      "recLow": 18,
+      "recHigh": 72,
+      "index": 97,
+      "max": 62,
+      "min": 42
+    },
+    {
+      "date": "8-Apr",
+      "avgLow": 40,
+      "avgHigh": 55,
+      "recLow": 21,
+      "recHigh": 81,
+      "index": 98,
+      "max": 45,
+      "min": 37
+    },
+    {
+      "date": "9-Apr",
+      "avgLow": 40,
+      "avgHigh": 56,
+      "recLow": 25,
+      "recHigh": 75,
+      "index": 99,
+      "max": 43,
+      "min": 37
+    },
+    {
+      "date": "10-Apr",
+      "avgLow": 40,
+      "avgHigh": 56,
+      "recLow": 26,
+      "recHigh": 79,
+      "index": 100,
+      "max": 56,
+      "min": 39
+    },
+    {
+      "date": "11-Apr",
+      "avgLow": 41,
+      "avgHigh": 56,
+      "recLow": 27,
+      "recHigh": 80,
+      "index": 101,
+      "max": 57,
+      "min": 44
+    },
+    {
+      "date": "12-Apr",
+      "avgLow": 41,
+      "avgHigh": 57,
+      "recLow": 26,
+      "recHigh": 87,
+      "index": 102,
+      "max": 66,
+      "min": 43
+    },
+    {
+      "date": "13-Apr",
+      "avgLow": 41,
+      "avgHigh": 57,
+      "recLow": 28,
+      "recHigh": 83,
+      "index": 103,
+      "max": 68,
+      "min": 50
+    },
+    {
+      "date": "14-Apr",
+      "avgLow": 42,
+      "avgHigh": 57,
+      "recLow": 21,
+      "recHigh": 74,
+      "index": 104,
+      "max": 65,
+      "min": 55
+    },
+    {
+      "date": "15-Apr",
+      "avgLow": 42,
+      "avgHigh": 58,
+      "recLow": 27,
+      "recHigh": 83,
+      "index": 105,
+      "max": 72,
+      "min": 51
+    },
+    {
+      "date": "16-Apr",
+      "avgLow": 42,
+      "avgHigh": 58,
+      "recLow": 26,
+      "recHigh": 80,
+      "index": 106,
+      "max": 64,
+      "min": 52
+    },
+    {
+      "date": "17-Apr",
+      "avgLow": 43,
+      "avgHigh": 59,
+      "recLow": 28,
+      "recHigh": 83,
+      "index": 107,
+      "max": 71,
+      "min": 55
+    },
+    {
+      "date": "18-Apr",
+      "avgLow": 43,
+      "avgHigh": 59,
+      "recLow": 36,
+      "recHigh": 83,
+      "index": 108,
+      "max": 80,
+      "min": 59
+    },
+    {
+      "date": "19-Apr",
+      "avgLow": 43,
+      "avgHigh": 59,
+      "recLow": 31,
+      "recHigh": 86,
+      "index": 109,
+      "max": 64,
+      "min": 48
+    },
+    {
+      "date": "20-Apr",
+      "avgLow": 44,
+      "avgHigh": 60,
+      "recLow": 33,
+      "recHigh": 82,
+      "index": 110,
+      "max": 57,
+      "min": 46
+    },
+    {
+      "date": "21-Apr",
+      "avgLow": 44,
+      "avgHigh": 60,
+      "recLow": 20,
+      "recHigh": 82,
+      "index": 111,
+      "max": 65,
+      "min": 52
+    },
+    {
+      "date": "22-Apr",
+      "avgLow": 44,
+      "avgHigh": 60,
+      "recLow": 27,
+      "recHigh": 83,
+      "index": 112,
+      "max": 69,
+      "min": 48
+    },
+    {
+      "date": "23-Apr",
+      "avgLow": 45,
+      "avgHigh": 61,
+      "recLow": 30,
+      "recHigh": 81,
+      "index": 113,
+      "max": 52,
+      "min": 41
+    },
+    {
+      "date": "24-Apr",
+      "avgLow": 45,
+      "avgHigh": 61,
+      "recLow": 38,
+      "recHigh": 85,
+      "index": 114,
+      "max": 52,
+      "min": 39
+    },
+    {
+      "date": "25-Apr",
+      "avgLow": 45,
+      "avgHigh": 61,
+      "recLow": 33,
+      "recHigh": 87,
+      "index": 115,
+      "max": 62,
+      "min": 38
+    },
+    {
+      "date": "26-Apr",
+      "avgLow": 46,
+      "avgHigh": 62,
+      "recLow": 33,
+      "recHigh": 80,
+      "index": 116,
+      "max": 64,
+      "min": 46
+    },
+    {
+      "date": "27-Apr",
+      "avgLow": 46,
+      "avgHigh": 62,
+      "recLow": 32,
+      "recHigh": 86,
+      "index": 117,
+      "max": 62,
+      "min": 49
+    },
+    {
+      "date": "28-Apr",
+      "avgLow": 47,
+      "avgHigh": 62,
+      "recLow": 38,
+      "recHigh": 82,
+      "index": 118,
+      "max": 71,
+      "min": 50
+    },
+    {
+      "date": "29-Apr",
+      "avgLow": 47,
+      "avgHigh": 63,
+      "recLow": 37,
+      "recHigh": 86,
+      "index": 119,
+      "max": 78,
+      "min": 50
+    },
+    {
+      "date": "30-Apr",
+      "avgLow": 47,
+      "avgHigh": 63,
+      "recLow": 40,
+      "recHigh": 79,
+      "index": 120,
+      "max": 67,
+      "min": 48
+    },
+    {
+      "date": "1-May",
+      "avgLow": 48,
+      "avgHigh": 63,
+      "recLow": 36,
+      "recHigh": 83,
+      "index": 121,
+      "max": 63,
+      "min": 49
+    },
+    {
+      "date": "2-May",
+      "avgLow": 48,
+      "avgHigh": 64,
+      "recLow": 34,
+      "recHigh": 80,
+      "index": 122,
+      "max": 74,
+      "min": 48
+    },
+    {
+      "date": "3-May",
+      "avgLow": 48,
+      "avgHigh": 64,
+      "recLow": 38,
+      "recHigh": 82,
+      "index": 123,
+      "max": 80,
+      "min": 51
+    },
+    {
+      "date": "4-May",
+      "avgLow": 49,
+      "avgHigh": 64,
+      "recLow": 38,
+      "recHigh": 87,
+      "index": 124,
+      "max": 85,
+      "min": 57
+    },
+    {
+      "date": "5-May",
+      "avgLow": 49,
+      "avgHigh": 65,
+      "recLow": 40,
+      "recHigh": 86,
+      "index": 125,
+      "max": 85,
+      "min": 66
+    },
+    {
+      "date": "6-May",
+      "avgLow": 49,
+      "avgHigh": 65,
+      "recLow": 41,
+      "recHigh": 88,
+      "index": 126,
+      "max": 73,
+      "min": 59
+    },
+    {
+      "date": "7-May",
+      "avgLow": 50,
+      "avgHigh": 66,
+      "recLow": 36,
+      "recHigh": 78,
+      "index": 127,
+      "max": 80,
+      "min": 56
+    },
+    {
+      "date": "8-May",
+      "avgLow": 50,
+      "avgHigh": 66,
+      "recLow": 36,
+      "recHigh": 87,
+      "index": 128,
+      "max": 82,
+      "min": 56
+    },
+    {
+      "date": "9-May",
+      "avgLow": 50,
+      "avgHigh": 66,
+      "recLow": 36,
+      "recHigh": 88,
+      "index": 129,
+      "max": 70,
+      "min": 57
+    },
+    {
+      "date": "10-May",
+      "avgLow": 51,
+      "avgHigh": 67,
+      "recLow": 34,
+      "recHigh": 89,
+      "index": 130,
+      "max": 83,
+      "min": 61
+    },
+    {
+      "date": "11-May",
+      "avgLow": 51,
+      "avgHigh": 67,
+      "recLow": 40,
+      "recHigh": 85,
+      "index": 131,
+      "max": 84,
+      "min": 70
+    },
+    {
+      "date": "12-May",
+      "avgLow": 51,
+      "avgHigh": 67,
+      "recLow": 39,
+      "recHigh": 85,
+      "index": 132,
+      "max": 86,
+      "min": 64
+    },
+    {
+      "date": "13-May",
+      "avgLow": 52,
+      "avgHigh": 67,
+      "recLow": 38,
+      "recHigh": 88,
+      "index": 133,
+      "max": 70,
+      "min": 53
+    },
+    {
+      "date": "14-May",
+      "avgLow": 52,
+      "avgHigh": 68,
+      "recLow": 41,
+      "recHigh": 81,
+      "index": 134,
+      "max": 73,
+      "min": 50
+    },
+    {
+      "date": "15-May",
+      "avgLow": 52,
+      "avgHigh": 68,
+      "recLow": 41,
+      "recHigh": 83,
+      "index": 135,
+      "max": 75,
+      "min": 55
+    },
+    {
+      "date": "16-May",
+      "avgLow": 53,
+      "avgHigh": 68,
+      "recLow": 40,
+      "recHigh": 87,
+      "index": 136,
+      "max": 75,
+      "min": 57
+    },
+    {
+      "date": "17-May",
+      "avgLow": 53,
+      "avgHigh": 69,
+      "recLow": 38,
+      "recHigh": 90,
+      "index": 137,
+      "max": 83,
+      "min": 64
+    },
+    {
+      "date": "18-May",
+      "avgLow": 53,
+      "avgHigh": 69,
+      "recLow": 38,
+      "recHigh": 88,
+      "index": 138,
+      "max": 75,
+      "min": 60
+    },
+    {
+      "date": "19-May",
+      "avgLow": 54,
+      "avgHigh": 69,
+      "recLow": 38,
+      "recHigh": 95,
+      "index": 139,
+      "max": 80,
+      "min": 59
+    },
+    {
+      "date": "20-May",
+      "avgLow": 54,
+      "avgHigh": 70,
+      "recLow": 41,
+      "recHigh": 88,
+      "index": 140,
+      "max": 67,
+      "min": 54
+    },
+    {
+      "date": "21-May",
+      "avgLow": 55,
+      "avgHigh": 70,
+      "recLow": 41,
+      "recHigh": 96,
+      "index": 141,
+      "max": 62,
+      "min": 52
+    },
+    {
+      "date": "22-May",
+      "avgLow": 55,
+      "avgHigh": 70,
+      "recLow": 47,
+      "recHigh": 94,
+      "index": 142,
+      "max": 74,
+      "min": 55
+    },
+    {
+      "date": "23-May",
+      "avgLow": 55,
+      "avgHigh": 71,
+      "recLow": 44,
+      "recHigh": 93,
+      "index": 143,
+      "max": 70,
+      "min": 49
+    },
+    {
+      "date": "24-May",
+      "avgLow": 56,
+      "avgHigh": 71,
+      "recLow": 41,
+      "recHigh": 92,
+      "index": 144,
+      "max": 81,
+      "min": 56
+    },
+    {
+      "date": "25-May",
+      "avgLow": 56,
+      "avgHigh": 71,
+      "recLow": 40,
+      "recHigh": 89,
+      "index": 145,
+      "max": 85,
+      "min": 64
+    },
+    {
+      "date": "26-May",
+      "avgLow": 56,
+      "avgHigh": 72,
+      "recLow": 44,
+      "recHigh": 92,
+      "index": 146,
+      "max": 88,
+      "min": 67
+    },
+    {
+      "date": "27-May",
+      "avgLow": 57,
+      "avgHigh": 72,
+      "recLow": 41,
+      "recHigh": 86,
+      "index": 147,
+      "max": 85,
+      "min": 70
+    },
+    {
+      "date": "28-May",
+      "avgLow": 57,
+      "avgHigh": 72,
+      "recLow": 39,
+      "recHigh": 88,
+      "index": 148,
+      "max": 85,
+      "min": 70
+    },
+    {
+      "date": "29-May",
+      "avgLow": 57,
+      "avgHigh": 73,
+      "recLow": 46,
+      "recHigh": 97,
+      "index": 149,
+      "max": 85,
+      "min": 65
+    },
+    {
+      "date": "30-May",
+      "avgLow": 58,
+      "avgHigh": 73,
+      "recLow": 44,
+      "recHigh": 92,
+      "index": 150,
+      "max": 85,
+      "min": 67
+    },
+    {
+      "date": "31-May",
+      "avgLow": 58,
+      "avgHigh": 73,
+      "recLow": 48,
+      "recHigh": 89,
+      "index": 151,
+      "max": 87,
+      "min": 57
+    },
+    {
+      "date": "1-Jun",
+      "avgLow": 58,
+      "avgHigh": 73,
+      "recLow": 46,
+      "recHigh": 92,
+      "index": 152,
+      "max": 58,
+      "min": 51
+    },
+    {
+      "date": "2-Jun",
+      "avgLow": 59,
+      "avgHigh": 74,
+      "recLow": 49,
+      "recHigh": 91,
+      "index": 153,
+      "max": 55,
+      "min": 50
+    },
+    {
+      "date": "3-Jun",
+      "avgLow": 59,
+      "avgHigh": 74,
+      "recLow": 46,
+      "recHigh": 83,
+      "index": 154,
+      "max": 70,
+      "min": 52
+    },
+    {
+      "date": "4-Jun",
+      "avgLow": 59,
+      "avgHigh": 74,
+      "recLow": 48,
+      "recHigh": 88,
+      "index": 155,
+      "max": 65,
+      "min": 54
+    },
+    {
+      "date": "5-Jun",
+      "avgLow": 60,
+      "avgHigh": 75,
+      "recLow": 50,
+      "recHigh": 91,
+      "index": 156,
+      "max": 70,
+      "min": 55
+    },
+    {
+      "date": "6-Jun",
+      "avgLow": 60,
+      "avgHigh": 75,
+      "recLow": 50,
+      "recHigh": 90,
+      "index": 157,
+      "max": 76,
+      "min": 60
+    },
+    {
+      "date": "7-Jun",
+      "avgLow": 60,
+      "avgHigh": 75,
+      "recLow": 46,
+      "recHigh": 90,
+      "index": 158,
+      "max": 74,
+      "min": 55
+    },
+    {
+      "date": "8-Jun",
+      "avgLow": 60,
+      "avgHigh": 75,
+      "recLow": 48,
+      "recHigh": 92,
+      "index": 159,
+      "max": 79,
+      "min": 63
+    },
+    {
+      "date": "9-Jun",
+      "avgLow": 61,
+      "avgHigh": 76,
+      "recLow": 44,
+      "recHigh": 96,
+      "index": 160,
+      "max": 83,
+      "min": 68
+    },
+    {
+      "date": "10-Jun",
+      "avgLow": 61,
+      "avgHigh": 76,
+      "recLow": 49,
+      "recHigh": 94,
+      "index": 161,
+      "max": 82,
+      "min": 65
+    },
+    {
+      "date": "11-Jun",
+      "avgLow": 61,
+      "avgHigh": 76,
+      "recLow": 44,
+      "recHigh": 94,
+      "index": 162,
+      "max": 89,
+      "min": 72
+    },
+    {
+      "date": "12-Jun",
+      "avgLow": 62,
+      "avgHigh": 76,
+      "recLow": 44,
+      "recHigh": 93,
+      "index": 163,
+      "max": 88,
+      "min": 73
+    },
+    {
+      "date": "13-Jun",
+      "avgLow": 62,
+      "avgHigh": 77,
+      "recLow": 50,
+      "recHigh": 94,
+      "index": 164,
+      "max": 86,
+      "min": 72
+    },
+    {
+      "date": "14-Jun",
+      "avgLow": 62,
+      "avgHigh": 77,
+      "recLow": 49,
+      "recHigh": 97,
+      "index": 165,
+      "max": 88,
+      "min": 66
+    },
+    {
+      "date": "15-Jun",
+      "avgLow": 63,
+      "avgHigh": 77,
+      "recLow": 51,
+      "recHigh": 95,
+      "index": 166,
+      "max": 83,
+      "min": 64
+    },
+    {
+      "date": "16-Jun",
+      "avgLow": 63,
+      "avgHigh": 77,
+      "recLow": 50,
+      "recHigh": 96,
+      "index": 167,
+      "max": 79,
+      "min": 65
+    },
+    {
+      "date": "17-Jun",
+      "avgLow": 63,
+      "avgHigh": 78,
+      "recLow": 50,
+      "recHigh": 93,
+      "index": 168,
+      "max": 82,
+      "min": 66
+    },
+    {
+      "date": "18-Jun",
+      "avgLow": 63,
+      "avgHigh": 78,
+      "recLow": 46,
+      "recHigh": 91,
+      "index": 169,
+      "max": 71,
+      "min": 64
+    },
+    {
+      "date": "19-Jun",
+      "avgLow": 64,
+      "avgHigh": 78,
+      "recLow": 52,
+      "recHigh": 91,
+      "index": 170,
+      "max": 87,
+      "min": 68
+    },
+    {
+      "date": "20-Jun",
+      "avgLow": 64,
+      "avgHigh": 78,
+      "recLow": 49,
+      "recHigh": 96,
+      "index": 171,
+      "max": 75,
+      "min": 64
+    },
+    {
+      "date": "21-Jun",
+      "avgLow": 64,
+      "avgHigh": 79,
+      "recLow": 55,
+      "recHigh": 92,
+      "index": 172,
+      "max": 88,
+      "min": 71
+    },
+    {
+      "date": "22-Jun",
+      "avgLow": 64,
+      "avgHigh": 79,
+      "recLow": 53,
+      "recHigh": 92,
+      "index": 173,
+      "max": 87,
+      "min": 70
+    },
+    {
+      "date": "23-Jun",
+      "avgLow": 65,
+      "avgHigh": 79,
+      "recLow": 54,
+      "recHigh": 91,
+      "index": 174,
+      "max": 90,
+      "min": 75
+    },
+    {
+      "date": "24-Jun",
+      "avgLow": 65,
+      "avgHigh": 79,
+      "recLow": 53,
+      "recHigh": 95,
+      "index": 175,
+      "max": 84,
+      "min": 68
+    },
+    {
+      "date": "25-Jun",
+      "avgLow": 65,
+      "avgHigh": 80,
+      "recLow": 48,
+      "recHigh": 96,
+      "index": 176,
+      "max": 83,
+      "min": 65
+    },
+    {
+      "date": "26-Jun",
+      "avgLow": 65,
+      "avgHigh": 80,
+      "recLow": 46,
+      "recHigh": 100,
+      "index": 177,
+      "max": 81,
+      "min": 69
+    },
+    {
+      "date": "27-Jun",
+      "avgLow": 65,
+      "avgHigh": 80,
+      "recLow": 50,
+      "recHigh": 98,
+      "index": 178,
+      "max": 71,
+      "min": 58
+    },
+    {
+      "date": "28-Jun",
+      "avgLow": 66,
+      "avgHigh": 80,
+      "recLow": 50,
+      "recHigh": 95,
+      "index": 179,
+      "max": 73,
+      "min": 62
+    },
+    {
+      "date": "29-Jun",
+      "avgLow": 66,
+      "avgHigh": 80,
+      "recLow": 57,
+      "recHigh": 96,
+      "index": 180,
+      "max": 76,
+      "min": 63
+    },
+    {
+      "date": "30-Jun",
+      "avgLow": 66,
+      "avgHigh": 81,
+      "recLow": 56,
+      "recHigh": 97,
+      "index": 181,
+      "max": 82,
+      "min": 68
+    },
+    {
+      "date": "1-Jul",
+      "avgLow": 66,
+      "avgHigh": 81,
+      "recLow": 54,
+      "recHigh": 97,
+      "index": 182,
+      "max": 82,
+      "min": 69
+    },
+    {
+      "date": "2-Jul",
+      "avgLow": 66,
+      "avgHigh": 81,
+      "recLow": 56,
+      "recHigh": 98,
+      "index": 183,
+      "max": 80,
+      "min": 69
+    },
+    {
+      "date": "3-Jul",
+      "avgLow": 67,
+      "avgHigh": 81,
+      "recLow": 56,
+      "recHigh": 102,
+      "index": 184,
+      "max": 82,
+      "min": 66
+    },
+    {
+      "date": "4-Jul",
+      "avgLow": 67,
+      "avgHigh": 81,
+      "recLow": 53,
+      "recHigh": 98,
+      "index": 185,
+      "max": 75,
+      "min": 69
+    },
+    {
+      "date": "5-Jul",
+      "avgLow": 67,
+      "avgHigh": 82,
+      "recLow": 49,
+      "recHigh": 97,
+      "index": 186,
+      "max": 83,
+      "min": 68
+    },
+    {
+      "date": "6-Jul",
+      "avgLow": 67,
+      "avgHigh": 82,
+      "recLow": 49,
+      "recHigh": 94,
+      "index": 187,
+      "max": 83,
+      "min": 72
+    },
+    {
+      "date": "7-Jul",
+      "avgLow": 67,
+      "avgHigh": 82,
+      "recLow": 53,
+      "recHigh": 96,
+      "index": 188,
+      "max": 88,
+      "min": 75
+    },
+    {
+      "date": "8-Jul",
+      "avgLow": 67,
+      "avgHigh": 82,
+      "recLow": 57,
+      "recHigh": 95,
+      "index": 189,
+      "max": 88,
+      "min": 77
+    },
+    {
+      "date": "9-Jul",
+      "avgLow": 68,
+      "avgHigh": 82,
+      "recLow": 54,
+      "recHigh": 97,
+      "index": 190,
+      "max": 79,
+      "min": 68
+    },
+    {
+      "date": "10-Jul",
+      "avgLow": 68,
+      "avgHigh": 82,
+      "recLow": 50,
+      "recHigh": 94,
+      "index": 191,
+      "max": 84,
+      "min": 72
+    },
+    {
+      "date": "11-Jul",
+      "avgLow": 68,
+      "avgHigh": 82,
+      "recLow": 59,
+      "recHigh": 94,
+      "index": 192,
+      "max": 88,
+      "min": 69
+    },
+    {
+      "date": "12-Jul",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 55,
+      "recHigh": 96,
+      "index": 193,
+      "max": 89,
+      "min": 72
+    },
+    {
+      "date": "13-Jul",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 57,
+      "recHigh": 97,
+      "index": 194,
+      "max": 88,
+      "min": 73
+    },
+    {
+      "date": "14-Jul",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 61,
+      "recHigh": 98,
+      "index": 195,
+      "max": 82,
+      "min": 73
+    },
+    {
+      "date": "15-Jul",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 58,
+      "recHigh": 98,
+      "index": 196,
+      "max": 81,
+      "min": 72
+    },
+    {
+      "date": "16-Jul",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 59,
+      "recHigh": 97,
+      "index": 197,
+      "max": 80,
+      "min": 64
+    },
+    {
+      "date": "17-Jul",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 58,
+      "recHigh": 97,
+      "index": 198,
+      "max": 81,
+      "min": 67
+    },
+    {
+      "date": "18-Jul",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 61,
+      "recHigh": 95,
+      "index": 199,
+      "max": 85,
+      "min": 71
+    },
+    {
+      "date": "19-Jul",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 60,
+      "recHigh": 96,
+      "index": 200,
+      "max": 93,
+      "min": 78
+    },
+    {
+      "date": "20-Jul",
+      "avgLow": 69,
+      "avgHigh": 83,
+      "recLow": 57,
+      "recHigh": 97,
+      "index": 201,
+      "max": 94,
+      "min": 82
+    },
+    {
+      "date": "21-Jul",
+      "avgLow": 69,
+      "avgHigh": 83,
+      "recLow": 58,
+      "recHigh": 97,
+      "index": 202,
+      "max": 89,
+      "min": 74
+    },
+    {
+      "date": "22-Jul",
+      "avgLow": 69,
+      "avgHigh": 83,
+      "recLow": 57,
+      "recHigh": 100,
+      "index": 203,
+      "max": 85,
+      "min": 69
+    },
+    {
+      "date": "23-Jul",
+      "avgLow": 69,
+      "avgHigh": 83,
+      "recLow": 62,
+      "recHigh": 97,
+      "index": 204,
+      "max": 86,
+      "min": 68
+    },
+    {
+      "date": "24-Jul",
+      "avgLow": 69,
+      "avgHigh": 83,
+      "recLow": 58,
+      "recHigh": 92,
+      "index": 205,
+      "max": 87,
+      "min": 70
+    },
+    {
+      "date": "25-Jul",
+      "avgLow": 69,
+      "avgHigh": 83,
+      "recLow": 57,
+      "recHigh": 95,
+      "index": 206,
+      "max": 88,
+      "min": 69
+    },
+    {
+      "date": "26-Jul",
+      "avgLow": 69,
+      "avgHigh": 83,
+      "recLow": 60,
+      "recHigh": 96,
+      "index": 207,
+      "max": 90,
+      "min": 74
+    },
+    {
+      "date": "27-Jul",
+      "avgLow": 69,
+      "avgHigh": 83,
+      "recLow": 55,
+      "recHigh": 96,
+      "index": 208,
+      "max": 86,
+      "min": 71
+    },
+    {
+      "date": "28-Jul",
+      "avgLow": 69,
+      "avgHigh": 83,
+      "recLow": 59,
+      "recHigh": 95,
+      "index": 209,
+      "max": 95,
+      "min": 75
+    },
+    {
+      "date": "29-Jul",
+      "avgLow": 69,
+      "avgHigh": 83,
+      "recLow": 60,
+      "recHigh": 96,
+      "index": 210,
+      "max": 96,
+      "min": 78
+    },
+    {
+      "date": "30-Jul",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 60,
+      "recHigh": 96,
+      "index": 211,
+      "max": 87,
+      "min": 76
+    },
+    {
+      "date": "31-Jul",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 57,
+      "recHigh": 98,
+      "index": 212,
+      "max": 89,
+      "min": 72
+    },
+    {
+      "date": "1-Aug",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 59,
+      "recHigh": 99,
+      "index": 213,
+      "max": 89,
+      "min": 75
+    },
+    {
+      "date": "2-Aug",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 59,
+      "recHigh": 100,
+      "index": 214,
+      "max": 89,
+      "min": 71
+    },
+    {
+      "date": "3-Aug",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 54,
+      "recHigh": 97,
+      "index": 215,
+      "max": 90,
+      "min": 75
+    },
+    {
+      "date": "4-Aug",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 57,
+      "recHigh": 94,
+      "index": 216,
+      "max": 89,
+      "min": 69
+    },
+    {
+      "date": "5-Aug",
+      "avgLow": 68,
+      "avgHigh": 83,
+      "recLow": 56,
+      "recHigh": 96,
+      "index": 217,
+      "max": 87,
+      "min": 72
+    },
+    {
+      "date": "6-Aug",
+      "avgLow": 68,
+      "avgHigh": 82,
+      "recLow": 54,
+      "recHigh": 92,
+      "index": 218,
+      "max": 83,
+      "min": 67
+    },
+    {
+      "date": "7-Aug",
+      "avgLow": 68,
+      "avgHigh": 82,
+      "recLow": 57,
+      "recHigh": 92,
+      "index": 219,
+      "max": 84,
+      "min": 69
+    },
+    {
+      "date": "8-Aug",
+      "avgLow": 68,
+      "avgHigh": 82,
+      "recLow": 54,
+      "recHigh": 91,
+      "index": 220,
+      "max": 82,
+      "min": 68
+    },
+    {
+      "date": "9-Aug",
+      "avgLow": 68,
+      "avgHigh": 82,
+      "recLow": 55,
+      "recHigh": 98,
+      "index": 221,
+      "max": 85,
+      "min": 68
+    },
+    {
+      "date": "10-Aug",
+      "avgLow": 68,
+      "avgHigh": 82,
+      "recLow": 56,
+      "recHigh": 95,
+      "index": 222,
+      "max": 84,
+      "min": 70
+    },
+    {
+      "date": "11-Aug",
+      "avgLow": 67,
+      "avgHigh": 82,
+      "recLow": 55,
+      "recHigh": 97,
+      "index": 223,
+      "max": 81,
+      "min": 71
+    },
+    {
+      "date": "12-Aug",
+      "avgLow": 67,
+      "avgHigh": 82,
+      "recLow": 50,
+      "recHigh": 92,
+      "index": 224,
+      "max": 85,
+      "min": 71
+    },
+    {
+      "date": "13-Aug",
+      "avgLow": 67,
+      "avgHigh": 82,
+      "recLow": 51,
+      "recHigh": 93,
+      "index": 225,
+      "max": 83,
+      "min": 67
+    },
+    {
+      "date": "14-Aug",
+      "avgLow": 67,
+      "avgHigh": 81,
+      "recLow": 53,
+      "recHigh": 94,
+      "index": 226,
+      "max": 88,
+      "min": 67
+    },
+    {
+      "date": "15-Aug",
+      "avgLow": 67,
+      "avgHigh": 81,
+      "recLow": 54,
+      "recHigh": 94,
+      "index": 227,
+      "max": 92,
+      "min": 73
+    },
+    {
+      "date": "16-Aug",
+      "avgLow": 67,
+      "avgHigh": 81,
+      "recLow": 52,
+      "recHigh": 91,
+      "index": 228,
+      "max": 93,
+      "min": 76
+    },
+    {
+      "date": "17-Aug",
+      "avgLow": 66,
+      "avgHigh": 81,
+      "recLow": 50,
+      "recHigh": 93,
+      "index": 229,
+      "max": 95,
+      "min": 78
+    },
+    {
+      "date": "18-Aug",
+      "avgLow": 66,
+      "avgHigh": 81,
+      "recLow": 54,
+      "recHigh": 91,
+      "index": 230,
+      "max": 90,
+      "min": 73
+    },
+    {
+      "date": "19-Aug",
+      "avgLow": 66,
+      "avgHigh": 81,
+      "recLow": 56,
+      "recHigh": 94,
+      "index": 231,
+      "max": 87,
+      "min": 77
+    },
+    {
+      "date": "20-Aug",
+      "avgLow": 66,
+      "avgHigh": 81,
+      "recLow": 53,
+      "recHigh": 95,
+      "index": 232,
+      "max": 86,
+      "min": 77
+    },
+    {
+      "date": "21-Aug",
+      "avgLow": 66,
+      "avgHigh": 80,
+      "recLow": 50,
+      "recHigh": 95,
+      "index": 233,
+      "max": 87,
+      "min": 71
+    },
+    {
+      "date": "22-Aug",
+      "avgLow": 65,
+      "avgHigh": 80,
+      "recLow": 55,
+      "recHigh": 96,
+      "index": 234,
+      "max": 86,
+      "min": 69
+    },
+    {
+      "date": "23-Aug",
+      "avgLow": 65,
+      "avgHigh": 80,
+      "recLow": 53,
+      "recHigh": 92,
+      "index": 235,
+      "max": 85,
+      "min": 70
+    },
+    {
+      "date": "24-Aug",
+      "avgLow": 65,
+      "avgHigh": 80,
+      "recLow": 53,
+      "recHigh": 92,
+      "index": 236,
+      "max": 87,
+      "min": 73
+    },
+    {
+      "date": "25-Aug",
+      "avgLow": 65,
+      "avgHigh": 80,
+      "recLow": 52,
+      "recHigh": 94,
+      "index": 237,
+      "max": 90,
+      "min": 73
+    },
+    {
+      "date": "26-Aug",
+      "avgLow": 65,
+      "avgHigh": 79,
+      "recLow": 54,
+      "recHigh": 100,
+      "index": 238,
+      "max": 85,
+      "min": 67
+    },
+    {
+      "date": "27-Aug",
+      "avgLow": 64,
+      "avgHigh": 79,
+      "recLow": 55,
+      "recHigh": 99,
+      "index": 239,
+      "max": 82,
+      "min": 67
+    },
+    {
+      "date": "28-Aug",
+      "avgLow": 64,
+      "avgHigh": 79,
+      "recLow": 47,
+      "recHigh": 98,
+      "index": 240,
+      "max": 82,
+      "min": 63
+    },
+    {
+      "date": "29-Aug",
+      "avgLow": 64,
+      "avgHigh": 79,
+      "recLow": 48,
+      "recHigh": 95,
+      "index": 241,
+      "max": 87,
+      "min": 67
+    },
+    {
+      "date": "30-Aug",
+      "avgLow": 63,
+      "avgHigh": 79,
+      "recLow": 48,
+      "recHigh": 99,
+      "index": 242,
+      "max": 90,
+      "min": 72
+    },
+    {
+      "date": "31-Aug",
+      "avgLow": 63,
+      "avgHigh": 78,
+      "recLow": 50,
+      "recHigh": 98,
+      "index": 243,
+      "max": 91,
+      "min": 76
+    },
+    {
+      "date": "1-Sep",
+      "avgLow": 63,
+      "avgHigh": 78,
+      "recLow": 53,
+      "recHigh": 92,
+      "index": 244,
+      "max": 90,
+      "min": 76
+    },
+    {
+      "date": "2-Sep",
+      "avgLow": 63,
+      "avgHigh": 78,
+      "recLow": 52,
+      "recHigh": 99,
+      "index": 245,
+      "max": 91,
+      "min": 74
+    },
+    {
+      "date": "3-Sep",
+      "avgLow": 62,
+      "avgHigh": 78,
+      "recLow": 52,
+      "recHigh": 91,
+      "index": 246,
+      "max": 93,
+      "min": 74
+    },
+    {
+      "date": "4-Sep",
+      "avgLow": 62,
+      "avgHigh": 77,
+      "recLow": 54,
+      "recHigh": 93,
+      "index": 247,
+      "max": 85,
+      "min": 72
+    },
+    {
+      "date": "5-Sep",
+      "avgLow": 62,
+      "avgHigh": 77,
+      "recLow": 52,
+      "recHigh": 93,
+      "index": 248,
+      "max": 83,
+      "min": 67
+    },
+    {
+      "date": "6-Sep",
+      "avgLow": 61,
+      "avgHigh": 77,
+      "recLow": 48,
+      "recHigh": 94,
+      "index": 249,
+      "max": 87,
+      "min": 65
+    },
+    {
+      "date": "7-Sep",
+      "avgLow": 61,
+      "avgHigh": 77,
+      "recLow": 47,
+      "recHigh": 92,
+      "index": 250,
+      "max": 92,
+      "min": 70
+    },
+    {
+      "date": "8-Sep",
+      "avgLow": 61,
+      "avgHigh": 76,
+      "recLow": 50,
+      "recHigh": 86,
+      "index": 251,
+      "max": 97,
+      "min": 76
+    },
+    {
+      "date": "9-Sep",
+      "avgLow": 60,
+      "avgHigh": 76,
+      "recLow": 48,
+      "recHigh": 90,
+      "index": 252,
+      "max": 90,
+      "min": 76
+    },
+    {
+      "date": "10-Sep",
+      "avgLow": 60,
+      "avgHigh": 76,
+      "recLow": 45,
+      "recHigh": 98,
+      "index": 253,
+      "max": 79,
+      "min": 70
+    },
+    {
+      "date": "11-Sep",
+      "avgLow": 60,
+      "avgHigh": 75,
+      "recLow": 49,
+      "recHigh": 96,
+      "index": 254,
+      "max": 81,
+      "min": 66
+    },
+    {
+      "date": "12-Sep",
+      "avgLow": 59,
+      "avgHigh": 75,
+      "recLow": 47,
+      "recHigh": 89,
+      "index": 255,
+      "max": 79,
+      "min": 69
+    },
+    {
+      "date": "13-Sep",
+      "avgLow": 59,
+      "avgHigh": 75,
+      "recLow": 45,
+      "recHigh": 92,
+      "index": 256,
+      "max": 80,
+      "min": 62
+    },
+    {
+      "date": "14-Sep",
+      "avgLow": 59,
+      "avgHigh": 75,
+      "recLow": 41,
+      "recHigh": 87,
+      "index": 257,
+      "max": 77,
+      "min": 59
+    },
+    {
+      "date": "15-Sep",
+      "avgLow": 58,
+      "avgHigh": 74,
+      "recLow": 45,
+      "recHigh": 88,
+      "index": 258,
+      "max": 84,
+      "min": 62
+    },
+    {
+      "date": "16-Sep",
+      "avgLow": 58,
+      "avgHigh": 74,
+      "recLow": 40,
+      "recHigh": 91,
+      "index": 259,
+      "max": 88,
+      "min": 66
+    },
+    {
+      "date": "17-Sep",
+      "avgLow": 58,
+      "avgHigh": 74,
+      "recLow": 42,
+      "recHigh": 90,
+      "index": 260,
+      "max": 89,
+      "min": 68
+    },
+    {
+      "date": "18-Sep",
+      "avgLow": 57,
+      "avgHigh": 73,
+      "recLow": 42,
+      "recHigh": 88,
+      "index": 261,
+      "max": 87,
+      "min": 68
+    },
+    {
+      "date": "19-Sep",
+      "avgLow": 57,
+      "avgHigh": 73,
+      "recLow": 42,
+      "recHigh": 93,
+      "index": 262,
+      "max": 83,
+      "min": 68
+    },
+    {
+      "date": "20-Sep",
+      "avgLow": 57,
+      "avgHigh": 73,
+      "recLow": 41,
+      "recHigh": 92,
+      "index": 263,
+      "max": 79,
+      "min": 64
+    },
+    {
+      "date": "21-Sep",
+      "avgLow": 56,
+      "avgHigh": 72,
+      "recLow": 39,
+      "recHigh": 82,
+      "index": 264,
+      "max": 73,
+      "min": 59
+    },
+    {
+      "date": "22-Sep",
+      "avgLow": 56,
+      "avgHigh": 72,
+      "recLow": 40,
+      "recHigh": 92,
+      "index": 265,
+      "max": 71,
+      "min": 62
+    },
+    {
+      "date": "23-Sep",
+      "avgLow": 56,
+      "avgHigh": 72,
+      "recLow": 43,
+      "recHigh": 95,
+      "index": 266,
+      "max": 80,
+      "min": 59
+    },
+    {
+      "date": "24-Sep",
+      "avgLow": 55,
+      "avgHigh": 71,
+      "recLow": 38,
+      "recHigh": 87,
+      "index": 267,
+      "max": 82,
+      "min": 60
+    },
+    {
+      "date": "25-Sep",
+      "avgLow": 55,
+      "avgHigh": 71,
+      "recLow": 40,
+      "recHigh": 90,
+      "index": 268,
+      "max": 76,
+      "min": 63
+    },
+    {
+      "date": "26-Sep",
+      "avgLow": 54,
+      "avgHigh": 70,
+      "recLow": 42,
+      "recHigh": 88,
+      "index": 269,
+      "max": 72,
+      "min": 61
+    },
+    {
+      "date": "27-Sep",
+      "avgLow": 54,
+      "avgHigh": 70,
+      "recLow": 38,
+      "recHigh": 84,
+      "index": 270,
+      "max": 71,
+      "min": 56
+    },
+    {
+      "date": "28-Sep",
+      "avgLow": 54,
+      "avgHigh": 70,
+      "recLow": 40,
+      "recHigh": 82,
+      "index": 271,
+      "max": 78,
+      "min": 65
+    },
+    {
+      "date": "29-Sep",
+      "avgLow": 53,
+      "avgHigh": 69,
+      "recLow": 41,
+      "recHigh": 79,
+      "index": 272,
+      "max": 83,
+      "min": 72
+    },
+    {
+      "date": "30-Sep",
+      "avgLow": 53,
+      "avgHigh": 69,
+      "recLow": 40,
+      "recHigh": 86,
+      "index": 273,
+      "max": 79,
+      "min": 59
+    },
+    {
+      "date": "1-Oct",
+      "avgLow": 52,
+      "avgHigh": 68,
+      "recLow": 45,
+      "recHigh": 82,
+      "index": 274,
+      "max": 64,
+      "min": 56
+    },
+    {
+      "date": "2-Oct",
+      "avgLow": 52,
+      "avgHigh": 68,
+      "recLow": 42,
+      "recHigh": 85,
+      "index": 275,
+      "max": 57,
+      "min": 48
+    },
+    {
+      "date": "3-Oct",
+      "avgLow": 52,
+      "avgHigh": 68,
+      "recLow": 37,
+      "recHigh": 83,
+      "index": 276,
+      "max": 55,
+      "min": 49
+    },
+    {
+      "date": "4-Oct",
+      "avgLow": 51,
+      "avgHigh": 67,
+      "recLow": 36,
+      "recHigh": 83,
+      "index": 277,
+      "max": 63,
+      "min": 53
+    },
+    {
+      "date": "5-Oct",
+      "avgLow": 51,
+      "avgHigh": 67,
+      "recLow": 37,
+      "recHigh": 81,
+      "index": 278,
+      "max": 67,
+      "min": 52
+    },
+    {
+      "date": "6-Oct",
+      "avgLow": 50,
+      "avgHigh": 67,
+      "recLow": 35,
+      "recHigh": 82,
+      "index": 279,
+      "max": 73,
+      "min": 52
+    },
+    {
+      "date": "7-Oct",
+      "avgLow": 50,
+      "avgHigh": 66,
+      "recLow": 38,
+      "recHigh": 83,
+      "index": 280,
+      "max": 73,
+      "min": 58
+    },
+    {
+      "date": "8-Oct",
+      "avgLow": 50,
+      "avgHigh": 66,
+      "recLow": 36,
+      "recHigh": 76,
+      "index": 281,
+      "max": 72,
+      "min": 59
+    },
+    {
+      "date": "9-Oct",
+      "avgLow": 49,
+      "avgHigh": 65,
+      "recLow": 34,
+      "recHigh": 82,
+      "index": 282,
+      "max": 78,
+      "min": 61
+    },
+    {
+      "date": "10-Oct",
+      "avgLow": 49,
+      "avgHigh": 65,
+      "recLow": 30,
+      "recHigh": 85,
+      "index": 283,
+      "max": 65,
+      "min": 50
+    },
+    {
+      "date": "11-Oct",
+      "avgLow": 49,
+      "avgHigh": 65,
+      "recLow": 33,
+      "recHigh": 83,
+      "index": 284,
+      "max": 69,
+      "min": 53
+    },
+    {
+      "date": "12-Oct",
+      "avgLow": 48,
+      "avgHigh": 64,
+      "recLow": 34,
+      "recHigh": 83,
+      "index": 285,
+      "max": 77,
+      "min": 56
+    },
+    {
+      "date": "13-Oct",
+      "avgLow": 48,
+      "avgHigh": 64,
+      "recLow": 34,
+      "recHigh": 85,
+      "index": 286,
+      "max": 72,
+      "min": 61
+    },
+    {
+      "date": "14-Oct",
+      "avgLow": 47,
+      "avgHigh": 64,
+      "recLow": 33,
+      "recHigh": 84,
+      "index": 287,
+      "max": 70,
+      "min": 58
+    },
+    {
+      "date": "15-Oct",
+      "avgLow": 47,
+      "avgHigh": 63,
+      "recLow": 38,
+      "recHigh": 82,
+      "index": 288,
+      "max": 65,
+      "min": 52
+    },
+    {
+      "date": "16-Oct",
+      "avgLow": 47,
+      "avgHigh": 63,
+      "recLow": 34,
+      "recHigh": 82,
+      "index": 289,
+      "max": 66,
+      "min": 54
+    },
+    {
+      "date": "17-Oct",
+      "avgLow": 46,
+      "avgHigh": 62,
+      "recLow": 36,
+      "recHigh": 81,
+      "index": 290,
+      "max": 58,
+      "min": 43
+    },
+    {
+      "date": "18-Oct",
+      "avgLow": 46,
+      "avgHigh": 62,
+      "recLow": 32,
+      "recHigh": 78,
+      "index": 291,
+      "max": 53,
+      "min": 38
+    },
+    {
+      "date": "19-Oct",
+      "avgLow": 46,
+      "avgHigh": 62,
+      "recLow": 32,
+      "recHigh": 78,
+      "index": 292,
+      "max": 52,
+      "min": 36
+    },
+    {
+      "date": "20-Oct",
+      "avgLow": 45,
+      "avgHigh": 61,
+      "recLow": 30,
+      "recHigh": 79,
+      "index": 293,
+      "max": 70,
+      "min": 49
+    },
+    {
+      "date": "21-Oct",
+      "avgLow": 45,
+      "avgHigh": 61,
+      "recLow": 30,
+      "recHigh": 80,
+      "index": 294,
+      "max": 71,
+      "min": 52
+    },
+    {
+      "date": "22-Oct",
+      "avgLow": 45,
+      "avgHigh": 61,
+      "recLow": 32,
+      "recHigh": 79,
+      "index": 295,
+      "max": 70,
+      "min": 53
+    },
+    {
+      "date": "23-Oct",
+      "avgLow": 44,
+      "avgHigh": 60,
+      "recLow": 27,
+      "recHigh": 72,
+      "index": 296,
+      "max": 66,
+      "min": 44
+    },
+    {
+      "date": "24-Oct",
+      "avgLow": 44,
+      "avgHigh": 60,
+      "recLow": 29,
+      "recHigh": 75,
+      "index": 297,
+      "max": 59,
+      "min": 42
+    },
+    {
+      "date": "25-Oct",
+      "avgLow": 44,
+      "avgHigh": 60,
+      "recLow": 32,
+      "recHigh": 74,
+      "index": 298,
+      "max": 70,
+      "min": 49
+    },
+    {
+      "date": "26-Oct",
+      "avgLow": 44,
+      "avgHigh": 59,
+      "recLow": 32,
+      "recHigh": 78,
+      "index": 299,
+      "max": 60,
+      "min": 45
+    },
+    {
+      "date": "27-Oct",
+      "avgLow": 43,
+      "avgHigh": 59,
+      "recLow": 29,
+      "recHigh": 80,
+      "index": 300,
+      "max": 59,
+      "min": 42
+    },
+    {
+      "date": "28-Oct",
+      "avgLow": 43,
+      "avgHigh": 58,
+      "recLow": 28,
+      "recHigh": 77,
+      "index": 301,
+      "max": 68,
+      "min": 52
+    },
+    {
+      "date": "29-Oct",
+      "avgLow": 43,
+      "avgHigh": 58,
+      "recLow": 31,
+      "recHigh": 75,
+      "index": 302,
+      "max": 74,
+      "min": 59
+    },
+    {
+      "date": "30-Oct",
+      "avgLow": 42,
+      "avgHigh": 58,
+      "recLow": 29,
+      "recHigh": 76,
+      "index": 303,
+      "max": 63,
+      "min": 47
+    },
+    {
+      "date": "31-Oct",
+      "avgLow": 42,
+      "avgHigh": 57,
+      "recLow": 30,
+      "recHigh": 75,
+      "index": 304,
+      "max": 55,
+      "min": 40
+    },
+    {
+      "date": "1-Nov",
+      "avgLow": 42,
+      "avgHigh": 57,
+      "recLow": 32,
+      "recHigh": 81,
+      "index": 305,
+      "max": 64,
+      "min": 54
+    },
+    {
+      "date": "2-Nov",
+      "avgLow": 42,
+      "avgHigh": 57,
+      "recLow": 30,
+      "recHigh": 80,
+      "index": 306,
+      "max": 65,
+      "min": 51
+    },
+    {
+      "date": "3-Nov",
+      "avgLow": 41,
+      "avgHigh": 57,
+      "recLow": 30,
+      "recHigh": 73,
+      "index": 307,
+      "max": 70,
+      "min": 45
+    },
+    {
+      "date": "4-Nov",
+      "avgLow": 41,
+      "avgHigh": 56,
+      "recLow": 30,
+      "recHigh": 75,
+      "index": 308,
+      "max": 69,
+      "min": 50
+    },
+    {
+      "date": "5-Nov",
+      "avgLow": 41,
+      "avgHigh": 56,
+      "recLow": 29,
+      "recHigh": 73,
+      "index": 309,
+      "max": 69,
+      "min": 53
+    },
+    {
+      "date": "6-Nov",
+      "avgLow": 40,
+      "avgHigh": 56,
+      "recLow": 28,
+      "recHigh": 77,
+      "index": 310,
+      "max": 75,
+      "min": 62
+    },
+    {
+      "date": "7-Nov",
+      "avgLow": 40,
+      "avgHigh": 55,
+      "recLow": 30,
+      "recHigh": 68,
+      "index": 311,
+      "max": 70,
+      "min": 55
+    },
+    {
+      "date": "8-Nov",
+      "avgLow": 40,
+      "avgHigh": 55,
+      "recLow": 28,
+      "recHigh": 75,
+      "index": 312,
+      "max": 60,
+      "min": 43
+    },
+    {
+      "date": "9-Nov",
+      "avgLow": 40,
+      "avgHigh": 54,
+      "recLow": 24,
+      "recHigh": 74,
+      "index": 313,
+      "max": 59,
+      "min": 39
+    },
+    {
+      "date": "10-Nov",
+      "avgLow": 39,
+      "avgHigh": 54,
+      "recLow": 30,
+      "recHigh": 71,
+      "index": 314,
+      "max": 59,
+      "min": 53
+    },
+    {
+      "date": "11-Nov",
+      "avgLow": 39,
+      "avgHigh": 54,
+      "recLow": 23,
+      "recHigh": 72,
+      "index": 315,
+      "max": 59,
+      "min": 50
+    },
+    {
+      "date": "12-Nov",
+      "avgLow": 39,
+      "avgHigh": 53,
+      "recLow": 25,
+      "recHigh": 66,
+      "index": 316,
+      "max": 60,
+      "min": 52
+    },
+    {
+      "date": "13-Nov",
+      "avgLow": 38,
+      "avgHigh": 53,
+      "recLow": 18,
+      "recHigh": 71,
+      "index": 317,
+      "max": 61,
+      "min": 48
+    },
+    {
+      "date": "14-Nov",
+      "avgLow": 38,
+      "avgHigh": 53,
+      "recLow": 18,
+      "recHigh": 70,
+      "index": 318,
+      "max": 51,
+      "min": 42
+    },
+    {
+      "date": "15-Nov",
+      "avgLow": 38,
+      "avgHigh": 52,
+      "recLow": 24,
+      "recHigh": 74,
+      "index": 319,
+      "max": 59,
+      "min": 40
+    },
+    {
+      "date": "16-Nov",
+      "avgLow": 37,
+      "avgHigh": 52,
+      "recLow": 24,
+      "recHigh": 69,
+      "index": 320,
+      "max": 69,
+      "min": 45
+    },
+    {
+      "date": "17-Nov",
+      "avgLow": 37,
+      "avgHigh": 52,
+      "recLow": 24,
+      "recHigh": 70,
+      "index": 321,
+      "max": 53,
+      "min": 40
+    },
+    {
+      "date": "18-Nov",
+      "avgLow": 37,
+      "avgHigh": 51,
+      "recLow": 19,
+      "recHigh": 70,
+      "index": 322,
+      "max": 60,
+      "min": 43
+    },
+    {
+      "date": "19-Nov",
+      "avgLow": 36,
+      "avgHigh": 51,
+      "recLow": 23,
+      "recHigh": 66,
+      "index": 323,
+      "max": 63,
+      "min": 58
+    },
+    {
+      "date": "20-Nov",
+      "avgLow": 36,
+      "avgHigh": 51,
+      "recLow": 20,
+      "recHigh": 75,
+      "index": 324,
+      "max": 63,
+      "min": 45
+    },
+    {
+      "date": "21-Nov",
+      "avgLow": 36,
+      "avgHigh": 50,
+      "recLow": 16,
+      "recHigh": 64,
+      "index": 325,
+      "max": 55,
+      "min": 42
+    },
+    {
+      "date": "22-Nov",
+      "avgLow": 36,
+      "avgHigh": 50,
+      "recLow": 16,
+      "recHigh": 66,
+      "index": 326,
+      "max": 58,
+      "min": 44
+    },
+    {
+      "date": "23-Nov",
+      "avgLow": 35,
+      "avgHigh": 50,
+      "recLow": 22,
+      "recHigh": 65,
+      "index": 327,
+      "max": 46,
+      "min": 35
+    },
+    {
+      "date": "24-Nov",
+      "avgLow": 35,
+      "avgHigh": 49,
+      "recLow": 21,
+      "recHigh": 65,
+      "index": 328,
+      "max": 48,
+      "min": 31
+    },
+    {
+      "date": "25-Nov",
+      "avgLow": 35,
+      "avgHigh": 49,
+      "recLow": 23,
+      "recHigh": 66,
+      "index": 329,
+      "max": 51,
+      "min": 32
+    },
+    {
+      "date": "26-Nov",
+      "avgLow": 34,
+      "avgHigh": 49,
+      "recLow": 16,
+      "recHigh": 60,
+      "index": 330,
+      "max": 60,
+      "min": 35
+    },
+    {
+      "date": "27-Nov",
+      "avgLow": 34,
+      "avgHigh": 48,
+      "recLow": 21,
+      "recHigh": 62,
+      "index": 331,
+      "max": 63,
+      "min": 43
+    },
+    {
+      "date": "28-Nov",
+      "avgLow": 33,
+      "avgHigh": 48,
+      "recLow": 19,
+      "recHigh": 68,
+      "index": 332,
+      "max": 65,
+      "min": 46
+    },
+    {
+      "date": "29-Nov",
+      "avgLow": 33,
+      "avgHigh": 47,
+      "recLow": 14,
+      "recHigh": 66,
+      "index": 333,
+      "max": 50,
+      "min": 38
+    },
+    {
+      "date": "30-Nov",
+      "avgLow": 33,
+      "avgHigh": 47,
+      "recLow": 16,
+      "recHigh": 59,
+      "index": 334,
+      "max": 50,
+      "min": 34
+    },
+    {
+      "date": "1-Dec",
+      "avgLow": 32,
+      "avgHigh": 47,
+      "recLow": 18,
+      "recHigh": 63,
+      "index": 335,
+      "max": 53,
+      "min": 46
+    },
+    {
+      "date": "2-Dec",
+      "avgLow": 32,
+      "avgHigh": 46,
+      "recLow": 15,
+      "recHigh": 65,
+      "index": 336,
+      "max": 57,
+      "min": 47
+    },
+    {
+      "date": "3-Dec",
+      "avgLow": 32,
+      "avgHigh": 46,
+      "recLow": 9,
+      "recHigh": 62,
+      "index": 337,
+      "max": 56,
+      "min": 45
+    },
+    {
+      "date": "4-Dec",
+      "avgLow": 31,
+      "avgHigh": 46,
+      "recLow": 6,
+      "recHigh": 70,
+      "index": 338,
+      "max": 53,
+      "min": 41
+    },
+    {
+      "date": "5-Dec",
+      "avgLow": 31,
+      "avgHigh": 45,
+      "recLow": 14,
+      "recHigh": 65,
+      "index": 339,
+      "max": 53,
+      "min": 35
+    },
+    {
+      "date": "6-Dec",
+      "avgLow": 31,
+      "avgHigh": 45,
+      "recLow": 13,
+      "recHigh": 68,
+      "index": 340,
+      "max": 51,
+      "min": 38
+    },
+    {
+      "date": "7-Dec",
+      "avgLow": 30,
+      "avgHigh": 45,
+      "recLow": 15,
+      "recHigh": 66,
+      "index": 341,
+      "max": 55,
+      "min": 40
+    },
+    {
+      "date": "8-Dec",
+      "avgLow": 30,
+      "avgHigh": 44,
+      "recLow": 15,
+      "recHigh": 63,
+      "index": 342,
+      "max": 51,
+      "min": 40
+    },
+    {
+      "date": "9-Dec",
+      "avgLow": 30,
+      "avgHigh": 44,
+      "recLow": 15,
+      "recHigh": 65,
+      "index": 343,
+      "max": 55,
+      "min": 34
+    },
+    {
+      "date": "10-Dec",
+      "avgLow": 29,
+      "avgHigh": 44,
+      "recLow": 9,
+      "recHigh": 64,
+      "index": 344,
+      "max": 59,
+      "min": 48
+    },
+    {
+      "date": "11-Dec",
+      "avgLow": 29,
+      "avgHigh": 43,
+      "recLow": 10,
+      "recHigh": 65,
+      "index": 345,
+      "max": 58,
+      "min": 46
+    },
+    {
+      "date": "12-Dec",
+      "avgLow": 29,
+      "avgHigh": 43,
+      "recLow": 6,
+      "recHigh": 62,
+      "index": 346,
+      "max": 64,
+      "min": 49
+    },
+    {
+      "date": "13-Dec",
+      "avgLow": 29,
+      "avgHigh": 43,
+      "recLow": 6,
+      "recHigh": 59,
+      "index": 347,
+      "max": 70,
+      "min": 53
+    },
+    {
+      "date": "14-Dec",
+      "avgLow": 28,
+      "avgHigh": 42,
+      "recLow": 10,
+      "recHigh": 58,
+      "index": 348,
+      "max": 61,
+      "min": 53
+    },
+    {
+      "date": "15-Dec",
+      "avgLow": 28,
+      "avgHigh": 42,
+      "recLow": 9,
+      "recHigh": 61,
+      "index": 349,
+      "max": 64,
+      "min": 53
+    },
+    {
+      "date": "16-Dec",
+      "avgLow": 28,
+      "avgHigh": 42,
+      "recLow": 11,
+      "recHigh": 64,
+      "index": 350,
+      "max": 53,
+      "min": 45
+    },
+    {
+      "date": "17-Dec",
+      "avgLow": 28,
+      "avgHigh": 41,
+      "recLow": 10,
+      "recHigh": 58,
+      "index": 351,
+      "max": 59,
+      "min": 50
+    },
+    {
+      "date": "18-Dec",
+      "avgLow": 27,
+      "avgHigh": 41,
+      "recLow": 11,
+      "recHigh": 58,
+      "index": 352,
+      "max": 58,
+      "min": 39
+    },
+    {
+      "date": "19-Dec",
+      "avgLow": 27,
+      "avgHigh": 41,
+      "recLow": 7,
+      "recHigh": 54,
+      "index": 353,
+      "max": 41,
+      "min": 36
+    },
+    {
+      "date": "20-Dec",
+      "avgLow": 27,
+      "avgHigh": 41,
+      "recLow": 4,
+      "recHigh": 56,
+      "index": 354,
+      "max": 44,
+      "min": 35
+    },
+    {
+      "date": "21-Dec",
+      "avgLow": 27,
+      "avgHigh": 40,
+      "recLow": 6,
+      "recHigh": 59,
+      "index": 355,
+      "max": 55,
+      "min": 38
+    },
+    {
+      "date": "22-Dec",
+      "avgLow": 26,
+      "avgHigh": 40,
+      "recLow": 4,
+      "recHigh": 60,
+      "index": 356,
+      "max": 60,
+      "min": 52
+    },
+    {
+      "date": "23-Dec",
+      "avgLow": 26,
+      "avgHigh": 40,
+      "recLow": 0,
+      "recHigh": 59,
+      "index": 357,
+      "max": 63,
+      "min": 48
+    },
+    {
+      "date": "24-Dec",
+      "avgLow": 26,
+      "avgHigh": 40,
+      "recLow": 5,
+      "recHigh": 56,
+      "index": 358,
+      "max": 69,
+      "min": 57
+    },
+    {
+      "date": "25-Dec",
+      "avgLow": 26,
+      "avgHigh": 39,
+      "recLow": 0,
+      "recHigh": 62,
+      "index": 359,
+      "max": 64,
+      "min": 52
+    },
+    {
+      "date": "26-Dec",
+      "avgLow": 25,
+      "avgHigh": 39,
+      "recLow": 1,
+      "recHigh": 62,
+      "index": 360,
+      "max": 60,
+      "min": 49
+    },
+    {
+      "date": "27-Dec",
+      "avgLow": 25,
+      "avgHigh": 39,
+      "recLow": 5,
+      "recHigh": 60,
+      "index": 361,
+      "max": 63,
+      "min": 48
+    },
+    {
+      "date": "28-Dec",
+      "avgLow": 25,
+      "avgHigh": 39,
+      "recLow": 7,
+      "recHigh": 64,
+      "index": 362,
+      "max": 48,
+      "min": 35
+    },
+    {
+      "date": "29-Dec",
+      "avgLow": 25,
+      "avgHigh": 38,
+      "recLow": 8,
+      "recHigh": 67,
+      "index": 363,
+      "max": 49,
+      "min": 34
+    },
+    {
+      "date": "30-Dec",
+      "avgLow": 25,
+      "avgHigh": 38,
+      "recLow": 2,
+      "recHigh": 59,
+      "index": 364,
+      "max": 51,
+      "min": 41
+    },
+    {
+      "date": "31-Dec",
+      "avgLow": 24,
+      "avgHigh": 38,
+      "recLow": 2,
+      "recHigh": 61,
+      "index": 365,
+      "max": 52,
+      "min": 43
+    }
+  ]
+}

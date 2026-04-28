@@ -1,0 +1,83 @@
+define([], function () { return { __esModule: true, default: {
+  "name": "baseComponent",
+  "children": [
+    {
+      "name": "dvtBaseComponent",
+      "children": [
+        {
+          "name": "dvtBaseGauge",
+          "children": [
+            { "name": "ojDialGauge", "children": [] },
+            { "name": "ojLedGauge", "children": [] },
+            { "name": "ojRatingGauge", "children": [] },
+            { "name": "ojStatusMeterGauge", "children": [] }
+          ]
+        },
+        {
+          "name": "dvtTimeComponent",
+          "children": [
+            { "name": "ojGantt", "children": [] },
+            { "name": "ojTimeline", "children": [] }
+          ]
+        },
+        { "name": "ojChart", "children": [] },
+        { "name": "ojDiagram", "children": [] },
+        { "name": "ojLegend", "children": [] },
+        { "name": "ojNBox", "children": [] },
+        { "name": "ojPictoChart", "children": [] },
+        { "name": "ojSparkChart", "children": [] },
+        { "name": "ojSunburst", "children": [] },
+        { "name": "ojTagCloud", "children": [] },
+        { "name": "ojThematicMap", "children": [] },
+        { "name": "ojTimeAxis", "children": [] },
+        { "name": "ojTreemap", "children": [] }
+      ]
+    },
+    {
+      "name": "editableValue",
+      "children": [
+        {
+          "name": "inputBase",
+          "children": [
+            { "name": "ojInputDate", "children": [{ "name": "ojInputDateTime", "children": [] }] },
+            { "name": "ojInputPassword", "children": [] },
+            { "name": "ojInputText", "children": [] },
+            { "name": "ojInputTime", "children": [] },
+            { "name": "ojTextArea", "children": [] }
+          ]
+        },
+        { "name": "ojCheckboxset", "children": [] },
+        { "name": "ojCombobox", "children": [] },
+        { "name": "ojInputNumber", "children": [] },
+        { "name": "ojRadioset", "children": [] },
+        { "name": "ojSelect", "children": [] },
+        { "name": "ojSlider", "children": [] },
+        { "name": "ojSwitch", "children": [] }
+      ]
+    },
+    { "name": "ojAccordion", "children": [] },
+    { "name": "ojButton", "children": [] },
+    { "name": "ojButtonset", "children": [] },
+    { "name": "ojCollapsible", "children": [] },
+    { "name": "ojConveyorBelt", "children": [] },
+    { "name": "ojDataGrid", "children": [] },
+    { "name": "ojDialog", "children": [] },
+    { "name": "ojFilmStrip", "children": [] },
+    { "name": "ojIndexer", "children": [] },
+    { "name": "ojListView", "children": [] },
+    { "name": "ojMasonryLayout", "children": [] },
+    { "name": "ojMenu", "children": [] },
+    { "name": "ojNavigationList", "children": [] },
+    { "name": "ojPagingControl", "children": [] },
+    { "name": "ojPopup", "children": [] },
+    { "name": "ojProgressbar", "children": [] },
+    { "name": "ojRowExpander", "children": [] },
+    { "name": "ojTable", "children": [] },
+    { "name": "ojTabs", "children": [] },
+    { "name": "ojToolbar", "children": [] },
+    { "name": "ojTrain", "children": [] },
+    { "name": "ojTree", "children": [] }
+  ]
+}
+ }; });
+

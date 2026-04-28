@@ -1,0 +1,24 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "Country": "FRA",
+    "Territory": "A"
+  },
+  {
+    "Country": "POL",
+    "Territory": "B"
+  },
+  {
+    "Country": "SWE",
+    "Territory": "C"
+  },
+  {
+    "Country": "ESP",
+    "Territory": "A"
+  },
+  {
+    "Country": "DEU",
+    "Territory": "B"
+  }
+]
+ }; });
+

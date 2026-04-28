@@ -1,0 +1,15 @@
+.demo-cut-item {
+  opacity: 0.8;
+}
+
+.demo-parent-element {
+  padding: 0.5rem 0.5rem;
+}
+
+.demo-text {
+  height: 70px;
+}
+
+.demo-parent-element:hover {
+  cursor: grab;
+}

@@ -1,0 +1,6 @@
+define([], function () { return { __esModule: true, default: [
+  { "id": "LOC-dpt2001-loc3001", "city": "Redwood City", "state": "California" },
+  { "id": "LOC-dpt2002-loc3002", "city": "Burlington", "state": "Massachusetts" }
+]
+ }; });
+

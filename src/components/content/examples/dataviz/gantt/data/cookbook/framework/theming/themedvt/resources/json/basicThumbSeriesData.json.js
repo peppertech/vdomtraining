@@ -1,0 +1,140 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": "e1",
+    "title": "ATP VTR Open",
+    "begin": "Feb 4, 2013",
+    "image": "../images/box_01.png",
+    "description": "Finalist: 3-1",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e2",
+    "title": "ATP Brasil Open",
+    "begin": "Feb 11, 2013",
+    "image": "../images/box_02.png",
+    "description": "Champion: 4-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e3",
+    "title": "ATP Abierto Mexicano Telcel",
+    "begin": "Feb 25, 2013",
+    "image": "../images/box_03.png",
+    "description": "Champion: 5-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e4",
+    "title": "ATP BNP Paribas Open",
+    "begin": "Mar 7, 2013",
+    "image": "../images/box_04.png",
+    "description": "Champion: 6-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e5",
+    "title": "ATP Monte-Carlo Rolex Masters",
+    "begin": "Apr 14, 2013",
+    "image": "../images/box_01.png",
+    "description": "Finalist: 4-1",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e6",
+    "title": "ATP Barcelona Open BancSabadell",
+    "begin": "Apr 22, 2013",
+    "image": "../images/box_04.png",
+    "description": "Champion: 5-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e7",
+    "title": "ATP Mutua Madrid Open",
+    "begin": "May 5, 2013",
+    "image": "../images/box_03.png",
+    "description": "Champion: 5-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e8",
+    "title": "ATP Internazionali BNL dItalia",
+    "begin": "May 12, 2013",
+    "image": "../images/box_02.png",
+    "description": "Champion: 5-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e9",
+    "title": "FRENCH OPEN",
+    "begin": "May 26, 2013",
+    "image": "../images/box_01.png",
+    "description": "Champion: 7-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e10",
+    "title": "WIMBLEDON",
+    "begin": "Jun 24, 2013",
+    "image": "../images/box_02.png",
+    "description": "1st Round Loss: 0-1",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e11",
+    "title": "ATP Rogers Cup presented by National Bank",
+    "begin": "Aug 5, 2013",
+    "image": "../images/box_03.png",
+    "description": "Champion: 5-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e12",
+    "title": "ATP Western & Southern Open",
+    "begin": "Aug 11, 2013",
+    "image": "../images/box_04.png",
+    "description": "Champion: 5-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e13",
+    "title": "US OPEN",
+    "begin": "Aug 26, 2013",
+    "image": "../images/box_04.png",
+    "description": "Champion: 7-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e14",
+    "title": "ATP China Open",
+    "begin": "Sep 30, 2013",
+    "image": "../images/box_03.png",
+    "description": "Finalist: 4-1",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e15",
+    "title": "Shanghai Rolex Masters",
+    "begin": "Oct 6, 2013",
+    "image": "../images/box_01.png",
+    "description": "Semi-Finalist: 3-1",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e16",
+    "title": "ATP BNP Paribas Masters",
+    "begin": "Oct 28, 2013",
+    "image": "../images/box_02.png",
+    "description": "Semi-Finalist: 3-1",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e17",
+    "title": "Barclays ATP World Tour Finals",
+    "begin": "Nov 4, 2013",
+    "image": "../images/box_03.png",
+    "description": "Finalist: 4-1",
+    "series": "Rafael Nadal: 75-7"
+  }
+]
+ }; });
+

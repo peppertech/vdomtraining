@@ -1,0 +1,38 @@
+<ol>
+  <li>
+    The link creation operation will be initiated from a connection point (
+    <i>port</i>
+    ), which is identified by the specified selector. The drop will be accepted by a drop port,
+    which is also identified by the specified selector. See
+    <a target="_blank" href="jsdocs/oj.ojDiagram.html#dnd.drag.ports.selector">
+      drag.ports.selector
+    </a>
+    and
+    <a target="_blank" href="jsdocs/oj.ojDiagram.html#dnd.drop.ports.selector">
+      drop.ports.selector
+    </a>
+    for more details.
+    <i>Ports</i>
+    might be created as a part of a diagram node by a custom renderer or a node itself might be
+    marked as a
+    <i>port</i>
+    .
+  </li>
+  <li>
+    To configure drag ports for link creation, mark a node or an element on a node as a port and set
+    the dnd.drag.ports property according to the
+    <a target="_blank" href="jsdocs/oj.ojDiagram.html#dnd.drag.ports">API doc</a>
+    .
+  </li>
+  <li>
+    To configure drop ports for link creation, mark a node or an element on a node as a port and set
+    the dnd.drop.ports property according to the
+    <a target="_blank" href="jsdocs/oj.ojDiagram.html#dnd.drop.ports">API doc</a>
+    .
+  </li>
+  <li>
+    <b>Accessibility</b>
+    : The application is responsible for providing the equivalent link creation functionality via
+    context menu for accessibility reasons.
+  </li>
+</ol>

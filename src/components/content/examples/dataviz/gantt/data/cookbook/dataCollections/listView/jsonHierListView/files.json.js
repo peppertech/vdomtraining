@@ -1,0 +1,66 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "attr": { "id": "folders", "name": "Folders" },
+    "children": [
+      {
+        "attr": { "id": "public", "name": "Public", "modified": "Jun 19, 2013", "type": "folder" }
+      },
+      {
+        "attr": { "id": "private", "name": "Private", "modified": "Feb 28, 2014", "type": "folder" }
+      },
+      { "attr": { "id": "work", "name": "Work", "modified": "Jun 19, 2013", "type": "folder" } }
+    ]
+  },
+  {
+    "attr": { "id": "files", "name": "Files" },
+    "children": [
+      {
+        "attr": {
+          "id": "f1",
+          "name": "Christmas Planning",
+          "modified": "12/11/2014",
+          "type": "xls"
+        }
+      },
+      { "attr": { "id": "f2", "name": "Budget (2014)", "modified": "1/1/2014", "type": "xls" } },
+      { "attr": { "id": "f3", "name": "New Year KK", "modified": "12/27/2014", "type": "xls" } },
+      {
+        "attr": {
+          "id": "f4",
+          "name": "Waiver For Grant Street Garage",
+          "modified": "12/12/2014",
+          "type": "doc"
+        }
+      },
+      {
+        "attr": {
+          "id": "f5",
+          "name": "Letter to Parents - Kindergarden",
+          "modified": "05/12/2014",
+          "type": "doc"
+        }
+      },
+      {
+        "attr": { "id": "f6", "name": "Inspection Report", "modified": "11/10/2014", "type": "pdf" }
+      },
+      {
+        "attr": {
+          "id": "f7",
+          "name": "Patent Declaration (Signed Copy)",
+          "modified": "03/04/2015",
+          "type": "pdf"
+        }
+      },
+      {
+        "attr": {
+          "id": "f8",
+          "name": "Presentation - Openworld 2014",
+          "modified": "10/04/2014",
+          "type": "ppt"
+        }
+      }
+    ]
+  }
+]
+ }; });
+

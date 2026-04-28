@@ -1,0 +1,26 @@
+.demo-diagram_node {
+  fill: #cecece;
+  stroke: #aaaaaa;
+  stroke-width: 1;
+}
+.demo-link-end {
+  fill: #00ffff;
+  stroke: #aaa;
+  stroke-width: 1;
+}
+.demo-link-end.oj-active-drop {
+  stroke: #aaaaaa;
+  stroke-width: 3;
+}
+.demo-link-end.oj-invalid-drop {
+  stroke: #ff0000;
+  stroke-width: 3;
+}
+.demo-link-start {
+  fill: #98fb98;
+  stroke: #aaa;
+  stroke-width: 1;
+}
+.demo-linkFeedback {
+  stroke: #f00;
+}

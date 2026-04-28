@@ -1,0 +1,28 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "state": "North Dakota",
+    "name": "Nina Evans"
+  },
+  {
+    "state": "Florida",
+    "name": "Diana Lorentz"
+  },
+  {
+    "state": "Hawaii",
+    "name": "Lucy Whalen"
+  },
+  {
+    "state": "California",
+    "name": "Steven King"
+  },
+  {
+    "state": "Texas",
+    "name": "Alex Hunold"
+  },
+  {
+    "state": "Massachusetts",
+    "name": "Curtis Davies"
+  }
+]
+ }; });
+

@@ -1,0 +1,88 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": 0,
+    "seriesId": "Series 1",
+    "groupId": ["Group A"],
+    "value": 57
+  },
+  {
+    "id": 1,
+    "seriesId": "Series 1",
+    "groupId": ["Group B"],
+    "value": 90
+  },
+  {
+    "id": 2,
+    "seriesId": "Series 1",
+    "groupId": ["Group C"],
+    "value": 89
+  },
+  {
+    "id": 3,
+    "seriesId": "Series 1",
+    "groupId": ["Group D"],
+    "value": 46
+  },
+  {
+    "id": 4,
+    "seriesId": "Series 1",
+    "groupId": ["Group E"],
+    "value": 75
+  },
+  {
+    "id": 5,
+    "seriesId": "Series 1",
+    "groupId": ["Group F"],
+    "value": 52
+  },
+  {
+    "id": 6,
+    "seriesId": "Series 1",
+    "groupId": ["Group G"],
+    "value": 49
+  },
+  {
+    "id": 7,
+    "seriesId": "Series 2",
+    "groupId": ["Group A"],
+    "value": 49
+  },
+  {
+    "id": 8,
+    "seriesId": "Series 2",
+    "groupId": ["Group B"],
+    "value": 87
+  },
+  {
+    "id": 9,
+    "seriesId": "Series 2",
+    "groupId": ["Group C"],
+    "value": 75
+  },
+  {
+    "id": 10,
+    "seriesId": "Series 2",
+    "groupId": ["Group D"],
+    "value": 78
+  },
+  {
+    "id": 11,
+    "seriesId": "Series 2",
+    "groupId": ["Group E"],
+    "value": 61
+  },
+  {
+    "id": 12,
+    "seriesId": "Series 2",
+    "groupId": ["Group F"],
+    "value": 80
+  },
+  {
+    "id": 13,
+    "seriesId": "Series 2",
+    "groupId": ["Group G"],
+    "value": 71
+  }
+]
+ }; });
+

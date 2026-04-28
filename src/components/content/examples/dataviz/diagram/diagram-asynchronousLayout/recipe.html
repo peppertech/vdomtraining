@@ -1,0 +1,21 @@
+<ol>
+  <li>Create an oj-diagram element.</li>
+  <li>
+    Provide nodes and links data for the component by constructing data providers out of nodes and
+    links arrays.
+  </li>
+  <li>
+    Supply a layout that positions nodes and links synchronously or asynchronously. Asynchronous
+    layouts should return a Promise object that resolves when the layout is done.
+  </li>
+  <li>
+    <b>Accessibility</b>
+    : The application is responsible for populating the
+    <i><b>short-desc</b></i>
+    attribute with meaningful descriptors as the component does not provide a default descriptor.
+  </li>
+  <li>
+    <b>Layouts</b>
+    : The application is responsible for providing the layout algorithm used by the Diagram.
+  </li>
+</ol>

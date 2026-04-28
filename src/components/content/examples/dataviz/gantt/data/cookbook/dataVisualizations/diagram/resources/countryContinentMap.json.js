@@ -1,0 +1,15 @@
+define([], function () { return { __esModule: true, default: {
+  "Canada": "North America",
+  "China": "Asia",
+  "France": "Europe",
+  "Germany": "Europe",
+  "Japan": "Asia",
+  "Netherlands": "Europe",
+  "S. Korea": "Asia",
+  "Sweden": "Europe",
+  "Switzerland": "Europe",
+  "Taiwan": "Asia",
+  "USA": "North America"
+}
+ }; });
+

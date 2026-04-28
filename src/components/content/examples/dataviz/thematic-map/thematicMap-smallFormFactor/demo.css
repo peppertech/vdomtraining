@@ -1,0 +1,19 @@
+.demo-thematicmap {
+  width: 12.5rem;
+  height: 12.5rem;
+}
+
+.demo-legend {
+  height: 2.1875rem;
+}
+.demo-datagrid {
+  height: 31.25rem;
+}
+
+.demo-header-row-style {
+  height: 12.5rem;
+}
+
+.demo-header-column-style {
+  width: 12.5rem;
+}

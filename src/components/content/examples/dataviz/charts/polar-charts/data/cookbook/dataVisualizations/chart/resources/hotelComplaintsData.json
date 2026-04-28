@@ -1,0 +1,98 @@
+[
+  {
+    "id": 0,
+    "type": "Occurrences",
+    "category": "Reservation",
+    "value": 31
+  },
+  {
+    "id": 1,
+    "type": "Occurrences",
+    "category": "Cleanliness",
+    "value": 18
+  },
+  {
+    "id": 2,
+    "type": "Occurrences",
+    "category": "Room service",
+    "value": 11
+  },
+  {
+    "id": 3,
+    "type": "Occurrences",
+    "category": "Staff",
+    "value": 8
+  },
+  {
+    "id": 4,
+    "type": "Occurrences",
+    "category": "Billing",
+    "value": 5
+  },
+  {
+    "id": 5,
+    "type": "Occurrences",
+    "category": "Concierge",
+    "value": 4
+  },
+  {
+    "id": 6,
+    "type": "Occurrences",
+    "category": "Decor",
+    "value": 2
+  },
+  {
+    "id": 7,
+    "type": "Occurrences",
+    "category": "Other",
+    "value": 1
+  },
+  {
+    "id": 0,
+    "type": "Cumulative",
+    "category": "Reservation",
+    "value": 0.3875
+  },
+  {
+    "id": 1,
+    "type": "Cumulative",
+    "category": "Cleanliness",
+    "value": 0.6125
+  },
+  {
+    "id": 2,
+    "type": "Cumulative",
+    "category": "Room service",
+    "value": 0.75
+  },
+  {
+    "id": 3,
+    "type": "Cumulative",
+    "category": "Staff",
+    "value": 0.85
+  },
+  {
+    "id": 4,
+    "type": "Cumulative",
+    "category": "Billing",
+    "value": 0.9125
+  },
+  {
+    "id": 5,
+    "type": "Cumulative",
+    "category": "Concierge",
+    "value": 0.9625
+  },
+  {
+    "id": 6,
+    "type": "Cumulative",
+    "category": "Decor",
+    "value": 0.9875
+  },
+  {
+    "id": 7,
+    "type": "Cumulative",
+    "category": "Other",
+    "value": 1
+  }
+]

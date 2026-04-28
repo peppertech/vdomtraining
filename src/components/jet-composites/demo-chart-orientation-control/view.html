@@ -1,0 +1,10 @@
+<oj-buttonset-one :id="[[$uniqueId + '_buttonset1']]" aria-label="Choose an orientation" disabled="[[$properties.disabled]]" focus-management="[[$properties.focusManagement]]" value="{{$properties.orientation}}" chroming="borderless" display="icons">
+  <oj-option value="vertical">
+    <span slot="startIcon" :class="[[verticalIcon]]"></span>
+    <span>Vertical</span>
+  </oj-option>
+  <oj-option value="horizontal">
+    <span slot="startIcon" :class="[[horizontalIcon]]"></span>
+    <span>Horizontal</span>
+  </oj-option>
+</oj-buttonset-one>

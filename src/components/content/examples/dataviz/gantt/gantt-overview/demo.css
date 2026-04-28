@@ -1,0 +1,33 @@
+.demo-gantt {
+  width: 100%;
+  height: 25rem;
+}
+
+.demo-full-size {
+  width: 100%;
+  height: 100%;
+}
+
+.demo-gantt .demo-gantt-row-label {
+  overflow: visible;
+}
+
+.demo-current-time-indicator {
+  stroke: var(--oj-dvt-danger-color);
+}
+
+.demo-gantt-task {
+  fill: rgb(var(--oj-palette-neutral-rgb-0));
+}
+
+.demo-gantt-task-emphasis-low {
+  fill: rgba(var(--oj-palette-dvt-rgb-2), 0.2);
+}
+
+.demo-gantt-task-emphasis-high {
+  fill: rgb(var(--oj-palette-dvt-rgb-7));
+}
+
+.demo-gantt-task-hold {
+  fill: rgb(var(--oj-palette-neutral-rgb-130));
+}

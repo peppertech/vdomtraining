@@ -1,0 +1,10 @@
+<oj-buttonset-one :id="[[$uniqueId + '_buttonset1']]" aria-label="Choose a stack setting" disabled="[[$properties.disabled]]" focus-management="[[$properties.focusManagement]]" value="{{$properties.stack}}" chroming="borderless" display="icons">
+  <oj-option value="off">
+    <span slot="startIcon" :class="[[unstackedIcon]]"></span>
+    <span>Unstacked</span>
+  </oj-option>
+  <oj-option value="on">
+    <span slot="startIcon" :class="[[stackedIcon]]"></span>
+    <span>Stacked</span>
+  </oj-option>
+</oj-buttonset-one>

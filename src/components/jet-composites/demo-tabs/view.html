@@ -1,0 +1,25 @@
+<div class="tabs-container oj-flex oj-sm-flex-direction-column oj-sm-flex-items-1">
+  <oj-tab-bar edge="top" selection="{{$properties.value}}">
+    <ul>
+      <oj-bind-for-each data="[[$properties.headers]]">
+          <template>
+              <li :id="[[$current.data.id]]">
+                  <a href="#">
+                      <oj-bind-text value="[[$current.data.label]]"></oj-bind-text>
+                  </a>
+              </li>
+          </template>
+      </oj-bind-for-each>
+    </ul>
+  </oj-tab-bar>
+  
+  <oj-switcher value="[[$properties.value]]" class="oj-flex oj-flex-item">
+    <oj-bind-for-each data="[[$properties.headers]]">
+      <template>
+        <div :slot="[[$current.data.id]]" class="oj-panel oj-flex-item">
+          <oj-bind-slot index="[[$current.index]]"></oj-bind-slot>
+        </div>
+      </template>
+    </oj-bind-for-each>
+  </oj-switcher>
+</div>

@@ -1,0 +1,90 @@
+[
+  {
+    "id": 0,
+    "seriesId": "Series 1",
+    "groupId": ["Group A"],
+    "low": 3,
+    "high": 28,
+    "q1": 8,
+    "q2": 12,
+    "q3": 17,
+    "items": [40, 50]
+  },
+  {
+    "id": 1,
+    "seriesId": "Series 1",
+    "groupId": ["Group B"],
+    "low": 21,
+    "high": 65,
+    "q1": 24,
+    "q2": 36,
+    "q3": 44,
+    "items": [15]
+  },
+  {
+    "id": 2,
+    "seriesId": "Series 1",
+    "groupId": ["Group C"],
+    "low": 7,
+    "high": 49,
+    "q1": 16,
+    "q2": 23,
+    "q3": 32,
+    "items": []
+  },
+  {
+    "id": 3,
+    "seriesId": "Series 1",
+    "groupId": ["Group D"],
+    "low": 8,
+    "high": 49,
+    "q1": 12,
+    "q2": 16,
+    "q3": 27,
+    "items": [61]
+  },
+  {
+    "id": 4,
+    "seriesId": "Series 2",
+    "groupId": ["Group A"],
+    "low": 12,
+    "high": 35,
+    "q1": 17,
+    "q2": 21,
+    "q3": 24,
+    "items": []
+  },
+  {
+    "id": 5,
+    "seriesId": "Series 2",
+    "groupId": ["Group B"],
+    "low": 5,
+    "high": 47,
+    "q1": 14,
+    "q2": 24,
+    "q3": 31,
+    "items": []
+  },
+  {
+    "id": 6,
+    "seriesId": "Series 2",
+    "groupId": ["Group C"],
+    "low": 26,
+    "high": 71,
+    "q1": 37,
+    "q2": 48,
+    "q3": 52,
+    "items": [9, 12, 78]
+  },
+  {
+    "id": 7,
+    "seriesId": "Series 2",
+    "groupId": ["Group D"],
+    "low": 10,
+    "high": 58,
+    "q1": 14,
+    "q2": 37,
+    "q3": 50,
+    "items": []
+  }
+]

@@ -1,0 +1,3 @@
+demo-select-enum:not(.oj-complete){
+  visibility: hidden;
+}

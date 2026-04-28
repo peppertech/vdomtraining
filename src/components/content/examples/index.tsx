@@ -21,6 +21,11 @@ type Tab = {
   icon?: string;
 };
 
+type ExampleRoute = Tab | {
+  path: string;
+  redirect: string;
+};
+
 type ExampleRouter = CoreRouter;
 type ExampleRouterState = Parameters<
   ExampleRouter["currentState"]["subscribe"]
@@ -35,12 +40,16 @@ const ExampleContent = (props: Props) => {
   const tabBarItems: Tab[] = [
     { path: "collection", label: "Collections" },
     { path: "form", label: "Forms" },
-    { path: "dataviz", label: "Data Visualization" },
+    { path: "dataviz", label: "Visualizations" },
     { path: "control", label: "Controls" },
     { path: "navlayout", label: "Navigations and Layouts" },
   ];
+  const exampleRoutes: ExampleRoute[] = [
+    { path: "", redirect: "collection" },
+    ...tabBarItems,
+  ];
   if (!props.router.childRouter) {
-    exampleRouter = props.router.createChildRouter(tabBarItems, {
+    exampleRouter = props.router.createChildRouter(exampleRoutes, {
       urlAdapter: new UrlParamAdapter(),
     });
   }

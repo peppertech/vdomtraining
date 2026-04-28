@@ -1,0 +1,794 @@
+[
+  {
+    "id": 0,
+    "series": "5 mph",
+    "angle": 24,
+    "speed": 2.25
+  },
+  {
+    "id": 1,
+    "series": "5 mph",
+    "angle": 30,
+    "speed": 2.875
+  },
+  {
+    "id": 2,
+    "series": "5 mph",
+    "angle": 40,
+    "speed": 3.875
+  },
+  {
+    "id": 3,
+    "series": "5 mph",
+    "angle": 50,
+    "speed": 4.75
+  },
+  {
+    "id": 4,
+    "series": "5 mph",
+    "angle": 60,
+    "speed": 5.313
+  },
+  {
+    "id": 5,
+    "series": "5 mph",
+    "angle": 70,
+    "speed": 5.625
+  },
+  {
+    "id": 6,
+    "series": "5 mph",
+    "angle": 80,
+    "speed": 5.75
+  },
+  {
+    "id": 7,
+    "series": "5 mph",
+    "angle": 90,
+    "speed": 5.75
+  },
+  {
+    "id": 8,
+    "series": "5 mph",
+    "angle": 100,
+    "speed": 5.875
+  },
+  {
+    "id": 9,
+    "series": "5 mph",
+    "angle": 110,
+    "speed": 5.75
+  },
+  {
+    "id": 10,
+    "series": "5 mph",
+    "angle": 120,
+    "speed": 5.313
+  },
+  {
+    "id": 11,
+    "series": "5 mph",
+    "angle": 130,
+    "speed": 4.625
+  },
+  {
+    "id": 12,
+    "series": "5 mph",
+    "angle": 140,
+    "speed": 3.938
+  },
+  {
+    "id": 13,
+    "series": "5 mph",
+    "angle": 150,
+    "speed": 3.313
+  },
+  {
+    "id": 14,
+    "series": "5 mph",
+    "angle": 160,
+    "speed": 2.938
+  },
+  {
+    "id": 15,
+    "series": "5 mph",
+    "angle": 170,
+    "speed": 2.688
+  },
+  {
+    "id": 16,
+    "series": "5 mph",
+    "angle": 180,
+    "speed": 2.542
+  },
+  {
+    "id": 17,
+    "series": "5 mph",
+    "angle": 190,
+    "speed": 2.688
+  },
+  {
+    "id": 18,
+    "series": "5 mph",
+    "angle": 200,
+    "speed": 2.938
+  },
+  {
+    "id": 19,
+    "series": "5 mph",
+    "angle": 210,
+    "speed": 3.313
+  },
+  {
+    "id": 20,
+    "series": "5 mph",
+    "angle": 220,
+    "speed": 3.938
+  },
+  {
+    "id": 21,
+    "series": "5 mph",
+    "angle": 230,
+    "speed": 4.625
+  },
+  {
+    "id": 22,
+    "series": "5 mph",
+    "angle": 240,
+    "speed": 5.313
+  },
+  {
+    "id": 23,
+    "series": "5 mph",
+    "angle": 250,
+    "speed": 5.75
+  },
+  {
+    "id": 24,
+    "series": "5 mph",
+    "angle": 260,
+    "speed": 5.875
+  },
+  {
+    "id": 25,
+    "series": "5 mph",
+    "angle": 270,
+    "speed": 5.75
+  },
+  {
+    "id": 26,
+    "series": "5 mph",
+    "angle": 280,
+    "speed": 5.75
+  },
+  {
+    "id": 27,
+    "series": "5 mph",
+    "angle": 290,
+    "speed": 5.625
+  },
+  {
+    "id": 28,
+    "series": "5 mph",
+    "angle": 300,
+    "speed": 5.313
+  },
+  {
+    "id": 29,
+    "series": "5 mph",
+    "angle": 310,
+    "speed": 4.75
+  },
+  {
+    "id": 30,
+    "series": "5 mph",
+    "angle": 320,
+    "speed": 3.875
+  },
+  {
+    "id": 31,
+    "series": "5 mph",
+    "angle": 330,
+    "speed": 2.875
+  },
+  {
+    "id": 32,
+    "series": "5 mph",
+    "angle": 336,
+    "speed": 2.25
+  },
+  {
+    "id": 33,
+    "series": "10 mph",
+    "angle": 24,
+    "speed": 5
+  },
+  {
+    "id": 34,
+    "series": "10 mph",
+    "angle": 30,
+    "speed": 5.5
+  },
+  {
+    "id": 35,
+    "series": "10 mph",
+    "angle": 40,
+    "speed": 6.375
+  },
+  {
+    "id": 36,
+    "series": "10 mph",
+    "angle": 50,
+    "speed": 7
+  },
+  {
+    "id": 37,
+    "series": "10 mph",
+    "angle": 60,
+    "speed": 7.375
+  },
+  {
+    "id": 38,
+    "series": "10 mph",
+    "angle": 70,
+    "speed": 7.625
+  },
+  {
+    "id": 39,
+    "series": "10 mph",
+    "angle": 80,
+    "speed": 7.75
+  },
+  {
+    "id": 40,
+    "series": "10 mph",
+    "angle": 90,
+    "speed": 7.938
+  },
+  {
+    "id": 41,
+    "series": "10 mph",
+    "angle": 100,
+    "speed": 8.063
+  },
+  {
+    "id": 42,
+    "series": "10 mph",
+    "angle": 110,
+    "speed": 7.938
+  },
+  {
+    "id": 43,
+    "series": "10 mph",
+    "angle": 120,
+    "speed": 7.625
+  },
+  {
+    "id": 44,
+    "series": "10 mph",
+    "angle": 130,
+    "speed": 7.313
+  },
+  {
+    "id": 45,
+    "series": "10 mph",
+    "angle": 140,
+    "speed": 6.875
+  },
+  {
+    "id": 46,
+    "series": "10 mph",
+    "angle": 150,
+    "speed": 6.313
+  },
+  {
+    "id": 47,
+    "series": "10 mph",
+    "angle": 160,
+    "speed": 5.813
+  },
+  {
+    "id": 48,
+    "series": "10 mph",
+    "angle": 170,
+    "speed": 5.375
+  },
+  {
+    "id": 49,
+    "series": "10 mph",
+    "angle": 180,
+    "speed": 5.063
+  },
+  {
+    "id": 50,
+    "series": "10 mph",
+    "angle": 190,
+    "speed": 5.375
+  },
+  {
+    "id": 51,
+    "series": "10 mph",
+    "angle": 200,
+    "speed": 5.813
+  },
+  {
+    "id": 52,
+    "series": "10 mph",
+    "angle": 210,
+    "speed": 6.313
+  },
+  {
+    "id": 53,
+    "series": "10 mph",
+    "angle": 220,
+    "speed": 6.875
+  },
+  {
+    "id": 54,
+    "series": "10 mph",
+    "angle": 230,
+    "speed": 7.313
+  },
+  {
+    "id": 55,
+    "series": "10 mph",
+    "angle": 240,
+    "speed": 7.625
+  },
+  {
+    "id": 56,
+    "series": "10 mph",
+    "angle": 250,
+    "speed": 7.938
+  },
+  {
+    "id": 57,
+    "series": "10 mph",
+    "angle": 260,
+    "speed": 8.063
+  },
+  {
+    "id": 58,
+    "series": "10 mph",
+    "angle": 270,
+    "speed": 7.938
+  },
+  {
+    "id": 59,
+    "series": "10 mph",
+    "angle": 280,
+    "speed": 7.75
+  },
+  {
+    "id": 60,
+    "series": "10 mph",
+    "angle": 290,
+    "speed": 7.625
+  },
+  {
+    "id": 61,
+    "series": "10 mph",
+    "angle": 300,
+    "speed": 7.375
+  },
+  {
+    "id": 62,
+    "series": "10 mph",
+    "angle": 310,
+    "speed": 7
+  },
+  {
+    "id": 63,
+    "series": "10 mph",
+    "angle": 320,
+    "speed": 6.375
+  },
+  {
+    "id": 64,
+    "series": "10 mph",
+    "angle": 330,
+    "speed": 5.5
+  },
+  {
+    "id": 65,
+    "series": "10 mph",
+    "angle": 336,
+    "speed": 5
+  },
+  {
+    "id": 66,
+    "series": "15 mph",
+    "angle": 24,
+    "speed": 5.563
+  },
+  {
+    "id": 67,
+    "series": "15 mph",
+    "angle": 30,
+    "speed": 6
+  },
+  {
+    "id": 68,
+    "series": "15 mph",
+    "angle": 40,
+    "speed": 6.75
+  },
+  {
+    "id": 69,
+    "series": "15 mph",
+    "angle": 50,
+    "speed": 7.375
+  },
+  {
+    "id": 70,
+    "series": "15 mph",
+    "angle": 60,
+    "speed": 7.813
+  },
+  {
+    "id": 71,
+    "series": "15 mph",
+    "angle": 70,
+    "speed": 8.188
+  },
+  {
+    "id": 72,
+    "series": "15 mph",
+    "angle": 80,
+    "speed": 8.563
+  },
+  {
+    "id": 73,
+    "series": "15 mph",
+    "angle": 90,
+    "speed": 8.875
+  },
+  {
+    "id": 74,
+    "series": "15 mph",
+    "angle": 100,
+    "speed": 9.063
+  },
+  {
+    "id": 75,
+    "series": "15 mph",
+    "angle": 110,
+    "speed": 9.313
+  },
+  {
+    "id": 76,
+    "series": "15 mph",
+    "angle": 120,
+    "speed": 9.375
+  },
+  {
+    "id": 77,
+    "series": "15 mph",
+    "angle": 130,
+    "speed": 9
+  },
+  {
+    "id": 78,
+    "series": "15 mph",
+    "angle": 140,
+    "speed": 8.438
+  },
+  {
+    "id": 79,
+    "series": "15 mph",
+    "angle": 150,
+    "speed": 7.875
+  },
+  {
+    "id": 80,
+    "series": "15 mph",
+    "angle": 160,
+    "speed": 7.438
+  },
+  {
+    "id": 81,
+    "series": "15 mph",
+    "angle": 170,
+    "speed": 7.188
+  },
+  {
+    "id": 82,
+    "series": "15 mph",
+    "angle": 180,
+    "speed": 6.958
+  },
+  {
+    "id": 83,
+    "series": "15 mph",
+    "angle": 190,
+    "speed": 7.188
+  },
+  {
+    "id": 84,
+    "series": "15 mph",
+    "angle": 200,
+    "speed": 7.438
+  },
+  {
+    "id": 85,
+    "series": "15 mph",
+    "angle": 210,
+    "speed": 7.875
+  },
+  {
+    "id": 86,
+    "series": "15 mph",
+    "angle": 220,
+    "speed": 8.438
+  },
+  {
+    "id": 87,
+    "series": "15 mph",
+    "angle": 230,
+    "speed": 9
+  },
+  {
+    "id": 88,
+    "series": "15 mph",
+    "angle": 240,
+    "speed": 9.375
+  },
+  {
+    "id": 89,
+    "series": "15 mph",
+    "angle": 250,
+    "speed": 9.313
+  },
+  {
+    "id": 90,
+    "series": "15 mph",
+    "angle": 260,
+    "speed": 9.063
+  },
+  {
+    "id": 91,
+    "series": "15 mph",
+    "angle": 270,
+    "speed": 8.875
+  },
+  {
+    "id": 92,
+    "series": "15 mph",
+    "angle": 280,
+    "speed": 8.563
+  },
+  {
+    "id": 93,
+    "series": "15 mph",
+    "angle": 290,
+    "speed": 8.188
+  },
+  {
+    "id": 94,
+    "series": "15 mph",
+    "angle": 300,
+    "speed": 7.813
+  },
+  {
+    "id": 95,
+    "series": "15 mph",
+    "angle": 310,
+    "speed": 7.375
+  },
+  {
+    "id": 96,
+    "series": "15 mph",
+    "angle": 320,
+    "speed": 6.75
+  },
+  {
+    "id": 97,
+    "series": "15 mph",
+    "angle": 330,
+    "speed": 6
+  },
+  {
+    "id": 98,
+    "series": "15 mph",
+    "angle": 336,
+    "speed": 5.563
+  },
+  {
+    "id": 99,
+    "series": "20 mph",
+    "angle": 24,
+    "speed": 5.563
+  },
+  {
+    "id": 100,
+    "series": "20 mph",
+    "angle": 30,
+    "speed": 6.063
+  },
+  {
+    "id": 101,
+    "series": "20 mph",
+    "angle": 40,
+    "speed": 6.875
+  },
+  {
+    "id": 102,
+    "series": "20 mph",
+    "angle": 50,
+    "speed": 7.563
+  },
+  {
+    "id": 103,
+    "series": "20 mph",
+    "angle": 60,
+    "speed": 8.063
+  },
+  {
+    "id": 104,
+    "series": "20 mph",
+    "angle": 70,
+    "speed": 8.5
+  },
+  {
+    "id": 105,
+    "series": "20 mph",
+    "angle": 80,
+    "speed": 8.938
+  },
+  {
+    "id": 106,
+    "series": "20 mph",
+    "angle": 90,
+    "speed": 9.313
+  },
+  {
+    "id": 107,
+    "series": "20 mph",
+    "angle": 100,
+    "speed": 9.688
+  },
+  {
+    "id": 108,
+    "series": "20 mph",
+    "angle": 110,
+    "speed": 10.188
+  },
+  {
+    "id": 109,
+    "series": "20 mph",
+    "angle": 120,
+    "speed": 10.875
+  },
+  {
+    "id": 110,
+    "series": "20 mph",
+    "angle": 130,
+    "speed": 10.75
+  },
+  {
+    "id": 111,
+    "series": "20 mph",
+    "angle": 140,
+    "speed": 10.125
+  },
+  {
+    "id": 112,
+    "series": "20 mph",
+    "angle": 150,
+    "speed": 9.375
+  },
+  {
+    "id": 113,
+    "series": "20 mph",
+    "angle": 160,
+    "speed": 8.875
+  },
+  {
+    "id": 114,
+    "series": "20 mph",
+    "angle": 170,
+    "speed": 8.625
+  },
+  {
+    "id": 115,
+    "series": "20 mph",
+    "angle": 180,
+    "speed": 8.313
+  },
+  {
+    "id": 116,
+    "series": "20 mph",
+    "angle": 190,
+    "speed": 8.625
+  },
+  {
+    "id": 117,
+    "series": "20 mph",
+    "angle": 200,
+    "speed": 8.875
+  },
+  {
+    "id": 118,
+    "series": "20 mph",
+    "angle": 210,
+    "speed": 9.375
+  },
+  {
+    "id": 119,
+    "series": "20 mph",
+    "angle": 220,
+    "speed": 10.125
+  },
+  {
+    "id": 120,
+    "series": "20 mph",
+    "angle": 230,
+    "speed": 10.75
+  },
+  {
+    "id": 121,
+    "series": "20 mph",
+    "angle": 240,
+    "speed": 10.875
+  },
+  {
+    "id": 122,
+    "series": "20 mph",
+    "angle": 250,
+    "speed": 10.188
+  },
+  {
+    "id": 123,
+    "series": "20 mph",
+    "angle": 260,
+    "speed": 9.688
+  },
+  {
+    "id": 124,
+    "series": "20 mph",
+    "angle": 270,
+    "speed": 9.313
+  },
+  {
+    "id": 125,
+    "series": "20 mph",
+    "angle": 280,
+    "speed": 8.938
+  },
+  {
+    "id": 126,
+    "series": "20 mph",
+    "angle": 290,
+    "speed": 8.5
+  },
+  {
+    "id": 127,
+    "series": "20 mph",
+    "angle": 300,
+    "speed": 8.063
+  },
+  {
+    "id": 128,
+    "series": "20 mph",
+    "angle": 310,
+    "speed": 7.563
+  },
+  {
+    "id": 129,
+    "series": "20 mph",
+    "angle": 320,
+    "speed": 6.875
+  },
+  {
+    "id": 130,
+    "series": "20 mph",
+    "angle": 330,
+    "speed": 6.063
+  },
+  {
+    "id": 131,
+    "series": "20 mph",
+    "angle": 336,
+    "speed": 5.563
+  }
+]

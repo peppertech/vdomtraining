@@ -1,0 +1,20 @@
+<ol>
+  <li>
+    Define SVG CSS customizations in a style class or inline style string. To use custom fills or
+    strokes, create a separate SVG image on the page and define the fills or strokes in the defs
+    element of that SVG image, referring to them in the style class or inline style.
+  </li>
+  <li>
+    Create an oj-diagram element and define the
+    <i><b>svgStyle</b></i>
+    or
+    <i><b>svgClassName</b></i>
+    properties on the node icon, node background, container or link. These properties should call
+    the previously defined style classes.
+  </li>
+  <li>The style class and inline style will override any other styling specifications.</li>
+  <li>
+    <b>Layouts</b>
+    : The application is responsible for providing the layout algorithm used by the Diagram.
+  </li>
+</ol>

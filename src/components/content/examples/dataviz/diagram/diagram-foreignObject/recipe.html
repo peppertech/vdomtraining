@@ -1,0 +1,43 @@
+<ol>
+  <li>Create an oj-diagram element.</li>
+  <li>
+    Create an
+    <code>ArrayTreeDataProvider</code>
+    from an array of data, or a JSON source and use data binding to bind to the 'node-data'
+    attribute.
+  </li>
+  <li>
+    Create an
+    <code>ArrayDataProvider</code>
+    from an array of data, or a JSON source and use data binding to bind to the 'link-data'
+    attribute.
+  </li>
+  <li>
+    Create a template element with the slot attribute set to
+    <a target="_blank" href="jsdocs/oj.ojDiagram.html#nodeContentTemplate">nodeContentTemplate</a>
+    . To use non-svg html elements in the node, use the
+    <a
+      target="_blank"
+      href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject">
+      foreignObject
+    </a>
+    element. See the
+    <a target="_blank" href="?component=diagram&demo=customTemplates">Custom Templates</a>
+    demo for details on how to use
+    <a target="_blank" href="jsdocs/oj.ojDiagram.html#nodeContentTemplate">nodeContentTemplate</a>
+    .
+  </li>
+  <li>
+    <b>Accessibility</b>
+    : The application is responsible for populating the
+    <i><b>aria-label</b></i>
+    attribute on the component and
+    <i><b>short-desc</b></i>
+    attribute on the diagram nodes/links with meaningful descriptors. The application is also
+    responsible for making sure any custom content meets accessibility requirements.
+  </li>
+  <li>
+    <b>Layouts</b>
+    : The application is responsible for providing the layout algorithm used by the Diagram.
+  </li>
+</ol>

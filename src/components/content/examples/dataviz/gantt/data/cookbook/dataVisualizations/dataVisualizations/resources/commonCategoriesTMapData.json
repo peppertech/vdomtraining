@@ -1,0 +1,82 @@
+[
+  {
+    "location": "Alabama",
+    "category": "Initial"
+  },
+  {
+    "location": "Florida",
+    "category": "Qualification"
+  },
+  {
+    "location": "Texas",
+    "category": "Meeting"
+  },
+  {
+    "location": "Mississippi",
+    "category": "Proposal"
+  },
+  {
+    "location": "Ohio",
+    "category": "Close"
+  },
+  {
+    "location": "Massachussetts",
+    "category": "Initial"
+  },
+  {
+    "location": "Rhode Island",
+    "category": "Qualification"
+  },
+  {
+    "location": "New Hampshire",
+    "category": "Meeting"
+  },
+  {
+    "location": "Oregon",
+    "category": "Proposal"
+  },
+  {
+    "location": "Washington",
+    "category": "Close"
+  },
+  {
+    "location": "Utah",
+    "category": "Initial"
+  },
+  {
+    "location": "Colorado",
+    "category": "Qualification"
+  },
+  {
+    "location": "South Dakota",
+    "category": "Meeting"
+  },
+  {
+    "location": "Iowa",
+    "category": "Proposal"
+  },
+  {
+    "location": "Missouri",
+    "category": "Close"
+  },
+  {
+    "location": "Arkansas",
+    "category": "Initial"
+  },
+  {
+    "location": "Pennsylvania",
+    "category": "Qualification"
+  },
+  {
+    "location": "West Virginia",
+    "category": "Meeting"
+  },
+  {
+    "location": "New York",
+    "category": "Proposal"
+  },
+  {
+    "location": "Maine",
+    "category": "Close"
+  }
+]

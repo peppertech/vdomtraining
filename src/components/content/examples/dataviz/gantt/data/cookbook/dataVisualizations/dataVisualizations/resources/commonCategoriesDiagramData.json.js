@@ -1,0 +1,52 @@
+define([], function () { return { __esModule: true, default: {
+  "nodes": [
+    {
+      "id": "dgN0",
+      "category": "Initial"
+    },
+    {
+      "id": "dgN1",
+      "category": "Qualification"
+    },
+    {
+      "id": "dgN2",
+      "category": "Meeting"
+    },
+    {
+      "id": "dgN3",
+      "category": "Proposal"
+    },
+    {
+      "id": "dgN4",
+      "category": "Close"
+    }
+  ],
+  "links": [
+    {
+      "id": "dgL0",
+      "startNode": "dgN0",
+      "endNode": "dgN1",
+      "category": "Initial"
+    },
+    {
+      "id": "dgL1",
+      "startNode": "dgN1",
+      "endNode": "dgN2",
+      "category": "Qualification"
+    },
+    {
+      "id": "dgL2",
+      "startNode": "dgN2",
+      "endNode": "dgN3",
+      "category": "Meeting"
+    },
+    {
+      "id": "dgL3",
+      "startNode": "dgN3",
+      "endNode": "dgN4",
+      "category": "Proposal"
+    }
+  ]
+}
+ }; });
+

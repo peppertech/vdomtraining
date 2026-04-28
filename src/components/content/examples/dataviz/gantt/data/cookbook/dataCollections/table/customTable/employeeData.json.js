@@ -1,0 +1,74 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "EmployeeId": 5,
+    "Photo": "../images/dvt/1.png",
+    "FirstName": "Amy",
+    "LastName": "Bartlet",
+    "Revenue": 100000,
+    "Rating": 1,
+    "TargetComplete": 20,
+    "TargetIncomplete": 80
+  },
+  {
+    "EmployeeId": 10,
+    "Photo": "../images/dvt/10.png",
+    "FirstName": "Andy",
+    "LastName": "Jones",
+    "Revenue": 200000,
+    "Rating": 2,
+    "TargetComplete": 40,
+    "TargetIncomplete": 60
+  },
+  {
+    "EmployeeId": 20,
+    "Photo": "../images/dvt/11.png",
+    "FirstName": "Andrew",
+    "LastName": "Bugsy",
+    "Revenue": 130000,
+    "Rating": 3,
+    "TargetComplete": 10,
+    "TargetIncomplete": 90
+  },
+  {
+    "EmployeeId": 30,
+    "Photo": "../images/dvt/2.png",
+    "FirstName": "Annette",
+    "LastName": "Barnes",
+    "Revenue": 110000,
+    "Rating": 4,
+    "TargetComplete": 30,
+    "TargetIncomplete": 70
+  },
+  {
+    "EmployeeId": 40,
+    "Photo": "../images/dvt/12.png",
+    "FirstName": "Bob",
+    "LastName": "Jones",
+    "Revenue": 230000,
+    "Rating": 5,
+    "TargetComplete": 70,
+    "TargetIncomplete": 30
+  },
+  {
+    "EmployeeId": 50,
+    "Photo": "../images/dvt/13.png",
+    "FirstName": "Bart",
+    "LastName": "Buckler",
+    "Revenue": 400000,
+    "Rating": 1.5,
+    "TargetComplete": 90,
+    "TargetIncomplete": 10
+  },
+  {
+    "EmployeeId": 60,
+    "Photo": "../images/dvt/14.png",
+    "FirstName": "Bobby",
+    "LastName": "Fisher",
+    "Revenue": 600000,
+    "Rating": 1.5,
+    "TargetComplete": 40,
+    "TargetIncomplete": 60
+  }
+]
+ }; });
+

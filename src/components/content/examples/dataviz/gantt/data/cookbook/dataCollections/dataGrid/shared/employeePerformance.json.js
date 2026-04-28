@@ -1,0 +1,179 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "name": "Sanchez Sweeney",
+    "communication": 2,
+    "teamwork": 4,
+    "contingent": 5,
+    "resourceful": 3
+  },
+  {
+    "name": "Burt Bernard",
+    "communication": 4,
+    "teamwork": 2,
+    "contingent": 2,
+    "resourceful": 1
+  },
+  {
+    "name": "Mason Pearson",
+    "communication": 2,
+    "teamwork": 5,
+    "contingent": 5,
+    "resourceful": 5
+  },
+  {
+    "name": "Adeline Christian",
+    "communication": 2,
+    "teamwork": 4,
+    "contingent": 3,
+    "resourceful": 5
+  },
+  {
+    "name": "Jeannie Cash",
+    "communication": 3,
+    "teamwork": 5,
+    "contingent": 2,
+    "resourceful": 5
+  },
+  {
+    "name": "Melton Bowman",
+    "communication": 3,
+    "teamwork": 2,
+    "contingent": 4,
+    "resourceful": 5
+  },
+  {
+    "name": "Leila Wilder",
+    "communication": 5,
+    "teamwork": 2,
+    "contingent": 5,
+    "resourceful": 3
+  },
+  {
+    "name": "Ray Morton",
+    "communication": 5,
+    "teamwork": 1,
+    "contingent": 4,
+    "resourceful": 5
+  },
+  {
+    "name": "Velasquez Rojas",
+    "communication": 2,
+    "teamwork": 3,
+    "contingent": 3,
+    "resourceful": 1
+  },
+  {
+    "name": "Jordan Cross",
+    "communication": 4,
+    "teamwork": 5,
+    "contingent": 3,
+    "resourceful": 1
+  },
+  {
+    "name": "Tasha Hamilton",
+    "communication": 5,
+    "teamwork": 1,
+    "contingent": 3,
+    "resourceful": 5
+  },
+  {
+    "name": "Anne Wilkins",
+    "communication": 1,
+    "teamwork": 2,
+    "contingent": 1,
+    "resourceful": 4
+  },
+  {
+    "name": "Marcia Schmidt",
+    "communication": 4,
+    "teamwork": 2,
+    "contingent": 2,
+    "resourceful": 2
+  },
+  {
+    "name": "Mai Lane",
+    "communication": 2,
+    "teamwork": 2,
+    "contingent": 3,
+    "resourceful": 1
+  },
+  {
+    "name": "Heidi Palmer",
+    "communication": 5,
+    "teamwork": 5,
+    "contingent": 4,
+    "resourceful": 4
+  },
+  {
+    "name": "Scott Stephens",
+    "communication": 1,
+    "teamwork": 5,
+    "contingent": 4,
+    "resourceful": 5
+  },
+  {
+    "name": "Francis Serrano",
+    "communication": 4,
+    "teamwork": 2,
+    "contingent": 3,
+    "resourceful": 1
+  },
+  {
+    "name": "Kristy Castillo",
+    "communication": 5,
+    "teamwork": 3,
+    "contingent": 5,
+    "resourceful": 4
+  },
+  {
+    "name": "Deena Alston",
+    "communication": 3,
+    "teamwork": 2,
+    "contingent": 5,
+    "resourceful": 2
+  },
+  {
+    "name": "Church Perez",
+    "communication": 3,
+    "teamwork": 1,
+    "contingent": 2,
+    "resourceful": 2
+  },
+  {
+    "name": "Williamson Wilcox",
+    "communication": 2,
+    "teamwork": 2,
+    "contingent": 1,
+    "resourceful": 5
+  },
+  {
+    "name": "Gabriela Mullen",
+    "communication": 3,
+    "teamwork": 1,
+    "contingent": 4,
+    "resourceful": 4
+  },
+  {
+    "name": "Erma Britt",
+    "communication": 2,
+    "teamwork": 1,
+    "contingent": 4,
+    "resourceful": 3
+  },
+  {
+    "name": "Harmon Jarvis",
+    "communication": 3,
+    "teamwork": 3,
+    "contingent": 3,
+    "resourceful": 3
+  },
+  {
+    "name": "Fisher Marks",
+    "communication": 2,
+    "teamwork": 4,
+    "contingent": 3,
+    "resourceful": 3
+  }
+]
+ }; });
+

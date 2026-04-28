@@ -1,0 +1,31 @@
+#gauge-container {
+  overflow-y: hidden;
+}
+
+.demo-grid {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: minmax(6.25rem, 1fr) minmax(12.5rem, 1fr) minmax(12.5rem, 1fr);
+}
+
+.demo-gauge-cell {
+  margin-top: 1.8rem;
+  max-height: 10rem;
+}
+
+.demo-text {
+  max-width: 12rem;
+}
+
+.demo-custom-size-horizontal {
+  width: 100%;
+}
+
+.demo-custom-size-vertical {
+  height: 6rem;
+}
+
+.demo-gauge-cell > .demo-full {
+  height: 150px;
+  width: 150px;
+}

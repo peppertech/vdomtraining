@@ -49,7 +49,7 @@ export function DemoLayoutTemplate({
         )}
 
         {description && (
-          <div class="demo-layout-template__description oj-typography-body-md">
+          <div class="demo-layout-template__description oj-typography-body-lg">
             {description}
           </div>
         )}

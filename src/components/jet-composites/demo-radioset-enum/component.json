@@ -1,0 +1,52 @@
+{
+  "name": "demo-radioset-enum",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "displayName": "A set of radio buttons",
+  "description": "A radioset component displaying a set of unique values.",
+  "properties": {
+     "enumValues": {
+        "description": "A set of unique values, each one will be assigned as the value of an option",
+        "displayName": "Enum Values",
+        "type": "Array<string>"
+     },
+     "disabledValues": {
+         "description": "A set of unique values of the options which should be disabled",
+         "displayName": "Disabled Values",
+         "type": "Array<string>",
+         "value": []
+      },
+     "value": {
+        "description": "The currently selected value",
+        "displayName": "Value",
+        "type": "string",
+        "writeback": true
+     },
+     "direction": {
+        "description": "Specifies the direction in which the options are to be rendered",
+        "displayName": "Direction",
+        "enumValues": ["column", "row"],
+        "type": "string"
+     },
+     "labelledBy":{
+      "description": "The ID of an oj-label element associated with this component",
+      "displayName": "Labelled By",
+      "type": "string"
+     },
+     "describedBy":{
+      "description": "The ID of an oj-label element associated with this component.  Typically not set by an application, but by oj-label itself",
+      "displayName": "DescribedBy",
+      "type": "string"
+     },
+     "labelHint":{
+        "description": "Represents a hint for oj-form-layout element to render a label on the editable component",
+        "displayName": "Label Hint",
+        "type": "string"
+     },
+     "disabled":{
+       "description": "Whether or not the entire radioset is disabled",
+       "displayName": "Disabled",
+       "type": "boolean"
+     }
+  }
+}

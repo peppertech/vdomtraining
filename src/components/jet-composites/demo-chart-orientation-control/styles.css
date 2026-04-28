@@ -1,0 +1,4 @@
+/* This is to prevent the flash of unstyled content before the composite properties have been setup. */
+demo-chart-orientation-control:not(.oj-complete) {
+  visibility: hidden;
+}

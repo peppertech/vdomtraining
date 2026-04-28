@@ -1,0 +1,24 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "name": "0-14",
+    "count": 19
+  },
+  {
+    "name": "15-24",
+    "count": 14
+  },
+  {
+    "name": "25-54",
+    "count": 40
+  },
+  {
+    "name": "55-64",
+    "count": 13
+  },
+  {
+    "name": "65+",
+    "count": 14
+  }
+]
+ }; });
+

@@ -1,0 +1,39 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": "d1",
+    "predecessor": "task2",
+    "successor": "task5",
+    "relation": "finishStart",
+    "status": "normal"
+  },
+  {
+    "id": "d2",
+    "predecessor": "task2",
+    "successor": "task11",
+    "relation": "finishStart",
+    "status": "normal"
+  },
+  {
+    "id": "d3",
+    "predecessor": "task12",
+    "successor": "task14",
+    "relation": "finishStart",
+    "status": "normal"
+  },
+  {
+    "id": "d4",
+    "predecessor": "task16",
+    "successor": "task19",
+    "relation": "finishStart",
+    "status": "normal"
+  },
+  {
+    "id": "d5",
+    "predecessor": "task28",
+    "successor": "task29",
+    "relation": "finishStart",
+    "status": "critical"
+  }
+]
+ }; });
+

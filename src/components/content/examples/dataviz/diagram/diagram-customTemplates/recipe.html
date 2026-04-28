@@ -1,0 +1,74 @@
+<ol>
+  <li>
+    To customize node content
+    <ol>
+      <li>
+        Create a template element with the slot attribute set to
+        <a target="_blank" href="jsdocs/oj.ojDiagram.html#nodeContentTemplate">
+          nodeContentTemplate
+        </a>
+        .
+      </li>
+      <li>Populate the template element with the desired HTML content.</li>
+      <li>
+        Template content will have access to a
+        <a target="_blank" href="jsdocs/oj.ojDiagram.html#RendererContext">RendererContext</a>
+        via the $current property as well as via any data-oj-as alias provided on the template
+        element.
+      </li>
+      <li>
+        To customize hover, selection and keyboard focus effects for the node:
+        <ol style="list-style-type: lower-alpha">
+          <li>
+            Modify the contents of the template based on the node's state which is passed via the
+            context.
+          </li>
+        </ol>
+      </li>
+      <li>
+        Add
+        <i><b>data-oj-zoom-thresholds</b></i>
+        attribute to the template to set thresholds that will trigger a rerender when crossed. This
+        should be a JSON array containing values between the
+        <i><b>min-zoom</b></i>
+        and
+        <i><b>max-zoom</b></i>
+        attribute values.
+      </li>
+      <li>
+        To position child node content, add an
+        <a target="_blank" href="jsdocs/oj.ojDiagramChildContent.html">oj-diagram-child-content</a>
+        element. Diagram will replace this element with the child contents of the container node.
+      </li>
+    </ol>
+  </li>
+  <li>
+    To customize link content
+    <ol>
+      <li>
+        Create a template element with the slot attribute set to
+        <a target="_blank" href="jsdocs/oj.ojDiagram.html#linkContentTemplate">
+          linkContentTemplate
+        </a>
+        .
+      </li>
+      <li>Populate the template element with the desired HTML content.</li>
+      <li>
+        Template content will have access to a
+        <a target="_blank" href="jsdocs/oj.ojDiagram.html#LinkRendererContext">
+          LinkRendererContext
+        </a>
+        via the $current property as well as via any data-oj-as alias provided on the template
+        element.
+      </li>
+      <li>
+        To customize hover, selection and keyboard focus effects for the link, modify the contents
+        of the template based on the link's state which is passed via the context.
+      </li>
+    </ol>
+  </li>
+  <li>
+    <b>Layouts</b>
+    : The application is responsible for providing the layout algorithm used by the Diagram.
+  </li>
+</ol>

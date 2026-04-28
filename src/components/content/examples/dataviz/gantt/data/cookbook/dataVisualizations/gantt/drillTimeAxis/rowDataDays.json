@@ -1,0 +1,356 @@
+[
+  {
+    "resource": "Chris Black",
+    "schedule": [
+      {
+        "id": "shif1-1",
+        "begin": "2021-01-04T00:00:00.000",
+        "finish": "2021-01-04T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift1-2",
+        "begin": "2021-01-05T00:00:00.000",
+        "finish": "2021-01-05T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift1-3",
+        "begin": "2021-01-06T00:00:00.000",
+        "finish": "2021-01-06T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift1-4",
+        "begin": "2021-01-10T08:00:00.000",
+        "finish": "2021-01-10T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift1-5",
+        "begin": "2021-01-11T08:00:00.000",
+        "finish": "2021-01-11T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift1-6",
+        "begin": "2021-01-12T08:00:00.000",
+        "finish": "2021-01-12T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shif1-7",
+        "begin": "2021-01-16T16:00:00.000",
+        "finish": "2021-01-17T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shif1-8",
+        "begin": "2021-01-17T16:00:00.000",
+        "finish": "2021-01-18T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shif1-9",
+        "begin": "2021-01-18T16:00:00.000",
+        "finish": "2021-01-19T00:00:00.000",
+        "name": "Evening Shift"
+      }
+    ]
+  },
+  {
+    "resource": "Christine Cooper",
+    "schedule": [
+      {
+        "id": "shift2-1",
+        "begin": "2021-01-04T08:00:00.000",
+        "finish": "2021-01-04T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift2-2",
+        "begin": "2021-01-05T08:00:00.000",
+        "finish": "2021-01-05T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift2-3",
+        "begin": "2021-01-06T08:00:00.000",
+        "finish": "2021-01-06T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift2-4",
+        "begin": "2021-01-10T16:00:00.000",
+        "finish": "2021-01-11T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift2-5",
+        "begin": "2021-01-11T16:00:00.000",
+        "finish": "2021-01-12T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift2-6",
+        "begin": "2021-01-12T16:00:00.000",
+        "finish": "2021-01-13T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift2-7",
+        "begin": "2021-01-16T00:00:00.000",
+        "finish": "2021-01-16T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift2-8",
+        "begin": "2021-01-17T00:00:00.000",
+        "finish": "2021-01-17T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift2-9",
+        "begin": "2021-01-18T00:00:00.000",
+        "finish": "2021-01-18T08:00:00.000",
+        "name": "Night Shift"
+      }
+    ]
+  },
+  {
+    "resource": "Kurt Marchris",
+    "schedule": [
+      {
+        "id": "shift3-1",
+        "begin": "2021-01-04T16:00:00.000",
+        "finish": "2021-01-05T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift3-2",
+        "begin": "2021-01-05T16:00:00.000",
+        "finish": "2021-01-06T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift3-3",
+        "begin": "2021-01-06T16:00:00.000",
+        "finish": "2021-01-07T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift3-4",
+        "begin": "2021-01-10T00:00:00.000",
+        "finish": "2021-01-10T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift3-5",
+        "begin": "2021-01-11T00:00:00.000",
+        "finish": "2021-01-11T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift3-6",
+        "begin": "2021-01-12T00:00:00.000",
+        "finish": "2021-01-12T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift3-7",
+        "begin": "2021-01-16T08:00:00.000",
+        "finish": "2021-01-16T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift3-8",
+        "begin": "2021-01-17T08:00:00.000",
+        "finish": "2021-01-17T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift3-9",
+        "begin": "2021-01-18T08:00:00.000",
+        "finish": "2021-01-18T16:00:00.000",
+        "name": "Day Shift"
+      }
+    ]
+  },
+  {
+    "resource": "Jennifer Christy",
+    "schedule": [
+      {
+        "id": "shift4-1",
+        "begin": "2021-01-07T00:00:00.000",
+        "finish": "2021-01-07T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift4-2",
+        "begin": "2021-01-08T00:00:00.000",
+        "finish": "2021-01-08T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift4-3",
+        "begin": "2021-01-09T00:00:00.000",
+        "finish": "2021-01-09T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift4-4",
+        "begin": "2021-01-13T08:00:00.000",
+        "finish": "2021-01-13T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift4-5",
+        "begin": "2021-01-14T08:00:00.000",
+        "finish": "2021-01-14T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift4-6",
+        "begin": "2021-01-15T08:00:00.000",
+        "finish": "2021-01-15T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift4-7",
+        "begin": "2021-01-19T16:00:00.000",
+        "finish": "2021-01-20T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift4-8",
+        "begin": "2021-01-20T16:00:00.000",
+        "finish": "2021-01-21T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift4-9",
+        "begin": "2021-01-21T16:00:00.000",
+        "finish": "2021-01-22T00:00:00.000",
+        "name": "Evening Shift"
+      }
+    ]
+  },
+  {
+    "resource": "Christian Wu",
+    "schedule": [
+      {
+        "id": "shift5-1",
+        "begin": "2021-01-07T08:00:00.000",
+        "finish": "2021-01-07T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift5-2",
+        "begin": "2021-01-08T08:00:00.000",
+        "finish": "2021-01-08T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift5-3",
+        "begin": "2021-01-09T08:00:00.000",
+        "finish": "2021-01-09T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift5-4",
+        "begin": "2021-01-13T16:00:00.000",
+        "finish": "2021-01-14T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift5-5",
+        "begin": "2021-01-14T16:00:00.000",
+        "finish": "2021-01-15T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift5-6",
+        "begin": "2021-01-15T16:00:00.000",
+        "finish": "2021-01-16T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift5-7",
+        "begin": "2021-01-19T00:00:00.000",
+        "finish": "2021-01-19T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift5-8",
+        "begin": "2021-01-20T00:00:00.000",
+        "finish": "2021-01-20T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift5-9",
+        "begin": "2021-01-21T00:00:00.000",
+        "finish": "2021-01-21T08:00:00.000",
+        "name": "Night Shift"
+      }
+    ]
+  },
+  {
+    "resource": "Alfred Marchris",
+    "schedule": [
+      {
+        "id": "shift6-1",
+        "begin": "2021-01-07T16:00:00.000",
+        "finish": "2021-01-08T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift6-2",
+        "begin": "2021-01-08T16:00:00.000",
+        "finish": "2021-01-09T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift6-3",
+        "begin": "2021-01-09T16:00:00.000",
+        "finish": "2021-01-10T00:00:00.000",
+        "name": "Evening Shift"
+      },
+      {
+        "id": "shift6-4",
+        "begin": "2021-01-13T00:00:00.000",
+        "finish": "2021-01-13T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift6-5",
+        "begin": "2021-01-14T00:00:00.000",
+        "finish": "2021-01-14T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift6-6",
+        "begin": "2021-01-15T00:00:00.000",
+        "finish": "2021-01-15T08:00:00.000",
+        "name": "Night Shift"
+      },
+      {
+        "id": "shift6-7",
+        "begin": "2021-01-19T08:00:00.000",
+        "finish": "2021-01-19T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift6-8",
+        "begin": "2021-01-20T08:00:00.000",
+        "finish": "2021-01-20T16:00:00.000",
+        "name": "Day Shift"
+      },
+      {
+        "id": "shift6-9",
+        "begin": "2021-01-21T08:00:00.000",
+        "finish": "2021-01-21T16:00:00.000",
+        "name": "Day Shift"
+      }
+    ]
+  }
+]

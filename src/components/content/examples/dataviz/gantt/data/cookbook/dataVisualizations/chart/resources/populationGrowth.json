@@ -1,0 +1,206 @@
+[
+  {
+    "id": 0,
+    "series": "California",
+    "group": 1850,
+    "value": 92597
+  },
+  {
+    "id": 1,
+    "series": "California",
+    "group": 1860,
+    "value": 379994
+  },
+  {
+    "id": 2,
+    "series": "California",
+    "group": 1870,
+    "value": 560247
+  },
+  {
+    "id": 3,
+    "series": "California",
+    "group": 1880,
+    "value": 864694
+  },
+  {
+    "id": 4,
+    "series": "California",
+    "group": 1890,
+    "value": 1213398
+  },
+  {
+    "id": 5,
+    "series": "California",
+    "group": 1900,
+    "value": 1485053
+  },
+  {
+    "id": 6,
+    "series": "California",
+    "group": 1910,
+    "value": 2377549
+  },
+  {
+    "id": 7,
+    "series": "California",
+    "group": 1920,
+    "value": 3426861
+  },
+  {
+    "id": 8,
+    "series": "California",
+    "group": 1930,
+    "value": 5677251
+  },
+  {
+    "id": 9,
+    "series": "California",
+    "group": 1940,
+    "value": 6907387
+  },
+  {
+    "id": 10,
+    "series": "California",
+    "group": 1950,
+    "value": 10586223
+  },
+  {
+    "id": 11,
+    "series": "California",
+    "group": 1960,
+    "value": 15717204
+  },
+  {
+    "id": 12,
+    "series": "California",
+    "group": 1970,
+    "value": 19953134
+  },
+  {
+    "id": 13,
+    "series": "California",
+    "group": 1980,
+    "value": 23667902
+  },
+  {
+    "id": 14,
+    "series": "California",
+    "group": 1990,
+    "value": 29760021
+  },
+  {
+    "id": 15,
+    "series": "California",
+    "group": 2000,
+    "value": 33871648
+  },
+  {
+    "id": 16,
+    "series": "California",
+    "group": 2010,
+    "value": 37253956
+  },
+  {
+    "id": 17,
+    "series": "Massachusetts",
+    "group": 1850,
+    "value": 994514
+  },
+  {
+    "id": 18,
+    "series": "Massachusetts",
+    "group": 1860,
+    "value": 1231066
+  },
+  {
+    "id": 19,
+    "series": "Massachusetts",
+    "group": 1870,
+    "value": 1457351
+  },
+  {
+    "id": 20,
+    "series": "Massachusetts",
+    "group": 1880,
+    "value": 1783085
+  },
+  {
+    "id": 21,
+    "series": "Massachusetts",
+    "group": 1890,
+    "value": 2238947
+  },
+  {
+    "id": 22,
+    "series": "Massachusetts",
+    "group": 1900,
+    "value": 2805346
+  },
+  {
+    "id": 23,
+    "series": "Massachusetts",
+    "group": 1910,
+    "value": 3366416
+  },
+  {
+    "id": 24,
+    "series": "Massachusetts",
+    "group": 1920,
+    "value": 3852356
+  },
+  {
+    "id": 25,
+    "series": "Massachusetts",
+    "group": 1930,
+    "value": 4249614
+  },
+  {
+    "id": 26,
+    "series": "Massachusetts",
+    "group": 1940,
+    "value": 4316721
+  },
+  {
+    "id": 27,
+    "series": "Massachusetts",
+    "group": 1950,
+    "value": 4690514
+  },
+  {
+    "id": 28,
+    "series": "Massachusetts",
+    "group": 1960,
+    "value": 5148578
+  },
+  {
+    "id": 29,
+    "series": "Massachusetts",
+    "group": 1970,
+    "value": 5689170
+  },
+  {
+    "id": 30,
+    "series": "Massachusetts",
+    "group": 1980,
+    "value": 5737037
+  },
+  {
+    "id": 31,
+    "series": "Massachusetts",
+    "group": 1990,
+    "value": 6016426
+  },
+  {
+    "id": 32,
+    "series": "Massachusetts",
+    "group": 2000,
+    "value": 6349097
+  },
+  {
+    "id": 33,
+    "series": "Massachusetts",
+    "group": 2010,
+    "value": 6547629
+  }
+]

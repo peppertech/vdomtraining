@@ -1,0 +1,28 @@
+<ol>
+  <li>
+    Look at the
+    <a href="#" onclick="demoGoLink(event, 'diagram', 'default'); return false;">Basic demo</a>
+    to see how to create an oj-diagram.
+  </li>
+  <li>
+    Set
+    <a target="_blank" href="jsdocs/oj.ojDiagram.html#panning">panning</a>
+    and
+    <a target="_blank" href="jsdocs/oj.ojDiagram.html#zooming">zooming</a>
+    attributes to 'auto' .
+  </li>
+  <li>
+    To set the zoom and center, modify pan-zoom-state.zoom, pan-zoom-state.center-x, and
+    pan-zoom-state.center-y properties of the
+    <a target="_blank" href="jsdocs/oj.ojDiagram.html#panZoomState">pan-zoom-state</a>
+    attribute.
+  </li>
+  <li>
+    By default, the pan-zoom-state is reset to zoom-to-fit on property changes and component
+    resizes. To prevent this reset, call event.preventDefault() on the
+    <a target="_blank" href="jsdocs/oj.ojDiagram.html#event:beforePanZoomReset">
+      oj-before-pan-zoom-reset
+    </a>
+    event.
+  </li>
+</ol>

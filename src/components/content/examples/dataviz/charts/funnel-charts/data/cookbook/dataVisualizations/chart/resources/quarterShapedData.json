@@ -1,0 +1,98 @@
+[
+  {
+    "id": 0,
+    "seriesId": "Series 1",
+    "groupId": ["Q1"],
+    "value": 74
+  },
+  {
+    "id": 1,
+    "seriesId": "Series 1",
+    "groupId": ["Q2"],
+    "value": 42
+  },
+  {
+    "id": 2,
+    "seriesId": "Series 1",
+    "groupId": ["Q3"],
+    "value": 70
+  },
+  {
+    "id": 3,
+    "seriesId": "Series 1",
+    "groupId": ["Q4"],
+    "value": 46
+  },
+  {
+    "id": 4,
+    "seriesId": "Series 2",
+    "groupId": ["Q1"],
+    "value": 50
+  },
+  {
+    "id": 5,
+    "seriesId": "Series 2",
+    "groupId": ["Q2"],
+    "value": 58
+  },
+  {
+    "id": 6,
+    "seriesId": "Series 2",
+    "groupId": ["Q3"],
+    "value": 46
+  },
+  {
+    "id": 7,
+    "seriesId": "Series 2",
+    "groupId": ["Q4"],
+    "value": 54
+  },
+  {
+    "id": 8,
+    "seriesId": "Series 3",
+    "groupId": ["Q1"],
+    "value": 34
+  },
+  {
+    "id": 9,
+    "seriesId": "Series 3",
+    "groupId": ["Q2"],
+    "value": 22
+  },
+  {
+    "id": 10,
+    "seriesId": "Series 3",
+    "groupId": ["Q3"],
+    "value": 30
+  },
+  {
+    "id": 11,
+    "seriesId": "Series 3",
+    "groupId": ["Q4"],
+    "value": 32
+  },
+  {
+    "id": 12,
+    "seriesId": "Series 4",
+    "groupId": ["Q1"],
+    "value": 18
+  },
+  {
+    "id": 13,
+    "seriesId": "Series 4",
+    "groupId": ["Q2"],
+    "value": 6
+  },
+  {
+    "id": 14,
+    "seriesId": "Series 4",
+    "groupId": ["Q3"],
+    "value": 14
+  },
+  {
+    "id": 15,
+    "seriesId": "Series 4",
+    "groupId": ["Q4"],
+    "value": 22
+  }
+]
