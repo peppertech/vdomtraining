@@ -220,14 +220,14 @@ export const renderEmployeeCollectionTable = (
   };
 
   const cellRenderer = (cellCtx: ojTable.CellTemplateContext<any, any>) => (
-    <oj-c-highlight-text
+    <oj-c-highlight-text  style={{ maxWidth: "400px" }}
       text={String(cellCtx.data)}
       matchText={collection.searchText}
     ></oj-c-highlight-text>
   );
 
   return (
-    <oj-c-table
+    <oj-c-table 
       aria-label="Select results"
       horizontal-grid-visible="disabled"
       verticalGridVisible="disabled"

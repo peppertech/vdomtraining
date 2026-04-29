@@ -1,0 +1,69 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "category": "freestyle",
+    "description": "Freestyle Skiing",
+    "medals": [
+      {
+        "name": "Joss Christensen",
+        "medal": "gold"
+      },
+      {
+        "name": "David Wise",
+        "medal": "gold"
+      },
+      {
+        "name": "Maddie Bowman",
+        "medal": "gold"
+      },
+      {
+        "name": "Gus Kenworthy",
+        "medal": "silver"
+      },
+      {
+        "name": "Devin Logan",
+        "medal": "silver"
+      },
+      {
+        "name": "Hannah Kearney",
+        "medal": "bronze"
+      },
+      {
+        "name": "Nicholas Goepper",
+        "medal": "bronze"
+      }
+    ]
+  },
+  {
+    "category": "snowboard",
+    "description": "Snowboarding",
+    "medals": [
+      { "name": "Jamie Anderson", "medal": "gold" },
+      { "name": "Sage Kotsenburg", "medal": "gold" },
+      { "name": "Alex Deibold", "medal": "bronze" },
+      { "name": "Kelly Clark", "medal": "bronze" }
+    ]
+  },
+  {
+    "category": "alpine",
+    "description": "Alpine Skiing",
+    "medals": [
+      { "name": "Ted Ligety", "medal": "gold" },
+      { "name": "Mikaela Shiffrin", "medal": "gold" }
+    ]
+  },
+  {
+    "category": "skeleton",
+    "description": "Skeleton",
+    "medals": [
+      { "name": "Noelle Pikus-Pace", "medal": "silver" },
+      { "name": "Matthew Antoine", "medal": "bronze" }
+    ]
+  },
+  {
+    "category": "luge",
+    "description": "Luge",
+    "medals": [{ "name": "Erin Hamlin", "medal": "bronze" }]
+  }
+]
+ }; });
+

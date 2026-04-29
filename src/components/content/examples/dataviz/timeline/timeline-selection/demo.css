@@ -1,0 +1,13 @@
+.demo-timeline {
+  width: 100%;
+  height: 25rem;
+}
+
+.demo-selection-text-container {
+  width: 100%;
+  height: 6.25rem;
+}
+
+.demo-timeline-selection {
+  display: inline-block;
+}

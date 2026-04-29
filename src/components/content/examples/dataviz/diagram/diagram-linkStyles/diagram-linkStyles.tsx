@@ -12,7 +12,7 @@ import 'ojs/ojinputnumber';
 import '../../../../../jet-composites/demo-select-enum/loader';
 import 'ojs/ojformlayout';
 import "css!./demo.css";
-type ConnectorType = 'none' | 'arrow' | 'arrowOpen';
+type ConnectorType = 'none' | 'arrow' | 'arrowOpen' | 'custom';
 type DiagramNodeDatum = {
     id: string;
     category: string;
@@ -47,6 +47,9 @@ export const DiagramLinkStyles = () => {
   const linkDataProvider = useMemo(() => new ArrayDataProvider(data.links, {
       keyAttributes: 'id'
   }), [data]);
+  const getStyleUrl = (styleId: string) => {
+      return 'url(' + document.URL + '#' + styleId + ')';
+  };
   const styleDefaultsValue = useMemo(() => ({
       nodeDefaults: {
           icon: { width: 40, height: 40, color: '#eee', borderColor: color }
@@ -54,8 +57,12 @@ export const DiagramLinkStyles = () => {
       linkDefaults: {
           color,
           width: linkWidth,
-          startConnectorType: linkStart,
-          endConnectorType: linkEnd
+          startConnectorType: linkStart === 'custom' ? 'none' : linkStart,
+          endConnectorType: linkEnd === 'custom' ? 'none' : linkEnd,
+          svgStyle: {
+              markerStart: linkStart === 'custom' ? getStyleUrl('startMarker') : undefined,
+              markerEnd: linkEnd === 'custom' ? getStyleUrl('endMarker') : undefined
+          }
       }
   }), [color, linkEnd, linkStart, linkWidth]);
     const nodeTemplateRenderer = (node: NodeTemplateContext) => {
@@ -71,10 +78,20 @@ return (
             <oj-form-layout userAssistanceDensity="compact" aria-controls="diagram1" labelWidth="100%">
                     <oj-input-number id="linkWidth" aria-controls="diagram1" labelHint="link width" min={1} max={10} step={1} onvalueChanged={(event: Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0]) => setLinkWidth(event.detail.value ?? 1)} value={linkWidth} />
                     <div class="oj-flex">
-                              <demo-select-enum id="linkStart" aria-controls="diagram1" class="oj-flex-item oj-sm-padding-2x-end" onvalueChanged={(event: JetElementCustomEvent<ConnectorType>) => setLinkStart(event.detail.value)} value={linkStart} labelHint="link start" enumValues={["none", "arrow", "arrowOpen"]} />
-                              <demo-select-enum id="linkEnd" aria-controls="diagram1" class="oj-flex-item" onvalueChanged={(event: JetElementCustomEvent<ConnectorType>) => setLinkEnd(event.detail.value)} value={linkEnd} labelHint="link end" enumValues={["none", "arrow", "arrowOpen"]} />
+                              <demo-select-enum id="linkStart" aria-controls="diagram1" class="oj-flex-item oj-sm-padding-2x-end" onvalueChanged={(event: JetElementCustomEvent<ConnectorType>) => setLinkStart(event.detail.value)} value={linkStart} labelHint="link start" enumValues={["none", "arrow", "arrowOpen", "custom"]} />
+                              <demo-select-enum id="linkEnd" aria-controls="diagram1" class="oj-flex-item" onvalueChanged={(event: JetElementCustomEvent<ConnectorType>) => setLinkEnd(event.detail.value)} value={linkEnd} labelHint="link end" enumValues={["none", "arrow", "arrowOpen", "custom"]} />
                           </div>
                 </oj-form-layout>
+            <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+                    <defs>
+                              <marker id="endMarker" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="20" markerHeight="20" markerUnits="userSpaceOnUse" orient="auto">
+                                        <path d="M 0 0 10 0 10 10 0 10 5 5 z" class="demo-diagram-marker" />
+                                    </marker>
+                              <marker id="startMarker" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="20" markerHeight="20" orient="auto">
+                                        <path d="M 10 0 0 0 0 10 10 10 5 5 z" class="demo-diagram-marker" />
+                                    </marker>
+                          </defs>
+                </svg>
             <oj-diagram id="diagram1" layout={layout.circleLayoutWithLayoutArgs(150)} nodeData={nodeDataProvider} linkData={linkDataProvider} selectionMode="multiple" styleDefaults={styleDefaultsValue}>
                     <template slot="nodeTemplate" render={nodeTemplateRenderer} />
                     <template slot="linkTemplate" render={linkTemplateRenderer} />

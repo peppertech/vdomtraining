@@ -6,29 +6,19 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import Chart from "./charts/chart";
-import { DrillChart } from "./charts/chart-drill";
-import AreaChartsHome from "./charts/area-charts/home";
-import BarChartsRecipePage from "./charts/bar-charts/index";
-import BoxPlotChartsRecipePage from "./charts/box-plot-charts/index";
-import BubbleChartsRecipePage from "./charts/bubble-charts/index";
-import CombinationChartsRecipePage from "./charts/combination-charts/index";
+import ChartsHome from "./charts/home";
 import DiagramRecipePage from "./diagram/index";
-import FunnelChartsRecipePage from "./charts/funnel-charts/index";
 import GanttRecipePage from "./gantt/index";
 import LegendHome from "./legend/home";
-import LineWithAreaChartsRecipePage from "./charts/line-with-area-charts/index";
 import MeterGaugeHome from "./meter-gauge/home";
 import NBoxRecipePage from "./nbox/index";
-import PieChartsRecipePage from "./charts/pie-charts/index";
-import PolarChartsRecipePage from "./charts/polar-charts/index";
-import PyramidChartsRecipePage from "./charts/pyramid-charts/index";
-import RangeChartsRecipePage from "./charts/range-charts/index";
+import PictoChartHome from "./picto-chart/home";
 import RatingGaugeHome from "./rating-gauge/home";
-import ScatterChartsRecipePage from "./charts/scatter-charts/index";
 import SunburstRecipePage from "./sunburst/index";
 import TagCloudHome from "./tag-cloud/home";
 import ThematicMapRecipePage from "./thematic-map/index";
+import TimelineRecipePage from "./timeline/index";
+import TreemapRecipePage from "./treemap/index";
 import {
   CatalogBreadcrumb,
   type CatalogBreadcrumbItem,
@@ -48,77 +38,11 @@ type DataVizComponent = {
 const dataVizComponents: DataVizComponent[] = [
   {
     id: 1,
-    name: "Area Charts",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-chart-area",
-    isAvailable: true,
-    isCorePack: true,
-    render: (props) => <AreaChartsHome {...props} />,
-  },
-  {
-    id: 2,
-    name: "Bar Charts",
-    image: "oj-ux-icon-size-12x oj-ux-ico-bar-chart",
-    isAvailable: true,
-  },
-  {
-    id: 9,
-    name: "Box Plot Charts",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-chart-box-plot",
-    isAvailable: true,
-  },
-  {
-    id: 10,
-    name: "Bubble Charts",
-    image: "oj-ux-icon-size-12x oj-ux-ico-chart-bubble",
-    isAvailable: true,
-  },
-  {
-    id: 3,
-    name: "Pie / Donut Charts",
-    image: "oj-ux-icon-size-12x oj-ux-ico-pie-chart",
-    isAvailable: true,
-  },
-  {
-    id: 11,
-    name: "Polar Charts",
-    image: "oj-ux-icon-size-12x oj-ux-ico-chart-radar",
-    isAvailable: true,
-  },
-  {
-    id: 12,
-    name: "Pyramid Charts",
-    image: "oj-ux-icon-size-12x oj-ux-ico-chart-pyramid",
-    isAvailable: true,
-  },
-  {
-    id: 13,
-    name: "Range Charts",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-chart-range-area",
-    isAvailable: true,
-  },
-  {
-    id: 14,
-    name: "Scatter Charts",
-    image: "oj-ux-icon-size-12x oj-ux-ico-chart-scatter",
-    isAvailable: true,
-  },
-  {
-    id: 15,
-    name: "Funnel Charts",
-    image: "oj-ux-icon-size-12x oj-ux-ico-chart-funnel",
-    isAvailable: true,
-  },
-  {
-    id: 16,
-    name: "Line with Area Charts",
-    image: "oj-ux-icon-size-12x oj-ux-ico-chart-area",
-    isAvailable: true,
-  },
-  {
-    id: 17,
-    name: "Combination Charts",
+    name: "Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-combo",
     isAvailable: true,
+    isCorePack: true,
+    render: (props) => <ChartsHome {...props} />,
   },
   {
     id: 18,
@@ -130,6 +54,26 @@ const dataVizComponents: DataVizComponent[] = [
     id: 19,
     name: "NBox",
     image: "oj-ux-icon-size-12x  oj-ux-ico-chart-nbox",
+    isAvailable: true,
+  },
+  {
+    id: 27,
+    name: "Picto Chart",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-chart-pictochart",
+    isAvailable: true,
+    isCorePack: true,
+    render: (props) => <PictoChartHome {...props} />,
+  },
+  {
+    id: 28,
+    name: "Timeline",
+    image: "oj-ux-icon-size-12x oj-ux-ico-timeline",
+    isAvailable: true,
+  },
+  {
+    id: 29,
+    name: "Treemap",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-treemap",
     isAvailable: true,
   },
   {
@@ -262,40 +206,18 @@ const DataVizHome = () => {
     }
 
     switch (activeComponentId) {
-      case 2:
-        return <BarChartsRecipePage />;
-      case 9:
-        return <BoxPlotChartsRecipePage />;
-      case 10:
-        return <BubbleChartsRecipePage />;
-      case 3:
-        return <PieChartsRecipePage />;
-      case 11:
-        return <PolarChartsRecipePage />;
-      case 12:
-        return <PyramidChartsRecipePage />;
-      case 13:
-        return <RangeChartsRecipePage />;
-      case 14:
-        return <ScatterChartsRecipePage />;
-      case 15:
-        return <FunnelChartsRecipePage />;
-      case 16:
-        return <LineWithAreaChartsRecipePage />;
-      case 17:
-        return <CombinationChartsRecipePage />;
       case 18:
         return <GanttRecipePage />;
       case 19:
         return <NBoxRecipePage />;
+      case 28:
+        return <TimelineRecipePage />;
+      case 29:
+        return <TreemapRecipePage />;
       case 24:
         return <SunburstRecipePage />;
       case 26:
         return <ThematicMapRecipePage />;
-      case 5:
-        return <Chart />;
-      case 6:
-        return <DrillChart />;
       case 8:
         return <DiagramRecipePage />;
       default:

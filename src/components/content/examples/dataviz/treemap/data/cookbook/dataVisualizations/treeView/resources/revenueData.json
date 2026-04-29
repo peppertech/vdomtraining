@@ -1,0 +1,224 @@
+{
+  "2013": [
+    {
+      "label": "Q1",
+      "value": 8181,
+      "sectors": [
+        {
+          "label": "Software & Cloud",
+          "value": 5833
+        },
+        {
+          "label": "Hardware",
+          "value": 1353
+        },
+        {
+          "label": "Services",
+          "value": 995
+        }
+      ]
+    },
+    {
+      "label": "Q2",
+      "value": 9094,
+      "sectors": [
+        {
+          "label": "Software & Cloud",
+          "value": 6763
+        },
+        {
+          "label": "Hardware",
+          "value": 1321
+        },
+        {
+          "label": "Services",
+          "value": 1010
+        }
+      ]
+    },
+    {
+      "label": "Q3",
+      "value": 8959,
+      "sectors": [
+        {
+          "label": "Software & Cloud",
+          "value": 6782
+        },
+        {
+          "label": "Hardware",
+          "value": 1241
+        },
+        {
+          "label": "Services",
+          "value": 935
+        }
+      ]
+    },
+    {
+      "label": "Q4",
+      "value": 10947,
+      "sectors": [
+        {
+          "label": "Software & Cloud",
+          "value": 8541
+        },
+        {
+          "label": "Hardware",
+          "value": 1431
+        },
+        {
+          "label": "Services",
+          "value": 975
+        }
+      ]
+    }
+  ],
+  "2014": [
+    {
+      "label": "Q1",
+      "value": 8372,
+      "sectors": [
+        {
+          "label": "Software & Cloud",
+          "value": 6193
+        },
+        {
+          "label": "Hardware",
+          "value": 1261
+        },
+        {
+          "label": "Services",
+          "value": 918
+        }
+      ]
+    },
+    {
+      "label": "Q2",
+      "value": 8275,
+      "sectors": [
+        {
+          "label": "Software & Cloud",
+          "value": 5993
+        },
+        {
+          "label": "Hardware",
+          "value": 1323
+        },
+        {
+          "label": "Services",
+          "value": 959
+        }
+      ]
+    },
+    {
+      "label": "Q3",
+      "value": 9307,
+      "sectors": [
+        {
+          "label": "Software & Cloud",
+          "value": 7100
+        },
+        {
+          "label": "Hardware",
+          "value": 1323
+        },
+        {
+          "label": "Services",
+          "value": 884
+        }
+      ]
+    },
+    {
+      "label": "Q4",
+      "value": 8320,
+      "sectors": [
+        {
+          "label": "Software & Cloud",
+          "value": 5914
+        },
+        {
+          "label": "Hardware",
+          "value": 1466
+        },
+        {
+          "label": "Services",
+          "value": 940
+        }
+      ]
+    }
+  ],
+  "2015": [
+    {
+      "label": "Q1",
+      "value": 8796,
+      "sectors": [
+        {
+          "label": "Software & Cloud",
+          "value": 6576
+        },
+        {
+          "label": "Hardware",
+          "value": 1165
+        },
+        {
+          "label": "Services",
+          "value": 1055
+        }
+      ]
+    },
+    {
+      "label": "Q2",
+      "value": 9598,
+      "sectors": [
+        {
+          "label": "Software & Cloud",
+          "value": 7329
+        },
+        {
+          "label": "Hardware",
+          "value": 1334
+        },
+        {
+          "label": "Services",
+          "value": 959
+        }
+      ]
+    },
+    {
+      "label": "Q3",
+      "value": 9327,
+      "sectors": [
+        {
+          "label": "Software & Cloud",
+          "value": 7170
+        },
+        {
+          "label": "Hardware",
+          "value": 1299
+        },
+        {
+          "label": "Services",
+          "value": 858
+        }
+      ]
+    },
+    {
+      "label": "Q4",
+      "value": 10906,
+      "sectors": [
+        {
+          "label": "Software & Cloud",
+          "value": 8400
+        },
+        {
+          "label": "Hardware",
+          "value": 1407
+        },
+        {
+          "label": "Services",
+          "value": 1099
+        }
+      ]
+    }
+  ]
+}

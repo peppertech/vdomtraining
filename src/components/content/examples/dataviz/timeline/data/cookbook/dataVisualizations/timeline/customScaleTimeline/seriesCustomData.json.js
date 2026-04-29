@@ -1,0 +1,214 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": "e1",
+    "title": "Day 1: Breakfast Event",
+    "begin": "2021-01-08T09:30:33",
+    "description": "9:30AM Jan 8, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e2",
+    "title": "Day 1: Morning Event",
+    "begin": "2021-01-08T11:30:33",
+    "description": "11:30AM Jan 8, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e3",
+    "title": "Day 1: Lunch Event",
+    "begin": "2021-01-08T12:30:33",
+    "description": "12:30PM Jan 8, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e4",
+    "title": "Day 1: Afternoon Event",
+    "begin": "2021-01-08T13:30:33",
+    "description": "1:30PM Jan 8, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e5",
+    "title": "Day 1: Afternoon Meeting",
+    "begin": "2021-01-08T14:30:33",
+    "description": "2:30PM Jan 8, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e6",
+    "title": "Day 1: Final Event",
+    "begin": "2021-01-08T15:30:33",
+    "description": "3:30PM Jan 8, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e7",
+    "title": "Day 1: Dinner Event",
+    "begin": "2021-01-08T17:30:33",
+    "description": "5:30PM Jan 8, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e8",
+    "title": "Day 2: Breakfast Event",
+    "begin": "2021-01-09T09:30:33",
+    "description": "9:30AM Jan 9, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e9",
+    "title": "Day 2: Morning Event",
+    "begin": "2021-01-09T11:30:33",
+    "description": "11:30AM Jan 9, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e10",
+    "title": "Day 2: Lunch Event",
+    "begin": "2021-01-09T12:30:33",
+    "description": "12:30PM Jan 9, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e11",
+    "title": "Day 2: Afternoon Event",
+    "begin": "2021-01-09T13:30:33",
+    "description": "1:30PM Jan 9, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e12",
+    "title": "Day 2: Afternoon Meeting",
+    "begin": "2021-01-09T14:30:33",
+    "description": "2:30PM Jan 9, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e13",
+    "title": "Day 2: Final Event",
+    "begin": "2021-01-09T15:30:33",
+    "description": "3:30PM Jan 9, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e14",
+    "title": "Day 2: Dinner Event",
+    "begin": "2021-01-09T17:30:33",
+    "description": "5:30PM Jan 9, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e15",
+    "title": "Day 2: Closing Event",
+    "begin": "2021-01-09T19:30:33",
+    "description": "7:30PM Jan 9, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e16",
+    "title": "Week 2: Breakfast Event",
+    "begin": "2021-01-17T09:30:33",
+    "description": "9:30AM Jan 17, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e17",
+    "title": "Week 2: Morning Event",
+    "begin": "2021-01-17T11:30:33",
+    "description": "11:30AM Jan 17, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e18",
+    "title": "Week 2: Lunch Event",
+    "begin": "2021-01-17T12:30:33",
+    "description": "12:30PM Jan 17, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e19",
+    "title": "Week 2: Afternoon Event",
+    "begin": "2021-01-17T13:30:33",
+    "description": "1:30PM Jan 17, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e20",
+    "title": "Week 2: Afternoon Meeting",
+    "begin": "2021-01-17T14:30:33",
+    "description": "2:30PM Jan 17, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e21",
+    "title": "Week 2: Final Event",
+    "begin": "2021-01-17T15:30:33",
+    "description": "3:30PM Jan 17, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e22",
+    "title": "Week 2: Dinner Event",
+    "begin": "2021-01-17T17:30:33",
+    "description": "5:30PM Jan 17, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e23",
+    "title": "Week 4: Breakfast Event",
+    "begin": "2021-01-29T09:30:33",
+    "description": "9:30AM Jan 29, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e24",
+    "title": "Week 4: Morning Event",
+    "begin": "2021-01-29T11:30:33",
+    "description": "11:30AM Jan 29, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e25",
+    "title": "Week 4: Lunch Event",
+    "begin": "2021-01-29T12:30:33",
+    "description": "12:30PM Jan 29, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e26",
+    "title": "Week 4: Afternoon Event",
+    "begin": "2021-01-29T13:30:33",
+    "description": "1:30PM Jan 29, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e27",
+    "title": "Week 4: Afternoon Meeting",
+    "begin": "2021-01-29T14:30:33",
+    "description": "2:30PM Jan 29, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e28",
+    "title": "Week 4: Final Event",
+    "begin": "2021-01-29T15:30:33",
+    "description": "3:30PM Jan 29, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e29",
+    "title": "Week 4: Dinner Event",
+    "begin": "2021-01-29T17:30:33",
+    "description": "5:30PM Jan 29, 2021",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e30",
+    "title": "Week 4: Closing Event",
+    "begin": "2021-01-29T19:30:33",
+    "description": "7:30PM Jan 29, 2021",
+    "series": "Oracle Events"
+  }
+]
+ }; });
+

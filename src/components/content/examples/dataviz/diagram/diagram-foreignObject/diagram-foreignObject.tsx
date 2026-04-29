@@ -83,10 +83,10 @@ export const DiagramForeignObject = () => {
   };
 
   const nodeContentTemplateRenderer = (current: NodeContentTemplateContext) => {
-      return <svg width="210" height="60">
-                                        <foreignObject x="0" y="0" width="210" height="60">
-                                              <div class="oj-panel oj-sm-padding-0">
-                                                    <oj-list-item-layout>
+      return <svg width="210" height="60">
+                                        <foreignObject x="0" y="0" width="210" height="60">
+                                              <div class="oj-panel oj-sm-padding-0 demo-position-static demo-node-dims">
+                                                    <oj-list-item-layout>
                                                           <span slot="leading" role="img">
                                                                 <oj-avatar role="img" aria-label={current.itemData.nodeType === 'number' ? 'numeric property' : current.itemData.nodeType === 'string' ? 'string property' : 'database icon'} iconClass={current.itemData.nodeType === 'number' ? 'ojUxIcoDiamond8' : current.itemData.nodeType === 'string' ? 'ojUxIcoCircle8' : 'oj-ux-ico-database'} size={current.itemData.nodeType ? 'xxs' : 'sm'} shape={current.itemData.nodeType ? 'circle' : 'square'} background={current.itemData.nodeType === 'number' ? 'blue' : current.itemData.nodeType === 'string' ? 'orange' : 'green'}/>
                                                             </span>

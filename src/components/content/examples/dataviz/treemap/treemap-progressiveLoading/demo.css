@@ -1,0 +1,35 @@
+.demo-container {
+  max-width: 100rem;
+}
+
+.demo-treemap-container {
+  height: auto;
+}
+
+.demo-treemap-container-sm {
+  padding-inline-end: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.demo-treemap-container-md {
+  padding-inline-start: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.demo-treemap-container-lg {
+  padding-top: 1.5rem;
+  width: 100%;
+}
+
+.demo-treemap {
+  width: 100%;
+  height: 100%;
+}
+
+.demo-treemap-md {
+  aspect-ratio: 2.1;
+}
+
+.demo-treemap-lg {
+  aspect-ratio: 3.1;
+}

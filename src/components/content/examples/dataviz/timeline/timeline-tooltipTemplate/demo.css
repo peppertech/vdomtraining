@@ -1,0 +1,9 @@
+.demo-timeline {
+  width: 100%;
+  height: 21.875rem;
+}
+
+.demo-timeline-gauge {
+  width: 3.125rem;
+  height: 3.125rem;
+}

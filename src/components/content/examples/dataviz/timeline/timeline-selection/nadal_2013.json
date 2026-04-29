@@ -1,0 +1,104 @@
+[
+  {
+    "event": "ATP VTR Open",
+    "startDate": "2013-02-04",
+    "endDate": "2013-02-10",
+    "result": "Finalist: 3-1"
+  },
+  {
+    "event": "ATP Brasil Open",
+    "startDate": "2013-02-11",
+    "endDate": "2013-02-13",
+    "result": "Champion: 4-0"
+  },
+  {
+    "event": "ATP Abierto Mexicano Telcel",
+    "startDate": "2013-02-25",
+    "endDate": "2013-03-02",
+    "result": "Champion: 5-0"
+  },
+  {
+    "event": "ATP BNP Paribas Open",
+    "startDate": "2013-03-07",
+    "endDate": "2013-03-17",
+    "result": "Champion: 6-0"
+  },
+  {
+    "event": "ATP Monte-Carlo Rolex Masters",
+    "startDate": "2013-04-14",
+    "endDate": "2013-04-21",
+    "result": "Finalist: 4-1"
+  },
+  {
+    "event": "ATP Barcelona Open BancSabadell",
+    "startDate": "2013-04-22",
+    "endDate": "2013-04-28",
+    "result": "Champion: 5-0"
+  },
+  {
+    "event": "ATP Mutua Madrid Open",
+    "startDate": "2013-05-05",
+    "endDate": "2013-05-11",
+    "result": "Champion: 5-0"
+  },
+  {
+    "event": "ATP Internazionali BNL dItalia",
+    "startDate": "2013-05-12",
+    "endDate": "2013-05-19",
+    "result": "Champion: 5-0"
+  },
+  {
+    "event": "FRENCH OPEN",
+    "startDate": "2013-05-26",
+    "endDate": "2013-06-09",
+    "result": "Champion: 7-0"
+  },
+  {
+    "event": "WIMBLEDON",
+    "startDate": "2013-06-24",
+    "endDate": "2013-07-07",
+    "result": "1st Round Loss: 0-1"
+  },
+  {
+    "event": "ATP Rogers Cup presented by National Bank",
+    "startDate": "2013-08-05",
+    "endDate": "2013-08-10",
+    "result": "Champion: 5-0"
+  },
+  {
+    "event": "ATP Western & Southern Open",
+    "startDate": "2013-08-11",
+    "endDate": "2013-08-18",
+    "result": "Champion: 5-0"
+  },
+  {
+    "event": "US OPEN",
+    "startDate": "2013-08-26",
+    "endDate": "2013-09-09",
+    "result": "Champion: 7-0"
+  },
+  {
+    "event": "ATP China Open",
+    "startDate": "2013-09-30",
+    "endDate": "2013-10-05",
+    "result": "Finalist: 4-1"
+  },
+  {
+    "event": "Shanghai Rolex Masters",
+    "startDate": "2013-10-06",
+    "endDate": "2013-10-13",
+    "result": "Semi-Finalist: 3-1"
+  },
+  {
+    "event": "ATP BNP Paribas Masters",
+    "startDate": "2013-10-28",
+    "endDate": "2013-11-03",
+    "result": "Semi-Finalist: 3-1"
+  },
+  {
+    "event": "Barclays ATP World Tour Finals",
+    "startDate": "2013-11-04",
+    "endDate": "2013-11-11",
+    "result": "Finalist: 4-1"
+  }
+]

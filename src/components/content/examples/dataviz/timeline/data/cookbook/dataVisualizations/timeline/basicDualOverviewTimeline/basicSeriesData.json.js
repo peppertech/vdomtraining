@@ -1,0 +1,263 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": "e1",
+    "title": "ATP VTR Open",
+    "begin": "2013-02-04",
+    "description": "Finalist: 3-1",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e2",
+    "title": "ATP Brasil Open",
+    "begin": "2013-02-11",
+    "description": "Champion: 4-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e3",
+    "title": "ATP Abierto Mexicano Telcel",
+    "begin": "2013-02-25",
+    "description": "Champion: 5-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e4",
+    "title": "ATP BNP Paribas Open",
+    "begin": "2013-03-07",
+    "description": "Champion: 6-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e5",
+    "title": "ATP Monte-Carlo Rolex Masters",
+    "begin": "2013-04-14",
+    "description": "Finalist: 4-1",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e6",
+    "title": "ATP Barcelona Open BancSabadell",
+    "begin": "2013-04-22",
+    "description": "Champion: 5-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e7",
+    "title": "ATP Mutua Madrid Open",
+    "begin": "2013-05-05",
+    "description": "Champion: 5-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e8",
+    "title": "ATP Internazionali BNL dItalia",
+    "begin": "2013-05-12",
+    "description": "Champion: 5-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e9",
+    "title": "FRENCH OPEN",
+    "begin": "2013-05-26",
+    "description": "Champion: 7-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e10",
+    "title": "WIMBLEDON",
+    "begin": "2013-05-24",
+    "description": "1st Round Loss: 0-1",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e11",
+    "title": "ATP Rogers Cup presented by National Bank",
+    "begin": "2013-08-05",
+    "description": "Champion: 5-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e12",
+    "title": "ATP Western & Southern Open",
+    "begin": "2013-08-11",
+    "description": "Champion: 5-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e13",
+    "title": "US OPEN",
+    "begin": "2013-08-26",
+    "description": "Champion: 7-0",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e14",
+    "title": "ATP China Open",
+    "begin": "2013-09-30",
+    "description": "Finalist: 4-1",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e15",
+    "title": "Shanghai Rolex Masters",
+    "begin": "2013-10-06",
+    "description": "Semi-Finalist: 3-1",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e16",
+    "title": "ATP BNP Paribas Masters",
+    "begin": "2013-10-28",
+    "description": "Semi-Finalist: 3-1",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e17",
+    "title": "Barclays ATP World Tour Finals",
+    "begin": "2013-11-04",
+    "description": "Finalist: 4-1",
+    "series": "Rafael Nadal: 75-7"
+  },
+  {
+    "id": "e101",
+    "title": "AUSTRALIAN OPEN",
+    "begin": "2013-01-14",
+    "description": "Champion: 7-0",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e102",
+    "title": "Davis Cup World Group Round 1",
+    "begin": "2013-02-01",
+    "description": "Results: 1-0",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e103",
+    "title": "ATP Dubai Duty Free Tennis Championships",
+    "begin": "2013-02-25",
+    "description": "Champion: 5-0",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e104",
+    "title": "ATP BNP Paribas Open",
+    "begin": "2013-03-07",
+    "description": "Semi-Finalist: 4-1",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e105",
+    "title": "ATP Sony Open Tennis",
+    "begin": "2013-03-20",
+    "description": "4th Round Loss: 2-1",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e106",
+    "title": "Davis Cup World Group Quarter-Final",
+    "begin": "2013-04-05",
+    "description": "Results: 2-0",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e107",
+    "title": "ATP Monte-Carlo Rolex Masters",
+    "begin": "2013-04-14",
+    "description": "Champion: 5-0",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e108",
+    "title": "ATP Mutua Madrid Open",
+    "begin": "2013-05-05",
+    "description": "2nd Round Loss: 0-1",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e109",
+    "title": "ATP Internazionali BNL dItalia",
+    "begin": "2013-05-12",
+    "description": "Quarter-Finalist: 2-1",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e110",
+    "title": "FRENCH OPEN",
+    "begin": "2013-05-26",
+    "description": "Semi-Finalist: 5-1",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e111",
+    "title": "WIMBLEDON",
+    "begin": "2013-06-24",
+    "description": "Finalist: 6-1",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e112",
+    "title": "ATP Rogers Cup presented by National Bank",
+    "begin": "2013-08-04",
+    "description": "Semi-Finalist: 3-1",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e113",
+    "title": "ATP Western & Southern Open",
+    "begin": "2013-08-11",
+    "description": "Quarter-Finalist: 2-1",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e114",
+    "title": "US OPEN",
+    "begin": "2013-08-24",
+    "description": "Finalist: 6-1",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e115",
+    "title": "Davis Cup World Group Semi-Final",
+    "begin": "2013-09-13",
+    "description": "Results: 2-0",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e116",
+    "title": "ATP China Open",
+    "begin": "2013-09-30",
+    "description": "Champion: 5-0",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e117",
+    "title": "Shanghai Rolex Masters",
+    "begin": "2013-10-06",
+    "description": "Champion: 5-0",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e118",
+    "title": "ATP BNP Paribas Masters",
+    "begin": "2013-10-28",
+    "description": "Champion: 5-0",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e119",
+    "title": "Barclays ATP World Tour Finals",
+    "begin": "2013-11-04",
+    "description": "Champion: 5-0",
+    "series": "Novak Djokovic: 74-9"
+  },
+  {
+    "id": "e120",
+    "title": "Davis Cup World Group Final",
+    "begin": "2013-11-15",
+    "description": "Results: 2-0",
+    "series": "Novak Djokovic: 74-9"
+  }
+]
+ }; });
+

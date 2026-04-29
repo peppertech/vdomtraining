@@ -58,7 +58,7 @@ import { sunburstPerformanceRecipe } from "./sunburst-performance/recipe";
 const sunburstItems: RecipePageItem[] = [
   {
     id: "default",
-    name: "Default",
+    name: "Basic",
     description: sunburstDefaultDescription,
     recipe: sunburstDefaultRecipe,
     Component: SunburstDefault,

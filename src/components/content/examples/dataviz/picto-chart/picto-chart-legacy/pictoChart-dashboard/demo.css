@@ -1,0 +1,14 @@
+.demo-pictochart-dashboard-width-style {
+  max-width: 51.25rem;
+}
+
+.demo-pictochart-dashboard-name-style {
+  width: 11.25rem;
+  height: 2.1875rem;
+}
+
+.demo-pictochart-dashboard-data-style {
+  max-width: 9.375rem;
+  height: 100%;
+  max-height: 9.375rem;
+}

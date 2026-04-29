@@ -63,23 +63,26 @@ export const DiagramDndEvents = () => {
         return <oj-diagram-link startNode={link.data.start} endNode={link.data.end} shortDesc={`Link ${link.data.id}, connects ${link.data.start} to ${link.data.end}`} width={3}/>;
     };
     return (<div id="diagram-container" class="oj-flex oj-sm-flex-direction-column">
-            <div class="oj-flex oj-sm-gap-4">
-                    <div class="oj-panel oj-sm-padding-4x" onDragOver={onDragOver} onDrop={onDrop}>
-                              <div class="oj-typography-body-md oj-typography-bold">Drop target</div>
-                              <div class="oj-sm-margin-2x-top">{dragMessage}</div>
+            <div class="demo-diagram-dndevents-width-style oj-sm-float-start">
+                    <div id="dropTarget" class="demo-diagram-dndevents-droptarget-width-style oj-sm-float-start" onDragOver={onDragOver} onDrop={onDrop}>
+                              <div class="oj-sm-padding-3x-start oj-typography-body-md oj-typography-bold">Drop diagram nodes here</div>
+                              <div class="oj-sm-padding-3x-start oj-sm-margin-2x-top">{dragMessage}</div>
                           </div>
-                    <div class="oj-panel oj-sm-padding-4x">
-                              <div class="oj-typography-body-md oj-typography-bold">Drag sources</div>
-                              <div class="oj-sm-margin-2x-top oj-flex oj-sm-gap-4">
-                                          <div id="circle" draggable={true} onDragStart={onDragStart} style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#c0392b' }}/>
-                                          <div id="square" draggable={true} onDragStart={onDragStart} style={{ width: '48px', height: '48px', background: '#2e86de' }}/>
+                    <div class="demo-diagram-dndevents-drag-style oj-sm-float-start">
+                              <div class="oj-sm-padding-3x-start oj-sm-padding-3x-bottom oj-typography-body-md oj-typography-bold">Drag the shapes below to the diagram</div>
+                              <br class="demo-diagram-dndevents-clear-left-style" />
+                              <div class="oj-sm-padding-3x-start">
+                                          <div id="circle" class="demo-diagram-dndevents-circle-style" draggable={true} onDragStart={onDragStart} />
+                                          <div id="square" class="demo-diagram-dndevents-square-style" draggable={true} onDragStart={onDragStart} />
                                       </div>
                           </div>
                 </div>
-            <oj-diagram id="diagram1" nodeData={nodeDataProvider} linkData={linkDataProvider} layout={layout.circleLayoutWithLayoutArgs(120)} selectionMode="multiple" class="oj-sm-margin-4x-top">
+            <br class="demo-diagram-dndevents-clear-left-style" />
+            <oj-diagram id="diagram1" nodeData={nodeDataProvider} linkData={linkDataProvider} layout={layout.circleLayoutWithLayoutArgs(120)} selectionMode="multiple" class="demo-diagram-dndevents-diagram1-style">
                     <template slot="nodeTemplate" render={nodeTemplateRenderer}/>
                     <template slot="linkTemplate" render={linkTemplateRenderer}/>
                 </oj-diagram>
+            <br class="demo-diagram-dndevents-clear-left-style" />
         </div>);
 };
 export default DiagramDndEvents;

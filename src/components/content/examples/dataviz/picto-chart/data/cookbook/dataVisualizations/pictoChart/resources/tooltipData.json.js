@@ -1,0 +1,19 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "name": "iPhone",
+    "count": 74,
+    "rating": 2.5
+  },
+  {
+    "name": "iPad",
+    "count": 21,
+    "rating": 3
+  },
+  {
+    "name": "Mac",
+    "count": 6,
+    "rating": 3.5
+  }
+]
+ }; });
+

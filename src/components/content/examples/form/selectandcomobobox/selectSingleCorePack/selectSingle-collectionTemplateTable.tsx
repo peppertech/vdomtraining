@@ -26,13 +26,12 @@ export default function SelectSingleCollectionTemplateTableExample() {
       <oj-c-select-single
         labelHint="Select Single"
         labelEdge="inside"
-        maxWidth="md"
         data={dataProvider}
         value={selectVal}
         itemText={getEmployeeItemText}
         onvalueChanged={handleValueChanged}
       >
-        <template
+        <template     
           slot="collectionTemplate"
           render={collectionTemplate}
         ></template>

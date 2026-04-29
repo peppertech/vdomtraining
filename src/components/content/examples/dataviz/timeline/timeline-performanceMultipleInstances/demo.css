@@ -1,0 +1,20 @@
+.demo-timeline-text {
+  line-height: 2rem;
+}
+
+.demo-timeline-flex {
+  max-width: 10.625rem;
+}
+
+.demo-timeline-radio {
+  max-width: 15.625rem;
+}
+
+.demo-timeline-input-number {
+  max-width: 17.1875rem;
+}
+
+.demo-timeline-viewport {
+  width: 100%;
+  height: 25rem;
+}
