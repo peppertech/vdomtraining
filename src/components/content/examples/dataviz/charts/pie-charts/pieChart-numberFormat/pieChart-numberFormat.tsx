@@ -58,8 +58,8 @@ export const PieChartNumberFormat = () => {
       <oj-chart-item
         value={item.data.value / 100}
         label={formattedValue}
-        group-id={[item.data.group]}
-        series-id={item.data.series}
+        groupId={[item.data.group]}
+        seriesId={item.data.series}
       />
     );
   };
@@ -78,9 +78,9 @@ export const PieChartNumberFormat = () => {
       <oj-chart
         type="pie"
         data={dataProvider}
-        animation-on-display="auto"
-        animation-on-data-change="auto"
-        {...{ 'value-formats.value.converter': numberConverter }}
+        animationOnDisplay="auto"
+        animationOnDataChange="auto"
+        valueFormats={{ value: { converter: numberConverter } }}
       >
         <template slot="itemTemplate" render={renderItem} />
       </oj-chart>

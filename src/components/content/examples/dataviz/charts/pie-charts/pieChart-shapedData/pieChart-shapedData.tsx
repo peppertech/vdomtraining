@@ -14,7 +14,7 @@ export const PieChartShapedData = () => {
 
   return (
       <div id="chart-container">
-            <oj-chart id="pieChart" type="pie" data={dataProvider} animation-on-display="auto" animation-on-data-change="auto" hover-behavior="dim" aria-label="Pie chart with four series over one group" />
+            <oj-chart id="pieChart" type="pie" data={dataProvider} animationOnDisplay="auto" animationOnDataChange="auto" hoverBehavior="dim" aria-label="Pie chart with four series over one group" />
         </div>
     );
 };

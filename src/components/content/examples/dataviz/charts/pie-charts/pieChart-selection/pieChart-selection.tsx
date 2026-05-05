@@ -62,8 +62,8 @@ export const PieChartSelection = () => {
     return (
       <oj-chart-item
         value={item.data.value}
-        group-id={[item.data.group]}
-        series-id={item.data.series}
+        groupId={[item.data.group]}
+        seriesId={item.data.series}
       />
     );
   };
@@ -89,12 +89,13 @@ export const PieChartSelection = () => {
       <oj-chart
         id="pieChart"
         type="pie"
-        selection-mode={modeValue}
+        selectionMode={modeValue}
         onselectionChanged={handleSelectionChanged}
         selection={selectionValue}
         data={dataProvider}
-        animation-on-display="auto"
-        {...{ 'legend.position': 'bottom', 'style-defaults.selection-effect': effectValue }}
+        animationOnDisplay="auto"
+        legend={{ position: 'bottom' }}
+        styleDefaults={{ selectionEffect: effectValue }}
       >
         <template slot="itemTemplate" render={renderItem} />
       </oj-chart>

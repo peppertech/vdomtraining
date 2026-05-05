@@ -40,31 +40,24 @@ import { barChartVariableBarWidthRecipe } from "./barChart-variableBarWidth/reci
 const barChartItems = [
   {
     id: "overview",
-    name: "Overview",
+    name: "Basic",
     description: barChartDefaultDescription,
     recipe: barChartDefaultRecipe,
     Component: BarChartDefault,
   },
   {
-    id: "shaped-data",
-    name: "Shaped Data",
-    description: barChartShapedDataDescription,
-    recipe: barChartShapedDataRecipe,
-    Component: BarChartShapedData,
+    id: "animation",
+    name: "Animations",
+    description: barChartAnimationDescription,
+    recipe: barChartAnimationRecipe,
+    Component: BarChartAnimation,
   },
   {
-    id: "selection",
-    name: "Selection",
-    description: barChartSelectionDescription,
-    recipe: barChartSelectionRecipe,
-    Component: BarChartSelection,
-  },
-  {
-    id: "hide-show",
-    name: "Hide and Show",
-    description: barChartHideShowDescription,
-    recipe: barChartHideShowRecipe,
-    Component: BarChartHideShow,
+    id: "attribute-groups",
+    name: "Attribute Groups",
+    description: barChartAttrGroupsDescription,
+    recipe: barChartAttrGroupsRecipe,
+    Component: BarChartAttrGroups,
   },
   {
     id: "data-labels",
@@ -75,7 +68,7 @@ const barChartItems = [
   },
   {
     id: "stack-labels",
-    name: "Stack Labels",
+    name: "Data Label Callbacks",
     description: barChartStackLabelProviderDescription,
     recipe: barChartStackLabelProviderRecipe,
     Component: BarChartStackLabelProvider,
@@ -88,6 +81,13 @@ const barChartItems = [
     Component: BarChartDualY,
   },
   {
+    id: "hide-show",
+    name: "Hide and Show",
+    description: barChartHideShowDescription,
+    recipe: barChartHideShowRecipe,
+    Component: BarChartHideShow,
+  },
+  {
     id: "reference-objects",
     name: "Reference Objects",
     description: barChartRefObjectDescription,
@@ -95,11 +95,26 @@ const barChartItems = [
     Component: BarChartRefObject,
   },
   {
-    id: "attribute-groups",
-    name: "Attribute Groups",
-    description: barChartAttrGroupsDescription,
-    recipe: barChartAttrGroupsRecipe,
-    Component: BarChartAttrGroups,
+    id: "selection",
+    name: "Selection",
+    description: barChartSelectionDescription,
+    recipe: barChartSelectionRecipe,
+    Component: BarChartSelection,
+  },
+  
+  {
+    id: "shaped-data",
+    name: "Shaped Data",
+    description: barChartShapedDataDescription,
+    recipe: barChartShapedDataRecipe,
+    Component: BarChartShapedData,
+  },
+  {
+    id: "styling",
+    name: "Styles",
+    description: barChartStylesDescription,
+    recipe: barChartStylesRecipe,
+    Component: BarChartStyles,
   },
   {
     id: "variable-bar-width",
@@ -107,20 +122,6 @@ const barChartItems = [
     description: barChartVariableBarWidthDescription,
     recipe: barChartVariableBarWidthRecipe,
     Component: BarChartVariableBarWidth,
-  },
-  {
-    id: "animation",
-    name: "Animation",
-    description: barChartAnimationDescription,
-    recipe: barChartAnimationRecipe,
-    Component: BarChartAnimation,
-  },
-  {
-    id: "styling",
-    name: "Styling",
-    description: barChartStylesDescription,
-    recipe: barChartStylesRecipe,
-    Component: BarChartStyles,
   },
 ];
 

@@ -53,12 +53,26 @@ import { treemapTooltipDescription } from "./treemap-tooltip/description";
 import { treemapTooltipRecipe } from "./treemap-tooltip/recipe";
 
 const treemapItems: RecipePageItem[] = [
+   {
+    id: "default",
+    name: "Basic",
+    description: treemapDefaultDescription,
+    recipe: treemapDefaultRecipe,
+    Component: TreemapDefault,
+  },
   {
     id: "animation",
-    name: "Animation",
+    name: "Animations",
     description: treemapAnimationDescription,
     recipe: treemapAnimationRecipe,
     Component: TreemapAnimation,
+  },
+  {
+    id: "drill",
+    name: "Drilling",
+    description: treemapDrillDescription,
+    recipe: treemapDrillRecipe,
+    Component: TreemapDrill,
   },
   {
     id: "context-menu",
@@ -67,20 +81,7 @@ const treemapItems: RecipePageItem[] = [
     recipe: treemapContextMenuRecipe,
     Component: TreemapContextMenu,
   },
-  {
-    id: "default",
-    name: "Basic",
-    description: treemapDefaultDescription,
-    recipe: treemapDefaultRecipe,
-    Component: TreemapDefault,
-  },
-  {
-    id: "drill",
-    name: "Drill",
-    description: treemapDrillDescription,
-    recipe: treemapDrillRecipe,
-    Component: TreemapDrill,
-  },
+  
   {
     id: "highlighting",
     name: "Highlighting",
@@ -111,7 +112,7 @@ const treemapItems: RecipePageItem[] = [
   },
   {
     id: "popup",
-    name: "Popup",
+    name: "Popups",
     description: treemapPopupDescription,
     recipe: treemapPopupRecipe,
     Component: TreemapPopup,
@@ -160,7 +161,7 @@ const treemapItems: RecipePageItem[] = [
   },
   {
     id: "tooltip",
-    name: "Tooltip",
+    name: "Tooltip Customization",
     description: treemapTooltipDescription,
     recipe: treemapTooltipRecipe,
     Component: TreemapTooltip,

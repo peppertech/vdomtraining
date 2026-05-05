@@ -12,7 +12,7 @@ import '../../../../../../../jet-composites/demo-chart-stack-control/loader';
 import '../../../../../../../jet-composites/demo-radioset-enum/loader';
 type ChartStack = ComponentProps<'oj-chart'>['stack'];
 type ChartOrientation = ComponentProps<'oj-chart'>['orientation'];
-type ChartLineType = 'straight' | 'curved' | 'stepped' | 'centeredStepped' | 'none';
+type ChartLineType = 'straight' | 'curved';
 type AreaChartItem = {
     id: number;
     quarter: string;
@@ -45,7 +45,7 @@ export const AreaChartLineTypescorepack = () => {
         } };
     return (<div id="chart-container">
             <oj-form-layout aria-controls="areaChart">
-                    <demo-radioset-enum labelHint="lineType" direction="row" onvalueChanged={handleLineTypeValueValueChanged} value={lineTypeValue} enumValues={["straight", "curved", "stepped", "centeredStepped", "none"]}/>
+                    <demo-radioset-enum labelHint="lineType" direction="row" onvalueChanged={handleLineTypeValueValueChanged} value={lineTypeValue} enumValues={["straight", "curved"]}/>
                 </oj-form-layout>
             <oj-chart id="areaChart" type="area" orientation={orientationValue} stack={stackValue} data={dataProvider} animationOnDisplay="auto" animationOnDataChange="auto" {...ojChartProps}>
                     <template slot="itemTemplate" render={itemTemplateRenderer}/>

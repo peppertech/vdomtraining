@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo } from 'preact/hooks';
-import ArrayTreeDataProvider from 'ojs/ojarraytreedataprovider';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import * as jsonData from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncomeSubregionShaped.json';
 import 'ojs/ojtreemap';
 

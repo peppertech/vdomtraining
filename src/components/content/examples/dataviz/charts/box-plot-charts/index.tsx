@@ -31,24 +31,24 @@ import { boxPlotVariableBoxWidthRecipe } from "./boxPlot-variableBoxWidth/recipe
 const boxPlotItems = [
   {
     id: "overview",
-    name: "Overview",
+    name: "Basic",
     description: boxPlotDefaultDescription,
     recipe: boxPlotDefaultRecipe,
     Component: BoxPlotDefault,
   },
   {
-    id: "shaped-data",
-    name: "Shaped Data",
-    description: boxPlotShapedDataDescription,
-    recipe: boxPlotShapedDataRecipe,
-    Component: BoxPlotShapedData,
+    id: "animation",
+    name: "Animations",
+    description: boxPlotAnimationDescription,
+    recipe: boxPlotAnimationRecipe,
+    Component: BoxPlotAnimation,
   },
   {
-    id: "selection",
-    name: "Selection",
-    description: boxPlotSelectionDescription,
-    recipe: boxPlotSelectionRecipe,
-    Component: BoxPlotSelection,
+    id: "means",
+    name: "Connected Means",
+    description: boxPlotMeansDescription,
+    recipe: boxPlotMeansRecipe,
+    Component: BoxPlotMeans,
   },
   {
     id: "hide-show",
@@ -57,13 +57,7 @@ const boxPlotItems = [
     recipe: boxPlotHideShowRecipe,
     Component: BoxPlotHideShow,
   },
-  {
-    id: "means",
-    name: "Means",
-    description: boxPlotMeansDescription,
-    recipe: boxPlotMeansRecipe,
-    Component: BoxPlotMeans,
-  },
+
   {
     id: "reference-objects",
     name: "Reference Objects",
@@ -72,25 +66,32 @@ const boxPlotItems = [
     Component: BoxPlotRefObject,
   },
   {
+    id: "selection",
+    name: "Selection",
+    description: boxPlotSelectionDescription,
+    recipe: boxPlotSelectionRecipe,
+    Component: BoxPlotSelection,
+  },
+  // {
+  //   id: "shaped-data",
+  //   name: "Shaped Data",
+  //   description: boxPlotShapedDataDescription,
+  //   recipe: boxPlotShapedDataRecipe,
+  //   Component: BoxPlotShapedData,
+  // },
+  {
+    id: "styling",
+    name: "Styles",
+    description: boxPlotStylesDescription,
+    recipe: boxPlotStylesRecipe,
+    Component: BoxPlotStyles,
+  },
+  {
     id: "variable-box-width",
     name: "Variable Box Width",
     description: boxPlotVariableBoxWidthDescription,
     recipe: boxPlotVariableBoxWidthRecipe,
     Component: BoxPlotVariableBoxWidth,
-  },
-  {
-    id: "animation",
-    name: "Animation",
-    description: boxPlotAnimationDescription,
-    recipe: boxPlotAnimationRecipe,
-    Component: BoxPlotAnimation,
-  },
-  {
-    id: "styling",
-    name: "Styling",
-    description: boxPlotStylesDescription,
-    recipe: boxPlotStylesRecipe,
-    Component: BoxPlotStyles,
   },
 ];
 

@@ -52,7 +52,7 @@ export const PieChartCenterCallback = () => {
   );
 
   const renderChartItem = (item: { data: SalesDatum }) => {
-    return <oj-chart-item value={item.data.value} group-id={[item.data.year]} series-id={item.data.region} />;
+    return <oj-chart-item value={item.data.value} groupId={[item.data.year]} seriesId={item.data.region} />;
   };
 
   const renderChartSeries = (series: { index: number }) => {
@@ -64,7 +64,7 @@ export const PieChartCenterCallback = () => {
       <oj-thematic-map-area
         color={colorAttributeHandler.getValue(String(area.data.Region - 1))}
         location={area.data.State}
-        short-desc={numberConverter.format(area.data.Sales)}
+        shortDesc={numberConverter.format(area.data.Sales)}
       />
     );
   };
@@ -85,9 +85,9 @@ export const PieChartCenterCallback = () => {
         <div class="oj-flex-item oj-typography-body-lg oj-typography-bold">SALES</div>
         <oj-thematic-map
           class="oj-flex-item"
-          label-display="off"
-          area-data={areaDataProvider}
-          map-provider={mapProvider}
+          labelDisplay="off"
+          areaData={areaDataProvider}
+          mapProvider={mapProvider}
           style={{
             marginRight: 'auto',
             marginLeft: 'auto',
@@ -108,12 +108,10 @@ export const PieChartCenterCallback = () => {
         id="pieChart"
         type="pie"
         data={dataProvider}
-        {...{
-          'style-defaults.pie-inner-radius': '.9',
-          'style-defaults.data-label-position': 'none',
-          'value-formats.series.tooltip-label': 'Region',
-          'value-formats.value.converter': numberConverter,
-          'value-formats.value.tooltip-label': 'Sales'
+        styleDefaults={{ pieInnerRadius: 0.9, dataLabelPosition: 'none' }}
+        valueFormats={{
+          series: { tooltipLabel: 'Region' },
+          value: { converter: numberConverter, tooltipLabel: 'Sales' }
         }}
       >
         <template slot="itemTemplate" render={renderChartItem} />

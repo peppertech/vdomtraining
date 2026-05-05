@@ -3,9 +3,6 @@ import { RecipePageTemplate } from "../../../../../../shared/demo-page-layout/re
 import { AreaChartBasiccorepack } from "./areaChart-basiccorepack/areaChart-basiccorepack";
 import { areaChartBasiccorepackDescription } from "./areaChart-basiccorepack/description";
 import { areaChartBasiccorepackRecipe } from "./areaChart-basiccorepack/recipe";
-import { AreaChartDataLabelscorepack } from "./areaChart-dataLabelscorepack/areaChart-dataLabelscorepack";
-import { areaChartDataLabelscorepackDescription } from "./areaChart-dataLabelscorepack/description";
-import { areaChartDataLabelscorepackRecipe } from "./areaChart-dataLabelscorepack/recipe";
 import { AreaChartHideShowcorepack } from "./areaChart-hideShowcorepack/areaChart-hideShowcorepack";
 import { areaChartHideShowcorepackDescription } from "./areaChart-hideShowcorepack/description";
 import { areaChartHideShowcorepackRecipe } from "./areaChart-hideShowcorepack/recipe";
@@ -25,38 +22,17 @@ import { areaChartStylescorepackRecipe } from "./areaChart-stylescorepack/recipe
 const areaChartCorePackItems = [
   {
     id: "overview",
-    name: "Overview",
+    name: "Basic",
     description: areaChartBasiccorepackDescription,
     recipe: areaChartBasiccorepackRecipe,
     Component: AreaChartBasiccorepack,
   },
   {
-    id: "shaped-data",
-    name: "Shaped Data",
-    description: areaChartShapedDatacorepackDescription,
-    recipe: areaChartShapedDatacorepackRecipe,
-    Component: AreaChartShapedDatacorepack,
-  },
-  {
-    id: "selection",
-    name: "Selection",
-    description: areaChartSelectioncorepackDescription,
-    recipe: areaChartSelectioncorepackRecipe,
-    Component: AreaChartSelectioncorepack,
-  },
-  {
     id: "hide-show",
-    name: "Hide and Show",
+    name: "Hide & Show",
     description: areaChartHideShowcorepackDescription,
     recipe: areaChartHideShowcorepackRecipe,
     Component: AreaChartHideShowcorepack,
-  },
-  {
-    id: "data-labels",
-    name: "Data Labels",
-    description: areaChartDataLabelscorepackDescription,
-    recipe: areaChartDataLabelscorepackRecipe,
-    Component: AreaChartDataLabelscorepack,
   },
   {
     id: "line-types",
@@ -66,8 +42,23 @@ const areaChartCorePackItems = [
     Component: AreaChartLineTypescorepack,
   },
   {
+    id: "selection",
+    name: "Selection",
+    description: areaChartSelectioncorepackDescription,
+    recipe: areaChartSelectioncorepackRecipe,
+    Component: AreaChartSelectioncorepack,
+  },
+  {
+    id: "shaped-data",
+    name: "Shaped Data",
+    description: areaChartShapedDatacorepackDescription,
+    recipe: areaChartShapedDatacorepackRecipe,
+    Component: AreaChartShapedDatacorepack,
+  },
+
+  {
     id: "styling",
-    name: "Styling",
+    name: "Styles",
     description: areaChartStylescorepackDescription,
     recipe: areaChartStylescorepackRecipe,
     Component: AreaChartStylescorepack,

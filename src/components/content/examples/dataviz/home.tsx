@@ -45,10 +45,32 @@ const dataVizComponents: DataVizComponent[] = [
     render: (props) => <ChartsHome {...props} />,
   },
   {
+    id: 8,
+    name: "Diagram",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-chart-radar",
+    isAvailable: true,
+  },
+  {
     id: 18,
     name: "Gantt",
     image: "oj-ux-icon-size-12x oj-ux-ico-timeline",
     isAvailable: true,
+  },
+  {
+    id: 4,
+    name: "Legend",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-legend",
+    isAvailable: true,
+    isCorePack: true,
+    render: (props) => <LegendHome {...props} />,
+  },
+  {
+    id: 20,
+    name: "Meters",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-chart-gauge",
+    isAvailable: true,
+    isCorePack: true,
+    render: (props) => <MeterGaugeHome {...props} />,
   },
   {
     id: 19,
@@ -64,26 +86,7 @@ const dataVizComponents: DataVizComponent[] = [
     isCorePack: true,
     render: (props) => <PictoChartHome {...props} />,
   },
-  {
-    id: 28,
-    name: "Timeline",
-    image: "oj-ux-icon-size-12x oj-ux-ico-timeline",
-    isAvailable: true,
-  },
-  {
-    id: 29,
-    name: "Treemap",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-treemap",
-    isAvailable: true,
-  },
-  {
-    id: 20,
-    name: "Meters and Gauges",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-chart-gauge",
-    isAvailable: true,
-    isCorePack: true,
-    render: (props) => <MeterGaugeHome {...props} />,
-  },
+  
   {
     id: 23,
     name: "Rating Gauge",
@@ -113,20 +116,17 @@ const dataVizComponents: DataVizComponent[] = [
     isAvailable: true,
   },
   {
-    id: 4,
-    name: "Legend",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-legend",
+    id: 28,
+    name: "Timeline",
+    image: "oj-ux-icon-size-12x oj-ux-ico-timeline",
     isAvailable: true,
-    isCorePack: true,
-    render: (props) => <LegendHome {...props} />,
   },
-  
   {
-    id: 8,
-    name: "Diagram",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-chart-radar",
+    id: 29,
+    name: "Treemap",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-treemap",
     isAvailable: true,
-  },
+  }
 ];
 
 const dataProvider = new MutableArrayDataProvider<

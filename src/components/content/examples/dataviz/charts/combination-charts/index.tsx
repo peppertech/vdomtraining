@@ -29,15 +29,69 @@ import { combinationChartStylesDescription } from "./combinationChart-styles/des
 import { combinationChartStylesRecipe } from "./combinationChart-styles/recipe";
 
 const combinationChartItems = [
-  { id: "overview", name: "Overview", description: combinationChartDefaultDescription, recipe: combinationChartDefaultRecipe, Component: CombinationChartDefault },
-  { id: "shaped-data", name: "Shaped Data", description: combinationChartShapedDataDescription, recipe: combinationChartShapedDataRecipe, Component: CombinationChartShapedData },
-  { id: "selection", name: "Selection", description: combinationChartSelectionDescription, recipe: combinationChartSelectionRecipe, Component: CombinationChartSelection },
-  { id: "hide-show", name: "Hide and Show", description: combinationChartHideShowDescription, recipe: combinationChartHideShowRecipe, Component: CombinationChartHideShow },
-  { id: "data-labels", name: "Data Labels", description: combinationChartDataLabelsDescription, recipe: combinationChartDataLabelsRecipe, Component: CombinationChartDataLabels },
-  { id: "dual-y-axis", name: "Dual Y Axis", description: combinationChartDualYDescription, recipe: combinationChartDualYRecipe, Component: CombinationChartDualY },
-  { id: "reference-objects", name: "Reference Objects", description: combinationChartRefObjectDescription, recipe: combinationChartRefObjectRecipe, Component: CombinationChartRefObject },
-  { id: "animation", name: "Animation", description: combinationChartAnimationDescription, recipe: combinationChartAnimationRecipe, Component: CombinationChartAnimation },
-  { id: "styling", name: "Styling", description: combinationChartStylesDescription, recipe: combinationChartStylesRecipe, Component: CombinationChartStyles },
+  {
+    id: "overview",
+    name: "Basic",
+    description: combinationChartDefaultDescription,
+    recipe: combinationChartDefaultRecipe,
+    Component: CombinationChartDefault,
+  },
+  {
+    id: "animation",
+    name: "Animations",
+    description: combinationChartAnimationDescription,
+    recipe: combinationChartAnimationRecipe,
+    Component: CombinationChartAnimation,
+  },
+  {
+    id: "data-labels",
+    name: "Data Labels",
+    description: combinationChartDataLabelsDescription,
+    recipe: combinationChartDataLabelsRecipe,
+    Component: CombinationChartDataLabels,
+  },
+  {
+    id: "dual-y-axis",
+    name: "Dual Y",
+    description: combinationChartDualYDescription,
+    recipe: combinationChartDualYRecipe,
+    Component: CombinationChartDualY,
+  },
+  {
+    id: "hide-show",
+    name: "Hide & Show",
+    description: combinationChartHideShowDescription,
+    recipe: combinationChartHideShowRecipe,
+    Component: CombinationChartHideShow,
+  },
+  {
+    id: "reference-objects",
+    name: "Reference Objects",
+    description: combinationChartRefObjectDescription,
+    recipe: combinationChartRefObjectRecipe,
+    Component: CombinationChartRefObject,
+  },
+  {
+    id: "selection",
+    name: "Selection",
+    description: combinationChartSelectionDescription,
+    recipe: combinationChartSelectionRecipe,
+    Component: CombinationChartSelection,
+  },
+  {
+    id: "shaped-data",
+    name: "Shaped Data",
+    description: combinationChartShapedDataDescription,
+    recipe: combinationChartShapedDataRecipe,
+    Component: CombinationChartShapedData,
+  },
+  {
+    id: "styling",
+    name: "Styles",
+    description: combinationChartStylesDescription,
+    recipe: combinationChartStylesRecipe,
+    Component: CombinationChartStyles,
+  },
 ];
 
 export default function CombinationChartsRecipePage() {

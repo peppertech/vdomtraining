@@ -54,13 +54,13 @@ export const PieChartAnimation = () => {
   const renderItem = (item: any) => (
     <oj-chart-item
       value={item.data.value}
-      group-id={[item.data.group]}
-      series-id={item.data.series}
+      groupId={[item.data.group]}
+      seriesId={item.data.series}
     />
   );
 
   const renderSeries = (series: any) => (
-    <oj-chart-series pie-slice-explode={series.id === 'Series 5' ? pieSliceExplode : 0} />
+    <oj-chart-series pieSliceExplode={series.id === 'Series 5' ? pieSliceExplode : 0} />
   );
 
   return (
@@ -70,7 +70,7 @@ export const PieChartAnimation = () => {
         <oj-button onojAction={seriesButtonClick}>Add/Remove Series</oj-button>
         <oj-button onojAction={explodeButtonClick}>Explode/UnExplode</oj-button>
       </oj-toolbar>
-      <oj-chart id="pieChart" type="pie" data={dataProvider} animation-on-display="auto" animation-on-data-change="auto">
+      <oj-chart id="pieChart" type="pie" data={dataProvider} animationOnDisplay="auto" animationOnDataChange="auto">
         <template slot="itemTemplate" render={renderItem} />
         <template slot="seriesTemplate" render={renderSeries} />
       </oj-chart>

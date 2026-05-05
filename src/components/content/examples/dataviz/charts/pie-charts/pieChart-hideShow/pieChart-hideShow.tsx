@@ -37,7 +37,7 @@ export const PieChartHideShow = () => {
 
   const renderItem = (item: ItemTemplateContext) => {
     return (
-      <oj-chart-item value={item.data.value} group-id={[item.data.group]} series-id={item.data.series} />
+      <oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series} />
     );
   };
 
@@ -46,13 +46,13 @@ export const PieChartHideShow = () => {
       <oj-chart
         id="pieChart"
         type="pie"
-        selection-mode="multiple"
+        selectionMode="multiple"
         data={dataProvider}
-        animation-on-display="auto"
-        animation-on-data-change="auto"
-        hide-and-show-behavior="withRescale"
+        animationOnDisplay="auto"
+        animationOnDataChange="auto"
+        hideAndShowBehavior="withRescale"
         onhiddenCategoriesChanged={handleHiddenCategoriesChanged}
-        hidden-categories={hidden}
+        hiddenCategories={hidden}
       >
         <template slot="itemTemplate" render={renderItem} />
       </oj-chart>

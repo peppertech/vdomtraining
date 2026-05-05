@@ -8,28 +8,15 @@ export const treemapHighlightingDescription = (
       two dimensions by the size and color of nested rectangular nodes.
     </p>
     <p>This demo shows the JET Treemap highlighting feature.</p>
-    <ul>
-      <li>
-        By default, highlighting on hover is disabled - the
-        <i><b>hover-behavior</b></i>
-        attribute is set to
-        <i>'none'</i>
-      </li>
-      <li>
-        When
-        <i><b>hover-behavior</b></i>
-        is set to
-        <i>'dim'</i>
-        , all objects that belong to the same category as hovered item are going to be highlighted if
-        <i><b>highlight-mode</b></i>
-        attribute is set to
-        <i>'categories'</i>
-        and all objects that are descendants of the hovered item are going to be highlighted if
-        <i><b>highlight-mode</b></i>
-        attribute is set to
-        <i>'descendants'</i>
-        .
-      </li>
-    </ul>
+    <p>
+      By default, highlighting on hover is disabled - the <i><b>hover-behavior</b></i> attribute is
+      set to <i>'none'</i>.
+    </p>
+    <p>
+      When <i><b>hover-behavior</b></i> is set to <i>'dim'</i>, all objects that belong to the same
+      category as the hovered item are highlighted if the <i><b>highlight-mode</b></i> attribute is
+      set to <i>'categories'</i>, and all objects that are descendants of the hovered item are
+      highlighted if the <i><b>highlight-mode</b></i> attribute is set to <i>'descendants'</i>.
+    </p>
   </>
 );

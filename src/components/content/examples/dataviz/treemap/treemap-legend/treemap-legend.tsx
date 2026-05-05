@@ -1,8 +1,8 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Fragment, h } from 'preact';
+import { h } from 'preact';
 import { useMemo, useRef } from 'preact/hooks';
-import ArrayTreeDataProvider from 'ojs/ojarraytreedataprovider';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { getColorValuesFromPalette } from 'ojs/ojpalette';
 import { getColorValue } from 'ojs/ojpaletteutils';
 import * as jsonData from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncomeSubregion.json';
@@ -64,16 +64,12 @@ export const TreemapLegend = () => {
       <div id="demo-container" class="demo-max-width">
             <oj-treemap animation-on-display="auto" color-label="Median Household Income" size-label="Population" data={treemapData}>
                     <template slot="nodeTemplate" render={($current) => (
-                            <>
-                                <oj-treemap-node label={$current.data.label} value={$current.data.population} color={getColor($current.data.meanIncome)} short-desc={getShortDesc($current.data.label, $current.data.population, $current.data.meanIncome)} />
-                            </>
+                            <oj-treemap-node label={$current.data.label} value={$current.data.population} color={getColor($current.data.meanIncome)} short-desc={getShortDesc($current.data.label, $current.data.population, $current.data.meanIncome)} />
                           )} />
                 </oj-treemap>
             <oj-legend orientation="horizontal" halign="center" data={legendData}>
                     <template slot="itemTemplate" render={($current) => (
-                            <>
-                                <oj-legend-item short-desc={$current.data.text} text={$current.data.text} color={$current.data.color} />
-                            </>
+                            <oj-legend-item short-desc={$current.data.text} text={$current.data.text} color={$current.data.color} />
                           )} />
                 </oj-legend>
         </div>

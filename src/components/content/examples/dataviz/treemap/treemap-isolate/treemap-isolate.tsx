@@ -1,8 +1,8 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Fragment, h } from 'preact';
+import { h } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayTreeDataProvider from 'ojs/ojarraytreedataprovider';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { getColorValuesFromPalette } from 'ojs/ojpalette';
 import { getColorValue } from 'ojs/ojpaletteutils';
 import * as jsonData from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncomeSubregion.json';
@@ -44,9 +44,7 @@ export const TreemapIsolate = () => {
       <div id="treemap-container">
             <oj-treemap id="treemap" animation-on-display="auto" animation-on-data-change="auto" data={treemapData} onisolatedNodeChanged={handleIsolatedNodeIsolatedNodeChanged} isolated-node={isolatedNode}>
                     <template slot="nodeTemplate" render={($current) => (
-                            <>
-                                <oj-treemap-node label={$current.data.label} value={$current.data.population} color={getColor($current.data.meanIncome)} short-desc={getShortDesc($current.data.label, $current.data.population, $current.data.meanIncome)} />
-                            </>
+                            <oj-treemap-node label={$current.data.label} value={$current.data.population} color={getColor($current.data.meanIncome)} short-desc={getShortDesc($current.data.label, $current.data.population, $current.data.meanIncome)} />
                           )} />
                 </oj-treemap>
             <div class="oj-typography-heading-xs oj-sm-padding-2x">

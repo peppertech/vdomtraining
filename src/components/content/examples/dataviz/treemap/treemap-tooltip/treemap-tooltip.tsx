@@ -1,9 +1,9 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Fragment, h } from 'preact';
+import { h } from 'preact';
 import { useMemo, useRef } from 'preact/hooks';
 import ArrayDataProvider from 'ojs/ojarraydataprovider';
-import ArrayTreeDataProvider from 'ojs/ojarraytreedataprovider';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import * as jsonData from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncomeSubregion.json';
 import { getColorValuesFromPalette } from 'ojs/ojpalette';
 import { getColorValue } from 'ojs/ojpaletteutils';
@@ -69,9 +69,7 @@ export const TreemapTooltip = () => {
       <div id="treemap-container">
             <oj-treemap animation-on-display="auto" animation-on-data-change="auto" data={treemapData} {...{ 'tooltip.renderer': tooltipFunction }}>
                     <template slot="nodeTemplate" render={($current) => (
-                            <>
-                                <oj-treemap-node label={$current.data.label} value={$current.data.population} color={getColor($current.data.meanIncome)} short-desc={$current.data.label + ':' + $current.data.population} />
-                            </>
+                            <oj-treemap-node label={$current.data.label} value={$current.data.population} color={getColor($current.data.meanIncome)} short-desc={$current.data.label + ':' + $current.data.population} />
                           )} />
                 </oj-treemap>
         </div>

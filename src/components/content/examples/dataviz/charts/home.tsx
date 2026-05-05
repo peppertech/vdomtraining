@@ -16,12 +16,16 @@ import BoxPlotChartsRecipePage from "./box-plot-charts/index";
 import BubbleChartsRecipePage from "./bubble-charts/index";
 import CombinationChartsRecipePage from "./combination-charts/index";
 import FunnelChartsRecipePage from "./funnel-charts/index";
+import LineChartsCorePackRecipePage from "./line-charts-corepack/index";
+import LineChartsRecipePage from "./line-charts/index";
 import LineWithAreaChartsRecipePage from "./line-with-area-charts/index";
 import PieChartsRecipePage from "./pie-charts/index";
 import PolarChartsRecipePage from "./polar-charts/index";
 import PyramidChartsRecipePage from "./pyramid-charts/index";
 import RangeChartsRecipePage from "./range-charts/index";
 import ScatterChartsRecipePage from "./scatter-charts/index";
+import SparkChartsRecipePage from "./spark-charts/index";
+import StockChartsRecipePage from "./stock-charts/index";
 
 type ChartComponent = {
   id: number;
@@ -104,6 +108,31 @@ const chartComponents: ChartComponent[] = [
     name: "Combination Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-combo",
     render: () => <CombinationChartsRecipePage />,
+  },
+  {
+    id: 13,
+    name: "Line Charts",
+    image: "oj-ux-icon-size-12x oj-ux-ico-chart-line",
+    render: () => <LineChartsRecipePage />,
+  },
+  {
+    id: 14,
+    name: "Line Charts",
+    image: "oj-ux-icon-size-12x oj-ux-ico-chart-line",
+    isCorePack: true,
+    render: () => <LineChartsCorePackRecipePage />,
+  },
+  {
+    id: 15,
+    name: "Stock Charts",
+    image: "oj-ux-icon-size-12x oj-ux-ico-chart-combo",
+    render: () => <StockChartsRecipePage />,
+  },
+  {
+    id: 16,
+    name: "Spark Charts",
+    image: "oj-ux-icon-size-12x oj-ux-ico-chart-area",
+    render: () => <SparkChartsRecipePage />,
   },
 ];
 
