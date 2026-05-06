@@ -1,0 +1,34 @@
+{
+    "name": "card",
+    "pack": "oj-sample",
+    "version": "9.0.0",
+    "jetVersion": ">=9.0.0 <21.0.0",
+    "displayName": "Card",
+    "description": "A component that display a card as specified by the layout component inside it",
+    "license": "https://opensource.org/licenses/UPL",
+    "icon": {
+        "iconPath": "extension/images/card.svg",
+        "selectedIconPath": "extension/images/card.svg",
+        "hoverIconPath": "extension/images/card-ovr.svg"
+    },
+    "properties": {},
+    "methods": {},
+    "events": {},
+    "slots": {
+        "layout": {
+            "description": "A template for the card layout"
+        }
+    },
+    "extension": {
+        "catalog": {
+            "category": "Sample Components",
+            "tags": [
+                "VBCS",
+                "Form Factor: Web",
+                "Form Factor: Tablet",
+                "Form Factor: mobile"
+            ],
+            "coverImage": "extension/images/coverImage.png"
+        }
+    }
+}

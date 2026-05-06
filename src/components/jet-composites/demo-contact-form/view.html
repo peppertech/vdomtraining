@@ -1,0 +1,7 @@
+<!-- Use the $uniqueId property to generate a unique id -->
+<oj-label for="[[$uniqueId + '_name']]">Name</oj-label>
+<oj-input-text :id="[[$uniqueId + '_name']]" value="{{$properties.name}}"></oj-input-text>
+<oj-label for="[[$uniqueId + '_email']]">Email</oj-label>
+<oj-input-text :id="[[$uniqueId + '_email']]" value="{{$properties.email}}"></oj-input-text>
+<oj-label for="[[$uniqueId + '_address']]">Address</oj-label>
+<oj-input-text :id="[[$uniqueId + '_address']]" value="{{$properties.address}}"></oj-input-text>

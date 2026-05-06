@@ -8,7 +8,7 @@
     "headers": {
       "description": "An array of the id and label of headers for the tabs.",
       "displayName": "Headers",
-      "type": "Array<object>"
+      "type": "Array<string>"
     },
     "value": {
       "description": "The id of the current tab.",

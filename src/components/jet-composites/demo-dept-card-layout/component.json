@@ -1,0 +1,57 @@
+{
+  "name": "demo-dept-card-layout",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "displayName": "Demo Dept Card",
+  "description": "A component that display a card with an avatar and information",
+  "license": "https://opensource.org/licenses/UPL",
+  "properties": {
+    "deptName": {
+      "description": "The department's name.",
+      "displayName": "Dept Name",
+      "type": "string"
+    },
+    "deptCount": {
+      "description": "The department's number of employees.",
+      "displayName": "Dept Employee Count",
+      "type": "string"
+    },
+    "name": {
+      "description": "The employee's name.",
+      "displayName": "Manager Name",
+      "type": "string"
+    },
+    "image": {
+      "description": "The url or path to the employee's image.",
+      "displayName": "Manager Image",
+      "type": "string"
+    },
+    "initials": {
+      "description": "The initials of the employee in case image isn't shown",
+      "displayName": "Manager Initials",
+      "type": "string"
+    },
+    "more": {
+      "description": "Show the more + card",
+      "displayName": "Show More",
+      "type": "boolean",
+      "value": false
+    }
+  },
+  "methods": {},
+  "events": {},
+  "slots": {},
+  "propertyLayout": [
+    {
+      "propertyGroup": "common",
+      "items": [
+        "name",
+        "initials",
+        "image",
+        "deptName",
+        "more",
+        "deptCount"
+      ]
+    }
+  ]
+}

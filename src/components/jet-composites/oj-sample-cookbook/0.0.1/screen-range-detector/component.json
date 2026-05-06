@@ -1,0 +1,23 @@
+{
+  "name": "screen-range-detector",
+  "pack": "oj-sample-cookbook",
+  "displayName": "Screen Range detector",
+  "description": "detects current screensize",
+  "version": "0.0.1",
+  "license": "https://opensource.org/licenses/UPL",
+  "jetVersion": ">=6.0.0 <21.0.0",
+  "properties": {
+    "value": {
+      "description": "Read-only property that will contain the current value of the screen size",
+      "displayName": "Value",
+      "type": "string",
+      "writeback": true,
+      "readOnly": true
+    }
+  },
+  "methods": {
+    "refresh": {
+      "description": "Refreshes the state of the component"
+    }
+  }
+}

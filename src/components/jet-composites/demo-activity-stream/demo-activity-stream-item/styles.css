@@ -1,0 +1,19 @@
+/* This is to prevent the flash of unstyled content before the composite properties have been setup. */
+demo-activity-stream-item:not(.oj-complete) {
+  visibility: hidden;
+}
+
+demo-activity-stream-item .demo-activity-item-container {
+  padding: 0 34px;
+}
+
+demo-activity-stream-item .demo-activity-stream-event {
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+  padding-left: 42px;
+  border-top: 1px solid #e5e1dd;
+}
+
+demo-activity-stream-item {
+  display:block;
+}

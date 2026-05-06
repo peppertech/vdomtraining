@@ -1,0 +1,25 @@
+<!--
+  If the composite is not in readonly mode or if the composite does not have a value,
+  render the input text component.
+-->
+<oj-bind-if test="[[ !$properties.value || !$properties.readonly ]]">
+  <oj-c-input-text
+    container-readonly="[[$properties.containerReadonly]]"
+    label-hint="[[$properties.labelHint]]"
+    readonly="[[$properties.readonly]]"
+    value="{{$properties.value}}">
+  </oj-c-input-text>
+</oj-bind-if>
+
+<!--
+  If the composite is in readonly mode and has a value,
+  render the labelled link component with href having a mailto link.
+-->
+<oj-bind-if test="[[ $properties.value && $properties.readonly ]]">
+  <oj-c-labelled-link
+    container-readonly="[[$properties.containerReadonly]]"
+    label-hint="[[$properties.labelHint]]"
+    href="[['mailto:' + $properties.value]]"
+    text="{{$properties.value}}">
+  </oj-c-labelled-link>
+</oj-bind-if>

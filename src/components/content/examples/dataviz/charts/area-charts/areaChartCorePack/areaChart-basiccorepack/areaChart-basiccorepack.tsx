@@ -10,10 +10,10 @@ import "../../../../../../../jet-composites/demo-chart-stack-control/loader";
 type AreaChartOrientation = NonNullable<ComponentProps<"oj-c-area-chart">["orientation"]>;
 type AreaChartStack = NonNullable<ComponentProps<"oj-c-area-chart">["stack"]>;
 type OrientationChangedEvent = {
-  detail: { value: AreaChartOrientation };
+  detail: { value: AreaChartOrientation }; 
 };
 type StackChangedEvent = {
-  detail: { value: AreaChartStack };
+  detail: { value: AreaChartStack }; 
 };
 
 type QuarterDatum = {

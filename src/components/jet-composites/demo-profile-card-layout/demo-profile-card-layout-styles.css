@@ -1,0 +1,132 @@
+demo-profile-card-layout:not(.oj-complete) {
+  visibility: hidden;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-container {
+  width: 330px;
+  height: 395px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-inner {
+  padding-top: 70px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-inner-more {
+  padding-top: 122px;
+  text-align: center;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-more-image {
+  margin: auto;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 94px;
+  content: url("./resources/plus.svg");
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-image {
+  margin-bottom: 16px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-name {
+  overflow: hidden;
+  width: 261px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-title {
+  width: 261px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-more {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-spacer {
+  height: 4px;
+  width: 261px;
+}
+
+/* For IE11 Support */
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  /* For IE11 to load content urls, you must put in :after or :before */
+  demo-profile-card-layout .demo-profile-card-layout-more-image:after {
+    margin: auto;
+    width: 96px;
+    height: 96px;
+    margin-bottom: 94px;
+    content: url("./resources/plus.svg");
+  }
+  /* Use max height to do line clamping */
+  demo-profile-card-layout .demo-profile-card-layout-emp-name {
+    overflow: hidden;
+    width: 261px;
+    max-height: 3rem;
+  }
+  /* Use Max height to do line clamping */
+  demo-profile-card-layout .demo-profile-card-layout-emp-title {
+    width: 261px;
+    overflow: hidden;
+    max-height: 1.25rem;
+  }
+}
+
+/* For reorder layout */
+
+demo-profile-card-layout .demo-profile-card-layout-container.demo-profile-card-layout-reorder {
+  height: 310px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-inner.demo-profile-card-layout-reorder {
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-image.demo-profile-card-layout-reorder,
+demo-profile-card-layout .demo-profile-card-layout-emp-name.demo-profile-card-layout-reorder,
+demo-profile-card-layout .demo-profile-card-layout-emp-title.demo-profile-card-layout-reorder
+{
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center !important;
+  text-align: center;
+}
+
+/* For tabbable layout */
+
+demo-profile-card-layout .demo-profile-card-layout-container.demo-profile-card-layout-tabbable {
+  height: 322px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-inner.demo-profile-card-layout-tabbable {
+  padding-top: 32px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+demo-profile-card-layout .demo-profile-card-layout-emp-image.demo-profile-card-layout-tabbable,
+demo-profile-card-layout .demo-profile-card-layout-emp-name.demo-profile-card-layout-tabbable,
+demo-profile-card-layout .demo-profile-card-layout-emp-title.demo-profile-card-layout-tabbable
+{
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start !important;
+  text-align: start;
+}

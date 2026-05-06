@@ -1,0 +1,58 @@
+<div>
+	<div class='oj-flex-bar'>
+		<div class='oj-flex-bar-start'>
+			<oj-label for="[[$uniqueId + '_addItem']]" class="oj-label-inline">Add Item</oj-label>
+		</div>
+		<div class='oj-flex-bar-middle'>
+			<oj-input-text :id="[[$uniqueId + '_addItem']]" value="{{currentValue}}">
+			</oj-input-text>
+		</div>
+		<div class='oj-flex-bar-end'>
+			<oj-button on-oj-action="[[addItem]]">Add</oj-button>
+		</div>
+	</div>
+
+	<table>
+		<thead>
+			<tr>
+				<th>
+					<oj-bind-text value="[[$properties.header]]"></oj-bind-text>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<oj-bind-for-each data="{{$properties.data}}">
+				<template>
+					<tr>
+						<td>
+							<!-- Template slot for list items with default template -->
+							<oj-bind-template-slot name="item" data="{{ {'value': $current.data} }}">
+								<!-- Default template -->
+								<template data-oj-as="listItem">
+									<span>
+										<oj-bind-text value='[[listItem.value]]'></oj-bind-text>
+									</span>
+								</template>
+							</oj-bind-template-slot>
+						</td>
+					</tr>
+				</template>
+			</oj-bind-for-each>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>
+					<!-- Template slot for total list items count -->
+					<oj-bind-template-slot name="total" data="[[totalItems]]">
+						<!-- Default template -->
+						<template>
+							<span style="font-weight: bold">Total Item Count: </span>
+							<oj-bind-text value='[[$current.total]]'></oj-bind-text>
+						</template>
+					</oj-bind-template-slot>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+
+</div>

@@ -1,0 +1,14 @@
+{
+  "name": "demo-text-json",
+  "description": "A bind text component that handles automatic json to string conversion of the component value.",
+  "displayName": "Bind Text",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "value": {
+      "description": "The value of the component.",
+      "type": "any",
+      "displayName": "Value"
+    }
+  }
+}

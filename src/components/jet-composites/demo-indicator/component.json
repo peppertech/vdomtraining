@@ -1,0 +1,14 @@
+{
+  "name": "demo-indicator",
+  "description": "A component to show total row count",
+  "displayName": "Bind Text",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "data": {
+      "description": "The data provider of the component.",
+      "type": "any",
+      "displayName": "Data"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+demo-chart-image-picker:not(.oj-complete) {
+  visibility: hidden;
+}
+
+demo-chart-image-picker {
+	width: 100px;
+	height: 100px;
+	display: block;
+}
+
+demo-chart-image-picker .demo-chart-image-picker-container {
+	height:100%;		
+	background-size: cover;
+}
+
+demo-chart-image-picker .demo-chart-image-picker-bar {
+	background-image: url('images/barchart_list.png');
+}
+
+demo-chart-image-picker .demo-chart-image-picker-bubble {
+	background-image: url('images/bubblechart_list.png');
+}
+
+demo-chart-image-picker  .demo-chart-image-picker-funnel {
+	background-image: url('images/funnelchart_list.png');
+}
+
+demo-chart-image-picker .demo-chart-image-picker-pie {
+	background-image: url('images/piechart_list.png');
+}

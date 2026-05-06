@@ -1,0 +1,5 @@
+<h2><oj-bind-text value="[[$properties.name]]"></oj-bind-text></h2>
+<h3>Location</h3>
+<!-- subproperty changes will refresh the composite View when directly referenced -->
+<div><oj-bind-text value="[['Exhibit: ' + $properties.location.exhibit]]"></oj-bind-text></div>
+<div><oj-bind-text value="[['Lot: ' + $properties.location.lot]]"></oj-bind-text></div>

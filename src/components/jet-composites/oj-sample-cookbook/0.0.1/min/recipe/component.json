@@ -1,0 +1,25 @@
+{
+    "name": "recipe",
+    "displayName": "recipe",
+    "description": "Displays cookbook recipe ",
+    "version": "0.0.1",
+    "pack":"oj-sample-cookbook",
+    "jetVersion": ">=4.2.0 <21.0.0",
+    "properties": {
+      "version": {
+        "description": "Cookbook recipe Version.",
+        "displayName": "Version",
+        "type": "string"
+      }
+    },
+    "slots" : {
+      "content": {
+        "description": "content slot."
+      }
+    },
+    "events":{
+    
+    },
+    "methods":{
+    }
+}

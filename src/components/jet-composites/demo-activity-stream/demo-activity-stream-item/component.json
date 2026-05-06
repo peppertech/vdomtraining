@@ -1,0 +1,65 @@
+{
+  "name": "demo-activity-stream-item",
+  "description": "Basic sample activity stream item.",
+  "displayName": "Activity Stream Item Demo",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "expanded": {
+      "description": "Specifies if item is expanded.",
+      "displayName": "Expanded",
+      "type": "boolean",
+      "writeback": true
+    },
+    "headerText": {
+      "description": "Specifies the item header text.",
+      "displayName": "Header Text",
+      "type": "string"
+    },
+    "itemCategory": {
+      "description": "Specifies the item category.",
+      "displayName": "Item Category",
+      "type": "string",
+      "enumValues": ["Ping", "Call", "Send", "Followup", "Suggestion"]
+    },
+    "section": {
+      "description": "Specifies the section this item belongs to.",
+      "displayName": "Section",
+      "type": "string",
+      "enumValues": ["pending", "pinned", "past", "suggestion"]
+    },
+    "eventsData": {
+      "description": "Array of events data.",
+      "displayName": "Event Data",
+      "type": "array<object>"
+    },
+    "itemContext": {
+      "description": "The binding context of the parent template.",
+      "displayName": "Item Context",
+      "type": "object",
+      "properties": {}
+    },
+    "buttonIconClass": {
+      "description": "The framework icon class to be applied to the item action button.",
+      "displayName": "Button Icon Class",
+      "type": "string"
+    }
+  },
+  "events": {
+    "itemAction": {
+      "description": "Meant to be triggered upon user action on an item. Items are responsible for dispatching this event on this component (e.g. upon button click, see demo-activity-stream-item).",
+      "bubbles": true,
+      "detail": {
+        "itemContext": {
+          "description": "Context of the target item.",
+          "type": "object"
+        },
+        "section": {
+          "description": "Section the target item belongs to",
+          "type": "string",
+          "enumValues": ["pending", "pinned", "past", "suggestion"]
+        }
+      }
+    }
+  }
+}

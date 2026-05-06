@@ -1,0 +1,10 @@
+/* This is to prevent the flash of unstyled content before the composite properties have been setup. */
+demo-responsive-buttonset:not(.oj-complete) {
+  visibility: hidden;
+}
+
+demo-responsive-buttonset {
+  display: block;
+  min-width: 100px;
+  min-height:220px;
+}

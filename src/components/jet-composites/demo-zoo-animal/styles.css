@@ -1,0 +1,8 @@
+/* This is to prevent the flash of unstyled content before the composite properties have been setup. */
+demo-zoo-animal:not(.oj-complete) {
+  visibility: hidden;
+}
+
+demo-zoo-animal {
+  display: block;
+}

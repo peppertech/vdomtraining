@@ -1,0 +1,7 @@
+demo-grocery-list:not(.oj-complete){
+  visibility: hidden;
+}
+
+demo-grocery-list {
+  display: block;
+}

@@ -1,0 +1,18 @@
+oj-sample-cookbook-screen-range-detector:not(.oj-complete) {
+  visibility: hidden;
+}
+
+oj-sample-cookbook-screen-range-detector {
+  display:inline;
+}
+
+oj-sample-cookbook-screen-range-detector .screen-range-detector-designtime-marker {
+  min-height:20px;
+  min-width:200px;
+  background-color: #dce3e4;
+  color:#5F5F5F;
+  opacity: 0.5;
+  text-align: center;
+  margin: auto;
+  padding:4px;
+}

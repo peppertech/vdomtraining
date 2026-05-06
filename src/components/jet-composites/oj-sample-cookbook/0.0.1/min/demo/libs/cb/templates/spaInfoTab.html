@@ -1,0 +1,27 @@
+<div id="info-tab">
+  <article id="componentRecipeContent" data-bind="visible:application.state.selectedTab()==='nt_info'">
+
+    <div id="info-tab-scroll-container" class="demo-scroll-container">
+      <div>
+        <!-- <div id="InfoComponentDescriptionContentInfo" class="demo-recipe-description oj-flex-item" data-bind="visible: !application.state.isStackedMode()">
+          <div data-bind="visible: application.state.hasTypeSizeData, template: {name: 'typeSizeTemplate',data:vm.application}"></div>
+          <oj-bind-if test="[[application.state.isRedwoodAntipattern()]]">
+            <p>
+              <span class="oj-sample-cookbook-demo-note">NOTE</span>: 
+              <span class="oj-sample-cookbook-demo-note-content">For Redwood applications this is not a recommended pattern. </span>
+              <hr class='oj-sm-margin-2x-top'>
+            </p>
+          </oj-bind-if>
+          <oj-bind-if test="[[application.state.descConfig()]]">
+            <oj-module config="[[application.state.descConfig]]"></oj-module>
+          </oj-bind-if>
+          <div class="oj-sm-margin-2x-top" data-bind="visible: application.state.shouldIncludeResInstrInDemo(), template: {name: 'responsiveInstructions'}"></div>                  
+          <div data-bind="visible: application.state.shouldIncludePreviewInstrInDemo(), template: {name: 'previewInstructions'}"></div>
+        </div> -->
+        <h2 id="recipeHeader" class="oj-typography-heading-sm">Recipe</h2>
+        <hr id="recipeDivider" class="demo-recipe-divider"/>
+        <div id="recipeInfo" class="componentRecipe demo-component-margin"></div>
+      </div>
+    </div>
+  </article>
+</div>

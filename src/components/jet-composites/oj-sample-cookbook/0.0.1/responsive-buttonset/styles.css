@@ -1,0 +1,12 @@
+oj-sample-cookbook-responsive-buttonset:not(.oj-complete) {
+  visibility: hidden;
+}
+
+.oj-sample-cookbook-responsive-buttonset-icon,
+.oj-sample-cookbook-responsive-buttonset-large {
+  width: 100%;
+}
+
+.oj-sample-cookbook-responsive-buttonset-select {
+  max-width: 20em;
+}

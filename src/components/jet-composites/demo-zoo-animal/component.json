@@ -1,0 +1,32 @@
+{
+  "name": "demo-zoo-animal",
+  "description": "A component to keep track of a zoom animal's information.",
+  "displayName": "Zoo Animal",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "name": {
+      "description": "The animal name.",
+      "displayName": "Name",
+      "type": "string"
+    },
+    "location": {
+      "description": "The animal's location in the zoo. This is a complex property and has defined subproperties.",
+      "displayName": "Location",
+      "type": "object",
+      "properties": {
+        "exhibit": {
+          "description": "The animal's exhibit.",
+          "displayName": "Exhibit",
+          "type": "string"
+        },
+        "lot": {
+          "description": "The animal's lot location within the exhibit.",
+          "displayName": "Lot",
+          "type": "number",
+          "format": "int32"
+        }
+      }
+    }
+  }
+}

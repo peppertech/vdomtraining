@@ -1,0 +1,3 @@
+oj-sample-cookbook-recipe:not(.oj-complete){
+  visibility: hidden;
+}

@@ -1,0 +1,43 @@
+{
+  "name": "responsive-buttonset",
+  "pack": "oj-sample-cookbook",
+  "displayName": "Responsive Buttonset",
+  "version": "0.0.1",
+  "jetVersion": ">=4.2.0 <21.0.0",
+  "properties": {
+    "data": {
+      "description": "List of items to be rendered.",
+      "displayName": "Data",
+      "type": "array<object>"
+    },
+    "selection": {
+      "description": "Selected Item.",
+      "displayName": "Selection",
+      "type": "string",
+      "writeback": true
+    },
+    "display": {
+      "description": "Option to either display icons or all.",
+      "displayName": "Display",
+      "type": "string"
+    },
+    "help": {
+      "description": "More information about each label.",
+      "displayName": "Help",
+      "type": "string"
+    }
+  },
+  "events": {
+    "help": {
+      "description": "Event to launch help info.",
+      "bubbles": false,
+      "detail": {
+      }
+    }
+  },
+  "methods": {
+    "refresh": {
+      "description": "Refreshes component."
+    }
+  }
+}

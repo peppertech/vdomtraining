@@ -1,0 +1,1 @@
+define(["ojs/ojcomposite","text!./screen-range-detector-view.html","./screen-range-detector-viewModel","text!./component.json","css!./screen-range-detector-styles"],(function(e,t,o,r){e.register("oj-sample-cookbook-screen-range-detector",{view:t,viewModel:o,metadata:JSON.parse(r)})}));

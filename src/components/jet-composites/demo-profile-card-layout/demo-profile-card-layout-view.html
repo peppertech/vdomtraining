@@ -1,0 +1,43 @@
+<!--
+  Copyright (c)  %FIRST_YEAR% 2026, Oracle and/or its affiliates.
+  The Universal Permissive License (UPL), Version 1.0
+-->
+<div :class="[['demo-profile-card-layout-container ' + $properties.reorderClass + $properties.tabbableClass]]">
+  <oj-bind-if test="[[!$properties.more]]">
+    <div :class="[['demo-profile-card-layout-inner ' + $properties.reorderClass + $properties.tabbableClass]]">
+      <oj-avatar
+        :class="[['demo-profile-card-layout-emp-image ' + $properties.reorderClass + $properties.tabbableClass]]"
+        role="img"
+        size="xxl"
+        initials="[[$properties.initials]]"
+        src="[[$properties.image]]"
+        :aria-label="[['Avatar of ' + $properties.name]]"
+      >
+      </oj-avatar>
+      <div
+        :class="[['oj-text-primary-color demo-profile-card-layout-emp-name oj-typography-subheading-xs ' + $properties.reorderClass + $properties.tabbableClass]]"
+      >
+        <oj-bind-text value="[[$properties.name]]"></oj-bind-text>
+      </div>
+      <div class="demo-profile-card-layout-emp-spacer"></div>
+      <div
+        :class="[['oj-text-tertiary-color demo-profile-card-layout-emp-title oj-typography-body-md ' + $properties.reorderClass + $properties.tabbableClass]]"
+      >
+        <oj-bind-text value="[[$properties.workTitle]]"></oj-bind-text>
+      </div>
+    </div>
+  </oj-bind-if>
+  <oj-bind-if test="[[$properties.more]]">
+    <div class="demo-profile-card-layout-inner-more">
+      <div
+        class="demo-profile-card-layout-more-image"
+        :aria-label="[[viewMoreEmployees]]"
+      ></div>
+      <div
+        class="oj-text-primary-color demo-profile-card-layout-emp-more oj-typography-body-md"
+      >
+        <oj-bind-text value="[[viewMoreEmployees]]"></oj-bind-text>
+      </div>
+    </div>
+  </oj-bind-if>
+</div>

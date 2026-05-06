@@ -1,0 +1,35 @@
+{
+  "name": "demo-input-email",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "displayName": "A demo component for inputting email.",
+  "description": "A demo input component that allows one to enter an email as its value.",
+  "properties": {
+    "containerReadonly": {
+      "binding": {
+        "consume": {
+          "name": "containerReadonly"
+        }
+      },
+      "description": "Whether or not the ancestor component is readonly",
+      "displayName": "Container Readonly",
+      "type": "boolean"
+    },
+    "value": {
+      "description": "The current value of the component",
+      "displayName": "Value",
+      "type": "string",
+      "writeback": true
+    },
+    "labelHint": {
+      "description": "Represents a label of the component",
+      "displayName": "Label Hint",
+      "type": "string"
+    },
+    "readonly": {
+      "description": "Whether or not the component is readonly",
+      "displayName": "Readonly",
+      "type": "boolean"
+    }
+  }
+}

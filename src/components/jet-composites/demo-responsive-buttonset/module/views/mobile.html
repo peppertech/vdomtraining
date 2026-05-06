@@ -1,0 +1,5 @@
+<oj-label for="[[uniqueId + '_selectsingle']]">
+	<span><oj-bind-text value='[[properties.label]]'></oj-bind-text></span>
+</oj-label>
+<oj-select-single :id="[[uniqueId + '_selectsingle']]" value="{{properties.value}}" data="[[getDataProvider(properties.options)]]" item-text="value">
+</oj-select-single>

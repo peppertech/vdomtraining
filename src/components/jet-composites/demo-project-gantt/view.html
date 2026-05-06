@@ -1,0 +1,36 @@
+<div class="demo-project-gantt-container oj-flex oj-sm-flex-wrap-nowrap">
+  <div class="demo-table-panel">
+    <oj-table class="demo-pg-table oj-table-hide-vertical-scrollbar"
+        data="[[tableDataProvider]]"
+        scroll-policy="loadAll"
+        scroll-position="{{scrollPosition}}"
+        columns-default.header-style="[[getColumnHeaderStyle()]]"
+        columns-default.resizable="disabled" 
+        columns-default.sortable="disabled" 
+        columns="[[$properties.columns]]"
+        on-oj-animate-start="[[disableAnimation]]">
+      <oj-bind-slot name="tableRowTemplate" slot="rowTemplate"></oj-bind-slot>
+    </oj-table>    
+  </div>
+  <div class="demo-gantt-panel">
+    <oj-gantt class="demo-pg-gantt" tabindex="-1" role="presentation"
+        row-axis.rendered="off"
+        start="[[$properties.start]]"
+        end="[[$properties.end]]"
+        viewport-start="[[$properties.viewportStart]]"
+        viewport-end="[[$properties.viewportEnd]]"
+        reference-objects="[[$properties.referenceObjects]]"
+        row-data="[[$properties.rowData]]"
+        dependency-data="[[$properties.dependencyData]]"
+        expanded="{{$properties.expanded}}"
+        gridlines="[[$properties.gridlines]]"
+        major-axis="[[$properties.majorAxis]]"
+        minor-axis="[[$properties.minorAxis]]"
+        row-defaults="[[$properties.rowDefaults]]" 
+        scroll-position="{{scrollPosition}}">
+        <oj-bind-slot name="ganttRowTemplate" slot="rowMappingTemplate"></oj-bind-slot>
+        <oj-bind-slot name="ganttTaskTemplate" slot="taskMappingTemplate"></oj-bind-slot>
+        <oj-bind-slot name="ganttDependencyTemplate" slot="dependencyTemplate"></oj-bind-slot>
+    </oj-gantt>
+  </div>
+</div>

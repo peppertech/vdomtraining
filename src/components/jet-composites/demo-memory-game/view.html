@@ -1,0 +1,7 @@
+<div class="oj-flex" role="group" :aria-label="[[gameMsg]]">
+  <oj-bind-for-each data="[[cards]]">
+    <template data-oj-as="card">
+      <demo-memory-card value="[[card.data.value]]" value-image="[[card.data.url]]"></demo-memory-card>
+    </template>
+  </oj-bind-for-each>
+</div>

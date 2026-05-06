@@ -1,0 +1,130 @@
+<oj-bind-if test="[[application.state.hasAllTab()]]">
+
+  <div id="info-all" data-bind="visible:application.state.selectedTab()==='st_all'">
+  
+    <div id="info-all-scroll-container" class="demo-scroll-container" >
+      <div>
+        <!-- <div id="componentDescriptionContentInfo" class="demo-recipe-description oj-flex-item" data-bind="visible: !application.state.isStackedMode()">
+          <div data-bind="visible: application.state.hasTypeSizeData, template: {name: 'typeSizeTemplate',data:vm.application}"></div>
+          <oj-bind-if test="[[application.state.isRedwoodAntipattern()]]">
+              <p>
+                <span class="oj-sample-cookbook-demo-note">NOTE</span>: 
+                <span class="oj-sample-cookbook-demo-note-content">For Redwood applications this is not a recommended pattern. </span>
+                <hr class='oj-sm-margin-2x-top'>
+              </p>
+          </oj-bind-if>
+          <oj-bind-if test="[[application.state.descConfig()]]">
+            <oj-module config="[[application.state.descConfig]]"></oj-module>
+          </oj-bind-if>
+          
+          <div class="oj-sm-margin-2x-top" data-bind="visible: application.state.shouldIncludeResInstrInDemo(), template: {name: 'responsiveInstructions'}"></div>                  
+          <div data-bind="visible: application.state.shouldIncludePreviewInstrInDemo(), template: {name: 'previewInstructions'}"></div>
+        </div> -->
+  
+        <oj-accordion id="accordionPageAll" multiple>
+          <oj-collapsible id="recipeHeaderAll" expanded>
+            <span>Recipe</span>
+            <div id="recipeAll" class="componentRecipe demo-component-margin"></div>
+          </oj-collapsible>
+  
+          <!-- ko if: application.state.htmlFile() -->						
+          <oj-collapsible id="c1" expanded on-oj-expand="[[functions.refreshCodeEditor.bind($data,'#html-example-all')]]">
+            <span>HTML Editor</span>
+            <div class="code-editor-section">
+              <div id="componentHTML_All"  dir="ltr">
+                <article id="componentHTMLContent_All" class="markup-example">
+                  <oj-sample-cookbook-editor id="html-example-all" source="{{application.state.htmlFile().editorSource}}"
+                                   type="{{application.state.htmlFile().editorType}}"
+                                   read-only="{{application.state.htmlFile().readOnly}}"
+                                   read-only-lines="{{application.state.htmlFile().readOnlyLines}}"
+                                   fold-lines="{{application.state.htmlFile().foldLines}}"
+                                   on-source-change="{{listeners.sourceChanged.bind($data)}}"
+                                   ></oj-sample-cookbook-editor>
+                </article>
+              </div>
+            </div>
+          </oj-collapsible>
+          <!-- /ko -->
+          
+          <!-- ko if: application.state.tsFile() -->
+          <oj-collapsible id="c2" expanded on-oj-expand="[[functions.refreshCodeEditor.bind($data,'#tsscript-example-all')]]">
+            <span>TS Editor</span>
+            <div class="code-editor-section">
+              <div id="componentTS_All" dir="ltr">
+                <article id="componentTSContent_All" class="script-example">
+                  <oj-sample-cookbook-editor id="tsscript-example-all" source="{{application.state.tsFile().editorSource}}"
+                                   type="{{application.state.tsFile().editorType}}"
+                                   read-only="{{application.state.tsFile().readOnly}}"
+                                   read-only-lines="{{application.state.tsFile().readOnlyLines}}"
+                                   fold-lines="{{application.state.tsFile().foldLines}}"
+                                   on-source-change="{{listeners.sourceChanged.bind($data)}}"
+                                   ></oj-sample-cookbook-editor>
+                </article>
+              </div>
+            </div>
+          </oj-collapsible>
+          <!-- /ko -->
+  
+  
+          <!-- ko if: application.state.jsFile() -->
+          <oj-collapsible id="c3" expanded on-oj-expand="[[functions.refreshCodeEditor.bind($data,'#script-example-all')]]"
+            <span>JS Editor</span>
+            <div class="code-editor-section">
+              <div id="componentJS_All" dir="ltr">
+                <article id="componentJSContent_All" class="script-example">
+                  <oj-sample-cookbook-editor id="script-example-all" source="{{application.state.jsFile().editorSource}}"
+                                   type="{{application.state.jsFile().editorType}}"
+                                   read-only="{{application.state.jsFile().readOnly}}"
+                                   read-only-lines="{{application.state.jsFile().readOnlyLines}}"
+                                   fold-lines="{{application.state.jsFile().foldLines}}"
+                                   on-source-change="{{listeners.sourceChanged.bind($data)}}"
+                                   ></oj-sample-cookbook-editor>
+                </article>
+              </div>
+            </div>
+          </oj-collapsible>
+          <!-- /ko -->
+  
+          <!-- ko if: application.state.cssFile() -->
+          <oj-collapsible id="c5" expanded on-oj-expand="[[functions.refreshCodeEditor.bind($data,'#css-example-all')]]">
+            <span>CSS Editor</span>
+            <div class="code-editor-section">
+              <div id="componentCSS_All" dir="ltr">
+                <article id="componentCSSContent_All" class="css-example">
+                  <oj-sample-cookbook-editor id="css-example-all" source="{{application.state.cssFile().editorSource}}"
+                                   type="{{application.state.cssFile().editorType}}"
+                                   read-only="{{application.state.cssFile().readOnly}}"
+                                   read-only-lines="{{application.state.cssFile().readOnlyLines}}"
+                                   fold-lines="{{application.state.cssFile().foldLines}}"
+                                   on-source-change="{{listeners.sourceChanged.bind($data)}}"
+                                   ></oj-sample-cookbook-editor>
+                </article>
+              </div>
+            </div>
+          </oj-collapsible>
+          <!-- /ko -->
+          <!-- ko if: application.state.wdtsFile() -->
+          <oj-collapsible id="c5" expanded on-oj-expand="[[functions.refreshCodeEditor.bind($data,'#wdtsscript')]]">
+            <span>WDTS Editor</span>
+            <div class="code-editor-section">
+              <div id="componentWDTS_All" dir="ltr">
+                <article id="componentWDTSContent_All" class="script-example">
+                  <oj-sample-cookbook-editor id="wdtsscript-example-all" source="{{application.state.wdtsFile().editorSource}}"
+                                   type="{{application.state.wdtsFile().editorType}}"
+                                   read-only="{{application.state.wdtsFile().readOnly}}"
+                                   read-only-lines="{{application.state.wdtsFile().readOnlyLines}}"
+                                   fold-lines="{{application.state.wdtsFile().foldLines}}"
+                                   on-source-change="{{listeners.sourceChanged.bind($data)}}"
+                                   ></oj-sample-cookbook-editor>
+                </article>
+              </div>
+            </div>
+          </oj-collapsible>
+          <!-- /ko -->
+  
+        </oj-accordion>
+      </div>
+    </div>	
+  </div>
+  </oj-bind-if>
+  

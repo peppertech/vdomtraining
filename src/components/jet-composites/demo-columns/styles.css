@@ -1,0 +1,28 @@
+/* This is to prevent the flash of unstyled content before the composite properties have been setup. */
+demo-columns:not(.oj-complete) {
+  visibility: hidden;
+}
+
+demo-columns {
+  display: block;
+}
+
+/* To ensure your classes are scoped correctly, we recommend scoping classes and prefixing class names with the composite name. */
+demo-columns .demo-columns-col-a {
+  background-color: #e8f2fb;
+  border-color: #d1e6f9;
+}
+
+demo-columns .demo-columns-col-b {
+  background-color: #fce8fe;
+  border-color: #facefe;
+}
+
+demo-columns .demo-columns-col-c {
+  background-color: #ffe4e1;
+  border-color: #ffcdc8;
+}
+
+demo-columns h3 {
+  font-weight: bold;
+}

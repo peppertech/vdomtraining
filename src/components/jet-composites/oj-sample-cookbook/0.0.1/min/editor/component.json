@@ -1,0 +1,58 @@
+{
+    "name": "editor",
+    "displayName": "editor",
+    "description": "Describe your component here",
+    "version": "0.0.1",
+    "pack":"oj-sample-cookbook",
+    "jetVersion": ">=4.2.0 <21.0.0",
+    "properties": {
+    "source": {
+      "description": "source code string.",
+      "displayName": "Source",
+      "type": "string",
+      "writeback": true
+    },
+    "type": {
+      "description": "source code type.",
+      "displayName": "Type",
+      "type": "string"
+    },
+    "readOnly": {
+      "description": "Readonly flag.",
+      "displayName": "Readonly Flag",
+      "type": "boolean"
+    },
+    "readOnlyLines": {
+      "description": "Readonly lines.",
+      "displayName": "Readonly Lines",
+      "type": "string"
+    },
+    "foldLines": {
+      "description": "Folded lines.",
+      "displayName": "Folded Lines",
+      "type": "string"
+    }
+  },
+  "slots" : {
+    "content": {
+      "description": "content slot."
+    }
+  },
+  "events":{
+   "sourceChange":{
+     "description": "fires when user edits source",
+      "bubbles": false,
+      "cancelable": false,
+      "detail":{}
+    }
+  },
+  "methods":{
+    "getSource":{
+     "description": "Returns latest source code",
+     "return":"string"
+    },
+    "refresh":{
+     "description": "Refreshes component"
+    }
+  }
+}

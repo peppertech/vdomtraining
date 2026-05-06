@@ -1,0 +1,29 @@
+{
+  "name": "demo-lifecycle",
+  "description": "An element that logs call to lifecycle methods.",
+  "displayName": "Life Cycle Demo",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "name": {
+      "description": "Name of this element used in log messages.",
+      "displayName": "Name",
+      "type": "string"
+    },
+    "logger": {
+      "description": "id of the <demo-log> element.",
+      "displayName": "Logger",
+      "type": "string"
+    },
+    "methods": {
+      "description": "If provided, array of method names to log.",
+      "displayName": "Methods",
+      "type": "Array<string>"
+    }
+  },
+  "slots" : {
+    "": {
+      "description": "Default slot that contains child elements managed by demo-lifecycle component."
+    }
+  }
+}

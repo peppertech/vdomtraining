@@ -1,0 +1,4 @@
+/* This is to prevent the flash of unstyled content before the composite properties have been setup. */
+demo-lifecycle:not(.oj-complete) {
+  visibility: hidden;
+}

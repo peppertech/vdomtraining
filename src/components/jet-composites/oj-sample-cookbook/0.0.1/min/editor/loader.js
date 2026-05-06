@@ -1,0 +1,1 @@
+define(["require","exports","./viewModel","ojs/ojcomposite","text!./component.json","text!./view.html","css!./styles","ojs/ojcomposite"],(function(e,o,t,s,i,r){"use strict";Object.defineProperty(o,"__esModule",{value:!0}),s.register("oj-sample-cookbook-editor",{view:r,viewModel:t.default,metadata:JSON.parse(i)})}));

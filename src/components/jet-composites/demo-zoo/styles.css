@@ -1,0 +1,26 @@
+demo-zoo:not(.oj-complete){
+  visibility: hidden;
+}
+
+demo-zoo {
+  display: block;
+}
+
+demo-zoo table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+demo-zoo th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+demo-zoo tr:nth-child(even){
+  background-color: #f2f2f2
+}
+
+demo-zoo th {
+  background-color: #0096E0;
+  color: white;
+}

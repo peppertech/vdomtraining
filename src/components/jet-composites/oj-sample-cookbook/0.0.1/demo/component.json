@@ -1,0 +1,246 @@
+{
+  "name": "demo",
+  "displayName": "Cookbook Demo",
+  "description": "Display cookbook demo",
+  "version": "0.0.1",
+  "pack": "oj-sample-cookbook",
+  "jetVersion": ">=4.2.0 <21.0.0",
+  "properties": {
+    "config": {
+      "description": "demo Configuration.",
+      "displayName": "Config",
+      "type": "object",
+      "writeback": false,
+      "properties": {}
+    },
+    "sourceType": {
+      "description": "Demo Source type to render.",
+      "displayName": "Source Type",
+      "type": "string",
+      "writeback": false,
+      "enumValues": ["javascript", "typescript"]
+    },
+    "service": {
+      "description": "Map of version based service configuration for jet core,jet community and vb demos.",
+      "displayName": "Service",
+      "type": "object",
+      "writeback": false,
+      "properties": {}
+    },
+    "allowedThemes": {
+      "description": "List of themes to show.",
+      "displayName": "Allowed Themes",
+      "type": "array<string>",
+      "value": [
+        "redwood",
+        "alta",
+        "alta-ios",
+        "alta-android",
+        "alta-windows",
+        "ocean"
+      ]
+    },
+    "theme": {
+      "description": "Theme for demo rendering.",
+      "displayName": "Theme",
+      "type": "string",
+      "value": "redwood",
+      "writeback": true,
+      "enumValues": [
+        "redwood",
+        "alta",
+        "alta-ios",
+        "alta-android",
+        "alta-windows",
+        "stable",
+        "ocean"
+      ]
+    },
+    "platform": {
+      "description": "Platform to be used.",
+      "displayName": "Plat Form",
+      "type": "string",
+      "value": "desktop",
+      "writeback": true,
+      "enumValues": [
+        "desktop",
+        "phone_portrait",
+        "tab_portrait",
+        "tab_landscape"
+      ]
+    },
+    "direction": {
+      "description": "direction. ltr or rtl",
+      "displayName": "Direction",
+      "type": "string",
+      "enumValues": ["ltr", "rtl"],
+      "writeback": true,
+      "value": "ltr"
+    },
+    "fontSize": {
+      "description": "font size ex: default or 12px",
+      "displayName": "Font Size",
+      "type": "string",
+      "writeback": true,
+      "enumValues": [
+        "fontnone",
+        "12px",
+        "14px",
+        "16px",
+        "18px"
+      ],
+      "value": "fontnone"
+    },
+    "debug": {
+      "description": "load debug source or minified",
+      "displayName": "Debug",
+      "type": "string",
+      "writeback": true,
+      "enumValues": ["debug", "min"],
+      "value": "min"
+    },
+    "tag": {
+      "description": "option to load notag css",
+      "displayName": "No Tag Css",
+      "type": "string",
+      "writeback": true,
+      "enumValues": ["default", "enabled"],
+      "value": "default"
+    },
+    "buttonSetting": {
+      "description": "display second level toolbar",
+      "displayName": "Button Setting",
+      "type": "boolean",
+      "writeback": true,
+      "value": false
+    },
+    "scale": {
+      "description": "option change scale",
+      "displayName": "Scale",
+      "type": "string",
+      "writeback": true,
+      "enumValues": ["lg", "md","sm"],
+      "value": "lg"
+    },
+    "density": {
+      "description": "option change density",
+      "displayName": "Density",
+      "type": "string",
+      "writeback": true,
+      "enumValues": ["standard", "compact"],
+      "value": "standard"
+    },
+    "settings": {
+      "description": "demo render settings",
+      "displayName": "Settings",
+      "type": "object",
+      "properties": {
+        "demoTheme": {
+          "description": "demo Theme based on baseTheme. ex: green, stealth etc",
+          "displayName": "Demo Theme",
+          "type": "string",
+          "enumValues": ["none", "green", "sanfrancisco", "stealth", "ocean"],
+          "defaultValue": "none"
+        },
+        "cssvars": {
+          "description": "option to load specific css version",
+          "displayName": "Css Version",
+          "type": "string",
+          "enumValues": ["default", "enabled", "disabled"],
+          "defaultValue": "default"
+        },
+        "color": {
+          "description": "Option load dark background",
+          "displayName": "Color",
+          "type": "string",
+          "enumValues": ["default", "invert"],
+          "defaultValue": "default"
+        },
+        "notagcss": {
+          "description": "option to load notag css",
+          "displayName": "No Tag Css",
+          "type": "string",
+          "enumValues": ["default", "enabled"],
+          "defaultValue": "default"
+        }
+      }
+    }
+  },
+  "slots": {
+    "customHeader": {
+      "description": "Slot for custom header."
+    },
+    "demoHeader": {
+      "description": "Slot for demo header. Mainly used for breadcrumbs or navigation."
+    },
+    "recipeContent": {
+      "description": "Recipe content section slot."
+    },
+    "toolbar": {
+      "description": "Slot to include toolbar controls."
+    },
+    "extratoolbar": {
+      "description": "Slot to include additonal toolbar controls."
+    },
+    "componentHeader": {
+      "description": "Slot to include additonal toolbar controls."
+    }
+  },
+  "events": {
+    "apiDocSelection": {
+      "description": "fires when api link menu item selected",
+      "bubbles": false,
+      "cancelable": false,
+      "detail": {
+        "item": {
+          "description": "Selected api doc item.",
+          "type": "object"
+        }
+      }
+    },
+    "uxSpecSelection": {
+      "description": "fires when design link menu item selected",
+      "bubbles": false,
+      "cancelable": false,
+      "detail": {
+        "item": {
+          "description": "Selected design spec item.",
+          "type": "object"
+        }
+      }
+    },
+    "seeAlsoItemSelection": {
+      "description": "fires when see also link menu item selected",
+      "bubbles": false,
+      "cancelable": false,
+      "detail": {
+        "item": {
+          "description": "Selected see also link item.",
+          "type": "object"
+        }
+      }
+    },
+    "sourceCodeChanged": {
+      "description": "fires when source code changed in editor",
+      "bubbles": false,
+      "cancelable": false,
+      "detail": {
+        "file": {
+          "description": "url ref/id of file which is being edited.",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "methods": {
+    "refresh": {
+      "description": "Refreshes component"
+    },
+    "reloadDemo": {
+      "description": "Reloads current demo"
+    },
+    "applySourceChanges": {
+      "description": "Apply Source Changes. Useful in case if headers are disabled and applicationm has its own apply changes button."
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "download",
+  "displayName": "Download",
+  "version": "0.0.1",
+  "pack":"oj-sample-cookbook",
+  "jetVersion": ">=4.0.0 <21.0.0",
+  "properties": {
+     "downloadables": {
+            "description": "Downloadable artifacts.",
+            "displayName": "Downloadable",
+            "type": "array<object>",
+            "properties": {
+                      "displayTitle": {
+                        "description": "Label for download button.",
+                        "displayName": "Display Title",
+                        "type": "string"
+                      },
+                      "files": {
+                        "description": "List of items to be included.",
+                        "displayName": "Files",
+                        "type": "array<string>"
+                      },
+                      "zipFileName": {
+                        "description": "Downloadable zip file name.",
+                        "displayName": "Zip File Name",
+                        "type": "string"
+                      },
+                      "baseDir":{
+                        "description": "Base directory for all urls referred in 'files' property.",
+                        "displayName": "Base Directory",
+                        "type": "string"
+                      }
+            }
+        },
+      "baseUrl":{
+        "description": "Base url to load all downloadables.",
+        "displayName": "Base Url",
+        "type": "string"
+      },
+      "resolveFile":{
+        "description": "Handler to resolve file to content.",
+        "displayName": "Resolve File",
+        "type": "function"
+      },
+      "defaultBaseDir":{
+        "description": "Default base directory for all urls referred in 'files' property.",
+        "displayName": "Default Base Directory",
+        "type": "string" 
+      }
+      
+  }
+}

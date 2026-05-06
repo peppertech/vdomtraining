@@ -1,0 +1,31 @@
+{
+  "name": "demo-memory-game",
+  "description": "A memory game element with a confirgurable card set and attempt counter.",
+  "displayName": "Memory Game",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "dependencies": {
+    "demo-memory-card": "^1.0.0"
+    },
+  "properties": {
+    "attempts": {
+      "description": "The current number of pair match attempts.",
+      "displayName": "Attempts",
+      "type": "number",
+      "readOnly": true,
+      "value": 0
+    },
+    "cards": {
+      "description": "The array of card objects containing keys for 'value' and 'url' which point to the card value and image urls respectively. The game will create pairs of cards from the image urls so duplicates should not be provided.",
+      "displayName": "Cards",
+      "type": "Array<object>"
+    },
+    "hasWon": {
+      "description": "True if all card pairs have been matched and the game is over.",
+      "displayName": "HasWon",
+      "type": "boolean",
+      "readOnly": true,
+      "value": false
+    }
+  }
+}

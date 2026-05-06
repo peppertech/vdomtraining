@@ -1,0 +1,17 @@
+{
+  "name": "demo-blank-card",
+  "description": "A blank card element that can display any slotted content on the front and back side of the card.",
+  "displayName": "Blank Card",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+  },
+  "slots" : {
+    "front": {
+      "description": "The front of this card component."
+    },
+    "back": {
+      "description": "The back of this card component."
+    }
+  }
+}

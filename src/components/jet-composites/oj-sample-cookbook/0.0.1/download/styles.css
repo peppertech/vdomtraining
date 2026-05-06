@@ -1,0 +1,32 @@
+oj-sample-cookbook-download:not(.oj-complete) {
+  visibility: hidden;
+}
+@font-face {
+  font-family: 'DownloadFont';
+  src: url("images/fonts/App_iconfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal
+}
+
+.cookbook-download-icon-font,.cookbook-download-icon-font-24 {
+  font-family: DownloadFont;
+  font-size: 16px;
+  line-height: 1;
+  display: inline-block;
+  font-weight: normal;
+  speak: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-align: center;
+  box-sizing: content-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+.cookbook-download-icon-24:before {
+  content: "\e905"
+}
+
+.oj-sample-cookbook-download-hidden {
+  display: hidden;
+}

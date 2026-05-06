@@ -1,0 +1,31 @@
+{
+  "name": "demo-chart-three-d-effect-control",
+  "description": "A control for easily configuring a chart's three-d-effect styling.  Only applies to pie, funnel and pyramid charts.",
+  "displayName": "Chart 3D Effect",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "threeDEffect": {
+      "description": "The chart three-d-effect styling.",
+      "displayName": "Styling",
+      "type": "string",
+      "enumValues": ["on", "off"],
+      "value": "off",
+      "writeback": true
+    },
+    "focusManagement": {
+      "description": "The focusManagement property should be set to 'none' when the control is placed in a JET Toolbar.  This allows the Toolbar to manage the focus.",
+      "displayName": "Focus Management",
+      "type": "string",
+      "enumValues": ["oneTabstop", "none"],
+      "value": "oneTabstop"
+    },
+    "disabled": {
+      "description": "Specifies whether this control should be disabled or not",
+      "displayName": "Disabled",
+      "type": "boolean",
+      "value": false
+    }
+  },
+  "implements": ["ButtonsetOneElement"]
+}

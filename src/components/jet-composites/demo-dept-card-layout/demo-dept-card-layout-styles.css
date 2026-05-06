@@ -1,0 +1,107 @@
+demo-dept-card-layout:not(.oj-complete) {
+  visibility: hidden;
+}
+
+demo-dept-card-layout .demo-dept-card-layout-container {
+  width: 330px;
+  height: 180px;
+}
+
+demo-dept-card-layout .demo-dept-card-layout-container-noemps {
+  width: 330px;
+  height: 164px;
+}
+
+demo-dept-card-layout .demo-dept-card-layout-inner {
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 24px;
+}
+
+demo-dept-card-layout .demo-dept-card-layout-emp-image {
+  margin-right: 12px;
+}
+
+demo-dept-card-layout .demo-dept-card-layout-emp-count {
+  width: 266px;
+}
+
+demo-dept-card-layout .demo-dept-card-layout-emp-name {
+  overflow: hidden;
+  vertical-align: middle;
+  margin-left: 12px;
+  margin-right: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  width: 214px;
+}
+
+demo-dept-card-layout .demo-dept-card-layout-name {
+  margin-bottom: 4px;
+  width: 266px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+demo-dept-card-layout .demo-dept-card-layout-empbox {
+  position: absolute;
+  bottom: 24px;
+}
+
+demo-dept-card-layout .demo-dept-card-layout-inner-more {
+  padding-top: 40px;
+  text-align: center;
+}
+
+demo-dept-card-layout .demo-dept-card-layout-more-image {
+  margin: auto;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 40px;
+  content: url("./resources/plus.svg");
+}
+
+demo-dept-card-layout .demo-dept-card-layout-emp-more {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/* For IE11 Support */
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  /* Must use :after or :before in order to load content urls in IE11 */
+  demo-dept-card-layout .demo-dept-card-layout-more-image:after {
+    margin: auto;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 40px;
+    content: url("./resources/plus.svg");
+  }
+  /* For IE11, must use max-height for line clamping */
+  demo-dept-card-layout .demo-dept-card-layout-emp-name {
+    overflow: hidden;
+    vertical-align: middle;
+    margin-left: 12px;
+    margin-right: 12px;
+    width: 214px;
+    max-height: 2rem;
+  }
+  demo-dept-card-layout .demo-dept-card-layout-name {
+    margin-bottom: 4px;
+    width: 266px;
+    overflow: hidden;
+    max-height: 3rem;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  demo-dept-card-layout .demo-dept-card-layout-emp-name {
+    width: auto;
+  }
+}

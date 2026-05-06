@@ -1,0 +1,25 @@
+{
+  "name": "demo-responsive-buttonset",
+  "description": "A responsive component which changes its View based on current screen size",
+  "displayName": "Responsive Component",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+   "properties": {
+    "value": {
+      "description": "indicates which value is selected, must be contained in specified options array",
+      "displayName": "Value",
+      "type": "string",
+      "writeback": true
+    },
+    "options": {
+      "description": "array of values to be selected",
+      "displayName": "Options",
+      "type": "Array<object>"
+    },
+    "label": {
+      "description": "label text to display",
+      "displayName": "Label",
+      "type":"string"
+    }
+  }
+}

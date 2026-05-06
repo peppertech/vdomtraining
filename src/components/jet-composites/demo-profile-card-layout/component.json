@@ -1,0 +1,70 @@
+{
+    "name": "demo-profile-card-layout",
+    "version": "20.0.0",
+    "jetVersion": ">=20.0.0 <21.0.0",
+    "displayName": "Demo Profile Card",
+    "description": "A component that display a card with an avatar and information",
+    "license": "https://opensource.org/licenses/UPL",
+    "properties": {
+        "name": {
+            "description": "The employee's name.",
+            "displayName": "Name",
+            "type": "string"
+        },
+        "image": {
+            "description": "The url or path to the employee's image.",
+            "displayName": "Image",
+            "type": "string"
+        },
+        "initials": {
+            "description": "The initials of the employee in case image isn't shown",
+            "displayName": "Initials",
+            "type": "string"
+        },
+        "workTitle": {
+            "description": "The employee's job title.",
+            "displayName": "Title",
+            "type": "string"
+        },
+        "more": {
+            "description": "Show the more + card",
+            "displayName": "Show More",
+            "type": "boolean",
+            "value": false
+        },
+        "layout": {
+            "description": "The layout for card content",
+            "displayName": "Layout",
+            "type": "string",
+            "value": "default"
+        }
+    },
+    "methods": {},
+    "events": {},
+    "slots": {},
+    "propertyLayout": [
+        {
+            "propertyGroup": "common",
+            "items": [
+                "name",
+                "initials",
+                "image",
+                "workTitle",
+                "more",
+                "layout"
+            ]
+        }
+    ],
+    "extension": {
+        "catalog": {
+            "category": "Sample Components",
+            "tags": [
+                "VBCS",
+                "Form Factor: Web",
+                "Form Factor: Tablet",
+                "Form Factor: mobile"
+            ],
+            "coverImage": "extension/images/coverImage.png"
+        }
+    }
+}

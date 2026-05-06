@@ -1,0 +1,587 @@
+<oj-bind-if test="[[$props.config]]">
+  <div id="toolbar-main" class="oj-flex oj-sm-align-items-center">
+    <oj-bind-if test="[[state.displayToolbar()]]">
+      <div style="width: 100%">
+        <oj-toolbar>
+          <div class="oj-flex-bar  oj-sm-align-items-center" style="width: 100%">
+            <div class="oj-flex-bar-start oj-flex oj-sm-align-items-center">
+              <!-- Platform List Menu -->
+              <!--   <oj-bind-if test="[[isNotJetRuntime]]">
+              <oj-select-single id="platform-select-single" aria-label="Choose Platform" label-hint="Theme"
+              data="[[platformDataProvider]]" style="width: 250px;" value="{{ state.selectedTheme }}"
+              on-value-changed="[[listeners.onThemeChange]]">
+  
+              <template slot="itemTemplate" data-oj-as="item">
+                <oj-option value="[[item.data.id]]">
+                  <span>
+                    <oj-bind-text value="[[item.data.label]]"></oj-bind-text>
+                  </span>
+                </oj-option>
+              </template>
+            </oj-select-single>
+  
+            <div class="oj-flex-item oj-md-only-hide oj-sm-only-hide">
+              <span role="separator" aria-orientation="vertical" class="oj-toolbar-separator"></span>
+            </div>
+          </oj-bind-if> -->
+              <div class="oj-flex-item">
+                <oj-buttonset-one id="platformList" aria-label="Choose a form factor" focus-management="none"
+                  display="icons" class="formFactorToolbarBtns oj-sm-only-hide" chroming="borderless"
+                  value="{{ state.selectedPlatform }}" on-value-changed="[[listeners.onPlatFormChange]]">
+                  <oj-bind-for-each data="{{ state.platformList }}">
+                    <template data-oj-as="item">
+                      <oj-option value="[[item.data.id]]" disabled="[[item.data.disabled]]">
+                        <span slot="startIcon" :class="[[item.data.iconStyleClass]]"></span>
+                        <span>
+                          <oj-bind-text value="[[item.data.label]]"></oj-bind-text>
+                        </span>
+                      </oj-option>
+                    </template>
+                  </oj-bind-for-each>
+                </oj-buttonset-one>
+              </div>
+
+              <div class="oj-flex-item oj-md-only-hide oj-sm-only-hide">
+                <span role="separator" aria-orientation="vertical" class="oj-toolbar-separator"></span>
+              </div>
+
+              <div class="oj-flex-item">
+                <!-- Show Demo on New Page -->
+                <oj-button class="demo-button-launch" display="icons" chroming="borderless"
+                  on-click="[[listeners.onOpenInNewWindow]]">
+                  <span slot="startIcon" class="oj-icon demo-platform-icon-newwindow"></span>
+                  Show in new window
+                </oj-button>
+              </div>
+            </div>
+            <div class="oj-flex-bar-end oj-flex oj-sm-align-items-center">
+
+              <oj-bind-if test="[[state.uxSpecLinks() && state.uxSpecLinks().length === 1]]">
+                <div class="oj-flex-item oj-sm-padding-2x-end">
+                  <oj-button chroming="outlined" on-oj-action="[[listeners.onUXSpecLaunchBtnClick]]">
+                    Design
+                  </oj-button>
+                </div>
+              </oj-bind-if>
+
+
+              <oj-bind-if test="[[state.uxSpecLinks() && state.uxSpecLinks().length > 1]]">
+                <div class="oj-flex-item oj-sm-padding-2x-end">
+                  <oj-menu-button chroming="outlined">
+                    Design
+                    <oj-menu slot="menu" class="oj-sample-cookbook-demo-hidden"
+                      on-oj-action="[[listeners.onUXSpecLaunchMenuClick]]">
+                      <oj-bind-for-each data="[[state.uxSpecLinks]]">
+                        <template data-oj-as="item">
+                          <oj-option value="[[item.data.url]]">
+                            <oj-bind-text value="[[item.data.label]]"></oj-bind-text>
+                          </oj-option>
+                        </template>
+                      </oj-bind-for-each>
+                    </oj-menu>
+                  </oj-menu-button>
+                </div>
+              </oj-bind-if>
+
+              <oj-bind-if test="[[state.apiDocLinks() && state.apiDocLinks().length === 1]]">
+                <div class="oj-flex-item">
+                  <oj-button chroming="outlined" on-oj-action="[[listeners.onApiDocLaunchBtnClick]]">
+                    API Doc
+                  </oj-button>
+                </div>
+              </oj-bind-if>
+
+
+              <oj-bind-if test="[[state.apiDocLinks() && state.apiDocLinks().length > 1]]">
+                <div class="oj-flex-item">
+                  <oj-menu-button chroming="outlined">
+                    API Doc
+                    <oj-menu slot="menu" class="oj-sample-cookbook-demo-hidden"
+                      on-oj-action="[[listeners.onApiDocLaunchMenuClick]]">
+                      <oj-bind-for-each data="[[state.apiDocLinks]]">
+                        <template data-oj-as="item">
+                          <oj-option value="[[item.data.url]]">
+                            <oj-bind-text value="[[item.data.label]]"></oj-bind-text>
+                          </oj-option>
+                        </template>
+                      </oj-bind-for-each>
+                    </oj-menu>
+                  </oj-menu-button>
+                </div>
+              </oj-bind-if>
+
+              <div class="oj-flex-item oj-md-only-hide oj-sm-only-hide">
+                <span role="separator" aria-orientation="vertical" class="oj-toolbar-separator"></span>
+              </div>
+
+              <!--  Commented more stuff
+          <oj-bind-if test="[[state.seeAlsoList() && state.seeAlsoList().length > 0]]">
+            <oj-menu-button chroming="borderless" class="oj-sm-margin-4x-end">
+              More
+              <oj-menu slot="menu" class="oj-sample-cookbook-demo-hidden"
+                on-oj-action="[[listeners.onSeeAlsoMenuAction]]">
+                <oj-bind-for-each data="[[state.seeAlsoList]]">
+                  <template data-oj-as="item1">
+                    <oj-option value="[[item1.data.url]]">
+                      <oj-bind-text value="[[item1.data.label]]"></oj-bind-text>
+                    </oj-option>
+                  </template>
+                </oj-bind-for-each>
+              </oj-menu>
+            </oj-menu-button>
+          </oj-bind-if>
+          -->
+
+              <!--     <oj-bind-slot name="toolbar">
+              </oj-bind-slot>
+            -->
+
+              <div id="settingsBtn" class="oj-flex-item">
+                <oj-button id='settings' chroming="half" display='icons'
+                  on-oj-action='[[listeners.onSettingsButtonClick]]' aria-label="setting button">
+                  <span slot="startIcon" class='oj-ux-ico-overflow-horiz'></span>setting button
+                </oj-button>
+              </div>
+
+            </div>
+
+        </oj-toolbar>
+      </div>
+    </oj-bind-if>
+  </div>
+</oj-bind-if>
+</div>
+<oj-bind-if test="[[settingsButtonValue() === true]]">
+  <div id="extratoolbar">
+    <div class="oj-flex oj-sm-flex-items-initial oj-sm-margin-4x-top">
+      <!-- Platform -->
+      <oj-bind-if test="[[!state.isCorepack()]]">
+        <div class="oj-flex-item oj-sm-padding-3x-end">
+          <oj-label-value>
+            <oj-label class="oj-sm-padding-1x-bottom">Theme</oj-label>
+
+            <oj-select-single id="platform-select-single" aria-label="Choose Platform" user-assistance-density='compact'
+              data="[[platformDataProvider]]" style="width: 250px;" value="{{ state.selectedTheme }}"
+              on-value-changed="[[listeners.onThemeChange]]">
+              <template slot="itemTemplate" data-oj-as="item">
+                <oj-option value="[[item.data.id]]">
+                  <span>
+                    <oj-bind-text value="[[item.data.label]]"></oj-bind-text>
+                  </span>
+                </oj-option>
+              </template>
+            </oj-select-single>
+          </oj-label-value>
+        </div>
+      </oj-bind-if>
+
+      <!-- Platform Corepack -->
+      <!-- <oj-bind-if test="[[state.isCorepack()]]">
+        <div class="oj-flex-item oj-sm-padding-3x-end">
+          <oj-label-value>
+            <oj-label>Theme</oj-label>
+
+            <oj-select-single id="platform-select-single" aria-label="Choose Platform" user-assistance-density='compact'
+              data="[[platformDataProviderCorepack]]" style="width: 250px;" value="{{ state.themeData }}"
+              on-value-changed="[[listeners.onThemeChange]]">
+              <template slot="itemTemplate" data-oj-as="item">
+                <oj-option value="[[item.data.id]]">
+                  <span>
+                    <oj-bind-text value="[[item.data.label]]"></oj-bind-text>
+                  </span>
+                </oj-option>
+              </template>
+            </oj-select-single>
+          </oj-label-value>
+        </div>
+      </oj-bind-if> -->
+      <oj-bind-if test="[[!isNotJetRuntime]]">
+
+        <!-- Scale  -->
+        <oj-bind-if test="{{state.isScaleEnabled}}">
+          <div class="oj-flex-item oj-sm-padding-3x-end">
+            <oj-sample-cookbook-responsive-buttonset id="setting-scale" help="[[state.scale.help]]"
+              data="[[state.scale.buttonSet]]" selection="{{state.selectedScale}}"
+              on-selection-changed="{{listeners.onScaleChange}}">
+              <div class="oj-sm-padding-1x-bottom"><oj-bind-text value="[[state.scale.title]]"></oj-bind-text></div>
+            </oj-sample-cookbook-responsive-buttonset>
+          </div>
+        </oj-bind-if>
+
+
+         <!-- Density  -->
+        
+        <div class="oj-flex-item oj-sm-padding-3x-end">
+          <oj-sample-cookbook-responsive-buttonset data="[[state.density.buttonSet]]" 
+            selection="{{state.selectedDensity}}" on-selection-changed="{{listeners.onDensityChange}}">
+            <div class="oj-sm-padding-1x-bottom"><oj-bind-text value="[[state.density.title]]"></oj-bind-text></div>
+          </oj-sample-cookbook-responsive-buttonset>
+        </div>
+
+        <!-- Screen Direction (Left/Right) -->
+        <div class="oj-flex-item oj-sm-padding-3x-end">
+          <oj-sample-cookbook-responsive-buttonset data="[[state.readingDir.buttonSet]]"
+            selection="{{state.selectedReadingDir}}" on-selection-changed="{{listeners.onDirectionChange}}">
+            <div class="oj-sm-padding-1x-bottom"><oj-bind-text value="[[state.readingDir.title]]"></oj-bind-text></div>
+          </oj-sample-cookbook-responsive-buttonset>
+
+        </div>
+
+        <!-- Debugging Mode -->
+        <div class="oj-flex-item oj-sm-padding-3x-end">
+          <oj-sample-cookbook-responsive-buttonset data="[[state.jsDebugMode.buttonSet]]"
+            selection="{{state.selectedDebugMode}}" on-selection-changed="{{listeners.onDebugChange}}">
+            <div class="oj-sm-padding-1x-bottom"><oj-bind-text value="[[state.jsDebugMode.title]]"></oj-bind-text></div>
+          </oj-sample-cookbook-responsive-buttonset>
+        </div>
+
+        <!-- Tag Mode -->
+        <oj-bind-if test="{{state.hasNotagFile}}">
+          <div class="oj-flex-item oj-sm-padding-3x-end">
+            <oj-sample-cookbook-responsive-buttonset help="[[state.tagMode.help]]" data="[[state.tagMode.buttonSet]]"
+              selection="{{state.selectedTagMode}}" on-selection-changed="{{listeners.onTagChange}}">
+              <div style="padding-bottom: 4px !important; display: inline-flex">
+                <oj-bind-text value="[[state.tagMode.title]]"></oj-bind-text>
+              </div>
+            </oj-sample-cookbook-responsive-buttonset>
+          </div>
+        </oj-bind-if>
+
+      </oj-bind-if>
+    </div>
+  </div>
+</oj-bind-if>
+<div class="oj-sm-padding-3x-vertical">
+  <div style="display: flex; flex-direction: row;">
+
+    <div id="demo-display-name" class="oj-typography-heading-sm">
+      <oj-bind-text value="[[state.displayName]]">
+      </oj-bind-text>
+      <oj-bind-if test="[[state.deprecated]]">
+        <oj-bind-text value="( "></oj-bind-text>
+        <span class="oj-text-color-danger"><oj-bind-text value="[[getDeprecatedMessage()]]"></oj-bind-text></span>
+        <oj-bind-text value=" )"></oj-bind-text>
+      </oj-bind-if>
+    </div>
+
+    <div class="oj-sm-padding-2x" style="display: flex; flex-direction: row;">
+      <oj-bind-if test="[[!state.isCorepack() && state.maintenance]]">
+        <span class="oj-text-color-danger"><oj-bind-text value='(maintenance since '></oj-bind-text>
+          <oj-bind-text value="[[state.maintenanceSince]]"></oj-bind-text>
+          <oj-bind-text value="use&nbsp"></oj-bind-text>
+        </span>
+        <oj-bind-for-each data="[[state?.maintenanceURLData]]">
+          <template>
+            <a :href="[[$current.data.value]]"> <oj-bind-text value=" [[$current.data.id]]" /> </a>
+
+            <oj-bind-if test="[[$current.index != (state.maintenanceDataLength._latestValue - 1)]]">
+              <oj-bind-text value=",&nbsp"></oj-bind-text>
+            </oj-bind-if>
+          </template>
+        </oj-bind-for-each>
+        <span class="oj-text-color-danger"><oj-bind-text value=' )'></oj-bind-text></span>
+    </div>
+
+    <div>
+      <oj-bind-if test="[[!state.isCorepack() && state.maintenance ]]">
+        <oj-button chroming="callToAction" class="oj-button-sm" on-oj-action="[[listeners.onApiDocLaunchBtn]]">
+          Migrate
+        </oj-button>
+      </oj-bind-if>
+    </div>
+    </oj-bind-if>
+  </div>
+
+  <div class="oj-typography-body-xs oj-typography-bold oj-text-color-secondary">
+    <oj-bind-text value="[[state.name]]"></oj-bind-text><oj-bind-if test="[[state.isCorepack()]]">
+      <a target="_blank"
+        href="./jsdocs/CorePackOverview.html" 
+        style="color: var(--oj-badge-text-color);" 
+        class="oj-sm-margin-2x-horizontal oj-link-subtle-primary oj-badge oj-badge-sm oj-badge-success">
+        CORE PACK</a></oj-bind-if>
+
+    <oj-bind-if test="[[(state.isCorepack() && state.supersedes)]]">
+      <span><oj-bind-text value="replaces"></oj-bind-text></span>
+      <oj-bind-for-each data="[[state.supersedesURLData]]">
+        <template>
+          <a :href="[[$current.data.value]]"> <oj-bind-text value="[[$current.data.id]]" /> </a>
+
+          <oj-bind-if test="[[$current.index != (state.supersedesDataLength._latestValue - 1)]]">
+            <oj-bind-text value=",&nbsp"></oj-bind-text>
+          </oj-bind-if>
+        </template>
+      </oj-bind-for-each>
+    </oj-bind-if>
+
+  </div>
+</div>
+<oj-bind-slot name="customHeader">
+</oj-bind-slot>
+<div :class="[[state.frameAndTabClass]]">
+  <oj-bind-if test="[[state.isAltaTheme()]]">
+    <oj-bind-if test="[[!state.isCorepack()]]">
+      <p>
+        <span class="oj-sample-cookbook-demo-note">NOTE</span>:
+        <span class="oj-sample-cookbook-demo-note-content">You are viewing the Alta theme which was deprecated in JET
+          10. The demo code is optimized for Redwood which is the recommended theme.</span>
+      </p>
+    </oj-bind-if>
+  </oj-bind-if>
+  <div class="demo-iframe-section-wrapper oj-flex oj-sm-flex-direction-column oj-sm-flex-wrap-nowrap">
+    <oj-bind-if test="[[!state.hasCustomHeader]]">
+      <oj-bind-slot name="demoHeader">
+      </oj-bind-slot>
+    </oj-bind-if>
+
+
+    <oj-bind-if test="[[state.hasDescription]]">
+      <div class="oj-flex demo-description oj-typography-body-md oj-sm-flex-direction-column demo-cook-description-top">
+        <div data-bind="visible: state.hasTypeSizeData(), template: {name: 'typeSizeTemplate'}"></div>
+        <oj-bind-if test="[[state.isRedwoodAntipattern()]]">
+          <p>
+            <span class="oj-sample-cookbook-demo-note">NOTE</span>:
+            <span class="oj-sample-cookbook-demo-note-content">For Redwood applications this is not a recommended
+              pattern. </span>
+            <hr class='oj-sm-margin-2x-top'>
+          </p>
+        </oj-bind-if>
+        <oj-bind-if test="[[state.descConfig()]]">
+          <oj-module config="[[state.descConfig]]"></oj-module>
+        </oj-bind-if>
+
+        <oj-bind-if test="[[(!state.isCorepack() && hasUnsupportedTheme())]]">
+          <div class="oj-sm-padding-3x-vertical"><span class="oj-icon-color-danger oj-ux-ico-error-s oj-icon-size-6x"
+              role="img" aria-label="error" style="font-size: 20px;vertical-align: bottom;"></span>
+            <b>NOTE</b>: <oj-bind-text value="[[state.name]]"></oj-bind-text> is not supported in <oj-bind-text
+              value="[[getUnSupportedThemeList()]]"></oj-bind-text>
+          </div>
+        </oj-bind-if>
+
+        <div class="oj-sm-margin-2x-top"
+          data-bind="visible: state.shouldIncludeResInstrInDemo(), template: {name: 'responsiveInstructions'}">
+        </div>
+        <div data-bind="visible: state.shouldIncludePreviewInstrInDemo(), template: {name: 'previewInstructions'}">
+        </div>
+      </div>
+  </div>
+  </oj-bind-if>
+
+  <div class="demo-iframe-section">
+    <div class="demo-cook-demo">
+      <div class="oj-flex-item">
+        <div class="demo-scroll-frame demo-iframe-parent">
+          <div class="demo-glass-pane"><img class="demo-load-image"></div>
+          <iframe class="demo-iframe" id="iFrameDemo" name="iFrameDemo" frameborder="0" title="iFrame Demo">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<oj-bind-if test="[[state.displaySourceTabs()]]">
+  <div class="demo-tab-section oj-flex">
+    <div class="oj-flex-item">
+      <div class="oj-flex">
+        <oj-bind-if test="[[!state.hasCustomHeader]]">
+          <oj-bind-slot name="recipeHeader">
+            <div
+              class="oj-sample-cookbook-demo-recipe-header oj-flex-item oj-flex oj-sm-justify-content-space-between oj-sm-flex-items-initial">
+              <div class="oj-flex-item">
+                <h2 class="oj-typography-heading-sm">
+                  <oj-bind-text value="[[state.demoTitle]]"></oj-bind-text>
+                </h2>
+              </div>
+
+              <div class="oj-flex-item oj-sm-padding-1x">
+                <oj-bind-if test="[[state.hasTSSource()]]">
+                  <oj-buttonset-one id="jstsmode" value="{{state.useTSSource}}"
+                    on-value-changed="[[listeners.handleTypeScriptFlagChange]]" class="oj-sm-padding-2x-end">
+                    <oj-bind-for-each data="[[jstsValues]]">
+                      <template data-oj-as="item">
+                        <oj-option value="[[item.data.id]]">
+                          <span>
+                            <oj-bind-text value="[[item.data.label]]"></oj-bind-text>
+                          </span>
+                        </oj-option>
+                      </template>
+                    </oj-bind-for-each>
+                  </oj-buttonset-one>
+                </oj-bind-if>
+                <oj-button chroming="callToAction" display="[[state.smOnly() ? 'icons' : 'all']]"
+                  disabled="{{ state.disableApply }}" on-oj-action="[[listeners.applyBtnAction]]">
+                  <span slot="startIcon" class="oj-ux-ico-check"></span>
+                  Apply Changes
+                </oj-button>
+                <oj-sample-cookbook-download data-bind="visible:state.downloadables()"
+                  downloadables="[[state.downloadables]]" base-url="[[state.baseUrl]]"
+                  default-base-dir="[[defaultBaseDir]]" resolve-file="[[functions.resolveFile]]">
+                </oj-sample-cookbook-download>
+              </div>
+            </div>
+          </oj-bind-slot>
+        </oj-bind-if>
+
+        <div class="oj-flex-item demo-source-screen-target">
+          <div class="oj-flex-item oj-flex demo-sourcetab-outer-wrapper" id="demoOffcanvasWrapper">
+            <div class="oj-panel-alt1 demo-sourcetab-start">
+              <oj-bind-if test="[[state.isComplexDemo]]">
+                <label class="demo-source-tree-label">Files used in this demo:</label>
+                <oj-tree-view data="[[state.treeDataSource]]"
+                  item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('tree_item_template', true);]]"
+                  selection-mode="single" item.selectable="[[ itemSelection ]]"
+                  on-selection-changed="[[listeners.onSourceTreeNodeSelection]]" expanded="[[state.expandAll]]"
+                  id="fileTreeView">
+                </oj-tree-view>
+              </oj-bind-if>
+            </div>
+            <script type="text/html" id="tree_item_template">
+                          <li>
+                            <span class="oj-treeview-icon oj-treeview-item-icon"></span>
+                            <span :title="[[$data.label]]"> <oj-bind-text value="[[$data.label]]"> </oj-bind-text></span>
+                          </li>
+                        </script>
+            <div class="demo-main-content oj-flex oj-sm-flex-direction-column">
+              <div class="oj-flex-item demo-source-tab-bar oj-flex oj-sm-flex-wrap-nowrap">
+                <oj-bind-if test="[[state.isComplexDemo]]">
+                  <oj-button class="demo-folder-view-toggle-button" display="icons" chroming="half" label="Folder view"
+                    on-click="[[listeners.expandSourceTreePanel]]">
+                    <span slot="startIcon" class="oj-ux-ico-folder-heirachy"></span>
+                    folder hierarchy button
+                  </oj-button>
+                </oj-bind-if>
+                <script type="text/html" id="source_tabs_template">
+                              <li :class="[[{'oj-removable':$data.removable, 'oj-disabled':$data.disabled}]]">
+                                <a href="#" :id="[[$data.id + '_panel']]">
+                                  <oj-bind-text value="[[$data.label]]"></oj-bind-text>
+                                </a>
+                              </li>
+                            </script>
+                <oj-conveyor-belt class="demo-tab-conveyor-belt">
+                  <oj-tab-bar id="hnavlist" data-oj-context class="oj-sm-condense" contextmenu="tabmenu"
+                    selection="{{ state.selectedTab }}" current-item="{{state.currentTab}}" edge="top"
+                    data="{{state.dataSource}}"
+                    item.renderer="{{oj.KnockoutTemplateUtils.getRenderer('source_tabs_template', true)}}"
+                    on-selection-changed="[[listeners.onSourceTabSelectionChange]]"
+                    on-oj-remove="[[listeners.onSourceTabRemove]]"
+                    on-oj-before-deselect="[[listeners.onSourceTabDeselect]]">
+                  </oj-tab-bar>
+                </oj-conveyor-belt>
+              </div>
+
+              <oj-switcher value="[[state.selectedTabPane]]" on-value-changed="[[listeners.onSourceSwitcherChange]]"
+                class="demo-source-section">
+                <div slot="info_tab" role="tabpanel" aria-label="information tab" class="demo-scroll-container">
+                  <div class="demo-tab-content">
+                    <oj-bind-if test="[[state.runtime() === 'vb']]">
+                      <oj-bind-if test="[[state.descConfig()]]">
+                        <div class="oj-sm-padding-1x">
+                          <oj-module config="[[state.descConfig]]"></oj-module>
+                        </div>
+                      </oj-bind-if>
+                      <h2>Recipe</h2>
+                      <hr class="demo-recipe-divider">
+
+                      <div class="componentRecipe oj-typography-body-md demo-component-margin">
+                        <oj-bind-if test="[[!state.hasCustomRecipe]]">
+                          <oj-module config="[[state.recipeConfig]]">
+                          </oj-module>
+                        </oj-bind-if>
+                        <oj-bind-slot name="recipeContent">
+                        </oj-bind-slot>
+                      </div>
+                    </oj-bind-if>
+                    <oj-bind-if test="[[state.runtime() === 'jet']]">
+                      <oj-bind-if test="[[state.infoTabModuleSettings()]]">
+                        <oj-module config="[[state.infoTabModuleSettings]]"></oj-module>
+                      </oj-bind-if>
+                    </oj-bind-if>
+                  </div>
+                </div>
+                <div slot="all_tab" role="tabpanel" aria-label="all tab" class="demo-scroll-container">
+                  <div class="demo-tab-content">
+                    <oj-bind-if test="[[state.runtime() === 'jet']]">
+                      <oj-bind-if test="[[state.infoAllTabModuleSettings()]]">
+                        <oj-module config="[[state.infoAllTabModuleSettings]]"></oj-module>
+                      </oj-bind-if>
+                    </oj-bind-if>
+                  </div>
+                </div>
+                <div slot="default_tab" role="tabpanel" aria-label="source tab bar">
+                  <oj-bind-for-each data="{{ state.openFiles }}">
+                    <template data-oj-as="item">
+
+                      <oj-bind-if test="[[ item.data.id !=='nt_info' && item.data.id !=='st_all']] ">
+                        <oj-bind-if test="[[ state.runtime() === 'vb' && state.filesMap()[item.data.id]]]">
+                          <div class="demo-scroll-container" data-bind="visible: item.data.id === state.selectedTab()">
+                            <oj-sample-cookbook-editor type="[[state.filesMap()[item.data.id].editorType]]"
+                              read-only="[[state.filesMap()[item.data.id].readOnly]]"
+                              source="{{state.filesMap()[item.data.id].editorSource}}"
+                              read-only-lines="{{state.filesMap()[item.data.id].readOnlyLines}}"
+                              fold-lines="{{state.filesMap()[item.data.id].foldLines}}"
+                              on-source-change="[[listeners.onSourceContentChange]]">
+                            </oj-sample-cookbook-editor>
+                          </div>
+                        </oj-bind-if>
+                        <oj-bind-if test="[[ (state.runtime() === 'jet')  && state.filesMap()[item.data.id]]]">
+                          <div class="demo-scroll-container" data-bind="visible: item.data.id === state.selectedTab()">
+                            <oj-sample-cookbook-editor type="[[state.filesMap()[item.data.id].editorType]]"
+                              read-only="[[state.filesMap()[item.data.id].readOnly]]"
+                              source="{{state.filesMap()[item.data.id].editorSource}}"
+                              read-only-lines="{{state.filesMap()[item.data.id].readOnlyLines}}"
+                              fold-lines="{{state.filesMap()[item.data.id].foldLines}}"
+                              on-source-change="[[listeners.onSourceContentChange]]">
+                            </oj-sample-cookbook-editor>
+                          </div>
+                        </oj-bind-if>
+                      </oj-bind-if>
+
+                    </template>
+                  </oj-bind-for-each>
+                </div>
+              </oj-switcher>
+            </div>
+</oj-bind-if>
+</div>
+</div>
+</div>
+</div>
+</div>
+</oj-bind-if>
+</div>
+</oj-bind-if>
+
+<script type="text/html" id="formfactorIconListTemplate">
+  <li data-bind="attr:{id: $data['id'], title: $data['label']}, css: {'oj-disabled': $data['disabled']}">
+    <a>
+    <span data-bind="attr:{class: 'oj-navigationlist-item-icon '+$data['iconStyleClass'], title: $data['label']}"></span>
+    </a>
+  </li>
+</script>
+
+<script type="text/html" id="typeSizeTemplate">
+  <p data-bind="visible: state.isHybridDemo()"><span class="oj-icon demo-platform-icon-ios oj-sample-cookbook-demo-type-size-platform-icon" title="hybrid" role="img"></span><span class="oj-sample-cookbook-demo-type-size-platform-text">This design is optimized for use in a hybrid mobile application.</span></p>
+  <p data-bind="visible: state.isWebDemo()"><span class="oj-sample-cookbook-demo-type-size-platform-icon oj-icon demo-platform-icon-web" title="web" role="img"></span><span class="oj-sample-cookbook-demo-type-size-platform-text">This design is optimized for use on the web, it is not recommended for use in a hybrid mobile application.</span></p>
+  <p data-bind="visible: state.isPhoneDemo()"><span class="oj-sample-cookbook-demo-type-size-platform-icon oj-icon demo-platform-icon-phone-portrait" title="phone" role="img"></span><span class="oj-sample-cookbook-demo-type-size-platform-text">This design is optimized for a phone.</span></p>
+  <p data-bind="visible: state.isTabletDemo()" class="oj-sample-cookbook-demo-type-size-not-optimized"><span class="oj-sample-cookbook-demo-type-size-not-optimized-text oj-fwk-icon-cross oj-fwk-icon" title="phone" role="img"></span><span class="oj-sample-cookbook-demo-type-size-platform-icon oj-icon demo-platform-icon-phone-portrait" title="phone" role="img"></span><span class="oj-sample-cookbook-demo-type-size-platform-text">This design is not optimized for a phone.</span></p>
+</script>
+
+<script type="text/html" id="previewInstructions">
+    <p><span class="oj-badge oj-badge-sm oj-badge-info">preview</span>
+      This demo uses a preview API. Preview APIs are production quality, but can be changed on a major version without a deprecation path. Please refer to the developer guide for details.
+    </p>
+</script>
+
+<script type="text/html" id="responsiveInstructions">
+  To see responsive behavior try one of the following: 
+    <ul> 
+      <li>select one of the platform size buttons above 
+        <span class="demo-icon-12 oj-icon demo-platform-icon-phone-portrait" title="phone" role="img"></span> 
+        <span class="demo-icon-12 oj-icon demo-platform-icon-tablet-portrait" title="tablet portrait" role="img"></span> 
+        <span class="demo-icon-12 oj-icon demo-platform-icon-tablet-landscape" title="tablet landscape" role="img"></span> 
+      </li> 
+      <li>click the new window button above 
+        <span class="demo-icon-12 oj-icon demo-platform-icon-newwindow" title="new window" role="img"></span> 
+        and resize the browser window 
+      </li> 
+    </ul> 
+</script>

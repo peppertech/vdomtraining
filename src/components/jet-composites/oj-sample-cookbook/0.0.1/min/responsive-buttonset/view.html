@@ -1,0 +1,49 @@
+<div>
+  <oj-label-value>
+  <oj-label help.source="[[$properties.help]]" >
+      <oj-bind-slot></oj-bind-slot>
+      <oj-bind-if test="[[showHelp]]">
+        <a on-click="[[onhelp]]"
+           class="demo-help-icon">
+          <span role="img" 
+                title="click for additional info" 
+                class="oj-clickable-icon oj-ux-ico-help-circle-s oj-ux-icon-size-6x">
+          </span>
+        </a>
+      </oj-bind-if>
+  </oj-label>
+  <oj-bind-if test="[[!small()]]">
+    <oj-buttonset-one 
+      class="oj-buttonset-width-auto" 
+      aria-label="additional information"
+      value="{{$properties.selection}}"
+      chroming="outlined"
+      display="icons">
+      <oj-bind-for-each data="[[$properties.data]]">
+        <template>
+          <oj-option value="[[$current.data.id]]">
+            <oj-bind-if test="[[$current.data.icons]]">
+              <span slot='startIcon' :class="[[$current.data.icons + ' oj-sample-cookbook-responsive-buttonset-icon' ]]"></span>
+            </oj-bind-if>
+            <oj-bind-text value="[[$current.data.label]]"></oj-bind-text>
+          </oj-option>
+        </template>
+      </oj-bind-for-each>
+    </oj-buttonset-one>
+  </oj-bind-if>
+  <oj-bind-if test="[[small()]]">
+    <oj-select-one value="{{$properties.selection}}"
+                   class="oj-sample-cookbook-responsive-buttonset-select"
+                   id="[[getButtonSetId()]]"
+                   aria-label="additional information">
+        <oj-bind-for-each data="[[$properties.data]]">
+          <template>
+            <oj-option value="[[$current.data.id]]">
+              <oj-bind-text value="[[$current.data.label]]"></oj-bind-text>
+            </oj-option>
+          </template>
+        </oj-bind-for-each>
+    </oj-select-one>
+  </oj-bind-if>
+</oj-label-value>
+</div>

@@ -1,0 +1,38 @@
+/* This is to prevent the flash of unstyled content before the composite properties have been setup. */
+demo-blank-card:not(.oj-complete) {
+  visibility: hidden;
+}
+
+demo-blank-card {
+  display: block;
+  width: 270px;
+  height: 270px;
+  perspective: 800px;
+  margin: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* To ensure your classes are scoped correctly, we recommend scoping classes and prefixing class names with the composite name. */
+demo-blank-card .demo-blank-card-front-side, 
+demo-blank-card .demo-blank-card-back-side {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+demo-blank-card .demo-blank-card-flip-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, .25);
+  border-radius: 5px;
+}
+
+demo-blank-card .demo-sales-header {
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}

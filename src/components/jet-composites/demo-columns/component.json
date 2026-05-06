@@ -1,0 +1,25 @@
+{
+  "name": "demo-columns",
+  "description": "A layout component with three columns.",
+  "displayName": "Three Columns",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "headers": {
+      "description": "The list of header titles to use for the columns in index order.",
+      "displayName": "Headers",
+      "type": "Array<string>"
+    }
+  },
+  "slots" : {
+    "columnA": {
+      "description": "The first column in this component's three column layout."
+    },
+    "columnB": {
+      "description": "The second column in this component's three column layout."
+    },
+    "columnC": {
+      "description": "The third column in this component's three column layout."
+    }
+  }
+}

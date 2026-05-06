@@ -1,0 +1,23 @@
+<div class="demo-activity-item-container">
+  <oj-collapsible expanded="{{$properties.expanded}}">
+    <h6 slot="header" class="oj-typography-body-lg oj-typography-bold demo-activity-item-header">
+      <span :class='[[headerIcon($properties.itemType)]]'></span>&nbsp;
+      <oj-bind-text value="[[$properties.headerText]]"></oj-bind-text>
+      <oj-button display="icons" on-oj-action="[[buttonHandler]]" aria-label="move item" class="oj-helper-margin-start-auto oj-clickthrough-disabled">
+        <span slot='startIcon' :class='[["oj-fwk-icon " + $properties.buttonIconClass]]'></span>
+        move item        
+      </oj-button>
+    </h6>
+    <div>
+      <oj-bind-for-each data="[[$properties.eventsData]]">
+        <template>
+          <div class="oj-typography-body-sm demo-activity-stream-event">
+            <oj-bind-text
+              value='[[$current.data.event + ": Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat..."]]'>
+            </oj-bind-text>
+          </div>
+        </template>
+      </oj-bind-for-each>
+    </div>
+  </oj-collapsible>
+</div>

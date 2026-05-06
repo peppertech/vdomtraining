@@ -1,0 +1,8 @@
+<div tabindex="0" class="demo-memory-card-flip-container" role="button" aria-pressed="false" :aria-label="[[cardMessage]]">
+  <div class="demo-memory-card-front-side">
+  </div>
+  <div class="demo-memory-card-back-side">
+    <div class="demo-memory-card-inner-back-side" :style.background-image="[[$properties.valueImage ? 'url(' + $properties.valueImage + ')' : '']]">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+{
+  "name": "demo-log",
+  "description": "An element that displays messages logged by other components.",
+  "displayName": "Demo Log",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "label": {
+      "description": "Label for log messages.",
+      "displayName": "Label",
+      "type": "string"
+    }
+  },
+  "methods": {
+    "log": {
+      "description": "Append message to the log.",
+      "params": [
+        {
+          "name": "message",
+          "description": "Message being logged",
+          "type": "string"
+        }
+      ]
+    },
+    "clear": {
+      "description": "Remove all previous log messages."
+    }
+  }
+}

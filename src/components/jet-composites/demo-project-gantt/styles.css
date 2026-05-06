@@ -1,0 +1,34 @@
+/* This is to prevent the flash of unstyled content before the composite properties have been setup. */
+demo-project-gantt:not(.oj-complete) {
+  visibility: hidden;
+}
+
+demo-project-gantt {
+  display: block;
+}
+
+/* To ensure your classes are scoped correctly, we recommend scoping classes and prefixing class names with the composite name. */
+demo-project-gantt .demo-project-gantt-container {
+  height: 100%;
+}
+
+demo-project-gantt .demo-table-panel {
+  flex-grow: 0;
+}
+
+/* The Gantt component should take any remaining space when the container grows.
+Also, hide boundary artifacts of the Gantt and Table by offsetting the Gantt. */
+demo-project-gantt .demo-gantt-panel {
+  flex-grow: 1;
+  position: relative;
+  inset-inline-start: -1px;
+}
+
+/* This shrinks the Table height by the height of the Gantt horizontal scrollbar so that they align correctly */
+demo-project-gantt .demo-pg-table {
+  height: calc(100% - 15px);  
+}
+
+demo-project-gantt .demo-pg-gantt {
+  height:100%;
+}

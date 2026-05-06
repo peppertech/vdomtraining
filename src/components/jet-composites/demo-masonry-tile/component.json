@@ -1,0 +1,14 @@
+{
+  "name": "demo-masonry-tile",
+  "description": "A masonry tile element with tile size determined on runtime based on the content.",
+  "displayName": "Masonry Tile",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "content": {
+      "description": "Masonry tile content.",
+      "displayName": "Content",
+      "type": "string"
+    }
+  }
+}

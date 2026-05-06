@@ -1,0 +1,902 @@
+oj-sample-cookbook-demo:not(.oj-complete) {
+  visibility: hidden;
+}
+
+.oj-sample-cookbook-demo-hidden {
+  display: hidden;
+}
+
+.oj-sample-cookbook-demo-note {
+  font-size: 18px;
+  color: red;
+  font-style: bold;
+}
+
+.oj-sample-cookbook-demo-note-content {
+  font-style: italic;
+}
+
+.oj-sample-cookbook-demo-recipe-header {
+  width: 100%;
+}
+
+.oj-sample-cookbook-demo-type-size-platform-icon {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+
+.oj-sample-cookbook-demo-type-size-platform-text {
+  margin-left: 5px;
+}
+
+.oj-sample-cookbook-demo-type-size-not-optimized {
+  position: relative;
+}
+
+.oj-sample-cookbook-demo-type-size-not-optimized-text {
+  color: red;
+  position: absolute;
+}
+
+.demo-drawer {
+  overflow: hidden;
+  height: 0px;
+  -webkit-transition: height, 0.5s ease-in;
+  -moz-transition: height, 0.5s ease-in;
+  -ms-transition: height, 0.5s ease-in;
+  -o-transition: height, 0.5s ease-in;
+  transition: height, 0.5s ease-in;
+  transition-duration: 0.5s;
+}
+
+.demo-drawer-open {
+  overflow: hidden;
+  height: 100px;
+  -webkit-transition: height, 0.5s ease-out;
+  -moz-transition: height, 0.5s ease-out;
+  -ms-transition: height, 0.5s ease-out;
+  -o-transition: height, 0.5s ease-out;
+  transition: height, 0.5s ease-out;
+}
+
+.hide {
+  display: none;
+}
+.demo-close-icon {
+  align-self: center;
+  padding-right: 5px;
+}
+.demo-toolbar {
+  margin: 0 10px 10px 0;
+  background-color: white;
+}
+
+.demo-description {
+  margin: 0 0 10px 0;
+}
+
+@font-face {
+  font-family: "platforms";
+  src: url("images/fonts/platform.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="demo-platform-icon-"],
+[class*=" demo-platform-icon-"] {
+  font-family: "platforms";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+}
+
+.demo-icon-12 {
+  width: 12px;
+  height: 12px;
+  font-size: 12px;
+}
+
+.demo-platform-icon-blocked:before {
+  content: "\e905";
+}
+
+.demo-platform-icon-projector:before {
+  content: "\e900";
+}
+
+.demo-platform-icon-wrench:before {
+  content: "\e901";
+}
+
+.demo-platform-icon-leaf:before {
+  content: "\e902";
+}
+
+.demo-platform-icon-cloud:before {
+  content: "\e906";
+}
+
+.demo-platform-icon-sf:before {
+  content: "\e907";
+}
+
+.demo-platform-icon-newwindow:before {
+  content: "\e903";
+}
+
+.demo-platform-icon-web:before {
+  content: "\e9c9";
+}
+
+.demo-platform-icon-ios:before {
+  content: "\eabf";
+}
+
+.demo-platform-icon-android:before {
+  content: "\eac1";
+}
+
+.demo-platform-icon-windows:before {
+  content: "\eac3";
+}
+
+.demo-platform-icon-stable:before {
+  content: "\e908";
+}
+
+.demo-platform-icon-desktop:before {
+  content: "\e956";
+}
+
+.demo-platform-icon-phone-portrait:before {
+  content: "\e958";
+}
+
+.demo-platform-icon-oracle-o:before {
+  content: "\e909";
+}
+
+.demo-platform-icon-tablet-portrait:before,
+.demo-platform-icon-tablet-landscape:before {
+  content: "\e959";
+}
+
+.demo-platform-icon-tablet-landscape:before {
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.demo-load-image {
+  content: url("images/spinner_full.gif");
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.demo-recipe-table th,
+.demo-recipe-table td {
+  border: 1px solid #d3d3d3;
+  border-collapse: collapse;
+  width: 10em;
+  text-align: center;
+  padding: 10px;
+}
+
+.demo-help-icon {
+  padding-left: 5px;
+}
+
+.demo-iframe-section {
+  margin-bottom: 15px;
+}
+
+.demo-portrait-web:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-web:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-web:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-web:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-web:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-ios:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-ios:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-ios:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-ios:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-ios:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-android:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-android:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-android:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-android:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-android:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-windows:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-windows:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-windows:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-windows:not(.demo-device-tab) .demo-scroll-container,
+.demo-portrait-windows:not(.demo-device-tab) .demo-scroll-container {
+  height: 73vh;
+}
+
+.demo-portrait-web:not(.demo-device-tab) .demo-tab-section,
+.demo-portrait-ios:not(.demo-device-tab) .demo-tab-section,
+.demo-portrait-android:not(.demo-device-tab) .demo-tab-section,
+.demo-portrait-windows:not(.demo-device-tab) .demo-tab-section {
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+.demo-cook-demo-and-tabs {
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+.demo-cook-demo-and-tabs.demo-stacked-mode {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.demo-iframe-section {
+  width: 100% !important;
+}
+
+.demo-portrait-web .demo-iframe-section-wrapper {
+  width: 0%;
+}
+
+.demo-portrait-web .demo-iframe-section,
+.demo-portrait-web .demo-iframe-section-wrapper {
+  min-height: inherit;
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex: auto;
+  flex: auto;
+}
+
+.demo-portrait-web .demo-cook-demo {
+  min-height: inherit;
+  box-sizing: border-box;
+  border: 1px solid #d6dfe6;
+  background-color: #fff;
+  border-radius: 1px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-grow: inherit;
+  flex-grow: inherit;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.demo-portrait-web .demo-scroll-frame {
+  width: 100%;
+}
+
+.demo-landscape-web .demo-iframe-section-wrapper,
+.demo-landscape-web .demo-tab-section {
+  width: 100%;
+}
+
+.demo-landscape-web .demo-iframe-section {
+  margin-bottom: 15px;
+  /* width: 100%; */
+  -webkit-flex: auto;
+  flex: auto;
+  box-sizing: border-box;
+}
+
+.demo-landscape-web .demo-cook-demo {
+  min-height: inherit;
+  box-sizing: border-box;
+  border: 1px solid #d6dfe6;
+  background-color: #fff;
+  border-radius: 1px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.demo-landscape-web .demo-scroll-frame {
+  width: 100%;
+}
+
+.demo-scroll-frame {
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  height: 100%;
+}
+
+.demo-iframe {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.demo-portrait-ios .demo-iframe-section {
+  min-height: inherit;
+  /* width: 381px; */
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.demo-portrait-ios .demo-cook-demo {
+  min-height: inherit;
+}
+
+.demo-portrait-ios .demo-cook-demo > div {
+  height: 799px;
+  width: 381px;
+  background-image: url("images/shells/phone-ios-new.png");
+  background-repeat: no-repeat;
+}
+
+.demo-portrait-ios .demo-scroll-frame {
+  position: relative;
+  top: 116px;
+  height: 568px;
+  left: 32px;
+  width: 320px;
+  overflow-x: auto;
+}
+
+.demo-device-tab.demo-portrait-ios .demo-cook-demo > div {
+  height: 1235px;
+  width: 872px;
+  background-image: url("images/shells/iPad.png");
+  background-repeat: no-repeat;
+}
+
+.demo-device-tab.demo-portrait-ios .demo-scroll-frame {
+  position: relative;
+  top: 105px;
+  height: 1026px;
+  left: 51px;
+  width: 770px;
+  overflow-x: auto;
+}
+
+.demo-landscape-ios .demo-iframe-section {
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  /* width: 100%; */
+  -webkit-flex: auto;
+  flex: auto;
+}
+
+.demo-landscape-ios .demo-cook-demo {
+  min-height: inherit;
+}
+
+.demo-landscape-ios .demo-cook-demo > div {
+  height: 381px;
+  width: 799px;
+  background-image: url("images/shells/phone-ios-landscape.png");
+  background-repeat: no-repeat;
+}
+
+.demo-landscape-ios .demo-scroll-frame {
+  position: relative;
+  top: 29px;
+  height: 320px;
+  left: 115px;
+  width: 565px;
+  overflow-x: auto;
+}
+
+.demo-device-tab.demo-landscape-ios .demo-cook-demo > div {
+  height: 872px;
+  width: 1235px;
+  background-image: url("images/shells/iPad-landscape.png");
+  background-repeat: no-repeat;
+}
+
+.demo-device-tab.demo-landscape-ios .demo-scroll-frame {
+  position: relative;
+  left: 105px;
+  width: 1026px;
+  top: 51px;
+  height: 770px;
+  overflow-x: auto;
+}
+
+.demo-portrait-android .demo-iframe-section {
+  min-height: inherit;
+  /* width: 393px; */
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.demo-portrait-android .demo-cook-demo {
+  min-height: inherit;
+}
+
+.demo-portrait-android .demo-cook-demo > div {
+  height: 775px;
+  width: 391px;
+  background-image: url("images/shells/phone-android-new.png");
+  background-repeat: no-repeat;
+}
+
+.demo-portrait-android .demo-scroll-frame {
+  position: relative;
+  top: 67px;
+  height: 625px;
+  left: 21px;
+  width: 350px;
+  overflow-x: auto;
+}
+
+.demo-device-tab.demo-portrait-android .demo-cook-demo > div {
+  height: 1291px;
+  width: 867px;
+  background-image: url("images/shells/googleNexus9.png");
+  background-repeat: no-repeat;
+}
+
+.demo-device-tab.demo-portrait-android .demo-scroll-frame {
+  position: relative;
+  top: 114px;
+  height: 1022px;
+  left: 49px;
+  width: 767px;
+  overflow-x: auto;
+}
+
+.demo-landscape-android .demo-iframe-section {
+  margin-bottom: 15px;
+  /* width: 100%; */
+  box-sizing: border-box;
+  -webkit-flex: auto;
+  flex: auto;
+}
+
+.demo-landscape-android .demo-cook-demo {
+  min-height: inherit;
+}
+
+.demo-landscape-android .demo-cook-demo > div {
+  height: 400px;
+  width: 772px;
+  background-image: url("images/shells/phone-android-landscape.png");
+  background-repeat: no-repeat;
+}
+
+.demo-landscape-android .demo-scroll-frame {
+  position: relative;
+  top: 20px;
+  height: 360px;
+  left: 69px;
+  width: 640px;
+  overflow-x: auto;
+}
+
+.demo-device-tab.demo-landscape-android .demo-cook-demo > div {
+  height: 867px;
+  width: 1291px;
+  background-image: url("images/shells/googleNexus9-landscape.png");
+  background-repeat: no-repeat;
+}
+
+.demo-device-tab.demo-landscape-android .demo-scroll-frame {
+  position: relative;
+  left: 114px;
+  width: 1022px;
+  top: 51px;
+  height: 767px;
+  overflow-x: auto;
+}
+
+.demo-portrait-windows .demo-iframe-section {
+  min-height: inherit;
+  /* width: 461px; */
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.demo-portrait-windows .demo-cook-demo {
+  min-height: inherit;
+}
+
+.demo-portrait-windows .demo-cook-demo > div {
+  height: 842px;
+  width: 461px;
+  background-image: url("images/shells/phone-windows-new.png");
+  background-repeat: no-repeat;
+}
+
+.demo-portrait-windows .demo-scroll-frame {
+  position: relative;
+  top: 69px;
+  height: 640px;
+  left: 38px;
+  width: 384px;
+  overflow-x: auto;
+}
+
+.demo-device-tab.demo-portrait-windows .demo-cook-demo > div {
+  height: 1583px;
+  width: 989px;
+  background-image: url("images/shells/WindowsSurface.png");
+  background-repeat: no-repeat;
+}
+
+.demo-device-tab.demo-portrait-windows .demo-scroll-frame {
+  position: relative;
+  top: 109px;
+  height: 1373px;
+  left: 101px;
+  width: 776px;
+  overflow-x: auto;
+}
+
+.demo-landscape-windows .demo-iframe-section {
+  margin-bottom: 15px;
+  /* width: 100%; */
+  box-sizing: border-box;
+  -webkit-flex: auto;
+  flex: auto;
+}
+
+.demo-landscape-windows .demo-cook-demo {
+  min-height: inherit;
+}
+
+.demo-landscape-windows .demo-cook-demo > div {
+  height: 461px;
+  width: 847px;
+  background-image: url("images/shells/phone-windows-landscape.png");
+  background-repeat: no-repeat;
+}
+
+.demo-landscape-windows .demo-scroll-frame {
+  position: relative;
+  top: 40px;
+  height: 384px;
+  left: 69px;
+  width: 638px;
+  overflow-x: auto;
+}
+
+.demo-device-tab.demo-landscape-windows .demo-cook-demo > div {
+  height: 988px;
+  width: 1583px;
+  background-image: url("images/shells/WindowsSurface-landscape.png");
+  background-repeat: no-repeat;
+}
+
+.demo-device-tab.demo-landscape-windows .demo-scroll-frame {
+  position: relative;
+  left: 101px;
+  width: 1373px;
+  top: 101px;
+  height: 776px;
+  overflow-x: auto;
+}
+
+.demo-portrait-web .demo-iframe-section-wrapper,
+.demo-portrait-web .demo-iframe-section {
+  min-width: 1000px;
+}
+
+.demo-portrait-ios .demo-iframe-section {
+  min-width: 385px;
+}
+
+.demo-portrait-android .demo-iframe-section {
+  min-width: 393px;
+}
+
+.demo-portrait-windows .demo-iframe-section {
+  min-width: 461px;
+}
+
+.demo-portrait-ios.demo-device-tab .demo-iframe-section,
+.demo-portrait-android.demo-device-tab .demo-iframe-section,
+.demo-portrait-windows.demo-device-tab .demo-iframe-section {
+  min-width: 860px;
+}
+
+.demo-landscape-ios.demo-device-tab .demo-iframe-section,
+.demo-landscape-android.demo-device-tab .demo-iframe-section,
+.demo-landscape-windows.demo-device-tab .demo-iframe-section {
+  min-width: 1229px;
+}
+
+@media screen and (max-width: 767px) {
+  .demo-cook-content,
+  .demo-cook-demo-and-tabs {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .demo-cook-description-top {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .demo-cook-description-top.oj-panel,
+  .demo-cook-demo-and-tabs .demo-cook-demo {
+    border-right: 0;
+    border-left: 0;
+  }
+}
+
+.oj-accordion-collapsible
+  > .oj-collapsible-wrapper
+  > .oj-collapsible-content.code-editor-section {
+  padding: 0;
+}
+
+.demo-recipe-divider {
+  margin-top: 0;
+}
+
+.demo-recipe-description {
+  margin-bottom: 20px;
+}
+
+.demo-tab-section > div {
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.demo-tab-section .oj-tabs {
+  overflow: hidden;
+}
+
+.demo-tab-section {
+  min-height: inherit;
+  padding-left: 15px;
+  min-width: 615px;
+}
+
+.demo-iframe-section-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.demo-stacked-mode .demo-tab-section {
+  padding-left: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .demo-tab-section {
+    min-width: 0;
+  }
+}
+
+.demo-cook-demo-and-tabs:not(.demo-stacked-mode) .demo-bread-crumbs {
+  padding: 7px 0;
+}
+
+.demo-description {
+  margin: 0 0 10px 0;
+}
+
+.demo-source-section {
+  width: 100%;
+  min-height: 350px;
+  padding: 10px 0 20px 0;
+}
+
+.demo-source-screen-target {
+  width: 100%;
+  border: 1px solid #d6dfe6;
+}
+
+.demo-main-content {
+  padding: 5px;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  width: 100%;
+}
+
+.demo-source-tab-bar {
+  padding: 0 !important;
+  width: 100%;
+}
+
+.demo-source-tab-bar .demo-tab-conveyor-belt {
+  width: calc(100% - 42px);
+}
+
+.demo-source-tree-label {
+  display: block;
+  padding: 8px;
+}
+
+.demo-folder-view-toggle-button {
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+.oj-tabbar-horizontal:not(.oj-tabbar-icon-only)
+  .demo-removable-element
+  .oj-tabbar-item-content {
+  padding-right: 5px;
+}
+
+.cookbook-readonly-line {
+  background-color: #eff0f1;
+}
+
+.demo-sourcetab-outer-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.demo-sourcetab-open .demo-sourcetab-start {
+  display: block;
+}
+
+.demo-sourcetab-start {
+  -webkit-transform: translate3d(-250px, 0, 0);
+  transform: translate3d(-250px, 0, 0);
+  border-width: 0 1px 0 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  border-radius: 0;
+  width: 250px;
+  overflow: auto;
+  border-color: #d6dfe6;
+  border-style: solid;
+  display: none;
+}
+
+.demo-sourcetab-transition-open .demo-sourcetab-start {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.demo-sourcetab-transition-open .demo-main-content {
+  -webkit-transform: translate3d(250px, 0, 0);
+  transform: translate3d(250px, 0, 0);
+  width: calc(100% - 250px);
+}
+
+.demo-sourcetab-animate-transition .demo-sourcetab-start,
+.demo-sourcetab-animate-transition .demo-main-content {
+  -webkit-transition: transform 0.4s;
+  transition: transform 0.4s;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+oj-sample-cookbook-editor:not(.oj-complete) {
+  visibility: hidden;
+}
+
+oj-sample-cookbook-editor.cookbook-readonly .CodeMirror-scroll {
+  background-color: #eff0f1;
+}
+
+cookbook-responsive-buttonset:not(.oj-complete) {
+  visibility: hidden;
+}
+
+.nano > .nano-pane {
+  z-index: 3;
+}
+
+.demo-show-loading-spinner .demo-glass-pane {
+  display: inherit;
+}
+
+.demo-glass-pane {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.3;
+  background-color: white;
+}
+
+.demo-show-loading-spinner {
+  position: relative;
+}
+
+.recipe-iframe {
+  width: 100%;
+  height: 600px;
+}
+
+/*! nanoScrollerJS - v0.8.7 - 2015
+* http://jamesflorentino.github.com/nanoScrollerJS/
+* Copyright (c) 2015 James Florentino; Licensed MIT */
+.nano {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.nano > .nano-content {
+  position: absolute;
+  overflow: scroll;
+  overflow-x: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.nano > .nano-content:focus {
+  outline: thin dotted;
+}
+
+.nano > .nano-content::-webkit-scrollbar {
+  display: none;
+}
+
+.has-scrollbar > .nano-content::-webkit-scrollbar {
+  display: block;
+}
+
+.nano > .nano-pane {
+  background: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  width: 10px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  visibility: hidden\9;
+  opacity: 0.01;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.nano > .nano-pane > .nano-slider {
+  background: #444;
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+  margin: 0 1px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.nano:hover > .nano-pane,
+.nano-pane.active,
+.nano-pane.flashed {
+  visibility: visible\9;
+  opacity: 0.99;
+}

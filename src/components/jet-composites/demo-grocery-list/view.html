@@ -1,0 +1,22 @@
+<div class='oj-flex-bar'>
+	<div class='oj-flex-bar-start'>
+		<oj-label for="[[$uniqueId + '_item']]" class="oj-label-inline">Add grocery item:</oj-label>
+	</div>
+	<div class='oj-flex-bar-middle'>
+		<oj-input-text :id="[[$uniqueId + '_item']]" value="{{itemToAdd}}">
+		</oj-input-text>
+	</div>
+</div>
+<oj-button on-oj-action="[[add]]">Add</oj-button>
+<oj-button on-oj-action="[[remove]]">Remove</oj-button>
+
+<oj-list-view data="[[dataProvider]]" selection-mode="multiple"
+	selection="{{selectedItems}}">
+	<oj-bind-slot name="groceryItem" slot="itemTemplate">
+		<template>
+			<span>
+				<oj-bind-text value='[[($current.index + 1) + ". " + $current.data.item]]'></oj-bind-text>
+			</span>
+		</template>
+	</oj-bind-slot>
+</oj-list-view>

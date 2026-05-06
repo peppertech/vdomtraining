@@ -1,0 +1,14 @@
+<oj-bind-if test="[[properties.label !== undefined]]">
+	<oj-label for="[[uniqueId + '_buttonsetone']]">
+		<span><oj-bind-text value='[[properties.label]]'></oj-bind-text></span>
+	</oj-label>
+</oj-bind-if>
+<oj-buttonset-one :id="[[uniqueId + '_buttonsetone']]" value="{{properties.value}}">
+	<oj-bind-for-each data="[[properties.options]]">
+		<template>
+			<oj-option value='[[$current.data.value]]'>
+				<span><oj-bind-text value='[[$current.data.value]]'></oj-bind-text></span>
+			</oj-option>
+		</template>
+	</oj-bind-for-each>
+</oj-buttonset-one>

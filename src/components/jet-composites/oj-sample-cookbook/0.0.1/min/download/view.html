@@ -1,0 +1,23 @@
+<!-- ko if: downloadType() === SINGLE -->
+<oj-button label="Download" 
+           chroming="borderless"
+           display="icons"
+           data-bind="click:onArtifactBtnSelection">
+  <span slot='startIcon' class="oj-ux-ico-download"></span>
+</oj-button>
+<!-- /ko -->
+<!-- ko if: downloadType() === MULTIPLE  -->
+<oj-menu-button id="menuButton" display="icons">
+  Download
+  <span slot='startIcon' class="cookbook-download-icon-24 cookbook-download-icon-font">Download</span>
+  <!-- To handle menu item selection, use an action listener as shown, not a click listener. -->
+  <oj-menu slot="menu" class="oj-sample-cookbook-download-hidden" on-oj-action="{{onArtifactMenuSelection}}">
+    <!-- ko foreach: { data: $properties.downloadables , as: 'artifact' } -->
+      <oj-option data-bind="attr:{'data-index':$index}">
+        <!-- ko text:artifact.displayTitle-->
+        <!-- /ko -->
+      </oj-option>
+    <!-- /ko -->
+  </oj-menu>
+</oj-menu-button>
+<!-- /ko -->

@@ -1,0 +1,16 @@
+{
+  "name": "demo-chart-image-picker",
+  "description": "A chart image displayed upon user text input.",
+  "displayName": "Chart Image Picker",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "type": {
+      "description": "The chart image type.",
+      "displayName": "Type",
+      "type": "string",
+      "value": "funnel",
+      "enumValues": ["bar", "bubble", "funnel", "pie"]
+    }
+  }
+}

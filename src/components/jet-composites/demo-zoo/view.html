@@ -1,0 +1,17 @@
+<h3><oj-bind-text value="[[$properties.zooName]]"></oj-bind-text></h3>
+<table>
+  <thead>
+    <tr><th>Animal</th><th>Exhibit</th></tr>
+  </thead>
+  <tbody>
+    <oj-bind-for-each data="[[$properties.animals]]">
+      <template>
+        <tr>
+          <td><oj-bind-text value="[[$current.data.name]]"></oj-bind-text></td>
+          <td><oj-bind-text value="[[$current.data.exhibit]]"></oj-bind-text></td>
+        </tr>            
+      </template>
+    </oj-bind-for-each>
+  </tbody>
+</table>
+

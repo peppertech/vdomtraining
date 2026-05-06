@@ -1,0 +1,19 @@
+{
+  "name": "demo-grocery-list",
+  "description": "A component for tracking lists of items.",
+  "displayName": "Grocery List",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {},
+  "slots": {
+    "groceryItem": {
+      "description": "Slot for stamping out grocery list items.",
+      "data": {
+        "data": {
+          "description": "An object containing 'item' and 'id' properties.",
+          "type": "object"
+        }
+      }
+    }
+  }
+}

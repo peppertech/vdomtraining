@@ -1,0 +1,272 @@
+{
+  "name": "demo-project-gantt",
+  "displayName": "Project Management",
+  "description": "A project management component with a table and a gantt chart.",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "rowData": {
+      "description": "The oj.DataProvider for the rows of the project, used by both the gantt and the table. Equivalent to oj-gantt's 'row-data' attribute.",
+      "displayName": "Row Data Provider",
+      "type": "DataProvider"
+    },
+    "dependencyData": {
+      "description": "The oj.DataProvider for the dependency lines of the gantt. Equivalent to oj-gantt's 'dependency-data' attribute.",
+      "displayName": "Dependency Lines Data Provider",
+      "type": "DataProvider"
+    },
+    "columns": {
+      "description": "An array of table column definitions. Equivalent to oj-table's 'columns' attribute.",
+      "displayName": "Table Columns Definition",
+      "type": "Array<Object>"
+    },
+    "majorAxis": {
+      "description": "An object defining the major time axis of the gantt.",
+      "displayName": "Gantt Major Axis Definition",
+      "type": "Object",
+      "properties": {
+        "converter": {
+          "description": "Equivalent to oj-gantt's 'major-axis.converter' attribute.",
+          "displayName": "Major Axis Converter",
+          "type": "Object|Converter",
+          "properties": {
+            "default": {
+              "description": "A converter used to format all scales that do not have a converter object provided.",
+              "displayName": "Default Scale Converter",
+              "type": "Converter"
+            },
+            "seconds": {
+              "description": "A converter used to format the 'seconds' scale.",
+              "displayName": "Seconds Scale Converter",
+              "type": "Converter"
+            },
+            "minutes": {
+              "description": "A converter used to format the 'minutes' scale.",
+              "displayName": "Minutes Scale Converter",
+              "type": "Converter"
+            },
+            "hours": {
+              "description": "A converter used to format the 'hours' scale.",
+              "displayName": "Hours Scale Converter",
+              "type": "Converter"
+            },
+            "days": {
+              "description": "A converter used to format the 'days' scale.",
+              "displayName": "Days Scale Converter",
+              "type": "Converter"
+            },
+            "weeks": {
+              "description": "A converter used to format the 'weeks' scale.",
+              "displayName": "Weeks Scale Converter",
+              "type": "Converter"
+            },
+            "months": {
+              "description": "A converter used to format the 'months' scale.",
+              "displayName": "Months Scale Converter",
+              "type": "Converter"
+            },
+            "quarters": {
+              "description": "A converter used to format the 'quarters' scale.",
+              "displayName": "Quarters Scale Converter",
+              "type": "Converter"
+            },
+            "years": {
+              "description": "A converter used to format the 'years' scale.",
+              "displayName": "Years Scale Converter",
+              "type": "Converter"
+            }
+          }
+        },
+        "height": {
+          "description": "The height of the major axis in pixels. Equivalent to oj-gantt's 'major-axis.height' attribute.",
+          "displayName": "Major Axis Height",
+          "type": "number",
+          "format": "int32",
+          "units": "pixels"
+        },
+        "scale": {
+          "description": "The time scale used for the major axis. Equivalent to oj-gantt's 'major-axis.scale' attribute.",
+          "displayName": "Scale",
+          "type": "string",
+          "enumValues": ["seconds", "minutes", "hours", "days", "weeks", "months", "quarters", "years"]
+        },
+        "zoomOrder": {
+          "description": "An array of strings containing the names of scales used for zooming from longest to shortest. Equivalent to oj-gantt's 'major-axis.zoom-order' attribute.",
+          "displayName": "Zoom Order",
+          "type": "Array<string>"
+        }
+      }
+    },
+    "minorAxis": {
+      "description": "An object defining the minor time axis of the gantt.",
+      "displayName": "Gantt Minor Axis Definition",
+      "type": "Object",
+      "properties": {
+        "converter": {
+          "description": "Equivalent to oj-gantt's 'minor-axis.converter' attribute.",
+          "displayName": "Major Axis Converter",
+          "type": "Object|Converter",
+          "properties": {
+            "default": {
+              "description": "A converter used to format all scales that do not have a converter object provided.",
+              "displayName": "Default Scale Converter",
+              "type": "Converter"
+            },
+            "seconds": {
+              "description": "A converter used to format the 'seconds' scale.",
+              "displayName": "Seconds Scale Converter",
+              "type": "Converter"
+            },
+            "minutes": {
+              "description": "A converter used to format the 'minutes' scale.",
+              "displayName": "Minutes Scale Converter",
+              "type": "Converter"
+            },
+            "hours": {
+              "description": "A converter used to format the 'hours' scale.",
+              "displayName": "Hours Scale Converter",
+              "type": "Converter"
+            },
+            "days": {
+              "description": "A converter used to format the 'days' scale.",
+              "displayName": "Days Scale Converter",
+              "type": "Converter"
+            },
+            "weeks": {
+              "description": "A converter used to format the 'weeks' scale.",
+              "displayName": "Weeks Scale Converter",
+              "type": "Converter"
+            },
+            "months": {
+              "description": "A converter used to format the 'months' scale.",
+              "displayName": "Months Scale Converter",
+              "type": "Converter"
+            },
+            "quarters": {
+              "description": "A converter used to format the 'quarters' scale.",
+              "displayName": "Quarters Scale Converter",
+              "type": "Converter"
+            },
+            "years": {
+              "description": "A converter used to format the 'years' scale.",
+              "displayName": "Years Scale Converter",
+              "type": "Converter"
+            }
+          }
+        },
+        "height": {
+          "description": "The height of the minor axis in pixels. Equivalent to oj-gantt's 'minor-axis.height' attribute.",
+          "displayName": "Minor Axis Height",
+          "type": "number",
+          "format": "int32",
+          "units": "pixels"
+        },
+        "scale": {
+          "description": "The time scale used for the minor axis. Equivalent to oj-gantt's 'minor-axis.scale' attribute.",
+          "displayName": "Scale",
+          "type": "string",
+          "enumValues": ["seconds", "minutes", "hours", "days", "weeks", "months", "quarters", "years"]
+        },
+        "zoomOrder": {
+          "description": "An array of strings containing the names of scales used for zooming from longest to shortest. Equivalent to oj-gantt's 'minor-axis.zoom-order' attribute.",
+          "displayName": "Zoom Order",
+          "type": "Array<string>"
+        }
+      }
+    },
+    "start": {
+      "description": "The start time of the gantt in ISO string format. Equivalent to oj-gantt's 'start' attribute.",
+      "displayName": "Gantt Start Time",
+      "format": "date-time",
+      "type": "string",
+      "value": ""
+    },
+    "end": {
+      "description": "The end time of the gantt in ISO string format. Equivalent to oj-gantt's 'end' attribute.",
+      "displayName": "Gantt End Time",
+      "format": "date-time",
+      "type": "string",
+      "value": ""
+    },
+    "viewportStart": {
+      "description": "The viewport start of the gantt in ISO string format. Equivalent to oj-gantt's 'viewport-start' attribute.",
+      "displayName": "Gantt Viewport Start Time",
+      "format": "date-time",
+      "type": "string",
+      "value": ""
+    },
+    "viewportEnd": {
+      "description": "The viewport end of the gantt in ISO string format. Equivalent to oj-gantt's 'viewport-end' attribute.",
+      "displayName": "Gantt Viewport End Time",
+      "format": "date-time",
+      "type": "string",
+      "value": ""
+    },
+    "referenceObjects": {
+      "description": "The array of reference objects associated with the Gantt. Equivalent to oj-gantt's 'reference-objects' attribute.",
+      "displayName": "Gantt Reference Objects",
+      "type": "Array<Object>",
+      "value": []
+    },
+    "gridlines": {
+      "description": "An object defining the minor time axis of the gantt.",
+      "displayName": "Gantt Minor Axis Definition",
+      "type": "Object",
+      "properties": {
+        "horizontal": {
+          "description": "Horizontal gridlines visibility. Equivalent to oj-gantt's 'gridlines.horizontal' attribute.",
+          "displayName": "Horizontal Gridlines Visibility",
+          "type": "string",
+          "enumValues": ["auto", "hidden", "visible"],
+          "value": "auto"
+        },
+        "vertical": {
+          "description": "Vertical gridlines visibility. Equivalent to oj-gantt's 'gridlines.vertical' attribute.",
+          "displayName": "Vertical Gridlines Visibility",
+          "type": "string",
+          "enumValues": ["auto", "hidden", "visible"],
+          "value": "auto"
+        }
+      }
+    },
+    "rowDefaults": {
+      "description": "An object defining the default styling for rows.",
+      "displayName": "Row Defaults",
+      "type": "Object",
+      "properties": {
+        "height": {
+          "description": "The height of the row in pixels.",
+          "displayName": "Row Height",
+          "type": "number",
+          "format": "int32",
+          "units": "pixels",
+          "value": 47
+        }
+      }
+    },
+    "expanded": {
+      "description": "The key set containing the ids of tasks that should be expanded. Equivalent to oj-gantt's 'expanded' attribute.",
+      "displayName": "Expanded Key Set",
+      "type": "KeySet",
+      "writeback": true
+    }
+  },
+  "slots": {
+    "tableRowTemplate": {
+      "description": "Slot for stamping out oj-table rows. Use this slot the same way as using oj-table's rowTemplate slot.",
+      "displayName": "Table row template slot"
+    },
+    "ganttRowTemplate": {
+      "description": "Slot for creating each row of the gantt. Use this slot the same way as using oj-gantt's rowMappingTemplate slot.",
+      "displayName": "Gantt row template slot"
+    },
+    "ganttTaskTemplate": {
+      "description": "Slot for creating each task of the gantt. Use this slot the same way as using oj-gantt's taskMappingTemplate slot.",
+      "displayName": "Gantt task template slot"
+    },
+    "ganttDependencyTemplate": {
+      "description": "Slot for creating each dependency line of the gantt. Use this slot the same way as using oj-gantt's dependencyTemplate slot.",
+      "displayName": "Gantt dependency template slot"
+    }
+  }
+}

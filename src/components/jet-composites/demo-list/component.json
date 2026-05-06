@@ -1,0 +1,40 @@
+{
+  "name": "demo-list",
+  "description": "A component for tracking lists of items.",
+  "displayName": "Demo List",
+  "version": "20.0.0",
+  "jetVersion": ">=20.0.0 <21.0.0",
+  "properties": {
+    "data": {
+      "description": "The data items for this list",
+      "displayName": "Data",
+      "type": "Array<string>",
+      "writeback": true
+    },
+    "header": {
+      "description": "The list header",
+      "displayName": "Header",
+      "type": "string"
+    }
+  },
+  "slots": {
+    "item": {
+      "description": "Slot for stamping out list items.",
+      "data": {
+        "value": {
+          "description": "The value of the current data item when iterating through the data list.",
+          "type": "string"
+        }
+      }
+    },
+    "total": {
+      "description": "Slot for displaying the total item count for this list component.",
+      "data": {
+        "total": {
+          "description": "The current number of items in the data list.",
+          "type": "number"
+        }
+      }
+    }
+  }
+}

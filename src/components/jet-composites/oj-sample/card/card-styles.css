@@ -1,0 +1,32 @@
+oj-sample-card:not(.oj-complete) {
+    visibility: hidden;
+}
+
+oj-sample-card {
+    display: inline-flex;
+    cursor: pointer;
+    padding: 0px !important
+}
+
+oj-sample-card .oj-sample-card-overlay {
+    height: 100%;
+    width: 100%;
+}
+
+
+
+.oj-focus > oj-sample-card.oj-default,
+oj-sample-card.oj-hover,
+oj-sample-card.oj-focus {
+    transform: scale(1.02);
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+oj-sample-card.oj-default {
+    transform: scale(1.00);
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+oj-sample-card.oj-active {
+    transform: scale(1.02);
+}

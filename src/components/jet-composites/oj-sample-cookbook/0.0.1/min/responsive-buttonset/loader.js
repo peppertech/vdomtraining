@@ -1,0 +1,1 @@
+define(["require","exports","./viewModel","ojs/ojcomposite","text!./component.json","text!./view.html","css!./styles"],(function(e,t,o,s,i,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),s.register("oj-sample-cookbook-responsive-buttonset",{view:r,viewModel:o.default,metadata:JSON.parse(i)})}));

@@ -1,0 +1,29 @@
+{
+    "name": "demo-zoo",
+    "description": "An component for tracking zoo animal information including exhibit locations.",
+    "displayName": "Zoo",
+    "version": "20.0.0",
+    "jetVersion": ">=20.0.0 <21.0.0",
+    "properties": {
+        "zooName": {
+            "displayName": "Zoo Name",
+            "type": "string"
+        },
+        "animals": {
+            "description": "The animals at this zoo.",
+            "displayName": "Animals",
+            "type": "Array<Object>",
+            "writeback": true
+        }
+    },
+    "methods": {
+        "addAnimal": {
+            "description": "Adds an animal to the animals property.",
+            "params": [{
+                "name": "animal",
+                "description": "An animal object with name and exhibit properties",
+                "type": "Object"
+            }]
+        }
+    }
+}

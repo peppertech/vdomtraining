@@ -1,0 +1,87 @@
+<oj-bind-if test="[[$properties.deptCount]]">
+  <div class="demo-dept-card-layout-container oj-default">
+    <oj-bind-if test="[[!$properties.more]]">
+      <div class="demo-dept-card-layout-inner">
+        <div
+          class="oj-text-primary-color demo-dept-card-layout-name oj-typography-subheading-xs"
+        >
+          <oj-bind-text value="[[$properties.deptName]]"></oj-bind-text>
+        </div>
+        <div
+          class="oj-text-primary-color demo-dept-card-layout-emp-count oj-typography-body-sm"
+        >
+          <oj-bind-text value="[[$properties.deptCount]]"></oj-bind-text>
+        </div>
+        <div class="oj-flex demo-dept-card-layout-empbox">
+          <oj-avatar
+            role="img"
+            size="xxs"
+            initials="[[$properties.initials]]"
+            src="[[$properties.image]]"
+            class="oj-flex-item"
+            :aria-label="[['Avatar of ' + $properties.name]]"
+          ></oj-avatar>
+          <div
+            class="oj-text-primary-color demo-dept-card-layout-emp-name oj-flex-item oj-typography-body-sm"
+          >
+            <oj-bind-text value="[[$properties.name]]"></oj-bind-text>
+          </div>
+        </div>
+      </div>
+    </oj-bind-if>
+    <oj-bind-if test="[[$properties.more]]">
+      <div class="demo-dept-card-layout-inner-more">
+        <div
+          class="demo-dept-card-layout-more-image"
+          :aria-label="[[viewMoreDepartments]]"
+        ></div>
+        <div
+          class="oj-text-primary-color demo-dept-card-layout-emp-more oj-typography-body-md"
+        >
+          <oj-bind-text value="[[viewMoreDepartments]]"></oj-bind-text>
+        </div>
+      </div>
+    </oj-bind-if>
+  </div>
+</oj-bind-if>
+<oj-bind-if test="[[!$properties.deptCount]]">
+  <div class="demo-dept-card-layout-container-noemps oj-default">
+    <oj-bind-if test="[[!$properties.more]]">
+      <div class="demo-dept-card-layout-inner">
+        <div
+          class="oj-text-primary-color demo-dept-card-layout-name oj-typography-subheading-xs"
+        >
+          <oj-bind-text value="[[$properties.deptName]]"></oj-bind-text>
+        </div>
+        <div class="oj-flex demo-dept-card-layout-empbox">
+          <oj-avatar
+            role="img"
+            size="xxs"
+            initials="[[$properties.initials]]"
+            src="[[$properties.image]]"
+            class="oj-flex-item"
+            :aria-label="[['Avatar of ' + $properties.name]]"
+          ></oj-avatar>
+          <div
+            class="oj-text-primary-color demo-dept-card-layout-emp-name oj-flex-item oj-typography-body-sm"
+          >
+            <oj-bind-text value="[[$properties.name]]"></oj-bind-text>
+          </div>
+        </div>
+      </div>
+    </oj-bind-if>
+    <oj-bind-if test="[[$properties.more]]">
+      <div class="demo-dept-card-layout-inner-more">
+        <div
+          class="demo-dept-card-layout-more-image"
+          :aria-label="[[viewMoreDepartments]]"
+        ></div>
+        <div
+          class="oj-text-primary-color demo-dept-card-layout-emp-more oj-typography-body-md"
+        >
+          <oj-bind-text value="[[viewMoreDepartments]]"></oj-bind-text>
+        </div>
+      </div>
+    </oj-bind-if>
+  </div>
+</oj-bind-if>

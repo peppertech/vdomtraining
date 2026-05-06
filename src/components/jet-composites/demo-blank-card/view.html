@@ -1,0 +1,22 @@
+<div tabindex="0" role="group" class="demo-blank-card-flip-container"
+  on-click="[[flipCard]]" on-keypress="[[flipCard]]" :aria-label="[[$properties.name + ' Press Enter for more info.']]">
+  <div class="demo-blank-card-front-side oj-flex oj-sm-align-items-center">
+    <!-- conditionally render front slot -->
+    <oj-bind-if test="[[isFront]]">
+      <!-- Due to a current limitation, the slot element needs to be wrapped in an HTML 
+        element when it is a child of an oj-bind-if element. -->
+      <div class="oj-flex-item  oj-sm-flex-direction-column">
+        <oj-bind-slot name="front"></oj-bind-slot>
+      </div>
+    </oj-bind-if>
+  </div>
+
+  <div class="demo-blank-card-back-side oj-flex oj-sm-align-items-center">
+    <!-- conditionally render back slot -->
+    <oj-bind-if test="[[!isFront()]]">
+      <div>
+        <oj-bind-slot name="back"></oj-bind-slot>
+      </div>
+    </oj-bind-if>
+  </div>
+</div>

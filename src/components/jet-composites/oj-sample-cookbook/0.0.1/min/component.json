@@ -1,0 +1,23 @@
+{
+    "name": "oj-sample-cookbook",
+    "displayName": "oj-sample-cookbook JET Pack",
+    "type":"pack",
+    "version": "0.0.1",
+    "jetVersion": "<21.0.0",   
+    "description": "A JET Pack containing a set of components specifically intended for building cookbook",
+    "license": "https://opensource.org/licenses/UPL",
+    "dependencies": {
+        "oj-sample-cookbook-demo":"0.0.1",
+        "oj-sample-cookbook-editor":"0.0.1",
+        "oj-sample-cookbook-recipe":"0.0.1",
+        "oj-sample-cookbook-download":"0.0.1",
+        "oj-sample-cookbook-responsive-buttonset":"0.0.1",
+        "oj-sample-cookbook-screen-range-detector":"0.0.1"
+    },
+    "extension": {
+        
+        "catalog": {
+            "coverImage": "coverimage.png"
+        }
+    }
+}

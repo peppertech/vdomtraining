@@ -1,0 +1,16 @@
+/* This is to prevent the flash of unstyled content before the composite properties have been setup. */
+demo-log:not(.oj-complete) {
+  visibility: hidden;
+}
+
+demo-log {
+  display: block;
+}
+
+demo-log .oj-label {
+  font-weight: bold;
+}
+
+demo-log .oj-textarea {
+  max-width: 100%
+}
