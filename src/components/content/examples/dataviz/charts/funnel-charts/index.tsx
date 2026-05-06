@@ -23,13 +23,55 @@ import { funnelChartTargetValuesDescription } from "./funnelChart-targetValues/d
 import { funnelChartTargetValuesRecipe } from "./funnelChart-targetValues/recipe";
 
 const funnelChartItems = [
-  { id: "overview", name: "Overview", description: funnelChartDefaultDescription, recipe: funnelChartDefaultRecipe, Component: FunnelChartDefault },
-  { id: "shaped-data", name: "Shaped Data", description: funnelChartShapedDataDescription, recipe: funnelChartShapedDataRecipe, Component: FunnelChartShapedData },
-  { id: "selection", name: "Selection", description: funnelChartSelectionDescription, recipe: funnelChartSelectionRecipe, Component: FunnelChartSelection },
-  { id: "legend", name: "Legend", description: funnelChartLegendDescription, recipe: funnelChartLegendRecipe, Component: FunnelChartLegend },
-  { id: "target-values", name: "Target Values", description: funnelChartTargetValuesDescription, recipe: funnelChartTargetValuesRecipe, Component: FunnelChartTargetValues },
-  { id: "animation", name: "Animation", description: funnelChartAnimationDescription, recipe: funnelChartAnimationRecipe, Component: FunnelChartAnimation },
-  { id: "styling", name: "Styling", description: funnelChartStylesDescription, recipe: funnelChartStylesRecipe, Component: FunnelChartStyles },
+  {
+    id: "overview",
+    name: "Basic",
+    description: funnelChartDefaultDescription,
+    recipe: funnelChartDefaultRecipe,
+    Component: FunnelChartDefault,
+  },
+  {
+    id: "animation",
+    name: "Animations",
+    description: funnelChartAnimationDescription,
+    recipe: funnelChartAnimationRecipe,
+    Component: FunnelChartAnimation,
+  },
+  {
+    id: "legend",
+    name: "Legend",
+    description: funnelChartLegendDescription,
+    recipe: funnelChartLegendRecipe,
+    Component: FunnelChartLegend,
+  },
+  {
+    id: "selection",
+    name: "Selection",
+    description: funnelChartSelectionDescription,
+    recipe: funnelChartSelectionRecipe,
+    Component: FunnelChartSelection,
+  },
+  {
+    id: "shaped-data",
+    name: "Shaped Data",
+    description: funnelChartShapedDataDescription,
+    recipe: funnelChartShapedDataRecipe,
+    Component: FunnelChartShapedData,
+  },
+  {
+    id: "styling",
+    name: "Styles",
+    description: funnelChartStylesDescription,
+    recipe: funnelChartStylesRecipe,
+    Component: FunnelChartStyles,
+  },
+  {
+    id: "target-values",
+    name: "Target Values",
+    description: funnelChartTargetValuesDescription,
+    recipe: funnelChartTargetValuesRecipe,
+    Component: FunnelChartTargetValues,
+  },
 ];
 
 export default function FunnelChartsRecipePage() {

@@ -37,38 +37,17 @@ import { rangeChartVariableBarWidthRecipe } from "./rangeChart-variableBarWidth/
 const rangeChartItems: RecipePageItem[] = [
   {
     id: "overview",
-    name: "Overview",
+    name: "Basic",
     description: rangeChartDefaultDescription,
     recipe: rangeChartDefaultRecipe,
     Component: RangeChartDefault,
   },
-  {
-    id: "polar",
-    name: "Polar",
-    description: rangeChartPolarDescription,
-    recipe: rangeChartPolarRecipe,
-    Component: RangeChartPolar,
-  },
-  {
-    id: "shaped-data",
-    name: "Shaped Data",
-    description: rangeChartShapedDataDescription,
-    recipe: rangeChartShapedDataRecipe,
-    Component: RangeChartShapedData,
-  },
-  {
-    id: "selection",
-    name: "Selection",
-    description: rangeChartSelectionDescription,
-    recipe: rangeChartSelectionRecipe,
-    Component: RangeChartSelection,
-  },
-  {
-    id: "hide-show",
-    name: "Hide and Show",
-    description: rangeChartHideShowDescription,
-    recipe: rangeChartHideShowRecipe,
-    Component: RangeChartHideShow,
+    {
+    id: "animation",
+    name: "Animations",
+    description: rangeChartAnimationDescription,
+    recipe: rangeChartAnimationRecipe,
+    Component: RangeChartAnimation,
   },
   {
     id: "data-labels",
@@ -78,11 +57,25 @@ const rangeChartItems: RecipePageItem[] = [
     Component: RangeChartDataLabels,
   },
   {
+    id: "hide-show",
+    name: "Hide & Show",
+    description: rangeChartHideShowDescription,
+    recipe: rangeChartHideShowRecipe,
+    Component: RangeChartHideShow,
+  },
+  {
     id: "line-types",
     name: "Line Types",
     description: rangeChartLineTypesDescription,
     recipe: rangeChartLineTypesRecipe,
     Component: RangeChartLineTypes,
+  },
+  {
+    id: "polar",
+    name: "Polar Coordinates",
+    description: rangeChartPolarDescription,
+    recipe: rangeChartPolarRecipe,
+    Component: RangeChartPolar,
   },
   {
     id: "reference-objects",
@@ -92,19 +85,29 @@ const rangeChartItems: RecipePageItem[] = [
     Component: RangeChartRefObject,
   },
   {
+    id: "selection",
+    name: "Selection",
+    description: rangeChartSelectionDescription,
+    recipe: rangeChartSelectionRecipe,
+    Component: RangeChartSelection,
+  },
+  
+  {
+    id: "shaped-data",
+    name: "Shaped Data",
+    description: rangeChartShapedDataDescription,
+    recipe: rangeChartShapedDataRecipe,
+    Component: RangeChartShapedData,
+  },
+  
+  {
     id: "variable-bar-width",
     name: "Variable Bar Width",
     description: rangeChartVariableBarWidthDescription,
     recipe: rangeChartVariableBarWidthRecipe,
     Component: RangeChartVariableBarWidth,
   },
-  {
-    id: "animation",
-    name: "Animation",
-    description: rangeChartAnimationDescription,
-    recipe: rangeChartAnimationRecipe,
-    Component: RangeChartAnimation,
-  },
+  
 ];
 
 export default function RangeChartsRecipePage() {

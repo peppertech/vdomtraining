@@ -32,16 +32,76 @@ import { polarChartStylesDescription } from "./polarChart-styles/description";
 import { polarChartStylesRecipe } from "./polarChart-styles/recipe";
 
 const polarChartItems = [
-  { id: "overview", name: "Overview", description: polarChartDefaultDescription, recipe: polarChartDefaultRecipe, Component: PolarChartDefault },
-  { id: "range", name: "Range", description: polarChartRangeDescription, recipe: polarChartRangeRecipe, Component: PolarChartRange },
-  { id: "shaped-data", name: "Shaped Data", description: polarChartShapedDataDescription, recipe: polarChartShapedDataRecipe, Component: PolarChartShapedData },
-  { id: "selection", name: "Selection", description: polarChartSelectionDescription, recipe: polarChartSelectionRecipe, Component: PolarChartSelection },
-  { id: "hide-show", name: "Hide and Show", description: polarChartHideShowDescription, recipe: polarChartHideShowRecipe, Component: PolarChartHideShow },
-  { id: "line-types", name: "Line Types", description: polarChartLineTypesDescription, recipe: polarChartLineTypesRecipe, Component: PolarChartLineTypes },
-  { id: "line-connectors", name: "Line Connectors", description: polarChartLineConnectorsDescription, recipe: polarChartLineConnectorsRecipe, Component: PolarChartLineConnectors },
-  { id: "reference-objects", name: "Reference Objects", description: polarChartRefObjectDescription, recipe: polarChartRefObjectRecipe, Component: PolarChartRefObject },
-  { id: "animation", name: "Animation", description: polarChartAnimationDescription, recipe: polarChartAnimationRecipe, Component: PolarChartAnimation },
-  { id: "styling", name: "Styling", description: polarChartStylesDescription, recipe: polarChartStylesRecipe, Component: PolarChartStyles },
+  {
+    id: "overview",
+    name: "Basic",
+    description: polarChartDefaultDescription,
+    recipe: polarChartDefaultRecipe,
+    Component: PolarChartDefault,
+  },
+  {
+    id: "animation",
+    name: "Animations",
+    description: polarChartAnimationDescription,
+    recipe: polarChartAnimationRecipe,
+    Component: PolarChartAnimation,
+  },
+  {
+    id: "hide-show",
+    name: "Hide and Show",
+    description: polarChartHideShowDescription,
+    recipe: polarChartHideShowRecipe,
+    Component: PolarChartHideShow,
+  },
+  {
+    id: "line-connectors",
+    name: "Line Connectors",
+    description: polarChartLineConnectorsDescription,
+    recipe: polarChartLineConnectorsRecipe,
+    Component: PolarChartLineConnectors,
+  },
+  {
+    id: "line-types",
+    name: "Line Types",
+    description: polarChartLineTypesDescription,
+    recipe: polarChartLineTypesRecipe,
+    Component: PolarChartLineTypes,
+  },
+  {
+    id: "range",
+    name: "Range Series",
+    description: polarChartRangeDescription,
+    recipe: polarChartRangeRecipe,
+    Component: PolarChartRange,
+  },
+  {
+    id: "reference-objects",
+    name: "Reference Objects",
+    description: polarChartRefObjectDescription,
+    recipe: polarChartRefObjectRecipe,
+    Component: PolarChartRefObject,
+  },
+  {
+    id: "selection",
+    name: "Selection",
+    description: polarChartSelectionDescription,
+    recipe: polarChartSelectionRecipe,
+    Component: PolarChartSelection,
+  },
+  {
+    id: "shaped-data",
+    name: "Shaped Data",
+    description: polarChartShapedDataDescription,
+    recipe: polarChartShapedDataRecipe,
+    Component: PolarChartShapedData,
+  },
+  {
+    id: "styling",
+    name: "Styles",
+    description: polarChartStylesDescription,
+    recipe: polarChartStylesRecipe,
+    Component: PolarChartStyles,
+  },
 ];
 
 export default function PolarChartsRecipePage() {

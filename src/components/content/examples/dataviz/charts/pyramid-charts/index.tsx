@@ -20,12 +20,48 @@ import { pyramidChartStylesDescription } from "./pyramidChart-styles/description
 import { pyramidChartStylesRecipe } from "./pyramidChart-styles/recipe";
 
 const pyramidChartItems = [
-  { id: "overview", name: "Overview", description: pyramidChartDefaultDescription, recipe: pyramidChartDefaultRecipe, Component: PyramidChartDefault },
-  { id: "shaped-data", name: "Shaped Data", description: pyramidChartShapedDataDescription, recipe: pyramidChartShapedDataRecipe, Component: PyramidChartShapedData },
-  { id: "selection", name: "Selection", description: pyramidChartSelectionDescription, recipe: pyramidChartSelectionRecipe, Component: PyramidChartSelection },
-  { id: "legend", name: "Legend", description: pyramidChartLegendDescription, recipe: pyramidChartLegendRecipe, Component: PyramidChartLegend },
-  { id: "animation", name: "Animation", description: pyramidChartAnimationDescription, recipe: pyramidChartAnimationRecipe, Component: PyramidChartAnimation },
-  { id: "styling", name: "Styling", description: pyramidChartStylesDescription, recipe: pyramidChartStylesRecipe, Component: PyramidChartStyles },
+  {
+    id: "overview",
+    name: "Basic",
+    description: pyramidChartDefaultDescription,
+    recipe: pyramidChartDefaultRecipe,
+    Component: PyramidChartDefault,
+  },
+  {
+    id: "animation",
+    name: "Animations",
+    description: pyramidChartAnimationDescription,
+    recipe: pyramidChartAnimationRecipe,
+    Component: PyramidChartAnimation,
+  },
+  {
+    id: "legend",
+    name: "Legend",
+    description: pyramidChartLegendDescription,
+    recipe: pyramidChartLegendRecipe,
+    Component: PyramidChartLegend,
+  },
+  {
+    id: "selection",
+    name: "Selection",
+    description: pyramidChartSelectionDescription,
+    recipe: pyramidChartSelectionRecipe,
+    Component: PyramidChartSelection,
+  },
+  {
+    id: "shaped-data",
+    name: "Shaped Data",
+    description: pyramidChartShapedDataDescription,
+    recipe: pyramidChartShapedDataRecipe,
+    Component: PyramidChartShapedData,
+  },
+  {
+    id: "styling",
+    name: "Styles",
+    description: pyramidChartStylesDescription,
+    recipe: pyramidChartStylesRecipe,
+    Component: PyramidChartStyles,
+  },
 ];
 
 export default function PyramidChartsRecipePage() {

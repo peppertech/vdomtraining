@@ -35,17 +35,84 @@ import { bubbleChartZoomScrollDescription } from "./bubbleChart-zoomScroll/descr
 import { bubbleChartZoomScrollRecipe } from "./bubbleChart-zoomScroll/recipe";
 
 const bubbleChartItems = [
-  { id: "overview", name: "Overview", description: bubbleChartDefaultDescription, recipe: bubbleChartDefaultRecipe, Component: BubbleChartDefault },
-  { id: "shaped-data", name: "Shaped Data", description: bubbleChartShapedDataDescription, recipe: bubbleChartShapedDataRecipe, Component: BubbleChartShapedData },
-  { id: "selection", name: "Selection", description: bubbleChartSelectionDescription, recipe: bubbleChartSelectionRecipe, Component: BubbleChartSelection },
-  { id: "hide-show", name: "Hide and Show", description: bubbleChartHideShowDescription, recipe: bubbleChartHideShowRecipe, Component: BubbleChartHideShow },
-  { id: "data-labels", name: "Data Labels", description: bubbleChartDataLabelsDescription, recipe: bubbleChartDataLabelsRecipe, Component: BubbleChartDataLabels },
-  { id: "line-types", name: "Line Types", description: bubbleChartLineTypesDescription, recipe: bubbleChartLineTypesRecipe, Component: BubbleChartLineTypes },
-  { id: "reference-objects", name: "Reference Objects", description: bubbleChartRefObjectDescription, recipe: bubbleChartRefObjectRecipe, Component: BubbleChartRefObject },
-  { id: "attribute-groups", name: "Attribute Groups", description: bubbleChartAttrGroupsDescription, recipe: bubbleChartAttrGroupsRecipe, Component: BubbleChartAttrGroups },
-  { id: "zoom-scroll", name: "Zoom and Scroll", description: bubbleChartZoomScrollDescription, recipe: bubbleChartZoomScrollRecipe, Component: BubbleChartZoomScroll },
-  { id: "animation", name: "Animation", description: bubbleChartAnimationDescription, recipe: bubbleChartAnimationRecipe, Component: BubbleChartAnimation },
-  { id: "styling", name: "Styling", description: bubbleChartStylesDescription, recipe: bubbleChartStylesRecipe, Component: BubbleChartStyles },
+  {
+    id: "overview",
+    name: "Basic",
+    description: bubbleChartDefaultDescription,
+    recipe: bubbleChartDefaultRecipe,
+    Component: BubbleChartDefault,
+  },
+  {
+    id: "animation",
+    name: "Animations",
+    description: bubbleChartAnimationDescription,
+    recipe: bubbleChartAnimationRecipe,
+    Component: BubbleChartAnimation,
+  },
+
+  {
+    id: "attribute-groups",
+    name: "Attribute Groups",
+    description: bubbleChartAttrGroupsDescription,
+    recipe: bubbleChartAttrGroupsRecipe,
+    Component: BubbleChartAttrGroups,
+  },
+  {
+    id: "data-labels",
+    name: "Data Labels",
+    description: bubbleChartDataLabelsDescription,
+    recipe: bubbleChartDataLabelsRecipe,
+    Component: BubbleChartDataLabels,
+  },
+  {
+    id: "hide-show",
+    name: "Hide and Show",
+    description: bubbleChartHideShowDescription,
+    recipe: bubbleChartHideShowRecipe,
+    Component: BubbleChartHideShow,
+  },
+  {
+    id: "line-types",
+    name: "Line Connectors",
+    description: bubbleChartLineTypesDescription,
+    recipe: bubbleChartLineTypesRecipe,
+    Component: BubbleChartLineTypes,
+  },
+  {
+    id: "reference-objects",
+    name: "Reference Objects",
+    description: bubbleChartRefObjectDescription,
+    recipe: bubbleChartRefObjectRecipe,
+    Component: BubbleChartRefObject,
+  },
+  {
+    id: "selection",
+    name: "Selection",
+    description: bubbleChartSelectionDescription,
+    recipe: bubbleChartSelectionRecipe,
+    Component: BubbleChartSelection,
+  },
+  {
+    id: "shaped-data",
+    name: "Shaped Data",
+    description: bubbleChartShapedDataDescription,
+    recipe: bubbleChartShapedDataRecipe,
+    Component: BubbleChartShapedData,
+  },
+  {
+    id: "styling",
+    name: "Styles",
+    description: bubbleChartStylesDescription,
+    recipe: bubbleChartStylesRecipe,
+    Component: BubbleChartStyles,
+  },
+  {
+    id: "zoom-scroll",
+    name: "Zoom and Scroll",
+    description: bubbleChartZoomScrollDescription,
+    recipe: bubbleChartZoomScrollRecipe,
+    Component: BubbleChartZoomScroll,
+  },
 ];
 
 export default function BubbleChartsRecipePage() {
