@@ -1,0 +1,35 @@
+.demo-container {
+  max-width: 100rem;
+}
+
+.demo-chart-container {
+  height: auto;
+}
+
+.demo-chart-container-sm {
+  padding-inline-end: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.demo-chart-container-md {
+  padding-inline-start: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.demo-chart-container-lg {
+  padding-top: 1.5rem;
+  width: 100%;
+}
+
+.demo-chart {
+  width: 100%;
+  height: 100%;
+}
+
+.demo-chart-md {
+  aspect-ratio: 2.1;
+}
+
+.demo-chart-lg {
+  aspect-ratio: 3.1;
+}

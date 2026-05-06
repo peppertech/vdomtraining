@@ -1,0 +1,86 @@
+[
+  {
+    "id": 0,
+    "series": "Series 1",
+    "group": "Group A",
+    "y": 42,
+    "x": "2014-03-27T00:00Z"
+  },
+  {
+    "id": 1,
+    "series": "Series 1",
+    "group": "Group B",
+    "y": 55,
+    "x": "2014-03-28T00:00Z"
+  },
+  {
+    "id": 2,
+    "series": "Series 1",
+    "group": "Group C",
+    "y": 36,
+    "x": "2014-03-30T00:00Z"
+  },
+  {
+    "id": 3,
+    "series": "Series 1",
+    "group": "Group D",
+    "y": 22,
+    "x": "2014-03-31T00:00Z"
+  },
+  {
+    "id": 4,
+    "series": "Series 1",
+    "group": "Group E",
+    "y": 32,
+    "x": "2014-04-01T00:00Z"
+  },
+  {
+    "id": 5,
+    "series": "Series 1",
+    "group": "Group F",
+    "y": 39,
+    "x": "2014-04-02T00:00Z"
+  },
+  {
+    "id": 6,
+    "series": "Series 2",
+    "group": "Group A",
+    "y": 34,
+    "x": "2014-03-27T00:00Z"
+  },
+  {
+    "id": 7,
+    "series": "Series 2",
+    "group": "Group B",
+    "y": 30,
+    "x": "2014-03-28T00:00Z"
+  },
+  {
+    "id": 8,
+    "series": "Series 2",
+    "group": "Group C",
+    "y": 50,
+    "x": "2014-03-30T00:00Z"
+  },
+  {
+    "id": 9,
+    "series": "Series 2",
+    "group": "Group D",
+    "y": 46,
+    "x": "2014-03-31T00:00Z"
+  },
+  {
+    "id": 10,
+    "series": "Series 2",
+    "group": "Group E",
+    "y": 36,
+    "x": "2014-04-01T00:00Z"
+  },
+  {
+    "id": 11,
+    "series": "Series 2",
+    "group": "Group F",
+    "y": 27,
+    "x": "2014-04-02T00:00Z"
+  }
+]

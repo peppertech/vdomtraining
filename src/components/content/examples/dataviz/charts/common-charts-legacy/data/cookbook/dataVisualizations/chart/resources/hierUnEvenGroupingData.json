@@ -1,0 +1,518 @@
+[
+  {
+    "id": 0,
+    "LOB": "Products",
+    "Region1": "Asia",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 1023204.2155503373
+  },
+  {
+    "id": 1,
+    "LOB": "Products",
+    "Region1": "Asia",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 864703.5782034907
+  },
+  {
+    "id": 2,
+    "LOB": "Products",
+    "Region1": "Asia",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 1177521.88561378
+  },
+  {
+    "id": 3,
+    "LOB": "Products",
+    "Region1": "Asia",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 1470327.49129869
+  },
+  {
+    "id": 4,
+    "LOB": "Products",
+    "Region2": "EMEA",
+    "Region1": "Africa",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 1117845.6974251943
+  },
+  {
+    "id": 5,
+    "LOB": "Products",
+    "Region2": "EMEA",
+    "Region1": "Africa",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 1112229.6182370493
+  },
+  {
+    "id": 6,
+    "LOB": "Products",
+    "Region2": "EMEA",
+    "Region1": "Africa",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 1396261.1307642497
+  },
+  {
+    "id": 7,
+    "LOB": "Products",
+    "Region2": "EMEA",
+    "Region1": "Africa",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 1361334.755445488
+  },
+  {
+    "id": 8,
+    "LOB": "Products",
+    "Region2": "EMEA",
+    "Region1": "Europe",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 1305584.6773172237
+  },
+  {
+    "id": 9,
+    "LOB": "Products",
+    "Region2": "EMEA",
+    "Region1": "Europe",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 1249908.4234781286
+  },
+  {
+    "id": 10,
+    "LOB": "Products",
+    "Region2": "EMEA",
+    "Region1": "Europe",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 1505143.627062216
+  },
+  {
+    "id": 11,
+    "LOB": "Products",
+    "Region2": "EMEA",
+    "Region1": "Europe",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 870034.3213533586
+  },
+  {
+    "id": 12,
+    "LOB": "Products",
+    "Region2": "EMEA",
+    "Region1": "MiddleEast",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 1054108.8294580907
+  },
+  {
+    "id": 13,
+    "LOB": "Products",
+    "Region2": "EMEA",
+    "Region1": "MiddleEast",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 1096555.590477705
+  },
+  {
+    "id": 14,
+    "LOB": "Products",
+    "Region2": "EMEA",
+    "Region1": "MiddleEast",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 1589389.312842477
+  },
+  {
+    "id": 15,
+    "LOB": "Products",
+    "Region2": "EMEA",
+    "Region1": "MiddleEast",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 1088475.3872912452
+  },
+  {
+    "id": 16,
+    "LOB": "Products",
+    "Region1": "North America",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 1055835.2396864388
+  },
+  {
+    "id": 17,
+    "LOB": "Products",
+    "Region1": "North America",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 1330377.0485354145
+  },
+  {
+    "id": 18,
+    "LOB": "Products",
+    "Region1": "North America",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 1581923.0427576567
+  },
+  {
+    "id": 19,
+    "LOB": "Products",
+    "Region1": "North America",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 1373109.7416002632
+  },
+  {
+    "id": 20,
+    "LOB": "Sales",
+    "Region1": "Asia",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 713258.7772360541
+  },
+  {
+    "id": 21,
+    "LOB": "Sales",
+    "Region1": "Asia",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 709489.9214262618
+  },
+  {
+    "id": 22,
+    "LOB": "Sales",
+    "Region1": "Asia",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 673642.0026632826
+  },
+  {
+    "id": 23,
+    "LOB": "Sales",
+    "Region1": "Asia",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 716150.6724702909
+  },
+  {
+    "id": 24,
+    "LOB": "Sales",
+    "Region2": "EMEA",
+    "Region1": "Africa",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 582153.0269858997
+  },
+  {
+    "id": 25,
+    "LOB": "Sales",
+    "Region2": "EMEA",
+    "Region1": "Africa",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 652877.4256906534
+  },
+  {
+    "id": 26,
+    "LOB": "Sales",
+    "Region2": "EMEA",
+    "Region1": "Africa",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 824164.3598334674
+  },
+  {
+    "id": 27,
+    "LOB": "Sales",
+    "Region2": "EMEA",
+    "Region1": "Africa",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 532936.8834664187
+  },
+  {
+    "id": 28,
+    "LOB": "Sales",
+    "Region2": "EMEA",
+    "Region1": "Europe",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 695289.9123550327
+  },
+  {
+    "id": 29,
+    "LOB": "Sales",
+    "Region2": "EMEA",
+    "Region1": "Europe",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 978388.169269107
+  },
+  {
+    "id": 30,
+    "LOB": "Sales",
+    "Region2": "EMEA",
+    "Region1": "Europe",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 996835.272780046
+  },
+  {
+    "id": 31,
+    "LOB": "Sales",
+    "Region2": "EMEA",
+    "Region1": "Europe",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 902480.7954544349
+  },
+  {
+    "id": 32,
+    "LOB": "Sales",
+    "Region2": "EMEA",
+    "Region1": "MiddleEast",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 706092.4940691184
+  },
+  {
+    "id": 33,
+    "LOB": "Sales",
+    "Region2": "EMEA",
+    "Region1": "MiddleEast",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 874250.2362897181
+  },
+  {
+    "id": 34,
+    "LOB": "Sales",
+    "Region2": "EMEA",
+    "Region1": "MiddleEast",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 717004.7706006062
+  },
+  {
+    "id": 35,
+    "LOB": "Sales",
+    "Region2": "EMEA",
+    "Region1": "MiddleEast",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 956153.0733340409
+  },
+  {
+    "id": 36,
+    "LOB": "Sales",
+    "Region1": "North America",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 695381.8656128863
+  },
+  {
+    "id": 37,
+    "LOB": "Sales",
+    "Region1": "North America",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 670919.4690035768
+  },
+  {
+    "id": 38,
+    "LOB": "Sales",
+    "Region1": "North America",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 554305.4795787116
+  },
+  {
+    "id": 39,
+    "LOB": "Sales",
+    "Region1": "North America",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 895580.5541548087
+  },
+  {
+    "id": 40,
+    "LOB": "Support",
+    "Region1": "Asia",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 493582.03122697904
+  },
+  {
+    "id": 41,
+    "LOB": "Support",
+    "Region1": "Asia",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 477171.6801068784
+  },
+  {
+    "id": 42,
+    "LOB": "Support",
+    "Region1": "Asia",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 300890.5581987131
+  },
+  {
+    "id": 43,
+    "LOB": "Support",
+    "Region1": "Asia",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 349748.0481357413
+  },
+  {
+    "id": 44,
+    "LOB": "Support",
+    "Region2": "EMEA",
+    "Region1": "Africa",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 418654.5699508827
+  },
+  {
+    "id": 45,
+    "LOB": "Support",
+    "Region2": "EMEA",
+    "Region1": "Africa",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 537809.5262475931
+  },
+  {
+    "id": 46,
+    "LOB": "Support",
+    "Region2": "EMEA",
+    "Region1": "Africa",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 381123.2274764677
+  },
+  {
+    "id": 47,
+    "LOB": "Support",
+    "Region2": "EMEA",
+    "Region1": "Africa",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 357938.9227448935
+  },
+  {
+    "id": 48,
+    "LOB": "Support",
+    "Region2": "EMEA",
+    "Region1": "Europe",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 526026.2048236222
+  },
+  {
+    "id": 49,
+    "LOB": "Support",
+    "Region2": "EMEA",
+    "Region1": "Europe",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 567239.074602742
+  },
+  {
+    "id": 50,
+    "LOB": "Support",
+    "Region2": "EMEA",
+    "Region1": "Europe",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 559969.7722817403
+  },
+  {
+    "id": 51,
+    "LOB": "Support",
+    "Region2": "EMEA",
+    "Region1": "Europe",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 397220.0781397846
+  },
+  {
+    "id": 52,
+    "LOB": "Support",
+    "Region2": "EMEA",
+    "Region1": "MiddleEast",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 516092.49944347143
+  },
+  {
+    "id": 53,
+    "LOB": "Support",
+    "Region2": "EMEA",
+    "Region1": "MiddleEast",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 571177.2862657696
+  },
+  {
+    "id": 54,
+    "LOB": "Support",
+    "Region2": "EMEA",
+    "Region1": "MiddleEast",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 447509.69170542445
+  },
+  {
+    "id": 55,
+    "LOB": "Support",
+    "Region2": "EMEA",
+    "Region1": "MiddleEast",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 566873.8483474427
+  },
+  {
+    "id": 56,
+    "LOB": "Support",
+    "Region1": "North America",
+    "Product": "Hardware",
+    "Period": "Q1",
+    "revenue": 470260.47318964434
+  },
+  {
+    "id": 57,
+    "LOB": "Support",
+    "Region1": "North America",
+    "Product": "Hardware",
+    "Period": "Q2",
+    "revenue": 573905.0122117342
+  },
+  {
+    "id": 58,
+    "LOB": "Support",
+    "Region1": "North America",
+    "Product": "Software",
+    "Period": "Q1",
+    "revenue": 522030.17048285564
+  },
+  {
+    "id": 59,
+    "LOB": "Support",
+    "Region1": "North America",
+    "Product": "Software",
+    "Period": "Q2",
+    "revenue": 421704.4808558862
+  }
+]

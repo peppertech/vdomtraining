@@ -1,0 +1,84 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": 0,
+    "department": "Clothing",
+    "season": "Fall",
+    "supervisor": "Tom",
+    "value": 42,
+    "totalDeptHires": 76
+  },
+  {
+    "id": 1,
+    "department": "Clothing",
+    "season": "Spring",
+    "supervisor": "Jen",
+    "value": 34,
+    "totalDeptHires": 76
+  },
+  {
+    "id": 2,
+    "department": "Electronics",
+    "season": "Fall",
+    "supervisor": "Lu",
+    "value": 55,
+    "totalDeptHires": 85
+  },
+  {
+    "id": 3,
+    "department": "Electronics",
+    "season": "Spring",
+    "supervisor": "James",
+    "value": 30,
+    "totalDeptHires": 85
+  },
+  {
+    "id": 4,
+    "department": "Household Products",
+    "season": "Fall",
+    "supervisor": "Kwame",
+    "value": 36,
+    "totalDeptHires": 86
+  },
+  {
+    "id": 5,
+    "department": "Household Products",
+    "season": "Spring",
+    "supervisor": "Mary",
+    "value": 50,
+    "totalDeptHires": 86
+  },
+  {
+    "id": 6,
+    "department": "Produce",
+    "season": "Fall",
+    "supervisor": "Samantha",
+    "value": 22,
+    "totalDeptHires": 68
+  },
+  {
+    "id": 7,
+    "department": "Produce",
+    "season": "Spring",
+    "supervisor": "Eric",
+    "value": 46,
+    "totalDeptHires": 68
+  },
+  {
+    "id": 8,
+    "department": "Stationery",
+    "season": "Fall",
+    "supervisor": "Joe",
+    "value": 28,
+    "totalDeptHires": 68
+  },
+  {
+    "id": 9,
+    "department": "Stationery",
+    "season": "Spring",
+    "supervisor": "Betty",
+    "value": 40,
+    "totalDeptHires": 68
+  }
+]
+ }; });
+
