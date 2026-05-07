@@ -9,6 +9,7 @@ import { ratingGaugeOverviewcorepackRecipe } from "./ratingGauge-overviewcorepac
 import { RatingGaugeEventscorepack } from "./ratingGauge-eventscorepack/ratingGauge-eventscorepack";
 import { ratingGaugeEventscorepackDescription } from "./ratingGauge-eventscorepack/description";
 import { ratingGaugeEventscorepackRecipe } from "./ratingGauge-eventscorepack/recipe";
+import "css!./rating-gauge-corepack.css";
 
 const ratingGaugeCorePackItems: RecipePageItem[] = [
   {

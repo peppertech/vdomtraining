@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo } from 'preact/hooks';
-import * as jsonData from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojnbox';
 
@@ -15,24 +14,13 @@ type Employee = {
   background?: string;
 };
 
+type NodeTemplateContext = {
+  data: Employee;
+};
+
+const employees = JSON.parse(jsonDataText as string) as Employee[];
+
 export const NBoxDefault = () => {
-  const employees = JSON.parse(jsonData) as Employee[];
-  const data = useMemo(
-    () =>
-      employees.map((employee) => ({
-        label: employee.name,
-        secondaryLabel: employee.position,
-        row: employee.potential,
-        column: employee.performance,
-        shortDesc: `${employee.name} - ${employee.position}`,
-        icon: {
-          source: employee.image ? `images/hcm/placeholder-${employee.image}.png` : '',
-          initials: employee.initials,
-          background: employee.background
-        }
-      })),
-    [employees]
-  );
   const rows = useMemo(() => [{ id: '0' }, { id: '1' }, { id: '2' }], []);
   const columns = useMemo(() => [{ id: '0' }, { id: '1' }, { id: '2' }], []);
   const cells = useMemo(() => [
@@ -82,22 +70,44 @@ export const NBoxDefault = () => {
           shortDesc: 'High Potential, Good Performance'
       }
   ], []);
-  const dataProvider = useMemo(() => new ArrayDataProvider(data, {
-      keyAttributes: 'label'
-  }), [data]);
+  const dataProvider = useMemo(
+    () => new ArrayDataProvider<Employee['name'], Employee>(employees, { keyAttributes: 'name' }),
+    []
+  );
+
+  const nodeTemplateRenderer = (current: NodeTemplateContext) => {
+    const employee = current.data;
+
+    return (
+      <oj-n-box-node
+        label={employee.name}
+        secondaryLabel={employee.position}
+        row={employee.potential}
+        column={employee.performance}
+        shortDesc={`${employee.name} - ${employee.position}`}
+        icon={{
+          source: employee.image ? `images/hcm/placeholder-${employee.image}.png` : '',
+          initials: employee.initials,
+          background: employee.background
+        }}
+      />
+    );
+  };
 
   return (
       <oj-n-box
         id="nbox-container"
-        animation-on-data-change="auto"
+        animationOnDataChange="auto"
         data={dataProvider}
         rows={rows}
         columns={columns}
         cells={cells}
-        rows-title="Potential"
-        columns-title="Performance"
+        rowsTitle="Potential"
+        columnsTitle="Performance"
         aria-label="NBox showing employees grouped by potential and performance."
-      />
+      >
+        <template slot="nodeTemplate" render={nodeTemplateRenderer} />
+      </oj-n-box>
     );
 };
 

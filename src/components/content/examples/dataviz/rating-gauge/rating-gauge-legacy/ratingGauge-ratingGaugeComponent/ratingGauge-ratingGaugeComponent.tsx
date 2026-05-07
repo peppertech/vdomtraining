@@ -44,7 +44,7 @@ export const RatingGaugeRatingGaugeComponent = () => {
   });
 
   return (
-    <div id="gauge-container" class="oj-typography-body-lg">
+    <div id="gauge-container" class="oj-typography-body-lg rating-gauge-legacy-overview">
       <div class="demo-grid">
         <div class="oj-typography-heading-sm">Size</div>
         <div id="small" class="oj-typography-heading-sm oj-sm-margin-4x-bottom">Small*</div>
@@ -250,7 +250,7 @@ export const RatingGaugeRatingGaugeComponent = () => {
         </div>
       </div>
 
-      <div class="oj-typography-body-md oj-typography-semi-bold oj-sm-margin-4x-top">
+      <div class="rating-gauge-overview-note oj-typography-body-md oj-typography-semi-bold oj-sm-margin-4x-top">
         * <i>sm</i> and <i>md</i> sizes are not recommended for interactive gauges as the touch
         target sizes are not large enough to meet the accessibility guidelines.
       </div>

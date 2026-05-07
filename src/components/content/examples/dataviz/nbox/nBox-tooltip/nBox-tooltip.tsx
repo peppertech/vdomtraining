@@ -1,23 +1,56 @@
-// @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Fragment, h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import * as jsonData from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
+import { h } from 'preact';
+import type { ComponentProps } from 'preact';
+import { useCallback, useMemo } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import { ojNBox } from 'ojs/ojnbox';
 import 'ojs/ojnbox';
 
+type Employee = {
+  name: string;
+  position: string;
+  department: string;
+  role: 'Manager' | 'Individual Contributor';
+  experience: string;
+  performance: string;
+  potential: string;
+  image?: string;
+  initials?: string;
+  background?: string;
+};
+
+const employees = JSON.parse(jsonDataText as string) as Employee[];
+
+type NodeTemplateContext = {
+  data: Employee;
+};
+
+type TooltipContent = {
+  element: HTMLDivElement;
+  labelText: Element;
+  secondaryLabelText: Element;
+  roleText: Element;
+};
+
 export const NBoxTooltip = () => {
-  const tooltipElem: any = document.createElement('div');
   const colorHandler = useMemo(() => new ColorAttributeGroupHandler({
       Manager: '#195f74',
       'Individual Contributor': '#32925e'
   }), []);
-  const data: any = JSON.parse(jsonData);
-  const labelText: any = tooltipElem.children[0];
-  const secondaryLabelText: any = tooltipElem.children[1];
-  const roleText: any = tooltipElem.children[2];
+  const data = employees;
+  const tooltipContent = useMemo<TooltipContent>(() => {
+      const element = document.createElement('div');
+      element.innerHTML =
+        '<div id="labelText" class="oj-sm-padding-2x bold"></div><div id="secondaryLabelText" class="oj-sm-padding-2x"></div><div id="roleText" class="oj-sm-padding-2x"></div>';
+
+      return {
+        element,
+        labelText: element.children[0],
+        secondaryLabelText: element.children[1],
+        roleText: element.children[2]
+      };
+  }, []);
   const rows = useMemo(() => [
       {
           id: '0'
@@ -87,7 +120,7 @@ export const NBoxTooltip = () => {
           shortDesc: 'High Potential, Good Performance'
       }
   ], []);
-  const dataProvider = useMemo(() => new ArrayDataProvider(data, {
+  const dataProvider = useMemo(() => new ArrayDataProvider<Employee['name'], Employee>(data, {
       keyAttributes: 'name'
   }), [data]);
 
@@ -95,25 +128,61 @@ export const NBoxTooltip = () => {
       return colorHandler.getValue(role);
   };
 
-  const tooltipFunction = (dataContext: ojNBox.TooltipContext<string>) => {
-      dataContext.parentElement['style'].borderColor = dataContext.indicatorColor;
-      labelText.textContent = dataContext.label;
-      secondaryLabelText.textContent = dataContext.secondaryLabel;
-      roleText.textContent =
-          dataContext.indicatorColor == '#195f74' ? 'Manager' : 'Individual Contributor';
-      // Return the elem and the chart will append it to the parentElement
+  const tooltipFunction = useCallback((dataContext: ojNBox.TooltipContext<Employee['name']>) => {
+      const parentElement = dataContext.parentElement as HTMLElement;
+      const employee = data.find((item) => item.name === dataContext.id);
+
+      parentElement.style.borderColor = dataContext.indicatorColor;
+      tooltipContent.labelText.textContent = dataContext.label;
+      tooltipContent.secondaryLabelText.textContent = dataContext.secondaryLabel;
+      tooltipContent.roleText.textContent = employee?.role ?? '';
+
       return {
-          insert: tooltipElem
+          insert: tooltipContent.element
       };
+  }, [data, tooltipContent]);
+
+  const nboxTooltipProps = useMemo(
+    () =>
+      ({
+        'tooltip.renderer': tooltipFunction
+      }) as unknown as Partial<ComponentProps<'oj-n-box'>>,
+    [tooltipFunction]
+  );
+
+  const nodeTemplateRenderer = (current: NodeTemplateContext) => {
+    const employee = current.data;
+
+    return (
+      <oj-n-box-node
+        label={employee.name}
+        secondaryLabel={employee.position}
+        row={employee.potential}
+        column={employee.performance}
+        shortDesc={`${employee.name} - ${employee.position}`}
+        indicatorColor={getColor(employee.role)}
+        icon={{
+          source: employee.image ? `images/hcm/placeholder-${employee.image}.png` : '',
+          initials: employee.initials,
+          background: employee.background
+        }}
+      />
+    );
   };
 
   return (
-      <oj-n-box id="nbox-container" animation-on-data-change="auto" data={dataProvider} rows={rows} columns={columns} cells={cells} rows-title="Potential" columns-title="Performance" {...{ 'tooltip.renderer': tooltipFunction }}>
-            <template slot="nodeTemplate" render={($current) => (
-                  <>
-                      <oj-n-box-node label={$current.data.name} secondary-label={$current.data.position} row={$current.data.potential} column={$current.data.performance} short-desc={$current.data.name + ' - ' + $current.data.position} indicator-color={getColor($current.data.role)} {...{ 'icon.source': $current.data.image ? 'images/hcm/placeholder-' + $current.data.image + '.png' : '', 'icon.initials': $current.data.initials, 'icon.background': $current.data.background }} />
-                  </>
-                )} />
+      <oj-n-box
+        id="nbox-container"
+        animationOnDataChange="auto"
+        data={dataProvider}
+        rows={rows}
+        columns={columns}
+        cells={cells}
+        rowsTitle="Potential"
+        columnsTitle="Performance"
+        {...nboxTooltipProps}
+      >
+            <template slot="nodeTemplate" render={nodeTemplateRenderer} />
         </oj-n-box>
     );
 };

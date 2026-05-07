@@ -1,9 +1,10 @@
-// @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Fragment, h } from 'preact';
+import { h } from 'preact';
+import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
-import * as jsonData from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import 'css!./demo.css';
 import 'ojs/ojnbox';
 import 'ojs/ojinputtext';
 import 'ojs/ojinputnumber';
@@ -13,9 +14,30 @@ import '../../../../../jet-composites/demo-input-json/loader';
 import '../../../../../jet-composites/demo-select-enum/loader';
 import '../../../../../jet-composites/demo-tabs/loader';
 import 'ojs/ojoption';
+
+type Employee = {
+    name: string;
+    position: string;
+    potential: string;
+    performance: string;
+    image?: string;
+    initials?: string;
+    background?: string;
+};
+
+type NodeTemplateContext = {
+    data: Employee;
+};
+
 type PropertyChangedEvent<T> = CustomEvent<{
     value: T;
 }>;
+type NullableArrayChangedEvent<T> = CustomEvent<{
+    value: T[] | null;
+}>;
+
+const data = JSON.parse(jsonDataText as string) as Employee[];
+
 export const NBoxStyles = () => {
     const [currentTab, setCurrentTab] = useState<any>('gridStyles');
     const [rowsTitleStyle, setRowsTitleStyle] = useState<any>({ color: '#000000' });
@@ -37,8 +59,10 @@ export const NBoxStyles = () => {
     const [nodeSecondaryLabelStyle, setNodeSecondaryLabelStyle] = useState<any>({ color: '#000000' });
     const [nodeBorderColor, setNodeBorderColor] = useState<any>('rgb(0,0,0)');
     const [nodeBorderWidth, setNodeBorderWidth] = useState<any>(0);
-    const data: any = JSON.parse(jsonData as string);
-    const dataProvider = useMemo(() => new ArrayDataProvider(data, { keyAttributes: 'name' }), [data]);
+    const dataProvider = useMemo(
+        () => new ArrayDataProvider<Employee['name'], Employee>(data, { keyAttributes: 'name' }),
+        []
+    );
     const disableCustomCount = useMemo(() => !cellShowCount[0], [cellShowCount]);
     const rows = useMemo(() => rowLabelShow[0]
         ? [
@@ -146,38 +170,38 @@ export const NBoxStyles = () => {
     const handleRowsTitleStyleValueChanged = (event: PropertyChangedEvent<any>) => {
         setRowsTitleStyle(event.detail.value);
     };
-    const handleRowsTitleShowValueChanged = (event: PropertyChangedEvent<any[]>) => {
-        setRowsTitleShow(event.detail.value);
+    const handleRowsTitleShowValueChanged = (event: NullableArrayChangedEvent<any>) => {
+        setRowsTitleShow(event.detail.value ?? []);
     };
     const handleRowLabelStyleValueChanged = (event: PropertyChangedEvent<any>) => {
         setRowLabelStyle(event.detail.value);
     };
-    const handleRowLabelShowValueChanged = (event: PropertyChangedEvent<any[]>) => {
-        setRowLabelShow(event.detail.value);
+    const handleRowLabelShowValueChanged = (event: NullableArrayChangedEvent<any>) => {
+        setRowLabelShow(event.detail.value ?? []);
     };
     const handleColumnsTitleStyleValueChanged = (event: PropertyChangedEvent<any>) => {
         setColumnsTitleStyle(event.detail.value);
     };
-    const handleColumnsTitleShowValueChanged = (event: PropertyChangedEvent<any[]>) => {
-        setColumnsTitleShow(event.detail.value);
+    const handleColumnsTitleShowValueChanged = (event: NullableArrayChangedEvent<any>) => {
+        setColumnsTitleShow(event.detail.value ?? []);
     };
     const handleColumnLabelStyleValueChanged = (event: PropertyChangedEvent<any>) => {
         setColumnLabelStyle(event.detail.value);
     };
-    const handleColumnLabelShowValueChanged = (event: PropertyChangedEvent<any[]>) => {
-        setColumnLabelShow(event.detail.value);
+    const handleColumnLabelShowValueChanged = (event: NullableArrayChangedEvent<any>) => {
+        setColumnLabelShow(event.detail.value ?? []);
     };
     const handleCellLabelStyleValueChanged = (event: PropertyChangedEvent<any>) => {
         setCellLabelStyle(event.detail.value);
     };
-    const handleCellLabelShowValueChanged = (event: PropertyChangedEvent<any[]>) => {
-        setCellLabelShow(event.detail.value);
+    const handleCellLabelShowValueChanged = (event: NullableArrayChangedEvent<any>) => {
+        setCellLabelShow(event.detail.value ?? []);
     };
-    const handleCellShowCountValueChanged = (event: PropertyChangedEvent<any[]>) => {
-        setCellShowCount(event.detail.value);
+    const handleCellShowCountValueChanged = (event: NullableArrayChangedEvent<any>) => {
+        setCellShowCount(event.detail.value ?? []);
     };
-    const handleCellCustomCountValueChanged = (event: PropertyChangedEvent<any[]>) => {
-        setCellCustomCount(event.detail.value);
+    const handleCellCustomCountValueChanged = (event: NullableArrayChangedEvent<any>) => {
+        setCellCustomCount(event.detail.value ?? []);
     };
     const handleCellLabelAlignValueChanged = (event: PropertyChangedEvent<any>) => {
         setCellLabelAlign(event.detail.value);
@@ -200,15 +224,49 @@ export const NBoxStyles = () => {
     const handleNodeBorderWidthValueChanged = (event: PropertyChangedEvent<any>) => {
         setNodeBorderWidth(event.detail.value);
     };
+
+    const nboxStyleProps = useMemo(
+        () =>
+            ({
+                styleDefaults,
+                countLabel: customCountLabelFunc
+            }) as unknown as Partial<ComponentProps<'oj-n-box'>>,
+        [customCountLabelFunc, styleDefaults]
+    );
+
+    const nodeTemplateRenderer = (current: NodeTemplateContext) => {
+        const employee = current.data;
+
+        return (
+            <oj-n-box-node
+                label={employee.name}
+                secondaryLabel={employee.position}
+                row={employee.potential}
+                column={employee.performance}
+                shortDesc={`${employee.name} - ${employee.position}`}
+                icon={{
+                    source: employee.image ? `images/hcm/placeholder-${employee.image}.png` : '',
+                    initials: employee.initials,
+                    background: employee.background
+                }}
+            />
+        );
+    };
+
     return (<div id="nbox-container" class="oj-flex">
-      <oj-n-box id="nbox" class="demo-nbox-flex-style" animation-on-data-change="auto" data={dataProvider} rows={rows} columns={columns} cells={cells} rows-title={rowsTitle} columns-title={columnsTitle} style-defaults={styleDefaults} count-label={customCountLabelFunc}>
-        <template slot="nodeTemplate" render={($current: any) => (<>
-              <oj-n-box-node label={$current.data.name} secondary-label={$current.data.position} row={$current.data.potential} column={$current.data.performance} short-desc={$current.data.name + ' - ' + $current.data.position} {...{
-            'icon.source': $current.data.image ? 'images/hcm/placeholder-' + $current.data.image + '.png' : '',
-            'icon.initials': $current.data.initials,
-            'icon.background': $current.data.background
-        }}/>
-            </>)}/>
+      <oj-n-box
+        id="nbox"
+        class="demo-nbox-flex-style"
+        animationOnDataChange="auto"
+        data={dataProvider}
+        rows={rows}
+        columns={columns}
+        cells={cells}
+        rowsTitle={rowsTitle}
+        columnsTitle={columnsTitle}
+        {...nboxStyleProps}
+      >
+        <template slot="nodeTemplate" render={nodeTemplateRenderer} />
       </oj-n-box>
       <demo-tabs class="oj-flex-item" headers={tabHeaders} onvalueChanged={handleCurrentTabValueChanged} value={currentTab}>
         <div class="oj-sm-padding-1x">
@@ -241,7 +299,7 @@ export const NBoxStyles = () => {
             <demo-input-json id="nodeLabel" onvalueChanged={handleNodeLabelStyleValueChanged} value={nodeLabelStyle} labelHint="Label Style"/>
             <demo-input-json id="nodeSecondaryLabel" onvalueChanged={handleNodeSecondaryLabelStyleValueChanged} value={nodeSecondaryLabelStyle} labelHint="Secondary Label Style"/>
             <oj-input-text id="nodeBorderColor" onvalueChanged={handleNodeBorderColorValueChanged} value={nodeBorderColor} label-hint="Border Color"/>
-            <oj-input-number id="nodeBorderWidth" onvalueChanged={handleNodeBorderWidthValueChanged} value={nodeBorderWidth} label-hint="Border Width" min="0" max="10"/>
+            <oj-input-number id="nodeBorderWidth" onvalueChanged={handleNodeBorderWidthValueChanged} value={nodeBorderWidth} label-hint="Border Width" min={0} max={10}/>
           </oj-form-layout>
         </div>
       </demo-tabs>

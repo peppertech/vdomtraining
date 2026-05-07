@@ -65,6 +65,23 @@ const circleLayout = (context: DiagramContext, radius: number, clockwise = true)
     updateLinks(context);
 };
 
+const positionNodeLabelBelowIcon = (node: any, labelGap = 8) => {
+    const position = node.getPosition();
+    const bounds = node.getBounds();
+    const labelBounds = node.getLabelBounds();
+
+    if (!labelBounds) {
+        return;
+    }
+
+    node.setLabelHalign('center');
+    node.setLabelValign('top');
+    node.setLabelPosition({
+        x: position.x + bounds.w / 2 - labelBounds.w / 2,
+        y: position.y + bounds.h + labelGap
+    });
+};
+
 export const gridLayout = (context: DiagramContext, columns = 3, horizontalGap = 180, verticalGap = 120) => {
     const count = context.getNodeCount();
     const center = getDiagramCenter(context);
@@ -88,6 +105,16 @@ export const gridLayout = (context: DiagramContext, columns = 3, horizontalGap =
 export const circleLayoutWithLayoutArgs = (radius: number) => {
     return (context: DiagramContext) => {
         circleLayout(context, radius);
+    };
+};
+
+export const circleLayoutWithLabelsBelow = (radius: number, labelGap = 8) => {
+    return (context: DiagramContext) => {
+        circleLayout(context, radius);
+
+        for (let index = 0; index < context.getNodeCount(); index++) {
+            positionNodeLabelBelowIcon(context.getNodeByIndex(index), labelGap);
+        }
     };
 };
 

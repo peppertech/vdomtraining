@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { h } from 'preact';
 
 export const nBoxDefaultRecipe = (
@@ -25,9 +24,11 @@ export const nBoxDefaultRecipe = (
         attribute to provide cell specific properties (e.g. shortDesc).
       </li>
       <li>
-        Shape each data item using the
-        <a target={"_blank"} href={"jsdocs/oj.ojNBox.html#Node"}>ojNBox.Node</a>
-        properties, including label, row, column, icon, and shortDesc.
+        Configure nodes by adding an
+        <a target={"_blank"} href={"jsdocs/oj.ojNBoxNode.html"}>oj-n-box-node</a>
+        element as content for the
+        <a target={"_blank"} href={"jsdocs/oj.ojNBox.html#nodeTemplate"}>nodeTemplate</a>
+        slot and setting its properties based on the DataProvider rows.
       </li>
       <li>
         <b>Accessibility</b>

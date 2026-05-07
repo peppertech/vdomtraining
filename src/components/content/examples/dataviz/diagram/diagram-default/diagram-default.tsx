@@ -37,7 +37,7 @@ export const DiagramDefault = () => {
     const [zoomingValue, setZoomingValue] = useState<DiagramZooming>('none');
     const data = jsonData;
     const colorHandler = useMemo(() => new ColorAttributeGroupHandler(), []);
-    const layoutFunc = layout.circleLayoutWithLayoutArgs(150);
+    const layoutFunc = layout.circleLayoutWithLabelsBelow(150);
     const nodeDataProvider = useMemo(() => new ArrayDataProvider(data.nodes, {
         keyAttributes: 'id'
     }), [data]);
@@ -62,11 +62,13 @@ export const DiagramDefault = () => {
         return <oj-diagram-link startNode={link.data.start} endNode={link.data.end} shortDesc={"Link " + link.data.id + ", Category " + link.data.category + ", connects " + link.data.start + " to " + link.data.end} color={colorHandler.getValue(link.data.category)} startConnectorType="none" endConnectorType="arrow"/>;
     };
     return (<div id="diagram-container">
+            <div class="oj-sm-padding-4x-start oj-sm-margin-4x-bottom" style={{ position: 'relative', zIndex: 1 }}>
             <oj-form-layout aria-controls="diagram1" maxColumns={2}>
                     <demo-radioset-enum direction="row" id="radioButtonset1" labelHint="Panning" enumValues={["none", "auto"]} onvalueChanged={handlePanningValueValueChanged} value={panningValue}/>
                     <demo-radioset-enum id="radioButtonset2" direction="row" labelHint="Zooming" onvalueChanged={handleZoomingValueValueChanged} value={zoomingValue} enumValues={["none", "auto"]}/>
                 </oj-form-layout>
-            <oj-diagram id="diagram1" animationOnDataChange="auto" panning={panningValue} zooming={zoomingValue} minZoom={.5} maxZoom={2} nodeData={nodeDataProvider} linkData={linkDataProvider} layout={layoutFunc} aria-label="This is a simple diagram that shows how to render Nodes and Links">
+            </div>
+            <oj-diagram id="diagram1" animationOnDataChange="auto" panning={panningValue} zooming={zoomingValue} minZoom={.5} maxZoom={2} nodeData={nodeDataProvider} linkData={linkDataProvider} layout={layoutFunc} aria-label="This is a simple diagram that shows how to render Nodes and Links" style={{ display: 'block', height: '520px' }}>
                     <template slot="nodeTemplate" render={nodeTemplateRenderer}/>
                     <template slot="linkTemplate" render={linkTemplateRenderer}/>
                 </oj-diagram>

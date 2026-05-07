@@ -40,11 +40,18 @@ const nBoxItems: RecipePageItem[] = [
     Component: NBoxDefault,
   },
   {
-    id: "shaped-data",
-    name: "Shaped Data",
-    description: nBoxShapedDataDescription,
-    recipe: nBoxShapedDataRecipe,
-    Component: NBoxShapedData,
+    id: "context-menu",
+    name: "Context Menu",
+    description: nBoxContextMenuDescription,
+    recipe: nBoxContextMenuRecipe,
+    Component: NBoxContextMenu,
+  },
+  {
+    id: "tooltip",
+    name: "Custom Tooltip",
+    description: nBoxTooltipDescription,
+    recipe: nBoxTooltipRecipe,
+    Component: NBoxTooltip,
   },
   {
     id: "grouping",
@@ -54,6 +61,13 @@ const nBoxItems: RecipePageItem[] = [
     Component: NBoxGrouping,
   },
   {
+    id: "shaped-data",
+    name: "Shaped Data",
+    description: nBoxShapedDataDescription,
+    recipe: nBoxShapedDataRecipe,
+    Component: NBoxShapedData,
+  },
+  {
     id: "styles",
     name: "Styles",
     description: nBoxStylesDescription,
@@ -61,18 +75,11 @@ const nBoxItems: RecipePageItem[] = [
     Component: NBoxStyles,
   },
   {
-    id: "tooltip",
-    name: "Tooltip",
-    description: nBoxTooltipDescription,
-    recipe: nBoxTooltipRecipe,
-    Component: NBoxTooltip,
-  },
-  {
-    id: "context-menu",
-    name: "Context Menu",
-    description: nBoxContextMenuDescription,
-    recipe: nBoxContextMenuRecipe,
-    Component: NBoxContextMenu,
+    id: "performance",
+    name: "Performance",
+    description: nBoxPerformanceDescription,
+    recipe: nBoxPerformanceRecipe,
+    Component: NBoxPerformance,
   },
   {
     id: "drag-and-drop-events",
@@ -87,13 +94,6 @@ const nBoxItems: RecipePageItem[] = [
     description: nBoxDndSampleDescription,
     recipe: nBoxDndSampleRecipe,
     Component: NBoxDndSample,
-  },
-  {
-    id: "performance",
-    name: "Performance",
-    description: nBoxPerformanceDescription,
-    recipe: nBoxPerformanceRecipe,
-    Component: NBoxPerformance,
   },
 ];
 

@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Fragment, h } from 'preact';
+import { h } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
-import * as jsonData from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ojNBox } from 'ojs/ojnbox';
 import { ojMenu } from 'ojs/ojmenu';
@@ -9,16 +8,38 @@ import 'ojs/ojnbox';
 import 'ojs/ojmenu';
 import 'ojs/ojoption';
 
-type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type Employee = {
+  name: string;
+  position: string;
+  potential: string;
+  performance: string;
+  image?: string;
+  initials?: string;
+  background?: string;
+};
+
+type Cell = {
+  row: string;
+  column: string;
+  shortDesc: string;
+};
+
+type NodeTemplateContext = {
+  data: Employee;
+};
+
+type SelectionKey = string | number;
+type SelectionChangedEvent = CustomEvent<{ value?: SelectionKey[] }>;
+
+const employees = JSON.parse(jsonDataText as string) as Employee[];
 
 export const NBoxContextMenu = () => {
-  const [selectedMenuItem, setSelectedMenuItem] = useState<any>('(None selected yet)');
-  const [selectedItemsValue, setSelectedItemsValue] = useState<any>([]);
+  const [selectedMenuItem, setSelectedMenuItem] = useState('(None selected yet)');
+  const [selectedItemsValue, setSelectedItemsValue] = useState<SelectionKey[]>([]);
 
-  const cellRef = useRef<any>(null);
-  const nodeRef = useRef<any>(null);
+  const cellRef = useRef<Cell | null>(null);
+  const nodeRef = useRef<Employee | null>(null);
 
-  const data: any = JSON.parse(jsonData);
   const rows = useMemo(() => [
       {
           id: '0'
@@ -41,7 +62,7 @@ export const NBoxContextMenu = () => {
           id: '2'
       }
   ], []);
-  const cells = useMemo(() => [
+  const cells = useMemo<Cell[]>(() => [
       {
           row: '0',
           column: '0',
@@ -88,35 +109,35 @@ export const NBoxContextMenu = () => {
           shortDesc: 'High Potential, Good Performance'
       }
   ], []);
-  const dataProvider = useMemo(() => new ArrayDataProvider(data, {
+  const dataProvider = useMemo(() => new ArrayDataProvider<number, Employee>(employees, {
       keyAttributes: '@index'
-  }), [data]);
+  }), []);
 
-  const handleSelectedItemsValueSelectionChanged = (event: PropertyChangedEvent<any>) => {
-    setSelectedItemsValue(event.detail.value);
+  const handleSelectedItemsValueSelectionChanged = (event: SelectionChangedEvent) => {
+    setSelectedItemsValue(event.detail.value ?? []);
   };
 
   const beforeOpenFunction = (event: ojMenu.ojBeforeOpen) => {
-      (nodeRef.current = null), (cellRef.current = null);
+      nodeRef.current = null;
+      cellRef.current = null;
       const target = event.detail.originalEvent.target as HTMLElement;
       if (target.id === 'nbox1') {
           // Handle keyboard interaction.
           const selection = selectedItemsValue;
           if (selection.length > 0) {
-              const id = selection[0];
-              nodeRef.current = data[id];
+              nodeRef.current = employees[Number(selection[0])];
           }
       }
       else {
           // Handle mouse interaction
-          const nbox = document.getElementById('nbox1') as ojNBox<string, Record<string, string>>;
+          const nbox = document.getElementById('nbox1') as ojNBox<number, Employee>;
           const context = nbox.getContextByNode(target);
           if (context != null) {
               if (context.subId == 'oj-nbox-node') {
-                  nodeRef.current = data[context['id']];
+                  nodeRef.current = employees[Number(context['id'])];
               }
               else if (context.subId == 'oj-nbox-cell') {
-                  for (let obj of cells) {
+                  for (const obj of cells) {
                       if (obj.row == context.row && obj.column == context.column) {
                           cellRef.current = obj;
                           break;
@@ -128,7 +149,7 @@ export const NBoxContextMenu = () => {
   };
 
   const menuItemAction = (event: ojMenu.ojMenuAction) => {
-      const text = event.detail.selectedValue;
+      const text = String(event.detail.selectedValue);
       if (nodeRef.current) {
           setSelectedMenuItem(text + ' from Node ' + nodeRef.current.name);
       }
@@ -140,14 +161,41 @@ export const NBoxContextMenu = () => {
       }
   };
 
+  const nodeTemplateRenderer = (current: NodeTemplateContext) => {
+    const employee = current.data;
+
+    return (
+      <oj-n-box-node
+        label={employee.name}
+        secondaryLabel={employee.position}
+        row={employee.potential}
+        column={employee.performance}
+        shortDesc={`${employee.name} - ${employee.position}`}
+        icon={{
+          source: employee.image ? `images/hcm/placeholder-${employee.image}.png` : '',
+          initials: employee.initials,
+          background: employee.background
+        }}
+      />
+    );
+  };
+
   return (
       <div id="nbox-container">
-            <oj-n-box id="nbox1" animation-on-data-change="auto" data={dataProvider} rows={rows} columns={columns} cells={cells} rows-title="Potential" onselectionChanged={handleSelectedItemsValueSelectionChanged} selection={selectedItemsValue} selection-mode="single" columns-title="Performance">
-                    <template slot="nodeTemplate" render={($current) => (
-                            <>
-                                <oj-n-box-node label={$current.data.name} secondary-label={$current.data.position} row={$current.data.potential} column={$current.data.performance} short-desc={$current.data.name + ' - ' + $current.data.position} {...{ 'icon.source': $current.data.image ? 'images/hcm/placeholder-' + $current.data.image + '.png' : '', 'icon.initials': $current.data.initials, 'icon.background': $current.data.background }} />
-                            </>
-                          )} />
+            <oj-n-box
+              id="nbox1"
+              animationOnDataChange="auto"
+              data={dataProvider}
+              rows={rows}
+              columns={columns}
+              cells={cells}
+              rowsTitle="Potential"
+              onselectionChanged={handleSelectedItemsValueSelectionChanged}
+              selection={selectedItemsValue}
+              selectionMode="single"
+              columnsTitle="Performance"
+            >
+                    <template slot="nodeTemplate" render={nodeTemplateRenderer} />
                     <oj-menu slot="contextMenu" aria-label="Edit" onojMenuAction={menuItemAction} onojBeforeOpen={beforeOpenFunction}>
                               <oj-option value="Action 1">Action 1</oj-option>
                               <oj-option value="Action 2">Action 2</oj-option>

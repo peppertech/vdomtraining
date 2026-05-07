@@ -45,39 +45,18 @@ import { pictoChartTooltipRecipe } from "./pictoChart-tooltip/recipe";
 
 const pictoChartLegacyItems: RecipePageItem[] = [
   {
-    id: "animation",
-    name: "Animation",
-    description: pictoChartAnimationDescription,
-    recipe: pictoChartAnimationRecipe,
-    Component: PictoChartAnimation,
-  },
-  {
-    id: "custom-images",
-    name: "Custom Images",
-    description: pictoChartCustomImagesDescription,
-    recipe: pictoChartCustomImagesRecipe,
-    Component: PictoChartCustomImages,
-  },
-  {
-    id: "custom-shapes",
-    name: "Custom Shapes",
-    description: pictoChartCustomShapesDescription,
-    recipe: pictoChartCustomShapesRecipe,
-    Component: PictoChartCustomShapes,
-  },
-  {
-    id: "dashboard",
-    name: "Dashboard",
-    description: pictoChartDashboardDescription,
-    recipe: pictoChartDashboardRecipe,
-    Component: PictoChartDashboard,
-  },
-  {
     id: "default",
     name: "Basic",
     description: pictoChartDefaultDescription,
     recipe: pictoChartDefaultRecipe,
     Component: PictoChartDefault,
+  },
+  {
+    id: "animation",
+    name: "Animations",
+    description: pictoChartAnimationDescription,
+    recipe: pictoChartAnimationRecipe,
+    Component: PictoChartAnimation,
   },
   {
     id: "fractions",
@@ -94,6 +73,20 @@ const pictoChartLegacyItems: RecipePageItem[] = [
     Component: PictoChartLayout,
   },
   {
+    id: "custom-images",
+    name: "Markers: Custom Images",
+    description: pictoChartCustomImagesDescription,
+    recipe: pictoChartCustomImagesRecipe,
+    Component: PictoChartCustomImages,
+  },
+  {
+    id: "custom-shapes",
+    name: "Markers: Custom Shapes",
+    description: pictoChartCustomShapesDescription,
+    recipe: pictoChartCustomShapesRecipe,
+    Component: PictoChartCustomShapes,
+  },
+   {
     id: "mixed-sizes",
     name: "Mixed Sizes",
     description: pictoChartMixedSizesDescription,
@@ -109,11 +102,28 @@ const pictoChartLegacyItems: RecipePageItem[] = [
   },
   {
     id: "selection",
-    name: "Selection",
+    name: "Selection & Drilling",
     description: pictoChartSelectionDescription,
     recipe: pictoChartSelectionRecipe,
     Component: PictoChartSelection,
   },
+  {
+    id: "tooltip",
+    name: "Tooltip Customization",
+    description: pictoChartTooltipDescription,
+    recipe: pictoChartTooltipRecipe,
+    Component: PictoChartTooltip,
+  },
+  {
+    id: "dashboard",
+    name: "Use Case: Dashboard",
+    description: pictoChartDashboardDescription,
+    recipe: pictoChartDashboardRecipe,
+    Component: PictoChartDashboard,
+  },
+  
+  
+ 
   {
     id: "shaped",
     name: "Shaped",
@@ -128,13 +138,7 @@ const pictoChartLegacyItems: RecipePageItem[] = [
     recipe: pictoChartSingletonRecipe,
     Component: PictoChartSingleton,
   },
-  {
-    id: "tooltip",
-    name: "Tooltip",
-    description: pictoChartTooltipDescription,
-    recipe: pictoChartTooltipRecipe,
-    Component: PictoChartTooltip,
-  },
+  
 ];
 
 export default function PictoChartLegacyRecipePage() {

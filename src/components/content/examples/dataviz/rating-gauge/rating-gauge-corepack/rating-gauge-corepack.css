@@ -1,0 +1,22 @@
+#ratingGaugeCorePackNavigationLayout {
+  width: 100%;
+  max-width: 100%;
+  align-items: flex-start;
+}
+
+#ratingGaugeCorePackNavigationLayout > .oj-flex-item {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+#ratingGaugeCorePackNavigationLayout .demo-layout-template {
+  min-width: 0;
+  padding-left: 1rem;
+}
+
+#ratingGaugeCorePackNavigationLayout .demo-layout-template__demo-section > div {
+  min-width: 0;
+  overflow-x: auto;
+}

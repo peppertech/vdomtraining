@@ -1,23 +1,44 @@
-.demo-grid {
-    overflow-y: hidden;
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: minmax(6.25rem, 1fr) minmax(12.5rem, 1fr) minmax(12.5rem, 1fr) minmax(
-        12.5rem,
-        1fr
-      );
-  }
-  
-  .demo-custom-size-vertical {
-    height: 100%;
-    max-height: 6rem;
-  }
-  
-  .demo-text {
-    max-width: 12rem;
-  }
-  
-  .demo-gauge-narrow-cell {
-    max-width: 15rem;
-  }
-  
+.rating-gauge-corepack-overview .demo-grid {
+  width: 100%;
+  min-width: 75rem;
+  overflow: visible;
+  display: grid;
+  grid-gap: 1rem;
+  align-items: center;
+  grid-auto-rows: minmax(5rem, auto);
+  grid-template-columns: minmax(6.25rem, 0.8fr) repeat(3, minmax(12.5rem, 1fr));
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+}
+
+.rating-gauge-corepack-overview .demo-custom-size-vertical {
+  height: 100%;
+  max-height: 6rem;
+}
+
+.rating-gauge-corepack-overview .demo-text {
+  max-width: 12rem;
+}
+
+.rating-gauge-corepack-overview .demo-gauge-narrow-cell {
+  max-width: 15rem;
+}
+
+.rating-gauge-corepack-overview .demo-gauge-narrow-cell,
+.rating-gauge-corepack-overview .demo-gauge-wide-cell {
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+}
+
+.rating-gauge-corepack-overview oj-c-rating-gauge {
+  display: block;
+  width: 100%;
+}
+
+.rating-gauge-corepack-overview .rating-gauge-overview-note {
+  display: block;
+  position: relative;
+  margin-top: 3rem !important;
+  clear: both;
+}

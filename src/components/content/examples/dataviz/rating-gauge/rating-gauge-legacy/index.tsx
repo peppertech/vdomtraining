@@ -9,11 +9,12 @@ import { ratingGaugeRatingGaugeComponentRecipe } from "./ratingGauge-ratingGauge
 import { RatingGaugeRatingGaugeEvents } from "./ratingGauge-ratingGaugeEvents/ratingGauge-ratingGaugeEvents";
 import { ratingGaugeRatingGaugeEventsDescription } from "./ratingGauge-ratingGaugeEvents/description";
 import { ratingGaugeRatingGaugeEventsRecipe } from "./ratingGauge-ratingGaugeEvents/recipe";
+import "css!./rating-gauge-legacy.css";
 
 const ratingGaugeLegacyItems: RecipePageItem[] = [
   {
-    id: "component",
-    name: "Component",
+    id: "overview",
+    name: "Overview",
     description: ratingGaugeRatingGaugeComponentDescription,
     recipe: ratingGaugeRatingGaugeComponentRecipe,
     Component: RatingGaugeRatingGaugeComponent,
@@ -34,7 +35,7 @@ export default function RatingGaugeLegacyRecipePage() {
       componentType="oj-rating-gauge"
       layoutId="ratingGaugeLegacyNavigationLayout"
       items={ratingGaugeLegacyItems}
-      initialItemId="component"
+      initialItemId="overview"
       navigationTitle="Rating Gauge"
     />
   );

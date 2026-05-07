@@ -1,16 +1,27 @@
-// @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Fragment, h } from 'preact';
+import { h } from 'preact';
+import type { ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
-import * as jsonData from 'text!../data/cookbook/dataVisualizations/nBox/resources/employeesNoInitials.json';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employeesNoInitials.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojnbox';
 import { DemoDataTransfer } from './DemoDataTransfer';
+import 'css!./demo.css';
+import 'ojs/ojnbox';
 import 'ojs/ojlistview';
 import 'ojs/ojlistviewdnd';
 import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
 import { ojListView } from 'ojs/ojlistview';
+
+type EmployeeNode = {
+    name: string;
+    position: string;
+    potential: string;
+    performance: string;
+    image?: string;
+    initials?: string;
+    background?: string;
+};
 
 interface DataInfo {
     id: string;
@@ -19,407 +30,540 @@ interface DataInfo {
     image: string;
 }
 
-type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type TransferNode = {
+    id?: string;
+    name?: string;
+    label?: string;
+    title?: string;
+    position?: string;
+    image?: string;
+};
 
-const initialListData = [
-  {
-      id: 'i1',
-      name: 'Chris Black',
-      title: 'Oracle Cloud Infrastructure GTM Channel Director EMEA',
-      image: 'images/hcm/placeholder-male-01.png'
-  },
-  {
-      id: 'i2',
-      name: 'Christine Cooper',
-      title: 'Senior Principal Escalation Manager',
-      image: 'images/hcm/placeholder-female-01.png'
-  },
-  {
-      id: 'i3',
-      name: 'Chris Benalamore',
-      title: 'Area Business Operations Director EMEA & JAPAC',
-      image: 'images/hcm/placeholder-male-03.png'
-  },
-  {
-      id: 'i4',
-      name: 'Christopher Johnson',
-      title: 'Vice-President HCM Application Development',
-      image: 'images/hcm/placeholder-male-04.png'
-  },
-  {
-      id: 'i5',
-      name: 'Samire Christian',
-      title: 'Consulting Project Technical Manager',
-      image: 'images/hcm/placeholder-male-05.png'
-  },
-  {
-      id: 'i6',
-      name: 'Kurt Marchris',
-      title: 'Customer Service Analyst',
-      image: 'images/hcm/placeholder-male-06.png'
-  }
+type Cell = {
+    row: string;
+    column: string;
+    shortDesc: string;
+};
+
+type NBoxCellContext = {
+    row: string | number;
+    column: string | number;
+};
+
+type NodeTemplateContext = {
+    data: EmployeeNode;
+};
+
+type ListItemTemplateContext = {
+    key: string;
+    item: {
+        data: DataInfo;
+        metadata: {
+            key: string;
+        };
+    };
+};
+
+type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type ClipboardAction = 'cut' | 'copy' | 'none' | null;
+
+const initialEmployees = JSON.parse(jsonDataText as string) as EmployeeNode[];
+
+const initialListData: DataInfo[] = [
+    {
+        id: 'i1',
+        name: 'Chris Black',
+        title: 'Oracle Cloud Infrastructure GTM Channel Director EMEA',
+        image: 'images/hcm/placeholder-male-01.png'
+    },
+    {
+        id: 'i2',
+        name: 'Christine Cooper',
+        title: 'Senior Principal Escalation Manager',
+        image: 'images/hcm/placeholder-female-01.png'
+    },
+    {
+        id: 'i3',
+        name: 'Chris Benalamore',
+        title: 'Area Business Operations Director EMEA & JAPAC',
+        image: 'images/hcm/placeholder-male-03.png'
+    },
+    {
+        id: 'i4',
+        name: 'Christopher Johnson',
+        title: 'Vice-President HCM Application Development',
+        image: 'images/hcm/placeholder-male-04.png'
+    },
+    {
+        id: 'i5',
+        name: 'Samire Christian',
+        title: 'Consulting Project Technical Manager',
+        image: 'images/hcm/placeholder-male-05.png'
+    },
+    {
+        id: 'i6',
+        name: 'Kurt Marchris',
+        title: 'Customer Service Analyst',
+        image: 'images/hcm/placeholder-male-06.png'
+    }
 ];
 
 export const NBoxDndSample = () => {
-  const [data, setData] = useState<any[]>(JSON.parse(jsonData));
-  const [cutItem, setCutItem] = useState<any>(undefined);
-  const [currentItem, setCurrentItem] = useState<any>(undefined);
-  const [listArr, setListArr] = useState<any[]>(initialListData);
+    const [data, setData] = useState<EmployeeNode[]>(initialEmployees);
+    const [cutItem, setCutItem] = useState<string | null>();
+    const [currentItem, setCurrentItem] = useState<string>();
+    const [listArr, setListArr] = useState<DataInfo[]>(initialListData);
 
-  const latestNboxActionRef = useRef<any>('none');
-  const latestListviewActionRef = useRef<any>('none');
-  const dragItemIdRef = useRef<any>(null);
+    const latestNboxActionRef = useRef<ClipboardAction>('none');
+    const latestListviewActionRef = useRef<ClipboardAction>('none');
+    const dragItemIdRef = useRef<string | null>(null);
 
-  const clipboard = useMemo(() => new DemoDataTransfer(), []);
-  const rows = useMemo(() => [{ id: '0' }, { id: '1' }, { id: '2' }], []);
-  const columns = useMemo(() => [{ id: '0' }, { id: '1' }, { id: '2' }], []);
-  const cells = useMemo(() => [
-      {
-          row: '0',
-          column: '0',
-          shortDesc: 'Low Potential, Poor Performance'
-      },
-      {
-          row: '0',
-          column: '1',
-          shortDesc: 'Low Potential, Fair Performance'
-      },
-      {
-          row: '0',
-          column: '2',
-          shortDesc: 'Low Potential, Good Performance'
-      },
-      {
-          row: '1',
-          column: '0',
-          shortDesc: 'Medium Potential, Poor Performance'
-      },
-      {
-          row: '1',
-          column: '1',
-          shortDesc: 'Medium Potential, Fair Performance'
-      },
-      {
-          row: '1',
-          column: '2',
-          shortDesc: 'Medium Potential, Good Performance'
-      },
-      {
-          row: '2',
-          column: '0',
-          shortDesc: 'High Potential, Poor Performance'
-      },
-      {
-          row: '2',
-          column: '1',
-          shortDesc: 'High Potential, Fair Performance'
-      },
-      {
-          row: '2',
-          column: '2',
-          shortDesc: 'High Potential, Good Performance'
-      }
-  ], []);
-  const dataProvider1 = useMemo(() => new ArrayDataProvider(data, {
-      keyAttributes: 'name'
-  }), [data]);
-  const _: any = undefined;
-  const listDataProvider = useMemo(() => new ArrayDataProvider(listArr, {
-      keyAttributes: 'id'
-  }), [listArr]);
+    const clipboard = useMemo(() => new DemoDataTransfer(), []);
+    const rows = useMemo(() => [{ id: '0' }, { id: '1' }, { id: '2' }], []);
+    const columns = useMemo(() => [{ id: '0' }, { id: '1' }, { id: '2' }], []);
+    const cells = useMemo<Cell[]>(() => [
+        {
+            row: '0',
+            column: '0',
+            shortDesc: 'Low Potential, Poor Performance'
+        },
+        {
+            row: '0',
+            column: '1',
+            shortDesc: 'Low Potential, Fair Performance'
+        },
+        {
+            row: '0',
+            column: '2',
+            shortDesc: 'Low Potential, Good Performance'
+        },
+        {
+            row: '1',
+            column: '0',
+            shortDesc: 'Medium Potential, Poor Performance'
+        },
+        {
+            row: '1',
+            column: '1',
+            shortDesc: 'Medium Potential, Fair Performance'
+        },
+        {
+            row: '1',
+            column: '2',
+            shortDesc: 'Medium Potential, Good Performance'
+        },
+        {
+            row: '2',
+            column: '0',
+            shortDesc: 'High Potential, Poor Performance'
+        },
+        {
+            row: '2',
+            column: '1',
+            shortDesc: 'High Potential, Fair Performance'
+        },
+        {
+            row: '2',
+            column: '2',
+            shortDesc: 'High Potential, Good Performance'
+        }
+    ], []);
+    const dataProvider = useMemo(() => new ArrayDataProvider<EmployeeNode['name'], EmployeeNode>(data, {
+        keyAttributes: 'name'
+    }), [data]);
+    const listDataProvider = useMemo(() => new ArrayDataProvider<DataInfo['id'], DataInfo>(listArr, {
+        keyAttributes: 'id'
+    }), [listArr]);
 
-  const handleCurrentItemCurrentItemChanged = (event: PropertyChangedEvent<any>) => {
-    setCurrentItem(event.detail.value);
-  };
+    const handleCurrentItemChanged = (event: PropertyChangedEvent<string>) => {
+        setCurrentItem(event.detail.value);
+    };
 
-  const onNBoxDrop = (event: DragEvent, context: {
-      row: number;
-      column: number;
-  }) => {
-      let fromLS = false;
-      let dropData = event.dataTransfer?.getData('application/nbox');
-      if (!dropData) {
-          dropData = event.dataTransfer?.getData('application/ojlistviewitems');
-          fromLS = true;
-      }
-      if (dropData) {
-          _drop(context.row, context.column, dropData, false, fromLS);
-      }
-  };
+    const onNBoxDrop = (event: DragEvent, context: NBoxCellContext) => {
+        let fromListView = false;
+        let dropData = event.dataTransfer?.getData('application/nbox') ?? '';
+        if (!dropData) {
+            dropData = event.dataTransfer?.getData('application/ojlistviewitems') ?? '';
+            fromListView = true;
+        }
+        if (dropData) {
+            _drop(context.row, context.column, dropData, false, fromListView);
+        }
+    };
 
-  const cutRequest = (event: any) => {
-      _keyboardCutCopy(event, 'cut');
-  };
+    const cutRequest = (event: any) => {
+        _keyboardCutCopy(event, 'cut');
+    };
 
-  const copyRequest = (event: any) => {
-      _keyboardCutCopy(event, 'copy');
-  };
+    const copyRequest = (event: any) => {
+        _keyboardCutCopy(event, 'copy');
+    };
 
-  const pasteRequest = (event: any) => {
-      const isCopy = latestNboxActionRef.current === 'copy';
-      let fromLS = false;
-      let dropData = clipboard.getData('application/nbox');
-      if (!dropData) {
-          dropData = clipboard.getData('application/ojlistviewitems');
-          fromLS = true;
-      }
-      clipboard.setData('application/nbox', null);
-      if (!dropData)
-          return;
-      const target = event.detail.target;
-      const row = target.row;
-      const column = target.column;
-      if (isCopy && !fromLS)
-          return;
-      _drop(row, column, dropData, true, fromLS);
-      setCutItem(null);
-  };
+    const pasteRequest = (event: any) => {
+        const isCopy = latestNboxActionRef.current === 'copy';
+        let fromListView = false;
+        let dropData = clipboard.getData('application/nbox');
+        if (!dropData) {
+            dropData = clipboard.getData('application/ojlistviewitems');
+            fromListView = true;
+        }
+        clipboard.setData('application/nbox', null);
+        if (!dropData) {
+            return;
+        }
+        const target = event.detail.target;
+        const row = target.row;
+        const column = target.column;
+        if (isCopy && !fromListView) {
+            return;
+        }
+        _drop(row, column, dropData, true, fromListView);
+        setCutItem(null);
+    };
 
-  const _drop = (row: number, column: number, dropData: string, keyboard: boolean, fromLS: boolean) => {
-      const data = JSON.parse(dropData);
-      let dataObj = data;
-      const names = [];
-      for (let i = 0; i < dataObj.length; i++) {
-          names.push(dataObj[i].name || dataObj[i].id);
-      }
-      const newNames = [];
-      if (fromLS) {
-          listArr.remove((s: any) => {
-              if (names.includes(s.name)) {
-                  newNames.push(s);
-                  return latestListviewActionRef.current !== 'copy' ? true : false;
-              }
-              return false;
-          });
-          listArr.valueHasMutated();
-      }
-      else {
-          data.remove((s: any) => {
-              if (names.includes(s.name)) {
-                  newNames.push(s);
-                  return true;
-              }
-              return false;
-          });
-      }
-      for (let i = 0; i < newNames.length; i++) {
-          const newName = newNames[i];
-          newName.potential = row;
-          newName.performance = column;
-          if (fromLS) {
-              newName.image = newName.image.split('placeholder-')[1].split('.png')[0];
-              newName.position = newName.title;
-          }
-          data.unshift(newName);
-      }
-      let accText;
-      const cell = _findCellDesc(column.toString(), row.toString());
-      if (newNames.length > 1) {
-          accText = `Moved multiple nodes from ${fromLS ? 'listview ' : ''}to ${cell} cell`;
-      }
-      else {
-          accText = `Moved node ${fromLS ? dataObj[0].name : dataObj[0].label} from ${fromLS ? 'listview ' : 'nbox '} to ${cell} cell`;
-      }
-      accText = accText + (keyboard ? ' via keyboard' : ' via drag and drop');
-      _updateAcc(accText);
-      latestListviewActionRef.current = 'none';
-      latestNboxActionRef.current = 'none';
-      clipboard.setData('application/nbox', null);
-      clipboard.setData('application/ojlistviewitems', null);
-  };
+    const _drop = (
+        row: string | number,
+        column: string | number,
+        dropData: string,
+        keyboard: boolean,
+        fromListView: boolean
+    ) => {
+        const dataObj = JSON.parse(dropData) as TransferNode[];
+        const names: string[] = [];
+        for (let i = 0; i < dataObj.length; i++) {
+            const itemName = dataObj[i].name ?? dataObj[i].id;
+            if (itemName) {
+                names.push(itemName);
+            }
+        }
 
-  const _keyboardCutCopy = (event: any, type: any) => {
-      const src = event.detail.source;
-      const jsonStr = JSON.stringify(src);
-      clipboard.setData('application/nbox', jsonStr);
-      latestNboxActionRef.current = type;
-      _updateAcc(`${src[0].id} ${type === 'copy' ? 'Copied' : 'Cut'}`);
-  };
+        let movedItems: Array<DataInfo | EmployeeNode> = [];
+        if (fromListView) {
+            movedItems = listArr.filter((item) => names.includes(item.name));
+            if (latestListviewActionRef.current !== 'copy') {
+                setListArr((items) => items.filter((item) => !names.includes(item.name)));
+            }
+        }
+        else {
+            movedItems = data.filter((item) => names.includes(item.name));
+        }
 
-  const _updateAcc = (text: any) => {
-      const acc = document.getElementById('accInfo');
-      acc.textContent = text;
-  };
+        const movedNodes = movedItems.map((item) => {
+            const movedNode = {
+                ...item,
+                potential: String(row),
+                performance: String(column)
+            } as EmployeeNode;
+            if (fromListView && 'title' in item) {
+                movedNode.image = item.image.split('placeholder-')[1]?.split('.png')[0] ?? item.image;
+                movedNode.position = item.title;
+            }
+            return movedNode;
+        });
+        const remainingNodes = fromListView ? data : data.filter((item) => !names.includes(item.name));
+        setData([...movedNodes, ...remainingNodes]);
 
-  const _findCellDesc = (col: string, row: string) => {
-      const cells = cells;
-      for (let i = 0; i < cells.length; i++) {
-          const cell = cells[i];
-          if (cell.row === row && cell.column === col) {
-              return cell.shortDesc;
-          }
-      }
-  };
+        let accText;
+        const cell = _findCellDesc(String(column), String(row));
+        if (movedItems.length > 1) {
+            accText = `Moved multiple nodes from ${fromListView ? 'listview ' : ''}to ${cell} cell`;
+        }
+        else {
+            const movedLabel = fromListView ? dataObj[0].name : dataObj[0].label;
+            accText = `Moved node ${movedLabel} from ${fromListView ? 'listview ' : 'nbox '} to ${cell} cell`;
+        }
+        accText = accText + (keyboard ? ' via keyboard' : ' via drag and drop');
+        _updateAcc(accText);
+        latestListviewActionRef.current = 'none';
+        latestNboxActionRef.current = 'none';
+        clipboard.setData('application/nbox', null);
+        clipboard.setData('application/ojlistviewitems', null);
+    };
 
-  const handleDrop = (event: DragEvent, context: ojListView.ItemsDropContext) => {
-      event.preventDefault();
-      let index = -1;
-      if (context.item) {
-          const itemContext = (document.getElementById('listview') as ojListView<DataInfo['id'], DataInfo>).getContextByNode(context.item);
-          index = itemContext.index;
-          if (context.position === 'after') {
-              index += 1;
-          }
-      }
-      const dataStr = event.dataTransfer.getData('application/nbox');
-      _listDrop(dataStr, false, index);
-  };
+    const _keyboardCutCopy = (event: any, type: 'cut' | 'copy') => {
+        const src = event.detail.source;
+        const jsonStr = JSON.stringify(src);
+        clipboard.setData('application/nbox', jsonStr);
+        latestNboxActionRef.current = type;
+        _updateAcc(`${src[0].id} ${type === 'copy' ? 'Copied' : 'Cut'}`);
+    };
 
-  const handleDragStart = (event: DragEvent) => {
-      const dataStr = event.dataTransfer.getData('application/ojlistviewitems');
-      const data = JSON.parse(dataStr);
-      dragItemIdRef.current = data[0].id;
-  };
+    const _updateAcc = (text: string) => {
+        const acc = document.getElementById('accInfo');
+        if (acc) {
+            acc.textContent = text;
+        }
+    };
 
-  const handleDragEnd = (event: DragEvent) => {
-      if (event.dataTransfer.dropEffect !== 'none') {
-          _removeSourceItem(dragItemIdRef.current);
-      }
-  };
+    const _findCellDesc = (col: string, row: string) => {
+        for (let i = 0; i < cells.length; i++) {
+            const cell = cells[i];
+            if (cell.row === row && cell.column === col) {
+                return cell.shortDesc;
+            }
+        }
+    };
 
-  const handleKeyDown = (event: any) => {
-      if ((event.ctrlKey || event.metaKey) && event.key === 'x') {
-          _cutCurrentItem();
-      }
-      else if ((event.ctrlKey || event.metaKey) && event.key === 'c') {
-          _copyCurrentItem();
-      }
-      else if ((event.ctrlKey || event.metaKey) && event.key === 'v') {
-          _paste();
-      }
-  };
+    const handleDrop = (event: DragEvent, context: ojListView.ItemsDropContext) => {
+        event.preventDefault();
+        let index = -1;
+        if (context.item) {
+            const listView = document.getElementById('listview') as ojListView<DataInfo['id'], DataInfo> | null;
+            const itemContext = listView?.getContextByNode(context.item);
+            if (itemContext) {
+                index = itemContext.index;
+                if (context.position === 'after') {
+                    index += 1;
+                }
+            }
+        }
+        const dataStr = event.dataTransfer?.getData('application/nbox') ?? '';
+        _listDrop(dataStr, false, index);
+    };
 
-  const _cutCurrentItem = () => {
-      _cutCopyKeyboardListview('cut');
-  };
+    const handleDragStart = (event: DragEvent) => {
+        const dataStr = event.dataTransfer?.getData('application/ojlistviewitems') ?? '';
+        if (!dataStr) {
+            return;
+        }
+        const transferData = JSON.parse(dataStr) as DataInfo[];
+        dragItemIdRef.current = transferData[0]?.id ?? null;
+    };
 
-  const _copyCurrentItem = () => {
-      _cutCopyKeyboardListview('copy');
-  };
+    const handleDragEnd = (event: DragEvent) => {
+        if (event.dataTransfer?.dropEffect !== 'none') {
+            _removeSourceItem(dragItemIdRef.current);
+        }
+    };
 
-  const _cutCopyKeyboardListview = (type: any) => {
-      const listView = document.getElementById('listview') as ojListView<DataInfo['id'], DataInfo>;
-      const currentItem = listView.currentItem;
-      const data = listView.getDataForVisibleItem({ key: currentItem });
-      const jsonStr = JSON.stringify([data]);
-      clipboard.setData('application/ojlistviewitems', jsonStr);
-      if (type === 'cut') {
-          setCutItem(currentItem);
-      }
-      _updateAcc(`${data.name} ${type === 'copy' ? 'Copied' : 'Cut'}`);
-      latestListviewActionRef.current = type;
-  };
+    const handleKeyDown = (event: KeyboardEvent) => {
+        if ((event.ctrlKey || event.metaKey) && event.key === 'x') {
+            _cutCurrentItem();
+        }
+        else if ((event.ctrlKey || event.metaKey) && event.key === 'c') {
+            _copyCurrentItem();
+        }
+        else if ((event.ctrlKey || event.metaKey) && event.key === 'v') {
+            _paste();
+        }
+    };
 
-  const _paste = () => {
-      const data = clipboard.getData('application/nbox');
-      if (data) {
-          const listView = document.getElementById('listview') as ojListView<DataInfo['id'], DataInfo>;
-          const currentItem = listView.currentItem;
-          const index = _findIndex(listArr, currentItem);
-          _listDrop(data, true, index + 1);
-      }
-  };
+    const _cutCurrentItem = () => {
+        _cutCopyKeyboardListview('cut');
+    };
 
-  const _findIndex = (arr: any, key: any) => {
-      const keys = arr.map((data: any) => {
-          return data.id;
-      });
-      return keys.indexOf(key);
-  };
+    const _copyCurrentItem = () => {
+        _cutCopyKeyboardListview('copy');
+    };
 
-  const _listDrop = (dropData: string, keyboard: boolean, index: number) => {
-      const data = JSON.parse(dropData);
-      const arr = listArr;
-      const names = [];
-      for (let i = 0; i < data.length; i++) {
-          names.push(data[i].id);
-      }
-      const newNames = [];
-      data.remove((s: any) => {
-          if (names.includes(s.name)) {
-              newNames.push(s);
-              return latestNboxActionRef.current !== 'copy' ? true : false;
-          }
-          return false;
-      });
-      for (let i = 0; i < newNames.length; i++) {
-          const n = newNames[i];
-          const newData = {
-              id: n.name,
-              name: n.name,
-              title: n.position,
-              image: `images/hcm/placeholder-${n.image}.png`
-          };
-          if (index === -1) {
-              // empty list case
-              arr.push(newData);
-          }
-          else {
-              arr.splice(index, 0, newData);
-          }
-      }
-      listArr.valueHasMutated();
-      let accText;
-      if (newNames.length > 1) {
-          accText = `Moved multiple nodes from nbox to listView`;
-      }
-      else {
-          accText = `Moved node ${names[0]} from nbox to listview`;
-      }
-      accText = accText + (keyboard ? ' via keyboard' : ' via drag and drop');
-      _updateAcc(accText);
-      latestListviewActionRef.current = 'none';
-      latestNboxActionRef.current = 'none';
-      clipboard.setData('application/nbox', null);
-      clipboard.setData('application/ojlistviewitems', null);
-      setCurrentItem(newNames[0].name);
-  };
+    const _cutCopyKeyboardListview = (type: 'cut' | 'copy') => {
+        const listView = document.getElementById('listview') as ojListView<DataInfo['id'], DataInfo> | null;
+        const listCurrentItem = listView?.currentItem;
+        if (!listView || listCurrentItem == null) {
+            return;
+        }
+        const itemData = listView.getDataForVisibleItem({ key: listCurrentItem });
+        if (!itemData) {
+            return;
+        }
+        const jsonStr = JSON.stringify([itemData]);
+        clipboard.setData('application/ojlistviewitems', jsonStr);
+        if (type === 'cut') {
+            setCutItem(String(listCurrentItem));
+        }
+        _updateAcc(`${itemData.name} ${type === 'copy' ? 'Copied' : 'Cut'}`);
+        latestListviewActionRef.current = type;
+    };
 
-  const _removeSourceItem = (itemId: any) => {
-      const arr = listArr;
-      for (let j = 0; j < arr.length; j++) {
-          // remove the selected items from array
-          if (arr[j].id === itemId) {
-              arr.splice(j, 1)[0];
-              break;
-          }
-      }
-      listArr.valueHasMutated();
-  };
+    const _paste = () => {
+        const dataStr = clipboard.getData('application/nbox');
+        if (dataStr) {
+            const listView = document.getElementById('listview') as ojListView<DataInfo['id'], DataInfo> | null;
+            const listCurrentItem = listView?.currentItem;
+            const index = _findIndex(listArr, listCurrentItem);
+            _listDrop(dataStr, true, index + 1);
+        }
+    };
 
-  return (
-      <div id="nbox-container">
+    const _findIndex = (arr: DataInfo[], key: DataInfo['id'] | null | undefined) => {
+        const keys = arr.map((item) => item.id);
+        return keys.indexOf(String(key));
+    };
+
+    const _listDrop = (dropData: string, keyboard: boolean, index: number) => {
+        if (!dropData) {
+            return;
+        }
+        const droppedNodes = JSON.parse(dropData) as TransferNode[];
+        const names: string[] = [];
+        for (let i = 0; i < droppedNodes.length; i++) {
+            const nodeId = droppedNodes[i].id;
+            if (nodeId) {
+                names.push(nodeId);
+            }
+        }
+        const movedNodes = data.filter((item) => names.includes(item.name));
+        if (latestNboxActionRef.current !== 'copy') {
+            setData((items) => items.filter((item) => !names.includes(item.name)));
+        }
+        const listItems = movedNodes.map((item) => ({
+            id: item.name,
+            name: item.name,
+            title: item.position,
+            image: `images/hcm/placeholder-${item.image}.png`
+        }));
+        setListArr((items) => {
+            const nextItems = [...items];
+            for (let i = 0; i < listItems.length; i++) {
+                const newData = listItems[i];
+                if (index === -1) {
+                    // Empty list case.
+                    nextItems.push(newData);
+                }
+                else {
+                    nextItems.splice(index + i, 0, newData);
+                }
+            }
+            return nextItems;
+        });
+
+        let accText;
+        if (movedNodes.length > 1) {
+            accText = 'Moved multiple nodes from nbox to listView';
+        }
+        else {
+            accText = `Moved node ${names[0]} from nbox to listview`;
+        }
+        accText = accText + (keyboard ? ' via keyboard' : ' via drag and drop');
+        _updateAcc(accText);
+        latestListviewActionRef.current = 'none';
+        latestNboxActionRef.current = 'none';
+        clipboard.setData('application/nbox', null);
+        clipboard.setData('application/ojlistviewitems', null);
+        setCurrentItem(movedNodes[0]?.name);
+    };
+
+    const _removeSourceItem = (itemId: string | null) => {
+        if (itemId) {
+            setListArr((items) => items.filter((item) => item.id !== itemId));
+        }
+    };
+
+    const listViewDndProps = {
+        dnd: {
+            drag: {
+                items: {
+                    dataTypes: ['application/ojlistviewitems'],
+                    dragStart: handleDragStart,
+                    dragEnd: handleDragEnd
+                }
+            },
+            drop: {
+                items: {
+                    dataTypes: ['application/nbox'],
+                    drop: handleDrop
+                }
+            }
+        }
+    } as unknown as Partial<ComponentProps<'oj-list-view'>>;
+
+    const nboxDndProps = {
+        dnd: {
+            drag: {
+                nodes: {
+                    dataTypes: ['application/nbox']
+                }
+            },
+            drop: {
+                cells: {
+                    dataTypes: ['application/nbox', 'application/ojlistviewitems'],
+                    drop: onNBoxDrop
+                }
+            }
+        },
+        dataTransferOptions: {
+            cut: 'enable',
+            copy: 'enable',
+            paste: 'enable'
+        }
+    } as unknown as Partial<ComponentProps<'oj-n-box'>>;
+
+    const listItemTemplateRenderer = (item: ListItemTemplateContext) => (
+        <li class={cutItem === item.key ? 'demo-cut-item' : ''}>
+            <oj-list-item-layout>
+                <span class="oj-typography-body-md oj-text-color-primary">{item.item.data.name}</span>
+                <oj-avatar slot="leading" size="xs" src={item.item.data.image} />
+                <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">
+                    {item.item.data.title}
+                </span>
+                <div
+                    id={`${item.item.metadata.key}_draghandle`}
+                    slot="action"
+                    role="presentation"
+                    class="oj-sm-margin-4x-horizontal oj-listview-drag-handle"
+                />
+            </oj-list-item-layout>
+        </li>
+    );
+
+    const nodeTemplateRenderer = (current: NodeTemplateContext) => {
+        const employee = current.data;
+
+        return (
+            <oj-n-box-node
+                label={employee.name}
+                secondaryLabel={employee.position}
+                row={employee.potential}
+                column={employee.performance}
+                shortDesc={`${employee.name} - ${employee.position}`}
+                icon={{
+                    source: employee.image ? `images/hcm/placeholder-${employee.image}.png` : '',
+                    initials: employee.initials,
+                    background: employee.background
+                }}
+            />
+        );
+    };
+
+    return (
+        <div id="nbox-container">
             <div class="oj-sm-odd-cols-4">
-                    <div class="oj-flex">
-                              <div class="oj-flex-item">
-                                          <div class="oj-typography-heading-xs oj-sm-margin-2x-horizontal">Listview</div>
-                                          <oj-list-view id="listview" aria-label="list drag source" class="demo-list oj-listview-item-padding-off" data={listDataProvider} oncurrentItemChanged={handleCurrentItemCurrentItemChanged} current-item={currentItem} onkeydown={handleKeyDown} {...{ 'dnd.drag.items.data-types': ["application/ojlistviewitems"], 'dnd.drag.items.drag-start': handleDragStart, 'dnd.drag.items.drag-end': handleDragEnd, 'dnd.drop.items.data-types': ["application/nbox"], 'dnd.drop.items.drop': handleDrop }}>
-                                                        <template slot="itemTemplate" render={(item: any) => (
-                                                                      <>
-                                                                          <li class={cutItem === item.key ? 'demo-cut-item' : ''}>
-                                                                                              <oj-list-item-layout>
-                                                                                                                    <span class="oj-typography-body-md oj-text-color-primary">{item.item.data.name}</span>
-                                                                                                                    <oj-avatar slot="leading" size="xs" src={item.item.data.image} />
-                                                                                                                    <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">{item.item.data.title}</span>
-                                                                                                                    <div id={item.item.metadata.key + '_draghandle'} slot="action" role="presentation" class="oj-sm-margin-4x-horizontal oj-listview-drag-handle" />
-                                                                                                                </oj-list-item-layout>
-                                                                                          </li>
-                                                                      </>
-                                                                    )} />
-                                                    </oj-list-view>
-                                      </div>
-                              <div class="oj-flex-item">
-                                          <div class="oj-typography-heading-xs oj-sm-margin-2x-horizontal">NBox</div>
-                                          <oj-n-box animation-on-data-change="auto" data={dataProvider1} rows={rows} columns={columns} cells={cells} rows-title="Potential" columns-title="Performance" onojCutRequest={cutRequest} onojCopyRequest={copyRequest} onojPasteRequest={pasteRequest} {...{ 'dnd.drag.nodes.data-types': ["application/nbox"], 'dnd.drop.cells.data-types': ["application/nbox", "application/ojlistviewitems"], 'dnd.drop.cells.drop': onNBoxDrop, 'data-transfer-options.cut': "enable", 'data-transfer-options.copy': "enable", 'data-transfer-options.paste': "enable" }}>
-                                                        <template slot="nodeTemplate" render={($current: any) => (
-                                                                      <>
-                                                                          <oj-n-box-node label={$current.data.name} secondary-label={$current.data.position} row={$current.data.potential} column={$current.data.performance} short-desc={$current.data.name + ' - ' + $current.data.position} {...{ 'icon.source': $current.data.image ? 'images/hcm/placeholder-' + $current.data.image + '.png' : '', 'icon.initials': $current.data.initials, 'icon.background': $current.data.background }} />
-                                                                      </>
-                                                                    )} />
-                                                    </oj-n-box>
-                                      </div>
-                          </div>
+                <div class="oj-flex">
+                    <div class="oj-flex-item">
+                        <div class="oj-typography-heading-xs oj-sm-margin-2x-horizontal">Listview</div>
+                        <oj-list-view
+                            id="listview"
+                            aria-label="list drag source"
+                            class="demo-list oj-listview-item-padding-off"
+                            data={listDataProvider}
+                            oncurrentItemChanged={handleCurrentItemChanged}
+                            currentItem={currentItem}
+                            onKeyDown={handleKeyDown}
+                            {...listViewDndProps}
+                        >
+                            <template slot="itemTemplate" render={listItemTemplateRenderer} />
+                        </oj-list-view>
+                    </div>
+                    <div class="oj-flex-item">
+                        <div class="oj-typography-heading-xs oj-sm-margin-2x-horizontal">NBox</div>
+                        <oj-n-box
+                            animationOnDataChange="auto"
+                            data={dataProvider}
+                            rows={rows}
+                            columns={columns}
+                            cells={cells}
+                            rowsTitle="Potential"
+                            columnsTitle="Performance"
+                            onojCutRequest={cutRequest}
+                            onojCopyRequest={copyRequest}
+                            onojPasteRequest={pasteRequest}
+                            {...nboxDndProps}
+                        >
+                            <template slot="nodeTemplate" render={nodeTemplateRenderer} />
+                        </oj-n-box>
+                    </div>
                 </div>
+            </div>
             <div id="accInfo" aria-live="polite" class="oj-helper-hidden-accessible" />
         </div>
     );

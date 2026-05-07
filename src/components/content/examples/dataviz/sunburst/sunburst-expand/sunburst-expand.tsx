@@ -1,8 +1,8 @@
-// @ts-nocheck
 import { h } from 'preact';
+import type { ComponentProps } from 'preact';
 import { useMemo, useRef } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { ObservableKeySet } from 'ojs/ojkeyset';
+import { KeySetImpl } from 'ojs/ojkeyset';
 import { getColorValuesFromPalette } from 'ojs/ojpalette';
 import { getColorValue } from 'ojs/ojpaletteutils';
 import 'ojs/ojsunburst';
@@ -15,12 +15,16 @@ type IncomeNode = {
   nodes?: IncomeNode[];
 };
 
+type SunburstNodeTemplateContext = {
+  data: IncomeNode;
+};
+
 const data = JSON.parse(jsonDataText as string) as IncomeNode[];
 
 export const SunburstExpand = () => {
   const maxIncomeRef = useRef(70000);
   const expandedNodes = useMemo(
-    () => new ObservableKeySet().add(['United States', 'Midwest Region', 'West Region', 'Pacific']),
+    () => new KeySetImpl<string>(['United States', 'Midwest Region', 'West Region', 'Pacific']),
     []
   );
   const sunburstData = useMemo(
@@ -40,7 +44,14 @@ export const SunburstExpand = () => {
   const getShortDesc = (label: string, population: number, meanIncome: number): string =>
     `&lt;b&gt;${label}&lt;/b&gt;&lt;br/&gt;Population: ${population}&lt;br/&gt;Income: ${meanIncome}`;
 
-  const nodeTemplateRenderer = ($current: any) => (
+  const sunburstProps = {
+    nodeDefaults: {
+      labelDisplay: 'rotated',
+      showDisclosure: 'on'
+    }
+  } as Partial<ComponentProps<'oj-sunburst'>>;
+
+  const nodeTemplateRenderer = ($current: SunburstNodeTemplateContext) => (
     <oj-sunburst-node
       label={$current.data.label}
       value={$current.data.population}
@@ -56,7 +67,7 @@ export const SunburstExpand = () => {
         animationOnDataChange="auto"
         data={sunburstData}
         expanded={expandedNodes}
-        {...({ 'nodeDefaults.labelDisplay': 'rotated', 'nodeDefaults.showDisclosure': 'on' } as any)}
+        {...sunburstProps}
       >
         <template slot="nodeTemplate" render={nodeTemplateRenderer} />
       </oj-sunburst>

@@ -1,0 +1,22 @@
+#ratingGaugeLegacyNavigationLayout {
+  width: 100%;
+  max-width: 100%;
+  align-items: flex-start;
+}
+
+#ratingGaugeLegacyNavigationLayout > .oj-flex-item {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+#ratingGaugeLegacyNavigationLayout .demo-layout-template {
+  min-width: 0;
+  padding-left: 1rem;
+}
+
+#ratingGaugeLegacyNavigationLayout .demo-layout-template__demo-section > div {
+  min-width: 0;
+  overflow-x: auto;
+}
