@@ -4,6 +4,32 @@
   padding-left: 2rem;
 }
 
+.recipe-page-template--with-nav,
+.oj-web-applayout-content > [id*="NavigationLayout"].oj-flex {
+  box-sizing: border-box;
+  inline-size: 100vw;
+  max-inline-size: 100vw;
+  margin-inline: calc(50% - 50vw);
+  padding-inline: clamp(1rem, 2vw, 2rem);
+  align-items: flex-start;
+}
+
+.recipe-page-template__navigation,
+.oj-web-applayout-content > [id*="NavigationLayout"].oj-flex > .navListDemoLayout {
+  flex: 0 0 12rem;
+}
+
+.recipe-page-template__content,
+.oj-web-applayout-content > [id*="NavigationLayout"].oj-flex > .oj-flex-item {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+
+.recipe-page-template__content > .demo-layout-template,
+.oj-web-applayout-content > [id*="NavigationLayout"].oj-flex > .oj-flex-item > .demo-layout-template {
+  padding-left: 0;
+}
+
 .demo-layout-template__header {
   display: grid;
   gap: 1rem;

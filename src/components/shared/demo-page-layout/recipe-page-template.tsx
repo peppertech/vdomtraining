@@ -105,9 +105,9 @@ export function RecipePageTemplate({
   return (
     <div
       id={layoutId}
-      class="oj-flex oj-sm-flex-wrap-nowrap oj-sm-column-gap-4x"
+      class="recipe-page-template recipe-page-template--with-nav oj-flex oj-sm-flex-wrap-nowrap oj-sm-column-gap-4x"
     >
-      <div class="navListDemoLayout">
+      <div class="recipe-page-template__navigation navListDemoLayout">
         <oj-navigation-list
           aria-label={ariaLabel}
           selection={activeExampleId}
@@ -117,7 +117,7 @@ export function RecipePageTemplate({
           <template slot="itemTemplate" render={renderNavigationItem}></template>
         </oj-navigation-list>
       </div>
-      <div class="oj-flex-item">
+      <div class="recipe-page-template__content oj-flex-item">
         <DemoLayoutTemplate
           componentType={componentType}
           packLabel={packLabel}
