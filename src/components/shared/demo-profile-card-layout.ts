@@ -58,26 +58,24 @@ class DemoProfileCardLayout extends HTMLElement {
 
     const imageWrapper = document.createElement("div");
     imageWrapper.className = "demo-profile-card-layout-emp-image";
-    if (image) {
-      const img = document.createElement("img");
-      img.src = image;
-      img.alt = name ? `Profile image for ${name}` : "Profile image";
-      img.className = "oj-avatar oj-avatar-bg-neutral oj-avatar-xxl oj-avatar-square oj-avatar-image";
-      img.loading = "lazy";
-      imageWrapper.appendChild(img);
-    } else if (initials) {
-      const fallback = document.createElement("div");
-      fallback.className = "demo-profile-card-layout-emp-avatar-placeholder";
-      fallback.textContent = initials;
-      fallback.setAttribute("aria-hidden", "true");
-      imageWrapper.appendChild(fallback);
+    const avatar = document.createElement("oj-avatar");
+    avatar.className = "demo-profile-card-layout-emp-avatar";
+    avatar.setAttribute("role", "img");
+    avatar.setAttribute("size", "xxl");
+    avatar.setAttribute("aria-label", name ? `Avatar of ${name}` : "Avatar");
+    if (initials) {
+      avatar.setAttribute("initials", initials);
     }
+    if (image) {
+      avatar.setAttribute("src", image);
+    }
+    imageWrapper.appendChild(avatar);
     inner.appendChild(imageWrapper);
 
     if (name) {
       const nameEl = document.createElement("div");
       nameEl.className =
-        "oj-text-tertiary-color demo-profile-card-layout-emp-title oj-typography-body-md";
+        "oj-text-primary-color demo-profile-card-layout-emp-name oj-typography-subheading-xs";
       nameEl.textContent = name;
       inner.appendChild(nameEl);
     }
@@ -89,7 +87,7 @@ class DemoProfileCardLayout extends HTMLElement {
     if (title) {
       const titleEl = document.createElement("div");
       titleEl.className =
-        "demo-profile-card-layout-emp-title oj-typography-body-sm oj-text-color-secondary";
+        "oj-text-tertiary-color demo-profile-card-layout-emp-title oj-typography-body-md";
       titleEl.textContent = title;
       inner.appendChild(titleEl);
     }

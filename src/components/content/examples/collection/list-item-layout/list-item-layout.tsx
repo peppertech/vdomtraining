@@ -10,7 +10,7 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySet, KeySetImpl } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 import { SelectorElement } from "ojs/ojselector";
-import * as peopleData from "text!../../collection/data/peopleData.json";
+import * as peopleData from "text!../data/peopleData.json";
 
 type BasePerson = {
   id: number;

@@ -132,7 +132,7 @@ const ListItemLayoutHome = ({
     }
 
     onBreadcrumbChange([
-      { label: "Controls", onSelect: onNavigateRootHome },
+      { label: "Collections", onSelect: onNavigateRootHome },
       { label: "List Item Layout", onSelect: handleBack },
       {
         label: formatCorePackLabel(

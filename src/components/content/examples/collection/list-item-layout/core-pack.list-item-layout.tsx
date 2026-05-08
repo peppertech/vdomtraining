@@ -8,7 +8,7 @@ import "oj-c/selector";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { ImmutableKeySet, KeySetImpl } from "ojs/ojkeyset";
 import { CListViewElement } from "oj-c/list-view";
-import * as peopleData from "text!../../collection/data/peopleData.json";
+import * as peopleData from "text!../data/peopleData.json";
 
 type BasePerson = {
   id: number;

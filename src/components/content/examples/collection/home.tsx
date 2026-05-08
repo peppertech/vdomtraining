@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import TableHome from "./table/home";
 import ListViewHome from "./listview/home";
+import ListItemLayoutHome from "./list-item-layout/home";
 import Treeview from "./treeview";
 import DataGrid from "./datagrid";
 import GroupByTable from "./group-by-table";
@@ -30,7 +31,6 @@ type CollectionComponent = {
 };
 
 const collectionComponents: CollectionComponent[] = [
-  
   {
     id: 7,
     name: "Table",
@@ -46,6 +46,14 @@ const collectionComponents: CollectionComponent[] = [
     isAvailable: true,
     isCorePack: true,
     render: (props) => <ListViewHome {...props} />,
+  },
+  {
+    id: 10,
+    name: "List Item Layout",
+    image: "oj-ux-icon-size-12x oj-ux-ico-list",
+    isAvailable: true,
+    isCorePack: true,
+    render: (props) => <ListItemLayoutHome {...props} />,
   },
   {
     id: 9,
