@@ -13,7 +13,7 @@ export const validatorsDateTimeRangeValidatorDescription = (
       <code className={"prettyprint"}>max</code>{' '}
       attributes are specified on the input date and time components, an implicit DateTimeRangeValidator
       is created. You can also set an explicit DateTimeRangeValidator using the
-      <code className={"prettyprint"}>validators</code>{' '}
+      {' '}<code className={"prettyprint"}>validators</code>{' '}
       attribute. This demo shows both approaches.
     </p>
     <h2>Test Steps</h2>

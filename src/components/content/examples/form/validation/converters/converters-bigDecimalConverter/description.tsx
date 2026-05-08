@@ -5,8 +5,8 @@ export const convertersBigDecimalConverterDescription = (
   <>
     <p>
       This demo shows how JET's big decimal converter can be used with an input text component by
-      setting the component's
-      <code className={"prettyprint"}>converter</code>
+      setting the component's{' '}
+      <code className={"prettyprint"}>converter</code>{' '}
       attribute.
     </p>
     <p>
@@ -32,22 +32,23 @@ export const convertersBigDecimalConverterDescription = (
       </li>
     </ol>
     <p>
-      <code className={"prettyprint"}>decimalFormat:'short'</code>
-      and
-      <code className={"prettyprint"}>decimalFormat:'long'</code>
-      converters support
-      <code className={"prettyprint"}>format</code>
-      , but not
-      <code className={"prettyprint"}>parse</code>
-      . You can only use these options with a readOnly component; otherwise, you will see an error.
+      <code className={"prettyprint"}>decimalFormat:'short'</code>{' '}
+      and{' '}
+      <code className={"prettyprint"}>decimalFormat:'long'</code>{' '}
+      converters support{' '}
+      <code className={"prettyprint"}>format</code>, but not{' '}
+      <code className={"prettyprint"}>parse</code>. You can only use these options with a readOnly
+      component; otherwise, you will see an error.
     </p>
     <p>
       By default, rounding is HALF_UP and occurs during format, not parse. To round during parse (to
-      keep data in sync with display value) set
-      <code className={"prettyprint"}>roundDuringParse: true</code>
+      keep data in sync with display value) set{' '}
+      <code className={"prettyprint"}>roundDuringParse: true</code>.
     </p>
-    <strong>NOTE:</strong>
-    If the user input does not match the expected value exactly, the number converter will attempt to
-    parse the input according to its leniency rules. For details refer to the documentation.
+    <p>
+      <strong>NOTE:</strong>{' '}
+      If the user input does not match the expected value exactly, the number converter will attempt to
+      parse the input according to its leniency rules. For details refer to the documentation.
+    </p>
   </>
 );

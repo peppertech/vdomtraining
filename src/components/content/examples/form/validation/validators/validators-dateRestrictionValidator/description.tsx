@@ -10,7 +10,7 @@ export const validatorsDateRestrictionValidatorDescription = (
       <code className={"prettyprint"}> dayMetaData </code>{' '}
       properties are set on the input datetime components, an implicit DateRestrictionValidator is
       created. This is different from any DateRestrictionValidator specified using the
-      <code className={"prettyprint"}>validators</code>{' '}
+      {' '}<code className={"prettyprint"}>validators</code>{' '}
       property.
     </p>
     <p>

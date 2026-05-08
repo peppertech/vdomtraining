@@ -13,7 +13,7 @@ export const validatorsNumberRangeValidatorDescription = (
       <code className={"prettyprint"}>max</code>{' '}
       attributes are specified on the input number component, an implicit NumberRangeValidator is
       created. This is different from any NumberRangeValidator present in the
-      <code className={"prettyprint"}>validators</code>{' '}
+      {' '}<code className={"prettyprint"}>validators</code>{' '}
       attribute.
     </p>
 

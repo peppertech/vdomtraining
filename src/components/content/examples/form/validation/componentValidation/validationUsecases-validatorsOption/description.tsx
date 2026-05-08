@@ -93,9 +93,9 @@ export const validationUsecasesValidatorsOptionDescription = (
                 <li>
                   NOTE: Custom messages are not cleared when the value is updated indirectly. App can
                   listen to the
-                  <code className={"prettyprint"}>optionChange</code>
+                  {' '}<code className={"prettyprint"}>optionChange</code>{' '}
                   event for the
-                  <code className={"prettyprint"}>value</code>
+                  {' '}<code className={"prettyprint"}>value</code>{' '}
                   option and clear it.
                 </li>
               </ul>

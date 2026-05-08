@@ -13,26 +13,26 @@ export const helpHintsMessagingHintsMessagesTitleDescription = (
     Following are the precedence rules:
     <ul>
       <li>
-        <code className={"prettyprint"}>help.instruction</code>
+        <code className={"prettyprint"}>help.instruction</code>{' '}
         shows;
       </li>
       <li>
         if no
-        <code className={"prettyprint"}>help.instruction</code>
+        {' '}<code className={"prettyprint"}>help.instruction</code>
         , then the validator hint shows;
       </li>
       <li>
         if no
-        <code className={"prettyprint"}>help.instruction</code>
+        {' '}<code className={"prettyprint"}>help.instruction</code>{' '}
         or validator hint, then
-        <code className={"prettyprint"}>help-hints.definition</code>
+        {' '}<code className={"prettyprint"}>help-hints.definition</code>{' '}
         shows;
       </li>
       <li>
         if no
-        <code className={"prettyprint"}>help.instruction</code>
+        {' '}<code className={"prettyprint"}>help.instruction</code>
         , validator hint, or
-        <code className={"prettyprint"}>help-hints.definition</code>
+        {' '}<code className={"prettyprint"}>help-hints.definition</code>
         , then the converter hint shows.
       </li>
       <li>help-hints.source always shows along side the above.</li>
@@ -43,7 +43,7 @@ export const helpHintsMessagingHintsMessagesTitleDescription = (
     <p>
       The demo also shows how page authors can turn off the display of converter and validator hints,
       and messages using the
-      <code className={"prettyprint"}>display-options</code>
+      {' '}<code className={"prettyprint"}>display-options</code>{' '}
       attribute. The last example does not show hints. Only messages get shown.
     </p>
   </>

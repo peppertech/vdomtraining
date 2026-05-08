@@ -5,13 +5,13 @@ export const validationGroupFormFieldsValidationDescription = (
     <p>A validation group tracks and summarizes the current validity state of a group of components.</p>
     <p>
       This demos the
-      <code className={"prettyprint"}>oj-validation-group</code>
+      {' '}<code className={"prettyprint"}>oj-validation-group</code>
       {' '}api, like the
-      <code className={"prettyprint"}>valid</code>
+      {' '}<code className={"prettyprint"}>valid</code>
       {' '}property, and the
-      <code className={"prettyprint"}>showMessages()</code>
+      {' '}<code className={"prettyprint"}>showMessages()</code>
       {' '}and
-      <code className={"prettyprint"}>focusOn("@firstInvalidShown")</code>
+      {' '}<code className={"prettyprint"}>focusOn("@firstInvalidShown")</code>
       {' '}methods.
     </p>
     <p>

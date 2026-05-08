@@ -8,7 +8,7 @@ export const validatorsRequiredValidatorDescription = (
       A RequiredValidator is created implicitly by components that support a{' '}
       <code className={"prettyprint"}> required </code>{' '}
       option. Page authors can customize the hint and message texts used by the validator using the
-      <code className={"prettyprint"}> required-message-detail </code>{' '}
+      {' '}<code className={"prettyprint"}> required-message-detail </code>{' '}
       option.
     </p>
 

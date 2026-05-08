@@ -4,7 +4,7 @@ export const validationUsecasesAsyncValidatorsDescription = (
   <>
     <p>
       This demo shows the behavior of editable form controls created with the
-      <code className={"prettyprint"}>validators</code>
+      {' '}<code className={"prettyprint"}>validators</code>{' '}
       attribute containing both a synchronous and an asynchronous validator.
     </p>
     <p>
@@ -14,11 +14,11 @@ export const validationUsecasesAsyncValidatorsDescription = (
     </p>
     <p>
       The async validator&apos;s
-      <code className={"prettyprint"}>validate</code>
+      {' '}<code className={"prettyprint"}>validate</code>{' '}
       method returns a Promise that resolves if validation passes and value is updated or rejects
       with an Error if validation does not pass and value is not updated. The async validator also
       has a
-      <code className={"prettyprint"}>hint</code>
+      {' '}<code className={"prettyprint"}>hint</code>{' '}
       field that returns a Promise. Hints are displayed to the user when the user focuses the field.
     </p>
     <p>Set focus on the field to see the hint, which explains what to type to see the error.</p>

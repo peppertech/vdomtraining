@@ -11,7 +11,7 @@ export const validationUsecasesValidateMethodRecipe = (
       </li>
       <li>
         Running validation will automatically update the
-        <code className={"prettyprint"}>valid</code>
+        {' '}<code className={"prettyprint"}>valid</code>{' '}
         property.
       </li>
       <li>Running validation will automatically show messages, if any.</li>

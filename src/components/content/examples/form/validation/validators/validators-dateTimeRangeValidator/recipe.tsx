@@ -11,7 +11,7 @@ export const validatorsDateTimeRangeValidatorRecipe = (
         and{' '}
         <code className={"prettyprint"}>max</code>{' '}
         to create a DateTimeRangeValidator implicitly. Add
-        <code className={"prettyprint"}>help.instruction</code>{' '}
+        {' '}<code className={"prettyprint"}>help.instruction</code>{' '}
         when you want extra guidance.
       </li>
       <li>

@@ -5,16 +5,14 @@ export const convertersDateTimeConverterDescription = (
   <>
     <p>
       This demo shows how JET's datetime converter can be used with Oracle JET editable value components
-      using the
-      <code className={"prettyprint"}>converter</code>
+      using the{' '}
+      <code className={"prettyprint"}>converter</code>{' '}
       option.
     </p>
 
     <p>
-      When a converter is not specified explicitly the
-      <a href={"#"}>
-        date and time input components
-      </a>
+      When a converter is not specified explicitly the{' '}
+      <a href={"#"}>date and time input components</a>{' '}
       create an implicit datetime converter.
     </p>
 
@@ -30,7 +28,7 @@ export const convertersDateTimeConverterDescription = (
       </li>
     </ol>
     <p>
-      <strong>NOTE:</strong>
+      <strong>NOTE:</strong>{' '}
       If user input does not match the expected value exactly, the datetime converter will attempt to
       parse the input according to its leniency rules. For details refer to the API docs for the
       datetime converter.

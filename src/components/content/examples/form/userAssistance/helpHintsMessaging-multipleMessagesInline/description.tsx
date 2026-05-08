@@ -19,12 +19,12 @@ export const helpHintsMessagingMultipleMessagesInlineDescription = (
     <ul>
       <li>
         Toggle on any 'severity type' button adds to add a message of the selected severity to the
-        <code className={"prettyprint"}>'messages-custom'</code>
+        {' '}<code className={"prettyprint"}>'messages-custom'</code>{' '}
         attribute of each component.
       </li>
       <li>
         Toggle off any 'severity type' button to remove the message of the selected severity from the
-        <code className={"prettyprint"}>'messages-custom'</code>
+        {' '}<code className={"prettyprint"}>'messages-custom'</code>{' '}
         attribute of each component.
       </li>
 
@@ -34,12 +34,12 @@ export const helpHintsMessagingMultipleMessagesInlineDescription = (
         <ul>
           <li>
             'error', the
-            <code className={"prettyprint"}>oj-invalid</code>
+            {' '}<code className={"prettyprint"}>oj-invalid</code>{' '}
             marker style is applied to the component.
           </li>
           <li>
             'warning', the
-            <code className={"prettyprint"}>oj-warning</code>
+            {' '}<code className={"prettyprint"}>oj-warning</code>{' '}
             marker style is applied to the component.
           </li>
           <li>'info', no styles are applied to the component.</li>

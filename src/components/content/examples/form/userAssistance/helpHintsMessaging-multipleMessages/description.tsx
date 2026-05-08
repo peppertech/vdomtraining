@@ -11,9 +11,9 @@ export const helpHintsMessagingMultipleMessagesDescription = (
     <p>
       'Messages' can be inline or in a notewindow. The default is inline. This demo shows how you can
       set them to be notewindow by setting the
-      <code className={"prettyprint"}>display-options</code>
+      {' '}<code className={"prettyprint"}>display-options</code>{' '}
       attribute to
-      <code className={"prettyprint"}>'{'{'}"messages": "notewindow"{'}'}'</code>
+      {' '}<code className={"prettyprint"}>'{'{'}"messages": "notewindow"{'}'}'</code>
       .
     </p>
 
@@ -32,12 +32,12 @@ export const helpHintsMessagingMultipleMessagesDescription = (
     <ul>
       <li>
         Toggle on any 'severity type' button adds to add a message of the selected severity to the
-        <code className={"prettyprint"}>'messages-custom'</code>
+        {' '}<code className={"prettyprint"}>'messages-custom'</code>{' '}
         attribute of each component.
       </li>
       <li>
         Toggle off any 'severity type' button to remove the message of the selected severity from the
-        <code className={"prettyprint"}>'messages-custom'</code>
+        {' '}<code className={"prettyprint"}>'messages-custom'</code>{' '}
         attribute of each component.
       </li>
 
@@ -47,12 +47,12 @@ export const helpHintsMessagingMultipleMessagesDescription = (
         <ul>
           <li>
             'error', the
-            <code className={"prettyprint"}>oj-invalid</code>
+            {' '}<code className={"prettyprint"}>oj-invalid</code>{' '}
             marker style is applied to the component.
           </li>
           <li>
             'warning', the
-            <code className={"prettyprint"}>oj-warning</code>
+            {' '}<code className={"prettyprint"}>oj-warning</code>{' '}
             marker style is applied to the component.
           </li>
           <li>'info', no styles are applied to the component.</li>

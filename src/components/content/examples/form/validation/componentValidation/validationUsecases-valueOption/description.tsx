@@ -3,16 +3,16 @@ import { h } from 'preact';
 export const validationUsecasesValueOptionDescription = (
   <>
     This demo shows the behavior of an editable form control when
-    <code className={"prettyprint"}>value</code>
+    {' '}<code className={"prettyprint"}>value</code>{' '}
     changes due to programmatic intervention and due to user action.
     <p></p>
     <p>
       When the
-      <code className={"prettyprint"}>value</code>
+      {' '}<code className={"prettyprint"}>value</code>{' '}
       property changes due to programmatic intervention, the component always clears all messages
       including messagesCustom, runs deferred validation, and always refreshes UI display value. When
       the
-      <code className={"prettyprint"}>value</code>
+      {' '}<code className={"prettyprint"}>value</code>{' '}
       property changes as a result of user interaction all messages are cleared, including custom
       messages added by the app, and full validation is run on the UI value.
     </p>

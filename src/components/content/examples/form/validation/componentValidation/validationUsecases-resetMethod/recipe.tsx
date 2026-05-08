@@ -5,7 +5,7 @@ export const validationUsecasesResetMethodRecipe = (
     <ul>
       <li>
         Call the component's
-        <code className={"prettyprint"}>reset</code>
+        {' '}<code className={"prettyprint"}>reset</code>{' '}
         method from your script like this -
         <pre className={"prettyprint"} dir={"ltr"}>
           document.getElementById('age').reset();

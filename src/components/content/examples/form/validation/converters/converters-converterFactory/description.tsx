@@ -3,7 +3,8 @@ import { h } from 'preact';
 
 export const convertersConverterFactoryDescription = (
   <>
-    <p>An input text allows the user to enter a text value.</p><p>
+    <p>An input text allows the user to enter a text value.</p>
+    <p>
       This demo shows how JET's number and date time converters can be used directly in application
       pages without using Oracle JET components.
     </p>

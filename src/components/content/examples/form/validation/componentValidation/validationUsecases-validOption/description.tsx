@@ -4,9 +4,9 @@ export const validationUsecasesValidOptionDescription = (
   <>
     <p>
       This demonstrates the JET form components
-      <code className={"prettyprint"}>valid</code>
+      {' '}<code className={"prettyprint"}>valid</code>{' '}
       property and the
-      <code className={"prettyprint"}>on-valid-changed</code>
+      {' '}<code className={"prettyprint"}>on-valid-changed</code>{' '}
       property.
     </p>
 
@@ -26,11 +26,11 @@ export const validationUsecasesValidOptionDescription = (
 
     <p>
       NOTE: You can instead use
-      <code className={"prettyprint"}>oj-validation-group</code>
+      {' '}<code className={"prettyprint"}>oj-validation-group</code>{' '}
       to group the form components so you can get the
-      <code className={"prettyprint"}>valid</code>
+      {' '}<code className={"prettyprint"}>valid</code>{' '}
       property and call
-      <code className={"prettyprint"}>showMessages()</code>
+      {' '}<code className={"prettyprint"}>showMessages()</code>{' '}
       on the group instead of on each component.
     </p>
   </>

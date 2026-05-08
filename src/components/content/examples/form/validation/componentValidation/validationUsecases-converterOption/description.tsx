@@ -3,7 +3,7 @@ import { h } from 'preact';
 export const validationUsecasesConverterOptionDescription = (
   <>
     This demo shows the behavior of an editable form control when
-    <code className={"prettyprint"}>converter</code>
+    {' '}<code className={"prettyprint"}>converter</code>{' '}
     property changes due to programmatic intervention.
 
     <p></p>

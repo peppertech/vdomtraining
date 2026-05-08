@@ -3,7 +3,7 @@ import { h } from 'preact';
 export const validationUsecasesResetMethodDescription = (
   <>
     This demo shows the behavior of an editable form control when its
-    <code className={"prettyprint"}>reset</code>
+    {' '}<code className={"prettyprint"}>reset</code>{' '}
     method is called.
     <p></p>
 
@@ -14,9 +14,9 @@ export const validationUsecasesResetMethodDescription = (
           <ul>
             <li>
               Components with
-              <code className={"prettyprint"}>required</code>
+              {' '}<code className={"prettyprint"}>required</code>{' '}
               set and empty initially have deferred errors which are not shown to the user. The
-              <code className={"prettyprint"}>valid</code>
+              {' '}<code className={"prettyprint"}>valid</code>{' '}
               property is "invalidHidden"
             </li>
             <li>Hit 'Reset'. Notice all components remain in the same state.</li>
@@ -34,7 +34,7 @@ export const validationUsecasesResetMethodDescription = (
             </li>
             <li>
               Click 'Reset' button. All custom messages are cleared - app messages added using
-              <code className={"prettyprint"}>messagesCustom</code>
+              {' '}<code className={"prettyprint"}>messagesCustom</code>{' '}
               property are cleared when reset is called.
             </li>
             <li>The component continues to have deferred errors</li>
@@ -49,7 +49,7 @@ export const validationUsecasesResetMethodDescription = (
             <li>Enter invalid value in both components and tab out. E.g. 'ab'</li>
             <li>
               The component shows a converter error; no longer has deferred errors; the component's
-              <code className={"prettyprint"}>valid</code>
+              {' '}<code className={"prettyprint"}>valid</code>{' '}
               property is 'invalidShown'
             </li>
             <li>
@@ -61,7 +61,7 @@ export const validationUsecasesResetMethodDescription = (
             <li>
               Notice both fields are reset to component's current value, which is still null. The
               component's
-              <code className={"prettyprint"}>valid</code>
+              {' '}<code className={"prettyprint"}>valid</code>{' '}
               property is 'invalidHidden'.
               <ul>
                 <li>

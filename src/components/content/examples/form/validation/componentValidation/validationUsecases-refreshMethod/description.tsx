@@ -3,7 +3,7 @@ import { h } from 'preact';
 export const validationUsecasesRefreshMethodDescription = (
   <>
     This demo shows the behavior of an editable form control when
-    <code className={"prettyprint"}>refresh</code>
+    {' '}<code className={"prettyprint"}>refresh</code>{' '}
     method is called.
 
     <p></p>

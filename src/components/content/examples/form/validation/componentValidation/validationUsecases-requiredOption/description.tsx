@@ -3,7 +3,7 @@ import { h } from 'preact';
 export const validationUsecasesRequiredOptionDescription = (
   <>
     This demo shows the behavior of an editable form control when the
-    <code className={"prettyprint"}>required</code>
+    {' '}<code className={"prettyprint"}>required</code>{' '}
     property changes due to programmatic intervention.
 
     <p></p>
@@ -17,7 +17,7 @@ export const validationUsecasesRequiredOptionDescription = (
           <ul>
             <li>
               'User Name' is not required so it has no deferred hidden message. The component's
-              <code className={"prettyprint"}>valid</code>
+              {' '}<code className={"prettyprint"}>valid</code>{' '}
               property is 'valid'.
             </li>
             <li>
@@ -25,7 +25,7 @@ export const validationUsecasesRequiredOptionDescription = (
               <ul>
                 <li>
                   The component's
-                  <code className={"prettyprint"}>valid</code>
+                  {' '}<code className={"prettyprint"}>valid</code>{' '}
                   property is 'invalidHidden'.
                 </li>
               </ul>
@@ -44,7 +44,7 @@ export const validationUsecasesRequiredOptionDescription = (
             <li>'User Name' shows validation error. Deferred errors are cleared.</li>
             <li>
               The component's
-              <code className={"prettyprint"}>valid</code>
+              {' '}<code className={"prettyprint"}>valid</code>{' '}
               property is 'invalidShown'.
             </li>
             <li>
@@ -80,7 +80,7 @@ export const validationUsecasesRequiredOptionDescription = (
                 <li>The empty value is now pushed to the model</li>
                 <li>
                   The component's
-                  <code className={"prettyprint"}>valid</code>
+                  {' '}<code className={"prettyprint"}>valid</code>{' '}
                   property is 'valid'.
                 </li>
               </ul>
