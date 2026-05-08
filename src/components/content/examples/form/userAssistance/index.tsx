@@ -1,8 +1,10 @@
 import { h } from "preact";
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
-import { UserAssistance } from "./userAssistance";
-import UserAssistanceConverterHintExample from "./userAssistance-converterHint";
-import UserAssistanceValidatorHintsExample from "./userAssistance-validatorHints";
+import HelpHintsMessagingConverterHintMessagesExample from "./helpHintsMessaging-converterHintMessages/helpHintsMessaging-converterHintMessages";
+import HelpHintsMessagingHelpTitleExample from "./helpHintsMessaging-helpTitle/helpHintsMessaging-helpTitle";
+import HelpHintsMessagingHintsMessagesTitleExample from "./helpHintsMessaging-hintsMessagesTitle/helpHintsMessaging-hintsMessagesTitle";
+import HelpHintsMessagingMultipleMessagesExample from "./helpHintsMessaging-multipleMessages/helpHintsMessaging-multipleMessages";
+import HelpHintsMessagingValidatorHintsMessagesExample from "./helpHintsMessaging-validatorHintsMessages/helpHintsMessaging-validatorHintsMessages";
 import {
   userAssistanceDocs,
   type UserAssistanceDemoId,
@@ -16,26 +18,41 @@ const userAssistanceItems: {
   Component: () => h.JSX.Element;
 }[] = [
   {
-    id: "overview",
-    name: "Overview",
-    description: userAssistanceDocs.overview.description,
-    recipe: userAssistanceDocs.overview.recipe,
-    Component: UserAssistance,
+    id: "help-title",
+    name: "Help",
+    description: userAssistanceDocs["help-title"].description,
+    recipe: userAssistanceDocs["help-title"].recipe,
+    Component: HelpHintsMessagingHelpTitleExample,
+  },
+  
+  {
+    id: "converter-hint-messages",
+    name: "Converter Hint and Messages",
+    description: userAssistanceDocs["converter-hint-messages"].description,
+    recipe: userAssistanceDocs["converter-hint-messages"].recipe,
+    Component: HelpHintsMessagingConverterHintMessagesExample,
   },
   {
-    id: "converter-hint",
-    name: "Converter Hint",
-    description: userAssistanceDocs["converter-hint"].description,
-    recipe: userAssistanceDocs["converter-hint"].recipe,
-    Component: UserAssistanceConverterHintExample,
+    id: "validator-hints-messages",
+    name: "Validator Hints and Messages",
+    description: userAssistanceDocs["validator-hints-messages"].description,
+    recipe: userAssistanceDocs["validator-hints-messages"].recipe,
+    Component: HelpHintsMessagingValidatorHintsMessagesExample,
   },
   {
-    id: "validator-hints",
-    name: "Validator Hints",
-    description: userAssistanceDocs["validator-hints"].description,
-    recipe: userAssistanceDocs["validator-hints"].recipe,
-    Component: UserAssistanceValidatorHintsExample,
+    id: "hints-messages-title",
+    name: "Display Options",
+    description: userAssistanceDocs["hints-messages-title"].description,
+    recipe: userAssistanceDocs["hints-messages-title"].recipe,
+    Component: HelpHintsMessagingHintsMessagesTitleExample,
   },
+  {
+    id: "multiple-messages",
+    name: "Inline Messages",
+    description: userAssistanceDocs["multiple-messages"].description,
+    recipe: userAssistanceDocs["multiple-messages"].recipe,
+    Component: HelpHintsMessagingMultipleMessagesExample,
+  }
 ];
 
 export default function UserAssistanceRecipePage() {
@@ -46,7 +63,7 @@ export default function UserAssistanceRecipePage() {
       packLabel="Core Pack"
       layoutId="userAssistanceNavigationLayout"
       items={userAssistanceItems}
-      initialItemId="overview"
+      initialItemId="help-title"
     />
   );
 }
