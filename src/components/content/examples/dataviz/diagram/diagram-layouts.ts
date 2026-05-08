@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DvtDiagramLayoutContext } from 'ojs/ojdiagram';
+import type { DvtDiagramLayoutContext, DvtDiagramLayoutContextNode } from 'ojs/ojdiagram';
 
 type DiagramNodeData = {
     id?: string;
@@ -15,13 +15,43 @@ type DiagramLinkData = {
 };
 
 type DiagramContext = DvtDiagramLayoutContext<string, string, DiagramNodeData, DiagramLinkData>;
+type DiagramNodeContext = DvtDiagramLayoutContextNode<string, DiagramNodeData>;
 
-const getNodeCenter = (node: any) => {
-    const position = node.getPosition();
-    const bounds = node.getBounds();
+type Bounds = {
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+};
+
+const emptyBounds: Bounds = { x: 0, y: 0, w: 0, h: 0 };
+
+const getBounds = (node: DiagramNodeContext): Bounds => {
+    return node.getBounds() ?? node.getContentBounds() ?? emptyBounds;
+};
+
+const getChildNodes = (node: DiagramNodeContext): DiagramNodeContext[] => {
+    return node.getChildNodes?.() ?? [];
+};
+
+const setNodeCenter = (node: DiagramNodeContext, x: number, y: number) => {
+    const bounds = getBounds(node);
+    node.setPosition({
+        x: x - bounds.x - bounds.w / 2,
+        y: y - bounds.y - bounds.h / 2
+    });
+};
+
+const getNodeCenter = (node: DiagramNodeContext, containerId: string | null) => {
+    const position = node.getRelativePosition(containerId as string) ?? node.getPosition();
+    if (!position) {
+        return null;
+    }
+
+    const bounds = getBounds(node);
     return {
-        x: position.x + bounds.w / 2,
-        y: position.y + bounds.h / 2
+        x: position.x + bounds.x + bounds.w / 2,
+        y: position.y + bounds.y + bounds.h / 2
     };
 };
 
@@ -33,8 +63,15 @@ const updateLinks = (context: DiagramContext) => {
         if (!startNode || !endNode) {
             continue;
         }
-        const start = getNodeCenter(startNode);
-        const end = getNodeCenter(endNode);
+
+        const coordinateSpace = context.getCommonContainer(link.getStartId(), link.getEndId());
+        const start = getNodeCenter(startNode, coordinateSpace);
+        const end = getNodeCenter(endNode, coordinateSpace);
+        if (!start || !end) {
+            continue;
+        }
+
+        link.setCoordinateSpace(coordinateSpace as string);
         link.setPoints([start.x, start.y, end.x, end.y]);
     }
 };
@@ -54,20 +91,21 @@ const circleLayout = (context: DiagramContext, radius: number, clockwise = true)
 
     for (let index = 0; index < count; index++) {
         const node = context.getNodeByIndex(index);
-        const bounds = node.getBounds();
         const angle = clockwise ? index * step : -index * step;
-        node.setPosition({
-            x: center.x + Math.cos(angle) * radius - bounds.w / 2,
-            y: center.y + Math.sin(angle) * radius - bounds.h / 2
-        });
+        layoutChildNodes(node);
+        setNodeCenter(node, center.x + Math.cos(angle) * radius, center.y + Math.sin(angle) * radius);
     }
 
     updateLinks(context);
 };
 
-const positionNodeLabelBelowIcon = (node: any, labelGap = 8) => {
+const positionNodeLabelBelowIcon = (node: DiagramNodeContext, labelGap = 8) => {
     const position = node.getPosition();
-    const bounds = node.getBounds();
+    if (!position) {
+        return;
+    }
+
+    const bounds = getBounds(node);
     const labelBounds = node.getLabelBounds();
 
     if (!labelBounds) {
@@ -82,6 +120,28 @@ const positionNodeLabelBelowIcon = (node: any, labelGap = 8) => {
     });
 };
 
+const layoutChildNodes = (node: DiagramNodeContext) => {
+    const children = getChildNodes(node);
+    if (!children.length) {
+        return;
+    }
+
+    const columns = Math.ceil(Math.sqrt(children.length));
+    const horizontalGap = 140;
+    const verticalGap = 90;
+    const startX = 50;
+    const startY = 35;
+
+    for (let index = 0; index < children.length; index++) {
+        const childNode = children[index];
+        const column = index % columns;
+        const row = Math.floor(index / columns);
+
+        layoutChildNodes(childNode);
+        setNodeCenter(childNode, startX + column * horizontalGap, startY + row * verticalGap);
+    }
+};
+
 export const gridLayout = (context: DiagramContext, columns = 3, horizontalGap = 180, verticalGap = 120) => {
     const count = context.getNodeCount();
     const center = getDiagramCenter(context);
@@ -90,13 +150,11 @@ export const gridLayout = (context: DiagramContext, columns = 3, horizontalGap =
 
     for (let index = 0; index < count; index++) {
         const node = context.getNodeByIndex(index);
-        const bounds = node.getBounds();
         const column = index % columns;
         const row = Math.floor(index / columns);
-        node.setPosition({
-            x: startX + column * horizontalGap - bounds.w / 2,
-            y: startY + row * verticalGap - bounds.h / 2
-        });
+
+        layoutChildNodes(node);
+        setNodeCenter(node, startX + column * horizontalGap, startY + row * verticalGap);
     }
 
     updateLinks(context);

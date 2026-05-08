@@ -54,6 +54,8 @@
 .demo-layout-template__recipe-section {
   display: grid;
   gap: 1rem;
+   border: 1px solid #d6dfe6;
+    padding: 10px 5px 10px 5px
 }
 
 .demo-layout-template__demo-section h2,
@@ -70,9 +72,10 @@
 }
 
 .demo-layout-template__recipe-body {
-  border-radius: 1rem;
+  /* border-radius: 1rem; */
   background: var(--oj-core-neutral-10, #f7f9fb);
   padding: 1.25rem 1.5rem;
+  /* border: 1px solid var(--oj-core-divider-color, #d9e1ea); */
 }
 
 .demo-layout-template__recipe-body ol,

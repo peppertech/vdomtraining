@@ -6,12 +6,14 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import ComponentValidation from "../componentValidation/index";
+import ComponentValidation from "./componentValidation/index";
+import Converters from "./converters/index";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
 } from "../form-breadcrumb";
-import ValidationGroup from "../validationGroup/index";
+import ValidationGroup from "./validationGroup/index";
+import Validators from "./validators/index";
 
 type ValidationComponent = {
   id: number;
@@ -22,6 +24,18 @@ type ValidationComponent = {
 };
 
 const validationComponents: ValidationComponent[] = [
+   {
+    id: 2,
+    name: "Component Validation",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-validation-component",
+    render: () => <ComponentValidation />,
+  },
+  {
+    id: 4,
+    name: "Converters",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-converter",
+    render: () => <Converters />,
+  },
   {
     id: 1,
     name: "Validation Group",
@@ -29,11 +43,12 @@ const validationComponents: ValidationComponent[] = [
     render: () => <ValidationGroup />,
   },
   {
-    id: 2,
-    name: "Component Validation",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-validation-component",
-    render: () => <ComponentValidation />,
+    id: 3,
+    name: "Validators",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-validator",
+    render: () => <Validators />,
   },
+  
 ];
 
 const dataProvider = new MutableArrayDataProvider<

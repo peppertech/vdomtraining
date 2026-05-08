@@ -108,11 +108,6 @@ export function RecipePageTemplate({
       class="oj-flex oj-sm-flex-wrap-nowrap oj-sm-column-gap-4x"
     >
       <div class="navListDemoLayout">
-        {/* {navigationTitle && (
-          <div class="recipe-page-template__nav-header">
-            <h4 class="recipe-page-template__nav-title">{navigationTitle}</h4>
-          </div>
-        )} */}
         <oj-navigation-list
           aria-label={ariaLabel}
           selection={activeExampleId}

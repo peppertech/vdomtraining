@@ -25,7 +25,7 @@ type InputNumberChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-n
 const jsonData = JSON.parse(jsonDataText as string) as DiagramData;
 export const DiagramAsynchronousLayout = () => {
     const [layoutDelay, setLayoutDelay] = useState<number>(500);
-    const [layoutCallback, setLayoutCallback] = useState<DiagramLayout>(layout.layout(500, true) as DiagramLayout);
+    const [layoutCallback, setLayoutCallback] = useState<DiagramLayout>(() => layout.layout(500, true) as DiagramLayout);
     const clockwiseRef = useRef<boolean>(true);
     const data = jsonData;
     const colorHandler = useMemo(() => new ColorAttributeGroupHandler(), []);
@@ -36,7 +36,7 @@ export const DiagramAsynchronousLayout = () => {
         const delay = event.detail.value ?? 500;
         setLayoutDelay(delay);
         clockwiseRef.current = !clockwiseRef.current;
-        setLayoutCallback(layout.layout(delay, clockwiseRef.current) as DiagramLayout);
+        setLayoutCallback(() => layout.layout(delay, clockwiseRef.current) as DiagramLayout);
     };
     const nodeTemplateRenderer = (node: NodeTemplateContext) => {
         const ojDiagramNodeProps: Partial<ComponentProps<'oj-diagram-node'>> = { icon: {
