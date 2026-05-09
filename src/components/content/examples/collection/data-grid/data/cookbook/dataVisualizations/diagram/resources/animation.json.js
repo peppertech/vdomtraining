@@ -1,0 +1,29 @@
+define([], function () { return { __esModule: true, default: {
+  "nodes": [
+    { "id": "N0", "group": "0", "size": 70 },
+    { "id": "N1", "group": "0", "size": 70 },
+    { "id": "N2", "group": "0", "size": 70 },
+    { "id": "N3", "group": "1", "size": 55 },
+    { "id": "N4", "group": "2", "size": 30 },
+    { "id": "N5", "group": "3", "size": 25 },
+    { "id": "N6", "group": "1", "size": 55 },
+    { "id": "N7", "group": "2", "size": 30 },
+    { "id": "N8", "group": "3", "size": 20 },
+    { "id": "N9", "group": "1", "size": 55 },
+    { "id": "N10", "group": "2", "size": 30 }
+  ],
+  "links": [
+    { "id": "L0", "start": "N0", "end": "N3" },
+    { "id": "L1", "start": "N0", "end": "N4" },
+    { "id": "L2", "start": "N0", "end": "N5" },
+    { "id": "L3", "start": "N1", "end": "N6" },
+    { "id": "L4", "start": "N1", "end": "N7" },
+    { "id": "L5", "start": "N1", "end": "N8" },
+    { "id": "L6", "start": "N2", "end": "N9" },
+    { "id": "L7", "start": "N2", "end": "N10" },
+    { "id": "L8", "start": "N0", "end": "N1" },
+    { "id": "L9", "start": "N1", "end": "N2" }
+  ]
+}
+ }; });
+

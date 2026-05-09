@@ -1,0 +1,178 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": "0",
+    "row": "0",
+    "column": "0",
+    "category": "Initial"
+  },
+  {
+    "id": "1",
+    "row": "0",
+    "column": "0",
+    "category": "Qualification"
+  },
+  {
+    "id": "2",
+    "row": "0",
+    "column": "0",
+    "category": "Qualification"
+  },
+  {
+    "id": "3",
+    "row": "0",
+    "column": "1",
+    "category": "Meeting"
+  },
+  {
+    "id": "4",
+    "row": "0",
+    "column": "1",
+    "category": "Proposal"
+  },
+  {
+    "id": "5",
+    "row": "0",
+    "column": "1",
+    "category": "Proposal"
+  },
+  {
+    "id": "6",
+    "row": "0",
+    "column": "1",
+    "category": "Meeting"
+  },
+  {
+    "id": "7",
+    "row": "0",
+    "column": "2",
+    "category": "Close"
+  },
+  {
+    "id": "8",
+    "row": "0",
+    "column": "2",
+    "category": "Close"
+  },
+  {
+    "id": "9",
+    "row": "1",
+    "column": "0",
+    "category": "Close"
+  },
+  {
+    "id": "10",
+    "row": "1",
+    "column": "0",
+    "category": "Meeting"
+  },
+  {
+    "id": "11",
+    "row": "1",
+    "column": "1",
+    "category": "Meeting"
+  },
+  {
+    "id": "12",
+    "row": "1",
+    "column": "1",
+    "category": "Proposal"
+  },
+  {
+    "id": "13",
+    "row": "1",
+    "column": "1",
+    "category": "Qualification"
+  },
+  {
+    "id": "14",
+    "row": "1",
+    "column": "1",
+    "category": "Qualification"
+  },
+  {
+    "id": "15",
+    "row": "1",
+    "column": "1",
+    "category": "Qualification"
+  },
+  {
+    "id": "16",
+    "row": "1",
+    "column": "1",
+    "category": "Meeting"
+  },
+  {
+    "id": "17",
+    "row": "1",
+    "column": "1",
+    "category": "Proposal"
+  },
+  {
+    "id": "18",
+    "row": "1",
+    "column": "1",
+    "category": "Proposal"
+  },
+  {
+    "id": "19",
+    "row": "1",
+    "column": "2",
+    "category": "Initial"
+  },
+  {
+    "id": "20",
+    "row": "1",
+    "column": "2",
+    "category": "Initial"
+  },
+  {
+    "id": "21",
+    "row": "1",
+    "column": "2",
+    "category": "Meeting"
+  },
+  {
+    "id": "22",
+    "row": "2",
+    "column": "0",
+    "category": "Meeting"
+  },
+  {
+    "id": "23",
+    "row": "2",
+    "column": "1",
+    "category": "Close"
+  },
+  {
+    "id": "24",
+    "row": "2",
+    "column": "1",
+    "category": "Close"
+  },
+  {
+    "id": "25",
+    "row": "2",
+    "column": "1",
+    "category": "Meeting"
+  },
+  {
+    "id": "26",
+    "row": "2",
+    "column": "1",
+    "category": "Meeting"
+  },
+  {
+    "id": "27",
+    "row": "2",
+    "column": "2",
+    "category": "Initial"
+  },
+  {
+    "id": "28",
+    "row": "2",
+    "column": "2",
+    "category": "Proposal"
+  }
+]
+ }; });
+

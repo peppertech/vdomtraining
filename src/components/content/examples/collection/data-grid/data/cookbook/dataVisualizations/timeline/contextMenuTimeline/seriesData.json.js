@@ -1,0 +1,36 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": "e1",
+    "title": "ATP VTR Open",
+    "begin": "2013-02-04T05:00:00.000Z",
+    "finish": "2013-02-10T05:00:00.000Z",
+    "description": "Finalist: 3-1",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e2",
+    "title": "ATP Brasil Open",
+    "begin": "2013-02-11T05:00:00.000Z",
+    "finish": "2013-02-17T05:00:00.000Z",
+    "description": "Champion: 4-0",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e3",
+    "title": "ATP Abierto Mexicano Telcel",
+    "begin": "2013-02-25T05:00:00.000Z",
+    "finish": "2013-03-02T05:00:00.000Z",
+    "description": "Champion: 5-0",
+    "series": "Oracle Events"
+  },
+  {
+    "id": "e4",
+    "title": "ATP BNP Paribas Open",
+    "begin": "2013-03-07T05:00:00.000Z",
+    "finish": "2013-03-17T04:00:00.000Z",
+    "description": "Champion: 6-0",
+    "series": "Oracle Events"
+  }
+]
+ }; });
+

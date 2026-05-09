@@ -1,0 +1,17 @@
+[
+  {
+    "DepartmentId": 10,
+    "DepartmentName": "ADFPM 1001 neverending",
+    "LocationId": 200,
+    "ManagerId": 300
+  },
+  { "DepartmentId": 20, "DepartmentName": "BB", "LocationId": 200, "ManagerId": 300 },
+  { "DepartmentId": 30, "DepartmentName": "Administration", "LocationId": 200, "ManagerId": 300 },
+  { "DepartmentId": 40, "DepartmentName": "Marketing", "LocationId": 200, "ManagerId": 300 },
+  { "DepartmentId": 50, "DepartmentName": "Purchasing", "LocationId": 200, "ManagerId": 300 },
+  { "DepartmentId": 60, "DepartmentName": "Human Resources1", "LocationId": 200, "ManagerId": 300 },
+  { "DepartmentId": 70, "DepartmentName": "Administration2", "LocationId": 200, "ManagerId": 300 },
+  { "DepartmentId": 80, "DepartmentName": "Marketing3", "LocationId": 200, "ManagerId": 300 },
+  { "DepartmentId": 90, "DepartmentName": "Purchasing4", "LocationId": 200, "ManagerId": 300 },
+  { "DepartmentId": 100, "DepartmentName": "Human Resources5", "LocationId": 200, "ManagerId": 300 }
+]

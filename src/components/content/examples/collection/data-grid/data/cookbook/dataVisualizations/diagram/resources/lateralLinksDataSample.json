@@ -1,0 +1,214 @@
+{
+  "nodes": [
+    {
+      "id": "N0",
+      "category": "0"
+    },
+    {
+      "id": "N1",
+      "category": "1"
+    },
+    {
+      "id": "N2",
+      "category": "2"
+    },
+    {
+      "id": "N3",
+      "category": "0"
+    },
+    {
+      "id": "N4",
+      "category": "1"
+    },
+    {
+      "id": "N5",
+      "category": "2"
+    },
+    {
+      "id": "N6",
+      "category": "0"
+    },
+    {
+      "id": "N7",
+      "category": "1"
+    },
+    {
+      "id": "N8",
+      "category": "2"
+    },
+    {
+      "id": "N9",
+      "category": "0"
+    },
+    {
+      "id": "N10",
+      "category": "1"
+    },
+    {
+      "id": "N11",
+      "category": "2"
+    },
+    {
+      "id": "N12",
+      "category": "0"
+    },
+    {
+      "id": "N13",
+      "category": "1"
+    },
+    {
+      "id": "N14",
+      "category": "2"
+    },
+    {
+      "id": "N15",
+      "category": "0"
+    }
+  ],
+  "links": [
+    {
+      "id": "V0",
+      "category": "0",
+      "startNode": "N0",
+      "endNode": "N4"
+    },
+    {
+      "id": "H0",
+      "category": "0",
+      "startNode": "N0",
+      "endNode": "N1"
+    },
+    {
+      "id": "V1",
+      "category": "1",
+      "startNode": "N1",
+      "endNode": "N5"
+    },
+    {
+      "id": "H1",
+      "category": "1",
+      "startNode": "N1",
+      "endNode": "N2"
+    },
+    {
+      "id": "V2",
+      "category": "2",
+      "startNode": "N2",
+      "endNode": "N6"
+    },
+    {
+      "id": "H2",
+      "category": "2",
+      "startNode": "N2",
+      "endNode": "N3"
+    },
+    {
+      "id": "V3",
+      "category": "0",
+      "startNode": "N3",
+      "endNode": "N7"
+    },
+    {
+      "id": "V4",
+      "category": "1",
+      "startNode": "N4",
+      "endNode": "N8"
+    },
+    {
+      "id": "H4",
+      "category": "1",
+      "startNode": "N4",
+      "endNode": "N5"
+    },
+    {
+      "id": "V5",
+      "category": "2",
+      "startNode": "N5",
+      "endNode": "N9"
+    },
+    {
+      "id": "H5",
+      "category": "2",
+      "startNode": "N5",
+      "endNode": "N6"
+    },
+    {
+      "id": "V6",
+      "category": "0",
+      "startNode": "N6",
+      "endNode": "N10"
+    },
+    {
+      "id": "H6",
+      "category": "0",
+      "startNode": "N6",
+      "endNode": "N7"
+    },
+    {
+      "id": "V7",
+      "category": "1",
+      "startNode": "N7",
+      "endNode": "N11"
+    },
+    {
+      "id": "V8",
+      "category": "2",
+      "startNode": "N8",
+      "endNode": "N12"
+    },
+    {
+      "id": "H8",
+      "category": "2",
+      "startNode": "N8",
+      "endNode": "N9"
+    },
+    {
+      "id": "V9",
+      "category": "0",
+      "startNode": "N9",
+      "endNode": "N13"
+    },
+    {
+      "id": "H9",
+      "category": "0",
+      "startNode": "N9",
+      "endNode": "N10"
+    },
+    {
+      "id": "V10",
+      "category": "1",
+      "startNode": "N10",
+      "endNode": "N14"
+    },
+    {
+      "id": "H10",
+      "category": "1",
+      "startNode": "N10",
+      "endNode": "N11"
+    },
+    {
+      "id": "V11",
+      "category": "2",
+      "startNode": "N11",
+      "endNode": "N15"
+    },
+    {
+      "id": "H12",
+      "category": "0",
+      "startNode": "N12",
+      "endNode": "N13"
+    },
+    {
+      "id": "H13",
+      "category": "1",
+      "startNode": "N13",
+      "endNode": "N14"
+    },
+    {
+      "id": "H14",
+      "category": "2",
+      "startNode": "N14",
+      "endNode": "N15"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+.demo-data-grid {
+  width: 100%;
+  min-height: 25rem;
+}
+
+.demo-data-grid-strike-through {
+  text-decoration: line-through;
+}
+
+.demo-data-grid-underline {
+  text-decoration: underline;
+}
+
+.demo-data-grid-font-italic {
+  font-style: italic;
+}

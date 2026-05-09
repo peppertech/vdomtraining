@@ -1,0 +1,95 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "title": "News",
+    "id": "news"
+  },
+  {
+    "title": "Blogs",
+    "id": "blogs",
+    "children": [
+      {
+        "title": "Today",
+        "id": "today"
+      },
+      {
+        "title": "Yesterday",
+        "id": "yesterday"
+      },
+      {
+        "title": "Archive",
+        "id": "archive"
+      },
+      {
+        "title": "Tomorrow",
+        "id": "tomorrow"
+      },
+      {
+        "title": "Weekend",
+        "id": "weekend",
+        "children": [
+          {
+            "title": "Saturday",
+            "id": "saturday"
+          },
+          {
+            "title": "Sunday",
+            "id": "sunday"
+          }
+        ]
+      },
+      {
+        "title": "Monday",
+        "id": "monday"
+      }
+    ]
+  },
+  {
+    "title": "USA",
+    "id": "usa",
+    "children": [
+      {
+        "title": "Northeast",
+        "id": "northeast",
+        "children": [
+          {
+            "title": "NY",
+            "id": "ny"
+          },
+          {
+            "title": "MA",
+            "id": "ma"
+          }
+        ]
+      },
+      {
+        "title": "Midwest",
+        "id": "midwest"
+      },
+      {
+        "title": "South",
+        "id": "south"
+      }
+    ]
+  },
+  {
+    "title": "Oracle",
+    "id": "oracle",
+    "children": [
+      {
+        "title": "Europe",
+        "id": "europe"
+      },
+      {
+        "title": "Asia",
+        "id": "asia"
+      }
+    ]
+  },
+  {
+    "title": "Links",
+    "id": "links",
+    "children": []
+  }
+]
+ }; });
+

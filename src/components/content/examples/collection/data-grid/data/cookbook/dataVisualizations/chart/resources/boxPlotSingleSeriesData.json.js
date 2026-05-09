@@ -1,0 +1,81 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": 0,
+    "series": "Box Plot",
+    "group": "Group A",
+    "low": 22,
+    "high": 45,
+    "q1": 27,
+    "q2": 31,
+    "q3": 34,
+    "outliers": []
+  },
+  {
+    "id": 1,
+    "series": "Box Plot",
+    "group": "Group B",
+    "low": 15,
+    "high": 57,
+    "q1": 24,
+    "q2": 34,
+    "q3": 41,
+    "outliers": []
+  },
+  {
+    "id": 2,
+    "series": "Box Plot",
+    "group": "Group C",
+    "low": 36,
+    "high": 81,
+    "q1": 47,
+    "q2": 58,
+    "q3": 62,
+    "outliers": [19, 22, 88]
+  },
+  {
+    "id": 3,
+    "series": "Box Plot",
+    "group": "Group D",
+    "low": 20,
+    "high": 68,
+    "q1": 24,
+    "q2": 47,
+    "q3": 60,
+    "outliers": []
+  },
+  {
+    "id": 4,
+    "series": "Box Plot",
+    "group": "Group E",
+    "low": 26,
+    "high": 47,
+    "q1": 28,
+    "q2": 37,
+    "q3": 41,
+    "outliers": []
+  },
+  {
+    "id": 5,
+    "series": "Box Plot",
+    "group": "Group F",
+    "low": 14,
+    "high": 51,
+    "q1": 23,
+    "q2": 36,
+    "q3": 47,
+    "outliers": []
+  },
+  {
+    "id": 6,
+    "series": "Box Plot",
+    "group": "Group G",
+    "low": 28,
+    "high": 65,
+    "q1": 44,
+    "q2": 51,
+    "q3": 57,
+    "outliers": [26, 82]
+  }
+]
+ }; });
+

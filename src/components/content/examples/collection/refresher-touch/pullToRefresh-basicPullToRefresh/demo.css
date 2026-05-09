@@ -1,0 +1,27 @@
+.demo-pulltorefresh {
+  width: 100%;
+  height: 31.25rem;
+  overflow-x: hidden;
+}
+
+.demo-thumbnail {
+  border-radius: 0.3125rem;
+  background-size: 2.5rem 2.5rem;
+  background-repeat: no-repeat;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  max-width: 2.5rem;
+}
+
+.demo-content {
+  margin-left: 0.625rem;
+}
+
+.demo-tweet {
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+}
+
+.demo-tweet span {
+  word-wrap: break-word;
+}

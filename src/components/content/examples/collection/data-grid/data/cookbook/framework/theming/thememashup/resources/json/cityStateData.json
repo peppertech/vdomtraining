@@ -1,0 +1,87 @@
+[
+  {
+    "label": "Massachusetts",
+    "id": "0",
+    "value": 87,
+    "nodes": [
+      {
+        "label": "Boston",
+        "id": "00",
+        "value": 93
+      },
+      {
+        "label": "Springfield",
+        "id": "01",
+        "value": 75
+      },
+      {
+        "label": "Worcester",
+        "id": "02",
+        "value": 70
+      }
+    ]
+  },
+  {
+    "label": "Connecticut",
+    "id": "1",
+    "value": 88,
+    "nodes": [
+      {
+        "label": "Hartford",
+        "id": "10",
+        "value": 78
+      },
+      {
+        "label": "New Haven",
+        "id": "11",
+        "value": 96
+      }
+    ]
+  },
+  {
+    "label": "Maine",
+    "id": "2",
+    "value": 72,
+    "nodes": [
+      {
+        "label": "Portland",
+        "id": "20",
+        "value": 93
+      },
+      {
+        "label": "Augusta",
+        "id": "21",
+        "value": 90
+      }
+    ]
+  },
+  {
+    "label": "Vermont",
+    "id": "3",
+    "value": 68,
+    "nodes": [
+      {
+        "label": "Burlington",
+        "id": "30",
+        "value": 77
+      }
+    ]
+  },
+  {
+    "label": "Rhode Island",
+    "id": "4",
+    "value": 68,
+    "nodes": [
+      {
+        "label": "Providence",
+        "id": "40",
+        "value": 84
+      },
+      {
+        "label": "Newport",
+        "id": "41",
+        "value": 96
+      }
+    ]
+  }
+]

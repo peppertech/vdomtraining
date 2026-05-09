@@ -1,0 +1,121 @@
+[
+  {
+    "id": 0,
+    "country": "Canada",
+    "type": "Vehicles",
+    "gasPricePerLiter": 7.92,
+    "distanceTraveled": 8200
+  },
+  {
+    "id": 1,
+    "country": "Denmark",
+    "type": "Vehicles",
+    "gasPricePerLiter": null,
+    "distanceTraveled": null
+  },
+  {
+    "id": 2,
+    "country": "Denmark",
+    "type": "Bikes",
+    "gasPricePerLiter": 8.13,
+    "distanceTraveled": 620.5
+  },
+  {
+    "id": 3,
+    "country": "France",
+    "type": "Vehicles",
+    "gasPricePerLiter": 8.01,
+    "distanceTraveled": 6200
+  },
+  {
+    "id": 4,
+    "country": "Germany",
+    "type": "Vehicles",
+    "gasPricePerLiter": 8.61,
+    "distanceTraveled": 6300
+  },
+  {
+    "id": 5,
+    "country": "Germany",
+    "type": "Bikes",
+    "gasPricePerLiter": 8.61,
+    "distanceTraveled": 292
+  },
+  {
+    "id": 6,
+    "country": "Italy",
+    "type": "Vehicles",
+    "gasPricePerLiter": 8.61,
+    "distanceTraveled": 7000
+  },
+  {
+    "id": 7,
+    "country": "Japan",
+    "type": "Vehicles",
+    "gasPricePerLiter": 5.9,
+    "distanceTraveled": 3900
+  },
+  {
+    "id": 8,
+    "country": "Netherlands",
+    "type": "Vehicles",
+    "gasPricePerLiter": 8.89,
+    "distanceTraveled": 6000
+  },
+  {
+    "id": 9,
+    "country": "Netherlands",
+    "type": "Bikes",
+    "gasPricePerLiter": 8.89,
+    "distanceTraveled": 1095
+  },
+  {
+    "id": 10,
+    "country": "Norway",
+    "type": "Vehicles",
+    "gasPricePerLiter": 10.08,
+    "distanceTraveled": 5700
+  },
+  {
+    "id": 11,
+    "country": "Norway",
+    "type": "Bikes",
+    "gasPricePerLiter": 10.08,
+    "distanceTraveled": 146
+  },
+  {
+    "id": 12,
+    "country": "Sweden",
+    "type": "Vehicles",
+    "gasPricePerLiter": 8.1,
+    "distanceTraveled": 6300
+  },
+  {
+    "id": 13,
+    "country": "Sweden",
+    "type": "Bikes",
+    "gasPricePerLiter": 8.1,
+    "distanceTraveled": 328.5
+  },
+  {
+    "id": 14,
+    "country": "USA",
+    "type": "Vehicles",
+    "gasPricePerLiter": 3.66,
+    "distanceTraveled": 13000
+  },
+  {
+    "id": 15,
+    "country": "UK",
+    "type": "Vehicles",
+    "gasPricePerLiter": 7.75,
+    "distanceTraveled": 6500
+  },
+  {
+    "id": 16,
+    "country": "UK",
+    "type": "Bikes",
+    "gasPricePerLiter": 7.75,
+    "distanceTraveled": 36.5
+  }
+]

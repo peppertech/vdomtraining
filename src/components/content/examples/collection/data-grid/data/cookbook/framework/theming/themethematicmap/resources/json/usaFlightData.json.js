@@ -1,0 +1,41 @@
+define([], function () { return { __esModule: true, default: {
+  "airports": [
+    {
+      "state": "Massachusetts"
+    },
+    {
+      "state": "New York"
+    },
+    {
+      "state": "Michigan"
+    },
+    {
+      "state": "California"
+    },
+    {
+      "state": "Texas"
+    },
+    {
+      "state": "Hawaii"
+    }
+  ],
+  "flights": [
+    {
+      "start": "Massachusetts",
+      "end": "California",
+      "flight": 900
+    },
+    {
+      "start": "New York",
+      "end": "Hawaii",
+      "flight": 900
+    },
+    {
+      "start": "Texas",
+      "end": "Michigan",
+      "flight": 900
+    }
+  ]
+}
+ }; });
+

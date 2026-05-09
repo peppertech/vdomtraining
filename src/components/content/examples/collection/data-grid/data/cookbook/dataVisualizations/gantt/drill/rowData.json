@@ -1,0 +1,335 @@
+[
+  {
+    "id": "design",
+    "tasks": [
+      {
+        "id": "design",
+        "label": "Design Phase",
+        "name": "Planning Team",
+        "progress": 1,
+        "type": "summary",
+        "start": "2016-01-03T00:00:00.000Z",
+        "end": "2016-02-02T00:00:00.000Z",
+        "plannedStart": "2016-01-03T00:00:00.000Z",
+        "plannedFinish": "2016-01-31T00:00:00.000Z"
+      }
+    ],
+    "subTasks": [
+      {
+        "id": "pm1",
+        "tasks": [
+          {
+            "id": "pm1",
+            "label": "Requirements Scope 1",
+            "name": "Project Manager",
+            "progress": 1,
+            "start": "2016-01-03T00:00:00.000Z",
+            "end": "2016-01-13T00:00:00.000Z",
+            "plannedStart": "2016-01-03T00:00:00.000Z",
+            "plannedFinish": "2016-01-10T00:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "id": "pm2",
+        "tasks": [
+          {
+            "id": "pm2",
+            "label": "Requirements Scope 2",
+            "name": "Project Manager",
+            "progress": 1,
+            "start": "2016-01-13T00:00:00.000Z",
+            "end": "2016-01-17T00:00:00.000Z",
+            "plannedStart": "2016-01-10T00:00:00.000Z",
+            "plannedFinish": "2016-01-17T00:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "id": "pm3",
+        "tasks": [
+          {
+            "id": "pm3",
+            "label": "Scope Complete",
+            "start": "2016-01-17T00:00:00.000Z",
+            "end": "2016-01-17T00:00:00.000Z",
+            "plannedStart": "2016-01-17T00:00:00.000Z",
+            "plannedFinish": "2016-01-17T00:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "id": "ad1",
+        "tasks": [
+          {
+            "id": "ad1",
+            "label": "Architectural Design",
+            "name": "Architect",
+            "progress": 1,
+            "start": "2016-01-19T00:00:00.000Z",
+            "end": "2016-02-02T00:00:00.000Z",
+            "plannedStart": "2016-01-17T00:00:00.000Z",
+            "plannedFinish": "2016-01-31T00:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "id": "ad2",
+        "tasks": [
+          {
+            "id": "ad2",
+            "label": "Design Complete",
+            "start": "2016-02-02T00:00:00.000Z",
+            "end": "2016-02-02T00:00:00.000Z",
+            "plannedStart": "2016-01-31T00:00:00.000Z",
+            "plannedFinish": "2016-01-31T00:00:00.000Z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dev",
+    "tasks": [
+      {
+        "id": "dev",
+        "label": "Development Phase",
+        "name": "Development Team",
+        "progress": 0.43,
+        "type": "summary",
+        "start": "2016-02-02T00:00:00.000Z",
+        "end": "2016-03-18T00:00:00.000Z",
+        "plannedStart": "2016-01-31T00:00:00.000Z",
+        "plannedFinish": "2016-03-18T00:00:00.000Z"
+      }
+    ],
+    "subTasks": [
+      {
+        "id": "dev1",
+        "tasks": [
+          {
+            "id": "dev1",
+            "label": "Pre-Impl Review",
+            "name": "Developer",
+            "progress": 1,
+            "start": "2016-02-02T00:00:00.000Z",
+            "end": "2016-02-05T00:00:00.000Z",
+            "plannedStart": "2016-01-31T00:00:00.000Z",
+            "plannedFinish": "2016-02-03T00:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "id": "dev2",
+        "tasks": [
+          {
+            "id": "dev2",
+            "label": "Development 1",
+            "name": "Developer",
+            "progress": 0.75,
+            "start": "2016-02-05T00:00:00.000Z",
+            "end": "2016-02-27T00:00:00.000Z",
+            "plannedStart": "2016-02-03T00:00:00.000Z",
+            "plannedFinish": "2016-02-27T00:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "id": "dev3",
+        "tasks": [
+          {
+            "id": "dev3",
+            "label": "Development 2",
+            "name": "Developer",
+            "progress": 0,
+            "start": "2016-02-27T00:00:00.000Z",
+            "end": "2016-03-15T00:00:00.000Z",
+            "plannedStart": "2016-02-27T00:00:00.000Z",
+            "plannedFinish": "2016-03-15T00:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "id": "dev4",
+        "tasks": [
+          {
+            "id": "dev4",
+            "label": "Post-Impl Review",
+            "name": "Developer",
+            "progress": 0,
+            "start": "2016-03-15T00:00:00.000Z",
+            "end": "2016-03-18T00:00:00.000Z",
+            "plannedStart": "2016-03-15T00:00:00.000Z",
+            "plannedFinish": "2016-03-18T00:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "id": "dev5",
+        "tasks": [
+          {
+            "id": "dev5",
+            "label": "Development Complete",
+            "start": "2016-03-18T00:00:00.000Z",
+            "end": "2016-03-18T00:00:00.000Z",
+            "finish": "2016-03-18T00:00:00.000Z",
+            "plannedStart": "2016-03-18T00:00:00.000Z",
+            "plannedFinish": "2016-03-18T00:00:00.000Z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "production",
+    "tasks": [
+      {
+        "id": "production",
+        "label": "Production Phase",
+        "name": "Delivery Team",
+        "progress": 0.08,
+        "type": "summary",
+        "start": "2016-02-02T00:00:00.000Z",
+        "end": "2016-07-25T00:00:00.000Z",
+        "plannedStart": "2016-01-31T00:00:00.000Z",
+        "plannedFinish": "2016-07-25T00:00:00.000Z"
+      }
+    ],
+    "subTasks": [
+      {
+        "id": "doc1",
+        "tasks": [
+          {
+            "id": "doc1",
+            "label": "Documentation",
+            "name": "Communicator",
+            "progress": 0.25,
+            "start": "2016-02-02T00:00:00.000Z",
+            "end": "2016-03-05T00:00:00.000Z",
+            "plannedStart": "2016-01-31T00:00:00.000Z",
+            "plannedFinish": "2016-03-05T00:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "id": "qa",
+        "tasks": [
+          {
+            "id": "qa",
+            "label": "QA Testing",
+            "name": "QA Team",
+            "progress": 0.184,
+            "type": "summary",
+            "start": "2016-02-02T00:00:00.000Z",
+            "end": "2016-04-18T00:00:00.000Z",
+            "plannedStart": "2016-01-31T00:00:00.000Z",
+            "plannedFinish": "2016-04-18T00:00:00.000Z"
+          }
+        ],
+        "subTasks": [
+          {
+            "id": "test1",
+            "tasks": [
+              {
+                "id": "test1",
+                "label": "QA Test 1",
+                "name": "QA Engineer",
+                "progress": 0.5,
+                "start": "2016-02-02T00:00:00.000Z",
+                "end": "2016-03-01T00:00:00.000Z",
+                "plannedStart": "2016-01-31T00:00:00.000Z",
+                "plannedFinish": "2016-03-01T00:00:00.000Z"
+              }
+            ]
+          },
+          {
+            "id": "test2",
+            "tasks": [
+              {
+                "id": "test2",
+                "label": "QA Test 2",
+                "name": "QA Engineer",
+                "progress": 0,
+                "start": "2016-03-18T00:00:00.000Z",
+                "end": "2016-04-18T00:00:00.000Z",
+                "plannedStart": "2016-03-18T00:00:00.000Z",
+                "plannedFinish": "2016-04-18T00:00:00.000Z"
+              }
+            ]
+          },
+          {
+            "id": "test3",
+            "tasks": [
+              {
+                "id": "test3",
+                "label": "QA Complete",
+                "start": "2016-04-18T00:00:00.000Z",
+                "end": "2016-04-18T00:00:00.000Z",
+                "plannedStart": "2016-04-18T00:00:00.000Z",
+                "plannedFinish": "2016-04-18T00:00:00.000Z"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "test4",
+        "tasks": [
+          {
+            "id": "test4",
+            "label": "Pilot",
+            "name": "Testers",
+            "progress": 0,
+            "start": "2016-04-30T00:00:00.000Z",
+            "end": "2016-06-18T00:00:00.000Z",
+            "plannedStart": "2016-04-30T00:00:00.000Z",
+            "plannedFinish": "2016-06-18T00:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "id": "test5",
+        "tasks": [
+          {
+            "id": "test5",
+            "label": "Beta",
+            "name": "Testers",
+            "progress": 0,
+            "start": "2016-06-20T00:00:00.000Z",
+            "end": "2016-07-18T00:00:00.000Z",
+            "plannedStart": "2016-06-20T00:00:00.000Z",
+            "plannedFinish": "2016-07-18T00:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "id": "deploy1",
+        "tasks": [
+          {
+            "id": "deploy1",
+            "label": "Deployment",
+            "name": "Deployment Team",
+            "progress": 0,
+            "start": "2016-07-20T00:00:00.000Z",
+            "end": "2016-07-25T00:00:00.000Z",
+            "plannedStart": "2016-07-20T00:00:00.000Z",
+            "plannedFinish": "2016-07-25T00:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "id": "deploy2",
+        "tasks": [
+          {
+            "id": "deploy2",
+            "label": "Deployment Complete",
+            "start": "2016-07-25T00:00:00.000Z",
+            "end": "2016-07-25T00:00:00.000Z",
+            "plannedStart": "2016-07-25T00:00:00.000Z",
+            "plannedFinish": "2016-07-25T00:00:00.000Z"
+          }
+        ]
+      }
+    ]
+  }
+]

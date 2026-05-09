@@ -1,0 +1,257 @@
+[
+  {
+    "EmployeeId": 100,
+    "FirstName": "Steven",
+    "LastName": "King",
+    "Email": "SKING",
+    "PhoneNumber": "515.123.4567",
+    "JobId": "AD_PRES",
+    "Salary": 24000,
+    "CommissionPct": null,
+    "ManagerId": null,
+    "DepartmentId": 90,
+    "links": {
+      "self": {
+        "rel": "self",
+        "href": "http://slc01qrl:7801/stable/rest/Employees/100"
+      },
+      "canonical": {
+        "rel": "canonical",
+        "href": "http://slc01qrl:7801/stable/rest/Employees/100"
+      }
+    },
+    "children": [
+      {
+        "EmployeeId": 201,
+        "FirstName": "Michael",
+        "LastName": "Hartstein",
+        "Email": "MHARTSTE",
+        "PhoneNumber": "515.123.5555",
+        "JobId": "MK_MAN",
+        "Salary": 13000,
+        "CommissionPct": null,
+        "ManagerId": 100,
+        "DepartmentId": 20,
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://slc01qrl:7801/stable/rest/Employees/201"
+          },
+          "canonical": {
+            "rel": "canonical",
+            "href": "http://slc01qrl:7801/stable/rest/Employees/201"
+          }
+        },
+        "children": [
+          {
+            "EmployeeId": 202,
+            "FirstName": "Pat",
+            "LastName": "Fay",
+            "Email": "PFAY",
+            "PhoneNumber": "603.123.6666",
+            "JobId": "MK_REP",
+            "Salary": 6000,
+            "CommissionPct": null,
+            "ManagerId": 201,
+            "DepartmentId": 20,
+            "links": {
+              "self": {
+                "rel": "self",
+                "href": "http://slc01qrl:7801/stable/rest/Employees/202"
+              },
+              "canonical": {
+                "rel": "canonical",
+                "href": "http://slc01qrl:7801/stable/rest/Employees/202"
+              }
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "EmployeeId": 101,
+        "FirstName": "Neena",
+        "LastName": "Kochhar",
+        "Email": "NKOCHHAR",
+        "PhoneNumber": "515.123.4568",
+        "JobId": "AD_VP",
+        "Salary": 17000,
+        "CommissionPct": null,
+        "ManagerId": 100,
+        "DepartmentId": 90,
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://slc01qrl:7801/stable/rest/Employees/101"
+          },
+          "canonical": {
+            "rel": "canonical",
+            "href": "http://slc01qrl:7801/stable/rest/Employees/101"
+          }
+        },
+        "children": [
+          {
+            "EmployeeId": 200,
+            "FirstName": "Jenny",
+            "LastName": "Whalen",
+            "Email": "JWHALEN",
+            "PhoneNumber": "515.123.4444",
+            "JobId": "AD_ASST",
+            "Salary": 4400,
+            "CommissionPct": 0,
+            "ManagerId": 101,
+            "DepartmentId": 10,
+            "links": {
+              "self": {
+                "rel": "self",
+                "href": "http://slc01qrl:7801/stable/rest/Employees/200"
+              },
+              "canonical": {
+                "rel": "canonical",
+                "href": "http://slc01qrl:7801/stable/rest/Employees/200"
+              }
+            },
+            "children": []
+          },
+          {
+            "EmployeeId": 203,
+            "FirstName": "Susan",
+            "LastName": "Mavris",
+            "Email": "SMAVRIS",
+            "PhoneNumber": "515.123.7777",
+            "JobId": "HR_REP",
+            "Salary": 6500,
+            "CommissionPct": null,
+            "ManagerId": 101,
+            "DepartmentId": 40,
+            "links": {
+              "self": {
+                "rel": "self",
+                "href": "http://slc01qrl:7801/stable/rest/Employees/203"
+              },
+              "canonical": {
+                "rel": "canonical",
+                "href": "http://slc01qrl:7801/stable/rest/Employees/203"
+              }
+            }
+          },
+          {
+            "EmployeeId": 204,
+            "FirstName": "Hermann",
+            "LastName": "Baer",
+            "Email": "HBAER",
+            "PhoneNumber": "515.123.8888",
+            "JobId": "PR_REP",
+            "Salary": 10000,
+            "CommissionPct": null,
+            "ManagerId": 101,
+            "DepartmentId": 70,
+            "links": {
+              "self": {
+                "rel": "self",
+                "href": "http://slc01qrl:7801/stable/rest/Employees/204"
+              },
+              "canonical": {
+                "rel": "canonical",
+                "href": "http://slc01qrl:7801/stable/rest/Employees/204"
+              }
+            }
+          },
+          {
+            "EmployeeId": 205,
+            "FirstName": "Shelley",
+            "LastName": "Higgins",
+            "Email": "SHIGGINS",
+            "PhoneNumber": "515.123.8080",
+            "JobId": "AC_MGR",
+            "Salary": 12008,
+            "CommissionPct": null,
+            "ManagerId": 101,
+            "DepartmentId": 110,
+            "links": {
+              "self": {
+                "rel": "self",
+                "href": "http://slc01qrl:7801/stable/rest/Employees/205"
+              },
+              "canonical": {
+                "rel": "canonical",
+                "href": "http://slc01qrl:7801/stable/rest/Employees/205"
+              }
+            },
+            "children": [
+              {
+                "EmployeeId": 206,
+                "FirstName": "William",
+                "LastName": "Gietz",
+                "Email": "WGIETZ",
+                "PhoneNumber": "515.123.8181",
+                "JobId": "AC_ACCOUNT",
+                "Salary": 8300,
+                "CommissionPct": null,
+                "ManagerId": 205,
+                "DepartmentId": 110,
+                "links": {
+                  "self": {
+                    "rel": "self",
+                    "href": "http://slc01qrl:7801/stable/rest/Employees/206"
+                  },
+                  "canonical": {
+                    "rel": "canonical",
+                    "href": "http://slc01qrl:7801/stable/rest/Employees/206"
+                  }
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "EmployeeId": 102,
+        "FirstName": "Lex",
+        "LastName": "De Haan",
+        "Email": "LDEHAAN",
+        "PhoneNumber": "515.123.4569",
+        "JobId": "AD_VP",
+        "Salary": 17000,
+        "CommissionPct": null,
+        "ManagerId": 100,
+        "DepartmentId": 90,
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://slc01qrl:7801/stable/rest/Employees/102"
+          },
+          "canonical": {
+            "rel": "canonical",
+            "href": "http://slc01qrl:7801/stable/rest/Employees/102"
+          }
+        },
+        "children": [
+          {
+            "EmployeeId": 103,
+            "FirstName": "Bikram",
+            "LastName": "Hunold",
+            "Email": "AHUNOLD",
+            "PhoneNumber": "590.423.4567",
+            "JobId": "IT_PROG",
+            "Salary": 9000,
+            "CommissionPct": null,
+            "ManagerId": 102,
+            "DepartmentId": 60,
+            "links": {
+              "self": {
+                "rel": "self",
+                "href": "http://slc01qrl:7801/stable/rest/Employees/103"
+              },
+              "canonical": {
+                "rel": "canonical",
+                "href": "http://slc01qrl:7801/stable/rest/Employees/103"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

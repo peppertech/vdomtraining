@@ -1,0 +1,350 @@
+[
+  {
+    "id": "Northeast",
+    "region": 0,
+    "sales": 42000000,
+    "description": "Northeast",
+    "nodes": [
+      {
+        "id": "CT",
+        "region": 0,
+        "sales": 33000,
+        "description": "Connecticut"
+      },
+      {
+        "id": "ME",
+        "region": 0,
+        "sales": 210000,
+        "description": "Maine"
+      },
+      {
+        "id": "MA",
+        "region": 0,
+        "sales": 59000,
+        "description": "Massachusetts"
+      },
+      {
+        "id": "NH",
+        "region": 0,
+        "sales": 140000,
+        "description": "New Hampshire"
+      },
+      {
+        "id": "NY",
+        "region": 0,
+        "sales": 120000,
+        "description": "New York"
+      },
+      {
+        "id": "RI",
+        "region": 0,
+        "sales": 120000,
+        "description": "Rhode Island"
+      },
+      {
+        "id": "VT",
+        "region": 0,
+        "sales": 17000,
+        "description": "Vermont"
+      }
+    ]
+  },
+  {
+    "id": "Midatlantic",
+    "region": 1,
+    "sales": 55000000,
+    "description": "Midatlantic",
+    "nodes": [
+      {
+        "id": "DE",
+        "region": 1,
+        "sales": 710000,
+        "description": "Delaware"
+      },
+      {
+        "id": "MD",
+        "region": 1,
+        "sales": 320000,
+        "description": "Maryland"
+      },
+      {
+        "id": "NJ",
+        "region": 1,
+        "sales": 870000,
+        "description": "New Jersey"
+      },
+      {
+        "id": "NC",
+        "region": 1,
+        "sales": 540000,
+        "description": "North Carolina"
+      },
+      {
+        "id": "PA",
+        "region": 1,
+        "sales": 990000,
+        "description": "Pennsylvania"
+      },
+      {
+        "id": "VA",
+        "region": 1,
+        "sales": 12000,
+        "description": "Virginia"
+      },
+      {
+        "id": "WV",
+        "region": 1,
+        "sales": 10000,
+        "description": "West Virginia"
+      }
+    ]
+  },
+  {
+    "id": "Southeast",
+    "region": 2,
+    "sales": 36000000,
+    "description": "Southeast",
+    "nodes": [
+      {
+        "id": "AL",
+        "region": 2,
+        "sales": 40000,
+        "description": "Alabama"
+      },
+      {
+        "id": "AR",
+        "region": 2,
+        "sales": 820000,
+        "description": "Arkansas"
+      },
+      {
+        "id": "FL",
+        "region": 2,
+        "sales": 820000,
+        "description": "Florida"
+      },
+      {
+        "id": "GA",
+        "region": 2,
+        "sales": 29000,
+        "description": "Georgia"
+      },
+      {
+        "id": "LA",
+        "region": 2,
+        "sales": 12000,
+        "description": "Louisiana"
+      },
+      {
+        "id": "MS",
+        "region": 2,
+        "sales": 120000,
+        "description": "Mississippi"
+      },
+      {
+        "id": "SC",
+        "region": 2,
+        "sales": 170000,
+        "description": "South Carolina"
+      },
+      {
+        "id": "TN",
+        "region": 2,
+        "sales": 450000,
+        "description": "Tennessee"
+      }
+    ]
+  },
+  {
+    "id": "Midwest",
+    "region": 3,
+    "sales": 22000000,
+    "description": "Midwest",
+    "nodes": [
+      {
+        "id": "CO",
+        "region": 3,
+        "sales": 20000,
+        "description": "Colorado"
+      },
+      {
+        "id": "ID",
+        "region": 3,
+        "sales": 550000,
+        "description": "Idaho"
+      },
+      {
+        "id": "KS",
+        "region": 3,
+        "sales": 880000,
+        "description": "Kansas"
+      },
+      {
+        "id": "MT",
+        "region": 3,
+        "sales": 120000,
+        "description": "Montana"
+      },
+      {
+        "id": "NE",
+        "region": 3,
+        "sales": 160000,
+        "description": "Nebraska"
+      },
+      {
+        "id": "NM",
+        "region": 3,
+        "sales": 350000,
+        "description": "New Mexico"
+      },
+      {
+        "id": "ND",
+        "region": 3,
+        "sales": 90000,
+        "description": "North Dakota"
+      },
+      {
+        "id": "OK",
+        "region": 3,
+        "sales": 210000,
+        "description": "Oklahoma"
+      },
+      {
+        "id": "SD",
+        "region": 3,
+        "sales": 110000,
+        "description": "South Dakota"
+      },
+      {
+        "id": "TX",
+        "region": 3,
+        "sales": 130000,
+        "description": "Texas"
+      },
+      {
+        "id": "UT",
+        "region": 3,
+        "sales": 110000,
+        "description": "Utah"
+      },
+      {
+        "id": "WY",
+        "region": 3,
+        "sales": 70000,
+        "description": "Wyoming"
+      }
+    ]
+  },
+  {
+    "id": "West",
+    "region": 4,
+    "sales": 32100000,
+    "description": "West",
+    "nodes": [
+      {
+        "id": "AK",
+        "region": 4,
+        "sales": 220000,
+        "description": "Alaska"
+      },
+      {
+        "id": "AZ",
+        "region": 4,
+        "sales": 310000,
+        "description": "Arizona"
+      },
+      {
+        "id": "CA",
+        "region": 4,
+        "sales": 10000,
+        "description": "California"
+      },
+      {
+        "id": "HI",
+        "region": 4,
+        "sales": 520000,
+        "description": "Hawaii"
+      },
+      {
+        "id": "NV",
+        "region": 4,
+        "sales": 40000,
+        "description": "Nevada"
+      },
+      {
+        "id": "OR",
+        "region": 4,
+        "sales": 670000,
+        "description": "Oregon"
+      },
+      {
+        "id": "WA",
+        "region": 4,
+        "sales": 70000,
+        "description": "Washington"
+      }
+    ]
+  },
+  {
+    "id": "Great Lakes",
+    "region": 5,
+    "sales": 25500000,
+    "description": "Great Lakes",
+    "nodes": [
+      {
+        "id": "IL",
+        "region": 5,
+        "sales": 670000,
+        "description": "Illinois"
+      },
+      {
+        "id": "IN",
+        "region": 5,
+        "sales": 470000,
+        "description": "Indiana"
+      },
+      {
+        "id": "IA",
+        "region": 5,
+        "sales": 340000,
+        "description": "Iowa"
+      },
+      {
+        "id": "KY",
+        "region": 5,
+        "sales": 210000,
+        "description": "Kentucky"
+      },
+      {
+        "id": "MI",
+        "region": 5,
+        "sales": 430000,
+        "description": "Michigan"
+      },
+      {
+        "id": "MN",
+        "region": 5,
+        "sales": 230000,
+        "description": "Minnesota"
+      },
+      {
+        "id": "MO",
+        "region": 5,
+        "sales": 320000,
+        "description": "Missouri"
+      },
+      {
+        "id": "OH",
+        "region": 5,
+        "sales": 670000,
+        "description": "Ohio"
+      },
+      {
+        "id": "WI",
+        "region": 5,
+        "sales": 20000,
+        "description": "Wisconsin"
+      }
+    ]
+  }
+]

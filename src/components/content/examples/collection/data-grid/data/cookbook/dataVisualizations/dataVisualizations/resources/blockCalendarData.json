@@ -1,0 +1,490 @@
+{
+  "january": [
+    {
+      "date": 1,
+      "value": 39
+    },
+    {
+      "date": 2,
+      "value": 42
+    },
+    {
+      "date": 3,
+      "value": 42
+    },
+    {
+      "date": 4,
+      "value": 56
+    },
+    {
+      "date": 5,
+      "value": 49
+    },
+    {
+      "date": 6,
+      "value": 22
+    },
+    {
+      "date": 7,
+      "value": 23
+    },
+    {
+      "date": 8,
+      "value": 21
+    },
+    {
+      "date": 9,
+      "value": 33
+    },
+    {
+      "date": 10,
+      "value": 23
+    },
+    {
+      "date": 11,
+      "value": 37
+    },
+    {
+      "date": 12,
+      "value": 39
+    },
+    {
+      "date": 13,
+      "value": 36
+    },
+    {
+      "date": 14,
+      "value": 32
+    },
+    {
+      "date": 15,
+      "value": 35
+    },
+    {
+      "date": 16,
+      "value": 43
+    },
+    {
+      "date": 17,
+      "value": 32
+    },
+    {
+      "date": 18,
+      "value": 42
+    },
+    {
+      "date": 19,
+      "value": 42
+    },
+    {
+      "date": 20,
+      "value": 40
+    },
+    {
+      "date": 21,
+      "value": 36
+    },
+    {
+      "date": 22,
+      "value": 40
+    },
+    {
+      "date": 23,
+      "value": 39
+    },
+    {
+      "date": 24,
+      "value": 39
+    },
+    {
+      "date": 25,
+      "value": 42
+    },
+    {
+      "date": 26,
+      "value": 31
+    },
+    {
+      "date": 27,
+      "value": 30
+    },
+    {
+      "date": 28,
+      "value": 34
+    },
+    {
+      "date": 29,
+      "value": 36
+    },
+    {
+      "date": 30,
+      "value": 38
+    },
+    {
+      "date": 31,
+      "value": 26
+    }
+  ],
+  "february": [
+    {
+      "date": 1,
+      "value": 36
+    },
+    {
+      "date": 2,
+      "value": 34
+    },
+    {
+      "date": 3,
+      "value": 26
+    },
+    {
+      "date": 4,
+      "value": 43
+    },
+    {
+      "date": 5,
+      "value": 42
+    },
+    {
+      "date": 6,
+      "value": 27
+    },
+    {
+      "date": 7,
+      "value": 40
+    },
+    {
+      "date": 8,
+      "value": 37
+    },
+    {
+      "date": 9,
+      "value": 29
+    },
+    {
+      "date": 10,
+      "value": 40
+    },
+    {
+      "date": 11,
+      "value": 34
+    },
+    {
+      "date": 12,
+      "value": 40
+    },
+    {
+      "date": 13,
+      "value": 21
+    },
+    {
+      "date": 14,
+      "value": 32
+    },
+    {
+      "date": 15,
+      "value": 25
+    },
+    {
+      "date": 16,
+      "value": 21
+    },
+    {
+      "date": 17,
+      "value": 27
+    },
+    {
+      "date": 18,
+      "value": 33
+    },
+    {
+      "date": 19,
+      "value": 27
+    },
+    {
+      "date": 20,
+      "value": 19
+    },
+    {
+      "date": 21,
+      "value": 32
+    },
+    {
+      "date": 22,
+      "value": 43
+    },
+    {
+      "date": 23,
+      "value": 38
+    },
+    {
+      "date": 24,
+      "value": 24
+    },
+    {
+      "date": 25,
+      "value": 37
+    },
+    {
+      "date": 26,
+      "value": 32
+    },
+    {
+      "date": 27,
+      "value": 30
+    },
+    {
+      "date": 28,
+      "value": 29
+    }
+  ],
+  "march": [
+    {
+      "date": 1,
+      "value": 31
+    },
+    {
+      "date": 2,
+      "value": 39
+    },
+    {
+      "date": 3,
+      "value": 37
+    },
+    {
+      "date": 4,
+      "value": 45
+    },
+    {
+      "date": 5,
+      "value": 40
+    },
+    {
+      "date": 6,
+      "value": 27
+    },
+    {
+      "date": 7,
+      "value": 38
+    },
+    {
+      "date": 8,
+      "value": 49
+    },
+    {
+      "date": 9,
+      "value": 54
+    },
+    {
+      "date": 10,
+      "value": 53
+    },
+    {
+      "date": 11,
+      "value": 59
+    },
+    {
+      "date": 12,
+      "value": 47
+    },
+    {
+      "date": 13,
+      "value": 43
+    },
+    {
+      "date": 14,
+      "value": 51
+    },
+    {
+      "date": 15,
+      "value": 44
+    },
+    {
+      "date": 16,
+      "value": 52
+    },
+    {
+      "date": 17,
+      "value": 57
+    },
+    {
+      "date": 18,
+      "value": 39
+    },
+    {
+      "date": 19,
+      "value": 43
+    },
+    {
+      "date": 20,
+      "value": 38
+    },
+    {
+      "date": 21,
+      "value": 47
+    },
+    {
+      "date": 22,
+      "value": 43
+    },
+    {
+      "date": 23,
+      "value": 38
+    },
+    {
+      "date": 24,
+      "value": 45
+    },
+    {
+      "date": 25,
+      "value": 49
+    },
+    {
+      "date": 26,
+      "value": 62
+    },
+    {
+      "date": 27,
+      "value": 46
+    },
+    {
+      "date": 28,
+      "value": 40
+    },
+    {
+      "date": 29,
+      "value": 46
+    },
+    {
+      "date": 30,
+      "value": 54
+    },
+    {
+      "date": 31,
+      "value": 47
+    }
+  ],
+  "april": [
+    {
+      "date": 1,
+      "value": 51
+    },
+    {
+      "date": 2,
+      "value": 67
+    },
+    {
+      "date": 3,
+      "value": 64
+    },
+    {
+      "date": 4,
+      "value": 60
+    },
+    {
+      "date": 5,
+      "value": 61
+    },
+    {
+      "date": 6,
+      "value": 63
+    },
+    {
+      "date": 7,
+      "value": 62
+    },
+    {
+      "date": 8,
+      "value": 45
+    },
+    {
+      "date": 9,
+      "value": 43
+    },
+    {
+      "date": 10,
+      "value": 56
+    },
+    {
+      "date": 11,
+      "value": 57
+    },
+    {
+      "date": 12,
+      "value": 66
+    },
+    {
+      "date": 13,
+      "value": 68
+    },
+    {
+      "date": 14,
+      "value": 65
+    },
+    {
+      "date": 15,
+      "value": 72
+    },
+    {
+      "date": 16,
+      "value": 64
+    },
+    {
+      "date": 17,
+      "value": 71
+    },
+    {
+      "date": 18,
+      "value": 80
+    },
+    {
+      "date": 19,
+      "value": 64
+    },
+    {
+      "date": 20,
+      "value": 57
+    },
+    {
+      "date": 21,
+      "value": 65
+    },
+    {
+      "date": 22,
+      "value": 69
+    },
+    {
+      "date": 23,
+      "value": 52
+    },
+    {
+      "date": 24,
+      "value": 52
+    },
+    {
+      "date": 25,
+      "value": 62
+    },
+    {
+      "date": 26,
+      "value": 64
+    },
+    {
+      "date": 27,
+      "value": 62
+    },
+    {
+      "date": 28,
+      "value": 71
+    },
+    {
+      "date": 29,
+      "value": 78
+    },
+    {
+      "date": 30,
+      "value": 67
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+define([], function () { return { __esModule: true, default: {
+  "nodes": [
+    {
+      "id": "N0",
+      "nodes": [
+        {
+          "id": "N00",
+          "nodes": [
+            {
+              "id": "N000"
+            },
+            {
+              "id": "N001"
+            }
+          ]
+        },
+        {
+          "id": "N01"
+        },
+        {
+          "id": "N02"
+        }
+      ]
+    },
+    {
+      "id": "N1",
+      "nodes": [
+        {
+          "id": "N10"
+        },
+        {
+          "id": "N11"
+        }
+      ]
+    },
+    {
+      "id": "N2",
+      "nodes": [
+        {
+          "id": "N20"
+        },
+        {
+          "id": "N21"
+        },
+        {
+          "id": "N22"
+        }
+      ]
+    },
+    {
+      "id": "N3"
+    }
+  ],
+  "links": [
+    {
+      "id": "L0",
+      "startNode": "N2",
+      "endNode": "N3"
+    },
+    {
+      "id": "L1",
+      "startNode": "N1",
+      "endNode": "N21"
+    },
+    {
+      "id": "L2",
+      "startNode": "N1",
+      "endNode": "N22"
+    },
+    {
+      "id": "L3",
+      "startNode": "N000",
+      "endNode": "N1"
+    },
+    {
+      "id": "L4",
+      "startNode": "N001",
+      "endNode": "N1"
+    },
+    {
+      "id": "L5",
+      "startNode": "N02",
+      "endNode": "N1"
+    },
+    {
+      "id": "L6",
+      "startNode": "N000",
+      "endNode": "N001"
+    }
+  ]
+}
+ }; });
+

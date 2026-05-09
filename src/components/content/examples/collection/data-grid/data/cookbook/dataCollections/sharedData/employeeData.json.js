@@ -1,0 +1,1076 @@
+define([], function () { return { __esModule: true, default: {
+  "Employees": [
+    {
+      "EMPLOYEE_ID": 100,
+      "FIRST_NAME": "Steven",
+      "LAST_NAME": "King",
+      "EMAIL": "SKING",
+      "PHONE_NUMBER": "515.123.4567",
+      "HIRE_DATE": "1987-06-17",
+      "SALARY": 24000,
+      "DEPARTMENT_ID": 90
+    },
+    {
+      "EMPLOYEE_ID": 101,
+      "FIRST_NAME": "Neena",
+      "LAST_NAME": "Kochhar",
+      "EMAIL": "NKOCHHAR",
+      "PHONE_NUMBER": "515.123.4568",
+      "HIRE_DATE": "1989-09-21",
+      "SALARY": 17000,
+      "DEPARTMENT_ID": 90
+    },
+    {
+      "EMPLOYEE_ID": 102,
+      "FIRST_NAME": "Lex",
+      "LAST_NAME": "De Haan",
+      "EMAIL": "LDEHAAN",
+      "PHONE_NUMBER": "515.123.4569",
+      "HIRE_DATE": "1993-01-13",
+      "SALARY": 17000,
+      "DEPARTMENT_ID": 90
+    },
+    {
+      "EMPLOYEE_ID": 103,
+      "FIRST_NAME": "Alexander",
+      "LAST_NAME": "Hunold",
+      "EMAIL": "AHUNOLD",
+      "PHONE_NUMBER": "590.423.4567",
+      "HIRE_DATE": "1990-01-03",
+      "SALARY": 9000,
+      "DEPARTMENT_ID": 60
+    },
+    {
+      "EMPLOYEE_ID": 104,
+      "FIRST_NAME": "Bruce",
+      "LAST_NAME": "Ernst",
+      "EMAIL": "BERNST",
+      "PHONE_NUMBER": "590.423.4568",
+      "HIRE_DATE": "1991-05-21",
+      "SALARY": 6000,
+      "DEPARTMENT_ID": 60
+    },
+    {
+      "EMPLOYEE_ID": 105,
+      "FIRST_NAME": "David",
+      "LAST_NAME": "Austin",
+      "EMAIL": "DAUSTIN",
+      "PHONE_NUMBER": "590.423.4569",
+      "HIRE_DATE": "1997-06-25",
+      "SALARY": 4800,
+      "DEPARTMENT_ID": 60
+    },
+    {
+      "EMPLOYEE_ID": 106,
+      "FIRST_NAME": "Valli",
+      "LAST_NAME": "Pataballa",
+      "EMAIL": "VPATABAL",
+      "PHONE_NUMBER": "590.423.4560",
+      "HIRE_DATE": "1998-02-05",
+      "SALARY": 4800,
+      "DEPARTMENT_ID": 60
+    },
+    {
+      "EMPLOYEE_ID": 107,
+      "FIRST_NAME": "Diana",
+      "LAST_NAME": "Lorentz",
+      "EMAIL": "DLORENTZ",
+      "PHONE_NUMBER": "590.423.5567",
+      "HIRE_DATE": "1999-02-07",
+      "SALARY": 4200,
+      "DEPARTMENT_ID": 60
+    },
+    {
+      "EMPLOYEE_ID": 108,
+      "FIRST_NAME": "Nancy",
+      "LAST_NAME": "Greenberg",
+      "EMAIL": "NGREENBE",
+      "PHONE_NUMBER": "515.124.4569",
+      "HIRE_DATE": "1994-08-17",
+      "SALARY": 12000,
+      "DEPARTMENT_ID": 100
+    },
+    {
+      "EMPLOYEE_ID": 109,
+      "FIRST_NAME": "Daniel",
+      "LAST_NAME": "Faviet",
+      "EMAIL": "DFAVIET",
+      "PHONE_NUMBER": "515.124.4169",
+      "HIRE_DATE": "1994-08-16",
+      "SALARY": 9000,
+      "DEPARTMENT_ID": 100
+    },
+    {
+      "EMPLOYEE_ID": 110,
+      "FIRST_NAME": "John",
+      "LAST_NAME": "Chen",
+      "EMAIL": "JCHEN",
+      "PHONE_NUMBER": "515.124.4269",
+      "HIRE_DATE": "1997-09-28",
+      "SALARY": 8200,
+      "DEPARTMENT_ID": 100
+    },
+    {
+      "EMPLOYEE_ID": 111,
+      "FIRST_NAME": "Ismael",
+      "LAST_NAME": "Sciarra",
+      "EMAIL": "ISCIARRA",
+      "PHONE_NUMBER": "515.124.4369",
+      "HIRE_DATE": "1997-09-30",
+      "SALARY": 7700,
+      "DEPARTMENT_ID": 100
+    },
+    {
+      "EMPLOYEE_ID": 112,
+      "FIRST_NAME": "Jose Manuel",
+      "LAST_NAME": "Urman",
+      "EMAIL": "JMURMAN",
+      "PHONE_NUMBER": "515.124.4469",
+      "HIRE_DATE": "1998-03-07",
+      "SALARY": 7800,
+      "DEPARTMENT_ID": 100
+    },
+    {
+      "EMPLOYEE_ID": 113,
+      "FIRST_NAME": "Luis",
+      "LAST_NAME": "Popp",
+      "EMAIL": "LPOPP",
+      "PHONE_NUMBER": "515.124.4567",
+      "HIRE_DATE": "1999-12-07",
+      "SALARY": 6900,
+      "DEPARTMENT_ID": 100
+    },
+    {
+      "EMPLOYEE_ID": 114,
+      "FIRST_NAME": "Den",
+      "LAST_NAME": "Raphaely",
+      "EMAIL": "DRAPHEAL",
+      "PHONE_NUMBER": "515.127.4561",
+      "HIRE_DATE": "1994-12-07",
+      "SALARY": 11000,
+      "DEPARTMENT_ID": 30
+    },
+    {
+      "EMPLOYEE_ID": 115,
+      "FIRST_NAME": "Alexander",
+      "LAST_NAME": "Khoo",
+      "EMAIL": "AKHOO",
+      "PHONE_NUMBER": "515.127.4562",
+      "HIRE_DATE": "1995-05-18",
+      "SALARY": 3100,
+      "DEPARTMENT_ID": 30
+    },
+    {
+      "EMPLOYEE_ID": 116,
+      "FIRST_NAME": "Shelli",
+      "LAST_NAME": "Baida",
+      "EMAIL": "SBAIDA",
+      "PHONE_NUMBER": "515.127.4563",
+      "HIRE_DATE": "1997-12-24",
+      "SALARY": 2900,
+      "DEPARTMENT_ID": 30
+    },
+    {
+      "EMPLOYEE_ID": 117,
+      "FIRST_NAME": "Sigal",
+      "LAST_NAME": "Tobias",
+      "EMAIL": "STOBIAS",
+      "PHONE_NUMBER": "515.127.4564",
+      "HIRE_DATE": "1997-07-24",
+      "SALARY": 2800,
+      "DEPARTMENT_ID": 30
+    },
+    {
+      "EMPLOYEE_ID": 118,
+      "FIRST_NAME": "Guy",
+      "LAST_NAME": "Himuro",
+      "EMAIL": "GHIMURO",
+      "PHONE_NUMBER": "515.127.4565",
+      "HIRE_DATE": "1998-11-15",
+      "SALARY": 2600,
+      "DEPARTMENT_ID": 30
+    },
+    {
+      "EMPLOYEE_ID": 119,
+      "FIRST_NAME": "Karen",
+      "LAST_NAME": "Colmenares",
+      "EMAIL": "KCOLMENA",
+      "PHONE_NUMBER": "515.127.4566",
+      "HIRE_DATE": "1999-08-10",
+      "SALARY": 2500,
+      "DEPARTMENT_ID": 30
+    },
+    {
+      "EMPLOYEE_ID": 120,
+      "FIRST_NAME": "Matthew",
+      "LAST_NAME": "Weiss",
+      "EMAIL": "MWEISS",
+      "PHONE_NUMBER": "650.123.1234",
+      "HIRE_DATE": "1996-07-18",
+      "SALARY": 8000,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 121,
+      "FIRST_NAME": "Adam",
+      "LAST_NAME": "Fripp",
+      "EMAIL": "AFRIPP",
+      "PHONE_NUMBER": "650.123.2234",
+      "HIRE_DATE": "1997-04-10",
+      "SALARY": 8200,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 122,
+      "FIRST_NAME": "Payam",
+      "LAST_NAME": "Kaufling",
+      "EMAIL": "PKAUFLIN",
+      "PHONE_NUMBER": "650.123.3234",
+      "HIRE_DATE": "1995-05-01",
+      "SALARY": 7900,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 123,
+      "FIRST_NAME": "Shanta",
+      "LAST_NAME": "Vollman",
+      "EMAIL": "SVOLLMAN",
+      "PHONE_NUMBER": "650.123.4234",
+      "HIRE_DATE": "1997-10-10",
+      "SALARY": 6500,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 124,
+      "FIRST_NAME": "Kevin",
+      "LAST_NAME": "Mourgos",
+      "EMAIL": "KMOURGOS",
+      "PHONE_NUMBER": "650.123.5234",
+      "HIRE_DATE": "1999-11-16",
+      "SALARY": 5800,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 125,
+      "FIRST_NAME": "Julia",
+      "LAST_NAME": "Nayer",
+      "EMAIL": "JNAYER",
+      "PHONE_NUMBER": "650.124.1214",
+      "HIRE_DATE": "1997-07-16",
+      "SALARY": 3200,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 126,
+      "FIRST_NAME": "Irene",
+      "LAST_NAME": "Mikkilineni",
+      "EMAIL": "IMIKKILI",
+      "PHONE_NUMBER": "650.124.1224",
+      "HIRE_DATE": "1998-09-28",
+      "SALARY": 2700,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 127,
+      "FIRST_NAME": "James",
+      "LAST_NAME": "Landry",
+      "EMAIL": "JLANDRY",
+      "PHONE_NUMBER": "650.124.1334",
+      "HIRE_DATE": "1999-01-14",
+      "SALARY": 2400,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 128,
+      "FIRST_NAME": "Steven",
+      "LAST_NAME": "Markle",
+      "EMAIL": "SMARKLE",
+      "PHONE_NUMBER": "650.124.1434",
+      "HIRE_DATE": "2000-03-08",
+      "SALARY": 2200,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 129,
+      "FIRST_NAME": "Laura",
+      "LAST_NAME": "Bissot",
+      "EMAIL": "LBISSOT",
+      "PHONE_NUMBER": "650.124.5234",
+      "HIRE_DATE": "1997-08-20",
+      "SALARY": 3300,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 130,
+      "FIRST_NAME": "Mozhe",
+      "LAST_NAME": "Atkinson",
+      "EMAIL": "MATKINSO",
+      "PHONE_NUMBER": "650.124.6234",
+      "HIRE_DATE": "1997-10-30",
+      "SALARY": 2800,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 131,
+      "FIRST_NAME": "James",
+      "LAST_NAME": "Marlow",
+      "EMAIL": "JAMRLOW",
+      "PHONE_NUMBER": "650.124.7234",
+      "HIRE_DATE": "1997-02-16",
+      "SALARY": 2500,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 132,
+      "FIRST_NAME": "TJ",
+      "LAST_NAME": "Olson",
+      "EMAIL": "TJOLSON",
+      "PHONE_NUMBER": "650.124.8234",
+      "HIRE_DATE": "1999-04-10",
+      "SALARY": 2100,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 133,
+      "FIRST_NAME": "Jason",
+      "LAST_NAME": "Mallin",
+      "EMAIL": "JMALLIN",
+      "PHONE_NUMBER": "650.127.1934",
+      "HIRE_DATE": "1996-06-14",
+      "SALARY": 3300,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 134,
+      "FIRST_NAME": "Michael",
+      "LAST_NAME": "Rogers",
+      "EMAIL": "MROGERS",
+      "PHONE_NUMBER": "650.127.1834",
+      "HIRE_DATE": "1998-08-26",
+      "SALARY": 2900,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 135,
+      "FIRST_NAME": "Ki",
+      "LAST_NAME": "Gee",
+      "EMAIL": "KGEE",
+      "PHONE_NUMBER": "650.127.1734",
+      "HIRE_DATE": "1999-12-12",
+      "SALARY": 2400,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 136,
+      "FIRST_NAME": "Hazel",
+      "LAST_NAME": "Philtanker",
+      "EMAIL": "HPHILTAN",
+      "PHONE_NUMBER": "650.127.1634",
+      "HIRE_DATE": "2000-02-06",
+      "SALARY": 2200,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 137,
+      "FIRST_NAME": "Renske",
+      "LAST_NAME": "Ladwig",
+      "EMAIL": "RLADWIG",
+      "PHONE_NUMBER": "650.121.1234",
+      "HIRE_DATE": "1995-07-14",
+      "SALARY": 3600,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 138,
+      "FIRST_NAME": "Stephen",
+      "LAST_NAME": "Stiles",
+      "EMAIL": "SSTILES",
+      "PHONE_NUMBER": "650.121.2034",
+      "HIRE_DATE": "1997-10-26",
+      "SALARY": 3200,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 139,
+      "FIRST_NAME": "John",
+      "LAST_NAME": "Seo",
+      "EMAIL": "JSEO",
+      "PHONE_NUMBER": "650.121.2019",
+      "HIRE_DATE": "1998-02-12",
+      "SALARY": 2700,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 140,
+      "FIRST_NAME": "Joshua",
+      "LAST_NAME": "Patel",
+      "EMAIL": "JPATEL",
+      "PHONE_NUMBER": "650.121.1834",
+      "HIRE_DATE": "1998-04-06",
+      "SALARY": 2500,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 141,
+      "FIRST_NAME": "Trenna",
+      "LAST_NAME": "Rajs",
+      "EMAIL": "TRAJS",
+      "PHONE_NUMBER": "650.121.8009",
+      "HIRE_DATE": "1995-10-17",
+      "SALARY": 3500,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 142,
+      "FIRST_NAME": "Curtis",
+      "LAST_NAME": "Davies",
+      "EMAIL": "CDAVIES",
+      "PHONE_NUMBER": "650.121.2994",
+      "HIRE_DATE": "1997-01-29",
+      "SALARY": 3100,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 143,
+      "FIRST_NAME": "Randall",
+      "LAST_NAME": "Matos",
+      "EMAIL": "RMATOS",
+      "PHONE_NUMBER": "650.121.2874",
+      "HIRE_DATE": "1998-03-15",
+      "SALARY": 2600,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 144,
+      "FIRST_NAME": "Peter",
+      "LAST_NAME": "Vargas",
+      "EMAIL": "PVARGAS",
+      "PHONE_NUMBER": "650.121.2004",
+      "HIRE_DATE": "1998-07-09",
+      "SALARY": 2500,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 145,
+      "FIRST_NAME": "John",
+      "LAST_NAME": "Russell",
+      "EMAIL": "JRUSSEL",
+      "PHONE_NUMBER": "011.44.1344.429268",
+      "HIRE_DATE": "1996-10-01",
+      "SALARY": 14000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 146,
+      "FIRST_NAME": "Karen",
+      "LAST_NAME": "Partners",
+      "EMAIL": "KPARTNER",
+      "PHONE_NUMBER": "011.44.1344.467268",
+      "HIRE_DATE": "1997-01-05",
+      "SALARY": 13500,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 147,
+      "FIRST_NAME": "Alberto",
+      "LAST_NAME": "Errazuriz",
+      "EMAIL": "AERRAZUR",
+      "PHONE_NUMBER": "011.44.1344.429278",
+      "HIRE_DATE": "1997-03-10",
+      "SALARY": 12000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 148,
+      "FIRST_NAME": "Gerald",
+      "LAST_NAME": "Cambrault",
+      "EMAIL": "GCAMBRAU",
+      "PHONE_NUMBER": "011.44.1344.619268",
+      "HIRE_DATE": "1999-10-15",
+      "SALARY": 11000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 149,
+      "FIRST_NAME": "Eleni",
+      "LAST_NAME": "Zlotkey",
+      "EMAIL": "EZLOTKEY",
+      "PHONE_NUMBER": "011.44.1344.429018",
+      "HIRE_DATE": "2000-01-29",
+      "SALARY": 10500,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 150,
+      "FIRST_NAME": "Peter",
+      "LAST_NAME": "Tucker",
+      "EMAIL": "PTUCKER",
+      "PHONE_NUMBER": "011.44.1344.129268",
+      "HIRE_DATE": "1997-01-30",
+      "SALARY": 10000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 151,
+      "FIRST_NAME": "David",
+      "LAST_NAME": "Bernstein",
+      "EMAIL": "DBERNSTE",
+      "PHONE_NUMBER": "011.44.1344.345268",
+      "HIRE_DATE": "1997-03-24",
+      "SALARY": 9500,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 152,
+      "FIRST_NAME": "Peter",
+      "LAST_NAME": "Hall",
+      "EMAIL": "PHALL",
+      "PHONE_NUMBER": "011.44.1344.478968",
+      "HIRE_DATE": "1997-08-20",
+      "SALARY": 9000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 153,
+      "FIRST_NAME": "Christopher",
+      "LAST_NAME": "Olsen",
+      "EMAIL": "COLSEN",
+      "PHONE_NUMBER": "011.44.1344.498718",
+      "HIRE_DATE": "1998-03-30",
+      "SALARY": 8000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 154,
+      "FIRST_NAME": "Nanette",
+      "LAST_NAME": "Cambrault",
+      "EMAIL": "NCAMBRAU",
+      "PHONE_NUMBER": "011.44.1344.987668",
+      "HIRE_DATE": "1998-12-09",
+      "SALARY": 7500,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 155,
+      "FIRST_NAME": "Oliver",
+      "LAST_NAME": "Tuvault",
+      "EMAIL": "OTUVAULT",
+      "PHONE_NUMBER": "011.44.1344.486508",
+      "HIRE_DATE": "1999-11-23",
+      "SALARY": 7000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 156,
+      "FIRST_NAME": "Janette",
+      "LAST_NAME": "King",
+      "EMAIL": "JKING",
+      "PHONE_NUMBER": "011.44.1345.429268",
+      "HIRE_DATE": "1996-01-30",
+      "SALARY": 10000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 157,
+      "FIRST_NAME": "Patrick",
+      "LAST_NAME": "Sully",
+      "EMAIL": "PSULLY",
+      "PHONE_NUMBER": "011.44.1345.929268",
+      "HIRE_DATE": "1996-03-04",
+      "SALARY": 9500,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 158,
+      "FIRST_NAME": "Allan",
+      "LAST_NAME": "McEwen",
+      "EMAIL": "AMCEWEN",
+      "PHONE_NUMBER": "011.44.1345.829268",
+      "HIRE_DATE": "1996-08-01",
+      "SALARY": 9000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 159,
+      "FIRST_NAME": "Lindsey",
+      "LAST_NAME": "Smith",
+      "EMAIL": "LSMITH",
+      "PHONE_NUMBER": "011.44.1345.729268",
+      "HIRE_DATE": "1997-03-10",
+      "SALARY": 8000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 160,
+      "FIRST_NAME": "Louise",
+      "LAST_NAME": "Doran",
+      "EMAIL": "LDORAN",
+      "PHONE_NUMBER": "011.44.1345.629268",
+      "HIRE_DATE": "1997-12-15",
+      "SALARY": 7500,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 161,
+      "FIRST_NAME": "Sarath",
+      "LAST_NAME": "Sewall",
+      "EMAIL": "SSEWALL",
+      "PHONE_NUMBER": "011.44.1345.529268",
+      "HIRE_DATE": "1998-11-03",
+      "SALARY": 7000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 162,
+      "FIRST_NAME": "Clara",
+      "LAST_NAME": "Vishney",
+      "EMAIL": "CVISHNEY",
+      "PHONE_NUMBER": "011.44.1346.129268",
+      "HIRE_DATE": "1997-11-11",
+      "SALARY": 10500,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 163,
+      "FIRST_NAME": "Danielle",
+      "LAST_NAME": "Greene",
+      "EMAIL": "DGREENE",
+      "PHONE_NUMBER": "011.44.1346.229268",
+      "HIRE_DATE": "1999-03-19",
+      "SALARY": 9500,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 164,
+      "FIRST_NAME": "Mattea",
+      "LAST_NAME": "Marvins",
+      "EMAIL": "MMARVINS",
+      "PHONE_NUMBER": "011.44.1346.329268",
+      "HIRE_DATE": "2000-01-24",
+      "SALARY": 7200,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 165,
+      "FIRST_NAME": "David",
+      "LAST_NAME": "Lee",
+      "EMAIL": "DLEE",
+      "PHONE_NUMBER": "011.44.1346.529268",
+      "HIRE_DATE": "2000-02-23",
+      "SALARY": 6800,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 166,
+      "FIRST_NAME": "Sundar",
+      "LAST_NAME": "Ande",
+      "EMAIL": "SANDE",
+      "PHONE_NUMBER": "011.44.1346.629268",
+      "HIRE_DATE": "2000-03-24",
+      "SALARY": 6400,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 167,
+      "FIRST_NAME": "Amit",
+      "LAST_NAME": "Banda",
+      "EMAIL": "ABANDA",
+      "PHONE_NUMBER": "011.44.1346.729268",
+      "HIRE_DATE": "2000-04-21",
+      "SALARY": 6200,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 168,
+      "FIRST_NAME": "Lisa",
+      "LAST_NAME": "Ozer",
+      "EMAIL": "LOZER",
+      "PHONE_NUMBER": "011.44.1343.929268",
+      "HIRE_DATE": "1997-03-11",
+      "SALARY": 11500,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 169,
+      "FIRST_NAME": "Harrison",
+      "LAST_NAME": "Bloom",
+      "EMAIL": "HBLOOM",
+      "PHONE_NUMBER": "011.44.1343.829268",
+      "HIRE_DATE": "1998-03-23",
+      "SALARY": 10000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 170,
+      "FIRST_NAME": "Tayler",
+      "LAST_NAME": "Fox",
+      "EMAIL": "TFOX",
+      "PHONE_NUMBER": "011.44.1343.729268",
+      "HIRE_DATE": "1998-01-24",
+      "SALARY": 9600,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 171,
+      "FIRST_NAME": "William",
+      "LAST_NAME": "Smith",
+      "EMAIL": "WSMITH",
+      "PHONE_NUMBER": "011.44.1343.629268",
+      "HIRE_DATE": "1999-02-23",
+      "SALARY": 7400,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 172,
+      "FIRST_NAME": "Elizabeth",
+      "LAST_NAME": "Bates",
+      "EMAIL": "EBATES",
+      "PHONE_NUMBER": "011.44.1343.529268",
+      "HIRE_DATE": "1999-03-24",
+      "SALARY": 7300,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 173,
+      "FIRST_NAME": "Sundita",
+      "LAST_NAME": "Kumar",
+      "EMAIL": "SKUMAR",
+      "PHONE_NUMBER": "011.44.1343.329268",
+      "HIRE_DATE": "2000-04-21",
+      "SALARY": 6100,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 174,
+      "FIRST_NAME": "Ellen",
+      "LAST_NAME": "Abel",
+      "EMAIL": "EABEL",
+      "PHONE_NUMBER": "011.44.1644.429267",
+      "HIRE_DATE": "1996-05-11",
+      "SALARY": 11000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 175,
+      "FIRST_NAME": "Alyssa",
+      "LAST_NAME": "Hutton",
+      "EMAIL": "AHUTTON",
+      "PHONE_NUMBER": "011.44.1644.429266",
+      "HIRE_DATE": "1997-03-19",
+      "SALARY": 8800,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 176,
+      "FIRST_NAME": "Jonathon",
+      "LAST_NAME": "Taylor",
+      "EMAIL": "JTAYLOR",
+      "PHONE_NUMBER": "011.44.1644.429265",
+      "HIRE_DATE": "1998-03-24",
+      "SALARY": 8600,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 177,
+      "FIRST_NAME": "Jack",
+      "LAST_NAME": "Livingston",
+      "EMAIL": "JLIVINGS",
+      "PHONE_NUMBER": "011.44.1644.429264",
+      "HIRE_DATE": "1998-04-23",
+      "SALARY": 8400,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 178,
+      "FIRST_NAME": "Kimberely",
+      "LAST_NAME": "Grant",
+      "EMAIL": "KGRANT",
+      "PHONE_NUMBER": "011.44.1644.429263",
+      "HIRE_DATE": "1999-05-24",
+      "SALARY": 7000,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 179,
+      "FIRST_NAME": "Charles",
+      "LAST_NAME": "Johnson",
+      "EMAIL": "CJOHNSON",
+      "PHONE_NUMBER": "011.44.1644.429262",
+      "HIRE_DATE": "2000-01-04",
+      "SALARY": 6200,
+      "DEPARTMENT_ID": 80
+    },
+    {
+      "EMPLOYEE_ID": 180,
+      "FIRST_NAME": "Winston",
+      "LAST_NAME": "Taylor",
+      "EMAIL": "WTAYLOR",
+      "PHONE_NUMBER": "650.507.9876",
+      "HIRE_DATE": "1998-01-24",
+      "SALARY": 3200,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 181,
+      "FIRST_NAME": "Jean",
+      "LAST_NAME": "Fleaur",
+      "EMAIL": "JFLEAUR",
+      "PHONE_NUMBER": "650.507.9877",
+      "HIRE_DATE": "1998-02-23",
+      "SALARY": 3100,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 182,
+      "FIRST_NAME": "Martha",
+      "LAST_NAME": "Sullivan",
+      "EMAIL": "MSULLIVA",
+      "PHONE_NUMBER": "650.507.9878",
+      "HIRE_DATE": "1999-06-21",
+      "SALARY": 2500,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 183,
+      "FIRST_NAME": "Girard",
+      "LAST_NAME": "Geoni",
+      "EMAIL": "GGEONI",
+      "PHONE_NUMBER": "650.507.9879",
+      "HIRE_DATE": "2000-02-03",
+      "SALARY": 2800,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 184,
+      "FIRST_NAME": "Nandita",
+      "LAST_NAME": "Sarchand",
+      "EMAIL": "NSARCHAN",
+      "PHONE_NUMBER": "650.509.1876",
+      "HIRE_DATE": "1996-01-27",
+      "SALARY": 4200,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 185,
+      "FIRST_NAME": "Alexis",
+      "LAST_NAME": "Bull",
+      "EMAIL": "ABULL",
+      "PHONE_NUMBER": "650.509.2876",
+      "HIRE_DATE": "1997-02-20",
+      "SALARY": 4100,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 186,
+      "FIRST_NAME": "Julia",
+      "LAST_NAME": "Dellinger",
+      "EMAIL": "JDELLING",
+      "PHONE_NUMBER": "650.509.3876",
+      "HIRE_DATE": "1998-06-24",
+      "SALARY": 3400,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 187,
+      "FIRST_NAME": "Anthony",
+      "LAST_NAME": "Cabrio",
+      "EMAIL": "ACABRIO",
+      "PHONE_NUMBER": "650.509.4876",
+      "HIRE_DATE": "1999-02-07",
+      "SALARY": 3000,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 188,
+      "FIRST_NAME": "Kelly",
+      "LAST_NAME": "Chung",
+      "EMAIL": "KCHUNG",
+      "PHONE_NUMBER": "650.505.1876",
+      "HIRE_DATE": "1997-06-14",
+      "SALARY": 3800,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 189,
+      "FIRST_NAME": "Jennifer",
+      "LAST_NAME": "Dilly",
+      "EMAIL": "JDILLY",
+      "PHONE_NUMBER": "650.505.2876",
+      "HIRE_DATE": "1997-08-13",
+      "SALARY": 3600,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 190,
+      "FIRST_NAME": "Timothy",
+      "LAST_NAME": "Gates",
+      "EMAIL": "TGATES",
+      "PHONE_NUMBER": "650.505.3876",
+      "HIRE_DATE": "1998-07-11",
+      "SALARY": 2900,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 191,
+      "FIRST_NAME": "Randall",
+      "LAST_NAME": "Perkins",
+      "EMAIL": "RPERKINS",
+      "PHONE_NUMBER": "650.505.4876",
+      "HIRE_DATE": "1999-12-19",
+      "SALARY": 2500,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 192,
+      "FIRST_NAME": "Sarah",
+      "LAST_NAME": "Bell",
+      "EMAIL": "SBELL",
+      "PHONE_NUMBER": "650.501.1876",
+      "HIRE_DATE": "1996-02-04",
+      "SALARY": 4000,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 193,
+      "FIRST_NAME": "Britney",
+      "LAST_NAME": "Everett",
+      "EMAIL": "BEVERETT",
+      "PHONE_NUMBER": "650.501.2876",
+      "HIRE_DATE": "1997-03-03",
+      "SALARY": 3900,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 194,
+      "FIRST_NAME": "Samuel",
+      "LAST_NAME": "McCain",
+      "EMAIL": "SMCCAIN",
+      "PHONE_NUMBER": "650.501.3876",
+      "HIRE_DATE": "1998-07-01",
+      "SALARY": 3200,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 195,
+      "FIRST_NAME": "Vance",
+      "LAST_NAME": "Jones",
+      "EMAIL": "VJONES",
+      "PHONE_NUMBER": "650.501.4876",
+      "HIRE_DATE": "1999-03-17",
+      "SALARY": 2800,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 196,
+      "FIRST_NAME": "Alana",
+      "LAST_NAME": "Walsh",
+      "EMAIL": "AWALSH",
+      "PHONE_NUMBER": "650.507.9811",
+      "HIRE_DATE": "1998-04-24",
+      "SALARY": 3100,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 197,
+      "FIRST_NAME": "Kevin",
+      "LAST_NAME": "Feeney",
+      "EMAIL": "KFEENEY",
+      "PHONE_NUMBER": "650.507.9822",
+      "HIRE_DATE": "1998-05-23",
+      "SALARY": 3000,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 198,
+      "FIRST_NAME": "Donald",
+      "LAST_NAME": "OConnell",
+      "EMAIL": "DOCONNEL",
+      "PHONE_NUMBER": "650.507.9833",
+      "HIRE_DATE": "1999-06-21",
+      "SALARY": 2600,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 199,
+      "FIRST_NAME": "Douglas",
+      "LAST_NAME": "Grant",
+      "EMAIL": "DGRANT",
+      "PHONE_NUMBER": "650.507.9844",
+      "HIRE_DATE": "2000-01-13",
+      "SALARY": 2600,
+      "DEPARTMENT_ID": 50
+    },
+    {
+      "EMPLOYEE_ID": 200,
+      "FIRST_NAME": "Jennifer",
+      "LAST_NAME": "Whalen",
+      "EMAIL": "JWHALEN",
+      "PHONE_NUMBER": "515.123.4444",
+      "HIRE_DATE": "1987-09-17",
+      "SALARY": 4400,
+      "DEPARTMENT_ID": 10
+    },
+    {
+      "EMPLOYEE_ID": 201,
+      "FIRST_NAME": "Michael",
+      "LAST_NAME": "Hartstein",
+      "EMAIL": "MHARTSTE",
+      "PHONE_NUMBER": "515.123.5555",
+      "HIRE_DATE": "1996-02-17",
+      "SALARY": 13000,
+      "DEPARTMENT_ID": 20
+    },
+    {
+      "EMPLOYEE_ID": 202,
+      "FIRST_NAME": "Pat",
+      "LAST_NAME": "Fay",
+      "EMAIL": "PFAY",
+      "PHONE_NUMBER": "603.123.6666",
+      "HIRE_DATE": "1997-08-17",
+      "SALARY": 6000,
+      "DEPARTMENT_ID": 20
+    },
+    {
+      "EMPLOYEE_ID": 203,
+      "FIRST_NAME": "Susan",
+      "LAST_NAME": "Mavris",
+      "EMAIL": "SMAVRIS",
+      "PHONE_NUMBER": "515.123.7777",
+      "HIRE_DATE": "1994-06-07",
+      "SALARY": 6500,
+      "DEPARTMENT_ID": 40
+    },
+    {
+      "EMPLOYEE_ID": 204,
+      "FIRST_NAME": "Hermann",
+      "LAST_NAME": "Baer",
+      "EMAIL": "HBAER",
+      "PHONE_NUMBER": "515.123.8888",
+      "HIRE_DATE": "1994-06-07",
+      "SALARY": 10000,
+      "DEPARTMENT_ID": 70
+    },
+    {
+      "EMPLOYEE_ID": 205,
+      "FIRST_NAME": "Shelley",
+      "LAST_NAME": "Higgins",
+      "EMAIL": "SHIGGINS",
+      "PHONE_NUMBER": "515.123.8080",
+      "HIRE_DATE": "1994-06-07",
+      "SALARY": 12000,
+      "DEPARTMENT_ID": 110
+    },
+    {
+      "EMPLOYEE_ID": 206,
+      "FIRST_NAME": "William",
+      "LAST_NAME": "Gietz",
+      "EMAIL": "WGIETZ",
+      "PHONE_NUMBER": "515.123.8181",
+      "HIRE_DATE": "1994-06-07",
+      "SALARY": 8300,
+      "DEPARTMENT_ID": 110
+    }
+  ]
+}
+ }; });
+

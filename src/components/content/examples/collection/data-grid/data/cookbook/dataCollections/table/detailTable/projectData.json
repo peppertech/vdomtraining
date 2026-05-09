@@ -1,0 +1,173 @@
+[
+  {
+    "attr": {
+      "id": "t1",
+      "name": "Task 1",
+      "resource": "Harry",
+      "start": "1/1/2014",
+      "end": "5/1/2014"
+    },
+    "children": [
+      {
+        "attr": {
+          "id": "t1:1",
+          "detail": "Various requirement gathering subtasks",
+          "complete": "100",
+          "incomplete": "0"
+        }
+      }
+    ]
+  },
+  {
+    "attr": {
+      "id": "t2",
+      "name": "Task 2",
+      "resource": "Carolina",
+      "start": "4/1/2014",
+      "end": "8/1/2014"
+    },
+    "children": [
+      {
+        "attr": {
+          "id": "t2:1",
+          "detail": "Various analysis subtasks",
+          "complete": "85",
+          "incomplete": "15"
+        }
+      }
+    ]
+  },
+  {
+    "attr": {
+      "id": "t3",
+      "name": "Task 3",
+      "resource": "Leona",
+      "start": "7/1/2014",
+      "end": "10/1/2014"
+    },
+    "children": [
+      {
+        "attr": {
+          "id": "t3:1",
+          "detail": "Various planning subtasks",
+          "complete": "80",
+          "incomplete": "20"
+        }
+      }
+    ]
+  },
+  {
+    "attr": {
+      "id": "t4",
+      "name": "Task 4",
+      "resource": "Reese",
+      "start": "11/1/2014",
+      "end": "14/1/2014"
+    },
+    "children": [
+      {
+        "attr": {
+          "id": "t4:1",
+          "detail": "Various designing subtasks",
+          "complete": "70",
+          "incomplete": "30"
+        }
+      }
+    ]
+  },
+  {
+    "attr": {
+      "id": "t5",
+      "name": "Task 5",
+      "resource": "Jerry",
+      "start": "13/1/2014",
+      "end": "18/1/2014"
+    },
+    "children": [
+      {
+        "attr": {
+          "id": "t5:1",
+          "detail": "Various coding subtasks",
+          "complete": "50",
+          "incomplete": "50"
+        }
+      }
+    ]
+  },
+  {
+    "attr": {
+      "id": "t6",
+      "name": "Task 6",
+      "resource": "John",
+      "start": "17/1/2014",
+      "end": "20/1/2014"
+    },
+    "children": [
+      {
+        "attr": {
+          "id": "t6:1",
+          "detail": "Various integration subtasks",
+          "complete": "45",
+          "incomplete": "55"
+        }
+      }
+    ]
+  },
+  {
+    "attr": {
+      "id": "t7",
+      "name": "Task 7",
+      "resource": "Rena",
+      "start": "19/1/2014",
+      "end": "25/1/2014"
+    },
+    "children": [
+      {
+        "attr": {
+          "id": "t7:1",
+          "detail": "Various testing subtasks",
+          "complete": "30",
+          "incomplete": "70"
+        }
+      }
+    ]
+  },
+  {
+    "attr": {
+      "id": "t8",
+      "name": "Task 8",
+      "resource": "Brianna",
+      "start": "23/1/2014",
+      "end": "26/1/2014"
+    },
+    "children": [
+      {
+        "attr": {
+          "id": "t8:1",
+          "detail": "Various deployment subtasks",
+          "complete": "15",
+          "incomplete": "85"
+        }
+      }
+    ]
+  },
+  {
+    "attr": {
+      "id": "t9",
+      "name": "Task 9",
+      "resource": "Larry",
+      "start": "26/1/2014",
+      "end": "29/1/2014"
+    },
+    "children": [
+      {
+        "attr": {
+          "id": "t9:1",
+          "detail": "Various maintenance subtasks",
+          "complete": "10",
+          "incomplete": "90"
+        }
+      }
+    ]
+  }
+]

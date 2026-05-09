@@ -10,7 +10,9 @@ import TableHome from "./table/home";
 import ListViewHome from "./listview/home";
 import ListItemLayoutHome from "./list-item-layout/home";
 import Treeview from "./treeview";
-import DataGrid from "./datagrid";
+import DataGridRecipePage from "./data-grid/index";
+import IndexerRecipePage from "./indexer/index";
+import RefresherTouchRecipePage from "./refresher-touch/index";
 import GroupByTable from "./group-by-table";
 import { RowExpanderTable } from "./rowexpander-table";
 import CorePackCardView from "./core-pack-card-view";
@@ -73,6 +75,20 @@ const collectionComponents: CollectionComponent[] = [
     name: "Data Grid",
     image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
     isAvailable: true,
+  },
+  {
+    id: 11,
+    name: "Indexer",
+    image: "oj-ux-icon-size-12x oj-ux-ico-indexer",
+    isAvailable: true,
+    render: () => <IndexerRecipePage />,
+  },
+  {
+    id: 12,
+    name: "Refresher Touch",
+    image: "oj-ux-icon-size-12x oj-ux-ico-refresher",
+    isAvailable: true,
+    render: () => <RefresherTouchRecipePage />,
   },
   {
     id: 5,
@@ -165,7 +181,7 @@ const CollectionHome = () => {
       case 3:
         return <Treeview />;
       case 4:
-        return <DataGrid />;
+        return <DataGridRecipePage />;
       case 5:
         return <GroupByTable />;
       case 6:

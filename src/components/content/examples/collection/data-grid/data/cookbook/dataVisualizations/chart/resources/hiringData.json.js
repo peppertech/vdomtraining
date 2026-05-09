@@ -1,0 +1,104 @@
+define([], function () { return { __esModule: true, default: [
+  {
+    "id": 0,
+    "company": "Apple",
+    "year": "2012",
+    "value": 42,
+    "name": "Email"
+  },
+  {
+    "id": 1,
+    "company": "Apple",
+    "year": "2013",
+    "value": 34,
+    "name": "Email"
+  },
+  {
+    "id": 2,
+    "company": "Apple",
+    "year": "2014",
+    "value": 42,
+    "name": "Live Chat"
+  },
+  {
+    "id": 3,
+    "company": "Apple",
+    "year": "2015",
+    "value": 34,
+    "name": "Email"
+  },
+  {
+    "id": 4,
+    "company": "Google",
+    "year": "2012",
+    "value": 22
+  },
+  {
+    "id": 5,
+    "company": "Google",
+    "year": "2013",
+    "value": 30
+  },
+  {
+    "id": 6,
+    "company": "Google",
+    "year": "2014",
+    "value": 55
+  },
+  {
+    "id": 7,
+    "company": "Google",
+    "year": "2015",
+    "value": 30
+  },
+  {
+    "id": 8,
+    "company": "Microsoft",
+    "year": "2012",
+    "value": 36
+  },
+  {
+    "id": 9,
+    "company": "Microsoft",
+    "year": "2013",
+    "value": 50
+  },
+  {
+    "id": 10,
+    "company": "Microsoft",
+    "year": "2014",
+    "value": 36
+  },
+  {
+    "id": 11,
+    "company": "Microsoft",
+    "year": "2015",
+    "value": 50
+  },
+  {
+    "id": 12,
+    "company": "Yahoo",
+    "year": "2012",
+    "value": 2
+  },
+  {
+    "id": 13,
+    "company": "Yahoo",
+    "year": "2013",
+    "value": 4
+  },
+  {
+    "id": 14,
+    "company": "Yahoo",
+    "year": "2014",
+    "value": 7
+  },
+  {
+    "id": 15,
+    "company": "Yahoo",
+    "year": "2015",
+    "value": 12
+  }
+]
+ }; });
+

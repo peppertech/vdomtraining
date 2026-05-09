@@ -1,0 +1,4 @@
+.demo-listview-container {
+  height: calc(100vh - 0.625rem);
+  min-height: 21.875rem;
+}

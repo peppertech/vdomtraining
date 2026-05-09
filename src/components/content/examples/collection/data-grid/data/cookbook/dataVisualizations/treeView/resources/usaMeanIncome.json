@@ -1,0 +1,292 @@
+[
+  {
+    "label": "United States",
+    "population": 301461533,
+    "meanIncome": 51425,
+    "nodes": [
+      {
+        "label": "Northeast Region",
+        "population": 54906297,
+        "meanIncome": 57208,
+        "nodes": [
+          {
+            "label": "Connecticut",
+            "population": 3494487,
+            "meanIncome": 67721
+          },
+          {
+            "label": "Maine",
+            "population": 1316380,
+            "meanIncome": 46541
+          },
+          {
+            "label": "Massachusetts",
+            "population": 6511176,
+            "meanIncome": 64496
+          },
+          {
+            "label": "New Hampshire",
+            "population": 1315419,
+            "meanIncome": 63033
+          },
+          {
+            "label": "Rhode Island",
+            "population": 1057381,
+            "meanIncome": 55569
+          },
+          {
+            "label": "Vermont",
+            "population": 620414,
+            "meanIncome": 51284
+          },
+          {
+            "label": "New Jersey",
+            "population": 8650548,
+            "meanIncome": 68981
+          },
+          {
+            "label": "New York",
+            "population": 19423896,
+            "meanIncome": 55233
+          },
+          {
+            "label": "Pennsylvania",
+            "population": 12516596,
+            "meanIncome": 49737
+          }
+        ]
+      },
+      {
+        "label": "Midwest Region",
+        "population": 66336038,
+        "meanIncome": 49932,
+        "nodes": [
+          {
+            "label": "Indiana",
+            "population": 6342469,
+            "meanIncome": 47465
+          },
+          {
+            "label": "Illinois",
+            "population": 12785043,
+            "meanIncome": 55222
+          },
+          {
+            "label": "Michigan",
+            "population": 10039208,
+            "meanIncome": 48700
+          },
+          {
+            "label": "Ohio",
+            "population": 11511858,
+            "meanIncome": 47144
+          },
+          {
+            "label": "Wisconsin",
+            "population": 5599420,
+            "meanIncome": 51569
+          },
+          {
+            "label": "Iowa",
+            "population": 2978880,
+            "meanIncome": 48052
+          },
+          {
+            "label": "Kansas",
+            "population": 2777835,
+            "meanIncome": 48394
+          },
+          {
+            "label": "Minnesota",
+            "population": 5188581,
+            "meanIncome": 57007
+          },
+          {
+            "label": "Missouri",
+            "population": 5904382,
+            "meanIncome": 46005
+          },
+          {
+            "label": "Nebraska",
+            "population": 1772124,
+            "meanIncome": 47995
+          },
+          {
+            "label": "North Dakota",
+            "population": 639725,
+            "meanIncome": 45140
+          },
+          {
+            "label": "South Dakota",
+            "population": 796513,
+            "meanIncome": 44828
+          }
+        ]
+      },
+      {
+        "label": "South Region",
+        "population": 110450832,
+        "meanIncome": 47204,
+        "nodes": [
+          {
+            "label": "Delaware",
+            "population": 863832,
+            "meanIncome": 57618
+          },
+          {
+            "label": "District of Columbia",
+            "population": 588433,
+            "meanIncome": 56519
+          },
+          {
+            "label": "Florida",
+            "population": 18222420,
+            "meanIncome": 47450
+          },
+          {
+            "label": "Georgia",
+            "population": 9497667,
+            "meanIncome": 49466
+          },
+          {
+            "label": "Maryland",
+            "population": 5637418,
+            "meanIncome": 69475
+          },
+          {
+            "label": "North Carolina",
+            "population": 9045705,
+            "meanIncome": 45069
+          },
+          {
+            "label": "South Carolina",
+            "population": 4416867,
+            "meanIncome": 43572
+          },
+          {
+            "label": "Virginia",
+            "population": 7721730,
+            "meanIncome": 60316
+          },
+          {
+            "label": "West Virginia",
+            "population": 1811403,
+            "meanIncome": 37356
+          },
+          {
+            "label": "Alabama",
+            "population": 4633360,
+            "meanIncome": 41216
+          },
+          {
+            "label": "Kentucky",
+            "population": 4252000,
+            "meanIncome": 41197
+          },
+          {
+            "label": "Mississippi",
+            "population": 2922240,
+            "meanIncome": 36796
+          },
+          {
+            "label": "Tennessee",
+            "population": 6158953,
+            "meanIncome": 42943
+          },
+          {
+            "label": "Arkansas",
+            "population": 2838143,
+            "meanIncome": 38542
+          },
+          {
+            "label": "Louisiana",
+            "population": 4411546,
+            "meanIncome": 42167
+          },
+          {
+            "label": "Oklahoma",
+            "population": 3610073,
+            "meanIncome": 41861
+          },
+          {
+            "label": "Texas",
+            "population": 23819042,
+            "meanIncome": 48199
+          }
+        ]
+      },
+      {
+        "label": "West Region",
+        "population": 69768366,
+        "meanIncome": 56171,
+        "nodes": [
+          {
+            "label": "Arizona",
+            "population": 6324865,
+            "meanIncome": 50296
+          },
+          {
+            "label": "Colorado",
+            "population": 4843211,
+            "meanIncome": 56222
+          },
+          {
+            "label": "Idaho",
+            "population": 1492573,
+            "meanIncome": 46183
+          },
+          {
+            "label": "Montana",
+            "population": 956257,
+            "meanIncome": 43089
+          },
+          {
+            "label": "Nevada",
+            "population": 2545763,
+            "meanIncome": 55585
+          },
+          {
+            "label": "New Mexico",
+            "population": 1964860,
+            "meanIncome": 42742
+          },
+          {
+            "label": "Utah",
+            "population": 2651816,
+            "meanIncome": 55642
+          },
+          {
+            "label": "Wyoming",
+            "population": 523949,
+            "meanIncome": 51990
+          },
+          {
+            "label": "Alaska",
+            "population": 683142,
+            "meanIncome": 64635
+          },
+          {
+            "label": "California",
+            "population": 36308527,
+            "meanIncome": 60392
+          },
+          {
+            "label": "Hawaii",
+            "population": 1280241,
+            "meanIncome": 64661
+          },
+          {
+            "label": "Oregon",
+            "population": 3727407,
+            "meanIncome": 49033
+          },
+          {
+            "label": "Washington",
+            "population": 6465755,
+            "meanIncome": 56384
+          }
+        ]
+      }
+    ]
+  }
+]

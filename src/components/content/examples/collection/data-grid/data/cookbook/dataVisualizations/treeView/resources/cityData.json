@@ -1,0 +1,62 @@
+[
+  {
+    "label": "Boston",
+    "id": "00",
+    "value": 0.55
+  },
+  {
+    "label": "Springfield",
+    "id": "01",
+    "value": 0.55
+  },
+  {
+    "label": "Worcester",
+    "id": "02",
+    "value": 0.7
+  },
+  {
+    "label": "New York City",
+    "id": "10",
+    "value": 0.85
+  },
+  {
+    "label": "Albany",
+    "id": "11",
+    "value": 1.2
+  },
+  {
+    "label": "Hartford",
+    "id": "20",
+    "value": 0.65
+  },
+  {
+    "label": "New Haven",
+    "id": "21",
+    "value": 1.4
+  },
+  {
+    "label": "Portland",
+    "id": "30",
+    "value": 1.15
+  },
+  {
+    "label": "Augusta",
+    "id": "31",
+    "value": 1.35
+  },
+  {
+    "label": "Burlington",
+    "id": "40",
+    "value": 1.4
+  },
+  {
+    "label": "Providence",
+    "id": "50",
+    "value": 0.65
+  },
+  {
+    "label": "Newport",
+    "id": "51",
+    "value": 0.95
+  }
+]
