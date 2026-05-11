@@ -14,9 +14,9 @@ import DataGridRecipePage from "./data-grid/index";
 import IndexerRecipePage from "./indexer/index";
 import RefresherTouchRecipePage from "./refresher-touch/index";
 import StreamListRecipePage from "./stream-list/index";
+import CardViewRecipePage from "./card-view/index";
 import GroupByTable from "./group-by-table";
 import { RowExpanderTable } from "./rowexpander-table";
-import CorePackCardView from "./core-pack-card-view";
 import {
   CatalogBreadcrumb,
   type CatalogBreadcrumbItem,
@@ -64,6 +64,7 @@ const collectionComponents: CollectionComponent[] = [
     image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
     isAvailable: true,
     isCorePack: true,
+    render: () => <CardViewRecipePage />,
   },
   {
     id: 3,
@@ -194,8 +195,6 @@ const CollectionHome = () => {
         return <GroupByTable />;
       case 6:
         return <RowExpanderTable />;
-      case 9:
-        return <CorePackCardView />;
       default:
         return null;
     }

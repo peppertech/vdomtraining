@@ -1,0 +1,12 @@
+.demo-card-view {
+  /* max-width: 25rem; */
+  height: 18.75rem;
+}
+
+.demo-nodata-content {
+  height: 100%;
+}
+
+.demo-nodata-inner {
+  flex-grow: 1;
+}
