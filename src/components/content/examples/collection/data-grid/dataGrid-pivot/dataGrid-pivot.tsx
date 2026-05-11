@@ -7,7 +7,7 @@ import 'ojs/ojbutton';
 import 'ojs/ojdatagrid';
 import type { DataGridElement } from 'ojs/ojdatagrid';
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import * as jsonDataText from 'text!../data/cookbook/dataCollections/dataGrid/shared/stateRegions.json';
+import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/stateRegions.json';
 import "css!./demo.css";
 const jsonData = JSON.parse(jsonDataText as string);
 interface PivotRow {

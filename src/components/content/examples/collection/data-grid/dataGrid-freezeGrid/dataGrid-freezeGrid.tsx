@@ -4,7 +4,7 @@ import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
 import type { JetElementCustomEvent } from 'ojs/index';
-import * as jsonDataText from 'text!../data/cookbook/dataCollections/dataGrid/shared/population.json';
+import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/population.json';
 import 'ojs/ojbutton';
 import 'ojs/ojdatagrid';
 import type { DataGridElement } from 'ojs/ojdatagrid';

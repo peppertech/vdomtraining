@@ -3,7 +3,7 @@ import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
-import * as jsonDataText from 'text!../data/cookbook/dataCollections/dataGrid/shared/customers.json';
+import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/customers.json';
 import 'ojs/ojdatagrid';
 import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
 import { IntlNumberConverter } from 'ojs/ojconverter-number';

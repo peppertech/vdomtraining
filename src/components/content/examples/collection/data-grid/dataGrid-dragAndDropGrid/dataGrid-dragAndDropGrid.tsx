@@ -9,7 +9,7 @@ import { ojDataGrid } from 'ojs/ojdatagrid';
 import 'ojs/ojmenu';
 import { ojMenu, ojMenuEventMap } from 'ojs/ojmenu';
 import 'ojs/ojoption';
-import * as jsonDataText from 'text!../data/cookbook/dataCollections/dataGrid/shared/population.json';
+import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/population.json';
 import "css!./demo.css";
 const jsonData = JSON.parse(jsonDataText as string);
 interface PopulationRow {

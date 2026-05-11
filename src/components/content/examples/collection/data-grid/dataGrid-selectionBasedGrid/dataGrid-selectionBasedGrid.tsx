@@ -5,7 +5,7 @@ import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import type { JetElementCustomEvent } from 'ojs/index';
 import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
 import 'ojs/ojdatagrid';
-import * as jsonDataText from 'text!../data/cookbook/dataCollections/dataGrid/shared/customers.json';
+import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/customers.json';
 import 'ojs/ojformlayout';
 import 'ojs/ojselectsingle';
 import 'ojs/ojtable';

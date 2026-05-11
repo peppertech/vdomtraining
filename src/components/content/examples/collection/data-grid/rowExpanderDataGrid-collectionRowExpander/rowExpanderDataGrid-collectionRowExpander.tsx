@@ -5,7 +5,7 @@ import { useMemo } from 'preact/hooks';
 import * as Model from 'ojs/ojmodel';
 import * as CollectionTreeDataSource from 'ojs/ojcollectiontreedatasource';
 import * as flattenedModule from 'ojs/ojflattenedtreedatagriddatasource';
-import * as jsonDataStr from 'text!../data/cookbook/dataCollections/rowExpanderDataGrid/collectionRowExpander/projectData.json';
+import * as jsonDataStr from 'text!../../data/cookbook/dataCollections/rowExpanderDataGrid/collectionRowExpander/projectData.json';
 import 'ojs/ojrowexpander';
 import 'ojs/ojdatagrid';
 import 'css!./demo.css';

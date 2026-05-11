@@ -4,7 +4,7 @@ import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import * as jsonDataStr from 'text!../data/cookbook/dataCollections/rowExpanderDataGrid/dataGridRowExpanderDataProvider/projectData.json';
+import * as jsonDataStr from 'text!../../data/cookbook/dataCollections/rowExpanderDataGrid/dataGridRowExpanderDataProvider/projectData.json';
 import 'ojs/ojrowexpander';
 import 'ojs/ojdatagrid';
 import 'css!./demo.css';

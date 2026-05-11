@@ -1,0 +1,19 @@
+.demo-avatar {
+  border-radius: 50%;
+  background-size: 3.125rem 3.125rem;
+  width: 3.125rem;
+  height: 3.125rem;
+  display: inline-block;
+}
+
+.demo-table-container {
+  width: 100%;
+}
+
+.demo-table-rating-gauge {
+  width: 100%;
+}
+
+.demo-table-status-gauge {
+  width: 100%;
+}

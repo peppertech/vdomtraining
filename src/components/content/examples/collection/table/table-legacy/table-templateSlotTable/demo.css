@@ -1,0 +1,17 @@
+.demo-table-rating-cell {
+  width: 3.75rem;
+  height: 0.9375rem;
+}
+
+.demo-table-container {
+  width: 100%;
+  height: 27rem;
+}
+
+.demo-header {
+  overflow: inherit;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}

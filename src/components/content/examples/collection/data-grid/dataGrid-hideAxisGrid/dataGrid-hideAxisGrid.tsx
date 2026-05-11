@@ -8,7 +8,7 @@ import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import 'ojs/ojformlayout';
 import 'ojs/ojselectcombobox';
-import * as jsonDataText from 'text!../data/cookbook/dataCollections/dataGrid/shared/customers.json';
+import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/customers.json';
 import "css!./demo.css";
 interface CustomerRow {
     index: number;

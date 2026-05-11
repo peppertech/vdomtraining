@@ -1,0 +1,11 @@
+.demo-table-container {
+  height: 27rem;
+}
+
+.demo-draggable-element {
+  cursor: grab;
+}
+
+.demo-draggable-element:active {
+  cursor: grabbing;
+}

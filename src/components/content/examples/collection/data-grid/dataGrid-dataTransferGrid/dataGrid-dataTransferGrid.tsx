@@ -3,7 +3,7 @@ import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
-import * as jsonDataText from 'text!../data/cookbook/dataCollections/dataGrid/shared/population.json';
+import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/population.json';
 import 'ojs/ojdatagrid';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';

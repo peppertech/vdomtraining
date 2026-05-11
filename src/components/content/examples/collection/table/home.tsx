@@ -6,7 +6,7 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import Table from "./table";
+import TableLegacyRecipePage from "./table-legacy/index";
 import CorePackTable from "./core-pack-table";
 import {
   type NestedCatalogHomeProps,
@@ -98,7 +98,7 @@ const TableHome = ({
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <Table />;
+        return <TableLegacyRecipePage />;
       case 2:
         return <CorePackTable />;
       default:

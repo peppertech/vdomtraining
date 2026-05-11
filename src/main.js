@@ -16,7 +16,14 @@
     map: {
       "*": {
         "react": "preact/compat",
-        "react-dom": "preact/compat" 
+        "react-dom": "preact/compat",
+        "ojs/ojbuttonsetone": "ojs/ojbutton",
+        "ojs/ojcomboboxone": "ojs/ojselectcombobox",
+        "ojs/ojinputdate": "ojs/ojdatetimepicker",
+        "ojs/ojmenubutton": "ojs/ojbutton",
+        "ojs/ojratinggauge": "ojs/ojgauge",
+        "ojs/ojstatusmetergauge": "ojs/ojgauge",
+        "ojs/ojtextarea": "ojs/ojinputtext"
       }
   },
     // injector:baseUrl
@@ -46,7 +53,11 @@
         preact: "libs/preact/dist/preact.umd",
         proj4: "libs/proj4js/dist/proj4-src",
         touchr: "libs/touchr/touchr",
-        chai: "libs/chai/chai-4.2.0"
+        chai: "libs/chai/chai-4.2.0",
+        "components/content/examples/collection/data-grid/data/cookbook": "components/content/examples/collection/data/cookbook",
+        "components/content/examples/collection/table/table-legacy/cookbook": "components/content/examples/collection/data/cookbook",
+        "components/content/examples/collection/table/table-legacy/data/cookbook": "components/content/examples/collection/data/cookbook",
+        "components/content/examples/collection/table/table-legacy/table-customTable/data/cookbook": "components/content/examples/collection/data/cookbook"
       }
     // endinjector
     
