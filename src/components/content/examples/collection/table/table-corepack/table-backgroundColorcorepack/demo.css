@@ -1,0 +1,12 @@
+.demo-width {
+  width: 31.25rem;
+}
+
+.demo-with-current-color {
+  background-color: rgb(var(--oj-palette-success-rgb-20));
+  --oj-current-bg-color: rgb(var(--oj-palette-success-rgb-20));
+}
+
+.demo-no-current-color {
+  background-color: rgb(var(--oj-palette-info-rgb-20));
+}

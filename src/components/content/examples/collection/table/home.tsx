@@ -7,7 +7,7 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
 import TableLegacyRecipePage from "./table-legacy/index";
-import CorePackTable from "./core-pack-table";
+import TableCorePackRecipePage from "./table-corepack/index";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -100,7 +100,7 @@ const TableHome = ({
       case 1:
         return <TableLegacyRecipePage />;
       case 2:
-        return <CorePackTable />;
+        return <TableCorePackRecipePage />;
       default:
         return null;
     }

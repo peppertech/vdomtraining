@@ -1,0 +1,12 @@
+.demo-table-container {
+  width: 100%;
+}
+
+.demo-card-sizing {
+  height: 3rem;
+  width: 3rem;
+}
+
+demo-memory-card .demo-memory-card-front-side {
+  background-image: url('../images/composites/card-background_1.png');
+}
