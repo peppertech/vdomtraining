@@ -1,0 +1,58 @@
+[
+  {
+    "id": 8,
+    "date": 1563309219690.7644,
+    "label": "Follow-up with Kevin",
+    "type": "Followup",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "date": 1563269049429.7346,
+    "label": "Call with Jan",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "date": 1563191100109.5771,
+    "label": "Ping Josef",
+    "type": "Ping",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  }
+]

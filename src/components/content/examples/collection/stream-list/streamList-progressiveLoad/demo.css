@@ -1,0 +1,9 @@
+.demo-height {
+  height: 37.5rem;
+}
+
+.demo-stream-list-group {
+  cursor: pointer;
+  border-radius: 0.25rem;
+  line-height: 1rem !important;
+}

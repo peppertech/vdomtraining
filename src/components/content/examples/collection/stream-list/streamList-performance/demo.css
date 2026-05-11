@@ -1,0 +1,17 @@
+.demo-max-height {
+  height: calc(100vh - 0.625rem);
+  min-height: 33rem;
+}
+
+.demo-stream-list-group {
+  cursor: pointer;
+  border-radius: 0.25rem;
+  line-height: 1rem !important;
+}
+
+.demo-container {
+  display: block;
+}
+.demo-streamlist-height {
+  height: 25rem;
+}

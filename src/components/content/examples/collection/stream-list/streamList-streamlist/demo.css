@@ -1,0 +1,23 @@
+#app {
+  height: 100vh;
+  background-image: url(./Artwork-Header.png);
+  background-repeat: repeat-x;
+  padding-top: 1rem;
+  box-sizing: border-box;
+  border-radius: 0.375rem 0.375rem 0rem 0rem;
+}
+
+#container {
+  overflow: auto;
+  height: 100%;
+}
+
+.demo-stream-list-group a {
+  padding: 0;
+}
+
+.demo-stream-list-group {
+  cursor: pointer;
+  border-radius: 0.25rem;
+  line-height: 1rem !important;
+}

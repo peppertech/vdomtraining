@@ -1,0 +1,930 @@
+[
+  {
+    "id": 5,
+    "date": 1563414671833.5947,
+    "label": "Send latest files to Carlos",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "date": 1563411313777.0576,
+    "label": "Call with Ben",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "date": 1563396773017.5017,
+    "label": "Call with Christine",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "date": 1563309219690.7644,
+    "label": "Follow-up with Kevin",
+    "type": "Followup",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "date": 1563301793699.352,
+    "label": "Ping Kevin",
+    "type": "Ping",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "date": 1563269477467.7173,
+    "label": "Send latest files to Kevin",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "date": 1563269049429.7346,
+    "label": "Call with Jan",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "date": 1563238716807.9705,
+    "label": "Send latest files to Adam",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "date": 1563202814309.5789,
+    "label": "Send latest files to Ben",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "date": 1563192750718.5642,
+    "label": "Call with Ben",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "date": 1563191100109.5771,
+    "label": "Ping Josef",
+    "type": "Ping",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "date": 1563179712055.305,
+    "label": "Follow-up with Carlos",
+    "type": "Followup",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "date": 1563150384819.6667,
+    "label": "Call with Josef",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "date": 1563145064054.9539,
+    "label": "Send latest files to Carlos",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "date": 1563083923106.219,
+    "label": "Ping Carlos",
+    "type": "Ping",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "date": 1562854327861.806,
+    "label": "Follow-up with Christine",
+    "type": "Followup",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "date": 1562837814724.1497,
+    "label": "Send latest files to Christine",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "date": 1562676663933.5613,
+    "label": "Ping Carlos",
+    "type": "Ping",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "date": 1562660526518.8335,
+    "label": "Follow-up with Josef",
+    "type": "Followup",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "date": 1562332131773.1167,
+    "label": "Ping Josef",
+    "type": "Ping",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "date": 1562329450190.2307,
+    "label": "Send latest files to Ben",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "date": 1562285129280.4563,
+    "label": "Call with Carlos",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "date": 1562251158912.31,
+    "label": "Send latest files to Bob",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "date": 1562067347861.6106,
+    "label": "Follow-up with Bob",
+    "type": "Followup",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "date": 1562055768136.404,
+    "label": "Ping Kevin",
+    "type": "Ping",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "date": 1561800258271.9768,
+    "label": "Ping Adam",
+    "type": "Ping",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "date": 1561372538465.5334,
+    "label": "Follow-up with Ben",
+    "type": "Followup",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "date": 1561249692976.675,
+    "label": "Send latest files to Christine",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "date": 1561100193129.0752,
+    "label": "Call with Ben",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "date": 1561003206720.6418,
+    "label": "Send latest files to Adam",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "date": 1560961457434.4614,
+    "label": "Follow-up with Ben",
+    "type": "Followup",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "date": 1560628304809.874,
+    "label": "Ping Ben",
+    "type": "Ping",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "date": 1560375796031.7192,
+    "label": "Call with Jan",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "date": 1560290325488.6206,
+    "label": "Call with Jan",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "date": 1560149335192.119,
+    "label": "Send latest files to Christine",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "date": 1559095432724.9731,
+    "label": "Follow-up with Kevin",
+    "type": "Followup",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "date": 1558889435438.8481,
+    "label": "Ping Ben",
+    "type": "Ping",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "date": 1558817629016.2866,
+    "label": "Call with Jan",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "date": 1558710575536.1768,
+    "label": "Call with Ben",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "date": 1558521467344.228,
+    "label": "Follow-up with Josef",
+    "type": "Followup",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "date": 1558229096902.9863,
+    "label": "Send latest files to Kevin",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "date": 1557463096994.294,
+    "label": "Call with Jan",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "date": 1556947639772.766,
+    "label": "Send latest files to Josef",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "date": 1556891689317.5042,
+    "label": "Follow-up with Carlos",
+    "type": "Followup",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "date": 1556879622709.5662,
+    "label": "Ping Josef",
+    "type": "Ping",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  }
+]

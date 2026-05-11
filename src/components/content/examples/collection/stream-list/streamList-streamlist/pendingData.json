@@ -1,0 +1,98 @@
+[
+  {
+    "id": 0,
+    "date": 1566007453097.772,
+    "label": "Send latest files to Ben",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "date": 1564966351573.1787,
+    "label": "Send latest files to Jan",
+    "type": "Send",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "date": 1564874097433.5347,
+    "label": "Ping Adam",
+    "type": "Ping",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "date": 1563643172407.095,
+    "label": "Call with Adam",
+    "type": "Call",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      },
+      {
+        "id": 3,
+        "event": "Event 3"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "date": 1563634745273.7378,
+    "label": "Follow-up with Ben",
+    "type": "Followup",
+    "events": [
+      {
+        "id": 0,
+        "event": "Event 0"
+      },
+      {
+        "id": 1,
+        "event": "Event 1"
+      },
+      {
+        "id": 2,
+        "event": "Event 2"
+      }
+    ]
+  }
+]

@@ -13,6 +13,7 @@ import Treeview from "./treeview";
 import DataGridRecipePage from "./data-grid/index";
 import IndexerRecipePage from "./indexer/index";
 import RefresherTouchRecipePage from "./refresher-touch/index";
+import StreamListRecipePage from "./stream-list/index";
 import GroupByTable from "./group-by-table";
 import { RowExpanderTable } from "./rowexpander-table";
 import CorePackCardView from "./core-pack-card-view";
@@ -89,6 +90,13 @@ const collectionComponents: CollectionComponent[] = [
     image: "oj-ux-icon-size-12x oj-ux-ico-refresher",
     isAvailable: true,
     render: () => <RefresherTouchRecipePage />,
+  },
+  {
+    id: 13,
+    name: "Stream List",
+    image: "oj-ux-icon-size-12x oj-ux-ico-list",
+    isAvailable: true,
+    render: () => <StreamListRecipePage />,
   },
   {
     id: 5,
