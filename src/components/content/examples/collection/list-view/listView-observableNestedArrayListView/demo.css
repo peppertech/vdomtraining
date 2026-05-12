@@ -1,0 +1,10 @@
+.demo-group {
+  display: inline-flex;
+  width: calc(100% - 2.625rem);
+}
+
+.demo-item {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-height: 3rem;
+}

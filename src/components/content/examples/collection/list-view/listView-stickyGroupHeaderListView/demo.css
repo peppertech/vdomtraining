@@ -1,0 +1,11 @@
+.demo-contacts {
+  width: 100%;
+  overflow-x: hidden;
+  height: 26.25rem;
+}
+
+@media only screen and (max-device-width: 64rem) {
+  .demo-contacts {
+    height: 31.25rem;
+  }
+}

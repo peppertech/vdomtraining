@@ -1,0 +1,17 @@
+.demo-list {
+  max-width: 25rem;
+  height: 18.75rem;
+}
+
+.demo-item {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.demo-nodata-content {
+  height: 100%;
+}
+
+.demo-nodata-inner {
+  flex-grow: 1;
+}

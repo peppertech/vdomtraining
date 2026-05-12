@@ -1,0 +1,25 @@
+// @ts-nocheck
+import { h } from 'preact';
+
+export const listViewProgressiveLoadHierListViewRecipe = (
+  <>
+    <ol>
+      <li>Construct an ArrayTreeDataProvider with the data.</li>
+      <li>Use the oj-list-view tag to create a JET ListView.</li>
+      <li>
+        Use the data attribute to bind an ArrayTreeDataProvider you created previously as data for
+        ListView.
+      </li>
+      <li>Use the itemTemplate slot to specify the template for rendering the item.</li>
+      <li>
+        Since oj-list-item-layout is used, which provides its own padding, remove the default item
+        padding using the oj-listview-item-padding-off style class.
+      </li>
+      <li>Use the expanded attribute to specify which group items to expand.</li>
+      <li>
+        Use the item.enter-key-focus-behavior attribute and set it to 'focusWithin' to allow access to
+        focusable elements within the item using the enter key (in addition to F2 key).
+      </li>
+    </ol>
+  </>
+);

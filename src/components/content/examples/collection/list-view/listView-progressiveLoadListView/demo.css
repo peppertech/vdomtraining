@@ -1,0 +1,23 @@
+.demo-list {
+  width: 100%;
+  height: calc(100vh - 9.375rem);
+  min-height: 18.75rem;
+}
+
+.demo-card {
+  width: 19.5rem;
+  height: 12.5rem;
+}
+
+.demo-tweet {
+  overflow: hidden;
+}
+
+.demo-tweet span {
+  word-wrap: break-word;
+}
+
+.demo-tweet a:focus {
+  outline-offset: -2px;
+  outline-style: solid;
+}

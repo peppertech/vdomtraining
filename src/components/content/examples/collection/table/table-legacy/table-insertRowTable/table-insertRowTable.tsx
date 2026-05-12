@@ -492,12 +492,12 @@ export const TableInsertRowTable = () => {
             <div class="oj-panel oj-bg-neutral-30">
                     <h2 id="table-controls-heading" class="oj-typography-subheading-md">Options To Control The Table Below</h2>
                     <oj-form-layout aria-controls="table" max-columns="3" class="oj-formlayout-full-width">
-                              <demo-radioset-enum direction="row" label-hint="Simulated Delays" onvalueChanged={handleSimulatedDelaysValueChanged} value={simulatedDelays} enum-values={JSON.stringify(['off', 'on'])} />
+                              {h('demo-radioset-enum', { direction: 'row', 'label-hint': 'Simulated Delays', onvalueChanged: handleSimulatedDelaysValueChanged, value: simulatedDelays, 'enum-values': JSON.stringify(['off', 'on']) })}
                               <oj-input-number id="edit-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditDelayValueChanged} value={editDelay} label-hint="Simulated Enter Edit Mode Delay (ms)" />
                               <oj-input-number id="edit-end-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditEndDelayValueChanged} value={editEndDelay} label-hint="Simulated Submit Add / Edit Delay (ms)" />
                               <oj-button id="insertRowDisplay" display="icons" onojAction={handleDisplay} label={buttonText} />
                               <oj-input-number id="insert-row-key-input" onvalueChanged={handleInsertRowKeyValueChanged} value={insertRowKey} label-hint="Insert Row Anchor Key" />
-                              <demo-radioset-enum direction="row" label-hint="Insert Row Anchor Key Position" onvalueChanged={handleInsertPositionValueChanged} value={insertPosition} enum-values={JSON.stringify(['before', 'after'])} />
+                              {h('demo-radioset-enum', { direction: 'row', 'label-hint': 'Insert Row Anchor Key Position', onvalueChanged: handleInsertPositionValueChanged, value: insertPosition, 'enum-values': JSON.stringify(['before', 'after']) })}
                           </oj-form-layout>
                 </div>
             <oj-table id="table" aria-label="Departments Table" class="oj-bg-body demo-table-container" data={dataprovider} edit-mode="rowEdit" insert-row-display={insertRowDisplay} oninsertRowDisplayChanged={handleInsertRow} add-row-display="hidden" oneditRowChanged={handleEditRowEditRowChanged} edit-row={editRow} onojBeforeRowEdit={beforeRowEditListener} onojBeforeRowEditEnd={beforeRowEditEndListener} onojBeforeRowAddEnd={beforeRowAddEndListener} layout="fixed" columns={columnArray} {...{ 'accessibility.row-header': "depName", 'columns-default.sortable': "disabled" }}>

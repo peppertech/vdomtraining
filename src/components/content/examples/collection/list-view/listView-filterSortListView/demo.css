@@ -1,0 +1,14 @@
+.demo-list {
+  height: calc(100vh - 4.375rem);
+}
+
+.demo-gauge {
+  width: 5.375rem;
+  height: 1.25em;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.demo-sku-model {
+  padding-left: 0;
+}

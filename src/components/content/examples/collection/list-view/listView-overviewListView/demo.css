@@ -1,0 +1,38 @@
+.demo-container {
+  min-height: 31.25rem;
+  overflow-x: hidden;
+}
+
+#componentDemoContent {
+  overflow: hidden;
+}
+
+.demo-view-container {
+  position: relative;
+  width: 100%;
+  min-height: 32.5rem;
+}
+
+.demo-panel {
+  height: calc(100% - 2.5rem);
+}
+
+.demo-page {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 0.625rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.demo-list-view-mode {
+  height: calc(100vh - 6.25rem);
+  min-height: 32.5rem;
+}
+
+.demo-list-edit-mode {
+  height: calc(100vh - 9.375rem);
+  min-height: 32.5rem;
+}

@@ -7,7 +7,7 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
 import TableHome from "./table/home";
-import ListViewHome from "./listview/home";
+import ListViewHome from "./list-view/index";
 import ListItemLayoutHome from "./list-item-layout/home";
 import Treeview from "./treeview";
 import DataGridRecipePage from "./data-grid/index";
@@ -71,8 +71,7 @@ const collectionComponents: CollectionComponent[] = [
     name: "List View",
     image: "oj-ux-icon-size-12x  oj-ux-ico-list",
     isAvailable: true,
-    isCorePack: true,
-    render: (props) => <ListViewHome {...props} />,
+    render: () => <ListViewHome />,
   },
    {
     id: 12,
