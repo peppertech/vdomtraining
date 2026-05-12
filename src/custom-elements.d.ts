@@ -7,6 +7,7 @@ declare global {
     interface IntrinsicElements {
       "demo-blank-card": DemoElementProps;
       "demo-card": DemoElementProps;
+      "demo-activity-stream-item": DemoElementProps;
       "demo-chart-image-picker": DemoElementProps;
       "demo-chart-orientation-control": DemoElementProps;
       "demo-chart-stack-control": DemoElementProps;
@@ -40,6 +41,7 @@ declare global {
     interface IntrinsicElements {
       "demo-blank-card": DemoElementProps;
       "demo-card": DemoElementProps;
+      "demo-activity-stream-item": DemoElementProps;
       "demo-chart-image-picker": DemoElementProps;
       "demo-chart-orientation-control": DemoElementProps;
       "demo-chart-stack-control": DemoElementProps;

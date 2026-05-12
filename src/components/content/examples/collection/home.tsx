@@ -15,6 +15,8 @@ import IndexerRecipePage from "./indexer/index";
 import RefresherTouchRecipePage from "./refresher-touch/index";
 import StreamListRecipePage from "./stream-list/index";
 import CardViewRecipePage from "./card-view/index";
+import WaterfallLayoutRecipePage from "./waterfall-layout/index";
+import SwipeActionsRecipePage from "./swipe-actions/index";
 import GroupByTable from "./group-by-table";
 import { RowExpanderTable } from "./rowexpander-table";
 import {
@@ -35,42 +37,12 @@ type CollectionComponent = {
 
 const collectionComponents: CollectionComponent[] = [
   {
-    id: 7,
-    name: "Table",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-tables-basic",
-    isAvailable: true,
-    isCorePack: true,
-    render: (props) => <TableHome {...props} />,
-  },
-  {
-    id: 2,
-    name: "List View",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-list",
-    isAvailable: true,
-    isCorePack: true,
-    render: (props) => <ListViewHome {...props} />,
-  },
-  {
-    id: 10,
-    name: "List Item Layout",
-    image: "oj-ux-icon-size-12x oj-ux-ico-list",
-    isAvailable: true,
-    isCorePack: true,
-    render: (props) => <ListItemLayoutHome {...props} />,
-  },
-  {
     id: 9,
     name: "Card View",
     image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
     isAvailable: true,
     isCorePack: true,
     render: () => <CardViewRecipePage />,
-  },
-  {
-    id: 3,
-    name: "Tree View",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-tree-view",
-    isAvailable: true,
   },
   {
     id: 4,
@@ -85,25 +57,29 @@ const collectionComponents: CollectionComponent[] = [
     isAvailable: true,
     render: () => <IndexerRecipePage />,
   },
+  
   {
+    id: 10,
+    name: "List Item Layout",
+    image: "oj-ux-icon-size-12x oj-ux-ico-list",
+    isAvailable: true,
+    isCorePack: true,
+    render: (props) => <ListItemLayoutHome {...props} />,
+  },
+  {
+    id: 2,
+    name: "List View",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-list",
+    isAvailable: true,
+    isCorePack: true,
+    render: (props) => <ListViewHome {...props} />,
+  },
+   {
     id: 12,
-    name: "Refresher Touch",
+    name: "Refresher (Touch)",
     image: "oj-ux-icon-size-12x oj-ux-ico-refresher",
     isAvailable: true,
     render: () => <RefresherTouchRecipePage />,
-  },
-  {
-    id: 13,
-    name: "Stream List",
-    image: "oj-ux-icon-size-12x oj-ux-ico-list",
-    isAvailable: true,
-    render: () => <StreamListRecipePage />,
-  },
-  {
-    id: 5,
-    name: "Group By Table",
-    image: "oj-ux-icon-size-12x oj-ux-ico-group",
-    isAvailable: true,
   },
   {
     id: 6,
@@ -111,6 +87,47 @@ const collectionComponents: CollectionComponent[] = [
     image: "oj-ux-icon-size-12x  oj-ux-ico-row-expander",
     isAvailable: true,
   },
+   {
+    id: 13,
+    name: "Stream List",
+    image: "oj-ux-icon-size-12x oj-ux-ico-list",
+    isAvailable: true,
+    render: () => <StreamListRecipePage />,
+  },
+  {
+    id: 15,
+    name: "Swipe Actions (Touch)",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-swipe-to-reveal",
+    isAvailable: true,
+    render: () => <SwipeActionsRecipePage />,
+  },
+  {
+    id: 7,
+    name: "Table",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-tables-basic",
+    isAvailable: true,
+    isCorePack: true,
+    render: (props) => <TableHome {...props} />,
+  },
+  {
+    id: 3,
+    name: "Tree View",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-tree-view",
+    isAvailable: true,
+  },
+  {
+    id: 14,
+    name: "Waterfall Layout",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
+    isAvailable: true,
+    render: () => <WaterfallLayoutRecipePage />,
+  },
+  {
+    id: 5,
+    name: "Group By Table",
+    image: "oj-ux-icon-size-12x oj-ux-ico-group",
+    isAvailable: true,
+  }
 ];
 
 const dataProvider = new MutableArrayDataProvider<

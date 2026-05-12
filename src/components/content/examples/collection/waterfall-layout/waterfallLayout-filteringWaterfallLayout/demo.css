@@ -1,0 +1,5 @@
+.demo-waterfall {
+  height: calc(100vh - 3.75rem);
+  min-height: 43.75rem;
+  min-width: 21.875rem;
+}

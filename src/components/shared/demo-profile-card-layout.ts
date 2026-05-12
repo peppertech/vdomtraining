@@ -125,3 +125,5 @@ class DemoProfileCardLayout extends HTMLElement {
 if (!window.customElements.get("demo-profile-card-layout")) {
   window.customElements.define("demo-profile-card-layout", DemoProfileCardLayout);
 }
+
+export {};

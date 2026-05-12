@@ -5,3 +5,5 @@ declare class DemoProfileCardLayout extends HTMLElement {
     private getAttr;
     private render;
 }
+
+export {};
