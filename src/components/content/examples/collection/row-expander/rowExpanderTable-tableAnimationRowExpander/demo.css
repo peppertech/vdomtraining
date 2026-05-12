@@ -1,0 +1,19 @@
+/* oj-animate-add applied just before add animation for setup*/
+.demo-custom .oj-animate-add {
+  transition-property: color, background-color;
+}
+
+/* oj-animate-add-active applied during add, set prop changes here */
+.demo-custom .oj-animate-add.oj-animate-add-active {
+  background-color: RGB(var(--oj-palette-success-rgb-30)) !important;
+}
+
+/* oj-animate-remove applied just before add animation for setup*/
+.demo-custom .oj-animate-remove {
+  transition-property: color, background-color;
+}
+
+/* oj-animate-remove-active applied during add, set prop changes here */
+.demo-custom .oj-animate-remove.oj-animate-remove-active {
+  background-color: RGB(var(--oj-palette-danger-rgb-30)) !important;
+}

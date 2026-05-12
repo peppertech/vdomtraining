@@ -1,11 +1,12 @@
 import { h } from "preact";
 
 const recipeHtmlText = String.raw`<ol>
-  <li>Create an ArrayDataProvider with a keyAttributes value that uniquely identifies each item.</li>
-  <li>Bind the provider to oj-c-list-view and enable singleRequired selection so the detail panel always has an active item.</li>
-  <li>Use oj-c-list-item-layout in the itemTemplate to lay out the avatar, primary text, and secondary text.</li>
-  <li>Listen for selectedChanged and ojFirstSelectedItem to keep the selected KeySet and the detail panel in sync.</li>
-  <li>Use ojItemAction with item.enterKeyFocusBehavior set to none so activating an item also updates the selected detail.</li>
+  <li>Create a MutableArrayDataProvider with a keyAttributes value that uniquely identifies each item.</li>
+  <li>Bind the provider to oj-c-list-view and use singleRequired selection in view mode so the detail panel always has an active item.</li>
+  <li>Use multipleToggle selection in edit mode so multiple tasks can be removed together.</li>
+  <li>Use oj-c-list-item-layout in the itemTemplate to lay out primary, secondary, and tertiary task text.</li>
+  <li>Listen for selectedChanged, ojFirstSelectedItem, and ojItemAction to keep the selected KeySet and detail panel in sync.</li>
+  <li>Use the noData slot to render custom content when all tasks have been removed.</li>
 </ol>`;
 
 export const listViewOverviewcorepackRecipe = (

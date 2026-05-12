@@ -116,7 +116,7 @@ export class CollectionMockFetchServer<D> {
       data: TreeItem<D>[];
       totalSize: number;
       hasMore: boolean;
-      metadata?: Array<{ key: string[]; leaf?: boolean }>;
+      metadata?: Array<{ key: string; leaf?: boolean }>;
     } = {
       data,
       totalSize: sourceData.items.length,
@@ -125,9 +125,8 @@ export class CollectionMockFetchServer<D> {
 
     if (this.options.returnMetadata) {
       body.metadata = data.map((item) => {
-        const key = [...sourceData.path, this.getItemKey(item)];
         return {
-          key,
+          key: this.getItemKey(item),
           leaf: !Array.isArray(item.children) || item.children.length === 0,
         };
       });

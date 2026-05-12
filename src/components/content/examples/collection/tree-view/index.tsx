@@ -9,6 +9,9 @@ import { treeViewCollectionRecipe } from "./treeView-collection/recipe";
 import { TreeViewContextMenu } from "./treeView-contextMenu/treeView-contextMenu";
 import { treeViewContextMenuDescription } from "./treeView-contextMenu/description";
 import { treeViewContextMenuRecipe } from "./treeView-contextMenu/recipe";
+import { TreeViewCrud } from "./treeView-crud/treeView-crud";
+import { treeViewCrudDescription } from "./treeView-crud/description";
+import { treeViewCrudRecipe } from "./treeView-crud/recipe";
 import { TreeViewDnd } from "./treeView-dnd/treeView-dnd";
 import { treeViewDndDescription } from "./treeView-dnd/description";
 import { treeViewDndRecipe } from "./treeView-dnd/recipe";
@@ -74,6 +77,13 @@ const treeViewItems = [
     description: treeViewContextMenuDescription,
     recipe: treeViewContextMenuRecipe,
     Component: TreeViewContextMenu,
+  },
+  {
+    id: "crud",
+    name: "CRUD",
+    description: treeViewCrudDescription,
+    recipe: treeViewCrudRecipe,
+    Component: TreeViewCrud,
   },
   {
     id: "icons",

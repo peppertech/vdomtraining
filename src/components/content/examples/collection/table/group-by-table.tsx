@@ -3,7 +3,7 @@ import "ojs/ojtable";
 import { ojTable } from "ojs/ojtable";
 import { Item } from "ojs/ojdataprovider";
 import "ojs/ojrowexpander";
-import * as groupData from "text!./data/groupdata.json";
+import * as groupData from "text!../data/groupdata.json";
 import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
 import FlattenedTreeDataProviderView = require("ojs/ojflattenedtreedataproviderview");
 import { KeySetImpl } from "ojs/ojkeyset";

@@ -1,0 +1,13 @@
+.row-expander-performance-controls {
+  margin-bottom: 0.25rem;
+  min-height: 0;
+  overflow-x: visible;
+}
+
+.row-expander-performance-controls .oj-panel {
+  margin-bottom: 0;
+}
+
+.demo-table-container {
+  height: 30rem;
+}

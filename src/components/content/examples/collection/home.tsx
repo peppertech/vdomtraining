@@ -17,8 +17,8 @@ import StreamListRecipePage from "./stream-list/index";
 import CardViewRecipePage from "./card-view/index";
 import WaterfallLayoutRecipePage from "./waterfall-layout/index";
 import SwipeActionsRecipePage from "./swipe-actions/index";
-import GroupByTable from "./group-by-table";
-import { RowExpanderTable } from "./rowexpander-table";
+import RowExpanderRecipePage from "./row-expander/index";
+import GroupByTable from "./table/group-by-table";
 import {
   CatalogBreadcrumb,
   type CatalogBreadcrumbItem,
@@ -83,9 +83,10 @@ const collectionComponents: CollectionComponent[] = [
   },
   {
     id: 6,
-    name: "Row Expander Table",
+    name: "Row Expander",
     image: "oj-ux-icon-size-12x  oj-ux-ico-row-expander",
     isAvailable: true,
+    render: () => <RowExpanderRecipePage />,
   },
    {
     id: 13,
@@ -123,12 +124,12 @@ const collectionComponents: CollectionComponent[] = [
     isAvailable: true,
     render: () => <WaterfallLayoutRecipePage />,
   },
-  {
-    id: 5,
-    name: "Group By Table",
-    image: "oj-ux-icon-size-12x oj-ux-ico-group",
-    isAvailable: true,
-  }
+  // {
+  //   id: 5,
+  //   name: "Group By Table",
+  //   image: "oj-ux-icon-size-12x oj-ux-ico-group",
+  //   isAvailable: true,
+  // }
 ];
 
 const dataProvider = new MutableArrayDataProvider<
@@ -209,8 +210,6 @@ const CollectionHome = () => {
         return <DataGridRecipePage />;
       case 5:
         return <GroupByTable />;
-      case 6:
-        return <RowExpanderTable />;
       default:
         return null;
     }

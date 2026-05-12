@@ -1,145 +1,236 @@
 import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import type { ComponentProps } from 'preact';
+import { useMemo, useRef, useState } from 'preact/hooks';
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 import { KeySetImpl, type ImmutableKeySet } from 'ojs/ojkeyset';
 import type { CListViewElement } from 'oj-c/list-view';
 import 'css!./demo.css';
-import 'oj-c/avatar';
 import 'oj-c/button';
+import 'oj-c/input-text';
 import 'oj-c/list-item-layout';
 import 'oj-c/list-view';
 
-type Employee = {
+type Task = {
   id: number;
-  name: string;
   title: string;
-  image: string;
-  summary: string;
+  date: string;
+  detail: string;
 };
 
-const employees: Employee[] = [
+type InputTextValueChangedEvent = Parameters<
+  NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>
+>[0];
+type ItemActionEvent = CListViewElement.ojItemAction<Task['id'], Task>;
+type ItemTemplateContext = CListViewElement.ItemTemplateContext<Task['id'], Task>;
+type FirstSelectedItemEvent = CListViewElement.ojFirstSelectedItem<Task['id'], Task>;
+type SelectedChangedEvent = CListViewElement.selectedChanged<Task['id'], Task>;
+
+const INITIAL_TASKS: Task[] = [
   {
     id: 1,
-    name: 'Chris Black',
-    title: 'Oracle Cloud Infrastructure GTM Channel Director EMEA',
-    image: '/styles/images/hcm/placeholder-male-01.png',
-    summary: 'Owns channel strategy and partner follow-through for regional OCI programs.'
+    title: 'Prepare list view examples',
+    date: 'Apr 29',
+    detail: 'Review the collection demos and make sure the list view recipes are wired.'
   },
   {
     id: 2,
-    name: 'Christine Cooper',
-    title: 'Senior Principal Escalation Manager',
-    image: '/styles/images/hcm/placeholder-female-01.png',
-    summary: 'Coordinates high-priority customer escalations and tracks readiness actions.'
+    title: 'Review release notes',
+    date: 'Apr 30',
+    detail: 'Check component behavior changes before publishing the cookbook update.'
   },
   {
     id: 3,
-    name: 'Chris Benalamore',
-    title: 'Area Business Operations Director EMEA & JAPAC',
-    image: '/styles/images/hcm/placeholder-male-03.png',
-    summary: 'Keeps regional operations aligned across planning, reporting, and execution.'
+    title: 'Follow up on design review',
+    date: 'May 02',
+    detail: 'Capture feedback from the review and update the remaining examples.'
   }
 ];
 
-type ItemTemplateContext = CListViewElement.ItemTemplateContext<Employee['id'], Employee>;
-type SelectedChangedEvent = CListViewElement.selectedChanged<Employee['id'], Employee>;
-type FirstSelectedItemEvent = CListViewElement.ojFirstSelectedItem<Employee['id'], Employee>;
+const createSelectedKeys = (keys: Task['id'][] = []) =>
+  new KeySetImpl<Task['id']>(keys) as ImmutableKeySet<Task['id']>;
 
-const getFirstSelectedKey = (keySet: ImmutableKeySet<Employee['id']>) => {
-  if (keySet.keys.all) {
-    return employees[0].id;
+const getSelectedIds = (tasks: Task[], selected: ImmutableKeySet<Task['id']>) =>
+  tasks.filter((task) => selected.has(task.id)).map((task) => task.id);
+
+const getFirstSelectedKey = (selected: ImmutableKeySet<Task['id']>, tasks: Task[]) => {
+  if (selected.keys.all) {
+    return tasks[0]?.id ?? null;
   }
 
-  const [key] = Array.from(keySet.keys.keys.values());
+  const [key] = Array.from(selected.keys.keys.values());
   return typeof key === 'number' ? key : null;
 };
 
+const renderNoData = () => (
+  <div class="demo-overview-no-data oj-typography-body-md oj-text-color-secondary">
+    No tasks to display
+  </div>
+);
+
 export const ListViewOverviewcorepack = () => {
-  const [activeEmployeeId, setActiveEmployeeId] = useState(employees[0].id);
-  const [selected, setSelected] = useState<ImmutableKeySet<Employee['id']>>(
-    () => new KeySetImpl([employees[0].id]) as ImmutableKeySet<Employee['id']>
+  const [tasks, setTasks] = useState(INITIAL_TASKS);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [activeTaskId, setActiveTaskId] = useState<Task['id']>(INITIAL_TASKS[0].id);
+  const [selected, setSelected] = useState<ImmutableKeySet<Task['id']>>(
+    createSelectedKeys([INITIAL_TASKS[0].id])
   );
+  const [draftTitle, setDraftTitle] = useState(INITIAL_TASKS[0].title);
+  const nextIdRef = useRef(Math.max(...INITIAL_TASKS.map((task) => task.id)) + 1);
+
   const dataProvider = useMemo(
     () =>
-      new ArrayDataProvider<Employee['id'], Employee>(employees, {
+      new MutableArrayDataProvider<Task['id'], Task>(tasks, {
         keyAttributes: 'id'
       }),
-    []
+    [tasks]
   );
-  const activeEmployee =
-    employees.find((employee) => employee.id === activeEmployeeId) ?? employees[0];
+  const activeTask = tasks.find((task) => task.id === activeTaskId) ?? tasks[0] ?? null;
+  const selectedIds = getSelectedIds(tasks, selected);
+
+  const selectTask = (task: Task | null) => {
+    setActiveTaskId(task?.id ?? 0);
+    setSelected(task ? createSelectedKeys([task.id]) : createSelectedKeys());
+    setDraftTitle(task?.title ?? '');
+  };
 
   const handleSelectedChanged = (event: SelectedChangedEvent) => {
-    const nextSelected =
-      event.detail.value ?? (new KeySetImpl([employees[0].id]) as ImmutableKeySet<Employee['id']>);
+    const nextSelected = event.detail.value ?? createSelectedKeys();
     setSelected(nextSelected);
 
-    const nextKey = getFirstSelectedKey(nextSelected);
-    if (nextKey !== null) {
-      setActiveEmployeeId(nextKey);
+    const selectedKey = getFirstSelectedKey(nextSelected, tasks);
+    const nextActiveTask = tasks.find((task) => task.id === selectedKey) ?? null;
+    if (nextActiveTask) {
+      setActiveTaskId(nextActiveTask.id);
+      setDraftTitle(nextActiveTask.title);
     }
   };
 
   const handleFirstSelectedItem = (event: FirstSelectedItemEvent) => {
-    const nextKey = event.detail.key;
-    if (typeof nextKey === 'number') {
-      setActiveEmployeeId(nextKey);
+    if (typeof event.detail.key === 'number') {
+      setActiveTaskId(event.detail.key);
+      setDraftTitle(event.detail.data.title);
     }
   };
 
-  const handleItemAction = (event: CListViewElement.ojItemAction<Employee['id'], Employee>) => {
-    const nextKey = event.detail.context.item.metadata.key;
-    setSelected(new KeySetImpl([nextKey]) as ImmutableKeySet<Employee['id']>);
-    setActiveEmployeeId(nextKey);
+  const handleItemAction = (event: ItemActionEvent) => {
+    const key = event.detail.context.item.metadata.key;
+    const nextActiveTask = tasks.find((task) => task.id === key) ?? null;
+    selectTask(nextActiveTask);
+  };
+
+  const handleDraftTitleChanged = (event: InputTextValueChangedEvent) => {
+    setDraftTitle(event.detail.value ?? '');
+  };
+
+  const handleAddTask = () => {
+    const title = draftTitle.trim() || `New task ${nextIdRef.current}`;
+    const nextTask: Task = {
+      id: nextIdRef.current,
+      title,
+      date: 'Today',
+      detail: 'Newly added task from the overview demo.'
+    };
+    nextIdRef.current += 1;
+    setTasks((currentTasks) => [nextTask, ...currentTasks]);
+    selectTask(nextTask);
+    setIsEditMode(false);
+  };
+
+  const handleUpdateTask = () => {
+    if (!activeTask) {
+      return;
+    }
+
+    const title = draftTitle.trim();
+    if (title.length === 0) {
+      return;
+    }
+
+    setTasks((currentTasks) =>
+      currentTasks.map((task) => (task.id === activeTask.id ? { ...task, title } : task))
+    );
+  };
+
+  const handleRemoveTasks = () => {
+    if (selectedIds.length === 0) {
+      return;
+    }
+
+    setTasks((currentTasks) => {
+      const remainingTasks = currentTasks.filter((task) => !selected.has(task.id));
+      const nextActiveTask = remainingTasks[0] ?? null;
+      selectTask(nextActiveTask);
+      return remainingTasks;
+    });
+  };
+
+  const handleToggleMode = () => {
+    const nextEditMode = !isEditMode;
+    setIsEditMode(nextEditMode);
+    if (!nextEditMode && activeTask) {
+      setSelected(createSelectedKeys([activeTask.id]));
+    }
   };
 
   const renderItem = (item: ItemTemplateContext) => (
-    <oj-c-list-item-layout aria-label={`Details for ${item.data.name}`}>
-      <span class="oj-typography-body-md oj-text-color-primary oj-typography-semi-bold">
-        {item.data.name}
-      </span>
-      <oj-c-avatar
-        slot="leading"
-        size="xs"
-        src={item.data.image}
-        title={`Avatar of ${item.data.name}`}
-      />
+    <oj-c-list-item-layout>
+      <span class="oj-typography-body-md oj-text-color-primary">{item.data.title}</span>
       <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">
-        {item.data.title}
+        {item.data.detail}
+      </span>
+      <span slot="tertiary" class="oj-typography-body-xs oj-text-color-secondary">
+        {item.data.date}
       </span>
     </oj-c-list-item-layout>
   );
 
   return (
     <div class="demo-overview-layout">
-      <oj-c-list-view
-        id="listview"
-        aria-label="list view overview"
-        data={dataProvider}
-        selected={selected}
-        selectionMode="singleRequired"
-        onselectedChanged={handleSelectedChanged}
-        onojFirstSelectedItem={handleFirstSelectedItem}
-        onojItemAction={handleItemAction}
-        item={{ enterKeyFocusBehavior: 'none' }}
-        gridlines={{ item: 'visible', bottom: 'visible' }}
-        class="demo-overview-list oj-listview-item-padding-off"
-      >
-        <template slot="itemTemplate" render={renderItem} />
-      </oj-c-list-view>
-      <section class="demo-overview-detail oj-bg-neutral-30" aria-live="polite">
-        <div class="demo-overview-detail__header">
-          <oj-c-avatar size="md" src={activeEmployee.image} title={`Avatar of ${activeEmployee.name}`} />
-          <div>
-            <div class="oj-typography-subheading-sm oj-text-color-primary">{activeEmployee.name}</div>
-            <div class="oj-typography-body-sm oj-text-color-secondary">{activeEmployee.title}</div>
-          </div>
+      <div class="demo-overview-toolbar oj-bg-neutral-30">
+        <oj-c-input-text
+          id="overviewTaskTitle"
+          labelHint="Task title"
+          value={draftTitle}
+          onvalueChanged={handleDraftTitleChanged}
+        />
+        <div class="demo-overview-toolbar__actions">
+          <oj-c-button label="Add" onojAction={handleAddTask} />
+          <oj-c-button label="Update" onojAction={handleUpdateTask} disabled={!activeTask} />
+          <oj-c-button label="Remove" onojAction={handleRemoveTasks} disabled={selectedIds.length === 0} />
+          <oj-c-button label={isEditMode ? 'View Mode' : 'Edit Mode'} onojAction={handleToggleMode} />
         </div>
-        <p class="oj-typography-body-md">{activeEmployee.summary}</p>
-        <div class="demo-overview-detail__actions">
-          <oj-c-button label="View Profile" chroming="outlined" />
-        </div>
-      </section>
+      </div>
+      <div class="demo-overview-content">
+        <oj-c-list-view
+          id="listview"
+          aria-label="list view overview"
+          data={dataProvider}
+          selected={selected}
+          selectionMode={isEditMode ? 'multipleToggle' : 'singleRequired'}
+          onselectedChanged={handleSelectedChanged}
+          onojFirstSelectedItem={handleFirstSelectedItem}
+          onojItemAction={handleItemAction}
+          item={{ enterKeyFocusBehavior: 'none' }}
+          gridlines={{ item: 'visible', bottom: 'visible' }}
+          class="demo-overview-list oj-listview-item-padding-off"
+        >
+          <template slot="itemTemplate" render={renderItem} />
+          <template slot="noData" render={renderNoData} />
+        </oj-c-list-view>
+        <section class="demo-overview-detail oj-bg-neutral-30" aria-live="polite">
+          {activeTask ? (
+            <>
+              <div class="oj-typography-subheading-sm oj-text-color-primary">
+                {activeTask.title}
+              </div>
+              <div class="oj-typography-body-sm oj-text-color-secondary">{activeTask.date}</div>
+              <p class="oj-typography-body-md">{activeTask.detail}</p>
+            </>
+          ) : (
+            <div class="oj-typography-body-md oj-text-color-secondary">No task selected</div>
+          )}
+        </section>
+      </div>
     </div>
   );
 };
