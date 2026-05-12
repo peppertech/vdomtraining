@@ -1,11 +1,23 @@
 type CollectionMockFetchServerOptions<D> = {
   data: D[];
   keyAttributes?: string;
+  hierarchical?: boolean;
+  returnMetadata?: boolean;
+  debug?: boolean;
 };
 
 type ActiveServer = {
   url: string;
   handleFetch: (requestUrl: string) => Promise<Response>;
+};
+
+type TreeItem<D> = D & {
+  children?: TreeItem<D>[];
+};
+
+type TreeNodeResult<D> = {
+  items: TreeItem<D>[];
+  path: string[];
 };
 
 let serverCounter = 0;
@@ -97,20 +109,90 @@ export class CollectionMockFetchServer<D> {
   private async handleFetch(requestUrl: string): Promise<Response> {
     const url = new URL(requestUrl);
     const offset = parseNumberParam(url.searchParams, "offset", 0);
-    const limit = parseNumberParam(url.searchParams, "limit", this.options.data.length);
-    const data = this.options.data.slice(offset, offset + limit);
+    const sourceData = this.getSourceData(url);
+    const limit = parseNumberParam(url.searchParams, "limit", sourceData.items.length);
+    const data = sourceData.items.slice(offset, offset + limit);
+    const body: {
+      data: TreeItem<D>[];
+      totalSize: number;
+      hasMore: boolean;
+      metadata?: Array<{ key: string[]; leaf?: boolean }>;
+    } = {
+      data,
+      totalSize: sourceData.items.length,
+      hasMore: offset + data.length < sourceData.items.length,
+    };
 
-    return new Response(
-      JSON.stringify({
-        data,
-        totalSize: this.options.data.length,
-        hasMore: offset + data.length < this.options.data.length,
-      }),
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
+    if (this.options.returnMetadata) {
+      body.metadata = data.map((item) => {
+        const key = [...sourceData.path, this.getItemKey(item)];
+        return {
+          key,
+          leaf: !Array.isArray(item.children) || item.children.length === 0,
+        };
+      });
+    }
+
+    return new Response(JSON.stringify(body), {
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+    });
+  }
+
+  private getSourceData(url: URL): TreeNodeResult<D> {
+    if (!this.options.hierarchical) {
+      return {
+        items: this.options.data as TreeItem<D>[],
+        path: [],
+      };
+    }
+
+    const parentKey = url.searchParams.get("parentKey");
+    if (!parentKey) {
+      return {
+        items: this.options.data as TreeItem<D>[],
+        path: [],
+      };
+    }
+
+    const parent = this.findTreeItem(this.options.data as TreeItem<D>[], parentKey);
+    return {
+      items: parent?.item.children ?? [],
+      path: parent?.path ?? [],
+    };
+  }
+
+  private findTreeItem(items: TreeItem<D>[], key: string, path: string[] = []): TreeNodeResult<D> & {
+    item: TreeItem<D>;
+  } | null {
+    for (const item of items) {
+      const itemKey = this.getItemKey(item);
+      const itemPath = [...path, itemKey];
+
+      if (itemKey === key) {
+        return {
+          item,
+          items: item.children ?? [],
+          path: itemPath,
+        };
+      }
+
+      const childResult = this.findTreeItem(item.children ?? [], key, itemPath);
+      if (childResult) {
+        return childResult;
+      }
+    }
+
+    return null;
+  }
+
+  private getItemKey(item: TreeItem<D>): string {
+    const keyAttribute = this.options.keyAttributes;
+    if (keyAttribute && keyAttribute in (item as Record<string, unknown>)) {
+      return String((item as Record<string, unknown>)[keyAttribute]);
+    }
+
+    return String((item as Record<string, unknown>).id);
   }
 }

@@ -1,0 +1,15 @@
+.demo-list {
+    width: 100%;
+    height: calc(100vh - 9.375rem);
+    min-height: 18.75rem;
+  }
+  
+  .demo-tweet {
+    overflow: hidden;
+  }
+  
+  .demo-tweet span {
+    word-wrap: break-word;
+  }
+  
+  

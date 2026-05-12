@@ -168,6 +168,7 @@
 }
 .componentInfo{
 text-align: center;
+white-space: normal !important;
 }
 
 

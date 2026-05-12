@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Home",
+    "id": "home"
+  },
+  {
+    "title": "News",
+    "id": "news"
+  },
+  {
+    "title": "Blogs",
+    "id": "blogs",
+    "children": [
+      {
+        "title": "Today",
+        "id": "today"
+      },
+      {
+        "title": "Yesterday",
+        "id": "yesterday"
+      },
+      {
+        "title": "2 Days Back",
+        "id": "backtwodays"
+      },
+      {
+        "title": "Archive",
+        "id": "archive"
+      }
+    ]
+  },
+  {
+    "title": "Links",
+    "id": "links",
+    "children": [
+      {
+        "title": "Oracle",
+        "id": "oracle"
+      },
+      {
+        "title": "IBM",
+        "id": "ibm"
+      },
+      {
+        "title": "Microsoft",
+        "id": "ms",
+        "children": [
+          {
+            "title": "USA",
+            "id": "msusa",
+            "children": [
+              {
+                "title": "North",
+                "id": "msusanorth"
+              },
+              {
+                "title": "South",
+                "id": "msusasouth"
+              },
+              {
+                "title": "East",
+                "id": "msusaeast"
+              },
+              {
+                "title": "West",
+                "id": "msusawest"
+              }
+            ]
+          },
+          {
+            "title": "Europe",
+            "id": "msuerope"
+          },
+          {
+            "title": "Asia",
+            "id": "msasia",
+            "children": [
+              {
+                "title": "Japan",
+                "id": "asiajap"
+              },
+              {
+                "title": "China",
+                "id": "asiachina"
+              },
+              {
+                "title": "India",
+                "id": "asiaindia"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Sponsors",
+    "id": "sponsors"
+  },
+  {
+    "title": "References",
+    "id": "references",
+    "children": [
+      {
+        "title": "All",
+        "id": "refsall"
+      },
+      {
+        "title": "USA",
+        "id": "refsusa"
+      },
+      {
+        "title": "Europe",
+        "id": "refseurope"
+      },
+      {
+        "title": "Asia",
+        "id": "refsasia"
+      }
+    ]
+  }
+]

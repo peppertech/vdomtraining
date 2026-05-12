@@ -1,0 +1,24 @@
+.demo-card {
+  width: 3.125rem;
+  height: 1.875rem;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 1.875rem;
+}
+
+.demo-card :focus {
+  outline: none !important;
+  box-shadow: 0 0 0.625rem #719ece;
+}
+
+.demo-fieldset {
+  min-width: 15rem;
+}
+
+.demo-clear {
+  clear: both;
+}
+
+.demo-div-container {
+  display: inline-flex;
+}

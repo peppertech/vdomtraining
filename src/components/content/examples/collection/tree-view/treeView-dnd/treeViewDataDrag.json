@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Home",
+    "id": "home"
+  },
+  {
+    "title": "News",
+    "id": "news"
+  },
+  {
+    "title": "Blogs",
+    "id": "blogs"
+  },
+  {
+    "title": "Links",
+    "id": "links"
+  },
+  {
+    "title": "Sponsors",
+    "id": "sponsors"
+  },
+  {
+    "title": "References",
+    "id": "references"
+  }
+]

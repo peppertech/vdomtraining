@@ -9,7 +9,7 @@ import { ojListView } from "ojs/ojlistview";
 import TableHome from "./table/home";
 import ListViewHome from "./list-view/index";
 import ListItemLayoutHome from "./list-item-layout/home";
-import Treeview from "./treeview";
+import TreeViewRecipePage from "./tree-view/index";
 import DataGridRecipePage from "./data-grid/index";
 import IndexerRecipePage from "./indexer/index";
 import RefresherTouchRecipePage from "./refresher-touch/index";
@@ -71,7 +71,8 @@ const collectionComponents: CollectionComponent[] = [
     name: "List View",
     image: "oj-ux-icon-size-12x  oj-ux-ico-list",
     isAvailable: true,
-    render: () => <ListViewHome />,
+    isCorePack: true,
+    render: (props) => <ListViewHome {...props} />,
   },
    {
     id: 12,
@@ -113,6 +114,7 @@ const collectionComponents: CollectionComponent[] = [
     name: "Tree View",
     image: "oj-ux-icon-size-12x  oj-ux-ico-tree-view",
     isAvailable: true,
+    render: () => <TreeViewRecipePage />,
   },
   {
     id: 14,
@@ -203,8 +205,6 @@ const CollectionHome = () => {
     }
 
     switch (activeComponentId) {
-      case 3:
-        return <Treeview />;
       case 4:
         return <DataGridRecipePage />;
       case 5:

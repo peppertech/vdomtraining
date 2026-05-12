@@ -1,0 +1,54 @@
+[
+  {
+    "title": "Companies",
+    "id": "companies",
+    "children": [
+      {
+        "title": "Corporate",
+        "id": "corporate"
+      },
+      {
+        "title": "Subsidiaries",
+        "id": "subsids"
+      },
+      {
+        "title": "External",
+        "id": "external"
+      }
+    ]
+  },
+  {
+    "title": "Divisions",
+    "id": "divs",
+    "children": [
+      {
+        "title": "Financial",
+        "id": "finance"
+      },
+      {
+        "title": "Marketing",
+        "id": "marketing"
+      },
+      {
+        "title": "Sales",
+        "id": "sales"
+      },
+      {
+        "title": "Production",
+        "id": "production"
+      }
+    ]
+  },
+  {
+    "title": "Legal",
+    "id": "legal"
+  },
+  {
+    "title": "Public Relations",
+    "id": "pr"
+  },
+  {
+    "title": "Investor Relations",
+    "id": "invest"
+  }
+]

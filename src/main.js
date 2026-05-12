@@ -56,6 +56,10 @@
         chai: "libs/chai/chai-4.2.0",
         "components/content/examples/collection/data-grid/data/cookbook": "components/content/examples/collection/data/cookbook",
         "components/content/examples/collection/list-view": "components/content/examples/collection/list-view/index",
+        "components/content/examples/collection/list-view/shared": "components/content/examples/collection/shared",
+        "components/content/examples/collection/list-view/jet-composites/demo-responsive-buttonset": "components/jet-composites/demo-responsive-buttonset",
+        "components/content/jet-composites/demo-profile-card-layout": "components/jet-composites/demo-profile-card-layout",
+        "components/content/dataProvider": "components/dataProvider",
         "components/content/examples/collection/table/table-legacy/cookbook": "components/content/examples/collection/data/cookbook",
         "components/content/examples/collection/table/table-legacy/data/cookbook": "components/content/examples/collection/data/cookbook",
         "components/content/examples/collection/table/table-legacy/table-customTable/data/cookbook": "components/content/examples/collection/data/cookbook"
