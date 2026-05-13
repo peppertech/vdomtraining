@@ -1,6 +1,7 @@
 import { h } from 'preact';
 import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
+import type { CListViewElement } from 'oj-c/list-view';
 import 'oj-c/list-view';
 import 'oj-c/avatar';
 import 'oj-c/list-item-layout';
@@ -12,9 +13,10 @@ type EmployeeData = {
   image: string;
 };
 
-type ListViewItemContext = {
-  data: EmployeeData;
-};
+type ListViewItemContext = CListViewElement.ItemTemplateContext<
+  EmployeeData['id'],
+  EmployeeData
+>;
 
 const data: EmployeeData[] = [
   { id: 1, name: 'Chris Black', title: 'Oracle Cloud Infrastructure GTM Channel Director EMEA', image: '/styles/images/hcm/placeholder-male-01.png' },
@@ -27,18 +29,20 @@ const data: EmployeeData[] = [
 ];
 
 export const ListViewBasiccorepack = () => {
-  const dataProvider = useMemo(() => new ArrayDataProvider(data, { keyAttributes: 'id' }), []);
+  const dataProvider = useMemo(
+    () => new MutableArrayDataProvider<EmployeeData['id'], EmployeeData>(data, { keyAttributes: 'id' }),
+    []
+  );
+  const itemConfig = useMemo(() => ({ enterKeyFocusBehavior: 'focusWithin' as const }), []);
 
   const itemTemplateRenderer = (item: ListViewItemContext) => (
-    <li>
-      <oj-c-list-item-layout>
-        <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
-        <oj-c-avatar slot="leading" size="xs" src={item.data.image}></oj-c-avatar>
-        <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">
-          {item.data.title}
-        </span>
-      </oj-c-list-item-layout>
-    </li>
+    <oj-c-list-item-layout>
+      <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
+      <oj-c-avatar slot="leading" size="xs" src={item.data.image}></oj-c-avatar>
+      <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">
+        {item.data.title}
+      </span>
+    </oj-c-list-item-layout>
   );
 
   return (
@@ -46,7 +50,7 @@ export const ListViewBasiccorepack = () => {
       id="listview"
       aria-label="simple list"
       data={dataProvider}
-      item={{ enterKeyFocusBehavior: 'focusWithin' }}
+      item={itemConfig}
       class="oj-listview-item-padding-off"
     >
       <template slot="itemTemplate" render={itemTemplateRenderer} />

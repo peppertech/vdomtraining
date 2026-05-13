@@ -59,7 +59,7 @@ const controlComponents: ControlComponent[] = [
   },
   {
     id: 4,
-    name: "Menu & Menu Button",
+    name: "Menu & Menu Buttons",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu",
     isAvailable: true,
     isCorePack: true,

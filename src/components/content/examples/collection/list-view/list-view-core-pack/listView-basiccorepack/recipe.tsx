@@ -9,11 +9,11 @@ const recipeHtmlText = String.raw`<ul>
   <li>
     Create an
     <code>MutableArrayDataProvider</code>
-    from an array, each item contains an object with the required
-    <code>value</code>
-    and
-    <code>label</code>
-    fields.
+    from an array of employee records and set
+    <code>keyAttributes</code>
+    to the unique
+    <code>id</code>
+    field.
   </li>
   <li>
     Bind the
