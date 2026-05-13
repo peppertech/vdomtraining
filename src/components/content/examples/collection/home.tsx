@@ -18,6 +18,7 @@ import CardViewRecipePage from "./card-view/index";
 import WaterfallLayoutRecipePage from "./waterfall-layout/index";
 import SwipeActionsRecipePage from "./swipe-actions/index";
 import RowExpanderRecipePage from "./row-expander/index";
+import SelectorRecipePage from "./selector/index";
 import GroupByTable from "./table/group-by-table";
 import {
   CatalogBreadcrumb,
@@ -87,6 +88,13 @@ const collectionComponents: CollectionComponent[] = [
     image: "oj-ux-icon-size-12x  oj-ux-ico-row-expander",
     isAvailable: true,
     render: () => <RowExpanderRecipePage />,
+  },
+  {
+    id: 16,
+    name: "Selector",
+    image: "oj-ux-icon-size-12x oj-ux-ico-checkbox-on",
+    isAvailable: true,
+    render: () => <SelectorRecipePage />,
   },
    {
     id: 13,

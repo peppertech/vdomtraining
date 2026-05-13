@@ -1,0 +1,18 @@
+.selector-performance-options {
+  display: block;
+}
+
+.selector-performance-panel {
+  margin-block-end: 0;
+}
+
+.demo-selector-listview {
+  margin-block-start: 0;
+  width: 100%;
+  height: 31.25rem;
+  overflow: auto;
+}
+
+#inputnumber-id1 {
+  width: 25rem;
+}
