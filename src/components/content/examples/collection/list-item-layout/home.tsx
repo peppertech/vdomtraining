@@ -6,8 +6,8 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import ListItemLayoutDemo from "./list-item-layout";
-import CorePackListItemLayoutDemo from "./core-pack.list-item-layout";
+import ListItemLayoutLegacyRecipePage from "./list-item-layout-legacy/index";
+import ListItemLayoutCorePackRecipePage from "./list-item-layout-corepack/index";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -96,9 +96,9 @@ const ListItemLayoutHome = ({
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <ListItemLayoutDemo />;
+        return <ListItemLayoutLegacyRecipePage />;
       case 2:
-        return <CorePackListItemLayoutDemo />;
+        return <ListItemLayoutCorePackRecipePage />;
       default:
         return null;
     }
