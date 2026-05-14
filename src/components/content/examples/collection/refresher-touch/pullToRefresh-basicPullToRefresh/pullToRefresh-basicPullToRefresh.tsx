@@ -20,6 +20,7 @@ type Tweet = {
 type ListViewItemContext = ojListView.ItemTemplateContext<Tweet['source'], Tweet>;
 
 const loadTweets = (): Tweet[] => JSON.parse(jsonDataStr) as Tweet[];
+const oracleAvatar = '/styles/images/listView/oracle.gif';
 
 export const PullToRefreshBasicPullToRefresh = () => {
   const [tweets, setTweets] = useState<Tweet[]>(() => loadTweets());
@@ -44,7 +45,7 @@ export const PullToRefreshBasicPullToRefresh = () => {
           <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
           <span class="oj-typography-body-xs">{`@${item.data.screen_name}`}</span>
         </div>
-        <oj-avatar slot="leading" size="xs" src={'../images/listView/oracle.gif'} />
+        <oj-avatar slot="leading" size="xs" src={oracleAvatar} />
         <div slot="secondary" class="demo-tweet">
           <span class="oj-typography-body-sm oj-text-color-secondary">{item.data.text}</span>
           <a href={item.data.source} class="oj-typography-body-sm">

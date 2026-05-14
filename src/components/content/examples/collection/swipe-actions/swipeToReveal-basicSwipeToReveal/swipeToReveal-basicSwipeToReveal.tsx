@@ -6,6 +6,7 @@ import { ojListView } from 'ojs/ojlistview';
 import { ojMenu } from 'ojs/ojmenu';
 import { ojSwipeActions } from 'ojs/ojswipeactions';
 import "css!./demo.css";
+import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojlistview';
 import 'ojs/ojmenu';
@@ -14,14 +15,14 @@ import 'ojs/ojswipeactions';
 
 export const SwipeToRevealBasicSwipeToReveal = () => {
   const [allItems, setAllItems] = useState([
-    { id: 'email_1', title: 'Meeting Invite: Product direction', from: 'Amy Bartlet', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum.' },
-    { id: 'email_2', title: 'Re: Latest market analysis from XYZ', from: 'Nina Evans', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
-    { id: 'email_3', title: 'Feedback from architecture review', from: 'James Marlow', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
-    { id: 'email_4', title: 'Customer success stories', from: 'Julia Nayar', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
-    { id: 'email_5', title: 'AD: Honey Harvest for 2015', from: 'Bruce Ernst', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
-    { id: 'email_6', title: 'Friend looking for internship', from: 'Julia Chen', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
-    { id: 'email_7', title: 'Re: Feedback from architecture review', from: 'Nina Evans', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
-    { id: 'email_8', title: 'Re: Customer success stories', from: 'Julia Chen', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' }
+    { id: 'email_1', title: 'Meeting Invite: Product direction', from: 'Amy Bartlet', image: '/styles/images/listItemImages/placeholder-female-01.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum.' },
+    { id: 'email_2', title: 'Re: Latest market analysis from XYZ', from: 'Nina Evans', image: '/styles/images/listItemImages/placeholder-female-02.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
+    { id: 'email_3', title: 'Feedback from architecture review', from: 'James Marlow', image: '/styles/images/listItemImages/placeholder-male-01.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
+    { id: 'email_4', title: 'Customer success stories', from: 'Julia Nayar', image: '/styles/images/listItemImages/placeholder-female-03.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
+    { id: 'email_5', title: 'AD: Honey Harvest for 2015', from: 'Bruce Ernst', image: '/styles/images/listItemImages/placeholder-male-02.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
+    { id: 'email_6', title: 'Friend looking for internship', from: 'Julia Chen', image: '/styles/images/listItemImages/placeholder-female-04.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
+    { id: 'email_7', title: 'Re: Feedback from architecture review', from: 'Nina Evans', image: '/styles/images/listItemImages/placeholder-female-02.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
+    { id: 'email_8', title: 'Re: Customer success stories', from: 'Julia Chen', image: '/styles/images/listItemImages/placeholder-female-04.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' }
   ]);
   const [action, setAction] = useState('No action taken yet');
   const currentItemRef = useRef(null);
@@ -90,6 +91,7 @@ export const SwipeToRevealBasicSwipeToReveal = () => {
     <li class="oj-swipeactions-container">
       <oj-swipe-actions onojAction={(event: any) => handleAction(event, item)}>
         <oj-list-item-layout>
+          <oj-avatar slot="leading" size="xs" src={item.data.image} />
           <span class="oj-typography-body-md oj-text-color-primary">{item.data.from}</span>
           <span slot="secondary" class="oj-line-clamp-1 oj-typography-body-sm oj-text-color-secondary">{item.data.title}</span>
           <div slot="tertiary" class="oj-line-clamp-2 oj-typography-body-xs oj-text-color-secondary">{item.data.content}</div>
