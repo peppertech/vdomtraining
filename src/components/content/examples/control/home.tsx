@@ -6,7 +6,7 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import Badge from "./badge";
+import BadgeHome from "./badge/home";
 import ButtonsHome from "./button/home";
 import FilePicker from "./filepicker";
 import FilmStrip from "./filmstrip";
@@ -48,6 +48,8 @@ const controlComponents: ControlComponent[] = [
     name: "Badges",
     image: "oj-ux-icon-size-12x oj-ux-ico-badge",
     isAvailable: true,
+    isCorePack: true,
+    render: (props) => <BadgeHome {...props} />,
   },
   {
     id: 3,
@@ -124,8 +126,6 @@ type ListViewProps = ComponentProps<"oj-list-view">;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<ControlComponent["id"]>;
 
-const BadgeShowcase = () => <Badge />;
-
 const ImageShowcase = () => (
   <div class="oj-flex oj-sm-flex-direction-column oj-sm-row-gap-2x">
     <CSSImage />
@@ -192,8 +192,6 @@ const ControlHome = () => {
     }
 
     switch (activeComponentId) {
-      case 2:
-        return <BadgeShowcase />;
       case 6:
         return <FilePicker />;
       case 7:

@@ -1,0 +1,5 @@
+.component-wrapper span.oj-badge + span.oj-badge,
+.component-wrapper oj-c-badge + oj-c-badge,
+.component-wrapper oj-c-truncating-badge + oj-c-truncating-badge {
+  margin-inline-start: 10px;
+}

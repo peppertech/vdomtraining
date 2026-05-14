@@ -1,0 +1,29 @@
+.demo-badge-purple {
+  --oj-badge-bg-color: purple;
+  --oj-badge-text-color: white;
+}
+
+.demo-badge-purple-subtle {
+  --oj-badge-bg-color: rgb(247, 230, 255);
+  --oj-badge-text-color: purple;
+}
+
+.demo-badge-pink {
+  --oj-badge-bg-color: rgb(204, 0, 99);
+  --oj-badge-text-color: white;
+}
+
+.demo-badge-pink-subtle {
+  --oj-badge-bg-color: rgb(255, 230, 242);
+  --oj-badge-text-color: rgb(204, 0, 99);
+}
+
+.demo-badge-teal {
+  --oj-badge-bg-color: rgb(0, 128, 128);
+  --oj-badge-text-color: white;
+}
+
+.demo-badge-teal-subtle {
+  --oj-badge-bg-color: rgb(234, 255, 255);
+  --oj-badge-text-color: rgb(0, 128, 128);
+}
