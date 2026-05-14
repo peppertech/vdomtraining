@@ -6,8 +6,12 @@ import { KeySetImpl, type ImmutableKeySet } from 'ojs/ojkeyset';
 import type { CListViewElement } from 'oj-c/list-view';
 import 'css!./demo.css';
 import 'ojs/ojbutton';
+import 'ojs/ojdatetimepicker';
+import 'ojs/ojformlayout';
+import 'ojs/ojinputtext';
 import 'ojs/ojoption';
 import 'ojs/ojrefresher';
+import 'ojs/ojselectcombobox';
 import 'ojs/ojswipeactions';
 import 'oj-c/avatar';
 import 'oj-c/button';
@@ -538,6 +542,19 @@ const formatDate = (dateString: string | null) => {
   }).format(date);
 };
 
+const toDateInputValue = (dateString: string | null) => {
+  if (!dateString) {
+    return null;
+  }
+
+  const date = new Date(dateString);
+  if (Number.isNaN(date.getTime())) {
+    return dateString;
+  }
+
+  return date.toISOString().slice(0, 10);
+};
+
 const getIconColor = (type: Task['type']) => {
   switch (type) {
     case 'Send':
@@ -680,7 +697,8 @@ export const ListViewOverviewcorepack = () => {
         task.taskId === activeTask.taskId ? updatedTask : task
       )
     );
-    selectTask(updatedTask);
+    setPanelMode(null);
+    selectTask(null);
   };
 
   const handleCreateTask = () => {
@@ -744,6 +762,12 @@ export const ListViewOverviewcorepack = () => {
   const handleDeleteSelectedTasks = () => {
     if (selectedIds.length > 0) {
       removeTaskIds(selectedIds);
+    }
+  };
+
+  const handleDeleteActiveTask = () => {
+    if (activeTask) {
+      removeTaskIds([activeTask.taskId]);
     }
   };
 
@@ -830,9 +854,158 @@ export const ListViewOverviewcorepack = () => {
 
   const renderEditItem = (item: ItemTemplateContext) => <div>{renderTaskLayout(item, true)}</div>;
 
+  const renderListContent = () => (
+    <div>
+      {mode === 'view' ? (
+        <oj-refresher
+          id="refresher"
+          refreshContent={refreshFunc}
+          text="Checking for updates"
+        >
+          <oj-c-list-view
+            id="listviewViewMode"
+            aria-label="To-Do list"
+            data={dataProvider}
+            onojItemAction={handleItemAction}
+            item={listViewItemConfig}
+            gridlines={gridlines}
+            scrollPolicyOptions={scrollPolicyOptions}
+            class="demo-overview-list demo-list-view-mode oj-listview-item-padding-off"
+          >
+            <template slot="itemTemplate" render={renderViewItem} />
+            <template slot="noData" render={renderNoData} />
+          </oj-c-list-view>
+        </oj-refresher>
+      ) : (
+        <>
+          {tasks.length > 0 ? (
+            <oj-c-list-item-layout>
+              <oj-c-selector-all
+                slot="selector"
+                selectedKeys={selected as any}
+                id="selectAll"
+                aria-label="Select all"
+                onselectedKeysChanged={handleSelectorSelectedKeysChanged}
+              />
+              <span id="selectAllText">Select All</span>
+            </oj-c-list-item-layout>
+          ) : null}
+          <oj-c-list-view
+            id="listviewEditMode"
+            aria-label="To-Do list"
+            data={dataProvider}
+            selected={selected}
+            selectionMode="multiple"
+            onselectedChanged={handleSelectedChanged}
+            item={listViewItemConfig}
+            gridlines={gridlines}
+            reorderable={reorderable}
+            onojReorder={handleReorder}
+            scrollPolicyOptions={scrollPolicyOptions}
+            class="demo-overview-list demo-list-edit-mode oj-listview-item-padding-off"
+          >
+            <template slot="itemTemplate" render={renderEditItem} />
+            <template slot="noData" render={renderNoData} />
+          </oj-c-list-view>
+        </>
+      )}
+    </div>
+  );
+
+  const renderTaskPanel = () => (
+    <section class="demo-task-panel" aria-live="polite">
+      <div class="demo-task-panel__toolbar">
+        <oj-c-button id="backButton" chroming="outlined" label="Back" onojAction={handleClosePanel}>
+          <span slot="startIcon" class="oj-fwk-icon-caret-start oj-fwk-icon" />
+        </oj-c-button>
+        <oj-c-button
+          id={panelMode === 'add' ? 'addTaskButton' : 'updateButton'}
+          chroming="outlined"
+          label={panelMode === 'add' ? 'Add' : 'Update'}
+          onojAction={panelMode === 'add' ? handleCreateTask : handleUpdateTask}
+          disabled={draftTask.taskName.trim().length === 0}
+        />
+        {panelMode === 'add' ? (
+          <oj-c-button
+            id="cancelButton"
+            chroming="outlined"
+            label="Cancel"
+            onojAction={handleClosePanel}
+          />
+        ) : (
+          <oj-c-button
+            id="deleteButton"
+            chroming="outlined"
+            label="Delete"
+            onojAction={handleDeleteActiveTask}
+          />
+        )}
+      </div>
+
+      <div class="demo-task-panel__body">
+        <h4>Task Detail</h4>
+        <oj-form-layout id="taskform" maxColumns={2} class="demo-task-panel__form">
+          <oj-input-text
+            id="taskId"
+            labelHint="Task Id"
+            value={String(draftTask.taskId)}
+            readonly
+          />
+          <oj-input-text
+            id="taskName"
+            labelHint="Name"
+            value={draftTask.taskName}
+            onvalueChanged={handleDraftFieldChanged('taskName')}
+          />
+          <oj-combobox-one
+            id="taskTypeOptions"
+            labelHint="Task Type"
+            value={draftTask.type}
+            class="oj-form-control-max-width-md"
+            onvalueChanged={handleDraftFieldChanged('type')}
+          >
+            <oj-option value="Send">Send</oj-option>
+            <oj-option value="Call">Call</oj-option>
+            <oj-option value="Follow-up">Follow-up</oj-option>
+            <oj-option value="Ping">Ping</oj-option>
+          </oj-combobox-one>
+          <oj-text-area
+            id="description"
+            labelHint="Description"
+            value={draftTask.description}
+            onvalueChanged={handleDraftFieldChanged('description')}
+          />
+          <oj-input-date
+            id="dateCreated"
+            labelHint="Date Created"
+            value={toDateInputValue(draftTask.dateCreated) ?? undefined}
+            onvalueChanged={handleDraftFieldChanged('dateCreated')}
+          />
+          <oj-input-date
+            id="dateCompleted"
+            labelHint="Date completed"
+            value={toDateInputValue(draftTask.dateCompleted) ?? undefined}
+            onvalueChanged={handleDraftFieldChanged('dateCompleted')}
+          />
+          <oj-combobox-one
+            id="taskStatusOptions"
+            labelHint="Task Status"
+            value={draftTask.status}
+            class="oj-form-control-max-width-md"
+            onvalueChanged={handleDraftFieldChanged('status')}
+          >
+            <oj-option value="Completed">Completed</oj-option>
+            <oj-option value="Work in Progress">Work in Progress</oj-option>
+            <oj-option value="Not Started">Not Started</oj-option>
+          </oj-combobox-one>
+        </oj-form-layout>
+      </div>
+    </section>
+  );
+
   return (
     <div class="demo-overview-layout">
-      <div class="demo-overview-toolbar">
+      {panelMode ? null : <div class="demo-overview-toolbar">
         <div class="demo-overview-toolbar__actions">
           <oj-c-button
             id="addButton"
@@ -867,119 +1040,9 @@ export const ListViewOverviewcorepack = () => {
             View To-Do List
           </oj-option>
         </oj-buttonset-one>
-      </div>
-      <div class={panelMode ? 'demo-overview-content demo-overview-content--with-panel' : 'demo-overview-content'}>
-        <div>
-          {mode === 'view' ? (
-            <oj-refresher
-              id="refresher"
-              refreshContent={refreshFunc}
-              text="Checking for updates"
-            >
-              <oj-c-list-view
-                id="listviewViewMode"
-                aria-label="To-Do list"
-                data={dataProvider}
-                onojItemAction={handleItemAction}
-                item={listViewItemConfig}
-                gridlines={gridlines}
-                scrollPolicyOptions={scrollPolicyOptions}
-                class="demo-overview-list demo-list-view-mode oj-listview-item-padding-off"
-              >
-                <template slot="itemTemplate" render={renderViewItem} />
-                <template slot="noData" render={renderNoData} />
-              </oj-c-list-view>
-            </oj-refresher>
-          ) : (
-            <>
-              {tasks.length > 0 ? (
-                <oj-c-list-item-layout>
-                  <oj-c-selector-all
-                    slot="selector"
-                    selectedKeys={selected as any}
-                    id="selectAll"
-                    aria-label="Select all"
-                    onselectedKeysChanged={handleSelectorSelectedKeysChanged}
-                  />
-                  <span id="selectAllText">Select All</span>
-                </oj-c-list-item-layout>
-              ) : null}
-              <oj-c-list-view
-                id="listviewEditMode"
-                aria-label="To-Do list"
-                data={dataProvider}
-                selected={selected}
-                selectionMode="multiple"
-                onselectedChanged={handleSelectedChanged}
-                item={listViewItemConfig}
-                gridlines={gridlines}
-                reorderable={reorderable}
-                onojReorder={handleReorder}
-                scrollPolicyOptions={scrollPolicyOptions}
-                class="demo-overview-list demo-list-edit-mode oj-listview-item-padding-off"
-              >
-                <template slot="itemTemplate" render={renderEditItem} />
-                <template slot="noData" render={renderNoData} />
-              </oj-c-list-view>
-            </>
-          )}
-        </div>
-        {panelMode ? (
-          <section class="demo-overview-detail oj-bg-neutral-30" aria-live="polite">
-            <div class="oj-typography-subheading-sm oj-text-color-primary">
-              {panelMode === 'add' ? 'Create New Task' : 'Edit Task'}
-            </div>
-            <div class="demo-overview-detail__metadata oj-typography-body-sm oj-text-color-secondary">
-              <div>Task ID: {draftTask.taskId}</div>
-              <div>Created: {formatDate(draftTask.dateCreated)}</div>
-              <div>Completed: {formatDate(draftTask.dateCompleted)}</div>
-            </div>
-            <oj-c-input-text
-              id="overviewTaskName"
-              labelHint="Task name"
-              value={draftTask.taskName}
-              onvalueChanged={handleDraftFieldChanged('taskName')}
-            />
-            <oj-c-input-text
-              id="overviewTaskType"
-              labelHint="Type"
-              value={draftTask.type}
-              onvalueChanged={handleDraftFieldChanged('type')}
-            />
-            <oj-c-input-text
-              id="overviewTaskStatus"
-              labelHint="Status"
-              value={draftTask.status}
-              onvalueChanged={handleDraftFieldChanged('status')}
-            />
-            <oj-c-input-text
-              id="overviewTaskDescription"
-              labelHint="Description"
-              value={draftTask.description}
-              onvalueChanged={handleDraftFieldChanged('description')}
-            />
-            <oj-c-input-text
-              id="overviewTaskDateCreated"
-              labelHint="Date created"
-              value={draftTask.dateCreated}
-              onvalueChanged={handleDraftFieldChanged('dateCreated')}
-            />
-            <oj-c-input-text
-              id="overviewTaskDateCompleted"
-              labelHint="Date completed"
-              value={draftTask.dateCompleted ?? ''}
-              onvalueChanged={handleDraftFieldChanged('dateCompleted')}
-            />
-            <div class="demo-overview-detail__actions">
-              <oj-c-button
-                label={panelMode === 'add' ? 'Create' : 'Update'}
-                onojAction={panelMode === 'add' ? handleCreateTask : handleUpdateTask}
-                disabled={draftTask.taskName.trim().length === 0}
-              />
-              <oj-c-button label="Cancel" chroming="outlined" onojAction={handleClosePanel} />
-            </div>
-          </section>
-        ) : null}
+      </div>}
+      <div class="demo-overview-content">
+        {panelMode ? renderTaskPanel() : renderListContent()}
       </div>
     </div>
   );

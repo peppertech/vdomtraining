@@ -1,29 +1,17 @@
-// @ts-nocheck
 import { h } from 'preact';
 
+const descriptionHtmlText = String.raw`<p>This demo shows the following features all in one oj-list-view demo:</p>
+<ul>
+  <li>Swipe Actions</li>
+  <li>Refresher</li>
+  <li>High-Water Mark scrolling</li>
+  <li>CRUD - Create a new task, update the active task, complete a task, and delete tasks</li>
+  <li>Use of Buttonset where one of the buttons can be toggled to switch between view and edit mode for the entire ListView</li>
+  <li>Reordering - The edit mode allows items to be reordered within ListView</li>
+  <li>Selection - The edit mode enables selection and deleting the selected items</li>
+  <li>No Data - Deleting all items shows custom no-data content in ListView</li>
+</ul>`;
+
 export const listViewOverviewListViewDescription = (
-  <>
-    <p>A list view displays data items as a list or a grid with highly interactive features.</p>This demo shows the following features all in one demo:
-    <br />
-    <ul>
-      <li>Swipe Actions</li>
-      <li>Refresher</li>
-      <li>High-Water Mark scrolling.</li>
-      <li>Preserving Scroll Position - Restore scroll state when Navigate from ListView and back.</li>
-      <li>
-        CRUD - List items with caret to enable drill down to content of an item to edit it. Create new
-        task button enables to add new item and positions it as the first item
-      </li>
-      <li>
-        Use of Buttonset where one of the buttons can be toggled to switch between view and edit mode
-        for the entire ListView
-      </li>
-      <li>Reordering - The edit mode allows to reorder items within ListView</li>
-      <li>Selection - The edit mode enables various selection mode and delete the items</li>
-      <li>
-        No Data - Deleting all items results in an empty ListView, this demo shows how to customize
-        content when there is no data in ListView
-      </li>
-    </ul>
-  </>
+  <div dangerouslySetInnerHTML={{ __html: descriptionHtmlText }} />
 );
