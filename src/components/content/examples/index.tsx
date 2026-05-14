@@ -21,10 +21,12 @@ type Tab = {
   icon?: string;
 };
 
-type ExampleRoute = Tab | {
-  path: string;
-  redirect: string;
-};
+type ExampleRoute =
+  | Tab
+  | {
+      path: string;
+      redirect: string;
+    };
 
 type ExampleRouter = CoreRouter;
 type ExampleRouterState = Parameters<
@@ -39,10 +41,10 @@ const ExampleContent = (props: Props) => {
 
   const tabBarItems: Tab[] = [
     { path: "collection", label: "Collections" },
-    { path: "form", label: "Forms" },
-    { path: "dataviz", label: "Visualizations" },
     { path: "control", label: "Controls" },
+    { path: "form", label: "Forms" },
     { path: "navlayout", label: "Navigations and Layouts" },
+    { path: "dataviz", label: "Visualizations" },
   ];
   const exampleRoutes: ExampleRoute[] = [
     { path: "", redirect: "collection" },
@@ -69,14 +71,11 @@ const ExampleContent = (props: Props) => {
     }
   };
 
-  const tabbarDP = new MutableArrayDataProvider<Tab["path"], Tab>(
-    tabBarItems,
-    {
-      keyAttributes: "path",
-    }
-  );
+  const tabbarDP = new MutableArrayDataProvider<Tab["path"], Tab>(tabBarItems, {
+    keyAttributes: "path",
+  });
   const loadTabContent = (
-    event: ojTabBar.selectionChanged<Tab["path"], Tab>
+    event: ojTabBar.selectionChanged<Tab["path"], Tab>,
   ): void => {
     setActiveTab(event.detail.value);
     exampleRouter?.go({ path: event.detail.value });
