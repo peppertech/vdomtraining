@@ -6,8 +6,8 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import Avatar from "./avatar";
-import CorePackAvatar from "./corePackAvatar";
+import AvatarLegacyRecipePage from "./avatar-legacy/index";
+import AvatarCorePackRecipePage from "./avatar-corepack/index";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -90,9 +90,9 @@ const AvatarsHome = ({
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <Avatar />;
+        return <AvatarLegacyRecipePage />;
       case 2:
-        return <CorePackAvatar />;
+        return <AvatarCorePackRecipePage />;
       default:
         return null;
     }

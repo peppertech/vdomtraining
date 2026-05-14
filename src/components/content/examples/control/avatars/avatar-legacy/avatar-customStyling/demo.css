@@ -1,0 +1,8 @@
+.demo-avatar-larger {
+  --oj-avatar-size: 7.5rem;
+  --oj-avatar-initials-font-size: 4rem;
+}
+
+.demo-avatar-red {
+  --oj-avatar-bg-color: #ad433f;
+}
