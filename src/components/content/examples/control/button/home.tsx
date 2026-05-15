@@ -8,11 +8,11 @@ import { ojListView } from "ojs/ojlistview";
 
 import ButtonLegacyRecipePage from "./button-legacy/index";
 import ButtonCorePackRecipePage from "./button-corepack/index";
-import ButtonSetMany from "./buttonsetmany";
+import ButtonsetManyRecipePage from "./buttonset-many/index";
+import ButtonsetMultipleRecipePage from "./buttonset-multiple/index";
 import ButtonSetOne from "./buttonsetone";
 import MenuButton from "./menubutton";
 import ButtonsetSingle from "./buttonsetsingle";
-import CorePackButtonsetMultiple from "./corePackButtonsetMultiple";
 import CorePackMenuButton from "./corePackMenuButton";
 import CorePackProgressButton from "./corePackProgressButton";
 import CorePackSplitMenuButton from "./corePackSplitMenuButton";
@@ -45,18 +45,31 @@ const buttonComponents: ButtonComponent[] = [
     isCorePack: true,
   },
   {
+    id: 2,
+    name: "Buttonset Many",
+    image: "oj-ux-icon-size-12x oj-ux-ico-button-set-many",
+    isAvailable: true,
+  },
+  {
+    id: 7,
+    name: "Buttonset Multiple",
+    image: "oj-ux-icon-size-12x oj-ux-ico-button-set-many",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
     id: 3,
-    name: "Button Set One",
+    name: "Buttonset One",
     image: "oj-ux-icon-size-12x oj-ux-ico-button-set-one",
     isAvailable: true,
   },
   {
-    id: 2,
-    name: "Button Set Many",
-    image: "oj-ux-icon-size-12x oj-ux-ico-button-set-many",
+    id: 5,
+    name: "Buttonset Single ",
+    image: "oj-ux-icon-size-12x oj-ux-ico-button-set-one",
     isAvailable: true,
+    isCorePack: true,
   },
-  
   {
     id: 4,
     name: "Menu Button",
@@ -70,22 +83,6 @@ const buttonComponents: ButtonComponent[] = [
     isAvailable: true,
     isCorePack: true,
   },
-  {
-    id: 5,
-    name: "Buttonset Single ",
-    image: "oj-ux-icon-size-12x oj-ux-ico-button-set-one",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  
-  {
-    id: 7,
-    name: "Buttonset Multiple",
-    image: "oj-ux-icon-size-12x oj-ux-ico-button-set-many",
-    isAvailable: true,
-    isCorePack: true,
-  },
-  
   {
     id: 9,
     name: "Progress Button",
@@ -176,7 +173,7 @@ const ButtonsHome = ({
       case 3:
         return <ButtonSetOne />;
       case 2:
-        return <ButtonSetMany />;
+        return <ButtonsetManyRecipePage />;
       case 4:
         return <MenuButton />;
       case 8:
@@ -184,7 +181,7 @@ const ButtonsHome = ({
       case 5:
         return <ButtonsetSingle />;
       case 7:
-        return <CorePackButtonsetMultiple />;
+        return <ButtonsetMultipleRecipePage />;
       case 9:
         return <CorePackProgressButton />;
       case 10:
