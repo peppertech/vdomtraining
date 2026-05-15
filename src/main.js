@@ -17,10 +17,12 @@
       "*": {
         "react": "preact/compat",
         "react-dom": "preact/compat",
+        "ojs/ojbuttonsetmany": "ojs/ojbutton",
         "ojs/ojbuttonsetone": "ojs/ojbutton",
         "ojs/ojcomboboxone": "ojs/ojselectcombobox",
         "ojs/ojinputdate": "ojs/ojdatetimepicker",
         "ojs/ojmenubutton": "ojs/ojbutton",
+        "ojs/ojselectmany": "ojs/ojselectcombobox",
         "ojs/ojratinggauge": "ojs/ojgauge",
         "ojs/ojstatusmetergauge": "ojs/ojgauge",
         "ojs/ojtextarea": "ojs/ojinputtext"

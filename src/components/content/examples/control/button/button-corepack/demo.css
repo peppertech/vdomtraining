@@ -1,0 +1,16 @@
+.button-corepack-page #buttons-container oj-c-button:not([width="100%"]):not([edge]),
+.button-corepack-page #button-container oj-c-button:not([width="100%"]):not([edge]),
+.button-corepack-page #buttons-container oj-c-menu-button,
+.button-corepack-page #button-container oj-c-menu-button,
+.button-corepack-page #buttons-container oj-c-split-menu-button,
+.button-corepack-page #button-container oj-c-split-menu-button,
+.button-corepack-page #buttons-container oj-c-toggle-button,
+.button-corepack-page #button-container oj-c-toggle-button,
+.button-corepack-page #buttons-container oj-c-progress-button,
+.button-corepack-page #button-container oj-c-progress-button,
+.button-corepack-page #buttons-container oj-c-buttonset-single,
+.button-corepack-page #button-container oj-c-buttonset-single,
+.button-corepack-page #buttons-container oj-c-buttonset-multiple,
+.button-corepack-page #button-container oj-c-buttonset-multiple {
+  margin: 0 5px 5px 0;
+}

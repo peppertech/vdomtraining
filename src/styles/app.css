@@ -445,8 +445,8 @@ demo-profile-card-layout .demo-profile-card-layout-emp-title.demo-profile-card-l
 }
 .navListDemoLayout{
  max-width: 280px;
-  min-width: 280px;
-  width: 280px;
+  /* min-width: 280px;
+  width: 280px; */
 }
 
 .recipe-actionlog {

@@ -1,0 +1,83 @@
+.demo-button-purple {
+  /* PURPLE COLOR RAMP */
+
+  --demo-purple-rgb-10: 252, 248, 254;
+  --demo-purple-rgb-20: 249, 242, 253;
+  --demo-purple-rgb-30: 246, 236, 252;
+  --demo-purple-rgb-40: 239, 219, 250;
+  --demo-purple-rgb-50: 229, 196, 246;
+  --demo-purple-rgb-60: 215, 165, 242;
+  --demo-purple-rgb-70: 206, 145, 239;
+  --demo-purple-rgb-80: 196, 123, 235;
+  --demo-purple-rgb-90: 183, 94, 231;
+  --demo-purple-rgb-100: 169, 64, 227;
+  --demo-purple-rgb-110: 159, 40, 223;
+  --demo-purple-rgb-120: 146, 35, 207;
+  --demo-purple-rgb-130: 132, 32, 186;
+  --demo-purple-rgb-140: 117, 28, 166;
+  --demo-purple-rgb-150: 102, 24, 144;
+  --demo-purple-rgb-160: 84, 20, 119;
+  --demo-purple-rgb-170: 72, 17, 101;
+
+  /* SOLID */
+
+  /* solid enabled */
+  --oj-button-solid-chrome-bg-color: rgb(var(--demo-purple-rgb-140));
+  --oj-button-solid-chrome-border-color: transparent;
+  --oj-button-solid-chrome-text-color: var(--oj-core-neutral-contrast);
+
+  /* solid hover */
+  --oj-button-solid-chrome-bg-color-hover: rgb(var(--demo-purple-rgb-120));
+  --oj-button-solid-chrome-border-color-hover: transparent;
+  --oj-button-solid-chrome-text-color-hover: var(--oj-core-neutral-contrast);
+
+  /* solid active */
+  --oj-button-solid-chrome-bg-color-active: rgb(var(--demo-purple-rgb-160));
+  --oj-button-solid-chrome-border-color-active: transparent;
+  --oj-button-solid-chrome-text-color-active: var(--oj-core-neutral-contrast);
+
+  /* solid disabled */
+  --oj-button-solid-chrome-bg-color-disabled: rgba(var(--demo-purple-rgb-100), 0.1);
+  --oj-button-solid-chrome-border-color-disabled: transparent;
+  --oj-button-solid-chrome-text-color-disabled: var(--oj-core-text-color-disabled);
+
+  /* BORDERLESS */
+
+  /* borderless-chrome enabled */
+  --oj-button-borderless-chrome-text-color: rgb(var(--demo-purple-rgb-120));
+
+  /* borderless chrome hover */
+  --oj-button-borderless-chrome-bg-color-hover: var(--oj-core-bg-color-hover);
+  --oj-button-borderless-chrome-border-color-hover: transparent;
+  --oj-button-borderless-chrome-text-color-hover: var(--oj-button-borderless-chrome-text-color);
+
+  /* borderless chrome-active */
+  --oj-button-borderless-chrome-bg-color-active: var(--oj-core-bg-color-active);
+  --oj-button-borderless-chrome-border-color-active: transparent;
+  --oj-button-borderless-chrome-text-color-active: var(--oj-button-borderless-chrome-text-color);
+
+  /* borderless chrome disabled */
+  --oj-button-borderless-chrome-text-color-disabled: rgba(var(--demo-purple-rgb-160), 0.3);
+
+  /* OUTLINED */
+
+  /* outlined enabled */
+  --oj-button-outlined-chrome-border-color: rgba(var(--demo-purple-rgb-160), 0.3);
+  --oj-button-outlined-chrome-text-color: var(--oj-button-borderless-chrome-text-color);
+
+  /* outlined hover */
+  --oj-button-outlined-chrome-bg-color-hover: var(--oj-core-bg-color-hover);
+  --oj-button-outlined-chrome-border-color-hover: var(--oj-button-outlined-chrome-border-color);
+  --oj-button-outlined-chrome-text-color-hover: var(--oj-button-outlined-chrome-text-color);
+
+  /* outlined active */
+  --oj-button-outlined-chrome-bg-color-active: var(--oj-core-bg-color-active);
+  --oj-button-outlined-chrome-border-color-active: var(--oj-button-outlined-chrome-border-color);
+  --oj-button-outlined-chrome-text-color-active: var(--oj-button-outlined-chrome-text-color);
+
+  /* outlined disabled */
+  --oj-button-outlined-chrome-border-color-disabled: rgba(var(--demo-purple-rgb-160), 0.1);
+  --oj-button-outlined-chrome-text-color-disabled: var(
+    --oj-button-borderless-chrome-text-color-disabled
+  );
+}

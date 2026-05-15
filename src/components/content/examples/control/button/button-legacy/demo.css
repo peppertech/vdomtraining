@@ -1,0 +1,12 @@
+.button-legacy-page #buttons-container oj-button:not(.oj-sm-width-full):not(.oj-button-full-width),
+.button-legacy-page #button-container oj-button:not(.oj-sm-width-full):not(.oj-button-full-width),
+.button-legacy-page #buttons-container oj-menu-button,
+.button-legacy-page #button-container oj-menu-button,
+.button-legacy-page #buttons-container oj-buttonset-one,
+.button-legacy-page #button-container oj-buttonset-one,
+.button-legacy-page #buttons-container oj-buttonset-many,
+.button-legacy-page #button-container oj-buttonset-many,
+.button-legacy-page #buttons-container .oj-button-nocomp,
+.button-legacy-page #button-container .oj-button-nocomp {
+  margin: 0 5px 5px 0;
+}

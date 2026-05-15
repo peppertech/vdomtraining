@@ -6,12 +6,12 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import Button from "./button";
+import ButtonLegacyRecipePage from "./button-legacy/index";
+import ButtonCorePackRecipePage from "./button-corepack/index";
 import ButtonSetMany from "./buttonsetmany";
 import ButtonSetOne from "./buttonsetone";
 import MenuButton from "./menubutton";
 import ButtonsetSingle from "./buttonsetsingle";
-import CorePackButton from "./corePackButton";
 import CorePackButtonsetMultiple from "./corePackButtonsetMultiple";
 import CorePackMenuButton from "./corePackMenuButton";
 import CorePackProgressButton from "./corePackProgressButton";
@@ -170,9 +170,9 @@ const ButtonsHome = ({
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <Button />;
-       case 6:
-        return <CorePackButton />;  
+        return <ButtonLegacyRecipePage />;
+      case 6:
+        return <ButtonCorePackRecipePage />;
       case 3:
         return <ButtonSetOne />;
       case 2:

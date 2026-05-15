@@ -60,14 +60,6 @@ const controlComponents: ControlComponent[] = [
     render: (props) => <ButtonsHome {...props} />,
   },
   {
-    id: 4,
-    name: "Menu & Menu Buttons",
-    image: "oj-ux-icon-size-12x oj-ux-ico-menu",
-    isAvailable: true,
-    isCorePack: true,
-    render: (props) => <MenuHome {...props} />,
-  },
-  {
     id: 6,
     name: "File Picker",
     image: "oj-ux-icon-size-12x oj-ux-ico-upload",
@@ -78,6 +70,22 @@ const controlComponents: ControlComponent[] = [
     name: "Film Strip",
     image: "oj-ux-icon-size-12x  oj-ux-ico-film",
     isAvailable: true,
+  },
+  {
+    id: 4,
+    name: "Menus",
+    image: "oj-ux-icon-size-12x oj-ux-ico-menu",
+    isAvailable: true,
+    isCorePack: true,
+    render: (props) => <MenuHome {...props} />,
+  },
+  {
+    id: 12,
+    name: "Messages",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-messages",
+    isAvailable: true,
+    isCorePack: true,
+    render: (props) => <MessageHome {...props} />,
   },
   {
     id: 8,
@@ -99,20 +107,13 @@ const controlComponents: ControlComponent[] = [
     image: "oj-ux-icon-size-12x oj-ux-ico-train",
     isAvailable: true,
   },
-  {
-    id: 11,
-    name: "Images & Icons",
-    image: "oj-ux-icon-size-12x oj-ux-ico-image",
-    isAvailable: true,
-  },
-  {
-    id: 12,
-    name: "Messages",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-messages",
-    isAvailable: true,
-    isCorePack: true,
-    render: (props) => <MessageHome {...props} />,
-  },
+  // {
+  //   id: 11,
+  //   name: "Images & Icons",
+  //   image: "oj-ux-icon-size-12x oj-ux-ico-image",
+  //   isAvailable: true,
+  // },
+  
 ];
 
 const dataProvider = new MutableArrayDataProvider<

@@ -1,7 +1,7 @@
 .demo-layout-template {
   display: grid;
   gap: 2rem;
-  padding-left: 2rem;
+  padding-left: 0.5rem;
 }
 
 .recipe-page-template--with-nav,
@@ -25,10 +25,10 @@
   min-inline-size: 0;
 }
 
-.recipe-page-template__content > .demo-layout-template,
+/* .recipe-page-template__content > .demo-layout-template,
 .oj-web-applayout-content > [id*="NavigationLayout"].oj-flex > .oj-flex-item > .demo-layout-template {
   padding-left: 0;
-}
+} */
 
 .demo-layout-template__header {
   display: grid;
