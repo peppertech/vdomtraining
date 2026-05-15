@@ -1,0 +1,10 @@
+.buttonset-one-page #buttons-container oj-button:not(.oj-sm-width-full):not(.oj-button-full-width),
+.buttonset-one-page #button-container oj-button:not(.oj-sm-width-full):not(.oj-button-full-width),
+.buttonset-one-page #buttons-container oj-menu-button,
+.buttonset-one-page #button-container oj-menu-button,
+.buttonset-one-page #buttons-container oj-buttonset-one,
+.buttonset-one-page #button-container oj-buttonset-one,
+.buttonset-one-page #buttons-container oj-buttonset-many,
+.buttonset-one-page #button-container oj-buttonset-many {
+  margin: 0 5px 5px 0;
+}

@@ -10,9 +10,9 @@ import ButtonLegacyRecipePage from "./button-legacy/index";
 import ButtonCorePackRecipePage from "./button-corepack/index";
 import ButtonsetManyRecipePage from "./buttonset-many/index";
 import ButtonsetMultipleRecipePage from "./buttonset-multiple/index";
-import ButtonSetOne from "./buttonsetone";
+import ButtonsetOneRecipePage from "./buttonset-one/index";
 import MenuButton from "./menubutton";
-import ButtonsetSingle from "./buttonsetsingle";
+import ButtonsetSingleRecipePage from "./buttonset-single/index";
 import CorePackMenuButton from "./corePackMenuButton";
 import CorePackProgressButton from "./corePackProgressButton";
 import CorePackSplitMenuButton from "./corePackSplitMenuButton";
@@ -171,7 +171,7 @@ const ButtonsHome = ({
       case 6:
         return <ButtonCorePackRecipePage />;
       case 3:
-        return <ButtonSetOne />;
+        return <ButtonsetOneRecipePage />;
       case 2:
         return <ButtonsetManyRecipePage />;
       case 4:
@@ -179,7 +179,7 @@ const ButtonsHome = ({
       case 8:
         return <CorePackMenuButton />;
       case 5:
-        return <ButtonsetSingle />;
+        return <ButtonsetSingleRecipePage />;
       case 7:
         return <ButtonsetMultipleRecipePage />;
       case 9:
