@@ -1,0 +1,20 @@
+.demo-default-train-container {
+  white-space: nowrap;
+}
+
+.demo-default-train-step {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.demo-default-train {
+  display: inline-block;
+}
+
+.demo-stretched-train {
+  min-width: 6.25rem;
+}
+
+.demo-stretched-train-step {
+  vertical-align: top;
+}

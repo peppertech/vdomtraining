@@ -11,12 +11,12 @@ import ButtonCorePackRecipePage from "./button-corepack/index";
 import ButtonsetManyRecipePage from "./buttonset-many/index";
 import ButtonsetMultipleRecipePage from "./buttonset-multiple/index";
 import ButtonsetOneRecipePage from "./buttonset-one/index";
-import MenuButton from "./menubutton";
+import MenuButtonLegacyRecipePage from "./menu-button-legacy/index";
 import ButtonsetSingleRecipePage from "./buttonset-single/index";
-import CorePackMenuButton from "./corePackMenuButton";
-import CorePackProgressButton from "./corePackProgressButton";
-import CorePackSplitMenuButton from "./corePackSplitMenuButton";
-import CorePackToggleButton from "./corePackToggleButton";
+import MenuButtonCorePackRecipePage from "./menu-button-corepack/index";
+import ProgressButtonCorePackRecipePage from "./progress-button-corepack/index";
+import SplitMenuButtonCorePackRecipePage from "./split-menu-button-corepack/index";
+import ToggleButtonCorePackRecipePage from "./toggle-button-corepack/index";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -175,19 +175,19 @@ const ButtonsHome = ({
       case 2:
         return <ButtonsetManyRecipePage />;
       case 4:
-        return <MenuButton />;
+        return <MenuButtonLegacyRecipePage />;
       case 8:
-        return <CorePackMenuButton />;
+        return <MenuButtonCorePackRecipePage />;
       case 5:
         return <ButtonsetSingleRecipePage />;
       case 7:
         return <ButtonsetMultipleRecipePage />;
       case 9:
-        return <CorePackProgressButton />;
+        return <ProgressButtonCorePackRecipePage />;
       case 10:
-        return <CorePackSplitMenuButton />;
+        return <SplitMenuButtonCorePackRecipePage />;
       case 11:
-        return <CorePackToggleButton />;
+        return <ToggleButtonCorePackRecipePage />;
       default:
         return null;
     }

@@ -1,0 +1,11 @@
+.demo-max-width-25em {
+  max-width: 25em !important;
+}
+
+.demo-max-width-50percent {
+  max-width: 50% !important;
+}
+
+.demo-height-10em {
+  height: 10em !important;
+}

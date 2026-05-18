@@ -1,0 +1,16 @@
+.demo-detail-item {
+  box-sizing: border-box;
+  width: 100%;
+  height: 12rem;
+  overflow: hidden;
+}
+
+.demo-master-item {
+  box-sizing: border-box;
+  width: 6.5rem;
+  height: 3rem;
+}
+
+.demo-detail-section {
+  position: relative;
+}

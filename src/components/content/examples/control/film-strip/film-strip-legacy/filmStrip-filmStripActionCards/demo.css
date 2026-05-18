@@ -1,0 +1,9 @@
+.demo-card {
+  box-sizing: border-box;
+  width: 16rem;
+  min-height: 12rem;
+}
+
+.demo-filmstrip {
+  height: 18rem;
+}

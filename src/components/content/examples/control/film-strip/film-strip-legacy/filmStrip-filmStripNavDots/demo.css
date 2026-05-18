@@ -1,0 +1,9 @@
+.demo-filmstrip-item {
+  box-sizing: border-box;
+  width: 10rem;
+  height: 10rem;
+}
+
+.demo-paging-control {
+  display: inline-block;
+}

@@ -8,11 +8,11 @@ import { ojListView } from "ojs/ojlistview";
 
 import BadgeHome from "./badge/home";
 import ButtonsHome from "./button/home";
-import FilePicker from "./filepicker";
-import FilmStrip from "./filmstrip";
+import FilePickerHome from "./file-picker/home";
+import FilmStripHome from "./film-strip/home";
 import ProgressHome from "./progress/home";
-import Toolbar from "./toolbar";
-import Train from "./train";
+import ToolbarHome from "./toolbar/home";
+import TrainHome from "./train/home";
 import CSSImage from "./image/cssimage";
 import IconFont from "./image/iconfont";
 import AvatarsHome from "./avatars/home";
@@ -64,12 +64,14 @@ const controlComponents: ControlComponent[] = [
     name: "File Picker",
     image: "oj-ux-icon-size-12x oj-ux-ico-upload",
     isAvailable: true,
+    render: (props) => <FilePickerHome {...props} />,
   },
   {
     id: 7,
     name: "Film Strip",
     image: "oj-ux-icon-size-12x  oj-ux-ico-film",
     isAvailable: true,
+    render: (props) => <FilmStripHome {...props} />,
   },
   {
     id: 4,
@@ -100,12 +102,15 @@ const controlComponents: ControlComponent[] = [
     name: "Toolbar",
     image: "oj-ux-icon-size-12x oj-ux-ico-toolbar",
     isAvailable: true,
+     isCorePack: true,
+    render: (props) => <ToolbarHome {...props} />,
   },
   {
     id: 10,
     name: "Train",
     image: "oj-ux-icon-size-12x oj-ux-ico-train",
     isAvailable: true,
+    render: (props) => <TrainHome {...props} />,
   },
   // {
   //   id: 11,
@@ -193,14 +198,6 @@ const ControlHome = () => {
     }
 
     switch (activeComponentId) {
-      case 6:
-        return <FilePicker />;
-      case 7:
-        return <FilmStrip />;
-      case 9:
-        return <Toolbar />;
-      case 10:
-        return <Train />;
       case 11:
         return <ImageShowcase />;
       default:

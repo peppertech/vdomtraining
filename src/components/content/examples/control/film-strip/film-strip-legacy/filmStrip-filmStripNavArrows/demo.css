@@ -1,0 +1,15 @@
+.demo-filmstrip-item {
+  box-sizing: border-box;
+  width: 10rem;
+  height: 10rem;
+}
+
+.demo-arrow-controls {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.demo-arrow-visibility-controls {
+  display: inline-block;
+  vertical-align: top;
+}
