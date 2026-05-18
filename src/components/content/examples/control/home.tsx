@@ -13,6 +13,7 @@ import FilmStripHome from "./film-strip/home";
 import ProgressHome from "./progress/home";
 import ToolbarHome from "./toolbar/home";
 import TrainHome from "./train/home";
+import TruncatingTextHome from "./truncating-text/home";
 import CSSImage from "./image/cssimage";
 import IconFont from "./image/iconfont";
 import AvatarsHome from "./avatars/home";
@@ -111,6 +112,14 @@ const controlComponents: ControlComponent[] = [
     image: "oj-ux-icon-size-12x oj-ux-ico-train",
     isAvailable: true,
     render: (props) => <TrainHome {...props} />,
+  },
+  {
+    id: 13,
+    name: "Truncating Text",
+    image: "oj-ux-icon-size-12x oj-ux-ico-text",
+    isAvailable: true,
+    isCorePack: true,
+    render: (props) => <TruncatingTextHome {...props} />,
   },
   // {
   //   id: 11,

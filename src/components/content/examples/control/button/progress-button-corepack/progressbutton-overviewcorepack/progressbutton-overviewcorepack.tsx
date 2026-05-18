@@ -33,7 +33,7 @@ export const ProgressbuttonOverviewcorepack = () => {
   return (
     <div id="buttons-container">
       <h6>Text Button</h6>
-      <div>
+      <div class="progress-button-demo-row">
         <oj-c-progress-button
           id="button1"
           onojAction={handleAction}
@@ -48,7 +48,7 @@ export const ProgressbuttonOverviewcorepack = () => {
         />
       </div>
       <h6>Button with Icon</h6>
-      <div>
+      <div class="progress-button-demo-row">
         <oj-c-progress-button
           id="icon_button1"
           display="icons"
@@ -68,14 +68,14 @@ export const ProgressbuttonOverviewcorepack = () => {
         </oj-c-progress-button>
       </div>
       <h6>Disabled Button</h6>
-      <div>
+      <div class="progress-button-demo-row">
         <oj-c-progress-button disabled id="dis_button1" label="Disabled" />
         <oj-c-progress-button disabled display="icons" id="dis_button2" label="Disabled Icon">
           <span slot="startIcon" class="oj-ux-ico-delete-circle" />
         </oj-c-progress-button>
       </div>
       <h6>Chroming</h6>
-      <div>
+      <div class="progress-button-demo-row">
         <oj-c-progress-button
           id="chroming_button1"
           chroming="borderless"
@@ -106,7 +106,7 @@ export const ProgressbuttonOverviewcorepack = () => {
         />
       </div>
       <h6>Sizes</h6>
-      <div>
+      <div class="progress-button-demo-row">
         <oj-c-progress-button
           id="size_button1"
           size="sm"

@@ -1,5 +1,9 @@
-.demo-filmstrip-item {
+.filmstrip-paging-text-item {
   box-sizing: border-box;
   width: 10rem;
   height: 10rem;
+}
+
+.filmstrip-paging-text-status {
+  min-height: 1.5rem;
 }

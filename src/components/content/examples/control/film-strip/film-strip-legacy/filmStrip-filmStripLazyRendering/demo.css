@@ -1,10 +1,14 @@
-.demo-filmstrip-item {
+.filmstrip-lazy-rendering-item {
   box-sizing: border-box;
   width: 100%;
   height: 12rem;
   overflow: hidden;
 }
 
-.demo-paging-control {
+.filmstrip-lazy-rendering-paging-control {
   display: inline-block;
+}
+
+.filmstrip-lazy-rendering-paging-control-container {
+  text-align: center;
 }

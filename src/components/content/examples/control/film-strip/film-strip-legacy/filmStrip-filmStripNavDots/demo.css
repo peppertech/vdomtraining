@@ -1,9 +1,13 @@
-.demo-filmstrip-item {
+.filmstrip-navdots-item {
   box-sizing: border-box;
   width: 10rem;
   height: 10rem;
 }
 
-.demo-paging-control {
+.filmstrip-navdots-paging-control {
   display: inline-block;
+}
+
+.filmstrip-navdots-paging-control-container {
+  text-align: center;
 }

@@ -23,7 +23,7 @@ export const SplitmenubuttonOverviewcorepack = () => (
       <oj-c-split-menu-button disabled id="dis_button1" label="Disabled" items={items} />
     </div>
     <h6>Chroming</h6>
-    <div>
+    <div class="split-menu-button-demo-row">
       <oj-c-split-menu-button
         id="chroming_button1"
         chroming="outlined"
@@ -39,7 +39,7 @@ export const SplitmenubuttonOverviewcorepack = () => (
       />
     </div>
     <h6>Sizes</h6>
-    <div>
+    <div class="split-menu-button-demo-row">
       <oj-c-split-menu-button id="size_button1" size="sm" label="Small" items={items} />
       <oj-c-split-menu-button id="size_button2" label="Default" items={items} />
       <oj-c-split-menu-button id="size_button3" size="md" label="Medium" items={items} />

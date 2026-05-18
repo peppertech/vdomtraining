@@ -1,16 +1,23 @@
-.demo-detail-item {
+.filmstrip-master-detail-detail-item {
   box-sizing: border-box;
   width: 100%;
   height: 12rem;
   overflow: hidden;
+  padding: 2rem;
 }
 
-.demo-master-item {
+.filmstrip-master-detail-master-item {
   box-sizing: border-box;
   width: 6.5rem;
   height: 3rem;
+  cursor: pointer;
+  outline-offset: 2px;
 }
 
-.demo-detail-section {
+.filmstrip-master-detail-master-item-selected {
+  border-color: var(--oj-core-border-color-selected);
+}
+
+.filmstrip-master-detail-detail-section {
   position: relative;
 }

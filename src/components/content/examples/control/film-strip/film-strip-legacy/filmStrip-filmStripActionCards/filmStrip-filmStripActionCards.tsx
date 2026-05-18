@@ -118,7 +118,8 @@ export const FilmStripFilmStripActionCards = () => {
           id="filmstrip"
           aria-label="Users"
           class="demo-filmstrip"
-          arrow-placement={isSmallDisplay ? 'overlay' : 'adjacent'}
+          arrowPlacement={isSmallDisplay ? 'overlay' : 'adjacent'}
+          arrowVisibility="visible"
         >
           {USERS.map((user) => (
             <oj-action-card key={user.id} class="demo-card">
