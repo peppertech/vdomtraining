@@ -21,6 +21,13 @@ import { trainLayoutRecipe } from "./train-layout/recipe";
 
 const trainLegacyItems = [
   {
+    id: "nonlinear",
+    name: "Non linear",
+    description: trainNonlinearDescription,
+    recipe: trainNonlinearRecipe,
+    Component: TrainNonlinear,
+  },
+  {
     id: "linear",
     name: "Linear",
     description: trainLinearDescription,
@@ -28,25 +35,11 @@ const trainLegacyItems = [
     Component: TrainLinear,
   },
   {
-    id: "nonlinear",
-    name: "Nonlinear",
-    description: trainNonlinearDescription,
-    recipe: trainNonlinearRecipe,
-    Component: TrainNonlinear,
-  },
-  {
-    id: "validation",
-    name: "Validation",
-    description: trainValidationDescription,
-    recipe: trainValidationRecipe,
-    Component: TrainValidation,
-  },
-  {
-    id: "message-types",
-    name: "Message Types",
-    description: trainMessageTypesDescription,
-    recipe: trainMessageTypesRecipe,
-    Component: TrainMessageTypes,
+    id: "layout",
+    name: "Layout",
+    description: trainLayoutDescription,
+    recipe: trainLayoutRecipe,
+    Component: TrainLayout,
   },
   {
     id: "button-navigation",
@@ -56,12 +49,19 @@ const trainLegacyItems = [
     Component: TrainButtonNavigation,
   },
   {
-    id: "layout",
-    name: "Layout",
-    description: trainLayoutDescription,
-    recipe: trainLayoutRecipe,
-    Component: TrainLayout,
+    id: "message-types",
+    name: "Message Types",
+    description: trainMessageTypesDescription,
+    recipe: trainMessageTypesRecipe,
+    Component: TrainMessageTypes,
   },
+  {
+    id: "validation",
+    name: "Validation",
+    description: trainValidationDescription,
+    recipe: trainValidationRecipe,
+    Component: TrainValidation,
+  }
 ];
 
 export default function TrainLegacyRecipePage() {
