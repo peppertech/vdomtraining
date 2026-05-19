@@ -84,6 +84,7 @@
   padding: 10px 5px 10px 5px;
   max-height: 800px;
   overflow: scroll;
+  min-height: 400px;
 }
 
 .demo-layout-template__demo-section h2,

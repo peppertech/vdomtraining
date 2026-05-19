@@ -1,0 +1,4 @@
+.demo-messages-page-container {
+  overflow: auto;
+  max-height: 100vh;
+}

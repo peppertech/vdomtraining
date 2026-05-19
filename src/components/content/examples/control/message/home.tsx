@@ -6,10 +6,10 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import MessageBannerVDOMExample from "./message-banner-legacy";
-import MessageBannerLegacyExample from "./message-toast-legacy";
-import { MessageBannerCorePackOverview } from "./message-banner-core-pack";
-import MessageToastCorePack from "./message-toast-core-pack";
+import MessageBannerLegacyRecipePage from "./message-banner-legacy/index";
+import MessageToastLegacyRecipePage from "./message-toast-legacy/index";
+import MessageBannerCorePackRecipePage from "./message-banner-corepack/index";
+import MessageToastCorePackRecipePage from "./message-toast-corepack/index";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -33,20 +33,20 @@ const messageComponents: MessageComponent[] = [
   {
     id: 2,
     name: "Message Banner",
-    description: "Core Pack overview of message banner variations, custom detail templates, and affordances.",
+    description: "Core Pack message banner demos with page, section, detail template, and sorting examples.",
     image: "oj-ux-icon-size-12x oj-ux-ico-message-banner",
     isCorePack: true,
   },
   {
     id: 3,
     name: "Messages Toast",
-    description: "Legacy oj-messages notification example backed by a MutableArrayDataProvider.",
+    description: "Legacy oj-messages notification demos with custom message content and actions.",
     image: "oj-ux-icon-size-12x  oj-ux-ico-messages",
   },
   {
     id: 4,
     name: "Message Toast",
-    description: "Core Pack oj-c-message-toast example with button-triggered toasts and close handling.",
+    description: "Core Pack oj-c-message-toast demos with auto timeout, detail actions, and progress examples.",
     image: "oj-ux-icon-size-12x  oj-ux-ico-messages",
     isCorePack: true,
   },
@@ -113,13 +113,13 @@ const MessageHome = ({
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <MessageBannerVDOMExample />;
+        return <MessageBannerLegacyRecipePage />;
       case 2:
-        return <MessageBannerCorePackOverview />;
+        return <MessageBannerCorePackRecipePage />;
       case 3:
-        return <MessageBannerLegacyExample />;
+        return <MessageToastLegacyRecipePage />;
       case 4:
-        return <MessageToastCorePack />;
+        return <MessageToastCorePackRecipePage />;
       default:
         return null;
     }
