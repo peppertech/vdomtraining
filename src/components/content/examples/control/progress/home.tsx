@@ -6,11 +6,11 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import ProgressBar from "./progressbar";
-import ProgressButton from "./progressbutton";
-import ProgressCircle from "./progresscircle";
-import LegacyProgressBar from "./legacyProgressBar";
-import LegacyProgressCircle from "./legacyProgressCircle";
+import ProgressBarCorePackRecipePage from "./progress-bar-corepack/index";
+import ProgressButtonCorePackRecipePage from "./progress-button-corepack/index";
+import ProgressCircleCorePackRecipePage from "./progress-circle-corepack/index";
+import ProgressBarLegacyRecipePage from "./progress-bar-legacy/index";
+import ProgressCircleLegacyRecipePage from "./progress-circle-legacy/index";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -28,13 +28,13 @@ const progressComponents: ProgressComponent[] = [
   {
     id: 4,
     name: "Progress Bar",
-    description: "Classic oj-progress-bar with determinate, indeterminate, and size variants.",
+    description: "",
     image: "oj-ux-icon-size-12x oj-ux-ico-progress-linear",
   },
   {
     id: 1,
     name: "Progress Bar",
-    description: "Linear progress with determinate, indeterminate, and status examples.",
+    description: "",
     image: "oj-ux-icon-size-12x oj-ux-ico-progress-linear",
     isCorePack: true,
   },
@@ -42,7 +42,7 @@ const progressComponents: ProgressComponent[] = [
   {
     id: 3,
     name: "Progress Button",
-    description: "Buttons with async progress states and sizing variants.",
+    description: "",
     image: "oj-ux-icon-size-12x  oj-ux-ico-button",
     isCorePack: true,
   },
@@ -50,13 +50,13 @@ const progressComponents: ProgressComponent[] = [
   {
     id: 5,
     name: "Progress Circle",
-    description: "Classic oj-progress-circle with determinate and indeterminate modes.",
+    description: "",
     image: "oj-ux-icon-size-12x  oj-ux-ico-circular-progress-7",
   },
   {
     id: 2,
     name: "Progress Circle",
-    description: "Radial progress indicators across sizes and statuses.",
+    description: "",
     image: "oj-ux-icon-size-12x  oj-ux-ico-circular-progress-7",
     isCorePack: true,
   }
@@ -116,19 +116,19 @@ const ProgressHome = ({
     let detailContent: preact.ComponentChildren = null;
     switch (activeComponentId) {
       case 1:
-        detailContent = <ProgressBar />;
+        detailContent = <ProgressBarCorePackRecipePage />;
         break;
       case 2:
-        detailContent = <ProgressCircle />;
+        detailContent = <ProgressCircleCorePackRecipePage />;
         break;
       case 3:
-        detailContent = <ProgressButton />;
+        detailContent = <ProgressButtonCorePackRecipePage />;
         break;
       case 4:
-        detailContent = <LegacyProgressBar />;
+        detailContent = <ProgressBarLegacyRecipePage />;
         break;
       case 5:
-        detailContent = <LegacyProgressCircle />;
+        detailContent = <ProgressCircleLegacyRecipePage />;
         break;
       default:
         detailContent = null;

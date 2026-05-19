@@ -1,0 +1,9 @@
+.progress-bar-corepack-width {
+  width: 12.5rem;
+}
+
+.progress-bar-corepack-embedded-panel {
+  width: 12.5rem;
+  height: 12.5rem;
+  padding: 0;
+}

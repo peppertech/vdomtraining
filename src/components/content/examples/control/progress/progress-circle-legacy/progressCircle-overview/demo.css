@@ -1,0 +1,8 @@
+.demo-padding td {
+  padding: 0.625rem;
+}
+
+.demo-table-width {
+  width: 100%;
+  max-width: 25rem;
+}
