@@ -6,9 +6,9 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import Menu from "./menu";
+import MenuLegacyRecipePage from "./menu-legacy/index";
 import MenuButton from "./menuButton";
-import MenuSelectMany from "./menuselectmany";
+import MenuSelectManyRecipePage from "./menu-select-many/index";
 import CorePackMenuButton from "./corePackMenuButton";
 import CorePackSplitMenuButton from "./corePackSplitMenuButton";
 import {
@@ -28,35 +28,35 @@ const menuComponents: MenuComponent[] = [
   {
     id: 1,
     name: "Menu",
-    description: "Classic oj-menu-button with nested oj-menu actions.",
+    description: "Classic oj-menu demos with popup actions, APIs, and template rendering.",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu-modal",
   },
-  {
-    id: 2,
-    name: "Menu Button",
-    description: "Focused oj-menu-button demo including icon, submenu, and disabled scenarios.",
-    image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
-  },
+  // {
+  //   id: 2,
+  //   name: "Menu Button",
+  //   description: "Focused oj-menu-button demo including icon, submenu, and disabled scenarios.",
+  //   image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
+  // },
+  //  {
+  //   id: 4,
+  //   name: "Menu Button",
+  //   description: "Core Pack menu button with selection writeback and chroming variants.",
+  //   image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
+  //   isCorePack: true,
+  // },
   {
     id: 3,
     name: "Menu Select Many",
     description: "oj-menu-select-many embedded in an oj-menu for multi-select settings.",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu-select-many",
   },
-  {
-    id: 4,
-    name: "Menu Button",
-    description: "Core Pack menu button with selection writeback and chroming variants.",
-    image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
-    isCorePack: true,
-  },
-  {
-    id: 5,
-    name: "Split Menu Button",
-    description: "Core Pack split menu button illustrating primary vs menu actions.",
-    image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
-    isCorePack: true,
-  },
+  // {
+  //   id: 5,
+  //   name: "Split Menu Button",
+  //   description: "Core Pack split menu button illustrating primary vs menu actions.",
+  //   image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
+  //   isCorePack: true,
+  // },
 ];
 
 const dataProvider = new MutableArrayDataProvider<MenuComponent["id"], MenuComponent>(
@@ -112,11 +112,11 @@ const MenuHome = ({
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <Menu />;
+        return <MenuLegacyRecipePage />;
       case 2:
         return <MenuButton />;
       case 3:
-        return <MenuSelectMany />;
+        return <MenuSelectManyRecipePage />;
       case 4:
         return <CorePackMenuButton />;
       case 5:
