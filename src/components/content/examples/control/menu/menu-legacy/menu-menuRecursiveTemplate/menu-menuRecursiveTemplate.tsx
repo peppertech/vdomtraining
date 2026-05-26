@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import 'ojs/ojmenu';
-import 'ojs/ojmenubutton';
+import 'ojs/ojbutton';
 import 'ojs/ojoption';
 
 type RecursiveMenuItem = {

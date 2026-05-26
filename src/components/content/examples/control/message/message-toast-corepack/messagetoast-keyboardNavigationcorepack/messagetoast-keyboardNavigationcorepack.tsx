@@ -11,14 +11,7 @@ type DemoMessageToastItem = MessageToastItem & {
   id: string;
 };
 
-const initialMessages: DemoMessageToastItem[] = [
-  {
-    id: "initialMessage",
-    severity: "info",
-    summary: "Info message summary",
-    detail: "Info message detail"
-  }
-];
+const initialMessages: DemoMessageToastItem[] = [];
 
 export const MessagetoastKeyboardNavigationcorepack = () => {
   const [counter, setCounter] = useState(0);
@@ -61,7 +54,12 @@ export const MessagetoastKeyboardNavigationcorepack = () => {
           <oj-c-input-text labelHint="Employee Email" />
         </oj-c-form-layout>
 
-        <oj-c-button chroming="outlined" onojAction={updatePersonalInfo} label="Update" />
+        <oj-c-button
+          class="oj-sm-margin-4x-top"
+          chroming="outlined"
+          onojAction={updatePersonalInfo}
+          label="Update"
+        />
       </div>
     </div>
   );

@@ -6,7 +6,6 @@ import type {
   CMessageToastElement
 } from "oj-c/message-toast";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { useToastContainerOffset } from "../useToastContainerOffset";
 import "oj-c/message-toast";
 
 type CustomAction = {
@@ -95,8 +94,9 @@ const renderDetailLinkTemplate = (
   </div>
 );
 
+const toastPosition = "bottom";
+
 export const MessagetoastDetailActionscorepack = () => {
-  const toastOffset = useToastContainerOffset("containerDiv");
   const messages = useMemo(
     () =>
       new MutableArrayDataProvider<string, DemoMessageToastItem>(initialMessages, {
@@ -118,7 +118,7 @@ export const MessagetoastDetailActionscorepack = () => {
       <oj-c-message-toast
         data={messages}
         detailTemplateValue={getDetailTemplate}
-        offset={toastOffset}
+        position={toastPosition}
         onojClose={closeMessage}
       >
         <template

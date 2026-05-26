@@ -11,11 +11,11 @@ type MessagesPosition = NonNullable<ComponentProps<'oj-messages'>['position']>;
 const notificationPosition: MessagesPosition = {
   my: {
     vertical: 'top',
-    horizontal: 'end'
+    horizontal: 'center'
   },
   at: {
     vertical: 'top',
-    horizontal: 'end'
+    horizontal: 'center'
   },
   of: '#notificationMessages'
 };

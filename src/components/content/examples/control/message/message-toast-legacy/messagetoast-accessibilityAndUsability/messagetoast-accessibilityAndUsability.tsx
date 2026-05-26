@@ -2,18 +2,14 @@ import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import Context = require('ojs/ojcontext');
 import { ojMessage } from 'ojs/ojmessage';
 import { ojMessages } from 'ojs/ojmessages';
-import { ojPopup } from 'ojs/ojpopup';
-import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
 import 'ojs/ojbutton';
 import 'ojs/ojcheckboxset';
 import 'ojs/ojcomboboxone';
 import 'ojs/ojmessage';
 import 'ojs/ojmessages';
 import 'ojs/ojoption';
-import 'ojs/ojpopup';
 import 'ojs/ojselectcombobox';
 import 'ojs/ojtoolbar';
 
@@ -24,7 +20,6 @@ type TimeoutOption = {
 
 type ToastMessage = ojMessage.Message;
 type MessagesPosition = NonNullable<ComponentProps<'oj-messages'>['position']>;
-type PopupPosition = NonNullable<ComponentProps<'oj-popup'>['position']>;
 type ComboboxValue = ComponentProps<'oj-combobox-one'>['value'];
 type ComboboxValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-combobox-one'>['onvalueChanged']>
@@ -41,36 +36,21 @@ const timeoutOptions: TimeoutOption[] = [
   { value: '15000', label: '15 seconds' }
 ];
 
-const buildMessagesPosition = (topStart: boolean): MessagesPosition => {
+const buildMessagesPosition = (): MessagesPosition => {
   return {
     my: {
       vertical: 'top',
-      horizontal: topStart ? 'start' : 'end'
+      horizontal: 'end'
     },
     at: {
       vertical: 'top',
-      horizontal: topStart ? 'start' : 'end'
+      horizontal: 'end'
     },
     of: '#messages_anchor'
   };
 };
 
-const buildSettingsPopupPosition = (topStart: boolean, smallScreen: boolean): PopupPosition => {
-  return {
-    my: {
-      vertical: smallScreen ? 'bottom' : 'top',
-      horizontal: topStart ? 'start' : 'end'
-    },
-    at: {
-      vertical: smallScreen ? 'bottom' : 'top',
-      horizontal: topStart ? 'start' : 'end'
-    },
-    of: '#accessibilityUsability'
-  };
-};
-
 export const MessagetoastAccessibilityAndUsability = () => {
-  const smQuery = ResponsiveUtils.getFrameworkQuery('sm-only') || '(max-width: 599px)';
   const [errorMessageTimeout, setErrorMessageTimeout] = useState<ComboboxValue>('-1');
   const [warningMessageTimeout, setWarningMessageTimeout] = useState<ComboboxValue>('-1');
   const [infoMessageTimeout, setInfoMessageTimeout] = useState<ComboboxValue>('-1');
@@ -80,37 +60,9 @@ export const MessagetoastAccessibilityAndUsability = () => {
   const [commonOptions, setCommonOptions] = useState<string[]>(['sound']);
   const [messages, setMessages] = useState<ToastMessage[]>([]);
   const [deletedMessages, setDeletedMessages] = useState<ToastMessage[]>([]);
-  const [smallScreen, setSmallScreen] = useState<boolean>(() =>
-    typeof window === 'undefined' ? false : window.matchMedia(smQuery).matches
-  );
 
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return undefined;
-    }
-
-    const matcher = window.matchMedia(smQuery);
-    const update = (event?: MediaQueryListEvent) => {
-      setSmallScreen(event ? event.matches : matcher.matches);
-    };
-
-    update();
-    matcher.addEventListener?.('change', update);
-    matcher.addListener?.(update);
-
-    return () => {
-      matcher.removeEventListener?.('change', update);
-      matcher.removeListener?.(update);
-    };
-  }, [smQuery]);
-
-  const topStart = commonOptions.includes('topStart');
   const playSound = commonOptions.includes('sound');
-  const messagesPosition = useMemo(() => buildMessagesPosition(topStart), [topStart]);
-  const settingsPopupPosition = useMemo(
-    () => buildSettingsPopupPosition(topStart, smallScreen),
-    [smallScreen, topStart]
-  );
+  const messagesPosition = useMemo(() => buildMessagesPosition(), []);
   const timeoutOptionsData = useMemo(
     () =>
       new ArrayDataProvider<TimeoutOption['value'], TimeoutOption>(timeoutOptions, {
@@ -155,26 +107,6 @@ export const MessagetoastAccessibilityAndUsability = () => {
   useEffect(() => {
     setMessages(getMessagesData());
   }, []);
-
-  useEffect(() => {
-    let isMounted = true;
-    const popup = document.getElementById('settingsPopup') as ojPopup | null;
-
-    if (popup) {
-      void Context.getContext(popup)
-        .getBusyContext()
-        .whenReady()
-        .then(() => {
-          if (isMounted && popup.isConnected && !popup.isOpen()) {
-            popup.open('#messages_anchor', settingsPopupPosition);
-          }
-        });
-    }
-
-    return () => {
-      isMounted = false;
-    };
-  }, [settingsPopupPosition]);
 
   const messagesDataprovider = useMemo(
     () => new ArrayDataProvider<string, ToastMessage>(messages, { keyAttributes: 'summary' }),
@@ -244,12 +176,15 @@ export const MessagetoastAccessibilityAndUsability = () => {
       >
         <template slot="messageTemplate" render={renderMessageTemplate} />
       </oj-messages>
-      <oj-popup
-        id="settingsPopup"
-        autoDismiss="none"
-        modality="modeless"
-        class="demo-popup oj-bg-info-30"
-        position={settingsPopupPosition}
+      <div
+        class="oj-panel oj-bg-info-30 oj-sm-padding-4x"
+        style={{
+          position: 'sticky',
+          top: '0',
+          left: '0',
+          zIndex: 1,
+          maxWidth: '24rem'
+        }}
       >
         <h4 class="oj-header-border">Messages settings</h4>
         <div class="oj-flex oj-sm-flex-direction-column">
@@ -305,7 +240,6 @@ export const MessagetoastAccessibilityAndUsability = () => {
               labelEdge="inside"
             >
               <oj-option value="sound">Sound</oj-option>
-              <oj-option value="topStart">Position messages at top-start</oj-option>
             </oj-checkboxset>
           </div>
         </div>
@@ -322,7 +256,7 @@ export const MessagetoastAccessibilityAndUsability = () => {
             </oj-button>
           ) : null}
         </oj-toolbar>
-      </oj-popup>
+      </div>
     </div>
   );
 };

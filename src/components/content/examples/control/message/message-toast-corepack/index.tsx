@@ -58,13 +58,14 @@ const messageToastCorePackItems = [
     recipe: messagetoastAutoTimeoutcorepackRecipe,
     Component: MessagetoastAutoTimeoutcorepack,
   },
+  
   {
-    id: "accessibility-and-usability",
+    id: "keyboard-navigation",
     name: "Keyboard Navigation",
-    description: messagetoastAccessibilityAndUsabilitycorepackDescription,
-    recipe: messagetoastAccessibilityAndUsabilitycorepackRecipe,
-    Component: MessagetoastAccessibilityAndUsabilitycorepack,
-  },
+    description: messagetoastKeyboardNavigationcorepackDescription,
+    recipe: messagetoastKeyboardNavigationcorepackRecipe,
+    Component: MessagetoastKeyboardNavigationcorepack,
+  }
 ];
 
 export default function MessageToastCorePackRecipePage() {

@@ -9,6 +9,9 @@ import { menuMenuOpenRecipe } from "./menu-menuOpen/recipe";
 import { MenuMenuForEachTemplate } from "./menu-menuForEachTemplate/menu-menuForEachTemplate";
 import { menuMenuForEachTemplateDescription } from "./menu-menuForEachTemplate/description";
 import { menuMenuForEachTemplateRecipe } from "./menu-menuForEachTemplate/recipe";
+import { MenuDeferredRendering } from "./menu-deferredRendering/menu-deferredRendering";
+import { menuDeferredRenderingDescription } from "./menu-deferredRendering/description";
+import { menuDeferredRenderingRecipe } from "./menu-deferredRendering/recipe";
 import { MenuMenuRecursiveTemplate } from "./menu-menuRecursiveTemplate/menu-menuRecursiveTemplate";
 import { menuMenuRecursiveTemplateDescription } from "./menu-menuRecursiveTemplate/description";
 import { menuMenuRecursiveTemplateRecipe } from "./menu-menuRecursiveTemplate/recipe";
@@ -36,12 +39,19 @@ const menuLegacyItems = [
     Component: MenuMenuForEachTemplate,
   },
   {
-    id: "menu-recursive-template",
-    name: "Menu Recursive Template",
-    description: menuMenuRecursiveTemplateDescription,
-    recipe: menuMenuRecursiveTemplateRecipe,
-    Component: MenuMenuRecursiveTemplate,
+    id: "deferred-rendering",
+    name: "Deferred Rendering",
+    description: menuDeferredRenderingDescription,
+    recipe: menuDeferredRenderingRecipe,
+    Component: MenuDeferredRendering,
   },
+  // {
+  //   id: "menu-recursive-template",
+  //   name: "Menu Recursive Template",
+  //   description: menuMenuRecursiveTemplateDescription,
+  //   recipe: menuMenuRecursiveTemplateRecipe,
+  //   Component: MenuMenuRecursiveTemplate,
+  // },
 ];
 
 export default function MenuLegacyRecipePage() {

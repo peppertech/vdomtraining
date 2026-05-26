@@ -4,7 +4,7 @@ import { useState } from 'preact/hooks';
 import { ojMenu } from 'ojs/ojmenu';
 import 'ojs/ojbutton';
 import 'ojs/ojmenu';
-import 'ojs/ojmenubutton';
+import 'ojs/ojbutton';
 import 'ojs/ojoption';
 
 type MenuActionEvent = Parameters<NonNullable<ComponentProps<'oj-menu'>['onojMenuAction']>>[0];
@@ -15,7 +15,10 @@ export const MenuMenuOpen = () => {
 
   const handleLaunch = (event: JSX.TargetedMouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    (document.getElementById('myMenu') as ojMenu | null)?.open(event);
+    (document.getElementById('myMenu') as ojMenu | null)?.open(event, {
+      launcher: event.currentTarget,
+      initialFocus: 'menu'
+    });
   };
 
   const handleMenuItemAction = (event: MenuActionEvent) => {
@@ -36,14 +39,13 @@ export const MenuMenuOpen = () => {
     <div id="menu-container">
       <h6>Open API</h6>
       <div class="oj-sm-margin-5x-bottom">
-        <a id="myLauncher" href="#" tabIndex={-1} onClick={handleLaunch}>
+        <a id="myLauncher" href="#" onClick={handleLaunch}>
           Actions
         </a>
         <oj-menu
           id="myMenu"
           aria-labelledby="myLauncher"
           onojMenuAction={handleMenuItemAction}
-          openOptions={{ launcher: '#myLauncher' }}
         >
           <oj-option id="zoomin" value="Zoom In">
             <span class="oj-ux-ico-zoom-in" slot="startIcon" />

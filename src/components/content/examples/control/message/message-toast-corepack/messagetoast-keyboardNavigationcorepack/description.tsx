@@ -6,7 +6,7 @@ const descriptionHtmlText = String.raw`<p>Toast messages are short, noncritical,
   component using the keyboard.
 </p>
 <p>
-  The demo initially renders with a single toast message. Press the <b>Update</b> button to open a new toast.
+  Press the <b>Update</b> button to open a new toast.
 </p>
 <p>The messages can be navigated using the keyboard as follows:</p>
 <ol>

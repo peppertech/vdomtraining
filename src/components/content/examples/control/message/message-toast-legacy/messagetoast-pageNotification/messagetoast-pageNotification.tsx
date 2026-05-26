@@ -1,11 +1,13 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import Context = require('ojs/ojcontext');
 import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
 import { ojMessage } from 'ojs/ojmessage';
 import { ojMessages } from 'ojs/ojmessages';
 import { ojPopup } from 'ojs/ojpopup';
+import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
 import 'ojs/ojbutton';
 import 'ojs/ojcheckboxset';
 import 'ojs/ojmessage';
@@ -44,13 +46,13 @@ type PositionOption = {
 };
 
 const POSITION_OPTIONS: PositionOption[] = [
-  { value: 'top-end-window', label: 'Top of demo at end' },
-  { value: 'top-start-window', label: 'Top of demo at start' },
-  { value: 'top-end-page', label: 'Below demo header at end' },
-  { value: 'top-start-page', label: 'Below demo header at start' },
-  { value: 'bottom-end-window', label: 'Bottom of demo at end' },
-  { value: 'bottom-center-window', label: 'Bottom of demo at center' },
-  { value: 'bottom-start-window', label: 'Bottom of demo at start' }
+  { value: 'top-end-window', label: 'Top of window at end' },
+  { value: 'top-start-window', label: 'Top of window at start' },
+  { value: 'top-end-page', label: 'Below page header at end' },
+  { value: 'top-start-page', label: 'Below page header at start' },
+  { value: 'bottom-end-window', label: 'Bottom of window at end' },
+  { value: 'bottom-center-window', label: 'Bottom of window at center' },
+  { value: 'bottom-start-window', label: 'Bottom of window at start' }
 ];
 
 const MESSAGE_SEVERITIES: MessageSeverity[] = [
@@ -91,7 +93,7 @@ const createPositionMappings = (): Record<PositionOptionValue, PageInfo> => {
       messages: {
         my: { vertical: 'top', horizontal: 'start' },
         at: { vertical: 'top', horizontal: 'start' },
-        of: '#pageNotificationMessages'
+        of: 'window'
       },
       settingsPopup: {
         my: { vertical: 'top', horizontal: 'end' },
@@ -103,7 +105,7 @@ const createPositionMappings = (): Record<PositionOptionValue, PageInfo> => {
       messages: {
         my: { vertical: 'top', horizontal: 'end' },
         at: { vertical: 'top', horizontal: 'end' },
-        of: '#pageNotificationMessages'
+        of: 'window'
       },
       settingsPopup: {
         my: { vertical: 'top', horizontal: 'end' },
@@ -115,7 +117,7 @@ const createPositionMappings = (): Record<PositionOptionValue, PageInfo> => {
       messages: {
         my: { vertical: 'bottom', horizontal: 'start' },
         at: { vertical: 'bottom', horizontal: 'start' },
-        of: '#pageNotificationMessages'
+        of: 'window'
       },
       settingsPopup: {
         my: { vertical: 'top', horizontal: 'end' },
@@ -127,7 +129,7 @@ const createPositionMappings = (): Record<PositionOptionValue, PageInfo> => {
       messages: {
         my: { vertical: 'bottom', horizontal: 'end' },
         at: { vertical: 'bottom', horizontal: 'end' },
-        of: '#pageNotificationMessages'
+        of: 'window'
       },
       settingsPopup: {
         my: { vertical: 'top', horizontal: 'end' },
@@ -139,7 +141,7 @@ const createPositionMappings = (): Record<PositionOptionValue, PageInfo> => {
       messages: {
         my: { vertical: 'bottom', horizontal: 'center' },
         at: { vertical: 'bottom', horizontal: 'center' },
-        of: '#pageNotificationMessages'
+        of: 'window'
       },
       settingsPopup: {
         my: { vertical: 'top', horizontal: 'end' },
@@ -151,6 +153,10 @@ const createPositionMappings = (): Record<PositionOptionValue, PageInfo> => {
 };
 
 export const MessagetoastPageNotification = () => {
+  const smQuery = ResponsiveUtils.getFrameworkQuery('sm-only') || '(max-width: 599px)';
+  const isSmallScreen = typeof window !== 'undefined' && window.matchMedia(smQuery).matches;
+  const paraCount = isSmallScreen ? 5 : 25;
+
   const [commonOptions, setCommonOptions] = useState<string[]>(['dark']);
   const [newMessagesOptions, setNewMessagesOptions] = useState<string[]>(['closeAffordance']);
   const [selectedMessages, setSelectedMessages] = useState<MessageSeverity[]>([
@@ -212,6 +218,11 @@ export const MessagetoastPageNotification = () => {
     ? { category: 'auto' }
     : { category: 'none' };
   const showDarkToasts = commonOptions.includes('dark');
+  const contentParagraphs = useMemo(() => {
+    return Array.from({ length: paraCount }, (_, index) => {
+      return `Sample page content paragraph ${index + 1}.`;
+    });
+  }, [paraCount]);
 
   const handleCommonOptionsValueChanged = (event: CheckboxsetValueChangedEvent) => {
     setCommonOptions((event.detail.value ?? []) as string[]);
@@ -255,6 +266,26 @@ export const MessagetoastPageNotification = () => {
     (document.getElementById('settingsPopup') as ojPopup | null)?.open('#settings', settingsPopupPosition);
   };
 
+  useEffect(() => {
+    let isMounted = true;
+    const popup = document.getElementById('settingsPopup') as ojPopup | null;
+
+    if (popup) {
+      void Context.getContext(popup)
+        .getBusyContext()
+        .whenReady()
+        .then(() => {
+          if (isMounted && popup.isConnected && !popup.isOpen()) {
+            popup.open('#settings', settingsPopupPosition);
+          }
+        });
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [settingsPopupPosition]);
+
   const handleCloseSettingsPopup = () => {
     (document.getElementById('settingsPopup') as ojPopup | null)?.close();
   };
@@ -292,6 +323,14 @@ export const MessagetoastPageNotification = () => {
       <oj-messages id="oj-messages-id" messages={dataprovider} display="notification" position={messagesPosition}>
         <template slot="messageTemplate" render={renderMessageTemplate} />
       </oj-messages>
+      <div role="main">
+        <div id="content" class="oj-web-padding">
+          <h2>Page Content Area</h2>
+          {contentParagraphs.map((paragraph) => {
+            return <p>{paragraph}</p>;
+          })}
+        </div>
+      </div>
       <oj-popup
         id="settingsPopup"
         position={settingsPopupPosition}

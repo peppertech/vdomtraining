@@ -1,7 +1,6 @@
-import { useMemo } from "preact/hooks";
+import { useMemo, useRef } from "preact/hooks";
 import type { MessageToastItem, CMessageToastElement } from "oj-c/message-toast";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { useToastContainerOffset } from "../useToastContainerOffset";
 import "oj-c/message-toast";
 import "oj-c/button";
 
@@ -46,11 +45,19 @@ const initialMessages: DemoMessageToastItem[] = [
   }
 ];
 
+const createMessages = (messageSetId: number): DemoMessageToastItem[] =>
+  initialMessages.map((message) => ({
+    ...message,
+    id: `${message.id}-${messageSetId}`
+  }));
+
+const toastPosition = "bottom";
+
 export const MessagetoastBasiccorepack = () => {
-  const toastOffset = useToastContainerOffset("containerDiv");
+  const messageSetCounter = useRef(0);
   const messages = useMemo(
     () =>
-      new MutableArrayDataProvider<string, DemoMessageToastItem>(initialMessages, {
+      new MutableArrayDataProvider<string, DemoMessageToastItem>(createMessages(0), {
         keyAttributes: "id"
       }),
     []
@@ -60,10 +67,19 @@ export const MessagetoastBasiccorepack = () => {
     messages.data = messages.data.filter((message) => message.id !== event.detail.key);
   };
 
+  const showMessages = () => {
+    messageSetCounter.current += 1;
+    messages.data = createMessages(messageSetCounter.current);
+  };
+
   return (
     <div id="containerDiv">
-      <oj-c-button label="Test Button" />
-      <oj-c-message-toast data={messages} offset={toastOffset} onojClose={closeMessage} />
+      <oj-c-button label="Test Button" onojAction={showMessages} />
+      <oj-c-message-toast
+        data={messages}
+        position={toastPosition}
+        onojClose={closeMessage}
+      />
     </div>
   );
 };
