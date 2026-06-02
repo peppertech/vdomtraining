@@ -7,9 +7,9 @@
  */
 import type { ComponentChildren, FunctionComponent } from "preact";
 import { DemoLayoutTemplate } from "./demo-layout-template";
-import ActioncardBasic from "../../content/examples/navlayout/actioncard/basic/actioncard-basic";
-import { actioncardBasicDescription } from "../../content/examples/navlayout/actioncard/basic/actioncard-description";
-import { actioncardBasicRecipe } from "../../content/examples/navlayout/actioncard/basic/actioncard-recipe";
+import ActioncardBasic from "../../content/examples/navlayout/action-card/action-card-legacy/actioncard-basic/actioncard-basic";
+import { actioncardBasicDescription } from "../../content/examples/navlayout/action-card/action-card-legacy/actioncard-basic/description";
+import { actioncardBasicRecipe } from "../../content/examples/navlayout/action-card/action-card-legacy/actioncard-basic/recipe";
 
 type DemoDefinition = {
   componentType: string;
@@ -21,8 +21,7 @@ type DemoDefinition = {
 };
 
 const initialDemo: DemoDefinition = {
-  componentType: "oj-c-action-card",
-  packLabel: "Core Pack",
+  componentType: "oj-action-card",
   title: "Action Card",
   description: actioncardBasicDescription,
   recipe: actioncardBasicRecipe,

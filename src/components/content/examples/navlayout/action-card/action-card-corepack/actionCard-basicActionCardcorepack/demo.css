@@ -1,0 +1,8 @@
+.demo-card-content {
+  width: 20rem;
+  height: 15rem;
+  max-width: 25rem;
+  max-height: 20rem;
+  min-width: 10rem;
+  min-height: 5rem;
+}

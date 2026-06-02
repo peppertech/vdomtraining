@@ -11,14 +11,14 @@ import {
   formatCorePackLabel,
 } from "../../../shared/catalog-breadcrumb";
 
-import { NavList } from "./navlist";
 import AccordionHome from "./accordion/home";
-import ActionCardHome from "./actioncard/home";
+import ActionCardHome from "./action-card/home";
 import ConveyorBeltHome from "./conveyorbelt/home";
 import DialogHome from "./dialog/home";
 import PopupHome from "./popup/home";
 import TabBarHome from "./tabbar/home";
 import DrawerHome from "./drawer/home";
+import NavigationListLegacyRecipePage from "./navigation-list/navigation-list-legacy/index";
 
 type NavLayoutComponent = {
   id: number;
@@ -30,19 +30,13 @@ type NavLayoutComponent = {
 
 const navLayoutComponents: NavLayoutComponent[] = [
   {
-    id: 1,
-    name: "Navigation List",
-    image: "oj-ux-icon-size-12x oj-ux-ico-navigation",
-    isAvailable: true,
-  },
-  {
     id: 2,
-    name: "Accordion & Collapsible",
+    name: "Accordion",
     image: "oj-ux-icon-size-12x oj-ux-ico-accordion",
     isAvailable: true,
     isCorePack: true,
   },
-  {
+   {
     id: 3,
     name: "Action Card",
     image: "oj-ux-icon-size-12x  oj-ux-ico-contact-card",
@@ -50,9 +44,9 @@ const navLayoutComponents: NavLayoutComponent[] = [
     isCorePack: true,
   },
   {
-    id: 4,
-    name: "Tab Bar",
-    image: "oj-ux-icon-size-12x  oj-ux-ico-tab-bar",
+    id: 8,
+    name: "Conveyor Belt",
+    image: "oj-ux-icon-size-12x oj-ux-ico-carousel",
     isAvailable: true,
     isCorePack: true,
   },
@@ -64,6 +58,19 @@ const navLayoutComponents: NavLayoutComponent[] = [
     isCorePack: true,
   },
   {
+    id: 7,
+    name: "Drawer",
+    image: "oj-ux-icon-size-12x oj-ux-ico-drawer",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
+    id: 1,
+    name: "Navigation List",
+    image: "oj-ux-icon-size-12x oj-ux-ico-navigation",
+    isAvailable: true,
+  },
+  {
     id: 6,
     name: "Popup",
     image: "oj-ux-icon-size-12x  oj-ux-ico-contact-card",
@@ -71,19 +78,13 @@ const navLayoutComponents: NavLayoutComponent[] = [
     isCorePack: true,
   },
   {
-    id: 7,
-    name: "Drawer Layout",
-    image: "oj-ux-icon-size-12x oj-ux-ico-drawer",
+    id: 4,
+    name: "Tab Bar",
+    image: "oj-ux-icon-size-12x  oj-ux-ico-tab-bar",
     isAvailable: true,
     isCorePack: true,
-  },
-  {
-    id: 8,
-    name: "Conveyor Belt",
-    image: "oj-ux-icon-size-12x oj-ux-ico-carousel",
-    isAvailable: true,
-    isCorePack: true,
-  },
+  }
+  
 ];
 
 const dataProvider = new MutableArrayDataProvider<
@@ -147,7 +148,7 @@ const NavLayoutHome = () => {
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <NavList />;
+        return <NavigationListLegacyRecipePage />;
       case 2:
         return (
           <AccordionHome

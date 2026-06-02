@@ -1,0 +1,28 @@
+.demo-card-content {
+  width: 25rem;
+  height: 15rem;
+}
+
+.demo-card-2 {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.demo-application {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  height: 180px;
+  padding: 8px;
+}
+
+.demo-scrollable {
+  width: 10rem;
+  height: 10rem;
+}
+
+.demo-scrollable-content {
+  padding: 8px;
+  overflow: auto;
+}
