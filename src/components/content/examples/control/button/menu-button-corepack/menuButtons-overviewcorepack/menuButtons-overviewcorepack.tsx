@@ -1,9 +1,10 @@
 import { h } from 'preact';
+import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
-import 'ojs/ojbutton';
-import 'ojs/ojmenu';
-import 'ojs/ojmenubutton';
-import 'ojs/ojoption';
+import 'oj-c/menu-button';
+import 'css!./demo.css';
+
+type MenuItems = NonNullable<ComponentProps<'oj-c-menu-button'>['items']>;
 
 type ItemInfo = {
   id: string;
@@ -12,9 +13,25 @@ type ItemInfo = {
   disabled?: boolean;
 };
 
+const toMenuItems = (items: ItemInfo[], includeIcons: boolean): MenuItems => {
+  return items.map((item) => {
+    const menuItem: MenuItems[number] = {
+      label: item.label ?? '',
+      key: item.id,
+      disabled: item.disabled
+    };
+
+    if (includeIcons && item.icon) {
+      menuItem.startIcon = { class: item.icon };
+    }
+
+    return menuItem;
+  });
+};
+
 export const MenuButtonsOverviewcorepack = () => {
-  const menuItems = useMemo<ItemInfo[]>(
-    () => [
+  const { textMenuItems, iconMenuItems } = useMemo(() => {
+    const items: ItemInfo[] = [
       { id: 'save', label: 'Save', icon: 'oj-ux-ico-print', disabled: false },
       {
         id: 'zoomin',
@@ -34,125 +51,67 @@ export const MenuButtonsOverviewcorepack = () => {
         icon: 'oj-ux-ico-print',
         disabled: true
       }
-    ],
-    []
-  );
+    ];
 
-  const renderTextMenuOption = (item: ItemInfo) => {
-    return (
-      <oj-option value={item.label} disabled={item.disabled} id={item.id}>
-        <span>{item.label}</span>
-      </oj-option>
-    );
-  };
-
-  const renderIconMenuOption = (item: ItemInfo) => {
-    return (
-      <oj-option value={item.label} disabled={item.disabled} id={item.id}>
-        {item.icon ? <span slot="startIcon" class={item.icon} /> : null}
-        {item.label}
-      </oj-option>
-    );
-  };
+    return {
+      textMenuItems: toMenuItems(items, false),
+      iconMenuItems: toMenuItems(items, true)
+    };
+  }, []);
 
   return (
     <div id="menuButtons-container" class="oj-sm-margin-2x-bottom">
       <h6>Text MenuButton</h6>
       <div>
-        <oj-menu-button id="menuButton1">
-          Action
-          <oj-menu id="myMenu1" slot="menu" aria-label="menu with actions">
-            {menuItems.map(renderTextMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
+        <oj-c-menu-button id="menuButton1" label="Action" items={textMenuItems} />
       </div>
       <h6 class="oj-sm-margin-8x-top">MenuButton with Icon</h6>
       <div>
-        <oj-menu-button id="menuButton2">
+        <oj-c-menu-button id="menuButton2" label="Action" items={iconMenuItems}>
           <span slot="startIcon" class="oj-ux-ico-settings" />
-          Action
-          <oj-menu id="myMenu2" slot="menu" aria-label="menu with actions">
-            {menuItems.map(renderIconMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
-        <oj-menu-button id="menuButton3" display="icons">
+        </oj-c-menu-button>
+        <oj-c-menu-button id="menuButton3" label="Action" items={iconMenuItems} display="icons">
           <span slot="startIcon" class="oj-ux-ico-settings" />
-          Action
-          <oj-menu id="myMenu3" slot="menu" aria-label="menu with actions">
-            {menuItems.map(renderIconMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
-        <oj-menu-button id="menuButton4" display="icons">
+        </oj-c-menu-button>
+        <oj-c-menu-button id="menuButton4" label="Action" items={iconMenuItems} display="icons">
           <span slot="endIcon" class="oj-ux-ico-settings" />
-          Action
-          <oj-menu id="myMenu4" slot="menu" aria-label="menu with actions">
-            {menuItems.map(renderIconMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
-        <oj-menu-button id="menuButton5" display="icons">
-          Action
-          <oj-menu id="myMenu5" slot="menu" aria-label="menu with actions">
-            {menuItems.map(renderIconMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
+        </oj-c-menu-button>
+        <oj-c-menu-button id="menuButton5" label="Action" items={iconMenuItems} display="icons" />
       </div>
       <h6 class="oj-sm-margin-8x-top">Disabled MenuButton</h6>
       <div>
-        <oj-menu-button id="menuButton6" disabled>
+        <oj-c-menu-button id="menuButton6" label="Disabled" items={iconMenuItems} disabled>
           <span slot="startIcon" class="oj-ux-ico-settings" />
-          Disabled
-          <oj-menu id="myMenu6" slot="menu" aria-label="menu with actions">
-            {menuItems.map(renderIconMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
+        </oj-c-menu-button>
       </div>
       <h6 class="oj-sm-margin-8x-top">Chroming</h6>
       <div>
-        <oj-menu-button chroming="outlined" id="menuButton7">
+        <oj-c-menu-button chroming="outlined" id="menuButton7" label="Outlined" items={iconMenuItems}>
           <span slot="startIcon" class="oj-ux-ico-settings" />
-          Outlined
-          <oj-menu id="myMenu7" slot="menu" aria-label="menu with actions">
-            {menuItems.map(renderIconMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
-        <oj-menu-button chroming="borderless" id="menuButton8">
+        </oj-c-menu-button>
+        <oj-c-menu-button
+          chroming="borderless"
+          id="menuButton8"
+          label="Borderless"
+          items={iconMenuItems}
+        >
           <span slot="startIcon" class="oj-ux-ico-settings" />
-          Borderless
-          <oj-menu id="myMenu8" slot="menu" aria-label="menu with actions">
-            {menuItems.map(renderIconMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
-        <oj-menu-button chroming="solid" id="menuButton9">
+        </oj-c-menu-button>
+        <oj-c-menu-button chroming="solid" id="menuButton9" label="Solid" items={iconMenuItems}>
           <span slot="startIcon" class="oj-ux-ico-settings" />
-          Solid
-          <oj-menu id="myMenu9" slot="menu" aria-label="menu with actions">
-            {menuItems.map(renderIconMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
+        </oj-c-menu-button>
       </div>
       <h6 class="oj-sm-margin-8x-top">Sizes</h6>
       <div>
-        <oj-menu-button id="menuButton10" class="oj-button-sm">
+        <oj-c-menu-button id="menuButton10" label="Small" items={iconMenuItems} size="sm">
           <span slot="startIcon" class="oj-ux-ico-settings" />
-          Small
-          <oj-menu id="myMenu10" slot="menu" aria-label="menu with actions">
-            {menuItems.map(renderIconMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
-        <oj-menu-button id="menuButton11">
+        </oj-c-menu-button>
+        <oj-c-menu-button id="menuButton11" label="Default" items={iconMenuItems}>
           <span slot="startIcon" class="oj-ux-ico-settings" />
-          Default
-          <oj-menu id="myMenu11" slot="menu" aria-label="menu with actions">
-            {menuItems.map(renderIconMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
-        <oj-menu-button id="menuButton12" class="oj-button-lg">
+        </oj-c-menu-button>
+        <oj-c-menu-button id="menuButton12" label="Large" items={iconMenuItems} size="lg">
           <span slot="startIcon" class="oj-ux-ico-settings" />
-          Large
-          <oj-menu id="myMenu12" slot="menu" aria-label="menu with actions">
-            {menuItems.map(renderIconMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
+        </oj-c-menu-button>
       </div>
     </div>
   );

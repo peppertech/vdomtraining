@@ -1,98 +1,80 @@
 import { h } from 'preact';
+import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
-import 'ojs/ojbutton';
-import 'ojs/ojmenu';
-import 'ojs/ojmenubutton';
-import 'ojs/ojoption';
-import 'ojs/ojtoolbar';
+import 'oj-c/menu-button';
 
-type MenuInfo = {
-  id: string;
-  label: string;
-  icon: string;
-  disabled: boolean;
-};
+type MenuItems = NonNullable<ComponentProps<'oj-c-menu-button'>['items']>;
 
 export const MenuButtonsMenuButtonDisplaycorepack = () => {
-  const menuItems = useMemo<MenuInfo[]>(
+  const menuItems = useMemo<MenuItems>(
     () => [
       {
-        id: 'zoomin',
         label: 'Zoom In',
-        icon: 'oj-ux-ico-zoom-in',
-        disabled: false
+        key: 'zoomin',
+        startIcon: { class: 'oj-ux-ico-zoom-in' }
       },
       {
-        id: 'zoomout',
         label: 'Zoom Out',
-        icon: 'oj-ux-ico-zoom-out',
-        disabled: false
+        key: 'zoomout',
+        startIcon: { class: 'oj-ux-ico-zoom-out' }
       },
-      { id: 'divider', label: '----', icon: '', disabled: false },
-      { id: 'save', label: 'Save', icon: 'oj-ux-ico-save', disabled: false },
+      { type: 'separator' },
       {
-        id: 'print',
+        label: 'Save',
+        key: 'save',
+        startIcon: { class: 'oj-ux-ico-save' }
+      },
+      {
         label: 'Print...',
-        icon: 'oj-ux-ico-print',
-        disabled: true
+        key: 'print',
+        disabled: true,
+        startIcon: { class: 'oj-ux-ico-print' }
       }
     ],
     []
   );
 
-  const renderMenuOption = (item: MenuInfo) => {
-    if (item.id === 'divider') {
-      return <oj-option id={item.id} />;
-    }
-
-    return (
-      <oj-option id={item.id} disabled={item.disabled} value={item.label}>
-        {item.icon ? <span slot="startIcon" class={item.icon} /> : null}
-        {item.label}
-      </oj-option>
-    );
-  };
-
   return (
     <div id="menubutton-container">
       <h6>Start Slot & display="all"</h6>
       <div>
-        <oj-menu-button chroming="outlined" id="menuButton2">
+        <oj-c-menu-button chroming="outlined" id="menuButton2" label="Action" items={menuItems}>
           <span slot="startIcon" class="oj-ux-ico-settings" />
-          Action
-          <oj-menu id="myMenu2" slot="menu" aria-label="menu with selection">
-            {menuItems.map(renderMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
+        </oj-c-menu-button>
       </div>
       <h6 class="oj-sm-margin-8x-top">Start Slot & display="icons"</h6>
       <div>
-        <oj-menu-button chroming="outlined" id="menuButton4" display="icons">
+        <oj-c-menu-button
+          chroming="outlined"
+          id="menuButton4"
+          label="Action"
+          items={menuItems}
+          display="icons"
+        >
           <span slot="startIcon" class="oj-ux-ico-settings" />
-          Action
-          <oj-menu id="myMenu4" slot="menu" aria-label="menu with selection">
-            {menuItems.map(renderMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
+        </oj-c-menu-button>
       </div>
       <h6 class="oj-sm-margin-8x-top">End Slot & display="icons"</h6>
       <div>
-        <oj-menu-button chroming="outlined" id="menuButton5" display="icons">
+        <oj-c-menu-button
+          chroming="outlined"
+          id="menuButton5"
+          label="Action"
+          items={menuItems}
+          display="icons"
+        >
           <span slot="endIcon" class="oj-ux-ico-settings" />
-          Action
-          <oj-menu id="myMenu5" slot="menu" aria-label="menu with selection">
-            {menuItems.map(renderMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
+        </oj-c-menu-button>
       </div>
       <h6 class="oj-sm-margin-8x-top">display="icons" only</h6>
       <div>
-        <oj-menu-button chroming="outlined" id="menuButton3" display="icons">
-          Action
-          <oj-menu id="myMenu3" slot="menu" aria-label="menu with selection">
-            {menuItems.map(renderMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
+        <oj-c-menu-button
+          chroming="outlined"
+          id="menuButton3"
+          label="Action"
+          items={menuItems}
+          display="icons"
+        />
       </div>
     </div>
   );

@@ -1,153 +1,126 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
-import 'ojs/ojbutton';
-import 'ojs/ojmenu';
-import 'ojs/ojmenubutton';
-import 'ojs/ojoption';
+import 'oj-c/menu-button';
 import 'ojs/ojtoolbar';
 
-type MenuActionEvent = Parameters<NonNullable<ComponentProps<'oj-menu'>['onojMenuAction']>>[0];
-
-type MenuInfo = {
-  id: string;
-  label: string;
-  icon: string;
-  disabled: boolean;
-};
+type MenuItems = NonNullable<ComponentProps<'oj-c-menu-button'>['items']>;
+type MenuActionEvent = Parameters<
+  NonNullable<ComponentProps<'oj-c-menu-button'>['onojMenuAction']>
+>[0];
 
 export const MenuButtonsMenuButtonsetcorepack = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('(None selected yet)');
 
-  const fileMenuItems = useMemo<MenuInfo[]>(
+  const fileMenuItems = useMemo<MenuItems>(
     () => [
       {
-        id: 'new',
         label: 'New File',
-        icon: 'oj-ux-ico-new-application',
-        disabled: false
+        key: 'New File',
+        startIcon: { class: 'oj-ux-ico-new-application' }
       },
       {
-        id: 'open',
         label: 'Open File',
-        icon: 'oj-ux-ico-folder-open',
-        disabled: false
+        key: 'Open File',
+        startIcon: { class: 'oj-ux-ico-folder-open' }
       },
-      { id: 'divider', label: '----', icon: '', disabled: false },
-      { id: 'save', label: 'Save', icon: 'oj-ux-ico-save', disabled: false },
+      { type: 'separator' },
       {
-        id: 'print',
+        label: 'Save',
+        key: 'Save',
+        startIcon: { class: 'oj-ux-ico-save' }
+      },
+      {
         label: 'Print...',
-        icon: 'oj-ux-ico-print',
-        disabled: true
+        key: 'Print...',
+        disabled: true,
+        startIcon: { class: 'oj-ux-ico-print' }
       }
     ],
     []
   );
-  const editMenuItems = useMemo<MenuInfo[]>(
+  const editMenuItems = useMemo<MenuItems>(
     () => [
       {
-        id: 'cut',
         label: 'Cut',
-        icon: 'oj-ux-ico-cut',
-        disabled: false
+        key: 'Cut',
+        startIcon: { class: 'oj-ux-ico-cut' }
       },
       {
-        id: 'copy',
         label: 'Copy',
-        icon: 'oj-ux-ico-copy',
-        disabled: false
+        key: 'Copy',
+        startIcon: { class: 'oj-ux-ico-copy' }
       },
       {
-        id: 'paste',
         label: 'Paste',
-        icon: 'oj-ux-ico-copy-field-to',
-        disabled: false
+        key: 'Paste',
+        startIcon: { class: 'oj-ux-ico-copy-field-to' }
       },
       {
-        id: 'find',
         label: 'Find',
-        icon: 'oj-ux-ico-input-search',
-        disabled: false
+        key: 'Find',
+        startIcon: { class: 'oj-ux-ico-input-search' }
       }
     ],
     []
   );
-  const viewMenuItems = useMemo<MenuInfo[]>(
+  const viewMenuItems = useMemo<MenuItems>(
     () => [
       {
-        id: 'bookmark',
         label: 'Always Show Bookmarks Bar',
-        icon: 'oj-ux-ico-bookmark',
-        disabled: false
+        key: 'Always Show Bookmarks Bar',
+        startIcon: { class: 'oj-ux-ico-bookmark' }
       },
       {
-        id: 'toolbar',
         label: 'Always Show Toolbar in Full Screen',
-        icon: 'oj-ux-ico-toolbar',
-        disabled: false
+        key: 'Always Show Toolbar in Full Screen',
+        startIcon: { class: 'oj-ux-ico-toolbar' }
       },
       {
-        id: 'sidebar',
         label: 'Show Side Bar',
-        icon: 'oj-ux-ico-side-bar',
-        disabled: false
+        key: 'Show Side Bar',
+        startIcon: { class: 'oj-ux-ico-side-bar' }
       },
-      { id: 'divider', label: '----', icon: '', disabled: false },
+      { type: 'separator' },
       {
-        id: 'zoomin',
         label: 'Zoom In',
-        icon: 'oj-ux-ico-zoom-in',
-        disabled: false
+        key: 'Zoom In',
+        startIcon: { class: 'oj-ux-ico-zoom-in' }
       },
       {
-        id: 'zoomout',
         label: 'Zoom Out',
-        icon: 'oj-ux-ico-zoom-out',
-        disabled: false
+        key: 'Zoom Out',
+        startIcon: { class: 'oj-ux-ico-zoom-out' }
       }
     ],
     []
   );
 
   const handleMenuItemAction = (event: MenuActionEvent) => {
-    setSelectedMenuItem(event.detail.selectedValue);
-  };
-
-  const renderMenuOption = (item: MenuInfo) => {
-    if (item.id === 'divider') {
-      return <oj-option id={item.id} />;
-    }
-
-    return (
-      <oj-option id={item.id} disabled={item.disabled} value={item.label}>
-        {item.icon ? <span slot="startIcon" class={item.icon} /> : null}
-        {item.label}
-      </oj-option>
-    );
+    setSelectedMenuItem(String(event.detail.key));
   };
 
   return (
     <div id="menuset-container">
       <oj-toolbar id="menuSet" chroming="borderless" class="oj-sm-margin-5x-bottom">
-        <oj-menu-button id="menuButton1">
-          File
-          <oj-menu id="myMenu1" slot="menu" onojMenuAction={handleMenuItemAction} aria-label="menu with selection">
-            {fileMenuItems.map(renderMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
-        <oj-menu-button id="menuButton2">
-          Edit
-          <oj-menu id="myMenu2" slot="menu" onojMenuAction={handleMenuItemAction} aria-label="menu with selection">
-            {editMenuItems.map(renderMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
-        <oj-menu-button id="menuButton3">
-          View
-          <oj-menu id="myMenu3" slot="menu" onojMenuAction={handleMenuItemAction} aria-label="menu with selection">
-            {viewMenuItems.map(renderMenuOption)}
-          </oj-menu>
-        </oj-menu-button>
+        <oj-c-menu-button
+          id="menuButton1"
+          label="File"
+          items={fileMenuItems}
+          onojMenuAction={handleMenuItemAction}
+        />
+        <oj-c-menu-button
+          id="menuButton2"
+          label="Edit"
+          items={editMenuItems}
+          onojMenuAction={handleMenuItemAction}
+        />
+        <oj-c-menu-button
+          id="menuButton3"
+          label="View"
+          items={viewMenuItems}
+          onojMenuAction={handleMenuItemAction}
+        />
       </oj-toolbar>
       <div class="oj-typography-body-md oj-typography-bold">
         Last selected menu item:
