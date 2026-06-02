@@ -24,6 +24,9 @@ import { menuButtonsSelectcorepackRecipe } from "./menuButtons-selectcorepack/re
 import { MenuButtonsMenuButtonsetcorepack } from "./menuButtons-menuButtonsetcorepack/menuButtons-menuButtonsetcorepack";
 import { menuButtonsMenuButtonsetcorepackDescription } from "./menuButtons-menuButtonsetcorepack/description";
 import { menuButtonsMenuButtonsetcorepackRecipe } from "./menuButtons-menuButtonsetcorepack/recipe";
+import { MenuButtonsChromingcorepack } from "./menuButtons-chromingcorepack/menuButtons-chromingcorepack";
+import { menuButtonsChromingcorepackDescription } from "./menuButtons-chromingcorepack/description";
+import { menuButtonsChromingcorepackRecipe } from "./menuButtons-chromingcorepack/recipe";
 
 const menuButtonCorePackItems = [
   {
@@ -35,38 +38,24 @@ const menuButtonCorePackItems = [
   },
   {
     id: "menu-button",
-    name: "Menu Button",
+    name: "Menu and Submenu",
     description: menuButtonsMenuButtoncorepackDescription,
     recipe: menuButtonsMenuButtoncorepackRecipe,
     Component: MenuButtonsMenuButtoncorepack,
   },
   {
-    id: "display",
-    name: "Display",
-    description: menuButtonsMenuButtonDisplaycorepackDescription,
-    recipe: menuButtonsMenuButtonDisplaycorepackRecipe,
-    Component: MenuButtonsMenuButtonDisplaycorepack,
-  },
-  {
     id: "disable",
-    name: "Disable",
+    name: "Disable Item",
     description: menuButtonsDisablecorepackDescription,
     recipe: menuButtonsDisablecorepackRecipe,
     Component: MenuButtonsDisablecorepack,
   },
   {
-    id: "event",
-    name: "Event",
-    description: menuButtonsEventcorepackDescription,
-    recipe: menuButtonsEventcorepackRecipe,
-    Component: MenuButtonsEventcorepack,
-  },
-  {
-    id: "menu-button-events",
-    name: "Menu Button Events",
-    description: menuButtonsMenuButtonEventscorepackDescription,
-    recipe: menuButtonsMenuButtonEventscorepackRecipe,
-    Component: MenuButtonsMenuButtonEventscorepack,
+    id: "display",
+    name: "Button Icons",
+    description: menuButtonsMenuButtonDisplaycorepackDescription,
+    recipe: menuButtonsMenuButtonDisplaycorepackRecipe,
+    Component: MenuButtonsMenuButtonDisplaycorepack,
   },
   {
     id: "select",
@@ -76,11 +65,33 @@ const menuButtonCorePackItems = [
     Component: MenuButtonsSelectcorepack,
   },
   {
+    id: "event",
+    name: "Event",
+    description: menuButtonsEventcorepackDescription,
+    recipe: menuButtonsEventcorepackRecipe,
+    Component: MenuButtonsEventcorepack,
+  },
+  
+  {
     id: "menu-button-set",
-    name: "Menu Button Set",
+    name: "Menu Bar",
     description: menuButtonsMenuButtonsetcorepackDescription,
     recipe: menuButtonsMenuButtonsetcorepackRecipe,
     Component: MenuButtonsMenuButtonsetcorepack,
+  },
+  {
+    id: "chroming",
+    name: "Chroming",
+    description: menuButtonsChromingcorepackDescription,
+    recipe: menuButtonsChromingcorepackRecipe,
+    Component: MenuButtonsChromingcorepack,
+  },
+  {
+    id: "menu-button-events",
+    name: "Menu Events",
+    description: menuButtonsMenuButtonEventscorepackDescription,
+    recipe: menuButtonsMenuButtonEventscorepackRecipe,
+    Component: MenuButtonsMenuButtonEventscorepack,
   },
 ];
 
