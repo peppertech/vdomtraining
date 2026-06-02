@@ -6,10 +6,8 @@ import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 import { useToastContainerOffset } from '../useToastContainerOffset';
 import 'oj-c/button';
+import 'oj-c/checkboxset';
 import 'oj-c/message-toast';
-import 'ojs/ojcheckboxset';
-import 'ojs/ojcomboboxone';
-import 'ojs/ojoption';
 
 type TimeoutOption = {
   value: NonNullable<MessageToastItem['autoTimeout']>;
@@ -19,11 +17,13 @@ type TimeoutOption = {
 type MessageData = MessageToastItem & {
   id: string;
 };
+type ToastOffset = NonNullable<ComponentProps<'oj-c-message-toast'>['offset']>;
+type ToastPosition = NonNullable<ComponentProps<'oj-c-message-toast'>['position']>;
 type ComboboxValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-combobox-one'>['onvalueChanged']>
 >[0];
 type CheckboxsetValueChangedEvent = Parameters<
-  NonNullable<ComponentProps<'oj-checkboxset'>['onvalueChanged']>
+  NonNullable<ComponentProps<'oj-c-checkboxset'>['onvalueChanged']>
 >[0];
 type ComboboxValue = ComponentProps<'oj-combobox-one'>['value'];
 
@@ -34,6 +34,24 @@ const timeoutOptions: TimeoutOption[] = [
   { value: 10000, label: '10 seconds' },
   { value: 15000, label: '15 seconds' }
 ];
+const soundOptions = [{ value: 'sound', label: 'Play sound' }];
+
+const toastPosition: ToastPosition = 'top';
+
+const getTopCenterOffset = (offset: ToastOffset): ToastOffset => {
+  if (typeof offset === 'number') {
+    return offset;
+  }
+
+  return {
+    ...offset,
+    horizontal: 0
+  };
+};
+
+const toStringArray = (value: unknown): string[] => {
+  return Array.isArray(value) ? value.map(String) : [];
+};
 
 const toAutoTimeout = (value: ComboboxValue): MessageData['autoTimeout'] => {
   if (value === 'on' || value === 'off' || typeof value === 'number') {
@@ -44,7 +62,11 @@ const toAutoTimeout = (value: ComboboxValue): MessageData['autoTimeout'] => {
 };
 
 export const MessagetoastAutoTimeoutcorepack = () => {
-  const toastOffset = useToastContainerOffset('autoTimeout', 'top');
+  const containerToastOffset = useToastContainerOffset('autoTimeout', toastPosition);
+  const toastOffset = useMemo(
+    () => getTopCenterOffset(containerToastOffset),
+    [containerToastOffset]
+  );
   const [toastAutoTimeout, setToastAutoTimeout] = useState<MessageData['autoTimeout']>('off');
   const [newToastOptions, setNewToastOptions] = useState<string[]>(['sound']);
   const [messageCounter, setMessageCounter] = useState(0);
@@ -72,7 +94,7 @@ export const MessagetoastAutoTimeoutcorepack = () => {
   };
 
   const handleNewToastOptionsChanged = (event: CheckboxsetValueChangedEvent) => {
-    setNewToastOptions((event.detail.value ?? []) as string[]);
+    setNewToastOptions(toStringArray(event.detail.value));
   };
 
   const handleOpenNewToast = () => {
@@ -104,7 +126,7 @@ export const MessagetoastAutoTimeoutcorepack = () => {
         id="oj-messages-id"
         data={messagesDataprovider}
         offset={toastOffset}
-        position="top"
+        position={toastPosition}
         onojClose={closeMessage}
       />
       <div class="oj-web-padding" role="main">
@@ -122,14 +144,13 @@ export const MessagetoastAutoTimeoutcorepack = () => {
             >
               <span slot="end" class="oj-ux-ico-clock oj-sm-padding-2x" />
             </oj-combobox-one>
-            <oj-checkboxset
+            <oj-c-checkboxset
               onvalueChanged={handleNewToastOptionsChanged}
               value={newToastOptions}
               labelHint="Sound options"
               labelEdge="inside"
-            >
-              <oj-option value="sound">Play sound</oj-option>
-            </oj-checkboxset>
+              options={soundOptions}
+            />
           </div>
           <div class="oj-divider-top oj-sm-padding-2x-top">
             <oj-c-button onojAction={handleOpenNewToast} label="Open new toast" />

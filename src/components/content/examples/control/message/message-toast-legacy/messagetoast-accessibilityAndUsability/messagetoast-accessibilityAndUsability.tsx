@@ -6,7 +6,6 @@ import { ojMessage } from 'ojs/ojmessage';
 import { ojMessages } from 'ojs/ojmessages';
 import 'ojs/ojbutton';
 import 'ojs/ojcheckboxset';
-import 'ojs/ojcomboboxone';
 import 'ojs/ojmessage';
 import 'ojs/ojmessages';
 import 'ojs/ojoption';

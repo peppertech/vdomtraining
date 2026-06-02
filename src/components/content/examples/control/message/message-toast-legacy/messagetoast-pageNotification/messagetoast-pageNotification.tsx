@@ -63,6 +63,9 @@ const MESSAGE_SEVERITIES: MessageSeverity[] = [
   'none'
 ];
 
+const PAGE_CONTENT_PARAGRAPH =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum, eget vehicula nibh augue sollicitudin ligula. Sed ullamcorper cursus feugiat. Mauris tristique aliquam dictum. Nulla facilisi. Nulla ut sapien sapien. Phasellus tristique arcu id ipsum mattis id aliquam risus sollicitudin.';
+
 const createPositionMappings = (): Record<PositionOptionValue, PageInfo> => {
   return {
     'top-start-page': {
@@ -219,8 +222,8 @@ export const MessagetoastPageNotification = () => {
     : { category: 'none' };
   const showDarkToasts = commonOptions.includes('dark');
   const contentParagraphs = useMemo(() => {
-    return Array.from({ length: paraCount }, (_, index) => {
-      return `Sample page content paragraph ${index + 1}.`;
+    return Array.from({ length: paraCount }, () => {
+      return PAGE_CONTENT_PARAGRAPH;
     });
   }, [paraCount]);
 

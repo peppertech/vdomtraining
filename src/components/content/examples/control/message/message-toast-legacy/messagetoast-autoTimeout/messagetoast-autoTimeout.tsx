@@ -7,7 +7,6 @@ import { ojMessage } from 'ojs/ojmessage';
 import { ojPopup } from 'ojs/ojpopup';
 import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
 import 'ojs/ojbutton';
-import 'ojs/ojcomboboxone';
 import 'ojs/ojmessages';
 import 'ojs/ojpopup';
 import 'ojs/ojtoolbar';

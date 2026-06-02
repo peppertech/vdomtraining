@@ -75,7 +75,7 @@ export default function MessageToastCorePackRecipePage() {
       componentType="oj-c-message-toast"
       packLabel="Core Pack"
       items={messageToastCorePackItems}
-      initialItemId="auto-timeout"
+      initialItemId="basic"
       navigationTitle="Message Toast"
     />
   );
