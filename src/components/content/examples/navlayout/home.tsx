@@ -20,6 +20,7 @@ import TabBarHome from "./tabbar/home";
 import DrawerHome from "./drawer/home";
 import NavigationListLegacyRecipePage from "./navigation-list/navigation-list-legacy/index";
 import CollapsibleHome from "./collapsible/home";
+import PanelLegacyRecipePage from "./panel/index";
 
 type NavLayoutComponent = {
   id: number;
@@ -76,6 +77,12 @@ const navLayoutComponents: NavLayoutComponent[] = [
     id: 1,
     name: "Navigation List",
     image: "oj-ux-icon-size-12x oj-ux-ico-navigation",
+    isAvailable: true,
+  },
+  {
+    id: 10,
+    name: "Panel",
+    image: "oj-ux-icon-size-12x oj-ux-ico-cards",
     isAvailable: true,
   },
   {
@@ -213,6 +220,8 @@ const NavLayoutHome = () => {
             onNavigateRootHome={handleHomeNavigation}
           />
         );
+      case 10:
+        return <PanelLegacyRecipePage />;
       default:
         return null;
     }
