@@ -43,7 +43,7 @@ const ExampleContent = (props: Props) => {
     { path: "collection", label: "Collections" },
     { path: "control", label: "Controls" },
     { path: "form", label: "Forms" },
-    { path: "navlayout", label: "Navigations and Layouts" },
+    { path: "navlayout", label: "Layout & Nav" },
     { path: "dataviz", label: "Visualizations" },
   ];
   const exampleRoutes: ExampleRoute[] = [

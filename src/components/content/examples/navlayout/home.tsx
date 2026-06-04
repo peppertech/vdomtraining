@@ -19,6 +19,7 @@ import PopupHome from "./popup/home";
 import TabBarHome from "./tabbar/home";
 import DrawerHome from "./drawer/home";
 import NavigationListLegacyRecipePage from "./navigation-list/navigation-list-legacy/index";
+import CollapsibleHome from "./collapsible/home";
 
 type NavLayoutComponent = {
   id: number;
@@ -36,10 +37,17 @@ const navLayoutComponents: NavLayoutComponent[] = [
     isAvailable: true,
     isCorePack: true,
   },
-   {
+  {
     id: 3,
     name: "Action Card",
     image: "oj-ux-icon-size-12x  oj-ux-ico-contact-card",
+    isAvailable: true,
+    isCorePack: true,
+  },
+  {
+    id: 9,
+    name: "Collapsible",
+    image: "oj-ux-icon-size-12x oj-ux-ico-accordion",
     isAvailable: true,
     isCorePack: true,
   },
@@ -194,6 +202,13 @@ const NavLayoutHome = () => {
       case 8:
         return (
           <ConveyorBeltHome
+            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onNavigateRootHome={handleHomeNavigation}
+          />
+        );
+      case 9:
+        return (
+          <CollapsibleHome
             onBreadcrumbChange={setNestedBreadcrumbItems}
             onNavigateRootHome={handleHomeNavigation}
           />

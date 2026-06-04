@@ -50,6 +50,11 @@ export const NavigationlistBasic = () => {
     setSelectedItem3(event.detail.value);
   };
 
+  const navListContainerClass = [
+    'navlistcontainer',
+    isContrastBackground ? 'oj-bg-neutral-170 oj-color-invert' : ''
+  ].filter(Boolean).join(' ');
+
   return (
       <div id="navlistdemo">
             <div class="oj-panel oj-bg-neutral-30 oj-sm-margin-4x-bottom">
@@ -64,7 +69,7 @@ export const NavigationlistBasic = () => {
                     <div class="oj-flex-item oj-md-padding-10x-end">
                               <h2 class="oj-typography-subheading-xs">Text Only</h2>
                               <div class="oj-sm-padding-10x-bottom">
-                                          <div class="navlistcontainer">
+                                          <div class={navListContainerClass}>
                                                         <oj-navigation-list onselectionChanged={handleSelectedItem1SelectionChanged} selection={selectedItem1} aria-label="Choose a navigation item" drill-mode="none" data={dataProvider}>
                                                                         <template slot="itemTemplate" render={(item) => (
                                                                                         <>
@@ -78,7 +83,7 @@ export const NavigationlistBasic = () => {
                     <div class="oj-flex-item oj-md-padding-10x-end">
                               <h2 class="oj-typography-subheading-xs">Icon Only</h2>
                               <div class="oj-sm-padding-10x-bottom">
-                                          <div class="navlistcontainer">
+                                          <div class={navListContainerClass}>
                                                         <oj-navigation-list onselectionChanged={handleSelectedItem2SelectionChanged} selection={selectedItem2} display="icons" aria-label="Choose a navigation item" drill-mode="none" data={dataProvider}>
                                                                         <template slot="itemTemplate" render={(item) => (
                                                                                         <>
@@ -97,7 +102,7 @@ export const NavigationlistBasic = () => {
                     <div class="oj-flex-item">
                               <h2 class="oj-typography-subheading-xs">Text and Icons</h2>
                               <div class="oj-sm-padding-10x-bottom">
-                                          <div class="navlistcontainer">
+                                          <div class={navListContainerClass}>
                                                         <oj-navigation-list onselectionChanged={handleSelectedItem3SelectionChanged} selection={selectedItem3} display="all" aria-label="Choose a navigation item" drill-mode="none" data={dataProvider}>
                                                                         <template slot="itemTemplate" render={(item) => (
                                                                                         <>
