@@ -1,0 +1,21 @@
+.demo-dialog-full-screen {
+  width: 100vw;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  border-radius: 0;
+}
+
+/* this media query is needed to make sure -webkit-fill-available gets applied
+   on Safari/iOS only. It returns incorrect values in Chrome. */
+@supports (-webkit-touch-callout: none) {
+  /* CSS specific to iOS devices */
+  .demo-dialog-full-screen {
+    min-height: -webkit-fill-available;
+    height: -webkit-fill-available;
+  }
+}
+
+.demo-form-field {
+  width: 8rem;
+}

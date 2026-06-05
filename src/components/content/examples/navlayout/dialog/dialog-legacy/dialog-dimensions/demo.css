@@ -1,0 +1,8 @@
+#minMaxDialog {
+  width: 20rem;
+  height: 15rem;
+  min-width: 12rem;
+  max-width: 22rem;
+  min-height: 14rem;
+  max-height: 24rem;
+}

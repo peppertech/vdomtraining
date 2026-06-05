@@ -28,13 +28,6 @@ const panelLegacyItems = [
     Component: PanelPaneloverview,
   },
   {
-    id: "basics",
-    name: "Basics",
-    description: panelPanelbasicsDescription,
-    recipe: panelPanelbasicsRecipe,
-    Component: PanelPanelbasics,
-  },
-  {
     id: "colors",
     name: "Colors",
     description: panelPanelcolorsDescription,
@@ -49,19 +42,12 @@ const panelLegacyItems = [
     Component: PanelPanelshadow,
   },
   {
-    id: "selected",
-    name: "Selected",
-    description: panelPanelselectedDescription,
-    recipe: panelPanelselectedRecipe,
-    Component: PanelPanelselected,
-  },
-  {
-    id: "drag",
-    name: "Drag",
-    description: panelPaneldragDescription,
-    recipe: panelPaneldragRecipe,
-    Component: PanelPaneldrag,
-  },
+    id: "basics",
+    name: "Flex Panel",
+    description: panelPanelbasicsDescription,
+    recipe: panelPanelbasicsRecipe,
+    Component: PanelPanelbasics,
+  }
 ];
 
 export default function PanelLegacyRecipePage() {

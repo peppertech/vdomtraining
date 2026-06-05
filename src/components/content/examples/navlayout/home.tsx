@@ -13,7 +13,7 @@ import {
 
 import AccordionHome from "./accordion/home";
 import ActionCardHome from "./action-card/home";
-import ConveyorBeltHome from "./conveyorbelt/home";
+import ConveyorBeltHome from "./conveyor-belt/home";
 import DialogHome from "./dialog/home";
 import PopupHome from "./popup/home";
 import TabBarHome from "./tabbar/home";

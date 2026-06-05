@@ -6,8 +6,8 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import { Dialog } from "./dialog";
-import { CorePackDialog } from "./core-pack-dialog";
+import DialogLegacyRecipePage from "./dialog-legacy/index";
+import DialogCorePackRecipePage from "./dialog-corepack/index";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -95,9 +95,9 @@ const DialogHome = ({
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <Dialog />;
+        return <DialogLegacyRecipePage />;
       case 2:
-        return <CorePackDialog />;
+        return <DialogCorePackRecipePage />;
       default:
         return null;
     }

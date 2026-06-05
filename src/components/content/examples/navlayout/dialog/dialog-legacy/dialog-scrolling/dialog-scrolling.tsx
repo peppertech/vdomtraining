@@ -1,0 +1,45 @@
+import { h } from 'preact';
+import { ojDialog } from 'ojs/ojdialog';
+import 'ojs/ojdialog';
+import 'ojs/ojbutton';
+import "css!./demo.css";
+
+export const DialogScrolling = () => {
+  const handleOpen = () => {
+      (document.querySelector('#scrollingDialog') as ojDialog).open();
+  };
+
+  const handleOKClose = () => {
+      (document.querySelector('#scrollingDialog') as ojDialog).close();
+  };
+
+  return (
+      <div id="dialogWrapper">
+            <oj-dialog id="scrollingDialog" dialogTitle="Scrolling Dialog">
+                    <div slot="body">
+                              <h5>Dialog with scrolling Content</h5>
+                              <ol>
+                                          <li>Item A</li>
+                                          <li>Item B</li>
+                                          <li>Item C</li>
+                                          <li>Item D</li>
+                                          <li>Item E</li>
+                                          <li>Item F</li>
+                                          <li>Item G</li>
+                                          <li>Item H</li>
+                                          <li>Item I</li>
+                                          <li>Item J</li>
+                                          <li>Item K</li>
+                                          <li>Item L</li>
+                                          <li>Item M</li>
+                                          <li>Item N</li>
+                                      </ol>
+                          </div>
+                    <div slot="footer"><oj-button id="okButton" onojAction={handleOKClose}>OK</oj-button></div>
+                </oj-dialog>
+            <oj-button id="buttonOpener" onojAction={handleOpen}>Open Scrolling Dialog</oj-button>
+        </div>
+    );
+};
+
+export default DialogScrolling;

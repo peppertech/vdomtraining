@@ -1,0 +1,12 @@
+.demo-conveyor-item {
+  display: inline-block;
+}
+
+#contentParentDiv {
+  display: flex;
+}
+
+#contentParentDiv:focus {
+  outline: dotted 1px;
+  outline-offset: 0.188rem;
+}
