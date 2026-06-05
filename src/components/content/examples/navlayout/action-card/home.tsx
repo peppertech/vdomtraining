@@ -130,7 +130,7 @@ const ActionCardHome = ({
     }
 
     onBreadcrumbChange([
-      { label: "Navigation and Layouts", onSelect: onNavigateRootHome },
+      { label: "Layout & Nav", onSelect: onNavigateRootHome },
       { label: "Action Card", onSelect: handleHomeNavigation },
       {
         label: formatCorePackLabel(

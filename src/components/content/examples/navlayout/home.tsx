@@ -257,7 +257,7 @@ const NavLayoutHome = () => {
     nestedBreadcrumbItems ??
     [
       {
-        label: "Navigation and Layouts",
+        label: "Layout & Nav",
         onSelect: handleHomeNavigation,
       },
       {

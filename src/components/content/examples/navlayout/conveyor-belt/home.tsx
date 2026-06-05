@@ -132,7 +132,7 @@ const ConveyorBeltHome = ({
     }
 
     onBreadcrumbChange([
-      { label: "Navigation and Layouts", onSelect: onNavigateRootHome },
+      { label: "Layout & Nav", onSelect: onNavigateRootHome },
       { label: "Conveyor Belt", onSelect: handleHomeNavigation },
       {
         label: formatCorePackLabel(

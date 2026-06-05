@@ -132,7 +132,7 @@ const CollapsibleHome = ({
     }
 
     onBreadcrumbChange([
-      { label: "Navigation and Layouts", onSelect: onNavigateRootHome },
+      { label: "Layout & Nav", onSelect: onNavigateRootHome },
       { label: "Collapsible", onSelect: handleHomeNavigation },
       {
         label: formatCorePackLabel(

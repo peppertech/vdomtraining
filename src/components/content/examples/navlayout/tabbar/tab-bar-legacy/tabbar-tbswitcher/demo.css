@@ -1,0 +1,22 @@
+.demo-tab-content {
+  height: 36.25rem;
+  overflow: auto;
+}
+.demo-edge-top,
+.demo-edge-bottom {
+  flex-direction: column;
+}
+.demo-edge-start .demo-tabbar-container,
+.demo-edge-end .demo-tabbar-container {
+  max-width: 18.75rem;
+  width: 25%;
+}
+.demo-edge-start .demo-switcher-container,
+.demo-edge-end .demo-switcher-container {
+  width: 75%;
+}
+.demo-edge-bottom .demo-tabbar-container,
+.demo-edge-end .demo-tabbar-container {
+  -webkit-order: 1;
+  order: 1;
+}

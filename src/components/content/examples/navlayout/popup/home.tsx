@@ -127,7 +127,7 @@ const PopupHome = ({
     }
 
     onBreadcrumbChange([
-      { label: "Navigation and Layouts", onSelect: onNavigateRootHome },
+      { label: "Layout & Nav", onSelect: onNavigateRootHome },
       { label: "Popup", onSelect: handleHomeNavigation },
       {
         label: formatCorePackLabel(

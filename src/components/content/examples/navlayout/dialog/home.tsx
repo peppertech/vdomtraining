@@ -127,7 +127,7 @@ const DialogHome = ({
     }
 
     onBreadcrumbChange([
-      { label: "Navigation and Layouts", onSelect: onNavigateRootHome },
+      { label: "Layout & Nav", onSelect: onNavigateRootHome },
       { label: "Dialog", onSelect: handleHomeNavigation },
       {
         label: formatCorePackLabel(

@@ -145,7 +145,7 @@ const DrawerHome = ({
     }
 
     onBreadcrumbChange([
-      { label: "Navigation and Layouts", onSelect: onNavigateRootHome },
+      { label: "Layout & Nav", onSelect: onNavigateRootHome },
       { label: "Drawer", onSelect: handleHomeNavigation },
       {
         label: formatCorePackLabel(

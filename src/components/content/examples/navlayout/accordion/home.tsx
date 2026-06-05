@@ -136,7 +136,7 @@ const AccordionHome = ({
     }
 
     onBreadcrumbChange([
-      { label: "Navigation and Layouts", onSelect: onNavigateRootHome },
+      { label: "Layout & Nav", onSelect: onNavigateRootHome },
       { label: "Accordion & Collapsible", onSelect: handleHomeNavigation },
       {
         label: formatCorePackLabel(

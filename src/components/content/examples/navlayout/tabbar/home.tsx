@@ -6,9 +6,9 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import { TabBar } from "./tabbar";
-import { CorePackTabBar } from "./core-pack-tab-bar";
-import { CorePackTabBarMixed } from "./core-pack-tab-bar-mixed";
+import TabBarLegacyRecipePage from "./tab-bar-legacy/index";
+import TabBarCorePackRecipePage from "./tab-bar-corepack/index";
+import TabBarMixedCorePackRecipePage from "./tab-bar-mixed-corepack/index";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -100,11 +100,11 @@ const TabBarHome = ({
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <TabBar />;
+        return <TabBarLegacyRecipePage />;
       case 2:
-        return <CorePackTabBar />;
+        return <TabBarCorePackRecipePage />;
       case 3:
-        return <CorePackTabBarMixed />;
+        return <TabBarMixedCorePackRecipePage />;
       default:
         return null;
     }
@@ -134,7 +134,7 @@ const TabBarHome = ({
     }
 
     onBreadcrumbChange([
-      { label: "Navigation and Layouts", onSelect: onNavigateRootHome },
+      { label: "Layout & Nav", onSelect: onNavigateRootHome },
       { label: "Tab Bar", onSelect: handleHomeNavigation },
       {
         label: formatCorePackLabel(
