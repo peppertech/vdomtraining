@@ -3,6 +3,7 @@ import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojconveyorbelt';
 import 'ojs/ojnavigationlist';
+import 'css!./demo.css';
 
 export const TabbarTboverflow = () => {
   const [selectedItem1, setSelectedItem1] = useState('settings');
@@ -13,7 +14,7 @@ export const TabbarTboverflow = () => {
       new ArrayDataProvider(
         [
           { name: 'Settings', id: 'settings' },
-          { name: 'Very very very long label', id: 'longlabel' },
+          { name: 'Very very  very long label', id: 'longlabel' },
           { name: 'Many more tools', id: 'tools' },
           { name: 'Base', id: 'base' },
           { name: 'Environment', id: 'environment' },
@@ -26,7 +27,8 @@ export const TabbarTboverflow = () => {
       ),
     []
   );
-  const itemTemplateRenderer = (item: any) => <li id={item.data.id}><a href="#">{item.data.name}</a></li>;
+  const conveyorItemTemplateRenderer = (item: any) => <li id={item.data.id}><a href="#">{item.data.name}</a></li>;
+  const overflowItemTemplateRenderer = (item: any) => <li><a href="#">{item.data.name}</a></li>;
 
   return (
     <div id="tabbardemo">
@@ -35,20 +37,20 @@ export const TabbarTboverflow = () => {
           <h2 class="oj-typography-subheading-xs oj-sm-margin-0-bottom">Overflow using conveyor belt</h2>
           <oj-conveyor-belt id="conveyor">
             <oj-tab-bar edge="top" onselectionChanged={(event: any) => setSelectedItem1(event.detail.value)} selection={selectedItem1} data={dataProvider}>
-              <template slot="itemTemplate" render={itemTemplateRenderer} />
+              <template slot="itemTemplate" render={conveyorItemTemplateRenderer} />
             </oj-tab-bar>
           </oj-conveyor-belt>
         </div>
         <div class="oj-flex-item oj-sm-12 demo-tabbar-container oj-sm-padding-10x-bottom oj-sm-padding-2x-horizontal">
           <h2 class="oj-typography-subheading-xs oj-sm-margin-0-bottom">overflow="popup"</h2>
           <oj-tab-bar edge="top" overflow="popup" onselectionChanged={(event: any) => setSelectedItem2(event.detail.value)} selection={selectedItem2} data={dataProvider}>
-            <template slot="itemTemplate" render={itemTemplateRenderer} />
+            <template slot="itemTemplate" render={overflowItemTemplateRenderer} />
           </oj-tab-bar>
         </div>
         <div class="oj-flex-item oj-sm-12 demo-tabbar-container oj-sm-padding-10x-bottom oj-sm-padding-2x-horizontal">
           <h2 class="oj-typography-subheading-xs oj-sm-margin-0-bottom">overflow="popup" and truncation="progressive"</h2>
           <oj-tab-bar edge="top" overflow="popup" onselectionChanged={(event: any) => setSelectedItem4(event.detail.value)} selection={selectedItem4} truncation="progressive" data={dataProvider} id="truncatedOverflowTabBar">
-            <template slot="itemTemplate" render={itemTemplateRenderer} />
+            <template slot="itemTemplate" render={overflowItemTemplateRenderer} />
           </oj-tab-bar>
         </div>
       </div>
