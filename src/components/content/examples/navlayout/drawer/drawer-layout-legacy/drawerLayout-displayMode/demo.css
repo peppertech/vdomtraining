@@ -1,0 +1,35 @@
+.demo-controls {
+  padding-bottom: 1rem;
+}
+
+.demo-oj-button {
+  margin-right: 0.5rem;
+}
+
+.demo-radioset {
+  margin: 0.3rem 0 0 2rem;
+}
+
+.demo-padding {
+  padding: 1rem;
+}
+
+.demo-full-height {
+  height: 100vh;
+}
+
+/*Drawers*/
+.demo-drawer-end {
+  height: 100%;
+}
+
+.demo-drawer-header {
+  display: flex;
+  padding: 0.3rem 1rem 0 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.demo-form-container {
+  width: 350px;
+}

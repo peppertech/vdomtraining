@@ -1,0 +1,10 @@
+.demo-drawer-header {
+  display: flex;
+  padding: 0.3rem 1rem 0 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.demo-form-container {
+  width: 350px;
+}

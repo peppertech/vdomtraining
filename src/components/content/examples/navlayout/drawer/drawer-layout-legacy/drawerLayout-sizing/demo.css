@@ -1,0 +1,54 @@
+#demo-container {
+  min-height: 100vh;
+}
+
+.demo-full-height {
+  height: 100vh;
+}
+
+/*Drawers*/
+#demo-drawer-start {
+  height: 100%;
+}
+
+#demo-drawer-bottom-content {
+  /*
+  DrawerLayout only animates opening and closing.
+  The drawer will adjust its size if runtime changes
+  are made to the content of the drawer, but the
+  app developer is responsible for adding content animations.
+  */
+  transition: height 0.3s ease-out;
+  height: 11rem;
+}
+
+.demo-drawer-width-12 {
+  width: 12rem;
+}
+
+.demo-drawer-width-19 {
+  width: 19rem;
+}
+
+.demo-drawer-width-25 {
+  width: 25rem;
+}
+
+.demo-drawer-width-31 {
+  width: 31rem;
+}
+
+.demo-drawer-width-37 {
+  width: 37rem;
+}
+
+.demo-drawer-header {
+  display: flex;
+  padding: 0.3rem 1rem 0 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.demo-form-container {
+  width: 30rem;
+}

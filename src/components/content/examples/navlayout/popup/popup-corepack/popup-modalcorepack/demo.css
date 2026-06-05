@@ -1,0 +1,17 @@
+
+.demo-popup-body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 25rem;
+}
+
+.demo-popup-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.demo-popup-content {
+  align-self: stretch;
+  overflow: hidden;
+}

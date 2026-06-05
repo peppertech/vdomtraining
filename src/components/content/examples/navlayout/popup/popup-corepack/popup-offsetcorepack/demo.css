@@ -1,0 +1,13 @@
+.demo-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#demo-launcher {
+    margin: 20px 0 130px 17px;
+}
+
+.demo-form {
+    max-width: 400px;
+}

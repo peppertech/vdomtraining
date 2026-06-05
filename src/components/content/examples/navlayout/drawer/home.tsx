@@ -6,10 +6,11 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import DrawerLayoutDemo from "./drawer-layout";
-import DrawerLayoutCorePack from "./drawer-layout-core-pack";
-import DrawerPopupDemo from "./drawer-popup";
-import DrawerPopupCorePack from "./drawer-popup-core-pack";
+import DrawerLayoutLegacyRecipePage from "./drawer-layout-legacy/index";
+import DrawerLayoutCorePackRecipePage from "./drawer-layout-corepack/index";
+import DrawerPopupLegacyRecipePage from "./drawer-popup-legacy/index";
+import DrawerPopupCorePackRecipePage from "./drawer-popup-corepack/index";
+
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -108,13 +109,13 @@ const DrawerHome = ({
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <DrawerLayoutDemo />;
+        return <DrawerLayoutLegacyRecipePage />;
       case 2:
-        return <DrawerLayoutCorePack />;
+        return <DrawerLayoutCorePackRecipePage />;
       case 3:
-        return <DrawerPopupDemo />;
+        return <DrawerPopupLegacyRecipePage />;
       case 4:
-        return <DrawerPopupCorePack />;
+        return <DrawerPopupCorePackRecipePage />;
       default:
         return null;
     }

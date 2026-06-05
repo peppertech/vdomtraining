@@ -1,0 +1,44 @@
+.demo-drawer-header {
+  display: flex;
+  padding: 0.3rem 1rem 0 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*
+  DrawerPopup only animates opening and closing.
+  The drawer will adjust its size if runtime changes
+  are made to the content of the drawer, but the
+  app developer is responsible for adding content animations.
+  */
+#demo-start-drawer-content {
+  transition: width 0.3s ease-out;
+}
+
+.demo-start-drawer-width-min {
+  width: 320px;
+}
+
+.demo-start-drawer-width-50vw {
+  width: 50vw;
+}
+
+.demo-start-drawer-width-max {
+  width: 90vw;
+}
+
+#demo-bottom-drawer-content {
+  transition: height 0.3s ease-out;
+}
+
+.demo-bottom-drawer-height-10rem {
+  height: 10rem;
+}
+
+.demo-bottom-drawer-height-20rem {
+  height: 20rem;
+}
+
+.demo-bottom-drawer-height-80vh {
+  height: 80vh;
+}

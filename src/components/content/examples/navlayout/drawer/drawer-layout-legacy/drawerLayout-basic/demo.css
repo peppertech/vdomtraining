@@ -1,0 +1,24 @@
+.demo-controls {
+  padding-bottom: 1rem;
+}
+
+.demo-padding {
+  padding: 1rem;
+}
+
+.demo-full-height {
+  height: 100vh;
+}
+
+/*Drawers*/
+.demo-drawer-start {
+  min-width: 12.5rem;
+  height: 100%;
+}
+
+.demo-drawer-header {
+  display: flex;
+  padding: 0.3rem 1rem 0 1rem;
+  justify-content: space-between;
+  align-items: center;
+}

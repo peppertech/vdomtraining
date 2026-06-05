@@ -6,8 +6,8 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import { Popup } from "./popup";
-import { CorePackPopup } from "./core-pack-popup";
+import PopupLegacyRecipePage from "./popup-legacy/index";
+import PopupCorePackRecipePage from "./popup-corepack/index";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -95,9 +95,9 @@ const PopupHome = ({
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <Popup />;
+        return <PopupLegacyRecipePage />;
       case 2:
-        return <CorePackPopup />;
+        return <PopupCorePackRecipePage />;
       default:
         return null;
     }

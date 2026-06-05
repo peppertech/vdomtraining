@@ -1,0 +1,18 @@
+.demo-wrapper {
+  width: 500px;
+  margin: 50px auto;
+}
+
+.demo-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.demo-flex-column {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.demo-button {
+  width: 150px;
+}
