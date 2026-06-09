@@ -25,12 +25,15 @@ export const streamListStreamlistRecipe = (
       </li>
       <li>
         The main CCA shown here is the
+        {" "}
         <code>demo-activity-stream-item</code>
         , which can be slotted into the itemTemplate.
       </li>
       <li>
         The
+        {" "}
         <code>demo-activity-stream-item</code>
+        {" "}
         in particular, shows how actions within a CCA can be communicated and handled by the application
         through custom events.
       </li>

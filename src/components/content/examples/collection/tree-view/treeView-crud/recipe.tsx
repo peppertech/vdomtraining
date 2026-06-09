@@ -6,9 +6,13 @@ export const treeViewCrudRecipe = (
     <ol>
       <li>
         Construct an
+        {" "}
         <code>MutableArrayTreeDataProvider</code>
+        {" "}
         as shown. Make sure to specify the
+        {" "}
         <code>keyAttributes</code>
+        {" "}
         " option.
       </li>
       <li>
@@ -22,9 +26,13 @@ export const treeViewCrudRecipe = (
       <li>Create 'Add Sibling', 'Add Child', 'Remove', and 'Update' buttons to update the tree.</li>
       <li>
         <code>mutate</code>
+        {" "}
         event will be triggered whenever data is changed. Call
+        {" "}
         <code>valueHasMutated</code>
+        {" "}
         will trigger the event
+        {" "}
         <code>refresh</code>
         .
       </li>

@@ -7,13 +7,18 @@ export const rowExpanderTableTablePerformanceRowExpanderRecipe = (
       <li>Create an oj-table with Row Expander (See Table with Row Expander Demo).</li>
       <li>
         In your JavaScript read data from a JSON file. Create a
+        {" "}
         <code>ArrayTreeDataProvider</code>
+        {" "}
         with the data.
       </li>
       <li>
         Wrap your
+        {" "}
         <code>ArrayTreeDataProvider</code>
+        {" "}
         with a
+        {" "}
         <code>FlattenedTreeDataProviderView</code>
         .
       </li>

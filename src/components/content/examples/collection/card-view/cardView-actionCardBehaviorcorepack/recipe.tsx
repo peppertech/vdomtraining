@@ -12,8 +12,7 @@ const recipeHtmlText = String.raw`<ul>
       Create an
       <code class="prettyprint">oj-c-action-card</code>
       element inside the
-      <code>template</code>
-      .
+      <code>template</code>.
     </li>
     <li>
       Create a function to handle the action event.

@@ -11,13 +11,16 @@ export const listViewCollectionListViewDescription = (
     <ul>
       <li>
         Request transform appends paging parameters (
+        {" "}
         <code>limit</code>
         ,
         <code>offset</code>
+        {" "}
         ) to the URL so the backend returns the next slice of results.
       </li>
       <li>
         Response transform parses the mock server response into
+        {" "}
         <code>{'{'} data, totalSize, hasMore {'}'}</code>
         , which oj-list-view uses to render items and to know whether more data is available.
       </li>
@@ -25,7 +28,9 @@ export const listViewCollectionListViewDescription = (
     <p>
       For demo purposes only, a MockFetchServer provides the tweets dataset. In a real application,
       configure
+      {" "}
       <code>url</code>
+      {" "}
       to point to your REST endpoint.
     </p>
   </>

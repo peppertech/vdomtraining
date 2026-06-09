@@ -17,8 +17,7 @@ const recipeHtmlText = String.raw`<ul>
     Bind the
     <code>gridlines</code>
     attribute to the
-    <code>Gridline</code>
-    .
+    <code>Gridline</code>.
   </li>
 </ul>`;
 

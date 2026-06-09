@@ -9,13 +9,17 @@ export const treeViewDndReorderRecipe = (
       </li>
       <li>
         Create a nested observable array structure (called
+        {" "}
         <code>observableArrayTree</code>
+        {" "}
         in this demo) using data from a local JSON
       </li>
       <li>
         Construct a ArrayTreeDataProvider using the ObservableArrayTree, and specify the data source
         through the
+        {" "}
         <b><i>data</i></b>
+        {" "}
         attribute. Refer to the API doc for details on how to specify a JSON tree definition.
       </li>
       <li>Use the dragEnd and drop attributes to register a dragEnd and drop event callback.</li>

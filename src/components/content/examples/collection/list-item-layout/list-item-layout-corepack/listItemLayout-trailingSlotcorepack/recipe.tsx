@@ -4,8 +4,7 @@ const recipeHtmlText = String.raw`<ol>
   <li>The sample shows how to render trailing slot contents within a oj-c-list-item-layout tag.</li>
   <li>
     Trailing slot can have icon, image or
-    <a href="#" onclick="demoGoLink(event, 'badge', 'overview'); return false;">badge</a>
-    .
+    <a href="#" onclick="demoGoLink(event, 'badge', 'overview'); return false;">badge</a>.
   </li>
   <li>Use the selector slot for selector component and metadata slot for extra content.</li>
   <li>

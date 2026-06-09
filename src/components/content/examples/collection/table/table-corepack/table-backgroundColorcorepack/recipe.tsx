@@ -13,8 +13,7 @@ const recipeHtmlText = String.raw`<ol>
     If an application uses any background color class demonstrated in the
     <a href="#" onclick="demoGoLink(event, 'colors', 'bgcolors'); return false;">
       background color demo
-    </a>
-    , then the table will automatically pick up that background color.
+    </a>, then the table will automatically pick up that background color.
   </li>
   <li>
     If an application uses any other background color, then the table's background color can be set using

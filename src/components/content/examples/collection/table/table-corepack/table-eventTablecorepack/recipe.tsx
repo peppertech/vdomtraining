@@ -12,8 +12,7 @@ const recipeHtmlText = String.raw`<ul>
     Register event listeners
     <code class="prettyprint">on-selected-changed</code>
     and
-    <code class="prettyprint">oj-row-action</code>
-    .
+    <code class="prettyprint">oj-row-action</code>.
   </li>
 </ul>`;
 

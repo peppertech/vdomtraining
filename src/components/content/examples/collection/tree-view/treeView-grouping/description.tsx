@@ -14,29 +14,45 @@ export const treeViewGroupingDescription = (
     <ol>
       <li>
         Drag
+        {" "}
         <strong>2023_Q1_Feb</strong>
+        {" "}
         between
+        {" "}
         <strong>2023_Q1_Jan</strong>
+        {" "}
         and
+        {" "}
         <strong>2023_Q1_Mar</strong>
         . This action will merge all three nodes under a single
+        {" "}
         <strong>2023_Q1</strong>
+        {" "}
         group.
       </li>
       <li>
         Drag
+        {" "}
         <strong>2023_Q1_Feb</strong>
+        {" "}
         back between
+        {" "}
         <strong>2023_Q2_May</strong>
+        {" "}
         and
+        {" "}
         <strong>2023_Q2_Jun</strong>
         . This will split the
+        {" "}
         <strong>2023_Q2</strong>
+        {" "}
         group into two separate groups: one for
+        {" "}
         <strong>2023_Q2_Apr</strong>
         ,{' '}
         <strong>2023_Q2_May</strong>
         , and one for
+        {" "}
         <strong>2023_Q2_Jun</strong>
         .
       </li>

@@ -13,24 +13,34 @@ export const tableExternalScrollTableDescription = (
       <li>To specify the HTML body itself, set 'html' as the scroller element. (Most common on mobile devices).</li>
       <li>
         The Table
+        {" "}
         <b>must not</b>
+        {" "}
         have a constrained height or width. It can have minimum sizes specified, but nothing that prevents it from growing in size in either direction.
       </li>
       <li>
         The scroller element specified
+        {" "}
         <b>must</b>
+        {" "}
         have horizontal
+        {" "}
         <b>AND</b>
+        {" "}
         vertical scrolling enabled (ie. overflow: 'auto').
       </li>
       <li>
         The scroller element
+        {" "}
         <b>must</b>
+        {" "}
         be an ancestor of the Table at some level in the DOM tree.
       </li>
       <li>
         No other elements between the Table and scroller element can manage overflow. They
+        {" "}
         <b>all must have</b>
+        {" "}
         overflow: 'visible' (which is the default value for an element). Otherwise, the Table's 'sticky' elements will not 'stick' to the correct element bounds.
       </li>
     </ul>

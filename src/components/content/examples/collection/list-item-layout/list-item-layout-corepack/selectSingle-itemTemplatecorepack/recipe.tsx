@@ -12,8 +12,7 @@ const recipeHtmlText = String.raw`<ul>
     in the
     <code class="prettyprint">itemTemplate</code>
     slot of the
-    <code class="prettyprint">oj-c-select-single</code>
-    .
+    <code class="prettyprint">oj-c-select-single</code>.
   </li>
   <li>
     Use
@@ -32,8 +31,7 @@ const recipeHtmlText = String.raw`<ul>
     value of the
     <code class="prettyprint">item-text</code>
     attribute of the
-    <code class="prettyprint">oj-c-select-single</code>
-    .
+    <code class="prettyprint">oj-c-select-single</code>.
   </li>
 </ul>`;
 

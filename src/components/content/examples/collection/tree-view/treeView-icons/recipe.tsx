@@ -15,6 +15,7 @@ export const treeViewIconsRecipe = (
       </li>
       <li>
         Pass the desired tree view icon type directly either through the static HTML or through the
+        {" "}
         <a href={"/jsdocs/oj.ojTreeView.html#item.renderer"}>item.renderer</a>
         .
       </li>

@@ -9,7 +9,9 @@ export const dataGridAlignmentRecipe = (
       </li>
       <li>
         Create a class that implements the
+        {" "}
         <a href={"/jsdocs/DataGridProvider.html"}>DataGridProvider</a>
+        {" "}
         interface and set that on the oj-data-grid's data attribute and apply bindings to the grid.
       </li>
       <li>

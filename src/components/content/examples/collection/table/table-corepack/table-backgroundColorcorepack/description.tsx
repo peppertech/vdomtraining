@@ -5,8 +5,7 @@ const descriptionHtmlText = String.raw`<p>A table displays data items in a tabul
   If an application uses any background color classes for table's container specified in the
   <a href="#" onclick="demoGoLink(event, 'colors', 'bgcolors'); return false;">
     background color demo
-  </a>
-  , then the table will pick up that background color automatically. If a
+  </a>, then the table will pick up that background color automatically. If a
   different background color is desired, one can be set using the --oj-current-bg-color CSS
   variable.
 </p>`;

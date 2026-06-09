@@ -19,8 +19,7 @@ const recipeHtmlText = String.raw`<ul>
       Bind the
       <code>data</code>
       attribute to the
-      <code>MutableArrayDataProvider</code>
-      .
+      <code>MutableArrayDataProvider</code>.
     </li>
     <li>
       Specify the card and its content in the itemTemplate slot.

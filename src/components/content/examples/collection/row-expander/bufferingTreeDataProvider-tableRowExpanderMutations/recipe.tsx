@@ -7,27 +7,38 @@ export const bufferingTreeDataProviderTableRowExpanderMutationsRecipe = (
       <li>Create an oj-table and assign it a meaningful ID.</li>
       <li>
         Create a nested observable array structure (called
+        {" "}
         <code>observableArrayTree</code>
+        {" "}
         in this demo) using data from a local JSON.
       </li>
       <li>
         Construct a ArrayTreeDataProvider using the ObservableArrayTree, and specify the data source
         through the
+        {" "}
         <b><i>data</i></b>
+        {" "}
         attribute. Refer to the API doc for details on how to specify a JSON tree definition.
       </li>
       <li>
         Wrap your
+        {" "}
         <code>ArrayTreeDataProvider</code>
+        {" "}
         with a
+        {" "}
         <code>BufferingTreeDataProvider</code>
         .
       </li>
       <li>
         Wrap your
+        {" "}
         <code>BufferingTreeDataProvider</code>
+        {" "}
         with a
+        {" "}
         <code>FlattenedTreeDataProviderView</code>
+        {" "}
         and feed that to the table implementation.
       </li>
       <li>

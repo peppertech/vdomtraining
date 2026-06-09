@@ -11,7 +11,9 @@ export const tableActionTableRecipe = (
       <li>Set the data-oj-clickthrough attribute on the oj-button to "disabled" to prevent clicks from affecting the Table's selection state.</li>
       <li>
         To freeze the action column set
+        {" "}
         <code>frozenEdge</code>
+        {" "}
         attribute to 'all'.
       </li>
       <li>

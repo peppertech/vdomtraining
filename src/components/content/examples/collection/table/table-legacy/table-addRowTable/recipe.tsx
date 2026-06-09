@@ -12,9 +12,13 @@ export const tableAddRowTableRecipe = (
       <li>
         <b>Note</b>
         : Class
+        {" "}
         <code>oj-bg-body</code>
+        {" "}
         is added to set the table background color. See the
+        {" "}
         <a href={"#"}>background demo</a>
+        {" "}
         for more info.
       </li>
       <li>If asynchronous edit or add row functionality is desired, pass a Promise to the "accept" method of the beforeRowEdit, beforeRowEditEnd, and beforeAddRow events' detail. The Table will display a loading indicator while waiting for the Promise to resolve or be rejected.</li>

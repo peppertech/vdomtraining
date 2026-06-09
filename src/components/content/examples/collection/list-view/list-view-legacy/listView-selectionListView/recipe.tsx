@@ -17,17 +17,23 @@ export const listViewSelectionListViewRecipe = (
       <li>Use the oj-selector and associated its selected-keys to the selected KeySet in ListView.</li>
       <li>
         Use the
+        {" "}
         <code className={"prettyprint"}>selection-mode</code>
+        {" "}
         attribute to enable multi-selection.
       </li>
       <li>
         Bind the
+        {" "}
         <code className={"prettyprint"}>selected</code>
+        {" "}
         attribute to an observable keyset to monitor current selection.
       </li>
       <li>
         Use the
+        {" "}
         <code className={"prettyprint"}>first-selected-item</code>
+        {" "}
         attribute to track the first selected item.
       </li>
       <li>
@@ -40,6 +46,7 @@ export const listViewSelectionListViewRecipe = (
       </li>
       <li>
         To get data from selected rows use fetchByKeys on the dataprovder as shown in the
+        {" "}
         <a href={"#"}>
           data provider demo.
         </a>
@@ -47,9 +54,11 @@ export const listViewSelectionListViewRecipe = (
     </ol>
     <p>
       Refer
+      {" "}
       <a href={"#"}>
         demos
       </a>
+      {" "}
       for more Data Provider usage.
     </p>
   </>

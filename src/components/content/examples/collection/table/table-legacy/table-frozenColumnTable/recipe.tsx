@@ -8,6 +8,7 @@ export const tableFrozenColumnTableRecipe = (
       <li>See the API doc for details on how to specify the columns to display as well as other configuration options on ArrayDataProvider.</li>
       <li>
         To freeze a column, set the columns[].frozenEdge property to
+        {" "}
         <code>all</code>
         .
       </li>

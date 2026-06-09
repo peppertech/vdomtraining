@@ -6,14 +6,19 @@ export const tableFilteringTableRecipe = (
     <ol>
       <li>
         Create a ListDataProviderView. To create an observable for totalFilteredRowCount set
+        {" "}
         <code>includeFilteredRowCount</code>
+        {" "}
         option to
+        {" "}
         <code>enabled</code>
         .
       </li>
       <li>
         Setup observable for filtered row count using
+        {" "}
         <code>getTotalFilteredRowCountObservable</code>
+        {" "}
         method as shown.
       </li>
       <li>Define an oj-input-text in your HTML for the filter.</li>
@@ -27,7 +32,9 @@ export const tableFilteringTableRecipe = (
     </ol>
     <p>
       Refer
+      {" "}
       <a href={"#"}>demos</a>
+      {" "}
       for more Data Provider usage.
     </p>
   </>

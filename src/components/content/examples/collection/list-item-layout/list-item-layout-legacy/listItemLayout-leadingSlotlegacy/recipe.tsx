@@ -6,10 +6,8 @@ const recipeHtmlText = String.raw`<ol>
   </li>
   <li>
     Leading slot can have icon, image,
-    <a href="#" onclick="demoGoLink(event, 'avatar', 'overview'); return false;">avatar</a>
-    ,
-    <a href="#" onclick="demoGoLink(event, 'badge', 'overview'); return false;">badge</a>
-    .
+    <a href="#" onclick="demoGoLink(event, 'avatar', 'overview'); return false;">avatar</a>,
+    <a href="#" onclick="demoGoLink(event, 'badge', 'overview'); return false;">badge</a>.
   </li>
   <li>
     Look at the demos

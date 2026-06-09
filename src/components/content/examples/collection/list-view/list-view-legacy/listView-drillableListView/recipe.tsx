@@ -11,7 +11,9 @@ export const listViewDrillableListViewRecipe = (
       <li>
         Use oj-listview-drill-icon class to render the drill icon. Use flex bar to position the icon as
         desired. See
+        {" "}
         <a href={"#"}>flex bar demo</a>
+        {" "}
         for details.
       </li>
       <li>Use the on-oj-item-action attribute to register an item action listener.</li>
@@ -23,9 +25,11 @@ export const listViewDrillableListViewRecipe = (
       <li>
         Also note that this demo primarily demonstrates the use of the drill icon. Module animation
         should be use to transition between views. See
+        {" "}
         <a href={"#"}>
           module animation demo
         </a>
+        {" "}
         for details.
       </li>
     </ol>

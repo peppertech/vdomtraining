@@ -9,13 +9,17 @@ export const tableEditableFormTableRecipe = (
       <li>Create an editable Table.</li>
       <li>
         To disable certain editable items use the:
+        {" "}
         <code>row.editable</code>
+        {" "}
         API and bind that to a function in your ViewModel.
       </li>
       <li>Using rowTemplate customize the row to have form-layout in edit mode.</li>
       <li>
         Add
+        {" "}
         <code>oj-form-control-default</code>
+        {" "}
         class to the cell containing oj-form-layout.
       </li>
       <li>Bind BufferingDataProvider to the "data" attribute of the Table.</li>

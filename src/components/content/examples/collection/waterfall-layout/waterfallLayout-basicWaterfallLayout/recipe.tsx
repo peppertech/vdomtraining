@@ -17,9 +17,11 @@ export const waterfallLayoutBasicWaterfallLayoutRecipe = (
     </ol>
     <p>
       Refer
+      {" "}
       <a href={"#"}>
         demos
       </a>
+      {" "}
       for more Data Provider usage.
     </p>
   </>

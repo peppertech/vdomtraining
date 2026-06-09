@@ -7,14 +7,20 @@ export const rowExpanderTableExpandedRowExpanderRecipe = (
       <li>Create an oj-table and assign it a meaningful ID.</li>
       <li>
         In your JavaScript read data from a JSON file. Create a
+        {" "}
         <code>ArrayTreeDataProvider</code>
+        {" "}
         with the data.
       </li>
       <li>
         Wrap your
+        {" "}
         <code>ArrayTreeDataProvider</code>
+        {" "}
         with a
+        {" "}
         <code>FlattenedTreeDataProviderView</code>
+        {" "}
         and feed that to the table implementation.
       </li>
       <li>

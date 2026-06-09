@@ -11,6 +11,7 @@ export const tableSelectionTableRecipe = (
       <li>Register an event handler for 'selectedChanged' event.</li>
       <li>
         To get data from selected rows use fetchByKeys on the dataprovder as shown in the
+        {" "}
         <a href={"#"}>data provider demo.</a>
       </li>
     </ol>

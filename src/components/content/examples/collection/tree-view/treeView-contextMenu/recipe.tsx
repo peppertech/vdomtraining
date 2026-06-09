@@ -10,7 +10,9 @@ export const treeViewContextMenuRecipe = (
       <li>Specifies a slot attribute with value 'contextMenu' on the oj-menu element.</li>
       <li>
         Use the
+        {" "}
         <code>getContextByNode</code>
+        {" "}
         method to determine the object that triggered the context menu. The structure of the returned
         context object is described in the
         {' '}
@@ -18,12 +20,15 @@ export const treeViewContextMenuRecipe = (
       </li>
       <li>
         Store the key returned by
+        {" "}
         <code>getContextByNode</code>
         .
       </li>
       <li>
         Call
+        {" "}
         <code>fetchByKeys</code>
+        {" "}
         to get the data relevant to that key.
       </li>
     </ul>

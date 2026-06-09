@@ -6,9 +6,13 @@ export const tableEventTableRecipe = (
     <ol>
       <li>
         In view, create table using
+        {" "}
         <code>oj-table</code>
+        {" "}
         element and add
+        {" "}
         <code>oj-text-area</code>
+        {" "}
         to print the details of the events.
       </li>
       <li>In view model, define event handlers for events which you are interested in.</li>

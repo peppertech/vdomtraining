@@ -7,12 +7,15 @@ export const streamListPerformanceRecipe = (
       <li>Create a oj-streamlist element and assign it a meaningful ID and specify properties.</li>
       <li>
         Construct a ArrayTreeDataProvider data, and specify the data source through the
+        {" "}
         <b><i>data</i></b>
+        {" "}
         attribute.
       </li>
       <li>Use the keySet to switch between collapsed and expanded mode.</li>
       <li>
         Override the default scrollPolicy using
+        {" "}
         <code>scroll-policy</code>
       </li>
       <li>

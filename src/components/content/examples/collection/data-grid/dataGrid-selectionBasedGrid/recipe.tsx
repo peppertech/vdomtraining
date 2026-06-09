@@ -10,7 +10,9 @@ export const dataGridSelectionBasedGridRecipe = (
       <li>Specify the appropriate attributes on the oj-data-grid elements.</li>
       <li>
         Create a class that implements the
+        {" "}
         <a href={"jsdocs/DataGridProvider.html"}>DataGridProvider</a>
+        {" "}
         interface and set an instance of that class on the oj-data-grid's data attribute and apply
         bindings to the grid.
       </li>

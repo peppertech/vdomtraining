@@ -6,31 +6,43 @@ export const treeViewCrudDescription = (
     <p>This demo shows what events and user should expect when data is changing.</p>
     <p>
       <code>addEventListener</code>
+      {" "}
       and
+      {" "}
       <code>removeEventListener</code>
+      {" "}
       are two events related methods.
     </p>
     <ul>
       <li>
         <code>addEventListener</code>
+        {" "}
         adds a callback function to listen for a specific event type.
       </li>
       <li>
         <code>removeEventListener</code>
+        {" "}
         removes a listener previously registered with addEventListener.
       </li>
     </ul>
     <p>
       Events
+      {" "}
       <code>mutate</code>
+      {" "}
       and
+      {" "}
       <code>refresh</code>
+      {" "}
       are used to demonstrate the usage of the above two methods.
     </p>
     <p>
       <code>update</code>
+      {" "}
       and
+      {" "}
       <code>refresh</code>
+      {" "}
       events will be fired according to following situations.
     </p>
     <p>
