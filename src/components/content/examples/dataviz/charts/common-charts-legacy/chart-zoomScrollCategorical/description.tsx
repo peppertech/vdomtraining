@@ -16,9 +16,13 @@ export const chartZoomScrollCategoricalDescription = (
     </ul>
     <p>
       Use the toggle buttons on the left to choose either the
+      {" "}
       <b>simple</b>
+      {" "}
       or the
+      {" "}
       <b>overview</b>
+      {" "}
       scrollbar. The overview scrollbar displays an overview of the entire dataset, and you can interact
       with it with the following gestures:
     </p>
@@ -28,12 +32,14 @@ export const chartZoomScrollCategoricalDescription = (
     </ul>
     <p>
       Use the toggle buttons on the center to enable or disable
+      {" "}
       <b>zooming</b>
       . Disabling zooming is useful when one wants to show a constant viewport size, such as one day or
       one week.
     </p>
     <p>
       Use the toggle buttons on the right to set the
+      {" "}
       <b>initial zooming</b>
       . The feature lets the chart automatically zoom into the first or the last data points that can
       fit inside the viewport during the initial render. It ensures that the chart initially displays as

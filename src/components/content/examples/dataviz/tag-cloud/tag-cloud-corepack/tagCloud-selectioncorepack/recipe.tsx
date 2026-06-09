@@ -5,12 +5,9 @@ const recipeHtmlText = String.raw`<ul>
       Set the
       <i><b>selection-mode</b></i>
       attribute to either
-      <i>'none'</i>
-      ,
-      <i>'single'</i>
-      , or
-      <i>'multiple'</i>
-      .
+      <i>'none'</i>,
+      <i>'single'</i>, or
+      <i>'multiple'</i>.
     </li>
     <li>
       Initialize selected items by passing them to the
@@ -24,8 +21,7 @@ const recipeHtmlText = String.raw`<ul>
       attribute to a selection listener.
     </li>
     <li>
-      <b>Accessibility</b>
-      : The application is responsible for populating the
+      <b>Accessibility</b>: The application is responsible for populating the
       <i><b>short-desc</b></i>
       attribute of the items with meaningful descriptors. When setting color, applications are responsible for making sure that the color meets the 
       <a href="https://www.w3.org/TR/WCAG21/#contrast-minimum">minimum contrast ratio</a>.

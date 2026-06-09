@@ -11,6 +11,7 @@ export const pictoChartPerformanceDescription = (
     <ul>
       <li>
         <b>Animation:</b>
+        {" "}
         When using large data sets, consider disabling data change animation altogether.
       </li>
     </ul>

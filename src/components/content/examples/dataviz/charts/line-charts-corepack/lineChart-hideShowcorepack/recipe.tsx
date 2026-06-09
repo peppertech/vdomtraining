@@ -5,12 +5,9 @@ const recipeHtmlText = String.raw`<ol>
     Set
     <i><b>hide-and-show-behavior</b></i>
     as either
-    <i>'none'</i>
-    ,
-    <i>'withRescale'</i>
-    , or
-    <i>'withoutRescale'</i>
-    .
+    <i>'none'</i>,
+    <i>'withRescale'</i>, or
+    <i>'withoutRescale'</i>.
   </li>
   <li>
     Initially hide a series by adding the series category to the

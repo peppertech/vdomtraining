@@ -7,22 +7,32 @@ export const timelineSelectionDescription = (
     <ul>
       <li>
         By default,
+        {" "}
         <i><b>selection-mode</b></i>
+        {" "}
         is set to
+        {" "}
         <i>'none'</i>
+        {" "}
         and is disabled.
       </li>
       <li>
         When
+        {" "}
         <i><b>selection-mode</b></i>
+        {" "}
         is set to
+        {" "}
         <i>'single'</i>
         , only one data item can be selected at a time.
       </li>
       <li>
         When
+        {" "}
         <i><b>selection-mode</b></i>
+        {" "}
         is set to
+        {" "}
         <i>'multiple'</i>
         , multiple data items can be selected at the same time. In this mode, you can perform selection
         by holding the Ctrl key while clicking on multiple items (the Ctrl key is not needed on touch

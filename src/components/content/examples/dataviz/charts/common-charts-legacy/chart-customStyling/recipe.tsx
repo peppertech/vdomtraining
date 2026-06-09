@@ -10,7 +10,9 @@ export const chartCustomStylingRecipe = (
     </p>
     <p>
       See the
+      {" "}
       <a href={"jsdocs/CssVariablesOverview.html"}>JET CSS variables</a>
+      {" "}
       doc for more information about the CSS Variables available in JET.
     </p>
   </>

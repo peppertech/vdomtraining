@@ -9,12 +9,10 @@ const descriptionHtmlText = String.raw`<p>Rating gauges are typically used to di
   <li>Rating gauge can be readonly, disabled or editable.</li>
   <li>
     Standard size for rating gauge are
-    <i>sm</i>
-    ,
+    <i>sm</i>,
     <i>md</i>
     and
-    <i>lg</i>
-    .
+    <i>lg</i>.
   </li>
   <li>
     Additional information can be displayed using tooltips for read only rating gauges or datatips interactive rating gauges.

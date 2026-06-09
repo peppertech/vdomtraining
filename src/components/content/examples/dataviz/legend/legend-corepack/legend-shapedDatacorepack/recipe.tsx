@@ -9,8 +9,7 @@ const recipeHtmlText = String.raw`<ol>
   <li>
     The data supplied to the DataProvider should be of shape modeled in the demo.ts of this demo. To see the full list of supported apis in items see
     <a target="_blank" href="jsdocs/oj-c.LegendItem.html">oj-c-legend-item</a> and for section see
-    <a target="_blank" href="jsdocs/oj-c.LegendSection.html">oj-c-legend-section</a>
-    .
+    <a target="_blank" href="jsdocs/oj-c.LegendSection.html">oj-c-legend-section</a>.
   </li>
 </ol>`;
 

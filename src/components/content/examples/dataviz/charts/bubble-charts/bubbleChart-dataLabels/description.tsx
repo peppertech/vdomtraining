@@ -7,13 +7,17 @@ export const bubbleChartDataLabelsDescription = (
     <ul>
       <li>
         Setting the label's position to
+        {" "}
         <i>'auto'</i>
+        {" "}
         will act as
+        {" "}
         <i>'center'</i>
         .
       </li>
       <li>
         Valid label position values on bubble charts are
+        {" "}
         <i>'auto'</i>
         ,
         <i>'center'</i>
@@ -24,6 +28,7 @@ export const bubbleChartDataLabelsDescription = (
         ,
         <i>'beforeMarker'</i>
         ,and
+        {" "}
         <i>'afterMarker'</i>
         .
       </li>

@@ -7,11 +7,17 @@ export const pictoChartAnimationDescription = (
     <ul>
       <li>
         By default,
+        {" "}
         <i><b>animation-on-display</b></i>
+        {" "}
         and
+        {" "}
         <i><b>animation-on-data-change</b></i>
+        {" "}
         set to
+        {" "}
         <i>'none'</i>
+        {" "}
         and disabled.
       </li>
     </ul>

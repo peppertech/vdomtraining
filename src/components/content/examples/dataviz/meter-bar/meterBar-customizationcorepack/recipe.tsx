@@ -23,8 +23,7 @@ const recipeHtmlText = String.raw`<ol>
   </li>
   <li>
     <b>Accessibility</b> : If you are using indicatorColor, applications are responsible for making sure that the color meets the 
-    <a href="https://www.w3.org/TR/WCAG21/#contrast-minimum">minimum contrast ratio</a>
-    .
+    <a href="https://www.w3.org/TR/WCAG21/#contrast-minimum">minimum contrast ratio</a>.
   </li>
 </ol>`;
 

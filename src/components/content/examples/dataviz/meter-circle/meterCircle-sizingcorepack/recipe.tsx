@@ -3,8 +3,7 @@ import { h } from "preact";
 const recipeHtmlText = String.raw`<ul>
     <li>
       Create an oj-c-meter-circle element with a defined
-      <i><b>min</b></i>
-      ,
+      <i><b>min</b></i>,
       <i><b>max</b></i>
       and/or
       <i><b>value</b></i>
@@ -24,12 +23,9 @@ const recipeHtmlText = String.raw`<ul>
       Choose one of the theme specified size of the meter circle by setting the
       <i><b>size</b></i>
       attribute to
-      <b><i>sm</i></b>
-      ,
-      <b><i>md</i></b>
-      , or
-      <b><i>lg</i></b>
-      .
+      <b><i>sm</i></b>,
+      <b><i>md</i></b>, or
+      <b><i>lg</i></b>.
     </li>
   </ul>`;
 

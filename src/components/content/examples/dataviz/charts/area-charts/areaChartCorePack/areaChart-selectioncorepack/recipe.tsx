@@ -5,12 +5,9 @@ const recipeHtmlText = String.raw`<ol>
     Set
     <i><b>selection-mode</b></i>
     to either
-    <i>'none'</i>
-    ,
-    <i>'single'</i>
-    , or
-    <i>'multiple'</i>
-    .
+    <i>'none'</i>,
+    <i>'single'</i>, or
+    <i>'multiple'</i>.
   </li>
   <li>
     Initially select data items by passing them to the

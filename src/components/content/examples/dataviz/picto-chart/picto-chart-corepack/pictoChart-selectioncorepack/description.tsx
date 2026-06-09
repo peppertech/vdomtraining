@@ -14,15 +14,13 @@ const descriptionHtmlText = String.raw`<p>A picto chart is an interactive data v
     When
     <i><b>selection-mode</b></i>
     is set to
-    <i>'single'</i>
-    , only one data item can be selected at a time.
+    <i>'single'</i>, only one data item can be selected at a time.
   </li>
   <li>
     When
     <i><b>selection-mode</b></i>
     is set to
-    <i>'multiple'</i>
-    , selection of more than one item at a time is enabled. On desktop, select multiple items by
+    <i>'multiple'</i>, selection of more than one item at a time is enabled. On desktop, select multiple items by
     holding the Ctrl key.
   </li>
 </ul>`;

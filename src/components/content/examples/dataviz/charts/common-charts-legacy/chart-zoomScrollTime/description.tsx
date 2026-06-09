@@ -16,9 +16,13 @@ export const chartZoomScrollTimeDescription = (
     </ul>
     <p>
       Use the toggle buttons on the left to choose either the
+      {" "}
       <b>simple</b>
+      {" "}
       or the
+      {" "}
       <b>overview</b>
+      {" "}
       scrollbar. The overview scrollbar displays an overview of the entire dataset, and you can interact
       with it with the following gestures:
     </p>

@@ -6,8 +6,7 @@ const recipeHtmlText = String.raw`<ul>
     To help with layout for a similar display, consider using the
     <i>oj-flex</i>
     style classes in Flex Layout or
-    <i>oj-table</i>
-    .
+    <i>oj-table</i>.
   </li>
 </ul>`;
 

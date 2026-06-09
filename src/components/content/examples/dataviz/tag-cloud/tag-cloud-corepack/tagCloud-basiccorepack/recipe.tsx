@@ -20,8 +20,7 @@ const recipeHtmlText = String.raw`<ul>
     child element. For more details, see
     <a target="_blank" href="jsdocs/oj-c.TagCloud.html#itemTemplate">itemTemplate</a>
     and
-    <a target="_blank" href="jsdocs/oj-c.TagCloudItem.html">oj-c-tag-cloud-item</a>
-    .
+    <a target="_blank" href="jsdocs/oj-c.TagCloudItem.html">oj-c-tag-cloud-item</a>.
   </li>
   <li>
     Change the tag cloud layout using the
@@ -29,8 +28,7 @@ const recipeHtmlText = String.raw`<ul>
     attribute.
   </li>
   <li>
-    <b>Accessibility</b>
-    : The application is responsible for populating the
+    <b>Accessibility</b>: The application is responsible for populating the
     <i><b>short-desc</b></i>
     attribute of the items with meaningful descriptors.
   </li>

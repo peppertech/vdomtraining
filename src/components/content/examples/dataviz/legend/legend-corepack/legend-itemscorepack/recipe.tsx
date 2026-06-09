@@ -12,12 +12,10 @@ const recipeHtmlText = String.raw`<ol>
     to
     <i>line</i>
     or
-    <i>lineWithMarker</i>
-    . The line can be customized using
+    <i>lineWithMarker</i>. The line can be customized using
     <i><b>lineWidth</b></i>
     and
-    <i><b>lineStyle</b></i>
-    .
+    <i><b>lineStyle</b></i>.
   </li>
   <li>
     To create a marker icon, set
@@ -25,10 +23,8 @@ const recipeHtmlText = String.raw`<ol>
     to
     <i>marker</i>
     or
-    <i>lineWithMarker</i>
-    . The marker can be customized using
-    <i><b>markerShape</b></i>
-    . Additionally,
+    <i>lineWithMarker</i>. The marker can be customized using
+    <i><b>markerShape</b></i>. Additionally,
     <i><b>markerColor</b></i>
     can be specified to control the marker color if it's different from the line color for
     <i>lineWithMarker</i>

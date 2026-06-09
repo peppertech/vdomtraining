@@ -5,8 +5,7 @@ const recipeHtmlText = String.raw`<ol>
     Set line-type of oj-c-line-chart-series to
     <i>'straight'</i>
     or
-    <i>'curved'</i>
-    .
+    <i>'curved'</i>.
   </li>
 </ol>`;
 

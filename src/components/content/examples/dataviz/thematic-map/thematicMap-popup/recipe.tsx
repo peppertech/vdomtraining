@@ -11,20 +11,28 @@ export const thematicMapPopupRecipe = (
       <li>
         For the non keyboard use case, the listener can determine whether to open the popup by analyzing
         the hover target which can be done by passing the event's target to the component
+        {" "}
         <code>getContextByNode</code>
+        {" "}
         API.
       </li>
       <li>
         For the keyboard use case, set
+        {" "}
         <b><i>selection-mode</i></b>
+        {" "}
         to 'single' and use the
+        {" "}
         <b><i>selection</i></b>
+        {" "}
         API to determine the focused target. This should be done and is required for the pop up
         interaction to be fully accessible.
       </li>
       <li>
         The component's default tooltips should be turned off via the
+        {" "}
         <code>tooltip-display</code>
+        {" "}
         attribute.
       </li>
     </ul>

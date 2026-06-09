@@ -21,6 +21,7 @@ export const polarChartHideShowDescription = (
       </li>
       <li>
         When <i><b>hide-and-show-behavior</b></i> is set to <i>'withoutRescale'</i>,
+        {" "}
         the chart axes will not rescale. This is useful to keep the user stay in
         context.
       </li>

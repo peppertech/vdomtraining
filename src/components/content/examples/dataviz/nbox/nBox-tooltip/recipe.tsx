@@ -7,7 +7,9 @@ export const nBoxTooltipRecipe = (
       <li>
         <b>Accessibility</b>
         : The application is responsible for populating the
+        {" "}
         <i><b>shortDesc</b></i>
+        {" "}
         property in the component properties object with meaningful descriptors as the oj-n-box element
         does not provide a default descriptor.
       </li>

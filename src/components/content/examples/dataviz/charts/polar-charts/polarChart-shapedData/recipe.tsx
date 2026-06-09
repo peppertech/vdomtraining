@@ -8,6 +8,7 @@ export const polarChartShapedDataRecipe = (
     <li>
       To set the chart type, use the <i><b>type</b></i> attribute. The available
       options are <i>bar</i>, <i>line</i>, <i>area</i>, <i>combo</i>, <i>scatter</i>,
+      {" "}
       and <i>bubble</i>.
     </li>
     <li>

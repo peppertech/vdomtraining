@@ -8,9 +8,11 @@ export const bubbleChartAttrGroupsDescription = (
     <p>
       To tailor data point descriptions to include custom data, such as assignments set with attribute
       groups, populate the
+      {" "}
       <a target={"_blank"} href={"jsdocs/oj.ojChartItem.html#shortDesc"}>
         <i><b>short-desc</b></i>
       </a>
+      {" "}
       attribute for each data item. See example below.
     </p>
   </>

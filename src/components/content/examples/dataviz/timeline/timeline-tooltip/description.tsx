@@ -9,13 +9,17 @@ export const timelineTooltipDescription = (
     </p>
     <p>
       This timeline uses the
+      {" "}
       <b><i>tooltip.renderer</i></b>
+      {" "}
       function to create a custom tooltip containing a status-meter gauge. Hover over the items (or
       keyboard navigate to, or press and hold on touch devices) to display the custom tooltip. The
       tooltip can also be specified via a template. Please see the
+      {" "}
       <a href={"#"}>
         timeline tooltip template demo
       </a>
+      {" "}
       for more details.
     </p>
   </>

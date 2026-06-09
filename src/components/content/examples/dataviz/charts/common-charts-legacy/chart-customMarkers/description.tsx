@@ -9,6 +9,7 @@ export const chartCustomMarkersDescription = (
       chart will style the markers in the same way as its built-in shapes, supporting APIs like color
       and borderColor. Images are most useful for multi-color markers or custom selection effects. For
       more details, see
+      {" "}
       <a href={"#"}>this demo</a>
       .
     </p>

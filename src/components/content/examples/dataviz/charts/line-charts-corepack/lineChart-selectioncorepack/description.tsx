@@ -8,15 +8,13 @@ const descriptionHtmlText = String.raw`<p>A line chart displays information grap
     When
     <i><b>selection-mode</b></i>
     is set to
-    <i>'single'</i>
-    , only one data item at a time can be selected.
+    <i>'single'</i>, only one data item at a time can be selected.
   </li>
   <li>
     When
     <i><b>selection-mode</b></i>
     is set to
-    <i>'multiple'</i>
-    , multiple data items can be selected at the same time. In this mode, you can perform selection
+    <i>'multiple'</i>, multiple data items can be selected at the same time. In this mode, you can perform selection
     by drawing a marquee (a bounding box) around the items you wish to select. Alternatively, hold
     the Ctrl key while clicking on multiple items (the Ctrl key is not needed on touch devices).
   </li>

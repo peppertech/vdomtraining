@@ -13,8 +13,7 @@ const recipeHtmlText = String.raw`<ul>
   <li>Set <i><b>hidden-categories</b></i> on both your Legend and Tag cloud to the same observable value.</li>
   <li>Set <i><b>hide-and-show-behavior</b></i> to on for your Legend.</li>
   <li>
-    <b>Accessibility</b>
-    : The application is responsible for populating the
+    <b>Accessibility</b>: The application is responsible for populating the
     <i><b>short-desc</b></i>
     attribute of your items with meaningful descriptors. When setting color, applications are responsible for making sure that the color meets the 
     <a href="https://www.w3.org/TR/WCAG21/#contrast-minimum">minimum contrast ratio</a>.

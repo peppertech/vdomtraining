@@ -13,10 +13,13 @@ export const ratingGaugeRatingGaugeComponentDescription = (
       <li>Rating gauge can be readonly, disabled or editable.</li>
       <li>
         Standard size for rating gauge are
+        {" "}
         <i>sm</i>
         ,
         <i>md</i>
+        {" "}
         and
+        {" "}
         <i>lg</i>
         .
       </li>

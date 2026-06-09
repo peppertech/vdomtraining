@@ -12,16 +12,19 @@ export const chartPerformanceMultipleDescription = (
     <ul>
       <li>
         <b>Animation:</b>
+        {" "}
         When using large data sets, consider disabling animation indicators or disabling animation
         altogether.
       </li>
       <li>
         <b>Chart Type:</b>
+        {" "}
         Consider best view type based on data density. For example, bar charts become less readable when
         there are many groups.
       </li>
       <li>
         <b>Tracking Resize:</b>
+        {" "}
         When large numbers of instances are used, consider disabling resize tracking, which adds a small
         overhead to the initial render.
       </li>

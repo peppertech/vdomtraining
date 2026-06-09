@@ -20,8 +20,7 @@ const recipeHtmlText = String.raw`<ul>
     child element. For more details, see
     <a target="_blank" href="jsdocs/oj-c.TagCloud.html#itemTemplate">itemTemplate</a>
     and
-    <a target="_blank" href="jsdocs/oj-c.TagCloudItem.html">oj-c-tag-cloud-item</a>
-    .
+    <a target="_blank" href="jsdocs/oj-c.TagCloudItem.html">oj-c-tag-cloud-item</a>.
   </li>
   <li>
     Use the <i><b>context-menu-config</b></i> attribute to specify a context menu.

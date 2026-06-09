@@ -19,8 +19,7 @@ const recipeHtmlText = String.raw`<ol>
   </li>
   <li>
     Configure the text styling for all the section using the
-    <i><b>text-style</b></i>
-    ,
+    <i><b>text-style</b></i>,
     <i><b>section-title-halign</b></i>
     and
     <i><b>section-title-style</b></i>

@@ -10,6 +10,7 @@ export const ganttShapedDataDescription = (
     <p>
       Performance can improve in many cases by using shaped data, because the gantt can be rendered
       without requiring data mapping templates (e.g.
+      {" "}
       <a target={"_blank"} href={"jsdocs/oj.ojGantt.html#taskMappingTemplate"}>taskMappingTemplate</a>
       ).
     </p>

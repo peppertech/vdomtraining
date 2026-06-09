@@ -11,17 +11,21 @@ export const pieChartDataLabelsDescription = (
     <ul>
       <li>
         Setting the label position to
+        {" "}
         <i>'auto'</i>
+        {" "}
         will place the labels inside the slices if they fit or outside if they don't.
       </li>
       <li>
         Valid label position values on pie charts are
+        {" "}
         <i>'auto'</i>
         ,
         <i>'outsideSlice'</i>
         ,
         <i>'center'</i>
         , and
+        {" "}
         <i>'none'</i>
         .
       </li>

@@ -2,8 +2,7 @@ import { h } from "preact";
 
 const recipeHtmlText = String.raw`<ul>
   <li>
-    <b>Accessibility</b>
-    : The application is responsible for populating the
+    <b>Accessibility</b>: The application is responsible for populating the
     <i><b>shortDesc</b></i>
     property with meaningful descriptors. Also, when using font colors as a data dimension for tag
     clouds, the application needs to ensure that they meet minimum contrast requirements. Note that

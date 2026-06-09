@@ -9,8 +9,7 @@ const recipeHtmlText = String.raw`<ul>
       attribute.
     </li>
     <li>
-      <b>Accessibility</b>
-      : The application is responsible for populating the
+      <b>Accessibility</b>: The application is responsible for populating the
       <i><b>short-desc</b></i>
       attribute of
       <b>oj-c-picto-chart-item</b>

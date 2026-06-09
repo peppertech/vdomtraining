@@ -15,6 +15,7 @@ export const lineChartDefaultDescription = (
       <li>Recommended for visualizing mixed frequency time data.</li>
       <li>
         Stacking is not recommended for line charts. Instead, consider using stacking on the
+        {" "}
         <b>lineWithArea</b> chart type to display cumulative values.
       </li>
     </ul>

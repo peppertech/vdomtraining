@@ -4,8 +4,7 @@ const descriptionHtmlText = String.raw`<p>A legend displays an interactive descr
   This demo shows legend item icons being customized. This demo uses shaped data. See the <a href="#" onclick="demoGoLink(event, 'legendCorepack', 'shapedData'); return false;">shaped data demo</a> for more details. Possible values for the
   <i><b>symbolType</b></i>
   property are:
-  <i>line, marker, lineWithMarker, image</i>
-  .
+  <i>line, marker, lineWithMarker, image</i>.
 </p>`;
 
 export const legendItemscorepackDescription = (

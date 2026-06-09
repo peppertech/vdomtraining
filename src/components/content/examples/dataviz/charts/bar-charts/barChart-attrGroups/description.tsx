@@ -27,9 +27,12 @@ export const barChartAttrGroupsDescription = (
 
       <li>
         <b>Not resetting</b>
+        {" "}
         the palette ensures that items that are common to both years will be colored consistently
         between data changes, whereas
+        {" "}
         <b>resetting</b>
+        {" "}
         the color palette doesn't guarantee this.
       </li>
     </ul>

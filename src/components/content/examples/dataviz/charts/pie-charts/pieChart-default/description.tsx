@@ -14,7 +14,9 @@ export const pieChartDefaultDescription = (
       </li>
       <li>
         When multiple small values exist, consider using the "Other" slice feature by setting the
+        {" "}
         <a href={"jsdocs/oj.ojChart.html#otherThreshold"}>other-threshold</a>
+        {" "}
         attribute.
       </li>
       <li>Sorting is recommended when there is no natural ordering between the slices.</li>

@@ -12,6 +12,7 @@ export const sunburstPerformanceDescription = (
     <ul>
       <li>
         <b>Animation:</b>
+        {" "}
         When using large data sets, consider disabling animation to improve performance.
       </li>
     </ul>

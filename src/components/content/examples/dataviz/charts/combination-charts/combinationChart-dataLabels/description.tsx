@@ -10,27 +10,37 @@ export const combinationChartDataLabelsDescription = (
     <ul>
       <li>
         On un-stacked combo charts, setting the label's position to
+        {" "}
         <i>'auto'</i>
+        {" "}
         on a bar series will act as
+        {" "}
         <i>'insideBarEdge'</i>
         .
       </li>
       <li>
         On stacked combo charts, setting the label's position to
+        {" "}
         <i>'auto'</i>
+        {" "}
         on a bar series will act as
+        {" "}
         <i>'center'</i>
         .
       </li>
       <li>
         Setting the label's position to
+        {" "}
         <i>'auto'</i>
+        {" "}
         on a line or area series will act as
+        {" "}
         <i>'afterMarker'</i>
         .
       </li>
       <li>
         Valid label position values on combo charts are
+        {" "}
         <i>'auto'</i>
         ,
         <i>'center'</i>
@@ -44,11 +54,15 @@ export const combinationChartDataLabelsDescription = (
         <i>'belowMarker'</i>
         ,
         <i>'beforeMarker'</i>
+        {" "}
         and
+        {" "}
         <i>'afterMarker'</i>
         . If a certain value is not applicable to a series type, that series will set its label
         positions based on its
+        {" "}
         <i>'auto'</i>
+        {" "}
         behavior.
         <br />
         <i>

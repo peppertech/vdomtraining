@@ -10,27 +10,38 @@ export const barChartDataLabelsDescription = (
     <ul>
       <li>
         On un-stacked bar charts, setting the label's position to
+        {" "}
         <i>'auto'</i>
+        {" "}
         will act as
+        {" "}
         <i>'insideBarEdge'</i>
         .
       </li>
       <li>
         On stacked bar charts, setting the label position to
+        {" "}
         <i>'auto'</i>
+        {" "}
         will act as
+        {" "}
         <i>'center'</i>
         .
       </li>
       <li>
         On stacked bar charts, setting the
+        {" "}
         <b><i>stack-label</i></b>
+        {" "}
         attribute to
+        {" "}
         <i>'on'</i>
+        {" "}
         will add the total value of stacks to the top.
       </li>
       <li>
         Valid label position values on bar charts are
+        {" "}
         <i>'auto'</i>
         ,
         <i>'center'</i>
@@ -38,16 +49,22 @@ export const barChartDataLabelsDescription = (
         <i>'insideBarEdge'</i>
         ,
         <i>'outsideBarEdge'</i>
+        {" "}
         and
+        {" "}
         <i>'none'</i>
         .
       </li>
       <li>
         For stack-label
+        {" "}
         <i>'on'</i>
         , consider setting the
+        {" "}
         <b><i>y-axis.tick-label.rendered</i></b>
+        {" "}
         attribute to
+        {" "}
         <i>'off'</i>
         .
       </li>

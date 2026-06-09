@@ -10,22 +10,27 @@ export const chartDragModeDescription = (
     <ul>
       <li>
         <b>user:</b>
+        {" "}
         Display buttons to let users switch between modes when multiple drag actions are available.
       </li>
       <li>
         <b>pan:</b>
+        {" "}
         Pan the chart. Only available if zoom & scroll is turned on.
       </li>
       <li>
         <b>zoom:</b>
+        {" "}
         Marquee zoom. Only available if zoom & scroll is turned on.
       </li>
       <li>
         <b>select:</b>
+        {" "}
         Marquee select. Only available if multiple selection is turned on.
       </li>
       <li>
         <b>off:</b>
+        {" "}
         Perform nothing on drag.
       </li>
     </ul>

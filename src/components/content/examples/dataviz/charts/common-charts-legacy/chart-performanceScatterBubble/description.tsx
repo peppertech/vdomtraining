@@ -11,11 +11,13 @@ export const chartPerformanceScatterBubbleDescription = (
     <ul>
       <li>
         <b>Animation:</b>
+        {" "}
         When using large data sets, consider disabling animation indicators or disabling animation
         altogether.
       </li>
       <li>
         <b>Chart Type:</b>
+        {" "}
         Consider best view type based on data density. For example, bubble charts become less readable
         when the data set is dense as the bubbles begin to obscure one another.
       </li>

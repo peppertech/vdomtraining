@@ -10,7 +10,9 @@ export const ganttValueFormatsDescription = (
     <p>Mouse hovering, mobile tap and hold, or keyboard navigating to a task brings up a tooltip.</p>
     <p>
       The form below maps to the
+      {" "}
       <a target={"_blank"} href={"jsdocs/oj.ojGantt.html#valueFormats"}>value-formats</a>
+      {" "}
       API for customizing the default tooltip:
     </p>
     <ul>

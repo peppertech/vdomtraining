@@ -11,7 +11,9 @@ export const chartCategoricalAxisSortingDescription = (
       <li>For dual-y charts, only values assigned to the y1 axis are used for the sort.</li>
       <li>
         When there are a large number of categories, consider using
+        {" "}
         <b><i>initial-zooming</i></b>
+        {" "}
         in conjunction with sorting.
       </li>
     </ul>

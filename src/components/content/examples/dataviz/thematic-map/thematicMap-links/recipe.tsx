@@ -10,9 +10,13 @@ export const thematicMapLinksRecipe = (
         with an oj-thematic-map-link element passed in the linkTemplate slot. They can be associated
         with a data item by specifying a marker or area ID for the the link's start-location.id and
         end-location.id attributes. Alternatively, a link's start and end points can be specified using
+        {" "}
         <code>location</code>
+        {" "}
         or
+        {" "}
         <code>x/y</code>
+        {" "}
         on start-location and end-location.
       </li>
       <li>

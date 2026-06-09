@@ -10,6 +10,7 @@ export const treemapIsolateDescription = (
 
     <p>
       <b>Note:</b>
+      {" "}
       Isolate is not recommended for use on touch devices and is not enabled by default for those
       devices.
     </p>

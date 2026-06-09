@@ -8,12 +8,16 @@ export const treemapSmallFormFactorRecipe = (
       <li>Declare a treemap with one parent node and one level of child nodes.</li>
       <li>
         Set the
+        {" "}
         <i><b>layout</b></i>
+        {" "}
         attribute to achieve the desired orientation of the nodes.
       </li>
       <li>
         If treemaps display comparable cummulative data, consider setting the
+        {" "}
         <b>width</b>
+        {" "}
         of each treemap to reflect its sum.
       </li>
     </ul>

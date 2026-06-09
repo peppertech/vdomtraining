@@ -8,8 +8,7 @@ const recipeHtmlText = String.raw`<ol>
     to either
     <i>'horizontal'</i>
     (default) or
-    <i>'vertical'</i>
-    .
+    <i>'vertical'</i>.
   </li>
   <li>
     Set
@@ -17,12 +16,10 @@ const recipeHtmlText = String.raw`<ol>
     to either
     <i>'topStart'</i>
     (default),
-    <i>'topEnd'</i>
-    ,
+    <i>'topEnd'</i>,
     <i>'bottomStart'</i>
     or
-    <i>'bottomEnd'</i>
-    .
+    <i>'bottomEnd'</i>.
   </li>
 </ol>`;
 

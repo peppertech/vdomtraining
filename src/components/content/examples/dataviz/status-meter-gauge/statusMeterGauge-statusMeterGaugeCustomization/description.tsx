@@ -11,7 +11,9 @@ export const statusMeterGaugeStatusMeterGaugeCustomizationDescription = (
       </li>
       <li>
         Thresholds can also be indicated by setting the
+        {" "}
         <i><b>threshold</b></i>
+        {" "}
         object on the component. Consider using thresholds over reference lines to display the range of
         thresholds in the plot area of the gauge, or to apply threshold styles to the indicator bar.
       </li>

@@ -12,22 +12,19 @@ const recipeHtmlText = String.raw`<ol>
   <li>
     Make the chart grow horizontally with
     <i>
-      <b>orientation</b>
-      : 'horizontal'
+      <b>orientation</b>: 'horizontal'
     </i>
     attribute.
   </li>
   <li>
     Stack the data items with
     <i>
-      <b>stack</b>
-      : 'on'
+      <b>stack</b>: 'on'
     </i>
     attribute.
   </li>
   <li>
-    <b>Accessibility</b>
-    : The
+    <b>Accessibility</b>: The
     <a target="_blank" href="jsdocs/oj-c.AreaChartItem.html#shortDesc">
       <i><b>short-desc</b></i>
     </a> property in oj-c-area-chart-item

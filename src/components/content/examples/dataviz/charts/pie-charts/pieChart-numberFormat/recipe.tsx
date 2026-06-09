@@ -6,7 +6,9 @@ export const pieChartNumberFormatRecipe = (
     <ol>
       <li>
         To format tooltip values, create a converter and set it on the chart's
+        {" "}
         <i><b>value-formats.value</b></i>
+        {" "}
         object.
       </li>
       <li>

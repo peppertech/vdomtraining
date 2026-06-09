@@ -8,10 +8,12 @@ export const pictoChartMixedSizesDescription = (
     <ol>
       <li>
         <b>row-span:</b>
+        {" "}
         Controls the number of rows each icon spans.
       </li>
       <li>
         <b>column-span:</b>
+        {" "}
         Controls the number of columns each icon spans.
       </li>
     </ol>

@@ -4,16 +4,11 @@ const descriptionHtmlText = String.raw`<p>A line chart displays information grap
 <ul>
   <li>
     Valid label position values on line charts are
-    <i>'center'</i>
-    ,
-    <i>'aboveMarker'</i>
-    ,
-    <i>'belowMarker'</i>
-    ,
-    <i>'beforeMarker'</i>
-    ,and
-    <i>'afterMarker'</i>
-    .
+    <i>'center'</i>,
+    <i>'aboveMarker'</i>,
+    <i>'belowMarker'</i>,
+    <i>'beforeMarker'</i>,and
+    <i>'afterMarker'</i>.
   </li>
 </ul>`;
 

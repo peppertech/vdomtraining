@@ -9,8 +9,7 @@ const recipeHtmlText = String.raw`<ol>
     </li>
     <li>
       The data supplied to the MutableArrayDataProvider should be of shape
-      <a target="_blank" href="jsdocs/oj-c.TagCloudItem.html">oj-c-tag-cloud-item</a>
-      .
+      <a target="_blank" href="jsdocs/oj-c.TagCloudItem.html">oj-c-tag-cloud-item</a>.
     </li>
 </ol>`;
 

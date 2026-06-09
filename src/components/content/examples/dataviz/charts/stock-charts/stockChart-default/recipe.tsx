@@ -6,6 +6,7 @@ export const stockChartDefaultRecipe = (
     <ol>
       <li>
         Create an oj-chart element and set
+        {" "}
         <i>
           <b>type</b>
           : 'stock'
@@ -14,14 +15,20 @@ export const stockChartDefaultRecipe = (
       </li>
       <li>
         Supply the data items using the
+        {" "}
         <i><b>data</b></i>
+        {" "}
         attribute. Note that stock charts only support a single series.
       </li>
       <li>
         Specify the series
+        {" "}
         <i><b>type</b></i>
+        {" "}
         in order to customize the chart. The
+        {" "}
         <i><b>candlestick</b></i>
+        {" "}
         is recommended when detailed information (open, high, low, and close values) for a time period
         is desired.
       </li>

@@ -8,28 +8,38 @@ export const tagCloudSelectionDescription = (
     <ul>
       <li>
         By default,
+        {" "}
         <i>
           <b>selection-mode</b>
         </i>
+        {" "}
         set to
+        {" "}
         <i>'none'</i>
+        {" "}
         and disabled.
       </li>
       <li>
         When
+        {" "}
         <i>
           <b>selection-mode</b>
         </i>
+        {" "}
         is set to
+        {" "}
         <i>'single'</i>
         , only one data item can be selected at a time.
       </li>
       <li>
         When
+        {" "}
         <i>
           <b>selection-mode</b>
         </i>
+        {" "}
         is set to
+        {" "}
         <i>'multiple'</i>
         , selection of more than one item at a time is enabled. On desktop, select multiple items by holding the Ctrl key.
       </li>

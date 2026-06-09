@@ -6,7 +6,9 @@ export const sunburstRadiusRecipe = (
     <ol>
       <li>
         For each node, set the radius using the
+        {" "}
         <b>radius</b>
+        {" "}
         attribute. The radius value is not absolute, but the relative size compared to the other nodes.
         If not specified, the default radius is 1.
       </li>

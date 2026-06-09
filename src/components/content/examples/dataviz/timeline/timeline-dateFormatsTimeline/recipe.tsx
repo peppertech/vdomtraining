@@ -8,7 +8,9 @@ export const timelineDateFormatsTimelineRecipe = (
       <li>
         Note that the time related values in series data can be specified with strings of various
         formats, as described in the description of this demo as well as in the
+        {" "}
         <a target={"_blank"} href={"jsdocs/oj.ojTimeline.html#formats-section"}>Date and Time Formats</a>
+        {" "}
         section of the docs.
       </li>
     </ol>

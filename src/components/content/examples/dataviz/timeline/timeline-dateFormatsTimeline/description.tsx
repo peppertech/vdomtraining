@@ -7,6 +7,7 @@ export const timelineDateFormatsTimelineDescription = (
       <span className={"oj-typography-body-sm"}>
         The Timeline supports a simplified version of the ISO 8601 extended date/time format. The format
         is as follows:
+        {" "}
         <span className={"demo-timeline-dateformat"}>YYYY-MM-DDTHH:mm:ss.sssZ</span>
         .
         <br />

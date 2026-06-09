@@ -8,19 +8,23 @@ export const rangeChartDataLabelsDescription = (
     <ul>
       <li>
         Valid label positions for range bar charts are
+        {" "}
         <i>'auto'</i>
         ,
         <i>'center'</i>
         ,
         <i>'insideBarEdge'</i>
         , and
+        {" "}
         <i>'outsideBarEdge'</i>
         . The default is
+        {" "}
         <i>'insideBarEdge'</i>
         .
       </li>
       <li>
         Valid label positions for range area charts are
+        {" "}
         <i>'auto'</i>
         ,
         <i>'center'</i>
@@ -31,10 +35,14 @@ export const rangeChartDataLabelsDescription = (
         ,
         <i>'beforeMarker'</i>
         , and
+        {" "}
         <i>'afterMarker'</i>
         . The default is
+        {" "}
         <i>'belowMarker'</i>
+        {" "}
         for the low label and
+        {" "}
         <i>'aboveMarker'</i>
         .for the high label.
       </li>

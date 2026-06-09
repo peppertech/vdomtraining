@@ -8,7 +8,9 @@ export const timelineSmallScaleTimelineRecipe = (
       <li>
         Specify series data with small time scales, and specify a small time scale and zoomOrder
         accordingly in the
+        {" "}
         <i><b>minor-axis</b></i>
+        {" "}
         attribute.
       </li>
     </ol>

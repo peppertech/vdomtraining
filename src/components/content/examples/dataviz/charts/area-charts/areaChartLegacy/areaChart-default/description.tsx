@@ -15,7 +15,9 @@ export const areaChartDefaultDescription = (
       <li>
         When multiple series are shown stacking is recommended to prevent values from being obscured, or
         using the
+        {" "}
         <b>lineWithArea</b>
+        {" "}
         chart type.
       </li>
     </ul>

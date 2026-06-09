@@ -15,9 +15,11 @@ export const funnelChartDefaultDescription = (
       <li>The area of a funnel slice is proportional to its value for the corresponding stage.</li>
       <li>
         Use of
+        {" "}
         <a href={"#"}>
           target values
         </a>
+        {" "}
         helps display additional context.
       </li>
     </ul>

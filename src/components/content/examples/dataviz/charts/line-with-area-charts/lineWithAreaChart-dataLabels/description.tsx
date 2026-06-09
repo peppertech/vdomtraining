@@ -6,13 +6,17 @@ export const lineWithAreaChartDataLabelsDescription = (
     <ul>
       <li>
         Setting the label's position to
+        {" "}
         <i>'auto'</i>
+        {" "}
         will act as
+        {" "}
         <i>'afterMarker'</i>
         .
       </li>
       <li>
         Valid label position values on area charts are
+        {" "}
         <i>'auto'</i>
         ,
         <i>'center'</i>
@@ -22,7 +26,9 @@ export const lineWithAreaChartDataLabelsDescription = (
         <i>'belowMarker'</i>
         ,
         <i>'beforeMarker'</i>
+        {" "}
         and
+        {" "}
         <i>'afterMarker'</i>
         .
       </li>

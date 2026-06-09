@@ -21,8 +21,7 @@ const recipeHtmlText = String.raw`<ul>
     child element. For more details, see
     <a target="_blank" href="jsdocs/oj-c.PictoChart.html#itemTemplate">itemTemplate</a>
     and
-    <a target="_blank" href="jsdocs/oj-c.PictoChartItem.html">oj-c-picto-chart-item</a>
-    .
+    <a target="_blank" href="jsdocs/oj-c.PictoChartItem.html">oj-c-picto-chart-item</a>.
   </li>
   <li>
     Use the <i><b>context-menu-config</b></i> attribute to specify a context menu.

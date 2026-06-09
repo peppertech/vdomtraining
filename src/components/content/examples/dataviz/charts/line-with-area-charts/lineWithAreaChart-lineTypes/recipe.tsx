@@ -5,8 +5,11 @@ export const lineWithAreaChartLineTypesRecipe = (
     <ol>
       <li>
         Set
+        {" "}
         <i><b>style-defaults.line-type</b></i>
+        {" "}
         as either
+        {" "}
         <i>'none'</i>
         ,
         <i>'straight'</i>
@@ -19,6 +22,7 @@ export const lineWithAreaChartLineTypesRecipe = (
         ,
         <i>'segmented'</i>
         , or
+        {" "}
         <i>'centerSegmented'</i>
         .
       </li>

@@ -12,16 +12,13 @@ const recipeHtmlText = String.raw`<ol>
     Render Y-axis data and Y2-axis data in separate plot areas by setting the attribute
     <b><i>split-dual-y</i></b>
     to
-    <i>'on'</i>
-    .
+    <i>'on'</i>.
   </li>
   <li>
     When using
     <i>
-      <b>split-dual-y</b>
-      : 'on'
-    </i>
-    , adjust the amount of space given to each sub-chart by setting the
+      <b>split-dual-y</b>: 'on'
+    </i>, adjust the amount of space given to each sub-chart by setting the
     <i><b>splitter-position</b></i>
     attribute.
   </li>

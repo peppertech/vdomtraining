@@ -12,15 +12,21 @@ export const pyramidChartSelectionDescription = (
       <li>By default, the selection-mode feature is disabled.</li>
       <li>
         When
+        {" "}
         <i><b>selection-mode</b></i>
+        {" "}
         is set to
+        {" "}
         <i>&apos;single&apos;</i>
         , only one data item at a time can be selected.
       </li>
       <li>
         When
+        {" "}
         <i><b>selection-mode</b></i>
+        {" "}
         is set to
+        {" "}
         <i>&apos;multiple&apos;</i>
         , multiple data items can be selected at the same time. Hold the Ctrl key while clicking
         on multiple items (the Ctrl key is not needed on touch devices).

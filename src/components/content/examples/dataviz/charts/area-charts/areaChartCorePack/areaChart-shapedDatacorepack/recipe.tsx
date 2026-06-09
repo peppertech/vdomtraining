@@ -4,10 +4,8 @@ const recipeHtmlText = String.raw`<ol>
   <li>
     Create an oj-c-area-chart element and set
     <i>
-      <b>type</b>
-      : 'area'
-    </i>
-    .
+      <b>type</b>: 'area'
+    </i>.
   </li>
   <li>
     Supply the data items using the
@@ -16,8 +14,7 @@ const recipeHtmlText = String.raw`<ol>
   </li>
   <li>
     The data supplied to the MutableArrayDataProvider should be of type
-    <a target="_blank" href="jsdocs/oj-c.AreaChart.html#AreaItem">oj-c-area-chart.AreaItem</a>
-    .
+    <a target="_blank" href="jsdocs/oj-c.AreaChart.html#AreaItem">oj-c-area-chart.AreaItem</a>.
   </li>
 </ol>`;
 

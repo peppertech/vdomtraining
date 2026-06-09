@@ -24,7 +24,9 @@ export const chartDrillingEventsDescription = (
     </ul>
     <p>
       Enable
+      {" "}
       <i>multi-series-drilling</i>
+      {" "}
       to allow drilling on objects with multi series objects. e.g. other slice and legend item in pie
       charts.
     </p>
