@@ -23,6 +23,20 @@ import { filePickerRestrictFileTypescorepackDescription } from "./filePicker-res
 import { filePickerRestrictFileTypescorepackRecipe } from "./filePicker-restrictFileTypescorepack/recipe";
 
 const filePickerCorePackItems = [
+    {
+    id: "restrict-file-types",
+    name: "Restrict File Types",
+    description: filePickerRestrictFileTypescorepackDescription,
+    recipe: filePickerRestrictFileTypescorepackRecipe,
+    Component: FilePickerRestrictFileTypescorepack,
+  },
+  {
+    id: "restrict-file-size",
+    name: "Restrict File Size",
+    description: filePickerRestrictFileSizecorepackDescription,
+    recipe: filePickerRestrictFileSizecorepackRecipe,
+    Component: FilePickerRestrictFileSizecorepack,
+  },
   {
     id: "button",
     name: "Button",
@@ -38,13 +52,6 @@ const filePickerCorePackItems = [
     Component: FilePickerCapturecorepack,
   },
   {
-    id: "custom-content",
-    name: "Custom Content",
-    description: filePickerCustomContentcorepackDescription,
-    recipe: filePickerCustomContentcorepackRecipe,
-    Component: FilePickerCustomContentcorepack,
-  },
-  {
     id: "custom-size",
     name: "Custom Size",
     description: filePickerCustomSizecorepackDescription,
@@ -58,20 +65,13 @@ const filePickerCorePackItems = [
     recipe: filePickerCustomTextcorepackRecipe,
     Component: FilePickerCustomTextcorepack,
   },
-  {
-    id: "restrict-file-size",
-    name: "Restrict File Size",
-    description: filePickerRestrictFileSizecorepackDescription,
-    recipe: filePickerRestrictFileSizecorepackRecipe,
-    Component: FilePickerRestrictFileSizecorepack,
-  },
-  {
-    id: "restrict-file-types",
-    name: "Restrict File Types",
-    description: filePickerRestrictFileTypescorepackDescription,
-    recipe: filePickerRestrictFileTypescorepackRecipe,
-    Component: FilePickerRestrictFileTypescorepack,
-  },
+   {
+    id: "custom-content",
+    name: "Custom Content",
+    description: filePickerCustomContentcorepackDescription,
+    recipe: filePickerCustomContentcorepackRecipe,
+    Component: FilePickerCustomContentcorepack,
+  }
 ];
 
 export default function FilePickerCorePackRecipePage() {
@@ -81,7 +81,7 @@ export default function FilePickerCorePackRecipePage() {
       componentType="oj-c-file-picker"
       packLabel="Core Pack"
       items={filePickerCorePackItems}
-      initialItemId="button"
+      initialItemId="restrict-file-types"
       navigationTitle="File Picker"
     />
   );

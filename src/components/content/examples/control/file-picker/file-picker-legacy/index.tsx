@@ -28,6 +28,13 @@ const filePickerLegacyItems = [
     Component: FilePickerBasic,
   },
   {
+    id: "custom",
+    name: "Custom Validation",
+    description: filePickerCustomDescription,
+    recipe: filePickerCustomRecipe,
+    Component: FilePickerCustom,
+  },
+  {
     id: "button",
     name: "Button",
     description: filePickerButtonDescription,
@@ -42,11 +49,11 @@ const filePickerLegacyItems = [
     Component: FilePickerCapture,
   },
   {
-    id: "custom",
-    name: "Custom",
-    description: filePickerCustomDescription,
-    recipe: filePickerCustomRecipe,
-    Component: FilePickerCustom,
+    id: "size",
+    name: "Custom Size",
+    description: filePickerSizeDescription,
+    recipe: filePickerSizeRecipe,
+    Component: FilePickerSize,
   },
   {
     id: "custom-text",
@@ -54,13 +61,6 @@ const filePickerLegacyItems = [
     description: filePickerCustomTextDescription,
     recipe: filePickerCustomTextRecipe,
     Component: FilePickerCustomText,
-  },
-  {
-    id: "size",
-    name: "Size",
-    description: filePickerSizeDescription,
-    recipe: filePickerSizeRecipe,
-    Component: FilePickerSize,
   },
 ];
 

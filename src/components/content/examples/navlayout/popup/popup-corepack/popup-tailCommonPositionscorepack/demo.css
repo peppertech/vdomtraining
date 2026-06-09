@@ -1,6 +1,7 @@
 .demo-wrapper {
-  width: 500px;
-  margin: 50px auto;
+  width: min(100%, 520px);
+  margin: 60px auto;
+  padding: 0 16px;
 }
 
 .demo-flex {
@@ -10,9 +11,34 @@
 
 .demo-flex-column {
   flex-direction: column;
-  gap: 10px;
+  gap: 18px;
+}
+
+.demo-buttons {
+  margin-top: 24px;
+}
+
+.demo-button-row {
+  align-items: center;
+  gap: 16px;
 }
 
 .demo-button {
+  flex: 0 0 150px;
   width: 150px;
+}
+
+.demo-position {
+  margin: 8px 0 0;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 600px) {
+  .demo-wrapper {
+    margin: 24px auto;
+  }
+
+  .demo-button-row {
+    flex-direction: column;
+  }
 }

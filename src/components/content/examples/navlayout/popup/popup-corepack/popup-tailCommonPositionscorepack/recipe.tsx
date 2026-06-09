@@ -2,7 +2,7 @@ import { h } from "preact";
 
 const recipeHtmlText = String.raw`<ol>
   <li>
-    Speicify the position of the popup relative to its anchor element using the
+    Specify the position of the popup relative to its anchor element using the
     <code class="prettyprint">placement</code>
     attribute.
   </li>
