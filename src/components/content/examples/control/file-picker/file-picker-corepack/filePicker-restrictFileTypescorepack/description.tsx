@@ -6,7 +6,7 @@ const descriptionHtmlText = String.raw`<p>A file picker displays a clickable dro
     to select files from the file browser or drop files from the file system to the drop zone. To
     trigger an
     <a href="jsdocs/oj-c.FilePicker.html#event:ojInvalidSelect">ojInvalidSelect</a>
-    event, drag and drop a file of invalid mimetype onto the file picker.
+    event, drag and drop a file of invalid MIME type onto the file picker.
   </p>
   <h5>Test Steps</h5>
   
@@ -18,25 +18,24 @@ const descriptionHtmlText = String.raw`<p>A file picker displays a clickable dro
       <a
         href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#Unique_file_type_specifiers">
         unique content type specifiers
-      </a>
-      .
+      </a>.
     </li>
     <li>
-      Drag and Drop an accepted file type on to the filepicker to fire an
+      Drag and drop an accepted file type onto the file picker to fire an
       <a href="jsdocs/oj-c.FilePicker.html#event:ojSelect">ojSelect</a>
       event. The list of selected files will be displayed.
     </li>
     <li>
-      Drag and Drop a file of any other type on to the filepicker to fire an
+      Drag and drop a file of any other type onto the file picker to fire an
       <a href="jsdocs/oj-c.FilePicker.html#event:ojInvalidSelect">ojInvalidSelect</a>
       event. The invalidSelect event message content will be displayed.
     </li>
     <li>
-      Click the filepicker to open the file dialog to select a file and fire an
+      Click the file picker to open the file dialog to select a file and fire an
       <a href="jsdocs/oj-c.FilePicker.html#event:ojSelect">ojSelect</a>
       event. The list of selected files will be displayed.
     </li>
-    <li>Toggle the Disable checkbox to disable the filepicker.</li>
+    <li>Toggle the Disable checkbox to disable the file picker.</li>
   </ul>`;
 
 export const filePickerRestrictFileTypescorepackDescription = (

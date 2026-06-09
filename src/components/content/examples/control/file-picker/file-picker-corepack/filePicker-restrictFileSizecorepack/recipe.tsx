@@ -32,7 +32,7 @@ const recipeHtmlText = String.raw`<ul>
       event listener to the
       <code class="prettyprint">oj-c-file-picker</code>
       element using the on-oj-invalid-select attribute. To trigger this listener, drag and drop a file
-      of invalid mimetype onto the file picker.
+      of invalid MIME type onto the file picker.
     </li>
   </ul>`;
 

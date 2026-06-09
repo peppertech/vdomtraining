@@ -21,18 +21,18 @@ import { trainLayoutRecipe } from "./train-layout/recipe";
 
 const trainLegacyItems = [
   {
-    id: "nonlinear",
-    name: "Non linear",
-    description: trainNonlinearDescription,
-    recipe: trainNonlinearRecipe,
-    Component: TrainNonlinear,
-  },
-  {
     id: "linear",
     name: "Linear",
     description: trainLinearDescription,
     recipe: trainLinearRecipe,
     Component: TrainLinear,
+  },
+  {
+    id: "nonlinear",
+    name: "Non linear",
+    description: trainNonlinearDescription,
+    recipe: trainNonlinearRecipe,
+    Component: TrainNonlinear,
   },
   {
     id: "layout",
