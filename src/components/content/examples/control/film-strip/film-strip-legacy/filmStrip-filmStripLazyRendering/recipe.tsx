@@ -6,9 +6,11 @@ export const filmStripFilmStripLazyRenderingRecipe = (
     <ol>
       <li>
         Please see the
+        {" "}
         <a href={"#"}>
           FilmStrip PagingControl demo
         </a>
+        {" "}
         for more information about configuring an oj-film-strip with an oj-paging-control.
       </li>
       <li>
@@ -20,7 +22,9 @@ export const filmStripFilmStripLazyRenderingRecipe = (
       </li>
       <li>
         In the ViewModel, listen for
+        {" "}
         <code className={"prettyprint"}>page</code>
+        {" "}
         events from the oj-film-strip's PagingModel and render items that will be displayed on the
         logical page that have not yet been rendered.
       </li>

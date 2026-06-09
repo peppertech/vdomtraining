@@ -19,8 +19,7 @@ const recipeHtmlText = String.raw`<ul>
     Note that the data row consists of an additional property other than those specified in the
     <code class="prettyprint">MessageBannerItem</code>
     type:
-    <code class="prettyprint">detailList</code>
-    . This property will be used for populating the list of error messages in the detail area.
+    <code class="prettyprint">detailList</code>. This property will be used for populating the list of error messages in the detail area.
     The property name can be anything, and for the demo purposes we are using 'detailList' here.
   </li>
   <li>
@@ -36,8 +35,7 @@ const recipeHtmlText = String.raw`<ul>
       detail-template-value
     </a>
     attribute to the name of the template slot be used, in this case, it is
-    <b>detailList</b>
-    . When this attribute is set to a string, the component will use the same template slot for rendering the
+    <b>detailList</b>. When this attribute is set to a string, the component will use the same template slot for rendering the
     detail content of all the messages.
   </li>
   <li>

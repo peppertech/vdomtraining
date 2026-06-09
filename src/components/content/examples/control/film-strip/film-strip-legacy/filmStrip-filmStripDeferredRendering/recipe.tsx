@@ -6,14 +6,18 @@ export const filmStripFilmStripDeferredRenderingRecipe = (
     <ol>
       <li>
         Please see the
+        {" "}
         <a href={"#"}>
           FilmStrip PagingControl demo
         </a>
+        {" "}
         for more information about configuring an oj-film-strip with an oj-paging-control.
       </li>
       <li>
         In the View, define each item in an
+        {" "}
         <code className={"prettyprint"}>oj-defer</code>
+        {" "}
         tag to defer rendering of the content until the item is displayed.
       </li>
       <li>

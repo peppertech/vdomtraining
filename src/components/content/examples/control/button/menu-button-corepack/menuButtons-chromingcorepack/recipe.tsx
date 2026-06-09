@@ -21,8 +21,7 @@ const recipeHtmlText = String.raw`<ol>
   </li>
   <li>
     For menu buttons in the Redwood theme, when there is no start slot and
-    <code class="prettyprint">display="icons"</code>
-    , the icon changes to three dots.
+    <code class="prettyprint">display="icons"</code>, the icon changes to three dots.
   </li>
 </ol>`;
 

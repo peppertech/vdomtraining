@@ -44,8 +44,7 @@ const recipeHtmlText = String.raw`<p><b>Toolbar:</b></p>
     Any included Buttonsets must have
     <code class="prettyprint">focusManagement</code>
     set to
-    <code class="prettyprint">"none"</code>
-    .
+    <code class="prettyprint">"none"</code>.
   </li>
   <li>
     Note that default width settings of Buttons in Buttonsets varies by theme and chroming, and

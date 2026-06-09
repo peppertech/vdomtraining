@@ -7,8 +7,7 @@ const recipeHtmlText = String.raw`<ul>
   </li>
   <li>
     For component attributes that should vary by screen size, such as
-    <code class="prettyprint">display</code>
-    , define computed observables that return the desired value of those attributes as a function of
+    <code class="prettyprint">display</code>, define computed observables that return the desired value of those attributes as a function of
     the screen size.
   </li>
   <li>Bind the component attributes to those computed observables.</li>

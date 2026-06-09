@@ -15,7 +15,9 @@ export const filmStripMasterDetailFilmStripRecipe = (
       </li>
       <li>
         Listen to
+        {" "}
         <code className={"prettyprint"}>beforePage</code>
+        {" "}
         events on the detail oj-film-strip's PagingModel in order to highlight the associated item in
         the master oj-film-strip, and to change pages in the master oj-film-strip when necessary.
       </li>

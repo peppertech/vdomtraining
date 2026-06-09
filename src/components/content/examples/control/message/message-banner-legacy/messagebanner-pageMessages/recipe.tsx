@@ -7,13 +7,18 @@ export const messagebannerPageMessagesRecipe = (
     <ol>
       <li>
         Include a page header and add an
+        {" "}
         <code className={"prettyprint"}>oj-message-banner</code>
+        {" "}
         element below it
       </li>
       <li>
         Make the messages page level by setting the attribute
+        {" "}
         <code className={"prettyprint"}>type</code>
+        {" "}
         as
+        {" "}
         <code className={"prettyprint"}>page</code>
       </li>
     </ol>
@@ -40,15 +45,23 @@ export const messagebannerPageMessagesRecipe = (
     <p>Closing the messages:</p>
     <p>
       Bind a listener to listen to the
+      {" "}
       <a target={"_blank"} href={"jsdocs/oj.ojMessageBanner.html#event:close"}>ojClose</a>
+      {" "}
       event using the
+      {" "}
       <code className={"prettyprint"}>on-oj-close</code>
+      {" "}
       attribute. This listener will be called when one tries to close a message. Using the
+      {" "}
       <code className={"prettyprint"}>event.detail.key</code>
+      {" "}
       property, remove the corresponding entry from the
+      {" "}
       <code className={"prettyprint"}>MutableArrayDataProvider</code>
       . This would in turn close the corresponding message in the UI. If the listener fails to remove
       the corresponding data from the
+      {" "}
       <code className={"prettyprint"}>MutableArrayDataProvider</code>
       , no action will be performed by the component and the message will stay open in the UI
     </p>

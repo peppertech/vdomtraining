@@ -11,6 +11,7 @@ export const filmStripFilmStripNavArrowsDescription = (
     </p>
     <p>
       When choosing between film strip or conveyor belt please consult API Doc
+      {" "}
       <a href={"jsdocs/oj.ojFilmStrip.html#filmStrip-conveyorBelt-section"}>
         JET FilmStrip and ConveyorBelt
       </a>

@@ -7,7 +7,9 @@ export const messagesInlineRecipe = (
     <ol>
       <li>
         Include a
+        {" "}
         <code className={"prettyprint"}>&lt;oj-messages&gt;</code>
+        {" "}
         element in the page and set its 'messages' property to a DataProvider. This demo uses an
         ArrayDataProvider wrapping a simple array of messages data.
       </li>
@@ -16,6 +18,7 @@ export const messagesInlineRecipe = (
       </li>
       <li>
         Make the messages inline by not specifying 'position' attribute for
+        {" "}
         <code className={"prettyprint"}>&lt;oj-messages&gt;</code>
         .
       </li>

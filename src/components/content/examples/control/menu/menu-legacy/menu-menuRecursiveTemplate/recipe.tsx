@@ -13,7 +13,9 @@ export const menuMenuRecursiveTemplateRecipe = (
       <li>In the view model, create a data structure with an entry for each menu item, as shown.</li>
       <li>
         Place a
+        {" "}
         <code className={"prettyprint"}>template</code>
+        {" "}
         binding, referring to the view model and a separate menu item template, on a nested virtual
         element as shown.
       </li>

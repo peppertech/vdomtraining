@@ -13,6 +13,7 @@ export const buttonsetoneBasicRecipe = (
       <li>
         Set <code className={"prettyprint"}>value</code> to the selected option and add an accessible
         label with <code className={"prettyprint"}>aria-label</code> or
+        {" "}
         <code className={"prettyprint"}>labelled-by</code>.
       </li>
     </ol>

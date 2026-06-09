@@ -12,7 +12,9 @@ export const menuButtonsMenuButtonRecipe = (
       <li>To create submenus, add nested oj-menu elements under the desired oj-option elements.</li>
       <li>
         A menu having submenus is always shown as a dropDown menu, not a sheet menu, regardless of the
+        {" "}
         <a href={"jsdocs/oj.ojMenu.html#openOptions.display"}>openOptions.display</a>
+        {" "}
         option.
       </li>
     </ol>

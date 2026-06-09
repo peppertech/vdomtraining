@@ -5,7 +5,9 @@ export const menuButtonsChromingDescription = (
     <p>A menu button launches a menu when clicked.</p>
     <p>
       This demo features various chroming value for:
+      {" "}
       <code className={"prettyprint"}>&lt;oj-button&gt;, &lt;oj-buttonset-one&gt;, &lt;oj-buttonset-many&gt;</code>
+      {" "}
       and <code>&lt;oj-menu-button&gt;</code>.
     </p>
     <p>"Chroming" refers to the borders and background of the button. In typical themes:</p>

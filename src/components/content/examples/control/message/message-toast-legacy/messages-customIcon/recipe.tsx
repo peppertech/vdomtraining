@@ -7,7 +7,9 @@ export const messagesCustomIconRecipe = (
     <ol>
       <li>
         Include a
+        {" "}
         <code className={"prettyprint"}>&lt;oj-messages&gt;</code>
+        {" "}
         element in the page with its 'messages' attribute bound to an ArrayDataProvider.
       </li>
       <li>

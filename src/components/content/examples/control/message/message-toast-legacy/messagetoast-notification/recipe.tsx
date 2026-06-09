@@ -7,7 +7,9 @@ export const messagetoastNotificationRecipe = (
     <ol>
       <li>
         Include a
+        {" "}
         <code className={"prettyprint"}>&lt;oj-messages&gt;</code>
+        {" "}
         element in the page and set its 'messages' property to a DataProvider. This demo uses an
         ArrayDataProvider wrapping a simple array of messages data.
       </li>
@@ -16,21 +18,29 @@ export const messagetoastNotificationRecipe = (
       </li>
       <li>
         Set the 'position' attribute of
+        {" "}
         <code className={"prettyprint"}>&lt;oj-messages&gt;</code>
+        {" "}
         to empty object to get default position, or set it to a fully defined position object
       </li>
       <li>
         Set the 'display' attribute of
+        {" "}
         <code className={"prettyprint"}>&lt;oj-messages&gt;</code>
+        {" "}
         to 'notification'
       </li>
       <li>
         Add the class
+        {" "}
         <a href={"jsdocs/ContrastingBackgroundColor.html#oj-color-invert"} target={"_blank"}>
           oj-color-invert
         </a>
+        {" "}
         to the
+        {" "}
         <code className={"prettyprint"}>&lt;oj-messages&gt;</code>
+        {" "}
         element to get the dark background
       </li>
     </ol>

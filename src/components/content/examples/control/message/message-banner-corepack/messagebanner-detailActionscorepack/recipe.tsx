@@ -21,8 +21,7 @@ const recipeHtmlText = String.raw`<ul>
     type. They are
     <code class="prettyprint">actions</code>
     and
-    <code class="prettyprint">detailLink</code>
-    . These properties will be used for customizing the detail content. These property names can be anything,
+    <code class="prettyprint">detailLink</code>. These properties will be used for customizing the detail content. These property names can be anything,
     and for the demo purposes we are using 'actions' and 'detailLink' here.
   </li>
   <li>

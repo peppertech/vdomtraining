@@ -14,15 +14,13 @@ const recipeHtmlText = String.raw`<ol>
     <code class="prettyprint">"outlined"</code>,
     <code class="prettyprint">"solid"</code>,
     <code class="prettyprint">"callToAction"</code>, and
-    <code class="prettyprint">"danger"</code>
-    . The default value varies by theme, as discussed in the
+    <code class="prettyprint">"danger"</code>. The default value varies by theme, as discussed in the
     <a href="jsdocs/oj.ojButton.html#chroming">Button Chroming</a>
     section in the API doc.
   </li>
   <li>
     For menu button in the Redwood theme, when there is no start slot and
-    <code class="prettyprint">"display='icons'"</code>
-    , the icon will change to three dots.
+    <code class="prettyprint">"display='icons'"</code>, the icon will change to three dots.
   </li>
 </ol>`;
 

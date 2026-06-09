@@ -6,6 +6,7 @@ export const buttonsetoneButtonResponsiveRecipe = (
     <ol>
       <li>
         Use shorter labels at narrower screen widths and switch
+        {" "}
         <code className={"prettyprint"}>display</code> to
         <code className={"prettyprint"}>icons</code> when only icons should remain visible.
       </li>

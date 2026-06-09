@@ -3,8 +3,7 @@ import { h } from "preact";
 const recipeHtmlText = String.raw`<ol>
   <li>
     For the
-    <code class="prettyprint">oj-c-menu-button</code>
-    , use 
+    <code class="prettyprint">oj-c-menu-button</code>, use
     <code class="prettyprint">label</code>
     attribute to create the menu button label.
   </li>

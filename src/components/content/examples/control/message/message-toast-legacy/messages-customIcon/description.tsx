@@ -5,7 +5,9 @@ export const messagesCustomIconDescription = (
   <>
     <p>Messages manages the layout and display of child messages.</p><p>
       This demo features 'icon' property of
+      {" "}
       <code className={"prettyprint"}>ojMessage.Message</code>
+      {" "}
       object.
     </p>
     <p>

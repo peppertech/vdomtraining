@@ -8,6 +8,7 @@ export const progressBarOverviewDescription = (
     </p>
     <p>
       This demo lets you quickly scan some of the more important visual aspects of{' '}
+      {" "}
       <code>oj-progress-bar</code>.
     </p>
   </>

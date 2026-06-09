@@ -17,6 +17,7 @@ export const messagetoastAccessibilityAndUsabilitycorepackRecipe = (
       </li>
       <li>
         Use <code className="prettyprint">sound</code> and <code className="prettyprint">position</code>
+        {" "}
         to support user preferences.
       </li>
       <li>

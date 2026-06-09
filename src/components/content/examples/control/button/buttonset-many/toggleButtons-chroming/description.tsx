@@ -6,7 +6,9 @@ export const toggleButtonsChromingDescription = (
     <p>An option represents a value for JET elements that display a list of values.</p>
     <p>
       This demo features various chroming value for:
+      {" "}
       <code className={"prettyprint"}>&lt;oj-button&gt;, &lt;oj-buttonset-one&gt;, &lt;oj-buttonset-many&gt;</code>
+      {" "}
       and <code>&lt;oj-menu-button&gt;</code>.
     </p>
     <p>&quot;Chroming&quot; refers to the borders and background of the button. In typical themes:</p>

@@ -8,10 +8,8 @@ const recipeHtmlText = String.raw`<ol>
   </li>
   <li>
     On the element, specify either one of the truncation options as described in the
-    <a href="jsdocs/oj-c.TruncatingText.html#truncation" target="_blank">API doc</a>
-    , or one of the line-clamp options as described in the
-    <a href="jsdocs/oj-c.TruncatingText.html#lineClamp" target="_blank">API doc</a>
-    . Do not use the truncation attribute and line-clamp attribute together, this will cause an
+    <a href="jsdocs/oj-c.TruncatingText.html#truncation" target="_blank">API doc</a>, or one of the line-clamp options as described in the
+    <a href="jsdocs/oj-c.TruncatingText.html#lineClamp" target="_blank">API doc</a>. Do not use the truncation attribute and line-clamp attribute together, this will cause an
     error.
   </li>
   <li>

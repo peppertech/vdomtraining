@@ -7,7 +7,9 @@ export const messagesSortingMessagesRecipe = (
     <ol>
       <li>
         Include a
+        {" "}
         <code>oj-messages</code>
+        {" "}
         element in the page with its 'messages' attribute bound to DataProvider implementation. We use
         the ListDataProviderView since it already provides the convenience of invoking the sort during
         data fetch.

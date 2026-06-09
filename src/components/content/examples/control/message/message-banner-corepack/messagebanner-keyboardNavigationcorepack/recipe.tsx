@@ -23,8 +23,7 @@ const recipeHtmlText = String.raw`<ul>
     attribute to specify the type of Message Banner. They can be either
     <code class="prettyprint">page</code>
     or
-    <code class="prettyprint">section</code>
-    . Message Banner are
+    <code class="prettyprint">section</code>. Message Banner are
     <code class="prettyprint">section</code>
     by default. Set the top-most component to
     <code class="prettyprint">page</code>
@@ -40,11 +39,9 @@ const recipeHtmlText = String.raw`<ul>
     message. Using the
     <code class="prettyprint">event.detail.key</code>
     property, remove the corresponding entry from the corresponding
-    <code class="prettyprint">MutableArrayDataProvider</code>
-    . This would in-turn close the corresponding message in the UI. If the listener fails to remove
+    <code class="prettyprint">MutableArrayDataProvider</code>. This would in-turn close the corresponding message in the UI. If the listener fails to remove
     the corresponding data from the
-    <code class="prettyprint">MutableArrayDataProvider</code>
-    , no action will be performed by the component and the message will stay open in the UI
+    <code class="prettyprint">MutableArrayDataProvider</code>, no action will be performed by the component and the message will stay open in the UI
   </li>
   <li>
     See

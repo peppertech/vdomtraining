@@ -6,17 +6,20 @@ export const toggleButtonsManyOverviewRecipe = (
     <ul>
       <li>
         Inside the <code className={"prettyprint"}>oj-buttonset-many</code> options can be provided via
+        {" "}
         <code className={"prettyprint"}>oj-option</code> (as shown in Multiple Buttons) or via
         <code className={"prettyprint"}>oj-bind-for-each</code> (as shown in Responsive) to generate
         buttons that can be clicked.
       </li>
       <li>
         Use <code className={"prettyprint"}>oj-buttonset-many</code> with its value attribute and
+        {" "}
         <code className={"prettyprint"}>oj-option</code> inside it to create a toggle button. See
         <a href={"#"}>Toggle(Single Button)</a> for details.
       </li>
       <li>
         Use <code className={"prettyprint"}>oj-buttonset-width-auto</code> and
+        {" "}
         <code className={"prettyprint"}>oj-buttonset-width-auto</code> classes to change width behavior.
         See <a href={"#"}>Buttonset Width</a> for details.
       </li>

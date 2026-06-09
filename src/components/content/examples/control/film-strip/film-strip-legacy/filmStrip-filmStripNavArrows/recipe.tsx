@@ -7,7 +7,9 @@ export const filmStripFilmStripNavArrowsRecipe = (
     <ol>
       <li>
         Create an
+        {" "}
         <code className={"prettyprint"}>oj-film-strip</code>
+        {" "}
         element.
       </li>
       <li>In the HTML, specify a group of sibling elements to be laid out by the oj-film-strip.</li>

@@ -4,8 +4,7 @@ const recipeHtmlText = String.raw`<ol>
   <li>Create a table with the dashboard data.</li>
   <li>
     Within the template, use an
-    <code class="prettyprint">oj-list-item-layout</code>
-    , whose attributes are bound to properties of the template context, as appropriate.
+    <code class="prettyprint">oj-list-item-layout</code>, whose attributes are bound to properties of the template context, as appropriate.
   </li>
   <li>
     You can use

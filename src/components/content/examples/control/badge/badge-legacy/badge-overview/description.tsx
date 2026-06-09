@@ -13,8 +13,10 @@ export const badgeOverviewDescription = (
     </p>
     <div className={"oj-sm-padding-2x-top"}>
       <span className={"oj-icon-color-danger oj-ux-ico-error-s oj-icon-size-6x"} role={"img"} aria-label={"error"}></span>
+      {" "}
       <b>NOTE</b>
       : Badges are supported in
+      {" "}
       <a href={"globalSupport-FAQ.html#redwood"} target={"_blank"}>the Redwood theme</a>
       , they are not supported in the Alta themes.
     </div>

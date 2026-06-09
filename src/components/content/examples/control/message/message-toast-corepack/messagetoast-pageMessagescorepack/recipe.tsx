@@ -42,11 +42,9 @@ const recipeHtmlText = String.raw`<p>Toast messages in page layout:</p>
   attribute. This listener will be called when one tries to close a message. Using the
   <code class="prettyprint">event.detail.key</code>
   property, remove the corresponding entry from the
-  <code class="prettyprint">MutableArrayDataProvider</code>
-  . This would in turn close the corresponding message in the UI. If the listener fails to remove
+  <code class="prettyprint">MutableArrayDataProvider</code>. This would in turn close the corresponding message in the UI. If the listener fails to remove
   the corresponding data from the
-  <code class="prettyprint">MutableArrayDataProvider</code>
-  , no action will be performed by the component and the message will stay open in the UI
+  <code class="prettyprint">MutableArrayDataProvider</code>, no action will be performed by the component and the message will stay open in the UI
 </p>`;
 
 export const messagetoastPageMessagescorepackRecipe = (

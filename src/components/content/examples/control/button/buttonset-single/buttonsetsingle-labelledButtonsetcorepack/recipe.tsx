@@ -12,8 +12,7 @@ const recipeHtmlText = String.raw`<ol>
     Add an
     <code class="prettyprint">oj-label</code>
     to define the label text and optional
-    <code class="prettyprint">help.definition</code>
-    .
+    <code class="prettyprint">help.definition</code>.
   </li>
   <li>
     Set the

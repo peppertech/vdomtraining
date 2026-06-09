@@ -12,14 +12,19 @@ export const menuDeferredRenderingRecipe = (
     <ol>
       <li>
         Place one
+        {" "}
         <code className={"prettyprint"}>oj-defer</code>
+        {" "}
         element as the immediate child of the
+        {" "}
         <code className={"prettyprint"}>oj-menu</code>
         .
       </li>
       <li>
         Place menu items inside the
+        {" "}
         <code className={"prettyprint"}>oj-defer</code>
+        {" "}
         element.
       </li>
       <li>
