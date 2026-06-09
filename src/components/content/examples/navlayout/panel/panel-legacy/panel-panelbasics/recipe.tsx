@@ -13,14 +13,17 @@ export const panelPanelbasicsRecipe = (
           </li>
           <li>
             add one of the
+            {" "}
             <a href={"#"}>
               background color classes
             </a>
+            {" "}
             to change the color.
           </li>
           <li>
             <b>oj-sm-margin-2x</b>
             : see the spacing section of the
+            {" "}
             <a href={"jsdocs/Spacing.html"}>styling doc</a>
           </li>
           <li>
@@ -35,13 +38,16 @@ export const panelPanelbasicsRecipe = (
         When panels are on the same row they have equal height because they are in a div with class
         'oj-flex'. By default in flexbox items on the same row will stretch vertically to be the same
         height. See the
+        {" "}
         <a href={"#"}>flex align demo</a>
+        {" "}
         for more information.
       </li>
       <li>
         Set the data-oj-binding-provider attribute to 'none' to notify the framework that particular
         elements or subtrees have no knockout dependencies and can be initialized without a knockout
         applyBindings call. For more information, see
+        {" "}
         <a href={"jsdocs/CustomElementOverview.html#ce-overview-upgrade-section"}>
           Upgrading a Custom Element
         </a>

@@ -11,8 +11,7 @@ const descriptionHtmlText = String.raw`<p>A Drawer Layout adds expandable side c
 </p>
 <p>
   This demo shows how to listen for drawer's event:
-  <code class="prettyprint">ojBeforeClose</code>
-  .
+  <code class="prettyprint">ojBeforeClose</code>.
 </p>`;
 
 export const drawerLayoutCancelableEventscorepackDescription = (

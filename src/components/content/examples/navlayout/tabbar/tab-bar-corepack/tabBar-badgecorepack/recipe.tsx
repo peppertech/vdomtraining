@@ -11,8 +11,7 @@ const recipeHtmlText = String.raw`<ol>
     <li>
         For each item provide an 
         <code class="prettyprint">itemKey</code>, 
-        <code class="prettyprint">label</code>
-        , and a 
+        <code class="prettyprint">label</code>, and a
         <code class="prettyprint">badge</code> or 
         <code class="prettyprint">metadata</code> or 
         <code class="prettyprint">severity</code>.

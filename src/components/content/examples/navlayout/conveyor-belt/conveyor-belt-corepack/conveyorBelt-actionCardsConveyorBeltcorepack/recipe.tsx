@@ -8,8 +8,7 @@ const recipeHtmlText = String.raw`<ol>
   </li>
   <li>
     Create an
-    <code>DataProvider</code>
-   . In this case since data is an
+    <code>DataProvider</code>. In this case since data is an
    <code>array</code>,
    use the
    <code>ArrayDataProvider</code>

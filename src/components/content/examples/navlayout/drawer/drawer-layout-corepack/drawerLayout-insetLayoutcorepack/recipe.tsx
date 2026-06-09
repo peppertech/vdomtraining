@@ -37,8 +37,7 @@ const recipeHtmlText = String.raw`<ol>
       </li>
       <li>
         Stretch its parent element to cover desired area applying e.g.
-        <code class="prettyprint">min-height: 100vh;</code>
-        .
+        <code class="prettyprint">min-height: 100vh;</code>.
       </li>
     </ul>
   </li>
@@ -46,8 +45,7 @@ const recipeHtmlText = String.raw`<ol>
     Create a fixed drawer header using e.g.
     <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout">
       CSS Flexible Box Layout
-    </a>
-    .
+    </a>.
     <ul>
       <li>
         Add your own custom class (or use the style attribute) to apply

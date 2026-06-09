@@ -43,8 +43,7 @@ const recipeHtmlText = String.raw`<p>
     </li>
     <li>
       Ensure that the content can be reached through keyboard by setting the
-      <code class="prettyprint">tabindex</code>
-      .
+      <code class="prettyprint">tabindex</code>.
     </li>
   </ul>
   <div class="oj-typography-body-xl oj-typography-bold">Script</div>

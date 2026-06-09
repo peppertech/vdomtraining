@@ -16,8 +16,7 @@ const descriptionHtmlText = String.raw`<p>A Dialog is a floating window that typ
   <code class="prettyprint">%</code>
   is problematic. To achieve fluid dialog sizing relative to the browser's viewport, use the
   viewport-percentage units:
-  <code class="prettyprint">vw, vh, vmin, vmax</code>
-  .
+  <code class="prettyprint">vw, vh, vmin, vmax</code>.
 </p>`;
 
 export const dialogPercentcorepackDescription = (

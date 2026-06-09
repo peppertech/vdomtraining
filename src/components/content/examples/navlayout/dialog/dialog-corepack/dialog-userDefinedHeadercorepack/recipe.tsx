@@ -11,8 +11,7 @@ const recipeHtmlText = String.raw`<ul>
     <ul>
       <li>
         Create a child element with with
-        <code class="prettyprint">slot='body'</code>
-        , and define your body content within this element.
+        <code class="prettyprint">slot='body'</code>, and define your body content within this element.
       </li>
     </ul>
   </li>
@@ -49,8 +48,7 @@ const recipeHtmlText = String.raw`<ul>
         header, use
         <code class="prettyprint">cancelBehavior: 'escape'</code>
         or
-        <code class="prettyprint">cancelBehavior: 'none'</code>
-        .
+        <code class="prettyprint">cancelBehavior: 'none'</code>.
       </li>
     </ul>
   </li>

@@ -10,8 +10,7 @@ const recipeHtmlText = String.raw`<ol>
         If desired, icons-only tabs can be shown by setting
       <code class="prettyprint">display</code>
       attribute to
-      <code class="prettyprint">icons</code>
-      .
+      <code class="prettyprint">icons</code>.
     </li>
     <li>
         To have different type of layout set

@@ -5,15 +5,13 @@ const recipeHtmlText = String.raw`<ol>
     Set the
     <code class="prettyprint">modality</code>
     option to
-    <code class="prettyprint">modal</code>
-    .
+    <code class="prettyprint">modal</code>.
   </li>
   <li>
     Set the
     <code class="prettyprint">auto-dismiss</code>
     option to
-    <code class="prettyprint">none</code>
-    .
+    <code class="prettyprint">none</code>.
   </li>
   <li>
     Configure the

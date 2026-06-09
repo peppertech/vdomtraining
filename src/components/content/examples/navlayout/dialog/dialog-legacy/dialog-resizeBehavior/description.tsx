@@ -6,7 +6,9 @@ export const dialogResizeBehaviorDescription = (
     <p>A dialog displays a popup window that provides information and gathers input from the application user.</p><p>
       The demo show how changing the dialog's resize behavior option can affect the dialog. The
       following describes the different settings of the
+      {" "}
       <code className={"prettyprint"}>resizeBehavior</code>
+      {" "}
       property:
     </p>
     <table className={"dialogDemo"}>
@@ -26,7 +28,9 @@ export const dialogResizeBehaviorDescription = (
     <p></p>
     <p>
       The dialog's default
+      {" "}
       <code className={"prettyprint"}>resizeBehavior</code>
+      {" "}
       setting is theme specific. In the Redwood theme, the default behavior is none. In the Alta theme,
       the default behavior is resizable, while in mobile themes (Android, iOS, and Windows), the default
       behavior is not resizable.
@@ -37,7 +41,9 @@ export const dialogResizeBehaviorDescription = (
         <th>Theme</th>
         <th className={"padding-10"}>
           Default
+          {" "}
           <code className={"prettyprint"}>resizeBehavior</code>
+          {" "}
           Setting
         </th>
       </tr>
@@ -65,7 +71,9 @@ export const dialogResizeBehaviorDescription = (
     <p></p>
     <p>
       These defaults can be overridden with the
+      {" "}
       <code className={"prettyprint"}>resizeBehavior</code>
+      {" "}
       property.
     </p>
   </>

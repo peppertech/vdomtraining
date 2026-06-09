@@ -14,19 +14,25 @@ export const tabbarTboverflowRecipe = (
       <li>if conveyorbelt is used, wrap Tab bar in side oj-conveyor-belt as shown below.</li>
       <li>
         if popup menu is used set overflow attribute to
+        {" "}
         <code className={"prettyprint"}>popup</code>
         .
       </li>
       <li>
         Ensure that
+        {" "}
         <code className={"prettyprint"}>edge</code>
+        {" "}
         attribute set to
+        {" "}
         <code className={"prettyprint"}>top</code>
         .
       </li>
       <li>
         Ensure that
+        {" "}
         <code className={"prettyprint"}>truncation</code>
+        {" "}
         attribute set to "progressive" to truncate labels based on available width
       </li>
       <li>
@@ -38,6 +44,7 @@ export const tabbarTboverflowRecipe = (
     <p>
       Use Tab bar only to toggle between related content sections. To perform any actions on the content
       use
+      {" "}
       <a href={"#"}>oj-toolbar</a>
       .
     </p>

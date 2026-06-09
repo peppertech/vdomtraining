@@ -20,27 +20,37 @@ export const navigationlistNavroutingRecipe = (
       <li>Create an oj-navigation-list element with a &lt;template&gt; element.</li>
       <li>
         Define the navigation-list's
+        {" "}
         <code className={"prettyprint"}>data</code>
+        {" "}
         attribute to to bind to an ArrayDataProvider instance so that it will create a &lt;li&gt; for every
         item in the array.
       </li>
       <li>
         Iterate through the array and use the
+        {" "}
         <code className={"prettyprint"}>item.data.path</code>
+        {" "}
         and
+        {" "}
         <code className={"prettyprint"}>item.data.detail.label</code>
+        {" "}
         properties of the Route for the list item.
       </li>
       <li>
         Define the
+        {" "}
         <code className={"prettyprint"}>selection</code>
+        {" "}
         attribute of the navigation-list to bind to the active route value, enabling the
         navigation-list to be notified of route changes and update its state based on user selection.
       </li>
       <li>
         Define the contents of the panel by creating an &lt;oj-bind-text&gt; element whose value is bound
         to
+        {" "}
         <code className={"prettyprint"}>selectedRoute</code>
+        {" "}
         to show the current route path, and another bound to the selected route detail
         to show the human-readable label of the route.
       </li>

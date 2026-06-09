@@ -9,30 +9,40 @@ export const dialogModalDescription = (
     </p>
     <p>
       This example also shows the use of slots (
+      {" "}
       <code className={"prettyprint"}>'body'</code>
+      {" "}
       and
+      {" "}
       <code className={"prettyprint"}>'footer'</code>
+      {" "}
       ), which are used to identify different content areas of the dialog:
     </p>
     <ul>
       <li>
         <code className={"prettyprint"}>slot='body'</code>
+        {" "}
         - identifies dialog body content area.
       </li>
       <li>
         <code className={"prettyprint"}>slot='footer'</code>
+        {" "}
         - identifies dialog footer content area.
       </li>
     </ul>
     <p>
       Note that the dialog also supports a
+      {" "}
       <code className={"prettyprint"}>'header'</code>
+      {" "}
       slot, which can be used to for user-defined headers.
     </p>
     <p>
       This and other dialog demos use a button to launch the dialog - the button's click handler calls
       the dialog's
+      {" "}
       <code className={"prettyprint"}>open</code>
+      {" "}
       method. However, in practice, you will likely open the dialog based on application state.
     </p>
     <p>

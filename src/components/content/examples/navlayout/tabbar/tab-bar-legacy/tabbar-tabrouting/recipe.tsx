@@ -20,20 +20,28 @@ export const tabbarTabroutingRecipe = (
       <li>Create an oj-tab-bar element with a &lt;template&gt; element.</li>
       <li>
         Define the tab-bar's
+        {" "}
         <code className={"prettyprint"}>data</code>
+        {" "}
         attribute to bind to an ArrayDataProvider instance so that it will create a &lt;li&gt; for
         every item in the array.
       </li>
       <li>
         Iterate through the array and use the
+        {" "}
         <code className={"prettyprint"}>item.data.path</code>
+        {" "}
         and
+        {" "}
         <code className={"prettyprint"}>item.data.detail.label</code>
+        {" "}
         properties of the Route for the tab.
       </li>
       <li>
         Define the
+        {" "}
         <code className={"prettyprint"}>selection</code>
+        {" "}
         attribute of the tab-bar to bind to the active route value, enabling the tab-bar to be
         notified of route changes and update its state based on user selection.
       </li>
@@ -43,6 +51,7 @@ export const tabbarTabroutingRecipe = (
       </li>
       <li>
         Ensure that the content can be reached through keyboard by setting the
+        {" "}
         <code className={"prettyprint"}>tabindex</code>
         .
       </li>

@@ -10,8 +10,7 @@ const recipeHtmlText = String.raw`<ul>
   </li>
   <li>
     Create a child element with with
-    <code class="prettyprint">slot='body'</code>
-    , and define your body content within this element.
+    <code class="prettyprint">slot='body'</code>, and define your body content within this element.
   </li>
   <li>
     Configure how to launch the dialog using the

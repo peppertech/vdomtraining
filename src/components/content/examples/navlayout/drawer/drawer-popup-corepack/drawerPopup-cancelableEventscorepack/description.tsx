@@ -10,8 +10,7 @@ const descriptionHtmlText = String.raw`<p>A Drawer Popup is a panel that slides 
 </p>
 <p>
   This demo shows how to listen for drawer's event:
-  <code class="prettyprint">ojBeforeClose</code>
-  .
+  <code class="prettyprint">ojBeforeClose</code>.
 </p>`;
 
 export const drawerPopupCancelableEventscorepackDescription = (

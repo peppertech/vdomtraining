@@ -11,8 +11,7 @@ const descriptionHtmlText = String.raw`<p>A Dialog is a floating window that typ
   This default behavior is controlled by the
   <code class="prettyprint">overflow: auto</code>
   style of the dialog body. Also note that the Dialog has
-  <code class="prettyprint">overflow:hidden</code>
-  , so that only the body will have a scrollbar.
+  <code class="prettyprint">overflow:hidden</code>, so that only the body will have a scrollbar.
 </p>
 <p>
   However, in this example, the dialog has been set to a small fixed height, which is why the

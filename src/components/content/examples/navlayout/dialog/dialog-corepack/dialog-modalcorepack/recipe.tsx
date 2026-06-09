@@ -12,8 +12,7 @@ const recipeHtmlText = String.raw`<ul>
     Define the dialog body content:
     <br />
     Create a child element with
-    <code class="prettyprint">slot='body'</code>
-    , and define your body content within this element.
+    <code class="prettyprint">slot='body'</code>, and define your body content within this element.
   </li>
   <li>
     Define the dialog footer content:

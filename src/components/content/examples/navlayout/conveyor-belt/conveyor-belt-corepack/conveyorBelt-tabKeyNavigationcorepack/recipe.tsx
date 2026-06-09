@@ -22,8 +22,7 @@ const recipeHtmlText = String.raw`HTML Markup:
     applyBindings call. For more information, see
     <a href="jsdocs/CustomElementOverview.html#ce-overview-upgrade-section">
       Upgrading a Custom Element
-    </a>
-    .
+    </a>.
   </li>
 </ol>`;
 

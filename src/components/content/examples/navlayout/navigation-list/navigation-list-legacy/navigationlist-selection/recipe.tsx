@@ -13,12 +13,16 @@ export const navigationlistSelectionRecipe = (
       <li>Use the itemTemplate slot to specify the template for rendering the item.</li>
       <li>
         Bind
+        {" "}
         <code className={"prettyprint"}>selection</code>
+        {" "}
         to observable to keep track of selected item.
       </li>
       <li>
         If needed, Use
+        {" "}
         <code className={"prettyprint"}>on-selection-changed</code>
+        {" "}
         listener to perform any action on selection change.
       </li>
     </ol>

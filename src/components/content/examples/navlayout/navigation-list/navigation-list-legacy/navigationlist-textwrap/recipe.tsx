@@ -13,12 +13,16 @@ export const navigationlistTextwrapRecipe = (
       <li>Use the itemTemplate slot to specify the template for rendering the item.</li>
       <li>
         Add the
+        {" "}
         <code className={"prettyprint"}>oj-navigationlist-item-text-wrap</code>
+        {" "}
         style class on root node.
       </li>
       <li>
         To handle item selection, bind
+        {" "}
         <code className={"prettyprint"}>selection</code>
+        {" "}
         attribute to an observable as shown.
       </li>
     </ol>

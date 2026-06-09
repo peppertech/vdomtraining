@@ -6,7 +6,9 @@ export const dialogDragAffordanceDescription = (
     <p>A dialog displays a popup window that provides information and gathers input from the application user.</p><p>
       The demo show how changing the dialog's drag affordance option can affect the dialog. The
       following describes the different settings of the
+      {" "}
       <code className={"prettyprint"}>dragAffordance</code>
+      {" "}
       property:
     </p>
     <table className={"dialogDemo"}>
@@ -25,7 +27,9 @@ export const dialogDragAffordanceDescription = (
     </table>
     <p>
       The dialog's default
+      {" "}
       <code className={"prettyprint"}>dragAffordance</code>
+      {" "}
       setting is theme specific. In the Redwood theme, the default behavior is none. In the Alta theme,
       the default behavior is resizable, while in mobile themes (Android, iOS, and Windows), the default
       behavior is not resizable.
@@ -36,7 +40,9 @@ export const dialogDragAffordanceDescription = (
         <th>Theme</th>
         <th className={"padding-10"}>
           Default
+          {" "}
           <code className={"prettyprint"}>dragAffordance</code>
+          {" "}
           Property
         </th>
       </tr>
@@ -63,7 +69,9 @@ export const dialogDragAffordanceDescription = (
     </table>
     <p>
       These defaults can be overridden with the
+      {" "}
       <code className={"prettyprint"}>dragAffordance</code>
+      {" "}
       property.
     </p>
   </>

@@ -5,6 +5,7 @@ export const panelPaneldragDescription = (
   <>
     <p>
       This demo shows various affordances for panel. Examples usage of the
+      {" "}
       <a href={"#"}>
         drag
       </a>
@@ -13,9 +14,11 @@ export const panelPaneldragDescription = (
         remove
       </a>
       , and
+      {" "}
       <a href={"#"}>
         expand/collapse
       </a>
+      {" "}
       affordances can be found in the masonry layout demos.
     </p>
   </>

@@ -4,8 +4,7 @@ const recipeHtmlText = String.raw`<ol>
   <li>In the HTML, specify a group of sibling elements to be managed by the ConveyorBelt.</li>
   <li>
     Create an
-    <code>DataProvider</code>
-   . In this case since data is an
+    <code>DataProvider</code>. In this case since data is an
    <code>array</code>,
    use the
    <code>ArrayDataProvider</code>

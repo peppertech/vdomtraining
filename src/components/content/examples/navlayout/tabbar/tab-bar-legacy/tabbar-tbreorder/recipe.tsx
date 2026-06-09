@@ -16,13 +16,16 @@ export const tabbarTbreorderRecipe = (
         operation on ArrayTableDataProvider. It is recommended to update a live region upon reordering a
         tab so that the screen reader announces this information. This demo shows a live region that is
         updated in the
+        {" "}
         <i><b>on-oj-reorder</b></i>
+        {" "}
         handler.
       </li>
     </ol>
     <p>
       Use Tab bar only to toggle between related content sections. To perform any actions on the content
       use
+      {" "}
       <a href={"#"}>oj-toolbar</a>
       .
     </p>

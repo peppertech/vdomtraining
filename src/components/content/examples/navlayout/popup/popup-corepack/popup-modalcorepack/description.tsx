@@ -4,8 +4,7 @@ const descriptionHtmlText = String.raw`<p>A popup temporarily 'pops up' content 
   This demo shows the usage of popup's
   <code class="prettyprint">modality</code>
   property. When set to
-  <code class="prettyprint">modal</code>
-  , the user input of the page behind the popup is blocked
+  <code class="prettyprint">modal</code>, the user input of the page behind the popup is blocked
 </p>
 <p>
   The demo also shows the effect of the

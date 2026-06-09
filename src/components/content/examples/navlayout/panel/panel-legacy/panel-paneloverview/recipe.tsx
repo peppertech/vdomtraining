@@ -14,23 +14,29 @@ export const panelPaneloverviewRecipe = (
       </li>
       <li>
         padding: see the
+        {" "}
         <a href={"#"}>
           spacing demo
         </a>
+        {" "}
         for more information about padding classes.
       </li>
       <li>
         colors: see the
+        {" "}
         <a href={"#"}>
           panel colors demo
         </a>
+        {" "}
         for more information.
       </li>
       <li>
         shadows: see the
+        {" "}
         <a href={"#"}>
           panel shadows demo
         </a>
+        {" "}
         for more information.
       </li>
     </ul>

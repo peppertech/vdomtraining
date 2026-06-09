@@ -6,11 +6,14 @@ export const dialogDragAffordanceRecipe = (
     <ul>
       <li>
         Use the oj-dialog element to create a
+        {" "}
         <code className={"prettyprint"}>dialog</code>
+        {" "}
         component.
       </li>
       <li>
         Create a child element with with
+        {" "}
         <code className={"prettyprint"}>slot='body'</code>
         , and define your body content within this element.
       </li>
@@ -19,16 +22,22 @@ export const dialogDragAffordanceRecipe = (
         <ul>
           <li>
             Call the dialog's
+            {" "}
             <code className={"prettyprint"}>open</code>
+            {" "}
             method to open the dialog.
           </li>
         </ul>
       </li>
       <li>
         Configure the dialog's drag affordance by setting
+        {" "}
         <code className={"prettyprint"}>drag-affordance='title-bar' or 'none'</code>
+        {" "}
         in the
+        {" "}
         <code className={"prettyprint"}>oj-radioset</code>
+        {" "}
         bindings.
       </li>
     </ul>

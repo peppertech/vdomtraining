@@ -6,7 +6,9 @@ export const dialogHeaderDecorationDescription = (
     <p>A dialog displays a popup window that provides information and gathers input from the application user.</p><p>
       The demo show how changing the dialog's header decoration option can affect the dialog. The
       following describes the different settings of the
+      {" "}
       <code className={"prettyprint"}>headerDecoration</code>
+      {" "}
       property:
     </p>
     <table className={"dialogDemo"}>
@@ -28,11 +30,16 @@ export const dialogHeaderDecorationDescription = (
     <br />
     <p>
       The dialog's default
+      {" "}
       <code className={"prettyprint"}>headerDecoration</code>
+      {" "}
       value is
+      {" "}
       <code className={"prettyprint"}>'on'</code>
       , but the decoration is only seen in the Redwood theme,
+      {" "}
       <code className={"prettyprint"}>'on'</code>
+      {" "}
       shows no decoration in other themes.
     </p>
   </>

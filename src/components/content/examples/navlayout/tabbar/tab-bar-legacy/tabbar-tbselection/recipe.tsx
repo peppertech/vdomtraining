@@ -14,18 +14,23 @@ export const tabbarTbselectionRecipe = (
       <li>If desired, an icon can be added before the list item text as shown.</li>
       <li>
         Bind
+        {" "}
         <code className={"prettyprint"}>selection</code>
+        {" "}
         to observable to keep track of selected item.
       </li>
       <li>
         If needed, Use
+        {" "}
         <code className={"prettyprint"}>on-selection-changed</code>
+        {" "}
         callback to perform any action on selection change.
       </li>
     </ol>
     <p>
       Use Tab bar only to toggle between related content sections. To perform any actions on the content
       use
+      {" "}
       <a href={"#"}>oj-toolbar</a>
       .
     </p>
