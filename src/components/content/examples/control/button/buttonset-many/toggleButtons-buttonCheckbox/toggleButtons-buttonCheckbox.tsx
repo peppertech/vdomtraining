@@ -1,12 +1,16 @@
-import { h } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useState } from 'preact/hooks';
 import 'ojs/ojbutton';
+
+type ButtonsetManyValueChangedEvent = Parameters<
+  NonNullable<ComponentProps<'oj-buttonset-many'>['onvalueChanged']>
+>[0];
 
 export const ToggleButtonsButtonCheckbox = () => {
   const [isAdvanced, setIsAdvanced] = useState<string[]>([]);
   const userText = `User is: ${isAdvanced.length ? 'an expert' : 'a beginner'}`;
 
-  const handleValueChanged = (event: any) => {
+  const handleValueChanged = (event: ButtonsetManyValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
       setIsAdvanced(event.detail.value ?? []);
     }

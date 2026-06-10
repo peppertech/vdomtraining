@@ -47,6 +47,10 @@ const dataProvider = new MutableArrayDataProvider<AvatarComponent["id"], AvatarC
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<AvatarComponent["id"]>;
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type AvatarSelectedChangedEvent = ojListView.selectedChanged<
+  AvatarComponent["id"],
+  AvatarComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
 const AvatarsHome = ({
@@ -98,7 +102,7 @@ const AvatarsHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: AvatarSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as AvatarComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

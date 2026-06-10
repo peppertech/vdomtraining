@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import { ojMenu } from 'ojs/ojmenu';
@@ -6,7 +5,6 @@ import 'ojs/ojmenu';
 import 'ojs/ojbutton';
 import 'ojs/ojoption';
 import 'ojs/ojmenuselectmany';
-import 'ojs/ojmenubutton';
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 

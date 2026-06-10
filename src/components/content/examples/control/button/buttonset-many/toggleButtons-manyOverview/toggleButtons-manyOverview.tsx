@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
 import 'ojs/ojbutton';
@@ -6,14 +6,27 @@ import 'ojs/ojlabel';
 import 'ojs/ojlabelvalue';
 import 'css!./demo.css';
 
-const responsiveItems = [
+type ResponsiveItem = {
+  id: string;
+  icon: string;
+};
+type DrinkOption = {
+  id: string;
+  value: string;
+  drink: string;
+};
+type ButtonsetManyValueChangedEvent = Parameters<
+  NonNullable<ComponentProps<'oj-buttonset-many'>['onvalueChanged']>
+>[0];
+
+const responsiveItems: ResponsiveItem[] = [
   { id: 'Home', icon: 'oj-ux-ico-home' },
   { id: 'Guide', icon: 'oj-ux-ico-education' },
   { id: 'Library', icon: 'oj-ux-ico-library' },
   { id: 'Styles', icon: 'oj-ux-ico-color-palette' },
   { id: 'FAQ', icon: 'oj-ux-ico-chat' }
 ];
-const drinkOptions = [
+const drinkOptions: DrinkOption[] = [
   { id: 'coffeeopt', value: 'coffee', drink: 'Coffee' },
   { id: 'teaopt', value: 'tea', drink: 'Tea' },
   { id: 'milkopt', value: 'milk', drink: 'Milk' }
@@ -70,7 +83,7 @@ export const ToggleButtonsManyOverview = () => {
   }, [screenRange]);
   const display = isSmall ? 'icons' : 'all';
 
-  const handleAdvancedChanged = (event: any) => {
+  const handleAdvancedChanged = (event: ButtonsetManyValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
       setIsAdvanced(event.detail.value ?? []);
     }
@@ -146,7 +159,7 @@ export const ToggleButtonsManyOverview = () => {
           display={display}
           aria-label="Choose only one item."
         >
-          {responsiveItems.map((item: any, index: any) => (
+          {responsiveItems.map((item: ResponsiveItem, index: number) => (
             <oj-option key={item.id} value={item.id}>
               <span slot="startIcon" class={item.icon} />
               <span>{itemLabels[index]}</span>
@@ -161,7 +174,7 @@ export const ToggleButtonsManyOverview = () => {
           Drinks
         </oj-label>
         <oj-buttonset-many slot="value" id="buttonsetLabelDemoId" labelledBy="mainlabelid" value={['coffee', 'tea']}>
-          {drinkOptions.map((option: any) => (
+          {drinkOptions.map((option: DrinkOption) => (
             <oj-option key={option.id} id={option.id} value={option.value}>
               {option.drink}
             </oj-option>

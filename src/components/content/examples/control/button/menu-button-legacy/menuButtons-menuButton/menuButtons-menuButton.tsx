@@ -3,7 +3,6 @@ import type { ComponentProps } from 'preact';
 import { useState } from 'preact/hooks';
 import 'ojs/ojbutton';
 import 'ojs/ojmenu';
-import 'ojs/ojmenubutton';
 import 'ojs/ojoption';
 
 type MenuActionEvent = Parameters<NonNullable<ComponentProps<'oj-menu'>['onojMenuAction']>>[0];

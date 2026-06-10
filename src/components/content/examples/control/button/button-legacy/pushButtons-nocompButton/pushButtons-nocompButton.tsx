@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h, type ComponentProps } from 'preact';
 import { useState } from 'preact/hooks';
 import 'ojs/ojcheckboxset';

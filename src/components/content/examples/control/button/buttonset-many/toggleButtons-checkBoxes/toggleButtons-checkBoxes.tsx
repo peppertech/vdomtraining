@@ -1,26 +1,31 @@
-import { h } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import 'ojs/ojbutton';
 
+type FormatValue = 'bold' | 'italic' | 'underline';
+type ButtonsetManyValueChangedEvent = Parameters<
+  NonNullable<ComponentProps<'oj-buttonset-many'>['onvalueChanged']>
+>[0];
+
 export const ToggleButtonsCheckBoxes = () => {
-  const [formats, setFormats] = useState(['bold', 'underline']);
+  const [formats, setFormats] = useState<FormatValue[]>(['bold', 'underline']);
   const classes = useMemo(() => formats.join(' '), [formats]);
   const bold = formats.includes('bold');
   const formattedText = bold ? 'This text is bold' : 'This text is NOT bold';
 
-  const handleFormatsChanged = (event: any) => {
+  const handleFormatsChanged = (event: ButtonsetManyValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
       setFormats(event.detail.value ?? []);
     }
   };
 
   const toggleAll = () => {
-    setFormats((current: any) => (current.length === 3 ? [] : ['bold', 'italic', 'underline']));
+    setFormats((current: FormatValue[]) => (current.length === 3 ? [] : ['bold', 'italic', 'underline']));
   };
 
   const toggleBold = () => {
-    setFormats((current: any) =>
-      current.includes('bold') ? current.filter((value: any) => value !== 'bold') : [...current, 'bold']
+    setFormats((current: FormatValue[]) =>
+      current.includes('bold') ? current.filter((value: FormatValue) => value !== 'bold') : [...current, 'bold']
     );
   };
 

@@ -57,6 +57,10 @@ const dataProvider = new MutableArrayDataProvider<
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<BadgeComponent["id"]>;
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type BadgeSelectedChangedEvent = ojListView.selectedChanged<
+  BadgeComponent["id"],
+  BadgeComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
 const BadgeHome = ({
@@ -109,7 +113,7 @@ const BadgeHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: BadgeSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as BadgeComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

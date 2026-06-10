@@ -5,9 +5,20 @@ import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojavatar';
 import 'ojs/ojlistview';
 import 'ojs/ojactioncard';
+import { ojListView } from 'ojs/ojlistview';
 import "css!./demo.css";
+
+type BadgeEndbadgeItem = {
+    id: string;
+    image: string;
+    model: string;
+    name: string;
+    status: string;
+    cost: string;
+};
+
 export const BadgeEndbadge = () => {
-    const data1 = useMemo(() => [
+    const data1 = useMemo<BadgeEndbadgeItem[]>(() => [
         {
             id: 'id1',
             image: '/styles/images/listItemImages/rake.png',
@@ -33,7 +44,7 @@ export const BadgeEndbadge = () => {
             cost: '$40.00'
         }
     ], []);
-    const dataProvider1 = useMemo(() => new ArrayDataProvider(data1, {
+    const dataProvider1 = useMemo(() => new ArrayDataProvider<BadgeEndbadgeItem["id"], BadgeEndbadgeItem>(data1, {
         keyAttributes: 'id'
     }), [data1]);
     const getBadgeClass = (status: string) => {
@@ -46,7 +57,7 @@ export const BadgeEndbadge = () => {
                 return 'oj-badge';
         }
     };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: ojListView.ItemTemplateContext<BadgeEndbadgeItem["id"], BadgeEndbadgeItem>) => {
         return <li>
                                                 <oj-action-card>
                                                                 <div class="demo-wrapper">

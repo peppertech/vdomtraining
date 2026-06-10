@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import { MessageBannerItem, MessageBannerElement } from 'ojs/ojmessagebanner';
@@ -20,6 +19,7 @@ type DemoMessageBannerItem = MessageBannerItem & {
     ];
     detailLink?: CustomAction;
 };
+type MessageTemplateContext = ItemContext<string, DemoMessageBannerItem>;
 
 export const MessagebannerDetailActions = () => {
   const initialMessages: Array<DemoMessageBannerItem> = [
@@ -79,13 +79,13 @@ export const MessagebannerDetailActions = () => {
 
   const _removeMessage = (key: string) => {
       const data = messages.data.slice();
-      messages.data = data.filter((message: any) => (message as any).id !== key);
+      messages.data = data.filter((message: DemoMessageBannerItem) => message.id !== key);
   };
 
   return (
       <div id="containerDiv">
             <oj-message-banner data={messages} type="page" detailTemplateValue={getDetailTemplate} onojClose={closeMessage}>
-                    <template slot="actions" render={(message: any) => (
+                    <template slot="actions" render={(message: MessageTemplateContext) => (
                             <>
                                 <div class="oj-flex-item"><span>{message.data.detail}</span></div>
                                 <div class="oj-flex oj-flex-item oj-sm-flex-items-initial oj-sm-padding-2x-top">
@@ -98,7 +98,7 @@ export const MessagebannerDetailActions = () => {
                                           </div>
                             </>
                           )} />
-                    <template slot="detailLink" render={(message: any) => (
+                    <template slot="detailLink" render={(message: MessageTemplateContext) => (
                             <>
                                 <div class="oj-flex-item">
                                               <span>{message.data.detail}</span>

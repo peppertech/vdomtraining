@@ -49,6 +49,10 @@ const dataProvider = new MutableArrayDataProvider<
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<ToolbarComponent["id"]>;
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type ToolbarSelectedChangedEvent = ojListView.selectedChanged<
+  ToolbarComponent["id"],
+  ToolbarComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
 const ToolbarHome = ({
@@ -104,7 +108,7 @@ const ToolbarHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: ToolbarSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as ToolbarComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

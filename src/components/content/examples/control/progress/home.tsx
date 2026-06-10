@@ -67,6 +67,10 @@ const dataProvider = new MutableArrayDataProvider<ProgressComponent["id"], Progr
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type ProgressSelectedChangedEvent = ojListView.selectedChanged<
+  ProgressComponent["id"],
+  ProgressComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<ProgressComponent["id"]>;
 
@@ -145,7 +149,7 @@ const ProgressHome = ({
     );
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: ProgressSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as ProgressComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

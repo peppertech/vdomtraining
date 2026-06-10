@@ -1,6 +1,5 @@
 import { h, JSX } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
-//import "ojs/ojmenubutton";
 import "ojs/ojmenu";
 import "ojs/ojoption";
 import type { MenuElement } from "ojs/ojmenu";

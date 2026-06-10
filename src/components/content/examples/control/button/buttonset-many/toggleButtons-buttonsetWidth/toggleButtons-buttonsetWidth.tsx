@@ -9,10 +9,19 @@ import 'css!./demo.css';
 
 const joinClasses = (...classes: Array<string | false>) => classes.filter(Boolean).join(' ');
 
-const items = [{ id: 'Home' }, { id: 'Guide' }, { id: 'Library' }];
+type ButtonsetWidthClass = 'default' | 'auto' | 'equal';
+type ButtonsetItem = {
+  id: string;
+};
+type ValueChangedEvent<T> = CustomEvent<{
+  value?: T;
+  updatedFrom?: string;
+}>;
+
+const items: ButtonsetItem[] = [{ id: 'Home' }, { id: 'Guide' }, { id: 'Library' }];
 
 export const ToggleButtonsButtonsetWidth = () => {
-  const [buttonsetWidthClass, setButtonsetWidthClass] = useState('default');
+  const [buttonsetWidthClass, setButtonsetWidthClass] = useState<ButtonsetWidthClass>('default');
   const [buttonWidth, setButtonWidth] = useState<string[]>([]);
   const [isSmall, setIsSmall] = useState(false);
 
@@ -53,13 +62,13 @@ export const ToggleButtonsButtonsetWidth = () => {
     buttonWidth.includes('true') && 'demo-max-width-400'
   );
 
-  const handleWidthClassChanged = (event: any) => {
+  const handleWidthClassChanged = (event: ValueChangedEvent<ButtonsetWidthClass>) => {
     if (event.detail.updatedFrom === 'internal') {
-      setButtonsetWidthClass(event.detail.value);
+      setButtonsetWidthClass(event.detail.value ?? 'default');
     }
   };
 
-  const handleButtonWidthChanged = (event: any) => {
+  const handleButtonWidthChanged = (event: ValueChangedEvent<string[]>) => {
     if (event.detail.updatedFrom === 'internal') {
       setButtonWidth(event.detail.value ?? []);
     }
@@ -112,7 +121,7 @@ export const ToggleButtonsButtonsetWidth = () => {
           value={['Home', 'Library']}
           class={buttonsetClass}
         >
-          {items.map((item: any, index: any) => (
+          {items.map((item: ButtonsetItem, index: number) => (
             <oj-option key={item.id} value={item.id} id={`borderless${item.id}`}>
               {itemIcons[index].start ? <span slot="startIcon" class={itemIcons[index].start} /> : null}
               <span>{itemLabels[index]}</span>
@@ -129,7 +138,7 @@ export const ToggleButtonsButtonsetWidth = () => {
         value={['Home', 'Library']}
         class={buttonsetClass}
       >
-        {items.map((item: any, index: any) => (
+        {items.map((item: ButtonsetItem, index: number) => (
           <oj-option key={item.id} value={item.id} id={`outlined${item.id}`}>
             {itemIcons[index].start ? <span slot="startIcon" class={itemIcons[index].start} /> : null}
             <span>{itemLabels[index]}</span>

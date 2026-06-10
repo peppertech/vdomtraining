@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import { MessageBannerItem, MessageBannerElement } from 'ojs/ojmessagebanner';
@@ -21,7 +20,7 @@ type DemoMessageBannerItem = MessageBannerItem & {
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 
 export const MessagebannerTest = () => {
-  const initialData = [
+  const initialData: DemoMessageBannerItem[] = [
       {
           id: 'error1',
           severity: 'error',
@@ -144,7 +143,7 @@ export const MessagebannerTest = () => {
   const closeMessage = (event: MessageBannerElement.ojClose<string, DemoMessageBannerItem>) => {
       let data = messages.data.slice();
       const closeMessageKey = event.detail.key;
-      data = data.filter((message: any) => (message as any).id !== closeMessageKey);
+      data = data.filter((message: DemoMessageBannerItem) => message.id !== closeMessageKey);
       messages.data = data;
   };
 

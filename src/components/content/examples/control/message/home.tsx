@@ -62,6 +62,10 @@ const dataProvider = new MutableArrayDataProvider<MessageComponent["id"], Messag
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<MessageComponent["id"]>;
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type MessageSelectedChangedEvent = ojListView.selectedChanged<
+  MessageComponent["id"],
+  MessageComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
 const MessageHome = ({
@@ -125,7 +129,7 @@ const MessageHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: MessageSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as MessageComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

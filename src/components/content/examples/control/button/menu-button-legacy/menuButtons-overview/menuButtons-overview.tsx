@@ -2,7 +2,6 @@ import { h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import 'ojs/ojbutton';
 import 'ojs/ojmenu';
-import 'ojs/ojmenubutton';
 import 'ojs/ojoption';
 
 type ItemInfo = {

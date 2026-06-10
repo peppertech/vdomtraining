@@ -13,7 +13,7 @@ import "oj-c/message-banner";
 import "ojs/ojnavigationlist";
 
 // Type imports
-import { MessageBannerItem, MessageBannerTemplateContext } from "oj-c/message-banner";
+import { CMessageBannerElement, MessageBannerItem, MessageBannerTemplateContext } from "oj-c/message-banner";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
 import { ojNavigationList } from "ojs/ojnavigationlist";
@@ -249,7 +249,7 @@ export const MessageBannerCorePackOverview = () => {
 
   // Event handlers
   const closeCustomDetailMessage = useCallback(
-    (event: any) => {
+    (event: CMessageBannerElement.ojClose<string, DemoCustomDetailMessageBannerItem>) => {
       const { data } = event.detail;
       setCustomDetailMessages((prev) =>
         prev.filter((msg) => msg.id !== data.id)
@@ -259,7 +259,7 @@ export const MessageBannerCorePackOverview = () => {
   );
 
   const closeCloseAffordanceMessage = useCallback(
-    (event: any) => {
+    (event: CMessageBannerElement.ojClose<string, DemoMessageBannerItem>) => {
       const { data } = event.detail;
       setCloseAffordanceMessages((prev) =>
         prev.filter((msg) => msg.id !== data.id)
@@ -269,7 +269,7 @@ export const MessageBannerCorePackOverview = () => {
   );
 
   const closeTimestampMessage = useCallback(
-    (event: any) => {
+    (event: CMessageBannerElement.ojClose<string, DemoMessageBannerItem>) => {
       const { data } = event.detail;
       setTimestampMessages((prev) =>
         prev.filter((msg) => msg.id !== data.id)

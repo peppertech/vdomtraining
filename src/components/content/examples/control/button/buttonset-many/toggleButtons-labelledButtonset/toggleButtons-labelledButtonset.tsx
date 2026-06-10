@@ -1,20 +1,29 @@
-import { h } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import 'ojs/ojbutton';
 import 'ojs/ojlabel';
 import 'ojs/ojlabelvalue';
 
-const drinkOptions = [
+type DrinkOption = {
+  id: string;
+  value: string;
+  drink: string;
+};
+type ButtonsetManyValueChangedEvent = Parameters<
+  NonNullable<ComponentProps<'oj-buttonset-many'>['onvalueChanged']>
+>[0];
+
+const drinkOptions: DrinkOption[] = [
   { id: 'coffeeopt', value: 'coffee', drink: 'Coffee' },
   { id: 'teaopt', value: 'tea', drink: 'Tea' },
   { id: 'milkopt', value: 'milk', drink: 'Milk' }
 ];
 
 export const ToggleButtonsLabelledButtonset = () => {
-  const [selectedOptions, setSelectedOptions] = useState(['coffee', 'tea']);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>(['coffee', 'tea']);
   const currentOptions = useMemo(() => selectedOptions.join(' '), [selectedOptions]);
 
-  const handleSelectedOptionsChanged = (event: any) => {
+  const handleSelectedOptionsChanged = (event: ButtonsetManyValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
       setSelectedOptions(event.detail.value ?? []);
     }
@@ -34,7 +43,7 @@ export const ToggleButtonsLabelledButtonset = () => {
             onvalueChanged={handleSelectedOptionsChanged}
             slot="value"
           >
-            {drinkOptions.map((option: any) => (
+            {drinkOptions.map((option: DrinkOption) => (
               <oj-option key={option.id} id={option.id} value={option.value}>
                 {option.drink}
               </oj-option>

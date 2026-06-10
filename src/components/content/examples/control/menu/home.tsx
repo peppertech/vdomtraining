@@ -69,6 +69,10 @@ const dataProvider = new MutableArrayDataProvider<MenuComponent["id"], MenuCompo
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<MenuComponent["id"]>;
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type MenuSelectedChangedEvent = ojListView.selectedChanged<
+  MenuComponent["id"],
+  MenuComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
 const MenuHome = ({
@@ -126,7 +130,7 @@ const MenuHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: MenuSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as MenuComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

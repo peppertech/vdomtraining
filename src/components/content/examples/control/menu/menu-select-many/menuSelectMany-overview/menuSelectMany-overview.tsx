@@ -3,7 +3,6 @@ import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import 'ojs/ojbutton';
 import 'ojs/ojmenu';
-import 'ojs/ojmenubutton';
 import 'ojs/ojmenuselectmany';
 import 'ojs/ojoption';
 

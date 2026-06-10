@@ -6,6 +6,11 @@ import "ojs/ojbutton";
 import "ojs/ojoption";
 import "ojs/ojselectsingle";
 
+type ValueChangedEvent<T> = CustomEvent<{
+  value?: T;
+  updatedFrom?: string;
+}>;
+
 const itemValues = [
   { id: "Home", icon: "oj-ux-ico-home" },
   { id: "Guide", icon: "oj-ux-ico-education" },
@@ -89,7 +94,7 @@ export const ButtonsetoneButtonResponsive = () => {
   );
   const display = isSmall ? "icons" : "all";
 
-  const handleVehicleChoiceChanged = (event: any) => {
+  const handleVehicleChoiceChanged = (event: ValueChangedEvent<string>) => {
     if (!event.detail.updatedFrom || event.detail.updatedFrom === "internal") {
       setVehicleChoice(event.detail.value ?? "Car");
     }

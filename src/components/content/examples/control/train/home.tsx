@@ -40,6 +40,10 @@ const dataProvider = new MutableArrayDataProvider<
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<TrainComponent["id"]>;
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type TrainSelectedChangedEvent = ojListView.selectedChanged<
+  TrainComponent["id"],
+  TrainComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
 const TrainHome = ({
@@ -93,7 +97,7 @@ const TrainHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: TrainSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as TrainComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

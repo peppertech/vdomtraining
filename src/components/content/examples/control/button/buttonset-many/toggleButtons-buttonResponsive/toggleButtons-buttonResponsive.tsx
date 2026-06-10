@@ -1,24 +1,39 @@
-import { h } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojbutton';
 import 'ojs/ojselectcombobox';
 
-const itemValues = [
+type ResponsiveItem = {
+  id: string;
+  icon: string;
+};
+type VehicleItem = {
+  id: string;
+};
+type VehicleOption = {
+  value: string;
+  label: string;
+};
+type ButtonsetManyValueChangedEvent = Parameters<
+  NonNullable<ComponentProps<'oj-buttonset-many'>['onvalueChanged']>
+>[0];
+
+const itemValues: ResponsiveItem[] = [
   { id: 'Home', icon: 'oj-ux-ico-home' },
   { id: 'Guide', icon: 'oj-ux-ico-education' },
   { id: 'Library', icon: 'oj-ux-ico-library' },
   { id: 'Styles', icon: 'oj-ux-ico-color-palette' },
   { id: 'FAQ', icon: 'oj-ux-ico-chat' }
 ];
-const vehicleValues = [
+const vehicleValues: VehicleItem[] = [
   { id: 'Bus' },
   { id: 'Bike' },
   { id: 'Car' },
   { id: 'Truck' }
 ];
-const vehicleOptions = vehicleValues.map((item: any) => ({
+const vehicleOptions: VehicleOption[] = vehicleValues.map((item: VehicleItem) => ({
   value: item.id,
   label: item.id
 }));
@@ -26,7 +41,7 @@ const vehicleOptions = vehicleValues.map((item: any) => ({
 export const ToggleButtonsButtonResponsive = () => {
   const [screenRange, setScreenRange] = useState('lg');
   const [isSmall, setIsSmall] = useState(false);
-  const [vehicleChoice, setVehicleChoice] = useState(['Bus', 'Bike']);
+  const [vehicleChoice, setVehicleChoice] = useState<string[]>(['Bus', 'Bike']);
   const vehicleValuesDP = useMemo(
     () =>
       new ArrayDataProvider(vehicleOptions, {
@@ -86,7 +101,7 @@ export const ToggleButtonsButtonResponsive = () => {
   );
   const display = isSmall ? 'icons' : 'all';
 
-  const handleVehicleChoiceChanged = (event: any) => {
+  const handleVehicleChoiceChanged = (event: ButtonsetManyValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
       setVehicleChoice(event.detail.value ?? []);
     }
@@ -112,7 +127,7 @@ export const ToggleButtonsButtonResponsive = () => {
           display={display}
           aria-label="Choose only one item."
         >
-          {itemValues.map((item: any, index: any) => (
+          {itemValues.map((item: ResponsiveItem, index: number) => (
             <oj-option key={item.id} value={item.id}>
               <span slot="startIcon" class={item.icon} />
               <span>{itemLabels[index]}</span>
@@ -132,7 +147,7 @@ export const ToggleButtonsButtonResponsive = () => {
           display={display}
           aria-label="Select only one vehicle."
         >
-          {vehicleValues.map((item: any, index: any) => (
+          {vehicleValues.map((item: VehicleItem, index: number) => (
             <oj-option key={item.id} value={item.id}>
               <span>{vehicleLabels[index]}</span>
             </oj-option>

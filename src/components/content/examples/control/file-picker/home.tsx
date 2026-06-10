@@ -49,6 +49,10 @@ const dataProvider = new MutableArrayDataProvider<
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<FilePickerComponent["id"]>;
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type FilePickerSelectedChangedEvent = ojListView.selectedChanged<
+  FilePickerComponent["id"],
+  FilePickerComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
 const FilePickerHome = ({
@@ -104,7 +108,7 @@ const FilePickerHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: FilePickerSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as FilePickerComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

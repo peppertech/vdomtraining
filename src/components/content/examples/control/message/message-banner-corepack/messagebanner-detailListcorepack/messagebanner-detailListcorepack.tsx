@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import { MessageBannerItem, CMessageBannerElement } from 'oj-c/message-banner';
@@ -8,11 +7,13 @@ import 'oj-c/message-banner';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
 import 'ojs/ojbutton';
+import { ItemContext } from 'ojs/ojcommontypes';
 
 type DemoMessageBannerItem = MessageBannerItem & {
     id: string;
     detailList?: Array<string>;
 };
+type MessageTemplateContext = ItemContext<string, DemoMessageBannerItem>;
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 
@@ -48,7 +49,7 @@ export const MessagebannerDetailListcorepack = () => {
   const closeMessage = (event: CMessageBannerElement.ojClose<string, DemoMessageBannerItem>) => {
       let data = messages.data.slice();
       const closeMessageKey = event.detail.key;
-      data = data.filter((message: any) => (message as any).id !== closeMessageKey);
+      data = data.filter((message: DemoMessageBannerItem) => message.id !== closeMessageKey);
       messages.data = data;
   };
 
@@ -93,11 +94,11 @@ export const MessagebannerDetailListcorepack = () => {
   return (
       <div id="containerDiv">
             <oj-c-message-banner data={messages} type="page" detailTemplateValue="detailList" onojClose={closeMessage}>
-                    <template slot="detailList" render={(context: any) => (
+                    <template slot="detailList" render={(context: MessageTemplateContext) => (
                             <>
                                 <ul>
                                               {
-                                                            (context.data.detailList ?? []).map(($current: any, index: any) => (
+                                                            (context.data.detailList ?? []).map(($current: string, index: number) => (
                                                               <>
                                                                 <li>{$current}</li>
                                                               </>

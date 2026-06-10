@@ -43,6 +43,10 @@ const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<
 >;
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type TruncatingTextSelectedChangedEvent = ojListView.selectedChanged<
+  TruncatingTextComponent["id"],
+  TruncatingTextComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
 const TruncatingTextHome = ({
@@ -96,7 +100,7 @@ const TruncatingTextHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: TruncatingTextSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]
       ?.key as TruncatingTextComponent["id"];
     if (typeof selectedKey === "number") {

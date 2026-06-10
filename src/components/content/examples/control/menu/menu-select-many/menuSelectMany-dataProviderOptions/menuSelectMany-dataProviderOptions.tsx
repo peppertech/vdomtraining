@@ -4,7 +4,6 @@ import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojbutton';
 import 'ojs/ojmenu';
-import 'ojs/ojmenubutton';
 import 'ojs/ojmenuselectmany';
 import 'ojs/ojoption';
 

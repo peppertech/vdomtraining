@@ -39,9 +39,14 @@ const someButtons = [
   { id: 'Grid', icon: 'oj-ux-ico-grid-view-small' }
 ];
 
-const renderFileMenu = (id: string, menuItemAction: any) => (
+type FileMenuItem = (typeof fileMenuItems)[number];
+type ToolbarButtonItem = (typeof someButtons)[number];
+type MenuItemActionHandler = (event: ojMenu.ojMenuAction) => void;
+type ProgressHandler = () => void;
+
+const renderFileMenu = (id: string, menuItemAction: MenuItemActionHandler) => (
   <oj-menu id={id} slot="menu" onojMenuAction={menuItemAction} aria-label="menu with actions">
-    {fileMenuItems.map((item: any) => (
+    {fileMenuItems.map((item: FileMenuItem) => (
       <oj-option key={`${id}-${item.id}`} id={item.id} disabled={item.disabled} value={item.label}>
         {item.icon ? <span slot="startIcon" class={item.icon} /> : null}
         {item.label}
@@ -52,7 +57,7 @@ const renderFileMenu = (id: string, menuItemAction: any) => (
 
 const renderToolbarButtons = () => (
   <oj-buttonset-many id="iconset" display="icons" focusManagement="none">
-    {someButtons.map((button: any) => (
+    {someButtons.map((button: ToolbarButtonItem) => (
       <oj-option key={button.id} value={button.id}>
         <span slot="startIcon" class={button.icon} />
         <span>{button.id}</span>
@@ -63,9 +68,9 @@ const renderToolbarButtons = () => (
 
 const renderToolbar = (
   suffix: string,
-  menuItemAction: any,
+  menuItemAction: MenuItemActionHandler,
   loading: boolean,
-  progressHandler: any,
+  progressHandler: ProgressHandler,
   outlined?: boolean
 ) => (
   <oj-toolbar

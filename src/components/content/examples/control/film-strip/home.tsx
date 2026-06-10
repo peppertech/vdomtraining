@@ -40,6 +40,10 @@ const dataProvider = new MutableArrayDataProvider<
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<FilmStripComponent["id"]>;
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type FilmStripSelectedChangedEvent = ojListView.selectedChanged<
+  FilmStripComponent["id"],
+  FilmStripComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
 const FilmStripHome = ({
@@ -93,7 +97,7 @@ const FilmStripHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: FilmStripSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as FilmStripComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
