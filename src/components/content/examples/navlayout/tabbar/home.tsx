@@ -49,6 +49,10 @@ const dataProvider = new MutableArrayDataProvider<
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type TabBarSelectedChangedEvent = ojListView.selectedChanged<
+  TabBarComponent["id"],
+  TabBarComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<TabBarComponent["id"]>;
 
@@ -117,7 +121,7 @@ const TabBarHome = ({
     onBreadcrumbChange?.(null);
   }, [onBreadcrumbChange]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: TabBarSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as TabBarComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

@@ -49,6 +49,10 @@ const dataProvider = new MutableArrayDataProvider<
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type AccordionSelectedChangedEvent = ojListView.selectedChanged<
+  AccordionComponent["id"],
+  AccordionComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<AccordionComponent["id"]>;
 
@@ -119,7 +123,7 @@ const AccordionHome = ({
     onBreadcrumbChange?.(null);
   }, [onBreadcrumbChange]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: AccordionSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as AccordionComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import * as jsonData from 'text!../../data/cookbook/layout/navigationlist/slidingNavlistComponent/treeViewData.json';

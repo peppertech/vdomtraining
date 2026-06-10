@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { h } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import 'ojs/ojlabel';
 import 'ojs/ojoption';
@@ -11,15 +11,24 @@ import "css!./demo.css";
 const PARAGRAPH =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum, eget vehicula nibh augue sollicitudin ligula. Sed ullamcorper cursus feugiat. Mauris tristique aliquam dictum. Nulla facilisi. Nulla ut sapien sapien. Phasellus tristique arcu id ipsum mattis id aliquam risus sollicitudin.';
 
+type TabId = 'home' | 'blogs' | 'settings' | 'about' | 'contact';
+type TabbarEdge = 'top' | 'bottom';
+type RadiosetValueChangedEvent = Parameters<
+  NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>
+>[0];
+type TabbarSelectionChangedEvent = Parameters<
+  NonNullable<ComponentProps<'oj-tab-bar'>['onselectionChanged']>
+>[0];
+
 export const TabBarUsingSwitchercorepack = () => {
-  const [selectedItem, setSelectedItem] = useState('blogs');
-  const [currentEdge, setCurrentEdge] = useState('top');
+  const [selectedItem, setSelectedItem] = useState<TabId>('blogs');
+  const [currentEdge, setCurrentEdge] = useState<TabbarEdge>('top');
   const paragraphs = useMemo(() => Array.from({ length: 7 }, () => PARAGRAPH), []);
 
-  const panelContent = (title: any) => (
+  const panelContent = (title: string) => (
     <div class="demo-tab-content">
       <h2>{title}</h2>
-      {paragraphs.map((paragraph: any, index: any) => <p key={index}>{paragraph}</p>)}
+      {paragraphs.map((paragraph: string, index: number) => <p key={index}>{paragraph}</p>)}
     </div>
   );
 
@@ -29,7 +38,7 @@ export const TabBarUsingSwitchercorepack = () => {
         <div class="oj-flex demo-header oj-sm-justify-content-flex-end oj-sm-margin-4x-bottom">
           <div class="oj-flex-item oj-sm-padding-2x-horizontal">
             <oj-label id="lid">Tab bar edge</oj-label>
-            <oj-radioset id="radiosetBasicDemoId" labelledBy="lid" value={currentEdge} onvalueChanged={(event: any) => setCurrentEdge(event.detail.value)} class="oj-choice-direction-row">
+            <oj-radioset id="radiosetBasicDemoId" labelledBy="lid" value={currentEdge} onvalueChanged={(event: RadiosetValueChangedEvent) => setCurrentEdge(event.detail.value as TabbarEdge)} class="oj-choice-direction-row">
               <oj-option id="topopt" value="top">top</oj-option>
               <oj-option id="bottomopt" value="bottom">bottom</oj-option>
             </oj-radioset>
@@ -38,7 +47,7 @@ export const TabBarUsingSwitchercorepack = () => {
       </div>
       <div id="demo-container" class={`oj-flex demo-edge-${currentEdge}`}>
         <div class="demo-tabbar-container">
-          <oj-tab-bar id="hnavlist" edge={currentEdge} onselectionChanged={(event: any) => setSelectedItem(event.detail.value)} selection={selectedItem}>
+          <oj-tab-bar id="hnavlist" edge={currentEdge} onselectionChanged={(event: TabbarSelectionChangedEvent) => setSelectedItem(event.detail.value as TabId)} selection={selectedItem}>
             <ul>
               <li id="home"><a href="#" aria-controls="home-tab-panel" id="home-tab">Home</a></li>
               <li id="blogs"><a href="#" aria-controls="blogs-tab-panel" id="blogs-tab">Blogs</a></li>

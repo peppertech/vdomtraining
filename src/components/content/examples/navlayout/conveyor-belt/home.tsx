@@ -42,6 +42,10 @@ const dataProvider = new MutableArrayDataProvider<
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type ConveyorBeltSelectedChangedEvent = ojListView.selectedChanged<
+  ConveyorBeltComponent["id"],
+  ConveyorBeltComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION =
   new KeySetImpl([]) as KeySet<ConveyorBeltComponent["id"]>;
@@ -113,7 +117,7 @@ const ConveyorBeltHome = ({
     onBreadcrumbChange?.(null);
   }, [onBreadcrumbChange]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: ConveyorBeltSelectedChangedEvent) => {
     const selectedKey =
       event.detail.items[0]?.key as ConveyorBeltComponent["id"];
     if (typeof selectedKey === "number") {

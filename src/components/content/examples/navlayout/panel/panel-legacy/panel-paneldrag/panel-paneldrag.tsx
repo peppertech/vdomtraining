@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import 'ojs/ojbutton';
 import "css!./demo.css";

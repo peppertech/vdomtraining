@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { h } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojlabel';
@@ -7,15 +7,32 @@ import 'ojs/ojoption';
 import 'ojs/ojradioset';
 import 'ojs/ojswitch';
 import 'ojs/ojnavigationlist';
+import { ojTabBar } from 'ojs/ojnavigationlist';
+
+type TabbarEdge = 'top' | 'bottom';
+type TabbarItem = {
+  name: string;
+  id: string;
+  count: string;
+  starticon: string;
+  endicon: string;
+};
+type TabbarItemContext = ojTabBar.ItemContext<TabbarItem["id"], TabbarItem>;
+type RadiosetValueChangedEvent = Parameters<
+  NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>
+>[0];
+type SwitchValueChangedEvent = Parameters<
+  NonNullable<ComponentProps<'oj-switch'>['onvalueChanged']>
+>[0];
 
 export const TabbarTbbadge = () => {
-  const [isChecked, setIsChecked] = useState();
-  const [edge, setEdge] = useState('top');
+  const [isChecked, setIsChecked] = useState(false);
+  const [edge, setEdge] = useState<TabbarEdge>('top');
   const [isDivider, setIsDivider] = useState(false);
   const [isContrastBackground, setIsContrastBackground] = useState(false);
   const dataProvider = useMemo(
     () =>
-      new ArrayDataProvider(
+      new ArrayDataProvider<TabbarItem["id"], TabbarItem>(
         [
           { name: 'Inbox', id: 'inbox', count: '3', starticon: 'oj-ux-ico-inbox', endicon: 'oj-icon-color-danger oj-ux-ico-error-s' },
           { name: 'Deleted Item', id: 'deleteditem', count: '99+', starticon: 'oj-ux-ico-trash', endicon: 'oj-icon-color-success oj-ux-ico-success-s' }
@@ -29,7 +46,7 @@ export const TabbarTbbadge = () => {
   const tabbarClass = `${isChecked ? 'oj-sm-condense' : ''} ${dividerClass}`.trim();
   const containerClass = `tabbarcontainer${isContrastBackground ? ' oj-bg-neutral-170 oj-color-invert' : ''}`;
 
-  const badgeItemTemplateRenderer = (item: any) => (
+  const badgeItemTemplateRenderer = (item: TabbarItemContext) => (
     <li>
       <a href="#">
         <span class={'oj-tabbar-item-icon ' + item.data.starticon} />
@@ -38,7 +55,7 @@ export const TabbarTbbadge = () => {
       </a>
     </li>
   );
-  const iconItemTemplateRenderer = (item: any) => (
+  const iconItemTemplateRenderer = (item: TabbarItemContext) => (
     <li>
       <a href="#">
         {item.data.name}
@@ -46,7 +63,7 @@ export const TabbarTbbadge = () => {
       </a>
     </li>
   );
-  const metaItemTemplateRenderer = (item: any) => (
+  const metaItemTemplateRenderer = (item: TabbarItemContext) => (
     <li>
       <a href="#">
         <span class={'oj-tabbar-item-icon ' + item.data.starticon} />
@@ -61,20 +78,20 @@ export const TabbarTbbadge = () => {
       <div class="oj-panel oj-bg-neutral-30 oj-sm-margin-4x-bottom">
         <div class="oj-flex">
           <div class="oj-flex-item oj-sm-padding-2x-horizontal">
-            <oj-radioset id="edgeRadioId" labelledBy="edgeLabelId" labelHint="Edge" labelEdge="inside" onvalueChanged={(event: any) => setEdge(event.detail.value)} value={edge}>
+            <oj-radioset id="edgeRadioId" labelledBy="edgeLabelId" labelHint="Edge" labelEdge="inside" onvalueChanged={(event: RadiosetValueChangedEvent) => setEdge(event.detail.value as TabbarEdge)} value={edge}>
               <oj-option id="horiEdge" value="top">Top</oj-option>
               <oj-option id="horiBottomEdge" value="bottom">Bottom</oj-option>
             </oj-radioset>
           </div>
           <div class="oj-flex-item oj-sm-padding-2x-horizontal">
             <oj-label id="condenseLabel" class="oj-label" for="condense">Condense</oj-label>
-            <oj-switch id="condense" onvalueChanged={(event: any) => setIsChecked(event.detail.value)} value={isChecked} />
+            <oj-switch id="condense" onvalueChanged={(event: SwitchValueChangedEvent) => setIsChecked(Boolean(event.detail.value))} value={isChecked} />
           </div>
           <div class="oj-flex-item oj-sm-padding-2x-horizontal">
-            <oj-switch id="verticaldividerSwitch" onvalueChanged={(event: any) => setIsDivider(!!event.detail.value)} value={isDivider} labelHint="Divider" labelEdge="inside" />
+            <oj-switch id="verticaldividerSwitch" onvalueChanged={(event: SwitchValueChangedEvent) => setIsDivider(!!event.detail.value)} value={isDivider} labelHint="Divider" labelEdge="inside" />
           </div>
           <div class="oj-flex-item oj-sm-padding-2x-horizontal">
-            <oj-switch id="contrastBgSwitch" onvalueChanged={(event: any) => setIsContrastBackground(!!event.detail.value)} value={isContrastBackground} labelHint="Dark Background" labelEdge="inside" />
+            <oj-switch id="contrastBgSwitch" onvalueChanged={(event: SwitchValueChangedEvent) => setIsContrastBackground(!!event.detail.value)} value={isContrastBackground} labelHint="Dark Background" labelEdge="inside" />
           </div>
         </div>
       </div>

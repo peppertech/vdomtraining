@@ -42,6 +42,10 @@ const dataProvider = new MutableArrayDataProvider<
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type CollapsibleSelectedChangedEvent = ojListView.selectedChanged<
+  CollapsibleComponent["id"],
+  CollapsibleComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION =
   new KeySetImpl([]) as KeySet<CollapsibleComponent["id"]>;
@@ -113,7 +117,7 @@ const CollapsibleHome = ({
     onBreadcrumbChange?.(null);
   }, [onBreadcrumbChange]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: CollapsibleSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as CollapsibleComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

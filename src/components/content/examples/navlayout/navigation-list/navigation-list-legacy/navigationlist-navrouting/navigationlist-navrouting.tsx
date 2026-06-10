@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import 'ojs/ojnavigationlist';

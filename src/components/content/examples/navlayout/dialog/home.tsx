@@ -42,6 +42,10 @@ const dataProvider = new MutableArrayDataProvider<
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type DialogSelectedChangedEvent = ojListView.selectedChanged<
+  DialogComponent["id"],
+  DialogComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<DialogComponent["id"]>;
 
@@ -110,7 +114,7 @@ const DialogHome = ({
     onBreadcrumbChange?.(null);
   }, [onBreadcrumbChange]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: DialogSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as DialogComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

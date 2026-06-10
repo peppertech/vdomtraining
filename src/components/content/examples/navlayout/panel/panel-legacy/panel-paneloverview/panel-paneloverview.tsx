@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import 'ojs/ojcollapsible';
 import "css!./demo.css";

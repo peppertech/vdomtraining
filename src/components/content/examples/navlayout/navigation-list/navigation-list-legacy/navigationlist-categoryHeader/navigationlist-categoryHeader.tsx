@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import { ojNavigationList } from 'ojs/ojnavigationlist';
@@ -6,22 +5,27 @@ import 'ojs/ojnavigationlist';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'css!./demo.css';
 
+type CategoryNavItem = {
+  name: string;
+  id: string;
+};
+
 export const NavigationlistCategoryHeader = () => {
-  const categoryData1 = [
+  const categoryData1: CategoryNavItem[] = [
       { name: 'Save', id: 'save' },
       { name: 'Zoom In', id: 'zoomin' },
       { name: 'Zoom Out', id: 'zoomout' },
       { name: 'Print...', id: 'print' },
       { name: 'divider', id: 'divider' }
   ];
-  const categoryData2 = [
+  const categoryData2: CategoryNavItem[] = [
       { name: 'Previous', id: 'prev' },
       { name: 'Stop', id: 'stop' },
       { name: 'Play', id: 'play' },
       { name: 'Next', id: 'nextitem' },
       { name: 'divider', id: 'divider' }
   ];
-  const categoryData3 = [
+  const categoryData3: CategoryNavItem[] = [
       { name: 'Track 1', id: 'track1' },
       { name: 'Track 2', id: 'track2' },
       { name: 'Track 3', id: 'track3' },
@@ -29,26 +33,28 @@ export const NavigationlistCategoryHeader = () => {
   ];
 
   let selectedItem: HTMLElement | null = null;
-  const dataProvider1 = useMemo(() => new ArrayDataProvider(categoryData1, {
+  const dataProvider1 = useMemo(() => new ArrayDataProvider<CategoryNavItem["id"], CategoryNavItem>(categoryData1, {
       keyAttributes: 'id'
   }), []);
-  const dataProvider2 = useMemo(() => new ArrayDataProvider(categoryData2, {
+  const dataProvider2 = useMemo(() => new ArrayDataProvider<CategoryNavItem["id"], CategoryNavItem>(categoryData2, {
       keyAttributes: 'id'
   }), []);
-  const dataProvider3 = useMemo(() => new ArrayDataProvider(categoryData3, {
+  const dataProvider3 = useMemo(() => new ArrayDataProvider<CategoryNavItem["id"], CategoryNavItem>(categoryData3, {
       keyAttributes: 'id'
   }), []);
-  const selectionChange: (event: ojNavigationList.selectionChanged<string, string>) => any = (event: CustomEvent) => {
+  const selectionChange = (
+    event: ojNavigationList.selectionChanged<CategoryNavItem["id"], CategoryNavItem>
+  ) => {
       //Get Selected item using item key.
       let newSelectedItem = document.getElementById(event.detail.value);
       //Check if existing selected item is not null,
       if (selectedItem && newSelectedItem) {
-          let oldNavlist = closest(selectedItem, '.oj-navigationlist') as ojNavigationList<string | null, string>;
+          let oldNavlist = closest(selectedItem, '.oj-navigationlist') as ojNavigationList<string | null, CategoryNavItem>;
           //Check if the existing selected item belongs
           //to a differnet navigationlist
           if (oldNavlist != null &&
               oldNavlist !==
-                  (closest(newSelectedItem, '.oj-navigationlist') as ojNavigationList<string | null, string>)) {
+                  (closest(newSelectedItem, '.oj-navigationlist') as ojNavigationList<string | null, CategoryNavItem>)) {
               //Remove selection in old navlist
               oldNavlist.selection = null;
           }

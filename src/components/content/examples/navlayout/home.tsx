@@ -110,6 +110,10 @@ const dataProvider = new MutableArrayDataProvider<
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type NavLayoutSelectedChangedEvent = ojListView.selectedChanged<
+  NavLayoutComponent["id"],
+  NavLayoutComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<NavLayoutComponent["id"]>;
 
@@ -234,7 +238,7 @@ const NavLayoutHome = () => {
     setSelectedItems(new KeySetImpl([]) as KeySet<NavLayoutComponent["id"]>);
   }, []);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: NavLayoutSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as NavLayoutComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

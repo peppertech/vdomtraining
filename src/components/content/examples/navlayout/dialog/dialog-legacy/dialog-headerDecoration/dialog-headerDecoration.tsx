@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useState } from 'preact/hooks';
 import { ojDialog } from 'ojs/ojdialog';

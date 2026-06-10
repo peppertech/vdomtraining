@@ -56,6 +56,10 @@ const dataProvider = new MutableArrayDataProvider<
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type DrawerSelectedChangedEvent = ojListView.selectedChanged<
+  DrawerComponent["id"],
+  DrawerComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<DrawerComponent["id"]>;
 
@@ -128,7 +132,7 @@ const DrawerHome = ({
     onBreadcrumbChange?.(null);
   }, [onBreadcrumbChange]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: DrawerSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as DrawerComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
