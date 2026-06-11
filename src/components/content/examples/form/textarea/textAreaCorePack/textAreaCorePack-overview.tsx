@@ -130,7 +130,7 @@ export default function TextAreaCorePackOverviewExample() {
           labelHint="max length"
           length={overviewLengthConfig}
           onvalueChanged={(event: TextAreaCorePackValueChangedEvent) =>
-            setLimitedValue(event.detail.value)
+            setLimitedValue((event.detail.value as string))
           }
         />
       </oj-c-form-layout>

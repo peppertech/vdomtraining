@@ -27,7 +27,7 @@ export default function CheckBoxCorePackCrossFieldValidationExample() {
           value={items}
           options={options}
           labelHint="Groceries"
-          onvalueChanged={(event: any) => {
+          onvalueChanged={(event) => {
             setItems((event.detail.value as string[]) ?? []);
           }}
         ></oj-c-checkboxset>
@@ -35,7 +35,7 @@ export default function CheckBoxCorePackCrossFieldValidationExample() {
           value={isChecked}
           messagesCustom={age21Messages}
           help={{ instruction: "Are you 21 years old or older?" }}
-          onvalueChanged={(event: any) => {
+          onvalueChanged={(event) => {
             setIsChecked(Boolean(event.detail.value));
             setAge21Messages([]);
           }}

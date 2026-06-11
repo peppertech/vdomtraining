@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import "oj-c/labelled-link";
 import "oj-c/form-layout";
 
@@ -61,7 +61,7 @@ export default function LabelledLinkStatesExample() {
             labelHint="Labelled link (Middle Truncation)"
             href="https://www.someverylongtextinaurlandwilltruncatewithoutenoughspace.com"
             target="_blank"
-            {...({ truncation: "middle" } as any)}
+            {...({ truncation: "middle" } as ComponentProps<"oj-c-labelled-link">)}
           ></oj-c-labelled-link>
         </div>
       </div>

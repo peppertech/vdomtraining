@@ -30,6 +30,15 @@ type DragPayload = {
   id: string;
   itemData: DndNode;
 }[];
+type DiagramDragContext = {
+  nodes: Array<{ id: string; data: unknown }>;
+};
+type DiagramDropContext = {
+  x: number;
+  y: number;
+  nodeContext?: { id: string };
+  linkContext?: { id: string; data: unknown };
+};
 
 const dndData = JSON.parse(dndDataText as string) as DndData;
 
@@ -97,20 +106,20 @@ export const DiagramDndSample = () => {
 
   const handleDragStart =
     (dataType: 'text/nodes1' | 'text/nodes2') =>
-    (event: DragEvent, context: any) => {
+    (event: DragEvent, context: DiagramDragContext) => {
       if (!event.dataTransfer) {
         return;
       }
-      const payload: DragPayload = context.nodes.map((node: { id: string; data: DndNode }) => ({
+      const payload: DragPayload = context.nodes.map((node) => ({
         id: node.id,
-        itemData: cloneNode(node.data)
+        itemData: cloneNode(node.data as DndNode)
       }));
       event.dataTransfer.setData(dataType, JSON.stringify(payload));
     };
 
   const handleDrop = (
     event: DragEvent,
-    context: any,
+    context: DiagramDropContext,
     target: 'A' | 'B',
     linkCleanup: boolean
   ) => {
@@ -158,7 +167,8 @@ export const DiagramDndSample = () => {
         }
       ]);
     } else if (context.linkContext) {
-      const { id, data } = context.linkContext;
+      const { id } = context.linkContext;
+      const data = context.linkContext.data as DndLink;
       setLinks2((prev) => {
         const withoutTarget = prev.filter((link) => link.id !== id);
         return [

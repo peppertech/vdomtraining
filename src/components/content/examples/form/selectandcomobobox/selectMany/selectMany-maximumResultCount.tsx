@@ -19,8 +19,8 @@ export default function SelectManyMaximumResultCountExample() {
           max={60}
           step={1}
           labelHint="Maximum result count"
-          onvalueChanged={(event: any) =>
-            setMaximumResultCount(event.detail.value ?? 15)
+          onvalueChanged={(event) =>
+            setMaximumResultCount((event.detail.value as number | null | undefined) ?? 15)
           }
         ></oj-input-number>
         <oj-select-many
@@ -30,7 +30,7 @@ export default function SelectManyMaximumResultCountExample() {
           options={dataProvider}
           maximumResultCount={maximumResultCount}
           class="oj-form-control-max-width-lg"
-          onvalueChanged={(event: any) => setValue(event.detail.value ?? [])}
+          onvalueChanged={(event) => setValue((event.detail.value as string[] | null | undefined) ?? [])}
         ></oj-select-many>
       </oj-form-layout>
     </div>

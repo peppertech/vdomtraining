@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useState } from "preact/hooks";
 import AsyncRegExpValidator = require("ojs/ojasyncvalidator-regexp");
 import { IntlNumberConverter } from "ojs/ojconverter-number";
@@ -58,7 +58,7 @@ export default function InputNumberCorePackRawValueExample() {
         ontransientValueChanged={(
           event: InputNumberCorePackTransientValueChangedEvent,
         ) => {
-          setTransientValue(event.detail.value ?? null);
+          setTransientValue((event.detail.value as number | null | null | undefined) ?? null);
         }}
         onrawValueChanged={(event: InputNumberCorePackRawValueChangedEvent) => {
           setRawValue(String(event.detail.value ?? ""));
@@ -101,8 +101,8 @@ export default function InputNumberCorePackRawValueExample() {
         max={1000000}
         step={10}
         value={convertedCurrentValue}
-        converter={currencyConverter as any}
-        validators={[[regExpTwoDigitValidator, regExpTenMultipleValidator]] as any}
+        converter={currencyConverter as ComponentProps<'oj-c-input-number'>['converter']}
+        validators={[[regExpTwoDigitValidator, regExpTenMultipleValidator]] as unknown as ComponentProps<'oj-c-input-number'>['validators']}
         labelHint="With Converter/Validators"
         labelEdge="inside"
         onvalueChanged={(event: InputNumberCorePackValueChangedEvent) => {
@@ -111,7 +111,7 @@ export default function InputNumberCorePackRawValueExample() {
         ontransientValueChanged={(
           event: InputNumberCorePackTransientValueChangedEvent,
         ) => {
-          setConvertedTransientValue(event.detail.value ?? null);
+          setConvertedTransientValue((event.detail.value as number | null | null | undefined) ?? null);
         }}
         onrawValueChanged={(event: InputNumberCorePackRawValueChangedEvent) => {
           setConvertedRawValue(String(event.detail.value ?? ""));

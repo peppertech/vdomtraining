@@ -16,7 +16,7 @@ export default function SelectManyGroupingExample() {
         labelHint="Inline optgroups"
         labelEdge="inside"
         class="oj-form-control-max-width-lg"
-        onvalueChanged={(event: any) => setInlineValue(event.detail.value ?? [])}
+        onvalueChanged={(event) => setInlineValue((event.detail.value as string[] | null | undefined) ?? [])}
       >
         <oj-optgroup label="North America">
           <oj-option value="AK">Alaska</oj-option>
@@ -37,7 +37,7 @@ export default function SelectManyGroupingExample() {
         labelEdge="inside"
         options={dataProvider}
         class="oj-form-control-max-width-lg"
-        onvalueChanged={(event: any) => setProviderValue(event.detail.value ?? [])}
+        onvalueChanged={(event) => setProviderValue((event.detail.value as string[] | null | undefined) ?? [])}
       ></oj-select-many>
     </div>
   );

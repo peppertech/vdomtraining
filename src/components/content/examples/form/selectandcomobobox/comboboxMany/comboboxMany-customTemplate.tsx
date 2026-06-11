@@ -1,17 +1,21 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectcombobox";
+
 import {
   createGroupedEmployeeDataProvider,
   renderEmployeeCustomOption,
 } from "./comboboxMany-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-many">["onvalueChanged"]>
+>[0];
 export default function ComboboxManyCustomTemplateExample() {
   const dataProvider = useMemo(() => createGroupedEmployeeDataProvider(), []);
   const [value, setValue] = useState<string[]>(["11111", "10725"]);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setValue(event.detail.value ?? []);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setValue((event.detail.value as string[] | null | undefined) ?? []);
   }, []);
 
   return (
@@ -22,7 +26,7 @@ export default function ComboboxManyCustomTemplateExample() {
         labelEdge="inside"
         options={dataProvider}
         class="oj-form-control-max-width-xl"
-        optionRenderer={renderEmployeeCustomOption as any}
+        optionRenderer={renderEmployeeCustomOption as ComponentProps<'oj-combobox-many'>['optionRenderer']}
         onvalueChanged={handleValueChanged}
       ></oj-combobox-many>
 

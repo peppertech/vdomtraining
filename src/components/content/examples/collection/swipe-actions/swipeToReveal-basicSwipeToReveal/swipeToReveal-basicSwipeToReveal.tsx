@@ -13,8 +13,36 @@ import 'ojs/ojmenu';
 import 'ojs/ojoption';
 import 'ojs/ojswipeactions';
 
+type EmailItem = {
+  id: string;
+  title: string;
+  from: string;
+  image: string;
+  content: string;
+};
+type StartAction = 'read' | 'archive';
+type EndAction = 'more' | 'flag' | 'trash';
+type MenuAction = 'reply' | 'forward' | 'move';
+type SwipeAction = StartAction | EndAction;
+type EmailItemTemplateContext = ojListView.ItemTemplateContext<
+  EmailItem['id'],
+  EmailItem
+>;
+type SwipeActionEvent = Event & {
+  target: EventTarget & {
+    value: SwipeAction;
+  };
+};
+type MenuActionEvent = CustomEvent<{
+  selectedValue: MenuAction;
+}>;
+const menuOpenOptions = {
+  'open-options.display': 'sheet',
+  'open-options.launcher': 'listview'
+} as const;
+
 export const SwipeToRevealBasicSwipeToReveal = () => {
-  const [allItems, setAllItems] = useState([
+  const [allItems, setAllItems] = useState<EmailItem[]>([
     { id: 'email_1', title: 'Meeting Invite: Product direction', from: 'Amy Bartlet', image: '/styles/images/listItemImages/placeholder-female-01.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum.' },
     { id: 'email_2', title: 'Re: Latest market analysis from XYZ', from: 'Nina Evans', image: '/styles/images/listItemImages/placeholder-female-02.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
     { id: 'email_3', title: 'Feedback from architecture review', from: 'James Marlow', image: '/styles/images/listItemImages/placeholder-male-01.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
@@ -25,17 +53,19 @@ export const SwipeToRevealBasicSwipeToReveal = () => {
     { id: 'email_8', title: 'Re: Customer success stories', from: 'Julia Chen', image: '/styles/images/listItemImages/placeholder-female-04.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' }
   ]);
   const [action, setAction] = useState('No action taken yet');
-  const currentItemRef = useRef(null);
+  const currentItemRef = useRef<EmailItem['id'] | null>(null);
 
   const dataProvider = useMemo(
     () => new ArrayDataProvider(allItems, { keyAttributes: 'id' }),
     [allItems]
   );
 
-  const renderOptions = (data: any) => (data.id === 'email_3' ? 'archive' : 'read');
-  const remove = (key: any) => setAllItems((items: any) => items.filter((current: any) => current.id !== key));
+  const renderOptions = (data: EmailItem): StartAction =>
+    data.id === 'email_3' ? 'archive' : 'read';
+  const remove = (key: EmailItem['id'] | null) =>
+    setAllItems((items) => items.filter((current) => current.id !== key));
 
-  const doAction = (nextAction: any) => {
+  const doAction = (nextAction: SwipeAction | MenuAction) => {
     if (currentItemRef.current != null) {
       setAction(`Handle ${nextAction} action on: ${currentItemRef.current}`);
     }
@@ -48,16 +78,16 @@ export const SwipeToRevealBasicSwipeToReveal = () => {
     }
   };
 
-  const handleAction = (event: any, context: any) => {
+  const handleAction = (event: SwipeActionEvent, context: EmailItemTemplateContext) => {
     currentItemRef.current = context.data.id;
     doAction(event.target.value);
   };
 
-  const handleMenuItemAction = (event: any) => {
+  const handleMenuItemAction = (event: MenuActionEvent) => {
     doAction(event.detail.selectedValue);
   };
 
-  const startTemplateRenderer = (item: any) =>
+  const startTemplateRenderer = (item: EmailItemTemplateContext) =>
     renderOptions(item.data) === 'read' ? (
       <oj-option value="read">
         Unread
@@ -87,9 +117,9 @@ export const SwipeToRevealBasicSwipeToReveal = () => {
     </>
   );
 
-  const itemTemplateRenderer = (item: any) => (
+  const itemTemplateRenderer = (item: EmailItemTemplateContext) => (
     <li class="oj-swipeactions-container">
-      <oj-swipe-actions onojAction={(event: any) => handleAction(event, item)}>
+      <oj-swipe-actions onojAction={(event: SwipeActionEvent) => handleAction(event, item)}>
         <oj-list-item-layout>
           <oj-avatar slot="leading" size="xs" src={item.data.image} />
           <span class="oj-typography-body-md oj-text-color-primary">{item.data.from}</span>
@@ -113,7 +143,7 @@ export const SwipeToRevealBasicSwipeToReveal = () => {
         id="moremenu"
         aria-label="More Actions"
         onojMenuAction={handleMenuItemAction}
-        {...({ 'open-options.display': 'sheet', 'open-options.launcher': 'listview' } as any)}
+        {...menuOpenOptions}
       >
         <oj-option id="reply">Reply</oj-option>
         <oj-option id="forward">Forward</oj-option>

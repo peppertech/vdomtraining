@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
+import type { ItemContext } from 'ojs/ojcommontypes';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import BufferingDataProvider = require('ojs/ojbufferingdataprovider');
 import { KeySetImpl } from 'ojs/ojkeyset';
@@ -18,6 +18,7 @@ import { ojTable } from 'ojs/ojtable';
 import 'ojs/ojtable';
 import { ojTextArea } from 'ojs/ojinputtext';
 import { DataProviderMutationEvent, ItemMessage } from 'ojs/ojdataprovider';
+import type { ojMessage } from 'ojs/ojmessage';
 import 'ojs/ojbutton';
 import 'ojs/ojinputtext';
 
@@ -30,25 +31,29 @@ interface DepartmentData {
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 type TableColumns = ComponentProps<'oj-table'>['columns'];
+type ValidationState = 'valid' | 'invalidHidden' | 'invalidShown' | 'pending' | undefined;
+type NumericInputValue = number | null | undefined;
+type FirstSelectedRow = ItemContext<DepartmentData['DepartmentId'], DepartmentData> | null;
+type DemoMessage = ojMessage.Message;
 
 export const TableObservableArrayTable = () => {
-  const deptArray: any = JSON.parse(deptData);
+  const deptArray: DepartmentData[] = JSON.parse(deptData as string) as DepartmentData[];
   const columns = useMemo<TableColumns>(() => [
       { headerText: 'Department Id', field: 'DepartmentId', id: 'depId' },
       { headerText: 'Department Name', field: 'DepartmentName', id: 'depName' },
       { headerText: 'Location Id', field: 'LocationId', id: 'locId' },
       { headerText: 'Manager Id', field: 'ManagerId', id: 'manId' }
   ], []);
-  const [deptObservableArray, setDeptObservableArray] = useState<any[]>(deptArray);
-  const [isEmptyTable, setIsEmptyTable] = useState<any>(false);
-  const [messageArray, setMessageArray] = useState<any[]>([]);
-  const [groupValid, setGroupValid] = useState<any>(undefined);
-  const [inputDepartmentId, setInputDepartmentId] = useState<any>(undefined);
-  const [inputDepartmentName, setInputDepartmentName] = useState<any>(undefined);
-  const [inputLocationId, setInputLocationId] = useState<any>(undefined);
-  const [inputManagerId, setInputManagerId] = useState<any>(undefined);
-  const [firstSelected, setFirstSelected] = useState<any>(undefined);
-  const [disableSubmit, setDisableSubmit] = useState<any>(true);
+  const [deptObservableArray, setDeptObservableArray] = useState<DepartmentData[]>(deptArray);
+  const [isEmptyTable, setIsEmptyTable] = useState(false);
+  const [messageArray, setMessageArray] = useState<DemoMessage[]>([]);
+  const [groupValid, setGroupValid] = useState<ValidationState>(undefined);
+  const [inputDepartmentId, setInputDepartmentId] = useState<NumericInputValue>(undefined);
+  const [inputDepartmentName, setInputDepartmentName] = useState<string | undefined>(undefined);
+  const [inputLocationId, setInputLocationId] = useState<NumericInputValue>(undefined);
+  const [inputManagerId, setInputManagerId] = useState<NumericInputValue>(undefined);
+  const [firstSelected, setFirstSelected] = useState<FirstSelectedRow>(null);
+  const [disableSubmit, setDisableSubmit] = useState(true);
 
   const dataprovider = useMemo(() => new BufferingDataProvider<DepartmentData['DepartmentId'], DepartmentData>(new ArrayDataProvider(deptObservableArray, {
       keyAttributes: 'DepartmentId'
@@ -56,32 +61,32 @@ export const TableObservableArrayTable = () => {
   const converter = useMemo(() => new NumberConverter.IntlNumberConverter({
       useGrouping: false
   }), []);
-  const disableCreate = !inputDepartmentId || groupValid === 'invalidShown';
+  const disableCreate = inputDepartmentId == null || groupValid === 'invalidShown';
   const disableRemoveUpdate = !firstSelected || !firstSelected.key || groupValid === 'invalidShown';
 
-  const handleGroupValidValidChanged = (event: PropertyChangedEvent<any>) => {
-    setGroupValid(event.detail.value);
-  };
+  const handleGroupValidValidChanged = (event: PropertyChangedEvent<ValidationState>) => {
+	    setGroupValid(event.detail.value);
+	  };
 
-  const handleInputDepartmentIdValueChanged = (event: PropertyChangedEvent<any>) => {
-    setInputDepartmentId(event.detail.value);
-  };
+  const handleInputDepartmentIdValueChanged = (event: PropertyChangedEvent<NumericInputValue>) => {
+	    setInputDepartmentId(event.detail.value);
+	  };
 
-  const handleInputDepartmentNameValueChanged = (event: PropertyChangedEvent<any>) => {
-    setInputDepartmentName(event.detail.value);
-  };
+  const handleInputDepartmentNameValueChanged = (event: PropertyChangedEvent<string | undefined>) => {
+	    setInputDepartmentName(event.detail.value);
+	  };
 
-  const handleInputLocationIdValueChanged = (event: PropertyChangedEvent<any>) => {
-    setInputLocationId(event.detail.value);
-  };
+  const handleInputLocationIdValueChanged = (event: PropertyChangedEvent<NumericInputValue>) => {
+	    setInputLocationId(event.detail.value);
+	  };
 
-  const handleInputManagerIdValueChanged = (event: PropertyChangedEvent<any>) => {
-    setInputManagerId(event.detail.value);
-  };
+  const handleInputManagerIdValueChanged = (event: PropertyChangedEvent<NumericInputValue>) => {
+	    setInputManagerId(event.detail.value);
+	  };
 
-  const addRow = () => {
-      if (groupValid !== 'invalidShown') {
-          const dept = {
+	  const addRow = () => {
+	      if (groupValid !== 'invalidShown' && inputDepartmentId != null && inputDepartmentName != null && inputLocationId != null && inputManagerId != null) {
+	          const dept: DepartmentData = {
               DepartmentId: inputDepartmentId,
               DepartmentName: inputDepartmentName,
               LocationId: inputLocationId,
@@ -94,14 +99,14 @@ export const TableObservableArrayTable = () => {
       }
   };
 
-  const updateRow = () => {
-      if (groupValid !== 'invalidShown') {
+	  const updateRow = () => {
+	      if (groupValid !== 'invalidShown' && inputDepartmentId != null && inputDepartmentName != null && inputLocationId != null && inputManagerId != null) {
           const element = document.getElementById('table');
           const currentRow = (element as ojTable<DepartmentData['DepartmentId'], DepartmentData>)
               .currentRow;
           if (currentRow != null) {
               const key = inputDepartmentId;
-              const newData = {
+	              const newData: DepartmentData = {
                   DepartmentId: inputDepartmentId,
                   DepartmentName: inputDepartmentName,
                   LocationId: inputLocationId,
@@ -172,10 +177,14 @@ export const TableObservableArrayTable = () => {
 
   const commitOneRow = (editItem: BufferingDataProvider.EditItem<DepartmentData['DepartmentId'], DepartmentData>) => {
       const idx = findIndex(editItem.item.metadata.key);
-      let error;
-      if (idx > -1) {
-          if (editItem.operation === 'update') {
-              deptObservableArray.splice(idx, 1, editItem.item.data);
+	      let error: DemoMessage | undefined;
+	      if (idx > -1) {
+	          if (editItem.operation === 'update') {
+	              const itemData = editItem.item.data;
+	              if (itemData == null) {
+	                  return Promise.resolve();
+	              }
+	              deptObservableArray.splice(idx, 1, itemData);
           }
           else if (editItem.operation === 'remove') {
               deptObservableArray.splice(idx, 1);
@@ -188,9 +197,13 @@ export const TableObservableArrayTable = () => {
               };
           }
       }
-      else {
-          if (editItem.operation === 'add') {
-              deptObservableArray.splice(deptObservableArray.length, 0, editItem.item.data);
+	      else {
+	          if (editItem.operation === 'add') {
+	              const itemData = editItem.item.data;
+	              if (itemData == null) {
+	                  return Promise.resolve();
+	              }
+	              deptObservableArray.splice(deptObservableArray.length, 0, itemData);
           }
           else {
               error = {
@@ -222,8 +235,13 @@ export const TableObservableArrayTable = () => {
               .catch((error: ItemMessage) => {
               // Set the edit item back to "unsubmitted" with error if not successful
               dataprovider.setItemStatus(editItem, 'unsubmitted', error);
-              var errorMsg = {
-                  severity: error.severity,
+	              const severity = error.severity;
+	              const messageSeverity: DemoMessage['severity'] =
+	                  severity === 'confirmation' || severity === 'info' || severity === 'warning' || severity === 'error'
+	                      ? severity
+	                      : 'error';
+	              var errorMsg: DemoMessage = {
+	                  severity: messageSeverity,
                   summary: error.summary,
                   autoTimeout: 4000
               };
@@ -254,9 +272,9 @@ export const TableObservableArrayTable = () => {
       textarea.value = textValue;
   };
 
-  const firstSelectedRowChangedListener = (event: ojTable.firstSelectedRowChanged<DepartmentData['DepartmentId'], DepartmentData>) => {
-      const itemContext = event.detail.value;
-      setFirstSelected(itemContext);
+	  const firstSelectedRowChangedListener = (event: ojTable.firstSelectedRowChanged<DepartmentData['DepartmentId'], DepartmentData>) => {
+	      const itemContext = event.detail.value;
+	      setFirstSelected(itemContext ?? null);
       if (itemContext && itemContext.data) {
           const dept = itemContext.data;
           setInputDepartmentId(dept.DepartmentId);
@@ -303,7 +321,7 @@ export const TableObservableArrayTable = () => {
                                       </oj-validation-group>
                           </div>
                     <div id="tableContainer" class="oj-flex-item oj-sm-padding-2x-horizontal">
-                              <oj-table id="table" aria-label="Departments Table" class="demo-table-container oj-helper-text-align-center" data={dataprovider} columns={columns} first-selected-row={firstSelected} onfirstSelectedRowChanged={firstSelectedRowChangedListener} {...{ 'accessibility.row-header': "depName", 'selection-mode.row': "single" }} />
+	                              <oj-table id="table" aria-label="Departments Table" class="demo-table-container oj-helper-text-align-center" data={dataprovider} columns={columns} first-selected-row={firstSelected ?? undefined} onfirstSelectedRowChanged={firstSelectedRowChangedListener} {...{ 'accessibility.row-header': "depName", 'selection-mode.row': "single" }} />
                               <div id="noDataDiv" class="oj-flex demo-table-container oj-helper-text-align-center oj-sm-hide">
                     <div class="oj-flex-item oj-sm-align-self-center">
                                                         <span>No data available. Please use the form controls to create a new row.</span>

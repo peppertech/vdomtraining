@@ -38,7 +38,8 @@
 
 .rating-gauge-legacy-overview .rating-gauge-overview-note {
   display: block;
-  position: relative;
-  margin-top: 3rem !important;
-  clear: both;
+  grid-column: 1 / -1;
+  margin-top: 1rem !important;
+  padding-top: 1rem;
+  border-top: 1px solid var(--oj-core-divider-color, #d9e1ea);
 }

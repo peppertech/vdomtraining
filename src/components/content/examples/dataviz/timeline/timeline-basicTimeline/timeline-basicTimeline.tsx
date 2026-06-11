@@ -21,11 +21,11 @@ const basicTimelineItems = JSON.parse(timelineSeriesDataText) as TimelineBasicIt
 const majorAxis = { scale: 'quarters' };
 const minorAxis = { scale: 'weeks', zoomOrder: ['months', 'weeks', 'days'] };
 
-const renderSeriesTemplate = (series: any) => (
+const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (
   <oj-timeline-series label={series.id} emptyText="No Data." />
 );
 
-const renderItemTemplate = (item: any) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-timeline-item
     seriesId={item.data.series}
     start={item.data.begin}
@@ -50,13 +50,13 @@ export const TimelineBasicTimeline = () => {
   const currentDate = new Date(currentDateString).toISOString();
   const referenceObjects = useMemo(() => [{ value: currentDate }], [currentDate]);
 
-  const handleOrientationChanged = (event: any) => {
+  const handleOrientationChanged = (event: DatavizValueChangedEvent<string>) => {
     if (event.detail.updatedFrom === 'internal') {
       setOrientationValue(event.detail.value);
     }
   };
 
-  const handleOverviewChanged = (event: any) => {
+  const handleOverviewChanged = (event: DatavizValueChangedEvent<string>) => {
     if (event.detail.updatedFrom === 'internal') {
       setOverviewValue(event.detail.value);
     }

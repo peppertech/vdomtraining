@@ -37,6 +37,10 @@ type CollectionComponent = {
   isCorePack?: boolean;
   render?: (props?: NestedCatalogHomeProps) => h.JSX.Element | null;
 };
+type CollectionSelectedChangedEvent = ojListView.selectedChanged<
+  CollectionComponent["id"],
+  CollectionComponent
+>;
 
 const collectionComponents: CollectionComponent[] = [
   {
@@ -250,14 +254,9 @@ const CollectionHome = () => {
     exampleRoute.routeTo([]);
   }, [exampleRoute]);
 
-  const handleSelectedChanged = (event: any) => {
-    if (event.detail.updatedFrom && event.detail.updatedFrom !== "internal") {
-      return;
-    }
-
-    const selectedKey = event.detail.items?.[0]?.key as
-      | CollectionComponent["id"]
-      | undefined;
+  const handleSelectedChanged = (event: CollectionSelectedChangedEvent) => {
+    const selection = event.detail.value as KeySetImpl<CollectionComponent["id"]>;
+    const selectedKey = Array.from(selection.values())[0];
     if (typeof selectedKey === "number") {
       const selectedComponent = collectionComponents.find(
         (component) => component.id === selectedKey,
@@ -266,7 +265,6 @@ const CollectionHome = () => {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       setNestedBreadcrumbItems(null);
-      const selection = event.detail.value as KeySet<CollectionComponent["id"]>;
       setSelectedItems(selection);
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
 

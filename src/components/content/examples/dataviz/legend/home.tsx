@@ -105,8 +105,8 @@ const LegendHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as LegendComponent["id"];
+  const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<LegendComponent["id"], KeySet<LegendComponent["id"]>>) => {
+    const selectedKey = event.detail.items?.[0]?.key as LegendComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);

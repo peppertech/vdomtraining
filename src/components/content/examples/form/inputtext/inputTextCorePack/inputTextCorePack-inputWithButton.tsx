@@ -71,8 +71,8 @@ export default function InputTextCorePackInputWithButtonExample() {
             value={selectMultipleValue}
             data={dataProvider}
             itemText="label"
-            onvalueChanged={(event: any) => {
-              setSelectMultipleValue(event.detail.value ?? new Set());
+            onvalueChanged={(event) => {
+              setSelectMultipleValue((event.detail.value as Set<string> | null | undefined) ?? new Set());
             }}
           ></oj-c-select-multiple>
         </div>

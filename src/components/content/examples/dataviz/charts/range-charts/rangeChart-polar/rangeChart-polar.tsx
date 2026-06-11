@@ -26,7 +26,7 @@ export const RangeChartPolar = () => {
   );
 
   const handleTypeValueChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setTypeValue(event.detail.value as RangeChartType);
   };

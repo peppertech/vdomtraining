@@ -98,19 +98,19 @@ export const ChartProgressiveLoading = () => {
     const OjChartProps: Partial<ComponentProps<'oj-chart'>> = { legend: {
             position: "top"
         } };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} low={item.data.low} high={item.data.high} q1={item.data.q1} q2={item.data.q2} q3={item.data.q3} items={item.data.outliers} open={item.data.open} close={item.data.close} volume={item.data.volume} x={item.data.x} y={item.data.y} z={item.data.z} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
     const OjChartProps2: Partial<ComponentProps<'oj-chart'>> = { legend: {
             position: "top"
         } };
-    const itemTemplateRenderer2 = (item: any) => {
+    const itemTemplateRenderer2 = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} low={item.data.low} high={item.data.high} q1={item.data.q1} q2={item.data.q2} q3={item.data.q3} items={item.data.outliers} open={item.data.open} close={item.data.close} volume={item.data.volume} x={item.data.x} y={item.data.y} z={item.data.z} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
     const OjChartProps3: Partial<ComponentProps<'oj-chart'>> = { legend: {
             position: "top"
         } };
-    const itemTemplateRenderer3 = (item: any) => {
+    const itemTemplateRenderer3 = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} low={item.data.low} high={item.data.high} q1={item.data.q1} q2={item.data.q2} q3={item.data.q3} items={item.data.outliers} open={item.data.open} close={item.data.close} volume={item.data.volume} x={item.data.x} y={item.data.y} z={item.data.z} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
     return (<div id="container" class="demo-container">

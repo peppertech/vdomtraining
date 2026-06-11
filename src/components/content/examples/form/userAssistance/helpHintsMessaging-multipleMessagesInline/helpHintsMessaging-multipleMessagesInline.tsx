@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'oj-c/input-number';
@@ -10,14 +9,6 @@ import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojoption';
 
-type InputTextMessagesCustom = ComponentProps<'oj-c-input-text'>['messagesCustom'];
-type InputTextMessage = NonNullable<InputTextMessagesCustom>[number];
-type SeverityValue = InputTextMessage['severity'];
-type ButtonsetValue = NonNullable<ComponentProps<'oj-buttonset-many'>['value']>;
-type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
-type TextAreaValue = ComponentProps<'oj-c-text-area'>['value'];
-type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
-type SelectSingleValue = ComponentProps<'oj-c-select-single'>['value'];
 type ButtonsetChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-buttonset-many'>['onvalueChanged']>
 >[0];
@@ -33,6 +24,14 @@ type InputNumberChangedEvent = Parameters<
 type SelectSingleChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-select-single'>['onvalueChanged']>
 >[0];
+type InputTextMessagesCustom = ComponentProps<'oj-c-input-text'>['messagesCustom'];
+type InputTextMessage = NonNullable<InputTextMessagesCustom>[number];
+type SeverityValue = InputTextMessage['severity'];
+type ButtonsetValue = NonNullable<ComponentProps<'oj-buttonset-many'>['value']>;
+type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
+type TextAreaValue = ComponentProps<'oj-c-text-area'>['value'];
+type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
+type SelectSingleValue = ComponentProps<'oj-c-select-single'>['value'];
 
 type MessageOption = {
   value: SeverityValue;
@@ -74,19 +73,19 @@ export const HelpHintsMessagingMultipleMessagesInline = () => {
   };
 
   const handleTextChanged = (event: InputTextChangedEvent) => {
-    setTextValue(event.detail.value ?? '');
+    setTextValue((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const handleTextAreaChanged = (event: TextAreaChangedEvent) => {
-    setTextAreaValue(event.detail.value ?? '');
+    setTextAreaValue((event.detail.value as TextAreaValue | null | undefined) ?? '');
   };
 
   const handleNumberChanged = (event: InputNumberChangedEvent) => {
-    setNumberValue(event.detail.value ?? null);
+    setNumberValue((event.detail.value as InputNumberValue | null | undefined) ?? null);
   };
 
   const handleSelectChanged = (event: SelectSingleChangedEvent) => {
-    setSelectValue(event.detail.value);
+    setSelectValue((event.detail.value as SelectSingleValue));
   };
 
   return (

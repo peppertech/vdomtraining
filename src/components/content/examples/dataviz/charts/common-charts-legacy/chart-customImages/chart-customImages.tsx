@@ -72,10 +72,10 @@ export const ChartCustomImages = () => {
             markerSize: 30,
             markerShape: "square"
         } };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return (<oj-chart-item groupId={[item.data.year]} seriesId={item.data.fruit} x={item.data.domesticProduction} y={item.data.imports}/>);
     };
-    const seriesTemplateRenderer = (series: any) => {
+    const seriesTemplateRenderer = (series: DatavizSeriesTemplateContext) => {
         return (<oj-chart-series color={getSeriesProperty(series.id, 'color')} source={getSeriesProperty(series.id, 'source')}/>);
     };
     return (<div id="chart-container">

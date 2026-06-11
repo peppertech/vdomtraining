@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojoption";
@@ -6,17 +6,23 @@ import "ojs/ojradioset";
 import "ojs/ojselectsingle";
 import { createBrowserDataProvider } from "./selectSingle-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-select-single">["onvalueChanged"]>
+>[0];
+type VirtualKeyboardEvent = Parameters<
+  NonNullable<ComponentProps<"oj-radioset">["onvalueChanged"]>
+>[0];
 export default function SelectSingleLegacyVirtualKeyboardExample() {
   const dataProvider = useMemo(() => createBrowserDataProvider(), []);
   const [selectVal, setSelectVal] = useState("CH");
   const [virtualKeyboard, setVirtualKeyboard] = useState("search");
 
-  const handleValueChanged = useCallback((event: any) => {
-    setSelectVal(event.detail.value);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setSelectVal((event.detail.value as string));
   }, []);
 
-  const handleVirtualKeyboardChanged = useCallback((event: any) => {
-    setVirtualKeyboard(event.detail.value);
+  const handleVirtualKeyboardChanged = useCallback((event: VirtualKeyboardEvent) => {
+    setVirtualKeyboard((event.detail.value as string));
   }, []);
 
   return (
@@ -41,7 +47,7 @@ export default function SelectSingleLegacyVirtualKeyboardExample() {
           data={dataProvider}
           itemText="label"
           value={selectVal}
-          virtualKeyboard={virtualKeyboard as any}
+          virtualKeyboard={virtualKeyboard as ComponentProps<'oj-select-single'>['virtualKeyboard']}
           class="oj-form-control-max-width-md"
           onvalueChanged={handleValueChanged}
         ></oj-select-single>

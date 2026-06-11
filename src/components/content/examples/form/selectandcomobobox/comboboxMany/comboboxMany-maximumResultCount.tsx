@@ -1,21 +1,27 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojinputnumber";
 import "ojs/ojselectcombobox";
 import { createStatesDataProvider } from "./comboboxMany-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-many">["onvalueChanged"]>
+>[0];
+type CountEvent = Parameters<
+  NonNullable<ComponentProps<"oj-input-number">["onvalueChanged"]>
+>[0];
 export default function ComboboxManyMaximumResultCountExample() {
   const dataProvider = useMemo(() => createStatesDataProvider(), []);
   const [value, setValue] = useState<string[]>(["AK"]);
   const [maximumResultCount, setMaximumResultCount] = useState(15);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setValue(event.detail.value ?? []);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setValue((event.detail.value as string[] | null | undefined) ?? []);
   }, []);
 
-  const handleCountChanged = useCallback((event: any) => {
-    setMaximumResultCount(event.detail.value ?? 15);
+  const handleCountChanged = useCallback((event: CountEvent) => {
+    setMaximumResultCount((event.detail.value as number | null | undefined) ?? 15);
   }, []);
 
   return (

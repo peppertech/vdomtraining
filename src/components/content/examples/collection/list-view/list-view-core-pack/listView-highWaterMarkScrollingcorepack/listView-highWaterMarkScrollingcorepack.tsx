@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import * as jsonDataStr from 'text!./tweets.json';
@@ -22,14 +21,15 @@ interface Data {
 }
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type TweetDataProvider = DemoDelayingDataProvider<Data['source'], Data>;
 
 const ORACLE_AVATAR = '/styles/images/listView/oracle.gif';
 
 export const ListViewHighWaterMarkScrollingcorepack = () => {
   const initialDelay = 2000;
   const arr: Data[] = useMemo(() => JSON.parse(jsonDataStr), []);
-  const [delay, setDelay] = useState<any>(initialDelay);
-  const [dataProvider, setDataProvider] = useState<any>(
+  const [delay, setDelay] = useState(initialDelay);
+  const [dataProvider, setDataProvider] = useState<TweetDataProvider>(
     () =>
       new DemoDelayingDataProvider(
         new ArrayDataProvider<Data['source'], Data>(arr, {
@@ -39,8 +39,8 @@ export const ListViewHighWaterMarkScrollingcorepack = () => {
       )
   );
 
-  const handleDelayValueChanged = (event: PropertyChangedEvent<any>) => {
-    setDelay(event.detail.value);
+  const handleDelayValueChanged = (event: PropertyChangedEvent<number>) => {
+    setDelay(event.detail.value ?? initialDelay);
   };
 
   const applyDelay = () => {

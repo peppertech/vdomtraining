@@ -22,7 +22,7 @@ const minorAxis = { scale: 'months', zoomOrder: ['months', 'weeks', 'days'] };
 
 const renderSeriesTemplate = () => <oj-timeline-series label="Rafael Nadal: 75-5" />;
 
-const renderItemTemplate = (item: any) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-timeline-item
     start={item.data.startDate}
     end={item.data.endDate}
@@ -42,7 +42,7 @@ export const TimelineSelection = () => {
     []
   );
 
-  const handleSelectionModeChanged = (event: any) => {
+  const handleSelectionModeChanged = (event: DatavizValueChangedEvent<string>) => {
     if (event.detail.updatedFrom !== 'internal') {
       return;
     }
@@ -59,7 +59,7 @@ export const TimelineSelection = () => {
     }
   };
 
-  const handleSelectionChanged = (event: any) => {
+  const handleSelectionChanged = (event: DatavizValueChangedEvent<string[] | null>) => {
     if (event.detail.updatedFrom === 'internal') {
       setSelectionValue(event.detail.value);
     }

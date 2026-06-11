@@ -69,7 +69,7 @@ export const BubbleChartSelection = () => {
           eventInfo += `\nyMax: ${detail['yMax'].toFixed(2)}\n`;
       setSelectionEventInfo(eventInfo);
   };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-chart-item x={item.data.x} y={item.data.y} z={item.data.z} groupId={[item.data.group]} seriesId={item.data.series}/>;
   };
 

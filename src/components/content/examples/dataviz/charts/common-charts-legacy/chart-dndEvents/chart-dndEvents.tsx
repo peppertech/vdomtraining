@@ -112,7 +112,7 @@ export const ChartDndEvents = () => {
                 }
             }
         } };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
     const OjChartProps2: Partial<ComponentProps<'oj-chart'>> = { xAxis: {
@@ -141,7 +141,7 @@ export const ChartDndEvents = () => {
                 }
             }
         } };
-    const itemTemplateRenderer2 = (item: any) => {
+    const itemTemplateRenderer2 = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item x={item.data.x} y={item.data.y} z={item.data.z} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
     return (<div id="chart-container">

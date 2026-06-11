@@ -69,7 +69,7 @@ export const BarChartAttrGroups = () => {
     const itemTemplateRenderer = (item: ChartItemContext) => {
         return <oj-chart-item value={item.data.value} groupId={[item.data.drink]} seriesId={item.data.year} color={colorHandler.getValue(item.data.drink)}/>;
     };
-    const seriesTemplateRenderer = ($current: any) => {
+    const seriesTemplateRenderer = ($current: DatavizSeriesTemplateContext) => {
         return <oj-chart-series displayInLegend="off"/>;
     };
     const ojChartProps: Partial<ComponentProps<'oj-chart'>> = { yAxis: {

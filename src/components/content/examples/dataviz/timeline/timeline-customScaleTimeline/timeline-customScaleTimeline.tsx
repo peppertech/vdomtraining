@@ -15,8 +15,8 @@ type TimelineCustomScaleItem = {
 };
 const customScaleItems = JSON.parse(timelineSeriesDataText) as TimelineCustomScaleItem[];
 const majorAxis = { scale: 'weeks' };
-const renderSeriesTemplate = (series: any) => (<oj-timeline-series label={series.id} emptyText="No Data."/>);
-const renderItemTemplate = (item: any) => (<oj-timeline-item seriesId={item.data.series} start={item.data.begin} label={item.data.title} description={item.data.description}/>);
+const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (<oj-timeline-series label={series.id} emptyText="No Data."/>);
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-timeline-item seriesId={item.data.series} start={item.data.begin} label={item.data.title} description={item.data.description}/>);
 export const TimelineCustomScaleTimeline = () => {
     const dataProvider = useMemo(() => new ArrayDataProvider(customScaleItems, {
         keyAttributes: 'id'

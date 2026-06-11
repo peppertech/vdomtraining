@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojcheckboxset";
@@ -12,7 +12,8 @@ export default function SwitchCrossFieldValidationExample() {
   const [isChecked, setIsChecked] = useState(false);
   const [items, setItems] = useState<string[]>([]);
   const [cartItemCount, setCartItemCount] = useState(0);
-  const [age21Messages, setAge21Messages] = useState<any[]>([]);
+  const [age21Messages, setAge21Messages] =
+    useState<ComponentProps<'oj-switch'>['messagesCustom']>([]);
 
   const labelEdge = useMemo<"top" | "start">(() => "start", []);
 
@@ -23,7 +24,7 @@ export default function SwitchCrossFieldValidationExample() {
           id="checkboxSetId"
           value={items}
           labelHint="Drinks"
-          onvalueChanged={(event: any) => {
+          onvalueChanged={(event) => {
             setItems((event.detail.value as string[]) ?? []);
           }}
         >
@@ -39,10 +40,10 @@ export default function SwitchCrossFieldValidationExample() {
           <oj-switch
             id="age21Switch"
             value={isChecked}
-            messagesCustom={age21Messages as any}
-            help={{ instruction: "Are you 21 years old or older?" } as any}
+            messagesCustom={age21Messages as ComponentProps<'oj-switch'>['messagesCustom']}
+            help={{ instruction: "Are you 21 years old or older?" } as ComponentProps<'oj-switch'>['help']}
             slot="value"
-            onvalueChanged={(event: any) => {
+            onvalueChanged={(event) => {
               setIsChecked(Boolean(event.detail.value));
               setAge21Messages([]);
             }}

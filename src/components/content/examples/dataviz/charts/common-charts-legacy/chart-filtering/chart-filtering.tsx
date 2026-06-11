@@ -53,43 +53,43 @@ export const ChartFiltering = () => {
     const handleHiddenCategoriesValueHiddenCategoriesChanged = (event: HiddenCategoriesChangedEvent) => {
         setHiddenCategoriesValue(event.detail.value ?? []);
     };
-    const itemTemplateRenderer = ($current: any) => {
+    const itemTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-legend-item text={$current.data.series} color={colorHandler.getValue($current.data.series)} shortDesc={'Filter: ' + $current.data.series} categories={[$current.data.series]}/>;
     };
     const OjChartProps: Partial<ComponentProps<'oj-chart'>> = { legend: {
             rendered: "off"
         } };
-    const itemTemplateRenderer2 = (item: any) => {
+    const itemTemplateRenderer2 = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} categories={[item.data.series]} color={colorHandler.getValue(item.data.series)} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
     const OjChartProps2: Partial<ComponentProps<'oj-chart'>> = { legend: {
             rendered: "off"
         } };
-    const itemTemplateRenderer3 = (item: any) => {
+    const itemTemplateRenderer3 = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item x={item.data.x} y={item.data.y} z={item.data.z} groupId={[item.data.group]} categories={[item.data.series]} seriesId={item.data.series}/>;
     };
     const OjChartProps3: Partial<ComponentProps<'oj-chart'>> = { legend: {
             rendered: "off"
         } };
-    const itemTemplateRenderer4 = (item: any) => {
+    const itemTemplateRenderer4 = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} categories={[item.data.series]} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
     const OjChartProps4: Partial<ComponentProps<'oj-chart'>> = { legend: {
             rendered: "off"
         } };
-    const itemTemplateRenderer5 = (item: any) => {
+    const itemTemplateRenderer5 = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} categories={[item.data.series]} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
     const OjChartProps5: Partial<ComponentProps<'oj-chart'>> = { legend: {
             rendered: "off"
         } };
-    const itemTemplateRenderer6 = (item: any) => {
+    const itemTemplateRenderer6 = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} categories={[item.data.series]} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
     const OjChartProps6: Partial<ComponentProps<'oj-chart'>> = { legend: {
             rendered: "off"
         } };
-    const itemTemplateRenderer7 = (item: any) => {
+    const itemTemplateRenderer7 = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} categories={[item.data.series]} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
     return (<div id="chart-container">

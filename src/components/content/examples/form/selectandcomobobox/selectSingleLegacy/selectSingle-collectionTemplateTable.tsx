@@ -24,7 +24,7 @@ export default function SelectSingleLegacyCollectionTemplateTableExample() {
       >
         <template
           slot="collectionTemplate"
-          render={(collection: any) =>
+          render={(collection) =>
             renderEmployeeCollectionTable(collection, (value) =>
               setSelectVal(value),
             )}

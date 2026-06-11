@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -24,7 +23,7 @@ export const PictoChartAnimation = () => {
     setNumberRef.current = setCount;
     itemsPerSetNumberRef.current = itemCount;
 
-    return Array.from({ length: setCount }, (_: any, index: any) => {
+    return Array.from({ length: setCount }, (_unused: unknown, index: number) => {
       const name = `Set ${index + 1}`;
       return {
         id: name,
@@ -44,7 +43,7 @@ export const PictoChartAnimation = () => {
     [pictoChartItems]
   );
 
-  const renderItem = (item: any) => (
+  const renderItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-picto-chart-item
       name={item.data.name}
       shape="circle"

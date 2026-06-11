@@ -1,17 +1,50 @@
 // @ts-nocheck
 import { h } from 'preact';
+import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { KeySetImpl } from 'ojs/ojkeyset';
+import { KeySet, KeySetImpl } from 'ojs/ojkeyset';
+import type { ojTreeView } from 'ojs/ojtreeview';
+import type { SelectorElement } from 'ojs/ojselector';
 import 'ojs/ojoption';
 import 'ojs/ojradioset';
 import 'ojs/ojselector';
 import 'ojs/ojtreeview';
 
+type TreeNode = {
+  id: string;
+  title: string;
+  children?: TreeNode[];
+};
+type TreeViewSelectionMode = NonNullable<
+  ComponentProps<'oj-tree-view'>['selectionMode']
+>;
+type TreeNodeKeySet = KeySet<TreeNode['id']>;
+type TreeItemTemplateContext = ojTreeView.ItemTemplateContext<
+  TreeNode['id'],
+  TreeNode
+>;
+type TreeSelectedChangedEvent = ojTreeView.selectedChanged<
+  TreeNode['id'],
+  TreeNode
+>;
+type RadioValueChangedEvent = CustomEvent<{
+  value: TreeViewSelectionMode | null;
+}>;
+type SelectorSelectedKeysChangedEvent =
+  SelectorElement.selectedKeysChanged<TreeNode['id']>;
+
+const createEmptySelection = () => new KeySetImpl<TreeNode['id']>();
+
 export const SelectorCheckboxSelectableTreeView = () => {
-  const [selectionMode, setSelectionMode] = useState('multiple');
-  const [selectedItems, setSelectedItems] = useState<any>(new KeySetImpl());
-  const expanded = useMemo(() => new KeySetImpl(['org', 'product']), []);
+  const [selectionMode, setSelectionMode] =
+    useState<TreeViewSelectionMode>('multiple');
+  const [selectedItems, setSelectedItems] =
+    useState<TreeNodeKeySet>(createEmptySelection());
+  const expanded = useMemo(
+    () => new KeySetImpl<TreeNode['id']>(['org', 'product']),
+    []
+  );
   const treeData = useMemo(
     () => [
       {
@@ -38,12 +71,14 @@ export const SelectorCheckboxSelectableTreeView = () => {
     [treeData]
   );
 
-  const renderItemTemplate = (row: any) => [
+  const renderItemTemplate = (row: TreeItemTemplateContext) => [
     <oj-selector
       key="selector"
       aria-label={row.data.title}
       selected-keys={selectedItems}
-      onselectedKeysChanged={(event: any) => setSelectedItems(event.detail.value)}
+      onselectedKeysChanged={(event: SelectorSelectedKeysChangedEvent) =>
+        setSelectedItems(event.detail.value ?? createEmptySelection())
+      }
       selection-mode={selectionMode === 'single' ? 'single' : 'multiple'}
       row-key={row.data.id}
     />,
@@ -56,9 +91,9 @@ export const SelectorCheckboxSelectableTreeView = () => {
     <div id="treeview-container">
       <oj-radioset
         value={selectionMode}
-        onvalueChanged={(event: any) => {
+        onvalueChanged={(event: RadioValueChangedEvent) => {
           setSelectionMode(event.detail.value ?? 'multiple');
-          setSelectedItems(new KeySetImpl());
+          setSelectedItems(createEmptySelection());
         }}
         labelHint="Selection Mode"
       >
@@ -75,12 +110,17 @@ export const SelectorCheckboxSelectableTreeView = () => {
         data={dataProvider}
         expanded={expanded}
         selected={selectedItems}
-        onselectedChanged={(event: any) => setSelectedItems(event.detail.value)}
+        onselectedChanged={(event: TreeSelectedChangedEvent) =>
+          setSelectedItems(event.detail.value ?? createEmptySelection())
+        }
         selectionMode={selectionMode}
       >
         <template slot="itemTemplate" render={renderItemTemplate} />
       </oj-tree-view>
-      <div class="oj-sm-margin-4x-top">Current selection: {JSON.stringify(Array.from(selectedItems.values?.() ?? []))}</div>
+      <div class="oj-sm-margin-4x-top">
+        Current selection:{" "}
+        {JSON.stringify(Array.from((selectedItems as KeySetImpl<string>).values()))}
+      </div>
     </div>
   );
 };

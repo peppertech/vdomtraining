@@ -9,6 +9,10 @@ type DayFormatterInput = {
   month: number;
   date: number;
 };
+type DayMetadata = {
+  disabled?: boolean;
+  [key: string]: DayMetadata | boolean | undefined;
+};
 
 const getWeekday = (dateInfo: DayFormatterInput) => {
   const jsDate = new Date(dateInfo.fullYear, dateInfo.month - 1, dateInfo.date);
@@ -16,7 +20,7 @@ const getWeekday = (dateInfo: DayFormatterInput) => {
   return df.format(jsDate);
 };
 
-const externalDayMetadata: Record<string, any> = {
+const externalDayMetadata: Record<string, DayMetadata> = {
   "*": {
     "12": {
       "25": { disabled: true },
@@ -39,30 +43,31 @@ for (let date = 1; date <= DAYS_IN_MONTH; date += 1) {
     const yearStr = String(YEAR);
     const monthStr = String(MONTH);
     const dayStr = String(date);
-    if (!externalDayMetadata[yearStr]) externalDayMetadata[yearStr] = {};
-    if (!externalDayMetadata[yearStr][monthStr]) {
-      externalDayMetadata[yearStr][monthStr] = {};
+    const yearMetadata = externalDayMetadata[yearStr] ?? {};
+    externalDayMetadata[yearStr] = yearMetadata;
+    if (!yearMetadata[monthStr]) {
+      yearMetadata[monthStr] = {};
     }
-    externalDayMetadata[yearStr][monthStr][dayStr] = { disabled: true };
+    (yearMetadata[monthStr] as DayMetadata)[dayStr] = { disabled: true };
   }
 }
 
 function getMetadata(
-  dayMetadata: any,
+  dayMetadata: DayMetadata | undefined,
   position: number,
   dateArray: Array<number>,
-): any {
+): DayMetadata | undefined {
   if (!dayMetadata || position === dateArray.length) {
     return dayMetadata;
   }
   const nextPos = position + 1;
-  const exactMatch: any = getMetadata(
-    dayMetadata[dateArray[position]],
+  const exactMatch = getMetadata(
+    dayMetadata[dateArray[position]] as DayMetadata | undefined,
     nextPos,
     dateArray,
   );
   if (exactMatch !== undefined) return exactMatch;
-  return getMetadata(dayMetadata["*"], nextPos, dateArray);
+  return getMetadata(dayMetadata["*"] as DayMetadata | undefined, nextPos, dateArray);
 }
 
 export default function InputDateCustomizeDaysVdomExample() {
@@ -80,25 +85,25 @@ export default function InputDateCustomizeDaysVdomExample() {
   );
 
   const dayFormatter = useCallback<NonNullable<InputDateProps["dayFormatter"]>>(
-    (dateInfo: any) => {
+    (dateInfo) => {
       const info = dateInfo as DayFormatterInput;
       if (info.fullYear === 2014 && info.month === 1 && info.date !== 1) {
-        return { disabled: true } as any;
+        return { disabled: true };
       }
       if (info.month === 12 && info.date === 25) {
-        return { disabled: true } as any;
+        return { disabled: true };
       }
       if (getWeekday(info) === "Mon") {
-        return { disabled: true } as any;
+        return { disabled: true };
       }
-      return null as any;
+      return null;
     },
     [],
   );
 
   const dayFormatterWithMetadata = useCallback<
     NonNullable<InputDateProps["dayFormatter"]>
-  >((dateInfo: any) => {
+  >((dateInfo) => {
     const info = dateInfo as DayFormatterInput;
     return (
       getMetadata(externalDayMetadata, 0, [info.fullYear, info.month, info.date]) ??

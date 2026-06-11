@@ -42,6 +42,10 @@ const dataProvider = new MutableArrayDataProvider<
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type NumberSelectedChangedEvent = ojListView.selectedChanged<
+  NumberComponent["id"],
+  NumberComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION =
   new KeySetImpl([]) as KeySet<NumberComponent["id"]>;
@@ -143,7 +147,7 @@ const InputNumberHome = ({
     showComponentDetail,
   ]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: NumberSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as NumberComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

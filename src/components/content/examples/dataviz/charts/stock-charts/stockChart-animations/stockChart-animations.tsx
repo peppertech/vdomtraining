@@ -50,7 +50,7 @@ export const StockChartAnimations = () => {
     const currentTimeRef = useRef(initialCurrentTime);
     const groupsRef = useRef(generateGroups(initialCurrentTime - dayInMs * 347, dayInMs, 350));
     const dataCacheRef = useRef<Record<number, StockChartItem>>({});
-    const generateStockData = (groups: number[], firstOpen: number, useCache: any = true) => {
+    const generateStockData = (groups: number[], firstOpen: number, useCache: boolean = true) => {
         const items: StockChartItem[] = [];
         for (let index = 0; index < groups.length; index += 1) {
             const group = groups[index];
@@ -114,7 +114,7 @@ export const StockChartAnimations = () => {
     const ledRotation = useMemo(() => (percentChangeNum > 0 ? 0 : 180), [percentChangeNum]);
     const currentText = useMemo(() => `${getDateText(viewportMinValue)} - ${getDateText(currentTime)}`, [currentTime, viewportMinValue]);
     const percentChange = useMemo(() => `${percentChangeNum}%`, [percentChangeNum]);
-    const handleSeriesTypeValueChanged = (event: any) => {
+    const handleSeriesTypeValueChanged = (event: DatavizValueChangedEvent<StockSeriesType>) => {
         setSeriesTypeValue(event.detail.value);
     };
     const seriesDataChange = () => {
@@ -139,7 +139,7 @@ export const StockChartAnimations = () => {
         setCurrentTime(nextCurrentTime);
         setStockData(generateStockData(groupsRef.current, 200));
     };
-    const itemTemplateRenderer = (item: any) => (<oj-chart-item open={item.data.open} close={item.data.close} high={item.data.high} low={item.data.low} volume={item.data.volume} groupId={[item.data.group]} seriesId={item.data.series}/>);
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-chart-item open={item.data.open} close={item.data.close} high={item.data.high} low={item.data.low} volume={item.data.volume} groupId={[item.data.group]} seriesId={item.data.series}/>);
     const seriesTemplateRenderer = () => <oj-chart-series type={seriesTypeValue}/>;
     const chartProps: Partial<ComponentProps<'oj-chart'>> = {
         overview: {

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { render } from 'preact';
-import type { ComponentProps } from 'preact';
+import type { ComponentChildren, ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as Model from 'ojs/ojmodel';
 import * as CollectionTreeDataSource from 'ojs/ojcollectiontreedatasource';
@@ -10,7 +10,28 @@ import 'ojs/ojrowexpander';
 import 'ojs/ojdatagrid';
 import 'css!./demo.css';
 
-const createRenderer = (factory: any) => (context: any) => {
+type DataGridRendererContext = {
+  key?: string | number;
+  data?: unknown;
+  [property: string]: unknown;
+};
+
+type EmployeeRecord = {
+  EmployeeId: number;
+  ManagerId: number | null;
+  LastName: string;
+  FirstName: string;
+  Salary: number;
+};
+
+type EmployeeModel = {
+  id: number | null;
+  get: (property: keyof EmployeeRecord) => EmployeeRecord[keyof EmployeeRecord];
+};
+
+const createRenderer =
+  (factory: (context: DataGridRendererContext) => ComponentChildren) =>
+  (context: DataGridRendererContext) => {
   const container = document.createElement('div');
   render(factory(context), container);
   return { insert: container };
@@ -18,12 +39,12 @@ const createRenderer = (factory: any) => (context: any) => {
 
 export const RowExpanderDataGridCollectionRowExpander = () => {
   const dataSource = useMemo(() => {
-    const empData = JSON.parse(jsonDataStr as string);
+    const empData = JSON.parse(jsonDataStr as string) as EmployeeRecord[];
     const Employee = Model.Model.extend({
       idAttribute: 'EmployeeId'
     });
 
-    const findEmployee = (id: any) => {
+    const findEmployee = (id: number | null) => {
       if (id) {
         for (let i = 0; i < empData.length; i++) {
           if (id === empData[i].EmployeeId) {
@@ -34,7 +55,7 @@ export const RowExpanderDataGridCollectionRowExpander = () => {
       return -1;
     };
 
-    const findManager = (id: any) => {
+    const findManager = (id: number | null) => {
       if (id) {
         for (let i = 0; i < empData.length; i++) {
           if (id === empData[i].ManagerId) {
@@ -45,7 +66,7 @@ export const RowExpanderDataGridCollectionRowExpander = () => {
       return -1;
     };
 
-    const countDepth = (model: any, depth: any) => {
+    const countDepth = (model: EmployeeModel, depth: number) => {
       if (model && model.id) {
         const managerLoc = findEmployee(model.get('ManagerId'));
         if (managerLoc > -1) {
@@ -56,7 +77,10 @@ export const RowExpanderDataGridCollectionRowExpander = () => {
       return depth;
     };
 
-    const getChildCollection = (_rootCollection: any, model: any) => {
+    const getChildCollection = (
+      _rootCollection: Model.Collection | null,
+      model: EmployeeModel | null
+    ) => {
       const employees = new Model.Collection(null, {
         model: Employee
       });
@@ -70,7 +94,7 @@ export const RowExpanderDataGridCollectionRowExpander = () => {
       return employees;
     };
 
-    const parseMetadata = (model: any) => {
+    const parseMetadata = (model: EmployeeModel) => {
       const retObj = {};
       retObj.key = model.id;
       retObj.leaf = findManager(model.id) === -1;
@@ -90,13 +114,13 @@ export const RowExpanderDataGridCollectionRowExpander = () => {
     });
   }, []);
 
-  const columnHeaderRenderer = createRenderer((context: any) => {
+  const columnHeaderRenderer = createRenderer((context) => {
     if (context.key === 'FirstName') return <span>First Name</span>;
     if (context.key === 'Salary') return <span>Salary</span>;
     return <span>{String(context.key)}</span>;
   });
 
-  const rowHeaderRenderer = createRenderer((context: any) => (
+  const rowHeaderRenderer = createRenderer((context) => (
     <>
       <oj-row-expander context={context} />
       <span>{String(context.data ?? '')}</span>

@@ -20,13 +20,13 @@ const dateFormatsItems = JSON.parse(timelineSeriesDataText) as TimelineDateForma
 const majorAxis = { scale: 'quarters' };
 const minorAxis = { scale: 'weeks', zoomOrder: ['months', 'weeks', 'days'] };
 
-const renderSeriesTemplate = (series: any) => (
+const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (
   <oj-timeline-series label={series.id} emptyText="No Data." />
 );
 
 const dateToLocalISO = (dateString: string) => IntlConverterUtils.dateToLocalIso(new Date(dateString));
 
-const renderItemTemplate = (item: any) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-timeline-item
     seriesId={item.data.series}
     start={item.data.id === 'e5' ? dateToLocalISO(item.data.begin) : item.data.begin}

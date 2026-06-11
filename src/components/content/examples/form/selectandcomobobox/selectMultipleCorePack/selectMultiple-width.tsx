@@ -1,13 +1,20 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/radioset";
 import "oj-c/select-multiple";
+
 import {
   createBrowserDataProvider,
   labelEdgeOptions,
 } from "./selectMultiple-shared";
 
+type LabelEdgeEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-radioset">["onvalueChanged"]>
+>[0];
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-multiple">["onvalueChanged"]>
+>[0];
 export default function SelectMultipleWidthExample() {
   const dataProvider = useMemo(() => createBrowserDataProvider(), []);
   const [labelEdge, setLabelEdge] = useState("inside");
@@ -15,12 +22,12 @@ export default function SelectMultipleWidthExample() {
     new Set(["CH", "FF"]),
   );
 
-  const handleLabelEdgeChanged = useCallback((event: any) => {
-    setLabelEdge(event.detail.value);
+  const handleLabelEdgeChanged = useCallback((event: LabelEdgeEvent) => {
+    setLabelEdge((event.detail.value as string));
   }, []);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setSelectVal(event.detail.value);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setSelectVal((event.detail.value as Set<string> | null));
   }, []);
 
   return (
@@ -41,7 +48,7 @@ export default function SelectMultipleWidthExample() {
       <h6>no width or max-width</h6>
       <oj-c-select-multiple
         id="id1"
-        labelEdge={labelEdge as any}
+        labelEdge={labelEdge as ComponentProps<'oj-c-select-multiple'>['labelEdge']}
         labelHint="width and max-width attributes are not defined"
         help={{ instruction: "The width and max-width are 100% by default" }}
         userAssistanceDensity="efficient"
@@ -55,7 +62,7 @@ export default function SelectMultipleWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-select-multiple
           id="id2"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-select-multiple'>['labelEdge']}
           labelHint="Max width medium"
           maxWidth="md"
           data={dataProvider}
@@ -67,7 +74,7 @@ export default function SelectMultipleWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-select-multiple
           id="id3"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-select-multiple'>['labelEdge']}
           labelHint="Max width small"
           maxWidth="sm"
           data={dataProvider}
@@ -81,7 +88,7 @@ export default function SelectMultipleWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-select-multiple
           id="id4"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-select-multiple'>['labelEdge']}
           labelHint="Width medium"
           width="md"
           data={dataProvider}
@@ -93,7 +100,7 @@ export default function SelectMultipleWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-select-multiple
           id="id5"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-select-multiple'>['labelEdge']}
           labelHint="Width small"
           width="sm"
           data={dataProvider}
@@ -107,7 +114,7 @@ export default function SelectMultipleWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-select-multiple
           id="id6"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-select-multiple'>['labelEdge']}
           labelHint="Width 50% MaxWidth 400px"
           width="50%"
           maxWidth="400px"
@@ -122,7 +129,7 @@ export default function SelectMultipleWidthExample() {
       <oj-c-form-layout>
         <oj-c-select-multiple
           id="id7"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-select-multiple'>['labelEdge']}
           labelHint="width and max-width attributes are not defined"
           help={{
             instruction: "The width is driven by the oj-c-form-layout column width",

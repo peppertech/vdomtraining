@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
@@ -78,7 +77,7 @@ export const RowExpanderTableExpandedRowExpander = () => {
       return () => subscriber.unsubscribe?.();
   }, [dataProvider]);
 
-  const handleValueValueChanged = (event: PropertyChangedEvent<any>) => {
+  const handleValueValueChanged = (event: PropertyChangedEvent<string>) => {
     setValue(event.detail.value);
   };
 

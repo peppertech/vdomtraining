@@ -1,42 +1,43 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useState, useCallback } from "preact/hooks";
 import "ojs/ojcolorspectrum";
 import "ojs/ojswitch";
 import "ojs/ojlabel";
+import type { ojColorSpectrum } from "ojs/ojcolorspectrum";
 import Color = require("ojs/ojcolor");
 
+type SwitchValueChangedEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
+type ColorValueChangedEvent = ojColorSpectrum.valueChanged;
+type ColorTransientValueChangedEvent = ojColorSpectrum.transientValueChanged;
+
+const INITIAL_COLOR = new Color("#FF0000");
+
 export const ColorSpectrum = () => {
-  type ColorInfo = {
-    color: Color;
-    label?: string;
-  };
-  // Initial color
-  const initialColor = new Color("#FF0000");
+  const [colorValue, setColorValue] = useState<Color>(INITIAL_COLOR);
+  const [transientValue, setTransientValue] = useState<Color>(INITIAL_COLOR);
+  const [spectrumDisabled, setSpectrumDisabled] = useState(false);
 
-  // State for color values
-  const [colorValue, setColorValue] = useState<Color>(new Color("#FF0000"));
-  const [transientValue, setTransientValue] = useState<Color>(
-    new Color("#FF0000"),
+  const handleValueChanged = useCallback((event: ColorValueChangedEvent) => {
+    setColorValue(event.detail.value);
+  }, []);
+
+  const handleTransientValueChanged = useCallback(
+    (event: ColorTransientValueChangedEvent) => {
+      setTransientValue(event.detail.value);
+    },
+    [],
   );
-  const [spectrumDisabled, setSpectrumDisabled] = useState<boolean>(false);
 
-  // Event handlers
-  const handleValueChanged = useCallback((event: any) => {
-    setColorValue(event.detail.value as Color);
-  }, []);
-
-  const handleTransientValueChanged = useCallback((event: any) => {
-    setTransientValue(event.detail.value as Color);
-  }, []);
-
-  const handleDisabledChanged = useCallback((event: any) => {
-    setSpectrumDisabled(event.detail.value as boolean);
+  const handleDisabledChanged = useCallback((event: SwitchValueChangedEvent) => {
+    setSpectrumDisabled(event.detail.value);
   }, []);
 
   const reset = useCallback(() => {
-    setColorValue(initialColor);
-    setTransientValue(initialColor);
-  }, [initialColor]);
+    setColorValue(INITIAL_COLOR);
+    setTransientValue(INITIAL_COLOR);
+  }, []);
 
   return (
     <div id="colorSpectrumDemo">
@@ -46,7 +47,7 @@ export const ColorSpectrum = () => {
           <div
             class="demo-color-preview demo-pointer"
             tabIndex={0}
-            style={{ backgroundColor: initialColor.toString() }}
+            style={{ backgroundColor: INITIAL_COLOR.toString() }}
             onClick={reset}
           />
         </div>

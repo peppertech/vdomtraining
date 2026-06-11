@@ -64,10 +64,10 @@ export const StockChartSelection = () => {
     const selectionListener = (event: ojChart.selectionChanged<number, Record<number, string | number>, null, null>) => {
         setSelectedItemsValue(event.detail['value'] ?? []);
     };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item open={item.data.open} close={item.data.close} high={item.data.high} low={item.data.low} volume={item.data.volume} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
-    const seriesTemplateRenderer = (series: any) => {
+    const seriesTemplateRenderer = (series: DatavizSeriesTemplateContext) => {
         return <oj-chart-series type={seriesTypeValue}/>;
     };
     const ojChartProps: Partial<ComponentProps<'oj-chart'>> = { xAxis: {

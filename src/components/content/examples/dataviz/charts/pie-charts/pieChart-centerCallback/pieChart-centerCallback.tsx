@@ -69,7 +69,7 @@ export const PieChartCenterCallback = () => {
     );
   };
 
-  const renderPieCenter = ($current: any) => {
+  const renderPieCenter = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <div
         class="oj-flex"

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -20,28 +19,31 @@ interface Employee {
 }
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type TableLayout = 'contents' | 'fixed';
+type ColumnSizeValue = string | null;
+type ColumnWeightValue = number | null;
 
 export const TableColumnLayoutscorepack = () => {
-  const [selectedLayout, setSelectedLayout] = useState<any>('contents');
-  const [col1Width, setCol1Width] = useState<any>(null);
-  const [col1MinWidth, setCol1MinWidth] = useState<any>('auto');
-  const [col1MaxWidth, setCol1MaxWidth] = useState<any>(null);
-  const [col1Weight, setCol1Weight] = useState<any>(1);
-  const [col2Width, setCol2Width] = useState<any>(null);
-  const [col2MinWidth, setCol2MinWidth] = useState<any>('auto');
-  const [col2MaxWidth, setCol2MaxWidth] = useState<any>(null);
-  const [col2Weight, setCol2Weight] = useState<any>(1);
-  const [col3Width, setCol3Width] = useState<any>(null);
-  const [col3MinWidth, setCol3MinWidth] = useState<any>('auto');
-  const [col3MaxWidth, setCol3MaxWidth] = useState<any>(null);
-  const [col3Weight, setCol3Weight] = useState<any>(1);
-  const [col4Width, setCol4Width] = useState<any>(null);
-  const [col4MinWidth, setCol4MinWidth] = useState<any>('auto');
-  const [col4MaxWidth, setCol4MaxWidth] = useState<any>(null);
-  const [col4Weight, setCol4Weight] = useState<any>(1);
+  const [selectedLayout, setSelectedLayout] = useState<TableLayout>('contents');
+  const [col1Width, setCol1Width] = useState<ColumnSizeValue>(null);
+  const [col1MinWidth, setCol1MinWidth] = useState<ColumnSizeValue>('auto');
+  const [col1MaxWidth, setCol1MaxWidth] = useState<ColumnSizeValue>(null);
+  const [col1Weight, setCol1Weight] = useState<ColumnWeightValue>(1);
+  const [col2Width, setCol2Width] = useState<ColumnSizeValue>(null);
+  const [col2MinWidth, setCol2MinWidth] = useState<ColumnSizeValue>('auto');
+  const [col2MaxWidth, setCol2MaxWidth] = useState<ColumnSizeValue>(null);
+  const [col2Weight, setCol2Weight] = useState<ColumnWeightValue>(1);
+  const [col3Width, setCol3Width] = useState<ColumnSizeValue>(null);
+  const [col3MinWidth, setCol3MinWidth] = useState<ColumnSizeValue>('auto');
+  const [col3MaxWidth, setCol3MaxWidth] = useState<ColumnSizeValue>(null);
+  const [col3Weight, setCol3Weight] = useState<ColumnWeightValue>(1);
+  const [col4Width, setCol4Width] = useState<ColumnSizeValue>(null);
+  const [col4MinWidth, setCol4MinWidth] = useState<ColumnSizeValue>('auto');
+  const [col4MaxWidth, setCol4MaxWidth] = useState<ColumnSizeValue>(null);
+  const [col4Weight, setCol4Weight] = useState<ColumnWeightValue>(1);
 
-  const deptArray: any = JSON.parse(deptData);
-  const dataprovider = useMemo(() => new ArrayDataProvider(deptArray, {
+  const deptArray: Employee[] = JSON.parse(deptData as string) as Employee[];
+  const dataprovider = useMemo(() => new ArrayDataProvider<Employee['DepartmentId'], Employee>(deptArray, {
       keyAttributes: 'DepartmentId'
   }), [deptArray]);
   const layoutValues = useMemo(() => [
@@ -107,8 +109,8 @@ export const TableColumnLayoutscorepack = () => {
       col4Width
   ]);
 
-  const handleSelectedLayoutValueChanged = (event: PropertyChangedEvent<any>) => {
-    setSelectedLayout(event.detail.value);
+  const handleSelectedLayoutValueChanged = (event: PropertyChangedEvent<TableLayout>) => {
+    setSelectedLayout(event.detail.value ?? 'contents');
   };
 
   const updateTable = () => {

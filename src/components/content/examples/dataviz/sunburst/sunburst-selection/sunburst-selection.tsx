@@ -51,7 +51,7 @@ export const SunburstSelection = () => {
   const getColor = () => {
       return colorHandler.getValue(Math.floor(Math.random() * 4).toString());
   };
-    const nodeTemplateRenderer = ($current: any) => {
+    const nodeTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-sunburst-node label={$current.data.label} value={$current.data.value} color={getColor()} shortDesc={$current.data.label + ':' + $current.data.value}/>;
   };
 

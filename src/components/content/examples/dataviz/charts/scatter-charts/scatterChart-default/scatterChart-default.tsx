@@ -22,7 +22,7 @@ export const ScatterChartDefault = () => {
     []
   );
 
-  const itemTemplateRenderer = (item: any) => (
+  const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-chart-item
       x={item.data.x}
       y={item.data.y}

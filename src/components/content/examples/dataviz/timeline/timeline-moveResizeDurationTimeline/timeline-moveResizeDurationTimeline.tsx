@@ -24,11 +24,11 @@ const minorAxis = { scale: 'weeks', zoomOrder: ['months', 'weeks', 'days'] };
 const dnd = { move: { items: 'enabled' } };
 const itemDefaults = { resizable: 'enabled' };
 
-const renderSeriesTemplate = (series: any) => (
+const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (
   <oj-timeline-series label={series.id} emptyText="No Tournaments Played." />
 );
 
-const renderItemTemplate = (item: any, itemType: any) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>, itemType: string) => (
   <oj-timeline-item
     itemType={itemType}
     seriesId={item.data.series}
@@ -59,25 +59,25 @@ export const TimelineMoveResizeDurationTimeline = () => {
     dataProvider.data = items;
   }, [dataProvider, items]);
 
-  const handleOrientationChanged = (event: any) => {
+  const handleOrientationChanged = (event: DatavizValueChangedEvent<string>) => {
     if (event.detail.updatedFrom === 'internal') {
       setOrientationValue(event.detail.value);
     }
   };
 
-  const handleOverviewChanged = (event: any) => {
+  const handleOverviewChanged = (event: DatavizValueChangedEvent<string>) => {
     if (event.detail.updatedFrom === 'internal') {
       setOverviewValue(event.detail.value);
     }
   };
 
-  const handleItemTypeChanged = (event: any) => {
+  const handleItemTypeChanged = (event: DatavizValueChangedEvent<string>) => {
     if (event.detail.updatedFrom === 'internal') {
       setItemType(event.detail.value);
     }
   };
 
-  const updateEventData = (event: any) => {
+  const updateEventData = (event: DatavizTimelineMoveResizeEvent) => {
     const itemContexts = event.detail.itemContexts;
     const resizeEdge = event.detail.typeDetail;
     const sourceTaskContext = itemContexts[0];
@@ -86,11 +86,11 @@ export const TimelineMoveResizeDurationTimeline = () => {
         ? getTime(event.detail.end) - getTime(sourceTaskContext.data.end)
         : getTime(event.detail.start) - getTime(sourceTaskContext.data.start);
 
-    setItems((current: any) => {
+    setItems((current) => {
       const nextItems = current.slice();
 
-      itemContexts.forEach((itemContext: any) => {
-        const itemIndex = nextItems.findIndex((item: any) => item.id === itemContext.data.id);
+      itemContexts.forEach((itemContext) => {
+        const itemIndex = nextItems.findIndex((item) => item.id === itemContext.data.id);
 
         if (itemIndex === -1) {
           return;
@@ -122,15 +122,15 @@ export const TimelineMoveResizeDurationTimeline = () => {
     });
   };
 
-  const handleMove = (event: any) => {
+  const handleMove = (event: DatavizTimelineMoveResizeEvent) => {
     updateEventData(event);
   };
 
-  const handleResize = (event: any) => {
+  const handleResize = (event: DatavizTimelineMoveResizeEvent) => {
     updateEventData(event);
   };
 
-  const itemTemplateRenderer = (item: any) => renderItemTemplate(item, itemType);
+  const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => renderItemTemplate(item, itemType);
 
   return (
     <div id="timelineContainer">

@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useState, useCallback, useMemo } from "preact/hooks";
 import "ojs/ojcolorpalette";
 import "ojs/ojbutton";
@@ -7,6 +7,12 @@ import "ojs/ojlabel";
 import "ojs/ojswitch";
 import Color = require("ojs/ojcolor");
 
+type SwatchSizeEvent = Parameters<
+  NonNullable<ComponentProps<"oj-buttonset-one">["onvalueChanged"]>
+>[0];
+type ColorValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-color-palette">["onvalueChanged"]>
+>[0];
 type SwatchSize = "xs" | "sm" | "lg";
 
 interface SwatchSizeOption {
@@ -57,11 +63,11 @@ export const ColorPalette = () => {
   );
 
   // Event handlers
-  const handleSwatchSizeChanged = useCallback((event: any) => {
+  const handleSwatchSizeChanged = useCallback((event: SwatchSizeEvent) => {
     setSwatchSize(event.detail.value as SwatchSize);
   }, []);
 
-  const handleColorValueChanged = useCallback((event: any) => {
+  const handleColorValueChanged = useCallback((event: ColorValueEvent) => {
     setColorValue(event.detail.value as Color);
   }, []);
 

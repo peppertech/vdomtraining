@@ -49,7 +49,7 @@ export const ScatterChartAttrGroups = () => {
     return `${datum.company} ${datum.year}&lt;br/&gt;X: ${datum.x}&lt;br/&gt;Y: ${datum.y}&lt;br/&gt;Z: ${datum.z}`;
   };
 
-  const itemTemplateRenderer = (item: any) => (
+  const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-chart-item
       x={item.data.x}
       y={item.data.y}

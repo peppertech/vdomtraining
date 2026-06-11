@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import { ojListView } from 'ojs/ojlistview';
@@ -17,6 +16,10 @@ interface DataInfo {
     title: string;
     image: string;
 }
+
+type ItemTemplateContext = ojListView.ItemTemplateContext<DataInfo['id'], DataInfo>;
+type TransferSource = DataTransfer | DemoDataTransfer | null;
+type MenuActionEvent = CustomEvent<{ selectedValue?: 'cut' | 'paste' }>;
 
 export const ListViewWithTableDndListView = () => {
   const sourceData = useMemo(() => [
@@ -95,11 +98,11 @@ export const ListViewWithTableDndListView = () => {
           image: '../images/hcm/placeholder-male-13.png'
       }
   ], []);
-  const [sourceArr, setSourceArr] = useState<any[]>(sourceData);
-  const [targetArr, setTargetArr] = useState<any[]>(targetData);
-  const [cutItem, setCutItem] = useState<any>(undefined);
+  const [sourceArr, setSourceArr] = useState<DataInfo[]>(sourceData);
+  const [targetArr, setTargetArr] = useState<DataInfo[]>(targetData);
+  const [cutItem, setCutItem] = useState<DataInfo['id'] | null>(null);
 
-  const dragItemIdRef = useRef<any>(null);
+  const dragItemIdRef = useRef<DataInfo['id'] | null>(null);
   const sourceDataProvider = useMemo(() => new ArrayDataProvider(sourceArr, {
       keyAttributes: 'id'
   }), [sourceArr]);
@@ -121,88 +124,97 @@ export const ListViewWithTableDndListView = () => {
       _handleDataTransfer(event.dataTransfer, index);
   };
 
-  const handleDragStart = (event: DragEvent) => {
-      const dataStr = event.dataTransfer.getData('application/ojlistviewitems+json');
-      const data = JSON.parse(dataStr);
-      dragItemIdRef.current = data[0].id;
-  };
+	  const handleDragStart = (event: DragEvent) => {
+	      const data = _getFirstTransferredItem(event.dataTransfer);
+	      dragItemIdRef.current = data?.id ?? null;
+	  };
 
   const handleDragEnd = (event: DragEvent) => {
       if (event.dataTransfer.dropEffect !== 'none') {
-          _removeSourceItem(dragItemIdRef.current);
-      }
-  };
+	          _removeSourceItem(dragItemIdRef.current);
+	      }
+	  };
 
-  const _handleDataTransfer = (dataTransfer: any, index: any) => {
-      const dataStr = dataTransfer.getData('application/ojlistviewitems+json');
-      const data = JSON.parse(dataStr)[0];
-      _insertTargetItem(data, index);
-  };
+	  const _getFirstTransferredItem = (dataTransfer: TransferSource): DataInfo | null => {
+	      const dataStr = dataTransfer?.getData('application/ojlistviewitems+json') ?? '';
+	      if (dataStr === '') {
+	          return null;
+	      }
+	      const [data] = JSON.parse(dataStr) as DataInfo[];
+	      return data ?? null;
+	  };
 
-  const _removeSourceItem = (itemId: any) => {
-      const arr = sourceArr;
-      for (let j = 0; j < arr.length; j++) {
-          // remove the selected items from array
-          if (arr[j].id === itemId) {
-              arr.splice(j, 1)[0];
-              break;
-          }
-      }
-      sourceArr.valueHasMutated();
-  };
+	  const _handleDataTransfer = (dataTransfer: TransferSource, index: number) => {
+	      _insertTargetItem(_getFirstTransferredItem(dataTransfer), index);
+	  };
 
-  const _insertTargetItem = (data: any, index: any) => {
-      const arr = targetArr;
-      if (index === -1) {
-          // empty list case
-          arr.push(data);
-      }
-      else {
-          arr.splice(index, 0, data);
-      }
-      targetArr.valueHasMutated();
-  };
+	  const _removeSourceItem = (itemId: DataInfo['id'] | null) => {
+	      if (itemId == null) {
+	          return;
+	      }
+	      setSourceArr((arr) => arr.filter((item) => item.id !== itemId));
+	  };
 
-  const handleMenuCut = (event: any) => {
-      _cutCurrentItem();
-  };
+	  const _insertTargetItem = (data: DataInfo | null, index: number) => {
+	      if (data == null) {
+	          return;
+	      }
+	      setTargetArr((arr) => {
+	          const nextArr = [...arr];
+	          if (index === -1) {
+	              // empty list case
+	              nextArr.push(data);
+	          }
+	          else {
+	              nextArr.splice(index, 0, data);
+	          }
+	          return nextArr;
+	      });
+	  };
 
-  const handleKeyCut = (event: any) => {
-      if ((event.ctrlKey || event.metaKey) && event.key === 'x') {
+	  const handleMenuCut = (_event: MenuActionEvent) => {
+	      _cutCurrentItem();
+	  };
+
+	  const handleKeyCut = (event: KeyboardEvent) => {
+	      if ((event.ctrlKey || event.metaKey) && event.key === 'x') {
           _cutCurrentItem();
       }
   };
 
   const _cutCurrentItem = () => {
-      const listView = document.getElementById('source') as ojListView<DataInfo['id'], DataInfo>;
-      const currentItem = listView.currentItem;
-      const data = listView.getDataForVisibleItem({ key: currentItem });
+	      const listView = document.getElementById('source') as ojListView<DataInfo['id'], DataInfo>;
+	      const currentItem = listView.currentItem as DataInfo['id'] | null;
+	      if (currentItem == null) {
+	          return;
+	      }
+	      const data = listView.getDataForVisibleItem({ key: currentItem }) as DataInfo;
       const jsonStr = JSON.stringify([data]);
       clipboard.setData('application/ojlistviewitems+json', jsonStr);
       setCutItem(currentItem);
   };
 
-  const handleMenuPaste = (event: any) => {
-      _paste();
-  };
+	  const handleMenuPaste = (_event: MenuActionEvent) => {
+	      _paste();
+	  };
 
-  const handleKeyPaste = (event: any) => {
+	  const handleKeyPaste = (event: KeyboardEvent) => {
       if ((event.ctrlKey || event.metaKey) && event.key === 'v') {
           _paste();
       }
   };
 
   const _paste = () => {
-      const listView = document.getElementById('target') as ojListView<DataInfo['id'], DataInfo>;
-      const currentItem = listView.currentItem;
-      const index = _findIndex(targetData, currentItem);
+	      const listView = document.getElementById('target') as ojListView<DataInfo['id'], DataInfo>;
+	      const currentItem = listView.currentItem as DataInfo['id'] | null;
+	      const index = _findIndex(targetData, currentItem);
       _handleDataTransfer(clipboard, index + 1);
       _removeSourceItem(cutItem);
       setCutItem(null);
   };
 
-  const _findIndex = (arr: any, key: any) => {
-      const keys = arr.map((data: any) => {
+	  const _findIndex = (arr: DataInfo[], key: DataInfo['id'] | null) => {
+	      const keys = arr.map((data: DataInfo) => {
           return data.id;
       });
       return keys.indexOf(key);
@@ -214,7 +226,7 @@ export const ListViewWithTableDndListView = () => {
                     <h4 class="oj-sm-margin-2x-start">Drag Source</h4>
                     <oj-list-view id="source" onkeydown={handleKeyCut} aria-label="list drag source" class="demo-list oj-listview-item-padding-off" data={sourceDataProvider} {...{ 'dnd.drag.items.data-types': "[\"application/ojlistviewitems+json\"]", 'dnd.drag.items.drag-start': handleDragStart, 'dnd.drag.items.drag-end': handleDragEnd, 'dnd.drop.items.data-types': "[\"application/ojtablerows+json\"]" }}>
                               <oj-menu slot="contextMenu" onojMenuAction={handleMenuCut} aria-label="menu with actions"><oj-option value="cut">Cut</oj-option></oj-menu>
-                              <template slot="itemTemplate" render={(item: any) => (
+	                              <template slot="itemTemplate" render={(item: ItemTemplateContext) => (
                                         <>
                                             <li class={cutItem === item.key ? 'demo-cut-item' : ''}>
                                                             <oj-list-item-layout>
@@ -232,7 +244,7 @@ export const ListViewWithTableDndListView = () => {
                     <h4 class="oj-sm-margin-2x-start">Drop Target</h4>
                     <oj-list-view id="target" onkeydown={handleKeyPaste} aria-label="list drop target" class="demo-list oj-listview-item-padding-off" data={targetDataProvider} {...{ 'dnd.drop.items.data-types': "[\"application/ojlistviewitems+json\"]", 'dnd.drop.items.drop': handleDrop }}>
                               <oj-menu slot="contextMenu" onojMenuAction={handleMenuPaste} aria-label="menu with actions"><oj-option value="paste" disabled={cutItem == null}>Paste</oj-option></oj-menu>
-                              <template slot="itemTemplate" render={(item: any) => (
+	                              <template slot="itemTemplate" render={(item: ItemTemplateContext) => (
                                         <>
                                             <oj-list-item-layout>
                                                             <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>

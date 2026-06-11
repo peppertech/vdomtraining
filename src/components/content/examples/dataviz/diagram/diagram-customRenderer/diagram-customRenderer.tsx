@@ -214,10 +214,10 @@ export const DiagramCustomRenderer = () => {
         }
         return [startX, startY, 'C', c1X, c1Y, c2X, c2Y, endX, endY];
     };
-    const nodeTemplateRenderer = (node: any) => {
+    const nodeTemplateRenderer = (node: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-diagram-node label={node.data.id} labelStyle={nodeTextColorFunc(node.data.id)} shortDesc={"Node " + node.data.id + ", Category " + node.data.category}/>;
     };
-    const linkTemplateRenderer = (link: any) => {
+    const linkTemplateRenderer = (link: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-diagram-link startNode={link.data.start} endNode={link.data.end} shortDesc={"Link " + link.data.id + ", Category " + link.data.category + ", connects " + link.data.start + " to " + link.data.end} color={colorHandler.getValue(link.data.category)}/>;
     };
     const ojDiagramProps: Partial<ComponentProps<'oj-diagram'>> = { nodeContent: {

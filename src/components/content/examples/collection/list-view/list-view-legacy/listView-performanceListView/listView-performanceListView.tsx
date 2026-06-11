@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import { ojButton } from 'ojs/ojbutton';
@@ -19,6 +18,9 @@ interface Data {
 }
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type ScrollPolicyValue = 'loadMoreOnScroll' | 'loadAll';
+type ListDataProvider = ArrayDataProvider<Data['id'], Data>;
+type NumberValueEvent = CustomEvent<{ value?: number | null }>;
 
 const generateData = (count: number) => {
   const data: Array<Data> = [];
@@ -30,10 +32,10 @@ const generateData = (count: number) => {
 
 export const ListViewPerformanceListView = () => {
   const initialData = useMemo(() => generateData(1000), []);
-  const [scrollPolicyValue, setScrollPolicyValue] = useState<any>('loadMoreOnScroll');
-  const [numItems, setNumItems] = useState<any>(1000);
-  const [renderTime, setRenderTime] = useState<any>(0);
-  const [dataProvider, setDataProvider] = useState<any>(() => new ArrayDataProvider<number, Data>(initialData, {
+  const [scrollPolicyValue, setScrollPolicyValue] = useState<ScrollPolicyValue>('loadMoreOnScroll');
+  const [numItems, setNumItems] = useState(1000);
+  const [renderTime, setRenderTime] = useState(0);
+  const [dataProvider, setDataProvider] = useState<ListDataProvider>(() => new ArrayDataProvider<number, Data>(initialData, {
       keys: initialData.map((value: Data) => {
           return value.id;
       })
@@ -44,8 +46,8 @@ export const ListViewPerformanceListView = () => {
       { id: 'off', label: 'Load All', value: 'loadAll' }
   ], []);
 
-  const handleScrollPolicyValueValueChanged = (event: PropertyChangedEvent<any>) => {
-    setScrollPolicyValue(event.detail.value);
+  const handleScrollPolicyValueValueChanged = (event: PropertyChangedEvent<ScrollPolicyValue>) => {
+    setScrollPolicyValue(event.detail.value ?? 'loadMoreOnScroll');
   };
 
   const renderTimeWhenReady = () => {
@@ -57,8 +59,9 @@ export const ListViewPerformanceListView = () => {
       });
   };
 
-  const updateData = (event: ojButton.ojAction) => {
-      const count = !isNaN(event.detail.value) ? event.detail.value : numItems;
+  const updateData = (event: NumberValueEvent | ojButton.ojAction) => {
+	      const nextValue = 'value' in event.detail ? event.detail.value : undefined;
+	      const count = typeof nextValue === 'number' && !Number.isNaN(nextValue) ? nextValue : numItems;
       setNumItems(count);
       const data = generateData(count);
       setDataProvider(new ArrayDataProvider<number, Data>(data, {

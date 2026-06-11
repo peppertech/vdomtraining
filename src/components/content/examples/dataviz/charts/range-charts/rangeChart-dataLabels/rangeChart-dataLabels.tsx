@@ -29,13 +29,13 @@ export const RangeChartDataLabels = () => {
   );
 
   const handleTypeValueChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setTypeValue(event.detail.value as RangeChartType);
   };
 
   const handleOrientationChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setOrientationValue(event.detail.value as ChartOrientation);
   };

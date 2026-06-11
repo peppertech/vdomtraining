@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 import Context = require('ojs/ojcontext');
@@ -11,12 +10,12 @@ import 'ojs/ojoption';
 import 'ojs/ojradioset';
 import 'ojs/ojvalidationgroup';
 
-type ContactPref = 'email' | 'phone';
-type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
-type InputTextMessagesCustom = ComponentProps<'oj-c-input-text'>['messagesCustom'];
 type RadioSetValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>
 >[0];
+type ContactPref = 'email' | 'phone';
+type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
+type InputTextMessagesCustom = ComponentProps<'oj-c-input-text'>['messagesCustom'];
 
 const requiredEmailMessage = [
   { detail: 'Email Address is required.', severity: 'error' }
@@ -95,11 +94,11 @@ export const ValidationGroupCrossFieldValidation = () => {
   };
 
   const handleEmailAddressChanged = (event: CustomEvent<{ value: InputTextValue }>) => {
-    setEmailAddress(event.detail.value);
+    setEmailAddress((event.detail.value as InputTextValue));
   };
 
   const handlePhoneNumberChanged = (event: CustomEvent<{ value: InputTextValue }>) => {
-    setPhoneNumber(event.detail.value);
+    setPhoneNumber((event.detail.value as InputTextValue));
   };
 
   const handleCreateNewMember = async () => {

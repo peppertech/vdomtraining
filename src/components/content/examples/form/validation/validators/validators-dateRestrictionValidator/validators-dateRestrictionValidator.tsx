@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
 import AsyncDateRestrictionValidator = require('ojs/ojasyncvalidator-daterestriction');
@@ -7,14 +6,14 @@ import 'ojs/ojdatetimepicker';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
 
-type InputDateValue = string | undefined;
-type InputTextValue = ComponentProps<'oj-input-text'>['value'];
 type InputTextChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>
 >[0];
 type InputDateChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-date'>['onvalueChanged']>
 >[0];
+type InputDateValue = string | undefined;
+type InputTextValue = ComponentProps<'oj-input-text'>['value'];
 
 type HolidayMeta = {
   disabled: true;
@@ -107,15 +106,15 @@ export const ValidatorsDateRestrictionValidator = () => {
   );
 
   const handleTextDateChanged = (event: InputTextChangedEvent) => {
-    setDateValue1(event.detail.value ?? '');
+    setDateValue1((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const handleDate2Changed = (event: InputDateChangedEvent) => {
-    setDateValue2(event.detail.value ?? undefined);
+    setDateValue2((event.detail.value as InputDateValue | null | undefined) ?? undefined);
   };
 
   const handleDate3Changed = (event: InputDateChangedEvent) => {
-    setDateValue3(event.detail.value ?? undefined);
+    setDateValue3((event.detail.value as InputDateValue | null | undefined) ?? undefined);
   };
 
   return (

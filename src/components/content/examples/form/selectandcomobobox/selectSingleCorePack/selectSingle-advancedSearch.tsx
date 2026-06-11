@@ -1,12 +1,19 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/select-single";
+
 import {
   createOracleEmployeeDataProvider,
   getEmployeeItemText,
   renderEmployeeItemTemplate,
 } from "./selectSingle-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-single">["onvalueChanged"]>
+>[0];
+type AdvancedSearchActionEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-single">["onojAdvancedSearchAction"]>
+>[0];
 const getTimestamp = () => {
   const date = new Date();
   return `timestamp: ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds()}`;
@@ -18,11 +25,11 @@ export default function SelectSingleAdvancedSearchExample() {
   const [eventLog, setEventLog] = useState("");
   const [timestamp, setTimestamp] = useState("");
 
-  const handleValueChanged = useCallback((event: any) => {
-    setSelectVal(event.detail.value ?? null);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setSelectVal((event.detail.value as number | null | null | undefined) ?? null);
   }, []);
 
-  const handleAdvancedSearchAction = useCallback((event: any) => {
+  const handleAdvancedSearchAction = useCallback((event: AdvancedSearchActionEvent) => {
     setEventLog(JSON.stringify(event.detail));
     setTimestamp(getTimestamp());
   }, []);

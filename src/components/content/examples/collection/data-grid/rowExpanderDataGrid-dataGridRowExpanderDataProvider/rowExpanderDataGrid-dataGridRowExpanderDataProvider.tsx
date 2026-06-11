@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { render } from 'preact';
-import type { ComponentProps } from 'preact';
+import type { ComponentChildren, ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
@@ -16,7 +16,15 @@ interface Project {
     end: string;
     children?: Array<Project>;
 }
-const createRenderer = (factory: any) => (context: any) => {
+type DataGridRendererContext = {
+    key?: string | number;
+    data?: unknown;
+    keys?: {
+        column?: string | number;
+    };
+    [property: string]: unknown;
+};
+const createRenderer = (factory: (context: DataGridRendererContext) => ComponentChildren) => (context: DataGridRendererContext) => {
     const container = document.createElement('div');
     render(factory(context), container);
     return { insert: container };
@@ -28,7 +36,7 @@ export const RowExpanderDataGridDataGridRowExpanderDataProvider = () => {
         });
         return new FlattenedTreeDataProviderView(arrayTreeDataProvider);
     }, []);
-    const columnHeaderRenderer = createRenderer((context: any) => {
+    const columnHeaderRenderer = createRenderer((context) => {
         if (context.key === 'id')
             return <span>Task ID</span>;
         if (context.key === 'name')
@@ -41,7 +49,7 @@ export const RowExpanderDataGridDataGridRowExpanderDataProvider = () => {
             return <span>End Date</span>;
         return <span>{String(context.key)}</span>;
     });
-    const cellRenderer = createRenderer((context: any) => (<>
+    const cellRenderer = createRenderer((context) => (<>
       {context.keys?.column === 'id' && <oj-row-expander context={context}/>}
       <span>{String(context.data ?? '')}</span>
     </>));

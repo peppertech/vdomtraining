@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useState } from 'preact/hooks';
 import 'oj-c/input-text';
 import 'ojs/ojformlayout';
@@ -8,7 +7,7 @@ type InputTextValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-c-in
 export const HelpHintsMessagingHelpTitle = () => {
     const [text, setText] = useState<InputTextValue>('');
     const handleValueChanged = (event: InputTextValueChangedEvent) => {
-        setText(event.detail.value ?? '');
+        setText((event.detail.value as InputTextValue | null | undefined) ?? '');
     };
     const ojCInputTextProps: Partial<ComponentProps<'oj-c-input-text'>> = { helpHints: {
             definition: 'custom help definition text'

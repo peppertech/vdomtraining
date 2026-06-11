@@ -40,11 +40,11 @@ const generateRandomEvent = (id: number): TimelineAnimationsItem => {
 };
 
 const generateRandomData = (numItems: number): TimelineAnimationsItem[] =>
-  Array.from({ length: numItems }, (_: any, index: any) => generateRandomEvent(index));
+  Array.from({ length: numItems }, (_unused: unknown, index: number) => generateRandomEvent(index));
 
-const renderSeriesTemplate = (series: any) => <oj-timeline-series label={series.id} />;
+const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => <oj-timeline-series label={series.id} />;
 
-const renderItemTemplate = (item: any) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-timeline-item
     seriesId={item.data.series}
     start={item.data.begin}
@@ -68,15 +68,15 @@ export const TimelineAnimations = () => {
   }, [dataProvider, items]);
 
   const addNode = () => {
-    setItems((current: any) => [...current, generateRandomEvent(current.length)]);
+    setItems((current) => [...current, generateRandomEvent(current.length)]);
   };
 
   const removeNode = () => {
-    setItems((current: any) => current.slice(0, -1));
+    setItems((current) => current.slice(0, -1));
   };
 
   const updateNode = () => {
-    setItems((current: any) => {
+    setItems((current) => {
       if (current.length === 0) {
         return current;
       }
@@ -88,7 +88,7 @@ export const TimelineAnimations = () => {
   };
 
   const updateNodeDuration = () => {
-    setItems((current: any) => {
+    setItems((current) => {
       if (current.length === 0) {
         return current;
       }

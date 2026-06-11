@@ -1,14 +1,17 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/select-single";
 import { createBrowserDataProvider } from "./selectSingle-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-single">["onvalueChanged"]>
+>[0];
 export default function SelectSingleBasicExample() {
   const dataProvider = useMemo(() => createBrowserDataProvider(), []);
   const [selectVal, setSelectVal] = useState("CH");
 
-  const handleValueChanged = useCallback((event: any) => {
-    setSelectVal(event.detail.value);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setSelectVal((event.detail.value as string));
   }, []);
 
   return (

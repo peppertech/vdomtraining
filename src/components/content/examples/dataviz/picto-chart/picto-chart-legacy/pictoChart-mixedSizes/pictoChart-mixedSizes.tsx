@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -61,8 +60,8 @@ export const PictoChartMixedSizes = () => {
     const numberChanged = (setter: (value: number) => void) => (event: PropertyChangedEvent<number>) => {
         setter(event.detail.value ?? 1);
     };
-    const renderPictoItem = (item: any) => (<oj-picto-chart-item name={item.data.name} short-desc={`${item.data.name}: ${item.data.count}`} shape="rectangle" row-span={item.data.rowSpan} column-span={item.data.columnSpan} color={item.data.color} count={item.data.count}/>);
-    const renderLegendItem = (item: any) => (<oj-legend-item short-desc={`Department: ${item.data.name}`} text={item.data.name} marker-shape="square" color={getColor(item.data.name)}/>);
+    const renderPictoItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-picto-chart-item name={item.data.name} short-desc={`${item.data.name}: ${item.data.count}`} shape="rectangle" row-span={item.data.rowSpan} column-span={item.data.columnSpan} color={item.data.color} count={item.data.count}/>);
+    const renderLegendItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-legend-item short-desc={`Department: ${item.data.name}`} text={item.data.name} marker-shape="square" color={getColor(item.data.name)}/>);
     return (<div id="chart-container" class="oj-flex oj-sm-flex-items-1">
       <div class="oj-flex-item">
         <oj-picto-chart id="pictochart1" column-count={12} data={chartDataProvider} animation-on-data-change="auto">

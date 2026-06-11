@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-text";
@@ -39,7 +39,7 @@ export default function InputTextCorePackPrefixSuffixExample() {
             aria-controls="myform"
             labelHint="Label Edge"
             options={labelEdgeOptions}
-            onvalueChanged={(event: any) => {
+            onvalueChanged={(event) => {
               setLabelEdge((event.detail.value ?? "inside") as VisibleInputTextLabelEdge);
             }}
           ></oj-c-radioset>
@@ -48,8 +48,8 @@ export default function InputTextCorePackPrefixSuffixExample() {
             aria-controls="myform"
             labelHint="State"
             options={stateOptions}
-            onvalueChanged={(event: any) => {
-              setFormState(event.detail.value ?? "enabled");
+            onvalueChanged={(event) => {
+              setFormState((event.detail.value as DemoState | null | undefined) ?? "enabled");
             }}
           ></oj-c-radioset>
           <oj-c-radioset
@@ -57,8 +57,8 @@ export default function InputTextCorePackPrefixSuffixExample() {
             aria-controls="myform"
             labelHint="Value"
             options={valueOptions}
-            onvalueChanged={(event: any) => {
-              setValueEnabled(event.detail.value ?? "yes");
+            onvalueChanged={(event) => {
+              setValueEnabled((event.detail.value as DemoValueState | null | undefined) ?? "yes");
             }}
           ></oj-c-radioset>
           <oj-c-radioset
@@ -66,8 +66,8 @@ export default function InputTextCorePackPrefixSuffixExample() {
             aria-controls="myform"
             labelHint="Text Align"
             options={textAlignOptions}
-            onvalueChanged={(event: any) => {
-              setTextAlignState(event.detail.value ?? "none");
+            onvalueChanged={(event) => {
+              setTextAlignState((event.detail.value as DemoTextAlignState | null | undefined) ?? "none");
             }}
           ></oj-c-radioset>
         </oj-c-form-layout>
@@ -80,7 +80,7 @@ export default function InputTextCorePackPrefixSuffixExample() {
           value={showValue ? "10,000.00" : null}
           labelHint="Price"
           disabled={disableControls}
-          textAlign={textAlignValue as any}
+          textAlign={textAlignValue as ComponentProps<'oj-c-input-text'>['textAlign']}
           inputPrefix="$"
         ></oj-c-input-text>
 
@@ -89,7 +89,7 @@ export default function InputTextCorePackPrefixSuffixExample() {
           value={showValue ? "155" : null}
           labelHint="Weight"
           disabled={disableControls}
-          textAlign={textAlignValue as any}
+          textAlign={textAlignValue as ComponentProps<'oj-c-input-text'>['textAlign']}
           inputSuffix="lbs"
         ></oj-c-input-text>
       </oj-c-form-layout>

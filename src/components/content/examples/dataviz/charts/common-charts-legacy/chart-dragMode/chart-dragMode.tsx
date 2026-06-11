@@ -24,7 +24,7 @@ export const ChartDragMode = () => {
 
     const xAxisConfig: ComponentProps<'oj-chart'>['xAxis'] = { viewportMin: 20, viewportMax: 40 };
   const yAxisConfig: ComponentProps<'oj-chart'>['yAxis'] = { viewportMin: 30, viewportMax: 50 };
-  const itemTemplateRenderer = (item: any) => {
+  const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
     return <oj-chart-item x={item.data.x} y={item.data.y} z={item.data.z} groupId={[item.data.group]} seriesId={item.data.series}/>;
 };
 

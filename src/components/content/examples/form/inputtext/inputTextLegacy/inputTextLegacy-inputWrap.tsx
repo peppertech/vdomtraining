@@ -89,7 +89,7 @@ export default function InputTextLegacyInputWrapExample() {
             labelEdge="none"
             class="demo-form-control-max-width oj-sm-padding-1x-end"
             value={dateTimeValue}
-            onvalueChanged={(event: any) => {
+            onvalueChanged={(event) => {
               setDateTimeValue(event.detail.value ?? nowIsoDateTime);
             }}
           ></oj-input-date-time>

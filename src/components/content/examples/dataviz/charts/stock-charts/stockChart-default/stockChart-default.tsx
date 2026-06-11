@@ -93,7 +93,7 @@ export const StockChartDefault = () => {
         setIntervalMin(event.detail.xMin);
         setIntervalMax(event.detail.xMax);
     };
-    const itemTemplateRenderer = (item: any) => (<oj-chart-item open={item.data.open} close={item.data.close} high={item.data.high} low={item.data.low} volume={item.data.volume} groupId={[item.data.group]} seriesId={item.data.series}/>);
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-chart-item open={item.data.open} close={item.data.close} high={item.data.high} low={item.data.low} volume={item.data.volume} groupId={[item.data.group]} seriesId={item.data.series}/>);
     const seriesTemplateRenderer = () => <oj-chart-series type={seriesTypeValue}/>;
     const chartProps: Partial<ComponentProps<'oj-chart'>> = {
         'hideAndShowBehavior': 'withRescale',

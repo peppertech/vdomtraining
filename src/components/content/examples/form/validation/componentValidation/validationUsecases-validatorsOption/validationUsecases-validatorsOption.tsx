@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 import AsyncNumberRangeValidator = require('ojs/ojasyncvalidator-numberrange');
@@ -7,16 +6,16 @@ import 'oj-c/button';
 import 'oj-c/input-number';
 import 'oj-c/input-text';
 
-type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
-type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
-type InputNumberMessagesCustom = ComponentProps<'oj-c-input-number'>['messagesCustom'];
-type InputNumberMessage = NonNullable<InputNumberMessagesCustom>[number];
 type InputTextValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>
 >[0];
 type InputNumberValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-number'>['onvalueChanged']>
 >[0];
+type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
+type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
+type InputNumberMessagesCustom = ComponentProps<'oj-c-input-number'>['messagesCustom'];
+type InputNumberMessage = NonNullable<InputNumberMessagesCustom>[number];
 
 export const ValidationUsecasesValidatorsOption = () => {
   const [userName, setUserName] = useState<InputTextValue>(undefined);
@@ -50,11 +49,11 @@ export const ValidationUsecasesValidatorsOption = () => {
   );
 
   const handleUserNameChanged = (event: InputTextValueChangedEvent) => {
-    setUserName(event.detail.value ?? undefined);
+    setUserName((event.detail.value as InputTextValue | null | undefined) ?? undefined);
   };
 
   const handleWeightChanged = (event: InputNumberValueChangedEvent) => {
-    setWeight(event.detail.value ?? null);
+    setWeight((event.detail.value as InputNumberValue | null | undefined) ?? null);
   };
 
   const handleVerifyWeight = () => {

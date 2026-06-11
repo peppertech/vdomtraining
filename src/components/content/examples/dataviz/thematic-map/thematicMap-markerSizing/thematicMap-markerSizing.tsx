@@ -33,7 +33,7 @@ export const ThematicMapMarkerSizing = () => {
       }),
     []
   );
-  const markerTemplateRenderer = ($current: any) => {
+  const markerTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-marker
         color={markerColor}

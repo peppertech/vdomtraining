@@ -50,7 +50,7 @@ export const ChartNumberFormat = () => {
             rangeType: 'data'
         });
     };
-    const percentData = data.percent.map((el: any): GDPDatum => {
+    const percentData = data.percent.map((el: GDPDatum): GDPDatum => {
         const pData = { ...el };
         pData.gdp = pData.gdp / totalGDP2012;
         return pData;
@@ -87,7 +87,7 @@ export const ChartNumberFormat = () => {
         }, legend: {
             rendered: "off"
         } };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.gdp} groupId={[item.data.country]} seriesId="GDP"/>;
     };
     const OjChartProps2: Partial<ComponentProps<'oj-chart'>> = { yAxis: {
@@ -103,7 +103,7 @@ export const ChartNumberFormat = () => {
                 converter: y2AxisConverter
             }
         } };
-    const itemTemplateRenderer2 = (item: any) => {
+    const itemTemplateRenderer2 = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.gdp} groupId={[item.data.country]} seriesId="GDP"/>;
     };
     return (<div id="chart-container">

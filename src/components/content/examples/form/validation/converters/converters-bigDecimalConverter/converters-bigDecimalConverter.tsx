@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import { BigDecimalStringConverter } from 'ojs/ojconverter-nativenumber';
@@ -144,55 +143,55 @@ export const ConvertersBigDecimalConverter = () => {
   }), [decimal]);
 
   const handleLargePrecisionDecimalValueChanged = (event: PropertyChangedEvent<string | null>) => {
-    setLargePrecisionDecimal(event.detail.value);
+    setLargePrecisionDecimal((event.detail.value as string | null));
   };
 
   const handleLargeScaleDecimalValueChanged = (event: PropertyChangedEvent<string | null>) => {
-    setLargeScaleDecimal(event.detail.value);
+    setLargeScaleDecimal((event.detail.value as string | null));
   };
 
   const handleExponentialValValueChanged = (event: PropertyChangedEvent<string | null>) => {
-    setExponentialVal(event.detail.value);
+    setExponentialVal((event.detail.value as string | null));
   };
 
   const handleDecimalValueChanged = (event: PropertyChangedEvent<string | null>) => {
-    setDecimal(event.detail.value);
+    setDecimal((event.detail.value as string | null));
   };
 
   const handleDecimalRoundingModeValueChanged = (event: PropertyChangedEvent<string | null>) => {
-    setDecimalRoundingMode(event.detail.value);
+    setDecimalRoundingMode((event.detail.value as string | null));
   };
 
   const handleDecimalRoundingModeUpParseValueChanged = (event: PropertyChangedEvent<string | null>) => {
-    setDecimalRoundingModeUpParse(event.detail.value);
+    setDecimalRoundingModeUpParse((event.detail.value as string | null));
   };
 
   const handleDecimalRoundingModeDownParseValueChanged = (event: PropertyChangedEvent<string | null>) => {
-    setDecimalRoundingModeDownParse(event.detail.value);
+    setDecimalRoundingModeDownParse((event.detail.value as string | null));
   };
 
   const handleDecimalRoundingModeEvenParseValueChanged = (event: PropertyChangedEvent<string | null>) => {
-    setDecimalRoundingModeEvenParse(event.detail.value);
+    setDecimalRoundingModeEvenParse((event.detail.value as string | null));
   };
 
   const handlePercentValueChanged = (event: PropertyChangedEvent<string | null>) => {
-    setPercent(event.detail.value);
+    setPercent((event.detail.value as string | null));
   };
 
   const handlePercentRoundDuringParseValueChanged = (event: PropertyChangedEvent<string | null>) => {
-    setPercentRoundDuringParse(event.detail.value);
+    setPercentRoundDuringParse((event.detail.value as string | null));
   };
 
   const handleFormatDigitalUnitsValueChanged = (event: PropertyChangedEvent<string | null>) => {
-    setFormatDigitalUnits(event.detail.value);
+    setFormatDigitalUnits((event.detail.value as string | null));
   };
 
   const handleCurrencyValueChanged = (event: PropertyChangedEvent<string | null>) => {
-    setCurrency(event.detail.value);
+    setCurrency((event.detail.value as string | null));
   };
 
   const handleCurrencyRoundDuringParseValueChanged = (event: PropertyChangedEvent<string | null>) => {
-    setCurrencyRoundDuringParse(event.detail.value);
+    setCurrencyRoundDuringParse((event.detail.value as string | null));
   };
 
   return (

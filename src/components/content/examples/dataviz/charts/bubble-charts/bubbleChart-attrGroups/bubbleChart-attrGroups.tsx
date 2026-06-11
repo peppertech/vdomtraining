@@ -70,11 +70,11 @@ export const BubbleChartAttrGroups = () => {
       return `${data.company} ${data.year}&lt;br/&gt;X: ${data.x}&lt;br/&gt;Y: ${data.y}&lt;br/&gt;Z: ${data.z}`;
   };
 
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-chart-item x={item.data.x} y={item.data.y} z={item.data.z} groupId={[item.data.year]} seriesId={item.data.company} color={colorHandler.getValue(item.data.company)} markerShape={shapeHandler.getValue(item.data.year)} categories={[item.data.company, item.data.year]} shortDesc={getDesc(item)}/>;
   };
 
-  const seriesTemplateRenderer = ($current: any) => {
+  const seriesTemplateRenderer = ($current: DatavizSeriesTemplateContext) => {
       return <oj-chart-series displayInLegend="off"/>;
   };
 

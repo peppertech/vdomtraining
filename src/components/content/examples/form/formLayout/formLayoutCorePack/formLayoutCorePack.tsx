@@ -434,7 +434,7 @@ export const FormLayoutCorePack = () => {
   }, []);
 
   const handleInputNumberChange = useCallback((event: InputNumberValueChangedEvent) => {
-    setInputNumberValue(event.detail.value);
+    setInputNumberValue((event.detail.value as InputNumberProps['value']));
   }, []);
 
   const handleInputDateMaskChange = useCallback((event: InputDateMaskValueChangedEvent) => {
@@ -442,7 +442,7 @@ export const FormLayoutCorePack = () => {
   }, []);
 
   const handleInputMonthMaskChange = useCallback((event: InputMonthMaskValueChangedEvent) => {
-    setInputMonthMaskValue(event.detail.value);
+    setInputMonthMaskValue((event.detail.value as InputMonthMaskProps['value']));
   }, []);
 
   const handleInputDateChange = useCallback((event: InputDateTextValueChangedEvent) => {
@@ -495,7 +495,7 @@ export const FormLayoutCorePack = () => {
   }, []);
 
   return (
-    <div id="sampleDemo" class="demo-padding demo-container">
+    <div id="sampleDemo" class="demo-padding">
       <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
         <div id="form-container">
           <oj-c-collapsible expanded={true}>
@@ -611,12 +611,12 @@ export const FormLayoutCorePack = () => {
           <oj-c-form-layout
             id="myform"
             labelEdge={labelEdge}
-            columns={columns as any}
-            maxColumns={maxColumns as any}
-            direction={direction as any}
+            columns={columns as ComponentProps<'oj-c-form-layout'>['columns']}
+            maxColumns={maxColumns as ComponentProps<'oj-c-form-layout'>['maxColumns']}
+            direction={direction as ComponentProps<'oj-c-form-layout'>['direction']}
             fullWidth={fullWidth}
             readonly={readonlyFormLayout}
-            userAssistanceDensity={userAssistanceDensity as any}
+            userAssistanceDensity={userAssistanceDensity as ComponentProps<'oj-c-form-layout'>['userAssistanceDensity']}
           >
             <oj-c-input-text
               id="f1"
@@ -624,7 +624,7 @@ export const FormLayoutCorePack = () => {
               placeholder={placeholder ? "placeholder text" : undefined}
               value={inputTextValue}
               disabled={disableFormControls}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-input-text'>['messagesCustom']}
               readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               readonly={readonlyFormControls}
               required={required}
@@ -637,7 +637,7 @@ export const FormLayoutCorePack = () => {
               placeholder={placeholder ? "placeholder text" : undefined}
               value={inputPasswordValue}
               disabled={disableFormControls}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-input-password'>['messagesCustom']}
               readonly={readonlyFormControls}
               readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
@@ -650,7 +650,7 @@ export const FormLayoutCorePack = () => {
               placeholder={placeholder ? "placeholder text" : undefined}
               value={inputSensitiveValue}
               disabled={disableFormControls}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-input-sensitive-text'>['messagesCustom']}
               readonly={readonlyFormControls}
               readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
@@ -666,7 +666,7 @@ export const FormLayoutCorePack = () => {
               placeholder={placeholder ? "placeholder text" : undefined}
               value={inputNumberValue}
               disabled={disableFormControls}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-input-number'>['messagesCustom']}
               readonly={readonlyFormControls}
              readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
@@ -680,7 +680,7 @@ export const FormLayoutCorePack = () => {
               placeholder={placeholder ? "placeholder text" : undefined}
               value={valueLength === 'long' ? 'IE' : valueLength === 'short' ? 'CH' : undefined}
               disabled={disableFormControls}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-select-single'>['messagesCustom']}
               readonly={readonlyFormControls}
               readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
@@ -694,7 +694,7 @@ export const FormLayoutCorePack = () => {
               placeholder={placeholder ? "placeholder text" : undefined}
               value={selectMultipleValue}
               disabled={disableFormControls}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-select-multiple'>['messagesCustom']}
               readonly={readonlyFormControls}
               readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
@@ -710,7 +710,7 @@ export const FormLayoutCorePack = () => {
               placeholder={placeholder ? "placeholder text" : undefined}
               value={textareaValue3}
               disabled={disableFormControls}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-text-area'>['messagesCustom']}
               readonly={readonlyFormControls}
               readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
@@ -724,7 +724,7 @@ export const FormLayoutCorePack = () => {
               placeholder={placeholder ? "placeholder text" : undefined}
               value={textareaValue3b}
               disabled={disableFormControls}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-text-area'>['messagesCustom']}
               readonly={readonlyFormControls}
               readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
@@ -739,7 +739,7 @@ export const FormLayoutCorePack = () => {
               placeholder={placeholder ? "placeholder text" : undefined}
               value={textareaValue3c}
               disabled={disableFormControls}
-              messagesCustom={messages as any }
+              messagesCustom={messages as ComponentProps<'oj-c-text-area'>['messagesCustom'] }
               readonly={readonlyFormControls}
               readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
@@ -752,7 +752,7 @@ export const FormLayoutCorePack = () => {
               labelHint={labelHint6}
               value={inputDateMaskValue}
               disabled={disableFormControls}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-input-date-mask'>['messagesCustom']}
               readonly={readonlyFormControls}
               readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
@@ -764,7 +764,7 @@ export const FormLayoutCorePack = () => {
               labelHint={labelHint6a}
               value={inputMonthMaskValue}
               disabled={disableFormControls}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-input-month-mask'>['messagesCustom']}
               readonly={readonlyFormControls}
               readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
@@ -777,7 +777,7 @@ export const FormLayoutCorePack = () => {
               labelHint={labelHint7}
               value={inputTimeMaskValue}
               disabled={disableFormControls}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-input-time-mask'>['messagesCustom']}
               readonly={readonlyFormControls}
               readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
@@ -789,7 +789,7 @@ export const FormLayoutCorePack = () => {
               labelHint={labelHint5}
               value={inputDateValue}
               disabled={disableFormControls}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-input-date-text'>['messagesCustom']}
               readonly={readonlyFormControls}
               readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
@@ -801,7 +801,7 @@ export const FormLayoutCorePack = () => {
               labelHint={labelHint20}
               value={inputDatePickerValue}
               disabled={disableFormControls}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-input-date-picker'>['messagesCustom']}
               readonly={readonlyFormControls}
               readonlyUserAssistanceShown={readonlyUserAssistanceShownBool}
               required={required}
@@ -811,7 +811,7 @@ export const FormLayoutCorePack = () => {
 
             <oj-c-checkbox
               id="f17"
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-checkbox'>['messagesCustom']}
               value={showValue ? checkboxValue : false}
               disabled={disableFormControls}
               readonly={readonlyFormControls}
@@ -826,7 +826,7 @@ export const FormLayoutCorePack = () => {
              <oj-c-radioset
               id="f15"
               labelHint={labelHint14}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-radioset'>['messagesCustom']}
               value={showValue ? radioValue : undefined}
               disabled={disableFormControls}
               readonly={readonlyFormControls}
@@ -839,7 +839,7 @@ export const FormLayoutCorePack = () => {
             <oj-c-checkboxset
               id="f16"
               labelHint={labelHint15}
-              messagesCustom={messages as any}
+              messagesCustom={messages as ComponentProps<'oj-c-checkboxset'>['messagesCustom']}
               value={showValue ? checkboxsetValue : undefined}
               disabled={disableFormControls}
               readonly={readonlyFormControls}

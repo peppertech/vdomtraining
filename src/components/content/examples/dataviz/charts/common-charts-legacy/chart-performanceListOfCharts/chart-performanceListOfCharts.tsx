@@ -103,10 +103,10 @@ export const ChartPerformanceListOfCharts = () => {
         }));
         measureTime();
     };
-    const chartItemTemplateRenderer = (item: any) => {
+    const chartItemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item groupId={item.data.groupId} seriesId={item.data.seriesId} value={item.data.value}/>;
     };
-    const listItemTemplateRenderer = ($current: any) => {
+    const listItemTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
         return <li id={$current.data.id} class="demo-chart-card">
                 <strong>{$current.data.title}</strong>
                 {$current.data.shapedValue === 'on' ? (<oj-chart type={$current.data.type} data={$current.data.dataProvider} aria-label="Chart displaying data relationships visually with shaped data." {...legendOffChartProps}/>) : null}

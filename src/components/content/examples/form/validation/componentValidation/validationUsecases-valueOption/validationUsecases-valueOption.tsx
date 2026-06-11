@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import type Message = require('ojs/ojmessaging');
 import 'ojs/ojbutton';
@@ -7,16 +6,16 @@ import 'ojs/ojdatetimepicker';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 
-type InputNumberValue = ComponentProps<'oj-input-number'>['value'];
-type InputDateValue = ComponentProps<'oj-input-date'>['value'];
-type InputDateMessagesCustom = ComponentProps<'oj-input-date'>['messagesCustom'];
-type InputDateMessage = NonNullable<InputDateMessagesCustom>[number];
 type InputDateChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-date'>['onvalueChanged']>
 >[0];
 type InputNumberChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>
 >[0];
+type InputNumberValue = ComponentProps<'oj-input-number'>['value'];
+type InputDateValue = ComponentProps<'oj-input-date'>['value'];
+type InputDateMessagesCustom = ComponentProps<'oj-input-date'>['messagesCustom'];
+type InputDateMessage = NonNullable<InputDateMessagesCustom>[number];
 
 const toIsoDateString = (date: Date) => {
   const year = date.getFullYear();
@@ -134,7 +133,7 @@ export const ValidationUsecasesValueOption = () => {
   };
 
   const handleEndDateChanged = (event: InputDateChangedEvent) => {
-    setEndDate(event.detail.value ?? undefined);
+    setEndDate((event.detail.value as InputDateValue | null | undefined) ?? undefined);
   };
 
   const handleSetWeekendStartDate = () => {

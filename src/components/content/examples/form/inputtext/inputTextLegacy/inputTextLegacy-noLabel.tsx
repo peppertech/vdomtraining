@@ -12,8 +12,8 @@ export default function InputTextLegacyNoLabelExample() {
         value={textValue}
         labelHint="Input Text No Visual Label"
         labelEdge="none"
-        onvalueChanged={(event: any) => {
-          setTextValue(event.detail.value ?? "");
+        onvalueChanged={(event) => {
+          setTextValue((event.detail.value as string | null | undefined) ?? "");
         }}
       ></oj-input-text>
       <oj-input-text

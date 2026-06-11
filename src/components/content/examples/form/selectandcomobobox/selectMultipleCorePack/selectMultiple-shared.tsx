@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import * as employeeDataText from "text!../../data/employeeData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import type { ItemContext } from "ojs/ojcommontypes";
@@ -10,6 +10,12 @@ import "oj-c/list-item-layout";
 import "oj-c/selector";
 import "oj-c/table";
 
+type CurrentCellEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-table">["oncurrentCellChanged"]>
+>[0];
+type SelectedEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-table">["onselectedChanged"]>
+>[0];
 export type BrowserOption = {
   value: string;
   label: string;
@@ -152,7 +158,7 @@ export const renderEmployeeItemTemplate = (
       aria-label="selector"
       slot="selector"
       selectedKeys={itemCtx.selectedKeys}
-      onselectedKeysChanged={itemCtx.onSelectedKeysChanged as any}
+      onselectedKeysChanged={itemCtx.onSelectedKeysChanged as ComponentProps<'oj-c-selector'>['onselectedKeysChanged']}
       selectionMode="multiple"
       rowKey={itemCtx.item.metadata.key}
     ></oj-c-selector>
@@ -191,7 +197,7 @@ export const renderEmployeeCollectionTable = (
     OracleEmployee
   >,
 ) => {
-  const handleCurrentCellChanged = (event: any) => {
+  const handleCurrentCellChanged = (event: CurrentCellEvent) => {
     const currentCell = event.detail.value as
       | { type?: string; rowKey?: OracleEmployee["EMPLOYEE_ID"] }
       | undefined;
@@ -203,11 +209,17 @@ export const renderEmployeeCollectionTable = (
     });
   };
 
-  const handleSelectedChanged = (event: any) => {
-    collection.onSelectedChanged({ value: event.detail.value?.row });
+  const handleSelectedChanged = (event: SelectedEvent) => {
+    const selected = event.detail.value as { row?: typeof collection.selected } | undefined;
+    collection.onSelectedChanged({ value: selected?.row });
   };
 
-  const cellRenderer = (cellCtx: ojTable.CellTemplateContext<any, any>) => (
+  const cellRenderer = (
+    cellCtx: ojTable.CellTemplateContext<
+      OracleEmployee["EMPLOYEE_ID"],
+      OracleEmployee
+    >,
+  ) => (
     <oj-c-highlight-text
       text={String(cellCtx.data)}
       matchText={collection.searchText}
@@ -221,8 +233,8 @@ export const renderEmployeeCollectionTable = (
       verticalGridVisible="disabled"
       selectAllControl="hidden"
       selectionMode={{ row: "multiple" }}
-      columns={tableColumns as any}
-      data={collection.data as any}
+      columns={tableColumns as unknown as ComponentProps<'oj-c-table'>['columns']}
+      data={collection.data as ComponentProps<'oj-c-table'>['data']}
       selected={{ row: collection.selected }}
       currentCellOverride={collection.currentRowOverride}
       oncurrentCellChanged={handleCurrentCellChanged}

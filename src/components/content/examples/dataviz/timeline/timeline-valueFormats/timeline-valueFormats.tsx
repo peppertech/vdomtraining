@@ -30,8 +30,8 @@ const durationItems = JSON.parse(durationDataText) as TimelineDurationItem[];
 const eventMinorAxis = { scale: 'weeks', zoomOrder: ['months', 'weeks', 'days'] };
 const eventMajorAxis = { scale: 'quarters' };
 
-const renderEventSeriesTemplate = (series: any) => <oj-timeline-series label={series.id} />;
-const renderDurationSeriesTemplate = (series: any) => (
+const renderEventSeriesTemplate = (series: DatavizSeriesTemplateContext) => <oj-timeline-series label={series.id} />;
+const renderDurationSeriesTemplate = (series: DatavizSeriesTemplateContext) => (
   <oj-timeline-series label={series.id} emptyText="No Tournaments Played." />
 );
 
@@ -104,13 +104,13 @@ export const TimelineValueFormats = () => {
     ]
   );
 
-  const handleRadioChanged = (event: any) => {
+  const handleRadioChanged = (event: DatavizValueChangedEvent<string>) => {
     if (event.detail.updatedFrom === 'internal') {
       setDataValue(event.detail.value);
     }
   };
 
-  const renderEventItemTemplate = (item: any) => (
+  const renderEventItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-timeline-item
       itemType="event"
       seriesId={item.data.series}
@@ -120,7 +120,7 @@ export const TimelineValueFormats = () => {
     />
   );
 
-  const renderDurationItemTemplate = (item: any) => (
+  const renderDurationItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-timeline-item
       itemType="duration-event"
       seriesId={item.data.series}
@@ -152,7 +152,7 @@ export const TimelineValueFormats = () => {
               slot="label"
               id="title_checkboxSetId"
               value={titleDisplay}
-              onvalueChanged={(event: any) => setTitleDisplay(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<string>) => setTitleDisplay(event.detail.value)}
               aria-controls="timeline"
             >
               <oj-option value="auto">Title</oj-option>
@@ -162,7 +162,7 @@ export const TimelineValueFormats = () => {
               id="title"
               aria-label="Title"
               value={titleOption}
-              onvalueChanged={(event: any) => setTitleOption(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<string>) => setTitleOption(event.detail.value)}
               aria-controls="timeline"
             />
           </oj-label-value>
@@ -171,7 +171,7 @@ export const TimelineValueFormats = () => {
               slot="label"
               id="description_checkboxSetId"
               value={descriptionDisplay}
-              onvalueChanged={(event: any) => setDescriptionDisplay(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<string>) => setDescriptionDisplay(event.detail.value)}
               aria-controls="timeline"
             >
               <oj-option value="auto">Description</oj-option>
@@ -181,7 +181,7 @@ export const TimelineValueFormats = () => {
               id="description"
               aria-label="Description"
               value={descriptionOption}
-              onvalueChanged={(event: any) => setDescriptionOption(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<string>) => setDescriptionOption(event.detail.value)}
               aria-controls="timeline"
             />
           </oj-label-value>
@@ -190,7 +190,7 @@ export const TimelineValueFormats = () => {
               slot="label"
               id="date_checkboxSetId"
               value={dateDisplay}
-              onvalueChanged={(event: any) => setDateDisplay(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<string>) => setDateDisplay(event.detail.value)}
               aria-controls="timeline"
             >
               <oj-option value="auto">Date</oj-option>
@@ -200,7 +200,7 @@ export const TimelineValueFormats = () => {
               id="date"
               aria-label="Date"
               value={dateOption}
-              onvalueChanged={(event: any) => setDateOption(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<string>) => setDateOption(event.detail.value)}
               aria-controls="timeline"
             />
           </oj-label-value>
@@ -209,7 +209,7 @@ export const TimelineValueFormats = () => {
               slot="label"
               id="series_checkboxSetId"
               value={seriesDisplay}
-              onvalueChanged={(event: any) => setSeriesDisplay(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<string>) => setSeriesDisplay(event.detail.value)}
               aria-controls="timeline"
             >
               <oj-option value="auto">Series</oj-option>
@@ -219,7 +219,7 @@ export const TimelineValueFormats = () => {
               id="series"
               aria-label="Series"
               value={seriesOption}
-              onvalueChanged={(event: any) => setSeriesOption(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<string>) => setSeriesOption(event.detail.value)}
               aria-controls="timeline"
             />
           </oj-label-value>
@@ -228,7 +228,7 @@ export const TimelineValueFormats = () => {
               slot="label"
               id="start_checkboxSetId"
               value={startDisplay}
-              onvalueChanged={(event: any) => setStartDisplay(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<string>) => setStartDisplay(event.detail.value)}
               aria-controls="timeline"
               disabled={!isDurationMode}
             >
@@ -239,7 +239,7 @@ export const TimelineValueFormats = () => {
               id="start"
               aria-label="Start"
               value={startOption}
-              onvalueChanged={(event: any) => setStartOption(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<string>) => setStartOption(event.detail.value)}
               aria-controls="timeline"
               disabled={!isDurationMode}
             />
@@ -249,7 +249,7 @@ export const TimelineValueFormats = () => {
               slot="label"
               id="end_checkboxSetId"
               value={endDisplay}
-              onvalueChanged={(event: any) => setEndDisplay(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<string>) => setEndDisplay(event.detail.value)}
               aria-controls="timeline"
               disabled={!isDurationMode}
             >
@@ -260,7 +260,7 @@ export const TimelineValueFormats = () => {
               id="end"
               aria-label="End"
               value={endOption}
-              onvalueChanged={(event: any) => setEndOption(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<string>) => setEndOption(event.detail.value)}
               aria-controls="timeline"
               disabled={!isDurationMode}
             />

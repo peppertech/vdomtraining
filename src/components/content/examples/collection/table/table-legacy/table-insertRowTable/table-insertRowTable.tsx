@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
@@ -51,20 +50,33 @@ interface SelectSingleData {
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 type TableColumns = ComponentProps<'oj-table'>['columns'];
 type AddRowContext = { submitAddRow: (cancelAdd: boolean) => void };
+type DelayMode = 'off' | 'on';
+type EditRowState = { rowKey?: DepartmentData['DepartmentId'] | null; rowIndex?: number };
+type InsertPosition = 'before' | 'after';
+type InsertRowDisplay = { position: InsertPosition; rowKey: DepartmentData['DepartmentId'] | null } | null;
+type EditableDepartmentData = Omit<DepartmentData, 'DepartmentId' | 'LocationId'> & {
+    DepartmentId: number | null;
+    LocationId: number | null;
+    Primary: string[];
+};
+type CompleteEditableDepartmentData = EditableDepartmentData & DepartmentData;
+
+const isCompleteDepartmentData = (data: EditableDepartmentData): data is CompleteEditableDepartmentData =>
+    data.DepartmentId != null && data.LocationId != null;
 
 export const TableInsertRowTable = () => {
   const [rowData, setRowData] = useState<DepartmentData | null>(null);
   const [editedData, setEditedData] = useState<string>('');
-  const [simulatedDelays, setSimulatedDelays] = useState<any>('off');
-  const [editDelay, setEditDelay] = useState<any>(2000);
-  const [editEndDelay, setEditEndDelay] = useState<any>(2000);
-  const [editRow, setEditRow] = useState<any>({ rowKey: null });
-  const [insertRowKey, setInsertRowKey] = useState<any>(30);
-  const [insertPosition, setInsertPosition] = useState<any>('before');
-  const [insertRowDisplay, setInsertRowDisplay] = useState<any>(null);
-  const [displayRow, setDisplayRow] = useState<any>(null);
-  const [isInsertCancel, setIsInsertCancel] = useState<any>(false);
-  const [insertRowData, setInsertRowData] = useState<any>({
+  const [simulatedDelays, setSimulatedDelays] = useState<DelayMode>('off');
+  const [editDelay, setEditDelay] = useState(2000);
+  const [editEndDelay, setEditEndDelay] = useState(2000);
+  const [editRow, setEditRow] = useState<EditRowState>({ rowKey: null });
+  const [insertRowKey, setInsertRowKey] = useState<DepartmentData['DepartmentId'] | null>(30);
+  const [insertPosition, setInsertPosition] = useState<InsertPosition>('before');
+  const [insertRowDisplay, setInsertRowDisplay] = useState<InsertRowDisplay>(null);
+  const [displayRow, setDisplayRow] = useState<true | null>(null);
+  const [isInsertCancel, setIsInsertCancel] = useState(false);
+  const [insertRowData, setInsertRowData] = useState<EditableDepartmentData>({
       DepartmentId: null,
       DepartmentName: '',
       LocationId: null,
@@ -74,11 +86,11 @@ export const TableInsertRowTable = () => {
       Primary: []
   });
 
-  const deptArrayRef = useRef<any>(JSON.parse(deptData));
+  const deptArrayRef = useRef<DepartmentData[]>(JSON.parse(deptData as string) as DepartmentData[]);
   const originalDataRef = useRef<DepartmentData | null>(null);
   const cancelEditRef = useRef<boolean>(false);
 
-  const dataprovider = useMemo(() => new BufferingDataProvider(new MutableArrayDataProvider(deptArrayRef.current, {
+  const dataprovider = useMemo(() => new BufferingDataProvider<DepartmentData['DepartmentId'], DepartmentData>(new MutableArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(deptArrayRef.current, {
       keyAttributes: 'DepartmentId'
   })), []);
   const departments = useMemo(() => new MutableArrayDataProvider([{ label: 'Sales' }, { label: 'HR' }, { label: 'Marketing' }, { label: 'Finance' }], { keyAttributes: 'label' }), []);
@@ -162,32 +174,32 @@ export const TableInsertRowTable = () => {
       setRowData((currentRowData) => currentRowData ? { ...currentRowData, [field]: value } : currentRowData);
   };
 
-  const updateInsertRowData = (field: string, value: unknown) => {
-      setInsertRowData((currentData: any) => ({ ...currentData, [field]: value }));
+  const updateInsertRowData = <K extends keyof EditableDepartmentData>(field: K, value: EditableDepartmentData[K]) => {
+      setInsertRowData((currentData) => ({ ...currentData, [field]: value }));
   };
 
-  const handleSimulatedDelaysValueChanged = (event: PropertyChangedEvent<any>) => {
-    setSimulatedDelays(event.detail.value);
+  const handleSimulatedDelaysValueChanged = (event: PropertyChangedEvent<DelayMode>) => {
+    setSimulatedDelays(event.detail.value ?? 'off');
   };
 
-  const handleEditDelayValueChanged = (event: PropertyChangedEvent<any>) => {
-    setEditDelay(event.detail.value);
+  const handleEditDelayValueChanged = (event: PropertyChangedEvent<number | null>) => {
+    setEditDelay(event.detail.value ?? 2000);
   };
 
-  const handleEditEndDelayValueChanged = (event: PropertyChangedEvent<any>) => {
-    setEditEndDelay(event.detail.value);
+  const handleEditEndDelayValueChanged = (event: PropertyChangedEvent<number | null>) => {
+    setEditEndDelay(event.detail.value ?? 2000);
   };
 
-  const handleInsertRowKeyValueChanged = (event: PropertyChangedEvent<any>) => {
-    setInsertRowKey(event.detail.value);
+  const handleInsertRowKeyValueChanged = (event: PropertyChangedEvent<DepartmentData['DepartmentId'] | null>) => {
+	    setInsertRowKey(event.detail.value);
+	  };
+
+  const handleInsertPositionValueChanged = (event: PropertyChangedEvent<InsertPosition>) => {
+    setInsertPosition(event.detail.value ?? 'before');
   };
 
-  const handleInsertPositionValueChanged = (event: PropertyChangedEvent<any>) => {
-    setInsertPosition(event.detail.value);
-  };
-
-  const handleEditRowEditRowChanged = (event: PropertyChangedEvent<any>) => {
-    setEditRow(event.detail.value);
+  const handleEditRowEditRowChanged = (event: PropertyChangedEvent<EditRowState | null>) => {
+    setEditRow(event.detail.value ?? { rowKey: null });
   };
 
   const clearRowData = () => {
@@ -357,19 +369,25 @@ export const TableInsertRowTable = () => {
               const key = editEvent.detail.rowContext.item.data.DepartmentId;
               submitRow(key);
           }
-      }
-      else {
-          let addItem = {
-              metadata: { key: insertRowData.DepartmentId },
-              data: insertRowData
+	      }
+	      else {
+	          if (!isCompleteDepartmentData(insertRowData)) {
+	              return;
+	          }
+	          let addItem = {
+	              metadata: { key: insertRowData.DepartmentId },
+	              data: insertRowData
           };
           let addOptions = insertPosition === 'before'
               ? ({ addBeforeKey: insertRowKey } as BufferingDataProvider.AddDetail<number>)
               : ({ addAfterKey: insertRowKey } as BufferingDataProvider.AddDetail<number>);
-          dataprovider.addItem(addItem, addOptions);
-          const editItem = dataprovider.getSubmittableItems()[0] as BufferingDataProvider.EditItem<DepartmentData['DepartmentId'], DepartmentData>;
-          dataprovider.setItemStatus(editItem, 'submitting');
-          deptArrayRef.current.splice(0, 0, editItem.item.data);
+	          dataprovider.addItem(addItem, addOptions);
+	          const editItem = dataprovider.getSubmittableItems()[0] as BufferingDataProvider.EditItem<DepartmentData['DepartmentId'], DepartmentData>;
+	          dataprovider.setItemStatus(editItem, 'submitting');
+	          const itemData = editItem.item.data;
+	          if (itemData != null) {
+	              deptArrayRef.current.splice(0, 0, itemData);
+	          }
           dataprovider.setItemStatus(editItem, 'submitted');
       }
   };
@@ -393,11 +411,16 @@ export const TableInsertRowTable = () => {
           metadata: { key: key },
           data: rowData
       });
-      const editItem = dataprovider.getSubmittableItems()[0] as BufferingDataProvider.EditItem<DepartmentData['DepartmentId'], DepartmentData>;
-      dataprovider.setItemStatus(editItem, 'submitting');
-      for (let idx = 0; idx < deptArrayRef.current.length; idx++) {
-          if (deptArrayRef.current[idx].DepartmentId === editItem.item.metadata.key) {
-              deptArrayRef.current.splice(idx, 1, editItem.item.data);
+	      const editItem = dataprovider.getSubmittableItems()[0] as BufferingDataProvider.EditItem<DepartmentData['DepartmentId'], DepartmentData>;
+	      dataprovider.setItemStatus(editItem, 'submitting');
+	      const itemData = editItem.item.data;
+	      if (itemData == null) {
+	          dataprovider.setItemStatus(editItem, 'submitted');
+	          return;
+	      }
+	      for (let idx = 0; idx < deptArrayRef.current.length; idx++) {
+	          if (deptArrayRef.current[idx].DepartmentId === editItem.item.metadata.key) {
+	              deptArrayRef.current.splice(idx, 1, itemData);
               break;
           }
       }

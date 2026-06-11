@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useRef, useState } from 'preact/hooks';
 import type { ojValidationGroup } from 'ojs/ojvalidationgroup';
 import 'oj-c/input-text';
@@ -9,15 +8,15 @@ import 'ojs/ojformlayout';
 import 'ojs/ojoption';
 import 'ojs/ojvalidationgroup';
 
-type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
-type InputTextMessagesCustom = ComponentProps<'oj-c-input-text'>['messagesCustom'];
 type InputTextValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>
 >[0];
-type ValidationGroupValid = ComponentProps<'oj-validation-group'>['valid'];
 type ValidationGroupValidChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-validation-group'>['onvalidChanged']>
 >[0];
+type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
+type InputTextMessagesCustom = ComponentProps<'oj-c-input-text'>['messagesCustom'];
+type ValidationGroupValid = ComponentProps<'oj-validation-group'>['valid'];
 
 const emailMismatchMessages = [
   {
@@ -63,15 +62,15 @@ export const ValidationGroupFormFieldsValidation = () => {
   };
 
   const handleGroupValidChanged = (event: ValidationGroupValidChangedEvent) => {
-    setGroupValid(event.detail.value);
+    setGroupValid((event.detail.value as ValidationGroupValid));
   };
 
   const handleLastNameChanged = (event: InputTextValueChangedEvent) => {
-    setLastName(event.detail.value);
+    setLastName((event.detail.value as InputTextValue));
   };
 
   const handleFirstEmailValueChanged = (event: InputTextValueChangedEvent) => {
-    setEmail(event.detail.value);
+    setEmail((event.detail.value as InputTextValue));
     setEmail2(null);
     setEmail2MessagesCustom([]);
   };

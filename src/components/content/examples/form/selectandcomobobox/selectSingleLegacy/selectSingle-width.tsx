@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojoption";
@@ -6,17 +6,23 @@ import "ojs/ojradioset";
 import "ojs/ojselectsingle";
 import { createBrowserDataProvider } from "./selectSingle-shared";
 
+type LabelEdgeEvent = Parameters<
+  NonNullable<ComponentProps<"oj-radioset">["onvalueChanged"]>
+>[0];
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-select-single">["onvalueChanged"]>
+>[0];
 export default function SelectSingleLegacyWidthExample() {
   const dataProvider = useMemo(() => createBrowserDataProvider(), []);
   const [labelEdge, setLabelEdge] = useState("inside");
   const [selectVal, setSelectVal] = useState("CH");
 
-  const handleLabelEdgeChanged = useCallback((event: any) => {
-    setLabelEdge(event.detail.value);
+  const handleLabelEdgeChanged = useCallback((event: LabelEdgeEvent) => {
+    setLabelEdge((event.detail.value as string));
   }, []);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setSelectVal(event.detail.value);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setSelectVal((event.detail.value as string));
   }, []);
 
   return (
@@ -40,7 +46,7 @@ export default function SelectSingleLegacyWidthExample() {
       <h6>no width or max-width</h6>
       <oj-select-single
         id="legacyWidthDefault"
-        labelEdge={labelEdge as any}
+        labelEdge={labelEdge as ComponentProps<'oj-select-single'>['labelEdge']}
         labelHint="width and max-width attributes are not defined"
         help={{ instruction: "The width and max-width are 100% by default" }}
         data={dataProvider}
@@ -53,7 +59,7 @@ export default function SelectSingleLegacyWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-select-single
           id="legacyWidthMaxMedium"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-select-single'>['labelEdge']}
           labelHint="Max width medium"
           class="oj-form-control-max-width-md"
           data={dataProvider}
@@ -67,7 +73,7 @@ export default function SelectSingleLegacyWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-select-single
           id="legacyWidthCustom"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-select-single'>['labelEdge']}
           labelHint="Width 50% MaxWidth 400px"
           style={{ width: "50%", maxWidth: "400px" }}
           data={dataProvider}
@@ -81,7 +87,7 @@ export default function SelectSingleLegacyWidthExample() {
       <oj-form-layout>
         <oj-select-single
           id="legacyWidthFormLayout"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-select-single'>['labelEdge']}
           labelHint="width and max-width attributes are not defined"
           help={{ instruction: "The width is driven by the oj-form-layout column width" }}
           data={dataProvider}

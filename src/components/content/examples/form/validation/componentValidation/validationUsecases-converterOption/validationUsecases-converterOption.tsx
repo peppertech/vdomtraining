@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
 import { NumberConverter, type ConverterOptions } from 'ojs/ojconverter-nativenumber';
@@ -9,13 +8,13 @@ import 'ojs/ojformlayout';
 import 'ojs/ojlabelvalue';
 import 'ojs/ojswitch';
 
-type InputTextValid = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
 type InputTextValidChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalidChanged']>
 >[0];
 type InputTextValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>
 >[0];
+type InputTextValid = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
 type SwitchValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-switch'>['onvalueChanged']>>[0];
 
 export const ValidationUsecasesConverterOption = () => {
@@ -52,15 +51,15 @@ export const ValidationUsecasesConverterOption = () => {
   };
 
   const handleBirthDateValidChanged = (event: InputTextValidChangedEvent) => {
-    setBirthDateValid(event.detail.value);
+    setBirthDateValid((event.detail.value as InputTextValid));
   };
 
   const handleNumberValueChanged = (event: InputTextValueChangedEvent) => {
-    setNumberValue(event.detail.value);
+    setNumberValue((event.detail.value as unknown));
   };
 
   const handleNumberValidChanged = (event: InputTextValidChangedEvent) => {
-    setNumberValid(event.detail.value);
+    setNumberValid((event.detail.value as InputTextValid));
   };
 
   const handleChangeDateConverter = () => {

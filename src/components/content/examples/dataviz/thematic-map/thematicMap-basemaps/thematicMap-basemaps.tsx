@@ -51,7 +51,7 @@ export const ThematicMapBasemaps = () => {
   );
   const handler = useMemo(() => new ColorAttributeGroupHandler(), [map]);
   const getColor = (id: string) => handler.getValue(id);
-  const areaTemplateRenderer = (area: any) => {
+  const areaTemplateRenderer = (area: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-area
         color={getColor(area.data.properties.CC3)}
@@ -67,7 +67,7 @@ export const ThematicMapBasemaps = () => {
           id="mapSelect"
           value={map}
           labelHint="Map"
-          onvalueChanged={(event: any) => setMap(event.detail.value ?? 'World')}
+          onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setMap(event.detail.value ?? 'World')}
           enumValues={['Africa', 'Asia', 'Australia', 'Europe', 'North America', 'South America', 'World']}
         />
       </oj-form-layout>

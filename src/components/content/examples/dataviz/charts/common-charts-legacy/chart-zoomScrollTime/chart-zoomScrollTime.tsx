@@ -70,7 +70,7 @@ export const ChartZoomScrollTime = () => {
                 tooltipLabel: "Date"
             }
         } };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item seriesId={item.data.series} groupId={[item.data.groups]} value={item.data.value}/>;
     };
     const styleConfig = { whiteSpace: 'pre-line' };

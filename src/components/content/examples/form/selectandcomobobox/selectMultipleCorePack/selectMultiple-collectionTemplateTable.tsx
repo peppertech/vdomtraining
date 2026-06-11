@@ -1,6 +1,8 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/select-multiple";
+import type { CSelectMultipleElement } from "oj-c/select-multiple";
+
 import {
   createOracleEmployeeDataProvider,
   getEmployeeItemText,
@@ -9,18 +11,26 @@ import {
   type OracleEmployee,
 } from "./selectMultiple-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-multiple">["onvalueChanged"]>
+>[0];
 export default function SelectMultipleCollectionTemplateTableExample() {
   const dataProvider = useMemo(() => createOracleEmployeeDataProvider(), []);
   const [selectVal, setSelectVal] = useState<Set<OracleEmployee["EMPLOYEE_ID"]> | null>(
     new Set([101, 102]),
   );
 
-  const handleValueChanged = useCallback((event: any) => {
-    setSelectVal(event.detail.value);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setSelectVal((event.detail.value as Set<OracleEmployee["EMPLOYEE_ID"]> | null));
   }, []);
 
   const collectionTemplate = useCallback(
-    (collection: any) => renderEmployeeCollectionTable(collection),
+    (
+      collection: CSelectMultipleElement.CollectionTemplateContext<
+        OracleEmployee["EMPLOYEE_ID"],
+        OracleEmployee
+      >,
+    ) => renderEmployeeCollectionTable(collection),
     [],
   );
 

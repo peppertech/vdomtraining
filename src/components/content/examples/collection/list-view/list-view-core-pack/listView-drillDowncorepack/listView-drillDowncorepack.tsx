@@ -1,8 +1,8 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import type { CListViewElement } from 'oj-c/list-view';
 import 'oj-c/list-view';
 import 'ojs/ojbutton';
 
@@ -14,8 +14,8 @@ interface TodoTask {
 }
 
 export const ListViewDrillDowncorepack = () => {
-  const [content, setContent] = useState<any>('');
-  const [disabled, setDisabled] = useState<any>(true);
+  const [content, setContent] = useState('');
+  const [disabled, setDisabled] = useState(true);
 
   const data = useMemo(() => [
       {
@@ -56,7 +56,7 @@ export const ListViewDrillDowncorepack = () => {
           return value.id;
       })
   }), [data]);
-  const previousElementKey: any = null;
+  const previousElementKey: TodoTask['id'] | null = null;
 
   const gotoList = () => {
       slide();
@@ -65,7 +65,7 @@ export const ListViewDrillDowncorepack = () => {
       listView?.focus();
   };
 
-  const gotoContent = (event: any) => {
+  const gotoContent = (event: CListViewElement.ojItemAction<TodoTask['id'], TodoTask>) => {
       if (event.detail.context != null) {
           let key = event.detail.context.item.metadata.key;
           previousElementKey;

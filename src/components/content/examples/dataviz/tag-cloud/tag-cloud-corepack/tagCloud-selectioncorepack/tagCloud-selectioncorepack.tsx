@@ -74,7 +74,7 @@ export const TagCloudSelectioncorepack = () => {
     }
   };
 
-  const renderSelectableTagCloudItem = (item: any) => {
+  const renderSelectableTagCloudItem = (item: DatavizTemplateContext<DatavizChartDatum>) => {
     const ageGroup = getAgeGroup(item.data);
     return (
       <oj-tag-cloud-item

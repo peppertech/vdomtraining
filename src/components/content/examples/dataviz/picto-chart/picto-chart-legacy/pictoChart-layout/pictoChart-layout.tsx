@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -18,9 +17,9 @@ const dataPopulation = JSON.parse(populationDataText as string);
 const dataMedal = JSON.parse(medalDataText as string);
 
 export const PictoChartLayout = () => {
-  const [layoutOrigin, setLayoutOrigin] = useState<any>('topStart');
-  const [layout, setLayout] = useState<any>('horizontal');
-  const [dataset, setDataset] = useState<any>('Population');
+  const [layoutOrigin, setLayoutOrigin] = useState<string>('topStart');
+  const [layout, setLayout] = useState<string>('horizontal');
+  const [dataset, setDataset] = useState<string>('Population');
   const colorHandler = useMemo(() => new ColorAttributeGroupHandler(), []);
 
   const headerMap = useMemo(
@@ -51,9 +50,9 @@ export const PictoChartLayout = () => {
     [medalLegendData]
   );
 
-  const handleLayoutValueChanged = (event: PropertyChangedEvent<any>) => setLayout(event.detail.value);
-  const handleLayoutOriginValueChanged = (event: PropertyChangedEvent<any>) => setLayoutOrigin(event.detail.value);
-  const handleDatasetValueChanged = (event: PropertyChangedEvent<any>) => setDataset(event.detail.value);
+  const handleLayoutValueChanged = (event: PropertyChangedEvent<string>) => setLayout(event.detail.value);
+  const handleLayoutOriginValueChanged = (event: PropertyChangedEvent<string>) => setLayoutOrigin(event.detail.value);
+  const handleDatasetValueChanged = (event: PropertyChangedEvent<string>) => setDataset(event.detail.value);
 
   return (
     <div id="chart-container">

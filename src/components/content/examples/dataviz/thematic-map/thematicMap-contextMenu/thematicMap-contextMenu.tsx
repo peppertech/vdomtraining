@@ -71,7 +71,7 @@ export const ThematicMapContextMenu = () => {
   );
   const stateToItemMap = useMemo(
     () =>
-      rainfallData.reduce<Record<string, RainfallDatum>>((map: any, item: any) => {
+      rainfallData.reduce<Record<string, RainfallDatum>>((map, item) => {
         map[item.State] = item;
         return map;
       }, {}),
@@ -86,7 +86,7 @@ export const ThematicMapContextMenu = () => {
     return colors[4];
   };
 
-  const handleSelectionChanged = (event: any) => {
+  const handleSelectionChanged = (event: DatavizValueChangedEvent<string[] | undefined>) => {
     setSelectedItemsValue(event.detail.value ?? []);
   };
 
@@ -126,7 +126,7 @@ export const ThematicMapContextMenu = () => {
     }
   };
 
-  const areaTemplateRenderer = (area: any) => {
+  const areaTemplateRenderer = (area: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-area
         color={getRainfallColor(area.data.Inches)}

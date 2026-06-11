@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
@@ -23,6 +22,7 @@ interface Data {
 }
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type ActiveLayout = 'card' | 'list';
 
 const createMediaQueryObservable = (query: string) => {
   const [matches, setMatches] = useState<boolean>(() => window.matchMedia(query).matches);
@@ -36,8 +36,8 @@ const createMediaQueryObservable = (query: string) => {
   return () => matches;
 };
 export const ListViewCardLayoutListView = () => {
-  const [activeLayout, setActiveLayout] = useState<any>('card');
-  const [prevActiveLayout, setPrevActiveLayout] = useState<any>('card');
+  const [activeLayout, setActiveLayout] = useState<ActiveLayout>('card');
+  const [prevActiveLayout, setPrevActiveLayout] = useState<ActiveLayout>('card');
 
   const rawData = useMemo(() => [
       {
@@ -143,10 +143,12 @@ export const ListViewCardLayoutListView = () => {
   const dataProvider = useMemo(() => new ArrayDataProvider<Data['id'], Data>(rawData, {
       keyAttributes: 'id'
   }), [rawData]);
-  const smQuery: any = ResponsiveUtils.getFrameworkQuery(ResponsiveUtils.FRAMEWORK_QUERY_KEY.SM_ONLY);
+  const smQuery =
+    ResponsiveUtils.getFrameworkQuery(ResponsiveUtils.FRAMEWORK_QUERY_KEY.SM_ONLY) ??
+    '';
 
-  const handleActiveLayoutValueChanged = (event: PropertyChangedEvent<any>) => {
-    setActiveLayout(event.detail.value);
+  const handleActiveLayoutValueChanged = (event: PropertyChangedEvent<ActiveLayout>) => {
+    setActiveLayout(event.detail.value ?? 'card');
   };
 
   const isSmall = () => {

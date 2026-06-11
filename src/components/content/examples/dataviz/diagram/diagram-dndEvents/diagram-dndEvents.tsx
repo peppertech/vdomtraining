@@ -50,7 +50,7 @@ export const DiagramDndEvents = () => {
         const type = event.dataTransfer?.getData('text/plain') ?? 'unknown shape';
         setDragMessage(`Dropped ${type} into the demo drop zone.`);
     };
-    const nodeTemplateRenderer = (node: any) => {
+    const nodeTemplateRenderer = (node: DatavizTemplateContext<DatavizChartDatum>) => {
         const ojDiagramNodeProps: Partial<ComponentProps<'oj-diagram-node'>> = { icon: {
                 shape: node.data.category === '0' ? 'circle' : node.data.category === '1' ? 'rectangle' : 'square',
                 color: nodeColor,
@@ -59,7 +59,7 @@ export const DiagramDndEvents = () => {
             } };
         return <oj-diagram-node label={node.data.id} shortDesc={`Node ${node.data.id}, Category ${node.data.category}`} {...ojDiagramNodeProps}/>;
     };
-    const linkTemplateRenderer = (link: any) => {
+    const linkTemplateRenderer = (link: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-diagram-link startNode={link.data.start} endNode={link.data.end} shortDesc={`Link ${link.data.id}, connects ${link.data.start} to ${link.data.end}`} width={3}/>;
     };
     return (<div id="diagram-container" class="oj-flex oj-sm-flex-direction-column">

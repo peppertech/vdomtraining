@@ -39,7 +39,7 @@ export const ScatterChartHideShow = () => {
     setHiddenCategories(event.detail.value ?? []);
   };
 
-  const itemTemplateRenderer = (item: any) => (
+  const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-chart-item
       x={item.data.x}
       y={item.data.y}
@@ -48,7 +48,7 @@ export const ScatterChartHideShow = () => {
     />
   );
 
-  const itemTemplateRenderer2 = (item: any) => (
+  const itemTemplateRenderer2 = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-chart-item
       x={item.data.x}
       y={item.data.y}

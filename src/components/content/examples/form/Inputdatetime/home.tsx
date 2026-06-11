@@ -91,6 +91,10 @@ const dataProvider = new MutableArrayDataProvider<
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type DateTimeSelectedChangedEvent = ojListView.selectedChanged<
+  DateTimeComponent["id"],
+  DateTimeComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION =
   new KeySetImpl([]) as KeySet<DateTimeComponent["id"]>;
@@ -206,7 +210,7 @@ const InputDateTimeHome = ({
     showComponentDetail,
   ]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: DateTimeSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as DateTimeComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

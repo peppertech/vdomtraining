@@ -49,7 +49,7 @@ export const ThematicMapSelection = () => {
   const getColor = (value: string) => handler.getValue(value);
   const selectionText = useMemo(() => {
     let items = '';
-    selectionValue.forEach((index: any) => {
+    selectionValue.forEach((index) => {
       const area = sodaData[index];
       if (area) {
         items += 'location: ' + area.state + ', value: ' + area.sodaVsPop + '; ';
@@ -57,14 +57,14 @@ export const ThematicMapSelection = () => {
     });
     return items;
   }, [selectionValue]);
-  const handleSelectionModeChanged = (event: any) => {
+  const handleSelectionModeChanged = (event: DatavizValueChangedEvent<string>) => {
     const nextMode = event.detail.value ?? 'multiple';
     setSelectionMode(nextMode);
     if (nextMode === 'multiple') setSelectionValue([3, 28, 39]);
     else if (nextMode === 'single') setSelectionValue([28]);
     else setSelectionValue([]);
   };
-  const areaTemplateRenderer = ($current: any) => {
+  const areaTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-area
         location={$current.data.state}
@@ -73,7 +73,7 @@ export const ThematicMapSelection = () => {
       />
     );
   };
-  const itemTemplateRenderer = ($current: any) => {
+  const itemTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-legend-item
         shortDesc={$current.data.text}
@@ -102,7 +102,7 @@ export const ThematicMapSelection = () => {
         mapProvider={mapProvider}
         selectionMode={selectionMode}
         selection={selectionValue}
-        onselectionChanged={(event: any) => setSelectionValue(event.detail.value ?? [])}
+        onselectionChanged={(event: DatavizValueChangedEvent<string[] | undefined>) => setSelectionValue(event.detail.value ?? [])}
         areaData={dataProvider}
         class="demo-thematicmap-min-width"
       >

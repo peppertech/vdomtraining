@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -32,7 +31,7 @@ export const PictoChartPerformance = () => {
     const chartDataProvider = useMemo(() => new ArrayDataProvider(pictoChartItems, { keyAttributes: 'name' }), [pictoChartItems]);
     const numDataItems = numSets * numCounts;
     const timerText = timeValue > 0 ? `Time: ${timeValue}ms` : '';
-    const generateRandomData = (setCount: number, countPerSet: number): PictoChartItem[] => Array.from({ length: setCount }, (_: any, index: any) => ({
+    const generateRandomData = (setCount: number, countPerSet: number): PictoChartItem[] => Array.from({ length: setCount }, (_unused: unknown, index: number) => ({
         name: `Set ${index + 1}`,
         shape: 'circle',
         color: colorHandler.getValue(String(Math.random())),
@@ -69,7 +68,7 @@ export const PictoChartPerformance = () => {
     const handleShapedDataChanged = (event: PropertyChangedEvent<string>) => {
         setShapedData(event.detail.value);
     };
-    const renderItem = (item: any) => (<oj-picto-chart-item name={item.data.name} shape={item.data.shape} color={item.data.color} count={item.data.count}/>);
+    const renderItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-picto-chart-item name={item.data.name} shape={item.data.shape} color={item.data.color} count={item.data.count}/>);
     return (<div id="chart-container">
       <div class="oj-sm-padding-2x-vertical">
         <oj-button class="oj-sm-margin-2x-end" id="updateButton" onojAction={updateData} aria-controls="pictochart1 pictochart2">

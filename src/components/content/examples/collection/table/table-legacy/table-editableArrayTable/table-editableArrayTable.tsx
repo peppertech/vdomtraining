@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import * as Context from 'ojs/ojcontext';
@@ -48,21 +47,23 @@ interface SelectSingleData {
 }
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type DelayMode = 'off' | 'on';
+type EditRowState = { rowKey?: DepartmentData['DepartmentId'] | null; rowIndex?: number };
 
 export const TableEditableArrayTable = () => {
-  const deptArray: any = JSON.parse(deptData);
-  const [deptObservableArray, setDeptObservableArray] = useState<any[]>(deptArray);
-  const [simulatedDelays, setSimulatedDelays] = useState<any>('off');
-  const [editDelay, setEditDelay] = useState<any>(2000);
-  const [editEndDelay, setEditEndDelay] = useState<any>(2000);
+  const deptArray: DepartmentData[] = JSON.parse(deptData as string) as DepartmentData[];
+  const [deptObservableArray, setDeptObservableArray] = useState<DepartmentData[]>(deptArray);
+  const [simulatedDelays, setSimulatedDelays] = useState<DelayMode>('off');
+  const [editDelay, setEditDelay] = useState(2000);
+  const [editEndDelay, setEditEndDelay] = useState(2000);
   const [rowData, setRowData] = useState<DepartmentData | null>(null);
   const [editedData, setEditedData] = useState<string>('');
-  const [editRow, setEditRow] = useState<any>({ rowKey: null });
+  const [editRow, setEditRow] = useState<EditRowState>({ rowKey: null });
 
   const originalDataRef = useRef<DepartmentData | null>(null);
   const cancelEditRef = useRef<boolean>(false);
 
-  const dataprovider = useMemo(() => new BufferingDataProvider(new ArrayDataProvider(deptObservableArray, {
+  const dataprovider = useMemo(() => new BufferingDataProvider<DepartmentData['DepartmentId'], DepartmentData>(new ArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(deptObservableArray, {
       keyAttributes: 'DepartmentId'
   })), [deptObservableArray]);
   const departments = useMemo(() => new ArrayDataProvider([{ label: 'Sales' }, { label: 'HR' }, { label: 'Marketing' }, { label: 'Finance' }], { keyAttributes: 'label' }), []);
@@ -148,20 +149,20 @@ export const TableEditableArrayTable = () => {
   const rangeValidator = useMemo(() => new NumberRangeValidator({ min: 100, max: 500 }), []);
   const validators = useMemo(() => [rangeValidator], [rangeValidator]);
 
-  const handleSimulatedDelaysValueChanged = (event: PropertyChangedEvent<any>) => {
-    setSimulatedDelays(event.detail.value);
+  const handleSimulatedDelaysValueChanged = (event: PropertyChangedEvent<DelayMode>) => {
+    setSimulatedDelays(event.detail.value ?? 'off');
   };
 
-  const handleEditDelayValueChanged = (event: PropertyChangedEvent<any>) => {
-    setEditDelay(event.detail.value);
+  const handleEditDelayValueChanged = (event: PropertyChangedEvent<number | null>) => {
+    setEditDelay(event.detail.value ?? 2000);
   };
 
-  const handleEditEndDelayValueChanged = (event: PropertyChangedEvent<any>) => {
-    setEditEndDelay(event.detail.value);
+  const handleEditEndDelayValueChanged = (event: PropertyChangedEvent<number | null>) => {
+    setEditEndDelay(event.detail.value ?? 2000);
   };
 
-  const handleEditRowEditRowChanged = (event: PropertyChangedEvent<any>) => {
-    setEditRow(event.detail.value);
+  const handleEditRowEditRowChanged = (event: PropertyChangedEvent<EditRowState | null>) => {
+    setEditRow(event.detail.value ?? { rowKey: null });
   };
 
   const updateRowData = <K extends keyof DepartmentData>(field: K, value: DepartmentData[K]) => {
@@ -284,10 +285,15 @@ export const TableEditableArrayTable = () => {
           data: rowData
       });
       const editItem = dataprovider.getSubmittableItems()[0] as BufferingDataProvider.EditItem<DepartmentData['DepartmentId'], DepartmentData>;
-      dataprovider.setItemStatus(editItem, 'submitting');
-      for (let idx = 0; idx < deptObservableArray.length; idx++) {
-          if (deptObservableArray[idx].DepartmentId === editItem.item.metadata.key) {
-              deptObservableArray.splice(idx, 1, editItem.item.data);
+	      dataprovider.setItemStatus(editItem, 'submitting');
+	      const itemData = editItem.item.data;
+	      if (itemData == null) {
+	          dataprovider.setItemStatus(editItem, 'submitted');
+	          return;
+	      }
+	      for (let idx = 0; idx < deptObservableArray.length; idx++) {
+	          if (deptObservableArray[idx].DepartmentId === editItem.item.metadata.key) {
+	              deptObservableArray.splice(idx, 1, itemData);
               break;
           }
       }

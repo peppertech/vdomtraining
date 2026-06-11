@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { render } from 'preact';
-import type { ComponentProps } from 'preact';
+import type { ComponentChildren, ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as flattenedModule from 'ojs/ojflattenedtreedatagriddatasource';
 import * as JsonTreeDataSource from 'ojs/ojjsontreedatasource';
@@ -9,7 +9,15 @@ import 'ojs/ojrowexpander';
 import 'ojs/ojdatagrid';
 import 'css!./demo.css';
 
-const createRenderer = (factory: any) => (context: any) => {
+type DataGridRendererContext = {
+  key?: string | number;
+  data?: unknown;
+  [property: string]: unknown;
+};
+
+const createRenderer =
+  (factory: (context: DataGridRendererContext) => ComponentChildren) =>
+  (context: DataGridRendererContext) => {
   const container = document.createElement('div');
   render(factory(context), container);
   return { insert: container };
@@ -28,14 +36,14 @@ export const RowExpanderDataGridDataGridRowExpander = () => {
     []
   );
 
-  const columnHeaderRenderer = createRenderer((context: any) => {
+  const columnHeaderRenderer = createRenderer((context) => {
     if (context.key === 'resource') return <span>Resource</span>;
     if (context.key === 'start') return <span>Start Date</span>;
     if (context.key === 'end') return <span>End Date</span>;
     return <span>{String(context.key)}</span>;
   });
 
-  const rowHeaderRenderer = createRenderer((context: any) => (
+  const rowHeaderRenderer = createRenderer((context) => (
     <>
       <oj-row-expander context={context} />
       <span>{String(context.data ?? '')}</span>

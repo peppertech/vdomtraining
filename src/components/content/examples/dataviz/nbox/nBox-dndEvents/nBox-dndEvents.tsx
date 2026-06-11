@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
@@ -126,7 +125,7 @@ export const NBoxDndEvents = () => {
       keyAttributes: 'name'
   }), [data]);
 
-  const onNBoxDragStart = (event: DragEvent, context: any) => {
+  const onNBoxDragStart = (event: DragEvent, context: DatavizNBoxDragContext) => {
       const transferData: TransferNode[] = [];
       const nodes = context.nodes;
       for (let i = 0; i < nodes.length; i++) {
@@ -161,28 +160,31 @@ export const NBoxDndEvents = () => {
       }
   };
 
-  const cutRequest = (event: any) => {
+  const cutRequest = (event: DatavizNBoxKeyboardRequestEvent) => {
       _keyboardCutCopy(event, 'cut');
   };
 
-  const copyRequest = (event: any) => {
+  const copyRequest = (event: DatavizNBoxKeyboardRequestEvent) => {
       _keyboardCutCopy(event, 'copy');
   };
 
-  const pasteRequest = (event: any) => {
+  const pasteRequest = (event: DatavizNBoxKeyboardRequestEvent) => {
       const isCopy = latestNboxActionRef.current === 'copy' || latestExtActionRef.current === 'copy';
       let dataStr;
       dataStr = clipboard.getData('application/nbox');
       if (!dataStr)
           return;
       const target = event.detail.target;
+      if (!target) {
+          return;
+      }
       const row = target.row;
       const column = target.column;
       _drop(row, column, isCopy, dataStr, true);
   };
 
-  const _keyboardCutCopy = (event: any, type: 'cut' | 'copy') => {
-      const src = event.detail.source;
+  const _keyboardCutCopy = (event: DatavizNBoxKeyboardRequestEvent, type: 'cut' | 'copy') => {
+      const src = event.detail.source ?? [];
       const jsonStr = JSON.stringify(src);
       clipboard.setData('application/nbox', jsonStr);
       latestNboxActionRef.current = type;
@@ -269,7 +271,7 @@ export const NBoxDndEvents = () => {
       }
   };
 
-  const handleKeyPaste = (event: any) => {
+  const handleKeyPaste = (event: KeyboardEvent) => {
       if ((event.ctrlKey || event.metaKey) && event.key === 'v') {
           if (latestExtActionRef.current === 'copy') {
               latestExtActionRef.current = null;
@@ -334,7 +336,7 @@ export const NBoxDndEvents = () => {
       setStatusText('');
   };
 
-  const onKeyDown = (event: any) => {
+  const onKeyDown = (event: KeyboardEvent) => {
       if ((event.ctrlKey || event.metaKey) && event.key === 'x') {
           _extKeyboardHelper(event, 'cut');
       }
@@ -343,7 +345,7 @@ export const NBoxDndEvents = () => {
       }
   };
 
-  const _extKeyboardHelper = (event: any, type: 'cut' | 'copy') => {
+  const _extKeyboardHelper = (event: KeyboardEvent, type: 'cut' | 'copy') => {
       const eventId = (event.target as HTMLElement).id;
       const data = _getListData(eventId);
       if (!data) {
@@ -353,7 +355,10 @@ export const NBoxDndEvents = () => {
       clipboard.setData('application/nbox', jsonStr);
       latestExtActionRef.current = type;
       if (type === 'cut') {
-          event.target.className += ' demo-cut-item';
+          const target = event.target as HTMLElement | null;
+          if (target) {
+              target.className += ' demo-cut-item';
+          }
       }
       _updateAcc(`${data.name} ${type === 'copy' ? 'Copied' : 'Cut'}`);
   };
@@ -454,7 +459,7 @@ export const NBoxDndEvents = () => {
                               <div class="oj-flex-item oj-panel oj-sm-margin-4x-top" tabIndex={0} onDragOver={onDragOver} onDragLeave={onDragLeave} onDrop={onDrop} onKeyDown={handleKeyPaste} role="application" aria-label="Drag and drop/Cut, copy, and paste nodes here from the nbox" id="dropTarget">
                                           <div class="oj-sm-padding-3x-start oj-typography-body-md oj-typography-bold">Drag and drop/Cut, copy, and paste nodes here from the nbox</div>
                                           {
-                                                      (dragData ?? []).map(($current: any, index: any) => (
+                                                      (dragData ?? []).map(($current, index) => (
                                                         <>
                                                           <div class="demo-parent-element" onDragStart={onDragStart} onKeyDown={onKeyDown} draggable={true} tabIndex={0} aria-label={$current.name + ' ' + $current.position} role="img" id={$current.id}>
                                                                             <div>

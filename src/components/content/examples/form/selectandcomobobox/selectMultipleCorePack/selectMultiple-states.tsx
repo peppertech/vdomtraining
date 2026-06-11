@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import "oj-c/form-layout";
 import "oj-c/select-multiple";
 import {
@@ -127,28 +127,28 @@ export default function SelectMultipleStatesExample() {
           data={browserDataProvider}
           itemText="label"
           value={selectedBrowsers}
-          messagesCustom={errorMessages as any}
+          messagesCustom={errorMessages as ComponentProps<'oj-c-select-multiple'>['messagesCustom']}
         ></oj-c-select-multiple>
         <oj-c-select-multiple
           labelHint="Warning"
           data={browserDataProvider}
           itemText="label"
           value={selectedBrowsers}
-          messagesCustom={warningMessages as any}
+          messagesCustom={warningMessages as ComponentProps<'oj-c-select-multiple'>['messagesCustom']}
         ></oj-c-select-multiple>
         <oj-c-select-multiple
           labelHint="Info"
           data={browserDataProvider}
           itemText="label"
           value={selectedBrowsers}
-          messagesCustom={infoMessages as any}
+          messagesCustom={infoMessages as ComponentProps<'oj-c-select-multiple'>['messagesCustom']}
         ></oj-c-select-multiple>
         <oj-c-select-multiple
           labelHint="Confirmation"
           data={browserDataProvider}
           itemText="label"
           value={selectedBrowsers}
-          messagesCustom={confirmationMessages as any}
+          messagesCustom={confirmationMessages as ComponentProps<'oj-c-select-multiple'>['messagesCustom']}
         ></oj-c-select-multiple>
       </oj-c-form-layout>
 

@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useState, useCallback, useMemo } from "preact/hooks";
 
 import "oj-c/input-sensitive-text";
@@ -247,25 +247,25 @@ export const InputSensitiveText = () => {
         <oj-c-input-sensitive-text
           value={errorValue}
           labelHint="Error"
-          messagesCustom={error as any}
+          messagesCustom={error as ComponentProps<'oj-c-input-sensitive-text'>['messagesCustom']}
           onvalueChanged={handleErrorValueChanged}
         />
         <oj-c-input-sensitive-text
           value={warningValue}
           labelHint="Warning"
-          messagesCustom={warning as any}
+          messagesCustom={warning as ComponentProps<'oj-c-input-sensitive-text'>['messagesCustom']}
           onvalueChanged={handleWarningValueChanged}
         />
         <oj-c-input-sensitive-text
           value={infoValue}
           labelHint="Information"
-          messagesCustom={info as any}
+          messagesCustom={info as ComponentProps<'oj-c-input-sensitive-text'>['messagesCustom']}
           onvalueChanged={handleInfoValueChanged}
         />
         <oj-c-input-sensitive-text
           value={confirmationValue}
           labelHint="Confirmation"
-          messagesCustom={confirmation as any}
+          messagesCustom={confirmation as ComponentProps<'oj-c-input-sensitive-text'>['messagesCustom']}
           onvalueChanged={handleConfirmationValueChanged}
         />
       </oj-c-form-layout>

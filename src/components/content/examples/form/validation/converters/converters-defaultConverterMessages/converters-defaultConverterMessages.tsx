@@ -1,7 +1,5 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';type ValueChangedEvent<TValue> = JetElementCustomEvent<TValue>;
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
-import { JetElementCustomEvent } from 'ojs/index';
 import 'ojs/ojinputnumber';
 import 'ojs/ojinputtext';
 import 'ojs/ojformlayout';
@@ -21,16 +19,16 @@ export const ConvertersDefaultConverterMessages = () => {
       currencyDisplay: 'symbol'
   }), []);
   const handleDateValue1ValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-date'>['onvalueChanged']>>[0]) => {
-    setDateValue1(event.detail.value);
+    setDateValue1((event.detail.value as string));
   };
   const handleNumberValueValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0]) => {
-    setNumberValue(event.detail.value);
+    setNumberValue((event.detail.value as number | null));
   };
   const handleCurrencyValueValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0]) => {
-    setCurrencyValue(event.detail.value);
+    setCurrencyValue((event.detail.value as number | null));
   };
   const handleColorValueValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>>[0]) => {
-    setColorValue(event.detail.value);
+    setColorValue((event.detail.value as string));
   };
   return (
       <oj-form-layout id="converter-example">

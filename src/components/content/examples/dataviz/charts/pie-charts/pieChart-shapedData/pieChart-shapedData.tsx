@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -6,7 +5,7 @@ import * as data from 'text!../data/cookbook/dataVisualizations/chart/resources/
 import 'ojs/ojchart';
 
 export const PieChartShapedData = () => {
-  const [chartData, setChartData] = useState<any[]>(JSON.parse(data));
+  const [chartData, setChartData] = useState<DatavizChartDatum[]>(JSON.parse(data));
 
   const dataProvider = useMemo(() => new ArrayDataProvider(chartData, {
       keyAttributes: 'id'

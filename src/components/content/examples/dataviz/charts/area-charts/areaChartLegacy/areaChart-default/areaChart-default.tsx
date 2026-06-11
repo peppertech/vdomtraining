@@ -29,7 +29,7 @@ export const AreaChartDefault = () => {
   const handleStackValueStackChanged = (event: JetElementCustomEvent<ChartStack>) => {
     setStackValue(event.detail.value);
   };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
       return (<oj-chart-item value={item.data.value} groupId={[item.data.quarter]} seriesId={item.data.series}>
                 </oj-chart-item>);
   };

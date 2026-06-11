@@ -36,11 +36,11 @@ export const DiagramStyleClass = () => {
       keyAttributes: 'id'
   }), [data]);
   const expandedNodes = useMemo(() => new KeySetImpl(['N0', 'N00', 'N2']), []);
-    const nodeTemplateRenderer = (node: any) => {
+    const nodeTemplateRenderer = (node: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-diagram-node label={node.data.id} shortDesc={`Node ${node.data.id}`} showDisclosure={node.data.id === 'N1' ? 'off' : 'on'}/>;
   };
 
-  const linkTemplateRenderer = (link: any) => {
+  const linkTemplateRenderer = (link: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-diagram-link startNode={link.data.startNode} endNode={link.data.endNode} shortDesc={`Link ${link.data.id} connects ${link.data.startNode} to ${link.data.endNode}`} svgClassName="demo-border"/>;
   };
 

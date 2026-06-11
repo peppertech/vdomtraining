@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ColorConverter = require('ojs/ojconverter-color');
 import 'oj-c/input-text';

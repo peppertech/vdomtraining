@@ -65,7 +65,7 @@ const chartComponents: ChartComponent[] = [
   {
     id: 5,
     name: "Bubble Charts",
-    image: "oj-ux-icon-size-12x oj-ux-ico-chart-bubble", 
+    image: "oj-ux-icon-size-12x oj-ux-ico-chart-bubble",
     render: () => <BubbleChartsRecipePage />,
   },
   {
@@ -209,8 +209,8 @@ const ChartsHome = ({
     [selectedItems],
   );
 
-  const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as ChartComponent["id"];
+  const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<ChartComponent["id"], KeySet<ChartComponent["id"]>>) => {
+    const selectedKey = event.detail.items?.[0]?.key as ChartComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);

@@ -92,7 +92,7 @@ export default function TextAreaOverviewExample() {
           length={lengthConfig}
           labelHint="max length"
           onvalueChanged={(event: TextAreaValueChangedEvent) =>
-            setLimitedValue(event.detail.value)
+            setLimitedValue((event.detail.value as string))
           }
         />
       </oj-form-layout>

@@ -173,7 +173,7 @@ export class DelayingDataProvider<K, D> implements DataProvider<K, D> {
     };
   }
 
-  getCapability(capabilityName: string): any {
+  getCapability(capabilityName: string): unknown {
     return this.dataProvider.getCapability(capabilityName);
   }
 

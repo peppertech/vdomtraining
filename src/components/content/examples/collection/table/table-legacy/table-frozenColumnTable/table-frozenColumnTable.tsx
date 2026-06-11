@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
@@ -24,7 +23,7 @@ interface EmployeeData {
 }
 
 export const TableFrozenColumnTable = () => {
-  const [empArray, setEmpArray] = useState<any[]>(JSON.parse(empData));
+  const [empArray, setEmpArray] = useState<EmployeeData[]>(() => JSON.parse(empData as string) as EmployeeData[]);
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Emp Id', field: 'EmployeeId', frozenEdge: 'all', id: 'id' },
       { headerText: 'Employee Name', template: 'empNameTemplate', minWidth: '12rem', id: 'name' },

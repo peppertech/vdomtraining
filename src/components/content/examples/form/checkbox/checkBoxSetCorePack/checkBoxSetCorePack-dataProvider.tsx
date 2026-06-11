@@ -20,7 +20,7 @@ export default function CheckBoxSetCorePackDataProviderExample() {
 
   const handleValueChanged = useCallback(
     (event: CheckboxsetValueChangedEvent) => {
-      setSelectVal(event.detail.value ?? []);
+      setSelectVal((event.detail.value as string[] | null | undefined) ?? []);
     },
     [],
   );

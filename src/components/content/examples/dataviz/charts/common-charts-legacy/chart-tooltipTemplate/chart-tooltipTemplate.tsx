@@ -14,10 +14,10 @@ export const ChartTooltipTemplate = () => {
       keyAttributes: 'id'
   }), []);
 
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
     return <oj-chart-item groupId={[item.data.season]} seriesId={item.data.department} value={item.data.value}/>;
 };
-  const tooltipTemplateRenderer = ($current: any) => {
+  const tooltipTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     return <div class="oj-flex">
                                               <div class="oj-flex-item">
                                                               <span><b>{$current.group}</b></span>

@@ -3,15 +3,20 @@ import { useCallback, useMemo, useState } from "preact/hooks";
 import { IntlConverterUtils } from "ojs/ojconverterutils-i18n";
 import { DateTimeConverter, IntlDateTimeConverter } from "ojs/ojconverter-datetime";
 import "ojs/ojdatetimepicker";
+import {
+  type InputTimeProps,
+  type InputTimeValueChangedEvent,
+} from "./inputTime-shared";
+import Validator = require("ojs/ojvalidator");
 
-class TimeIncrementValidator {
+class TimeIncrementValidator implements Validator<string> {
   private converter: DateTimeConverter;
 
   constructor(options: { converter: DateTimeConverter }) {
     this.converter = options.converter;
   }
 
-  validate(value: string) {
+  validate(value: string): void {
     if (value) {
       const currentTime = IntlConverterUtils.isoToLocalDate(value);
       let previousValidValue: string;
@@ -68,12 +73,15 @@ export default function InputTimeCustomValidatorExample() {
   );
 
   const validators = useMemo(
-    () => [new TimeIncrementValidator({ converter: validatorConverter as any })],
+    () =>
+      [
+        new TimeIncrementValidator({ converter: validatorConverter }),
+      ] as InputTimeProps["validators"],
     [],
   );
 
-  const handleValueChanged = useCallback((event: any) => {
-    setValue(String(event.detail.value ?? ""));
+  const handleValueChanged = useCallback((event: InputTimeValueChangedEvent) => {
+    setValue(event.detail.value);
   }, []);
 
   return (
@@ -82,7 +90,7 @@ export default function InputTimeCustomValidatorExample() {
       <oj-input-time
         id="customValidator"
         value={value}
-        validators={validators as any}
+        validators={validators}
         onvalueChanged={handleValueChanged}
       />
 

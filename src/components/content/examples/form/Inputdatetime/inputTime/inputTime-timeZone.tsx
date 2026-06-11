@@ -1,19 +1,30 @@
 import { h } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
-import { IntlConverterUtils } from "ojs/ojconverterutils-i18n";
 import { IntlDateTimeConverter } from "ojs/ojconverter-datetime";
 import "ojs/ojdatetimepicker";
 import "ojs/ojformlayout";
 import "ojs/ojradioset";
-import { type RadiosetValueChangedEvent } from "./inputTime-shared";
+import {
+  type InputTimeValueChangedEvent,
+  type RadiosetValueChangedEvent,
+} from "./inputTime-shared";
 
-type TimeFormatValue = IntlDateTimeConverter.ConverterOptions["timeFormat"];
-type IsoStrFormatValue =
-  IntlDateTimeConverter.ConverterOptions["isoStrFormat"];
+const TIME_FORMAT_VALUES = ["short", "medium", "long", "full"] as const;
+const ISO_STR_FORMAT_VALUES = ["offset", "zulu", "local"] as const;
+const TIME_ZONE_VALUES = [
+  "America/Los_Angeles",
+  "America/New_York",
+  "Europe/London",
+  "Asia/Hong_Kong",
+] as const;
+
+type TimeFormatValue = (typeof TIME_FORMAT_VALUES)[number];
+type IsoStrFormatValue = (typeof ISO_STR_FORMAT_VALUES)[number];
+type TimeZoneValue = (typeof TIME_ZONE_VALUES)[number];
 type TimeConverterOptions = {
   timeFormat: TimeFormatValue;
   isoStrFormat: IsoStrFormatValue;
-  timeZone: string;
+  timeZone: TimeZoneValue;
 };
 
 const buildConverter = (options: TimeConverterOptions) =>
@@ -24,11 +35,21 @@ const buildConverter = (options: TimeConverterOptions) =>
     timeZone: options.timeZone,
   });
 
+const isTimeFormatValue = (value: unknown): value is TimeFormatValue =>
+  TIME_FORMAT_VALUES.some((option) => option === value);
+
+const isIsoStrFormatValue = (value: unknown): value is IsoStrFormatValue =>
+  ISO_STR_FORMAT_VALUES.some((option) => option === value);
+
+const isTimeZoneValue = (value: unknown): value is TimeZoneValue =>
+  TIME_ZONE_VALUES.some((option) => option === value);
+
 export default function InputTimeTimeZoneExample() {
   const [timeFormatValue, setTimeFormatValue] = useState<TimeFormatValue>("long");
   const [isoStrFormatValue, setIsoStrFormatValue] =
     useState<IsoStrFormatValue>("zulu");
-  const [timezoneValue, setTimezoneValue] = useState("America/Los_Angeles");
+  const [timezoneValue, setTimezoneValue] =
+    useState<TimeZoneValue>("America/Los_Angeles");
   const [timeValue, setTimeValue] = useState("T04:00:00Z");
 
   const timeConverter = useMemo(
@@ -45,7 +66,7 @@ export default function InputTimeTimeZoneExample() {
     (
       nextTimeFormat: TimeFormatValue,
       nextIsoStrFormat: IsoStrFormatValue,
-      nextTimeZone: string,
+      nextTimeZone: TimeZoneValue,
     ) => {
       const nextConverter = buildConverter({
         timeFormat: nextTimeFormat,
@@ -54,9 +75,7 @@ export default function InputTimeTimeZoneExample() {
       });
       setTimeValue((prev) => {
         const parsed = nextConverter.parse(prev);
-        return typeof parsed === "string"
-          ? parsed
-          : IntlConverterUtils.dateToLocalIso(parsed as unknown as Date);
+        return parsed ?? prev;
       });
     },
     [],
@@ -64,7 +83,9 @@ export default function InputTimeTimeZoneExample() {
 
   const handleTimeFormatChanged = useCallback(
     (event: RadiosetValueChangedEvent) => {
-      const nextValue = (event.detail.value ?? "long") as TimeFormatValue;
+      const nextValue = isTimeFormatValue(event.detail.value)
+        ? event.detail.value
+        : "long";
       setTimeFormatValue(nextValue);
       refreshValueForOptions(nextValue, isoStrFormatValue, timezoneValue);
     },
@@ -73,7 +94,9 @@ export default function InputTimeTimeZoneExample() {
 
   const handleIsoStrFormatChanged = useCallback(
     (event: RadiosetValueChangedEvent) => {
-      const nextValue = (event.detail.value ?? "zulu") as IsoStrFormatValue;
+      const nextValue = isIsoStrFormatValue(event.detail.value)
+        ? event.detail.value
+        : "zulu";
       setIsoStrFormatValue(nextValue);
       refreshValueForOptions(timeFormatValue, nextValue, timezoneValue);
     },
@@ -82,15 +105,17 @@ export default function InputTimeTimeZoneExample() {
 
   const handleTimezoneChanged = useCallback(
     (event: RadiosetValueChangedEvent) => {
-      const nextValue = String(event.detail.value ?? "America/Los_Angeles");
+      const nextValue = isTimeZoneValue(event.detail.value)
+        ? event.detail.value
+        : "America/Los_Angeles";
       setTimezoneValue(nextValue);
       refreshValueForOptions(timeFormatValue, isoStrFormatValue, nextValue);
     },
     [isoStrFormatValue, refreshValueForOptions, timeFormatValue],
   );
 
-  const handleTimeValueChanged = useCallback((event: any) => {
-    setTimeValue(String(event.detail.value ?? ""));
+  const handleTimeValueChanged = useCallback((event: InputTimeValueChangedEvent) => {
+    setTimeValue(event.detail.value);
   }, []);
 
   return (
@@ -135,7 +160,7 @@ export default function InputTimeTimeZoneExample() {
       <oj-input-time
         id="timezone"
         value={timeValue}
-        converter={timeConverter as any}
+        converter={timeConverter}
         labelHint="InputTime Timezone converter"
         labelEdge="inside"
         class="oj-form-control-max-width-md"

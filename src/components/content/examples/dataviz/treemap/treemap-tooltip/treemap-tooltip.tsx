@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useRef } from 'preact/hooks';
 import ArrayDataProvider from 'ojs/ojarraydataprovider';
@@ -12,16 +11,16 @@ import 'ojs/ojchart';
 import { ojTreemap } from 'ojs/ojtreemap';
 
 export const TreemapTooltip = () => {
-  const maxIncomeRef = useRef<any>(70000);
+  const maxIncomeRef = useRef<number>(70000);
 
-  const tooltipElem: any = document.createElement('div');
-  const data: any = JSON.parse(jsonData);
+  const tooltipElem = document.createElement('div');
+  const data = JSON.parse(jsonData) as DatavizChartDatum[];
   const treemapData = useMemo(() => new ArrayTreeDataProvider(data, {
       keyAttributes: 'label',
       childrenAttribute: 'nodes'
   }), [data]);
-  const minIncome: any = 35000;
-  const colors: any = getColorValuesFromPalette('viridis', 4);
+  const minIncome = 35000;
+  const colors = getColorValuesFromPalette('viridis', 4);
 
   const getColor = (meanIncome: number) => {
       return getColorValue(colors, (meanIncome - minIncome) / (maxIncomeRef.current - minIncome));

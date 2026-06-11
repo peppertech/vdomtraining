@@ -95,7 +95,7 @@ const dataVizComponents: DataVizComponent[] = [
     isCorePack: true,
     render: (props) => <PictoChartHome {...props} />,
   },
-  
+
   {
     id: 23,
     routeId: "rating-gauge",
@@ -245,14 +245,8 @@ const DataVizHome = () => {
     }
   }, [activeComponentId, handleHomeNavigation]);
 
-  const handleSelectedChanged = (event: any) => {
-    if (event.detail.updatedFrom && event.detail.updatedFrom !== "internal") {
-      return;
-    }
-
-    const selectedKey = event.detail.items?.[0]?.key as
-      | DataVizComponent["id"]
-      | undefined;
+  const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<DataVizComponent["id"], KeySet<DataVizComponent["id"]>>) => {
+    const selectedKey = event.detail.items?.[0]?.key as DataVizComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = dataVizComponents.find(
         (component) => component.id === selectedKey,

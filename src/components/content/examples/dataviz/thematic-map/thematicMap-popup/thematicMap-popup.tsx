@@ -70,7 +70,7 @@ export const ThematicMapPopup = () => {
   );
   const stateToItemMap = useMemo(
     () =>
-      rainfallData.reduce<Record<string, RainfallDatum>>((map: any, item: any) => {
+      rainfallData.reduce<Record<string, RainfallDatum>>((map, item) => {
         map[item.State] = item;
         return map;
       }, {}),
@@ -85,7 +85,7 @@ export const ThematicMapPopup = () => {
     return colors[4];
   };
 
-  const handleSelectionChanged = (event: any) => {
+  const handleSelectionChanged = (event: DatavizValueChangedEvent<string[] | null>) => {
     setSelectedItemsValue(event.detail.value ?? []);
   };
 
@@ -143,15 +143,15 @@ export const ThematicMapPopup = () => {
     }
   };
 
-  const handleMapClick: NonNullable<ComponentProps<'oj-thematic-map'>['onClick']> = (event: any) => {
-    openPopup(event as MouseEvent);
+  const handleMapClick: NonNullable<ComponentProps<'oj-thematic-map'>['onClick']> = (event: MouseEvent) => {
+    openPopup(event);
   };
 
-  const handleMapKeyDown: NonNullable<ComponentProps<'oj-thematic-map'>['onKeyDown']> = (event: any) => {
-    openPopup(event as KeyboardEvent);
+  const handleMapKeyDown: NonNullable<ComponentProps<'oj-thematic-map'>['onKeyDown']> = (event: KeyboardEvent) => {
+    openPopup(event);
   };
 
-  const areaTemplateRenderer = (area: any) => {
+  const areaTemplateRenderer = (area: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-area
         color={getRainfallColor(area.data.Inches)}

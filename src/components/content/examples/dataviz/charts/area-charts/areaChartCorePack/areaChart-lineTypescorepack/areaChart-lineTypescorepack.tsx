@@ -36,7 +36,7 @@ export const AreaChartLineTypescorepack = () => {
     const handleStackValueStackChanged = (event: JetElementCustomEvent<ChartStack>) => {
         setStackValue(event.detail.value);
     };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} groupId={[item.data.quarter]} seriesId={item.data.series}/>;
     };
     const ojChartProps: Partial<ComponentProps<'oj-chart'>> = { styleDefaults: {

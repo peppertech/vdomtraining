@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { IntlDateTimeConverter } from "ojs/ojconverter-datetime";
 import "ojs/ojdatetimepicker";
 import "ojs/ojformlayout";
@@ -62,7 +62,7 @@ export default function InputDateTimeStatesExample() {
       >
         <oj-input-date-time
           value={sampleDateTimeValue}
-          datePicker={datePickerWeek as any}
+          datePicker={datePickerWeek as ComponentProps<'oj-input-date-time'>['datePicker']}
           labelHint="Week Of Year"
         />
       </oj-form-layout>
@@ -76,7 +76,7 @@ export default function InputDateTimeStatesExample() {
         <oj-input-date-time
           value={sampleDateTimeValue}
           id="timeIncrement"
-          timePicker={timePicker as any}
+          timePicker={timePicker as ComponentProps<'oj-input-date-time'>['timePicker']}
           labelHint="Time Increment of 15 minutes"
         />
         <oj-input-date-time

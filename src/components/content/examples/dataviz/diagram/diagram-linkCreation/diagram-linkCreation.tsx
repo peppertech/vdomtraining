@@ -34,12 +34,12 @@ export const DiagramLinkCreation = () => {
         const nextIndex = links.length;
         const start = nodes[nextIndex % nodes.length].id;
         const end = nodes[(nextIndex + 1) % nodes.length].id;
-        setLinks((current: any) => current.concat({ id: `L${nextIndex}`, start, end }));
+        setLinks((current) => current.concat({ id: `L${nextIndex}`, start, end }));
     };
     const removeLink = () => {
-        setLinks((current: any) => current.slice(0, -1));
+        setLinks((current) => current.slice(0, -1));
     };
-    const nodeTemplateRenderer = (node: any) => {
+    const nodeTemplateRenderer = (node: DatavizTemplateContext<DatavizChartDatum>) => {
         const ojDiagramNodeProps: Partial<ComponentProps<'oj-diagram-node'>> = { icon: {
                 shape: 'square',
                 width: 54,
@@ -48,7 +48,7 @@ export const DiagramLinkCreation = () => {
             } };
         return <oj-diagram-node label={node.data.id} shortDesc={`Node ${node.data.id}`} {...ojDiagramNodeProps}/>;
     };
-    const linkTemplateRenderer = (link: any) => {
+    const linkTemplateRenderer = (link: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-diagram-link startNode={link.data.start} endNode={link.data.end} shortDesc={`Link ${link.data.id} connects ${link.data.start} to ${link.data.end}`}/>;
     };
     return (<div id="diagram-container">

@@ -59,7 +59,7 @@ export const FunnelChartAnimation = () => {
       numSeriesRef.current = numSeriesRef.current <= 5 ? numSeriesRef.current + 1 : numSeriesRef.current - 1;
       setChartData(getData());
   };
-    const itemTemplateRenderer = ($current: any) => {
+    const itemTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-chart-item value={$current.data.value} groupId={[$current.data.group]} seriesId={$current.data.series}/>;
   };
 

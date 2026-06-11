@@ -59,7 +59,7 @@ export const FunnelChartSelection = () => {
     setOrientationValue(event.detail.value);
   };
 
-    const itemTemplateRenderer = ($current: any) => {
+    const itemTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-chart-item value={$current.data.value} groupId={[$current.data.group]} seriesId={$current.data.series}/>;
   };
 

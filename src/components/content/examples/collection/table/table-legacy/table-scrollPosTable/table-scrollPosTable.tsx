@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
@@ -26,6 +25,7 @@ interface TableData {
 }
 
 type TableScrollPosition = NonNullable<ComponentProps<'oj-table'>['scrollPosition']>;
+type ScrollPolicyValue = 'loadMoreOnScroll' | 'loadAll';
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 type ScrollPosition = {
@@ -40,7 +40,7 @@ type ScrollPosition = {
 };
 
 export const TableScrollPosTable = () => {
-  const [scrollPolicyValue, setScrollPolicyValue] = useState<any>('loadMoreOnScroll');
+  const [scrollPolicyValue, setScrollPolicyValue] = useState<ScrollPolicyValue>('loadMoreOnScroll');
   const [scrollPosValue, setScrollPosValue] = useState<ScrollPosition>({});
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Id', field: 'id', id: 'id' }
@@ -66,12 +66,12 @@ export const TableScrollPosTable = () => {
       keyAttributes: 'id'
   }), []);
 
-  const handleScrollPolicyValueValueChanged = (event: PropertyChangedEvent<any>) => {
-    setScrollPolicyValue(event.detail.value);
+  const handleScrollPolicyValueValueChanged = (event: PropertyChangedEvent<ScrollPolicyValue>) => {
+    setScrollPolicyValue(event.detail.value ?? 'loadMoreOnScroll');
   };
 
-  const handleScrollPosValueScrollPositionChanged = (event: PropertyChangedEvent<any>) => {
-    setScrollPosValue(event.detail.value);
+  const handleScrollPosValueScrollPositionChanged = (event: PropertyChangedEvent<ScrollPosition>) => {
+    setScrollPosValue(event.detail.value ?? {});
   };
 
   const handleRowPixelValueChanged = (event: JetElementCustomEvent<number | null>) => {

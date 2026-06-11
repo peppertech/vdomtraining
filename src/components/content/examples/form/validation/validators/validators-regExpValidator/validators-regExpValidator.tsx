@@ -1,14 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 import 'oj-c/input-text';
 import 'ojs/ojformlayout';
 
-type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
 type InputTextChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>
 >[0];
+type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
 
 export const ValidatorsRegExpValidator = () => {
   const [patternValue, setPatternValue] = useState<InputTextValue>('');
@@ -50,15 +49,15 @@ export const ValidatorsRegExpValidator = () => {
   );
 
   const handlePatternValueChanged = (event: InputTextChangedEvent) => {
-    setPatternValue(event.detail.value ?? '');
+    setPatternValue((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const handlePattern2ValueChanged = (event: InputTextChangedEvent) => {
-    setPattern2Value(event.detail.value ?? '');
+    setPattern2Value((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const handleEmailPatternChanged = (event: InputTextChangedEvent) => {
-    setEmailPatternValue(event.detail.value ?? '');
+    setEmailPatternValue((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   return (

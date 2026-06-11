@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import "ojs/ojdatetimepicker";
 import "ojs/ojformlayout";
 import { messageSets, sampleIsoDate } from "./inputDate-shared";
@@ -25,7 +25,7 @@ export default function InputDateStatesVdomExample() {
       <oj-form-layout maxColumns={3} direction="row" class="oj-sm-padding-2x-bottom">
         <oj-input-date
           value={sampleIsoDate}
-          datePicker={{ weekDisplay: "number" } as any}
+          datePicker={{ weekDisplay: "number" } as ComponentProps<'oj-input-date'>['datePicker']}
           labelHint="Week Of Year"
         />
       </oj-form-layout>

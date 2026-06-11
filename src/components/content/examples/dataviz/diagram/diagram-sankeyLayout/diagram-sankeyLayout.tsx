@@ -36,15 +36,15 @@ export const DiagramSankeyLayout = () => {
             svgStyle: { strokeOpacity: '0.5', vectorEffect: 'none' }
         }
     }), []);
-    const nodeTemplateRenderer = (node: any) => {
+    const nodeTemplateRenderer = (node: DatavizTemplateContext<DatavizChartDatum>) => {
         const ojDiagramNodeProps: Partial<ComponentProps<'oj-diagram-node'>> = { icon: {
                 color: colorHandler.getValue(node.data.category),
                 height: node.data.category === 'award' ? 90 : 54
             } };
         return <oj-diagram-node label={node.data.id} shortDesc={node.data.id} {...ojDiagramNodeProps}/>;
     };
-    const linkTemplateRenderer = (link: any) => {
-        return <oj-diagram-link startNode={link.data.start} endNode={link.data.end} width={link.data.items * 3} shortDesc={`${link.data.items} medals from ${link.data.start} to ${link.data.end}`} color={colorHandler.getValue(link.data.start)}/>;
+    const linkTemplateRenderer = (link: DatavizTemplateContext<DatavizChartDatum>) => {
+        return <oj-diagram-link startNode={link.data.start} endNode={link.data.end} width={Number(link.data.items) * 3} shortDesc={`${link.data.items} medals from ${link.data.start} to ${link.data.end}`} color={colorHandler.getValue(link.data.start)}/>;
     };
     return (<div id="diagram-container">
             <oj-diagram id="diagram1" nodeData={nodeDataProvider} linkData={linkDataProvider} layout={layout.containerLayout} styleDefaults={styleDefaults} class="demo-diagram-sankeylayout-height-style">

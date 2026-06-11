@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as jsonData from 'text!../data/cookbook/dataVisualizations/nBox/resources/employeesShaped.json';
@@ -6,7 +5,7 @@ import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojnbox';
 
 export const NBoxShapedData = () => {
-  const data: any = JSON.parse(jsonData);
+  const data = JSON.parse(jsonData) as DatavizChartDatum[];
   const rows = useMemo(() => [{ id: '0' }, { id: '1' }, { id: '2' }], []);
   const columns = useMemo(() => [{ id: '0' }, { id: '1' }, { id: '2' }], []);
   const cells = useMemo(() => [

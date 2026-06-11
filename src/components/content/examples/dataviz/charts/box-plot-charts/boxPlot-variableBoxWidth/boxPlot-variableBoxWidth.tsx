@@ -22,7 +22,7 @@ export const BoxPlotVariableBoxWidth = () => {
     setOrientationValue(event.detail.value ?? 'vertical');
   };
 
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-chart-item low={item.data.low} high={item.data.high} z={item.data.z} q1={item.data.q1} q2={item.data.q2} q3={item.data.q3} items={item.data.outliers} groupId={[item.data.group]} seriesId={item.data.series}/>;
   };
 

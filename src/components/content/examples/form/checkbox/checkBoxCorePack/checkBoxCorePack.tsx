@@ -5,15 +5,12 @@
  * as shown at https://oss.oracle.com/licenses/upl/
  * @ignore
  */
-import { h } from "preact";
-import { ComponentProps } from "preact";
+import { h, type ComponentProps } from "preact";
 
 // CorePack component import
 import "oj-c/checkbox";
 import "oj-c/form-layout";
 
-// Type import
-import { CCheckboxElement } from "oj-c/checkbox";
 import Message = require("ojs/ojmessaging");
 
 export const CheckBoxCorePack = () => {
@@ -46,11 +43,6 @@ export const CheckBoxCorePack = () => {
       detail: "This is confirmation",
     },
   ];
-
-  // External event handlers as per style guide
-  const handleCheckboxChange = (event: any) => {
-    console.log("Checkbox value changed:", event.detail.value);
-  };
 
   return (
   <div class="oj-web-applayout-max-width oj-web-applayout-content">
@@ -115,23 +107,23 @@ export const CheckBoxCorePack = () => {
 
       <h5 class="oj-sm-margin-4x-top oj-sm-padding-2x-bottom">Messages</h5>
       <oj-c-form-layout maxColumns={3} direction="row">
-        <oj-c-checkbox value={false} messagesCustom={errorMessages as any}>
+        <oj-c-checkbox value={false} messagesCustom={errorMessages as ComponentProps<'oj-c-checkbox'>['messagesCustom']}>
           Error
         </oj-c-checkbox>
-        <oj-c-checkbox value={false} messagesCustom={warningMessages as any}>
+        <oj-c-checkbox value={false} messagesCustom={warningMessages as ComponentProps<'oj-c-checkbox'>['messagesCustom']}>
           Warning
         </oj-c-checkbox>
         <oj-c-checkbox
           id="airplaneModeInformation"
           value={false}
-          messagesCustom={infoMessages as any}
+          messagesCustom={infoMessages as ComponentProps<'oj-c-checkbox'>['messagesCustom']}
         >
           Information
         </oj-c-checkbox>
         <oj-c-checkbox
           id="airplaneModeConfirmation"
           value={false}
-          messagesCustom={confirmationMessages as any}
+          messagesCustom={confirmationMessages as ComponentProps<'oj-c-checkbox'>['messagesCustom']}
         >
           Confirmation
         </oj-c-checkbox>

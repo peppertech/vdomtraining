@@ -83,13 +83,13 @@ export const RangeChartSelection = () => {
   }, [idToItemMap, selectedItemsValue, selectionEventInfo]);
 
   const handleSelectionValueChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setSelectionValue(event.detail.value as ChartSelectionMode);
   };
 
   const handleOrientationChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setOrientationValue(event.detail.value as ChartOrientation);
   };

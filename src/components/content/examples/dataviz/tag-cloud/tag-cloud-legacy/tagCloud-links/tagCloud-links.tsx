@@ -11,7 +11,7 @@ type SocialNetwork = {
   url?: string;
 };
 
-const renderTagCloudLinkItem = (item: any) => (
+const renderTagCloudLinkItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-tag-cloud-item
     label={item.data.id}
     value={item.data.total}

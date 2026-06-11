@@ -1,9 +1,12 @@
 // @ts-nocheck
 import { h } from 'preact';
+import type { ComponentProps } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { getContext } from 'ojs/ojcontext';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { KeySetImpl } from 'ojs/ojkeyset';
+import { KeySet, KeySetImpl } from 'ojs/ojkeyset';
+import type { ojListView } from 'ojs/ojlistview';
+import type { SelectorElement } from 'ojs/ojselector';
 import 'ojs/ojbutton';
 // import 'ojs/ojbuttonsetone';
 import 'ojs/ojformlayout';
@@ -18,6 +21,31 @@ type DemoItem = {
   id: number;
   name: string;
 };
+type ScrollPolicyValue = NonNullable<ComponentProps<'oj-list-view'>['scrollPolicy']>;
+type SelectedKeySet = KeySet<DemoItem['id']>;
+type ItemTemplateContext = ojListView.ItemTemplateContext<
+  DemoItem['id'],
+  DemoItem
+>;
+type InputNumberValueChangedEvent = Parameters<
+  NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>
+>[0];
+type ButtonsetValueChangedEvent = CustomEvent<{
+  value: ScrollPolicyValue | null;
+}>;
+type SelectorSelectedKeysChangedEvent =
+  SelectorElement.selectedKeysChanged<DemoItem['id']>;
+type ListViewSelectedChangedEvent = ojListView.selectedChanged<
+  DemoItem['id'],
+  DemoItem
+>;
+type MaybeNumberValueEvent = Event & {
+  detail?: {
+    value?: number | null;
+  };
+};
+
+const createEmptySelection = () => new KeySetImpl<DemoItem['id']>();
 
 const generateData = (count: number): DemoItem[] =>
   Array.from({ length: count }, (_, index) => ({
@@ -26,9 +54,11 @@ const generateData = (count: number): DemoItem[] =>
   }));
 
 export const SelectorPerformanceSelector = () => {
-  const [scrollPolicyValue, setScrollPolicyValue] = useState('loadMoreOnScroll');
+  const [scrollPolicyValue, setScrollPolicyValue] =
+    useState<ScrollPolicyValue>('loadMoreOnScroll');
   const [numItems, setNumItems] = useState(100);
-  const [selectedItems, setSelectedItems] = useState<any>(new KeySetImpl());
+  const [selectedItems, setSelectedItems] =
+    useState<SelectedKeySet>(createEmptySelection());
   const [renderTime, setRenderTime] = useState('');
   const [refreshVersion, setRefreshVersion] = useState(0);
   const data = useMemo(() => generateData(numItems), [numItems, refreshVersion]);
@@ -53,24 +83,26 @@ export const SelectorPerformanceSelector = () => {
     });
   }, [dataProvider, scrollPolicyValue]);
 
-  const handleUpdateData = (event?: any) => {
+  const handleUpdateData = (event?: InputNumberValueChangedEvent | MaybeNumberValueEvent) => {
     if (typeof event?.detail?.value === 'number') {
       setNumItems(event.detail.value);
     } else {
       setRefreshVersion((current) => current + 1);
     }
-    setSelectedItems(new KeySetImpl());
+    setSelectedItems(createEmptySelection());
   };
 
-  const handleScrollPolicyChanged = (event: any) => {
+  const handleScrollPolicyChanged = (event: ButtonsetValueChangedEvent) => {
     setScrollPolicyValue(event.detail.value ?? 'loadMoreOnScroll');
   };
 
-  const handleSelectedItemsChanged = (event: any) => {
-    setSelectedItems(event.detail.value ?? new KeySetImpl());
+  const handleSelectedItemsChanged = (
+    event: SelectorSelectedKeysChangedEvent | ListViewSelectedChangedEvent
+  ) => {
+    setSelectedItems(event.detail.value ?? createEmptySelection());
   };
 
-  const renderItemTemplate = (item: any) => (
+  const renderItemTemplate = (item: ItemTemplateContext) => (
     <oj-list-item-layout>
       <oj-selector
         slot="selector"

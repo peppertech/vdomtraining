@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from "preact/hooks";
 import "oj-c/button";
 import "oj-c/form-layout";
@@ -41,7 +41,7 @@ export default function InputTextCorePackStartEndSlotsExample() {
             aria-controls="myform"
             labelHint="Label Edge"
             options={labelEdgeOptions}
-            onvalueChanged={(event: any) => {
+            onvalueChanged={(event) => {
               setLabelEdge((event.detail.value ?? "inside") as VisibleInputTextLabelEdge);
             }}
           ></oj-c-radioset>
@@ -50,8 +50,8 @@ export default function InputTextCorePackStartEndSlotsExample() {
             aria-controls="myform"
             labelHint="State"
             options={stateOptions}
-            onvalueChanged={(event: any) => {
-              setFormState(event.detail.value ?? "enabled");
+            onvalueChanged={(event) => {
+              setFormState((event.detail.value as DemoState | null | undefined) ?? "enabled");
             }}
           ></oj-c-radioset>
           <oj-c-radioset
@@ -59,8 +59,8 @@ export default function InputTextCorePackStartEndSlotsExample() {
             aria-controls="myform"
             labelHint="Value"
             options={valueOptions}
-            onvalueChanged={(event: any) => {
-              setValueEnabled(event.detail.value ?? "yes");
+            onvalueChanged={(event) => {
+              setValueEnabled((event.detail.value as DemoValueState | null | undefined) ?? "yes");
             }}
           ></oj-c-radioset>
         </oj-c-form-layout>
@@ -95,7 +95,7 @@ export default function InputTextCorePackStartEndSlotsExample() {
               slot="end"
               display="icons"
               label="Email"
-              size={endButtonSize as any}
+              size={endButtonSize as ComponentProps<'oj-c-button'>['size']}
               chroming="ghost"
               disabled={disableControls}
               onojAction={() => {

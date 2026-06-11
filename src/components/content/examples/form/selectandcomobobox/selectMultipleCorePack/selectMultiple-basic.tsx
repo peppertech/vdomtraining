@@ -1,19 +1,23 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/select-multiple";
+
 import {
   createBrowserDataProvider,
   getBrowserLabels,
 } from "./selectMultiple-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-multiple">["onvalueChanged"]>
+>[0];
 export default function SelectMultipleBasicExample() {
   const dataProvider = useMemo(() => createBrowserDataProvider(), []);
   const [selectVal, setSelectVal] = useState<Set<string> | null>(
     new Set(["CH", "FF"]),
   );
 
-  const handleValueChanged = useCallback((event: any) => {
-    setSelectVal(event.detail.value);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setSelectVal((event.detail.value as Set<string> | null));
   }, []);
 
   return (

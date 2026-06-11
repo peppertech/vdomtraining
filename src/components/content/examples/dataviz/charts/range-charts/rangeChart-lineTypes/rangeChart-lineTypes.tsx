@@ -30,13 +30,13 @@ export const RangeChartLineTypes = () => {
   );
 
   const handleLineTypeValueChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setLineTypeValue(event.detail.value as LineType);
   };
 
   const handleOrientationChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setOrientationValue(event.detail.value as ChartOrientation);
   };

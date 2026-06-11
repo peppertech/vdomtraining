@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useState } from "preact/hooks";
 import AsyncRegExpValidator = require("ojs/ojasyncvalidator-regexp");
 import AsyncNumberRangeValidator = require("ojs/ojasyncvalidator-numberrange");
@@ -93,7 +93,7 @@ export default function InputNumberValidatorExample() {
         max={44}
         labelHint="Range Validator with Custom Messages"
         labelEdge="inside"
-        translations={translations as any}
+        translations={translations as ComponentProps<'oj-input-number'>['translations']}
         onvalueChanged={(event: InputNumberValueChangedEvent) => {
           setRangeCustomMessageValue(Number(event.detail.value ?? 0));
         }}
@@ -113,10 +113,10 @@ export default function InputNumberValidatorExample() {
         labelHint="Multiple RegExp Validators"
         labelEdge="inside"
         validators={
-          [[regExpTwoDigitValidator, regExpTenMultipleValidator, numberRangeValidator]] as any
+          [[regExpTwoDigitValidator, regExpTenMultipleValidator, numberRangeValidator]] as unknown as ComponentProps<'oj-input-number'>['validators']
         }
         onvalueChanged={(event: InputNumberValueChangedEvent) => {
-          setRegExpInputValue(event.detail.value ?? null);
+          setRegExpInputValue((event.detail.value as number | null | null | undefined) ?? null);
         }}
       />
     </div>

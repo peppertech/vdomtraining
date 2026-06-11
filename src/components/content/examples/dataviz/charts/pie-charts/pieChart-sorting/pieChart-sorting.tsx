@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -27,7 +26,7 @@ export const PieChartSorting = () => {
     const handleOtherColorValueChanged = (event: PropertyChangedEvent<string>) => {
         setOtherColorValue(event.detail.value);
     };
-    const renderItem = (item: any) => (<oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>);
+    const renderItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>);
     return (<div id="chart-container">
       <oj-form-layout aria-controls="pieChart">
         <demo-select-enum onvalueChanged={handleSortingValueChanged} value={sortingValue} labelHint="Sorting" enumValues={["ascending","descending","off"]}/>

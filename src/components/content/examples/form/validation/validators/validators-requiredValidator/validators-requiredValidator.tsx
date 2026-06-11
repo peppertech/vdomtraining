@@ -1,29 +1,28 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useState } from 'preact/hooks';
 import 'oj-c/input-number';
 import 'oj-c/input-text';
 import 'ojs/ojformlayout';
 
-type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
-type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
 type InputTextChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>
 >[0];
 type InputNumberChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-number'>['onvalueChanged']>
 >[0];
+type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
+type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
 
 export const ValidatorsRequiredValidator = () => {
   const [requiredValue1, setRequiredValue1] = useState<InputTextValue>('something');
   const [requiredValue3, setRequiredValue3] = useState<InputNumberValue>(1);
 
   const handleRequiredTextChanged = (event: InputTextChangedEvent) => {
-    setRequiredValue1(event.detail.value ?? '');
+    setRequiredValue1((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const handleRequiredNumberChanged = (event: InputNumberChangedEvent) => {
-    setRequiredValue3(event.detail.value ?? null);
+    setRequiredValue3((event.detail.value as InputNumberValue | null | undefined) ?? null);
   };
 
   return (

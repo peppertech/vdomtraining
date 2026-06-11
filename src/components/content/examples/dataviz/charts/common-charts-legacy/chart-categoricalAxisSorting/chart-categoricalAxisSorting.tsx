@@ -47,7 +47,7 @@ export const ChartCategoricalAxisSorting = () => {
                 tooltipLabel: "Revenue"
             }
         } };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} groupId={[item.data.company]} seriesId={item.data.year}/>;
     };
     return (<div id="chart-container">

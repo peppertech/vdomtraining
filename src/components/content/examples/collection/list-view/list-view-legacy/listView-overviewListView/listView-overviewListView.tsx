@@ -4,6 +4,7 @@ import { useCallback, useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ojListView } from 'ojs/ojlistview';
 import { KeySetImpl, type ImmutableKeySet, type KeySet } from 'ojs/ojkeyset';
+import type { ojSwipeActions } from 'ojs/ojswipeactions';
 import 'css!./demo.css';
 import 'ojs/ojavatar';
 import 'ojs/ojbutton';
@@ -40,6 +41,11 @@ type SelectorSelectedKeysChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-selector'>['onselectedKeysChanged']>
 >[0];
 type SelectedKeySet = KeySet<Task['taskId']>;
+type AvatarBackground = NonNullable<ComponentProps<'oj-avatar'>['background']>;
+type SwipeTaskAction = 'complete' | 'trash';
+type SwipeActionTarget = EventTarget & {
+  value?: SwipeTaskAction;
+};
 
 const INITIAL_TASKS: Task[] = [
   {
@@ -558,7 +564,7 @@ const toDateInputValue = (dateString: string | null) => {
   return date.toISOString().slice(0, 10);
 };
 
-const getIconColor = (type: Task['type']) => {
+const getIconColor = (type: Task['type']): AvatarBackground => {
   switch (type) {
     case 'Send':
       return 'blue';
@@ -746,8 +752,8 @@ export const ListViewOverviewListView = () => {
     }
   };
 
-  const handleSwipeAction = (event: any, item: ItemTemplateContext) => {
-    const action = event.target.value;
+  const handleSwipeAction = (event: ojSwipeActions.ojAction, item: ItemTemplateContext) => {
+    const action = (event.target as SwipeActionTarget | null)?.value;
     if (action === 'complete') {
       handleCompleteTask(item.data.taskId);
     } else if (action === 'trash') {
@@ -819,7 +825,7 @@ export const ListViewOverviewListView = () => {
       ) : null}
       <oj-avatar
         slot="leading"
-        background={getIconColor(item.data.type) as any}
+        background={getIconColor(item.data.type)}
         size="xs"
         icon-class={getIconClass(item.data.type)}
         aria-label="Circular icon with type icon"
@@ -850,7 +856,7 @@ export const ListViewOverviewListView = () => {
 
   const renderViewItem = (item: ItemTemplateContext) => (
     <li class="oj-swipeactions-container">
-      <oj-swipe-actions onojAction={(event: any) => handleSwipeAction(event, item)}>
+      <oj-swipe-actions onojAction={(event) => handleSwipeAction(event, item)}>
         {renderTaskLayout(item)}
         <template
           slot="start"

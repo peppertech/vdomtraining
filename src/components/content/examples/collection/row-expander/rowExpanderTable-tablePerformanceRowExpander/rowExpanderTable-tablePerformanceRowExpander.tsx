@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import * as Context from 'ojs/ojcontext';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
+import { ojTable } from 'ojs/ojtable';
 import 'ojs/ojtable';
 import 'ojs/ojrowexpander';
 import 'ojs/ojformlayout';
@@ -26,6 +27,7 @@ type ExpandValue = 'collapse' | 'expand';
 type InputNumberChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0];
 type ButtonsetChangedEvent = Parameters<NonNullable<ComponentProps<'oj-buttonset-one'>['onvalueChanged']>>[0];
 type TableColumns = ComponentProps<'oj-table'>['columns'];
+type ItemRowTemplateContext = ojTable.RowTemplateContext<Item['id'], Item>;
 
 export const RowExpanderTableTablePerformanceRowExpander = () => {
   const [scrollPolicyValue, setScrollPolicyValue] = useState<ScrollPolicyValue>('loadMoreOnScroll');
@@ -114,7 +116,7 @@ export const RowExpanderTableTablePerformanceRowExpander = () => {
     );
     setErrorMessage('');
     startRef.current = Date.now();
-    const busyContext = (Context as any).getPageContext().getBusyContext();
+    const busyContext = Context.getPageContext().getBusyContext();
     void busyContext.whenReady().then(() => {
       if (exceedsLimits()) {
         updateErrorState();
@@ -245,7 +247,7 @@ export const RowExpanderTableTablePerformanceRowExpander = () => {
       >
         <template
           slot="rowTemplate"
-          render={(row: any) => (
+          render={(row: ItemRowTemplateContext) => (
             <tr>
               <td>
                 <oj-row-expander context={row} data-oj-clickthrough="disabled" />

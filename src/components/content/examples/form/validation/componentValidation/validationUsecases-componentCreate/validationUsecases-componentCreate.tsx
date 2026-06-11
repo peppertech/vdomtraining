@@ -1,14 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
 
-type InputTextValue = ComponentProps<'oj-input-text'>['value'];
 type InputTextValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>
 >[0];
+type InputTextValue = ComponentProps<'oj-input-text'>['value'];
 
 export const ValidationUsecasesComponentCreate = () => {
   const [userName, setUserName] = useState<InputTextValue>('');
@@ -27,12 +26,12 @@ export const ValidationUsecasesComponentCreate = () => {
   );
 
   const handleUserNameChanged = (event: InputTextValueChangedEvent) => {
-    setUserName(event.detail.value ?? '');
+    setUserName((event.detail.value as InputTextValue | null | undefined) ?? '');
     setShowUserNameInitialError(false);
   };
 
   const handleFullNameChanged = (event: InputTextValueChangedEvent) => {
-    setFullName(event.detail.value ?? '');
+    setFullName((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   return (

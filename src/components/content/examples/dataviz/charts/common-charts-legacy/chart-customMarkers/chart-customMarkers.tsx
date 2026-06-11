@@ -48,7 +48,7 @@ export const ChartCustomMarkers = () => {
             markerSize: 25,
             markerShape: "square"
         } };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item groupId={[item.data.type]} seriesId={item.data.country} x={item.data.gasPricePerLiter} y={item.data.distanceTraveled} categories={[item.data.country, item.data.type]} markerShape={getMarkerShape(item.data.type)}/>;
     };
     return (<div id="chart-container">

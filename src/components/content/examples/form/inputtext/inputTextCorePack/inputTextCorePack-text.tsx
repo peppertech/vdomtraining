@@ -12,8 +12,8 @@ export default function InputTextCorePackTextExample() {
         value={value}
         labelHint="Color"
         labelEdge="inside"
-        onvalueChanged={(event: any) => {
-          setValue(event.detail.value ?? "");
+        onvalueChanged={(event) => {
+          setValue((event.detail.value as string | null | undefined) ?? "");
         }}
       ></oj-c-input-text>
       <div class="oj-sm-margin-4x-vertical">

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -52,7 +51,7 @@ export const PieChartNumberFormat = () => {
     setFormatValue(event.detail.value);
   };
 
-  const renderItem = (item: any) => {
+  const renderItem = (item: DatavizTemplateContext<DatavizChartDatum>) => {
     const formattedValue = numberConverter.format(item.data.value / 100);
     return (
       <oj-chart-item

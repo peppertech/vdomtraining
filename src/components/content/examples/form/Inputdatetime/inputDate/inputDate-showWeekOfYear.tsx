@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useState } from "preact/hooks";
 import "ojs/ojdatetimepicker";
 import "ojs/ojlabel";
@@ -20,7 +20,7 @@ export default function InputDateShowWeekOfYearVdomExample() {
       <oj-input-date
         id="weekofyearInputDate-vdom"
         value={value}
-        datePicker={{ weekDisplay: "number" } as any}
+        datePicker={{ weekDisplay: "number" } as ComponentProps<'oj-input-date'>['datePicker']}
         class="oj-form-control-max-width-sm"
         onvalueChanged={handleValueChanged}
       />

@@ -1,14 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import AsyncLengthValidator = require('ojs/ojasyncvalidator-length');
 import 'oj-c/input-text';
 import 'ojs/ojformlayout';
 
-type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
 type InputTextChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>
 >[0];
+type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
 
 export const ValidatorsLengthValidator = () => {
   const [lengthValue1, setLengthValue1] = useState<InputTextValue>('');
@@ -48,19 +47,19 @@ export const ValidatorsLengthValidator = () => {
   );
 
   const handleLength1Changed = (event: InputTextChangedEvent) => {
-    setLengthValue1(event.detail.value ?? '');
+    setLengthValue1((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const handleLength2Changed = (event: InputTextChangedEvent) => {
-    setLengthValue2(event.detail.value ?? '');
+    setLengthValue2((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const handleLength3Changed = (event: InputTextChangedEvent) => {
-    setLengthValue3(event.detail.value ?? '');
+    setLengthValue3((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const handleLength4Changed = (event: InputTextChangedEvent) => {
-    setLengthValue4(event.detail.value ?? '');
+    setLengthValue4((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   return (

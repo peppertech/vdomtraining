@@ -105,8 +105,8 @@ const RatingGaugeHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as RatingGaugeComponent["id"];
+  const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<RatingGaugeComponent["id"], KeySet<RatingGaugeComponent["id"]>>) => {
+    const selectedKey = event.detail.items?.[0]?.key as RatingGaugeComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);

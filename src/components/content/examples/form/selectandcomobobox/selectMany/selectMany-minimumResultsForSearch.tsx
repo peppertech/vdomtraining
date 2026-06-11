@@ -19,7 +19,7 @@ export default function SelectManyMinimumResultsForSearchExample() {
           max={100}
           step={1}
           labelHint="Minimum results for search"
-          onvalueChanged={(event: any) => setThreshold(event.detail.value ?? 15)}
+          onvalueChanged={(event) => setThreshold((event.detail.value as number | null | undefined) ?? 15)}
         ></oj-input-number>
         <oj-select-many
           value={value}
@@ -28,7 +28,7 @@ export default function SelectManyMinimumResultsForSearchExample() {
           options={dataProvider}
           minimumResultsForSearch={threshold}
           class="oj-form-control-max-width-lg"
-          onvalueChanged={(event: any) => setValue(event.detail.value ?? [])}
+          onvalueChanged={(event) => setValue((event.detail.value as string[] | null | undefined) ?? [])}
         ></oj-select-many>
       </oj-form-layout>
     </div>

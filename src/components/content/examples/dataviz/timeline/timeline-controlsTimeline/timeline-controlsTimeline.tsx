@@ -27,11 +27,11 @@ const overviewOptions = [
   { id: 'off', label: 'off' }
 ];
 
-const renderSeriesTemplate = (series: any) => (
+const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (
   <oj-timeline-series label={series.id} emptyText="No Tournaments Played." />
 );
 
-const renderItemTemplate = (item: any) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-timeline-item
     seriesId={item.data.series}
     start={item.data.begin}
@@ -93,7 +93,7 @@ export const TimelineControlsTimeline = () => {
     };
   }, [mdQuery, smQuery]);
 
-  const handleOverviewChanged = (event: any) => {
+  const handleOverviewChanged = (event: DatavizValueChangedEvent<string>) => {
     if (event.detail.updatedFrom === 'internal') {
       setOverviewValue(event.detail.value);
     }
@@ -113,7 +113,7 @@ export const TimelineControlsTimeline = () => {
             value={overviewValue}
             onvalueChanged={handleOverviewChanged}
           >
-            {overviewOptions.map((option: any) => (
+            {overviewOptions.map((option) => (
               <oj-option key={option.id} value={option.id}>
                 {option.label}
               </oj-option>

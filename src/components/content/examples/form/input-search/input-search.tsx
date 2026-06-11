@@ -62,7 +62,7 @@ export const InputSearchBasic = () => {
   const handleValueChanged = (
     event: InputSearchElement.valueChanged<string, string>,
   ) => {
-    setValue(event.detail.value ?? "");
+    setValue((event.detail.value as string | null | undefined) ?? "");
   };
 
   const handleValueAction = (

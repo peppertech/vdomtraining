@@ -69,7 +69,7 @@ export default function InputNumberStepExample() {
           value={currentValue2}
           labelHint="step=2, min/max/value not set"
           onvalueChanged={(event: InputNumberValueChangedEvent) => {
-            setCurrentValue2(event.detail.value ?? null);
+            setCurrentValue2((event.detail.value as number | null | null | undefined) ?? null);
           }}
         />
 

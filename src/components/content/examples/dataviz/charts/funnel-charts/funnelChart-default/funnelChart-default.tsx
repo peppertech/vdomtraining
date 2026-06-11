@@ -22,7 +22,7 @@ export const FunnelChartDefault = () => {
     setOrientationValue(event.detail.value ?? 'vertical');
   };
 
-    const itemTemplateRenderer = ($current: any) => {
+    const itemTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-chart-item value={$current.data.value} groupId={[$current.data.group]} seriesId={$current.data.series}/>;
   };
 

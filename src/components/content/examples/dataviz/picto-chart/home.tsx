@@ -105,8 +105,8 @@ const PictoChartHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as PictoChartComponent["id"];
+  const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<PictoChartComponent["id"], KeySet<PictoChartComponent["id"]>>) => {
+    const selectedKey = event.detail.items?.[0]?.key as PictoChartComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);

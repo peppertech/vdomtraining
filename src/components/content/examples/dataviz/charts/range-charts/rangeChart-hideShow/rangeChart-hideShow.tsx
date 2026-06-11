@@ -34,7 +34,7 @@ export const RangeChartHideShow = () => {
   );
 
   const handleTypeValueChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setTypeValue(event.detail.value as RangeChartType);
   };
@@ -44,7 +44,7 @@ export const RangeChartHideShow = () => {
   };
 
   const handleOrientationChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setOrientationValue(event.detail.value as ChartOrientation);
   };

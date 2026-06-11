@@ -1,8 +1,10 @@
-import { h } from "preact";
+import { h } from 'preact';
 import * as employeeDataText from "text!../../data/employeeData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import type { ItemContext } from "ojs/ojcommontypes";
 import { ojSelectSingle } from "ojs/ojselectsingle";
+import type { ojListView } from "ojs/ojlistview";
+import type { ojTable } from "ojs/ojtable";
 import "ojs/ojavatar";
 import "ojs/ojhighlighttext";
 import "ojs/ojlistitemlayout";
@@ -144,9 +146,15 @@ export const renderEmployeeCollectionListView = (
   >,
   onSelectionChange?: (value: OracleEmployee["EMPLOYEE_ID"] | null) => void,
 ) => {
-  const handleRowAction = (event: any) => {
-    collection.handleRowAction(event, event.detail.context);
-    onSelectionChange?.(event.detail.context.data.EMPLOYEE_ID ?? null);
+  const handleRowAction = (
+    event: ojListView.ojItemAction<
+      OracleEmployee["EMPLOYEE_ID"],
+      OracleEmployee
+    >,
+  ) => {
+    const context = event.detail.context;
+    collection.handleRowAction(event, context);
+    onSelectionChange?.(context.data.EMPLOYEE_ID ?? null);
   };
 
   return (
@@ -157,7 +165,7 @@ export const renderEmployeeCollectionListView = (
       selectionMode="single"
       selected={collection.selected}
       currentItem={collection.currentRow.rowKey}
-      onojItemAction={handleRowAction as any}
+      onojItemAction={handleRowAction}
       class="oj-select-results oj-group-header-sm"
     >
       <template
@@ -180,9 +188,15 @@ export const renderEmployeeCollectionTable = (
   >,
   onSelectionChange?: (value: OracleEmployee["EMPLOYEE_ID"] | null) => void,
 ) => {
-  const handleRowAction = (event: any) => {
-    collection.handleRowAction(event, event.detail.context);
-    onSelectionChange?.(event.detail.context.data.EMPLOYEE_ID ?? null);
+  const handleRowAction = (
+    event: ojTable.ojRowAction<
+      OracleEmployee["EMPLOYEE_ID"],
+      OracleEmployee
+    >,
+  ) => {
+    const context = event.detail.context;
+    collection.handleRowAction(event, context);
+    onSelectionChange?.(context.data.EMPLOYEE_ID ?? null);
   };
 
   const itemRenderer = (

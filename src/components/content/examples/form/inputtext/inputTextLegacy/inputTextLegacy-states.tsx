@@ -105,11 +105,11 @@ export default function InputTextLegacyStatesExample() {
           rawValue={rawValue}
           length={maxLengthConfig}
           labelHint="max length"
-          onvalueChanged={(event: any) => {
-            setValue(event.detail.value ?? "");
+          onvalueChanged={(event) => {
+            setValue((event.detail.value as string | null | undefined) ?? "");
           }}
-          onrawValueChanged={(event: any) => {
-            setRawValue(event.detail.value ?? "");
+          onrawValueChanged={(event) => {
+            setRawValue((event.detail.value as string | null | undefined) ?? "");
           }}
         ></oj-input-text>
       </oj-form-layout>

@@ -14,7 +14,7 @@ export default function CheckBoxSetCorePackBasicExample() {
 
   const handleValueChanged = useCallback(
     (event: CheckboxsetValueChangedEvent) => {
-      setCurrentColor(event.detail.value ?? []);
+      setCurrentColor((event.detail.value as string[] | null | undefined) ?? []);
     },
     [],
   );

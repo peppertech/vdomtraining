@@ -3,6 +3,45 @@ import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojswitch";
 
+type EnabledSwitchOnEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
+type DisabledSwitchOnEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
+type ReadonlySwitchOnEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
+type EnabledSwitchOffEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
+type DisabledSwitchOffEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
+type ReadonlySwitchOffEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
+type HelpInstructionEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
+type HelpDefinitionEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
+type HelpSourceEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
+type ErrorEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
+type WarningEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
+type InfoEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
+type ConfirmationEvent = Parameters<
+  NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>
+>[0];
 type InputTextProps = ComponentProps<"oj-input-text">;
 
 export default function SwitchStatesExample() {
@@ -51,55 +90,55 @@ export default function SwitchStatesExample() {
   );
 
   const handleEnabledSwitchOnChanged = useCallback(
-    (event: any) => setEnabledSwitchOn(Boolean(event.detail.value)),
+    (event: EnabledSwitchOnEvent) => setEnabledSwitchOn(Boolean(event.detail.value)),
     [],
   );
   const handleDisabledSwitchOnChanged = useCallback(
-    (event: any) => setDisabledSwitchOn(Boolean(event.detail.value)),
+    (event: DisabledSwitchOnEvent) => setDisabledSwitchOn(Boolean(event.detail.value)),
     [],
   );
   const handleReadonlySwitchOnChanged = useCallback(
-    (event: any) => setReadonlySwitchOn(Boolean(event.detail.value)),
+    (event: ReadonlySwitchOnEvent) => setReadonlySwitchOn(Boolean(event.detail.value)),
     [],
   );
   const handleEnabledSwitchOffChanged = useCallback(
-    (event: any) => setEnabledSwitchOff(Boolean(event.detail.value)),
+    (event: EnabledSwitchOffEvent) => setEnabledSwitchOff(Boolean(event.detail.value)),
     [],
   );
   const handleDisabledSwitchOffChanged = useCallback(
-    (event: any) => setDisabledSwitchOff(Boolean(event.detail.value)),
+    (event: DisabledSwitchOffEvent) => setDisabledSwitchOff(Boolean(event.detail.value)),
     [],
   );
   const handleReadonlySwitchOffChanged = useCallback(
-    (event: any) => setReadonlySwitchOff(Boolean(event.detail.value)),
+    (event: ReadonlySwitchOffEvent) => setReadonlySwitchOff(Boolean(event.detail.value)),
     [],
   );
   const handleHelpInstructionChanged = useCallback(
-    (event: any) => setHelpInstructionSwitch(Boolean(event.detail.value)),
+    (event: HelpInstructionEvent) => setHelpInstructionSwitch(Boolean(event.detail.value)),
     [],
   );
   const handleHelpDefinitionChanged = useCallback(
-    (event: any) => setHelpDefinitionSwitch(Boolean(event.detail.value)),
+    (event: HelpDefinitionEvent) => setHelpDefinitionSwitch(Boolean(event.detail.value)),
     [],
   );
   const handleHelpSourceChanged = useCallback(
-    (event: any) => setHelpSourceSwitch(Boolean(event.detail.value)),
+    (event: HelpSourceEvent) => setHelpSourceSwitch(Boolean(event.detail.value)),
     [],
   );
   const handleErrorChanged = useCallback(
-    (event: any) => setErrorSwitch(Boolean(event.detail.value)),
+    (event: ErrorEvent) => setErrorSwitch(Boolean(event.detail.value)),
     [],
   );
   const handleWarningChanged = useCallback(
-    (event: any) => setWarningSwitch(Boolean(event.detail.value)),
+    (event: WarningEvent) => setWarningSwitch(Boolean(event.detail.value)),
     [],
   );
   const handleInfoChanged = useCallback(
-    (event: any) => setInfoSwitch(Boolean(event.detail.value)),
+    (event: InfoEvent) => setInfoSwitch(Boolean(event.detail.value)),
     [],
   );
   const handleConfirmationChanged = useCallback(
-    (event: any) => setConfirmationSwitch(Boolean(event.detail.value)),
+    (event: ConfirmationEvent) => setConfirmationSwitch(Boolean(event.detail.value)),
     [],
   );
 
@@ -156,7 +195,7 @@ export default function SwitchStatesExample() {
           <oj-switch
             value={helpInstructionSwitch}
             labelHint="help.instruction"
-            help={{ instruction: "help.instruction text" } as any}
+            help={{ instruction: "help.instruction text" } as ComponentProps<'oj-switch'>['help']}
             onvalueChanged={handleHelpInstructionChanged}
           />
           <oj-switch
@@ -178,27 +217,27 @@ export default function SwitchStatesExample() {
           <oj-switch
             value={errorSwitch}
             labelHint="Error"
-            messagesCustom={errorMessages as any}
+            messagesCustom={errorMessages as ComponentProps<'oj-switch'>['messagesCustom']}
             onvalueChanged={handleErrorChanged}
           />
           <oj-switch
             value={warningSwitch}
             labelHint="Warning"
-            messagesCustom={warningMessages as any}
+            messagesCustom={warningMessages as ComponentProps<'oj-switch'>['messagesCustom']}
             onvalueChanged={handleWarningChanged}
           />
           <oj-switch
             id="airplaneModeInformation"
             value={infoSwitch}
             labelHint="Information"
-            messagesCustom={infoMessages as any}
+            messagesCustom={infoMessages as ComponentProps<'oj-switch'>['messagesCustom']}
             onvalueChanged={handleInfoChanged}
           />
           <oj-switch
             id="airplaneModeConfirmation"
             labelHint="Confirmation"
             value={confirmationSwitch}
-            messagesCustom={confirmationMessages as any}
+            messagesCustom={confirmationMessages as ComponentProps<'oj-switch'>['messagesCustom']}
             onvalueChanged={handleConfirmationChanged}
           />
         </oj-form-layout>

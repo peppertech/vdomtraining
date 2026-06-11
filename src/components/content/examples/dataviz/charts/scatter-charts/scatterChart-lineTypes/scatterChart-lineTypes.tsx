@@ -23,7 +23,7 @@ export const ScatterChartLineTypes = () => {
     const handleLineTypeValueChanged = (event: JetElementCustomEvent<ChartLineType>) => {
         setLineTypeValue(event.detail.value ?? 'curved');
     };
-    const itemTemplateRenderer = (item: any) => (<oj-chart-item x={item.data.x} y={item.data.y} groupId={[item.data.group]} seriesId={item.data.series}/>);
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-chart-item x={item.data.x} y={item.data.y} groupId={[item.data.group]} seriesId={item.data.series}/>);
     const ojChartProps: Partial<ComponentProps<'oj-chart'>> = {
         styleDefaults: {
             lineType: lineTypeValue,

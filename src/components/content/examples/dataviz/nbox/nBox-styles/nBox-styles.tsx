@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
@@ -35,30 +34,57 @@ type PropertyChangedEvent<T> = CustomEvent<{
 type NullableArrayChangedEvent<T> = CustomEvent<{
     value: T[] | null;
 }>;
+type StyleObject = Record<string, string | number>;
+type NBoxTab = 'gridStyles' | 'cellStyles' | 'nodeStyles';
+type CellLabelAlign = 'start' | 'center' | 'end';
+type CountLabelContext = {
+    nodeCount: number;
+    totalNodeCount: number;
+};
+type NBoxCellDefaults = {
+    labelStyle: StyleObject;
+    labelHalign?: CellLabelAlign;
+};
+type NBoxNodeDefaults = {
+    labelStyle: StyleObject;
+    secondaryLabelStyle: StyleObject;
+    borderWidth: number;
+    color?: string;
+    indicatorColor?: string;
+    borderColor?: string;
+};
+type NBoxStyleDefaults = {
+    rowsTitleStyle: StyleObject;
+    rowLabelStyle: StyleObject;
+    columnsTitleStyle: StyleObject;
+    columnLabelStyle: StyleObject;
+    cellDefaults?: NBoxCellDefaults;
+    nodeDefaults?: NBoxNodeDefaults;
+};
 
 const data = JSON.parse(jsonDataText as string) as Employee[];
 
 export const NBoxStyles = () => {
-    const [currentTab, setCurrentTab] = useState<any>('gridStyles');
-    const [rowsTitleStyle, setRowsTitleStyle] = useState<any>({ color: '#000000' });
-    const [rowsTitleShow, setRowsTitleShow] = useState<any[]>(['true']);
-    const [rowLabelStyle, setRowLabelStyle] = useState<any>({ fontWeight: 'bold' });
-    const [rowLabelShow, setRowLabelShow] = useState<any[]>(['true']);
-    const [columnsTitleStyle, setColumnsTitleStyle] = useState<any>({ color: '#000000' });
-    const [columnsTitleShow, setColumnsTitleShow] = useState<any[]>(['true']);
-    const [columnLabelStyle, setColumnLabelStyle] = useState<any>({ fontWeight: 'bold' });
-    const [columnLabelShow, setColumnLabelShow] = useState<any[]>(['true']);
-    const [cellLabelStyle, setCellLabelStyle] = useState<any>({ color: '#226622' });
-    const [cellLabelShow, setCellLabelShow] = useState<any[]>(['true']);
-    const [cellShowCount, setCellShowCount] = useState<any[]>([]);
-    const [cellCustomCount, setCellCustomCount] = useState<any[]>([]);
-    const [cellLabelAlign, setCellLabelAlign] = useState<any>('start');
-    const [nodeColor, setNodeColor] = useState<any>('rgb(255,255,255)');
-    const [nodeIndicatorColor, setNodeIndicatorColor] = useState<any>('rgb(97, 99, 96)');
-    const [nodeLabelStyle, setNodeLabelStyle] = useState<any>({ color: '#000000' });
-    const [nodeSecondaryLabelStyle, setNodeSecondaryLabelStyle] = useState<any>({ color: '#000000' });
-    const [nodeBorderColor, setNodeBorderColor] = useState<any>('rgb(0,0,0)');
-    const [nodeBorderWidth, setNodeBorderWidth] = useState<any>(0);
+    const [currentTab, setCurrentTab] = useState<NBoxTab>('gridStyles');
+    const [rowsTitleStyle, setRowsTitleStyle] = useState<StyleObject>({ color: '#000000' });
+    const [rowsTitleShow, setRowsTitleShow] = useState<string[]>(['true']);
+    const [rowLabelStyle, setRowLabelStyle] = useState<StyleObject>({ fontWeight: 'bold' });
+    const [rowLabelShow, setRowLabelShow] = useState<string[]>(['true']);
+    const [columnsTitleStyle, setColumnsTitleStyle] = useState<StyleObject>({ color: '#000000' });
+    const [columnsTitleShow, setColumnsTitleShow] = useState<string[]>(['true']);
+    const [columnLabelStyle, setColumnLabelStyle] = useState<StyleObject>({ fontWeight: 'bold' });
+    const [columnLabelShow, setColumnLabelShow] = useState<string[]>(['true']);
+    const [cellLabelStyle, setCellLabelStyle] = useState<StyleObject>({ color: '#226622' });
+    const [cellLabelShow, setCellLabelShow] = useState<string[]>(['true']);
+    const [cellShowCount, setCellShowCount] = useState<string[]>([]);
+    const [cellCustomCount, setCellCustomCount] = useState<string[]>([]);
+    const [cellLabelAlign, setCellLabelAlign] = useState<CellLabelAlign>('start');
+    const [nodeColor, setNodeColor] = useState<string>('rgb(255,255,255)');
+    const [nodeIndicatorColor, setNodeIndicatorColor] = useState<string>('rgb(97, 99, 96)');
+    const [nodeLabelStyle, setNodeLabelStyle] = useState<StyleObject>({ color: '#000000' });
+    const [nodeSecondaryLabelStyle, setNodeSecondaryLabelStyle] = useState<StyleObject>({ color: '#000000' });
+    const [nodeBorderColor, setNodeBorderColor] = useState<string>('rgb(0,0,0)');
+    const [nodeBorderWidth, setNodeBorderWidth] = useState<number>(0);
     const dataProvider = useMemo(
         () => new ArrayDataProvider<Employee['name'], Employee>(data, { keyAttributes: 'name' }),
         []
@@ -108,8 +134,8 @@ export const NBoxStyles = () => {
         if (!cellCustomCount[0]) {
             return null;
         }
-        return (dataContext: any) => {
-            let s = dataContext.nodeCount;
+        return (dataContext: CountLabelContext) => {
+            let s = String(dataContext.nodeCount);
             const percent = Math.round((100 * dataContext.nodeCount) / dataContext.totalNodeCount);
             s += ` (${percent}%)`;
             return s;
@@ -118,18 +144,18 @@ export const NBoxStyles = () => {
     const rowsTitle = useMemo(() => (rowsTitleShow[0] ? 'Potential' : undefined), [rowsTitleShow]);
     const columnsTitle = useMemo(() => (columnsTitleShow[0] ? 'Performance' : undefined), [columnsTitleShow]);
     const styleDefaults = useMemo(() => {
-        const defaults: any = {
+        const defaults: NBoxStyleDefaults = {
             rowsTitleStyle,
             rowLabelStyle,
             columnsTitleStyle,
             columnLabelStyle
         };
-        const cellDefaults: any = { labelStyle: cellLabelStyle };
+        const cellDefaults: NBoxCellDefaults = { labelStyle: cellLabelStyle };
         if (cellLabelAlign) {
             cellDefaults.labelHalign = cellLabelAlign;
         }
         defaults.cellDefaults = cellDefaults;
-        const nodeDefaults: any = {
+        const nodeDefaults: NBoxNodeDefaults = {
             labelStyle: nodeLabelStyle,
             secondaryLabelStyle: nodeSecondaryLabelStyle,
             borderWidth: nodeBorderWidth
@@ -164,65 +190,65 @@ export const NBoxStyles = () => {
         { id: 'cellStyles', label: 'Cell Styles' },
         { id: 'nodeStyles', label: 'Node Styles' }
     ], []);
-    const handleCurrentTabValueChanged = (event: PropertyChangedEvent<any>) => {
+    const handleCurrentTabValueChanged = (event: PropertyChangedEvent<NBoxTab>) => {
         setCurrentTab(event.detail.value);
     };
-    const handleRowsTitleStyleValueChanged = (event: PropertyChangedEvent<any>) => {
+    const handleRowsTitleStyleValueChanged = (event: PropertyChangedEvent<StyleObject>) => {
         setRowsTitleStyle(event.detail.value);
     };
-    const handleRowsTitleShowValueChanged = (event: NullableArrayChangedEvent<any>) => {
+    const handleRowsTitleShowValueChanged = (event: NullableArrayChangedEvent<string>) => {
         setRowsTitleShow(event.detail.value ?? []);
     };
-    const handleRowLabelStyleValueChanged = (event: PropertyChangedEvent<any>) => {
+    const handleRowLabelStyleValueChanged = (event: PropertyChangedEvent<StyleObject>) => {
         setRowLabelStyle(event.detail.value);
     };
-    const handleRowLabelShowValueChanged = (event: NullableArrayChangedEvent<any>) => {
+    const handleRowLabelShowValueChanged = (event: NullableArrayChangedEvent<string>) => {
         setRowLabelShow(event.detail.value ?? []);
     };
-    const handleColumnsTitleStyleValueChanged = (event: PropertyChangedEvent<any>) => {
+    const handleColumnsTitleStyleValueChanged = (event: PropertyChangedEvent<StyleObject>) => {
         setColumnsTitleStyle(event.detail.value);
     };
-    const handleColumnsTitleShowValueChanged = (event: NullableArrayChangedEvent<any>) => {
+    const handleColumnsTitleShowValueChanged = (event: NullableArrayChangedEvent<string>) => {
         setColumnsTitleShow(event.detail.value ?? []);
     };
-    const handleColumnLabelStyleValueChanged = (event: PropertyChangedEvent<any>) => {
+    const handleColumnLabelStyleValueChanged = (event: PropertyChangedEvent<StyleObject>) => {
         setColumnLabelStyle(event.detail.value);
     };
-    const handleColumnLabelShowValueChanged = (event: NullableArrayChangedEvent<any>) => {
+    const handleColumnLabelShowValueChanged = (event: NullableArrayChangedEvent<string>) => {
         setColumnLabelShow(event.detail.value ?? []);
     };
-    const handleCellLabelStyleValueChanged = (event: PropertyChangedEvent<any>) => {
+    const handleCellLabelStyleValueChanged = (event: PropertyChangedEvent<StyleObject>) => {
         setCellLabelStyle(event.detail.value);
     };
-    const handleCellLabelShowValueChanged = (event: NullableArrayChangedEvent<any>) => {
+    const handleCellLabelShowValueChanged = (event: NullableArrayChangedEvent<string>) => {
         setCellLabelShow(event.detail.value ?? []);
     };
-    const handleCellShowCountValueChanged = (event: NullableArrayChangedEvent<any>) => {
+    const handleCellShowCountValueChanged = (event: NullableArrayChangedEvent<string>) => {
         setCellShowCount(event.detail.value ?? []);
     };
-    const handleCellCustomCountValueChanged = (event: NullableArrayChangedEvent<any>) => {
+    const handleCellCustomCountValueChanged = (event: NullableArrayChangedEvent<string>) => {
         setCellCustomCount(event.detail.value ?? []);
     };
-    const handleCellLabelAlignValueChanged = (event: PropertyChangedEvent<any>) => {
+    const handleCellLabelAlignValueChanged = (event: PropertyChangedEvent<CellLabelAlign>) => {
         setCellLabelAlign(event.detail.value);
     };
-    const handleNodeColorValueChanged = (event: PropertyChangedEvent<any>) => {
+    const handleNodeColorValueChanged = (event: PropertyChangedEvent<string>) => {
         setNodeColor(event.detail.value);
     };
-    const handleNodeIndicatorColorValueChanged = (event: PropertyChangedEvent<any>) => {
+    const handleNodeIndicatorColorValueChanged = (event: PropertyChangedEvent<string>) => {
         setNodeIndicatorColor(event.detail.value);
     };
-    const handleNodeLabelStyleValueChanged = (event: PropertyChangedEvent<any>) => {
+    const handleNodeLabelStyleValueChanged = (event: PropertyChangedEvent<StyleObject>) => {
         setNodeLabelStyle(event.detail.value);
     };
-    const handleNodeSecondaryLabelStyleValueChanged = (event: PropertyChangedEvent<any>) => {
+    const handleNodeSecondaryLabelStyleValueChanged = (event: PropertyChangedEvent<StyleObject>) => {
         setNodeSecondaryLabelStyle(event.detail.value);
     };
-    const handleNodeBorderColorValueChanged = (event: PropertyChangedEvent<any>) => {
+    const handleNodeBorderColorValueChanged = (event: PropertyChangedEvent<string>) => {
         setNodeBorderColor(event.detail.value);
     };
-    const handleNodeBorderWidthValueChanged = (event: PropertyChangedEvent<any>) => {
-        setNodeBorderWidth(event.detail.value);
+    const handleNodeBorderWidthValueChanged = (event: PropertyChangedEvent<number | null>) => {
+        setNodeBorderWidth(event.detail.value ?? 0);
     };
 
     const nboxStyleProps = useMemo(

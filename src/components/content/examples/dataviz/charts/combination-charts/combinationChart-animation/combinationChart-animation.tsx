@@ -75,7 +75,7 @@ export const CombinationChartAnimation = () => {
       numGroupsRef.current = numGroupsRef.current <= 4 ? numGroupsRef.current + 1 : numGroupsRef.current - 1;
       setObservableData(getData());
   };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>;
   };
 

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
@@ -20,7 +19,7 @@ interface EmployeeData {
 }
 
 export const TableActionTable = () => {
-  const [empArray, setEmpArray] = useState<any[]>(JSON.parse(empData));
+  const [empArray, setEmpArray] = useState<EmployeeData[]>(() => JSON.parse(empData as string) as EmployeeData[]);
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Employee Id', field: 'EmployeeId', id: 'id' },
       { headerText: 'Employee Name', template: 'empNameTemplate', id: 'name' },
@@ -47,7 +46,7 @@ export const TableActionTable = () => {
       implicitSort: [{ attribute: 'EmployeeId', direction: 'ascending' }]
   }), [empArray]);
 
-  const handleApprove = (event: ojButton.ojAction, context: ojTable.CellTemplateContext<EmployeeData['EmployeeId'], EmployeeData>) => {
+  const handleApprove = (_event: ojButton.ojAction, context: ojTable.CellTemplateContext<EmployeeData['EmployeeId'], EmployeeData>) => {
       setEmpArray((current) => current.map((row) => row.EmployeeId === context.item.data.EmployeeId ? { ...row, Status: 'Approved' } : row));
   };
 

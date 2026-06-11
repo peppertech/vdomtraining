@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
@@ -13,7 +12,7 @@ interface DepartmentData {
 }
 
 export const TableCustomSortableTable = () => {
-  const deptArray: any = JSON.parse(deptData);
+  const deptArray: DepartmentData[] = JSON.parse(deptData as string) as DepartmentData[];
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Department Id', field: 'DepartmentId', id: 'depId', minWidth: '10rem' },
       { headerText: 'Department Name', field: 'DepartmentName', id: 'depName', minWidth: '10rem' },

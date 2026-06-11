@@ -33,7 +33,7 @@ export const DiagramContainers = () => {
     }), [data]);
     const expandedNodes = useMemo(() => new KeySetImpl(['N0', 'N00']), []);
     const layoutFunc: DiagramLayout = layout.containerLayout;
-    const nodeTemplateRenderer = (node: any) => {
+    const nodeTemplateRenderer = (node: DatavizTemplateContext<DatavizChartDatum>) => {
         const ojDiagramNodeProps: Partial<ComponentProps<'oj-diagram-node'>> = { icon: {
                 width: 70,
                 height: 30,
@@ -45,7 +45,7 @@ export const DiagramContainers = () => {
             } };
         return <oj-diagram-node label={node.data.id} shortDesc={"Node " + node.data.id} {...ojDiagramNodeProps}/>;
     };
-    const linkTemplateRenderer = (link: any) => {
+    const linkTemplateRenderer = (link: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-diagram-link startNode={link.data.startNode} endNode={link.data.endNode} startConnectorType="circle" endConnectorType="arrow" shortDesc={"Link " + link.data.id + " connects " + link.data.startNode + " to " + link.data.endNode}/>;
     };
     return (<oj-diagram id="diagram-container" animationOnDataChange="auto" animationOnDisplay="auto" nodeData={nodeDataProvider} linkData={linkDataProvider} layout={layoutFunc} maxZoom={2.0} promotedLinkBehavior="full" expanded={expandedNodes}>

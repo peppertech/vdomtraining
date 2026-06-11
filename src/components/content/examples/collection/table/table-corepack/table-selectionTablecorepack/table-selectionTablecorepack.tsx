@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
@@ -9,8 +8,7 @@ import 'ojs/ojtable';
 import 'ojs/ojbutton';
 import 'ojs/ojselectsingle';
 import 'ojs/ojformlayout';
-import { KeySetImpl, AllKeySetImpl } from 'ojs/ojkeyset';
-// import 'ojs/ojtextarea';
+import { KeySet, KeySetImpl, AllKeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojinputtext';
 
 interface Employee {
@@ -21,18 +19,30 @@ interface Employee {
 }
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type TableSelectedItems = {
+    row?: KeySet<Employee['DepartmentId']>;
+    column?: KeySet<string>;
+};
+type TableSelectionMode = {
+    row: 'none' | 'single' | 'multiple' | 'multipleToggle';
+    column: 'none' | 'single' | 'multiple';
+};
+type SelectionModeOption = {
+    value: TableSelectionMode;
+    label: string;
+};
 
 export const TableSelectionTablecorepack = () => {
-  const [selectedItems, setSelectedItems] = useState<any>({
-      row: new KeySetImpl(),
-      column: new KeySetImpl()
-  });
-  const [isDisabled, setIsDisabled] = useState<any>(true);
-  const [selectionInfo, setSelectionInfo] = useState<any>('');
-  const [selectedSelectionMode, setSelectedSelectionMode] = useState<any>({
-      row: 'multiple',
-      column: 'none'
-  });
+  const [selectedItems, setSelectedItems] = useState<TableSelectedItems>({
+	      row: new KeySetImpl(),
+	      column: new KeySetImpl()
+	  });
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [selectionInfo, setSelectionInfo] = useState('');
+  const [selectedSelectionMode, setSelectedSelectionMode] = useState<TableSelectionMode>({
+	      row: 'multiple',
+	      column: 'none'
+	  });
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Department Id', field: 'DepartmentId', id: 'depId' },
       { headerText: 'Department Name', field: 'DepartmentName', id: 'depName' },
@@ -43,11 +53,11 @@ export const TableSelectionTablecorepack = () => {
       accessibility: { rowHeader: 'depName' }
   };
 
-  const deptArray: any = JSON.parse(deptData);
-  const dataprovider = useMemo(() => new ArrayDataProvider(deptArray, {
-      keyAttributes: 'DepartmentId'
-  }), [deptArray]);
-  const selectionModes = useMemo(() => [
+  const deptArray: Employee[] = JSON.parse(deptData as string) as Employee[];
+  const dataprovider = useMemo(() => new ArrayDataProvider<Employee['DepartmentId'], Employee>(deptArray, {
+	      keyAttributes: 'DepartmentId'
+	  }), [deptArray]);
+  const selectionModes = useMemo<SelectionModeOption[]>(() => [
       { value: { row: 'none', column: 'single' }, label: 'Single Column' },
       { value: { row: 'none', column: 'multiple' }, label: 'Multiple Column' },
       { value: { row: 'single', column: 'none' }, label: 'Single Row' },
@@ -58,8 +68,8 @@ export const TableSelectionTablecorepack = () => {
       keyAttributes: 'value'
   }), [selectionModes]);
 
-  const handleSelectedSelectionModeValueChanged = (event: PropertyChangedEvent<any>) => {
-    setSelectedSelectionMode(event.detail.value);
+  const handleSelectedSelectionModeValueChanged = (event: PropertyChangedEvent<TableSelectionMode>) => {
+    setSelectedSelectionMode(event.detail.value ?? { row: 'multiple', column: 'none' });
   };
 
   const selectedChangedListener = (event: ojTable.selectedChanged<Employee['DepartmentId'], Employee>) => {

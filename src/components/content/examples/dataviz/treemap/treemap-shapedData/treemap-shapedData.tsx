@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
@@ -7,7 +6,7 @@ import * as jsonData from 'text!../data/cookbook/dataVisualizations/treeView/res
 import 'ojs/ojtreemap';
 
 export const TreemapShapedData = () => {
-  const nodes: any = JSON.parse(jsonData);
+  const nodes = JSON.parse(jsonData) as DatavizChartDatum[];
   const treemapData = useMemo(() => new ArrayTreeDataProvider(nodes, {
       keyAttributes: 'label',
       childrenAttribute: 'nodes'

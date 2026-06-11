@@ -36,8 +36,8 @@ export const AreaChartDataLabels = () => {
     const handleStackValueStackChanged = (event: JetElementCustomEvent<ChartStack>) => {
         setStackValue(event.detail.value);
     };
-    const itemTemplateRenderer = (item: any) => {
-        return <oj-chart-item value={item.data.value} groupId={[item.data.quarter]} seriesId={item.data.series} label={(item.data.id === 2 || item.data.id === 5) ? item.data.quarter : ''}/>;
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
+        return <oj-chart-item value={item.data.value} groupId={[item.data.quarter]} seriesId={item.data.series} label={(Number(item.data.id) === 2 || Number(item.data.id) === 5) ? item.data.quarter : ''}/>;
     };
     const ojChartProps: Partial<ComponentProps<'oj-chart'>> = { styleDefaults: {
             dataLabelPosition: labelPosition,

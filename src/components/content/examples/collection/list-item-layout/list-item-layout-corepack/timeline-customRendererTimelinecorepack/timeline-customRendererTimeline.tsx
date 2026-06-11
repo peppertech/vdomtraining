@@ -3,6 +3,7 @@ import { h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import * as employeeStartDataText from 'text!../../../data/cookbook/dataVisualizations/timeline/customRendererTimeline/employeeStartData.json';
+import type { ojTimeline } from 'ojs/ojtimeline';
 import 'ojs/ojtimeline';
 import 'oj-c/avatar';
 import 'oj-c/list-item-layout';
@@ -18,24 +19,41 @@ type TimelineEmployeeItem = {
   begin: string;
   series: string;
 };
+type TimelineSeriesContext = ojTimeline.SeriesTemplateContext<
+  TimelineEmployeeItem['id'],
+  TimelineEmployeeItem
+>;
+type TimelineItemContext = ojTimeline.ItemTemplateContext<
+  TimelineEmployeeItem['id'],
+  TimelineEmployeeItem
+>;
+type TimelineBubbleContext = {
+  data: TimelineEmployeeItem;
+  itemData: TimelineEmployeeItem;
+};
+type MenuItem = {
+  id: string;
+  label: string;
+  icon: string;
+};
 
-const employeeItems = (JSON.parse(employeeStartDataText) as TimelineEmployeeItem[]).map((item: any) => ({
+const employeeItems = (JSON.parse(employeeStartDataText) as TimelineEmployeeItem[]).map((item) => ({
   ...item,
   image: `/styles/images/listItemImages/${item.image.split('/').pop()}`
 }));
 const majorAxis = { scale: 'quarters' };
 const minorAxis = { scale: 'weeks', zoomOrder: ['months', 'weeks', 'days'] };
-const menuItems = [
+const menuItems: MenuItem[] = [
   { id: 'save', label: 'Save', icon: 'oj-ux-ico-save' },
   { id: 'download', label: 'Download', icon: 'oj-ux-ico-download' },
   { id: 'print', label: 'Print...', icon: 'oj-ux-ico-print' }
 ];
 
-const renderSeriesTemplate = (series: any) => (
+const renderSeriesTemplate = (series: TimelineSeriesContext) => (
   <oj-timeline-series label={series.id} emptyText="No Data." />
 );
 
-const renderItemTemplate = (item: any) => (
+const renderItemTemplate = (item: TimelineItemContext) => (
   <oj-timeline-item
     seriesId={item.data.series}
     start={item.data.begin}
@@ -57,7 +75,7 @@ export const TimelineCustomRendererTimeline = () => {
   const referenceObjects = useMemo(() => [{ value: currentDate }], [currentDate]);
   const bubbleX = document.documentElement.getAttribute('dir') === 'ltr' ? '0' : '-22.5em';
 
-  const renderItemBubbleContentTemplate = (item: any) => (
+  const renderItemBubbleContentTemplate = (item: TimelineBubbleContext) => (
     <svg class="demo-timeline-bubble">
       <g>
         <foreignObject x={bubbleX} y="0" width="24.5em" height="6.0em">
@@ -80,7 +98,7 @@ export const TimelineCustomRendererTimeline = () => {
             <div slot="action">
               <oj-menu-button chroming="borderless" id={`menu${item.data.id}`} class="oj-button-sm" display="icons">
                 <oj-menu slot="menu">
-                  {menuItems.map((menuItem: any) => (
+                  {menuItems.map((menuItem) => (
                     <oj-option key={`${menuItem.id}${item.data.id}`} value={menuItem.label} id={`${menuItem.id}${item.data.id}`}>
                       <span slot="startIcon" class={menuItem.icon}></span>
                       <span>{menuItem.label}</span>

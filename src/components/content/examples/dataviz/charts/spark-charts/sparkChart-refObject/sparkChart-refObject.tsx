@@ -50,13 +50,13 @@ const constantArea = {
   shortDesc: 'Sample Reference Area'
 };
 
-const renderValueItem = (item: any) => <oj-spark-chart-item value={item.data.val} />;
+const renderValueItem = (item: DatavizTemplateContext<DatavizChartDatum>) => <oj-spark-chart-item value={item.data.val} />;
 
-const renderRangeItem = (item: any) => (
+const renderRangeItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-spark-chart-item low={item.data.value0} high={item.data.value1} />
 );
 
-const SparkChartRow = ({ label, children }: any) => (
+const SparkChartRow = ({ label, children }: DatavizSparkChartRowProps) => (
   <tr>
     <td>{label}</td>
     <td>{children}</td>

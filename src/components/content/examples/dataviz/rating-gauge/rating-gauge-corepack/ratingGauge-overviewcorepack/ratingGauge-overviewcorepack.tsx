@@ -165,10 +165,10 @@ export const RatingGaugeOverviewcorepack = () => {
           value={3}
           thresholds={thresholdValues}
         />
-      </div>
-      <div class="rating-gauge-overview-note oj-typography-body-md oj-typography-semi-bold oj-sm-margin-4x-top">
-        * <i>sm</i> and <i>md</i> sizes are not recommended for interactive gauges as the touch
-        target sizes are not large enough to meet the accessibility guidelines.
+        <div class="rating-gauge-overview-note oj-typography-body-md oj-typography-semi-bold oj-sm-margin-4x-top">
+          * <i>sm</i> and <i>md</i> sizes are not recommended for interactive gauges as the touch
+          target sizes are not large enough to meet the accessibility guidelines.
+        </div>
       </div>
     </div>
   );

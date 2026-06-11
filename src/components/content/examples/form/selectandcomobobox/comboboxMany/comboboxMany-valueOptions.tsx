@@ -1,8 +1,17 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectcombobox";
 import { createStatesDataProvider } from "./comboboxMany-shared";
 
+type ValueOnlyEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-many">["onvalueChanged"]>
+>[0];
+type ValueOptionsEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-many">["onvalueChanged"]>
+>[0];
+type SelectedOptionsEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-many">["onvalueOptionsChanged"]>
+>[0];
 const initialValueOptions = [
   { value: "CA", label: "California" },
   { value: "MA", label: "Massachusetts" },
@@ -20,16 +29,18 @@ export default function ComboboxManyValueOptionsExample() {
   ]);
   const [valueOptions, setValueOptions] = useState(initialValueOptions);
 
-  const handleValueOnlyChanged = useCallback((event: any) => {
-    setValueOnlySelection(event.detail.value ?? []);
+  const handleValueOnlyChanged = useCallback((event: ValueOnlyEvent) => {
+    setValueOnlySelection((event.detail.value as string[] | null | undefined) ?? []);
   }, []);
 
-  const handleValueOptionsChanged = useCallback((event: any) => {
-    setValueOptionsSelection(event.detail.value ?? []);
+  const handleValueOptionsChanged = useCallback((event: ValueOptionsEvent) => {
+    setValueOptionsSelection((event.detail.value as string[] | null | undefined) ?? []);
   }, []);
 
-  const handleSelectedOptionsChanged = useCallback((event: any) => {
-    setValueOptions(event.detail.value ?? []);
+  const handleSelectedOptionsChanged = useCallback((event: SelectedOptionsEvent) => {
+    setValueOptions(
+      (event.detail.value as typeof initialValueOptions | null | undefined) ?? [],
+    );
   }, []);
 
   return (

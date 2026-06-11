@@ -52,7 +52,7 @@ const generateChartData = (numGroups: number, numSeries: number, chartType: Char
     });
 };
 const buildChartList = (numCharts: number, numGroups: number, numSeries: number, chartType: ChartType, shapedValue: 'on' | 'off') => {
-    return Array.from({ length: numCharts }, (_: any, index: any) => ({
+    return Array.from({ length: numCharts }, (_unused: unknown, index: number) => ({
         id: `chart-${index + 1}`,
         chartType,
         shapedValue,
@@ -79,7 +79,7 @@ export const ChartPerformanceMultiple = () => {
     const legendOffChartProps: Partial<ComponentProps<'oj-chart'>> = { legend: {
             rendered: 'off'
         } };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} groupId={item.data.groupId} seriesId={item.data.seriesId} x={item.data.x} y={item.data.y} z={item.data.z}/>;
     };
     const handleNumChartsValueChanged = (event: NumberValueChangedEvent) => {

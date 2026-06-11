@@ -1,11 +1,24 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectcombobox";
+
 import {
   createBrowserLabelDataProvider,
   formatEventDetail,
 } from "./comboboxMany-shared";
 
+type InlineValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-many">["onvalueChanged"]>
+>[0];
+type InlineValueOptionsEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-many">["onvalueOptionsChanged"]>
+>[0];
+type DpValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-many">["onvalueChanged"]>
+>[0];
+type DpValueOptionsEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-many">["onvalueOptionsChanged"]>
+>[0];
 export default function ComboboxManyEventsExample() {
   const dataProvider = useMemo(() => createBrowserLabelDataProvider(), []);
   const [inlineValue, setInlineValue] = useState<string[]>(["Chrome", "Safari"]);
@@ -15,21 +28,21 @@ export default function ComboboxManyEventsExample() {
   const [dpValueLog, setDpValueLog] = useState("");
   const [dpValueOptionsLog, setDpValueOptionsLog] = useState("");
 
-  const handleInlineValueChanged = useCallback((event: any) => {
-    setInlineValue(event.detail.value ?? []);
+  const handleInlineValueChanged = useCallback((event: InlineValueEvent) => {
+    setInlineValue((event.detail.value as string[] | null | undefined) ?? []);
     setInlineValueLog(formatEventDetail(event.detail));
   }, []);
 
-  const handleInlineValueOptionsChanged = useCallback((event: any) => {
+  const handleInlineValueOptionsChanged = useCallback((event: InlineValueOptionsEvent) => {
     setInlineValueOptionsLog(formatEventDetail(event.detail));
   }, []);
 
-  const handleDpValueChanged = useCallback((event: any) => {
-    setDpValue(event.detail.value ?? []);
+  const handleDpValueChanged = useCallback((event: DpValueEvent) => {
+    setDpValue((event.detail.value as string[] | null | undefined) ?? []);
     setDpValueLog(formatEventDetail(event.detail));
   }, []);
 
-  const handleDpValueOptionsChanged = useCallback((event: any) => {
+  const handleDpValueOptionsChanged = useCallback((event: DpValueOptionsEvent) => {
     setDpValueOptionsLog(formatEventDetail(event.detail));
   }, []);
 

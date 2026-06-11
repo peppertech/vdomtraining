@@ -35,7 +35,7 @@ export const SunburstProgressiveLoading = () => {
 
   const getColor = (): string => colorHandler.getValue(Math.floor(Math.random() * 4).toString());
 
-  const nodeTemplateRenderer = ($current: any) => (
+  const nodeTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-sunburst-node
       label={$current.data.label}
       value={$current.data.value}
@@ -52,7 +52,7 @@ export const SunburstProgressiveLoading = () => {
             id="fetch-delay-input"
             min={0}
             step={0}
-            onvalueChanged={(event: any) => setDelay(event.detail.value ?? 0)}
+            onvalueChanged={(event: DatavizValueChangedEvent<number | null>) => setDelay(event.detail.value ?? 0)}
             value={delay}
             labelHint="Fetch delay (ms)"
           />

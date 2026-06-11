@@ -27,7 +27,7 @@ const defaultSelection = [0];
 export const PieChartSelection = () => {
   const [modeValue, setModeValue] = useState<SelectionMode>('multiple');
   const [effectValue, setEffectValue] = useState<SelectionEffect>('explode');
-  const [selectionValue, setSelectionValue] = useState<any[]>(defaultSelection);
+  const [selectionValue, setSelectionValue] = useState<number[]>(defaultSelection);
   const dataProvider = useMemo(
     () => new ArrayDataProvider<ChartDatum['id'], ChartDatum>(jsonData, { keyAttributes: 'id' }),
     []

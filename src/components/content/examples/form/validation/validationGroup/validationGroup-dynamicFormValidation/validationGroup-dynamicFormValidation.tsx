@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import type { ojValidationGroup } from 'ojs/ojvalidationgroup';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -10,19 +9,19 @@ import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojvalidationgroup';
 
-type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
-type SelectSingleValue = ComponentProps<'oj-c-select-single'>['value'];
 type InputTextChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>
 >[0];
 type SelectSingleChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-select-single'>['onvalueChanged']>
 >[0];
-type ButtonActionEvent = Parameters<NonNullable<ComponentProps<'oj-button'>['onojAction']>>[0];
-type ValidationGroupValid = ComponentProps<'oj-validation-group'>['valid'];
 type ValidationGroupValidChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-validation-group'>['onvalidChanged']>
 >[0];
+type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
+type SelectSingleValue = ComponentProps<'oj-c-select-single'>['value'];
+type ButtonActionEvent = Parameters<NonNullable<ComponentProps<'oj-button'>['onojAction']>>[0];
+type ValidationGroupValid = ComponentProps<'oj-validation-group'>['valid'];
 
 type ContactTypeOption = {
   value: string;
@@ -148,7 +147,7 @@ export const ValidationGroupDynamicFormValidation = () => {
   );
 
   const handleValidChanged = (event: ValidationGroupValidChangedEvent) => {
-    setGroupValid(event.detail.value);
+    setGroupValid((event.detail.value as ValidationGroupValid));
   };
 
   const handleAddContactNumber = () => {
@@ -198,11 +197,11 @@ export const ValidationGroupDynamicFormValidation = () => {
   };
 
   const handleFirstNameChanged = (event: InputTextChangedEvent) => {
-    setFirstName(event.detail.value ?? '');
+    setFirstName((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const handleLastNameChanged = (event: InputTextChangedEvent) => {
-    setLastName(event.detail.value ?? '');
+    setLastName((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const checkValidationGroup = () => {

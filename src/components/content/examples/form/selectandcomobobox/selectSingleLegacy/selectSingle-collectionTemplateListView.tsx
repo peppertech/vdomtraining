@@ -25,7 +25,7 @@ export default function SelectSingleLegacyCollectionTemplateListViewExample() {
         >
           <template
             slot="collectionTemplate"
-            render={(collection: any) =>
+            render={(collection) =>
               renderEmployeeCollectionListView(collection, (value) =>
                 setSelectVal(value),
               )}

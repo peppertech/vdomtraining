@@ -22,8 +22,8 @@ export default function InputSearchHeroExample() {
         value={value}
         placeholder="Search..."
         aria-label="My search field"
-        onvalueChanged={(event: any) => {
-          setValue(event.detail.value ?? "");
+        onvalueChanged={(event) => {
+          setValue((event.detail.value as string | null | undefined) ?? "");
         }}
       ></oj-input-search>
     </div>
