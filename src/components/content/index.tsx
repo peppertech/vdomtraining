@@ -23,7 +23,7 @@ const Redirect = ({ to }: RedirectProps) => {
 
 const Content = () => {
   return (
-    <div class="oj-web-applayout-max-width oj-web-applayout-content">
+    <div class="oj-web-applayout-content">
       <Router>
         <Route path="/" component={Redirect} to="/bindings" />
         <Route path="/bindings" component={BindingContent} />

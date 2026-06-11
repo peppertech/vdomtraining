@@ -59,7 +59,7 @@ export function DemoLayoutTemplate({
         aria-labelledby="demo-layout-template-demo-heading"
         class="demo-layout-template__demo-section"
       >
-        <div>{demo}</div>
+        <div class="demo-layout-template__demo-body">{demo}</div>
       </section>
 
       <section

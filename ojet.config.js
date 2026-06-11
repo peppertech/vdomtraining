@@ -8,6 +8,16 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const resizeObserverLoopMessages = new Set([
+  'ResizeObserver loop completed with undelivered notifications.',
+  'ResizeObserver loop limit exceeded'
+]);
+
+function isResizeObserverLoopError(error) {
+  const message = typeof error === 'string' ? error : error && error.message;
+  return resizeObserverLoopMessages.has(message);
+}
+
 class EnsureRedwoodThemeFirstPlugin {
   apply(compiler) {
     compiler.hooks.compilation.tap('EnsureRedwoodThemeFirstPlugin', (compilation) => {
@@ -118,8 +128,21 @@ module.exports = {
 
     const existingSetupMiddlewares = config.devServer && config.devServer.setupMiddlewares;
 
+    const existingClient = (config.devServer && config.devServer.client) || {};
+    const existingOverlay =
+      existingClient.overlay && typeof existingClient.overlay === 'object'
+        ? existingClient.overlay
+        : {};
+
     config.devServer = {
       ...(config.devServer || {}),
+      client: {
+        ...existingClient,
+        overlay: {
+          ...existingOverlay,
+          runtimeErrors: (error) => !isResizeObserverLoopError(error)
+        }
+      },
       setupMiddlewares: (middlewares, devServer) => {
         middlewares.unshift({
           name: 'nested-asset-rewrite',

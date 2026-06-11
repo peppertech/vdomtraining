@@ -152,7 +152,7 @@ const ExampleContent = () => {
   };
 
   return (
-    <div class="oj-web-applayout-max-width oj-web-applayout-content">
+    <div class="oj-web-applayout-content">
       <oj-tab-bar
         ref={tabBarRef}
         edge="top"
