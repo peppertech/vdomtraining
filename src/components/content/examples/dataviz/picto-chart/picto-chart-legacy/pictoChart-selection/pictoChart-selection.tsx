@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -87,7 +86,7 @@ export const PictoChartSelection = () => {
     setDrillInfo2(event.detail.id);
   };
 
-  const renderColorItem = (item: any) => (
+  const renderColorItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-picto-chart-item
       name={item.data.name}
       color={colorHandler.getValue(item.data.name)}
@@ -95,7 +94,7 @@ export const PictoChartSelection = () => {
     />
   );
 
-  const renderImageItem = (item: any) => (
+  const renderImageItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-picto-chart-item
       name={item.data.name}
       count={item.data.count * 2}
@@ -107,7 +106,7 @@ export const PictoChartSelection = () => {
   );
 
   const renderSelectionList = (items: string[]) =>
-    items.length > 0 ? items.map((item: any) => <div key={item}>{item}</div>) : <span>None</span>;
+    items.length > 0 ? items.map((item) => <div key={item}>{item}</div>) : <span>None</span>;
 
   return (
     <div id="chart-container">

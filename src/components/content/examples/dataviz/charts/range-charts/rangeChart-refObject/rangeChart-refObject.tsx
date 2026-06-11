@@ -242,31 +242,31 @@ export const RangeChartRefObject = () => {
   );
 
   const handleAxisChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setAxisValue(event.detail.value as ReferenceAxis);
   };
 
   const handleTypeChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setRefObjTypeValue(event.detail.value as ReferenceType);
   };
 
   const handleValuesChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setRefObjItemsTypeValue(event.detail.value as ReferenceValuesType);
   };
 
   const handleLocationChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setLocationValue(event.detail.value as ReferenceLocation);
   };
 
   const handleOrientationChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setOrientationValue(event.detail.value as ChartOrientation);
   };

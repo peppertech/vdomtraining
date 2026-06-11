@@ -24,11 +24,11 @@ export const BubbleChartHideShow = () => {
     setHiddenCategories(event.detail.value ?? []);
   };
 
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-chart-item x={item.data.x} y={item.data.y} z={item.data.z} groupId={[item.data.group]} seriesId={item.data.series}/>;
   };
 
-  const itemTemplateRenderer2 = (item: any) => {
+  const itemTemplateRenderer2 = (item: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-chart-item x={item.data.x} y={item.data.y} z={item.data.z} groupId={[item.data.group]} seriesId={item.data.series}/>;
   };
 

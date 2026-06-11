@@ -40,12 +40,12 @@ export const SunburstAnimation = () => {
   };
 
   const valueButtonClick = (): void => {
-    nodesRef.current.forEach((node: any) => {
+    nodesRef.current.forEach((node) => {
       if (Math.random() < 0.4) {
         node.value = getValue();
       }
 
-      node.nodes?.forEach((child: any) => {
+      node.nodes?.forEach((child) => {
         if (Math.random() < 0.4) {
           child.value = getValue();
         }
@@ -56,12 +56,12 @@ export const SunburstAnimation = () => {
   };
 
   const colorButtonClick = (): void => {
-    nodesRef.current.forEach((node: any) => {
+    nodesRef.current.forEach((node) => {
       if (Math.random() < 0.3) {
         node.color = getColor();
       }
 
-      node.nodes?.forEach((child: any) => {
+      node.nodes?.forEach((child) => {
         if (Math.random() < 0.3) {
           child.color = getColor();
         }
@@ -90,7 +90,7 @@ export const SunburstAnimation = () => {
     refreshNodes();
   };
 
-  const nodeTemplateRenderer = ($current: any) => (
+  const nodeTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-sunburst-node
       label={$current.data.label}
       value={$current.data.value}

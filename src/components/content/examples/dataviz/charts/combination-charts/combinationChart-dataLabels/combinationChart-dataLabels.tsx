@@ -36,8 +36,8 @@ export const CombinationChartDataLabels = () => {
     const handleStackValueStackChanged = (event: JetElementCustomEvent<ChartStack>) => {
         setStackValue(event.detail.value);
     };
-    const itemTemplateRenderer = (item: any) => {
-        return <oj-chart-item value={item.data.value} groupId={[item.data.quarter]} seriesId={item.data.series} label={(item.data.id === 0 || item.data.id === 5 || item.data.id === 10 || item.data.id === 15) ? item.data.value.toString() : ''}/>;
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
+        return <oj-chart-item value={item.data.value} groupId={[item.data.quarter]} seriesId={item.data.series} label={(Number(item.data.id) === 0 || Number(item.data.id) === 5 || Number(item.data.id) === 10 || Number(item.data.id) === 15) ? item.data.value.toString() : ''}/>;
     };
     const ojChartProps: Partial<ComponentProps<'oj-chart'>> = { styleDefaults: {
             dataLabelPosition: labelPosition,

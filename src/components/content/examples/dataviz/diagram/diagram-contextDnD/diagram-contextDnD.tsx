@@ -35,6 +35,9 @@ type DragPayload = {
   id: string;
   itemData: DndNode;
 }[];
+type DiagramDragContext = {
+  nodes: Array<{ id: string; data: unknown }>;
+};
 type BackgroundDropContext = {
   x: number;
   y: number;
@@ -159,13 +162,13 @@ export const DiagramContextDnD = () => {
 
   const handleDragStart =
     (dataType: 'text/nodes1' | 'text/nodes2') =>
-    (event: DragEvent, context: any) => {
+    (event: DragEvent, context: DiagramDragContext) => {
       if (!event.dataTransfer) {
         return;
       }
-      const payload: DragPayload = context.nodes.map((node: { id: string; data: DndNode }) => ({
+      const payload: DragPayload = context.nodes.map((node) => ({
         id: node.id,
-        itemData: cloneNode(node.data)
+        itemData: cloneNode(node.data as DndNode)
       }));
       event.dataTransfer.setData(dataType, JSON.stringify(payload));
     };

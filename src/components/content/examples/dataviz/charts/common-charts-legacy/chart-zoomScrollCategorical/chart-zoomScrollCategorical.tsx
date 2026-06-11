@@ -84,7 +84,7 @@ export const ChartZoomScrollCategorical = () => {
                 tooltipLabel: "GDP"
             }
         } };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.gdp} groupId={[item.data.country]} seriesId="GDP"/>;
     };
     const styleConfig = { whiteSpace: 'pre-line' };

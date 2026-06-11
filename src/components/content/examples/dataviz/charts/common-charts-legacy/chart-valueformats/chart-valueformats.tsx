@@ -174,10 +174,10 @@ export const ChartValueformats = () => {
                 tooltipLabel: zOption
             }
         } };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item x={item.data.x} y={item.data.y * 1000} z={item.data.z} groupId={[item.data.year]} seriesId={item.data.company} color={colorHandler.getValue(item.data.company)} markerShape={shapeHandler.getValue(item.data.year)} categories={[item.data.company, item.data.year]}/>;
     };
-    const seriesTemplateRenderer = ($current: any) => {
+    const seriesTemplateRenderer = ($current: DatavizSeriesTemplateContext) => {
         return <oj-chart-series displayInLegend="off"/>;
     };
     return (<div class="oj-flex" id="chart-container">

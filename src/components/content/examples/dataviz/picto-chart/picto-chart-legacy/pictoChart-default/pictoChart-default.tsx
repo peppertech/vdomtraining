@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -7,7 +6,7 @@ import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoCha
 import 'ojs/ojpictochart';
 
 export const PictoChartDefault = () => {
-  const data: any = JSON.parse(chartData);
+  const data = JSON.parse(chartData) as DatavizChartDatum[];
   const dataProvider = useMemo(() => new ArrayDataProvider(data, {
       keyAttributes: 'name'
   }), [data]);

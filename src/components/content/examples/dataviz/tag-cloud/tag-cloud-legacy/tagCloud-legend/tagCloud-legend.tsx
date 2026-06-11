@@ -87,7 +87,7 @@ export const TagCloudLegend = () => {
     }
   };
 
-  const renderLegendTagCloudItem = (item: any) => {
+  const renderLegendTagCloudItem = (item: DatavizTemplateContext<DatavizChartDatum>) => {
     const ageGroup = getAgeGroup(item.data);
     return (
       <oj-tag-cloud-item
@@ -100,7 +100,7 @@ export const TagCloudLegend = () => {
     );
   };
 
-  const renderLegendItem = (item: any) => (
+  const renderLegendItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-legend-item
       text={item.data.text}
       color={item.data.color}

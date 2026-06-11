@@ -67,7 +67,7 @@ export const ThematicMapDefault = () => {
     if (rainfall <= 50) return colors[3];
     return colors[4];
   };
-  const areaTemplateRenderer = (area: any) => {
+  const areaTemplateRenderer = (area: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-area
         color={getRainfallColor(area.data.Inches)}

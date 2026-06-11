@@ -48,7 +48,7 @@ export const ChartTooltip = () => {
     const OjChartProps: Partial<ComponentProps<'oj-chart'>> = { tooltip: {
             renderer: tooltipFunction
         } };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item groupId={[item.data.season]} seriesId={item.data.department} value={item.data.value}/>;
     };
     return (<div id="chart-container">

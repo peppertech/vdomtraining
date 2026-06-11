@@ -11,11 +11,11 @@ export const FunnelChartLegend = () => {
       keyAttributes: 'id'
   }), []);
 
-    const itemTemplateRenderer = ($current: any) => {
+    const itemTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-chart-item value={$current.data.value} groupId={[$current.data.group]} seriesId={$current.data.series}/>;
   };
 
-  const seriesTemplateRenderer = ($current: any) => {
+  const seriesTemplateRenderer = ($current: DatavizSeriesTemplateContext) => {
       return <oj-chart-series displayInLegend="on"/>;
   };
 

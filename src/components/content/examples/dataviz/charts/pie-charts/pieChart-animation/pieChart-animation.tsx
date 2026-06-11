@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -34,7 +33,7 @@ export const PieChartAnimation = () => {
     return nextData;
   };
 
-  const [chartData, setChartData] = useState<any[]>(() => getData());
+  const [chartData, setChartData] = useState(() => getData());
   const dataProvider = useMemo(() => new ArrayDataProvider(chartData, { keyAttributes: 'id' }), [chartData]);
 
   const updateButtonClick = () => {
@@ -51,7 +50,7 @@ export const PieChartAnimation = () => {
     setPieSliceExplode(1 - pieSliceExplode);
   };
 
-  const renderItem = (item: any) => (
+  const renderItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-chart-item
       value={item.data.value}
       groupId={[item.data.group]}
@@ -59,7 +58,7 @@ export const PieChartAnimation = () => {
     />
   );
 
-  const renderSeries = (series: any) => (
+  const renderSeries = (series: DatavizSeriesTemplateContext) => (
     <oj-chart-series pieSliceExplode={series.id === 'Series 5' ? pieSliceExplode : 0} />
   );
 

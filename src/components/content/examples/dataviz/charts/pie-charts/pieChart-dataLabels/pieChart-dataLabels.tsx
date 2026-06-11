@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
@@ -27,7 +26,7 @@ export const PieChartDataLabels = () => {
     setDataLabelPositionValue(event.detail.value);
   };
 
-  const renderItem = (item: any) => (
+  const renderItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-chart-item
       value={item.data.value}
       groupId={[item.data.group]}

@@ -14,8 +14,10 @@ type SocialNetwork = {
 };
 
 type SelectionChangedEvent = CustomEvent<{ value: string[]; updatedFrom?: string }>;
+type TagCloudMenuBeforeOpenEvent = CustomEvent<{ originalEvent?: Event }>;
+type TagCloudMenuActionEvent = CustomEvent<{ selectedValue: string }>;
 
-const renderContextMenuTagCloudItem = (item: any) => (
+const renderContextMenuTagCloudItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-tag-cloud-item
     label={item.data.id}
     value={item.data.total}
@@ -33,7 +35,7 @@ export const TagCloudContextMenucorepack = () => {
     [socialNetworks]
   );
   const idToItemMap = useMemo(
-    () => Object.fromEntries(socialNetworks.map((entry: any) => [entry.id, entry])),
+    () => Object.fromEntries(socialNetworks.map((entry) => [entry.id, entry])),
     [socialNetworks]
   );
 
@@ -43,7 +45,7 @@ export const TagCloudContextMenucorepack = () => {
     }
   };
 
-  const beforeOpenFunction = (event: any) => {
+  const beforeOpenFunction = (event: TagCloudMenuBeforeOpenEvent) => {
     const target = event.detail.originalEvent?.target;
     setItem(null);
 
@@ -66,7 +68,7 @@ export const TagCloudContextMenucorepack = () => {
     }
   };
 
-  const menuItemAction = (event: any) => {
+  const menuItemAction = (event: TagCloudMenuActionEvent) => {
     const text = event.detail.selectedValue;
     setSelectedMenuItem(item ? `${text} from ${item.id}` : `${text} from tag cloud background`);
   };

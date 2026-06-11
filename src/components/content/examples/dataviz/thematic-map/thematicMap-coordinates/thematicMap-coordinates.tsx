@@ -84,7 +84,7 @@ export const ThematicMapCoordinates = () => {
   );
   const cities = useMemo(
     () =>
-      cityData.map((city: any) => {
+      cityData.map((city) => {
         const coords = projectToBritishNationalGrid(city.long, city.lat);
 
         return {
@@ -113,7 +113,7 @@ export const ThematicMapCoordinates = () => {
     ],
     []
   );
-  const markerTemplateRenderer = ($current: any) => {
+  const markerTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-marker
         x={$current.data.projectedLongitude}

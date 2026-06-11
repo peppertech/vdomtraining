@@ -27,7 +27,7 @@ export const RangeChartVariableBarWidth = () => {
   );
 
   const handleOrientationChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setOrientationValue(event.detail.value as ChartOrientation);
   };

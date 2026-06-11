@@ -34,7 +34,7 @@ export const ThematicMapInlineTemplates = () => {
       }),
     []
   );
-  const getColor = (name: string, state?: any, isInverted?: boolean, isOuterCircle?: boolean) => {
+  const getColor = (name: string, state?: { selected?: boolean; hovered?: boolean }, isInverted?: boolean, isOuterCircle?: boolean) => {
     let color = colorHandler.getValue((name.length % 3).toString());
     if (state && state.selected && isOuterCircle) color = 'black';
     else if (state && state.hovered && !isOuterCircle) color = 'white';
@@ -46,9 +46,9 @@ export const ThematicMapInlineTemplates = () => {
   const getInitials = (fullName: string) =>
     fullName
       .split(' ')
-      .map((name: any) => name.substring(0, 1))
+      .map((name) => name.substring(0, 1))
       .join('');
-  const markerTemplateRenderer = ($current: any) => {
+  const markerTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-marker
         location={$current.data.state}
@@ -57,7 +57,7 @@ export const ThematicMapInlineTemplates = () => {
       />
     );
   };
-  const markerContentTemplateRenderer = ($current: any) => {
+  const markerContentTemplateRenderer = ($current: DatavizThematicMapMarkerContentContext<DatavizChartDatum>) => {
     return (
       <svg width="100" height="100">
         <g transform="translate(6,6)">

@@ -64,7 +64,7 @@ export const SunburstContextMenu = () => {
     const context = sunburst.getContextByNode(target) as ojSunburst.NodeContext | null;
 
     if (context != null) {
-      nodeRef.current = context.indexPath.reduce((acc: any, cur: any) => acc.nodes[cur], { nodes } as any);
+      nodeRef.current = context.indexPath.reduce((acc, cur) => acc.nodes[cur], { nodes } as { nodes: MenuNode[] });
     }
   };
 
@@ -80,7 +80,7 @@ export const SunburstContextMenu = () => {
     setSelectedMenuItem(`${text} from Sunburst background`);
   };
 
-  const nodeTemplateRenderer = ($current: any) => (
+  const nodeTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-sunburst-node
       label={$current.data.label}
       value={$current.data.value}
@@ -97,7 +97,7 @@ export const SunburstContextMenu = () => {
         animationOnDisplay="auto"
         animationOnDataChange="auto"
         selectionMode="single"
-        onselectionChanged={(event: any) => setSelectedItemsValue(event.detail.value ?? [])}
+        onselectionChanged={(event: DatavizValueChangedEvent<string[] | null>) => setSelectedItemsValue(event.detail.value ?? [])}
         selection={selectedItemsValue}
         data={sunburstData}
       >

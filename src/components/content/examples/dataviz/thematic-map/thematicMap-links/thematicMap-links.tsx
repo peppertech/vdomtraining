@@ -8,6 +8,7 @@ import 'css!./demo.css';
 import 'ojs/ojthematicmap';
 
 type ThematicMapProvider = ComponentProps<'oj-thematic-map'>['mapProvider'];
+type AirportDatum = { city: string; outgoing: number; incoming: number; longitude: number; latitude: number };
 
 const geo = JSON.parse(geoText as string);
 const flightData = JSON.parse(flightDataText as string);
@@ -26,7 +27,7 @@ export const ThematicMapLinks = () => {
   );
   const airports = useMemo(
     () =>
-      flightData.airports.map((airport: any) => ({
+      flightData.airports.map((airport: AirportDatum) => ({
         city: airport.city,
         outgoing: airport.outgoing,
         incoming: airport.incoming,
@@ -49,7 +50,7 @@ export const ThematicMapLinks = () => {
       }),
     []
   );
-  const markerTemplateRenderer = ($current: any) => {
+  const markerTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-marker
         x={$current.data.longitude}
@@ -65,7 +66,7 @@ export const ThematicMapLinks = () => {
       />
     );
   };
-  const linkTemplateRenderer = ($current: any) => {
+  const linkTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-link
         startLocation={{ id: $current.data.start }}

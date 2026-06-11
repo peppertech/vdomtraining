@@ -75,7 +75,7 @@ export const ThematicMapSmallFormFactor = () => {
   );
   const rows = useMemo<GridRow[]>(
     () =>
-      olympicHosts.map((host: any) => ({
+      olympicHosts.map((host) => ({
         id: host.Year,
         year: host.Year,
         defaultMap: host,
@@ -109,7 +109,7 @@ export const ThematicMapSmallFormFactor = () => {
   );
   const areaDataProviderByCountry = useMemo(
     () =>
-      rows.reduce<Record<string, InstanceType<typeof ArrayDataProvider>>>((providers: any, row: any) => {
+      rows.reduce<Record<string, InstanceType<typeof ArrayDataProvider>>>((providers, row) => {
         providers[row.defaultMap.Country] = new ArrayDataProvider([row.defaultMap], {
           keyAttributes: 'Country'
         });
@@ -153,7 +153,7 @@ export const ThematicMapSmallFormFactor = () => {
     return areaDataProviderByCountry[host.Country];
   };
 
-  const areaTemplateRenderer = ($current: any) => {
+  const areaTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-area
         location={$current.data.Country}
@@ -185,7 +185,7 @@ export const ThematicMapSmallFormFactor = () => {
     );
   };
 
-  const cellTemplateRenderer = (cell: any) => {
+  const cellTemplateRenderer = (cell: DatavizTemplateContext<DatavizChartDatum>) => {
     const columnKey = GRID_COLUMNS[cell.item.columnIndex];
     const host = cell.item.data.data as OlympicHost;
     if (columnKey == null || host == null) {

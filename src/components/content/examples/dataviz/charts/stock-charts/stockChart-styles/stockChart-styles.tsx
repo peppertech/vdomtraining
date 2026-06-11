@@ -141,7 +141,7 @@ export const StockChartStyles = () => {
     setCurrentTab(event.detail.value);
   };
 
-  const itemTemplateRenderer = (item: any) => (
+  const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-chart-item
       open={item.data.open}
       close={item.data.close}
@@ -196,38 +196,38 @@ export const StockChartStyles = () => {
               min={0}
               max={1}
               step={0.1}
-              onvalueChanged={(event: any) => setBarGapRatio(event.detail.value ?? 0)}
+              onvalueChanged={(event: DatavizValueChangedEvent<number | null>) => setBarGapRatio(event.detail.value ?? 0)}
             />
             <oj-input-number
               labelHint="maxBarWidth"
               min={0}
               id="maxBarWidth"
               value={maxBarWidth}
-              onvalueChanged={(event: any) => setMaxBarWidth(event.detail.value ?? 0)}
+              onvalueChanged={(event: DatavizValueChangedEvent<number | null>) => setMaxBarWidth(event.detail.value ?? 0)}
             />
             <oj-input-text
               labelHint="stockFallingColor"
               id="fallingColor"
               value={stockFallingColor}
-              onvalueChanged={(event: any) => setStockFallingColor(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setStockFallingColor(event.detail.value ?? '')}
             />
             <oj-input-text
               labelHint="stockRisingColor"
               id="risingColor"
               value={stockRisingColor}
-              onvalueChanged={(event: any) => setStockRisingColor(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setStockRisingColor(event.detail.value ?? '')}
             />
             <oj-input-text
               labelHint="stockRangeColor"
               id="rangeColor"
               value={stockRangeColor}
-              onvalueChanged={(event: any) => setStockRangeColor(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setStockRangeColor(event.detail.value ?? '')}
             />
             <oj-input-text
               labelHint="stockVolumeColor"
               id="volumeColor"
               value={stockVolumeColor}
-              onvalueChanged={(event: any) => setStockVolumeColor(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setStockVolumeColor(event.detail.value ?? '')}
             />
           </oj-form-layout>
         </div>
@@ -239,13 +239,13 @@ export const StockChartStyles = () => {
               labelHint="color"
               id="color1"
               value={color1}
-              onvalueChanged={(event: any) => setColor1(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setColor1(event.detail.value ?? '')}
             />
             <oj-input-text
               labelHint="borderColor"
               id="borderColor1"
               value={borderColor1}
-              onvalueChanged={(event: any) => setBorderColor1(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setBorderColor1(event.detail.value ?? '')}
             />
           </oj-form-layout>
         </div>
@@ -257,13 +257,13 @@ export const StockChartStyles = () => {
               labelHint="title"
               id="xTitle"
               value={xTitle}
-              onvalueChanged={(event: any) => setXTitle(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setXTitle(event.detail.value ?? '')}
             />
             <demo-input-json
               labelHint="titleStyle"
               id="xStyle"
               value={xStyle}
-              onvalueChanged={(event: any) => setXStyle(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<ChartTextStyle>) => setXStyle(event.detail.value)}
             />
           </oj-form-layout>
 
@@ -273,13 +273,13 @@ export const StockChartStyles = () => {
               labelHint="title"
               id="yTitle"
               value={yTitle}
-              onvalueChanged={(event: any) => setYTitle(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setYTitle(event.detail.value ?? '')}
             />
             <demo-input-json
               labelHint="titleStyle"
               id="yStyle"
               value={yStyle}
-              onvalueChanged={(event: any) => setYStyle(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<ChartTextStyle>) => setYStyle(event.detail.value)}
             />
           </oj-form-layout>
 
@@ -289,13 +289,13 @@ export const StockChartStyles = () => {
               id="y2Title"
               labelHint="title"
               value={y2Title}
-              onvalueChanged={(event: any) => setY2Title(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setY2Title(event.detail.value ?? '')}
             />
             <demo-input-json
               id="y2Style"
               labelHint="titleStyle"
               value={y2Style}
-              onvalueChanged={(event: any) => setY2Style(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<ChartTextStyle>) => setY2Style(event.detail.value)}
             />
           </oj-form-layout>
         </div>
@@ -307,20 +307,20 @@ export const StockChartStyles = () => {
               id="background"
               labelHint="backgroundColor"
               value={plotAreaColor}
-              onvalueChanged={(event: any) => setPlotAreaColor(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setPlotAreaColor(event.detail.value ?? '')}
             />
             <oj-input-text
               id="borderColor"
               labelHint="borderColor"
               value={plotAreaBorderColor}
-              onvalueChanged={(event: any) => setPlotAreaBorderColor(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setPlotAreaBorderColor(event.detail.value ?? '')}
             />
             <oj-input-number
               id="borderWidth"
               labelHint="borderWidth"
               min={0}
               value={plotAreaBorderWidth}
-              onvalueChanged={(event: any) => setPlotAreaBorderWidth(event.detail.value ?? 0)}
+              onvalueChanged={(event: DatavizValueChangedEvent<number | null>) => setPlotAreaBorderWidth(event.detail.value ?? 0)}
             />
           </oj-form-layout>
 
@@ -331,14 +331,14 @@ export const StockChartStyles = () => {
               id="xAxisLineColor"
               labelHint="lineColor"
               value={xAxisLineColor}
-              onvalueChanged={(event: any) => setXAxisLineColor(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setXAxisLineColor(event.detail.value ?? '')}
             />
             <oj-input-number
               id="xAxisLineWidth"
               labelHint="lineWidth"
               min={0}
               value={xAxisLineWidth}
-              onvalueChanged={(event: any) => setXAxisLineWidth(event.detail.value ?? 0)}
+              onvalueChanged={(event: DatavizValueChangedEvent<number | null>) => setXAxisLineWidth(event.detail.value ?? 0)}
             />
           </oj-form-layout>
 
@@ -349,20 +349,20 @@ export const StockChartStyles = () => {
               id="yMajorTickColor"
               labelHint="lineColor"
               value={yMajorTickColor}
-              onvalueChanged={(event: any) => setYMajorTickColor(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setYMajorTickColor(event.detail.value ?? '')}
             />
             <oj-input-number
               id="yMajorTickWidth"
               labelHint="lineWidth"
               min={0}
               value={yMajorTickWidth}
-              onvalueChanged={(event: any) => setYMajorTickWidth(event.detail.value ?? 0)}
+              onvalueChanged={(event: DatavizValueChangedEvent<number | null>) => setYMajorTickWidth(event.detail.value ?? 0)}
             />
             <demo-select-enum
               id="yMajorTickStyle"
               labelHint="lineStyle"
               value={yMajorTickStyle}
-              onvalueChanged={(event: any) => setYMajorTickStyle(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<TickStyle>) => setYMajorTickStyle(event.detail.value)}
               enumValues={["solid", "dashed", "dotted"]}
             />
           </oj-form-layout>
@@ -374,7 +374,7 @@ export const StockChartStyles = () => {
               labelHint="position"
               aria-controls="stockChart"
               value={yTickLabelPosition}
-              onvalueChanged={(event: any) => setYTickLabelPosition(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<TickLabelPosition>) => setYTickLabelPosition(event.detail.value)}
               enumValues={["outside", "inside"]}
             />
           </oj-form-layout>
@@ -386,21 +386,21 @@ export const StockChartStyles = () => {
               id="y2MajorTickColor"
               labelHint="lineColor"
               value={y2MajorTickColor}
-              onvalueChanged={(event: any) => setY2MajorTickColor(event.detail.value ?? '')}
+              onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setY2MajorTickColor(event.detail.value ?? '')}
             />
             <oj-input-number
               id="y2MajorTickWidth"
               labelHint="lineWidth"
               min={0}
               value={y2MajorTickWidth}
-              onvalueChanged={(event: any) => setY2MajorTickWidth(event.detail.value ?? 0)}
+              onvalueChanged={(event: DatavizValueChangedEvent<number | null>) => setY2MajorTickWidth(event.detail.value ?? 0)}
             />
             <demo-select-enum
               id="y2MajorTickStyle"
               labelHint="lineStyle"
               aria-controls="stockChart"
               value={y2MajorTickStyle}
-              onvalueChanged={(event: any) => setY2MajorTickStyle(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<TickStyle>) => setY2MajorTickStyle(event.detail.value)}
               enumValues={["solid", "dashed", "dotted"]}
             />
           </oj-form-layout>
@@ -412,7 +412,7 @@ export const StockChartStyles = () => {
               labelHint="position"
               aria-controls="stockChart"
               value={y2TickLabelPosition}
-              onvalueChanged={(event: any) => setY2TickLabelPosition(event.detail.value)}
+              onvalueChanged={(event: DatavizValueChangedEvent<TickLabelPosition>) => setY2TickLabelPosition(event.detail.value)}
               enumValues={["outside", "inside"]}
             />
           </oj-form-layout>

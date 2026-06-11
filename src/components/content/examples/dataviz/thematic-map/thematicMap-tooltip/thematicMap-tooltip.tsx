@@ -20,7 +20,7 @@ type ThematicMapProvider = ComponentProps<'oj-thematic-map'>['mapProvider'];
 
 const geo = JSON.parse(geoText as string);
 const electionData = (JSON.parse(jsonDataText as string) as ElectionDatum[]).filter(
-  (_value: any, index: any) => index % 2 === 0
+  (_value: unknown, index: number) => index % 2 === 0
 );
 
 export const ThematicMapTooltip = () => {
@@ -117,7 +117,7 @@ export const ThematicMapTooltip = () => {
     return { insert: tooltipElem };
   };
 
-  const areaTemplateRenderer = ($current: any) => {
+  const areaTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     const isDemocratWin = $current.data.Democrat > $current.data.Republican;
     return (
       <oj-thematic-map-area

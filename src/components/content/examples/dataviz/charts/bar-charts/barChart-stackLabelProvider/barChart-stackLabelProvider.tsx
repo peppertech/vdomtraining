@@ -35,7 +35,7 @@ export const BarChartStackLabelProvider = () => {
             return decimalConverter.format(dataContext.value);
         }
     };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} groupId={[item.data.description]} seriesId={item.data.company}/>;
     };
     const ojChartProps: Partial<ComponentProps<'oj-chart'>> = { yAxis: {

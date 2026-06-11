@@ -34,11 +34,11 @@ const minorAxis = {
   }
 };
 
-const renderSeriesTemplate = (series: any) => (
+const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (
   <oj-timeline-series label={series.id} emptyText="No Data." />
 );
 
-const renderItemTemplate = (item: any) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-timeline-item
     seriesId={item.data.series}
     start={item.data.begin}

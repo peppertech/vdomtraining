@@ -105,8 +105,8 @@ const AreaChartsHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as AreaChartComponent["id"];
+  const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<AreaChartComponent["id"], KeySet<AreaChartComponent["id"]>>) => {
+    const selectedKey = event.detail.items?.[0]?.key as AreaChartComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);

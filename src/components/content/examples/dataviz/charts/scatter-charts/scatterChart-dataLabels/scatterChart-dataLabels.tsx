@@ -68,7 +68,7 @@ export const ScatterChartDataLabels = () => {
     const handleDataCollisionValueChanged = (event: JetElementCustomEvent<DataLabelCollision>) => {
         setDataCollisionValue(event.detail.value ?? 'none');
     };
-    const itemTemplateRenderer = (item: any) => (<oj-chart-item x={item.data.x} y={item.data.y} label={`${item.data.series} - ${item.data.group}`} groupId={[item.data.group]} seriesId={item.data.series}/>);
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-chart-item x={item.data.x} y={item.data.y} label={`${item.data.series} - ${item.data.group}`} groupId={[item.data.group]} seriesId={item.data.series}/>);
     const ojChartProps: Partial<ComponentProps<'oj-chart'>> = {
         styleDefaults: {
             dataLabelPosition: labelPosition,

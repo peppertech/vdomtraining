@@ -27,7 +27,7 @@ const generateRandomData = (numTags: number): RandomTag[] => {
     }
     return data;
 };
-const renderPerformanceTagCloudItem = (item: any) => (<oj-tag-cloud-item label={item.data.label} value={item.data.value}/>);
+const renderPerformanceTagCloudItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-tag-cloud-item label={item.data.label} value={item.data.value}/>);
 export const TagCloudPerformance = () => {
     const [animationValue, setAnimationValue] = useState<'auto' | 'none'>('none');
     const [layoutValue, setLayoutValue] = useState<'rectangular' | 'cloud'>('rectangular');
@@ -37,7 +37,7 @@ export const TagCloudPerformance = () => {
     const [tags, setTags] = useState<RandomTag[]>(() => generateRandomData(20));
     const dataProvider = useMemo(() => new ArrayDataProvider(tags, { keyAttributes: 'id' }), [tags]);
     const timerText = timeValue && timeValue > 0 ? `Time:  ${timeValue}ms` : '';
-    const regenerateData = (count: any = numTags) => {
+    const regenerateData = (count: number = numTags) => {
         setTimeValue(0);
         const busyContext = Context.getPageContext().getBusyContext();
         const data = generateRandomData(count);

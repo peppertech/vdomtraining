@@ -16,7 +16,7 @@ export const ChartCustomStyling = () => {
           return valueCache[id];
       };
 
-      return Array.from({ length: 12 }, (_: any, index: any) => ({
+      return Array.from({ length: 12 }, (_unused: unknown, index: number) => ({
           id: index + 1,
           series: `Series ${index + 1}`,
           group: 'Group 1',
@@ -27,10 +27,10 @@ export const ChartCustomStyling = () => {
       keyAttributes: 'id'
   }), [chartData]);
 
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
     return <oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>;
 };
-  const itemTemplateRenderer2 = (item: any) => {
+  const itemTemplateRenderer2 = (item: DatavizTemplateContext<DatavizChartDatum>) => {
     return <oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>;
 };
 

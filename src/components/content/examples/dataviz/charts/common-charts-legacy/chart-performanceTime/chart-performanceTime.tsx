@@ -48,7 +48,7 @@ export const ChartPerformanceTime = () => {
     const animationIndicatorValueDisabled = animationValue !== 'auto';
     const userText = `Data Items:  ${numGroups * numSeries}`;
     const timerText = timeValue > 0 ? `Time:  ${timeValue}ms` : '';
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item groupId={item.data.groupId} seriesId={item.data.seriesId} value={item.data.value}/>;
     };
     const handleShapedValueValueChanged = (event: ValueChangedEvent<'on' | 'off'>) => {

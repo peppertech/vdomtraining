@@ -24,7 +24,7 @@ export const SunburstShapedData = () => {
         sizeLabel="Population"
         data={sunburstData}
         aria-label="Sunburst showing hierarchical data in concentric rings"
-        {...({ 'nodeDefaults.labelDisplay': 'rotated' } as any)}
+        {...({ 'nodeDefaults.labelDisplay': 'rotated' } as DatavizSunburstProps)}
       />
     </div>
   );

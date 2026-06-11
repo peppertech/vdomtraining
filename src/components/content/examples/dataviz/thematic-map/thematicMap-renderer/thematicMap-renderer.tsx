@@ -134,7 +134,7 @@ export const ThematicMapRenderer = () => {
     }
   };
 
-  const markerTemplateRenderer = ($current: any) => {
+  const markerTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-marker
         location={$current.data.Country}

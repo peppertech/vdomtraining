@@ -86,7 +86,7 @@ const dataVizComponents: DataVizComponent[] = [
     isCorePack: true,
     render: (props) => <PictoChartHome {...props} />,
   },
-  
+
   {
     id: 23,
     name: "Rating Gauge",
@@ -225,8 +225,8 @@ const DataVizHome = () => {
     }
   }, [activeComponentId, handleHomeNavigation]);
 
-  const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as DataVizComponent["id"];
+  const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<DataVizComponent["id"], KeySet<DataVizComponent["id"]>>) => {
+    const selectedKey = event.detail.items?.[0]?.key as DataVizComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);

@@ -105,8 +105,8 @@ const TagCloudHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as TagCloudComponent["id"];
+  const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<TagCloudComponent["id"], KeySet<TagCloudComponent["id"]>>) => {
+    const selectedKey = event.detail.items?.[0]?.key as TagCloudComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);

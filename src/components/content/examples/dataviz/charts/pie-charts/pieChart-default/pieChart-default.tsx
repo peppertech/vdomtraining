@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -18,7 +17,7 @@ export const PieChartDefault = () => {
     const dataProvider = useMemo(() => new ArrayDataProvider(data, {
         keyAttributes: 'id'
     }), []);
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series} />;
     };
 

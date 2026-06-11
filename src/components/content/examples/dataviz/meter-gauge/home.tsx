@@ -114,8 +114,8 @@ const MeterGaugeHome = ({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as MeterGaugeComponent["id"];
+  const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<MeterGaugeComponent["id"], KeySet<MeterGaugeComponent["id"]>>) => {
+    const selectedKey = event.detail.items?.[0]?.key as MeterGaugeComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);

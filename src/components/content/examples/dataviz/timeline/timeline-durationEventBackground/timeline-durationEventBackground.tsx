@@ -49,7 +49,7 @@ export const TimelineDurationEventBackground = () => {
         formatType: 'date',
         dateFormat: 'long'
     }), []);
-    const handleItemTypeChanged = (event: any) => {
+    const handleItemTypeChanged = (event: DatavizValueChangedEvent<string>) => {
         if (event.detail.updatedFrom === 'internal') {
             setItemTypeValue(event.detail.value);
         }
@@ -59,14 +59,14 @@ export const TimelineDurationEventBackground = () => {
         const endTimeString = dateConverter.format(new Date(itemData.finish).toISOString());
         return itemTypeValue === 'duration-event' ? `${startTimeString} - ${endTimeString}` : startTimeString;
     };
-    const itemTemplateRenderer = (item: any) => (<oj-timeline-item description={getShortDesc(item.data)} background={getBackgroundColor(item.data.series)} itemType={itemTypeValue} start={item.data.begin} end={item.data.finish} label={item.data.series}/>);
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-timeline-item description={getShortDesc(item.data)} background={getBackgroundColor(item.data.series)} itemType={itemTypeValue} start={item.data.begin} end={item.data.finish} label={item.data.series}/>);
     return (<div id="timeline-container">
       <div class="oj-panel oj-bg-info-30 oj-sm-margin-4x-bottom">
         <h2 class="oj-typography-subheading-md">Options To Control Event Types Below</h2>
         <oj-form-layout maxColumns={2} direction="row" class="oj-formlayout-full-width">
           <oj-label for="radioButtonset">Event types</oj-label>
           <oj-buttonset-one id="radioButtonset" class="oj-buttonset-width-auto" aria-label="Choose an overview." aria-controls="timeline" value={itemTypeValue} onvalueChanged={handleItemTypeChanged}>
-            {itemTypeOptions.map((option: any) => (<oj-option key={option.id} value={option.id}>
+            {itemTypeOptions.map((option) => (<oj-option key={option.id} value={option.id}>
                 {option.label}
               </oj-option>))}
           </oj-buttonset-one>

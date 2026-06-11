@@ -74,16 +74,16 @@ const findClosestGroup = (array: StockChartItem[], time: string | number) => {
 const buildComparisonData = (startTime: number, compareList: CompareValue[]) => {
   const startIndex = findClosestGroup(stockData, startTime);
   const startClose = stockData[startIndex].close;
-  const referenceObjects = compareList.map((key: any) => {
+  const referenceObjects = compareList.map((key) => {
     const source = comparisonSources[key];
     const startReference = source.items[startIndex];
     return {
       ...source,
-      items: source.items.map((item: any) => (item - startReference) / startReference)
+      items: source.items.map((item) => (item - startReference) / startReference)
     };
   });
 
-  const transformedStockData = stockData.map((item: any) => ({
+  const transformedStockData = stockData.map((item) => ({
     ...item,
     open: (item.open - startClose) / startClose,
     close: (item.close - startClose) / startClose,
@@ -112,7 +112,7 @@ export const StockChartComparison = () => {
   );
   const yAxisConverter = useMemo(() => new IntlNumberConverter({ style: 'percent' }), []);
 
-  const tooltipFunction = (dataContext: any) => {
+  const tooltipFunction = (dataContext: DatavizTooltipContext<DatavizChartDatum>) => {
     (dataContext.parentElement as HTMLElement).style.borderColor = '#000000';
 
     const tooltipElem = document.createElement('div');
@@ -165,7 +165,7 @@ export const StockChartComparison = () => {
     appendRow(String(dataContext.series), '#267db3', Number(dataContext.close));
 
     const groupIndex = findClosestGroup(transformedStockData, Number(dataContext.group));
-    referenceObjects.forEach((referenceObject: any) => {
+    referenceObjects.forEach((referenceObject) => {
       appendRow(referenceObject.name, referenceObject.color, referenceObject.items[groupIndex]);
     });
 
@@ -186,7 +186,7 @@ export const StockChartComparison = () => {
     setViewportMinValue(event.detail.xMin);
   };
 
-  const itemTemplateRenderer = (item: any) => (
+  const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-chart-item
       open={item.data.open}
       close={item.data.close}

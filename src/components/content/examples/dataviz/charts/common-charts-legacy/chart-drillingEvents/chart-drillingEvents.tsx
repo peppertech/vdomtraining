@@ -106,10 +106,10 @@ export const ChartDrillingEvents = () => {
       text += 'series: ' + series.toString() + '; ';
       setDrillText(text);
   };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
     return <oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>;
 };
-  const itemTemplateRenderer2 = (item: any) => {
+  const itemTemplateRenderer2 = (item: DatavizTemplateContext<DatavizChartDatum>) => {
     return <oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>;
 };
 

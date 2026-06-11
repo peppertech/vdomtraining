@@ -19,10 +19,10 @@ export const BoxPlotMeans = () => {
     const handleOrientationValueOrientationChanged = (event: JetElementCustomEvent<ChartOrientation>) => {
         setOrientationValue(event.detail.value ?? 'vertical');
     };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item low={item.data.low} high={item.data.high} q1={item.data.q1} q2={item.data.q2} q3={item.data.q3} items={item.data.outliers} value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
-    const seriesTemplateRenderer = (series: any) => {
+    const seriesTemplateRenderer = (series: DatavizSeriesTemplateContext) => {
         const ojChartSeriesProps: Partial<ComponentProps<'oj-chart-series'>> = { boxPlot: {
                 q2Color: series.id === 'Box Plot' ? colorHandler.getValue('q2') : undefined,
                 q3Color: series.id === 'Box Plot' ? colorHandler.getValue('q3') : undefined

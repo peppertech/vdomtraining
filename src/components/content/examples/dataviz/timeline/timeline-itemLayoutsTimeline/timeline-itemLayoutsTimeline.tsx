@@ -21,7 +21,7 @@ const itemLayoutItems = JSON.parse(timelineSeriesDataText) as TimelineItemLayout
 const majorAxis = { scale: 'quarters' };
 const minorAxis = { scale: 'weeks', zoomOrder: ['months', 'weeks', 'days'] };
 
-const renderItemTemplate = (item: any) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-timeline-item
     seriesId={item.data.series}
     start={item.data.begin}
@@ -43,13 +43,13 @@ export const TimelineItemLayoutsTimeline = () => {
   const currentDate = new Date(currentDateString).toISOString();
   const referenceObjects = useMemo(() => [{ value: currentDate }], [currentDate]);
 
-  const handleItemLayoutChanged = (event: any) => {
+  const handleItemLayoutChanged = (event: DatavizValueChangedEvent<string>) => {
     if (event.detail.updatedFrom === 'internal') {
       setItemLayoutValue(event.detail.value);
     }
   };
 
-  const renderSeriesTemplate = (series: any) => (
+  const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (
     <oj-timeline-series label={series.id} emptyText="No Data." itemLayout={itemLayoutValue} />
   );
 

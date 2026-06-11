@@ -51,7 +51,7 @@ export const SunburstTooltip = () => {
   const getColor = (meanIncome: number): string =>
     getColorValue(colors, (meanIncome - minIncome) / (maxIncomeRef.current - minIncome));
 
-  const tooltipFunction = (dataContext: any) => {
+  const tooltipFunction = (dataContext: DatavizTooltipContext<DatavizChartDatum>) => {
     const pieChart = tooltipElem.children[1];
     const chartItems = [
       { value: dataContext.value % 50, groupId: ['Group'], color: colors[0], seriesId: '1stQuartile' },
@@ -71,7 +71,7 @@ export const SunburstTooltip = () => {
     return { insert: tooltipElem };
   };
 
-  const nodeTemplateRenderer = ($current: any) => (
+  const nodeTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-sunburst-node
       label={$current.data.label}
       value={$current.data.population}
@@ -87,7 +87,7 @@ export const SunburstTooltip = () => {
         colorLabel="Median Household Income"
         sizeLabel="Population"
         data={sunburstData}
-        {...({ 'nodeDefaults.labelDisplay': 'rotated', 'tooltip.renderer': tooltipFunction } as any)}
+        {...({ 'nodeDefaults.labelDisplay': 'rotated', 'tooltip.renderer': tooltipFunction } as DatavizSunburstProps)}
       >
         <template slot="nodeTemplate" render={nodeTemplateRenderer} />
       </oj-sunburst>

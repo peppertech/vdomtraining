@@ -24,7 +24,7 @@ export const ChartDrillingSample = () => {
     const colorHandler = useMemo(() => new ColorAttributeGroupHandler(), []);
     const years = useMemo(() => ['2012', '2013', '2014', '2015'], []);
     const getYearlyItems = () => {
-        const chartData = data.map((item: any) => ({ ...item }));
+        const chartData = data.map((item) => ({ ...item }));
         const items: QuarterDatum[] = [];
         for (let i = 0; i < chartData.length; i += 4) {
             const year = years[i / 4];
@@ -42,7 +42,7 @@ export const ChartDrillingSample = () => {
     };
     const getQuarterlyItems = (year: number) => {
         const start = (year - 2012) * 4;
-        const chartData = data.slice(start, start + 4).map((item: any) => ({ ...item }));
+        const chartData = data.slice(start, start + 4).map((item) => ({ ...item }));
         for (let i = 0; i < chartData.length; i++) {
             chartData[i].color = colorHandler.getValue(year.toString());
             chartData[i].series = year.toString();
@@ -86,7 +86,7 @@ export const ChartDrillingSample = () => {
         }, legend: {
             rendered: "off"
         } };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item groupId={[item.data.group || item.data.quarter]} seriesId={item.data.series} color={item.data.color} value={item.data.value}/>;
     };
     return (<div id="chart-container">

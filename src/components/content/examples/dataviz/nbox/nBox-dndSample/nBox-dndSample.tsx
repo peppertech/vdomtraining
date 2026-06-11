@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
@@ -191,15 +190,15 @@ export const NBoxDndSample = () => {
         }
     };
 
-    const cutRequest = (event: any) => {
+    const cutRequest = (event: DatavizNBoxKeyboardRequestEvent) => {
         _keyboardCutCopy(event, 'cut');
     };
 
-    const copyRequest = (event: any) => {
+    const copyRequest = (event: DatavizNBoxKeyboardRequestEvent) => {
         _keyboardCutCopy(event, 'copy');
     };
 
-    const pasteRequest = (event: any) => {
+    const pasteRequest = (event: DatavizNBoxKeyboardRequestEvent) => {
         const isCopy = latestNboxActionRef.current === 'copy';
         let fromListView = false;
         let dropData = clipboard.getData('application/nbox');
@@ -212,6 +211,9 @@ export const NBoxDndSample = () => {
             return;
         }
         const target = event.detail.target;
+        if (!target) {
+            return;
+        }
         const row = target.row;
         const column = target.column;
         if (isCopy && !fromListView) {
@@ -280,8 +282,8 @@ export const NBoxDndSample = () => {
         clipboard.setData('application/ojlistviewitems', null);
     };
 
-    const _keyboardCutCopy = (event: any, type: 'cut' | 'copy') => {
-        const src = event.detail.source;
+    const _keyboardCutCopy = (event: DatavizNBoxKeyboardRequestEvent, type: 'cut' | 'copy') => {
+        const src = event.detail.source ?? [];
         const jsonStr = JSON.stringify(src);
         clipboard.setData('application/nbox', jsonStr);
         latestNboxActionRef.current = type;

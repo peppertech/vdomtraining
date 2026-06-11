@@ -10,7 +10,7 @@ type SocialNetwork = {
   total: number;
 };
 
-const renderTagCloudItem = (item: any) => (
+const renderTagCloudItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-tag-cloud-item
     label={item.data.id}
     value={item.data.total}

@@ -21,11 +21,11 @@ const contextMenuItems = JSON.parse(timelineSeriesDataText) as TimelineContextIt
 const majorAxis = { scale: 'quarters' };
 const minorAxis = { scale: 'weeks', zoomOrder: ['months', 'weeks', 'days'] };
 
-const renderSeriesTemplate = (series: any) => (
+const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (
   <oj-timeline-series label={series.id} emptyText="No Data." />
 );
 
-const renderItemTemplate = (item: any) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-timeline-item
     seriesId={item.data.series}
     start={item.data.begin}
@@ -49,14 +49,14 @@ export const TimelineContextMenuTimeline = () => {
   );
   const idToItemMap = useMemo(
     () =>
-      contextMenuItems.reduce<Record<string, TimelineContextItem>>((acc: any, item: any) => {
+      contextMenuItems.reduce<Record<string, TimelineContextItem>>((acc, item) => {
         acc[item.id] = item;
         return acc;
       }, {}),
     []
   );
 
-  const handleSelectionChanged = (event: any) => {
+  const handleSelectionChanged = (event: DatavizValueChangedEvent<string[] | null>) => {
     if (event.detail.updatedFrom === 'internal') {
       setSelectedItemsValue(event.detail.value ?? []);
     }

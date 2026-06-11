@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
@@ -11,19 +10,19 @@ import 'ojs/ojtreemap';
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 
 export const TreemapIsolate = () => {
-  const [isolatedNode, setIsolatedNode] = useState<any>('Northeast Region');
+  const [isolatedNode, setIsolatedNode] = useState<string>('Northeast Region');
 
-  const maxIncomeRef = useRef<any>(70000);
+  const maxIncomeRef = useRef<number>(70000);
 
-  const data: any = JSON.parse(jsonData);
+  const data = JSON.parse(jsonData) as DatavizChartDatum[];
   const treemapData = useMemo(() => new ArrayTreeDataProvider(data, {
       keyAttributes: 'label',
       childrenAttribute: 'nodes'
   }), [data]);
-  const minIncome: any = 35000;
-  const colors: any = getColorValuesFromPalette('viridis');
+  const minIncome = 35000;
+  const colors = getColorValuesFromPalette('viridis');
 
-  const handleIsolatedNodeIsolatedNodeChanged = (event: PropertyChangedEvent<any>) => {
+  const handleIsolatedNodeIsolatedNodeChanged = (event: PropertyChangedEvent<string>) => {
     setIsolatedNode(event.detail.value);
   };
 

@@ -33,7 +33,7 @@ export const DiagramLayoutHelper = () => {
             if (parentId) {
                 flatLinks.push({ id: `${parentId}_${node.name}`, start: parentId, end: node.name });
             }
-            node.children?.forEach((child: any) => visit(child, depth + 1, node.name));
+            node.children?.forEach((child) => visit(child, depth + 1, node.name));
         };
         visit(treeData, 0);
         return { nodes: flatNodes, links: flatLinks };
@@ -44,14 +44,14 @@ export const DiagramLayoutHelper = () => {
     const linkDataProvider = useMemo(() => new ArrayDataProvider(links, {
         keyAttributes: 'id'
     }), [links]);
-    const nodeTemplateRenderer = (node: any) => {
+    const nodeTemplateRenderer = (node: DatavizTemplateContext<DatavizChartDatum>) => {
         const ojDiagramNodeProps: Partial<ComponentProps<'oj-diagram-node'>> = { icon: {
                 color: colorHandler.getValue(String(node.data.depth)),
                 shape: 'circle'
             } };
         return <oj-diagram-node label={node.data.id} shortDesc={node.data.id} {...ojDiagramNodeProps}/>;
     };
-    const linkTemplateRenderer = (link: any) => {
+    const linkTemplateRenderer = (link: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-diagram-link startNode={link.data.start} endNode={link.data.end} shortDesc={`${link.data.start} extends ${link.data.end}`}/>;
     };
     return (<div id="diagram-container">

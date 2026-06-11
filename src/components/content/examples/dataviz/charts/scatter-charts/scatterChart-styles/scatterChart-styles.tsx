@@ -160,8 +160,8 @@ export const ScatterChartStyles = () => {
     const handleYTickLabelPositionValueChanged = (event: JetElementCustomEvent<TickLabelPosition>) => {
         setYTickLabelPosition(event.detail.value);
     };
-    const itemTemplateRenderer = (item: any) => (<oj-chart-item x={item.data.x} y={item.data.y} groupId={[item.data.group]} seriesId={item.data.series}/>);
-    const seriesTemplateRenderer = (series: any) => (<oj-chart-series color={series.id === 'Series 1' ? color1 : undefined} borderColor={series.id === 'Series 1' ? borderColor1 : undefined} markerShape={series.id === 'Series 1' ? markerShape1 : undefined} markerSize={series.id === 'Series 1' ? markerSize1 : undefined}/>);
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-chart-item x={item.data.x} y={item.data.y} groupId={[item.data.group]} seriesId={item.data.series}/>);
+    const seriesTemplateRenderer = (series: DatavizSeriesTemplateContext) => (<oj-chart-series color={series.id === 'Series 1' ? color1 : undefined} borderColor={series.id === 'Series 1' ? borderColor1 : undefined} markerShape={series.id === 'Series 1' ? markerShape1 : undefined} markerSize={series.id === 'Series 1' ? markerSize1 : undefined}/>);
     const ojChartProps: Partial<ComponentProps<'oj-chart'>> = {
         'legend.position': 'bottom'
     };

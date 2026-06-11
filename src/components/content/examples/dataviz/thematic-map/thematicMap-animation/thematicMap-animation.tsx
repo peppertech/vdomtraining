@@ -28,14 +28,14 @@ export const ThematicMapAnimation = () => {
     []
   );
   const areaData = useMemo(() => {
-    return electionData.map((item: any, index: any) => ({
+    return electionData.map((item, index) => ({
       id: index.toString(),
       color: (item.Democrat + electionYear) % 100 > item.Republican % 100 ? '#336791' : '#C53333',
       location: item.State,
       shortDesc: ((item.Democrat + electionYear) % 100 > item.Republican % 100 ? 'Democrat' : 'Republican') + ' win'
     }));
   }, [electionYear]);
-  const handleElectionYearChanged = (event: any) => {
+  const handleElectionYearChanged = (event: DatavizValueChangedEvent<string>) => {
     setElectionYear(event.detail.value ?? 2000);
   };
 

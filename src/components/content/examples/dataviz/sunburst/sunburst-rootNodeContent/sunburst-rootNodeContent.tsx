@@ -41,8 +41,8 @@ export const SunburstRootNodeContent = () => {
   const areaData = useMemo<AreaDatum[]>(() => {
     const items: AreaDatum[] = [];
 
-    salesData.forEach((region: any) => {
-      region.nodes?.forEach((state: any) => {
+    salesData.forEach((region) => {
+      region.nodes?.forEach((state) => {
         items.push({
           id: state.id,
           color: colorHandler.getValue(state.region),
@@ -77,7 +77,7 @@ export const SunburstRootNodeContent = () => {
   const getShortDesc = (description: string, sales: number): string =>
     `${description} : ${numberConverter.format(sales)}`;
 
-  const nodeTemplateRenderer = ($current: any) => (
+  const nodeTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-sunburst-node
       label={$current.data.id}
       value={$current.data.sales}
@@ -87,7 +87,7 @@ export const SunburstRootNodeContent = () => {
     />
   );
 
-  const areaTemplateRenderer = (area: any) => (
+  const areaTemplateRenderer = (area: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-thematic-map-area
       color={area.data.color}
       location={area.data.location}
@@ -95,7 +95,7 @@ export const SunburstRootNodeContent = () => {
     />
   );
 
-  const rootNodeContentTemplateRenderer = ($current: any) => (
+  const rootNodeContentTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => (
     <div
       style={{
         position: 'absolute',

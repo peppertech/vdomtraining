@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -54,7 +53,7 @@ export const PieChartStyles = () => {
     const handleCenterLabelValueChanged = (event: PropertyChangedEvent<string>) => {
         setCenterLabel(event.detail.value);
     };
-    const handleCenterLabelStyleValueChanged = (event: PropertyChangedEvent<any>) => {
+    const handleCenterLabelStyleValueChanged = (event: PropertyChangedEvent<Record<string, string>>) => {
         setCenterLabelStyle(event.detail.value);
     };
     const handleColor1ValueChanged = (event: PropertyChangedEvent<string>) => {
@@ -72,8 +71,8 @@ export const PieChartStyles = () => {
     const handleExplodeValueChanged = (event: PropertyChangedEvent<number>) => {
         setExplode(event.detail.value);
     };
-    const renderItem = (item: any) => (<oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>);
-    const renderSeries = (series: any) => (<oj-chart-series color={series.id === 'Series 1' ? color1 : undefined} borderColor={series.id === 'Series 1' ? borderColor1 : undefined} borderWidth={series.id === 'Series 1' ? borderWidth1 : undefined} pattern={series.id === 'Series 1' ? pattern1 : undefined} pieSliceExplode={series.id === 'Series 1' ? explode : undefined}/>);
+    const renderItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>);
+    const renderSeries = (series: DatavizSeriesTemplateContext) => (<oj-chart-series color={series.id === 'Series 1' ? color1 : undefined} borderColor={series.id === 'Series 1' ? borderColor1 : undefined} borderWidth={series.id === 'Series 1' ? borderWidth1 : undefined} pattern={series.id === 'Series 1' ? pattern1 : undefined} pieSliceExplode={series.id === 'Series 1' ? explode : undefined}/>);
     return (<div id="chart-container" class="oj-flex oj-sm-padding-1x oj-sm-flex-items-1">
       <div class="oj-flex-item">
         <oj-chart id="pieChart" type="pie" data={dataProvider} animationOnDataChange="auto" pieCenter={pieCenter} styleDefaults={styleDefaults} legend={{ position: 'bottom' }}>

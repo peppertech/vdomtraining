@@ -51,7 +51,7 @@ export const ChartPerformanceScatterBubble = () => {
     const animationIndicatorDisabled = animationValue !== 'auto';
     const userText = `Data Items:  ${numGroups * numSeries}`;
     const timerText = timeValue > 0 ? `Time:  ${timeValue}ms` : '';
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item groupId={item.data.groupId} seriesId={item.data.seriesId} x={item.data.x} y={item.data.y} z={item.data.z}/>;
     };
     const handleShapedValueValueChanged = (event: ValueChangedEvent<'on' | 'off'>) => {

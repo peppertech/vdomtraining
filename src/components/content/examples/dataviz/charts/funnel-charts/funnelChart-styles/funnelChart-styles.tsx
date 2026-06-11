@@ -70,11 +70,11 @@ export const FunnelChartStyles = () => {
   const handlePattern1ValueChanged = (event: JetElementCustomEvent<Pattern>) => {
     setPattern1(event.detail.value);
   };
-    const itemTemplateRenderer = ($current: any) => {
+    const itemTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-chart-item value={$current.data.value} targetValue={$current.data.targetValue} groupId={[$current.data.group]} seriesId={$current.data.series}/>;
   };
 
-  const seriesTemplateRenderer = ($current: any) => {
+  const seriesTemplateRenderer = ($current: DatavizSeriesTemplateContext) => {
       return <oj-chart-series color={$current.id == 'Series 5' ? color1 : undefined} borderColor={$current.id == 'Series 5' ? borderColor1 : undefined} pattern={$current.id == 'Series 5' ? pattern1 : undefined}/>;
   };
 

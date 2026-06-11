@@ -22,7 +22,7 @@ const tooltipTemplateItems = JSON.parse(tooltipSeriesDataText) as TimelineToolti
 const majorAxis = { scale: 'months' };
 const minorAxis = { scale: 'weeks', zoomOrder: ['quarters', 'months', 'weeks', 'days'] };
 
-const renderSeriesTemplate = (series: any) => (
+const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (
   <oj-timeline-series label={series.id} emptyText="No Data." />
 );
 
@@ -60,7 +60,7 @@ export const TimelineTooltipTemplate = () => {
     ].join(', ');
   };
 
-  const renderItemTemplate = (item: any) => (
+  const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-timeline-item
       seriesId={item.data.series}
       start={item.data.begin}
@@ -71,7 +71,7 @@ export const TimelineTooltipTemplate = () => {
     />
   );
 
-  const renderTooltipTemplate = (item: any) => (
+  const renderTooltipTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <div>
       <div class="oj-sm-float-start oj-sm-padding-2x-vertical oj-sm-padding-2x-end oj-sm-padding-1x-start">
         <span class="oj-typography-body-sm oj-typography-bold">{item.seriesData.label}</span>

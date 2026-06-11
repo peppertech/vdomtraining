@@ -36,11 +36,11 @@ export const DiagramCustomTemplates = () => {
   }), [data]);
   const expandedNodes = useMemo(() => new KeySetImpl(['N0', 'N00']), []);
 
-    const nodeTemplateRenderer = (node: any) => {
+    const nodeTemplateRenderer = (node: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-diagram-node shortDesc={`Node ${node.data.id}`}/>;
   };
 
-  const nodeContentTemplateRenderer = (current: any) => {
+  const nodeContentTemplateRenderer = (current: DatavizTemplateContext<DatavizChartDatum>) => {
       return <svg width={current.state.expanded ? current.content.width + 40 : 120} height={current.state.expanded ? current.content.height + 60 : 56}>
                               <g>
                                   <rect x="1" y="1" width={current.state.expanded ? current.content.width + 38 : 118} height={current.state.expanded ? current.content.height + 58 : 54} fill="white" stroke={current.state.selected ? 'red' : '#87ceeb'} strokeWidth={current.state.selected || current.state.hovered ? 3 : 1}/>
@@ -51,7 +51,7 @@ export const DiagramCustomTemplates = () => {
                           </svg>;
   };
 
-  const linkTemplateRenderer = (link: any) => {
+  const linkTemplateRenderer = (link: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-diagram-link startNode={link.data.startNode} endNode={link.data.endNode} startConnectorType="circle" endConnectorType="arrow" shortDesc={`Link ${link.data.id} connects ${link.data.startNode} to ${link.data.endNode}`}/>;
   };
 

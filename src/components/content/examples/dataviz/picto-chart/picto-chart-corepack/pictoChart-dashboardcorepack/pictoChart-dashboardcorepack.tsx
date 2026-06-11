@@ -1,11 +1,17 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/dashboardData.json';
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojpictochart';
+
+type DashboardDatum = Record<string, string | number> & {
+  id: string;
+  name: string;
+  count: number;
+  color?: string;
+};
 
 export const PictoChartDashboardcorepack = () => {
   const colorHandler = useMemo(() => new ColorAttributeGroupHandler({
@@ -32,7 +38,7 @@ export const PictoChartDashboardcorepack = () => {
       cfe: 3,
       cfe1: 3
   }), []);
-  const data: any = JSON.parse(chartData);
+  const data = JSON.parse(chartData) as DashboardDatum[];
   const dataProvider = useMemo(() => new ArrayDataProvider(data, {
       keyAttributes: 'id'
   }), [data]);
@@ -41,9 +47,9 @@ export const PictoChartDashboardcorepack = () => {
       return colorHandler.getValue(colorMap[id]);
   };
 
-  const getChartDataProvider = (data: Record<string, string | number>) => {
+  const getChartDataProvider = (data: DashboardDatum) => {
       const chartData = [];
-      const newItem = {};
+      const newItem: Partial<DashboardDatum> = {};
       for (let prop in data) {
           if (prop === 'count') {
               newItem[prop] = 100 - (data[prop] as number);
@@ -66,12 +72,12 @@ export const PictoChartDashboardcorepack = () => {
             <div class="oj-typography-bold">What is your preferred method of recruitment? (UK)</div>
             <div class="oj-flex oj-sm-margin-1x demo-pictochart-dashboard-width-style">
                     {
-                            (data ?? []).map((method: any, index: any) => (
+                            (data ?? []).map((method, index) => (
                               <>
                                 <div class="oj-flex oj-sm-flex-direction-column oj-sm-margin-4x-bottom oj-helper-inline-block oj-helper-text-align-center">
                                               <div class="oj-flex-item oj-sm-margin-2x demo-pictochart-dashboard-name-style">{method.name}</div>
                                               <oj-picto-chart class="oj-flex-item oj-sm-width-full demo-pictochart-dashboard-data-style" id="pictochart1" data={getChartDataProvider(method)}>
-                                                              <template slot="itemTemplate" render={(item: any) => (
+                                                              <template slot="itemTemplate" render={(item: DatavizTemplateContext<DatavizChartDatum>) => (
                                                                               <>
                                                                                   <oj-picto-chart-item name={item.data.name} short-desc={item.data.color ? (item.data.name + ': ' + item.data.count + '%') : (item.data.name + ': ' + (100 - item.data.count) + '%')} shape="circle" color={item.data.color} count={item.data.count} />
                                                                               </>

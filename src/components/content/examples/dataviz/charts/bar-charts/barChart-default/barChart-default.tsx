@@ -35,7 +35,7 @@ export const BarChartDefault = () => {
     setStackValue(event.detail.value);
   };
 
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>;
   };
 

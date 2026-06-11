@@ -88,16 +88,16 @@ const generateRandomData = (numItems: number, instance: number): TimelinePerform
 };
 
 const buildTimelineList = (numTimelines: number, numItems: number): TimelineInstance[] =>
-  Array.from({ length: numTimelines }, (_: any, index: any) => ({
+  Array.from({ length: numTimelines }, (_unused: unknown, index: number) => ({
     id: `timeline-${index}`,
     dataProvider: new ArrayDataProvider(generateRandomData(numItems, index), {
       keyAttributes: 'id'
     })
   }));
 
-const renderSeriesTemplate = (series: any) => <oj-timeline-series label={series.id} />;
+const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => <oj-timeline-series label={series.id} />;
 
-const renderItemTemplate = (item: any) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-timeline-item
     seriesId={item.data.series ?? item.data.seriesId}
     start={item.data.start}
@@ -167,7 +167,7 @@ export const TimelinePerformanceMultipleInstances = () => {
     };
   }, [numItems, numTimelines]);
 
-  const handleOverviewChanged = (event: any) => {
+  const handleOverviewChanged = (event: DatavizValueChangedEvent<string>) => {
     if (event.detail.updatedFrom === 'internal') {
       measureUpdate(() => {
         setOverviewValue(event.detail.value);
@@ -175,7 +175,7 @@ export const TimelinePerformanceMultipleInstances = () => {
     }
   };
 
-  const handleOrientationChanged = (event: any) => {
+  const handleOrientationChanged = (event: DatavizValueChangedEvent<string>) => {
     if (event.detail.updatedFrom === 'internal') {
       measureUpdate(() => {
         setOrientationValue(event.detail.value);
@@ -183,7 +183,7 @@ export const TimelinePerformanceMultipleInstances = () => {
     }
   };
 
-  const handleShapedDataChanged = (event: any) => {
+  const handleShapedDataChanged = (event: DatavizValueChangedEvent<string>) => {
     if (event.detail.updatedFrom === 'internal') {
       measureUpdate(() => {
         setShapedDataValue(event.detail.value);
@@ -191,7 +191,7 @@ export const TimelinePerformanceMultipleInstances = () => {
     }
   };
 
-  const handleMinTimeScaleChanged = (event: any) => {
+  const handleMinTimeScaleChanged = (event: DatavizValueChangedEvent<string>) => {
     if (event.detail.updatedFrom !== 'internal') {
       return;
     }
@@ -210,19 +210,19 @@ export const TimelinePerformanceMultipleInstances = () => {
     });
   };
 
-  const handleNumTimelinesChanged = (event: any) => {
+  const handleNumTimelinesChanged = (event: DatavizValueChangedEvent<number | null>) => {
     if (event.detail.updatedFrom === 'internal') {
       setNumTimelines(event.detail.value ?? 1);
     }
   };
 
-  const handleNumItemsChanged = (event: any) => {
+  const handleNumItemsChanged = (event: DatavizValueChangedEvent<number | null>) => {
     if (event.detail.updatedFrom === 'internal') {
       setNumItems(event.detail.value ?? 0);
     }
   };
 
-  const handleViewportChange = (event: any) => {
+  const handleViewportChange = (event: DatavizTimelineViewportChangeEvent) => {
     if (event.detail.minorAxisScale) {
       setCurrentTimeScaleValue(event.detail.minorAxisScale);
     }
@@ -260,7 +260,7 @@ export const TimelinePerformanceMultipleInstances = () => {
             value={overviewValue}
             onvalueChanged={handleOverviewChanged}
           >
-            {overviewOptions.map((option: any) => (
+            {overviewOptions.map((option) => (
               <oj-option key={option.id} value={option.id}>
                 {option.label}
               </oj-option>
@@ -275,7 +275,7 @@ export const TimelinePerformanceMultipleInstances = () => {
             value={orientationValue}
             onvalueChanged={handleOrientationChanged}
           >
-            {orientationOptions.map((option: any) => (
+            {orientationOptions.map((option) => (
               <oj-option key={option.id} value={option.id}>
                 {option.label}
               </oj-option>
@@ -290,7 +290,7 @@ export const TimelinePerformanceMultipleInstances = () => {
             value={shapedDataValue}
             onvalueChanged={handleShapedDataChanged}
           >
-            {overviewOptions.map((option: any) => (
+            {overviewOptions.map((option) => (
               <oj-option key={option.id} value={option.id}>
                 {option.label}
               </oj-option>
@@ -305,7 +305,7 @@ export const TimelinePerformanceMultipleInstances = () => {
             value={minTimeScaleValue}
             onvalueChanged={handleMinTimeScaleChanged}
           >
-            {minTimeScaleOptions.map((option: any) => (
+            {minTimeScaleOptions.map((option) => (
               <oj-option key={option.id} value={option.id}>
                 {option.label}
               </oj-option>
@@ -339,7 +339,7 @@ export const TimelinePerformanceMultipleInstances = () => {
           />
         </oj-form-layout>
       </div>
-      {timelines.map((timeline: any) =>
+      {timelines.map((timeline) =>
         shapedDataValue === 'on' ? (
           <oj-timeline
             key={`${timeline.id}-shaped`}

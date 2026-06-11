@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
@@ -9,16 +8,16 @@ import 'ojs/ojinputnumber';
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
 type PropertyChangedEvent<T> = CustomEvent<{
-    value: T;
+    value: T | null;
 }>;
 
-const data = JSON.parse(dataText as string);
+const data = JSON.parse(dataText as string) as DatavizChartDatum[];
 const centerLabelStyle = { fontSize: '20px', color: '#999999' };
 
 export const PieChartDonut = () => {
-    const [innerRadius, setInnerRadius] = useState<any>(0.5);
-    const [centerLabel, setCenterLabel] = useState<any>('Center Label');
-    const [chartData] = useState<any[]>(data);
+    const [innerRadius, setInnerRadius] = useState<number>(0.5);
+    const [centerLabel, setCenterLabel] = useState<string>('Center Label');
+    const [chartData] = useState<DatavizChartDatum[]>(data);
     const dataProvider = useMemo(() => new ArrayDataProvider(chartData, {
         keyAttributes: 'id'
     }), [chartData]);
@@ -35,13 +34,13 @@ export const PieChartDonut = () => {
         }),
         [centerLabel]
     );
-    const handleInnerRadiusValueChanged = (event: PropertyChangedEvent<any>) => {
-        setInnerRadius(event.detail.value);
+    const handleInnerRadiusValueChanged = (event: PropertyChangedEvent<number>) => {
+        setInnerRadius(event.detail.value ?? 0);
     };
-    const handleCenterLabelValueChanged = (event: PropertyChangedEvent<any>) => {
-        setCenterLabel(event.detail.value);
+    const handleCenterLabelValueChanged = (event: PropertyChangedEvent<string>) => {
+        setCenterLabel(event.detail.value ?? '');
     };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
 

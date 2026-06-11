@@ -20,9 +20,9 @@ const minorAxis = {
   zoomOrder: ['minutes', 'seconds']
 };
 
-const renderSeriesTemplate = (series: any) => <oj-timeline-series label={series.id} />;
+const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => <oj-timeline-series label={series.id} />;
 
-const renderItemTemplate = (item: any) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-timeline-item
     seriesId={item.data.series}
     start={item.data.begin}

@@ -5,7 +5,7 @@ import 'css!./demo.css';
 const thresholdValues = [{ max: 33 }, { max: 67 }, {}];
 const plotAreaProps = { 'plot-area.rendered': 'on' };
 const thresholdTooltipProps = {
-  'tooltip.renderer': (context: any) => ({
+  'tooltip.renderer': (context: DatavizTooltipContext<DatavizChartDatum>) => ({
     insert: `Value: ${context.label}<br>Thresholds: Low 33, Medium 67, High 100`
   })
 };

@@ -49,13 +49,13 @@ const lineChartAriaLabel =
 const areaChartAriaLabel =
   'Area Spark Chart, First Value: 5, Last Value: 2, Low Value: 0, High Value: 9';
 
-const renderValueItem = (item: any) => <oj-spark-chart-item value={item.data.val} />;
+const renderValueItem = (item: DatavizTemplateContext<DatavizChartDatum>) => <oj-spark-chart-item value={item.data.val} />;
 
-const renderRangeItem = (item: any) => (
+const renderRangeItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-spark-chart-item low={item.data.value0} high={item.data.value1} />
 );
 
-const SparkChartRow = ({ label, children }: any) => (
+const SparkChartRow = ({ label, children }: DatavizSparkChartRowProps) => (
   <tr>
     <td>{label}</td>
     <td>{children}</td>
@@ -118,7 +118,7 @@ export const SparkChartStyles = () => {
     setCurrentTab(event.detail.value);
   };
 
-  const handleBarGapRatioValueChanged = (event: any) => {
+  const handleBarGapRatioValueChanged = (event: DatavizValueChangedEvent<number | null>) => {
     setBarGapRatio(event.detail.value ?? 0);
   };
 
@@ -126,7 +126,7 @@ export const SparkChartStyles = () => {
     setLineType(event.detail.value);
   };
 
-  const handleLineWidthValueChanged = (event: any) => {
+  const handleLineWidthValueChanged = (event: DatavizValueChangedEvent<number | null>) => {
     setLineWidth(event.detail.value ?? 0);
   };
 
@@ -138,27 +138,27 @@ export const SparkChartStyles = () => {
     setMarkerShape(event.detail.value);
   };
 
-  const handleMarkerSizeValueChanged = (event: any) => {
+  const handleMarkerSizeValueChanged = (event: DatavizValueChangedEvent<number | null>) => {
     setMarkerSize(event.detail.value ?? 0);
   };
 
-  const handleColorValueChanged = (event: any) => {
+  const handleColorValueChanged = (event: DatavizValueChangedEvent<string | null>) => {
     setColor(event.detail.value ?? '');
   };
 
-  const handleFirstColorValueChanged = (event: any) => {
+  const handleFirstColorValueChanged = (event: DatavizValueChangedEvent<string | null>) => {
     setFirstColor(event.detail.value ?? '');
   };
 
-  const handleLastColorValueChanged = (event: any) => {
+  const handleLastColorValueChanged = (event: DatavizValueChangedEvent<string | null>) => {
     setLastColor(event.detail.value ?? '');
   };
 
-  const handleHighColorValueChanged = (event: any) => {
+  const handleHighColorValueChanged = (event: DatavizValueChangedEvent<string | null>) => {
     setHighColor(event.detail.value ?? '');
   };
 
-  const handleLowColorValueChanged = (event: any) => {
+  const handleLowColorValueChanged = (event: DatavizValueChangedEvent<string | null>) => {
     setLowColor(event.detail.value ?? '');
   };
 

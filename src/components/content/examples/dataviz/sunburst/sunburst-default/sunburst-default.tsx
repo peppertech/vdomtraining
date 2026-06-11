@@ -34,7 +34,7 @@ export const SunburstDefault = () => {
   const getShortDesc = (label: string, population: number, meanIncome: number): string =>
     `&lt;b&gt;${label}&lt;/b&gt;&lt;br/&gt;Population: ${population}&lt;br/&gt;Income: ${meanIncome}`;
 
-  const nodeTemplateRenderer = ($current: any) => (
+  const nodeTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-sunburst-node
       label={$current.data.label}
       value={$current.data.population}
@@ -50,7 +50,7 @@ export const SunburstDefault = () => {
         colorLabel="Median Household Income"
         sizeLabel="Population"
         data={sunburstData}
-        {...({ 'nodeDefaults.labelDisplay': 'rotated' } as any)}
+        {...({ 'nodeDefaults.labelDisplay': 'rotated' } as DatavizSunburstProps)}
       >
         <template slot="nodeTemplate" render={nodeTemplateRenderer} />
       </oj-sunburst>

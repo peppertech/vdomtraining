@@ -22,7 +22,7 @@ type ChartItem = {
   color: string;
 };
 
-const renderTooltipTagCloudItem = (item: any) => (
+const renderTooltipTagCloudItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-tag-cloud-item
     label={item.data.id}
     value={item.data.total}
@@ -60,11 +60,11 @@ export const TagCloudTooltip = () => {
     () => tooltipElem.querySelector('.demo-tagCloud-tooltip-value') as HTMLSpanElement,
     [tooltipElem]
   );
-  const pieChart = useMemo(() => tooltipElem.querySelector('oj-chart') as any, [tooltipElem]);
+  const pieChart = useMemo(() => tooltipElem.querySelector('oj-chart') as HTMLElement & { data?: unknown }, [tooltipElem]);
 
-  const getDataForId = (id: string) => socialNetworks.find((item: any) => item.id === id);
+  const getDataForId = (id: string) => socialNetworks.find((item) => item.id === id);
 
-  const tooltipFunction = (dataContext: any) => {
+  const tooltipFunction = (dataContext: DatavizTooltipContext<DatavizChartDatum>) => {
     dataContext.parentElement.style.borderWidth = '2px';
     valueText.textContent = dataContext.label;
 

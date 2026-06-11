@@ -49,7 +49,7 @@ export const LineChartDataLabels = (): JSX.Element => {
       value={item.data.value}
       groupId={[item.data.quarter]}
       seriesId={item.data.series}
-      label={item.data.id === 2 || item.data.id === 5 ? item.data.quarter : ''}
+      label={Number(item.data.id) === 2 || Number(item.data.id) === 5 ? item.data.quarter : ''}
     />
   );
 

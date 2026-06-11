@@ -54,7 +54,7 @@ export const ThematicMapStyles = () => {
     [borderColor, borderWidth, borderStyle, markerLabel]
   );
   const getColor = (country: string) => handler.getValue(country);
-  const markerTemplateRenderer = ($current: any) => {
+  const markerTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-marker
         location={$current.data.Country}
@@ -82,26 +82,26 @@ export const ThematicMapStyles = () => {
         <oj-input-text
           id="borderWidth"
           value={borderWidth}
-          onvalueChanged={(event: any) => setBorderWidth(event.detail.value ?? 0)}
+          onvalueChanged={(event: DatavizValueChangedEvent<number | null>) => setBorderWidth(event.detail.value ?? 0)}
           labelHint="Marker Border Width"
         />
         <oj-input-text
           id="borderColor"
           value={borderColor}
-          onvalueChanged={(event: any) => setBorderColor(event.detail.value ?? '')}
+          onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setBorderColor(event.detail.value ?? '')}
           labelHint="Marker Border Color"
         />
         <demo-select-enum
           id="select1"
           labelHint="Marker Border Style"
           value={borderStyle}
-          onvalueChanged={(event: any) => setBorderStyle(event.detail.value ?? 'solid')}
+          onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setBorderStyle(event.detail.value ?? 'solid')}
           enumValues={['none', 'solid']}
         />
         <demo-input-json
           id="markerLabel"
           value={markerLabel}
-          onvalueChanged={(event: any) => setMarkerLabel(event.detail.value ?? {})}
+          onvalueChanged={(event: DatavizValueChangedEvent<{ color?: string } | null>) => setMarkerLabel(event.detail.value ?? {})}
           labelHint="Marker Label Style"
         />
       </oj-form-layout>

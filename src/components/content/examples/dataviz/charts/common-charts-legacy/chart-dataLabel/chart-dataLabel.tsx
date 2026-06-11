@@ -29,7 +29,7 @@ export const ChartDataLabel = () => {
       return `${currencyConverter.format(dataContext.value)} (${percentConverter.format(percent)})`;
   };
 
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
     return <oj-chart-item value={item.data.value} groupId={[item.data.year]} seriesId={item.data.region}/>;
 };
 

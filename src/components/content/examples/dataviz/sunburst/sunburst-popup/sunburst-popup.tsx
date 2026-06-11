@@ -47,9 +47,11 @@ export const SunburstPopup = () => {
   }, []);
 
   const getColor = (): string => colorHandler.getValue(Math.floor(Math.random() * 4).toString());
+  const getNodeFromIndexPath = (indexPath: number[]): PopupNode =>
+    indexPath.reduce<PopupNode>((acc, cur) => acc.nodes?.[cur] ?? acc, { nodes } as PopupNode);
   const getTooltip = () => ({ preventDefault: true });
 
-  const openPopup = (event: any): void => {
+  const openPopup = (event: MouseEvent | KeyboardEvent): void => {
     let node: PopupNode | null = null;
     let nodeContext;
 
@@ -75,15 +77,17 @@ export const SunburstPopup = () => {
 
     if (nodeContext && nodeContext.subId === 'oj-sunburst-node') {
       setTailMode('simple');
-      node = nodeContext.indexPath.reduce((acc: any, cur: any) => acc.nodes[cur], { nodes } as any);
+      node = getNodeFromIndexPath(nodeContext.indexPath);
       popupText = getPopupText(node);
-      pageX = event.pageX;
-      pageY = event.pageY;
-    } else if (node && event.key === 'Enter') {
+      if (event instanceof MouseEvent) {
+        pageX = event.pageX;
+        pageY = event.pageY;
+      }
+    } else if (node && event instanceof KeyboardEvent && event.key === 'Enter') {
       setTailMode('none');
       popupText = getPopupText(node);
-      pageX = event.target.offsetWidth / 2;
-      pageY = event.target.offsetHeight / 1.79;
+      pageX = (event.target as HTMLElement).offsetWidth / 2;
+      pageY = (event.target as HTMLElement).offsetHeight / 1.79;
     }
 
     if (popupText && popupRef.current && popupContentRef.current) {
@@ -97,7 +101,7 @@ export const SunburstPopup = () => {
     }
   };
 
-  const nodeTemplateRenderer = ($current: any) => (
+  const nodeTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-sunburst-node label={$current.data.label} value={$current.data.value} color={getColor()} />
   );
 
@@ -105,15 +109,15 @@ export const SunburstPopup = () => {
     <div id="sunburst-container">
       <oj-sunburst
         id="sunburst1"
-        onclick={openPopup}
-        onkeydown={openPopup}
+        onClick={openPopup}
+        onKeyDown={openPopup}
         animationOnDisplay="auto"
         animationOnDataChange="auto"
         data={sunburstData}
         selectionMode="single"
-        onselectionChanged={(event: any) => setSelectedItemsValue(event.detail.value ?? [])}
+        onselectionChanged={(event: DatavizValueChangedEvent<string[] | undefined>) => setSelectedItemsValue(event.detail.value ?? [])}
         selection={selectedItemsValue}
-        {...({ 'tooltip.renderer': getTooltip } as any)}
+        {...({ 'tooltip.renderer': getTooltip } as DatavizSunburstProps)}
       >
         <template slot="nodeTemplate" render={nodeTemplateRenderer} />
       </oj-sunburst>

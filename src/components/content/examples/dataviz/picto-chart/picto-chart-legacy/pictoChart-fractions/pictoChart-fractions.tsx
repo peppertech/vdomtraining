@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -38,7 +37,7 @@ export const PictoChartFractions = () => {
   const legendItems = useMemo(() => [{ text: '10 million units' }], []);
   const legendDataProvider = useMemo(() => new ArrayDataProvider(legendItems, { keyAttributes: 'text' }), [legendItems]);
 
-  const getChartDataProvider = (cell: any) => {
+  const getChartDataProvider = (cell: DatavizTableCellTemplateContext<Product>) => {
     const item = [
       {
         id: `${cell.item.data.Product}-${cell.columnIndex}`,
@@ -50,11 +49,11 @@ export const PictoChartFractions = () => {
     return new ArrayDataProvider(item, { keyAttributes: 'id' });
   };
 
-  const cellTemplateRenderer = (cell: any) => (
+  const cellTemplateRenderer = (cell: DatavizTableCellTemplateContext<Product>) => (
     <oj-picto-chart id={`picto-${cell.item.data.Product}-${cell.columnIndex}`} data={getChartDataProvider(cell)} row-count={1}>
       <template
         slot="itemTemplate"
-        render={(item: any) => (
+        render={(item: DatavizTemplateContext<DatavizChartDatum>) => (
           <oj-picto-chart-item
             name={item.data.name}
             short-desc={`${item.data.id}: ${item.data.count * 10} million units`}
@@ -82,7 +81,7 @@ export const PictoChartFractions = () => {
         <template slot="pictoChartCellTemplate" render={cellTemplateRenderer} />
       </oj-table>
       <oj-legend id="legend1" data={legendDataProvider}>
-        <template slot="itemTemplate" render={(item: any) => <oj-legend-item text={item.data.text} short-desc={item.data.text} />} />
+        <template slot="itemTemplate" render={(item: DatavizTemplateContext<DatavizChartDatum>) => <oj-legend-item text={item.data.text} short-desc={item.data.text} />} />
       </oj-legend>
     </div>
   );

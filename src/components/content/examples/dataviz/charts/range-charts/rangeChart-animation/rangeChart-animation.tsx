@@ -63,7 +63,7 @@ export const RangeChartAnimation = () => {
   );
 
   const handleOrientationChanged = (
-    event: any
+    event: DatavizValueChangedEvent<string>
   ) => {
     setOrientationValue(event.detail.value as ChartOrientation);
   };

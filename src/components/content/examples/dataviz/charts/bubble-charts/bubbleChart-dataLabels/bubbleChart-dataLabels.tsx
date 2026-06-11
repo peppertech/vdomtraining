@@ -18,7 +18,7 @@ export const BubbleChartDataLabels = () => {
     const handleLabelPositionValueChanged = (event: JetElementCustomEvent<DataLabelPosition>) => {
         setLabelPosition(event.detail.value ?? 'auto');
     };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
         return <oj-chart-item x={item.data.x} y={item.data.y} z={item.data.z} label={item.data.group} groupId={[item.data.group]} seriesId={item.data.series}/>;
     };
     const ojChartProps: Partial<ComponentProps<'oj-chart'>> = { styleDefaults: {

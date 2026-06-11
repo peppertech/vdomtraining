@@ -38,7 +38,7 @@ export const SunburstHighlighting = () => {
   const getShortDesc = (label: string, population: number, meanIncome: number): string =>
     `&lt;b&gt;${label}&lt;/b&gt;&lt;br/&gt;Population: ${population}&lt;br/&gt;Income: ${meanIncome}`;
 
-  const nodeTemplateRenderer = ($current: any) => {
+  const nodeTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     const nodeColor = getColor($current.data.meanIncome);
     return (
       <oj-sunburst-node
@@ -56,7 +56,7 @@ export const SunburstHighlighting = () => {
       <div class="oj-panel oj-bg-info-30 oj-sm-margin-4x-bottom">
         <h2 id="h1" class="oj-typography-subheading-md">Options To Control The Sunburst Below</h2>
         <oj-radioset
-          onvalueChanged={(event: any) => setHighlight(event.detail.value)}
+          onvalueChanged={(event: DatavizValueChangedEvent<HighlightMode>) => setHighlight(event.detail.value)}
           value={highlight}
           class="oj-choice-direction-row"
           labelHint="Highlight Mode"
@@ -75,7 +75,7 @@ export const SunburstHighlighting = () => {
         hoverBehavior="dim"
         highlightMode={highlight}
         data={sunburstData}
-        {...({ 'nodeDefaults.labelDisplay': 'rotated' } as any)}
+        {...({ 'nodeDefaults.labelDisplay': 'rotated' } as DatavizSunburstProps)}
       >
         <template slot="nodeTemplate" render={nodeTemplateRenderer} />
       </oj-sunburst>

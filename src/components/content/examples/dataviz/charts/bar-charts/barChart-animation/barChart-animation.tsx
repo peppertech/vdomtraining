@@ -88,7 +88,7 @@ export const BarChartAnimation = () => {
       numGroupsRef.current = numGroupsRef.current <= 2 ? numGroupsRef.current + 1 : numGroupsRef.current - 1;
       setChartData(getData());
   };
-    const itemTemplateRenderer = (item: any) => {
+    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => {
       return <oj-chart-item value={item.data.value} groupId={[item.data.group]} seriesId={item.data.series}/>;
   };
 

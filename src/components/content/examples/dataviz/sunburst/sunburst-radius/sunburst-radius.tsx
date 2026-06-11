@@ -27,7 +27,7 @@ export const SunburstRadius = () => {
   const getShortDesc = (label: string, value: number): string =>
     `&lt;b&gt;${label}&lt;/b&gt;&lt;br/&gt;Radius: ${value}`;
 
-  const nodeTemplateRenderer = ($current: any) => (
+  const nodeTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => (
     <oj-sunburst-node
       value={1}
       label={$current.data.label}
@@ -43,7 +43,7 @@ export const SunburstRadius = () => {
         animationOnDisplay="auto"
         data={sunburstData}
         selectionMode="single"
-        {...({ 'nodeDefaults.labelDisplay': 'rotated' } as any)}
+        {...({ 'nodeDefaults.labelDisplay': 'rotated' } as DatavizSunburstProps)}
       >
         <template slot="nodeTemplate" render={nodeTemplateRenderer} />
       </oj-sunburst>

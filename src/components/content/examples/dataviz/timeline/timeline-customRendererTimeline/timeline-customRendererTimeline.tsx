@@ -19,7 +19,7 @@ type TimelineEmployeeItem = {
   series: string;
 };
 
-const employeeItems = (JSON.parse(employeeStartDataText) as TimelineEmployeeItem[]).map((item: any) => ({
+const employeeItems = (JSON.parse(employeeStartDataText) as TimelineEmployeeItem[]).map((item) => ({
   ...item,
   image: `/styles/images/hcm/${item.image.split('/').pop()}`
 }));
@@ -31,11 +31,11 @@ const menuItems = [
   { id: 'print', label: 'Print...', icon: 'oj-ux-ico-print' }
 ];
 
-const renderSeriesTemplate = (series: any) => (
+const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (
   <oj-timeline-series label={series.id} emptyText="No Data." />
 );
 
-const renderItemTemplate = (item: any) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
   <oj-timeline-item
     seriesId={item.data.series}
     start={item.data.begin}
@@ -57,7 +57,7 @@ export const TimelineCustomRendererTimeline = () => {
   const referenceObjects = useMemo(() => [{ value: currentDate }], [currentDate]);
   const bubbleX = document.documentElement.getAttribute('dir') === 'ltr' ? '0' : '-22.5em';
 
-  const renderItemBubbleContentTemplate = (item: any) => (
+  const renderItemBubbleContentTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
     <svg class="demo-timeline-bubble">
       <g>
         <foreignObject x={bubbleX} y="0" width="24.5em" height="6.0em">
@@ -80,7 +80,7 @@ export const TimelineCustomRendererTimeline = () => {
             <div slot="action">
               <oj-menu-button chroming="borderless" id={`menu${item.data.id}`} class="oj-button-sm" display="icons">
                 <oj-menu slot="menu">
-                  {menuItems.map((menuItem: any) => (
+                  {menuItems.map((menuItem) => (
                     <oj-option key={`${menuItem.id}${item.data.id}`} value={menuItem.label} id={`${menuItem.id}${item.data.id}`}>
                       <span slot="startIcon" class={menuItem.icon}></span>
                       <span>{menuItem.label}</span>
