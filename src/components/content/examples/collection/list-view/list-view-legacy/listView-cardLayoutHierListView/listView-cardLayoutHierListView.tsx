@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
@@ -29,10 +28,11 @@ interface Data {
 }
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type ActiveLayout = 'card' | 'list';
 
 export const ListViewCardLayoutHierListView = () => {
-  const [fullWidthMode, setFullWidthMode] = useState<any>(false);
-  const [activeLayout, setActiveLayout] = useState<any>('card');
+  const [fullWidthMode, setFullWidthMode] = useState(false);
+  const [activeLayout, setActiveLayout] = useState<ActiveLayout>('card');
 
   const data = useMemo(() => [
       {
@@ -116,14 +116,16 @@ export const ListViewCardLayoutHierListView = () => {
       keyAttributes: 'id'
   }), [data]);
 
-  const handleActiveLayoutValueChanged = (event: PropertyChangedEvent<any>) => {
-    setActiveLayout(event.detail.value);
+  const handleActiveLayoutValueChanged = (event: PropertyChangedEvent<ActiveLayout>) => {
+    setActiveLayout(event.detail.value ?? 'card');
   };
 
-  const handleFullWidthModeChange = (event: ojButtonsetOne.valueChanged) => {
-      (event.currentTarget as ojButtonsetOne).value
-          ? document.getElementById('listview').classList.add('oj-listview-full-width')
-          : document.getElementById('listview').classList.remove('oj-listview-full-width');
+  const handleFullWidthModeChange = (event: PropertyChangedEvent<boolean>) => {
+	      const enabled = event.detail.value ?? false;
+	      setFullWidthMode(enabled);
+	      enabled
+	          ? document.getElementById('listview').classList.add('oj-listview-full-width')
+	          : document.getElementById('listview').classList.remove('oj-listview-full-width');
   };
 
   return (

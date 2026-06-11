@@ -1,7 +1,7 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import type { CListViewElement, ContextMenuConfig } from 'oj-c/list-view';
 import { useMemo, useState } from 'preact/hooks';
 import 'oj-c/avatar';
 import 'oj-c/list-item-layout';
@@ -13,6 +13,10 @@ interface EmployeeData {
   title: string;
   image: string;
 }
+
+type ContextMenuItemContext = Parameters<ContextMenuConfig<EmployeeData['id'], EmployeeData>['items']>[0];
+type ContextMenuActionEvent = CListViewElement.ojContextMenuAction<EmployeeData['id'], EmployeeData>;
+type ItemTemplateContext = CListViewElement.ItemTemplateContext<EmployeeData['id'], EmployeeData>;
 
 const data: EmployeeData[] = [
   {
@@ -72,9 +76,9 @@ export const ListViewContextMenucorepack = () => {
   );
 
   const contextMenuConfig = useMemo(
-    () => ({
+    (): ContextMenuConfig<EmployeeData['id'], EmployeeData> => ({
       accessibleLabel: 'Actions',
-      items: (context: any) => {
+      items: (context: ContextMenuItemContext) => {
         setLaunchedFromItem(String(context?.item?.metadata?.key ?? 'None launched yet'));
         return [
           { label: 'Action 1', key: 'Action 1' },
@@ -86,12 +90,12 @@ export const ListViewContextMenucorepack = () => {
     []
   );
 
-  const handleContextMenuAction = (event: any) => {
+  const handleContextMenuAction = (event: ContextMenuActionEvent) => {
     setSelectedMenuItem(event.detail.menuItemKey);
     setLaunchedFromItem(String(event.detail.contextMenuContext?.item?.metadata?.key ?? 'None launched yet'));
   };
 
-  const renderItem = (item: any) => (
+  const renderItem = (item: ItemTemplateContext) => (
     <oj-c-list-item-layout>
       <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
       <oj-c-avatar slot="leading" size="xs" src={item.data.image} />

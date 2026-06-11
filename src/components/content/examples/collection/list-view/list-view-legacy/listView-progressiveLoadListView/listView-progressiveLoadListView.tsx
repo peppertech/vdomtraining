@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listView/collectionListView/tweets.json';
@@ -17,8 +16,8 @@ import 'ojs/ojbuttonsetone';
 import 'ojs/ojoption';
 
 interface Data {
-    name: string;
-    sreen_name: string;
+	    name: string;
+	    screen_name: string;
     profile_background_image_url: string;
     text: string;
     created_at: string;
@@ -26,13 +25,15 @@ interface Data {
 }
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type ActiveLayout = 'card' | 'list';
+type TweetDataProvider = DemoDelayingDataProvider<Data['source'], Data>;
 
 export const ListViewProgressiveLoadListView = () => {
-  const initialDelay = 2000;
-  const arr: any = useMemo(() => JSON.parse(jsonDataStr), []);
-  const [delay, setDelay] = useState<any>(initialDelay);
-  const [activeLayout, setActiveLayout] = useState<any>('list');
-  const [dataProvider, setDataProvider] = useState<any>(() => new DemoDelayingDataProvider(new ArrayDataProvider<Data['source'], Data>(arr, {
+	  const initialDelay = 2000;
+	  const arr: Data[] = useMemo(() => JSON.parse(jsonDataStr) as Data[], []);
+	  const [delay, setDelay] = useState(initialDelay);
+	  const [activeLayout, setActiveLayout] = useState<ActiveLayout>('list');
+	  const [dataProvider, setDataProvider] = useState<TweetDataProvider>(() => new DemoDelayingDataProvider(new ArrayDataProvider<Data['source'], Data>(arr, {
       keyAttributes: 'source'
   }), initialDelay));
 
@@ -41,12 +42,12 @@ export const ListViewProgressiveLoadListView = () => {
       { id: 'list', icon: 'oj-ux-ico-list-round' }
   ], []);
 
-  const handleActiveLayoutValueChanged = (event: PropertyChangedEvent<any>) => {
-    setActiveLayout(event.detail.value);
+  const handleActiveLayoutValueChanged = (event: PropertyChangedEvent<ActiveLayout>) => {
+    setActiveLayout(event.detail.value ?? 'list');
   };
 
-  const handleDelayValueChanged = (event: PropertyChangedEvent<any>) => {
-    setDelay(event.detail.value);
+  const handleDelayValueChanged = (event: PropertyChangedEvent<number>) => {
+    setDelay(event.detail.value ?? initialDelay);
   };
 
   const applyDelay = () => {

@@ -495,7 +495,7 @@ export const FormLayoutCorePack = () => {
   }, []);
 
   return (
-    <div id="sampleDemo" class="demo-padding demo-container">
+    <div id="sampleDemo" class="demo-padding">
       <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
         <div id="form-container">
           <oj-c-collapsible expanded={true}>

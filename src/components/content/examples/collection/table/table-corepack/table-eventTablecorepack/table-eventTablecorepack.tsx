@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
@@ -19,7 +18,7 @@ interface DepartmentData {
 }
 
 export const TableEventTablecorepack = () => {
-  const [eventLog, setEventLog] = useState<any>('');
+  const [eventLog, setEventLog] = useState('');
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Department Id', field: 'DepartmentId', id: 'depId' },
       { headerText: 'Department Name', field: 'DepartmentName', id: 'depName' },
@@ -27,8 +26,8 @@ export const TableEventTablecorepack = () => {
       { headerText: 'Manager Id', field: 'ManagerId', id: 'manId' }
   ], []);
 
-  const deptArray: any = JSON.parse(deptData);
-  const dataprovider = useMemo(() => new ArrayDataProvider(deptArray, {
+  const deptArray: DepartmentData[] = JSON.parse(deptData as string) as DepartmentData[];
+  const dataprovider = useMemo(() => new ArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(deptArray, {
       keyAttributes: 'DepartmentId'
   }), [deptArray]);
   const [selectedItems, setSelectedItems] = useState<{

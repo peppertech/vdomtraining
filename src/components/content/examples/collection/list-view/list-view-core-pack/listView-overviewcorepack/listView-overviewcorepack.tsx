@@ -4,6 +4,7 @@ import { useCallback, useMemo, useRef, useState } from 'preact/hooks';
 import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 import { KeySetImpl, type ImmutableKeySet } from 'ojs/ojkeyset';
 import type { CListViewElement } from 'oj-c/list-view';
+import type { ojSwipeActions } from 'ojs/ojswipeactions';
 import 'css!./demo.css';
 import 'ojs/ojbutton';
 import 'ojs/ojdatetimepicker';
@@ -37,6 +38,11 @@ type InputTextValueChangedEvent = Parameters<
 type ItemActionEvent = CListViewElement.ojItemAction<Task['taskId'], Task>;
 type ItemTemplateContext = CListViewElement.ItemTemplateContext<Task['taskId'], Task>;
 type SelectedChangedEvent = CListViewElement.selectedChanged<Task['taskId'], Task>;
+type AvatarBackground = NonNullable<ComponentProps<'oj-c-avatar'>['background']>;
+type SwipeTaskAction = 'complete' | 'trash';
+type SwipeActionTarget = EventTarget & {
+  value?: SwipeTaskAction;
+};
 
 const INITIAL_TASKS: Task[] = [
   {
@@ -555,7 +561,7 @@ const toDateInputValue = (dateString: string | null) => {
   return date.toISOString().slice(0, 10);
 };
 
-const getIconColor = (type: Task['type']) => {
+const getIconColor = (type: Task['type']): AvatarBackground => {
   switch (type) {
     case 'Send':
       return 'blue';
@@ -750,8 +756,8 @@ export const ListViewOverviewcorepack = () => {
     }
   };
 
-  const handleSwipeAction = (event: any, item: ItemTemplateContext) => {
-    const action = event.target.value;
+  const handleSwipeAction = (event: ojSwipeActions.ojAction, item: ItemTemplateContext) => {
+    const action = (event.target as SwipeActionTarget | null)?.value;
     if (action === 'complete') {
       handleCompleteTask(item.data.taskId);
     } else if (action === 'trash') {
@@ -792,7 +798,7 @@ export const ListViewOverviewcorepack = () => {
       {isEditItem ? (
         <oj-c-selector
           slot="selector"
-          selectedKeys={selected as any}
+          selectedKeys={selected}
           rowKey={item.data.taskId}
           selectionMode="multiple"
           onselectedKeysChanged={handleSelectorSelectedKeysChanged}
@@ -800,7 +806,7 @@ export const ListViewOverviewcorepack = () => {
       ) : null}
       <oj-c-avatar
         slot="leading"
-        background={getIconColor(item.data.type) as any}
+        background={getIconColor(item.data.type)}
         size="xs"
         iconClass={getIconClass(item.data.type)}
         aria-label="Circular icon with type icon"
@@ -828,7 +834,7 @@ export const ListViewOverviewcorepack = () => {
 
   const renderViewItem = (item: ItemTemplateContext) => (
     <div class="oj-swipeactions-container">
-      <oj-swipe-actions onojAction={(event: any) => handleSwipeAction(event, item)}>
+      <oj-swipe-actions onojAction={(event) => handleSwipeAction(event, item)}>
         {renderTaskLayout(item)}
         <template
           slot="start"
@@ -882,7 +888,7 @@ export const ListViewOverviewcorepack = () => {
             <oj-c-list-item-layout>
               <oj-c-selector-all
                 slot="selector"
-                selectedKeys={selected as any}
+                selectedKeys={selected}
                 id="selectAll"
                 aria-label="Select all"
                 onselectedKeysChanged={handleSelectorSelectedKeysChanged}

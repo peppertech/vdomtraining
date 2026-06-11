@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { KeySet, KeySetImpl } from 'ojs/ojkeyset';
+import { KeySet, KeySetImpl, type ImmutableKeySet } from 'ojs/ojkeyset';
 import { ojListView } from 'ojs/ojlistview';
 import { ojInputText, inputBase } from 'ojs/ojinputtext';
 import 'ojs/ojlistview';
@@ -17,6 +16,11 @@ type ItemData = {
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 type SelectedItems = KeySet<ItemData['id']>;
+
+const getSelectedValues = (selection: SelectedItems): Set<ItemData['id']> => {
+  const keySet = selection as ImmutableKeySet<ItemData['id']>;
+  return keySet.keys.all ? new Set() : new Set(Array.from(keySet.keys.keys.values()));
+};
 
 const initialItems: ItemData[] = [
   { id: 1, item: 'Milk' },
@@ -39,7 +43,7 @@ export const ListViewObservableArrayListView = () => {
     [allItems]
   );
 
-  const selectedValues = (selectedItems as any).values() as Set<ItemData['id']>;
+  const selectedValues = getSelectedValues(selectedItems);
   const isSelectionEmpty = selectedValues.size === 0;
   const isTextOrSelectionEmpty = isTextEmpty || isSelectionEmpty;
 
@@ -92,7 +96,7 @@ export const ListViewObservableArrayListView = () => {
   ) => {
     const nextSelection = event.detail.value as SelectedItems;
     setSelectedItems(nextSelection);
-    const key = Array.from(((nextSelection as any).values() as Set<ItemData['id']>))[0];
+    const key = Array.from(getSelectedValues(nextSelection))[0];
     const selectedItem = allItems.find((item) => item.id === key);
     if (selectedItem) {
       setCurrentItem(selectedItem.item);

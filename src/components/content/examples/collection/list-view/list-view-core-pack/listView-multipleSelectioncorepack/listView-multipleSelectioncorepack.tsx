@@ -13,7 +13,7 @@ import 'oj-c/selector';
 import 'oj-c/selector-all';
 import 'ojs/ojradioset';
 import { ojListView } from 'ojs/ojlistview';
-import { ImmutableKeySet, KeySet, KeySetImpl } from 'ojs/ojkeyset';
+import { ImmutableKeySet, KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojoption';
 
 interface EmployeeData {
@@ -24,7 +24,7 @@ interface EmployeeData {
 }
 
 type SelectionMode = Extract<ComponentProps<'oj-c-list-view'>['selectionMode'], 'multiple' | 'multipleToggle'>;
-type SelectedKeySet = KeySet<EmployeeData['id']>;
+type SelectedKeySet = ImmutableKeySet<EmployeeData['id']>;
 type FirstSelectedItem = Parameters<
   NonNullable<ComponentProps<'oj-c-list-view'>['onfirstSelectedItemChanged']>
 >[0]['detail']['value'];
@@ -184,7 +184,7 @@ export const ListViewMultipleSelectioncorepack = () => {
                           </oj-radioset>
                 </div>
             <oj-c-list-item-layout>
-                    <oj-c-selector-all onselectedKeysChanged={handleSelectedItemsSelectedKeysChanged} selectedKeys={selectedItems as any} id="selectAll" aria-label="select all" />
+                    <oj-c-selector-all onselectedKeysChanged={handleSelectedItemsSelectedKeysChanged} selectedKeys={selectedItems} id="selectAll" aria-label="select all" />
                     <span>Select All</span>
                 </oj-c-list-item-layout>
             <oj-c-list-view id="listview" aria-label="list to show selection features" class="oj-listview-item-padding-off" data={dataProvider} selected={selectedItems} selectionMode={selectionMode} selectionRequired={selectedSelectionRequired} onselectedChanged={handleSelectedChanged} onojFirstSelectedItem={handleFirstSelectedItemFirstSelectedItemChanged} {...{ 'item.enter-key-focus-behavior': "focusWithin" }}>

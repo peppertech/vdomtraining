@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useEffect, useMemo } from 'preact/hooks';
 import { RESTDataProvider } from 'ojs/ojrestdataprovider';

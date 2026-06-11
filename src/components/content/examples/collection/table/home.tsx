@@ -19,6 +19,10 @@ type TableComponent = {
   image: string;
   isCorePack?: boolean;
 };
+type TableSelectedChangedEvent = ojListView.selectedChanged<
+  TableComponent["id"],
+  TableComponent
+>;
 
 const tableComponents: TableComponent[] = [
   {
@@ -115,12 +119,12 @@ const TableHome = ({
     onBreadcrumbChange?.(null);
   }, [onBreadcrumbChange]);
 
-  const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as TableComponent["id"];
+  const handleSelectedChanged = (event: TableSelectedChangedEvent) => {
+    const selection = event.detail.value as KeySetImpl<TableComponent["id"]>;
+    const selectedKey = Array.from(selection.values())[0];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
-      const selection = event.detail.value as KeySet<TableComponent["id"]>;
       setSelectedItems(selection);
     }
   };

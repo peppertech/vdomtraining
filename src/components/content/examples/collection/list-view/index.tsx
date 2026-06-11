@@ -19,6 +19,10 @@ type ListViewComponent = {
   image: string;
   isCorePack?: boolean;
 };
+type ListViewSelectedChangedEvent = ojListView.selectedChanged<
+  ListViewComponent["id"],
+  ListViewComponent
+>;
 
 const listViewComponents: ListViewComponent[] = [
   {
@@ -118,12 +122,12 @@ const ListViewHome = ({
     onBreadcrumbChange?.(null);
   }, [onBreadcrumbChange]);
 
-  const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as ListViewComponent["id"];
+  const handleSelectedChanged = (event: ListViewSelectedChangedEvent) => {
+    const selection = event.detail.value as KeySetImpl<ListViewComponent["id"]>;
+    const selectedKey = Array.from(selection.values())[0];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
-      const selection = event.detail.value as KeySet<ListViewComponent["id"]>;
       setSelectedItems(selection);
     }
   };

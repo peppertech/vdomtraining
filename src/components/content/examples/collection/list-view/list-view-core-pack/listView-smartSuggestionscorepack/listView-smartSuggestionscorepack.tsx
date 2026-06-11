@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import DemoSmartSuggestionsDataProvider = require('../../../../../../dataProvider/DemoSmartSuggestionsDataProvider');
@@ -21,7 +20,7 @@ export const ListViewSmartSuggestionscorepack = () => {
       }
       return data;
   };
-  const data: any = useMemo(() => generateData(30), []);
+  const data: Employee[] = useMemo(() => generateData(30), []);
   const dataProvider = useMemo(() => new DemoSmartSuggestionsDataProvider(data, 'id', [
       'e5',
       'e10',

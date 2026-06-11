@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -15,8 +14,9 @@ interface TodoTask {
 }
 
 export const ListViewDrillableListView = () => {
-  const [content, setContent] = useState<any>('');
-  const [disabled, setDisabled] = useState<any>(true);
+  const [content, setContent] = useState('');
+  const [disabled, setDisabled] = useState(true);
+  const [previousElementKey, setPreviousElementKey] = useState<TodoTask['id'] | null>(null);
 
   const data = useMemo(() => [
       {
@@ -57,8 +57,6 @@ export const ListViewDrillableListView = () => {
           return value.id;
       })
   }), [data]);
-  const previousElementKey: any = null;
-
   const gotoList = () => {
       slide();
       setDisabled(true);
@@ -68,10 +66,10 @@ export const ListViewDrillableListView = () => {
   };
 
   const gotoContent = (event: ojListView.ojItemAction<TodoTask['id'], TodoTask>) => {
-      if (event.detail.context != null) {
-          let key = event.detail.context.key;
-          previousElementKey;
-          let row = data[key];
+	      if (event.detail.context != null) {
+	          let key = event.detail.context.key;
+	          setPreviousElementKey(key);
+	          let row = data[key];
           setContent(row.content);
           slide();
           setDisabled(false);

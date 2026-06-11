@@ -3,6 +3,7 @@ import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { ojListView } from 'ojs/ojlistview';
+import { ojMenu } from 'ojs/ojmenu';
 import 'css!./demo.css';
 import 'ojs/ojactioncard';
 import 'ojs/ojavatar';
@@ -29,6 +30,9 @@ type SwitchValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-switch'
 type ButtonsetValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-buttonset-one'>['onvalueChanged']>
 >[0];
+type MenuBeforeOpenEvent = ojMenu.ojBeforeOpen;
+type MenuActionEvent = ojMenu.ojMenuAction;
+type CurrentItemChangedEvent = CustomEvent<{ value?: FileNode['id'] | null }>;
 
 type ItemInfo = {
   arr: FileNode[];
@@ -243,8 +247,9 @@ export const ListViewReorderListView = () => {
     setCutItem(null);
   };
 
-  const handleMenuBeforeOpen = (event: any) => {
-    const target = event.detail.originalEvent.target;
+  const handleMenuBeforeOpen = (event: MenuBeforeOpenEvent) => {
+    const launcher = event.detail.openOptions.launcher;
+    const target = typeof launcher === 'string' ? document.querySelector(launcher) : launcher;
 
     if (target instanceof Element && target.classList.contains('oj-listview-drag-handle')) {
       event.preventDefault();
@@ -265,7 +270,7 @@ export const ListViewReorderListView = () => {
     }
   };
 
-  const handleMenuAction = (event: any) => {
+  const handleMenuAction = (event: MenuActionEvent) => {
     const value = event.detail.selectedValue as 'cut' | 'before' | 'after' | 'inside';
 
     if (value === 'cut') {
@@ -307,7 +312,7 @@ export const ListViewReorderListView = () => {
     setActiveLayout((event.detail.value as LayoutMode | null) ?? 'list');
   };
 
-  const handleCurrentItemChanged = (event: any) => {
+  const handleCurrentItemChanged = (event: CurrentItemChangedEvent) => {
     setCurrentItem(event.detail.value ?? null);
   };
 

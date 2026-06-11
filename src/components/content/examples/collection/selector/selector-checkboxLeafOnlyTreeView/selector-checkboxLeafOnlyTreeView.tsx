@@ -1,13 +1,38 @@
 import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { KeySetImpl } from 'ojs/ojkeyset';
+import { KeySet, KeySetImpl } from 'ojs/ojkeyset';
+import type { ojTreeView } from 'ojs/ojtreeview';
+import type { SelectorElement } from 'ojs/ojselector';
 import 'ojs/ojselector';
 import 'ojs/ojtreeview';
 
+type TreeNode = {
+  title: string;
+  id: string;
+  children?: TreeNode[];
+};
+type TreeNodeKeySet = KeySet<TreeNode['id']>;
+type TreeItemTemplateContext = ojTreeView.ItemTemplateContext<
+  TreeNode['id'],
+  TreeNode
+>;
+type TreeSelectedChangedEvent = ojTreeView.selectedChanged<
+  TreeNode['id'],
+  TreeNode
+>;
+type SelectorSelectedKeysChangedEvent =
+  SelectorElement.selectedKeysChanged<TreeNode['id']>;
+
+const createEmptySelection = () => new KeySetImpl<TreeNode['id']>();
+
 export const SelectorCheckboxLeafOnlyTreeView = () => {
-  const [selectedItems, setSelectedItems] = useState<any>(new KeySetImpl());
-  const expanded = useMemo(() => new KeySetImpl(['blogs', 'links', 'oracle', 'usa']), []);
+  const [selectedItems, setSelectedItems] =
+    useState<TreeNodeKeySet>(createEmptySelection());
+  const expanded = useMemo(
+    () => new KeySetImpl<TreeNode['id']>(['blogs', 'links', 'oracle', 'usa']),
+    []
+  );
   const treeData = useMemo(
     () => [
       {
@@ -70,12 +95,14 @@ export const SelectorCheckboxLeafOnlyTreeView = () => {
     [treeData]
   );
 
-  const renderItemTemplate = (row: any) => [
+  const renderItemTemplate = (row: TreeItemTemplateContext) => [
     <oj-selector
       key="selector"
       aria-label={row.data.title}
       selected-keys={selectedItems}
-      onselectedKeysChanged={(event: any) => setSelectedItems(event.detail.value)}
+      onselectedKeysChanged={(event: SelectorSelectedKeysChangedEvent) =>
+        setSelectedItems(event.detail.value ?? createEmptySelection())
+      }
       selection-mode="multiple"
       row-key={row.data.id}
     />,
@@ -92,12 +119,17 @@ export const SelectorCheckboxLeafOnlyTreeView = () => {
         data={dataProvider}
         expanded={expanded}
         selected={selectedItems}
-        onselectedChanged={(event: any) => setSelectedItems(event.detail.value)}
+        onselectedChanged={(event: TreeSelectedChangedEvent) =>
+          setSelectedItems(event.detail.value ?? createEmptySelection())
+        }
         selectionMode="leafOnly"
       >
         <template slot="itemTemplate" render={renderItemTemplate} />
       </oj-tree-view>
-      <div class="oj-sm-margin-4x-top">Current selection: {JSON.stringify(Array.from(selectedItems.values?.() ?? []))}</div>
+      <div class="oj-sm-margin-4x-top">
+        Current selection:{" "}
+        {JSON.stringify(Array.from((selectedItems as KeySetImpl<string>).values()))}
+      </div>
     </div>
   );
 };

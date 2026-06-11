@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
@@ -7,8 +6,16 @@ import * as deptData from 'text!../../../data/cookbook/dataCollections/table/sha
 import 'ojs/ojtable';
 import 'ojs/ojbutton';
 
+interface DepartmentData {
+    DepartmentId: number;
+    DepartmentName: string;
+    LocationId: number;
+    ManagerId: number;
+    EmployeeCount: number;
+}
+
 export const TableExternalScrollTable = () => {
-  const deptArray: any = JSON.parse(deptData);
+  const deptArray: DepartmentData[] = JSON.parse(deptData as string) as DepartmentData[];
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Department Id', minWidth: '500', field: 'DepartmentId', id: 'depId' },
       { headerText: 'Department Name', minWidth: '500', field: 'DepartmentName', id: 'depName' },
@@ -39,7 +46,7 @@ export const TableExternalScrollTable = () => {
       },
       columnsDefault: { resizable: 'enabled' }
   };
-  const dataprovider = useMemo(() => new MutableArrayDataProvider(deptArray, {
+  const dataprovider = useMemo(() => new MutableArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(deptArray, {
       keyAttributes: 'DepartmentId',
       implicitSort: [{ attribute: 'DepartmentId', direction: 'ascending' }]
   }), [deptArray]);

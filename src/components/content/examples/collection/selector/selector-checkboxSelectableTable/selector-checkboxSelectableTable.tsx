@@ -1,15 +1,40 @@
 import { h } from 'preact';
+import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { KeySetImpl } from 'ojs/ojkeyset';
+import { KeySet, KeySetImpl } from 'ojs/ojkeyset';
+import { ojTable } from 'ojs/ojtable';
+import type { SelectorElement } from 'ojs/ojselector';
 import 'ojs/ojoption';
 import 'ojs/ojradioset';
 import 'ojs/ojselector';
 import 'ojs/ojtable';
 
+type Department = {
+  id: number;
+  name: string;
+  manager: string;
+};
+type SelectionMode = Extract<
+  ComponentProps<'oj-selector'>['selectionMode'],
+  'single' | 'multiple'
+>;
+type SelectedKeySet = KeySet<Department['id']>;
+type SelectorCellTemplateContext = ojTable.CellTemplateContext<
+  Department['id'],
+  Department
+>;
+type RadioValueChangedEvent = CustomEvent<{ value: SelectionMode | null }>;
+type SelectorSelectedKeysChangedEvent =
+  SelectorElement.selectedKeysChanged<Department['id']>;
+
+const createEmptySelection = () => new KeySetImpl<Department['id']>();
+
 export const SelectorCheckboxSelectableTable = () => {
-  const [selectionMode, setSelectionMode] = useState('multiple');
-  const [selectedKeys, setSelectedKeys] = useState<any>(new KeySetImpl());
+  const [selectionMode, setSelectionMode] = useState<SelectionMode>('multiple');
+  const [selectedKeys, setSelectedKeys] = useState<SelectedKeySet>(
+    createEmptySelection()
+  );
   const departments = useMemo(
     () => [
       { id: 10, name: 'Sales', manager: 'Chris Black' },
@@ -31,11 +56,13 @@ export const SelectorCheckboxSelectableTable = () => {
     []
   );
 
-  const renderSelectorTemplate = (cell: any) => (
+  const renderSelectorTemplate = (cell: SelectorCellTemplateContext) => (
     <oj-selector
       aria-label={cell.item.data.name}
       selected-keys={selectedKeys}
-      onselectedKeysChanged={(event: any) => setSelectedKeys(event.detail.value)}
+      onselectedKeysChanged={(event: SelectorSelectedKeysChangedEvent) =>
+        setSelectedKeys(event.detail.value ?? createEmptySelection())
+      }
       selection-mode={selectionMode}
       row-key={cell.item.data.id}
     />
@@ -45,9 +72,9 @@ export const SelectorCheckboxSelectableTable = () => {
     <div id="tableDemo">
       <oj-radioset
         value={selectionMode}
-        onvalueChanged={(event: any) => {
+        onvalueChanged={(event: RadioValueChangedEvent) => {
           setSelectionMode(event.detail.value ?? 'multiple');
-          setSelectedKeys(new KeySetImpl());
+          setSelectedKeys(createEmptySelection());
         }}
         labelHint="Selection Mode"
       >
@@ -57,7 +84,10 @@ export const SelectorCheckboxSelectableTable = () => {
       <oj-table aria-label="selector table" data={dataProvider} columns={columns}>
         <template slot="selectorTemplate" render={renderSelectorTemplate} />
       </oj-table>
-      <div class="oj-sm-margin-4x-top">Current selection: {JSON.stringify(Array.from(selectedKeys.values?.() ?? []))}</div>
+      <div class="oj-sm-margin-4x-top">
+        Current selection:{" "}
+        {JSON.stringify(Array.from((selectedKeys as KeySetImpl<number>).values()))}
+      </div>
     </div>
   );
 };

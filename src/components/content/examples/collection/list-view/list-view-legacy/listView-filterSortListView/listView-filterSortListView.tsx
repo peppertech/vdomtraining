@@ -1,8 +1,8 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
+import type { JSX } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
-import { FilterFactory } from 'ojs/ojdataprovider';
+import { FilterFactory, type AttributeExprFilterDef, type CompoundFilterDef, type DataFilter, type DataProvider, type SortCriterion } from 'ojs/ojdataprovider';
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import { ojCheckboxset } from 'ojs/ojcheckboxset';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -22,36 +22,58 @@ import 'ojs/ojoption';
 import 'ojs/ojratinggauge';
 
 interface OptionData {
-    value: string;
-    label: string;
+	    value: string;
+	    label: string;
 }
 
-export const ListViewFilterSortListView = () => {
-  const priceCriteriaRef = useRef<any>([]);
-  const ratingCriteriaRef = useRef<any>([]);
-  const authorCriteriaRef = useRef<any>([]);
-  const currentSortCriteriaRef = useRef<any>(null);
-  const currentFilterCriterionRef = useRef<any>(null);
+interface Product {
+	    ID: number;
+	    TITLE: string;
+	    AUTHOR: string;
+	    PUBLISH_DATE: string;
+	    PRICE: number;
+	    RATING: number;
+	    IMAGE_URL: string;
+	    REVIEWS: number;
+}
 
-  const sortCriteriaMap = useMemo(() => ({
+type SortValue = 'default' | 'lh' | 'hl' | 'reviews' | 'date';
+type ProductAttributeCriterion = AttributeExprFilterDef<Product>;
+type ProductCompoundCriterion = CompoundFilterDef<Product>;
+type ProductFilterCriterion = ProductAttributeCriterion | ProductCompoundCriterion;
+type ProductFilterCriteriaMap = Record<string, ProductFilterCriterion>;
+type ProductDataProvider = DataProvider<Product['ID'], Product>;
+type ProductItemTemplateContext = {
+	    data: Product;
+};
+type ProductImageStyle = JSX.CSSProperties;
+
+export const ListViewFilterSortListView = () => {
+	  const priceCriteriaRef = useRef<ProductFilterCriterion[]>([]);
+	  const ratingCriteriaRef = useRef<ProductFilterCriterion[]>([]);
+	  const authorCriteriaRef = useRef<ProductFilterCriterion[]>([]);
+	  const currentSortCriteriaRef = useRef<SortCriterion<Product>[] | undefined>(undefined);
+	  const currentFilterCriterionRef = useRef<DataFilter.Filter<Product> | undefined>(undefined);
+
+	  const sortCriteriaMap = useMemo<Partial<Record<SortValue, SortCriterion<Product>>>>(() => ({
       lh: { attribute: 'PRICE', direction: 'ascending' },
       hl: { attribute: 'PRICE', direction: 'descending' },
       reviews: { attribute: 'REVIEWS', direction: 'descending' },
       date: { attribute: 'PUBLISH_DATE', direction: 'descending' }
   }), []);
-  const priceFilterCriteriaMap = useMemo(() => ({
+	  const priceFilterCriteriaMap = useMemo<ProductFilterCriteriaMap>(() => ({
       lt30: { op: '$lt', attribute: 'PRICE', value: 30 },
       '30to40': { op: '$and', criteria: [{ op: '$ge', attribute: 'PRICE', value: 30 }, { op: '$le', attribute: 'PRICE', value: 39.99 }] },
       '40to50': { op: '$and', criteria: [{ op: '$ge', attribute: 'PRICE', value: 40 }, { op: '$le', attribute: 'PRICE', value: 49.99 }] },
       gt50: { op: '$ge', attribute: 'PRICE', value: 50 }
   }), []);
-  const ratingFilterCriteriaMap = useMemo(() => ({
+	  const ratingFilterCriteriaMap = useMemo<ProductFilterCriteriaMap>(() => ({
       five: { op: '$ge', attribute: 'RATING', value: 5 },
       four: { op: '$ge', attribute: 'RATING', value: 4 },
       three: { op: '$ge', attribute: 'RATING', value: 3 },
       two: { op: '$lt', attribute: 'RATING', value: 3 }
   }), []);
-  const authorFilterCriteriaMap = useMemo(() => ({
+	  const authorFilterCriteriaMap = useMemo<ProductFilterCriteriaMap>(() => ({
       dcoward: { op: '$eq', attribute: 'AUTHOR', value: 'Danny Coward' },
       hschildt: { op: '$eq', attribute: 'AUTHOR', value: 'Herbert Schildt' },
       jmanico: { op: '$eq', attribute: 'AUTHOR', value: 'Jim Manico' },
@@ -64,11 +86,12 @@ export const ListViewFilterSortListView = () => {
       currencyDisplay: 'symbol'
   }), []);
   const currencyConverter = useMemo(() => new IntlNumberConverter(currencyOptions), [currencyOptions]);
-  const baseDataProvider = useMemo(() => new ArrayDataProvider(JSON.parse(jsonDataStr), {
-      keyAttributes: 'ID'
-  }), []);
-  const [dataProvider, setDataProvider] = useState<any>(baseDataProvider);
-  const [currentSort, setCurrentSort] = useState<any>('default');
+	  const productData = useMemo(() => JSON.parse(jsonDataStr) as Product[], []);
+	  const baseDataProvider = useMemo<ProductDataProvider>(() => new ArrayDataProvider<Product['ID'], Product>(productData, {
+	      keyAttributes: 'ID'
+	  }), [productData]);
+	  const [dataProvider, setDataProvider] = useState<ProductDataProvider>(baseDataProvider);
+	  const [currentSort, setCurrentSort] = useState<SortValue>('default');
   const options = useMemo(() => [
       {
           value: 'default',
@@ -95,7 +118,7 @@ export const ListViewFilterSortListView = () => {
       keyAttributes: 'value'
   }), [options]);
 
-  const getImage = (url: string) => {
+	  const getImage = (url: string): ProductImageStyle => {
       return {
           backgroundImage: 'url(' + url + ')',
           backgroundRepeat: 'no-repeat',
@@ -106,9 +129,11 @@ export const ListViewFilterSortListView = () => {
       };
   };
 
-  const handleSortCriteriaChanged = (event: ojSelectSingle.valueChanged<OptionData['value'], OptionData>) => {
-      setCurrentSort(event.detail.value);
-      let sortCriteria = sortCriteriaMap[event.detail.value];
+	  const handleSortCriteriaChanged = (event: ojSelectSingle.valueChanged<OptionData['value'], OptionData>) => {
+	      const selectedSort = (event.detail.value as SortValue | null) ?? 'default';
+	      setCurrentSort(selectedSort);
+	      const selectedSortCriterion = sortCriteriaMap[selectedSort];
+	      let sortCriteria = selectedSortCriterion ? [selectedSortCriterion] : undefined;
       if (sortCriteria != null) {
           sortCriteria = [sortCriteria];
       }
@@ -134,10 +159,10 @@ export const ListViewFilterSortListView = () => {
       _handleFilterChanged();
   };
 
-  const _getCriteria = (event: ojCheckboxset.valueChanged<OptionData['value'], OptionData>, criteriaMap: any) => {
-      const criteria = new Array();
-      const values = event.detail.value;
-      values.forEach(function (value: any) {
+	  const _getCriteria = (event: ojCheckboxset.valueChanged<OptionData['value'], OptionData>, criteriaMap: ProductFilterCriteriaMap) => {
+	      const criteria: ProductFilterCriterion[] = [];
+	      const values = event.detail.value ?? [];
+	      values.forEach(function (value: string) {
           const filter = criteriaMap[value];
           if (filter) {
               criteria.push(filter);
@@ -146,8 +171,8 @@ export const ListViewFilterSortListView = () => {
       return criteria;
   };
 
-  const _handleFilterChanged = () => {
-      const criteria = new Array();
+	  const _handleFilterChanged = () => {
+	      const criteria: ProductCompoundCriterion[] = [];
       if (priceCriteriaRef.current.length > 0) {
           criteria.push({ op: '$or', criteria: priceCriteriaRef.current });
       }
@@ -157,9 +182,9 @@ export const ListViewFilterSortListView = () => {
       if (authorCriteriaRef.current.length > 0) {
           criteria.push({ op: '$or', criteria: authorCriteriaRef.current });
       }
-      const filterCriterion = criteria.length === 0
-          ? undefined
-          : FilterFactory.getFilter({ filterDef: { op: '$and', criteria: criteria } });
+	      const filterCriterion: DataFilter.Filter<Product> | undefined = criteria.length === 0
+	          ? undefined
+	          : FilterFactory.getFilter({ filterDef: { op: '$and', criteria: criteria } }) as DataFilter.Filter<Product>;
       currentFilterCriterionRef.current = filterCriterion;
       setDataProvider(new ListDataProviderView(baseDataProvider, {
           filterCriterion,
@@ -202,7 +227,7 @@ export const ListViewFilterSortListView = () => {
                                                     </div>
                                       </div>
                               <oj-list-view id="listview" aria-label="list with external sort and filter controls" class="demo-list oj-listview-item-padding-off" data={dataProvider} selection-mode="single" {...{ 'item.enter-key-focus-behavior': "focusWithin" }}>
-                                          <template slot="itemTemplate" render={(item: any) => (
+	                                          <template slot="itemTemplate" render={(item: ProductItemTemplateContext) => (
                                                       <>
                                                           <oj-list-item-layout>
                                                                             <div class="oj-typography-body-xl"><a href="#">{item.data.TITLE}</a></div>
@@ -247,7 +272,7 @@ export const ListViewFilterSortListView = () => {
                                                                                                                   </div>
                                                                                             </div>
                                                                             <div slot="tertiary"><a class="oj-typography-body-xs" href="#">Check Shipping & Availability</a></div>
-                                                                            <div slot="trailing" style={getImage(item.data.IMAGE_URL) as any} />
+	                                                                            <div slot="trailing" style={getImage(item.data.IMAGE_URL)} />
                                                                             <div slot="quaternary" class="oj-typography-body-lg oj-typography-bold">{currencyConverter.format(item.data.PRICE)}</div>
                                                                             <div slot="navigation"><a class="oj-typography-body-sm" href="#">Add to cart</a></div>
                                                                         </oj-list-item-layout>

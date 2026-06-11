@@ -3,6 +3,7 @@ import type { ComponentProps } from 'preact';
 import { useEffect, useMemo } from 'preact/hooks';
 import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
 import { RESTTreeDataProvider } from 'ojs/ojresttreedataprovider';
+import { ojTable } from 'ojs/ojtable';
 import { CollectionMockFetchServer as MockFetchServer } from '../../shared/CollectionMockFetchServer';
 import * as treeDataText from 'text!../../data/cookbook/dataCollections/rowExpanderTable/tableCollectionRowExpander/projectData.json';
 import 'ojs/ojtable';
@@ -25,6 +26,7 @@ type TaskItem = {
     leaf?: boolean;
   };
 };
+type TaskRowTemplateContext = ojTable.RowTemplateContext<TaskKey, TaskData>;
 
 export const RowExpanderTableTableCollectionRowExpander = () => {
   const keyAttributes: keyof TaskData = 'id';
@@ -139,7 +141,7 @@ export const RowExpanderTableTableCollectionRowExpander = () => {
     >
       <template
         slot="rowTemplate"
-        render={(row: any) => (
+        render={(row: TaskRowTemplateContext) => (
           <tr>
             <td>
               <oj-row-expander data-oj-clickthrough="disabled" context={row} />

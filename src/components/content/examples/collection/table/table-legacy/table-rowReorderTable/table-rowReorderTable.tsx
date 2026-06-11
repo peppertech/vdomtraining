@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
@@ -19,7 +18,7 @@ interface TableData {
 const clipboard = new DataTransfer();
 
 export const TableRowReorderTable = () => {
-  const [dataArray, setDataArray] = useState<any[]>(JSON.parse(resultData));
+  const [dataArray, setDataArray] = useState<TableData[]>(() => JSON.parse(resultData as string) as TableData[]);
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Year', field: 'Year', id: 'year' },
       { headerText: 'Q1', field: 'Q1', id: 'q1' },
@@ -41,7 +40,7 @@ export const TableRowReorderTable = () => {
   const _handleDataTransfer = (dataTransfer: DataTransfer, rowIndex: number) => {
       const dragData = dataTransfer.getData('application/ojtablerows+json');
       if (dragData) {
-          const rowDataArray = JSON.parse(dragData);
+	          const rowDataArray = JSON.parse(dragData) as Array<{ metadata?: { key: TableData['Year'] }; key?: TableData['Year']; data: TableData }>;
           const toRowIndex = rowIndex;
           const key = rowDataArray[0].metadata ? rowDataArray[0].metadata.key : rowDataArray[0].key;
           if (key) {

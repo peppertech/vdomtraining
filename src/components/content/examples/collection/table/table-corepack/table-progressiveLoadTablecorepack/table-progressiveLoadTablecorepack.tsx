@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
@@ -20,12 +19,14 @@ type Employee = {
 };
 
 type Key = Employee['EMPLOYEE_ID'];
+type EmployeeResponse = { Employees: Employee[] };
+type DelayedEmployeeDataProvider = DemoDelayingDataProvider<Key, Employee>;
 
 type NumberChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0];
 
 export const TableProgressiveLoadTablecorepack = () => {
-  const [fetchDelay, setFetchDelay] = useState<any>(2000);
-  const [dataProvider, setDataProvider] = useState<any>(undefined);
+  const [fetchDelay, setFetchDelay] = useState(2000);
+  const [dataProvider, setDataProvider] = useState<DelayedEmployeeDataProvider | undefined>(undefined);
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Employee Id', field: 'EMPLOYEE_ID', id: 'id' },
       { headerText: 'First Name', field: 'FIRST_NAME', id: 'first' },
@@ -41,7 +42,7 @@ export const TableProgressiveLoadTablecorepack = () => {
   const keyAttributes: keyof Employee = 'EMPLOYEE_ID';
   const server = useMemo(() => new CollectionMockFetchServer<Employee>({
       keyAttributes: keyAttributes,
-      data: JSON.parse(jsonDataStr).Employees
+	      data: (JSON.parse(jsonDataStr as string) as EmployeeResponse).Employees
   }), [keyAttributes]);
   useEffect(() => {
       server.start();

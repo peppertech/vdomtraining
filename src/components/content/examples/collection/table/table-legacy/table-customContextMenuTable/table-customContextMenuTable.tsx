@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
@@ -18,8 +17,8 @@ interface DepartmentData {
 }
 
 export const TableCustomContextMenuTable = () => {
-  const [selectedMenuItem, setSelectedMenuItem] = useState<any>('None selected yet');
-  const [launchedFrom, setLaunchedFrom] = useState<any>('None launched yet');
+  const [selectedMenuItem, setSelectedMenuItem] = useState('None selected yet');
+  const [launchedFrom, setLaunchedFrom] = useState('None launched yet');
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Department Id', field: 'DepartmentId', id: 'depId' },
       { headerText: 'Department Name', field: 'DepartmentName', id: 'depName' },
@@ -30,7 +29,7 @@ export const TableCustomContextMenuTable = () => {
       accessibility: { rowHeader: 'depName' }
   };
 
-  const deptArray: any = JSON.parse(deptData);
+  const deptArray: DepartmentData[] = JSON.parse(deptData as string) as DepartmentData[];
   const dataprovider = useMemo(() => new ArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(deptArray, {
       keyAttributes: 'DepartmentId'
   }), [deptArray]);

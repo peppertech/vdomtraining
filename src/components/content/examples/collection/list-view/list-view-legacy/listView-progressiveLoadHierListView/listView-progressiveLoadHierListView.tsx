@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import { KeySetImpl } from 'ojs/ojkeyset';
@@ -26,10 +25,11 @@ interface Contact {
 }
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type ContactsDataProvider = DemoDelayingTreeDataProvider<Data['id'], Data>;
 
 export const ListViewProgressiveLoadHierListView = () => {
-  const [delay, setDelay] = useState<any>(2000);
-  const [childDelay, setChildDelay] = useState<any>(2000);
+  const [delay, setDelay] = useState(2000);
+  const [childDelay, setChildDelay] = useState(2000);
 
   const data = useMemo(() => [
       {
@@ -111,17 +111,17 @@ export const ListViewProgressiveLoadHierListView = () => {
           ]
       }
   ], []);
-  const [dataProvider, setDataProvider] = useState<any>(() => new DemoDelayingTreeDataProvider(new ArrayTreeDataProvider<Data['id'], Data>(data, {
+  const [dataProvider, setDataProvider] = useState<ContactsDataProvider>(() => new DemoDelayingTreeDataProvider(new ArrayTreeDataProvider<Data['id'], Data>(data, {
       keyAttributes: 'id'
   }), delay, childDelay));
   const expanded = useMemo(() => new KeySetImpl(), []);
 
-  const handleDelayValueChanged = (event: PropertyChangedEvent<any>) => {
-    setDelay(event.detail.value);
+  const handleDelayValueChanged = (event: PropertyChangedEvent<number>) => {
+    setDelay(event.detail.value ?? 2000);
   };
 
-  const handleChildDelayValueChanged = (event: PropertyChangedEvent<any>) => {
-    setChildDelay(event.detail.value);
+  const handleChildDelayValueChanged = (event: PropertyChangedEvent<number>) => {
+    setChildDelay(event.detail.value ?? 2000);
   };
 
   const applyDelay = () => {

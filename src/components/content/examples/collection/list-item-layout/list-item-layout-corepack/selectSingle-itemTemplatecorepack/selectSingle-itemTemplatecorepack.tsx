@@ -3,6 +3,7 @@ import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import * as employeeDataText from 'text!./employeeData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import type { CSelectSingleElement } from 'oj-c/select-single';
 import 'oj-c/select-single';
 import 'oj-c/highlight-text';
 import 'oj-c/list-item-layout';
@@ -17,6 +18,14 @@ type Employee = {
   PHONE_NUMBER: string;
   IMAGE: string;
 };
+type SelectSingleItemTemplateContext = CSelectSingleElement.ItemTemplateContext<
+  Employee['EMPLOYEE_ID'],
+  Employee
+>;
+type SelectSingleValueChangedEvent = CSelectSingleElement.valueChanged<
+  Employee['EMPLOYEE_ID'],
+  Employee
+>;
 
 const employeeData = (JSON.parse(employeeDataText as string) as Employee[]).map((employee) => ({
   ...employee,
@@ -34,14 +43,14 @@ export const SelectSingleItemTemplatecorepack = () => {
     []
   );
 
-  const getItemText = (itemContext: any) =>
+  const getItemText = (itemContext: SelectSingleItemTemplateContext) =>
     `${itemContext.data.FIRST_NAME} ${itemContext.data.LAST_NAME}`;
 
-  const handleSelectValChanged = (event: any) => {
+  const handleSelectValChanged = (event: SelectSingleValueChangedEvent) => {
     setSelectVal(event.detail.value ?? null);
   };
 
-  const renderItemTemplate = (item: any) => (
+  const renderItemTemplate = (item: SelectSingleItemTemplateContext) => (
     <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
       <span class="oj-typography-body-md oj-text-color-primary">
         <oj-c-highlight-text

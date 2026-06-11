@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
@@ -51,18 +50,30 @@ interface SelectSingleData {
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 type TableColumns = ComponentProps<'oj-table'>['columns'];
 type AddRowContext = { submitAddRow: (cancelAdd: boolean) => void };
+type DelayMode = 'off' | 'on';
+type EditRowState = { rowKey?: DepartmentData['DepartmentId'] | null; rowIndex?: number };
+type AddRowDisplay = 'top' | 'hidden';
+type EditableDepartmentData = Omit<DepartmentData, 'DepartmentId' | 'LocationId'> & {
+    DepartmentId: number | null;
+    LocationId: number | null;
+    Primary: string[];
+};
+type CompleteEditableDepartmentData = EditableDepartmentData & DepartmentData;
+
+const isCompleteDepartmentData = (data: EditableDepartmentData): data is CompleteEditableDepartmentData =>
+    data.DepartmentId != null && data.LocationId != null;
 
 export const TableAddRowTable = () => {
-  const deptArray: any = JSON.parse(deptData);
-  const [deptObservableArray, setDeptObservableArray] = useState<any[]>(deptArray);
+  const deptArray: DepartmentData[] = JSON.parse(deptData as string) as DepartmentData[];
+  const [deptObservableArray, setDeptObservableArray] = useState<DepartmentData[]>(deptArray);
   const [rowData, setRowData] = useState<DepartmentData | null>(null);
   const [editedData, setEditedData] = useState<string>('');
-  const [simulatedDelays, setSimulatedDelays] = useState<any>('off');
-  const [editDelay, setEditDelay] = useState<any>(2000);
-  const [editEndDelay, setEditEndDelay] = useState<any>(2000);
-  const [editRow, setEditRow] = useState<any>({ rowKey: null });
-  const [displayRow, setDisplayRow] = useState<any>('top');
-  const [addRowData, setAddRowData] = useState<any>({
+  const [simulatedDelays, setSimulatedDelays] = useState<DelayMode>('off');
+  const [editDelay, setEditDelay] = useState(2000);
+  const [editEndDelay, setEditEndDelay] = useState(2000);
+  const [editRow, setEditRow] = useState<EditRowState>({ rowKey: null });
+  const [displayRow, setDisplayRow] = useState<AddRowDisplay>('top');
+  const [addRowData, setAddRowData] = useState<EditableDepartmentData>({
       DepartmentId: null,
       DepartmentName: '',
       LocationId: null,
@@ -75,7 +86,7 @@ export const TableAddRowTable = () => {
   const originalDataRef = useRef<DepartmentData | null>(null);
   const cancelEditRef = useRef<boolean>(false);
 
-  const dataprovider = useMemo(() => new BufferingDataProvider(new ArrayDataProvider(deptObservableArray, {
+  const dataprovider = useMemo(() => new BufferingDataProvider<DepartmentData['DepartmentId'], DepartmentData>(new ArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(deptObservableArray, {
       keyAttributes: 'DepartmentId'
   })), [deptObservableArray]);
   const departments = useMemo(() => new ArrayDataProvider([{ label: 'Sales' }, { label: 'HR' }, { label: 'Marketing' }, { label: 'Finance' }], { keyAttributes: 'label' }), []);
@@ -159,24 +170,24 @@ export const TableAddRowTable = () => {
       setRowData((currentRowData) => currentRowData ? { ...currentRowData, [field]: value } : currentRowData);
   };
 
-  const updateAddRowData = (field: string, value: unknown) => {
-      setAddRowData((currentData: any) => ({ ...currentData, [field]: value }));
+  const updateAddRowData = <K extends keyof EditableDepartmentData>(field: K, value: EditableDepartmentData[K]) => {
+      setAddRowData((currentData) => ({ ...currentData, [field]: value }));
   };
 
-  const handleSimulatedDelaysValueChanged = (event: PropertyChangedEvent<any>) => {
-    setSimulatedDelays(event.detail.value);
+  const handleSimulatedDelaysValueChanged = (event: PropertyChangedEvent<DelayMode>) => {
+    setSimulatedDelays(event.detail.value ?? 'off');
   };
 
-  const handleEditDelayValueChanged = (event: PropertyChangedEvent<any>) => {
-    setEditDelay(event.detail.value);
+  const handleEditDelayValueChanged = (event: PropertyChangedEvent<number | null>) => {
+    setEditDelay(event.detail.value ?? 2000);
   };
 
-  const handleEditEndDelayValueChanged = (event: PropertyChangedEvent<any>) => {
-    setEditEndDelay(event.detail.value);
+  const handleEditEndDelayValueChanged = (event: PropertyChangedEvent<number | null>) => {
+    setEditEndDelay(event.detail.value ?? 2000);
   };
 
-  const handleEditRowEditRowChanged = (event: PropertyChangedEvent<any>) => {
-    setEditRow(event.detail.value);
+  const handleEditRowEditRowChanged = (event: PropertyChangedEvent<EditRowState | null>) => {
+    setEditRow(event.detail.value ?? { rowKey: null });
   };
 
   const clearRowData = () => {
@@ -329,16 +340,22 @@ export const TableAddRowTable = () => {
               const key = editEvent.detail.rowContext.item.data.DepartmentId;
               submitRow(key);
           }
-      }
-      else {
-          let addItem = {
-              metadata: { key: addRowData.DepartmentId },
-              data: addRowData
-          };
-          dataprovider.addItem(addItem);
-          const editItem = dataprovider.getSubmittableItems()[0] as BufferingDataProvider.EditItem<DepartmentData['DepartmentId'], DepartmentData>;
-          dataprovider.setItemStatus(editItem, 'submitting');
-          deptObservableArray.splice(0, 0, editItem.item.data);
+	      }
+	      else {
+	          if (!isCompleteDepartmentData(addRowData)) {
+	              return;
+	          }
+	          let addItem = {
+	              metadata: { key: addRowData.DepartmentId },
+	              data: addRowData
+	          };
+	          dataprovider.addItem(addItem);
+	          const editItem = dataprovider.getSubmittableItems()[0] as BufferingDataProvider.EditItem<DepartmentData['DepartmentId'], DepartmentData>;
+	          dataprovider.setItemStatus(editItem, 'submitting');
+	          const itemData = editItem.item.data;
+	          if (itemData != null) {
+	              deptObservableArray.splice(0, 0, itemData);
+	          }
           dataprovider.setItemStatus(editItem, 'submitted');
           clearRowData();
       }
@@ -363,11 +380,16 @@ export const TableAddRowTable = () => {
           metadata: { key: key },
           data: rowData
       });
-      const editItem = dataprovider.getSubmittableItems()[0] as BufferingDataProvider.EditItem<DepartmentData['DepartmentId'], DepartmentData>;
-      dataprovider.setItemStatus(editItem, 'submitting');
-      for (let idx = 0; idx < deptObservableArray.length; idx++) {
-          if (deptObservableArray[idx].DepartmentId === editItem.item.metadata.key) {
-              deptObservableArray.splice(idx, 1, editItem.item.data);
+	      const editItem = dataprovider.getSubmittableItems()[0] as BufferingDataProvider.EditItem<DepartmentData['DepartmentId'], DepartmentData>;
+	      dataprovider.setItemStatus(editItem, 'submitting');
+	      const itemData = editItem.item.data;
+	      if (itemData == null) {
+	          dataprovider.setItemStatus(editItem, 'submitted');
+	          return;
+	      }
+	      for (let idx = 0; idx < deptObservableArray.length; idx++) {
+	          if (deptObservableArray[idx].DepartmentId === editItem.item.metadata.key) {
+	              deptObservableArray.splice(idx, 1, itemData);
               break;
           }
       }
