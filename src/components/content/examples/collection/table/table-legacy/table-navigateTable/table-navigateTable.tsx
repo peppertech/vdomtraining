@@ -1,46 +1,91 @@
 import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import * as ModuleAnimations from 'ojs/ojmoduleanimations';
-import CoreRouter = require('ojs/ojcorerouter');
-import UrlParamAdapter = require('ojs/ojurlparamadapter');
-import ModuleRouterAdapter = require('ojs/ojmodulerouter-adapter');
-import 'ojs/ojmodule-element';
-import 'ojs/ojmodule';
+import type { ComponentProps } from 'preact';
+import { useMemo, useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import * as deptData from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
+import 'ojs/ojbutton';
+import 'ojs/ojtable';
+
+type Department = {
+  DepartmentId: number;
+  DepartmentName: string;
+  LocationId: number;
+  ManagerId: number;
+};
+
+type View = 'table' | 'content';
+type TableProps = ComponentProps<'oj-table'>;
+type CurrentRow = NonNullable<TableProps['currentRow']>;
+type ScrollPosition = TableProps['scrollPosition'];
+type CurrentRowChangedEvent = Parameters<NonNullable<TableProps['oncurrentRowChanged']>>[0];
+type ScrollPositionChangedEvent = Parameters<NonNullable<TableProps['onscrollPositionChanged']>>[0];
 
 export const TableNavigateTable = () => {
-  const animationCallback = (context: ModuleRouterAdapter.AnimationCallbackParameters) => {
-    if (context.state && context.state.path === 'content') {
-      return ModuleAnimations.navParent;
-    }
-    return ModuleAnimations.navChild;
-  };
+  const [view, setView] = useState<View>('table');
+  const [currentRow, setCurrentRow] = useState<CurrentRow>({ rowKey: 10 });
+  const [scrollPosition, setScrollPosition] = useState<ScrollPosition>({ rowKey: 10 });
 
-  const router = useMemo(
+  const departments = useMemo<Department[]>(() => JSON.parse(deptData), []);
+  const dataProvider = useMemo(
     () =>
-      new CoreRouter(
-        [
-          { path: '', redirect: 'table' },
-          { path: 'table', detail: { label: 'table' } },
-          { path: 'content', detail: { label: 'content' } }
-        ],
-        {
-          history: 'skip',
-          urlAdapter: new UrlParamAdapter()
-        }
-      ),
+      new ArrayDataProvider<Department['DepartmentId'], Department>(departments, {
+        keyAttributes: 'DepartmentId'
+      }),
+    [departments]
+  );
+  const columns = useMemo<TableProps['columns']>(
+    () => [
+      { headerText: 'Department Id', field: 'DepartmentId', id: 'DepartmentId' },
+      { headerText: 'Department Name', field: 'DepartmentName', id: 'DepartmentName' },
+      { headerText: 'Location Id', field: 'LocationId', id: 'LocationId' },
+      { headerText: 'Manager Id', field: 'ManagerId', id: 'ManagerId' }
+    ],
     []
   );
-  const module = useMemo(
-    () =>
-      new ModuleRouterAdapter(router, {
-        viewPath: 'views/ojTable-scroll/',
-        viewModelPath: 'viewModels/ojTable-scroll/',
-        animationCallback
-      }),
-    [router]
-  );
 
-  return <oj-module id="moduleDemo" class="demo-module" config={module.koObservableConfig} animation={module.animation} />;
+  const selectedDepartment =
+    departments.find((department) => department.DepartmentId === currentRow.rowKey) ?? departments[0];
+
+  const handleCurrentRowChanged = (event: CurrentRowChangedEvent) => {
+    setCurrentRow(event.detail.value as CurrentRow);
+  };
+
+  const handleScrollPositionChanged = (event: ScrollPositionChangedEvent) => {
+    setScrollPosition(event.detail.value);
+  };
+
+  return (
+    <div class="demo-module">
+      {view === 'table' ? (
+        <div class="demo-page">
+          <div class="oj-sm-margin-2x-bottom">
+            <oj-button onojAction={() => setView('content')}>View current row detail</oj-button>
+          </div>
+          <oj-table
+            id="tableNavigateTable"
+            aria-label="Departments Table"
+            class="demo-table-container"
+            data={dataProvider}
+            columns={columns}
+            currentRow={currentRow}
+            scrollPosition={scrollPosition}
+            oncurrentRowChanged={handleCurrentRowChanged}
+            onscrollPositionChanged={handleScrollPositionChanged}
+          />
+        </div>
+      ) : (
+        <div class="demo-page oj-sm-padding-4x">
+          <oj-button onojAction={() => setView('table')}>Back to table</oj-button>
+          <div class="oj-panel oj-sm-margin-4x-top">
+            <h4>{selectedDepartment.DepartmentName}</h4>
+            <p>Department Id: {selectedDepartment.DepartmentId}</p>
+            <p>Location Id: {selectedDepartment.LocationId}</p>
+            <p>Manager Id: {selectedDepartment.ManagerId}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default TableNavigateTable;

@@ -1,5 +1,5 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
@@ -26,9 +26,11 @@ import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
 } from "../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../example-route-context";
 
 type CollectionComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isAvailable?: boolean;
@@ -39,6 +41,7 @@ type CollectionComponent = {
 const collectionComponents: CollectionComponent[] = [
   {
     id: 9,
+    routeId: "card-view",
     name: "Card View",
     image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
     isAvailable: true,
@@ -47,12 +50,14 @@ const collectionComponents: CollectionComponent[] = [
   },
   {
     id: 4,
+    routeId: "data-grid",
     name: "Data Grid",
     image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
     isAvailable: true,
   },
   {
     id: 11,
+    routeId: "indexer",
     name: "Indexer",
     image: "oj-ux-icon-size-12x oj-ux-ico-indexer",
     isAvailable: true,
@@ -61,6 +66,7 @@ const collectionComponents: CollectionComponent[] = [
   
   {
     id: 10,
+    routeId: "list-item-layout",
     name: "List Item Layout",
     image: "oj-ux-icon-size-12x oj-ux-ico-list",
     isAvailable: true,
@@ -69,6 +75,7 @@ const collectionComponents: CollectionComponent[] = [
   },
   {
     id: 2,
+    routeId: "list-view",
     name: "List View",
     image: "oj-ux-icon-size-12x  oj-ux-ico-list",
     isAvailable: true,
@@ -77,6 +84,7 @@ const collectionComponents: CollectionComponent[] = [
   },
    {
     id: 12,
+    routeId: "refresher-touch",
     name: "Refresher (Touch)",
     image: "oj-ux-icon-size-12x oj-ux-ico-refresher",
     isAvailable: true,
@@ -84,6 +92,7 @@ const collectionComponents: CollectionComponent[] = [
   },
   {
     id: 6,
+    routeId: "row-expander",
     name: "Row Expander",
     image: "oj-ux-icon-size-12x  oj-ux-ico-row-expander",
     isAvailable: true,
@@ -91,6 +100,7 @@ const collectionComponents: CollectionComponent[] = [
   },
   {
     id: 16,
+    routeId: "selector",
     name: "Selector",
     image: "oj-ux-icon-size-12x oj-ux-ico-checkbox-on",
     isAvailable: true,
@@ -98,6 +108,7 @@ const collectionComponents: CollectionComponent[] = [
   },
    {
     id: 13,
+    routeId: "stream-list",
     name: "Stream List",
     image: "oj-ux-icon-size-12x oj-ux-ico-list",
     isAvailable: true,
@@ -105,6 +116,7 @@ const collectionComponents: CollectionComponent[] = [
   },
   {
     id: 15,
+    routeId: "swipe-actions",
     name: "Swipe Actions (Touch)",
     image: "oj-ux-icon-size-12x  oj-ux-ico-swipe-to-reveal",
     isAvailable: true,
@@ -112,6 +124,7 @@ const collectionComponents: CollectionComponent[] = [
   },
   {
     id: 7,
+    routeId: "table",
     name: "Table",
     image: "oj-ux-icon-size-12x  oj-ux-ico-tables-basic",
     isAvailable: true,
@@ -120,6 +133,7 @@ const collectionComponents: CollectionComponent[] = [
   },
   {
     id: 3,
+    routeId: "tree-view",
     name: "Tree View",
     image: "oj-ux-icon-size-12x  oj-ux-ico-tree-view",
     isAvailable: true,
@@ -127,6 +141,7 @@ const collectionComponents: CollectionComponent[] = [
   },
   {
     id: 14,
+    routeId: "waterfall-layout",
     name: "Waterfall Layout",
     image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
     isAvailable: true,
@@ -152,6 +167,7 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<CollectionComponent["id"]>;
 
 const CollectionHome = () => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<CollectionComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -162,6 +178,9 @@ const CollectionHome = () => {
   const [nestedBreadcrumbItems, setNestedBreadcrumbItems] = useState<
     CatalogBreadcrumbItem[] | null
   >(null);
+  const activeRouteComponent = collectionComponents.find(
+    (component) => component.routeId === exampleRoute.segments[0],
+  );
 
   const renderListItem = useCallback(
     (
@@ -228,23 +247,56 @@ const CollectionHome = () => {
     setShowComponentDetail(false);
     setNestedBreadcrumbItems(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<CollectionComponent["id"]>);
-  }, []);
+    exampleRoute.routeTo([]);
+  }, [exampleRoute]);
 
   const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as CollectionComponent["id"];
+    if (event.detail.updatedFrom && event.detail.updatedFrom !== "internal") {
+      return;
+    }
+
+    const selectedKey = event.detail.items?.[0]?.key as
+      | CollectionComponent["id"]
+      | undefined;
     if (typeof selectedKey === "number") {
+      const selectedComponent = collectionComponents.find(
+        (component) => component.id === selectedKey,
+      );
+
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       setNestedBreadcrumbItems(null);
       const selection = event.detail.value as KeySet<CollectionComponent["id"]>;
       setSelectedItems(selection);
-
-      const selectedComponent = collectionComponents.find(
-        (component) => component.id === selectedKey,
-      );
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([selectedComponent.routeId]);
+      }
     }
   };
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setNestedBreadcrumbItems(null);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as KeySet<
+          CollectionComponent["id"]
+        >,
+      );
+      setIsComponentAvailable(Boolean(activeRouteComponent.isAvailable));
+      return;
+    }
+
+    if (exampleRoute.segments.length === 0) {
+      setActiveComponentId(null);
+      setShowComponentDetail(false);
+      setNestedBreadcrumbItems(null);
+      setSelectedItems(new KeySetImpl([]) as KeySet<CollectionComponent["id"]>);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length]);
 
   const activeComponent = collectionComponents.find(
     (component) => component.id === activeComponentId,

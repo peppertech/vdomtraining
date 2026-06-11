@@ -7,7 +7,7 @@ import "ojs/ojactioncard";
 import "../../../../../../jet-composites/demo-profile-card-layout/loader";
 import "ojs/ojavatar";
 import "ojs/ojbutton";
-import "ojs/ojbuttonsetone";
+// import "ojs/ojbuttonsetone";
 import "ojs/ojlistitemlayout";
 import "ojs/ojlistview";
 import "ojs/ojoption";

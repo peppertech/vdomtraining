@@ -1,5 +1,6 @@
 import { h } from "preact";
-import { useRef, useState, useEffect } from "preact/hooks";
+import { useEffect, useMemo, useRef, useState } from "preact/hooks";
+import { useLocation } from "preact-iso";
 import * as ResponsiveUtils from "ojs/ojresponsiveutils";
 import "ojs/ojtoolbar";
 import "ojs/ojmenu";
@@ -7,24 +8,17 @@ import "ojs/ojbutton";
 import "ojs/ojnavigationlist";
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import { ojNavigationList } from "ojs/ojnavigationlist";
+import type { AppRoute } from "./app";
 
 type Props = Readonly<{
   appName: string;
   userLogin: string;
-  page?: string;
-  routes: Array<object>;
-  onPageChanged: (value: string) => void;
+  routes: AppRoute[];
 }>;
 
-type Route = {
-  path: string;
-  detail: object;
-};
-
 export const Header = (props: Props) => {
-  const [selectedPage, setSelectedPage] = useState<string>(
-    props.page ? props.page : "bindings"
-  );
+  const location = useLocation();
+  const navigationListRef = useRef<HTMLElement | null>(null);
   const mediaQueryRef = useRef<MediaQueryList>(
     window.matchMedia(ResponsiveUtils.getFrameworkQuery("sm-only")!)
   );
@@ -50,21 +44,77 @@ export const Header = (props: Props) => {
     return isSmallWidth ? "icons" : "all";
   };
 
-  const routesDP = new ArrayDataProvider(props.routes.slice(1), {
-    keyAttributes: "path",
-  });
+  const routesDP = useMemo(
+    () =>
+      new ArrayDataProvider<AppRoute["path"], AppRoute>(props.routes, {
+        keyAttributes: "path",
+      }),
+    [props.routes],
+  );
 
-  const pageChangeHandler = (
-    event: ojNavigationList.selectionChanged<Route["path"], Route>
-  ) => {
-    if (event.detail.updatedFrom === "internal")
-      props.onPageChanged(event.detail.value);
+  const selectedPage = location.path.startsWith("/examples")
+    ? "/examples"
+    : props.routes.find((route) => route.path === location.path)?.path ??
+      "/bindings";
+
+  const getRouteTarget = (path: AppRoute["path"]) =>
+    path === "/examples" ? "/examples/collection" : path;
+
+  const routeTo = (path: AppRoute["path"]) => {
+    const targetPath = getRouteTarget(path);
+
+    if (location.path !== targetPath) {
+      location.route(targetPath);
+    }
   };
 
-  const renderNavList = (item: ojNavigationList.ItemContext<string, Route>) => {
+  useEffect(() => {
+    const navigationList = navigationListRef.current;
+
+    if (!navigationList) {
+      return;
+    }
+
+    const handleNavigationClick = (event: MouseEvent) => {
+      const target = event.target as Element | null;
+      const anchor = target?.closest(
+        "a[data-route-path]",
+      ) as HTMLAnchorElement | null;
+      const routePath = anchor?.dataset.routePath as AppRoute["path"] | undefined;
+
+      if (!anchor || !routePath || !navigationList.contains(anchor)) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+      routeTo(routePath);
+    };
+
+    navigationList.addEventListener("click", handleNavigationClick, true);
+
+    return () => {
+      navigationList.removeEventListener("click", handleNavigationClick, true);
+    };
+  }, [location.path]);
+
+  const pageChangeHandler = (
+    event: ojNavigationList.selectionChanged<AppRoute["path"], AppRoute>
+  ) => {
+    if (event.detail.updatedFrom === "internal") {
+      routeTo(event.detail.value);
+    }
+  };
+
+  const renderNavList = (
+    item: ojNavigationList.ItemContext<AppRoute["path"], AppRoute>
+  ) => {
     return (
       <li id={item.data.path}>
-        <a href="#">
+        <a
+          href="#"
+          data-route-path={item.data.path}
+        >
           <span class={item.data.detail.iconClass} />
           {getDisplayType() === "all" ? item.data.detail.label : ""}
         </a>
@@ -95,7 +145,8 @@ export const Header = (props: Props) => {
             class="oj-web-applayout-max-width oj-web-applayout-navbar"
           >
             <oj-navigation-list
-              selection={props.page}
+              ref={navigationListRef}
+              selection={selectedPage}
               edge="top"
               id="navilist1"
               aria-label="Main navigation, select a page"

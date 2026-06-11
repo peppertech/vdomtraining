@@ -1,5 +1,5 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
@@ -25,9 +25,11 @@ import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
 } from "../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../example-route-context";
 
 type DataVizComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isAvailable?: boolean;
@@ -38,6 +40,7 @@ type DataVizComponent = {
 const dataVizComponents: DataVizComponent[] = [
   {
     id: 1,
+    routeId: "charts",
     name: "Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-combo",
     isAvailable: true,
@@ -46,18 +49,21 @@ const dataVizComponents: DataVizComponent[] = [
   },
   {
     id: 8,
+    routeId: "diagram",
     name: "Diagram",
     image: "oj-ux-icon-size-12x  oj-ux-ico-chart-radar",
     isAvailable: true,
   },
   {
     id: 18,
+    routeId: "gantt",
     name: "Gantt",
     image: "oj-ux-icon-size-12x oj-ux-ico-timeline",
     isAvailable: true,
   },
   {
     id: 4,
+    routeId: "legend",
     name: "Legend",
     image: "oj-ux-icon-size-12x  oj-ux-ico-legend",
     isAvailable: true,
@@ -66,6 +72,7 @@ const dataVizComponents: DataVizComponent[] = [
   },
   {
     id: 20,
+    routeId: "meters",
     name: "Meters",
     image: "oj-ux-icon-size-12x  oj-ux-ico-chart-gauge",
     isAvailable: true,
@@ -74,12 +81,14 @@ const dataVizComponents: DataVizComponent[] = [
   },
   {
     id: 19,
+    routeId: "nbox",
     name: "NBox",
     image: "oj-ux-icon-size-12x  oj-ux-ico-chart-nbox",
     isAvailable: true,
   },
   {
     id: 27,
+    routeId: "picto-chart",
     name: "Picto Chart",
     image: "oj-ux-icon-size-12x  oj-ux-ico-chart-pictochart",
     isAvailable: true,
@@ -89,6 +98,7 @@ const dataVizComponents: DataVizComponent[] = [
   
   {
     id: 23,
+    routeId: "rating-gauge",
     name: "Rating Gauge",
     image: "oj-ux-icon-size-12x oj-ux-ico-star",
     isAvailable: true,
@@ -97,12 +107,14 @@ const dataVizComponents: DataVizComponent[] = [
   },
   {
     id: 24,
+    routeId: "sunburst",
     name: "Sunburst",
     image: "oj-ux-icon-size-12x  oj-ux-ico-sunburst",
     isAvailable: true,
   },
   {
     id: 25,
+    routeId: "tag-cloud",
     name: "Tag Cloud",
     image: "oj-ux-icon-size-12x oj-ux-ico-cloud",
     isAvailable: true,
@@ -111,18 +123,21 @@ const dataVizComponents: DataVizComponent[] = [
   },
   {
     id: 26,
+    routeId: "thematic-map",
     name: "Thematic Map",
     image: "oj-ux-icon-size-12x oj-ux-ico-map",
     isAvailable: true,
   },
   {
     id: 28,
+    routeId: "timeline",
     name: "Timeline",
     image: "oj-ux-icon-size-12x oj-ux-ico-timeline",
     isAvailable: true,
   },
   {
     id: 29,
+    routeId: "treemap",
     name: "Treemap",
     image: "oj-ux-icon-size-12x  oj-ux-ico-treemap",
     isAvailable: true,
@@ -141,6 +156,7 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<DataVizComponent["id"]>;
 
 const DataVizHome = () => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<DataVizComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -151,6 +167,9 @@ const DataVizHome = () => {
   const [nestedBreadcrumbItems, setNestedBreadcrumbItems] = useState<
     CatalogBreadcrumbItem[] | null
   >(null);
+  const activeRouteComponent = dataVizComponents.find(
+    (component) => component.routeId === exampleRoute.segments[0],
+  );
 
   const renderListItem = useCallback(
     (
@@ -192,7 +211,8 @@ const DataVizHome = () => {
     setShowComponentDetail(false);
     setNestedBreadcrumbItems(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<DataVizComponent["id"]>);
-  }, []);
+    exampleRoute.routeTo([]);
+  }, [exampleRoute]);
 
   const ComponentDetail = useCallback(() => {
     const activeComponent = dataVizComponents.find(
@@ -226,20 +246,52 @@ const DataVizHome = () => {
   }, [activeComponentId, handleHomeNavigation]);
 
   const handleSelectedChanged = (event: any) => {
-    const selectedKey = event.detail.items[0]?.key as DataVizComponent["id"];
+    if (event.detail.updatedFrom && event.detail.updatedFrom !== "internal") {
+      return;
+    }
+
+    const selectedKey = event.detail.items?.[0]?.key as
+      | DataVizComponent["id"]
+      | undefined;
     if (typeof selectedKey === "number") {
+      const selectedComponent = dataVizComponents.find(
+        (component) => component.id === selectedKey,
+      );
+
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       setNestedBreadcrumbItems(null);
       const selection = event.detail.value as KeySet<DataVizComponent["id"]>;
       setSelectedItems(selection);
-
-      const selectedComponent = dataVizComponents.find(
-        (component) => component.id === selectedKey,
-      );
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([selectedComponent.routeId]);
+      }
     }
   };
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setNestedBreadcrumbItems(null);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as KeySet<
+          DataVizComponent["id"]
+        >,
+      );
+      setIsComponentAvailable(Boolean(activeRouteComponent.isAvailable));
+      return;
+    }
+
+    if (exampleRoute.segments.length === 0) {
+      setActiveComponentId(null);
+      setShowComponentDetail(false);
+      setNestedBreadcrumbItems(null);
+      setSelectedItems(new KeySetImpl([]) as KeySet<DataVizComponent["id"]>);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length]);
 
   const activeComponent = dataVizComponents.find(
     (component) => component.id === activeComponentId,

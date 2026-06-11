@@ -15,7 +15,7 @@ import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
 import 'ojs/ojdatetimepicker';
 import 'ojs/ojlabel';
-import 'ojs/ojtextarea';
+// import 'ojs/ojtextarea';
 import 'ojs/ojtoolbar';
 import 'css!./demo.css';
 

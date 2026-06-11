@@ -10,7 +10,8 @@ import 'ojs/ojbutton';
 import 'ojs/ojselectsingle';
 import 'ojs/ojformlayout';
 import { KeySetImpl, AllKeySetImpl } from 'ojs/ojkeyset';
-import 'ojs/ojtextarea';
+// import 'ojs/ojtextarea';
+import 'ojs/ojinputtext';
 
 interface Employee {
     DepartmentId: number;

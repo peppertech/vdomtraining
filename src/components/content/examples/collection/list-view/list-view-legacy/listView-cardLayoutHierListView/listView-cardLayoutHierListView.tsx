@@ -12,7 +12,7 @@ import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojswitch';
 import 'ojs/ojlabel';
-import 'ojs/ojbuttonsetone';
+// import 'ojs/ojbuttonsetone';
 import 'ojs/ojoption';
 
 interface Contact {

@@ -1,5 +1,5 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
@@ -25,9 +25,11 @@ import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
 } from "../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../example-route-context";
 
 type ControlComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isAvailable?: boolean;
@@ -38,6 +40,7 @@ type ControlComponent = {
 const controlComponents: ControlComponent[] = [
   {
     id: 1,
+    routeId: "avatars",
     name: "Avatars",
     image: "oj-ux-icon-size-12x  oj-ux-ico-avatar",
     isAvailable: true,
@@ -46,6 +49,7 @@ const controlComponents: ControlComponent[] = [
   },
   {
     id: 2,
+    routeId: "badges",
     name: "Badges",
     image: "oj-ux-icon-size-12x oj-ux-ico-badge",
     isAvailable: true,
@@ -54,6 +58,7 @@ const controlComponents: ControlComponent[] = [
   },
   {
     id: 3,
+    routeId: "buttons",
     name: "Buttons",
     image: "oj-ux-icon-size-12x oj-ux-ico-button",
     isAvailable: true,
@@ -62,6 +67,7 @@ const controlComponents: ControlComponent[] = [
   },
   {
     id: 6,
+    routeId: "file-picker",
     name: "File Picker",
     image: "oj-ux-icon-size-12x oj-ux-ico-upload",
     isAvailable: true,
@@ -69,6 +75,7 @@ const controlComponents: ControlComponent[] = [
   },
   {
     id: 7,
+    routeId: "film-strip",
     name: "Film Strip",
     image: "oj-ux-icon-size-12x  oj-ux-ico-film",
     isAvailable: true,
@@ -76,6 +83,7 @@ const controlComponents: ControlComponent[] = [
   },
   {
     id: 4,
+    routeId: "menus",
     name: "Menus",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu",
     isAvailable: true,
@@ -84,6 +92,7 @@ const controlComponents: ControlComponent[] = [
   },
   {
     id: 12,
+    routeId: "messages",
     name: "Messages",
     image: "oj-ux-icon-size-12x  oj-ux-ico-messages",
     isAvailable: true,
@@ -92,6 +101,7 @@ const controlComponents: ControlComponent[] = [
   },
   {
     id: 8,
+    routeId: "progress-indicators",
     name: "Progress Indicators",
     image: "oj-ux-icon-size-12x  oj-ux-ico-progress-linear",
     isAvailable: true,
@@ -100,6 +110,7 @@ const controlComponents: ControlComponent[] = [
   },
   {
     id: 9,
+    routeId: "toolbar",
     name: "Toolbar",
     image: "oj-ux-icon-size-12x oj-ux-ico-toolbar",
     isAvailable: true,
@@ -108,6 +119,7 @@ const controlComponents: ControlComponent[] = [
   },
   {
     id: 10,
+    routeId: "train",
     name: "Train",
     image: "oj-ux-icon-size-12x oj-ux-ico-train",
     isAvailable: true,
@@ -115,6 +127,7 @@ const controlComponents: ControlComponent[] = [
   },
   {
     id: 13,
+    routeId: "truncating-text",
     name: "Truncating Text",
     image: "oj-ux-icon-size-12x oj-ux-ico-text",
     isAvailable: true,
@@ -153,6 +166,7 @@ const ImageShowcase = () => (
 );
 
 const ControlHome = () => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<ControlComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -163,6 +177,9 @@ const ControlHome = () => {
   const [nestedBreadcrumbItems, setNestedBreadcrumbItems] = useState<
     CatalogBreadcrumbItem[] | null
   >(null);
+  const activeRouteComponent = controlComponents.find(
+    (component) => component.routeId === exampleRoute.segments[0],
+  );
 
   const renderListItem = useCallback(
     (
@@ -223,23 +240,56 @@ const ControlHome = () => {
     setShowComponentDetail(false);
     setNestedBreadcrumbItems(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<ControlComponent["id"]>);
-  }, []);
+    exampleRoute.routeTo([]);
+  }, [exampleRoute]);
 
   const handleSelectedChanged = (event: ControlSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as ControlComponent["id"];
+    if (event.detail.updatedFrom && event.detail.updatedFrom !== "internal") {
+      return;
+    }
+
+    const selectedKey = event.detail.items?.[0]?.key as
+      | ControlComponent["id"]
+      | undefined;
     if (typeof selectedKey === "number") {
+      const selectedComponent = controlComponents.find(
+        (component) => component.id === selectedKey,
+      );
+
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       setNestedBreadcrumbItems(null);
       const selection = event.detail.value as KeySet<ControlComponent["id"]>;
       setSelectedItems(selection);
-
-      const selectedComponent = controlComponents.find(
-        (component) => component.id === selectedKey,
-      );
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([selectedComponent.routeId]);
+      }
     }
   };
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setNestedBreadcrumbItems(null);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as KeySet<
+          ControlComponent["id"]
+        >,
+      );
+      setIsComponentAvailable(Boolean(activeRouteComponent.isAvailable));
+      return;
+    }
+
+    if (exampleRoute.segments.length === 0) {
+      setActiveComponentId(null);
+      setShowComponentDetail(false);
+      setNestedBreadcrumbItems(null);
+      setSelectedItems(new KeySetImpl([]) as KeySet<ControlComponent["id"]>);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length]);
 
   const activeComponent = controlComponents.find(
     (component) => component.id === activeComponentId,

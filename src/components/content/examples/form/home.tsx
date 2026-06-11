@@ -1,5 +1,5 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
@@ -30,6 +30,7 @@ import {
   formatCorePackLabel,
 } from "./form-breadcrumb";
 import InputSearchDemoWrapper from "./input-search/index";
+import { useExampleRoute } from "../example-route-context";
 
 type FormShowcase = {
   id: string;
@@ -176,6 +177,7 @@ const INITIAL_SELECTION =
   new KeySetImpl<FormShowcase["id"]>([]) as KeySet<FormShowcase["id"]>;
 
 const FormsHome = () => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<FormShowcase["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -185,6 +187,9 @@ const FormsHome = () => {
   const [nestedBreadcrumbItems, setNestedBreadcrumbItems] = useState<
     FormBreadcrumbItem[] | null
   >(null);
+  const activeRouteComponent = formExamples.find(
+    (example) => example.id === exampleRoute.segments[0],
+  );
 
   const renderListItem = useCallback(
     (
@@ -228,7 +233,8 @@ const FormsHome = () => {
     setSelectedItems(
       new KeySetImpl<FormShowcase["id"]>([]) as KeySet<FormShowcase["id"]>,
     );
-  }, []);
+    exampleRoute.routeTo([]);
+  }, [exampleRoute]);
 
   const ComponentDetail = useCallback(() => {
     const showcase = formExamples.find(
@@ -252,10 +258,14 @@ const FormsHome = () => {
   const handleSelectedChanged = (
     event: ojListView.selectedChanged<FormShowcase["id"], FormShowcase>,
   ) => {
+    if (event.detail.updatedFrom && event.detail.updatedFrom !== "internal") {
+      return;
+    }
+
     const selection = event.detail.value as KeySet<FormShowcase["id"]>;
     setSelectedItems(selection);
 
-    const selectedKey = event.detail.items[0]?.key as
+    const selectedKey = event.detail.items?.[0]?.key as
       | FormShowcase["id"]
       | undefined;
 
@@ -263,8 +273,32 @@ const FormsHome = () => {
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       setNestedBreadcrumbItems(null);
+      exampleRoute.routeTo([selectedKey]);
     }
   };
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setNestedBreadcrumbItems(null);
+      setSelectedItems(
+        new KeySetImpl<FormShowcase["id"]>([
+          activeRouteComponent.id,
+        ]) as KeySet<FormShowcase["id"]>,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length === 0) {
+      setActiveComponentId(null);
+      setShowComponentDetail(false);
+      setNestedBreadcrumbItems(null);
+      setSelectedItems(
+        new KeySetImpl<FormShowcase["id"]>([]) as KeySet<FormShowcase["id"]>,
+      );
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length]);
 
   const breadcrumbItems: FormBreadcrumbItem[] = nestedBreadcrumbItems ?? [
     {

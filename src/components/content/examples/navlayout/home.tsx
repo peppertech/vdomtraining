@@ -1,5 +1,5 @@
 import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
 import "ojs/ojlistview";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
@@ -10,6 +10,7 @@ import {
   type CatalogBreadcrumbItem,
   formatCorePackLabel,
 } from "../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../example-route-context";
 
 import AccordionHome from "./accordion/home";
 import ActionCardHome from "./action-card/home";
@@ -24,6 +25,7 @@ import PanelLegacyRecipePage from "./panel/index";
 
 type NavLayoutComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isAvailable?: boolean;
@@ -33,6 +35,7 @@ type NavLayoutComponent = {
 const navLayoutComponents: NavLayoutComponent[] = [
   {
     id: 2,
+    routeId: "accordion",
     name: "Accordion",
     image: "oj-ux-icon-size-12x oj-ux-ico-accordion",
     isAvailable: true,
@@ -40,6 +43,7 @@ const navLayoutComponents: NavLayoutComponent[] = [
   },
   {
     id: 3,
+    routeId: "action-card",
     name: "Action Card",
     image: "oj-ux-icon-size-12x  oj-ux-ico-contact-card",
     isAvailable: true,
@@ -47,6 +51,7 @@ const navLayoutComponents: NavLayoutComponent[] = [
   },
   {
     id: 9,
+    routeId: "collapsible",
     name: "Collapsible",
     image: "oj-ux-icon-size-12x oj-ux-ico-accordion",
     isAvailable: true,
@@ -54,6 +59,7 @@ const navLayoutComponents: NavLayoutComponent[] = [
   },
   {
     id: 8,
+    routeId: "conveyor-belt",
     name: "Conveyor Belt",
     image: "oj-ux-icon-size-12x oj-ux-ico-carousel",
     isAvailable: true,
@@ -61,6 +67,7 @@ const navLayoutComponents: NavLayoutComponent[] = [
   },
   {
     id: 5,
+    routeId: "dialog",
     name: "Dialog",
     image: "oj-ux-icon-size-12x oj-ux-ico-dialog",
     isAvailable: true,
@@ -68,6 +75,7 @@ const navLayoutComponents: NavLayoutComponent[] = [
   },
   {
     id: 7,
+    routeId: "drawer",
     name: "Drawer",
     image: "oj-ux-icon-size-12x oj-ux-ico-drawer",
     isAvailable: true,
@@ -75,18 +83,21 @@ const navLayoutComponents: NavLayoutComponent[] = [
   },
   {
     id: 1,
+    routeId: "navigation-list",
     name: "Navigation List",
     image: "oj-ux-icon-size-12x oj-ux-ico-navigation",
     isAvailable: true,
   },
   {
     id: 10,
+    routeId: "panel",
     name: "Panel",
     image: "oj-ux-icon-size-12x oj-ux-ico-cards",
     isAvailable: true,
   },
   {
     id: 6,
+    routeId: "popup",
     name: "Popup",
     image: "oj-ux-icon-size-12x  oj-ux-ico-contact-card",
     isAvailable: true,
@@ -94,6 +105,7 @@ const navLayoutComponents: NavLayoutComponent[] = [
   },
   {
     id: 4,
+    routeId: "tab-bar",
     name: "Tab Bar",
     image: "oj-ux-icon-size-12x  oj-ux-ico-tab-bar",
     isAvailable: true,
@@ -118,6 +130,7 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<NavLayoutComponent["id"]>;
 
 const NavLayoutHome = () => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<NavLayoutComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -128,6 +141,9 @@ const NavLayoutHome = () => {
   const [nestedBreadcrumbItems, setNestedBreadcrumbItems] = useState<
     CatalogBreadcrumbItem[] | null
   >(null);
+  const activeRouteComponent = navLayoutComponents.find(
+    (component) => component.routeId === exampleRoute.segments[0],
+  );
 
   const renderListItem = useCallback(
     (
@@ -236,23 +252,56 @@ const NavLayoutHome = () => {
     setShowComponentDetail(false);
     setNestedBreadcrumbItems(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<NavLayoutComponent["id"]>);
-  }, []);
+    exampleRoute.routeTo([]);
+  }, [exampleRoute]);
 
   const handleSelectedChanged = (event: NavLayoutSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as NavLayoutComponent["id"];
+    if (event.detail.updatedFrom && event.detail.updatedFrom !== "internal") {
+      return;
+    }
+
+    const selectedKey = event.detail.items?.[0]?.key as
+      | NavLayoutComponent["id"]
+      | undefined;
     if (typeof selectedKey === "number") {
+      const selectedComponent = navLayoutComponents.find(
+        (component) => component.id === selectedKey,
+      );
+
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<NavLayoutComponent["id"]>;
       setSelectedItems(selection);
       setNestedBreadcrumbItems(null);
-
-      const selectedComponent = navLayoutComponents.find(
-        (component) => component.id === selectedKey,
-      );
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([selectedComponent.routeId]);
+      }
     }
   };
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setNestedBreadcrumbItems(null);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as KeySet<
+          NavLayoutComponent["id"]
+        >,
+      );
+      setIsComponentAvailable(Boolean(activeRouteComponent.isAvailable));
+      return;
+    }
+
+    if (exampleRoute.segments.length === 0) {
+      setActiveComponentId(null);
+      setShowComponentDetail(false);
+      setNestedBreadcrumbItems(null);
+      setSelectedItems(new KeySetImpl([]) as KeySet<NavLayoutComponent["id"]>);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length]);
 
   const activeComponent = navLayoutComponents.find(
     (component) => component.id === activeComponentId,

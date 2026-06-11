@@ -26,6 +26,7 @@
   ***************************** IMPORTANT INFORMATION ************************************ -->
 <html lang="en-us">
   <head>
+    <base href="/" />
     <meta charset="UTF-8" />
     <title>Oracle JET VDOM training sample app</title>
     <meta
@@ -33,23 +34,16 @@
       content="viewport-fit=cover, width=device-width, initial-scale=1"
     />
     <meta name="description" content="The Oracle JET VDOM Starter Template" />
-    <link rel="icon" href="styles/images/favicon.ico" type="image/x-icon" />
-    <!-- This is injects main css file for the default theme -->
-    <!-- injector:theme -->
-    <!-- endinjector -->
-    <!-- This contains icon fonts used by the starter template -->
-    <link
-      rel="stylesheet"
-      href="styles/demo-alta-site-min.css"
-      type="text/css"
-    />
+    <link rel="icon" href="/styles/images/favicon.ico" type="image/x-icon" />
+    
+    
     <link
       rel="stylesheet"
       id="uxiconFont"
-      href="https://static.oracle.com/cdn/fnd/gallery/2407.0.0/images/iconfont/ojuxIconFont.min.css"
+      href="https://static.oracle.com/cdn/fnd/gallery/2607.0.1/images/iconfont/ojuxIconFont.min.css"
     />
-    <!-- This is where you would add any app specific styling -->
-    <link rel="stylesheet" href="styles/app.css" type="text/css" />
+    
+  <link href="/styles/app.css" rel="stylesheet">
   </head>
 
   <body class="oj-web-applayout-body" data-oj-binding-provider="preact">
@@ -60,8 +54,5 @@
       // on the busy state context.
       window["oj_whenReady"] = true;
     </script>
-    <!-- This injects script tags for the main javascript files -->
-    <!-- injector:scripts -->
-    <!-- endinjector -->
   </body>
 </html>

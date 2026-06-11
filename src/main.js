@@ -16,16 +16,7 @@
     map: {
       "*": {
         "react": "preact/compat",
-        "react-dom": "preact/compat",
-        "ojs/ojbuttonsetmany": "ojs/ojbutton",
-        "ojs/ojbuttonsetone": "ojs/ojbutton",
-        "ojs/ojcomboboxone": "ojs/ojselectcombobox",
-        "ojs/ojinputdate": "ojs/ojdatetimepicker",
-        "ojs/ojmenubutton": "ojs/ojbutton",
-        "ojs/ojselectmany": "ojs/ojselectcombobox",
-        "ojs/ojratinggauge": "ojs/ojgauge",
-        "ojs/ojstatusmetergauge": "ojs/ojgauge",
-        "ojs/ojtextarea": "ojs/ojinputtext"
+        "react-dom": "preact/compat"
       }
   },
     // injector:baseUrl
@@ -38,33 +29,33 @@
        */
       // injector:mainReleasePaths
       {
-        ojs: "libs/oj/v11.0.0/debug",
-        ojL10n: "libs/oj/v11.0.0/ojL10n",
-        ojtranslations: "libs/oj/v11.0.0/resources",
-        knockout: "libs/knockout/knockout-3.5.1.debug",
-        "knockout-mapping": "libs/knockout/knockout.mapping-latest.debug",
-        jquery: "libs/jquery/jquery-3.5.1",
-        "jqueryui-amd": "libs/jquery/jqueryui-amd-1.12.1",
-        text: "libs/require/text",
-        hammerjs: "libs/hammer/hammer-2.0.8",
-        signals: "libs/js-signals/signals",
-        ojdnd: "libs/dnd-polyfill/dnd-polyfill-1.0.2",
-        css: "libs/require-css/css.min",
-        "css-builder": "libs/require-css/css-builder",
-        normalize: "libs/require-css/normalize",
-        preact: "libs/preact/dist/preact.umd",
-        proj4: "libs/proj4js/dist/proj4-src",
-        touchr: "libs/touchr/touchr",
-        chai: "libs/chai/chai-4.2.0",
-        "components/content/examples/collection/data-grid/data/cookbook": "components/content/examples/collection/data/cookbook",
-        "components/content/examples/collection/list-view": "components/content/examples/collection/list-view/index",
-        "components/content/examples/collection/list-view/shared": "components/content/examples/collection/shared",
-        "components/content/examples/collection/list-view/jet-composites/demo-responsive-buttonset": "components/jet-composites/demo-responsive-buttonset",
-        "components/content/jet-composites/demo-profile-card-layout": "components/jet-composites/demo-profile-card-layout",
-        "components/content/dataProvider": "components/dataProvider",
-        "components/content/examples/collection/table/table-legacy/cookbook": "components/content/examples/collection/data/cookbook",
-        "components/content/examples/collection/table/table-legacy/data/cookbook": "components/content/examples/collection/data/cookbook",
-        "components/content/examples/collection/table/table-legacy/table-customTable/data/cookbook": "components/content/examples/collection/data/cookbook"
+        // ojs: "libs/oj/v11.0.0/debug",
+        // ojL10n: "libs/oj/v11.0.0/ojL10n",
+        // ojtranslations: "libs/oj/v11.0.0/resources",
+        // knockout: "libs/knockout/knockout-3.5.1.debug",
+        // "knockout-mapping": "libs/knockout/knockout.mapping-latest.debug",
+        // jquery: "libs/jquery/jquery-3.5.1",
+        // "jqueryui-amd": "libs/jquery/jqueryui-amd-1.12.1",
+        // text: "libs/require/text",
+        // hammerjs: "libs/hammer/hammer-2.0.8",
+        // signals: "libs/js-signals/signals",
+        // ojdnd: "libs/dnd-polyfill/dnd-polyfill-1.0.2",
+        // css: "libs/require-css/css.min",
+        // "css-builder": "libs/require-css/css-builder",
+        // normalize: "libs/require-css/normalize",
+        // preact: "libs/preact/dist/preact.umd",
+        // proj4: "libs/proj4js/dist/proj4-src",
+        // touchr: "libs/touchr/touchr",
+        // chai: "libs/chai/chai-4.2.0",
+        // "components/content/examples/collection/data-grid/data/cookbook": "components/content/examples/collection/data/cookbook",
+        // "components/content/examples/collection/list-view": "components/content/examples/collection/list-view/index",
+        // "components/content/examples/collection/list-view/shared": "components/content/examples/collection/shared",
+        // "components/content/examples/collection/list-view/jet-composites/demo-responsive-buttonset": "components/jet-composites/demo-responsive-buttonset",
+        // "components/content/jet-composites/demo-profile-card-layout": "components/jet-composites/demo-profile-card-layout",
+        // "components/content/dataProvider": "components/dataProvider",
+        // "components/content/examples/collection/table/table-legacy/cookbook": "components/content/examples/collection/data/cookbook",
+        // "components/content/examples/collection/table/table-legacy/data/cookbook": "components/content/examples/collection/data/cookbook",
+        // "components/content/examples/collection/table/table-legacy/table-customTable/data/cookbook": "components/content/examples/collection/data/cookbook"
       }
     // endinjector
     

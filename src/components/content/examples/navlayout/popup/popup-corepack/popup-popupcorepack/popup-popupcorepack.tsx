@@ -2,7 +2,6 @@ import { h } from 'preact';
 import 'ojs/ojbutton';
 import 'ojs/ojpopup';
 import { ojPopup } from 'ojs/ojpopup';
-import "css!./demo.css";
 
 export const PopupPopupcorepack = () => {
   const openListener = () => {

@@ -1,9 +1,10 @@
 import { h, type ComponentChildren, type FunctionComponent } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
+import { useCallback, useEffect, useMemo, useRef, useState } from "preact/hooks";
 import "ojs/ojnavigationlist";
 import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
 import { ojNavigationList } from "ojs/ojnavigationlist";
 import { DemoLayoutTemplate } from "./demo-layout-template";
+import { useExampleRoute } from "../../content/examples/example-route-context";
 
 export type RecipePageItem = {
   id: string;
@@ -32,8 +33,16 @@ export function RecipePageTemplate({
   layoutId,
   navigationTitle,
 }: RecipePageTemplateProps) {
+  const exampleRoute = useExampleRoute();
+  const navigationListRef = useRef<HTMLElement | null>(null);
+  const routeItemId = exampleRoute.segments[exampleRoute.segments.length - 1];
+  const initialActiveItemId =
+    initialItemId ?? items[0]?.id ?? "";
+  const activeRouteItem = items.some((item) => item.id === routeItemId)
+    ? routeItemId
+    : undefined;
   const [activeExampleId, setActiveExampleId] = useState<string>(
-    initialItemId ?? items[0]?.id ?? "",
+    activeRouteItem ?? initialActiveItemId,
   );
 
   const navDataProvider = useMemo(
@@ -46,6 +55,26 @@ export function RecipePageTemplate({
     [items],
   );
 
+  const selectExample = useCallback(
+    (itemId: string) => {
+      setActiveExampleId(itemId);
+
+      if (exampleRoute.category) {
+        const nextSegments = [...exampleRoute.segments];
+        const lastSegment = nextSegments[nextSegments.length - 1];
+
+        if (items.some((item) => item.id === lastSegment)) {
+          nextSegments[nextSegments.length - 1] = itemId;
+        } else {
+          nextSegments.push(itemId);
+        }
+
+        exampleRoute.routeTo(nextSegments);
+      }
+    },
+    [exampleRoute, items],
+  );
+
   const handleNavigationChange = useCallback(
     (
       event: ojNavigationList.selectionChanged<
@@ -54,11 +83,47 @@ export function RecipePageTemplate({
       >,
     ) => {
       if (event.detail.updatedFrom === "internal") {
-        setActiveExampleId(event.detail.value);
+        selectExample(event.detail.value);
       }
     },
-    [],
+    [selectExample],
   );
+
+  useEffect(() => {
+    if (activeRouteItem && activeRouteItem !== activeExampleId) {
+      setActiveExampleId(activeRouteItem);
+    }
+  }, [activeExampleId, activeRouteItem]);
+
+  useEffect(() => {
+    const navigationList = navigationListRef.current;
+
+    if (!navigationList) {
+      return;
+    }
+
+    const handleNavigationClick = (event: MouseEvent) => {
+      const target = event.target as Element | null;
+      const anchor = target?.closest(
+        "a[data-recipe-page-item-id]",
+      ) as HTMLAnchorElement | null;
+      const itemId = anchor?.dataset.recipePageItemId;
+
+      if (!anchor || !itemId || !navigationList.contains(anchor)) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+      selectExample(itemId);
+    };
+
+    navigationList.addEventListener("click", handleNavigationClick, true);
+
+    return () => {
+      navigationList.removeEventListener("click", handleNavigationClick, true);
+    };
+  }, [selectExample]);
 
   const renderNavigationItem = useCallback(
     (
@@ -68,7 +133,11 @@ export function RecipePageTemplate({
       >,
     ) => (
       <li id={item.data.id}>
-        <a href="" style="color: inherit; text-decoration: none;">
+        <a
+          href="#"
+          data-recipe-page-item-id={item.data.id}
+          style="color: inherit; text-decoration: none;"
+        >
           {item.data.name}
         </a>
       </li>
@@ -109,6 +178,7 @@ export function RecipePageTemplate({
     >
       <div class="recipe-page-template__navigation navListDemoLayout">
         <oj-navigation-list
+          ref={navigationListRef}
           aria-label={ariaLabel}
           selection={activeExampleId}
           data={navDataProvider}

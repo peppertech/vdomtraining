@@ -3,40 +3,40 @@ import Footer from "./footer";
 import Content from "./content/index";
 import { registerCustomElement } from "ojs/ojvcomponent";
 import "preact";
-import { useEffect, useState } from "preact/hooks";
-import CoreRouter = require("ojs/ojcorerouter");
-import UrlParamAdapter = require("ojs/ojurlparamadapter");
+import { useEffect } from "preact/hooks";
+import { LocationProvider } from "preact-iso";
 import Context = require("ojs/ojcontext");
 
 type Props = {
-  appName: string;
-  userLogin: string;
+  appName?: string;
+  userLogin?: string;
 };
 
-type Route = {
+export type AppRoute = {
   path: string;
-  detail?: object;
-  redirect?: string;
+  detail: {
+    label: string;
+    iconClass: string;
+  };
 };
 
-const routeArray: Array<Route> = [
-  { path: "", redirect: "bindings" },
+const routeArray: AppRoute[] = [
   {
-    path: "bindings",
+    path: "/bindings",
     detail: {
       label: "Bindings",
       iconClass: "oj-navigationlist-item-icon oj-ux-ico-binding-control",
     },
   },
   {
-    path: "modules",
+    path: "/modules",
     detail: {
       label: "Modules",
       iconClass: "oj-navigationlist-item-icon oj-ux-ico-ungroup",
     },
   },
   {
-    path: "examples",
+    path: "/examples",
     detail: {
       label: "Examples",
       iconClass:
@@ -45,46 +45,23 @@ const routeArray: Array<Route> = [
   },
 ];
 
-// const router = new CoreRouter<CoreRouter.DetailedRouteConfig>(routeArray);
-const router = new CoreRouter<CoreRouter.DetailedRouteConfig>(routeArray, {
-  urlAdapter: new UrlParamAdapter(),
-});
-
-const pageChangeHandler = (value: string) => {
-  router.go({ path: value });
-};
 export const App = registerCustomElement("app-root", (props: Props) => {
-  props.appName = "VDOM Training";
-  props.userLogin = "some.person@oracle.com";
-  const [routePath, setRoutePath] = useState<string>("");
+  const appName = props.appName ?? "VDOM Training";
+  const userLogin = props.userLogin ?? "some.person@oracle.com";
 
   useEffect(() => {
     Context.getPageContext().getBusyContext().applicationBootstrapComplete();
-    router.currentState.subscribe(routerUpdated);
-    router.sync();
   }, []);
 
-  const routerUpdated = (
-    actionable: CoreRouter.ActionableState<CoreRouter.DetailedRouteConfig>
-  ): void => {
-    // Update our state based on new router state
-    const newPath = actionable.state?.path;
-    setRoutePath(newPath);
-  };
-
   return (
-    <div id="appContainer" class="oj-web-applayout-page">
-      <Header
-        appName={props.appName}
-        page={routePath}
-        onPageChanged={pageChangeHandler}
-        userLogin={props.userLogin}
-        routes={routeArray}
-      />
-      
-      <Content page={routePath} router={router} />
-      
-      <Footer />
-    </div>
+    <LocationProvider>
+      <div id="appContainer" class="oj-web-applayout-page">
+        <Header appName={appName} userLogin={userLogin} routes={routeArray} />
+
+        <Content />
+
+        <Footer />
+      </div>
+    </LocationProvider>
   );
 });

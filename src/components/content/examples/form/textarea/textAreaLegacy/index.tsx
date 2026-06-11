@@ -101,7 +101,7 @@ export default function TextAreaLegacyIndex() {
       >,
     ) => (
       <li id={item.data.id}>
-        <a href="" style="color: inherit; text-decoration: none;">
+        <a href="#" style="color: inherit; text-decoration: none;">
           {item.data.name}
         </a>
       </li>

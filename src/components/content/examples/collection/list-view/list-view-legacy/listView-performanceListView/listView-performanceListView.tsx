@@ -10,7 +10,7 @@ import 'ojs/ojinputnumber';
 import 'ojs/ojlabel';
 import 'ojs/ojformlayout';
 import 'ojs/ojbutton';
-import 'ojs/ojbuttonsetone';
+// import 'ojs/ojbuttonsetone';
 import 'ojs/ojoption';
 
 interface Data {

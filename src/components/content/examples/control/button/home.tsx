@@ -21,9 +21,11 @@ import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
 } from "../../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../../example-route-context";
 
 type ButtonComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isAvailable?: boolean;
@@ -33,12 +35,14 @@ type ButtonComponent = {
 const buttonComponents: ButtonComponent[] = [
   {
     id: 1,
+    routeId: "button-legacy",
     name: "Button",
     image: "oj-ux-icon-size-12x oj-ux-ico-button",
     isAvailable: true,
   },
   {
     id: 6,
+    routeId: "button-corepack",
     name: "Button",
     image: "oj-ux-icon-size-12x oj-ux-ico-button",
     isAvailable: true,
@@ -46,12 +50,14 @@ const buttonComponents: ButtonComponent[] = [
   },
   {
     id: 2,
+    routeId: "buttonset-many",
     name: "Buttonset Many",
     image: "oj-ux-icon-size-12x oj-ux-ico-button-set-many",
     isAvailable: true,
   },
   {
     id: 7,
+    routeId: "buttonset-multiple",
     name: "Buttonset Multiple",
     image: "oj-ux-icon-size-12x oj-ux-ico-button-set-many",
     isAvailable: true,
@@ -59,12 +65,14 @@ const buttonComponents: ButtonComponent[] = [
   },
   {
     id: 3,
+    routeId: "buttonset-one",
     name: "Buttonset One",
     image: "oj-ux-icon-size-12x oj-ux-ico-button-set-one",
     isAvailable: true,
   },
   {
     id: 5,
+    routeId: "buttonset-single",
     name: "Buttonset Single ",
     image: "oj-ux-icon-size-12x oj-ux-ico-button-set-one",
     isAvailable: true,
@@ -72,12 +80,14 @@ const buttonComponents: ButtonComponent[] = [
   },
   {
     id: 4,
+    routeId: "menu-button-legacy",
     name: "Menu Button",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
     isAvailable: true,
   },
   {
     id: 8,
+    routeId: "menu-button-corepack",
     name: "Menu Button ",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
     isAvailable: true,
@@ -85,6 +95,7 @@ const buttonComponents: ButtonComponent[] = [
   },
   {
     id: 9,
+    routeId: "progress-button-corepack",
     name: "Progress Button",
     image: "oj-ux-icon-size-12x oj-ux-ico-button",
     isAvailable: true,
@@ -92,6 +103,7 @@ const buttonComponents: ButtonComponent[] = [
   },
   {
     id: 10,
+    routeId: "split-menu-button-corepack",
     name: "Split Menu Button",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
     isAvailable: true,
@@ -99,6 +111,7 @@ const buttonComponents: ButtonComponent[] = [
   },
   {
     id: 11,
+    routeId: "toggle-button-corepack",
     name: "Toggle Button",
     image: "oj-ux-icon-size-12x oj-ux-ico-button",
     isAvailable: true,
@@ -125,6 +138,7 @@ const ButtonsHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<ButtonComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -135,6 +149,10 @@ const ButtonsHome = ({
   const activeComponent = buttonComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const activeRouteComponent = buttonComponents.find(
+    (component) => component.routeId === exampleRoute.segments[1],
+  );
+  const routePrefix = exampleRoute.segments[0] ?? "buttons";
 
   const renderListItem = useCallback(
     (
@@ -198,17 +216,27 @@ const ButtonsHome = ({
   }, [activeComponentId]);
 
   const handleSelectedChanged = (event: ButtonSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as ButtonComponent["id"];
+    if (event.detail.updatedFrom && event.detail.updatedFrom !== "internal") {
+      return;
+    }
+
+    const selectedKey = event.detail.items?.[0]?.key as
+      | ButtonComponent["id"]
+      | undefined;
     if (typeof selectedKey === "number") {
+      const selectedComponent = buttonComponents.find(
+        (component) => component.id === selectedKey,
+      );
+
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<ButtonComponent["id"]>;
       setSelectedItems(selection);
-
-      const selectedComponent = buttonComponents.find(
-        (component) => component.id === selectedKey,
-      );
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([routePrefix, selectedComponent.routeId]);
+      }
     }
   };
   const handleBack = useCallback(() => {
@@ -217,7 +245,29 @@ const ButtonsHome = ({
     setIsComponentAvailable(false);
     setSelectedItems(new KeySetImpl([]) as KeySet<ButtonComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo([routePrefix]);
+  }, [exampleRoute, onBreadcrumbChange, routePrefix]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as KeySet<
+          ButtonComponent["id"]
+        >,
+      );
+      setIsComponentAvailable(Boolean(activeRouteComponent.isAvailable));
+      return;
+    }
+
+    if (exampleRoute.segments.length <= 1) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setIsComponentAvailable(false);
+      setSelectedItems(new KeySetImpl([]) as KeySet<ButtonComponent["id"]>);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {

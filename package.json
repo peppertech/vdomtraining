@@ -1,24 +1,45 @@
 {
   "name": "vdom_training",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Oracle JET sample app for Virtual DOM (VDOM) architecture",
   "dependencies": {
-    "@oracle/oraclejet": "~20.0.0",
-    "@oracle/oraclejet-core-pack": "~20.0.0",
-    "@oracle/oraclejet-preact": "~20.0.0",
+    "@oracle/oraclejet": "20.1.2",
+    "@oracle/oraclejet-core-pack": "20.1.2",
+    "@oracle/oraclejet-preact": "20.1.2",
+    "preact-iso": "^2.12.0",
     "react-router-dom": "^6.22.3"
   },
   "devDependencies": {
-    "@oracle/ojet-cli": "^20.0.0",
+    "@oracle/ojet-cli": "20.1.1",
+    "@prefresh/babel-plugin": "0.5.3",
+    "@prefresh/webpack": "4.0.6",
+    "@types/node": "18.16.3",
+    "clean-webpack-plugin": "4.0.0",
+    "compression-webpack-plugin": "12.0.0",
+    "copy-webpack-plugin": "14.0.0",
+    "css-fix-url-loader": "1.0.2",
+    "css-loader": "7.1.4",
     "extract-zip": "^1.7.0",
     "fs-extra": "^8.1.0",
     "glob": "^13.0.5",
+    "html-replace-webpack-plugin": "2.6.0",
+    "html-webpack-plugin": "5.6.7",
+    "mini-css-extract-plugin": "2.10.2",
+    "noop-loader": "1.0.0",
+    "raw-loader": "4.0.2",
+    "sass": "1.100.0",
+    "sass-loader": "17.0.0",
+    "style-loader": "4.0.0",
+    "ts-loader": "8.4.0",
     "typescript": "5.8.3",
     "underscore": "^1.10.2",
+    "webpack": "5.76.0",
+    "webpack-dev-server": "5.2.4",
+    "webpack-merge": "6.0.1",
     "yargs-parser": "13.1.2"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=20.0.0"
   },
   "private": true
 }

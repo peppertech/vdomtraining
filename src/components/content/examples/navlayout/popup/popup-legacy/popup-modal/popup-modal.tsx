@@ -7,7 +7,6 @@ import 'ojs/ojpopup';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
 import { ojPopup } from 'ojs/ojpopup';
-import "css!./demo.css";
 
 type TextInputValue = ComponentProps<'oj-input-text'>['value'];
 type PopupPositionProps = Partial<ComponentProps<'oj-popup'>> & {

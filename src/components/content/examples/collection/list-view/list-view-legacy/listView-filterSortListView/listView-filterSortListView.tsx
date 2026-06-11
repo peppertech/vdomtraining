@@ -19,7 +19,7 @@ import 'ojs/ojlistitemlayout';
 import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listView/filterSortListView/productData.json';
 import 'ojs/ojlabel';
 import 'ojs/ojoption';
-import 'ojs/ojratinggauge';
+// import 'ojs/ojratinggauge';
 
 interface OptionData {
     value: string;

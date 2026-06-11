@@ -20,6 +20,16 @@
   background-color: #3a3631;
 }
 
+.demo-oracle-icon {
+  width: 137px;
+  height: 18px;
+}
+
+.demo-oracle-icon::before {
+  content: url("images/oracle_logo.svg");
+  display: inline;
+}
+
 .demo-data-grid {
   width: 100%;
   min-height: 25rem;
@@ -467,5 +477,4 @@ demo-profile-card-layout .demo-profile-card-layout-emp-title.demo-profile-card-l
 .select-multiple-add-to-list-demo oj-c-select-multiple {
   display: block;
 }
-
 

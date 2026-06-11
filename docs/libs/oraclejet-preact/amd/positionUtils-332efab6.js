@@ -1,2 +1,0 @@
-define(['exports'], (function(t){"use strict";t.normalizePosition=(t,e)=>{const r={start:"left",end:"right"},n={start:"right",end:"left"};return"rtl"===e?t.replace(/start|end/g,(t=>n[t])):t.replace(/start|end/g,(t=>r[t]))},t.reverseNormalizePosition=(t,e)=>{const r={left:"start",right:"end"},n={right:"start",left:"end"};return"rtl"===e?t.replace(/left|right/g,(t=>n[t])):t.replace(/left|right/g,(t=>r[t]))}}));
-//# sourceMappingURL=positionUtils-332efab6.js.map

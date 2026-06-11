@@ -9,7 +9,7 @@ import { AllKeySetImpl, KeySetImpl, KeySet } from 'ojs/ojkeyset';
 import * as deptData from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
 import 'ojs/ojinputtext';
 import 'ojs/ojformlayout';
-import 'ojs/ojtextarea';
+// import 'ojs/ojtextarea';
 
 interface DepartmentData {
     DepartmentId: number;

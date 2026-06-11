@@ -10,7 +10,7 @@ import 'ojs/ojbutton';
 import 'ojs/ojswitch';
 import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
-import 'ojs/ojbuttonsetone';
+// import 'ojs/ojbuttonsetone';
 import 'ojs/ojoption';
 
 interface Data {

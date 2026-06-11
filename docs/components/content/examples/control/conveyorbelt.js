@@ -1,8 +1,0 @@
-define(["require", "exports", "preact/jsx-runtime", "preact", "ojs/ojconveyorbelt"], function (require, exports, jsx_runtime_1) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    const ConveyorBelt = () => {
-        return ((0, jsx_runtime_1.jsxs)("oj-conveyor-belt", { orientation: "horizontal", arrowVisibility: "auto", children: [(0, jsx_runtime_1.jsx)("oj-button", { id: "hydrogen", class: "oj-sm-margin-1x", children: "Hydrogen" }), (0, jsx_runtime_1.jsx)("oj-button", { id: "helium", class: "oj-sm-margin-1x", children: "Helium" }), (0, jsx_runtime_1.jsx)("oj-button", { id: "lithium", class: "oj-sm-margin-1x", children: "Lithium" }), (0, jsx_runtime_1.jsx)("oj-button", { id: "berylium", class: "oj-sm-margin-1x", children: "Beryllium" }), (0, jsx_runtime_1.jsx)("oj-button", { id: "boron", class: "oj-sm-margin-1x", children: "Boron" }), (0, jsx_runtime_1.jsx)("oj-button", { id: "carbon", class: "oj-sm-margin-1x", children: "Carbon" }), (0, jsx_runtime_1.jsx)("oj-button", { id: "nitrogen", class: "oj-sm-margin-1x", children: "Nitrogen" }), (0, jsx_runtime_1.jsx)("oj-button", { id: "oxygen", class: "oj-sm-margin-1x", children: "Oxygen" }), (0, jsx_runtime_1.jsx)("oj-button", { id: "fluorine", class: "oj-sm-margin-1x", children: "Fluorine" }), (0, jsx_runtime_1.jsx)("oj-button", { id: "neon", class: "oj-sm-margin-1x", children: "Neon" }), (0, jsx_runtime_1.jsx)("oj-button", { id: "sodium", class: "oj-sm-margin-1x", children: "Sodium" }), (0, jsx_runtime_1.jsx)("oj-button", { id: "magnesium", class: "oj-sm-margin-1x", children: "Magnesium" })] }));
-    };
-    exports.default = ConveyorBelt;
-});

@@ -5,7 +5,7 @@ import { getContext } from 'ojs/ojcontext';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojbutton';
-import 'ojs/ojbuttonsetone';
+// import 'ojs/ojbuttonsetone';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojlistitemlayout';

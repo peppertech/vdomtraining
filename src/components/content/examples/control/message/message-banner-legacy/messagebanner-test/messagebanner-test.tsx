@@ -11,7 +11,7 @@ import 'ojs/ojmessagebanner';
 import 'ojs/ojradioset';
 import 'ojs/ojselectsingle';
 import 'ojs/ojoption';
-import 'ojs/ojtextarea';
+// import 'ojs/ojtextarea';
 
 type DemoMessageBannerItem = MessageBannerItem & {
     id: string;
