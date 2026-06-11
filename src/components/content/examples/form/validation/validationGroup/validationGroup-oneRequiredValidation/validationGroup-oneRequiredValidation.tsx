@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 import type { ojValidationGroup } from 'ojs/ojvalidationgroup';
@@ -10,16 +9,16 @@ import 'ojs/ojformlayout';
 import 'ojs/ojlabel';
 import 'ojs/ojvalidationgroup';
 
-type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
-type InputTextMessagesCustom = ComponentProps<'oj-c-input-text'>['messagesCustom'];
-type InputTextValidators = ComponentProps<'oj-c-input-text'>['validators'];
 type InputTextValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>
 >[0];
-type ValidationGroupValid = ComponentProps<'oj-validation-group'>['valid'];
 type ValidationGroupValidChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-validation-group'>['onvalidChanged']>
 >[0];
+type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
+type InputTextMessagesCustom = ComponentProps<'oj-c-input-text'>['messagesCustom'];
+type InputTextValidators = ComponentProps<'oj-c-input-text'>['validators'];
+type ValidationGroupValid = ComponentProps<'oj-validation-group'>['valid'];
 
 export const ValidationGroupOneRequiredValidation = () => {
   const trackerRef = useRef<ojValidationGroup | null>(null);
@@ -78,7 +77,7 @@ export const ValidationGroupOneRequiredValidation = () => {
   };
 
   const handleGroupValidChanged = (event: ValidationGroupValidChangedEvent) => {
-    setGroupValid(event.detail.value);
+    setGroupValid((event.detail.value as ValidationGroupValid));
   };
 
   const handleFirstFieldChanged = (event: InputTextValueChangedEvent) => {

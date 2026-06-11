@@ -1,8 +1,14 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectcombobox";
 import { createStatesDataProvider } from "./selectMany-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-select-many">["onvalueChanged"]>
+>[0];
+type ValueOptionsEvent = Parameters<
+  NonNullable<ComponentProps<"oj-select-many">["onvalueOptionsChanged"]>
+>[0];
 const initialValueOptions = [
   { value: "CA", label: "California" },
   { value: "MA", label: "Massachusetts" },
@@ -13,12 +19,14 @@ export default function SelectManyValueOptionsExample() {
   const [value, setValue] = useState<string[]>(["CA", "MA"]);
   const [valueOptions, setValueOptions] = useState(initialValueOptions);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setValue(event.detail.value ?? []);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setValue((event.detail.value as string[] | null | undefined) ?? []);
   }, []);
 
-  const handleValueOptionsChanged = useCallback((event: any) => {
-    setValueOptions(event.detail.value ?? []);
+  const handleValueOptionsChanged = useCallback((event: ValueOptionsEvent) => {
+    setValueOptions(
+      (event.detail.value as typeof initialValueOptions | null | undefined) ?? [],
+    );
   }, []);
 
   return (

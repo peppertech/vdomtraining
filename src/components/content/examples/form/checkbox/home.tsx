@@ -61,6 +61,10 @@ const dataProvider = new MutableArrayDataProvider<
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type CheckboxSelectedChangedEvent = ojListView.selectedChanged<
+  CheckboxComponent["id"],
+  CheckboxComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION =
   new KeySetImpl([]) as KeySet<CheckboxComponent["id"]>;
@@ -158,7 +162,7 @@ const CheckboxHome = ({
     showComponentDetail,
   ]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: CheckboxSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as CheckboxComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

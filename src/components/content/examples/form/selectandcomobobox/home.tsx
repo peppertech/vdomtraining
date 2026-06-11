@@ -74,6 +74,10 @@ const dataProvider = new MutableArrayDataProvider<
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type SelectSelectedChangedEvent = ojListView.selectedChanged<
+  SelectComponent["id"],
+  SelectComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION =
   new KeySetImpl([]) as KeySet<SelectComponent["id"]>;
@@ -171,7 +175,7 @@ const SelectAndComboboxHome = ({
     showComponentDetail,
   ]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: SelectSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as SelectComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

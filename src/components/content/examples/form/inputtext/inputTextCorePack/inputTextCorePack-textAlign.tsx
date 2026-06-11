@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/buttonset-single";
 import "oj-c/form-layout";
@@ -6,11 +6,15 @@ import "oj-c/input-number";
 import "oj-c/input-password";
 import "oj-c/input-text";
 import "oj-c/select-multiple";
+
 import {
   buttonsetItems,
   createBrowserDataProvider,
 } from "./inputTextCorePack-shared";
 
+type TextAlignEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-buttonset-single">["onvalueChanged"]>
+>[0];
 export default function InputTextCorePackTextAlignExample() {
   const dataProvider = useMemo(() => createBrowserDataProvider(), []);
   const [textAlign, setTextAlign] = useState("start");
@@ -26,8 +30,8 @@ export default function InputTextCorePackTextAlignExample() {
     [textAlign],
   );
 
-  const handleTextAlignChanged = useCallback((event: any) => {
-    setTextAlign(event.detail.value ?? "");
+  const handleTextAlignChanged = useCallback((event: TextAlignEvent) => {
+    setTextAlign((event.detail.value as string | null | undefined) ?? "");
   }, []);
 
   return (
@@ -45,37 +49,37 @@ export default function InputTextCorePackTextAlignExample() {
 
       <oj-c-form-layout id="myform">
         <oj-c-input-text
-          textAlign={textAlignValue as any}
+          textAlign={textAlignValue as ComponentProps<'oj-c-input-text'>['textAlign']}
           value={textVal}
           labelHint="Input Text"
-          onvalueChanged={(event: any) => {
-            setTextVal(event.detail.value ?? "");
+          onvalueChanged={(event) => {
+            setTextVal((event.detail.value as string | null | undefined) ?? "");
           }}
         ></oj-c-input-text>
         <oj-c-input-password
-          textAlign={textAlignValue as any}
+          textAlign={textAlignValue as ComponentProps<'oj-c-input-password'>['textAlign']}
           value={passwordVal}
           labelHint="Input Password"
-          onvalueChanged={(event: any) => {
-            setPasswordVal(event.detail.value ?? "");
+          onvalueChanged={(event) => {
+            setPasswordVal((event.detail.value as string | null | undefined) ?? "");
           }}
         ></oj-c-input-password>
         <oj-c-input-number
-          textAlign={textAlignValue as any}
+          textAlign={textAlignValue as ComponentProps<'oj-c-input-number'>['textAlign']}
           value={numberVal}
           labelHint="Input Number"
-          onvalueChanged={(event: any) => {
-            setNumberVal(event.detail.value ?? 0);
+          onvalueChanged={(event) => {
+            setNumberVal((event.detail.value as number | null | undefined) ?? 0);
           }}
         ></oj-c-input-number>
         <oj-c-select-multiple
-          textAlign={textAlignValue as any}
+          textAlign={textAlignValue as ComponentProps<'oj-c-select-multiple'>['textAlign']}
           labelHint="Select Multiple"
           value={selectMultipleVal}
           data={dataProvider}
           itemText="label"
-          onvalueChanged={(event: any) => {
-            setSelectMultipleVal(event.detail.value ?? new Set());
+          onvalueChanged={(event) => {
+            setSelectMultipleVal((event.detail.value as Set<string> | null | undefined) ?? new Set());
           }}
         ></oj-c-select-multiple>
       </oj-c-form-layout>

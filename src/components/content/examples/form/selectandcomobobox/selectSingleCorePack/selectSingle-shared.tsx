@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import * as employeeDataText from "text!../../data/employeeData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import type { ItemContext } from "ojs/ojcommontypes";
@@ -10,6 +10,18 @@ import "oj-c/list-item-layout";
 import "oj-c/list-view";
 import "oj-c/table";
 
+type CurrentItemEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-list-view">["oncurrentItemChanged"]>
+>[0];
+type ItemActionEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-list-view">["onojItemAction"]>
+>[0];
+type CurrentCellEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-table">["oncurrentCellChanged"]>
+>[0];
+type RowActionEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-table">["onojRowAction"]>
+>[0];
 export type BrowserOption = {
   value: string;
   label: string;
@@ -160,7 +172,7 @@ export const renderEmployeeCollectionListView = (
   >,
   onSelectionChange?: (value: OracleEmployee["EMPLOYEE_ID"] | null) => void,
 ) => {
-  const handleCurrentItemChanged = (event: any) => {
+  const handleCurrentItemChanged = (event: CurrentItemEvent) => {
     const value = event.detail.value as OracleEmployee["EMPLOYEE_ID"] | null;
     if (value != null) {
       collection.onCurrentRowChanged({ rowKey: value });
@@ -168,8 +180,11 @@ export const renderEmployeeCollectionListView = (
     }
   };
 
-  const handleItemAction = (event: any) => {
-    collection.onRowAction({ item: event.detail.context.item });
+  const handleItemAction = (event: ItemActionEvent) => {
+    const item = event.detail.context?.item as Parameters<
+      typeof collection.onRowAction
+    >[0]["item"];
+    collection.onRowAction({ item });
   };
 
   return (
@@ -203,7 +218,7 @@ export const renderEmployeeCollectionTable = (
   >,
   onSelectionChange?: (value: OracleEmployee["EMPLOYEE_ID"] | null) => void,
 ) => {
-  const handleCurrentCellChanged = (event: any) => {
+  const handleCurrentCellChanged = (event: CurrentCellEvent) => {
     const currentCell = event.detail.value as
       | { type?: string; rowKey?: OracleEmployee["EMPLOYEE_ID"] }
       | undefined;
@@ -215,11 +230,19 @@ export const renderEmployeeCollectionTable = (
     onSelectionChange?.(rowKey);
   };
 
-  const handleRowAction = (event: any) => {
-    collection.onRowAction({ item: event.detail.context.item });
+  const handleRowAction = (event: RowActionEvent) => {
+    const item = event.detail.context?.item as Parameters<
+      typeof collection.onRowAction
+    >[0]["item"];
+    collection.onRowAction({ item });
   };
 
-  const cellRenderer = (cellCtx: ojTable.CellTemplateContext<any, any>) => (
+  const cellRenderer = (
+    cellCtx: ojTable.CellTemplateContext<
+      OracleEmployee["EMPLOYEE_ID"],
+      OracleEmployee
+    >,
+  ) => (
     <oj-c-highlight-text  style={{ maxWidth: "400px" }}
       text={String(cellCtx.data)}
       matchText={collection.searchText}
@@ -233,8 +256,8 @@ export const renderEmployeeCollectionTable = (
       verticalGridVisible="disabled"
       selectAllControl="hidden"
       selectionMode={{ row: "single" }}
-      columns={tableColumns as any}
-      data={collection.data as any}
+      columns={tableColumns as unknown as ComponentProps<'oj-c-table'>['columns']}
+      data={collection.data as ComponentProps<'oj-c-table'>['data']}
       selected={{ row: collection.selected }}
       currentCellOverride={collection.currentRowOverride}
       oncurrentCellChanged={handleCurrentCellChanged}

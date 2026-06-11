@@ -1,17 +1,21 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectcombobox";
+
 import {
   createUnformattedCurrencyDataProvider,
   usdCurrencyConverter,
 } from "./comboBoxOne-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-one">["onvalueChanged"]>
+>[0];
 export default function ComboboxOneConverterWithDataMappingExample() {
   const dataProvider = useMemo(() => createUnformattedCurrencyDataProvider(), []);
   const [value, setValue] = useState<number | null>(null);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setValue(event.detail.value ?? null);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setValue((event.detail.value as number | null | null | undefined) ?? null);
   }, []);
 
   return (
@@ -21,7 +25,7 @@ export default function ComboboxOneConverterWithDataMappingExample() {
         labelHint="Unformatted currency data"
         labelEdge="inside"
         options={dataProvider}
-        converter={usdCurrencyConverter as any}
+        converter={usdCurrencyConverter as ComponentProps<'oj-combobox-one'>['converter']}
         class="oj-form-control-max-width-lg"
         onvalueChanged={handleValueChanged}
       ></oj-combobox-one>

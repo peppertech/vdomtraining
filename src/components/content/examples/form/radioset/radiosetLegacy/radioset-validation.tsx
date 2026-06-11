@@ -11,9 +11,13 @@ import {
   type RadiosetValueChangedEvent,
 } from "./radioset-shared";
 
+type ValidatableElement = EventTarget & {
+  validate?: () => Promise<unknown> | unknown;
+};
+
 export default function RadiosetValidationExample() {
   const [currentColor, setCurrentColor] = useState<string | null>("red");
-  const radiosetRef = useRef<any>(null);
+  const radiosetRef = useRef<ValidatableElement | null>(null);
 
   return (
     <div>

@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import Message = require('ojs/ojmessaging');
 import 'ojs/ojbutton';
@@ -37,15 +36,15 @@ export const HelpHintsMessagingMultipleMessages = () => {
   };
 
   const handleTextChanged = (event: InputTextChangedEvent) => {
-      setTextValue(event.detail.value ?? '');
+      setTextValue((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const handleTextAreaChanged = (event: TextAreaChangedEvent) => {
-      setTextAreaValue(event.detail.value ?? '');
+      setTextAreaValue((event.detail.value as TextAreaValue | null | undefined) ?? '');
   };
 
   const handleNumberChanged = (event: InputNumberChangedEvent) => {
-      setNumberValue(event.detail.value ?? null);
+      setNumberValue((event.detail.value as InputNumberValue | null | undefined) ?? null);
   };
 
   return (

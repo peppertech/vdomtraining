@@ -1,17 +1,21 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectcombobox";
+
 import {
   createFormattedCurrencyDataProvider,
   usdCurrencyConverter,
 } from "./comboboxMany-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-many">["onvalueChanged"]>
+>[0];
 export default function ComboboxManyConverterExample() {
   const dataProvider = useMemo(() => createFormattedCurrencyDataProvider(), []);
   const [value, setValue] = useState<number[]>([1, 3]);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setValue(event.detail.value ?? []);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setValue((event.detail.value as number[] | null | undefined) ?? []);
   }, []);
 
   return (
@@ -21,7 +25,7 @@ export default function ComboboxManyConverterExample() {
         labelHint="Currency options"
         labelEdge="inside"
         options={dataProvider}
-        converter={usdCurrencyConverter as any}
+        converter={usdCurrencyConverter as ComponentProps<'oj-combobox-many'>['converter']}
         class="oj-form-control-max-width-md"
         onvalueChanged={handleValueChanged}
       ></oj-combobox-many>

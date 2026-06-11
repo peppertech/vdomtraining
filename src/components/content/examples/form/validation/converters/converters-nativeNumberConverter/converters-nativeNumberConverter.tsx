@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import { NumberConverter } from 'ojs/ojconverter-nativenumber';
 import { JetElementCustomEvent } from 'ojs/index';
@@ -127,34 +126,34 @@ export const ConvertersNativeNumberConverter = () => {
         maximumFractionDigits: 2
     }), []);
     const handleDecimalValueChanged = (event: JetElementCustomEvent<number | null | undefined>) => {
-        setDecimal(event.detail.value ?? null);
+        setDecimal((event.detail.value as number | null | null | undefined) ?? null);
     };
     const handleDecimalRoundingModeValueChanged = (event: JetElementCustomEvent<number | null | undefined>) => {
-        setDecimalRoundingMode(event.detail.value ?? null);
+        setDecimalRoundingMode((event.detail.value as number | null | null | undefined) ?? null);
     };
     const handleDecimalRoundingModeUpParseValueChanged = (event: JetElementCustomEvent<number | null | undefined>) => {
-        setDecimalRoundingModeUpParse(event.detail.value ?? null);
+        setDecimalRoundingModeUpParse((event.detail.value as number | null | null | undefined) ?? null);
     };
     const handleDecimalRoundingModeDownParseValueChanged = (event: JetElementCustomEvent<number | null | undefined>) => {
-        setDecimalRoundingModeDownParse(event.detail.value ?? null);
+        setDecimalRoundingModeDownParse((event.detail.value as number | null | null | undefined) ?? null);
     };
     const handleDecimalRoundingModeEvenParseValueChanged = (event: JetElementCustomEvent<number | null | undefined>) => {
-        setDecimalRoundingModeEvenParse(event.detail.value ?? null);
+        setDecimalRoundingModeEvenParse((event.detail.value as number | null | null | undefined) ?? null);
     };
     const handlePercentValueChanged = (event: JetElementCustomEvent<number | null | undefined>) => {
-        setPercent(event.detail.value ?? null);
+        setPercent((event.detail.value as number | null | null | undefined) ?? null);
     };
     const handlePercentRoundDuringParseValueChanged = (event: JetElementCustomEvent<number | null | undefined>) => {
-        setPercentRoundDuringParse(event.detail.value ?? null);
+        setPercentRoundDuringParse((event.detail.value as number | null | null | undefined) ?? null);
     };
     const handleFormatDigitalUnitsValueChanged = (event: JetElementCustomEvent<number | null | undefined>) => {
-        setFormatDigitalUnits(event.detail.value ?? null);
+        setFormatDigitalUnits((event.detail.value as number | null | null | undefined) ?? null);
     };
     const handleCurrencyValueChanged = (event: JetElementCustomEvent<number | null | undefined>) => {
-        setCurrency(event.detail.value ?? null);
+        setCurrency((event.detail.value as number | null | null | undefined) ?? null);
     };
     const handleCurrencyRoundDuringParseValueChanged = (event: JetElementCustomEvent<number | null | undefined>) => {
-        setCurrencyRoundDuringParse(event.detail.value ?? null);
+        setCurrencyRoundDuringParse((event.detail.value as number | null | null | undefined) ?? null);
     };
     const ojCInputNumberProps: Partial<ComponentProps<'oj-c-input-number'>> = { help: {
             instruction: "enter a number. grouping separator is accepted"

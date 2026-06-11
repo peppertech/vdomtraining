@@ -1,23 +1,34 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/select-single";
+import type { CSelectSingleElement } from "oj-c/select-single";
+
 import {
   createOracleEmployeeDataProvider,
   getEmployeeItemText,
   renderEmployeeCollectionListView,
+  type OracleEmployee,
 } from "./selectSingle-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-single">["onvalueChanged"]>
+>[0];
 export default function SelectSingleCollectionTemplateListViewExample() {
   const dataProvider = useMemo(() => createOracleEmployeeDataProvider(), []);
   const [selectVal, setSelectVal] = useState<number | null>(103);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setSelectVal(event.detail.value ?? null);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setSelectVal((event.detail.value as number | null | null | undefined) ?? null);
   }, []);
 
   const collectionTemplate = useCallback(
-    (collection: any) =>
+    (
+      collection: CSelectSingleElement.CollectionTemplateContext<
+        OracleEmployee["EMPLOYEE_ID"],
+        OracleEmployee
+      >,
+    ) =>
       renderEmployeeCollectionListView(collection, (value) => setSelectVal(value)),
     [],
   );

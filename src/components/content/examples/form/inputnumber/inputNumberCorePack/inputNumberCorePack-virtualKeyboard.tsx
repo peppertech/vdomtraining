@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-number";
@@ -31,7 +31,7 @@ export default function InputNumberCorePackVirtualKeyboardExample() {
         <oj-c-input-number
           id="inputnumber1a"
           value={currentValue1a}
-          converter={noGroupingNumberConverter as any}
+          converter={noGroupingNumberConverter as ComponentProps<'oj-c-input-number'>['converter']}
           labelHint={'virtual-keyboard="auto", nogrouping converter'}
           onvalueChanged={update(setCurrentValue1a)}
         />
@@ -39,7 +39,7 @@ export default function InputNumberCorePackVirtualKeyboardExample() {
           id="inputnumber2"
           value={currentValue2}
           virtualKeyboard="number"
-          converter={noGroupingNumberConverter as any}
+          converter={noGroupingNumberConverter as ComponentProps<'oj-c-input-number'>['converter']}
           labelHint={'virtual-keyboard="number", nogrouping converter'}
           onvalueChanged={update(setCurrentValue2)}
         />

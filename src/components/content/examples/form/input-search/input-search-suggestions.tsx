@@ -47,7 +47,7 @@ export default function InputSearchSuggestionsExample() {
       <oj-checkboxset
         aria-label="Simulate Fetch Delay"
         value={isDelayed}
-        onvalueChanged={(event: any) => {
+        onvalueChanged={(event) => {
           setIsDelayed((event.detail.value as string[]) ?? []);
         }}
       >

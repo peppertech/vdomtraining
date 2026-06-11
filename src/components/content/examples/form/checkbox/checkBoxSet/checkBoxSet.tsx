@@ -6,11 +6,11 @@ import "ojs/ojoption";
 import Message = require("ojs/ojmessaging");
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
-type FormLayoutProps = ComponentProps<"oj-form-layout">;
-type CheckboxsetProps = ComponentProps<"oj-checkboxset">;
 type CheckboxsetValueChangedEvent = Parameters<
   NonNullable<CheckboxsetProps["onvalueChanged"]>
 >[0];
+type FormLayoutProps = ComponentProps<"oj-form-layout">;
+type CheckboxsetProps = ComponentProps<"oj-checkboxset">;
 
 const hintDefinition: CheckboxsetProps["helpHints"] = {
   definition: "help hint definition",

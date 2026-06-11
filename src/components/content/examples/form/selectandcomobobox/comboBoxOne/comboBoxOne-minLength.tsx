@@ -1,14 +1,17 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectcombobox";
 import { createStatesDataProvider } from "./comboBoxOne-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-one">["onvalueChanged"]>
+>[0];
 export default function ComboboxOneMinLengthExample() {
   const dataProvider = useMemo(() => createStatesDataProvider(), []);
   const [value, setValue] = useState("");
 
-  const handleValueChanged = useCallback((event: any) => {
-    setValue(event.detail.value ?? "");
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setValue((event.detail.value as string | null | undefined) ?? "");
   }, []);
 
   return (

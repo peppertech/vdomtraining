@@ -43,6 +43,10 @@ const dataProvider = new MutableArrayDataProvider<
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type PasswordSelectedChangedEvent = ojListView.selectedChanged<
+  PasswordComponent["id"],
+  PasswordComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION =
   new KeySetImpl([]) as KeySet<PasswordComponent["id"]>;
@@ -144,7 +148,7 @@ const InputPasswordHome = ({
     showComponentDetail,
   ]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: PasswordSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as PasswordComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

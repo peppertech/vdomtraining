@@ -1,17 +1,21 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectsingle";
+
 import {
   createOracleEmployeeDataProvider,
   getEmployeeItemText,
 } from "./selectSingle-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-select-single">["onvalueChanged"]>
+>[0];
 export default function SelectSingleLegacyItemTextExample() {
   const dataProvider = useMemo(() => createOracleEmployeeDataProvider(), []);
   const [selectVal, setSelectVal] = useState<number | null>(102);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setSelectVal(event.detail.value ?? null);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setSelectVal((event.detail.value as number | null | null | undefined) ?? null);
   }, []);
 
   return (

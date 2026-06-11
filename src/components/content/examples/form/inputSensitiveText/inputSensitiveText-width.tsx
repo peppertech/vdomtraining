@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-sensitive-text";
@@ -35,7 +35,7 @@ export default function InputSensitiveTextWidthVdomExample() {
 
       <h6>no width or max-width</h6>
       <oj-c-input-sensitive-text
-        labelEdge={labelEdge as any}
+        labelEdge={labelEdge as ComponentProps<'oj-c-input-sensitive-text'>['labelEdge']}
         labelHint="width and max-width attributes are not defined"
         help={{ instruction: "The width and max-width are 100% by default" }}
         userAssistanceDensity="efficient"
@@ -45,7 +45,7 @@ export default function InputSensitiveTextWidthVdomExample() {
       <h6>max-width attribute</h6>
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-input-sensitive-text
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-input-sensitive-text'>['labelEdge']}
           labelHint="Max width medium"
           maxWidth="md"
           value="foobar"
@@ -53,7 +53,7 @@ export default function InputSensitiveTextWidthVdomExample() {
       </div>
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-input-sensitive-text
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-input-sensitive-text'>['labelEdge']}
           labelHint="Max width small"
           maxWidth="sm"
           value="foobar"
@@ -63,7 +63,7 @@ export default function InputSensitiveTextWidthVdomExample() {
       <h6>width attribute</h6>
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-input-sensitive-text
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-input-sensitive-text'>['labelEdge']}
           labelHint="Width medium"
           width="md"
           value="foobar"
@@ -71,7 +71,7 @@ export default function InputSensitiveTextWidthVdomExample() {
       </div>
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-input-sensitive-text
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-input-sensitive-text'>['labelEdge']}
           labelHint="Width small"
           width="sm"
           value="foobar"
@@ -81,7 +81,7 @@ export default function InputSensitiveTextWidthVdomExample() {
       <h6>custom width and max-width</h6>
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-input-sensitive-text
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-input-sensitive-text'>['labelEdge']}
           labelHint="Width 50% MaxWidth 400px"
           maxWidth="400px"
           width="50%"
@@ -92,7 +92,7 @@ export default function InputSensitiveTextWidthVdomExample() {
       <h6>Inside oj-c-form-layout, no width or max-width</h6>
       <oj-c-form-layout>
         <oj-c-input-sensitive-text
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-input-sensitive-text'>['labelEdge']}
           labelHint="width and max-width attributes are not defined"
           help={{
             instruction:

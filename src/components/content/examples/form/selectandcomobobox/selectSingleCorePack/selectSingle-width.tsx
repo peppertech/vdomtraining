@@ -1,24 +1,31 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/radioset";
 import "oj-c/select-single";
+
 import {
   createBrowserDataProvider,
   labelEdgeOptions,
 } from "./selectSingle-shared";
 
+type LabelEdgeEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-radioset">["onvalueChanged"]>
+>[0];
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-single">["onvalueChanged"]>
+>[0];
 export default function SelectSingleWidthExample() {
   const dataProvider = useMemo(() => createBrowserDataProvider(), []);
   const [labelEdge, setLabelEdge] = useState("inside");
   const [selectVal, setSelectVal] = useState("CH");
 
-  const handleLabelEdgeChanged = useCallback((event: any) => {
-    setLabelEdge(event.detail.value);
+  const handleLabelEdgeChanged = useCallback((event: LabelEdgeEvent) => {
+    setLabelEdge((event.detail.value as string));
   }, []);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setSelectVal(event.detail.value);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setSelectVal((event.detail.value as string));
   }, []);
 
   return (
@@ -39,7 +46,7 @@ export default function SelectSingleWidthExample() {
       <h6>no width or max-width</h6>
       <oj-c-select-single
         id="id1"
-        labelEdge={labelEdge as any}
+        labelEdge={labelEdge as ComponentProps<'oj-c-select-single'>['labelEdge']}
         labelHint="width and max-width attributes are not defined"
         help={{ instruction: "The width and max-width are 100% by default" }}
         userAssistanceDensity="efficient"
@@ -53,7 +60,7 @@ export default function SelectSingleWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-select-single
           id="id2"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-select-single'>['labelEdge']}
           labelHint="Max width medium"
           maxWidth="md"
           data={dataProvider}
@@ -65,7 +72,7 @@ export default function SelectSingleWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-select-single
           id="id3"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-select-single'>['labelEdge']}
           labelHint="Max width small"
           maxWidth="sm"
           data={dataProvider}
@@ -79,7 +86,7 @@ export default function SelectSingleWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-select-single
           id="id4"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-select-single'>['labelEdge']}
           labelHint="Width medium"
           width="md"
           data={dataProvider}
@@ -91,7 +98,7 @@ export default function SelectSingleWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-select-single
           id="id5"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-select-single'>['labelEdge']}
           labelHint="Width small"
           width="sm"
           data={dataProvider}
@@ -105,7 +112,7 @@ export default function SelectSingleWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-select-single
           id="id6"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-select-single'>['labelEdge']}
           labelHint="Width 50% MaxWidth 400px"
           width="50%"
           maxWidth="400px"
@@ -120,7 +127,7 @@ export default function SelectSingleWidthExample() {
       <oj-c-form-layout>
         <oj-c-select-single
           id="id7"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-select-single'>['labelEdge']}
           labelHint="width and max-width attributes are not defined"
           help={{ instruction: "The width is driven by the oj-c-form-layout column width" }}
           data={dataProvider}

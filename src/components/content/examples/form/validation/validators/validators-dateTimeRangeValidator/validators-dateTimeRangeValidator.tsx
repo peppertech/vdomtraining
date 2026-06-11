@@ -1,15 +1,14 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import AsyncDateTimeRangeValidator = require('ojs/ojasyncvalidator-datetimerange');
 import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
 import 'ojs/ojdatetimepicker';
 import 'ojs/ojformlayout';
 
-type InputDateValue = string | undefined;
 type InputDateChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-date'>['onvalueChanged']>
 >[0];
+type InputDateValue = string | undefined;
 
 const toIsoDateString = (date: Date) => {
   const year = date.getFullYear();
@@ -42,11 +41,11 @@ export const ValidatorsDateTimeRangeValidator = () => {
   );
 
   const handleDate1Changed = (event: InputDateChangedEvent) => {
-    setDateValue1(event.detail.value ?? undefined);
+    setDateValue1((event.detail.value as InputDateValue | null | undefined) ?? undefined);
   };
 
   const handleDate2Changed = (event: InputDateChangedEvent) => {
-    setDateValue2(event.detail.value ?? undefined);
+    setDateValue2((event.detail.value as InputDateValue | null | undefined) ?? undefined);
   };
 
   return (

@@ -28,8 +28,8 @@ export default function InputTextLegacyTextAlignExample() {
         <oj-radioset
           value={textAlign}
           labelHint="Text Alignment"
-          onvalueChanged={(event: any) => {
-            setTextAlign(event.detail.value ?? "");
+          onvalueChanged={(event) => {
+            setTextAlign((event.detail.value as string | null | undefined) ?? "");
           }}
         >
           <oj-option value="start">start</oj-option>

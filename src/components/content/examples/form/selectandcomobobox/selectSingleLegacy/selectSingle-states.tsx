@@ -142,7 +142,7 @@ export default function SelectSingleLegacyStatesExample() {
           value={requiredValue}
           labelHint="required"
           class="oj-form-control-max-width-md"
-          onvalueChanged={(event: any) => setRequiredValue(event.detail.value ?? null)}
+          onvalueChanged={(event) => setRequiredValue((event.detail.value as string | null | null | undefined) ?? null)}
         ></oj-select-single>
         <oj-select-single
           data={dataProvider}

@@ -1,20 +1,26 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectcombobox";
 import { createBrowserDataProvider, formatEventDetail } from "./comboBoxOne-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-one">["onvalueChanged"]>
+>[0];
+type ValueOptionEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-one">["onvalueOptionChanged"]>
+>[0];
 export default function ComboboxOneEventsExample() {
   const dataProvider = useMemo(() => createBrowserDataProvider(), []);
   const [value, setValue] = useState("Chrome");
   const [valueLog, setValueLog] = useState("");
   const [valueOptionLog, setValueOptionLog] = useState("");
 
-  const handleValueChanged = useCallback((event: any) => {
-    setValue(event.detail.value ?? "");
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setValue((event.detail.value as string | null | undefined) ?? "");
     setValueLog(formatEventDetail(event.detail));
   }, []);
 
-  const handleValueOptionChanged = useCallback((event: any) => {
+  const handleValueOptionChanged = useCallback((event: ValueOptionEvent) => {
     setValueOptionLog(formatEventDetail(event.detail));
   }, []);
 

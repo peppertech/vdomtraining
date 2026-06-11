@@ -67,7 +67,7 @@ export default function LabelledLinkEditableExample() {
   const handleStateChanged = useCallback(
     (event: CRadiosetElement.valueChanged<ComponentState, StateOption>) => {
       if (event.detail.value) {
-        setComponentState(event.detail.value);
+        setComponentState((event.detail.value as ComponentState));
       }
     },
     [],
@@ -75,7 +75,7 @@ export default function LabelledLinkEditableExample() {
 
   const handleEmailChanged = useCallback(
     (event: CInputTextElement.valueChanged<string>) => {
-      setEmailValue(event.detail.value ?? "");
+      setEmailValue((event.detail.value as string | null | undefined) ?? "");
     },
     [],
   );

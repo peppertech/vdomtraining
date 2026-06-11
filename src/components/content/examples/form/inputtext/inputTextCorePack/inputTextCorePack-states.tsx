@@ -104,11 +104,11 @@ export default function InputTextCorePackStatesExample() {
           value={value}
           length={overviewMaxLengthConfig}
           labelHint="max length"
-          onvalueChanged={(event: any) => {
-            setValue(event.detail.value ?? "");
+          onvalueChanged={(event) => {
+            setValue((event.detail.value as string | null | undefined) ?? "");
           }}
-          onrawValueChanged={(event: any) => {
-            setRawValue(event.detail.value ?? "");
+          onrawValueChanged={(event) => {
+            setRawValue((event.detail.value as string | null | undefined) ?? "");
           }}
         ></oj-c-input-text>
       </oj-c-form-layout>

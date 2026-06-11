@@ -45,8 +45,8 @@ export default function InputTextLegacyStartEndSlotsExample() {
         <oj-radioset
           value={labelEdge}
           labelHint="Label Edge"
-          onvalueChanged={(event: any) => {
-            setLabelEdge(event.detail.value ?? "inside");
+          onvalueChanged={(event) => {
+            setLabelEdge((event.detail.value as "top" | "inside" | null | undefined) ?? "inside");
           }}
         >
           <oj-option value="top">top</oj-option>
@@ -55,8 +55,8 @@ export default function InputTextLegacyStartEndSlotsExample() {
         <oj-radioset
           value={formState}
           labelHint="State"
-          onvalueChanged={(event: any) => {
-            setFormState(event.detail.value ?? "enabled");
+          onvalueChanged={(event) => {
+            setFormState((event.detail.value as "enabled" | "disabled" | "readonly" | null | undefined) ?? "enabled");
           }}
         >
           <oj-option value="enabled">Enabled</oj-option>
@@ -66,8 +66,8 @@ export default function InputTextLegacyStartEndSlotsExample() {
         <oj-radioset
           value={valueEnabled}
           labelHint="Value"
-          onvalueChanged={(event: any) => {
-            setValueEnabled(event.detail.value ?? "yes");
+          onvalueChanged={(event) => {
+            setValueEnabled((event.detail.value as "yes" | "no" | null | undefined) ?? "yes");
           }}
         >
           <oj-option value="yes">Yes</oj-option>

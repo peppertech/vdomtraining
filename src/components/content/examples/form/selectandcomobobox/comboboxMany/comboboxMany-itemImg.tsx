@@ -1,17 +1,21 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectcombobox";
+
 import {
   createBrowserLabelDataProvider,
   renderBrowserImageOption,
 } from "./comboboxMany-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-combobox-many">["onvalueChanged"]>
+>[0];
 export default function ComboboxManyItemImgExample() {
   const dataProvider = useMemo(() => createBrowserLabelDataProvider(), []);
   const [value, setValue] = useState<string[]>(["Chrome", "Safari"]);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setValue(event.detail.value ?? []);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setValue((event.detail.value as string[] | null | undefined) ?? []);
   }, []);
 
   return (
@@ -22,7 +26,7 @@ export default function ComboboxManyItemImgExample() {
         labelEdge="inside"
         options={dataProvider}
         class="oj-form-control-max-width-md"
-        optionRenderer={renderBrowserImageOption as any}
+        optionRenderer={renderBrowserImageOption as ComponentProps<'oj-combobox-many'>['optionRenderer']}
         onvalueChanged={handleValueChanged}
       ></oj-combobox-many>
 

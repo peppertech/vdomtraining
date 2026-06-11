@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useState } from "preact/hooks";
 import { IntlNumberConverter } from "ojs/ojconverter-number";
 import AsyncRegExpValidator = require("ojs/ojasyncvalidator-regexp");
@@ -58,7 +58,7 @@ export default function InputNumberRawValueExample() {
           setCurrentValue(Number(event.detail.value ?? 0));
         }}
         ontransientValueChanged={(event: InputNumberTransientValueChangedEvent) => {
-          setTransientValue(event.detail.value ?? null);
+          setTransientValue((event.detail.value as number | null | null | undefined) ?? null);
         }}
         onrawValueChanged={(event: InputNumberRawValueChangedEvent) => {
           setRawValue(String(event.detail.value ?? ""));
@@ -105,14 +105,14 @@ export default function InputNumberRawValueExample() {
         transientValue={convertedTransientValue}
         rawValue={convertedRawValue}
         converter={currencyConverter}
-        validators={[[regExpTwoDigitValidator, regExpTenMultipleValidator]] as any}
+        validators={[[regExpTwoDigitValidator, regExpTenMultipleValidator]] as unknown as ComponentProps<'oj-input-number'>['validators']}
         labelHint="With Converter/Validators"
         labelEdge="inside"
         onvalueChanged={(event: InputNumberValueChangedEvent) => {
           setConvertedCurrentValue(Number(event.detail.value ?? 0));
         }}
         ontransientValueChanged={(event: InputNumberTransientValueChangedEvent) => {
-          setConvertedTransientValue(event.detail.value ?? null);
+          setConvertedTransientValue((event.detail.value as number | null | null | undefined) ?? null);
         }}
         onrawValueChanged={(event: InputNumberRawValueChangedEvent) => {
           setConvertedRawValue(String(event.detail.value ?? ""));

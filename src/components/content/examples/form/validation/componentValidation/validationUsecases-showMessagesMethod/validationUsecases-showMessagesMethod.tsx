@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 import type { CInputPasswordElement } from 'oj-c/input-password';
@@ -10,9 +9,6 @@ import 'oj-c/input-text';
 import 'ojs/ojformlayout';
 import 'ojs/ojlabelvalue';
 
-type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
-type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
-type InputPasswordValue = ComponentProps<'oj-c-input-password'>['value'];
 type InputTextValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>
 >[0];
@@ -25,6 +21,9 @@ type InputTextValidChangedEvent = Parameters<
 type InputPasswordValidChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-password'>['onvalidChanged']>
 >[0];
+type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
+type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
+type InputPasswordValue = ComponentProps<'oj-c-input-password'>['value'];
 
 export const ValidationUsecasesShowMessagesMethod = () => {
   const userNameRef = useRef<CInputTextElement<string> | null>(null);
@@ -56,11 +55,11 @@ export const ValidationUsecasesShowMessagesMethod = () => {
   );
 
   const handleUserNameChanged = (event: InputTextValueChangedEvent) => {
-    setUserName(event.detail.value ?? null);
+    setUserName((event.detail.value as InputTextValue | null | undefined) ?? null);
   };
 
   const handlePasswordChanged = (event: InputPasswordValueChangedEvent) => {
-    setPassword(event.detail.value ?? '');
+    setPassword((event.detail.value as InputPasswordValue | null | undefined) ?? '');
   };
 
   const handleUserNameValidChanged = (event: InputTextValidChangedEvent) => {

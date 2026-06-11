@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 import type { ojInputText } from 'ojs/ojinputtext';
@@ -10,7 +9,6 @@ import 'ojs/ojlabel';
 type InputTextValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>
 >[0];
-
 export const ValidationUsecasesRefreshMethod = () => {
   const inputRef = useRef<ojInputText | null>(null);
   const [userName, setUserName] = useState('');
@@ -26,7 +24,7 @@ export const ValidationUsecasesRefreshMethod = () => {
   );
 
   const handleUserNameChanged = (event: InputTextValueChangedEvent) => {
-    setUserName(event.detail.value ?? '');
+    setUserName((event.detail.value as string | null | undefined) ?? '');
   };
 
   const handleChangeLabel = () => {

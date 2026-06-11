@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 import type Validator = require('ojs/ojvalidator');
@@ -7,10 +6,10 @@ import type { CInputPasswordElement } from 'oj-c/input-password';
 import 'oj-c/input-password';
 import 'ojs/ojformlayout';
 
-type InputPasswordValue = ComponentProps<'oj-c-input-password'>['value'];
 type InputPasswordChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-password'>['onvalueChanged']>
 >[0];
+type InputPasswordValue = ComponentProps<'oj-c-input-password'>['value'];
 
 export const ValidatorsCustomValidators = () => {
   const confirmPasswordRef = useRef<CInputPasswordElement | null>(null);
@@ -53,11 +52,11 @@ export const ValidatorsCustomValidators = () => {
   }, [password]);
 
   const handlePasswordChanged = (event: InputPasswordChangedEvent) => {
-    setPassword(event.detail.value ?? '');
+    setPassword((event.detail.value as InputPasswordValue | null | undefined) ?? '');
   };
 
   const handleConfirmPasswordChanged = (event: InputPasswordChangedEvent) => {
-    setPasswordRepeat(event.detail.value ?? '');
+    setPasswordRepeat((event.detail.value as InputPasswordValue | null | undefined) ?? '');
   };
 
   return (

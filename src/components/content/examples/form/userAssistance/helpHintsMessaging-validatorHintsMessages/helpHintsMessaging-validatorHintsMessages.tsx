@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useState } from 'preact/hooks';
 import 'ojs/ojformlayout';
 import 'oj-c/input-number';
@@ -16,8 +15,8 @@ export const HelpHintsMessagingValidatorHintsMessages = () => {
     return (<div id="form-container">
             <oj-form-layout>
                     <h5 class="oj-header-border">Validator Hints</h5>
-                    <oj-c-input-number id="currency1" required={true} min={10000} max={50000.45} onvalueChanged={(event: InputNumberValueChangedEvent) => setDecimal(event.detail.value ?? null)} value={decimal} labelHint="min, max attributes" {...ojCInputNumberProps}/>
-                    <oj-c-input-number id="currency2" required={true} min={10000} max={50000.45} onvalueChanged={(event: InputNumberValueChangedEvent) => setDecimal2(event.detail.value ?? null)} value={decimal2} labelHint="min, max, and help.instruction set" {...ojCInputNumberProps2}/>
+                    <oj-c-input-number id="currency1" required={true} min={10000} max={50000.45} onvalueChanged={(event: InputNumberValueChangedEvent) => setDecimal((event.detail.value as number | null | null | undefined) ?? null)} value={decimal} labelHint="min, max attributes" {...ojCInputNumberProps}/>
+                    <oj-c-input-number id="currency2" required={true} min={10000} max={50000.45} onvalueChanged={(event: InputNumberValueChangedEvent) => setDecimal2((event.detail.value as number | null | null | undefined) ?? null)} value={decimal2} labelHint="min, max, and help.instruction set" {...ojCInputNumberProps2}/>
                 </oj-form-layout>
         </div>);
 };

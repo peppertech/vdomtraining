@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useState } from 'preact/hooks';
 import 'ojs/ojformlayout';
 import 'oj-c/input-number';
@@ -17,11 +16,11 @@ export const HelpHintsMessagingHintsMessagesTitle = () => {
         } };
     return (<oj-form-layout id="form-container">
             <h5 class="oj-header-border">Default Display of Messages, Hints, Help Instruction</h5>
-            <oj-c-input-number id="field1" autocomplete="off" required={true} min={0} max={100} onvalueChanged={(event: InputNumberValueChangedEvent) => setInputValue(event.detail.value ?? null)} value={inputValue} labelHint="input number" {...ojCInputNumberProps}/>
+            <oj-c-input-number id="field1" autocomplete="off" required={true} min={0} max={100} onvalueChanged={(event: InputNumberValueChangedEvent) => setInputValue((event.detail.value as number | null | null | undefined) ?? null)} value={inputValue} labelHint="input number" {...ojCInputNumberProps}/>
             <h5 class="oj-header-border">Default Display of Messages, Hints, with No Help Instruction</h5>
-            <oj-c-input-number id="field2" required={true} min={0} max={100} onvalueChanged={(event: InputNumberValueChangedEvent) => setInputValue(event.detail.value ?? null)} value={inputValue} placeholder="custom placeholder text" labelHint="input number" {...ojCInputNumberProps2}/>
+            <oj-c-input-number id="field2" required={true} min={0} max={100} onvalueChanged={(event: InputNumberValueChangedEvent) => setInputValue((event.detail.value as number | null | null | undefined) ?? null)} value={inputValue} placeholder="custom placeholder text" labelHint="input number" {...ojCInputNumberProps2}/>
             <h5 class="oj-header-border">Show Messages and Hide Hints</h5>
-            <oj-c-input-number id="field3" required={true} min={0} max={100} onvalueChanged={(event: InputNumberValueChangedEvent) => setInputValue(event.detail.value ?? null)} value={inputValue} displayOptions={{ converterHint: 'none', validatorHint: 'none' }} placeholder="custom placeholder text" labelHint="input number"/>
+            <oj-c-input-number id="field3" required={true} min={0} max={100} onvalueChanged={(event: InputNumberValueChangedEvent) => setInputValue((event.detail.value as number | null | null | undefined) ?? null)} value={inputValue} displayOptions={{ converterHint: 'none', validatorHint: 'none' }} placeholder="custom placeholder text" labelHint="input number"/>
         </oj-form-layout>);
 };
 export default HelpHintsMessagingHintsMessagesTitle;

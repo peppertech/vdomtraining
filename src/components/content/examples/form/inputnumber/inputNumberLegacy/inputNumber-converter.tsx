@@ -59,7 +59,7 @@ export default function InputNumberConverterExample() {
 
   const handleDecimalChanged = useCallback(
     (event: InputNumberValueChangedEvent) => {
-      setDecimal(event.detail.value ?? null);
+      setDecimal((event.detail.value as number | null | null | undefined) ?? null);
     },
     [],
   );

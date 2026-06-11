@@ -16,8 +16,8 @@ export default function InputTextCorePackNoLabelExample() {
         value={textVal}
         labelHint="Input Text No Visual Label"
         labelEdge="none"
-        onvalueChanged={(event: any) => {
-          setTextVal(event.detail.value ?? "");
+        onvalueChanged={(event) => {
+          setTextVal((event.detail.value as string | null | undefined) ?? "");
         }}
       ></oj-c-input-text>
       <oj-c-input-text
@@ -30,8 +30,8 @@ export default function InputTextCorePackNoLabelExample() {
         value={textAreaVal}
         labelHint="Text Area No Visual Label"
         labelEdge="none"
-        onvalueChanged={(event: any) => {
-          setTextAreaVal(event.detail.value ?? "");
+        onvalueChanged={(event) => {
+          setTextAreaVal((event.detail.value as string | null | undefined) ?? "");
         }}
       ></oj-c-text-area>
       <oj-c-text-area
@@ -44,8 +44,8 @@ export default function InputTextCorePackNoLabelExample() {
         value={passwordVal}
         labelHint="Input Password No Visual Label"
         labelEdge="none"
-        onvalueChanged={(event: any) => {
-          setPasswordVal(event.detail.value ?? "");
+        onvalueChanged={(event) => {
+          setPasswordVal((event.detail.value as string | null | undefined) ?? "");
         }}
       ></oj-c-input-password>
       <oj-c-input-password

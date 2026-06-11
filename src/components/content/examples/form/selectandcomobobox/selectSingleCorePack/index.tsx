@@ -135,7 +135,7 @@ export default function SelectSingleIndex() {
       >,
     ) => {
       if (event.detail.updatedFrom === "internal") {
-        setActiveExampleId(event.detail.value);
+        setActiveExampleId((event.detail.value as SelectSingleCorePackDemoId));
       }
     },
     [],

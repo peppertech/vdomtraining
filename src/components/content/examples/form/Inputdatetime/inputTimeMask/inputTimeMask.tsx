@@ -1,13 +1,48 @@
-import { ComponentProps, h } from "preact";
-import { useState, useCallback, useMemo } from "preact/hooks";
+import { h } from "preact";
+import { useState, useCallback } from "preact/hooks";
 
 import "oj-c/input-time-mask";
 import "oj-c/form-layout";
 
-import { CInputTimeMaskElement } from "oj-c/input-time-mask";
+import {
+  type InputTimeMaskProps,
+  type InputTimeMaskValueChangedEvent,
+} from "./inputTimeMask-shared";
 
-type InputTimeMaskProps = ComponentProps<"oj-c-input-time-mask">;
-type ValueType = CInputTimeMaskElement["value"];
+type ValueType = InputTimeMaskProps["value"];
+type MessagesCustom = NonNullable<InputTimeMaskProps["messagesCustom"]>;
+
+const errorMessages: MessagesCustom = [
+  {
+    summary: "Error message",
+    detail: "This is an error message",
+    severity: "error",
+  },
+];
+
+const warningMessages: MessagesCustom = [
+  {
+    summary: "Warning message",
+    detail: "This is a warning message",
+    severity: "warning",
+  },
+];
+
+const infoMessages: MessagesCustom = [
+  {
+    summary: "Info message",
+    detail: "This is an info message",
+    severity: "info",
+  },
+];
+
+const confirmationMessages: MessagesCustom = [
+  {
+    summary: "Confirmation message",
+    detail: "This is a confirmation message",
+    severity: "confirmation",
+  },
+];
 
 export const InputTimeMask = () => {
   const [value, setValue] = useState<ValueType>("T20:11");
@@ -27,87 +62,46 @@ export const InputTimeMask = () => {
     source: "https://www.oracle.com",
   };
 
-  const error = useMemo(
-    () => [
-      {
-        summary: "Error message",
-        detail: "This is an error message",
-        severity: "error" as const,
-      },
-    ],
-    [],
-  );
-
-  const warning = useMemo(
-    () => [
-      {
-        summary: "Warning message",
-        detail: "This is a warning message",
-        severity: "warning" as const,
-      },
-    ],
-    [],
-  );
-
-  const info = useMemo(
-    () => [
-      {
-        summary: "Info message",
-        detail: "This is an info message",
-        severity: "info" as const,
-      },
-    ],
-    [],
-  );
-
-  const confirmation = useMemo(
-    () => [
-      {
-        summary: "Confirmation message",
-        detail: "This is a confirmation message",
-        severity: "confirmation" as const,
-      },
-    ],
-    [],
-  );
-
-  const handleValueChanged = useCallback((event: any) => {
+  const handleValueChanged = useCallback((event: InputTimeMaskValueChangedEvent) => {
     setValue(event.detail.value);
   }, []);
 
-  const handleValueMinuteChanged = useCallback((event: any) => {
+  const handleValueMinuteChanged = useCallback((event: InputTimeMaskValueChangedEvent) => {
     setValueMinute(event.detail.value);
   }, []);
 
-  const handleValueSecondChanged = useCallback((event: any) => {
+  const handleValueSecondChanged = useCallback((event: InputTimeMaskValueChangedEvent) => {
     setValueSecond(event.detail.value);
   }, []);
 
-  const handleValueMillisecondChanged = useCallback((event: any) => {
-    setValueMillisecond(event.detail.value);
-  }, []);
+  const handleValueMillisecondChanged = useCallback(
+    (event: InputTimeMaskValueChangedEvent) => {
+      setValueMillisecond(event.detail.value);
+    },
+    [],
+  );
 
-  const handleValue24Changed = useCallback((event: any) => {
+  const handleValue24Changed = useCallback((event: InputTimeMaskValueChangedEvent) => {
     setValue24(event.detail.value);
   }, []);
 
-  const handleValue12Changed = useCallback((event: any) => {
+  const handleValue12Changed = useCallback((event: InputTimeMaskValueChangedEvent) => {
     setValue12(event.detail.value);
   }, []);
 
-  const handleValuem1Changed = useCallback((event: any) => {
+  const handleValuem1Changed = useCallback((event: InputTimeMaskValueChangedEvent) => {
     setValuem1(event.detail.value);
   }, []);
 
-  const handleValuem2Changed = useCallback((event: any) => {
+  const handleValuem2Changed = useCallback((event: InputTimeMaskValueChangedEvent) => {
     setValuem2(event.detail.value);
   }, []);
 
-  const handleValuem3Changed = useCallback((event: any) => {
+  const handleValuem3Changed = useCallback((event: InputTimeMaskValueChangedEvent) => {
     setValuem3(event.detail.value);
   }, []);
 
-  const handleValuem4Changed = useCallback((event: any) => {
+  const handleValuem4Changed = useCallback((event: InputTimeMaskValueChangedEvent) => {
     setValuem4(event.detail.value);
   }, []);
 
@@ -337,25 +331,25 @@ export const InputTimeMask = () => {
         <oj-c-input-time-mask
           value={valuem1}
           labelHint="Error"
-          messagesCustom={error}
+          messagesCustom={errorMessages}
           onvalueChanged={handleValuem1Changed}
         ></oj-c-input-time-mask>
         <oj-c-input-time-mask
           value={valuem2}
           labelHint="Warning"
-          messagesCustom={warning}
+          messagesCustom={warningMessages}
           onvalueChanged={handleValuem2Changed}
         ></oj-c-input-time-mask>
         <oj-c-input-time-mask
           value={valuem3}
           labelHint="Information"
-          messagesCustom={info}
+          messagesCustom={infoMessages}
           onvalueChanged={handleValuem3Changed}
         ></oj-c-input-time-mask>
         <oj-c-input-time-mask
           value={valuem4}
           labelHint="Confirmation"
-          messagesCustom={confirmation}
+          messagesCustom={confirmationMessages}
           onvalueChanged={handleValuem4Changed}
         ></oj-c-input-time-mask>
       </oj-c-form-layout>

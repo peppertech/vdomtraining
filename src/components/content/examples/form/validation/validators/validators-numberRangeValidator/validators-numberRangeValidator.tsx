@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import AsyncNumberRangeValidator = require('ojs/ojasyncvalidator-numberrange');
@@ -7,14 +6,14 @@ import 'oj-c/input-number';
 import 'oj-c/input-text';
 import 'ojs/ojformlayout';
 
-type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
-type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
 type InputTextChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>
 >[0];
 type InputNumberChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-number'>['onvalueChanged']>
 >[0];
+type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
+type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
 
 export const ValidatorsNumberRangeValidator = () => {
   const [numberValue1, setNumberValue1] = useState<InputTextValue>('');
@@ -55,19 +54,19 @@ export const ValidatorsNumberRangeValidator = () => {
   );
 
   const handleText1Changed = (event: InputTextChangedEvent) => {
-    setNumberValue1(event.detail.value ?? '');
+    setNumberValue1((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const handleNumber2Changed = (event: InputNumberChangedEvent) => {
-    setNumberValue2(event.detail.value ?? null);
+    setNumberValue2((event.detail.value as InputNumberValue | null | undefined) ?? null);
   };
 
   const handleText3Changed = (event: InputTextChangedEvent) => {
-    setNumberValue3(event.detail.value ?? '');
+    setNumberValue3((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const handleNumber4Changed = (event: InputNumberChangedEvent) => {
-    setNumberValue4(event.detail.value ?? null);
+    setNumberValue4((event.detail.value as InputNumberValue | null | undefined) ?? null);
   };
 
   return (

@@ -1,6 +1,5 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from "preact/hooks";
-import type { ComponentProps } from "preact";
 import "oj-c/form-layout";
 import "oj-c/select-single";
 import { createBrowserDataProvider } from "./selectSingle-shared";
@@ -127,7 +126,7 @@ export default function SelectSingleStatesExample() {
           required
           value={requiredValue}
           labelHint="required"
-          onvalueChanged={(event: any) => setRequiredValue(event.detail.value ?? null)}
+          onvalueChanged={(event) => setRequiredValue((event.detail.value as string | null | null | undefined) ?? null)}
         />
         <oj-c-select-single
           data={dataProvider}

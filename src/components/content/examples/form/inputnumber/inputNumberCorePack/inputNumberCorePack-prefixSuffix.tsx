@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-number";
@@ -87,7 +87,7 @@ export default function InputNumberCorePackPrefixSuffixExample() {
           value={showValue ? 10000 : null}
           labelHint="Price"
           disabled={disabledControls}
-          textAlign={textAlignValue as any}
+          textAlign={textAlignValue as ComponentProps<'oj-c-input-number'>['textAlign']}
           inputPrefix="$"
         />
 
@@ -96,7 +96,7 @@ export default function InputNumberCorePackPrefixSuffixExample() {
           labelHint="Weight"
           value={showValue ? 155 : null}
           disabled={disabledControls}
-          textAlign={textAlignValue as any}
+          textAlign={textAlignValue as ComponentProps<'oj-c-input-number'>['textAlign']}
           inputSuffix="lbs"
         />
       </oj-c-form-layout>

@@ -1,18 +1,22 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-text";
 import "oj-c/radioset";
+
 import {
   labelEdgeOptions,
   type VisibleInputTextLabelEdge,
 } from "./inputTextCorePack-shared";
 
+type LabelEdgeEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-radioset">["onvalueChanged"]>
+>[0];
 export default function InputTextCorePackWidthExample() {
   const [labelEdge, setLabelEdge] = useState<VisibleInputTextLabelEdge>("inside");
 
-  const handleLabelEdgeChanged = useCallback((event: any) => {
-    setLabelEdge(event.detail.value ?? "inside");
+  const handleLabelEdgeChanged = useCallback((event: LabelEdgeEvent) => {
+    setLabelEdge((event.detail.value as VisibleInputTextLabelEdge | null | undefined) ?? "inside");
   }, []);
 
   return (

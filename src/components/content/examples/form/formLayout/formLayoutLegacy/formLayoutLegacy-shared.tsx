@@ -4,7 +4,7 @@ import { IntlConverterUtils } from "ojs/ojconverterutils-i18n";
 
 export type LabelEdge = "inside" | "start" | "top";
 
-export const createDataProvider = <T extends Record<string, any>>(items: T[]) =>
+export const createDataProvider = <T extends Record<string, unknown>>(items: T[]) =>
   new MutableArrayDataProvider(items, {
     keyAttributes: "value",
   });

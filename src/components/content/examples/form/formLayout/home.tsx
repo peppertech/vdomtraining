@@ -47,6 +47,10 @@ const INITIAL_SELECTION =
   new KeySetImpl([]) as KeySet<FormLayoutComponent["id"]>;
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type FormLayoutSelectedChangedEvent = ojListView.selectedChanged<
+  FormLayoutComponent["id"],
+  FormLayoutComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
 export default function FormLayoutHome({
@@ -105,7 +109,7 @@ export default function FormLayoutHome({
     }
   }, [activeComponentId]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: FormLayoutSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as FormLayoutComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

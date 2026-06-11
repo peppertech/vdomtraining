@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import Context = require('ojs/ojcontext');
 import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
@@ -13,12 +12,6 @@ import 'ojs/ojformlayout';
 import 'oj-c/input-number';
 import 'oj-c/input-text';
 
-type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
-type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
-type InputDateValue = string | undefined;
-type InputTextValid = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
-type InputNumberValid = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
-type InputDateValid = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown' | undefined;
 type InputTextValidChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalidChanged']>
 >[0];
@@ -37,6 +30,12 @@ type InputNumberValueChangedEvent = Parameters<
 type InputDateValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-date'>['onvalueChanged']>
 >[0];
+type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
+type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
+type InputDateValue = string | undefined;
+type InputTextValid = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
+type InputNumberValid = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
+type InputDateValid = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown' | undefined;
 
 const aprilFoolsFormatter = (dateInfo: DayFormatterInput): DayFormatterOutput | null => {
   if (dateInfo.month === 4 && dateInfo.date === 1) {
@@ -168,27 +167,27 @@ export const ValidationUsecasesAsyncValidators = () => {
   }, []);
 
   const handleInputValidChanged = (event: InputTextValidChangedEvent) => {
-    setInputValid(event.detail.value);
+    setInputValid((event.detail.value as InputTextValid));
   };
 
   const handleInputNumberValidChanged = (event: InputNumberValidChangedEvent) => {
-    setInputNumberValid(event.detail.value);
+    setInputNumberValid((event.detail.value as InputNumberValid));
   };
 
   const handleInputDateValidChanged = (event: InputDateValidChangedEvent) => {
-    setInputDateValid(event.detail.value);
+    setInputDateValid((event.detail.value as InputDateValid));
   };
 
   const handleInputTextValueChanged = (event: InputTextValueChangedEvent) => {
-    setQuantityLimit(event.detail.value ?? null);
+    setQuantityLimit((event.detail.value as InputTextValue | null | undefined) ?? null);
   };
 
   const handleInputNumberValueChanged = (event: InputNumberValueChangedEvent) => {
-    setQuantityLimitNumber(event.detail.value ?? null);
+    setQuantityLimitNumber((event.detail.value as InputNumberValue | null | undefined) ?? null);
   };
 
   const handleInputDateValueChanged = (event: InputDateValueChangedEvent) => {
-    setDateValue(event.detail.value ?? undefined);
+    setDateValue((event.detail.value as InputDateValue | null | undefined) ?? undefined);
   };
 
   return (

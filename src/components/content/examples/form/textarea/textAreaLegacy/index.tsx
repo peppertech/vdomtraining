@@ -87,7 +87,7 @@ export default function TextAreaLegacyIndex() {
       >,
     ) => {
       if (event.detail.updatedFrom === "internal") {
-        setActiveExampleId(event.detail.value);
+        setActiveExampleId((event.detail.value as TextAreaLegacyDemoId));
       }
     },
     [],

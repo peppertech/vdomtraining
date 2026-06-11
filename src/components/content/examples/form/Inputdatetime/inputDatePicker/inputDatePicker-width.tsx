@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-date-picker";
@@ -36,7 +36,7 @@ export default function InputDatePickerWidthExample() {
       <h6>no width or max-width</h6>
       <oj-c-input-date-picker
         id="id1"
-        labelEdge={labelEdge as any}
+        labelEdge={labelEdge as ComponentProps<'oj-c-input-date-picker'>['labelEdge']}
         labelHint="width and max-width attributes are not defined"
         help={{ instruction: "The width and max-width are 100% by default" }}
         userAssistanceDensity="efficient"
@@ -47,7 +47,7 @@ export default function InputDatePickerWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-input-date-picker
           id="id2"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-input-date-picker'>['labelEdge']}
           labelHint="Max width medium"
           maxWidth="md"
           value="2025-05-25"
@@ -56,7 +56,7 @@ export default function InputDatePickerWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-input-date-picker
           id="id3"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-input-date-picker'>['labelEdge']}
           labelHint="Max width small"
           maxWidth="sm"
           value="2025-05-25"
@@ -67,7 +67,7 @@ export default function InputDatePickerWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-input-date-picker
           id="id4"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-input-date-picker'>['labelEdge']}
           labelHint="Width medium"
           width="md"
           value="2025-05-25"
@@ -76,7 +76,7 @@ export default function InputDatePickerWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-input-date-picker
           id="id5"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-input-date-picker'>['labelEdge']}
           labelHint="Width small"
           width="sm"
           value="2025-05-25"
@@ -87,7 +87,7 @@ export default function InputDatePickerWidthExample() {
       <div class="oj-flex oj-sm-padding-2x-vertical">
         <oj-c-input-date-picker
           id="id6"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-input-date-picker'>['labelEdge']}
           labelHint="Width 50% MaxWidth 400px"
           maxWidth="400px"
           width="50%"
@@ -99,7 +99,7 @@ export default function InputDatePickerWidthExample() {
       <oj-c-form-layout>
         <oj-c-input-date-picker
           id="id7"
-          labelEdge={labelEdge as any}
+          labelEdge={labelEdge as ComponentProps<'oj-c-input-date-picker'>['labelEdge']}
           labelHint="width and max-width attributes are not defined"
           help={{
             instruction:

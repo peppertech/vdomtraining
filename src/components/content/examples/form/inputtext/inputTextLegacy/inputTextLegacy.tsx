@@ -8,15 +8,15 @@ import Message = require("ojs/ojmessaging");
 import "ojs/ojdatetimepicker";
 import "ojs/ojbutton";
 
-//component props types
-type InputTextProps = ComponentProps<"oj-input-text">;
-type FormLayoutProps = ComponentProps<"oj-form-layout">;
 type InputTextValueChangedEvent = Parameters<
   NonNullable<InputTextProps["onvalueChanged"]>
 >[0];
 type InputTextRawValueChangedEvent = Parameters<
   NonNullable<InputTextProps["onrawValueChanged"]>
 >[0];
+//component props types
+type InputTextProps = ComponentProps<"oj-input-text">;
+type FormLayoutProps = ComponentProps<"oj-form-layout">;
 
 const length: InputTextProps["length"] = {
   countBy: "codePoint",
@@ -78,7 +78,7 @@ const InputText = () => {
   };
 
   const onRawValueChange = (event: InputTextRawValueChangedEvent) => {
-    setCurrentRawValue(event.detail.value ?? "");
+    setCurrentRawValue((event.detail.value as InputTextProps["rawValue"] | null | undefined) ?? "");
   };
 
   return (

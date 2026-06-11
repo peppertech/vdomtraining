@@ -16,11 +16,11 @@ export default function InputTextLegacyMaxLengthExample() {
           length={maxLengthConfig}
           labelHint="Input text with max length"
           labelEdge="inside"
-          onvalueChanged={(event: any) => {
-            setValue(event.detail.value ?? "");
+          onvalueChanged={(event) => {
+            setValue((event.detail.value as string | null | undefined) ?? "");
           }}
-          onrawValueChanged={(event: any) => {
-            setRawValue(event.detail.value ?? "");
+          onrawValueChanged={(event) => {
+            setRawValue((event.detail.value as string | null | undefined) ?? "");
           }}
         ></oj-input-text>
       </div>

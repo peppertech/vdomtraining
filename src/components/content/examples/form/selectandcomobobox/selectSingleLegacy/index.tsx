@@ -136,7 +136,7 @@ export default function SelectSingleLegacyIndex() {
       >,
     ) => {
       if (event.detail.updatedFrom === "internal") {
-        setActiveExampleId(event.detail.value);
+        setActiveExampleId((event.detail.value as SelectSingleLegacyDemoId));
       }
     },
     [],

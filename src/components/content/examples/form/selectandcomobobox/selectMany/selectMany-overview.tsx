@@ -110,7 +110,7 @@ export default function SelectManyOverviewExample() {
           labelHint="required"
           options={dataProvider}
           class="oj-form-control-max-width-md"
-          onvalueChanged={(event: any) => setRequiredValue(event.detail.value ?? [])}
+          onvalueChanged={(event) => setRequiredValue((event.detail.value as string[] | null | undefined) ?? [])}
         />
         <oj-select-many
           labelHint="placeholder"

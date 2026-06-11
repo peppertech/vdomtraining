@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import 'ojs/ojformlayout';
@@ -8,7 +7,6 @@ import 'ojs/ojinputnumber';
 type InputNumberValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>
 >[0];
-
 export const ConvertersNumberConverter = () => {
   const [currency, setCurrency] = useState<number | null>(12345);
   const [currencyRoundDuringParse, setCurrencyRoundDuringParse] = useState<number | null>(78000);

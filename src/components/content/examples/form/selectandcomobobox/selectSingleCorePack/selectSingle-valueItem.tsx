@@ -1,11 +1,21 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useEffect, useMemo, useState } from "preact/hooks";
 import "oj-c/select-single";
+
 import {
   browserOptions,
   createBrowserDataProvider,
 } from "./selectSingle-shared";
 
+type ValueItemSelectEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-single">["onvalueChanged"]>
+>[0];
+type ValueItemEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-single">["onvalueItemChanged"]>
+>[0];
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-single">["onvalueChanged"]>
+>[0];
 type BrowserValueItem = {
   key: string;
   data: {
@@ -48,16 +58,16 @@ export default function SelectSingleValueItemExample() {
     };
   }, [selectValItem]);
 
-  const handleValueItemSelectChanged = useCallback((event: any) => {
-    setSelectVal1(event.detail.value ?? null);
+  const handleValueItemSelectChanged = useCallback((event: ValueItemSelectEvent) => {
+    setSelectVal1((event.detail.value as string | null | null | undefined) ?? null);
   }, []);
 
-  const handleValueItemChanged = useCallback((event: any) => {
-    setSelectValItem(event.detail.valueItem ?? null);
+  const handleValueItemChanged = useCallback((event: ValueItemEvent) => {
+    setSelectValItem((event.detail.value as BrowserValueItem | null | undefined) ?? null);
   }, []);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setSelectVal2(event.detail.value);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setSelectVal2((event.detail.value as string));
   }, []);
 
   return (
@@ -70,7 +80,7 @@ export default function SelectSingleValueItemExample() {
         data={activeDataProvider}
         itemText="label"
         value={selectVal1}
-        valueItem={selectValItem as any}
+        valueItem={selectValItem as ComponentProps<'oj-c-select-single'>['valueItem']}
         onvalueChanged={handleValueItemSelectChanged}
         onvalueItemChanged={handleValueItemChanged}
       ></oj-c-select-single>

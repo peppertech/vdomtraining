@@ -383,7 +383,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-input-text'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -399,7 +399,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-input-password'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -419,7 +419,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-input-number'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -430,7 +430,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-input-date'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -441,7 +441,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-input-time'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -456,7 +456,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-input-date-time'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -473,7 +473,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-select-single'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -489,7 +489,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-combobox-one'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -511,7 +511,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-select-many'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -533,7 +533,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-combobox-many'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -552,7 +552,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-text-area'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -569,7 +569,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-text-area'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -606,7 +606,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-switch'>['readonlyUserAssistanceShown']}
           helpHints={helpHints}
           help={help}
         />
@@ -616,7 +616,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-radioset'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -637,7 +637,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-checkboxset'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}
@@ -654,7 +654,7 @@ export default function FormLayoutLegacyFormInputsExample() {
           disabled={disableFormControls}
           readonly={readonlyFormControls}
           messagesCustom={messages}
-          readonlyUserAssistanceShown={readonlyUserAssistanceShown as any}
+          readonlyUserAssistanceShown={readonlyUserAssistanceShown as ComponentProps<'oj-checkboxset'>['readonlyUserAssistanceShown']}
           required={required}
           helpHints={helpHints}
           help={help}

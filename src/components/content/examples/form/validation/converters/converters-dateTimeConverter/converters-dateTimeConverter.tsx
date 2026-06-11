@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 
 import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
@@ -36,11 +35,11 @@ export const ConvertersDateTimeConverter = () => {
       second: '2-digit'
   }), []);
   const handleDatetimeValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-date-time'>['onvalueChanged']>>[0]) => {
-    setDatetime(event.detail.value);
+    setDatetime((event.detail.value as InputDateTimeValue));
   };
 
   const handleTimeValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-time'>['onvalueChanged']>>[0]) => {
-    setTime(event.detail.value);
+    setTime((event.detail.value as InputTimeValue));
   };
 
   return (

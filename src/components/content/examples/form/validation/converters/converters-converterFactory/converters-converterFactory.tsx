@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';

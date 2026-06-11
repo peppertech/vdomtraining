@@ -10,9 +10,13 @@ import {
   type CheckboxsetValueChangedEvent,
 } from "./checkBoxSet-shared";
 
+type ValidatableElement = EventTarget & {
+  validate?: () => Promise<unknown> | unknown;
+};
+
 export default function CheckBoxSetValidationExample() {
   const [currentColor, setCurrentColor] = useState<string[]>(["red"]);
-  const checkboxsetRef = useRef<any>(null);
+  const checkboxsetRef = useRef<ValidatableElement | null>(null);
 
   return (
     <div>

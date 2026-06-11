@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from "preact/hooks";
 import "ojs/ojgauge";
 import "ojs/ojinputtext";
@@ -74,7 +74,7 @@ export default function InputPasswordPatternMatchingExample() {
           id="password-pattern-match"
           value={passwordValue}
           rawValue={passwordValue}
-          validators={patternValidator as any}
+          validators={patternValidator as ComponentProps<'oj-input-password'>['validators']}
           maskIcon="visible"
           onFocus={() => {
             setFocused(true);

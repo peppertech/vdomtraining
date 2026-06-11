@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import type { ojValidationGroup } from 'ojs/ojvalidationgroup';
 import DemoNumberRangeAsyncValidator from './DemoNumberRangeAsyncValidator';
@@ -9,14 +8,14 @@ import 'ojs/ojformlayout';
 import 'ojs/ojlabelvalue';
 import 'ojs/ojvalidationgroup';
 
-type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
 type InputNumberValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-number'>['onvalueChanged']>
 >[0];
-type ValidationGroupValid = ComponentProps<'oj-validation-group'>['valid'];
 type ValidationGroupValidChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-validation-group'>['onvalidChanged']>
 >[0];
+type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
+type ValidationGroupValid = ComponentProps<'oj-validation-group'>['valid'];
 
 export const ValidationGroupAsyncValidation = () => {
   const trackerRef = useRef<ojValidationGroup | null>(null);
@@ -53,7 +52,7 @@ export const ValidationGroupAsyncValidation = () => {
   };
 
   const handleValidChanged = (event: ValidationGroupValidChangedEvent) => {
-    setGroupValid(event.detail.value);
+    setGroupValid((event.detail.value as ValidationGroupValid));
     if (submitIfValid && event.detail.value !== 'pending') {
       checkValidationGroupAndSubmit();
       setSubmitIfValid(false);
@@ -61,11 +60,11 @@ export const ValidationGroupAsyncValidation = () => {
   };
 
   const handleFirstQuantityChanged = (event: InputNumberValueChangedEvent) => {
-    setQuantityLimitNumber(event.detail.value ?? null);
+    setQuantityLimitNumber((event.detail.value as InputNumberValue | null | undefined) ?? null);
   };
 
   const handleSecondQuantityChanged = (event: InputNumberValueChangedEvent) => {
-    setQuantityLimitNumber2(event.detail.value ?? null);
+    setQuantityLimitNumber2((event.detail.value as InputNumberValue | null | undefined) ?? null);
   };
 
   return (

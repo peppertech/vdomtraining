@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import AsyncNumberRangeValidator = require('ojs/ojasyncvalidator-numberrange');
 import type { CInputNumberElement } from 'oj-c/input-number';
@@ -8,16 +7,16 @@ import 'oj-c/input-number';
 import 'ojs/ojformlayout';
 import 'ojs/ojlabelvalue';
 
-type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
-type InputNumberValid = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
-type InputNumberMessagesCustom = ComponentProps<'oj-c-input-number'>['messagesCustom'];
-type InputNumberMessage = NonNullable<InputNumberMessagesCustom>[number];
 type InputNumberValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-number'>['onvalueChanged']>
 >[0];
 type InputNumberValidChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-number'>['onvalidChanged']>
 >[0];
+type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
+type InputNumberValid = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
+type InputNumberMessagesCustom = ComponentProps<'oj-c-input-number'>['messagesCustom'];
+type InputNumberMessage = NonNullable<InputNumberMessagesCustom>[number];
 
 export const ValidationUsecasesResetMethod = () => {
   const ageRef = useRef<CInputNumberElement | null>(null);
@@ -54,7 +53,7 @@ export const ValidationUsecasesResetMethod = () => {
   );
 
   const handleAgeChanged = (event: InputNumberValueChangedEvent) => {
-    setAge(event.detail.value ?? null);
+    setAge((event.detail.value as InputNumberValue | null | undefined) ?? null);
   };
 
   const handleAgeValidChanged = (event: InputNumberValidChangedEvent) => {
@@ -62,7 +61,7 @@ export const ValidationUsecasesResetMethod = () => {
   };
 
   const handleWeightChanged = (event: InputNumberValueChangedEvent) => {
-    setWeight(event.detail.value ?? null);
+    setWeight((event.detail.value as InputNumberValue | null | undefined) ?? null);
   };
 
   const handleWeightValidChanged = (event: InputNumberValidChangedEvent) => {

@@ -1,26 +1,30 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useEffect, useMemo, useRef, useState } from "preact/hooks";
 import type { CSelectMultipleElement } from "oj-c/select-multiple";
 import "oj-c/select-multiple";
+
 import {
   browserOptions,
   createBrowserDataProvider,
   type BrowserOption,
 } from "./selectMultiple-shared";
 
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-multiple">["onvalueChanged"]>
+>[0];
 const toOptionKey = (searchText: string) =>
   searchText.trim().toUpperCase().replace(/[^A-Z0-9]+/g, "_");
 
 export default function SelectMultipleAddToListExample() {
-  const selectRef = useRef<CSelectMultipleElement<string, Record<string, any>> | null>(null);
+  const selectRef = useRef<CSelectMultipleElement<string, Record<string, unknown>> | null>(null);
   const [options, setOptions] = useState<BrowserOption[]>(browserOptions);
   const [selectVal, setSelectVal] = useState<Set<string> | null>(
     new Set(["CH", "FF"]),
   );
   const dataProvider = useMemo(() => createBrowserDataProvider(options), [options]);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setSelectVal(event.detail.value);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setSelectVal((event.detail.value as Set<string> | null));
   }, []);
 
   const handleAddToListAction = useCallback((event: Event) => {
@@ -75,7 +79,7 @@ export default function SelectMultipleAddToListExample() {
   return (
     <div id="container" class="select-multiple-add-to-list-demo">
       <oj-c-select-multiple
-        ref={selectRef as any}
+        ref={selectRef as ComponentProps<'oj-c-select-multiple'>['ref']}
         id="selectMultipleAddToList"
         labelHint="Select Multiple"
         labelEdge="inside"

@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 import type { CInputPasswordElement } from 'oj-c/input-password';
@@ -10,11 +9,6 @@ import 'oj-c/input-text';
 import 'ojs/ojformlayout';
 import 'ojs/ojlabelvalue';
 
-type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
-type InputTextMessagesCustom = ComponentProps<'oj-c-input-text'>['messagesCustom'];
-type InputTextMessage = NonNullable<InputTextMessagesCustom>[number];
-type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
-type InputPasswordValue = ComponentProps<'oj-c-input-password'>['value'];
 type InputTextValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>
 >[0];
@@ -27,6 +21,11 @@ type InputTextValidChangedEvent = Parameters<
 type InputPasswordValidChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-password'>['onvalidChanged']>
 >[0];
+type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
+type InputTextMessagesCustom = ComponentProps<'oj-c-input-text'>['messagesCustom'];
+type InputTextMessage = NonNullable<InputTextMessagesCustom>[number];
+type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
+type InputPasswordValue = ComponentProps<'oj-c-input-password'>['value'];
 
 export const ValidationUsecasesValidOption = () => {
   const userNameRef = useRef<CInputTextElement<string> | null>(null);
@@ -60,11 +59,11 @@ export const ValidationUsecasesValidOption = () => {
   );
 
   const handleUserNameChanged = (event: InputTextValueChangedEvent) => {
-    setUserName(event.detail.value ?? '');
+    setUserName((event.detail.value as InputTextValue | null | undefined) ?? '');
   };
 
   const handlePasswordChanged = (event: InputPasswordValueChangedEvent) => {
-    setPassword(event.detail.value ?? '');
+    setPassword((event.detail.value as InputPasswordValue | null | undefined) ?? '');
   };
 
   const handleUserNameValidChanged = (event: InputTextValidChangedEvent) => {

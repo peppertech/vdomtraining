@@ -19,24 +19,24 @@ export default function InputTextCorePackClearIconExample() {
         <oj-c-input-text
           value={valueNoClearIcon}
           labelHint="no clear-icon attribute"
-          onvalueChanged={(event: any) => {
-            setValueNoClearIcon(event.detail.value ?? "");
+          onvalueChanged={(event) => {
+            setValueNoClearIcon((event.detail.value as string | null | undefined) ?? "");
           }}
         ></oj-c-input-text>
         <oj-c-input-text
           value={valueClearIconNever}
           clearIcon="never"
           labelHint="clear-icon='never'"
-          onvalueChanged={(event: any) => {
-            setValueClearIconNever(event.detail.value ?? "");
+          onvalueChanged={(event) => {
+            setValueClearIconNever((event.detail.value as string | null | undefined) ?? "");
           }}
         ></oj-c-input-text>
         <oj-c-input-text
           value={valueClearIconAlways}
           clearIcon="always"
           labelHint="clear-icon='always'"
-          onvalueChanged={(event: any) => {
-            setValueClearIconAlways(event.detail.value ?? "");
+          onvalueChanged={(event) => {
+            setValueClearIconAlways((event.detail.value as string | null | undefined) ?? "");
           }}
         ></oj-c-input-text>
         <oj-c-input-text
@@ -44,19 +44,19 @@ export default function InputTextCorePackClearIconExample() {
           clearIcon="always"
           required
           labelHint="clear-icon='always' with required"
-          onvalueChanged={(event: any) => {
-            setValueClearIconAlwaysRequired(event.detail.value ?? "");
+          onvalueChanged={(event) => {
+            setValueClearIconAlwaysRequired((event.detail.value as string | null | undefined) ?? "");
           }}
         ></oj-c-input-text>
         <oj-c-input-text
           value={valueClearIconConditional}
           clearIcon="conditional"
           labelHint="clear-icon='conditional'"
-          onvalueChanged={(event: any) => {
-            setValueClearIconConditional(event.detail.value ?? "");
+          onvalueChanged={(event) => {
+            setValueClearIconConditional((event.detail.value as string | null | undefined) ?? "");
           }}
-          onrawValueChanged={(event: any) => {
-            setRawValueClearIconConditional(event.detail.value ?? "");
+          onrawValueChanged={(event) => {
+            setRawValueClearIconConditional((event.detail.value as string | null | undefined) ?? "");
           }}
         ></oj-c-input-text>
       </oj-c-form-layout>

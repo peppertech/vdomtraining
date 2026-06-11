@@ -59,6 +59,10 @@ const dataProvider = new MutableArrayDataProvider<
 });
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type ValidationSelectedChangedEvent = ojListView.selectedChanged<
+  ValidationComponent["id"],
+  ValidationComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const INITIAL_SELECTION =
   new KeySetImpl([]) as KeySet<ValidationComponent["id"]>;
@@ -156,7 +160,7 @@ const ValidationHome = ({
     showComponentDetail,
   ]);
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: ValidationSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as ValidationComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

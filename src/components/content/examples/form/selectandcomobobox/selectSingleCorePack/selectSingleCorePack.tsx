@@ -1,29 +1,20 @@
-import { h, ComponentProps } from "preact";
-import { useState, useEffect, useCallback } from "preact/hooks";
+import { h, type ComponentProps } from "preact";
+import { useState } from "preact/hooks";
 import * as peopleData from "text!../data/peopleData.json";
 import * as employeeData from "text!../data/employeeData.json";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { ItemContext } from "ojs/ojcommontypes";
-import "ojs/ojknockout";
-import "ojs/ojhighlighttext";
-import "ojs/ojlistitemlayout";
-import "ojs/ojavatar";
-import { ojSelectSingle } from "ojs/ojselectsingle";
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
-import { ojListView } from "ojs/ojlistview";
+import type { ItemContext } from "ojs/ojcommontypes";
 import "oj-c/select-single";
 import "oj-c/list-item-layout";
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import "oj-c/form-layout";
 import "oj-c/avatar";
 import "oj-c/highlight-text";
-import { CSelectSingleElement } from "oj-c/select-single";
+import type { CSelectSingleElement } from "oj-c/select-single";
 import "oj-c/list-view";
-import { CListViewElement } from "oj-c/list-view";
-import "ojs/ojtable";
-import 'oj-c/table';
-import { ojTable } from "ojs/ojtable";
-
+import type { CListViewElement } from "oj-c/list-view";
+import "oj-c/table";
+import type { CTableElement } from "oj-c/table";
 
 //  data types
 type Person = {
@@ -52,25 +43,26 @@ type OracleEmployee = {
   TITLE: string;
   IMAGE: string;
 };
+type SelectedValueState<T> = {
+  selectedValue: T;
+};
 
 const browsers = [
-  { value: 'IE', label: 'Internet Explorer' },
-  { value: 'FF', label: 'Firefox' },
-  { value: 'CH', label: 'Chrome' },
-  { value: 'OP', label: 'Opera' },
-  { value: 'SA', label: 'Safari' },
+  { value: "IE", label: "Internet Explorer" },
+  { value: "FF", label: "Firefox" },
+  { value: "CH", label: "Chrome" },
+  { value: "OP", label: "Opera" },
+  { value: "SA", label: "Safari" },
 ];
 
 const browsersDP = new ArrayDataProvider(browsers, {
-  keyAttributes: 'value',
+  keyAttributes: "value",
 });
 
 // basic select single data
-const employeesData: Array<Person> = [];
-
-JSON.parse(peopleData).map((item: Employee) => {
-  employeesData.push({ id: item.id, value: item.name, label: item.name });
-});
+const employeesData: Person[] = (JSON.parse(peopleData) as Employee[]).map(
+  (item) => ({ id: item.id, value: item.name, label: item.name }),
+);
 
 const employeeDataProvider = new MutableArrayDataProvider<
   Person["value"],
@@ -80,90 +72,168 @@ const employeeDataProvider = new MutableArrayDataProvider<
 });
 
 // item text data
-const oracleEmployeeDataProvider = new MutableArrayDataProvider(
-  JSON.parse(employeeData),
+const oracleEmployees = JSON.parse(employeeData) as OracleEmployee[];
+const oracleEmployeeDataProvider = new MutableArrayDataProvider<
+  OracleEmployee["EMPLOYEE_ID"],
+  OracleEmployee
+>(
+  oracleEmployees,
   {
     keyAttributes: "EMPLOYEE_ID",
     textFilterAttributes: ["FIRST_NAME", "LAST_NAME", "EMAIL"],
-  }
+  },
 );
 
-type FormLayoutProps = ComponentProps<"oj-form-layout">;
-type ListViewProps = ComponentProps<"oj-list-view">;
-const gridlinesItemVisible: ListViewProps["gridlines"] = { item: "visible" };
-const INIT_SELECTEDITEMS = new KeySetImpl([]) as KeySet<
-  OracleEmployee["EMPLOYEE_ID"]
+type FormLayoutProps = ComponentProps<"oj-c-form-layout">;
+type TableColumnKey = "first" | "last" | "depId" | "salary";
+type TableColumnDefinition = {
+  headerText: string;
+  field: keyof OracleEmployee;
+  template: "cellTemplate";
+};
+type PersonValueChangedEvent = CSelectSingleElement.valueChanged<
+  Person["value"],
+  Person
+>;
+type OracleEmployeeValueChangedEvent = CSelectSingleElement.valueChanged<
+  OracleEmployee["EMPLOYEE_ID"],
+  OracleEmployee
 >;
 
- const tableColumns = [
-      { headerText: 'First Name', field: 'FIRST_NAME', template: 'cellTemplate', id: 'first' },
-      { headerText: 'Last Name', field: 'LAST_NAME', template: 'cellTemplate', id: 'last' },
-      {
-        headerText: 'Department',
-        field: 'DEPARTMENT_ID',
-        template: 'cellTemplate',
-        id: 'depId'
-      },
-      { headerText: 'Salary', field: 'SALARY', template: 'cellTemplate', id: 'salary' }
- ];
+const tableColumns = {
+  first: {
+    headerText: "First Name",
+    field: "FIRST_NAME",
+    template: "cellTemplate",
+  },
+  last: {
+    headerText: "Last Name",
+    field: "LAST_NAME",
+    template: "cellTemplate",
+  },
+  depId: {
+    headerText: "Department",
+    field: "DEPARTMENT_ID",
+    template: "cellTemplate",
+  },
+  salary: {
+    headerText: "Salary",
+    field: "SALARY",
+    template: "cellTemplate",
+  },
+} satisfies Record<TableColumnKey, TableColumnDefinition>;
 
 const SelectSingleCorePack = () => {
-
   const [selectSingleData, setSelectSingleValue] = useState({
     selectedValue: "Chris Black",
   });
 
-  const [selectedOracleEmployee, setOracleEmployeeSelectSingle] = useState<any>(
-    { selectedValue: 102 }
-  );
+  const [selectedOracleEmployee, setOracleEmployeeSelectSingle] =
+    useState<SelectedValueState<OracleEmployee["EMPLOYEE_ID"] | null>>({
+      selectedValue: 102,
+    });
 
-  const [selectedListViewItem, setListViewItem] = useState<any>({
+  const [selectedListViewItem, setListViewItem] = useState<
+    SelectedValueState<OracleEmployee["EMPLOYEE_ID"] | null>
+  >({
     selectedValue: 103,
   });
 
-   const [selectedCollTemplateItem, setCollectionTemplateValue] = useState<any>({
+  const [selectedCollTemplateItem, setCollectionTemplateValue] = useState<
+    SelectedValueState<OracleEmployee["EMPLOYEE_ID"] | null>
+  >({
     selectedValue: 101,
   });
 
-  const [density, setDensity] =
+  const [density] =
     useState<FormLayoutProps["userAssistanceDensity"]>("efficient");
 
-  const onBasicSelectSingleChange = (event: any) => {
+  const onBasicSelectSingleChange = (event: PersonValueChangedEvent) => {
     setSelectSingleValue({
-      selectedValue: event.detail.value,
+      selectedValue: event.detail.value ?? "",
     });
   };
 
-  const onItemTextSelectionChange = (event: any) => {
+  const onItemTextSelectionChange = (event: OracleEmployeeValueChangedEvent) => {
     setOracleEmployeeSelectSingle({
-      selectedValue: event.detail.value,
+      selectedValue: event.detail.value ?? null,
     });
   };
 
-   const onColTemplateValueChange = (event: any) => {
+  const onColTemplateValueChange = (event: OracleEmployeeValueChangedEvent) => {
     setCollectionTemplateValue({
-      selectedValue: event.detail.value,
+      selectedValue: event.detail.value ?? null,
     });
   };
 
   const getItemText = (
-    itemContext: ItemContext<string, Record<string, string | number>>
+    itemContext: ItemContext<OracleEmployee["EMPLOYEE_ID"], OracleEmployee>,
   ) => {
     return `${itemContext.data.FIRST_NAME} ${itemContext.data.LAST_NAME}`;
   };
-  
 
   const itemTemplateRenderer = (
-      itemCtx: CSelectSingleElement.ItemTemplateContext<
+    itemCtx: CSelectSingleElement.ItemTemplateContext<
       OracleEmployee["EMPLOYEE_ID"],
-      OracleEmployee>
+      OracleEmployee
+    >,
   ) => {
+    return (
+      <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
+        <span className="oj-typography-body-md oj-text-color-primary">
+          <oj-c-highlight-text
+            text={`${itemCtx.item.data.FIRST_NAME} ${itemCtx.item.data.LAST_NAME}`}
+            matchText={itemCtx.searchText}
+          ></oj-c-highlight-text>
+        </span>
+        <oj-c-avatar
+          slot="leading"
+          role="img"
+          size="xs"
+          shape="circle"
+          src={itemCtx.item.data.IMAGE}
+          title={`Avatar of ${itemCtx.item.data.FIRST_NAME}`}
+        ></oj-c-avatar>
+        <span
+          slot="secondary"
+          className="oj-typography-body-sm oj-text-color-secondary"
+        >
+          <oj-c-highlight-text
+            text={itemCtx.item.data.TITLE}
+            matchText={itemCtx.searchText}
+          ></oj-c-highlight-text>
+        </span>
+        <span
+          slot="metadata"
+          className="oj-typography-body-sm oj-text-color-secondary"
+        >
+          <oj-c-highlight-text
+            text={itemCtx.item.data.PHONE_NUMBER}
+            matchText={itemCtx.searchText}
+          ></oj-c-highlight-text>
+        </span>
+      </oj-c-list-item-layout>
+    );
+  };
+
+  const collectionTemplateRendererForListView = (
+    collection: CSelectSingleElement.CollectionTemplateContext<
+      OracleEmployee["EMPLOYEE_ID"],
+      OracleEmployee
+    >,
+  ) => {
+    const itemRenderer = (
+      itemCtx: CSelectSingleElement.ItemTemplateContext<
+        OracleEmployee["EMPLOYEE_ID"],
+        OracleEmployee
+      >,
+    ) => {
       return (
         <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
           <span className="oj-typography-body-md oj-text-color-primary">
             <oj-c-highlight-text
-              text={itemCtx.item.data.FIRST_NAME +  " " + itemCtx.item.data.LAST_NAME }
-              matchText={itemCtx.searchText}
+              text={`${itemCtx.item.data.FIRST_NAME} ${itemCtx.item.data.LAST_NAME}`}
+              matchText={collection.searchText}
             ></oj-c-highlight-text>
           </span>
           <oj-c-avatar
@@ -172,7 +242,7 @@ const SelectSingleCorePack = () => {
             size="xs"
             shape="circle"
             src={itemCtx.item.data.IMAGE}
-            title={"Avatar of " + itemCtx.item.data.FIRST_NAME}
+            title={`Avatar of ${itemCtx.item.data.FIRST_NAME}`}
           ></oj-c-avatar>
           <span
             slot="secondary"
@@ -180,7 +250,7 @@ const SelectSingleCorePack = () => {
           >
             <oj-c-highlight-text
               text={itemCtx.item.data.TITLE}
-              matchText={itemCtx.searchText}
+              matchText={collection.searchText}
             ></oj-c-highlight-text>
           </span>
           <span
@@ -189,88 +259,46 @@ const SelectSingleCorePack = () => {
           >
             <oj-c-highlight-text
               text={itemCtx.item.data.PHONE_NUMBER}
-              matchText={itemCtx.searchText}
+              matchText={collection.searchText}
             ></oj-c-highlight-text>
-          </span>
-        </oj-c-list-item-layout>
-      );
-  };
- 
-
-  const collectionTemplateRendererForListView = (
-    collection: CSelectSingleElement.CollectionTemplateContext< 
-      OracleEmployee["EMPLOYEE_ID"],
-      OracleEmployee
-    >
-  ) => {
-    const itemRenderer = (
-      itemCtx: CSelectSingleElement.ItemTemplateContext<
-        OracleEmployee["EMPLOYEE_ID"],
-        OracleEmployee
-      >
-    ) => {
-      return (
-        <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
-          <span className="oj-typography-body-md oj-text-color-primary">
-            <oj-highlight-text
-              text={itemCtx.item.data.FIRST_NAME + " " + itemCtx.item.data.LAST_NAME}
-              matchText={collection.searchText}
-            ></oj-highlight-text>
-          </span>
-          <oj-avatar
-            slot="leading"
-            role="img"
-            size="xs"
-            shape="circle"
-            src={itemCtx.item.data.IMAGE}
-            title={"Avatar of " + itemCtx.item.data.FIRST_NAME}
-          ></oj-avatar>
-          <span
-            slot="secondary"
-            className="oj-typography-body-sm oj-text-color-secondary"
-          >
-            <oj-highlight-text
-              text={itemCtx.item.data.TITLE}
-              matchText={collection.searchText}
-            ></oj-highlight-text>
-          </span>
-          <span
-            slot="metadata"
-            className="oj-typography-body-sm oj-text-color-secondary"
-          >
-            <oj-highlight-text
-              text={itemCtx.item.data.PHONE_NUMBER}
-              matchText={collection.searchText}
-            ></oj-highlight-text>
           </span>
         </oj-c-list-item-layout>
       );
     };
 
-    const handleRowAction = (
+    const handleCurrentItemChanged = (
       event: CListViewElement.currentItemChanged<
-      OracleEmployee["EMPLOYEE_ID"],
-      OracleEmployee>
-      ) => {
+        OracleEmployee["EMPLOYEE_ID"],
+        OracleEmployee
+      >,
+    ) => {
       collection.onCurrentRowChanged({
-        rowKey: event.detail.value 
+        rowKey: event.detail.value,
       });
       setListViewItem({
-        selectedValue: event.detail.value
+        selectedValue: event.detail.value,
       });
-     };
+    };
+
+    const handleItemAction = (
+      event: CListViewElement.ojItemAction<
+        OracleEmployee["EMPLOYEE_ID"],
+        OracleEmployee
+      >,
+    ) => {
+      collection.onRowAction({ item: event.detail.context.item });
+    };
 
     return (
       <oj-c-list-view
         id="listview"
         aria-label="list of employees"
         data={collection.data}
-        selectionMode={"single"}
-        selected={collection.selected} 
+        selectionMode="single"
+        selected={collection.selected}
         currentItemOverride={collection.currentRowOverride}
-        oncurrentItemChanged={handleRowAction}
-        //oncurrentItemChanged={event => event.detail.value && collection.onCurrentRowChanged({ rowKey: event.detail.value })}
-        onojItemAction={ event => collection.onRowAction({ item: event.detail.context.item }) }
+        oncurrentItemChanged={handleCurrentItemChanged}
+        onojItemAction={handleItemAction}
         class="oj-select-results oj-group-header-sm"
       >
         <template
@@ -282,64 +310,76 @@ const SelectSingleCorePack = () => {
   };
 
   const collectionTemplateRendererForTabularView = (
-    colCtx: CSelectSingleElement.CollectionTemplateContext< 
+    colCtx: CSelectSingleElement.CollectionTemplateContext<
       OracleEmployee["EMPLOYEE_ID"],
       OracleEmployee
-    >
+    >,
   ) => {
-   
-    const cellRenderer =(cellCtx: ojTable.CellTemplateContext<any, any>) =>{
-    return (
-       <oj-c-highlight-text 
-                text={String(cellCtx.data)}
-                matchText={colCtx.searchText}
-       ></oj-c-highlight-text> 
-     );
+    const cellRenderer = (
+      cellCtx: CTableElement.CellTemplateContext<
+        OracleEmployee["EMPLOYEE_ID"],
+        OracleEmployee,
+        TableColumnKey
+      >,
+    ) => {
+      return (
+        <oj-c-highlight-text
+          text={String(cellCtx.data)}
+          matchText={colCtx.searchText}
+        ></oj-c-highlight-text>
+      );
     };
 
-    const handleTableCurrentCellChanged = (event: any) => {
-      const currentCell = event.detail.value as
-        | { type?: string; rowKey?: OracleEmployee["EMPLOYEE_ID"] }
-        | undefined;
-
+    const handleTableCurrentCellChanged = (
+      event: CTableElement.currentCellChanged<
+        OracleEmployee["EMPLOYEE_ID"],
+        OracleEmployee,
+        TableColumnKey
+      >,
+    ) => {
+      const currentCell = event.detail.value;
       colCtx.onCurrentRowChanged({
         rowKey:
-          currentCell && currentCell.type === "data"
+          currentCell?.type === "data"
             ? currentCell.rowKey
             : undefined,
       });
     };
 
-    const handleTableRowAction = (event: any) => {
+    const handleTableRowAction = (
+      event: CTableElement.ojRowAction<
+        OracleEmployee["EMPLOYEE_ID"],
+        OracleEmployee
+      >,
+    ) => {
       colCtx.onRowAction({ item: event.detail.context.item });
     };
 
-    return ( 
-            <oj-c-table
-                  aria-label='select results'
-                  horizontal-grid-visible="disabled"
-                  verticalGridVisible="disabled"
-                  selectAllControl="hidden"
-                  selectionMode ={{row: "single"}}
-                  columns={tableColumns as any}
-                  data={colCtx.data as any}
-                  selected={{ row: colCtx.selected}}
-                  currentCellOverride={colCtx.currentRowOverride}
-                  oncurrentCellChanged={handleTableCurrentCellChanged}
-                  onojRowAction={handleTableRowAction}
-                  >
-                <template
-                  slot="cellTemplate"
-                  render={cellRenderer}>
-                </template>
-             </oj-c-table>
-           );
+    return (
+      <oj-c-table
+        aria-label="select results"
+        horizontal-grid-visible="disabled"
+        verticalGridVisible="disabled"
+        selectAllControl="hidden"
+        selectionMode={{ row: "single" }}
+        columns={tableColumns}
+        data={colCtx.data ?? undefined}
+        selected={{ row: colCtx.selected }}
+        currentCellOverride={colCtx.currentRowOverride}
+        oncurrentCellChanged={handleTableCurrentCellChanged}
+        onojRowAction={handleTableRowAction}
+      >
+        <template
+          slot="cellTemplate"
+          render={cellRenderer}
+        ></template>
+      </oj-c-table>
+    );
   };
-
 
   return (
     <div class="oj-web-applayout-max-width oj-web-applayout-content">
-      <oj-form-layout
+      <oj-c-form-layout
         userAssistanceDensity={density}
         labelEdge="inside"
         columns={1}
@@ -348,13 +388,13 @@ const SelectSingleCorePack = () => {
         maxColumns={3}
       >
         <h6 class="oj-typography-heading-sm">
-          {" "}
-          Select Single - Core Pack (Basic) 
+          Select Single - Core Pack (Basic)
         </h6>
-         <oj-c-select-single
-                data={browsersDP}
-                itemText="label"
-                labelHint="Select Single enabled with no value"></oj-c-select-single>
+        <oj-c-select-single
+          data={browsersDP}
+          itemText="label"
+          labelHint="Select Single enabled with no value"
+        ></oj-c-select-single>
 
         <oj-c-select-single
           id="employeeSelector"
@@ -370,9 +410,8 @@ const SelectSingleCorePack = () => {
         <span>The selected values are: {selectSingleData.selectedValue} </span>
 
         <h6 class="oj-typography-heading-sm">
-          {" "}
           Select Single Core pack (Item Text)
-        </h6>  
+        </h6>
         <oj-c-select-single
           id="itemTextSelector"
           labelHint="Select Single - Item text"
@@ -401,7 +440,7 @@ const SelectSingleCorePack = () => {
             render={itemTemplateRenderer}
           ></template>
         </oj-c-select-single>
-       <span>
+        <span>
           The selected value is: {selectedOracleEmployee.selectedValue}{" "}
         </span>
 
@@ -421,10 +460,9 @@ const SelectSingleCorePack = () => {
             render={collectionTemplateRendererForListView}
           ></template>
         </oj-c-select-single>
-         <span>The selected value is: {selectedListViewItem.selectedValue}</span> 
+        <span>The selected value is: {selectedListViewItem.selectedValue}</span>
 
-
-         <h6 class="oj-typography-heading-sm">
+        <h6 class="oj-typography-heading-sm">
           Select Single (Collection Template - Tabular View)
         </h6>
         <oj-c-select-single
@@ -441,10 +479,10 @@ const SelectSingleCorePack = () => {
             render={collectionTemplateRendererForTabularView}
           ></template>
         </oj-c-select-single>
-         <span>The selected value is: {selectedCollTemplateItem.selectedValue}</span> 
-       
-      </oj-form-layout>
-  
+        <span>
+          The selected value is: {selectedCollTemplateItem.selectedValue}
+        </span>
+      </oj-c-form-layout>
     </div>
   );
 };

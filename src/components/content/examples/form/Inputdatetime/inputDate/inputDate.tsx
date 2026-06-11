@@ -37,16 +37,13 @@ const InputDate = () => {
   let timeFullConverter: IntlDateTimeConverter;
   let numberOfMonths: number;
   let datePickerMonths: ojDatePicker["datePicker"];
-  let largeScreenMatch: any;
   let datePickerWeek: ojDatePicker["datePicker"];
   let timePicker: object;
   let value: string = "2022-12-20T10:00:00Z";
 
   const mdQuery =
     ResponsiveUtils.getFrameworkQuery("md-up") || "(min-width: 768px)";
-  if (mdQuery != null) {
-    largeScreenMatch = window.matchMedia(mdQuery);
-  }
+  const largeScreenMatch = window.matchMedia(mdQuery);
 
   numberOfMonths = largeScreenMatch.matches ? 2 : 1;
   datePickerMonths = {

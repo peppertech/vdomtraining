@@ -18,11 +18,11 @@ export default function InputTextLegacyRawValueExample() {
         rawValue={currentRawValue}
         labelHint="raw value example"
         labelEdge="inside"
-        onvalueChanged={(event: any) => {
-          setCurrentValue(event.detail.value ?? "");
+        onvalueChanged={(event) => {
+          setCurrentValue((event.detail.value as string | null | undefined) ?? "");
         }}
-        onrawValueChanged={(event: any) => {
-          setCurrentRawValue(event.detail.value ?? "");
+        onrawValueChanged={(event) => {
+          setCurrentRawValue((event.detail.value as string | null | undefined) ?? "");
         }}
       ></oj-input-text>
       <div class="oj-sm-margin-4x-vertical">

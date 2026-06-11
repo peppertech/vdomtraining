@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useRef, useState } from 'preact/hooks';
 import type { ojValidationGroup } from 'ojs/ojvalidationgroup';
 import 'oj-c/input-text';
@@ -8,10 +7,10 @@ import 'ojs/ojformlayout';
 import 'ojs/ojlabelvalue';
 import 'ojs/ojvalidationgroup';
 
-type ValidationGroupValid = ComponentProps<'oj-validation-group'>['valid'];
 type ValidationGroupValidChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-validation-group'>['onvalidChanged']>
 >[0];
+type ValidationGroupValid = ComponentProps<'oj-validation-group'>['valid'];
 
 export const ValidationGroupRequiredFieldValidation = () => {
   const trackerRef = useRef<ojValidationGroup | null>(null);
@@ -20,7 +19,7 @@ export const ValidationGroupRequiredFieldValidation = () => {
   const [groupValid, setGroupValid] = useState<ValidationGroupValid>('invalidHidden');
 
   const handleGroupValidChanged = (event: ValidationGroupValidChangedEvent) => {
-    setGroupValid(event.detail.value);
+    setGroupValid((event.detail.value as ValidationGroupValid));
   };
 
   const checkValidationGroup = () => {
@@ -41,11 +40,11 @@ export const ValidationGroupRequiredFieldValidation = () => {
   };
 
   const handleFirstNameChanged = (event: CustomEvent<{ value: string | null }>) => {
-    setFirstNameVal(event.detail.value);
+    setFirstNameVal((event.detail.value as string | null));
   };
 
   const handleLastNameChanged = (event: CustomEvent<{ value: string | null }>) => {
-    setLastNameVal(event.detail.value);
+    setLastNameVal((event.detail.value as string | null));
   };
 
   return (

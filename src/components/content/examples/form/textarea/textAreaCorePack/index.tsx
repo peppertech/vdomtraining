@@ -79,7 +79,7 @@ export default function TextAreaCorePackIndex() {
       >,
     ) => {
       if (event.detail.updatedFrom === "internal") {
-        setActiveExampleId(event.detail.value);
+        setActiveExampleId((event.detail.value as TextAreaCorePackDemoId));
       }
     },
     [],

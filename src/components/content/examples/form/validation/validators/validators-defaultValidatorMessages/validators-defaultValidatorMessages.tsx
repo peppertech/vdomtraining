@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import AsyncLengthValidator = require('ojs/ojasyncvalidator-length');
 import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
@@ -8,9 +7,6 @@ import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojinputtext';
 
-type InputTextValue = ComponentProps<'oj-input-text'>['value'];
-type InputNumberValue = ComponentProps<'oj-input-number'>['value'];
-type InputDateValue = string | undefined;
 type InputTextChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>
 >[0];
@@ -20,6 +16,9 @@ type InputNumberChangedEvent = Parameters<
 type InputDateChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-date'>['onvalueChanged']>
 >[0];
+type InputTextValue = ComponentProps<'oj-input-text'>['value'];
+type InputNumberValue = ComponentProps<'oj-input-number'>['value'];
+type InputDateValue = string | undefined;
 
 export const ValidatorsDefaultValidatorMessages = () => {
   const localIsoDate = '2019-12-08';
@@ -64,7 +63,7 @@ export const ValidatorsDefaultValidatorMessages = () => {
       <oj-input-date
         id="dateTimeRange1"
         value={dateValue1}
-        onvalueChanged={(event: InputDateChangedEvent) => setDateValue1(event.detail.value ?? undefined)}
+        onvalueChanged={(event: InputDateChangedEvent) => setDateValue1((event.detail.value as InputDateValue | null | undefined) ?? undefined)}
         min={minDay}
         max={maxDay}
         labelHint="DateTimeRangeValidator"
@@ -77,7 +76,7 @@ export const ValidatorsDefaultValidatorMessages = () => {
       <oj-input-date
         id="dateTimeRange2"
         value={dateValue2}
-        onvalueChanged={(event: InputDateChangedEvent) => setDateValue2(event.detail.value ?? undefined)}
+        onvalueChanged={(event: InputDateChangedEvent) => setDateValue2((event.detail.value as InputDateValue | null | undefined) ?? undefined)}
         min={minDay}
         max={minDay}
         labelHint="DateTimeRangeValidator min==max"
@@ -91,7 +90,7 @@ export const ValidatorsDefaultValidatorMessages = () => {
       <oj-input-date
         id="foolsErrand3"
         value={dateValue3}
-        onvalueChanged={(event: InputDateChangedEvent) => setDateValue3(event.detail.value ?? undefined)}
+        onvalueChanged={(event: InputDateChangedEvent) => setDateValue3((event.detail.value as InputDateValue | null | undefined) ?? undefined)}
         labelHint="DateRestrictionValidator"
         dayFormatter={dayFormatter}
       />
@@ -103,7 +102,7 @@ export const ValidatorsDefaultValidatorMessages = () => {
       <oj-input-number
         id="numberrangeinputnumber"
         value={numberRangeValue}
-        onvalueChanged={(event: InputNumberChangedEvent) => setNumberRangeValue(event.detail.value ?? null)}
+        onvalueChanged={(event: InputNumberChangedEvent) => setNumberRangeValue((event.detail.value as InputNumberValue | null | undefined) ?? null)}
         min={10}
         max={10000}
         autocomplete="off"
@@ -126,7 +125,7 @@ export const ValidatorsDefaultValidatorMessages = () => {
       <oj-input-text
         id="requiredinput"
         value={value}
-        onvalueChanged={(event: InputTextChangedEvent) => setValue(event.detail.value ?? '')}
+        onvalueChanged={(event: InputTextChangedEvent) => setValue((event.detail.value as InputTextValue | null | undefined) ?? '')}
         required
         autocomplete="off"
         labelHint="RequiredValidator"
@@ -139,7 +138,7 @@ export const ValidatorsDefaultValidatorMessages = () => {
       <oj-input-text
         id="length1"
         value={lengthValue}
-        onvalueChanged={(event: InputTextChangedEvent) => setLengthValue(event.detail.value ?? '')}
+        onvalueChanged={(event: InputTextChangedEvent) => setLengthValue((event.detail.value as InputTextValue | null | undefined) ?? '')}
         validators={lengthValidators}
         autocomplete="off"
         labelHint="LengthValidator"
@@ -153,7 +152,7 @@ export const ValidatorsDefaultValidatorMessages = () => {
       <oj-input-text
         id="regexp1"
         value={regExpValue1}
-        onvalueChanged={(event: InputTextChangedEvent) => setRegExpValue1(event.detail.value ?? '')}
+        onvalueChanged={(event: InputTextChangedEvent) => setRegExpValue1((event.detail.value as InputTextValue | null | undefined) ?? '')}
         validators={regExpValidators}
         autocomplete="off"
         labelHint="RegExpValidator"

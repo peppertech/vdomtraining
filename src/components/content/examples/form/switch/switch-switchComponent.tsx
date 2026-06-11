@@ -13,7 +13,7 @@ export default function SwitchComponentExample() {
           value={isChecked}
           labelEdge="inside"
           labelHint="switch component"
-          onvalueChanged={(event: any) => {
+          onvalueChanged={(event) => {
             setIsChecked(Boolean(event.detail.value));
           }}
         />

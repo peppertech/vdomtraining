@@ -1,8 +1,14 @@
-import { h } from "preact";
+import { h, type ComponentProps } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectcombobox";
 import { createBrowserDataProvider } from "./selectMany-shared";
 
+type InlineEvent = Parameters<
+  NonNullable<ComponentProps<"oj-select-many">["onvalueChanged"]>
+>[0];
+type ProviderEvent = Parameters<
+  NonNullable<ComponentProps<"oj-select-many">["onvalueChanged"]>
+>[0];
 export default function SelectManyBasicExample() {
   const dataProvider = useMemo(() => createBrowserDataProvider(), []);
   const [inlineValue, setInlineValue] = useState<string[]>(["Chrome", "Safari"]);
@@ -11,12 +17,12 @@ export default function SelectManyBasicExample() {
     "Opera",
   ]);
 
-  const handleInlineChanged = useCallback((event: any) => {
-    setInlineValue(event.detail.value ?? []);
+  const handleInlineChanged = useCallback((event: InlineEvent) => {
+    setInlineValue((event.detail.value as string[] | null | undefined) ?? []);
   }, []);
 
-  const handleProviderChanged = useCallback((event: any) => {
-    setProviderValue(event.detail.value ?? []);
+  const handleProviderChanged = useCallback((event: ProviderEvent) => {
+    setProviderValue((event.detail.value as string[] | null | undefined) ?? []);
   }, []);
 
   return (

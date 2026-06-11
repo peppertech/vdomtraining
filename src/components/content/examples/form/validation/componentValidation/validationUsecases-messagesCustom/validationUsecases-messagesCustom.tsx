@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
+import { h, type ComponentProps } from 'preact';
 import { useState } from 'preact/hooks';
 import type Message = require('ojs/ojmessaging');
 import 'ojs/ojformlayout';
@@ -7,17 +6,17 @@ import 'ojs/ojoption';
 import 'ojs/ojradioset';
 import 'ojs/ojselectcombobox';
 
-type RadiosetValue = ComponentProps<'oj-radioset'>['value'];
-type SelectManyValue = NonNullable<ComponentProps<'oj-select-many'>['value']>;
-type SelectManyMessagesCustom = ComponentProps<'oj-select-many'>['messagesCustom'];
-type ValidState = ComponentProps<'oj-select-many'>['valid'];
-type RadiosetChangedEvent = Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0];
 type SelectManyChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-select-many'>['onvalueChanged']>
 >[0];
 type SelectManyValidChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-select-many'>['onvalidChanged']>
 >[0];
+type RadiosetValue = ComponentProps<'oj-radioset'>['value'];
+type SelectManyValue = NonNullable<ComponentProps<'oj-select-many'>['value']>;
+type SelectManyMessagesCustom = ComponentProps<'oj-select-many'>['messagesCustom'];
+type ValidState = ComponentProps<'oj-select-many'>['valid'];
+type RadiosetChangedEvent = Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0];
 
 const IE_ON_MAC_MESSAGE: Message = {
   detail: 'You cannot have Internet Explorer on a Mac.',
@@ -61,7 +60,7 @@ export const ValidationUsecasesMessagesCustom = () => {
   };
 
   const handleSelectValidChanged = (event: SelectManyValidChangedEvent) => {
-    setValid(event.detail.value);
+    setValid((event.detail.value as ValidState));
   };
 
   return (

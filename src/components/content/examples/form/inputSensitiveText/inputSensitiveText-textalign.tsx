@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/buttonset-single";
 import "oj-c/form-layout";
@@ -47,7 +47,7 @@ export default function InputSensitiveTextTextAlignVdomExample() {
 
       <oj-c-form-layout id="myform">
         <oj-c-input-sensitive-text
-          textAlign={textAlignValue as any}
+          textAlign={textAlignValue as ComponentProps<'oj-c-input-sensitive-text'>['textAlign']}
           value={sensitiveVal}
           labelHint="Input Sensitive Text"
           onvalueChanged={handleValueChanged}

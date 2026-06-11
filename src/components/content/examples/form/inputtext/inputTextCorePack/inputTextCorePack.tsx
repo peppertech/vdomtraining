@@ -8,11 +8,11 @@ import "oj-c/input-text";
 import "oj-c/form-layout";
 import Message = require("ojs/ojmessaging");
 
-type InputTextProps = ComponentProps<"oj-c-input-text">;
-type FormLayoutProps = ComponentProps<"oj-c-form-layout">;
 type InputTextValueChangedEvent = Parameters<
   NonNullable<InputTextProps["onvalueChanged"]>
 >[0];
+type InputTextProps = ComponentProps<"oj-c-input-text">;
+type FormLayoutProps = ComponentProps<"oj-c-form-layout">;
 
 const hintDefinition: InputTextProps["helpHints"] = {
   definition: "cost of a single item",

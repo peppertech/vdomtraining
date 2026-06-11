@@ -7,6 +7,10 @@ import ArrayTreeDataProvider = require("ojs/ojarraytreedataprovider");
 import ListDataProviderView = require("ojs/ojlistdataproviderview");
 
 type SelectManyProps = ComponentProps<"oj-select-many">;
+type OptionRendererContext<TData> = {
+  data: TData;
+  leaf?: boolean;
+};
 
 export type OptionItem = {
   value: string;
@@ -90,7 +94,7 @@ export const createEmployeeMappedDataProvider = () =>
     }),
     {
       dataMapping: {
-        mapFields: (item: any) => ({
+        mapFields: (item) => ({
           data: {
             value: item.data.value,
             label: `${item.data.lastname}, ${item.data.firstname}`,
@@ -101,8 +105,8 @@ export const createEmployeeMappedDataProvider = () =>
     },
   );
 
-export const formatEventDetail = (detail: Record<string, any>) => {
-  const payload: Record<string, any> = {
+export const formatEventDetail = (detail: Record<string, unknown>) => {
+  const payload: Record<string, unknown> = {
     previousValue: detail.previousValue,
     value: detail.value,
   };
@@ -134,7 +138,9 @@ const buildBadge = (text: string, background: string) => {
   return badge;
 };
 
-export const renderOptionWithBadge = (context: any) => {
+export const renderOptionWithBadge = (
+  context: OptionRendererContext<OptionItem | GroupItem>,
+) => {
   const data = context.data as OptionItem | GroupItem;
 
   if (!context.leaf) {

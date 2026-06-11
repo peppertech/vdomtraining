@@ -1,6 +1,7 @@
-import { h } from "preact";
+import { h, type ComponentProps } from 'preact';
 import { useCallback, useEffect, useMemo, useState } from "preact/hooks";
 import "oj-c/select-multiple";
+
 import {
   browserOptions,
   createBrowserDataProvider,
@@ -8,6 +9,15 @@ import {
   type BrowserValueItems,
 } from "./selectMultiple-shared";
 
+type ValueItemsValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-multiple">["onvalueChanged"]>
+>[0];
+type ValueItemsEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-multiple">["onvalueItemsChanged"]>
+>[0];
+type ValueEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-select-multiple">["onvalueChanged"]>
+>[0];
 export default function SelectMultipleValueItemsExample() {
   const emptyDataProvider = useMemo(() => createBrowserDataProvider([]), []);
   const loadedDataProvider = useMemo(
@@ -42,16 +52,16 @@ export default function SelectMultipleValueItemsExample() {
   const selectedWithValueItems =
     selectVal1 ?? new Set(Array.from(selectValItems.keys()));
 
-  const handleValueItemsValueChanged = useCallback((event: any) => {
-    setSelectVal1(event.detail.value ?? null);
+  const handleValueItemsValueChanged = useCallback((event: ValueItemsValueEvent) => {
+    setSelectVal1((event.detail.value as Set<string> | null | null | undefined) ?? null);
   }, []);
 
-  const handleValueItemsChanged = useCallback((event: any) => {
-    setSelectValItems(event.detail.value ?? new Map());
+  const handleValueItemsChanged = useCallback((event: ValueItemsEvent) => {
+    setSelectValItems((event.detail.value as BrowserValueItems | null | undefined) ?? new Map());
   }, []);
 
-  const handleValueChanged = useCallback((event: any) => {
-    setSelectVal2(event.detail.value ?? null);
+  const handleValueChanged = useCallback((event: ValueEvent) => {
+    setSelectVal2((event.detail.value as Set<string> | null | null | undefined) ?? null);
   }, []);
 
   return (
@@ -64,7 +74,7 @@ export default function SelectMultipleValueItemsExample() {
         data={activeDataProvider}
         itemText="label"
         value={selectVal1}
-        valueItems={selectValItems as any}
+        valueItems={selectValItems as ComponentProps<'oj-c-select-multiple'>['valueItems']}
         onvalueChanged={handleValueItemsValueChanged}
         onvalueItemsChanged={handleValueItemsChanged}
       ></oj-c-select-multiple>

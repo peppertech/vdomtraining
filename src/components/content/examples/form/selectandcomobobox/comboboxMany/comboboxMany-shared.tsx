@@ -12,6 +12,10 @@ import RegExpValidator = require("ojs/ojvalidator-regexp");
 import { IntlNumberConverter } from "ojs/ojconverter-number";
 
 type ComboboxManyProps = ComponentProps<"oj-combobox-many">;
+type OptionRendererContext<TData> = {
+  data: TData;
+  leaf?: boolean;
+};
 
 export type BrowserOption = {
   value: string;
@@ -121,7 +125,7 @@ export const createEmployeeDataProvider = () =>
 export const createEmployeeMappedDataProvider = () =>
   new ListDataProviderView(createEmployeeDataProvider(), {
     dataMapping: {
-      mapFields: (item: any) => ({
+      mapFields: (item) => ({
         data: {
           label: `${item.data.lastname}, ${item.data.firstname}`,
           value: item.data.value,
@@ -170,7 +174,7 @@ export const createUnformattedCurrencyDataProvider = () =>
     }),
     {
       dataMapping: {
-        mapFields: (item: any) => {
+        mapFields: (item) => {
           const parsedValue = usdCurrencyConverter.parse(item.data.value);
           const value =
             typeof parsedValue === "number"
@@ -207,8 +211,8 @@ export const multipleEmailValidator = {
   getHint: () => "enter a valid email format",
 };
 
-export const formatEventDetail = (detail: Record<string, any>) => {
-  const valueObj: Record<string, any> = {
+export const formatEventDetail = (detail: Record<string, unknown>) => {
+  const valueObj: Record<string, unknown> = {
     previousValue: detail.previousValue,
     value: detail.value,
   };
@@ -217,8 +221,9 @@ export const formatEventDetail = (detail: Record<string, any>) => {
     valueObj.data = detail.data;
   }
 
-  if (detail.metadata && detail.metadata.length > 0) {
-    valueObj.metadata = detail.metadata.map((item: any) =>
+  const metadata = detail.metadata as Array<{ key?: unknown } | undefined> | undefined;
+  if (metadata && metadata.length > 0) {
+    valueObj.metadata = metadata.map((item) =>
       item ? { key: item.key } : undefined,
     );
   }
@@ -242,7 +247,9 @@ const buildCircle = (text: string, background: string) => {
   return icon;
 };
 
-export const renderEmployeeCustomOption = (context: any) => {
+export const renderEmployeeCustomOption = (
+  context: OptionRendererContext<EmployeeOption | EmployeeGroup>,
+) => {
   const data = context.data as EmployeeOption | EmployeeGroup;
 
   if (!context.leaf) {
@@ -265,7 +272,9 @@ export const renderEmployeeCustomOption = (context: any) => {
   return option;
 };
 
-export const renderBrowserImageOption = (context: any) => {
+export const renderBrowserImageOption = (
+  context: OptionRendererContext<StateOption>,
+) => {
   const data = context.data as StateOption;
   const option = document.createElement("oj-option");
   const iconSlot = document.createElement("span");

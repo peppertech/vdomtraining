@@ -56,6 +56,10 @@ const dataProvider = new MutableArrayDataProvider<RadiosetComponent["id"], Radio
 const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<RadiosetComponent["id"]>;
 
 type ListViewProps = ComponentProps<"oj-list-view">;
+type RadiosetSelectedChangedEvent = ojListView.selectedChanged<
+  RadiosetComponent["id"],
+  RadiosetComponent
+>;
 const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 
 const RadiosetHome = ({
@@ -118,7 +122,7 @@ const RadiosetHome = ({
     (component) => component.id === activeComponentId,
   );
 
-  const handleSelectedChanged = (event: any) => {
+  const handleSelectedChanged = (event: RadiosetSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as RadiosetComponent["id"];
     if (typeof selectedKey === "number") {
       setActiveComponentId(selectedKey);

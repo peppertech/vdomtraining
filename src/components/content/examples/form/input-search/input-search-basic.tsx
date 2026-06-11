@@ -16,7 +16,7 @@ export default function InputSearchBasicExample() {
     handleValueChanged,
     handleRawValueChanged,
     handleValueAction,
-  } = useInputSearchExampleState<any, any>();
+  } = useInputSearchExampleState<string, unknown>();
 
   return (
     <div class="input-search-demo">

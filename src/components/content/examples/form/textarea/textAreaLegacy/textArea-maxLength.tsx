@@ -21,7 +21,7 @@ export default function TextAreaMaxLengthExample() {
           rows={4}
           length={lengthConfig}
           onvalueChanged={(event: TextAreaValueChangedEvent) =>
-            setValue(event.detail.value)
+            setValue((event.detail.value as string))
           }
         />
       </oj-form-layout>

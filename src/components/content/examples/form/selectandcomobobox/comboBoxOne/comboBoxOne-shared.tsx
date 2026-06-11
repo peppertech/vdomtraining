@@ -12,6 +12,10 @@ import RegExpValidator = require("ojs/ojvalidator-regexp");
 import { IntlNumberConverter } from "ojs/ojconverter-number";
 
 type ComboboxOneProps = ComponentProps<"oj-combobox-one">;
+type OptionRendererContext<TData> = {
+  data: TData;
+  leaf?: boolean;
+};
 
 type OptionItem = {
   value: string;
@@ -131,7 +135,7 @@ export const createEmployeeMappedDataProvider = () =>
     }),
     {
       dataMapping: {
-        mapFields: (item: any) => ({
+        mapFields: (item) => ({
           data: {
             value: item.data.value,
             label: `${item.data.lastname}, ${item.data.firstname}`,
@@ -172,7 +176,7 @@ export const createUnformattedCurrencyDataProvider = () =>
     }),
     {
       dataMapping: {
-        mapFields: (item: any) => {
+        mapFields: (item) => {
           const parsed = usdCurrencyConverter.parse(item.data.value);
           const value = typeof parsed === "number" ? parsed : Number(item.data.value);
           return {
@@ -192,8 +196,8 @@ export const createEmailDataProvider = () =>
     keyAttributes: "value",
   });
 
-export const formatEventDetail = (detail: Record<string, any>) => {
-  const payload: Record<string, any> = {
+export const formatEventDetail = (detail: Record<string, unknown>) => {
+  const payload: Record<string, unknown> = {
     previousValue: detail.previousValue,
     value: detail.value,
   };
@@ -221,7 +225,9 @@ const buildBadge = (text: string, background: string) => {
   return badge;
 };
 
-export const renderOptionWithBadge = (context: any) => {
+export const renderOptionWithBadge = (
+  context: OptionRendererContext<OptionItem | GroupItem>,
+) => {
   const data = context.data as OptionItem | GroupItem;
 
   if (!context.leaf) {
@@ -253,7 +259,9 @@ export const renderOptionWithBadge = (context: any) => {
   return option;
 };
 
-export const renderEmployeeOption = (context: any) => {
+export const renderEmployeeOption = (
+  context: OptionRendererContext<EmployeeOption | GroupItem>,
+) => {
   const data = context.data as EmployeeOption | GroupItem;
 
   if (!context.leaf) {
