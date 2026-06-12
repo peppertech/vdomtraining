@@ -10,12 +10,14 @@ import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
 } from "../../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../../example-route-context";
 import MeterBarRecipePage from "../meter-bar/index";
 import MeterCircleRecipePage from "../meter-circle/index";
 import StatusMeterGaugeRecipePage from "../status-meter-gauge/index";
 
 type MeterGaugeComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -24,18 +26,21 @@ type MeterGaugeComponent = {
 const meterGaugeComponents: MeterGaugeComponent[] = [
   {
     id: 1,
+    routeId: "meter-bar",
     name: "Meter Bar",
     image: "oj-ux-icon-size-12x  oj-ux-ico-linear-status",
     isCorePack: true,
   },
   {
     id: 2,
+    routeId: "meter-circle",
     name: "Meter Circle",
     image: "oj-ux-icon-size-12x  oj-ux-ico-chart-gauge",
     isCorePack: true,
   },
   {
     id: 3,
+    routeId: "status-meter-gauge",
     name: "Status Meter Gauge",
     image: "oj-ux-icon-size-12x  oj-ux-ico-linear-status",
   },
@@ -57,6 +62,7 @@ const MeterGaugeHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<MeterGaugeComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -67,6 +73,18 @@ const MeterGaugeHome = ({
   const activeComponent = meterGaugeComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const activeRouteComponent =
+    meterGaugeComponents.find(
+      (component) => component.routeId === exampleRoute.segments[1],
+    ) ??
+    (exampleRoute.segments[1] &&
+    ["overview", "customization", "center-content", "sizing", "events"].includes(
+      exampleRoute.segments[1],
+    )
+      ? meterGaugeComponents.find(
+          (component) => component.routeId === "meter-circle",
+        )
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -117,10 +135,18 @@ const MeterGaugeHome = ({
   const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<MeterGaugeComponent["id"], KeySet<MeterGaugeComponent["id"]>>) => {
     const selectedKey = event.detail.items?.[0]?.key as MeterGaugeComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = meterGaugeComponents.find(
+        (component) => component.id === selectedKey,
+      );
+
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<MeterGaugeComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo(["meters", selectedComponent.routeId]);
+      }
     }
   };
 
@@ -129,7 +155,27 @@ const MeterGaugeHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<MeterGaugeComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(["meters"]);
+  }, [exampleRoute, onBreadcrumbChange]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as KeySet<
+          MeterGaugeComponent["id"]
+        >,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length === 1) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as KeySet<MeterGaugeComponent["id"]>);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -148,8 +194,6 @@ const MeterGaugeHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

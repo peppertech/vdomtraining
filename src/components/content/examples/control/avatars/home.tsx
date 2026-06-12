@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import AvatarLegacyRecipePage from "./avatar-legacy/index";
 import AvatarCorePackRecipePage from "./avatar-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 interface AvatarComponent {
   id: number;
+  routeId: string;
   name: string;
   description: string;
   image: string;
@@ -24,12 +26,14 @@ interface AvatarComponent {
 const avatarComponents: AvatarComponent[] = [
   {
     id: 1,
+    routeId: "avatar",
     name: "Avatar",
     description: "Classic oj-avatar demos showcasing content, shapes, backgrounds, and sizes.",
     image: "oj-ux-icon-size-12x oj-ux-ico-avatar",
   },
   {
     id: 2,
+    routeId: "avatar-corepack",
     name: "Avatar (oj-c)",
     description: "Core Pack avatar variants with updated styling and states.",
     image: "oj-ux-icon-size-12x oj-ux-ico-avatar",
@@ -56,7 +60,9 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const AvatarsHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<AvatarComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -64,6 +70,17 @@ const AvatarsHome = ({
   const activeComponent = avatarComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    avatarComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? avatarComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? avatarComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (item: ojListView.ItemTemplateContext<AvatarComponent["id"], AvatarComponent>) => (
@@ -105,10 +122,17 @@ const AvatarsHome = ({
   const handleSelectedChanged = (event: AvatarSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as AvatarComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = avatarComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<AvatarComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -117,7 +141,25 @@ const AvatarsHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<AvatarComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -136,8 +178,6 @@ const AvatarsHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

@@ -70,6 +70,7 @@ export default function FormLayoutLegacyRecipePage() {
       layoutId="formLayoutLegacyNavigationLayout"
       items={formLayoutLegacyItems}
       initialItemId="form-inputs"
+      routeSegments={["form-layout", "form-layout-legacy"]}
     />
   );
 }

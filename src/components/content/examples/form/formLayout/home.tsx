@@ -7,6 +7,7 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 import FormLayoutCorePack from "./formLayoutCorePack/index";
 import FormLayoutLegacy from "./formLayoutLegacy/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
@@ -14,6 +15,7 @@ import {
 
 type FormLayoutComponent = {
   id: number;
+  routeId: string;
   name: string;
   description: string;
   image: string;
@@ -23,12 +25,14 @@ type FormLayoutComponent = {
 const formLayoutComponents: FormLayoutComponent[] = [
   {
     id: 1,
+    routeId: "form-layout-legacy",
     name: "Form Layout",
     description: "Legacy oj-form-layout recipes for spanning, nesting, shared columns, and job forms.",
     image: "oj-ux-icon-size-12x oj-ux-ico-form-layout-jet",
   },
   {
     id: 2,
+    routeId: "form-layout-corepack",
     name: "Form Layout",
     description: "Core Pack oj-c-form-layout recipes for modern Redwood form patterns.",
     image: "oj-ux-icon-size-12x oj-ux-ico-form-layout-jet",
@@ -56,7 +60,9 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 export default function FormLayoutHome({
   onBreadcrumbChange,
   onNavigateFormsHome,
+  routeSegments,
 }: NestedFormHomeProps) {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<FormLayoutComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -67,6 +73,17 @@ export default function FormLayoutHome({
   const activeComponent = formLayoutComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    formLayoutComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? formLayoutComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? formLayoutComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -112,9 +129,15 @@ export default function FormLayoutHome({
   const handleSelectedChanged = (event: FormLayoutSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as FormLayoutComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = formLayoutComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       setSelectedItems(event.detail.value as KeySet<FormLayoutComponent["id"]>);
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -123,7 +146,25 @@ export default function FormLayoutHome({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<FormLayoutComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -142,8 +183,6 @@ export default function FormLayoutHome({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

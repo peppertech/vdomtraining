@@ -146,8 +146,6 @@ const ConveyorBeltHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,

@@ -12,9 +12,11 @@ import {
 } from "../../../../shared/catalog-breadcrumb";
 import TagCloudCorePackRecipePage from "./tag-cloud-corepack/index";
 import TagCloudLegacyRecipePage from "./tag-cloud-legacy/index";
+import { useExampleRoute } from "../../example-route-context";
 
 type TagCloudComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -23,11 +25,13 @@ type TagCloudComponent = {
 const tagCloudComponents: TagCloudComponent[] = [
   {
     id: 1,
+    routeId: "tag-cloud-legacy",
     name: "Tag Cloud",
     image: "oj-ux-icon-size-12x oj-ux-ico-cloud",
   },
   {
     id: 2,
+    routeId: "tag-cloud-corepack",
     name: "Tag Cloud",
     image: "oj-ux-icon-size-12x oj-ux-ico-cloud",
     isCorePack: true,
@@ -49,7 +53,9 @@ const INITIAL_SELECTION =
 const TagCloudHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<TagCloudComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -60,6 +66,17 @@ const TagCloudHome = ({
   const activeComponent = tagCloudComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    tagCloudComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? tagCloudComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? tagCloudComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -108,10 +125,17 @@ const TagCloudHome = ({
   const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<TagCloudComponent["id"], KeySet<TagCloudComponent["id"]>>) => {
     const selectedKey = event.detail.items?.[0]?.key as TagCloudComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = tagCloudComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<TagCloudComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -120,7 +144,25 @@ const TagCloudHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<TagCloudComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -139,8 +181,6 @@ const TagCloudHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

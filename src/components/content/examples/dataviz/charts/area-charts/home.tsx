@@ -10,11 +10,13 @@ import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
 } from "../../../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../../../example-route-context";
 import AreaChartCorePackRecipePage from "./areaChartCorePack/index";
 import AreaChartLegacyRecipePage from "./areaChartLegacy/index";
 
 type AreaChartComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -23,11 +25,13 @@ type AreaChartComponent = {
 const areaChartComponents: AreaChartComponent[] = [
   {
     id: 1,
+    routeId: "area-chart",
     name: "Area Chart",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-area",
   },
   {
     id: 2,
+    routeId: "area-chart-core-pack",
     name: "Area Chart",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-area",
     isCorePack: true,
@@ -50,6 +54,7 @@ const AreaChartsHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<AreaChartComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -59,6 +64,9 @@ const AreaChartsHome = ({
 
   const activeComponent = areaChartComponents.find(
     (component) => component.id === activeComponentId,
+  );
+  const activeRouteComponent = areaChartComponents.find(
+    (component) => component.routeId === exampleRoute.segments[2],
   );
 
   const renderListItem = useCallback(
@@ -108,10 +116,22 @@ const AreaChartsHome = ({
   const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<AreaChartComponent["id"], KeySet<AreaChartComponent["id"]>>) => {
     const selectedKey = event.detail.items?.[0]?.key as AreaChartComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = areaChartComponents.find(
+        (component) => component.id === selectedKey,
+      );
+
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<AreaChartComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([
+          "charts",
+          "area-charts",
+          selectedComponent.routeId,
+        ]);
+      }
     }
   };
 
@@ -122,7 +142,29 @@ const AreaChartsHome = ({
       new KeySetImpl([]) as KeySet<AreaChartComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(["charts", "area-charts"]);
+  }, [exampleRoute, onBreadcrumbChange]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as KeySet<
+          AreaChartComponent["id"]
+        >,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length === 2) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(
+        new KeySetImpl([]) as KeySet<AreaChartComponent["id"]>,
+      );
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -141,8 +183,6 @@ const AreaChartsHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

@@ -67,6 +67,7 @@ export default function MeterCircleRecipePage() {
       items={meterCircleItems}
       initialItemId="overview"
       navigationTitle="Meter Circle"
+      routeSegments={["meters", "meter-circle"]}
     />
   );
 }

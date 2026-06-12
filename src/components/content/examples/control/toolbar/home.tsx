@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import ToolbarLegacyRecipePage from "./toolbar-legacy/index";
 import ToolbarCorePackRecipePage from "./toolbar-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 type ToolbarComponent = {
   id: number;
+  routeId: string;
   name: string;
   description: string;
   image: string;
@@ -24,6 +26,7 @@ type ToolbarComponent = {
 const toolbarComponents: ToolbarComponent[] = [
   {
     id: 1,
+    routeId: "toolbar-legacy",
     name: "Toolbar",
     description:
       "Classic oj-toolbar demos covering toolbar composition and stacked toolbar layouts.",
@@ -31,6 +34,7 @@ const toolbarComponents: ToolbarComponent[] = [
   },
   {
     id: 2,
+    routeId: "toolbar-corepack",
     name: "Toolbar",
     description:
       "Core Pack toolbar demos covering item actions, toolbar actions, selection, and dynamic content.",
@@ -58,7 +62,9 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const ToolbarHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<ToolbarComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -66,6 +72,17 @@ const ToolbarHome = ({
   const activeComponent = toolbarComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    toolbarComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? toolbarComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? toolbarComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -111,10 +128,17 @@ const ToolbarHome = ({
   const handleSelectedChanged = (event: ToolbarSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as ToolbarComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = toolbarComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<ToolbarComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -123,7 +147,25 @@ const ToolbarHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<ToolbarComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -142,8 +184,6 @@ const ToolbarHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

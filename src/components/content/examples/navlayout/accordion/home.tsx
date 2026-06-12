@@ -9,6 +9,7 @@ import { ojListView } from "ojs/ojlistview";
 import { Accordion } from "./accordion";
 import CorePackAccordianItemMultiple from "./core-pack-accordian-item-multiple";
 import CorePackAccordianItemSingle from "./core-pack-accordian-item-single";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -16,6 +17,7 @@ import {
 
 type AccordionComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -24,17 +26,20 @@ type AccordionComponent = {
 const accordionComponents: AccordionComponent[] = [
   {
     id: 1,
+    routeId: "accordion-and-collapsible",
     name: "Accordion & Collapsible",
     image: "oj-ux-icon-size-12x oj-ux-ico-accordion",
   },
   {
     id: 2,
+    routeId: "accordion-item-multiple",
     name: "Accordion Item Multiple",
     image: "oj-ux-icon-size-12x oj-ux-ico-accordion",
     isCorePack: true,
   },
   {
     id: 3,
+    routeId: "accordion-item-single",
     name: "Accordion Item Single",
     image: "oj-ux-icon-size-12x oj-ux-ico-accordion",
     isCorePack: true,
@@ -59,7 +64,9 @@ const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<AccordionComponent["id"]>
 const AccordionHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<AccordionComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -69,6 +76,17 @@ const AccordionHome = ({
   const activeComponent = accordionComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    accordionComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? accordionComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? accordionComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -121,17 +139,41 @@ const AccordionHome = ({
     setShowComponentDetail(false);
     setSelectedItems(new KeySetImpl([]) as KeySet<AccordionComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: AccordionSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as AccordionComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = accordionComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<AccordionComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -150,8 +192,6 @@ const AccordionHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,

@@ -11,6 +11,7 @@ import MenuButton from "./menuButton";
 import MenuSelectManyRecipePage from "./menu-select-many/index";
 import CorePackMenuButton from "./corePackMenuButton";
 import CorePackSplitMenuButton from "./corePackSplitMenuButton";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -18,6 +19,7 @@ import {
 
 interface MenuComponent {
   id: number;
+  routeId: string;
   name: string;
   description: string;
   image: string;
@@ -27,6 +29,7 @@ interface MenuComponent {
 const menuComponents: MenuComponent[] = [
   {
     id: 1,
+    routeId: "menu",
     name: "Menu",
     description: "Classic oj-menu demos with popup actions, APIs, and template rendering.",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu-modal",
@@ -46,6 +49,7 @@ const menuComponents: MenuComponent[] = [
   // },
   {
     id: 3,
+    routeId: "menu-select-many",
     name: "Menu Select Many",
     description: "oj-menu-select-many embedded in an oj-menu for multi-select settings.",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu-select-many",
@@ -78,7 +82,9 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const MenuHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<MenuComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -86,6 +92,17 @@ const MenuHome = ({
   const activeComponent = menuComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    menuComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? menuComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? menuComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (item: ojListView.ItemTemplateContext<MenuComponent["id"], MenuComponent>) => (
@@ -133,10 +150,17 @@ const MenuHome = ({
   const handleSelectedChanged = (event: MenuSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as MenuComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = menuComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<MenuComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -145,7 +169,25 @@ const MenuHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<MenuComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -164,8 +206,6 @@ const MenuHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

@@ -171,6 +171,28 @@ const DataVizHome = () => {
     (component) => component.routeId === exampleRoute.segments[0],
   );
 
+  const updateNestedBreadcrumbItems = useCallback((items: CatalogBreadcrumbItem[] | null) => {
+    setNestedBreadcrumbItems((current) => {
+      if (current === items) {
+        return current;
+      }
+
+      if (current && items && current.length === items.length) {
+        const hasSameItems = current.every(
+          (item, index) =>
+            item.label === items[index].label &&
+            Boolean(item.current) === Boolean(items[index].current),
+        );
+
+        if (hasSameItems) {
+          return current;
+        }
+      }
+
+      return items;
+    });
+  }, []);
+
   const renderListItem = useCallback(
     (
       item: ojListView.ItemTemplateContext<
@@ -220,8 +242,9 @@ const DataVizHome = () => {
     );
     if (activeComponent?.render) {
       return activeComponent.render({
-        onBreadcrumbChange: setNestedBreadcrumbItems,
+        onBreadcrumbChange: updateNestedBreadcrumbItems,
         onNavigateRootHome: handleHomeNavigation,
+        routeSegments: [activeComponent.routeId],
       });
     }
 
@@ -243,7 +266,7 @@ const DataVizHome = () => {
       default:
         return null;
     }
-  }, [activeComponentId, handleHomeNavigation]);
+  }, [activeComponentId, handleHomeNavigation, updateNestedBreadcrumbItems]);
 
   const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<DataVizComponent["id"], KeySet<DataVizComponent["id"]>>) => {
     const selectedKey = event.detail.items?.[0]?.key as DataVizComponent["id"];

@@ -10,6 +10,7 @@ import CheckBoxSet from "./checkBoxSet/index";
 import CheckBoxCorePack from "./checkBoxCorePack/index";
 import CheckBoxSetCorePack  from "./checkBoxSetCorePack/index";
 import  RichCheckBoxsetCorePack  from "./richCheckBoxsetCorePack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
@@ -17,6 +18,7 @@ import {
 
 type CheckboxComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -26,12 +28,14 @@ type CheckboxComponent = {
 const checkboxComponents: CheckboxComponent[] = [
   {
     id: 1,
+    routeId: "checkbox-set-legacy",
     name: "Checkbox Set",
     image: "oj-ux-icon-size-12x oj-ux-ico-checkbox-on",
     render: () => <CheckBoxSet />,
   },
   {
     id: 2,
+    routeId: "checkbox",
     name: "Checkbox",
     image: "oj-ux-icon-size-12x oj-ux-ico-checkbox-on",
     isCorePack: true,
@@ -39,6 +43,7 @@ const checkboxComponents: CheckboxComponent[] = [
   },
   {
     id: 3,
+    routeId: "checkbox-set-corepack",
     name: "Checkbox Set",
     image: "oj-ux-icon-size-12x oj-ux-ico-checkbox-on",
     isCorePack: true,
@@ -46,6 +51,7 @@ const checkboxComponents: CheckboxComponent[] = [
   },
   {
     id: 4,
+    routeId: "rich-checkbox-set",
     name: "Rich Checkbox Set",
     image: "oj-ux-icon-size-12x oj-ux-ico-checkbox-on",
     isCorePack: true,
@@ -72,7 +78,9 @@ const INITIAL_SELECTION =
 const CheckboxHome = ({
   onBreadcrumbChange,
   onNavigateFormsHome,
+  routeSegments,
 }: NestedFormHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<CheckboxComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -125,6 +133,17 @@ const CheckboxHome = ({
   const activeComponent = checkboxComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    checkboxComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? checkboxComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? checkboxComponents[0]
+      : undefined);
 
   const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
@@ -133,7 +152,25 @@ const CheckboxHome = ({
       new KeySetImpl([]) as KeySet<CheckboxComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -152,8 +189,6 @@ const CheckboxHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,
@@ -165,10 +200,17 @@ const CheckboxHome = ({
   const handleSelectedChanged = (event: CheckboxSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as CheckboxComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = checkboxComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<CheckboxComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 

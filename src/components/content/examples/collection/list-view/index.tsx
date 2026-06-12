@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import ListViewLegacyRecipePage from "./list-view-legacy/index";
 import ListViewCorePackRecipePage from "./list-view-core-pack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 type ListViewComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -27,11 +29,13 @@ type ListViewSelectedChangedEvent = ojListView.selectedChanged<
 const listViewComponents: ListViewComponent[] = [
   {
     id: 1,
+    routeId: "list-view-legacy",
     name: "List View",
     image: "oj-ux-icon-size-12x oj-ux-ico-list",
   },
   {
     id: 2,
+    routeId: "list-view-corepack",
     name: "List View",
     image: "oj-ux-icon-size-12x oj-ux-ico-list",
     isCorePack: true,
@@ -53,7 +57,9 @@ const INITIAL_SELECTION =
 const ListViewHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps = {}) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<ListViewComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -63,6 +69,17 @@ const ListViewHome = ({
   const activeComponent = listViewComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    listViewComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? listViewComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? listViewComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -120,17 +137,41 @@ const ListViewHome = ({
       new KeySetImpl([]) as KeySet<ListViewComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: ListViewSelectedChangedEvent) => {
     const selection = event.detail.value as KeySetImpl<ListViewComponent["id"]>;
     const selectedKey = Array.from(selection.values())[0];
     if (typeof selectedKey === "number") {
+      const selectedComponent = listViewComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -149,8 +190,6 @@ const ListViewHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,

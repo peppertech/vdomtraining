@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import ListItemLayoutLegacyRecipePage from "./list-item-layout-legacy/index";
 import ListItemLayoutCorePackRecipePage from "./list-item-layout-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 type ListItemLayoutComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -27,11 +29,13 @@ type ListItemLayoutSelectedChangedEvent = ojListView.selectedChanged<
 const listItemLayoutComponents: ListItemLayoutComponent[] = [
   {
     id: 1,
+    routeId: "list-item-layout-legacy",
     name: "List Item Layout",
     image: "oj-ux-icon-size-12x oj-ux-ico-list",
   },
   {
     id: 2,
+    routeId: "list-item-layout-corepack",
     name: "List Item Layout",
     image: "oj-ux-icon-size-12x oj-ux-ico-list",
     isCorePack: true,
@@ -53,7 +57,9 @@ const INITIAL_SELECTION =
 const ListItemLayoutHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<ListItemLayoutComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -63,6 +69,17 @@ const ListItemLayoutHome = ({
   const activeComponent = listItemLayoutComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    listItemLayoutComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? listItemLayoutComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? listItemLayoutComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -115,18 +132,42 @@ const ListItemLayoutHome = ({
       new KeySetImpl([]) as KeySet<ListItemLayoutComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: ListItemLayoutSelectedChangedEvent) => {
     const selection =
       event.detail.value as KeySetImpl<ListItemLayoutComponent["id"]>;
     const selectedKey = Array.from(selection.values())[0];
     if (typeof selectedKey === "number") {
+      const selectedComponent = listItemLayoutComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -145,8 +186,6 @@ const ListItemLayoutHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

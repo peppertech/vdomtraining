@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import ConveyorBeltLegacyRecipePage from "./conveyor-belt-legacy/index";
 import ConveyorBeltCorePackRecipePage from "./conveyor-belt-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 type ConveyorBeltComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -23,11 +25,13 @@ type ConveyorBeltComponent = {
 const conveyorBeltComponents: ConveyorBeltComponent[] = [
   {
     id: 1,
+    routeId: "conveyor-belt-legacy",
     name: "Conveyor Belt",
     image: "oj-ux-icon-size-12x oj-ux-ico-carousel",
   },
   {
     id: 2,
+    routeId: "conveyor-belt-corepack",
     name: "Conveyor Belt",
     image: "oj-ux-icon-size-12x oj-ux-ico-carousel",
     isCorePack: true,
@@ -53,7 +57,9 @@ const INITIAL_SELECTION =
 const ConveyorBeltHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<ConveyorBeltComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -63,6 +69,17 @@ const ConveyorBeltHome = ({
   const activeComponent = conveyorBeltComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    conveyorBeltComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? conveyorBeltComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? conveyorBeltComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -115,19 +132,43 @@ const ConveyorBeltHome = ({
       new KeySetImpl([]) as KeySet<ConveyorBeltComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: ConveyorBeltSelectedChangedEvent) => {
     const selectedKey =
       event.detail.items[0]?.key as ConveyorBeltComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = conveyorBeltComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection =
         event.detail.value as KeySet<ConveyorBeltComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -146,8 +187,6 @@ const ConveyorBeltHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,

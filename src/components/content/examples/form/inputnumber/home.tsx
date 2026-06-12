@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import InputNumber from "./inputNumberLegacy/index";
 import InputNumberCorePack from "./inputNumberCorePack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 type NumberComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -23,11 +25,13 @@ type NumberComponent = {
 const numberComponents: NumberComponent[] = [
   {
     id: 1,
+    routeId: "input-number-legacy",
     name: "Input Number",
     image: "oj-ux-icon-size-12x oj-ux-ico-input-number",
   },
   {
     id: 2,
+    routeId: "input-number-corepack",
     name: "Input Number",
     image: "oj-ux-icon-size-12x oj-ux-ico-input-number",
     isCorePack: true,
@@ -53,7 +57,9 @@ const INITIAL_SELECTION =
 const InputNumberHome = ({
   onBreadcrumbChange,
   onNavigateFormsHome,
+  routeSegments,
 }: NestedFormHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<NumberComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -110,6 +116,17 @@ const InputNumberHome = ({
   const activeComponent = numberComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    numberComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? numberComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? numberComponents[0]
+      : undefined);
 
   const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
@@ -118,7 +135,25 @@ const InputNumberHome = ({
       new KeySetImpl([]) as KeySet<NumberComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -137,8 +172,6 @@ const InputNumberHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,
@@ -150,10 +183,17 @@ const InputNumberHome = ({
   const handleSelectedChanged = (event: NumberSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as NumberComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = numberComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<NumberComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 

@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import DialogLegacyRecipePage from "./dialog-legacy/index";
 import DialogCorePackRecipePage from "./dialog-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 type DialogComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -23,11 +25,13 @@ type DialogComponent = {
 const dialogComponents: DialogComponent[] = [
   {
     id: 1,
+    routeId: "dialog-legacy",
     name: "Dialog",
     image: "oj-ux-icon-size-12x oj-ux-ico-dialog",
   },
   {
     id: 2,
+    routeId: "dialog-corepack",
     name: "Dialog",
     image: "oj-ux-icon-size-12x oj-ux-ico-dialog",
     isCorePack: true,
@@ -52,7 +56,9 @@ const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<DialogComponent["id"]>;
 const DialogHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<DialogComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -62,6 +68,17 @@ const DialogHome = ({
   const activeComponent = dialogComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    dialogComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? dialogComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? dialogComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -112,17 +129,41 @@ const DialogHome = ({
     setShowComponentDetail(false);
     setSelectedItems(new KeySetImpl([]) as KeySet<DialogComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: DialogSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as DialogComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = dialogComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<DialogComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -141,8 +182,6 @@ const DialogHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,

@@ -145,6 +145,28 @@ const NavLayoutHome = () => {
     (component) => component.routeId === exampleRoute.segments[0],
   );
 
+  const updateNestedBreadcrumbItems = useCallback((items: CatalogBreadcrumbItem[] | null) => {
+    setNestedBreadcrumbItems((current) => {
+      if (current === items) {
+        return current;
+      }
+
+      if (current && items && current.length === items.length) {
+        const hasSameItems = current.every(
+          (item, index) =>
+            item.label === items[index].label &&
+            Boolean(item.current) === Boolean(items[index].current),
+        );
+
+        if (hasSameItems) {
+          return current;
+        }
+      }
+
+      return items;
+    });
+  }, []);
+
   const renderListItem = useCallback(
     (
       item: ojListView.ItemTemplateContext<
@@ -187,57 +209,65 @@ const NavLayoutHome = () => {
       case 2:
         return (
           <AccordionHome
-            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onBreadcrumbChange={updateNestedBreadcrumbItems}
             onNavigateRootHome={handleHomeNavigation}
+            routeSegments={["accordion"]}
           />
         );
       case 3:
         return (
           <ActionCardHome
-            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onBreadcrumbChange={updateNestedBreadcrumbItems}
             onNavigateRootHome={handleHomeNavigation}
+            routeSegments={["action-card"]}
           />
         );
       case 4:
         return (
           <TabBarHome
-            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onBreadcrumbChange={updateNestedBreadcrumbItems}
             onNavigateRootHome={handleHomeNavigation}
+            routeSegments={["tab-bar"]}
           />
         );
       case 5:
         return (
           <DialogHome
-            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onBreadcrumbChange={updateNestedBreadcrumbItems}
             onNavigateRootHome={handleHomeNavigation}
+            routeSegments={["dialog"]}
           />
         );
       case 6:
         return (
           <PopupHome
-            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onBreadcrumbChange={updateNestedBreadcrumbItems}
             onNavigateRootHome={handleHomeNavigation}
+            routeSegments={["popup"]}
           />
         );
       case 7:
         return (
           <DrawerHome
-            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onBreadcrumbChange={updateNestedBreadcrumbItems}
             onNavigateRootHome={handleHomeNavigation}
+            routeSegments={["drawer"]}
           />
         );
       case 8:
         return (
           <ConveyorBeltHome
-            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onBreadcrumbChange={updateNestedBreadcrumbItems}
             onNavigateRootHome={handleHomeNavigation}
+            routeSegments={["conveyor-belt"]}
           />
         );
       case 9:
         return (
           <CollapsibleHome
-            onBreadcrumbChange={setNestedBreadcrumbItems}
+            onBreadcrumbChange={updateNestedBreadcrumbItems}
             onNavigateRootHome={handleHomeNavigation}
+            routeSegments={["collapsible"]}
           />
         );
       case 10:
@@ -245,7 +275,7 @@ const NavLayoutHome = () => {
       default:
         return null;
     }
-  }, [activeComponentId]);
+  }, [activeComponentId, updateNestedBreadcrumbItems]);
 
   const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);

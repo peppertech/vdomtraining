@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import PopupLegacyRecipePage from "./popup-legacy/index";
 import PopupCorePackRecipePage from "./popup-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 type PopupComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -23,11 +25,13 @@ type PopupComponent = {
 const popupComponents: PopupComponent[] = [
   {
     id: 1,
+    routeId: "popup-legacy",
     name: "Popup",
     image: "oj-ux-icon-size-12x oj-ux-ico-contact-card",
   },
   {
     id: 2,
+    routeId: "popup-corepack",
     name: "Popup",
     image: "oj-ux-icon-size-12x oj-ux-ico-contact-card",
     isCorePack: true,
@@ -52,7 +56,9 @@ const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<PopupComponent["id"]>;
 const PopupHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<PopupComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -62,6 +68,17 @@ const PopupHome = ({
   const activeComponent = popupComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    popupComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? popupComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? popupComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -112,17 +129,41 @@ const PopupHome = ({
     setShowComponentDetail(false);
     setSelectedItems(new KeySetImpl([]) as KeySet<PopupComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: PopupSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as PopupComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = popupComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<PopupComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -141,8 +182,6 @@ const PopupHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,

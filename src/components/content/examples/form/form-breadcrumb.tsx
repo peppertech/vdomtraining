@@ -9,6 +9,7 @@ type FormBreadcrumbItem = {
 type NestedFormHomeProps = {
   onBreadcrumbChange?: (items: FormBreadcrumbItem[] | null) => void;
   onNavigateFormsHome?: () => void;
+  routeSegments?: string[];
 };
 
 type FormBreadcrumbProps = {

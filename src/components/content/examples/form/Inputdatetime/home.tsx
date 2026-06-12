@@ -14,6 +14,7 @@ import InputDateText from "./inputDateText/index";
 import InputMonthMask from "./inputMonthMask/index";
 import InputTime from "./inputTime/index";
 import InputTimeMask from "./inputTimeMask/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
@@ -21,6 +22,7 @@ import {
 
 type DateTimeComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isAvailable?: boolean;
@@ -30,12 +32,14 @@ type DateTimeComponent = {
 const dateTimeComponents: DateTimeComponent[] = [
   {
     id: 1,
+    routeId: "input-date",
     name: "Input Date",
     image: "oj-ux-icon-size-12x oj-ux-ico-calendar",
     isAvailable: true,
   },
   {
     id: 2,
+    routeId: "input-date-mask",
     name: "Input Date Mask",
     image: "oj-ux-icon-size-12x oj-ux-ico-calendar-clock",
     isCorePack: true,
@@ -43,6 +47,7 @@ const dateTimeComponents: DateTimeComponent[] = [
   },
   {
     id: 3,
+    routeId: "input-date-picker",
     name: "Input Date Picker",
     image: "oj-ux-icon-size-12x  oj-ux-ico-type-date-input",
     isCorePack: true,
@@ -50,6 +55,7 @@ const dateTimeComponents: DateTimeComponent[] = [
   },
   {
     id: 4,
+    routeId: "input-date-text",
     name: "Input Date Text",
     image: "oj-ux-icon-size-12x oj-ux-ico-text-input",
     isAvailable: true,
@@ -57,12 +63,14 @@ const dateTimeComponents: DateTimeComponent[] = [
   },
   {
     id: 5,
+    routeId: "input-date-time",
     name: "Input Date Time",
     image: "oj-ux-icon-size-12x oj-ux-ico-calendar-clock",
     isAvailable: true,
   },
   {
     id: 6,
+    routeId: "input-month-mask",
     name: "Input Month Mask ",
     image: "oj-ux-icon-size-12x oj-ux-ico-calendar",
     isCorePack: true,
@@ -70,12 +78,14 @@ const dateTimeComponents: DateTimeComponent[] = [
   },
   {
     id: 7,
+    routeId: "input-time",
     name: "Input Time",
     image: "oj-ux-icon-size-12x oj-ux-ico-clock",
     isAvailable: true,
   },
   {
     id: 8,
+    routeId: "input-time-mask",
     name: "Input Time Mask ",
     image: "oj-ux-icon-size-12x oj-ux-ico-clock",
     isCorePack: true,
@@ -102,7 +112,9 @@ const INITIAL_SELECTION =
 const InputDateTimeHome = ({
   onBreadcrumbChange,
   onNavigateFormsHome,
+  routeSegments,
 }: NestedFormHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<DateTimeComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -172,6 +184,17 @@ const InputDateTimeHome = ({
   const activeComponent = dateTimeComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    dateTimeComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? dateTimeComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? dateTimeComponents[0]
+      : undefined);
 
   const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
@@ -181,7 +204,27 @@ const InputDateTimeHome = ({
     );
     setIsComponentAvailable(false);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      setIsComponentAvailable(Boolean(activeRouteComponent.isAvailable));
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+      setIsComponentAvailable(false);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -200,8 +243,6 @@ const InputDateTimeHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,
@@ -213,15 +254,18 @@ const InputDateTimeHome = ({
   const handleSelectedChanged = (event: DateTimeSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as DateTimeComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = dateTimeComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<DateTimeComponent["id"]>;
       setSelectedItems(selection);
-
-      const selectedComponent = dateTimeComponents.find(
-        (component) => component.id === selectedKey,
-      );
       setIsComponentAvailable(Boolean(selectedComponent?.isAvailable));
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 

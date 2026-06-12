@@ -57,6 +57,7 @@ export default function MeterBarRecipePage() {
       items={meterBarItems}
       initialItemId="overview"
       navigationTitle="Meter Bar"
+      routeSegments={["meters", "meter-bar"]}
     />
   );
 }

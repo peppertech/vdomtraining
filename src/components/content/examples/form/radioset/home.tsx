@@ -9,6 +9,7 @@ import { ojListView } from "ojs/ojlistview";
 import RadiosetCorePackExample from "./radiosetCorePackExample/index";
 import RichRadioset from "./richRadioSet/index";
 import RadiosetExample from "./radiosetLegacy/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
@@ -16,6 +17,7 @@ import {
 
 type RadiosetComponent = {
   id: number;
+  routeId: string;
   name: string;
   description: string;
   image: string;
@@ -25,6 +27,7 @@ type RadiosetComponent = {
 const radiosetComponents: RadiosetComponent[] = [
   {
     id: 1,
+    routeId: "radioset-legacy",
     name: "Radioset",
     description: "Classic oj-radioset with layout, messaging, and help variations.",
     image: "oj-ux-icon-size-12x  oj-ux-ico-radio-set",
@@ -32,6 +35,7 @@ const radiosetComponents: RadiosetComponent[] = [
   },
   {
     id: 2,
+    routeId: "radioset-corepack",
     name: "Radioset",
     description: "Core Pack radioset showcasing states, layout variations, messages, and wrap behavior.",
     image: "oj-ux-icon-size-12x  oj-ux-ico-radio-set",
@@ -39,6 +43,7 @@ const radiosetComponents: RadiosetComponent[] = [
   },
   {
     id: 3,
+    routeId: "rich-radioset",
     name: "Rich Radioset",
     description: "Card-style rich radioset with responsive layouts and assistive content.",
     image: "oj-ux-icon-size-12x  oj-ux-ico-radio-set",
@@ -65,7 +70,9 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const RadiosetHome = ({
   onBreadcrumbChange,
   onNavigateFormsHome,
+  routeSegments,
 }: NestedFormHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<RadiosetComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -121,14 +128,32 @@ const RadiosetHome = ({
   const activeComponent = radiosetComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    radiosetComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? radiosetComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? radiosetComponents[0]
+      : undefined);
 
   const handleSelectedChanged = (event: RadiosetSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as RadiosetComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = radiosetComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<RadiosetComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -137,7 +162,25 @@ const RadiosetHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<RadiosetComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -156,8 +199,6 @@ const RadiosetHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

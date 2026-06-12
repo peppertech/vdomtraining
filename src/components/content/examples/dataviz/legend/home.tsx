@@ -12,9 +12,11 @@ import {
 } from "../../../../shared/catalog-breadcrumb";
 import LegendCorePackRecipePage from "./legend-corepack/index";
 import LegendLegacyRecipePage from "./legend-legacy/index";
+import { useExampleRoute } from "../../example-route-context";
 
 type LegendComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -23,11 +25,13 @@ type LegendComponent = {
 const legendComponents: LegendComponent[] = [
   {
     id: 1,
+    routeId: "legend-legacy",
     name: "Legend",
     image: "oj-ux-icon-size-12x oj-ux-ico-legend",
   },
   {
     id: 2,
+    routeId: "legend-corepack",
     name: "Legend",
     image: "oj-ux-icon-size-12x oj-ux-ico-legend",
     isCorePack: true,
@@ -49,7 +53,9 @@ const INITIAL_SELECTION =
 const LegendHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<LegendComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -60,6 +66,17 @@ const LegendHome = ({
   const activeComponent = legendComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    legendComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? legendComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? legendComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -108,10 +125,17 @@ const LegendHome = ({
   const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<LegendComponent["id"], KeySet<LegendComponent["id"]>>) => {
     const selectedKey = event.detail.items?.[0]?.key as LegendComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = legendComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<LegendComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -120,7 +144,25 @@ const LegendHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<LegendComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -139,8 +181,6 @@ const LegendHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

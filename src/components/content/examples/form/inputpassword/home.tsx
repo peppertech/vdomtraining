@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import InputPasswordCorePack from "./inputPasswordCorePack/index";
 import InputPassword from "./inputPasswordLegacy/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 type PasswordComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -23,12 +25,14 @@ type PasswordComponent = {
 const passwordComponents: PasswordComponent[] = [
   {
     id: 1,
+    routeId: "input-password-corepack",
     name: "Input Password (oj-c)",
     image: "oj-ux-icon-size-12x oj-ux-ico-lock",
     isCorePack: true,
   },
   {
     id: 2,
+    routeId: "input-password-oj-input-password",
     name: "Input Password (oj-input-password)",
     image: "oj-ux-icon-size-12x oj-ux-ico-lock",
     isCorePack: false,
@@ -54,7 +58,9 @@ const INITIAL_SELECTION =
 const InputPasswordHome = ({
   onBreadcrumbChange,
   onNavigateFormsHome,
+  routeSegments,
 }: NestedFormHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<PasswordComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -111,6 +117,17 @@ const InputPasswordHome = ({
   const activeComponent = passwordComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    passwordComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? passwordComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? passwordComponents[0]
+      : undefined);
 
   const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
@@ -119,7 +136,25 @@ const InputPasswordHome = ({
       new KeySetImpl([]) as KeySet<PasswordComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -138,8 +173,6 @@ const InputPasswordHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,
@@ -151,10 +184,17 @@ const InputPasswordHome = ({
   const handleSelectedChanged = (event: PasswordSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as PasswordComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = passwordComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<PasswordComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 

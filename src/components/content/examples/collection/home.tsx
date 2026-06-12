@@ -186,6 +186,28 @@ const CollectionHome = () => {
     (component) => component.routeId === exampleRoute.segments[0],
   );
 
+  const updateNestedBreadcrumbItems = useCallback((items: CatalogBreadcrumbItem[] | null) => {
+    setNestedBreadcrumbItems((current) => {
+      if (current === items) {
+        return current;
+      }
+
+      if (current && items && current.length === items.length) {
+        const hasSameItems = current.every(
+          (item, index) =>
+            item.label === items[index].label &&
+            Boolean(item.current) === Boolean(items[index].current),
+        );
+
+        if (hasSameItems) {
+          return current;
+        }
+      }
+
+      return items;
+    });
+  }, []);
+
   const renderListItem = useCallback(
     (
       item: ojListView.ItemTemplateContext<
@@ -231,8 +253,9 @@ const CollectionHome = () => {
 
     if (activeComponent?.render) {
       return activeComponent.render({
-        onBreadcrumbChange: setNestedBreadcrumbItems,
+        onBreadcrumbChange: updateNestedBreadcrumbItems,
         onNavigateRootHome: handleHomeNavigation,
+        routeSegments: [activeComponent.routeId],
       });
     }
 
@@ -244,7 +267,7 @@ const CollectionHome = () => {
       default:
         return null;
     }
-  }, [activeComponentId]);
+  }, [activeComponentId, updateNestedBreadcrumbItems]);
 
   const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);

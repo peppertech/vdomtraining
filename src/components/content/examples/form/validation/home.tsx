@@ -14,9 +14,11 @@ import {
 } from "../form-breadcrumb";
 import ValidationGroup from "./validationGroup/index";
 import Validators from "./validators/index";
+import { useExampleRoute } from "../../example-route-context";
 
 type ValidationComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -26,24 +28,28 @@ type ValidationComponent = {
 const validationComponents: ValidationComponent[] = [
    {
     id: 2,
+    routeId: "component-validation",
     name: "Component Validation",
     image: "oj-ux-icon-size-12x  oj-ux-ico-validation-component",
     render: () => <ComponentValidation />,
   },
   {
     id: 4,
+    routeId: "converters",
     name: "Converters",
     image: "oj-ux-icon-size-12x  oj-ux-ico-converter",
     render: () => <Converters />,
   },
   {
     id: 1,
+    routeId: "validation-group",
     name: "Validation Group",
     image: "oj-ux-icon-size-12x  oj-ux-ico-validation",
     render: () => <ValidationGroup />,
   },
   {
     id: 3,
+    routeId: "validators",
     name: "Validators",
     image: "oj-ux-icon-size-12x  oj-ux-ico-validator",
     render: () => <Validators />,
@@ -70,7 +76,9 @@ const INITIAL_SELECTION =
 const ValidationHome = ({
   onBreadcrumbChange,
   onNavigateFormsHome,
+  routeSegments,
 }: NestedFormHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<ValidationComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -123,6 +131,17 @@ const ValidationHome = ({
   const activeComponent = validationComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    validationComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? validationComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? validationComponents[0]
+      : undefined);
 
   const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
@@ -131,7 +150,25 @@ const ValidationHome = ({
       new KeySetImpl([]) as KeySet<ValidationComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -150,8 +187,6 @@ const ValidationHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,
@@ -163,12 +198,19 @@ const ValidationHome = ({
   const handleSelectedChanged = (event: ValidationSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as ValidationComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = validationComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<
         ValidationComponent["id"]
       >;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 

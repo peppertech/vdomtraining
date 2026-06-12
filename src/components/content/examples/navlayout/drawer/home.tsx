@@ -10,6 +10,7 @@ import DrawerLayoutLegacyRecipePage from "./drawer-layout-legacy/index";
 import DrawerLayoutCorePackRecipePage from "./drawer-layout-corepack/index";
 import DrawerPopupLegacyRecipePage from "./drawer-popup-legacy/index";
 import DrawerPopupCorePackRecipePage from "./drawer-popup-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 
 import {
   type NestedCatalogHomeProps,
@@ -18,6 +19,7 @@ import {
 
 type DrawerComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -26,22 +28,26 @@ type DrawerComponent = {
 const drawerComponents: DrawerComponent[] = [
   {
     id: 1,
+    routeId: "drawer-layout-legacy",
     name: "Drawer Layout",
     image: "oj-ux-icon-size-12x oj-ux-ico-drawer",
   },
   {
     id: 2,
+    routeId: "drawer-layout-corepack",
     name: "Drawer Layout",
     image: "oj-ux-icon-size-12x oj-ux-ico-drawer",
     isCorePack: true,
   },
   {
     id: 3,
+    routeId: "drawer-popup-legacy",
     name: "Drawer Popup",
     image: "oj-ux-icon-size-12x oj-ux-ico-drawer-popup",
   },
   {
     id: 4,
+    routeId: "drawer-popup-corepack",
     name: "Drawer Popup",
     image: "oj-ux-icon-size-12x oj-ux-ico-drawer-popup",
     isCorePack: true,
@@ -66,7 +72,9 @@ const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<DrawerComponent["id"]>;
 const DrawerHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<DrawerComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -76,6 +84,17 @@ const DrawerHome = ({
   const activeComponent = drawerComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    drawerComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? drawerComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? drawerComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -130,17 +149,41 @@ const DrawerHome = ({
     setShowComponentDetail(false);
     setSelectedItems(new KeySetImpl([]) as KeySet<DrawerComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: DrawerSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as DrawerComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = drawerComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<DrawerComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -159,8 +202,6 @@ const DrawerHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,

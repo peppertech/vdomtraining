@@ -11,6 +11,7 @@ import ProgressButtonCorePackRecipePage from "./progress-button-corepack/index";
 import ProgressCircleCorePackRecipePage from "./progress-circle-corepack/index";
 import ProgressBarLegacyRecipePage from "./progress-bar-legacy/index";
 import ProgressCircleLegacyRecipePage from "./progress-circle-legacy/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -18,6 +19,7 @@ import {
 
 type ProgressComponent = {
   id: number;
+  routeId: string;
   name: string;
   description: string;
   image: string;
@@ -27,12 +29,14 @@ type ProgressComponent = {
 const progressComponents: ProgressComponent[] = [
   {
     id: 4,
+    routeId: "progress-bar-legacy",
     name: "Progress Bar",
     description: "",
     image: "oj-ux-icon-size-12x oj-ux-ico-progress-linear",
   },
   {
     id: 1,
+    routeId: "progress-bar-corepack",
     name: "Progress Bar",
     description: "",
     image: "oj-ux-icon-size-12x oj-ux-ico-progress-linear",
@@ -41,6 +45,7 @@ const progressComponents: ProgressComponent[] = [
   
   {
     id: 3,
+    routeId: "progress-button",
     name: "Progress Button",
     description: "",
     image: "oj-ux-icon-size-12x  oj-ux-ico-button",
@@ -49,12 +54,14 @@ const progressComponents: ProgressComponent[] = [
   
   {
     id: 5,
+    routeId: "progress-circle-legacy",
     name: "Progress Circle",
     description: "",
     image: "oj-ux-icon-size-12x  oj-ux-ico-circular-progress-7",
   },
   {
     id: 2,
+    routeId: "progress-circle-corepack",
     name: "Progress Circle",
     description: "",
     image: "oj-ux-icon-size-12x  oj-ux-ico-circular-progress-7",
@@ -77,13 +84,26 @@ const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<ProgressComponent["id"]>;
 const ProgressHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] = useState<KeySet<ProgressComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
   const [activeComponentId, setActiveComponentId] = useState<number | null>(null);
   const activeComponent = progressComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    progressComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? progressComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? progressComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (item: ojListView.ItemTemplateContext<ProgressComponent["id"], ProgressComponent>) => (
@@ -152,10 +172,17 @@ const ProgressHome = ({
   const handleSelectedChanged = (event: ProgressSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as ProgressComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = progressComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<ProgressComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -164,7 +191,25 @@ const ProgressHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<ProgressComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -183,8 +228,6 @@ const ProgressHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

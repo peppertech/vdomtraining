@@ -191,6 +191,28 @@ const FormsHome = () => {
     (example) => example.id === exampleRoute.segments[0],
   );
 
+  const updateNestedBreadcrumbItems = useCallback((items: FormBreadcrumbItem[] | null) => {
+    setNestedBreadcrumbItems((current) => {
+      if (current === items) {
+        return current;
+      }
+
+      if (current && items && current.length === items.length) {
+        const hasSameItems = current.every(
+          (item, index) =>
+            item.label === items[index].label &&
+            Boolean(item.current) === Boolean(items[index].current),
+        );
+
+        if (hasSameItems) {
+          return current;
+        }
+      }
+
+      return items;
+    });
+  }, []);
+
   const renderListItem = useCallback(
     (
       item: ojListView.ItemTemplateContext<
@@ -242,11 +264,12 @@ const FormsHome = () => {
     );
     return (
       showcase?.render({
-        onBreadcrumbChange: setNestedBreadcrumbItems,
+        onBreadcrumbChange: updateNestedBreadcrumbItems,
         onNavigateFormsHome: handleHomeNavigation,
+        routeSegments: [showcase.id],
       }) ?? null
     );
-  }, [activeComponentId, handleHomeNavigation]);
+  }, [activeComponentId, handleHomeNavigation, updateNestedBreadcrumbItems]);
 
   const activeComponent = formExamples.find(
     (example) => example.id === activeComponentId,

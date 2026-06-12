@@ -22,6 +22,7 @@ type RecipePageTemplateProps = {
   initialItemId?: string;
   layoutId?: string;
   navigationTitle?: string;
+  routeSegments?: string[];
 };
 
 export function RecipePageTemplate({
@@ -32,10 +33,17 @@ export function RecipePageTemplate({
   initialItemId,
   layoutId,
   navigationTitle,
+  routeSegments,
 }: RecipePageTemplateProps) {
   const exampleRoute = useExampleRoute();
   const navigationListRef = useRef<HTMLElement | null>(null);
-  const routeItemId = exampleRoute.segments[exampleRoute.segments.length - 1];
+  const routeItemId =
+    routeSegments &&
+    routeSegments.every(
+      (segment, index) => exampleRoute.segments[index] === segment,
+    )
+      ? exampleRoute.segments[routeSegments.length]
+      : exampleRoute.segments[exampleRoute.segments.length - 1];
   const initialActiveItemId =
     initialItemId ?? items[0]?.id ?? "";
   const activeRouteItem = items.some((item) => item.id === routeItemId)
@@ -60,10 +68,12 @@ export function RecipePageTemplate({
       setActiveExampleId(itemId);
 
       if (exampleRoute.category) {
-        const nextSegments = [...exampleRoute.segments];
+        const nextSegments = routeSegments
+          ? [...routeSegments]
+          : [...exampleRoute.segments];
         const lastSegment = nextSegments[nextSegments.length - 1];
 
-        if (items.some((item) => item.id === lastSegment)) {
+        if (!routeSegments && items.some((item) => item.id === lastSegment)) {
           nextSegments[nextSegments.length - 1] = itemId;
         } else {
           nextSegments.push(itemId);
@@ -72,7 +82,7 @@ export function RecipePageTemplate({
         exampleRoute.routeTo(nextSegments);
       }
     },
-    [exampleRoute, items],
+    [exampleRoute, items, routeSegments],
   );
 
   const handleNavigationChange = useCallback(

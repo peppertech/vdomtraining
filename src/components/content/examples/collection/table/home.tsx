@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import TableLegacyRecipePage from "./table-legacy/index";
 import TableCorePackRecipePage from "./table-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 type TableComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -27,11 +29,13 @@ type TableSelectedChangedEvent = ojListView.selectedChanged<
 const tableComponents: TableComponent[] = [
   {
     id: 1,
+    routeId: "table-legacy",
     name: "Table",
     image: "oj-ux-icon-size-12x  oj-ux-ico-tables-basic",
   },
   {
     id: 2,
+    routeId: "table-corepack",
     name: "Table",
     image: "oj-ux-icon-size-12x  oj-ux-ico-tables-basic",
     isCorePack: true,
@@ -53,7 +57,9 @@ const INITIAL_SELECTION =
 const TableHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<TableComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -63,6 +69,17 @@ const TableHome = ({
   const activeComponent = tableComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    tableComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? tableComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? tableComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -117,17 +134,41 @@ const TableHome = ({
       new KeySetImpl([]) as KeySet<TableComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: TableSelectedChangedEvent) => {
     const selection = event.detail.value as KeySetImpl<TableComponent["id"]>;
     const selectedKey = Array.from(selection.values())[0];
     if (typeof selectedKey === "number") {
+      const selectedComponent = tableComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -146,8 +187,6 @@ const TableHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,

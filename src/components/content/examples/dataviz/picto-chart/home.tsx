@@ -12,9 +12,11 @@ import {
 } from "../../../../shared/catalog-breadcrumb";
 import PictoChartCorePackRecipePage from "./picto-chart-corepack/index";
 import PictoChartLegacyRecipePage from "./picto-chart-legacy/index";
+import { useExampleRoute } from "../../example-route-context";
 
 type PictoChartComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -23,11 +25,13 @@ type PictoChartComponent = {
 const pictoChartComponents: PictoChartComponent[] = [
   {
     id: 1,
+    routeId: "picto-chart-legacy",
     name: "Picto Chart",
     image: "oj-ux-icon-size-12x  oj-ux-ico-treemap",
   },
   {
     id: 2,
+    routeId: "picto-chart-corepack",
     name: "Picto Chart",
     image: "oj-ux-icon-size-12x  oj-ux-ico-treemap",
     isCorePack: true,
@@ -49,7 +53,9 @@ const INITIAL_SELECTION =
 const PictoChartHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<PictoChartComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -60,6 +66,17 @@ const PictoChartHome = ({
   const activeComponent = pictoChartComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    pictoChartComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? pictoChartComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? pictoChartComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -108,10 +125,17 @@ const PictoChartHome = ({
   const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<PictoChartComponent["id"], KeySet<PictoChartComponent["id"]>>) => {
     const selectedKey = event.detail.items?.[0]?.key as PictoChartComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = pictoChartComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<PictoChartComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -120,7 +144,25 @@ const PictoChartHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<PictoChartComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -139,8 +181,6 @@ const PictoChartHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

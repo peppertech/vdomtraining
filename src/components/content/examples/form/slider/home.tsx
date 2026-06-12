@@ -9,9 +9,11 @@ import { ojListView } from "ojs/ojlistview";
 import RangeSlider from "./rangeSliderLegacy/index";
 import Slider from "./sliderLegacy/index";
 import { type NestedFormHomeProps } from "../form-breadcrumb";
+import { useExampleRoute } from "../../example-route-context";
 
 type SliderComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
 };
@@ -19,11 +21,13 @@ type SliderComponent = {
 const sliderComponents: SliderComponent[] = [
   {
     id: 1,
+    routeId: "slider",
     name: "Slider",
     image: "oj-ux-icon-size-12x oj-ux-ico-slider",
   },
   {
     id: 2,
+    routeId: "range-slider",
     name: "Range Slider",
     image: "oj-ux-icon-size-12x oj-ux-ico-slider",
   },
@@ -48,7 +52,9 @@ const INITIAL_SELECTION =
 const SliderHome = ({
   onBreadcrumbChange,
   onNavigateFormsHome,
+  routeSegments,
 }: NestedFormHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<SliderComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -100,6 +106,17 @@ const SliderHome = ({
   const activeComponent = sliderComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    sliderComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? sliderComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? sliderComponents[0]
+      : undefined);
 
   const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
@@ -108,7 +125,25 @@ const SliderHome = ({
       new KeySetImpl([]) as KeySet<SliderComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -124,8 +159,6 @@ const SliderHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,
@@ -137,10 +170,17 @@ const SliderHome = ({
   const handleSelectedChanged = (event: SliderSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as SliderComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = sliderComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<SliderComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 

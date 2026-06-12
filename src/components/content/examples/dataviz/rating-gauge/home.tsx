@@ -12,9 +12,11 @@ import {
 } from "../../../../shared/catalog-breadcrumb";
 import RatingGaugeCorePackRecipePage from "./rating-gauge-corepack/index";
 import RatingGaugeLegacyRecipePage from "./rating-gauge-legacy/index";
+import { useExampleRoute } from "../../example-route-context";
 
 type RatingGaugeComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -23,11 +25,13 @@ type RatingGaugeComponent = {
 const ratingGaugeComponents: RatingGaugeComponent[] = [
   {
     id: 1,
+    routeId: "rating-gauge-legacy",
     name: "Rating Gauge",
     image: "oj-ux-icon-size-12x oj-ux-ico-star",
   },
   {
     id: 2,
+    routeId: "rating-gauge-corepack",
     name: "Rating Gauge",
     image: "oj-ux-icon-size-12x oj-ux-ico-star",
     isCorePack: true,
@@ -49,7 +53,9 @@ const INITIAL_SELECTION =
 const RatingGaugeHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<RatingGaugeComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -60,6 +66,17 @@ const RatingGaugeHome = ({
   const activeComponent = ratingGaugeComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    ratingGaugeComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? ratingGaugeComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? ratingGaugeComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -108,10 +125,17 @@ const RatingGaugeHome = ({
   const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<RatingGaugeComponent["id"], KeySet<RatingGaugeComponent["id"]>>) => {
     const selectedKey = event.detail.items?.[0]?.key as RatingGaugeComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = ratingGaugeComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<RatingGaugeComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -120,7 +144,25 @@ const RatingGaugeHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<RatingGaugeComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -139,8 +181,6 @@ const RatingGaugeHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

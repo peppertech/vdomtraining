@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import TextArea from "./textAreaLegacy/index";
 import TextAreaCorePack from "./textAreaCorePack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 type TextAreaComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -24,12 +26,14 @@ type TextAreaComponent = {
 const textAreaComponents: TextAreaComponent[] = [
   {
     id: 1,
+    routeId: "text-area",
     name: "Text Area",
     image: "oj-ux-icon-size-12x oj-ux-ico-text-input-area",
     render: () => <TextArea />,
   },
   {
     id: 2,
+    routeId: "text-area-corepack",
     name: "Text Area (oj-c)",
     image: "oj-ux-icon-size-12x oj-ux-ico-text-input-area",
     isCorePack: true,
@@ -55,7 +59,9 @@ const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<TextAreaComponent["id"]>;
 const TextAreaHome = ({
   onBreadcrumbChange,
   onNavigateFormsHome,
+  routeSegments,
 }: NestedFormHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<TextAreaComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -108,6 +114,17 @@ const TextAreaHome = ({
   const activeComponent = textAreaComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    textAreaComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? textAreaComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? textAreaComponents[0]
+      : undefined);
 
   const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
@@ -116,7 +133,25 @@ const TextAreaHome = ({
       new KeySetImpl([]) as KeySet<TextAreaComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -135,8 +170,6 @@ const TextAreaHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,
@@ -148,10 +181,17 @@ const TextAreaHome = ({
   const handleSelectedChanged = (event: TextAreaSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as TextAreaComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = textAreaComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<TextAreaComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 

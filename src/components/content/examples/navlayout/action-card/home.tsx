@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import ActionCardLegacyRecipePage from "./action-card-legacy/index";
 import ActionCardCorePackRecipePage from "./action-card-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 type ActionCardComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -23,11 +25,13 @@ type ActionCardComponent = {
 const actionCardComponents: ActionCardComponent[] = [
   {
     id: 1,
+    routeId: "action-card-legacy",
     name: "Action Card",
     image: "oj-ux-icon-size-12x oj-ux-ico-contact-card",
   },
   {
     id: 2,
+    routeId: "action-card-corepack",
     name: "Action Card",
     image: "oj-ux-icon-size-12x oj-ux-ico-contact-card",
     isCorePack: true,
@@ -53,7 +57,9 @@ const INITIAL_SELECTION =
 const ActionCardHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<ActionCardComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -63,6 +69,17 @@ const ActionCardHome = ({
   const activeComponent = actionCardComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    actionCardComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? actionCardComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? actionCardComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -115,17 +132,41 @@ const ActionCardHome = ({
       new KeySetImpl([]) as KeySet<ActionCardComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: ActionCardSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as ActionCardComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = actionCardComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<ActionCardComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -144,8 +185,6 @@ const ActionCardHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,

@@ -7,6 +7,7 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
 import TrainLegacyRecipePage from "./train-legacy/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -14,6 +15,7 @@ import {
 
 type TrainComponent = {
   id: number;
+  routeId: string;
   name: string;
   description: string;
   image: string;
@@ -23,6 +25,7 @@ type TrainComponent = {
 const trainComponents: TrainComponent[] = [
   {
     id: 1,
+    routeId: "train",
     name: "Train",
     description:
       "Classic oj-train demos covering linear flow, validation, messages, navigation, and layout.",
@@ -49,7 +52,9 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const TrainHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<TrainComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -57,6 +62,17 @@ const TrainHome = ({
   const activeComponent = trainComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    trainComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? trainComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? trainComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -100,10 +116,17 @@ const TrainHome = ({
   const handleSelectedChanged = (event: TrainSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as TrainComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = trainComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<TrainComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -112,7 +135,25 @@ const TrainHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<TrainComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -131,8 +172,6 @@ const TrainHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

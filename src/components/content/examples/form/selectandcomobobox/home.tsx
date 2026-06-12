@@ -12,6 +12,7 @@ import SelectMultipleCorePack from "./selectMultipleCorePack/index";
 import  SelectManyIndex from "./selectMany/index";
 import ComboboxOneExample from "./comboBoxOne/index";
 import ComboboxManyDemoWrapper from "./comboboxMany/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
@@ -19,6 +20,7 @@ import {
 
 type SelectComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -28,12 +30,14 @@ type SelectComponent = {
 const selectComponents: SelectComponent[] = [
   {
     id: 1,
+    routeId: "select-single-legacy",
     name: "Select Single",
     image: "oj-ux-icon-size-12x oj-ux-ico-select-tab",
     render: () => <SelectSingleLegacyDemoWrapper />,
   },
   {
     id: 2,
+    routeId: "select-single-corepack",
     name: "Select Single",
     image: "oj-ux-icon-size-12x oj-ux-ico-select-tab",
     isCorePack: true,
@@ -41,6 +45,7 @@ const selectComponents: SelectComponent[] = [
   },
   {
     id: 3,
+    routeId: "select-multiple",
     name: "Select Multiple",
     image: "oj-ux-icon-size-12x oj-ux-ico-select",
     isCorePack: true,
@@ -48,18 +53,21 @@ const selectComponents: SelectComponent[] = [
   },
   {
     id: 4,
+    routeId: "select-many",
     name: "Select Many",
     image: "oj-ux-icon-size-12x oj-ux-ico-select-all",
     render: () => <SelectManyIndex />,
   },
   {
     id: 5,
+    routeId: "combobox-one",
     name: "Combobox One",
     image: "oj-ux-icon-size-12x oj-ux-ico-text-input-combo",
     render: () => <ComboboxOneExample />,
   },
   {
     id: 6,
+    routeId: "combobox-many",
     name: "Combobox Many",
     image: "oj-ux-icon-size-12x oj-ux-ico-text-input-combo-many",
     render: () => <ComboboxManyDemoWrapper />,
@@ -85,7 +93,9 @@ const INITIAL_SELECTION =
 const SelectAndComboboxHome = ({
   onBreadcrumbChange,
   onNavigateFormsHome,
+  routeSegments,
 }: NestedFormHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<SelectComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -138,6 +148,17 @@ const SelectAndComboboxHome = ({
   const activeComponent = selectComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    selectComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? selectComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? selectComponents[0]
+      : undefined);
 
   const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
@@ -146,7 +167,25 @@ const SelectAndComboboxHome = ({
       new KeySetImpl([]) as KeySet<SelectComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -165,8 +204,6 @@ const SelectAndComboboxHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,
@@ -178,10 +215,17 @@ const SelectAndComboboxHome = ({
   const handleSelectedChanged = (event: SelectSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as SelectComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = selectComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<SelectComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 

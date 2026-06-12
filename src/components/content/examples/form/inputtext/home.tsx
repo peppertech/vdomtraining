@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import InputTextLegacy from "./inputTextLegacy/index";
 import InputTextCorePack from "./inputTextCorePack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 type InputTextComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -23,11 +25,13 @@ type InputTextComponent = {
 const components: InputTextComponent[] = [
   {
     id: 1,
+    routeId: "input-text",
     name: "Input Text",
     image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
   },
   {
     id: 2,
+    routeId: "input-text-corepack",
     name: "Input Text (oj-c)",
     image: "oj-ux-icon-size-12x  oj-ux-ico-text-input",
     isCorePack: true,
@@ -53,7 +57,9 @@ const INITIAL_SELECTION =
 const InputTextHome = ({
   onBreadcrumbChange,
   onNavigateFormsHome,
+  routeSegments,
 }: NestedFormHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<InputTextComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -110,6 +116,17 @@ const InputTextHome = ({
   const activeComponent = components.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    components.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? components.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? components[0]
+      : undefined);
 
   const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
@@ -118,7 +135,25 @@ const InputTextHome = ({
       new KeySetImpl([]) as KeySet<InputTextComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -137,8 +172,6 @@ const InputTextHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,
@@ -150,10 +183,17 @@ const InputTextHome = ({
   const handleSelectedChanged = (event: InputTextSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as InputTextComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = components.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<InputTextComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 

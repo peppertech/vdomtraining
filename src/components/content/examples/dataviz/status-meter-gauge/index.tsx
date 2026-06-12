@@ -66,6 +66,7 @@ export default function StatusMeterGaugeRecipePage() {
       items={statusMeterGaugeItems}
       initialItemId="default"
       navigationTitle="Status Meter Gauge"
+      routeSegments={["meters", "status-meter-gauge"]}
     />
   );
 }

@@ -10,6 +10,7 @@ import {
   type CatalogBreadcrumbItem,
   type NestedCatalogHomeProps,
 } from "../../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../../example-route-context";
 import AreaChartsHome from "./area-charts/home";
 import BarChartsRecipePage from "./bar-charts/index";
 import BoxPlotChartsRecipePage from "./box-plot-charts/index";
@@ -30,6 +31,7 @@ import StockChartsRecipePage from "./stock-charts/index";
 
 type ChartComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -39,6 +41,7 @@ type ChartComponent = {
 const chartComponents: ChartComponent[] = [
   {
     id: 1,
+    routeId: "area-charts",
     name: "Area Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-area",
     isCorePack: true,
@@ -46,84 +49,98 @@ const chartComponents: ChartComponent[] = [
   },
   {
     id: 2,
+    routeId: "bar-charts",
     name: "Bar Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-bar-chart",
     render: () => <BarChartsRecipePage />,
   },
   {
     id: 3,
+    routeId: "pie-charts",
     name: "Pie / Donut Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-pie-chart",
     render: () => <PieChartsRecipePage />,
   },
   {
     id: 4,
+    routeId: "box-plot-charts",
     name: "Box Plot Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-box-plot",
     render: () => <BoxPlotChartsRecipePage />,
   },
   {
     id: 5,
+    routeId: "bubble-charts",
     name: "Bubble Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-bubble",
     render: () => <BubbleChartsRecipePage />,
   },
   {
     id: 6,
+    routeId: "polar-charts",
     name: "Polar Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-radar",
     render: () => <PolarChartsRecipePage />,
   },
   {
     id: 7,
+    routeId: "pyramid-charts",
     name: "Pyramid Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-pyramid",
     render: () => <PyramidChartsRecipePage />,
   },
   {
     id: 8,
+    routeId: "range-charts",
     name: "Range Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-range-area",
     render: () => <RangeChartsRecipePage />,
   },
   {
     id: 9,
+    routeId: "scatter-charts",
     name: "Scatter Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-scatter",
     render: () => <ScatterChartsRecipePage />,
   },
   {
     id: 10,
+    routeId: "funnel-charts",
     name: "Funnel Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-funnel",
     render: () => <FunnelChartsRecipePage />,
   },
   {
     id: 11,
+    routeId: "line-with-area-charts",
     name: "Line with Area Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-area",
     render: () => <LineWithAreaChartsRecipePage />,
   },
   {
     id: 12,
+    routeId: "combination-charts",
     name: "Combination Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-combo",
     render: () => <CombinationChartsRecipePage />,
   },
   {
     id: 13,
+    routeId: "common-charts",
     name: "Common Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-combo",
     render: () => <CommonChartsLegacyRecipePage />,
   },
   {
     id: 14,
+    routeId: "line-charts",
     name: "Line Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-line",
     render: () => <LineChartsRecipePage />,
   },
   {
     id: 15,
+    routeId: "line-charts-corepack",
     name: "Line Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-line",
     isCorePack: true,
@@ -131,12 +148,14 @@ const chartComponents: ChartComponent[] = [
   },
   {
     id: 16,
+    routeId: "stock-charts",
     name: "Stock Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-combo",
     render: () => <StockChartsRecipePage />,
   },
   {
     id: 17,
+    routeId: "spark-charts",
     name: "Spark Charts",
     image: "oj-ux-icon-size-12x oj-ux-ico-chart-area",
     render: () => <SparkChartsRecipePage />,
@@ -158,6 +177,7 @@ const ChartsHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<ChartComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -168,13 +188,17 @@ const ChartsHome = ({
   const activeComponent = chartComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const activeRouteComponent = chartComponents.find(
+    (component) => component.routeId === exampleRoute.segments[1],
+  );
 
   const handleBack = useCallback(() => {
     setShowComponentDetail(false);
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<ChartComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(["charts"]);
+  }, [exampleRoute, onBreadcrumbChange]);
 
   const renderListItem = useCallback(
     (
@@ -212,10 +236,18 @@ const ChartsHome = ({
   const handleSelectedChanged = (event: DatavizListSelectionChangedEvent<ChartComponent["id"], KeySet<ChartComponent["id"]>>) => {
     const selectedKey = event.detail.items?.[0]?.key as ChartComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = chartComponents.find(
+        (component) => component.id === selectedKey,
+      );
+
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<ChartComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo(["charts", selectedComponent.routeId]);
+      }
     }
   };
 
@@ -258,6 +290,25 @@ const ChartsHome = ({
   }, [activeComponent, handleNestedBreadcrumbChange, onNavigateRootHome]);
 
   useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as KeySet<
+          ChartComponent["id"]
+        >,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length === 1) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as KeySet<ChartComponent["id"]>);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length]);
+
+  useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
       onBreadcrumbChange?.(null);
       return;
@@ -271,8 +322,6 @@ const ChartsHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

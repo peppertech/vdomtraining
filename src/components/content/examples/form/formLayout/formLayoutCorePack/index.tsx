@@ -79,6 +79,7 @@ export default function FormLayoutCorePackRecipePage() {
       layoutId="formLayoutCorePackNavigationLayout"
       items={formLayoutCorePackItems}
       initialItemId="form-inputs"
+      routeSegments={["form-layout", "form-layout-corepack"]}
     />
   );
 }

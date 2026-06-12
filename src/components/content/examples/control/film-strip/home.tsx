@@ -7,6 +7,7 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
 import FilmStripLegacyRecipePage from "./film-strip-legacy/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -14,6 +15,7 @@ import {
 
 type FilmStripComponent = {
   id: number;
+  routeId: string;
   name: string;
   description: string;
   image: string;
@@ -23,6 +25,7 @@ type FilmStripComponent = {
 const filmStripComponents: FilmStripComponent[] = [
   {
     id: 1,
+    routeId: "film-strip",
     name: "Film Strip",
     description:
       "Classic oj-film-strip demos covering navigation, paging, lazy rendering, and layouts.",
@@ -49,7 +52,9 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const FilmStripHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<FilmStripComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -57,6 +62,17 @@ const FilmStripHome = ({
   const activeComponent = filmStripComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    filmStripComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? filmStripComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? filmStripComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -100,10 +116,17 @@ const FilmStripHome = ({
   const handleSelectedChanged = (event: FilmStripSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as FilmStripComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = filmStripComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<FilmStripComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -112,7 +135,25 @@ const FilmStripHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<FilmStripComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -131,8 +172,6 @@ const FilmStripHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

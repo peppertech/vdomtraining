@@ -7,6 +7,7 @@ import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
 import TruncatingTextCorePackRecipePage from "./truncating-text-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -14,6 +15,7 @@ import {
 
 type TruncatingTextComponent = {
   id: number;
+  routeId: string;
   name: string;
   description: string;
   image: string;
@@ -23,6 +25,7 @@ type TruncatingTextComponent = {
 const truncatingTextComponents: TruncatingTextComponent[] = [
   {
     id: 1,
+    routeId: "truncating-text",
     name: "Truncating Text",
     description:
       "Core Pack truncating text demos covering hyphenation, overflow wrapping, colors, sizes, truncation, and line clamp.",
@@ -52,7 +55,9 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const TruncatingTextHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<TruncatingTextComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -60,6 +65,17 @@ const TruncatingTextHome = ({
   const activeComponent = truncatingTextComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    truncatingTextComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? truncatingTextComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? truncatingTextComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -104,10 +120,17 @@ const TruncatingTextHome = ({
     const selectedKey = event.detail.items[0]
       ?.key as TruncatingTextComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = truncatingTextComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<TruncatingTextComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -118,7 +141,25 @@ const TruncatingTextHome = ({
       new KeySetImpl([]) as KeySet<TruncatingTextComponent["id"]>,
     );
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -137,8 +178,6 @@ const TruncatingTextHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

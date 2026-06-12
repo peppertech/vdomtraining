@@ -10,6 +10,7 @@ import { ojListView } from "ojs/ojlistview";
 import BadgeLegacyRecipePage from "./badge-legacy/index";
 import BadgeCorePackRecipePage from "./badge-corepack/index";
 import TruncatingBadgeCorePackRecipePage from "./truncating-badge-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -17,6 +18,7 @@ import {
 
 type BadgeComponent = {
   id: number;
+  routeId: string;
   name: string;
   description: string;
   image: string;
@@ -26,12 +28,14 @@ type BadgeComponent = {
 const badgeComponents: BadgeComponent[] = [
   {
     id: 1,
+    routeId: "badge",
     name: "Badge",
     description: "Classic oj-badge demos covering colors, sizes, custom styling, and end badges.",
     image: "oj-ux-icon-size-12x oj-ux-ico-badge",
   },
   {
     id: 2,
+    routeId: "badge-corepack",
     name: "Badge (oj-c)",
     description: "Core Pack badge demos covering variants, subtle colors, and sizes.",
     image: "oj-ux-icon-size-12x oj-ux-ico-badge",
@@ -39,6 +43,7 @@ const badgeComponents: BadgeComponent[] = [
   },
   {
     id: 3,
+    routeId: "truncating-badge-corepack",
     name: "Truncating Badge (oj-c)",
     description:
       "Core Pack truncating badge demos covering truncation, tooltips, variants, and sizes.",
@@ -66,7 +71,9 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const BadgeHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<BadgeComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -74,6 +81,17 @@ const BadgeHome = ({
   const activeComponent = badgeComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    badgeComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? badgeComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? badgeComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (item: ojListView.ItemTemplateContext<BadgeComponent["id"], BadgeComponent>) => (
@@ -116,10 +134,17 @@ const BadgeHome = ({
   const handleSelectedChanged = (event: BadgeSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as BadgeComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = badgeComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<BadgeComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -128,7 +153,25 @@ const BadgeHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<BadgeComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -147,8 +190,6 @@ const BadgeHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

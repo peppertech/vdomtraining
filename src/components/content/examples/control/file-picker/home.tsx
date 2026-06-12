@@ -8,6 +8,7 @@ import { ojListView } from "ojs/ojlistview";
 
 import FilePickerLegacyRecipePage from "./file-picker-legacy/index";
 import FilePickerCorePackRecipePage from "./file-picker-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -15,6 +16,7 @@ import {
 
 type FilePickerComponent = {
   id: number;
+  routeId: string;
   name: string;
   description: string;
   image: string;
@@ -24,6 +26,7 @@ type FilePickerComponent = {
 const filePickerComponents: FilePickerComponent[] = [
   {
     id: 1,
+    routeId: "file-picker-legacy",
     name: "File Picker",
     description:
       "Classic oj-file-picker demos covering selection, capture, custom content, and sizing.",
@@ -31,6 +34,7 @@ const filePickerComponents: FilePickerComponent[] = [
   },
   {
     id: 2,
+    routeId: "file-picker-corepack",
     name: "File Picker",
     description:
       "Core Pack file picker demos covering capture, custom content, custom text, and restrictions.",
@@ -58,7 +62,9 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const FilePickerHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<FilePickerComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -66,6 +72,17 @@ const FilePickerHome = ({
   const activeComponent = filePickerComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    filePickerComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? filePickerComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? filePickerComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -111,10 +128,17 @@ const FilePickerHome = ({
   const handleSelectedChanged = (event: FilePickerSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as FilePickerComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = filePickerComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<FilePickerComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -123,7 +147,25 @@ const FilePickerHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<FilePickerComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -142,8 +184,6 @@ const FilePickerHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

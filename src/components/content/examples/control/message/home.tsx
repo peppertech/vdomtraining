@@ -10,6 +10,7 @@ import MessageBannerLegacyRecipePage from "./message-banner-legacy/index";
 import MessageToastLegacyRecipePage from "./message-toast-legacy/index";
 import MessageBannerCorePackRecipePage from "./message-banner-corepack/index";
 import MessageToastCorePackRecipePage from "./message-toast-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -17,6 +18,7 @@ import {
 
 type MessageComponent = {
   id: number;
+  routeId: string;
   name: string;
   description: string;
   image: string;
@@ -26,12 +28,14 @@ type MessageComponent = {
 const messageComponents: MessageComponent[] = [
   {
     id: 1,
+    routeId: "message-banner-legacy",
     name: "Message Banner",
     description: "Interactive VDOM example demonstrating dismissible banner messages with actions.",
     image: "oj-ux-icon-size-12x oj-ux-ico-message-banner",
   },
   {
     id: 2,
+    routeId: "message-banner-corepack",
     name: "Message Banner",
     description: "Core Pack message banner demos with page, section, detail template, and sorting examples.",
     image: "oj-ux-icon-size-12x oj-ux-ico-message-banner",
@@ -39,12 +43,14 @@ const messageComponents: MessageComponent[] = [
   },
   {
     id: 3,
+    routeId: "messages-toast",
     name: "Messages Toast",
     description: "Legacy oj-messages notification demos with custom message content and actions.",
     image: "oj-ux-icon-size-12x  oj-ux-ico-messages",
   },
   {
     id: 4,
+    routeId: "message-toast",
     name: "Message Toast",
     description: "Core Pack oj-c-message-toast demos with auto timeout, detail actions, and progress examples.",
     image: "oj-ux-icon-size-12x  oj-ux-ico-messages",
@@ -71,7 +77,9 @@ const gridlines: ListViewProps["gridlines"] = { item: "visible" };
 const MessageHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<MessageComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -79,6 +87,17 @@ const MessageHome = ({
   const activeComponent = messageComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    messageComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? messageComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? messageComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -132,10 +151,17 @@ const MessageHome = ({
   const handleSelectedChanged = (event: MessageSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as MessageComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = messageComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<MessageComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
 
@@ -144,7 +170,25 @@ const MessageHome = ({
     setActiveComponentId(null);
     setSelectedItems(new KeySetImpl([]) as KeySet<MessageComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
+
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -163,8 +207,6 @@ const MessageHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleBack,

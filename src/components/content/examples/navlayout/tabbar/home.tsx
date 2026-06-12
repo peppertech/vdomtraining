@@ -9,6 +9,7 @@ import { ojListView } from "ojs/ojlistview";
 import TabBarLegacyRecipePage from "./tab-bar-legacy/index";
 import TabBarCorePackRecipePage from "./tab-bar-corepack/index";
 import TabBarMixedCorePackRecipePage from "./tab-bar-mixed-corepack/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
@@ -16,6 +17,7 @@ import {
 
 type TabBarComponent = {
   id: number;
+  routeId: string;
   name: string;
   image: string;
   isCorePack?: boolean;
@@ -24,17 +26,20 @@ type TabBarComponent = {
 const tabBarComponents: TabBarComponent[] = [
   {
     id: 1,
+    routeId: "tab-bar-legacy",
     name: "Tab Bar",
     image: "oj-ux-icon-size-12x oj-ux-ico-tab-bar",
   },
   {
     id: 2,
+    routeId: "tab-bar-corepack",
     name: "Tab Bar",
     image: "oj-ux-icon-size-12x oj-ux-ico-tab-bar",
     isCorePack: true,
   },
   {
     id: 3,
+    routeId: "tab-bar-mixed",
     name: "Tab Bar Mixed",
     image: "oj-ux-icon-size-12x oj-ux-ico-tab-bar",
     isCorePack: true,
@@ -59,7 +64,9 @@ const INITIAL_SELECTION = new KeySetImpl([]) as KeySet<TabBarComponent["id"]>;
 const TabBarHome = ({
   onBreadcrumbChange,
   onNavigateRootHome,
+  routeSegments,
 }: NestedCatalogHomeProps) => {
+  const exampleRoute = useExampleRoute();
   const [selectedItems, setSelectedItems] =
     useState<KeySet<TabBarComponent["id"]>>(INITIAL_SELECTION);
   const [showComponentDetail, setShowComponentDetail] = useState(false);
@@ -67,6 +74,17 @@ const TabBarHome = ({
   const activeComponent = tabBarComponents.find(
     (component) => component.id === activeComponentId,
   );
+  const routeBase = routeSegments ?? exampleRoute.segments.slice(0, 1);
+  const activeRouteComponent =
+    tabBarComponents.find(
+      (component) => component.routeId === exampleRoute.segments[routeBase.length],
+    ) ??
+    (exampleRoute.segments.length > routeBase.length
+      ? tabBarComponents.find(
+          (component) =>
+            "isCorePack" in component && Boolean(component.isCorePack),
+        ) ?? tabBarComponents[0]
+      : undefined);
 
   const renderListItem = useCallback(
     (
@@ -119,17 +137,41 @@ const TabBarHome = ({
     setShowComponentDetail(false);
     setSelectedItems(new KeySetImpl([]) as KeySet<TabBarComponent["id"]>);
     onBreadcrumbChange?.(null);
-  }, [onBreadcrumbChange]);
+    exampleRoute.routeTo(routeBase);
+  }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: TabBarSelectedChangedEvent) => {
     const selectedKey = event.detail.items[0]?.key as TabBarComponent["id"];
     if (typeof selectedKey === "number") {
+      const selectedComponent = tabBarComponents.find(
+        (component) => component.id === selectedKey,
+      );
       setActiveComponentId(selectedKey);
       setShowComponentDetail(true);
       const selection = event.detail.value as KeySet<TabBarComponent["id"]>;
       setSelectedItems(selection);
+
+      if (selectedComponent) {
+        exampleRoute.routeTo([...routeBase, selectedComponent.routeId]);
+      }
     }
   };
+  useEffect(() => {
+    if (activeRouteComponent) {
+      setActiveComponentId(activeRouteComponent.id);
+      setShowComponentDetail(true);
+      setSelectedItems(
+        new KeySetImpl([activeRouteComponent.id]) as typeof INITIAL_SELECTION,
+      );
+      return;
+    }
+
+    if (exampleRoute.segments.length <= routeBase.length) {
+      setShowComponentDetail(false);
+      setActiveComponentId(null);
+      setSelectedItems(new KeySetImpl([]) as typeof INITIAL_SELECTION);
+    }
+  }, [activeRouteComponent, exampleRoute.segments.length, routeBase.length]);
 
   useEffect(() => {
     if (!onBreadcrumbChange || !showComponentDetail || !activeComponent) {
@@ -148,8 +190,6 @@ const TabBarHome = ({
         current: true,
       },
     ]);
-
-    return () => onBreadcrumbChange(null);
   }, [
     activeComponent,
     handleHomeNavigation,

@@ -9,6 +9,7 @@ type CatalogBreadcrumbItem = {
 type NestedCatalogHomeProps = {
   onBreadcrumbChange?: (items: CatalogBreadcrumbItem[] | null) => void;
   onNavigateRootHome?: () => void;
+  routeSegments?: string[];
 };
 
 type CatalogBreadcrumbProps = {
