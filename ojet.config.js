@@ -7,6 +7,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const resizeObserverLoopMessages = new Set([
   'ResizeObserver loop completed with undelivered notifications.',
@@ -123,6 +124,14 @@ module.exports = {
         resourceRegExp: /\.js\.map$/
       }),
       new EnsureRedwoodThemeFirstPlugin(),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: path.resolve(__dirname, 'src/404.html'),
+            to: '404.html'
+          }
+        ]
+      }),
       new webpack.NormalModuleReplacementPlugin(/^ojs\/_foo_$/, path.resolve(__dirname, 'src/webpack-empty-module.js'))
     ];
 

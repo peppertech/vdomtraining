@@ -28,6 +28,16 @@
   <head>
     <base href="/" />
     <meta charset="UTF-8" />
+    <script type="text/javascript">
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var redirectPath = params.get("spaRedirect");
+
+        if (redirectPath) {
+          window.history.replaceState(null, "", redirectPath);
+        }
+      })();
+    </script>
     <title>Oracle JET VDOM training sample app</title>
     <meta
       name="viewport"
