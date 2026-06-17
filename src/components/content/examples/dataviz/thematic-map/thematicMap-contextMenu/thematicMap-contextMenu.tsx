@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/usaRainfall.json';
@@ -25,6 +25,14 @@ const geo = JSON.parse(geoText as string);
 const rainfallData = JSON.parse(jsonDataText as string) as RainfallDatum[];
 
 export const ThematicMapContextMenu = () => {
+  const thematicMapRef = useRef<ojThematicMap<
+    RainfallDatum['State'],
+    null,
+    null,
+    RainfallDatum,
+    null,
+    null
+  > | null>(null);
   const [selectedItemsValue, setSelectedItemsValue] = useState<ThematicMapSelection>([]);
   const [selectedMenuItem, setSelectedMenuItem] = useState('(None selected yet)');
   const [activeState, setActiveState] = useState<RainfallDatum | null>(null);
@@ -100,15 +108,7 @@ export const ThematicMapContextMenu = () => {
         nextState = stateToItemMap[String(selection[0])] ?? null;
       }
     } else if (target != null) {
-      const thematicMap = document.getElementById('map1') as ojThematicMap<
-        RainfallDatum['State'],
-        null,
-        null,
-        RainfallDatum,
-        null,
-        null
-      > | null;
-      const context = thematicMap?.getContextByNode(target);
+      const context = thematicMapRef.current?.getContextByNode(target);
       if (context != null && context.subId === 'oj-thematicmap-area') {
         nextState = rainfallData[context.index] ?? null;
       }
@@ -139,6 +139,7 @@ export const ThematicMapContextMenu = () => {
   return (
     <div id="mapdemo">
       <oj-thematic-map
+        ref={thematicMapRef}
         id="map1"
         areaData={dataProvider}
         mapProvider={mapProvider}

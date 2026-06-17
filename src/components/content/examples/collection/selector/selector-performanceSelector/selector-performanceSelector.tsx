@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { getContext } from 'ojs/ojcontext';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { KeySet, KeySetImpl } from 'ojs/ojkeyset';
@@ -61,6 +61,7 @@ export const SelectorPerformanceSelector = () => {
     useState<SelectedKeySet>(createEmptySelection());
   const [renderTime, setRenderTime] = useState('');
   const [refreshVersion, setRefreshVersion] = useState(0);
+  const listViewRef = useRef<ojListView<DemoItem['id'], DemoItem> | null>(null);
   const data = useMemo(() => generateData(numItems), [numItems, refreshVersion]);
   const dataProvider = useMemo(
     () =>
@@ -71,7 +72,7 @@ export const SelectorPerformanceSelector = () => {
   );
 
   useEffect(() => {
-    const element = document.getElementById('listview');
+    const element = listViewRef.current;
     if (!element) {
       return;
     }
@@ -161,6 +162,7 @@ export const SelectorPerformanceSelector = () => {
       </div>
       <oj-list-view
         id="listview"
+        ref={listViewRef}
         aria-label="performance test for list view"
         class="demo-selector-listview oj-listview-item-padding-off"
         data={dataProvider}

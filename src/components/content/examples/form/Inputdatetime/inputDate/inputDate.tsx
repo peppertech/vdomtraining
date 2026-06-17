@@ -43,7 +43,7 @@ const InputDate = () => {
 
   const mdQuery =
     ResponsiveUtils.getFrameworkQuery("md-up") || "(min-width: 768px)";
-  const largeScreenMatch = window.matchMedia(mdQuery);
+  const largeScreenMatch = matchMedia(mdQuery);
 
   numberOfMonths = largeScreenMatch.matches ? 2 : 1;
   datePickerMonths = {

@@ -1,21 +1,24 @@
 import { h } from 'preact';
+import { useRef } from 'preact/hooks';
 import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojdialog';
 import 'ojs/ojbutton';
 import "css!./demo.css";
 
 export const DialogPercent = () => {
+  const dialogRef = useRef<ojDialog | null>(null);
+
   const handleOpen = () => {
-      (document.querySelector('#percentDialog') as ojDialog).open();
+      dialogRef.current?.open();
   };
 
   const handleOKClose = () => {
-      (document.querySelector('#percentDialog') as ojDialog).close();
+      dialogRef.current?.close();
   };
 
   return (
       <div id="dialogWrapper">
-            <oj-dialog id="percentDialog" dialogTitle="Percent Dimensions Dialog">
+            <oj-dialog ref={dialogRef} id="percentDialog" dialogTitle="Percent Dimensions Dialog">
                     <div slot="body">This dialog's width and height are set to 50% of the viewport.</div>
                     <div slot="footer"><oj-button id="okButton" onojAction={handleOKClose}>OK</oj-button></div>
                 </oj-dialog>

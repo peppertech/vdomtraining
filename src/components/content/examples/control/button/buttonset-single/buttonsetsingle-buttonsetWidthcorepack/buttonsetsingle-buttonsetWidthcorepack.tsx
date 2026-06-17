@@ -20,7 +20,7 @@ const maxWidthItems = [
   { value: "true", label: "max-width: 400px" }
 ];
 
-const getViewportWidth = () => (typeof window === "undefined" ? 1280 : window.innerWidth);
+const getViewportWidth = () => (typeof window === "undefined" ? 1280 : innerWidth);
 
 const getResponsiveItemLabels = (width: number): ToggleItems => {
   if (width < 768) {

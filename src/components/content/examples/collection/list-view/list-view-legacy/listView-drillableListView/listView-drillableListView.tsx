@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Fragment, h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojlistview';
 import 'ojs/ojbutton';
@@ -14,6 +14,9 @@ interface TodoTask {
 }
 
 export const ListViewDrillableListView = () => {
+  const listViewRef = useRef<ojListView<TodoTask['id'], TodoTask> | null>(null);
+  const page1Ref = useRef<HTMLDivElement | null>(null);
+  const page2Ref = useRef<HTMLDivElement | null>(null);
   const [content, setContent] = useState('');
   const [disabled, setDisabled] = useState(true);
   const [previousElementKey, setPreviousElementKey] = useState<TodoTask['id'] | null>(null);
@@ -60,7 +63,10 @@ export const ListViewDrillableListView = () => {
   const gotoList = () => {
       slide();
       setDisabled(true);
-      const listView = document.getElementById('listview') as ojListView<TodoTask['id'], TodoTask>;
+      const listView = listViewRef.current;
+      if (!listView) {
+          return;
+      }
       listView.currentItem = previousElementKey;
       listView.focus();
   };
@@ -77,14 +83,14 @@ export const ListViewDrillableListView = () => {
   };
 
   const slide = () => {
-      document.getElementById('page1').classList.toggle('demo-page1-hide');
-      document.getElementById('page2').classList.toggle('demo-page2-hide');
+      page1Ref.current?.classList.toggle('demo-page1-hide');
+      page2Ref.current?.classList.toggle('demo-page2-hide');
   };
 
   return (
       <div id="listviewContainer" class="demo-container">
-            <div id="page1" class="demo-page">
-                    <oj-list-view id="listview" aria-label="drill down list" data={dataProvider} onojItemAction={gotoContent}>
+            <div ref={page1Ref} id="page1" class="demo-page">
+                    <oj-list-view ref={listViewRef} id="listview" aria-label="drill down list" data={dataProvider} onojItemAction={gotoContent}>
                               <template slot="itemTemplate" render={(item) => (
                                         <>
                                             <div class="oj-flex oj-sm-justify-content-space-between oj-sm-align-items-center">
@@ -100,7 +106,7 @@ export const ListViewDrillableListView = () => {
                                       )} />
                           </oj-list-view>
                 </div>
-            <div id="page2" class="demo-page demo-page2-hide">
+            <div ref={page2Ref} id="page2" class="demo-page demo-page2-hide">
                     <oj-button id="buttonIcon2" onojAction={gotoList} disabled={disabled}>
                               <span slot="startIcon" class="oj-ux-ico-chevron-left" />
                               Back

@@ -39,7 +39,7 @@ const initialDynamicTabs = [
   { itemKey: "nancy", label: "Nancy Richardson" }
 ] satisfies NonNullable<TabBarMixedProps["dynamicTabs"]>;
 
-const getViewportWidth = () => (typeof window === "undefined" ? 1280 : window.innerWidth);
+const getViewportWidth = () => (typeof window === "undefined" ? 1280 : innerWidth);
 
 export const TabBarMixedResponsivecorepack = () => {
   const [dynamicTabs, setDynamicTabs] =

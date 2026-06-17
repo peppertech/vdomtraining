@@ -50,6 +50,7 @@ export const RowExpanderTableTableEditableRowExpander = () => {
   const [editRow, setEditRow] = useState<TableEditRow>({ rowKey: null });
   const cancelEditRef = useRef(false);
   const originalDataRef = useRef<TaskNode | null>(null);
+  const tableRef = useRef<ojTable<TaskNode['id'], TaskNode> | null>(null);
   const dateConverter = useMemo(
     () =>
       new IntlDateTimeConverter({
@@ -127,7 +128,7 @@ export const RowExpanderTableTableEditableRowExpander = () => {
     setEditedData('');
     const detail = event.detail;
     if (!detail.cancelEdit && !cancelEditRef.current) {
-      if (hasValidationErrorInRow(document.getElementById('table') as ojTable<TaskNode['id'], TaskNode>)) {
+      if (tableRef.current && hasValidationErrorInRow(tableRef.current)) {
         event.preventDefault();
         return;
       }
@@ -232,6 +233,7 @@ export const RowExpanderTableTableEditableRowExpander = () => {
     <div id="tableWrapper">
       <oj-table
         id="table"
+        ref={tableRef}
         aria-label="Tasks Table"
         data={dataProvider}
         editMode="rowEdit"

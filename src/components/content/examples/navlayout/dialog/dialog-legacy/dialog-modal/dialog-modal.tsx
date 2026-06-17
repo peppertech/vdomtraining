@@ -2,7 +2,7 @@ import { JetElementCustomEvent } from 'ojs/index';
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojbutton';
 import 'ojs/ojdialog';
@@ -13,6 +13,7 @@ type InputTextValue = ComponentProps<'oj-input-text'>['value'];
 type InputTextValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>>[0];
 
 export const DialogModal = () => {
+  const dialogRef = useRef<ojDialog | null>(null);
   const [textVal1, setTextVal1] = useState<InputTextValue>('');
   const [textVal2, setTextVal2] = useState<InputTextValue>('');
 
@@ -25,18 +26,16 @@ export const DialogModal = () => {
   };
 
   const close = () => {
-      const dialog = document.getElementById('modalDialog1') as ojDialog | null;
-      dialog?.close();
+      dialogRef.current?.close();
   };
 
   const open = () => {
-      const dialog = document.getElementById('modalDialog1') as ojDialog | null;
-      dialog?.open();
+      dialogRef.current?.open();
   };
 
   return (
       <div id="dialogWrapper">
-            <oj-dialog id="modalDialog1" dialogTitle="Modal Dialog" aria-describedby="desc">
+            <oj-dialog ref={dialogRef} id="modalDialog1" dialogTitle="Modal Dialog" aria-describedby="desc">
                     <div slot="body">
                               <p id="desc">
                                           This is the dialog content. User can change dialog resize behavior, cancel behavior and drag behavior by setting attributes. Default attribute value depends on the theme.

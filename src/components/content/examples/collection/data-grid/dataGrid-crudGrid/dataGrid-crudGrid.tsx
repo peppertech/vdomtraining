@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import type { JetElementCustomEvent } from 'ojs/index';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
@@ -27,6 +27,7 @@ const ROW_HEADER_KEY = 'states';
 const COLUMN_KEYS = Object.keys(SOURCE_ROWS[0]).filter((key) => key !== ROW_HEADER_KEY);
 const cloneRows = () => SOURCE_ROWS.map((row) => ({ ...row }));
 export const DataGridCrudGrid = () => {
+    const dataGridRef = useRef<DataGridDomElement | null>(null);
     const [rows, setRows] = useState<PopulationRow[]>(() => cloneRows());
     const [selection, setSelection] = useState<DataGridSelection>([]);
     const [inputTextValue, setInputTextValue] = useState<string>('');
@@ -126,7 +127,7 @@ export const DataGridCrudGrid = () => {
     const selectionChange = (event: SelectionChangedEvent) => {
         const nextSelection = event.detail.value ?? [];
         setSelection(nextSelection);
-        const grid = document.getElementById('datagrid') as DataGridDomElement | null;
+        const grid = dataGridRef.current;
         const currentCell = grid?.currentCell;
         if (!currentCell || currentCell.type !== 'cell') {
             return;
@@ -158,7 +159,7 @@ export const DataGridCrudGrid = () => {
     return (<div id="dataGridDemo">
             <div class="oj-flex">
                     <div class="oj-flex-item oj-sm-8">
-                              <oj-data-grid id="datagrid" class="demo-data-grid" aria-label="DataGrid CRUD demo" data={dataGridProvider} scrollPolicy="scroll" selection={selection} onselectionChanged={selectionChange} {...ojDataGridProps}>
+                              <oj-data-grid ref={dataGridRef} id="datagrid" class="demo-data-grid" aria-label="DataGrid CRUD demo" data={dataGridProvider} scrollPolicy="scroll" selection={selection} onselectionChanged={selectionChange} {...ojDataGridProps}>
                                           <template slot="columnHeaderContentTemplate" render={columnHeaderContentTemplateRenderer}/>
                                       </oj-data-grid>
                           </div>

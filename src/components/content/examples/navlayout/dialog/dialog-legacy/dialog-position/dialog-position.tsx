@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import { ojButton } from 'ojs/ojbutton';
 import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojbutton';
@@ -23,6 +23,7 @@ type CheckboxValueChangedEvent = Parameters<
 >[0];
 
 export const DialogPosition = () => {
+  const dialogRef = useRef<ojDialog | null>(null);
   const [currentPosition, setCurrentPosition] = useState<DialogPositionValue>('center');
   const [fullScreen, setFullScreen] = useState<string[]>([]);
 
@@ -35,11 +36,11 @@ export const DialogPosition = () => {
   };
 
   const close = (_event: ojButton.ojAction) => {
-    (document.getElementById('modalDialog1') as ojDialog | null)?.close();
+    dialogRef.current?.close();
   };
 
   const open = (_event: ojButton.ojAction) => {
-    (document.getElementById('modalDialog1') as ojDialog | null)?.open();
+    dialogRef.current?.open();
   };
 
   const dialogProps = useMemo<Partial<DialogProps>>(
@@ -91,6 +92,7 @@ export const DialogPosition = () => {
       </div>
       <div id="dialogWrapper">
         <oj-dialog
+          ref={dialogRef}
           id="modalDialog1"
           dialogTitle="Modal Dialog"
           class={isFullScreen ? 'demo-dialog-full-screen' : undefined}

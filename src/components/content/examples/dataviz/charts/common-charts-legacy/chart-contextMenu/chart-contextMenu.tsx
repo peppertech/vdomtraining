@@ -1,6 +1,6 @@
 import 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicData.json';
 import { JetElementCustomEvent } from 'ojs/index';
 import { ojChart } from 'ojs/ojchart';
@@ -34,6 +34,7 @@ type ChartContext = ChartItemContext | ChartGroupContext | ChartSeriesContext;
 
 const data = JSON.parse(dataText as string) as ChartDatum[];
 export const ChartContextMenu = () => {
+    const chartRef = useRef<ojChart<string, Record<string, string | number>, null, null> | null>(null);
     const [selectedMenuItem, setSelectedMenuItem] = useState<string>('(None selected yet)');
     const [item, setItem] = useState<ChartDatum | null>(null);
     const [group, setGroup] = useState<ChartDatum | null>(null);
@@ -68,8 +69,7 @@ export const ChartContextMenu = () => {
         }
         else {
             // Handle mouse interaction.
-            const chart = document.getElementById('chart1') as ojChart<string, Record<string, string | number>, null, null>;
-            const context = chart.getContextByNode(target) as ChartContext | null;
+            const context = chartRef.current?.getContextByNode(target) as ChartContext | null;
             if (context != null) {
                 if (context.subId === 'oj-chart-item') {
                     setItem(jsonData[context.itemIndex + 2 * context.seriesIndex] ?? null);
@@ -111,6 +111,7 @@ export const ChartContextMenu = () => {
     return (
         <div id="chart-container">
             <oj-chart
+                ref={chartRef}
                 id="chart1"
                 animationOnDisplay="auto"
                 animationOnDataChange="auto"

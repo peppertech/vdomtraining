@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ojTable } from 'ojs/ojtable';
 import * as deptData from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
@@ -24,6 +24,7 @@ type ColumnSizeValue = string | null;
 type ColumnWeightValue = number | null;
 
 export const TableColumnLayoutscorepack = () => {
+  const tableRef = useRef<ojTable<Employee['DepartmentId'], Employee> | null>(null);
   const [selectedLayout, setSelectedLayout] = useState<TableLayout>('contents');
   const [col1Width, setCol1Width] = useState<ColumnSizeValue>(null);
   const [col1MinWidth, setCol1MinWidth] = useState<ColumnSizeValue>('auto');
@@ -114,7 +115,7 @@ export const TableColumnLayoutscorepack = () => {
   };
 
   const updateTable = () => {
-      (document.getElementById('table') as ojTable<Employee['DepartmentId'], Employee>).refresh();
+      tableRef.current?.refresh();
   };
 
   return (
@@ -164,7 +165,7 @@ export const TableColumnLayoutscorepack = () => {
                                       </oj-label-value>
                           </oj-form-layout>
                 </div>
-            <oj-table id="table" aria-label="Departments Table" class="demo-table-container" data={dataprovider} layout={selectedLayout} columns={tableColumns} {...{ 'accessibility.row-header': "depName" }} />
+            <oj-table ref={tableRef} id="table" aria-label="Departments Table" class="demo-table-container" data={dataprovider} layout={selectedLayout} columns={tableColumns} {...{ 'accessibility.row-header': "depName" }} />
         </div>
     );
 };

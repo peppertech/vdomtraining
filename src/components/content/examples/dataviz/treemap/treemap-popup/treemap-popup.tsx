@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
@@ -8,7 +8,7 @@ import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView
 import 'ojs/ojtreemap';
 import 'ojs/ojpopup';
 import { ojTreemap } from 'ojs/ojtreemap';
-import type { ojPopupSettableProperties } from 'ojs/ojpopup';
+import { ojPopup, ojPopupSettableProperties } from 'ojs/ojpopup';
 
 type TreeNode = {
   label: string;
@@ -37,6 +37,8 @@ const getNodeFromIndexPath = (indexPath: number[]) => {
 };
 
 export const TreemapPopup = () => {
+  const treemapRef = useRef<ojTreemap<string, TreeNode> | null>(null);
+  const popupRef = useRef<ojPopup | null>(null);
   const [tailMode, setTailMode] = useState<ojPopupSettableProperties['tail']>('simple');
   const [selectedItemsValue, setSelectedItemsValue] = useState<string[]>([]);
   const [popupInfo, setPopupInfo] = useState<PopupInfo | null>(null);
@@ -68,8 +70,8 @@ export const TreemapPopup = () => {
 
   const openPopup = (event: MouseEvent | KeyboardEvent) => {
     const target = event.target as HTMLElement | null;
-    const popup = document.getElementById('popup1') as HTMLElement & { open: Function } | null;
-    const launcher = document.getElementById('treemap1');
+    const popup = popupRef.current;
+    const launcher = treemapRef.current;
     if (!target || !popup || !launcher) {
       return;
     }
@@ -92,8 +94,7 @@ export const TreemapPopup = () => {
       pageX = target.offsetWidth / 2.3;
       pageY = target.offsetHeight / 3;
     } else {
-      const treemap = launcher as ojTreemap<string, TreeNode>;
-      const context = treemap.getContextByNode(target) as { subId?: string; indexPath?: number[] } | null;
+      const context = launcher.getContextByNode(target) as { subId?: string; indexPath?: number[] } | null;
       if (context?.subId !== 'oj-treemap-node' || !context.indexPath) {
         return;
       }
@@ -124,6 +125,7 @@ export const TreemapPopup = () => {
   return (
     <div id="treemap-container">
       <oj-treemap
+        ref={treemapRef}
         id="treemap1"
         onClick={openPopup}
         onKeyDown={openPopup}
@@ -142,6 +144,7 @@ export const TreemapPopup = () => {
         />
       </oj-treemap>
       <oj-popup
+        ref={popupRef}
         class="oj-helper-text-align-center"
         id="popup1"
         tail={tailMode}

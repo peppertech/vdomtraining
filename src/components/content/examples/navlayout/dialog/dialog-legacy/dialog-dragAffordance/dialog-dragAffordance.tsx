@@ -1,7 +1,7 @@
 import { JetElementCustomEvent } from 'ojs/index';
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';type ValueChangedEvent<TValue> = JetElementCustomEvent<TValue>;
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojdialog';
 import 'ojs/ojbutton';
@@ -9,15 +9,16 @@ import 'ojs/ojradioset';
 import 'ojs/ojlabel';
 import 'ojs/ojoption';
 export const DialogDragAffordance = () => {
+  const dialogRef = useRef<ojDialog | null>(null);
   const [currentDragAffordanceOpt, setCurrentDragAffordanceOpt] = useState<ojDialog['dragAffordance']>('title-bar' as ojDialog['dragAffordance']);
   const handleCurrentDragAffordanceOptValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0]) => {
     setCurrentDragAffordanceOpt(event.detail.value);
   };
   const handleOpen = () => {
-      (document.querySelector('#dialog1') as ojDialog).open();
+      dialogRef.current?.open();
   };
   const handleOKClose = () => {
-      (document.querySelector('#dialog1') as ojDialog).close();
+      dialogRef.current?.close();
   };
   return (
       <>
@@ -29,7 +30,7 @@ export const DialogDragAffordance = () => {
                     </oj-radioset>
             </div>
           <div id="dialogWrapper">
-                <oj-dialog id="dialog1" dialogTitle="Drag Affordance Options" dragAffordance="title-bar">
+                <oj-dialog ref={dialogRef} id="dialog1" dialogTitle="Drag Affordance Options" dragAffordance="title-bar">
                         <div slot="body"><div>dragAffordance: title-bar</div></div>
                         <div slot="footer"><oj-button id="okButton" onojAction={handleOKClose}>OK</oj-button></div>
                     </oj-dialog>

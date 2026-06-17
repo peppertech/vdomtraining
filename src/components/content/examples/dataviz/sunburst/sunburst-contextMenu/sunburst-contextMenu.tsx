@@ -20,6 +20,7 @@ type MenuNode = {
 const nodes = JSON.parse(jsonDataText as string) as MenuNode[];
 
 export const SunburstContextMenu = () => {
+  const sunburstRef = useRef<ojSunburst<string, MenuNode> | null>(null);
   const [selectedItemsValue, setSelectedItemsValue] = useState<string[]>([]);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('(None selected yet)');
   const nodeRef = useRef<MenuNode | null>(null);
@@ -60,8 +61,7 @@ export const SunburstContextMenu = () => {
       return;
     }
 
-    const sunburst = document.getElementById('sunburst1') as ojSunburst<string, MenuNode>;
-    const context = sunburst.getContextByNode(target) as ojSunburst.NodeContext | null;
+    const context = sunburstRef.current?.getContextByNode(target) as ojSunburst.NodeContext | null;
 
     if (context != null) {
       nodeRef.current = context.indexPath.reduce((acc, cur) => acc.nodes[cur], { nodes } as { nodes: MenuNode[] });
@@ -92,6 +92,7 @@ export const SunburstContextMenu = () => {
   return (
     <div id="sunburst-container">
       <oj-sunburst
+        ref={sunburstRef}
         id="sunburst1"
         contextmenu="menu1"
         animationOnDisplay="auto"

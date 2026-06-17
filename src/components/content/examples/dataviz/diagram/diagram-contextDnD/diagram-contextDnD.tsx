@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import * as dndDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/dndDataSample.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
@@ -104,6 +104,7 @@ const buildDropLayout = (nodes: DndNode[], links: DndLink[], panZoomState: PanZo
   });
 
 export const DiagramContextDnD = () => {
+  const diagram2Ref = useRef<HTMLElement | null>(null);
   const colorHandler = useMemo(() => new ColorAttributeGroupHandler(), []);
   const [nodes1, setNodes1] = useState<DndNode[]>(dndData.nodesA.map(cloneNode));
   const [nodes2, setNodes2] = useState<DndNode[]>(dndData.nodesB.map(cloneNode));
@@ -146,7 +147,7 @@ export const DiagramContextDnD = () => {
   };
 
   const moveNodeToB = (node: DndNode) => {
-    const diagramB = document.getElementById('diagram2');
+    const diagramB = diagram2Ref.current;
     const rect = diagramB?.getBoundingClientRect();
     const width = rect?.width ?? 300;
     const height = rect?.height ?? 300;
@@ -347,6 +348,7 @@ export const DiagramContextDnD = () => {
         <div class="oj-flex-item oj-sm-margin-1x-horizontal oj-panel oj-panel-border-radius-0 oj-sm-padding-0">
           <div class="oj-typography-heading-xs oj-sm-margin-2x-horizontal">Diagram B</div>
           <oj-diagram
+            ref={diagram2Ref}
             id="diagram2"
             nodeData={nodeDataProvider2}
             linkData={linkDataProvider2}

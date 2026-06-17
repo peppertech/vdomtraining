@@ -1,7 +1,6 @@
 import { h } from "preact";
-import type { ComponentProps } from "preact";
+import type { ComponentProps, JSX } from "preact";
 import { useEffect, useMemo, useRef, useState } from "preact/hooks";
-import { isLogicalAncestor } from "ojs/ojpopuputils";
 import "oj-c/menu-button";
 import { CMenuButtonElement } from "oj-c/menu-button";
 
@@ -27,6 +26,46 @@ export const MenuButtonsMenuButtonEventscorepack = () => {
   const timerId2Ref = useRef<ReturnType<typeof setTimeout> | null>(null);
   const menuButtonRef = useRef<CMenuButtonElement | null>(null);
   const menuButton1Ref = useRef<CMenuButtonElement | null>(null);
+
+  const clearPrimaryTimer = () => {
+    if (timerIdRef.current) {
+      clearTimeout(timerIdRef.current);
+      timerIdRef.current = null;
+    }
+  };
+
+  const clearSecondaryTimer = () => {
+    if (timerId2Ref.current) {
+      clearTimeout(timerId2Ref.current);
+      timerId2Ref.current = null;
+    }
+  };
+
+  const showPrimaryEvent = (event: Event) => {
+    clearPrimaryTimer();
+    setEventLog(formatEventInfo(event));
+    timerIdRef.current = setTimeout(() => {
+      setEventLog("");
+      timerIdRef.current = null;
+    }, 2000);
+  };
+
+  const showSecondaryEvent = (event: Event) => {
+    clearSecondaryTimer();
+    setEventLog2(formatEventInfo(event));
+    timerId2Ref.current = setTimeout(() => {
+      setEventLog2("");
+      timerId2Ref.current = null;
+    }, 2000);
+  };
+
+  const handlePrimaryMouseMove = (event: JSX.TargetedMouseEvent<CMenuButtonElement>) => {
+    showPrimaryEvent(event);
+  };
+
+  const handleSecondaryMouseMove = (event: JSX.TargetedMouseEvent<CMenuButtonElement>) => {
+    showSecondaryEvent(event);
+  };
 
   const items = useMemo<MenuItems>(
     () => [
@@ -104,53 +143,9 @@ export const MenuButtonsMenuButtonEventscorepack = () => {
     []
   );
 
-  useEffect(() => {
-    const clearPrimaryTimer = () => {
-      if (timerIdRef.current) {
-        clearTimeout(timerIdRef.current);
-        timerIdRef.current = null;
-      }
-    };
-
-    const clearSecondaryTimer = () => {
-      if (timerId2Ref.current) {
-        clearTimeout(timerId2Ref.current);
-        timerId2Ref.current = null;
-      }
-    };
-
-    const handleMouseMove = (event: Event) => {
-      const target = event.target;
-      if (!(target instanceof Node)) {
-        return;
-      }
-
-      if (menuButtonRef.current && isLogicalAncestor(menuButtonRef.current, target)) {
-        clearPrimaryTimer();
-        setEventLog(formatEventInfo(event));
-        timerIdRef.current = setTimeout(() => {
-          setEventLog("");
-          timerIdRef.current = null;
-        }, 2000);
-      }
-
-      if (menuButton1Ref.current && isLogicalAncestor(menuButton1Ref.current, target)) {
-        clearSecondaryTimer();
-        setEventLog2(formatEventInfo(event));
-        timerId2Ref.current = setTimeout(() => {
-          setEventLog2("");
-          timerId2Ref.current = null;
-        }, 2000);
-      }
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      clearPrimaryTimer();
-      clearSecondaryTimer();
-    };
+  useEffect(() => () => {
+    clearPrimaryTimer();
+    clearSecondaryTimer();
   }, []);
 
   return (
@@ -161,6 +156,7 @@ export const MenuButtonsMenuButtonEventscorepack = () => {
         ref={menuButtonRef}
         label="Actions"
         items={items}
+        onMouseMove={handlePrimaryMouseMove}
         class="oj-sm-margin-5x-bottom"
       />
       <div>{eventLog}</div>
@@ -174,6 +170,7 @@ export const MenuButtonsMenuButtonEventscorepack = () => {
         ref={menuButton1Ref}
         label="Actions"
         items={submenuItems}
+        onMouseMove={handleSecondaryMouseMove}
         class="oj-sm-margin-5x-bottom"
       />
       <div>{eventLog2}</div>

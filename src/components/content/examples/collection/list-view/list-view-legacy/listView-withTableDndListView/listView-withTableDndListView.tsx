@@ -103,6 +103,8 @@ export const ListViewWithTableDndListView = () => {
   const [cutItem, setCutItem] = useState<DataInfo['id'] | null>(null);
 
   const dragItemIdRef = useRef<DataInfo['id'] | null>(null);
+  const sourceListRef = useRef<ojListView<DataInfo['id'], DataInfo> | null>(null);
+  const targetListRef = useRef<ojListView<DataInfo['id'], DataInfo> | null>(null);
   const sourceDataProvider = useMemo(() => new ArrayDataProvider(sourceArr, {
       keyAttributes: 'id'
   }), [sourceArr]);
@@ -115,7 +117,10 @@ export const ListViewWithTableDndListView = () => {
       event.preventDefault();
       let index = -1;
       if (context.item) {
-          const itemContext = (document.getElementById('target') as ojListView<DataInfo['id'], DataInfo>).getContextByNode(context.item);
+          const itemContext = targetListRef.current?.getContextByNode(context.item);
+          if (!itemContext) {
+              return;
+          }
           index = itemContext.index;
           if (context.position === 'after') {
               index += 1;
@@ -183,7 +188,10 @@ export const ListViewWithTableDndListView = () => {
   };
 
   const _cutCurrentItem = () => {
-	      const listView = document.getElementById('source') as ojListView<DataInfo['id'], DataInfo>;
+	      const listView = sourceListRef.current;
+	      if (!listView) {
+	          return;
+	      }
 	      const currentItem = listView.currentItem as DataInfo['id'] | null;
 	      if (currentItem == null) {
 	          return;
@@ -205,7 +213,10 @@ export const ListViewWithTableDndListView = () => {
   };
 
   const _paste = () => {
-	      const listView = document.getElementById('target') as ojListView<DataInfo['id'], DataInfo>;
+	      const listView = targetListRef.current;
+	      if (!listView) {
+	          return;
+	      }
 	      const currentItem = listView.currentItem as DataInfo['id'] | null;
 	      const index = _findIndex(targetData, currentItem);
       _handleDataTransfer(clipboard, index + 1);
@@ -224,7 +235,7 @@ export const ListViewWithTableDndListView = () => {
       <div id="container">
             <div class="oj-sm-float-start">
                     <h4 class="oj-sm-margin-2x-start">Drag Source</h4>
-                    <oj-list-view id="source" onkeydown={handleKeyCut} aria-label="list drag source" class="demo-list oj-listview-item-padding-off" data={sourceDataProvider} {...{ 'dnd.drag.items.data-types': "[\"application/ojlistviewitems+json\"]", 'dnd.drag.items.drag-start': handleDragStart, 'dnd.drag.items.drag-end': handleDragEnd, 'dnd.drop.items.data-types': "[\"application/ojtablerows+json\"]" }}>
+                    <oj-list-view ref={sourceListRef} id="source" onkeydown={handleKeyCut} aria-label="list drag source" class="demo-list oj-listview-item-padding-off" data={sourceDataProvider} {...{ 'dnd.drag.items.data-types': "[\"application/ojlistviewitems+json\"]", 'dnd.drag.items.drag-start': handleDragStart, 'dnd.drag.items.drag-end': handleDragEnd, 'dnd.drop.items.data-types': "[\"application/ojtablerows+json\"]" }}>
                               <oj-menu slot="contextMenu" onojMenuAction={handleMenuCut} aria-label="menu with actions"><oj-option value="cut">Cut</oj-option></oj-menu>
 	                              <template slot="itemTemplate" render={(item: ItemTemplateContext) => (
                                         <>
@@ -242,7 +253,7 @@ export const ListViewWithTableDndListView = () => {
                 </div>
             <div class="oj-sm-float-start oj-sm-margin-4x-start">
                     <h4 class="oj-sm-margin-2x-start">Drop Target</h4>
-                    <oj-list-view id="target" onkeydown={handleKeyPaste} aria-label="list drop target" class="demo-list oj-listview-item-padding-off" data={targetDataProvider} {...{ 'dnd.drop.items.data-types': "[\"application/ojlistviewitems+json\"]", 'dnd.drop.items.drop': handleDrop }}>
+                    <oj-list-view ref={targetListRef} id="target" onkeydown={handleKeyPaste} aria-label="list drop target" class="demo-list oj-listview-item-padding-off" data={targetDataProvider} {...{ 'dnd.drop.items.data-types': "[\"application/ojlistviewitems+json\"]", 'dnd.drop.items.drop': handleDrop }}>
                               <oj-menu slot="contextMenu" onojMenuAction={handleMenuPaste} aria-label="menu with actions"><oj-option value="paste" disabled={cutItem == null}>Paste</oj-option></oj-menu>
 	                              <template slot="itemTemplate" render={(item: ItemTemplateContext) => (
                                         <>

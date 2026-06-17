@@ -1,6 +1,6 @@
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
+import { useMemo, useRef } from 'preact/hooks';
 import * as barDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicData.json';
 import * as bubbleDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
 import { ojChart } from 'ojs/ojchart';
@@ -10,6 +10,9 @@ import "css!./demo.css";
 const barData = JSON.parse(barDataText as string);
 const bubbleData = JSON.parse(bubbleDataText as string);
 export const ChartDndEvents = () => {
+    const dropTargetRef = useRef<HTMLDivElement | null>(null);
+    const dropTargetTextRef = useRef<HTMLDivElement | null>(null);
+    const dragSourceTextRef = useRef<HTMLDivElement | null>(null);
     const dataProvider = useMemo(() => new ArrayDataProvider(barData, {
         keyAttributes: 'id'
     }), []);
@@ -24,7 +27,7 @@ export const ChartDndEvents = () => {
         for (let i = 0; i < dataTypes.length; i++) {
             const dataType = dataTypes[i];
             if (dataType === 'text/barchart') {
-                const dropTarget = document.getElementById('dropTarget');
+                const dropTarget = dropTargetRef.current;
                 if (dropTarget) {
                     dropTarget.style.backgroundColor = 'rgb(208,234,193)';
                 }
@@ -34,13 +37,13 @@ export const ChartDndEvents = () => {
         }
     };
     const onDragLeave = () => {
-        const dropTarget = document.getElementById('dropTarget');
+        const dropTarget = dropTargetRef.current;
         if (dropTarget) {
             dropTarget.style.backgroundColor = '#EEEEEE';
         }
     };
     const onDrop = (event: DragEvent) => {
-        const dropTarget = document.getElementById('dropTarget');
+        const dropTarget = dropTargetRef.current;
         if (dropTarget) {
             dropTarget.style.backgroundColor = '#EEEEEE';
         }
@@ -58,7 +61,7 @@ export const ChartDndEvents = () => {
                 text += '<hr>';
             }
         }
-        const targetText = document.getElementById('dropTargetText');
+        const targetText = dropTargetTextRef.current;
         if (targetText) {
             targetText.innerHTML = text;
         }
@@ -71,7 +74,7 @@ export const ChartDndEvents = () => {
         let text = 'Target: <i>Plot Area</i><br>';
         text += `X: <i>${(ui.x ?? 0).toFixed(3)}</i><br>`;
         text += `Y: <i>${(ui.y ?? 0).toFixed(3)}</i><br>`;
-        const dragSourceText = document.getElementById('dragSourceText');
+        const dragSourceText = dragSourceTextRef.current;
         if (dragSourceText) {
             dragSourceText.innerHTML = text;
         }
@@ -79,7 +82,7 @@ export const ChartDndEvents = () => {
     const onXAxisDrop = (event: DragEvent, ui: ojChart.DndDrop) => {
         let text = 'Target: <i>X-Axis</i><br>';
         text += `X: <i>${(ui.x ?? 0).toFixed(3)}</i><br>`;
-        const dragSourceText = document.getElementById('dragSourceText');
+        const dragSourceText = dragSourceTextRef.current;
         if (dragSourceText) {
             dragSourceText.innerHTML = text;
         }
@@ -87,14 +90,14 @@ export const ChartDndEvents = () => {
     const onYAxisDrop = (event: DragEvent, ui: ojChart.DndDrop) => {
         let text = 'Target: <i>Y-Axis</i><br>';
         text += `Y: <i>${(ui.y ?? 0).toFixed(3)}</i><br>`;
-        const dragSourceText = document.getElementById('dragSourceText');
+        const dragSourceText = dragSourceTextRef.current;
         if (dragSourceText) {
             dragSourceText.innerHTML = text;
         }
     };
     const onLegendDrop = () => {
         let text = 'Target: <i>Legend</i><br>';
-        const dragSourceText = document.getElementById('dragSourceText');
+        const dragSourceText = dragSourceTextRef.current;
         if (dragSourceText) {
             dragSourceText.innerHTML = text;
         }
@@ -149,9 +152,9 @@ export const ChartDndEvents = () => {
                     <oj-chart class="oj-flex-item" id="barChart" type="bar" data={dataProvider} selectionMode="multiple" dragMode="off" {...OjChartProps}>
                               <template slot="itemTemplate" render={itemTemplateRenderer}/>
                           </oj-chart>
-                    <div id="dropTarget" class="oj-flex-item oj-sm-margin-1x-start oj-bg-neutral-30" onDragOver={onDragOver} onDragLeave={onDragLeave} onDrop={onDrop}>
+                    <div ref={dropTargetRef} id="dropTarget" class="oj-flex-item oj-sm-margin-1x-start oj-bg-neutral-30" onDragOver={onDragOver} onDragLeave={onDragLeave} onDrop={onDrop}>
                               <div class="oj-sm-padding-3x">Drop bars, x-axis labels, or legend items here.</div>
-                              <div class="oj-sm-padding-3x" id="dropTargetText"/>
+                              <div ref={dropTargetTextRef} class="oj-sm-padding-3x" id="dropTargetText"/>
                           </div>
                 </div>
             <hr class="oj-sm-margin-4x-vertical"/>
@@ -163,7 +166,7 @@ export const ChartDndEvents = () => {
                               <div class="oj-sm-padding-2x-vertical oj-sm-padding-3x-horizontal">
                                           <div class="oj-bg-success-30" id="circle" draggable={true} onDragStart={onDragStart}/>
                                       </div>
-                              <div id="dragSourceText" class="oj-sm-padding-2x"/>
+                              <div ref={dragSourceTextRef} id="dragSourceText" class="oj-sm-padding-2x"/>
                           </div>
                     <oj-chart id="bubbleChart" class="oj-flex-item" type="bubble" data={dataProvider2} {...OjChartProps2}>
                               <template slot="itemTemplate" render={itemTemplateRenderer2}/>

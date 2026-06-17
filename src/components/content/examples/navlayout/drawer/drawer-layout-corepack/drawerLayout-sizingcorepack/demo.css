@@ -1,9 +1,21 @@
-#demo-container {
-  min-height: 100vh;
+.demo-layout-template__demo-section:has(.drawer-layout-sizing-demo) {
+  block-size: 100vh;
+  overflow: hidden;
 }
 
-.demo-full-height {
-  height: 100vh;
+.demo-layout-template__demo-section:has(.drawer-layout-sizing-demo) > .demo-layout-template__demo-body {
+  block-size: 100%;
+  min-block-size: 0;
+}
+
+.drawer-layout-sizing-demo {
+  block-size: 100%;
+  min-block-size: 100%;
+  overflow: hidden;
+}
+
+.drawer-layout-sizing-demo .demo-full-height {
+  block-size: 100%;
 }
 
 /*Drawers*/
@@ -18,8 +30,11 @@
   are made to the content of the drawer, but the
   app developer is responsible for adding content animations.
   */
+  box-sizing: border-box;
   transition: height 0.3s ease-out;
   height: 19rem;
+  max-height: 100%;
+  overflow: auto;
 }
 
 .demo-drawer-width-12 {

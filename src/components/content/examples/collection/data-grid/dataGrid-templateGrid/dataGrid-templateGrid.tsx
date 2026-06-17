@@ -5,10 +5,12 @@ import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
 import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/customers.json';
 import 'ojs/ojdatagrid';
+import { ojDataGrid } from 'ojs/ojdatagrid';
 import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
 import 'ojs/ojgauge';
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import "css!./demo.css";
+
 interface CustomerRow {
     index: number;
     firstName: string;
@@ -16,50 +18,90 @@ interface CustomerRow {
     balance: number;
     registered: string;
     totalAmountOrdered: number;
+    lastOrder: string;
     company: string;
+    shortName: string;
+    phone: string;
+    address: string;
+    city: string;
+    state: string;
+    zip: number;
+    countryOrigin: string;
     gender: string;
+    age: number;
     birthdate: string;
     isActive: boolean;
+    height: number;
+    weight: number;
+    eyeColor: string;
+    hairColor: string;
+    latitude: number;
+    longitude: number;
 }
+
+type CustomerColumnKey = keyof Omit<CustomerRow, 'index'>;
+type CustomerCellValue = CustomerRow[CustomerColumnKey];
+
 type CellTemplateContext = {
     item: {
         columnIndex: number;
         data: {
-            data: CustomerRow[keyof Omit<CustomerRow, 'index'>];
+            data: CustomerCellValue;
         };
     };
 };
+
+type ColumnHeaderTemplateContext = {
+    item: {
+        data: {
+            data: CustomerColumnKey;
+        };
+    };
+};
+
 const jsonData = JSON.parse(jsonDataText as string) as CustomerRow[];
-const COLUMNS: Array<keyof Omit<CustomerRow, 'index'>> = ['firstName', 'lastName', 'balance', 'registered', 'totalAmountOrdered', 'company', 'gender', 'birthdate', 'isActive'];
+const COLUMNS = Object.keys(jsonData[0]).filter((key): key is CustomerColumnKey => key !== 'index');
+const DATE_COLUMNS = new Set<CustomerColumnKey>(['registered', 'lastOrder', 'birthdate']);
+const WIDE_COLUMN_WIDTHS: Partial<Record<CustomerColumnKey, string>> = {
+    phone: '175px',
+    registered: '150px',
+    lastOrder: '150px',
+    birthdate: '150px',
+    totalAmountOrdered: '185px',
+    address: '250px',
+    state: '250px',
+    countryOrigin: '250px'
+};
+
+const formatColumnName = (column: CustomerColumnKey) => {
+    return column.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase());
+};
+
 export const DataGridTemplateGrid = () => {
-    const rows = useMemo<CustomerRow[]>(() => jsonData.slice(0, 12).map((item) => ({
-        index: item.index,
-        firstName: item.firstName,
-        lastName: item.lastName,
-        balance: item.balance,
-        registered: item.registered,
-        totalAmountOrdered: item.totalAmountOrdered,
-        company: item.company,
-        gender: item.gender,
-        birthdate: item.birthdate,
-        isActive: item.isActive
-    })), []);
+    const rows = useMemo<CustomerRow[]>(() => jsonData, []);
     const maxAmountOrdered = useMemo(() => rows.reduce((previousValue, currentValue) => Math.max(previousValue, currentValue.totalAmountOrdered), -Infinity), [rows]);
     const minAmountOrdered = useMemo(() => rows.reduce((previousValue, currentValue) => Math.min(previousValue, currentValue.totalAmountOrdered), Infinity), [rows]);
     const thresholdValues = useMemo(() => [{ max: 20000 }, { max: 30000 }, {}], []);
+    const numericIndexes = useMemo(() => {
+        const firstRowValues = Object.values(rows[0]).slice(1) as CustomerCellValue[];
+        return firstRowValues.reduce<number[]>((numeric, data, index) => {
+            const numberValue = Number(data);
+            if (!Number.isNaN(numberValue) || !Number.isNaN(Date.parse(String(data)))) {
+                numeric.push(index);
+            }
+            return numeric;
+        }, []);
+    }, [rows]);
     const rowDataProvider = useMemo(() => new ArrayDataProvider<number, CustomerRow>(rows, {
         keyAttributes: 'index'
     }), [rows]);
-    const dataGridProvider = useMemo(() => new RowDataGridProvider<string, number, CustomerRow>(rowDataProvider, {
+    const dataGridProvider = useMemo(() => new RowDataGridProvider<CustomerCellValue, number, CustomerRow>(rowDataProvider, {
         columns: {
             rowHeader: ['index'],
             databody: COLUMNS
         },
         columnHeaders: {
-            column: ['First Name', 'Last Name', 'Balance', 'Registered', 'Total Ordered', 'Company', 'Gender', 'Birthdate', 'Active']
-        },
-        headerLabels: {
-            row: ['Row']
+            column: COLUMNS.slice()
         }
     }), [rowDataProvider]);
     const dateConverter = useMemo(() => new IntlDateTimeConverter({
@@ -77,30 +119,50 @@ export const DataGridTemplateGrid = () => {
         currencyDisplay: 'symbol',
         currencyFormat: 'short'
     }), []);
-    const renderValue = (column: keyof Omit<CustomerRow, 'index'>, value: CustomerRow[keyof Omit<CustomerRow, 'index'>]) => {
+    const isRightAlignedColumn = (columnIndex: number) => {
+        return numericIndexes.includes(columnIndex) || columnIndex === 15;
+    };
+    const getColumnHeaderStyle = (headerContext: ojDataGrid.HeaderContext<number, CustomerCellValue>) => {
+        const column = COLUMNS[headerContext.index];
+        return `width:${column ? WIDE_COLUMN_WIDTHS[column] ?? '125px' : '125px'};`;
+    };
+    const getColumnHeaderHorizontalAlignment = (headerContext: ojDataGrid.HeaderContext<number, CustomerCellValue>) => {
+        return isRightAlignedColumn(headerContext.index) ? 'right' : 'start';
+    };
+    const getCellHorizontalAlignment = (cellContext: ojDataGrid.CellContext<number, CustomerCellValue>) => {
+        return isRightAlignedColumn(cellContext.indexes.column) ? 'right' : 'start';
+    };
+    const columnHeaderContentTemplateRenderer = (header: ColumnHeaderTemplateContext) => {
+        return formatColumnName(header.item.data.data);
+    };
+    const renderValue = (column: CustomerColumnKey, value: CustomerCellValue) => {
         if (column === 'firstName' || column === 'lastName') {
             return <span class="oj-typography-body-lg oj-typography-bold">{value}</span>;
         }
         if (column === 'balance') {
-            return <span class={(value as number) > 0 ? 'ojBgSuccess30' : 'oj-bg-danger-30'}>{numberConverter.format(value as number)}</span>;
+            return <span class={(value as number) > 0 ? 'oj-bg-success-30' : 'oj-bg-danger-30'}>{numberConverter.format(value as number)}</span>;
         }
         if (column === 'totalAmountOrdered') {
-            return (<>
-                  <oj-status-meter-gauge min={minAmountOrdered} max={maxAmountOrdered} value={value as number} thresholds={thresholdValues} class="demo-gauge" readonly={true} aria-label="Total amount ordered represented as a status meter"/>
-                  <div>{numberConverterShort.format(value as number)}</div>
-              </>);
+            return (
+                <>
+                    <oj-status-meter-gauge min={minAmountOrdered} max={maxAmountOrdered} value={value as number} thresholds={thresholdValues} class="demo-gauge" readonly={true} aria-label="Total amount ordered represented as a status meter" />
+                    <div>{numberConverterShort.format(value as number)}</div>
+                </>
+            );
         }
-        if (column === 'registered' || column === 'birthdate') {
+        if (DATE_COLUMNS.has(column)) {
             return <span>{dateConverter.format(value as string)}</span>;
         }
         if (column === 'company') {
             return <a href={`https://www.morningstar.com/search?query=${value}`} target="_blank">{value}</a>;
         }
-        if (column === 'gender') {
+        if (column === 'age') {
             return <span class="oj-badge oj-badge-info">{value}</span>;
         }
         if (column === 'isActive') {
-            return value ? <span class="oj-icon-color-success oj-ux-ico-success-s oj-ux-icon-size-9x" role="img" aria-label="success"/> : <span class="oj-icon-color-danger oj-ux-ico-error-s oj-ux-icon-size-9x" role="img" aria-label="error"/>;
+            return value
+                ? <span class="oj-icon-color-success oj-ux-ico-success-s oj-ux-icon-size-9x" role="img" aria-label="success" />
+                : <span class="oj-icon-color-danger oj-ux-ico-error-s oj-ux-icon-size-9x" role="img" aria-label="error" />;
         }
         return <span>{String(value ?? '')}</span>;
     };
@@ -111,22 +173,32 @@ export const DataGridTemplateGrid = () => {
         }
         return renderValue(column, cell.item.data.data);
     };
-    const ojDataGridProps: Partial<ComponentProps<'oj-data-grid'>> = { cell: {
+    const ojDataGridProps: Partial<ComponentProps<'oj-data-grid'>> = {
+        cell: {
             alignment: {
-                horizontal: 'start'
+                horizontal: getCellHorizontalAlignment
             }
-        }, header: {
+        },
+        header: {
             column: {
-                style: 'width:185px;',
+                alignment: {
+                    horizontal: getColumnHeaderHorizontalAlignment
+                },
+                style: getColumnHeaderStyle,
                 sortable: 'disable'
             },
             row: {
-                style: 'width:90px;',
+                style: 'width:120px;',
                 sortable: 'disable'
             }
-        } };
-    return (<oj-data-grid id="datagrid" class="demo-data-grid" aria-label="Data Grid with templates demo" data={dataGridProvider} scrollPolicy="scroll" {...ojDataGridProps}>
-            <template slot="cellTemplate" render={cellTemplateRenderer}/>
-        </oj-data-grid>);
+        }
+    };
+    return (
+        <oj-data-grid id="datagrid" class="demo-data-grid" aria-label="Data Grid with templates demo" data={dataGridProvider} scrollPolicy="scroll" {...ojDataGridProps}>
+            <template slot="columnHeaderContentTemplate" render={columnHeaderContentTemplateRenderer} />
+            <template slot="cellTemplate" render={cellTemplateRenderer} />
+        </oj-data-grid>
+    );
 };
+
 export default DataGridTemplateGrid;

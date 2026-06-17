@@ -1,4 +1,5 @@
-import { Fragment, h } from 'preact';
+import { h } from 'preact';
+import type { ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import * as Context from 'ojs/ojcontext';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -10,7 +11,6 @@ import 'ojs/ojselectcombobox';
 import 'ojs/ojcheckboxset';
 import 'ojs/ojtable';
 import 'ojs/ojtoolbar';
-import { ojButton } from 'ojs/ojbutton';
 import 'ojs/ojbutton';
 import 'ojs/ojmessages';
 import 'ojs/ojselectsingle';
@@ -47,8 +47,11 @@ interface SelectSingleData {
 }
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type TableColumns = ComponentProps<'oj-table'>['columns'];
 type DelayMode = 'off' | 'on';
 type EditRowState = { rowKey?: DepartmentData['DepartmentId'] | null; rowIndex?: number };
+const formatPrimaryValue = (primary: DepartmentData['Primary']) =>
+    primary.includes('checked') ? 'Checked' : 'Unchecked';
 
 export const TableEditableArrayTable = () => {
   const deptArray: DepartmentData[] = JSON.parse(deptData as string) as DepartmentData[];
@@ -62,13 +65,14 @@ export const TableEditableArrayTable = () => {
 
   const originalDataRef = useRef<DepartmentData | null>(null);
   const cancelEditRef = useRef<boolean>(false);
+  const tableRef = useRef<ojTable<DepartmentData['DepartmentId'], DepartmentData> | null>(null);
 
   const dataprovider = useMemo(() => new BufferingDataProvider<DepartmentData['DepartmentId'], DepartmentData>(new ArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(deptObservableArray, {
       keyAttributes: 'DepartmentId'
   })), [deptObservableArray]);
   const departments = useMemo(() => new ArrayDataProvider([{ label: 'Sales' }, { label: 'HR' }, { label: 'Marketing' }, { label: 'Finance' }], { keyAttributes: 'label' }), []);
   const isDelayDisabled = simulatedDelays === 'off';
-  const columnArray = useMemo(() => [
+  const columnArray = useMemo<TableColumns>(() => [
       {
           field: 'DepartmentId',
           headerText: 'ReadOnly',
@@ -253,7 +257,10 @@ export const TableEditableArrayTable = () => {
   };
 
   const validateEdits = async (event: ojTable.ojBeforeRowEditEnd<DepartmentData['DepartmentId'], DepartmentData>) => {
-      let invalidInputs = await getValidationErrorElementsInRow(document.getElementById('table') as ojTable<DepartmentData['DepartmentId'], DepartmentData>);
+      if (!tableRef.current) {
+          return;
+      }
+      let invalidInputs = await getValidationErrorElementsInRow(tableRef.current);
       if (invalidInputs.length > 0) {
           return invalidInputs[0];
       }
@@ -266,7 +273,7 @@ export const TableEditableArrayTable = () => {
   };
 
   const applyFocus = (element: HTMLElement) => {
-      const tableElement = document.getElementById('table');
+      const tableElement = tableRef.current;
       if (!tableElement) {
           return;
       }
@@ -284,7 +291,10 @@ export const TableEditableArrayTable = () => {
           metadata: { key: key },
           data: rowData
       });
-      const editItem = dataprovider.getSubmittableItems()[0] as BufferingDataProvider.EditItem<DepartmentData['DepartmentId'], DepartmentData>;
+      const editItem = dataprovider.getSubmittableItems()[0];
+      if (!editItem) {
+          return;
+      }
 	      dataprovider.setItemStatus(editItem, 'submitting');
 	      const itemData = editItem.item.data;
 	      if (itemData == null) {
@@ -355,7 +365,7 @@ export const TableEditableArrayTable = () => {
                               <oj-input-number id="edit-end-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditEndDelayValueChanged} value={editEndDelay} label-hint="Simulated Submit Edit Delay (ms)" />
                           </oj-form-layout>
                 </div>
-            <oj-table id="table" aria-label="Departments Table" class="demo-table-container" data={dataprovider} edit-mode="rowEdit" oneditRowChanged={handleEditRowEditRowChanged} edit-row={editRow} onojBeforeRowEdit={beforeRowEditListener} onojBeforeRowEditEnd={beforeRowEditEndListener} layout="fixed" columns={columnArray} {...{ 'accessibility.row-header': "depName", 'columns-default.sortable': "disabled" }}>
+            <oj-table ref={tableRef} id="table" aria-label="Departments Table" class="demo-table-container" data={dataprovider} edit-mode="rowEdit" oneditRowChanged={handleEditRowEditRowChanged} edit-row={editRow} onojBeforeRowEdit={beforeRowEditListener} onojBeforeRowEditEnd={beforeRowEditEndListener} layout="fixed" columns={columnArray} {...{ 'accessibility.row-header': "depName", 'columns-default.sortable': "disabled" }}>
                     <template slot="deptIdTemplate" render={(cell) => (
                             <>
                                 {numberConverter.format(cell.data)}
@@ -460,14 +470,14 @@ export const TableEditableArrayTable = () => {
                                 {
                                             cell.mode == "navigation" ? (
                                               <>
-                                                {cell.data == 'checked' ? 'Checked' : 'Unchecked'}
+                                                {formatPrimaryValue(cell.data)}
                                               </>
                                             ) : null
                                           }
                                 {
                                             cell.mode == "edit" ? (
                                               <>
-                                                <div oj-sm-justify-content-center>
+                                                <div class="oj-sm-justify-content-center">
                                                                 <oj-checkboxset id="cs2" aria-label="Checkboxset" value={rowData?.Primary ?? []} class="oj-choice-direction-row demo-table-checkbox editable" onvalueChanged={(event) => updateRowData('Primary', event.detail.value ?? [])}><oj-option value="checked" /></oj-checkboxset>
                                                             </div>
                                               </>

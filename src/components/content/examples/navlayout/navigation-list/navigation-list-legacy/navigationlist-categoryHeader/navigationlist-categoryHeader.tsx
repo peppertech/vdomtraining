@@ -1,5 +1,5 @@
 import { Fragment, h } from 'preact';
-import { useMemo } from 'preact/hooks';
+import { useMemo, useRef } from 'preact/hooks';
 import { ojNavigationList } from 'ojs/ojnavigationlist';
 import 'ojs/ojnavigationlist';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -11,6 +11,8 @@ type CategoryNavItem = {
 };
 
 export const NavigationlistCategoryHeader = () => {
+  const itemRefs = useRef<Record<string, HTMLLIElement | null>>({});
+  const selectedItemRef = useRef<HTMLElement | null>(null);
   const categoryData1: CategoryNavItem[] = [
       { name: 'Save', id: 'save' },
       { name: 'Zoom In', id: 'zoomin' },
@@ -32,7 +34,6 @@ export const NavigationlistCategoryHeader = () => {
       { name: 'Track 4', id: 'track4' }
   ];
 
-  let selectedItem: HTMLElement | null = null;
   const dataProvider1 = useMemo(() => new ArrayDataProvider<CategoryNavItem["id"], CategoryNavItem>(categoryData1, {
       keyAttributes: 'id'
   }), []);
@@ -46,10 +47,10 @@ export const NavigationlistCategoryHeader = () => {
     event: ojNavigationList.selectionChanged<CategoryNavItem["id"], CategoryNavItem>
   ) => {
       //Get Selected item using item key.
-      let newSelectedItem = document.getElementById(event.detail.value);
+      const newSelectedItem = itemRefs.current[event.detail.value];
       //Check if existing selected item is not null,
-      if (selectedItem && newSelectedItem) {
-          let oldNavlist = closest(selectedItem, '.oj-navigationlist') as ojNavigationList<string | null, CategoryNavItem>;
+      if (selectedItemRef.current && newSelectedItem) {
+          let oldNavlist = closest(selectedItemRef.current, '.oj-navigationlist') as ojNavigationList<string | null, CategoryNavItem>;
           //Check if the existing selected item belongs
           //to a differnet navigationlist
           if (oldNavlist != null &&
@@ -60,7 +61,7 @@ export const NavigationlistCategoryHeader = () => {
           }
       }
       //update the current item with newly selected one.
-      selectedItem = newSelectedItem;
+      selectedItemRef.current = newSelectedItem;
   };
 
   const closest = (element: HTMLElement, selector: string) => {
@@ -86,7 +87,7 @@ export const NavigationlistCategoryHeader = () => {
                               <oj-navigation-list id="navilist1" onselectionChanged={selectionChange} aria-labelledby="options" data={dataProvider1}>
                                           <template slot="itemTemplate" render={(item) => (
                                                       <>
-                                                          <li id={item.data.id} class={item.index === 4 ? 'oj-navigationlist-category-divider' : ''}><a href="#">{item.data.name}</a></li>
+                                                          <li ref={(element) => { itemRefs.current[item.data.id] = element; }} id={item.data.id} class={item.index === 4 ? 'oj-navigationlist-category-divider' : ''}><a href="#">{item.data.name}</a></li>
                                                       </>
                                                     )} />
                                       </oj-navigation-list>
@@ -94,7 +95,7 @@ export const NavigationlistCategoryHeader = () => {
                               <oj-navigation-list id="navilist2" onselectionChanged={selectionChange} aria-labelledby="playback" data={dataProvider2}>
                                           <template slot="itemTemplate" render={(item) => (
                                                       <>
-                                                          <li id={item.data.id} class={item.index === 4 ? 'oj-navigationlist-category-divider' : ''}><a href="#">{item.data.name}</a></li>
+                                                          <li ref={(element) => { itemRefs.current[item.data.id] = element; }} id={item.data.id} class={item.index === 4 ? 'oj-navigationlist-category-divider' : ''}><a href="#">{item.data.name}</a></li>
                                                       </>
                                                     )} />
                                       </oj-navigation-list>
@@ -102,7 +103,7 @@ export const NavigationlistCategoryHeader = () => {
                               <oj-navigation-list id="navilist3" onselectionChanged={selectionChange} aria-labelledby="tracks" data={dataProvider3}>
                                           <template slot="itemTemplate" render={(item) => (
                                                       <>
-                                                          <li id={item.data.id}><a href="#">{item.data.name}</a></li>
+                                                          <li ref={(element) => { itemRefs.current[item.data.id] = element; }} id={item.data.id}><a href="#">{item.data.name}</a></li>
                                                       </>
                                                     )} />
                                       </oj-navigation-list>

@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { CMessageToastElement, MessageToastItem } from 'oj-c/message-toast';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import Context = require('ojs/ojcontext');
@@ -66,6 +66,7 @@ const toAutoTimeout = (value: ComboboxValue): ToastMessage['autoTimeout'] => {
 };
 
 export const MessagetoastAccessibilityAndUsabilitycorepack = () => {
+  const settingsPopupRef = useRef<ojPopup | null>(null);
   const smQuery = ResponsiveUtils.getFrameworkQuery('sm-only') || '(max-width: 599px)';
   const [errorMessageTimeout, setErrorMessageTimeout] = useState<ComboboxValue>('off');
   const [warningMessageTimeout, setWarningMessageTimeout] = useState<ComboboxValue>('off');
@@ -77,7 +78,7 @@ export const MessagetoastAccessibilityAndUsabilitycorepack = () => {
   const [messages, setMessages] = useState<ToastMessage[]>([]);
   const [deletedMessages, setDeletedMessages] = useState<ToastMessage[]>([]);
   const [smallScreen, setSmallScreen] = useState<boolean>(() =>
-    typeof window === 'undefined' ? false : window.matchMedia(smQuery).matches
+    typeof window === 'undefined' ? false : matchMedia(smQuery).matches
   );
 
   useEffect(() => {
@@ -85,7 +86,7 @@ export const MessagetoastAccessibilityAndUsabilitycorepack = () => {
       return undefined;
     }
 
-    const matcher = window.matchMedia(smQuery);
+    const matcher = matchMedia(smQuery);
     const update = (event?: MediaQueryListEvent) => {
       setSmallScreen(event ? event.matches : matcher.matches);
     };
@@ -163,7 +164,7 @@ export const MessagetoastAccessibilityAndUsabilitycorepack = () => {
 
   useEffect(() => {
     let isMounted = true;
-    const popup = document.getElementById('settingsPopup') as ojPopup | null;
+    const popup = settingsPopupRef.current;
 
     if (popup) {
       void Context.getContext(popup)
@@ -243,6 +244,7 @@ export const MessagetoastAccessibilityAndUsabilitycorepack = () => {
         onojClose={handleCloseMessage}
       />
       <oj-popup
+        ref={settingsPopupRef}
         id="settingsPopup"
         autoDismiss="none"
         modality="modeless"

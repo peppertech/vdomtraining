@@ -1,5 +1,5 @@
 import { Fragment, h } from 'preact';
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojdialog';
 import 'ojs/ojbutton';
@@ -10,6 +10,7 @@ import 'ojs/ojoption';
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 
 export const DialogHeaderDecoration = () => {
+  const dialogRef = useRef<ojDialog | null>(null);
   const [currentHeaderDecorationOpt, setCurrentHeaderDecorationOpt] = useState<ojDialog['headerDecoration']>('on' as ojDialog['headerDecoration']);
 
   const handleCurrentHeaderDecorationOptValueChanged = (event: PropertyChangedEvent<ojDialog['headerDecoration']>) => {
@@ -17,11 +18,11 @@ export const DialogHeaderDecoration = () => {
   };
 
   const handleOpen = () => {
-      (document.querySelector('#dialog1') as ojDialog).open();
+      dialogRef.current?.open();
   };
 
   const handleOKClose = () => {
-      (document.querySelector('#dialog1') as ojDialog).close();
+      dialogRef.current?.close();
   };
 
   return (
@@ -34,7 +35,7 @@ export const DialogHeaderDecoration = () => {
                     </oj-radioset>
             </div>
           <div id="dialogWrapper">
-                <oj-dialog id="dialog1" dialog-title="Header Decoration Options" header-decoration={currentHeaderDecorationOpt}>
+                <oj-dialog ref={dialogRef} id="dialog1" dialog-title="Header Decoration Options" header-decoration={currentHeaderDecorationOpt}>
                         <div slot="body">
                                   <div>
                                               header-decoration:

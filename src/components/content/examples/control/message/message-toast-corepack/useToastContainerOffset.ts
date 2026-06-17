@@ -13,16 +13,16 @@ const getHorizontalOffset = (rect: DOMRect, position: ToastPosition) => {
     return getEdgeOffset(rect.left);
   }
   if (position.endsWith('right')) {
-    return getEdgeOffset(window.innerWidth - rect.right);
+    return getEdgeOffset(innerWidth - rect.right);
   }
   if (position.endsWith('start')) {
-    return isRtl ? getEdgeOffset(window.innerWidth - rect.right) : getEdgeOffset(rect.left);
+    return isRtl ? getEdgeOffset(innerWidth - rect.right) : getEdgeOffset(rect.left);
   }
   if (position.endsWith('end')) {
-    return isRtl ? getEdgeOffset(rect.left) : getEdgeOffset(window.innerWidth - rect.right);
+    return isRtl ? getEdgeOffset(rect.left) : getEdgeOffset(innerWidth - rect.right);
   }
 
-  return Math.round(rect.left + rect.width / 2 - window.innerWidth / 2);
+  return Math.round(rect.left + rect.width / 2 - innerWidth / 2);
 };
 
 const getVerticalOffset = (rect: DOMRect, position: ToastPosition) => {

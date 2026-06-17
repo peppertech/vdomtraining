@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import Context = require('ojs/ojcontext');
 import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
@@ -156,8 +156,9 @@ const createPositionMappings = (): Record<PositionOptionValue, PageInfo> => {
 };
 
 export const MessagetoastPageNotification = () => {
+  const settingsPopupRef = useRef<ojPopup | null>(null);
   const smQuery = ResponsiveUtils.getFrameworkQuery('sm-only') || '(max-width: 599px)';
-  const isSmallScreen = typeof window !== 'undefined' && window.matchMedia(smQuery).matches;
+  const isSmallScreen = typeof window !== 'undefined' && matchMedia(smQuery).matches;
   const paraCount = isSmallScreen ? 5 : 25;
 
   const [commonOptions, setCommonOptions] = useState<string[]>(['dark']);
@@ -266,12 +267,12 @@ export const MessagetoastPageNotification = () => {
   };
 
   const handleOpenSettingsPopup = () => {
-    (document.getElementById('settingsPopup') as ojPopup | null)?.open('#settings', settingsPopupPosition);
+    settingsPopupRef.current?.open('#settings', settingsPopupPosition);
   };
 
   useEffect(() => {
     let isMounted = true;
-    const popup = document.getElementById('settingsPopup') as ojPopup | null;
+    const popup = settingsPopupRef.current;
 
     if (popup) {
       void Context.getContext(popup)
@@ -290,7 +291,7 @@ export const MessagetoastPageNotification = () => {
   }, [settingsPopupPosition]);
 
   const handleCloseSettingsPopup = () => {
-    (document.getElementById('settingsPopup') as ojPopup | null)?.close();
+    settingsPopupRef.current?.close();
   };
 
   const renderMessageTemplate = (context: ojMessages.MessageTemplateContext) => {
@@ -335,6 +336,7 @@ export const MessagetoastPageNotification = () => {
         </div>
       </div>
       <oj-popup
+        ref={settingsPopupRef}
         id="settingsPopup"
         position={settingsPopupPosition}
         autoDismiss="none"

@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojtable';
 import { ojTable } from 'ojs/ojtable';
@@ -17,6 +17,7 @@ interface DepartmentData {
 }
 
 export const TableCustomContextMenuTablecorepack = () => {
+  const tableRef = useRef<ojTable<DepartmentData['DepartmentId'], DepartmentData> | null>(null);
   const [selectedMenuItem, setSelectedMenuItem] = useState('None selected yet');
   const [launchedFrom, setLaunchedFrom] = useState('None launched yet');
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
@@ -40,7 +41,7 @@ export const TableCustomContextMenuTablecorepack = () => {
 
   const myBeforeOpenFunction = (event: ojMenu.ojBeforeOpen) => {
       const target = event.detail.originalEvent.target;
-      const context = (document.getElementById('table') as ojTable<DepartmentData['DepartmentId'], DepartmentData>).getContextByNode(target);
+      const context = tableRef.current?.getContextByNode(target);
       if (context != null) {
           if (context.subId === 'oj-table-header') {
               setLaunchedFrom('Header: [' + context.index + ']');
@@ -53,7 +54,7 @@ export const TableCustomContextMenuTablecorepack = () => {
 
   return (
       <div id="tableWrapper">
-            <oj-table id="table" aria-label="Departments Table" data={dataprovider} columns={columns} class="demo-table-container" {...ojTableProps}>
+            <oj-table ref={tableRef} id="table" aria-label="Departments Table" data={dataprovider} columns={columns} class="demo-table-container" {...ojTableProps}>
                     <oj-menu slot="contextMenu" onojMenuAction={myActionFunction} onojBeforeOpen={myBeforeOpenFunction} aria-label="Employee Edit">
                               <oj-option value="My First Item">My First Item</oj-option>
                               <oj-option value="Sort Ascending" data-oj-command="oj-table-sortAsc" />

@@ -116,6 +116,8 @@ export const NBoxDndSample = () => {
     const latestNboxActionRef = useRef<ClipboardAction>('none');
     const latestListviewActionRef = useRef<ClipboardAction>('none');
     const dragItemIdRef = useRef<string | null>(null);
+    const accInfoRef = useRef<HTMLDivElement | null>(null);
+    const listViewRef = useRef<ojListView<DataInfo['id'], DataInfo> | null>(null);
 
     const clipboard = useMemo(() => new DemoDataTransfer(), []);
     const rows = useMemo(() => [{ id: '0' }, { id: '1' }, { id: '2' }], []);
@@ -291,7 +293,7 @@ export const NBoxDndSample = () => {
     };
 
     const _updateAcc = (text: string) => {
-        const acc = document.getElementById('accInfo');
+        const acc = accInfoRef.current;
         if (acc) {
             acc.textContent = text;
         }
@@ -310,7 +312,7 @@ export const NBoxDndSample = () => {
         event.preventDefault();
         let index = -1;
         if (context.item) {
-            const listView = document.getElementById('listview') as ojListView<DataInfo['id'], DataInfo> | null;
+            const listView = listViewRef.current;
             const itemContext = listView?.getContextByNode(context.item);
             if (itemContext) {
                 index = itemContext.index;
@@ -359,7 +361,7 @@ export const NBoxDndSample = () => {
     };
 
     const _cutCopyKeyboardListview = (type: 'cut' | 'copy') => {
-        const listView = document.getElementById('listview') as ojListView<DataInfo['id'], DataInfo> | null;
+        const listView = listViewRef.current;
         const listCurrentItem = listView?.currentItem;
         if (!listView || listCurrentItem == null) {
             return;
@@ -380,7 +382,7 @@ export const NBoxDndSample = () => {
     const _paste = () => {
         const dataStr = clipboard.getData('application/nbox');
         if (dataStr) {
-            const listView = document.getElementById('listview') as ojListView<DataInfo['id'], DataInfo> | null;
+            const listView = listViewRef.current;
             const listCurrentItem = listView?.currentItem;
             const index = _findIndex(listArr, listCurrentItem);
             _listDrop(dataStr, true, index + 1);
@@ -534,6 +536,7 @@ export const NBoxDndSample = () => {
                     <div class="oj-flex-item">
                         <div class="oj-typography-heading-xs oj-sm-margin-2x-horizontal">Listview</div>
                         <oj-list-view
+                            ref={listViewRef}
                             id="listview"
                             aria-label="list drag source"
                             class="demo-list oj-listview-item-padding-off"
@@ -566,7 +569,7 @@ export const NBoxDndSample = () => {
                     </div>
                 </div>
             </div>
-            <div id="accInfo" aria-live="polite" class="oj-helper-hidden-accessible" />
+            <div ref={accInfoRef} id="accInfo" aria-live="polite" class="oj-helper-hidden-accessible" />
         </div>
     );
 };

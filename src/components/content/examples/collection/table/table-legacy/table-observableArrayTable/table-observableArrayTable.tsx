@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import type { ItemContext } from 'ojs/ojcommontypes';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import BufferingDataProvider = require('ojs/ojbufferingdataprovider');
@@ -37,6 +37,9 @@ type FirstSelectedRow = ItemContext<DepartmentData['DepartmentId'], DepartmentDa
 type DemoMessage = ojMessage.Message;
 
 export const TableObservableArrayTable = () => {
+  const tableRef = useRef<ojTable<DepartmentData['DepartmentId'], DepartmentData> | null>(null);
+  const bufferContentRef = useRef<ojTextArea | null>(null);
+  const noDataRef = useRef<HTMLDivElement | null>(null);
   const deptArray: DepartmentData[] = JSON.parse(deptData as string) as DepartmentData[];
   const columns = useMemo<TableColumns>(() => [
       { headerText: 'Department Id', field: 'DepartmentId', id: 'depId' },
@@ -101,9 +104,8 @@ export const TableObservableArrayTable = () => {
 
 	  const updateRow = () => {
 	      if (groupValid !== 'invalidShown' && inputDepartmentId != null && inputDepartmentName != null && inputLocationId != null && inputManagerId != null) {
-          const element = document.getElementById('table');
-          const currentRow = (element as ojTable<DepartmentData['DepartmentId'], DepartmentData>)
-              .currentRow;
+          const element = tableRef.current;
+          const currentRow = element?.currentRow;
           if (currentRow != null) {
               const key = inputDepartmentId;
 	              const newData: DepartmentData = {
@@ -118,7 +120,10 @@ export const TableObservableArrayTable = () => {
   };
 
   const removeRow = () => {
-      const element = document.getElementById('table') as ojTable<DepartmentData['DepartmentId'], DepartmentData>;
+      const element = tableRef.current;
+      if (!element) {
+          return;
+      }
       const currentRow = element.currentRow;
       if (currentRow != null && currentRow.rowIndex != null) {
           const dataObj = element.getDataForVisibleRow(currentRow.rowIndex);
@@ -258,7 +263,10 @@ export const TableObservableArrayTable = () => {
   };
 
   const showSubmittableItems = (submittable: Array<BufferingDataProvider.EditItem<DepartmentData['DepartmentId'], DepartmentData>>) => {
-      const textarea = document.getElementById('bufferContent') as ojTextArea;
+      const textarea = bufferContentRef.current;
+      if (!textarea) {
+          return;
+      }
       let textValue = '';
       submittable.forEach((editItem: BufferingDataProvider.EditItem<DepartmentData['DepartmentId'], DepartmentData>) => {
           textValue += editItem.operation + ' ';
@@ -285,8 +293,8 @@ export const TableObservableArrayTable = () => {
   };
 
   const hideTable = (hide: boolean) => {
-      const table = document.getElementById('table');
-      const noDataDiv = document.getElementById('noDataDiv');
+      const table = tableRef.current;
+      const noDataDiv = noDataRef.current;
       if (!table || !noDataDiv) {
           return;
       }
@@ -321,8 +329,8 @@ export const TableObservableArrayTable = () => {
                                       </oj-validation-group>
                           </div>
                     <div id="tableContainer" class="oj-flex-item oj-sm-padding-2x-horizontal">
-	                              <oj-table id="table" aria-label="Departments Table" class="demo-table-container oj-helper-text-align-center" data={dataprovider} columns={columns} first-selected-row={firstSelected ?? undefined} onfirstSelectedRowChanged={firstSelectedRowChangedListener} {...{ 'accessibility.row-header': "depName", 'selection-mode.row': "single" }} />
-                              <div id="noDataDiv" class="oj-flex demo-table-container oj-helper-text-align-center oj-sm-hide">
+	                              <oj-table ref={tableRef} id="table" aria-label="Departments Table" class="demo-table-container oj-helper-text-align-center" data={dataprovider} columns={columns} first-selected-row={firstSelected ?? undefined} onfirstSelectedRowChanged={firstSelectedRowChangedListener} {...{ 'accessibility.row-header': "depName", 'selection-mode.row': "single" }} />
+                              <div ref={noDataRef} id="noDataDiv" class="oj-flex demo-table-container oj-helper-text-align-center oj-sm-hide">
                     <div class="oj-flex-item oj-sm-align-self-center">
                                                         <span>No data available. Please use the form controls to create a new row.</span>
                                                     </div>
@@ -335,7 +343,7 @@ export const TableObservableArrayTable = () => {
                 </div>
             <div>
                     <oj-label for="bufferContent">Buffered Changes:</oj-label>
-                    <oj-text-area id="bufferContent" rows={10} class="demo-table-textarea" />
+                    <oj-text-area ref={bufferContentRef} id="bufferContent" rows={10} class="demo-table-textarea" />
                 </div>
         </div>
     );

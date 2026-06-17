@@ -34,6 +34,7 @@ type SelectionChangedEvent = CustomEvent<{ value?: SelectionKey[] }>;
 const employees = JSON.parse(jsonDataText as string) as Employee[];
 
 export const NBoxContextMenu = () => {
+  const nboxRef = useRef<ojNBox<number, Employee> | null>(null);
   const [selectedMenuItem, setSelectedMenuItem] = useState('(None selected yet)');
   const [selectedItemsValue, setSelectedItemsValue] = useState<SelectionKey[]>([]);
 
@@ -130,8 +131,7 @@ export const NBoxContextMenu = () => {
       }
       else {
           // Handle mouse interaction
-          const nbox = document.getElementById('nbox1') as ojNBox<number, Employee>;
-          const context = nbox.getContextByNode(target);
+          const context = nboxRef.current?.getContextByNode(target);
           if (context != null) {
               if (context.subId == 'oj-nbox-node') {
                   nodeRef.current = employees[Number(context['id'])];
@@ -183,6 +183,7 @@ export const NBoxContextMenu = () => {
   return (
       <div id="nbox-container">
             <oj-n-box
+              ref={nboxRef}
               id="nbox1"
               animationOnDataChange="auto"
               data={dataProvider}

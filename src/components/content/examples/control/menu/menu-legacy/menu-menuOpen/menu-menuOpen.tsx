@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps, JSX } from 'preact';
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 import { ojMenu } from 'ojs/ojmenu';
 import 'ojs/ojbutton';
 import 'ojs/ojmenu';
@@ -10,12 +10,14 @@ import 'ojs/ojoption';
 type MenuActionEvent = Parameters<NonNullable<ComponentProps<'oj-menu'>['onojMenuAction']>>[0];
 
 export const MenuMenuOpen = () => {
+  const openMenuRef = useRef<ojMenu | null>(null);
+  const closeMenuRef = useRef<ojMenu | null>(null);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('(None selected yet)');
   const [selectedMenuItem1, setSelectedMenuItem1] = useState<string>('(None selected yet)');
 
   const handleLaunch = (event: JSX.TargetedMouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    (document.getElementById('myMenu') as ojMenu | null)?.open(event, {
+    openMenuRef.current?.open(event, {
       launcher: event.currentTarget,
       initialFocus: 'menu'
     });
@@ -31,7 +33,7 @@ export const MenuMenuOpen = () => {
 
   const handleMenuButtonAction1 = () => {
     setTimeout(() => {
-      (document.getElementById('myMenu1') as ojMenu | null)?.close();
+      closeMenuRef.current?.close();
     }, 3000);
   };
 
@@ -43,6 +45,7 @@ export const MenuMenuOpen = () => {
           Actions
         </a>
         <oj-menu
+          ref={openMenuRef}
           id="myMenu"
           aria-labelledby="myLauncher"
           onojMenuAction={handleMenuItemAction}
@@ -75,7 +78,7 @@ export const MenuMenuOpen = () => {
         aria-label="menu that shows close action"
       >
         Actions
-        <oj-menu id="myMenu1" slot="menu" onojMenuAction={handleMenuItemAction1} aria-label="menu with actions">
+        <oj-menu ref={closeMenuRef} id="myMenu1" slot="menu" onojMenuAction={handleMenuItemAction1} aria-label="menu with actions">
           <oj-option id="save1" value="Save">
             <span class="oj-ux-ico-save" slot="startIcon" />
             Save

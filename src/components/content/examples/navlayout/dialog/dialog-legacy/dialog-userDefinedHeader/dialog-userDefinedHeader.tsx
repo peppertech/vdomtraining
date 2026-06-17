@@ -1,20 +1,23 @@
 import { h } from 'preact';
+import { useRef } from 'preact/hooks';
 import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojdialog';
 import 'ojs/ojbutton';
 
 export const DialogUserDefinedHeader = () => {
+  const dialogRef = useRef<ojDialog | null>(null);
+
   const handleOpen = () => {
-      (document.querySelector('#dialogWithUserDefinedHeader') as ojDialog).open();
+      dialogRef.current?.open();
   };
 
   const handleOKClose = () => {
-      (document.querySelector('#dialogWithUserDefinedHeader') as ojDialog).close();
+      dialogRef.current?.close();
   };
 
   return (
       <div id="dialogWrapper">
-            <oj-dialog id="dialogWithUserDefinedHeader">
+            <oj-dialog ref={dialogRef} id="dialogWithUserDefinedHeader">
                     <div slot="header">
                               <h1 id="dialogTitleId" class="oj-dialog-title">
                                           User Defined Header

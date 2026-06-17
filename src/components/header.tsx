@@ -24,7 +24,7 @@ const toTabIconClass = (iconClass: string) =>
 export const Header = (props: Props) => {
   const location = useLocation();
   const mediaQueryRef = useRef<MediaQueryList>(
-    window.matchMedia(ResponsiveUtils.getFrameworkQuery("sm-only")!)
+    matchMedia(ResponsiveUtils.getFrameworkQuery("sm-only")!)
   );
 
   const [isSmallWidth, setIsSmallWidth] = useState(

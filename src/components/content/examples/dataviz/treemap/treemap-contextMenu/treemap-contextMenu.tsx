@@ -33,6 +33,7 @@ const getNodeFromIndexPath = (indexPath: number[]) => {
 };
 
 export const TreemapContextMenu = () => {
+  const treemapRef = useRef<ojTreemap<string, TreeNode> | null>(null);
   const [selectedItemsValue, setSelectedItemsValue] = useState<string[]>([]);
   const [selectedMenuItem, setSelectedMenuItem] = useState('(None selected yet)');
 
@@ -76,7 +77,7 @@ export const TreemapContextMenu = () => {
       return;
     }
 
-    const treemap = document.getElementById('treemap1') as ojTreemap<string, TreeNode> | null;
+    const treemap = treemapRef.current;
     if (!treemap) {
       return;
     }
@@ -98,6 +99,7 @@ export const TreemapContextMenu = () => {
   return (
     <div id="treemap-container">
       <oj-treemap
+        ref={treemapRef}
         id="treemap1"
         animationOnDisplay="auto"
         animationOnDataChange="auto"

@@ -99,7 +99,7 @@ const TEAM_MEMBERS: DataInfo[] = [
   }
 ];
 
-const getViewportWidth = () => (typeof window === "undefined" ? 1280 : window.innerWidth);
+const getViewportWidth = () => (typeof window === "undefined" ? 1280 : innerWidth);
 
 const getScreenRange = (width: number): ScreenRange => {
   if (width < 768) {

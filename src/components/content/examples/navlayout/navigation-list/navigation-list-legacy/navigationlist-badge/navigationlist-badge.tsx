@@ -74,6 +74,11 @@ export const NavigationlistBadge = () => {
     setSelectedItem8(event.detail.value);
   };
 
+  const navListContainerClass = [
+    'navlistcontainer',
+    isContrastBackground ? 'oj-bg-neutral-170 oj-color-invert' : ''
+  ].filter(Boolean).join(' ');
+
   return (
       <div id="navlistdemo">
             <div class="oj-panel oj-bg-neutral-30 oj-sm-margin-4x-bottom">
@@ -88,7 +93,7 @@ export const NavigationlistBadge = () => {
             <div class="oj-flex">
                     <div class="oj-flex-item oj-sm-12 oj-lg-4 oj-lg-padding-4x-end oj-divider-end">
                               <div class="oj-sm-padding-2x-bottom oj-sm-padding-5x-end">
-                                          <div class="navlistcontainer">
+                                          <div class={navListContainerClass}>
                                                         <oj-navigation-list onselectionChanged={handleSelectedItem1SelectionChanged} selection={selectedItem1} aria-label="Choose a navigation item" drill-mode="none" data={dataProvider}>
                                                                         <template slot="itemTemplate" render={(item) => (
                                                                                         <>
@@ -112,7 +117,7 @@ export const NavigationlistBadge = () => {
                           </div>
                     <div class="oj-flex-item oj-sm-12 oj-lg-4 oj-lg-padding-4x-horizontal oj-divider-end">
                               <div class="oj-sm-padding-2x-bottom oj-sm-padding-5x-end">
-                                          <div class="navlistcontainer">
+                                          <div class={navListContainerClass}>
                                                         <oj-navigation-list onselectionChanged={handleSelectedItem3SelectionChanged} selection={selectedItem3} display="all" aria-label="Choose a navigation item" drill-mode="none" data={dataProvider}>
                                                                         <template slot="itemTemplate" render={(item) => (
                                                                                         <>
@@ -137,12 +142,12 @@ export const NavigationlistBadge = () => {
                           </div>
                     <div class="oj-flex-item oj-sm-12 oj-lg-4 oj-lg-padding-4x-start">
                               <div class="oj-sm-padding-2x-bottom oj-sm-padding-5x-end">
-                                          <div class="navlistcontainer">
+                                          <div class={navListContainerClass}>
                                                         <oj-navigation-list onselectionChanged={handleSelectedItem2SelectionChanged} selection={selectedItem2} display="icons" aria-label="Choose a navigation item" drill-mode="none" data={dataProvider}>
                                                                         <template slot="itemTemplate" render={(item) => (
                                                                                         <>
                                                                                             <li>
-                                                                                                                  <a href="#">
+                                                                                                                  <a href="#" aria-label={item.data.name}>
                                                                                                                                           <span class={'oj-navigationlist-item-icon ' + item.data.icons} />
                                                                                                                                           {
                                                                                                                                                                   item.data.count ? (
@@ -151,7 +156,7 @@ export const NavigationlistBadge = () => {
                                                                                                                                                                     </>
                                                                                                                                                                   ) : null
                                                                                                                                                                 }
-                                                                                                                                          {item.data.name}
+                                                                                                                                          <span class="oj-helper-hidden-accessible">{item.data.name}</span>
                                                                                                                                       </a>
                                                                                                               </li>
                                                                                         </>
@@ -165,7 +170,7 @@ export const NavigationlistBadge = () => {
             <div class="oj-flex">
                     <div class="oj-flex-item oj-sm-12 oj-lg-4 oj-lg-padding-4x-end oj-divider-end">
                               <div class="oj-sm-padding-2x-bottom oj-sm-padding-5x-end">
-                                          <div class="navlistcontainer">
+                                          <div class={navListContainerClass}>
                                                         <oj-navigation-list onselectionChanged={handleSelectedItem4SelectionChanged} selection={selectedItem4} aria-label="Choose a navigation item" drill-mode="none" data={dataProvider}>
                                                                         <template slot="itemTemplate" render={(item) => (
                                                                                         <>
@@ -189,7 +194,7 @@ export const NavigationlistBadge = () => {
                           </div>
                     <div class="oj-flex-item oj-sm-12 oj-lg-4 oj-lg-padding-4x-horizontal">
                               <div class="oj-sm-padding-2x-bottom oj-sm-padding-5x-end">
-                                          <div class="navlistcontainer">
+                                          <div class={navListContainerClass}>
                                                         <oj-navigation-list onselectionChanged={handleSelectedItem6SelectionChanged} selection={selectedItem6} display="all" aria-label="Choose a navigation item" drill-mode="none" data={dataProvider}>
                                                                         <template slot="itemTemplate" render={(item) => (
                                                                                         <>
@@ -217,7 +222,7 @@ export const NavigationlistBadge = () => {
             <div class="oj-flex">
                     <div class="oj-flex-item oj-sm-12 oj-lg-4 oj-lg-padding-4x-end oj-divider-end">
                               <div class="oj-sm-padding-2x-bottom oj-sm-padding-5x-end">
-                                          <div class="navlistcontainer">
+                                          <div class={navListContainerClass}>
                                                         <oj-navigation-list onselectionChanged={handleSelectedItem7SelectionChanged} selection={selectedItem7} aria-label="Choose a navigation item" drill-mode="none" data={dataProvider}>
                                                                         <template slot="itemTemplate" render={(item) => (
                                                                                         <>
@@ -245,7 +250,7 @@ export const NavigationlistBadge = () => {
                           </div>
                     <div class="oj-flex-item oj-sm-12 oj-lg-4 oj-lg-padding-4x-horizontal">
                               <div class="oj-sm-padding-2x-bottom oj-sm-padding-5x-end">
-                                          <div class="navlistcontainer">
+                                          <div class={navListContainerClass}>
                                                         <oj-navigation-list onselectionChanged={handleSelectedItem8SelectionChanged} selection={selectedItem8} display="all" aria-label="Choose a navigation item" drill-mode="none" data={dataProvider}>
                                                                         <template slot="itemTemplate" render={(item) => (
                                                                                         <>

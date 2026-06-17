@@ -1,11 +1,10 @@
 // @ts-nocheck
 import { h } from 'preact';
+import type { ComponentProps } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import * as jsonData from 'text!../../data/cookbook/dataVisualizations/tagCloud/resources/socialNetworks.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojmenu';
-import 'ojs/ojtagcloud';
-import 'ojs/ojoption';
+import 'oj-c/tag-cloud';
 import 'css!./demo.css';
 
 type SocialNetwork = {
@@ -14,29 +13,80 @@ type SocialNetwork = {
 };
 
 type SelectionChangedEvent = CustomEvent<{ value: string[]; updatedFrom?: string }>;
-type TagCloudMenuBeforeOpenEvent = CustomEvent<{ originalEvent?: Event }>;
-type TagCloudMenuActionEvent = CustomEvent<{ selectedValue: string }>;
+type TagCloudContextMenuConfig = NonNullable<ComponentProps<'oj-c-tag-cloud'>['contextMenuConfig']>;
+type TagCloudMenuSelectionValue = 'selection1' | 'selection2' | 'selection3';
 
 const renderContextMenuTagCloudItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
-  <oj-tag-cloud-item
+  <oj-c-tag-cloud-item
     label={item.data.id}
     value={item.data.total}
-    short-desc={`${item.data.id}: ${item.data.total}% of respondents`}
+    shortDesc={`${item.data.id}: ${item.data.total}% of respondents`}
   />
 );
 
 export const TagCloudContextMenucorepack = () => {
-  const [selectedMenuItem, setSelectedMenuItem] = useState('(None selected yet)');
+  const [launchedFromItem, setLaunchedFromItem] = useState('None launched yet');
+  const [selectedMenuItem, setSelectedMenuItem] = useState('None selected yet');
+  const [selectedSelectionMenuItem, setSelectedSelectionMenuItem] =
+    useState<TagCloudMenuSelectionValue>('selection1');
   const [selectedItemsValue, setSelectedItemsValue] = useState<string[]>([]);
-  const [item, setItem] = useState<SocialNetwork | null>(null);
   const socialNetworks = useMemo(() => JSON.parse(jsonData as string) as SocialNetwork[], []);
   const dataProvider = useMemo(
     () => new ArrayDataProvider(socialNetworks, { keyAttributes: 'id' }),
     [socialNetworks]
   );
-  const idToItemMap = useMemo(
-    () => Object.fromEntries(socialNetworks.map((entry) => [entry.id, entry])),
-    [socialNetworks]
+
+  const contextMenuConfig = useMemo<TagCloudContextMenuConfig>(
+    () => ({
+      items: (context) => {
+        const launchedFrom =
+          context.type === 'background'
+            ? 'background'
+            : context.itemData?.id ?? context.data?.label ?? context.data?.id ?? 'unknown';
+
+        setLaunchedFromItem(launchedFrom);
+
+        return [
+          {
+            label: 'Action 1',
+            key: 'action1',
+            onAction: () => {
+              setSelectedMenuItem('action1');
+            }
+          },
+          {
+            label: 'Action 2',
+            key: 'action2',
+            onAction: () => {
+              setSelectedMenuItem('action2');
+            }
+          },
+          {
+            label: 'Action 3',
+            key: 'action3',
+            onAction: () => {
+              setSelectedMenuItem('action3');
+            }
+          },
+          { type: 'separator' },
+          {
+            type: 'selectsingle',
+            key: 'tagCloudSelection',
+            items: [
+              { label: 'Selection 1', value: 'selection1' },
+              { label: 'Selection 2', value: 'selection2' },
+              { label: 'Selection 3', value: 'selection3' }
+            ],
+            selection: selectedSelectionMenuItem,
+            onSelection: (selectionInfo) => {
+              setSelectedSelectionMenuItem(selectionInfo.value as TagCloudMenuSelectionValue);
+            }
+          }
+        ];
+      },
+      accessibleLabel: 'tag cloud actions'
+    }),
+    [selectedSelectionMenuItem]
   );
 
   const handleSelectedItemsValueSelectionChanged = (event: SelectionChangedEvent) => {
@@ -45,37 +95,9 @@ export const TagCloudContextMenucorepack = () => {
     }
   };
 
-  const beforeOpenFunction = (event: TagCloudMenuBeforeOpenEvent) => {
-    const target = event.detail.originalEvent?.target;
-    setItem(null);
-
-    if (!target) {
-      return;
-    }
-
-    if (target.id === 'tagcloud1') {
-      const selection = selectedItemsValue;
-      if (selection.length > 0) {
-        setItem(idToItemMap[selection[0]] ?? null);
-      }
-      return;
-    }
-
-    const tagCloud = document.getElementById('tagcloud1');
-    const context = tagCloud?.getContextByNode?.(target);
-    if (context != null) {
-      setItem(socialNetworks[context.index] ?? null);
-    }
-  };
-
-  const menuItemAction = (event: TagCloudMenuActionEvent) => {
-    const text = event.detail.selectedValue;
-    setSelectedMenuItem(item ? `${text} from ${item.id}` : `${text} from tag cloud background`);
-  };
-
   return (
     <div id="tagcloud-container">
-      <oj-tag-cloud
+      <oj-c-tag-cloud
         id="tagcloud1"
         layout="cloud"
         data={dataProvider}
@@ -83,23 +105,21 @@ export const TagCloudContextMenucorepack = () => {
         selectionMode="single"
         onselectionChanged={handleSelectedItemsValueSelectionChanged}
         selection={selectedItemsValue}
+        contextMenuConfig={contextMenuConfig}
       >
         <template slot="itemTemplate" render={renderContextMenuTagCloudItem} />
-        <oj-menu
-          slot="contextMenu"
-          aria-label="Social Network Edit"
-          onojMenuAction={menuItemAction}
-          onojBeforeOpen={beforeOpenFunction}
-        >
-          <oj-option value="Action 1">Action 1</oj-option>
-          <oj-option value="Action 2">Action 2</oj-option>
-          <oj-option value="Action 3">Action 3</oj-option>
-        </oj-menu>
-      </oj-tag-cloud>
-      <p>
-        Last selected menu item:
-        <span id="results" class="oj-typography-bold italic">{selectedMenuItem}</span>
-      </p>
+      </oj-c-tag-cloud>
+      <div class="oj-sm-margin-4x-vertical">
+        <p>
+          Last selected menu action: <span id="selected">{selectedMenuItem}</span>
+        </p>
+        <p>
+          Last select single group selection: <span id="selectedSelection">{selectedSelectionMenuItem}</span>
+        </p>
+        <p>
+          Launched from: <span id="launched">{launchedFromItem}</span>
+        </p>
+      </div>
     </div>
   );
 };

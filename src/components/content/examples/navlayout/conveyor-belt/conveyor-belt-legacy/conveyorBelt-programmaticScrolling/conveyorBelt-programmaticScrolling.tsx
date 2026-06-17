@@ -24,17 +24,6 @@ const tabs: TabItem[] = [
   { id: 'settings', name: 'Settings', icons: 'oj-ux-ico-settings' }
 ];
 
-const itemTemplate = (context: ojTabBar.ItemContext<TabItem['id'], TabItem>) => {
-  return (
-    <li id={`tab-${context.data.id}`}>
-      <a href="#">
-        <span class={`oj-tabbar-item-icon ${context.data.icons}`} aria-hidden="true"></span>
-        <span class="oj-tabbar-item-label">{context.data.name}</span>
-      </a>
-    </li>
-  );
-};
-
 type SelectSingleProps = ComponentProps<'oj-select-single'>;
 type SelectSingleValueChangedEvent = Parameters<
   NonNullable<SelectSingleProps['onvalueChanged']>
@@ -42,6 +31,7 @@ type SelectSingleValueChangedEvent = Parameters<
 
 export const ConveyorBeltProgrammaticScrolling = () => {
   const conveyorBeltRef = useRef<ojConveyorBelt>(null);
+  const tabRefs = useRef<Record<TabItem['id'], HTMLLIElement | null>>({});
   const [selectedItem, setSelectedItem] = useState<TabItem['id']>('dashboard');
 
   const dataProvider = useMemo(
@@ -54,11 +44,27 @@ export const ConveyorBeltProgrammaticScrolling = () => {
 
   const scrollSelectedIntoView = useCallback((key: TabItem['id']) => {
     window.requestAnimationFrame(() => {
-      const tabElement = document.getElementById(`tab-${key}`);
+      const tabElement = tabRefs.current[key];
       if (tabElement) {
         conveyorBeltRef.current?.scrollElementIntoView(tabElement);
       }
     });
+  }, []);
+
+  const itemTemplate = useCallback((context: ojTabBar.ItemContext<TabItem['id'], TabItem>) => {
+    return (
+      <li
+        ref={(element) => {
+          tabRefs.current[context.data.id] = element;
+        }}
+        id={`tab-${context.data.id}`}
+      >
+        <a href="#">
+          <span class={`oj-tabbar-item-icon ${context.data.icons}`} aria-hidden="true"></span>
+          <span class="oj-tabbar-item-label">{context.data.name}</span>
+        </a>
+      </li>
+    );
   }, []);
 
   const handleSelectionChanged = useCallback(

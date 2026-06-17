@@ -219,7 +219,7 @@ export const TreeViewGrouping = () => {
   const handleBeforeOpen = () => {
     const treeView = treeViewRef.current;
     const currentItem = treeView?.currentItem;
-    const currentNode = currentItem ? document.getElementById(currentItem) : null;
+    const currentNode = currentItem ? treeView?.querySelector<HTMLElement>(`#${currentItem}`) : null;
     const currentContext = currentNode && treeView ? treeView.getContextByNode(currentNode) : null;
 
     if (!currentContext?.leaf) {

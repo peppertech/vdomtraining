@@ -70,6 +70,10 @@ export const NBoxDndEvents = () => {
 
   const latestNboxActionRef = useRef<ClipboardAction>('none');
   const latestExtActionRef = useRef<ClipboardAction>('none');
+  const dropTargetRef = useRef<HTMLDivElement | null>(null);
+  const accInfoRef = useRef<HTMLDivElement | null>(null);
+  const eventContainerRef = useRef<HTMLDivElement | null>(null);
+  const externalItemRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   const clipboard = useMemo(() => new DemoDataTransfer(), []);
   const rows = useMemo(() => [{ id: '0' }, { id: '1' }, { id: '2' }], []);
@@ -151,7 +155,7 @@ export const NBoxDndEvents = () => {
       for (let i = 0; i < dataTypes.length; i++) {
           if (dataTypes[i] === 'text/node') {
               // Adding background color feedback for user
-              const dropTarget = document.getElementById('dropTarget');
+              const dropTarget = dropTargetRef.current;
               if (dropTarget) {
                   dropTarget.style.backgroundColor = 'rgb(208,234,193)';
               }
@@ -210,7 +214,7 @@ export const NBoxDndEvents = () => {
           for (let i = 0; i < dataObj.length; i++) {
               newNames.push(dataObj[i]);
               if (isCopy) {
-                  document.getElementById(dataObj[i].id)?.setAttribute('class', 'demo-parent-element');
+                  externalItemRefs.current[dataObj[i].id]?.setAttribute('class', 'demo-parent-element');
               }
           }
           if (!isCopy) {
@@ -256,7 +260,7 @@ export const NBoxDndEvents = () => {
   };
 
   const onDragLeave = () => {
-      const dropTarget = document.getElementById('dropTarget');
+      const dropTarget = dropTargetRef.current;
       if (dropTarget) {
           dropTarget.style.backgroundColor = '';
       }
@@ -265,7 +269,7 @@ export const NBoxDndEvents = () => {
   const onDrop = (event: DragEvent) => {
       const dropData = event.dataTransfer?.getData('text/node') ?? '';
       _externalDrop(false, dropData, false);
-      const dropTarget = document.getElementById('dropTarget');
+      const dropTarget = dropTargetRef.current;
       if (dropTarget) {
           dropTarget.style.backgroundColor = '';
       }
@@ -364,14 +368,14 @@ export const NBoxDndEvents = () => {
   };
 
   const _updateAcc = (text: string) => {
-      const acc = document.getElementById('accInfo');
+      const acc = accInfoRef.current;
       if (acc) {
           acc.textContent = text;
       }
   };
 
   const setStatusText = (text: string) => {
-      const eventContainer = document.getElementById('nboxEvents');
+      const eventContainer = eventContainerRef.current;
       if (eventContainer) {
           eventContainer.textContent = text;
       }
@@ -435,7 +439,7 @@ export const NBoxDndEvents = () => {
       <div id="nbox-container">
             <div class="oj-sm-padding-1x demo-text">
                     <div class="oj-typography-heading-xs oj-typography-bold oj-sm-margin-2x-vertical">Interactions:</div>
-                    <div id="nboxEvents" />
+                    <div ref={eventContainerRef} id="nboxEvents" />
                 </div>
             <div class="oj-sm-odd-cols-9">
                     <div class="oj-flex">
@@ -456,12 +460,12 @@ export const NBoxDndEvents = () => {
                                                         <template slot="nodeTemplate" render={nodeTemplateRenderer} />
                                                     </oj-n-box>
                                       </div>
-                              <div class="oj-flex-item oj-panel oj-sm-margin-4x-top" tabIndex={0} onDragOver={onDragOver} onDragLeave={onDragLeave} onDrop={onDrop} onKeyDown={handleKeyPaste} role="application" aria-label="Drag and drop/Cut, copy, and paste nodes here from the nbox" id="dropTarget">
+                              <div ref={dropTargetRef} class="oj-flex-item oj-panel oj-sm-margin-4x-top" tabIndex={0} onDragOver={onDragOver} onDragLeave={onDragLeave} onDrop={onDrop} onKeyDown={handleKeyPaste} role="application" aria-label="Drag and drop/Cut, copy, and paste nodes here from the nbox" id="dropTarget">
                                           <div class="oj-sm-padding-3x-start oj-typography-body-md oj-typography-bold">Drag and drop/Cut, copy, and paste nodes here from the nbox</div>
                                           {
                                                       (dragData ?? []).map(($current, index) => (
                                                         <>
-                                                          <div class="demo-parent-element" onDragStart={onDragStart} onKeyDown={onKeyDown} draggable={true} tabIndex={0} aria-label={$current.name + ' ' + $current.position} role="img" id={$current.id}>
+                                                          <div ref={(element) => { externalItemRefs.current[$current.id] = element; }} class="demo-parent-element" onDragStart={onDragStart} onKeyDown={onKeyDown} draggable={true} tabIndex={0} aria-label={$current.name + ' ' + $current.position} role="img" id={$current.id}>
                                                                             <div>
                                                                                                 <span class="oj-typography-body-md oj-text-color-primary">{$current.name}</span>
                                                                                             </div>
@@ -475,7 +479,7 @@ export const NBoxDndEvents = () => {
                                       </div>
                           </div>
                 </div>
-            <div id="accInfo" aria-live="polite" class="oj-helper-hidden-accessible" />
+            <div ref={accInfoRef} id="accInfo" aria-live="polite" class="oj-helper-hidden-accessible" />
         </div>
     );
 };

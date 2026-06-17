@@ -20,12 +20,15 @@ interface States {
     [propName: string]: number | string;
 }
 type CellTemplateContext = DataGridElement.CellTemplateContext<States>;
-const VISIBLE_COLUMNS = ['2016', '2017', '2018', '2019', '2020'];
+const populationRows = jsonData as States[];
+const DATA_COLUMNS = Object.keys(populationRows[0] ?? {})
+    .filter((key) => key !== 'states')
+    .sort((left, right) => Number(left) - Number(right));
 export const DataGridFreezeGrid = () => {
     const [frozenRowCount, setFrozenRowCount] = useState<number>(2);
     const [frozenColumnCount, setFrozenColumnCount] = useState<number>(2);
     const [scrollPolicyValue, setScrollPolicyValue] = useState<'loadMoreOnScroll' | 'scroll'>('loadMoreOnScroll');
-    const rows = useMemo(() => (jsonData as States[]).slice(0, 20), []);
+    const rows = useMemo(() => populationRows, []);
     const rowDataProvider = useMemo(() => new ArrayDataProvider<string, States>(rows, {
         keyAttributes: 'states',
         implicitSort: [{ attribute: 'states', direction: 'ascending' }]
@@ -33,10 +36,10 @@ export const DataGridFreezeGrid = () => {
     const dataGridProvider = useMemo(() => new RowDataGridProvider<string, string, States>(rowDataProvider, {
         columns: {
             rowHeader: ['states'],
-            databody: VISIBLE_COLUMNS
+            databody: DATA_COLUMNS
         },
         columnHeaders: {
-            column: VISIBLE_COLUMNS
+            column: DATA_COLUMNS
         },
         headerLabels: {
             row: ['States']

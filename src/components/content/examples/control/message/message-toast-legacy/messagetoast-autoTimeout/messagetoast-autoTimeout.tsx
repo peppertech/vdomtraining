@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import Context = require('ojs/ojcontext');
 import { ojMessage } from 'ojs/ojmessage';
@@ -57,9 +57,10 @@ const buildMessagesPosition = (): MessagesPosition => ({
 });
 
 export const MessagetoastAutoTimeout = () => {
+  const settingsPopupRef = useRef<ojPopup | null>(null);
   const mediaQuery = ResponsiveUtils.getFrameworkQuery('sm-only') || '(max-width: 599px)';
   const [smallScreen, setSmallScreen] = useState<boolean>(() =>
-    typeof window === 'undefined' ? false : window.matchMedia(mediaQuery).matches
+    typeof window === 'undefined' ? false : matchMedia(mediaQuery).matches
   );
   const [errorMessageTimeout, setErrorMessageTimeout] = useState<ComboboxValue>('-1');
   const [warningMessageTimeout, setWarningMessageTimeout] = useState<ComboboxValue>('-1');
@@ -74,7 +75,7 @@ export const MessagetoastAutoTimeout = () => {
       return undefined;
     }
 
-    const matcher = window.matchMedia(mediaQuery);
+    const matcher = matchMedia(mediaQuery);
     const update = (event?: MediaQueryListEvent) => {
       setSmallScreen(event ? event.matches : matcher.matches);
     };
@@ -122,7 +123,7 @@ export const MessagetoastAutoTimeout = () => {
 
   useEffect(() => {
     let isMounted = true;
-    const popup = document.getElementById('settingsPopup') as ojPopup | null;
+    const popup = settingsPopupRef.current;
 
     if (popup) {
       void Context.getContext(popup)
@@ -184,6 +185,7 @@ export const MessagetoastAutoTimeout = () => {
         displayOptions={{ category: 'none' }}
       />
       <oj-popup
+        ref={settingsPopupRef}
         id="settingsPopup"
         autoDismiss="none"
         modality="modeless"

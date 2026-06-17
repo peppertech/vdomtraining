@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Fragment, h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import type { CListViewElement } from 'oj-c/list-view';
 import 'oj-c/list-view';
@@ -14,8 +14,13 @@ interface TodoTask {
 }
 
 export const ListViewDrillDowncorepack = () => {
+  const listViewRef = useRef<CListViewElement<TodoTask['id'], TodoTask> | null>(null);
+  const page1Ref = useRef<HTMLDivElement | null>(null);
+  const page2Ref = useRef<HTMLDivElement | null>(null);
   const [content, setContent] = useState('');
   const [disabled, setDisabled] = useState(true);
+  const [previousElementKey, setPreviousElementKey] = useState<TodoTask['id'] | null>(null);
+  const [currentItemOverride, setCurrentItemOverride] = useState<{ rowKey: TodoTask['id'] } | undefined>();
 
   const data = useMemo(() => [
       {
@@ -56,35 +61,37 @@ export const ListViewDrillDowncorepack = () => {
           return value.id;
       })
   }), [data]);
-  const previousElementKey: TodoTask['id'] | null = null;
 
   const gotoList = () => {
       slide();
       setDisabled(true);
-      const listView = document.getElementById('listview') as HTMLElement | null;
-      listView?.focus();
+      if (previousElementKey != null) {
+          setCurrentItemOverride({ rowKey: previousElementKey });
+      }
+      listViewRef.current?.focus();
   };
 
   const gotoContent = (event: CListViewElement.ojItemAction<TodoTask['id'], TodoTask>) => {
-      if (event.detail.context != null) {
-          let key = event.detail.context.item.metadata.key;
-          previousElementKey;
-          let row = data[key];
-          setContent(row.content);
+      const item = event.detail.context?.item;
+      if (item != null) {
+          const key = item.metadata.key;
+          setPreviousElementKey(key);
+          setCurrentItemOverride(undefined);
+          setContent(item.data.content);
           slide();
           setDisabled(false);
       }
   };
 
   const slide = () => {
-      document.getElementById('page1').classList.toggle('demo-page1-hide');
-      document.getElementById('page2').classList.toggle('demo-page2-hide');
+      page1Ref.current?.classList.toggle('demo-page1-hide');
+      page2Ref.current?.classList.toggle('demo-page2-hide');
   };
 
   return (
       <div id="listviewContainer" class="demo-container">
-            <div id="page1" class="demo-page">
-                    <oj-c-list-view id="listview" aria-label="drill down list" data={dataProvider} onojItemAction={gotoContent}>
+            <div ref={page1Ref} id="page1" class="demo-page">
+                    <oj-c-list-view ref={listViewRef} id="listview" aria-label="drill down list" data={dataProvider} currentItemOverride={currentItemOverride} onojItemAction={gotoContent}>
                               <template slot="itemTemplate" render={(item) => (
                                         <>
                                             <div class="oj-flex oj-sm-justify-content-space-between oj-sm-align-items-center">
@@ -100,7 +107,7 @@ export const ListViewDrillDowncorepack = () => {
                                       )} />
                           </oj-c-list-view>
                 </div>
-            <div id="page2" class="demo-page demo-page2-hide">
+            <div ref={page2Ref} id="page2" class="demo-page demo-page2-hide">
                     <oj-button id="buttonIcon2" onojAction={gotoList} disabled={disabled}>
                               <span slot="startIcon" class="oj-ux-ico-chevron-left" />
                               Back

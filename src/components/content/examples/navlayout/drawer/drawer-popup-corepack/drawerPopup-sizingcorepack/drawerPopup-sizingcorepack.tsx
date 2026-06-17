@@ -81,28 +81,6 @@ export const DrawerPopupSizingcorepack = () => {
 
   const bottomToggle = () => setBottomOpened((value) => !value);
 
-  const updateWidth = (value: string) => {
-      const startContentElement = document.getElementById('demo-start-drawer-content');
-      if (startContentElement) {
-          startContentElement.removeAttribute('class');
-          startContentElement.classList.add('demo-start-drawer-width-' + value);
-          const title = startContentElement.getElementsByTagName('h6')[0];
-          if (title) {
-              setStartTitle('Content width: ' + value);
-          }
-      }
-  };
-  const updateHeight = (value: string) => {
-      const bottomContentElement = document.getElementById('demo-bottom-drawer-content');
-      if (bottomContentElement) {
-          bottomContentElement.removeAttribute('class');
-          bottomContentElement.classList.add('demo-bottom-drawer-height-' + value);
-          const title = bottomContentElement.getElementsByTagName('h6')[0];
-          if (title) {
-              setBottomTitle('Content height: ' + value);
-          }
-      }
-  };
   return (
       <div id="demo-container">
             <div class="oj-sm-padding-4x">

@@ -99,13 +99,13 @@ const USERS: UserModel[] = [
   },
 ];
 
-const getIsSmallDisplay = (): boolean => window.matchMedia('(max-width: 599.9px)').matches;
+const getIsSmallDisplay = (): boolean => matchMedia('(max-width: 599.9px)').matches;
 
 export const FilmStripFilmStripActionCards = () => {
   const [isSmallDisplay, setIsSmallDisplay] = useState<boolean>(() => getIsSmallDisplay());
 
   useEffect(() => {
-    const mediaQueryList = window.matchMedia('(max-width: 599.9px)');
+    const mediaQueryList = matchMedia('(max-width: 599.9px)');
     const listener = () => setIsSmallDisplay(mediaQueryList.matches);
     mediaQueryList.addEventListener('change', listener);
     return () => mediaQueryList.removeEventListener('change', listener);

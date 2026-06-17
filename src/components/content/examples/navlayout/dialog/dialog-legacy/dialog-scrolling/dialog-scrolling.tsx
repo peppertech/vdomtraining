@@ -1,21 +1,24 @@
 import { h } from 'preact';
+import { useRef } from 'preact/hooks';
 import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojdialog';
 import 'ojs/ojbutton';
 import "css!./demo.css";
 
 export const DialogScrolling = () => {
+  const dialogRef = useRef<ojDialog | null>(null);
+
   const handleOpen = () => {
-      (document.querySelector('#scrollingDialog') as ojDialog).open();
+      dialogRef.current?.open();
   };
 
   const handleOKClose = () => {
-      (document.querySelector('#scrollingDialog') as ojDialog).close();
+      dialogRef.current?.close();
   };
 
   return (
       <div id="dialogWrapper">
-            <oj-dialog id="scrollingDialog" dialogTitle="Scrolling Dialog">
+            <oj-dialog ref={dialogRef} id="scrollingDialog" dialogTitle="Scrolling Dialog">
                     <div slot="body">
                               <h5>Dialog with scrolling Content</h5>
                               <ol>

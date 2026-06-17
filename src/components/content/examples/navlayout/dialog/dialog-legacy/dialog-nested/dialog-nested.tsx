@@ -1,32 +1,36 @@
 import { h } from 'preact';
+import { useRef } from 'preact/hooks';
 import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojdialog';
 import 'ojs/ojbutton';
 import "css!./demo.css";
 
 export const DialogNested = () => {
+  const outerDialogRef = useRef<ojDialog | null>(null);
+  const innerDialogRef = useRef<ojDialog | null>(null);
+
   const handleNestedOpen = () => {
-      (document.querySelector('#outerDialog') as ojDialog).open();
+      outerDialogRef.current?.open();
   };
 
   const handleOpen = () => {
-      (document.querySelector('#innerDialog') as ojDialog).open();
+      innerDialogRef.current?.open();
   };
 
   const handleOKClose = () => {
-      (document.querySelector('#outerDialog') as ojDialog).close();
+      outerDialogRef.current?.close();
   };
 
   const handleOKClose2 = () => {
-      (document.querySelector('#innerDialog') as ojDialog).close();
+      innerDialogRef.current?.close();
   };
 
   return (
       <div id="dialogWrapper">
-            <oj-dialog id="outerDialog" dialogTitle="Outer Dialog">
+            <oj-dialog ref={outerDialogRef} id="outerDialog" dialogTitle="Outer Dialog">
                     <div slot="body">
                               You can launch another dialog from this dialog.
-                              <oj-dialog id="innerDialog" dialogTitle="Dialog Inner" modality="modal">
+                              <oj-dialog ref={innerDialogRef} id="innerDialog" dialogTitle="Dialog Inner" modality="modal">
                                           <div slot="body">Inner Dialog</div>
                                           <div slot="footer"><oj-button id="okButton2" onojAction={handleOKClose2}>OK</oj-button></div>
                                       </oj-dialog>

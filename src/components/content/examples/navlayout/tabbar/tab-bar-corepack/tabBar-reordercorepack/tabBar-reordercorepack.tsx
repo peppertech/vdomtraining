@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ojTabBar } from 'ojs/ojnavigationlist';
 import 'ojs/ojlabel';
@@ -25,6 +25,7 @@ type TabbarSelectionChangedEvent = Parameters<
 type TabbarItemContext = ojTabBar.ItemContext<TabbarItem["id"], TabbarItem>;
 
 export const TabBarReordercorepack = () => {
+  const tabbarRef = useRef<ReorderableTabBarElement | null>(null);
   const [edge, setEdge] = useState<TabbarEdge>('top');
   const [selectedItem, setSelectedItem] = useState('settings');
   const [accInfo, setAccInfo] = useState('');
@@ -39,7 +40,7 @@ export const TabBarReordercorepack = () => {
   const dataProvider = useMemo(() => new ArrayDataProvider<TabbarItem["id"], TabbarItem>(tabs, { keyAttributes: 'id' }), [tabs]);
 
   const handleReorder = (event: ojTabBar.ojReorder) => {
-    const tabbar = document.getElementById('tabbar') as ReorderableTabBarElement | null;
+    const tabbar = tabbarRef.current;
     if (!tabbar) {
       return;
     }
@@ -80,7 +81,7 @@ export const TabBarReordercorepack = () => {
           </div>
         </div>
       </div>
-      <oj-tab-bar id="tabbar" aria-label="Tabs using json data" onselectionChanged={(event: TabbarSelectionChangedEvent) => setSelectedItem(event.detail.value)} selection={selectedItem} data={dataProvider} reorderable="enabled" edge={edge} onojReorder={handleReorder}>
+      <oj-tab-bar ref={tabbarRef} id="tabbar" aria-label="Tabs using json data" onselectionChanged={(event: TabbarSelectionChangedEvent) => setSelectedItem(event.detail.value)} selection={selectedItem} data={dataProvider} reorderable="enabled" edge={edge} onojReorder={handleReorder}>
         <template slot="itemTemplate" render={(item: TabbarItemContext) => <li><a href="#">{item.data.name}</a></li>} />
       </oj-tab-bar>
       <div id="tabBarReorderInfo" class="oj-helper-hidden-accessible" aria-live="polite">{accInfo}</div>

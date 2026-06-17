@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import * as weeksData from 'text!../data/cookbook/dataVisualizations/gantt/drillTimeAxis/rowDataWeeks.json';
 import * as daysData from 'text!../data/cookbook/dataVisualizations/gantt/drillTimeAxis/rowDataDays.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -49,7 +49,7 @@ const MS_IN_DAY = 24 * 60 * 60 * 1000;
 const MS_IN_WEEK = 7 * MS_IN_DAY;
 
 const resolveScreenRange = (): ScreenRange => {
-  const width = window.innerWidth;
+  const width = innerWidth;
   if (width < 600) {
     return 'sm';
   }
@@ -137,6 +137,7 @@ const computeViewport = (config: ScaleConfig, range: ScreenRange, startTime: num
 };
 
 export const GanttDrillTimeAxis = () => {
+  const liveRegionRef = useRef<HTMLDivElement | null>(null);
   const initialRange = resolveScreenRange();
   const initialViewport = computeViewport(weeksConfig, initialRange, projectStartTime);
   const [screenRange, setScreenRange] = useState<ScreenRange>(initialRange);
@@ -181,7 +182,7 @@ export const GanttDrillTimeAxis = () => {
   }, [scaleConfig, currentViewportStartTime]);
 
   useEffect(() => {
-    const liveRegion = document.getElementById('timeAxisDrillInfo');
+    const liveRegion = liveRegionRef.current;
     if (!liveRegion) {
       return;
     }
@@ -252,7 +253,7 @@ export const GanttDrillTimeAxis = () => {
         <template slot="rowMappingTemplate" render={rowMappingTemplateRenderer} />
         <template slot="taskMappingTemplate" render={taskMappingTemplateRenderer} />
       </oj-gantt>
-      <div id="timeAxisDrillInfo" aria-live="polite" class="oj-helper-hidden-accessible"></div>
+      <div ref={liveRegionRef} id="timeAxisDrillInfo" aria-live="polite" class="oj-helper-hidden-accessible"></div>
     </div>
   );
 };

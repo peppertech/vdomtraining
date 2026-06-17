@@ -1,6 +1,6 @@
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import * as bubbleDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/commonCategoriesBubbleData.json';
@@ -38,9 +38,11 @@ type BubbleItemTemplateContext = {
 type TimeSeriesItemTemplateContext = {
     data: TimeSeriesDatum;
 };
+type ChartElement = ojChart<string, BubbleDatum | TimeSeriesDatum, null, null>;
 const bubbleData = JSON.parse(bubbleDataText as string) as BubbleDatum[];
 const timeSeriesData = JSON.parse(timeSeriesDataText as string) as TimeSeriesDatum[];
 export const ChartSelecting = () => {
+    const chartRefs = useRef<Partial<Record<string, ChartElement | null>>>({});
     const selected = useMemo(() => [0, 1, 2, 3, 4], []);
     const [selectedItemsValue, setSelectedItemsValue] = useState<ChartSelection>(selected);
     const colorHandler = useMemo(() => new ColorAttributeGroupHandler(), []);
@@ -62,7 +64,7 @@ export const ChartSelecting = () => {
     };
     const syncSelection = (items: ChartSelection, chartIds: string[]) => {
         chartIds.forEach((chartId) => {
-            const chart = document.getElementById(chartId) as ojChart<string, BubbleDatum | TimeSeriesDatum, null, null> | null;
+            const chart = chartRefs.current[chartId];
             if (chart) {
                 chart.selection = items;
             }
@@ -113,18 +115,18 @@ export const ChartSelecting = () => {
                 </oj-legend>
             <div class="oj-sm-odd-cols-12 oj-md-odd-cols-6">
                     <div class="oj-flex">
-                              <oj-chart class="oj-flex-item" id="scatterChart" type="scatter" data={bubbleDataProvider} animationOnDisplay="auto" animationOnDataChange="auto" selectionMode="multiple" onselectionChanged={handleSelectedItemsValueSelectionChanged} selection={selectedItemsValue} onojSelectInput={scatterSelectInput} {...OjChartProps}>
+                              <oj-chart ref={(element) => { chartRefs.current.scatterChart = element as ChartElement | null; }} class="oj-flex-item" id="scatterChart" type="scatter" data={bubbleDataProvider} animationOnDisplay="auto" animationOnDataChange="auto" selectionMode="multiple" onselectionChanged={handleSelectedItemsValueSelectionChanged} selection={selectedItemsValue} onojSelectInput={scatterSelectInput} {...OjChartProps}>
                                           <template slot="itemTemplate" render={itemTemplateRenderer2}/>
                                       </oj-chart>
-                              <oj-chart class="oj-flex-item" id="bubbleChart" type="bubble" data={bubbleDataProvider} animationOnDisplay="auto" animationOnDataChange="auto" selectionMode="multiple" onselectionChanged={handleSelectedItemsValueSelectionChanged} selection={selectedItemsValue} onojSelectInput={bubbleSelectInput} {...OjChartProps2}>
+                              <oj-chart ref={(element) => { chartRefs.current.bubbleChart = element as ChartElement | null; }} class="oj-flex-item" id="bubbleChart" type="bubble" data={bubbleDataProvider} animationOnDisplay="auto" animationOnDataChange="auto" selectionMode="multiple" onselectionChanged={handleSelectedItemsValueSelectionChanged} selection={selectedItemsValue} onojSelectInput={bubbleSelectInput} {...OjChartProps2}>
                                           <template slot="itemTemplate" render={itemTemplateRenderer3}/>
                                       </oj-chart>
                           </div>
                     <div class="oj-flex">
-                              <oj-chart class="oj-flex-item" id="barChart" type="bar" data={timeSeriesDataProvider} animationOnDisplay="auto" animationOnDataChange="auto" selectionMode="multiple" onselectionChanged={handleSelectedItemsValueSelectionChanged} selection={selectedItemsValue} onojSelectInput={barSelectInput} {...OjChartProps3}>
+                              <oj-chart ref={(element) => { chartRefs.current.barChart = element as ChartElement | null; }} class="oj-flex-item" id="barChart" type="bar" data={timeSeriesDataProvider} animationOnDisplay="auto" animationOnDataChange="auto" selectionMode="multiple" onselectionChanged={handleSelectedItemsValueSelectionChanged} selection={selectedItemsValue} onojSelectInput={barSelectInput} {...OjChartProps3}>
                                           <template slot="itemTemplate" render={itemTemplateRenderer4}/>
                                       </oj-chart>
-                              <oj-chart class="oj-flex-item" id="areaChart" type="area" data={timeSeriesDataProvider} stack="on" animationOnDisplay="auto" animationOnDataChange="auto" selectionMode="multiple" onselectionChanged={handleSelectedItemsValueSelectionChanged} selection={selectedItemsValue} onojSelectInput={areaSelectInput} {...OjChartProps4}>
+                              <oj-chart ref={(element) => { chartRefs.current.areaChart = element as ChartElement | null; }} class="oj-flex-item" id="areaChart" type="area" data={timeSeriesDataProvider} stack="on" animationOnDisplay="auto" animationOnDataChange="auto" selectionMode="multiple" onselectionChanged={handleSelectedItemsValueSelectionChanged} selection={selectedItemsValue} onojSelectInput={areaSelectInput} {...OjChartProps4}>
                                           <template slot="itemTemplate" render={itemTemplateRenderer5}/>
                                       </oj-chart>
                           </div>

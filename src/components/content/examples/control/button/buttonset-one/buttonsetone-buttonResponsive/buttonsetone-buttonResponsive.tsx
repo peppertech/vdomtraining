@@ -53,14 +53,14 @@ export const ButtonsetoneButtonResponsive = () => {
       "(min-width: 1440px)";
 
     const updateResponsiveState = () => {
-      const small = window.matchMedia(smQuery).matches;
+      const small = matchMedia(smQuery).matches;
       setIsSmall(small);
 
-      if (window.matchMedia(xlQuery).matches) {
+      if (matchMedia(xlQuery).matches) {
         setScreenRange("xl");
-      } else if (window.matchMedia(lgQuery).matches) {
+      } else if (matchMedia(lgQuery).matches) {
         setScreenRange("lg");
-      } else if (window.matchMedia(mdQuery).matches) {
+      } else if (matchMedia(mdQuery).matches) {
         setScreenRange("md");
       } else if (small) {
         setScreenRange("sm");
@@ -68,10 +68,10 @@ export const ButtonsetoneButtonResponsive = () => {
     };
 
     updateResponsiveState();
-    window.addEventListener("resize", updateResponsiveState);
+    addEventListener("resize", updateResponsiveState);
 
     return () => {
-      window.removeEventListener("resize", updateResponsiveState);
+      removeEventListener("resize", updateResponsiveState);
     };
   }, []);
 

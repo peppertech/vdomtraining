@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 import { ojDialog } from 'ojs/ojdialog';
 import { JetElementCustomEvent } from 'ojs/index';
 import 'ojs/ojdialog';
@@ -12,6 +12,7 @@ import 'ojs/ojoption';
 type CheckboxValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-checkboxset'>['onvalueChanged']>>[0];
 
 export const DialogFooter = () => {
+  const dialogRef = useRef<ojDialog | null>(null);
   const [classNames, setClassNames] = useState<string[]>([]);
 
   const handleClassNamesValueChanged = (event: CheckboxValueChangedEvent) => {
@@ -19,11 +20,11 @@ export const DialogFooter = () => {
   };
 
   const handleOpen = () => {
-      (document.querySelector('#dialog1') as ojDialog).open();
+      dialogRef.current?.open();
   };
 
   const handleOkClose = () => {
-      (document.querySelector('#dialog1') as ojDialog).close();
+      dialogRef.current?.close();
   };
 
   const isSelected = (option: string) => {
@@ -38,7 +39,7 @@ export const DialogFooter = () => {
                 </oj-checkboxset>
             <br />
             <br />
-            <oj-dialog id="dialog1" dialogTitle="Dialog Footer Styles">
+            <oj-dialog ref={dialogRef} id="dialog1" dialogTitle="Dialog Footer Styles">
                     <div slot="body">A separator can be added between the body and the footer sections.</div>
                     <div slot="footer" className={isSelected('oj-dialog-footer-separator') ? 'ojDialogFooterSeparator' : undefined}><oj-button id="okButton" onojAction={handleOkClose}>Ok</oj-button></div>
                 </oj-dialog>

@@ -27,7 +27,7 @@ export const NavigationlistResponsive = () => {
 
   const [selectedItem, setSelectedItem] = useState<string>('home');
 
-  const large = typeof window !== 'undefined' && !!lgQuery ? window.matchMedia(lgQuery).matches : false;
+  const large = typeof window !== 'undefined' && !!lgQuery ? matchMedia(lgQuery).matches : false;
   const dataProvider = useMemo(() => new ArrayDataProvider(data, { keyAttributes: 'id' }), []);
 
   const handleSelectedItemSelectionChanged = (event: PropertyChangedEvent<string>) => {

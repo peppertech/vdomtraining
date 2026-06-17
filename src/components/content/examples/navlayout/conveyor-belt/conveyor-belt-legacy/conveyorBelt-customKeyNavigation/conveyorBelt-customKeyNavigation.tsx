@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { useRef } from 'preact/hooks';
 import 'ojs/ojconveyorbelt';
 import "css!./demo.css";
 
@@ -11,12 +12,15 @@ function isRtl(): boolean {
 }
 
 export const ConveyorBeltCustomKeyNavigation = () => {
+  const conveyorBeltRef = useRef<ConveyorBeltElement | null>(null);
+  const contentParentRef = useRef<HTMLDivElement | null>(null);
+
   const handleKeyDown = (event: KeyboardEvent) => {
       // This function implements keyboard navigation among the items in
       // the conveyor using the left and right arrow keys for the purpose
       // of demonstrating how to programmatically scroll an item into view
       // using the DOM function scrollIntoView().
-      const contentParentDiv = document.getElementById('contentParentDiv');
+      const contentParentDiv = contentParentRef.current;
       if (!contentParentDiv) {
           return;
       }
@@ -62,7 +66,7 @@ export const ConveyorBeltCustomKeyNavigation = () => {
           // Apply the highlight styling to the next item.
           newChild.classList.add('oj-bg-brand-30');
           // Scroll the next highlight item into view.
-          const conveyorBelt = document.getElementById('conveyor1') as ConveyorBeltElement | null;
+          const conveyorBelt = conveyorBeltRef.current;
           if (!conveyorBelt) {
               return;
           }
@@ -73,8 +77,8 @@ export const ConveyorBeltCustomKeyNavigation = () => {
   return (
       <div id="customKeyNavigation">
             <div class="oj-flex">
-                    <oj-conveyor-belt id="conveyor1" class="oj-lg-6 oj-md-9 oj-sm-12 oj-flex-item" contentParent="#contentParentDiv">
-                              <div id="contentParentDiv" tabIndex={0} class="oj-sm-margin-2x" onKeyDown={handleKeyDown}>
+                    <oj-conveyor-belt ref={conveyorBeltRef} id="conveyor1" class="oj-lg-6 oj-md-9 oj-sm-12 oj-flex-item" contentParent="#contentParentDiv">
+                              <div ref={contentParentRef} id="contentParentDiv" tabIndex={0} class="oj-sm-margin-2x" onKeyDown={handleKeyDown}>
                                           <div class="oj-panel demo-conveyor-item oj-bg-brand-30 oj-sm-padding-4x oj-sm-margin-1x">Hydrogen</div>
                                           <div class="oj-panel demo-conveyor-item oj-sm-padding-4x oj-sm-margin-1x">Helium</div>
                                           <div class="oj-panel demo-conveyor-item oj-sm-padding-4x oj-sm-margin-1x">Lithium</div>

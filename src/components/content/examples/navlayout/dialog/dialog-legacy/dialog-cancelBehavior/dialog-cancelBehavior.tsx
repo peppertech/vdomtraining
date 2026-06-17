@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojbutton';
 import 'ojs/ojdialog';
@@ -16,6 +16,7 @@ type RadioSetValueChangedEvent = Parameters<
 >[0];
 
 export const DialogCancelBehavior = () => {
+  const dialogRef = useRef<ojDialog | null>(null);
   const [currentCancelBehaviorOpt, setCurrentCancelBehaviorOpt] =
     useState<DialogCancelBehavior>('icon');
 
@@ -24,13 +25,11 @@ export const DialogCancelBehavior = () => {
   };
 
   const handleOpen = () => {
-    const dialog = document.getElementById('dialog1') as ojDialog | null;
-    dialog?.open();
+    dialogRef.current?.open();
   };
 
   const handleClose = () => {
-    const dialog = document.getElementById('dialog1') as ojDialog | null;
-    dialog?.close();
+    dialogRef.current?.close();
   };
 
   return (
@@ -57,6 +56,7 @@ export const DialogCancelBehavior = () => {
       </div>
       <div id="dialogWrapper">
         <oj-dialog
+          ref={dialogRef}
           id="dialog1"
           dialogTitle="Cancel Behavior Options"
           cancelBehavior={currentCancelBehaviorOpt}

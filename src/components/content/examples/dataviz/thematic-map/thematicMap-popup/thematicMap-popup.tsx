@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/usaRainfall.json';
@@ -25,6 +25,15 @@ const geo = JSON.parse(geoText as string);
 const rainfallData = JSON.parse(jsonDataText as string) as RainfallDatum[];
 
 export const ThematicMapPopup = () => {
+  const mapRef = useRef<ojThematicMap<
+    RainfallDatum['State'],
+    null,
+    null,
+    RainfallDatum,
+    null,
+    null
+  > | null>(null);
+  const popupRef = useRef<(HTMLElement & ojPopup) | null>(null);
   const [selectedItemsValue, setSelectedItemsValue] = useState<ThematicMapSelection>([]);
   const [popupText, setPopupText] = useState('');
 
@@ -101,15 +110,7 @@ export const ThematicMapPopup = () => {
         popupArea = stateToItemMap[String(selection[0])] ?? null;
       }
     } else if (target != null) {
-      const map = document.getElementById('map1') as ojThematicMap<
-        RainfallDatum['State'],
-        null,
-        null,
-        RainfallDatum,
-        null,
-        null
-      > | null;
-      const context = map?.getContextByNode(target);
+      const context = mapRef.current?.getContextByNode(target);
       if (context != null && context.subId === 'oj-thematicmap-area') {
         popupArea = rainfallData[context.index] ?? null;
         if (event instanceof MouseEvent) {
@@ -129,7 +130,7 @@ export const ThematicMapPopup = () => {
       pageY = target.offsetHeight / 5;
     }
 
-    const popup = document.getElementById('popup1') as (HTMLElement & ojPopup) | null;
+    const popup = popupRef.current;
     if (popupArea != null && pageX != null && pageY != null && popup != null) {
       setPopupText(`${popupArea.Inches} inches of annual rainfall`);
       popup.open(null, {
@@ -165,6 +166,7 @@ export const ThematicMapPopup = () => {
     <Fragment>
       <div id="mapdemo">
         <oj-thematic-map
+          ref={mapRef}
           id="map1"
           tooltipDisplay="none"
           onClick={handleMapClick}
@@ -189,7 +191,7 @@ export const ThematicMapPopup = () => {
           aria-label="legend showing annual rainfall categorised in five ranges"
         />
       </div>
-      <oj-popup id="popup1">{popupText}</oj-popup>
+      <oj-popup ref={popupRef} id="popup1">{popupText}</oj-popup>
     </Fragment>
   );
 };

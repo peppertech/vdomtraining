@@ -18,7 +18,7 @@ type TaskItem = {
 };
 
 const resolveScreenRange = (): ScreenRange => {
-  const width = window.innerWidth;
+  const width = innerWidth;
   if (width < 600) {
     return 'sm';
   }

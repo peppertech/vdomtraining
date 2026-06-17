@@ -27,11 +27,11 @@ type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 
 const useMediaQuery = (query: string) => {
   const [matches, setMatches] = useState<boolean>(() =>
-    window.matchMedia(query).matches,
+    matchMedia(query).matches,
   );
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia(query);
+    const mediaQuery = matchMedia(query);
     const listener = (event: MediaQueryListEvent) => setMatches(event.matches);
     setMatches(mediaQuery.matches);
     mediaQuery.addEventListener("change", listener);

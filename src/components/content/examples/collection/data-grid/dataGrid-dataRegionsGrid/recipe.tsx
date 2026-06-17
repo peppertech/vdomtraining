@@ -15,7 +15,7 @@ export const dataGridDataRegionsGridRecipe = (
         interface and set that on the oj-data-grid's data attribute and apply bindings to the grid.
       </li>
       <li>
-        Initialize the values for the various data regions an provide user control to change them and
+        Initialize the values for the various data regions and provide user control to change them and
         render the data grid dynamically.
       </li>
     </ol>

@@ -1,7 +1,7 @@
 import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 import 'ojs/ojbutton';
 import 'ojs/ojpopup';
 import 'ojs/ojformlayout';
@@ -18,6 +18,7 @@ type PopupPositionProps = Partial<ComponentProps<'oj-popup'>> & {
 };
 
 export const PopupModal = () => {
+    const popupRef = useRef<ojPopup | null>(null);
     const [textVal1, setTextVal1] = useState<TextInputValue>('');
     const [textVal2, setTextVal2] = useState<TextInputValue>('');
 
@@ -30,12 +31,10 @@ export const PopupModal = () => {
     };
 
     const openListener = () => {
-        let popup = document.getElementById('popup1') as ojPopup;
-        popup.open('#btnGo');
+        popupRef.current?.open('#btnGo');
     };
     const cancelListener = () => {
-        let popup = document.getElementById('popup1') as ojPopup;
-        popup.close();
+        popupRef.current?.close();
     };
     const ojPopupProps: PopupPositionProps = {
         'position.my.horizontal': 'center',
@@ -47,7 +46,7 @@ export const PopupModal = () => {
 
 return (
         <div id="popupWrapper">
-            <oj-popup id="popup1" class="demo-popup" autoDismiss="none" modality="modal" aria-labelledby="popupTitle" tail="none" {...ojPopupProps}>
+            <oj-popup ref={popupRef} id="popup1" class="demo-popup" autoDismiss="none" modality="modal" aria-labelledby="popupTitle" tail="none" {...ojPopupProps}>
                 <div class="demo-popup-body oj-sm-padding-2x">
                     <div class="demo-popup-header">
                         <h5 id="popupTitle">Modal Popup</h5>

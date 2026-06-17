@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojlistview';
@@ -21,6 +21,7 @@ type ItemTemplateContext = {
 };
 
 export const ListViewCustomContextMenuListView = () => {
+  const listViewRef = useRef<ojListView<EmployeeData['id'], EmployeeData> | null>(null);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('None selected yet');
   const [launchedFromItem, setLaunchedFromItem] = useState<string>('None launched yet');
 
@@ -89,9 +90,7 @@ export const ListViewCustomContextMenuListView = () => {
       return;
     }
 
-    const context = (document.getElementById('listview') as ojListView<EmployeeData['id'], EmployeeData>).getContextByNode(
-      launcher
-    );
+    const context = listViewRef.current?.getContextByNode(launcher);
 
     if (context != null && context.key != null) {
       setLaunchedFromItem(String(context.key));
@@ -113,6 +112,7 @@ export const ListViewCustomContextMenuListView = () => {
   return (
     <div id="listviewwrapper">
       <oj-list-view
+        ref={listViewRef}
         id="listview"
         aria-label="list with context menu"
         class="oj-listview-item-padding-off"

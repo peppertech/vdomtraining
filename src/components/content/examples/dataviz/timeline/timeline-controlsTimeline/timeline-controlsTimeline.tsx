@@ -67,10 +67,10 @@ export const TimelineControlsTimeline = () => {
 
   useEffect(() => {
     const updateResponsiveState = () => {
-      if (window.matchMedia(smQuery).matches) {
+      if (matchMedia(smQuery).matches) {
         setScreenSize('small');
         setOrientationValue('vertical');
-      } else if (window.matchMedia(mdQuery).matches) {
+      } else if (matchMedia(mdQuery).matches) {
         setScreenSize('medium');
         setOrientationValue('vertical');
       } else {
@@ -86,10 +86,10 @@ export const TimelineControlsTimeline = () => {
     };
 
     updateResponsiveState();
-    window.addEventListener('resize', updateResponsiveState);
+    addEventListener('resize', updateResponsiveState);
 
     return () => {
-      window.removeEventListener('resize', updateResponsiveState);
+      removeEventListener('resize', updateResponsiveState);
     };
   }, [mdQuery, smQuery]);
 

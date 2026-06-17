@@ -54,6 +54,7 @@ export const SwipeToRevealBasicSwipeToReveal = () => {
   ]);
   const [action, setAction] = useState('No action taken yet');
   const currentItemRef = useRef<EmailItem['id'] | null>(null);
+  const menuRef = useRef<ojMenu | null>(null);
 
   const dataProvider = useMemo(
     () => new ArrayDataProvider(allItems, { keyAttributes: 'id' }),
@@ -73,8 +74,7 @@ export const SwipeToRevealBasicSwipeToReveal = () => {
     if (nextAction === 'trash') {
       remove(currentItemRef.current);
     } else if (nextAction === 'more') {
-      const menu = document.getElementById('moremenu');
-      menu?.open();
+      menuRef.current?.open();
     }
   };
 
@@ -141,6 +141,7 @@ export const SwipeToRevealBasicSwipeToReveal = () => {
       </oj-list-view>
       <oj-menu
         id="moremenu"
+        ref={menuRef}
         aria-label="More Actions"
         onojMenuAction={handleMenuItemAction}
         {...menuOpenOptions}

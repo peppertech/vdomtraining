@@ -49,16 +49,21 @@ type DataGridContext = {
     axis?: 'row' | 'rowEnd' | 'column' | 'columnEnd';
     index?: number;
 };
+type DataTransferOptions = NonNullable<ComponentProps<'oj-data-grid'>['dataTransferOptions']>;
 const SOURCE_ROWS = (jsonData as PopulationRow[]).slice(0, 8);
 const INITIAL_COLUMNS = Object.keys(SOURCE_ROWS[0]).filter((key) => key !== 'states');
 const cloneRows = () => SOURCE_ROWS.map((row) => ({ ...row }));
 export const DataGridDragAndDropGrid = () => {
+    const dataGridRef = useRef<ojDataGrid<string, string> | null>(null);
     const [rows, setRows] = useState<PopulationRow[]>(() => cloneRows());
     const [columns, setColumns] = useState<string[]>(INITIAL_COLUMNS);
     const [menuAxis, setMenuAxis] = useState<'row' | 'column' | null>(null);
     const cutRangeRef = useRef<SelectionRange | null>(null);
     const draggedRangesRef = useRef<SelectionRange[]>([]);
     const insertIndexRef = useRef<number>(0);
+    const dataTransferOptions = useMemo<DataTransferOptions>(() => ({
+        cut: 'enable'
+    }), []);
     const rowDataProvider = useMemo(() => new ArrayDataProvider<string, PopulationRow>(rows, {
         keyAttributes: 'states'
     }), [rows]);
@@ -195,7 +200,7 @@ export const DataGridDragAndDropGrid = () => {
     };
     const beforeOpenHandler = (event: ojMenu.ojBeforeOpen) => {
         const target = event.detail.originalEvent.target as Element;
-        const datagrid = document.getElementById('datagrid') as ojDataGrid<string, string> | null;
+        const datagrid = dataGridRef.current;
         const context = datagrid?.getContextByNode(target) as DataGridContext | null;
         if (context?.index != null) {
             if (context.axis === 'row' || context.axis === 'rowEnd') {
@@ -242,7 +247,7 @@ export const DataGridDragAndDropGrid = () => {
             }
         } };
     return (<div id="datagrid-container">
-            <oj-data-grid id="datagrid" class="demo-data-grid" aria-label="Data Grid drag and drop demo" data={dataGridProvider} scrollPolicy="scroll" dataTransferOptions={"{\"cut\": \"enable\"}"} onojCutRequest={handleCut} {...ojDataGridProps}>
+            <oj-data-grid ref={dataGridRef} id="datagrid" class="demo-data-grid" aria-label="Data Grid drag and drop demo" data={dataGridProvider} scrollPolicy="scroll" dataTransferOptions={dataTransferOptions} onojCutRequest={handleCut} {...ojDataGridProps}>
                     <template slot="cellTemplate" render={cellTemplateRenderer}/>
                     <oj-menu slot="contextMenu" onojMenuAction={handleMenuAction} onojBeforeOpen={beforeOpenHandler} aria-label="custom context menu">
                               <oj-option id="cut" value="cut" data-oj-command="oj-datagrid-cutCells">Cut</oj-option>

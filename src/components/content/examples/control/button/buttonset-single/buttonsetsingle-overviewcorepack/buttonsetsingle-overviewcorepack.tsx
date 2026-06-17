@@ -51,7 +51,7 @@ const drinkOptions: ToggleItems = [
   { value: "milk", label: "Milk" }
 ];
 
-const getViewportWidth = () => (typeof window === "undefined" ? 1280 : window.innerWidth);
+const getViewportWidth = () => (typeof window === "undefined" ? 1280 : innerWidth);
 
 const getScreenRange = (width: number) => {
   if (width < 768) {

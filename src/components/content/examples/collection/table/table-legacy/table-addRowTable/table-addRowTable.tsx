@@ -85,6 +85,7 @@ export const TableAddRowTable = () => {
 
   const originalDataRef = useRef<DepartmentData | null>(null);
   const cancelEditRef = useRef<boolean>(false);
+  const tableRef = useRef<ojTable<DepartmentData['DepartmentId'], DepartmentData> | null>(null);
 
   const dataprovider = useMemo(() => new BufferingDataProvider<DepartmentData['DepartmentId'], DepartmentData>(new ArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(deptObservableArray, {
       keyAttributes: 'DepartmentId'
@@ -205,7 +206,9 @@ export const TableAddRowTable = () => {
   const beforeRowAddEndListener = async (event: ojTable.ojBeforeRowAddEnd) => {
       const detail = event.detail;
       if (detail.cancelAdd === true) {
-          resetAddRowElements(document.getElementById('table') as ojTable<DepartmentData['DepartmentId'], DepartmentData>);
+          if (tableRef.current) {
+              resetAddRowElements(tableRef.current);
+          }
           clearRowData();
       }
       else {
@@ -330,7 +333,10 @@ export const TableAddRowTable = () => {
   };
 
   const validateInputs = async (event: ojTable.ojBeforeRowEditEnd<DepartmentData['DepartmentId'], DepartmentData> | ojTable.ojBeforeRowAddEnd, isAdd: boolean) => {
-      let invalidInputs = await getValidationErrorElementsInRow(document.getElementById('table') as ojTable<DepartmentData['DepartmentId'], DepartmentData>, isAdd ? '.addRowEditable' : '.editable');
+      if (!tableRef.current) {
+          return;
+      }
+      let invalidInputs = await getValidationErrorElementsInRow(tableRef.current, isAdd ? '.addRowEditable' : '.editable');
       if (invalidInputs.length > 0) {
           return invalidInputs[0];
       }
@@ -362,7 +368,7 @@ export const TableAddRowTable = () => {
   };
 
   const applyFocus = (element: HTMLElement) => {
-      const tableElement = document.getElementById('table');
+      const tableElement = tableRef.current;
       if (!tableElement) {
           return;
       }
@@ -475,7 +481,7 @@ export const TableAddRowTable = () => {
                               <oj-button id="addRowDisplay" display="icons" onojAction={handleDisplay} label={buttonText} />
                           </oj-form-layout>
                 </div>
-            <oj-table id="table" aria-label="Departments Table" class="oj-bg-body demo-table-container" data={dataprovider} edit-mode="rowEdit" add-row-display={displayRow} oneditRowChanged={handleEditRowEditRowChanged} edit-row={editRow} onojBeforeRowEdit={beforeRowEditListener} onojBeforeRowEditEnd={beforeRowEditEndListener} onojBeforeRowAddEnd={beforeRowAddEndListener} layout="fixed" columns={columnArray} {...{ 'accessibility.row-header': "depName", 'columns-default.sortable': "disabled" }}>
+            <oj-table ref={tableRef} id="table" aria-label="Departments Table" class="oj-bg-body demo-table-container" data={dataprovider} edit-mode="rowEdit" add-row-display={displayRow} oneditRowChanged={handleEditRowEditRowChanged} edit-row={editRow} onojBeforeRowEdit={beforeRowEditListener} onojBeforeRowEditEnd={beforeRowEditEndListener} onojBeforeRowAddEnd={beforeRowAddEndListener} layout="fixed" columns={columnArray} {...{ 'accessibility.row-header': "depName", 'columns-default.sortable': "disabled" }}>
                     <template slot="addRowTemplate" render={(addRow) => (
                             <>
                                 <tr>

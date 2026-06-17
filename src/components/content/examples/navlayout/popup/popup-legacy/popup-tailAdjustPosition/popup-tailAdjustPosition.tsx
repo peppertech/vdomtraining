@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ojPopup, ojPopupSettableProperties } from 'ojs/ojpopup';
 import 'ojs/ojpopup';
@@ -11,6 +11,7 @@ import 'ojs/ojlabel';
 type RadioChangedEvent = Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0];
 
 export const PopupTailAdjustPosition = () => {
+  const popupRef = useRef<ojPopup | null>(null);
   const availableHorizontalPositionMnemonics = [
     { value: 'start', label: 'start' },
     { value: 'left', label: 'left' },
@@ -65,7 +66,7 @@ export const PopupTailAdjustPosition = () => {
   };
 
   const openPopup = () => {
-    const popup = document.getElementById('popup') as ojPopup | null;
+    const popup = popupRef.current;
     if (!popup) {
       return;
     }
@@ -73,7 +74,7 @@ export const PopupTailAdjustPosition = () => {
   };
 
   const clickListener = () => {
-    const popup = document.getElementById('popup') as ojPopup | null;
+    const popup = popupRef.current;
     if (!popup) {
       return;
     }
@@ -88,6 +89,7 @@ export const PopupTailAdjustPosition = () => {
   return (
     <div id="popupWrapper">
       <oj-popup
+        ref={popupRef}
         id="popup"
         autoDismiss="none"
         modality="modeless"

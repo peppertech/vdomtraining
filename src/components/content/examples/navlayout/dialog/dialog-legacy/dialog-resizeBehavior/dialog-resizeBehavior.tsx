@@ -1,7 +1,7 @@
 import { JetElementCustomEvent } from 'ojs/index';
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';type ValueChangedEvent<TValue> = JetElementCustomEvent<TValue>;
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojdialog';
 import 'ojs/ojbutton';
@@ -9,15 +9,16 @@ import 'ojs/ojradioset';
 import 'ojs/ojlabel';
 import 'ojs/ojoption';
 export const DialogResizeBehavior = () => {
+  const dialogRef = useRef<ojDialog | null>(null);
   const [currentResizeBehaviorOpt, setCurrentResizeBehaviorOpt] = useState<ojDialog['resizeBehavior']>('resizable' as ojDialog['resizeBehavior']);
   const handleCurrentResizeBehaviorOptValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0]) => {
     setCurrentResizeBehaviorOpt(event.detail.value);
   };
   const handleOpen = () => {
-      (document.querySelector('#dialog1') as ojDialog).open();
+      dialogRef.current?.open();
   };
   const handleOKClose = () => {
-      (document.querySelector('#dialog1') as ojDialog).close();
+      dialogRef.current?.close();
   };
   return (
       <>
@@ -29,7 +30,7 @@ export const DialogResizeBehavior = () => {
                     </oj-radioset>
             </div>
           <div id="dialogWrapper">
-                <oj-dialog id="dialog1" dialogTitle="Resize Behavior Options" resizeBehavior="resizable">
+                <oj-dialog ref={dialogRef} id="dialog1" dialogTitle="Resize Behavior Options" resizeBehavior="resizable">
                         <div slot="body"><div>resizeBehavior: resizable</div></div>
                         <div slot="footer"><oj-button id="okButton" onojAction={handleOKClose}>OK</oj-button></div>
                     </oj-dialog>

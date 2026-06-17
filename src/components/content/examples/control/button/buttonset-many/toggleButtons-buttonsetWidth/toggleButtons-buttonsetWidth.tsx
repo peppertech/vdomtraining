@@ -30,7 +30,7 @@ export const ToggleButtonsButtonsetWidth = () => {
       ResponsiveUtils.getFrameworkQuery(ResponsiveUtils.FRAMEWORK_QUERY_KEY.SM_ONLY) || '(max-width: 599px)';
 
     const updateSmallState = () => {
-      setIsSmall(window.matchMedia(smQuery).matches);
+      setIsSmall(matchMedia(smQuery).matches);
     };
 
     updateSmallState();

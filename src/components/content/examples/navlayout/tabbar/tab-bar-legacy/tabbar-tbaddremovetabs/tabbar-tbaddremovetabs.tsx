@@ -34,6 +34,7 @@ type TabbarRemoveEvent = Parameters<
 >[0];
 
 export const TabbarTbaddremovetabs = () => {
+  const dialogRef = useRef<HTMLElement & { open: () => void; close: () => void }>(null);
   const nextIdRef = useRef(1);
   const [tabs, setTabs] = useState<TabbarItem[]>([
     { name: 'Settings', id: 'settings' },
@@ -79,11 +80,11 @@ export const TabbarTbaddremovetabs = () => {
   const openDialog = () => {
     nextIdRef.current += 1;
     setNewTabTitle(`Tab ${nextIdRef.current}`);
-    document.getElementById('tabDialog')?.open();
+    dialogRef.current?.open();
   };
 
   const closeDialog = () => {
-    document.getElementById('tabDialog')?.close();
+    dialogRef.current?.close();
   };
 
   const addTab = () => {
@@ -108,7 +109,7 @@ export const TabbarTbaddremovetabs = () => {
         </div>
       </div>
 
-      <oj-dialog class="demo-tab-dialog" id="tabDialog" dialogTitle="Tab data">
+      <oj-dialog ref={dialogRef} class="demo-tab-dialog" id="tabDialog" dialogTitle="Tab data">
         <div slot="body">
           <oj-form-layout>
             <oj-input-text id="t1" onvalueChanged={(event: InputTextValueChangedEvent) => setNewTabTitle(event.detail.value as string)} value={newTabTitle} labelHint="Title" />

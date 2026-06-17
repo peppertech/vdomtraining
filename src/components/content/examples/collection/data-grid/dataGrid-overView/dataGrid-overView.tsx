@@ -13,14 +13,18 @@ interface States {
     states: string;
     [propName: string]: number | string;
 }
-const COLUMNS = ['2016', '2017', '2018', '2019', '2020'];
+const populationRows = jsonData as States[];
+const COLUMNS = Object.keys(populationRows[0] ?? {})
+    .filter((key) => key !== 'states')
+    .sort((left, right) => Number(left) - Number(right));
+const DEFAULT_SORT_COLUMN = COLUMNS[COLUMNS.length - 1] ?? '2020';
 type SortRequestEvent = Parameters<NonNullable<ComponentProps<'oj-data-grid'>['onojSortRequest']>>[0];
 type CellTemplateContext = DataGridElement.CellTemplateContext<States>;
 export const DataGridOverView = () => {
-    const [sortColumn, setSortColumn] = useState<string>('2020');
+    const [sortColumn, setSortColumn] = useState<string>(DEFAULT_SORT_COLUMN);
     const [sortDirection, setSortDirection] = useState<'ascending' | 'descending'>('descending');
     const rows = useMemo(() => {
-        const nextRows = [...(jsonData as States[])];
+        const nextRows = [...populationRows];
         nextRows.sort((left, right) => {
             const leftValue = Number(left[sortColumn] ?? 0);
             const rightValue = Number(right[sortColumn] ?? 0);

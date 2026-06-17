@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { ojListView } from 'ojs/ojlistview';
 import { ojMenu } from 'ojs/ojmenu';
@@ -189,6 +189,7 @@ const getIconClass = (type: FileNode['type']) => {
 };
 
 export const ListViewReorderListView = () => {
+  const listViewRef = useRef<ojListView<FileNode['id'], FileNode> | null>(null);
   const [data, setData] = useState<FileNode[]>(() => cloneNodes(INITIAL_DATA));
   const [currentItem, setCurrentItem] = useState<FileNode['id'] | null>(null);
   const [cutItem, setCutItem] = useState<FileNode['id'] | null>(null);
@@ -249,7 +250,7 @@ export const ListViewReorderListView = () => {
 
   const handleMenuBeforeOpen = (event: MenuBeforeOpenEvent) => {
     const launcher = event.detail.openOptions.launcher;
-    const target = typeof launcher === 'string' ? document.querySelector(launcher) : launcher;
+    const target = launcher instanceof Element ? launcher : null;
 
     if (target instanceof Element && target.classList.contains('oj-listview-drag-handle')) {
       event.preventDefault();
@@ -291,11 +292,8 @@ export const ListViewReorderListView = () => {
       return;
     }
 
-    const listView = document.getElementById('listview') as
-      | ojListView<FileNode['id'], FileNode>
-      | null;
-    const source = listView?.getContextByNode(event.detail.items[0]);
-    const destination = listView?.getContextByNode(event.detail.reference);
+    const source = listViewRef.current?.getContextByNode(event.detail.items[0]);
+    const destination = listViewRef.current?.getContextByNode(event.detail.reference);
 
     reorderItem(
       source?.key ?? null,
@@ -416,6 +414,7 @@ export const ListViewReorderListView = () => {
       </div>
 
       <oj-list-view
+        ref={listViewRef}
         id="listview"
         aria-label="reorderable list using json data"
         class="oj-sm-padding-1x oj-listview-item-padding-off"

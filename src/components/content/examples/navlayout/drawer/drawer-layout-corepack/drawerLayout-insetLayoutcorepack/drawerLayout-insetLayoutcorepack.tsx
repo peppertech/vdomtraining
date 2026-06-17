@@ -24,8 +24,6 @@ export const DrawerLayoutInsetLayoutcorepack = () => {
   const [countMain, setCountMain] = useState<InputNumberValue>(7);
   const [countEnd, setCountEnd] = useState<InputNumberValue>(3);
 
-  const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum, eget vehicula nibh augue sollicitudin ligula. Sed ullamcorper cursus feugiat. Mauris tristique aliquam dictum. Nulla facilisi. Nulla ut sapien sapien. Phasellus tristique arcu id ipsum mattis id aliquam risus sollicitudin.';
-
   const handleStartOpenedStartOpenedChanged = (event: Parameters<NonNullable<ComponentProps<'oj-drawer-layout'>['onstartOpenedChanged']>>[0]) => {
     setStartOpened(event.detail.value ?? false);
   };
@@ -56,19 +54,6 @@ export const DrawerLayoutInsetLayoutcorepack = () => {
 
   const bottomToggle = () => setBottomOpened((value) => !value);
 
-  const updateCount = (count: number, target: string) => {
-      const element = document.getElementById(target);
-      if (!element) {
-          return;
-      }
-      element.innerHTML = '';
-      for (let i = 0; i < count; i++) {
-          const paragraph = document.createElement('p');
-          const paragraphContent = document.createTextNode(text);
-          paragraph.appendChild(paragraphContent);
-          element.appendChild(paragraph);
-      }
-  };
   return (
       <div id="demo-container">
             <div class="demo-header demo-padding oj-bg-neutral-0 oj-divider-bottom">

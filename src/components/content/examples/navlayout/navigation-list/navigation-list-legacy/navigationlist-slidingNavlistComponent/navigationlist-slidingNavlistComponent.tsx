@@ -10,8 +10,6 @@ import 'css!./demo.css';
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 
 export const NavigationlistSlidingNavlistComponent = () => {
-  const navlistContainer = document.getElementById('navlistcontainer');
-
   const [isContrastBackground, setIsContrastBackground] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<string>('home');
 
@@ -27,6 +25,11 @@ export const NavigationlistSlidingNavlistComponent = () => {
     setSelectedItem(event.detail.value);
   };
 
+  const navListContainerClass = [
+    'demo-navlist-container',
+    isContrastBackground ? 'oj-bg-neutral-170 oj-color-invert' : ''
+  ].filter(Boolean).join(' ');
+
   return (
       <div id="navlistdemo">
             <div class="oj-panel oj-bg-neutral-30 oj-sm-margin-4x-bottom">
@@ -37,7 +40,7 @@ export const NavigationlistSlidingNavlistComponent = () => {
                                       </div>
                           </div>
                 </div>
-            <div id="navlistcontainer" class="demo-navlist-container">
+            <div id="navlistcontainer" class={navListContainerClass}>
                     <oj-navigation-list drill-mode="sliding" onselectionChanged={handleSelectedItemSelectionChanged} selection={selectedItem} data={dataProvider}>
                               <template slot="itemTemplate" render={(item) => (
                                         <>

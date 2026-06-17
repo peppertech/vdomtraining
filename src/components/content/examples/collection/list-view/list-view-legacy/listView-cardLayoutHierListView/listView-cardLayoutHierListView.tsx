@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Fragment, h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import 'ojs/ojactioncard';
 import '../../../../../../jet-composites/demo-profile-card-layout/loader';
@@ -31,6 +31,7 @@ type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 type ActiveLayout = 'card' | 'list';
 
 export const ListViewCardLayoutHierListView = () => {
+  const listViewRef = useRef<HTMLElement | null>(null);
   const [fullWidthMode, setFullWidthMode] = useState(false);
   const [activeLayout, setActiveLayout] = useState<ActiveLayout>('card');
 
@@ -123,9 +124,7 @@ export const ListViewCardLayoutHierListView = () => {
   const handleFullWidthModeChange = (event: PropertyChangedEvent<boolean>) => {
 	      const enabled = event.detail.value ?? false;
 	      setFullWidthMode(enabled);
-	      enabled
-	          ? document.getElementById('listview').classList.add('oj-listview-full-width')
-	          : document.getElementById('listview').classList.remove('oj-listview-full-width');
+	      listViewRef.current?.classList.toggle('oj-listview-full-width', enabled);
   };
 
   return (
@@ -148,7 +147,7 @@ export const ListViewCardLayoutHierListView = () => {
                                       }
                           </oj-buttonset-one>
                 </div>
-            <oj-list-view id="listview" class="oj-sm-padding-1x" aria-label="list with card layout for items in group" data={dataProvider} display={activeLayout} drill-mode="none" group-header-position="static">
+            <oj-list-view ref={listViewRef} id="listview" class="oj-sm-padding-1x" aria-label="list with card layout for items in group" data={dataProvider} display={activeLayout} drill-mode="none" group-header-position="static">
                     <template slot="itemTemplate" render={(item) => (
                             <>
                                 {

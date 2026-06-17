@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ojMenu } from 'ojs/ojmenu';
 import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/contextMenuTimeline/seriesData.json';
@@ -36,6 +36,7 @@ const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => 
 );
 
 export const TimelineContextMenuTimeline = () => {
+  const timelineRef = useRef(null);
   const [selectedMenuItem, setSelectedMenuItem] = useState('(None selected yet)');
   const [selectedItemsValue, setSelectedItemsValue] = useState([]);
   const [itemTitle, setItemTitle] = useState<string | null>(null);
@@ -76,7 +77,7 @@ export const TimelineContextMenuTimeline = () => {
       return;
     }
 
-    const timeline = document.getElementById('timeline');
+    const timeline = timelineRef.current;
     const context = timeline?.getContextByNode(target);
     if (context != null && context.subId === 'oj-timeline-item') {
       setItemTitle(contextMenuItems[context.itemIndex]?.title ?? null);
@@ -96,6 +97,7 @@ export const TimelineContextMenuTimeline = () => {
   return (
     <div id="timeline-container">
       <oj-timeline
+        ref={timelineRef}
         id="timeline"
         aria-label="Timeline Context Menu Demo"
         class="demo-timeline"

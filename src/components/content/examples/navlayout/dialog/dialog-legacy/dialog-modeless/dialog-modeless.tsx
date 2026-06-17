@@ -2,7 +2,7 @@ import { JetElementCustomEvent } from 'ojs/index';
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojdialog';
 import 'ojs/ojbutton';
@@ -13,6 +13,7 @@ type InputTextValue = ComponentProps<'oj-input-text'>['value'];
 type InputTextValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>>[0];
 
 export const DialogModeless = () => {
+  const dialogRef = useRef<ojDialog | null>(null);
   const [textVal1, setTextVal1] = useState<InputTextValue>('');
   const [textVal2, setTextVal2] = useState<InputTextValue>('');
 
@@ -25,18 +26,16 @@ export const DialogModeless = () => {
   };
 
   const handleOpen = () => {
-      const dialog = document.querySelector('#modelessDialog1') as ojDialog | null;
-      dialog?.open();
+      dialogRef.current?.open();
   };
 
   const handleOKClose = () => {
-      const dialog = document.querySelector('#modelessDialog1') as ojDialog | null;
-      dialog?.close();
+      dialogRef.current?.close();
   };
 
   return (
       <div id="dialogWrapper">
-            <oj-dialog id="modelessDialog1" dialogTitle="Modeless Dialog" modality="modeless" aria-describedby="desc">
+            <oj-dialog ref={dialogRef} id="modelessDialog1" dialogTitle="Modeless Dialog" modality="modeless" aria-describedby="desc">
                     <div slot="body">
                               <p id="desc">
                                           This is an example of a modeless dialog. Interaction with other window areas and components is possible when a modeless dialog is displayed.

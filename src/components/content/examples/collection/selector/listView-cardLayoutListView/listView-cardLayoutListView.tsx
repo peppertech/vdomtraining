@@ -25,9 +25,9 @@ type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 type ActiveLayout = 'card' | 'list';
 
 const createMediaQueryObservable = (query: string) => {
-  const [matches, setMatches] = useState<boolean>(() => window.matchMedia(query).matches);
+  const [matches, setMatches] = useState<boolean>(() => matchMedia(query).matches);
   useEffect(() => {
-    const mediaQuery = window.matchMedia(query);
+    const mediaQuery = matchMedia(query);
     const listener = (event: MediaQueryListEvent) => setMatches(event.matches);
     setMatches(mediaQuery.matches);
     mediaQuery.addEventListener('change', listener);

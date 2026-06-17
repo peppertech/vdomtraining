@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import { ojPopup, ojPopupSettableProperties } from 'ojs/ojpopup';
 import 'ojs/ojpopup';
 import 'ojs/ojformlayout';
@@ -92,6 +92,7 @@ const popupObjs: PopupObj[] = [
 ];
 
 export const PopupTailCommonPositions = () => {
+  const popupRefs = useRef<Record<string, ojPopup | null>>({});
   const [tailSelected, setTailSelected] = useState<ojPopupSettableProperties['tail']>('simple');
   const positions = useMemo(() => popupObjs, []);
 
@@ -102,7 +103,11 @@ export const PopupTailCommonPositions = () => {
   };
 
   const togglePopup = (popupObj: PopupObj) => {
-    const popup = document.getElementById(popupObj.popupId) as ojPopup;
+    const popup = popupRefs.current[popupObj.popupId];
+    if (!popup) {
+      return;
+    }
+
     if (popup.isOpen()) {
       popup.close();
     } else {
@@ -115,6 +120,9 @@ export const PopupTailCommonPositions = () => {
       {positions.map((popupObj) => (
         <oj-popup
           key={popupObj.popupId}
+          ref={(element) => {
+            popupRefs.current[popupObj.popupId] = element as ojPopup | null;
+          }}
           id={popupObj.popupId}
           auto-dismiss="none"
           modality="modeless"

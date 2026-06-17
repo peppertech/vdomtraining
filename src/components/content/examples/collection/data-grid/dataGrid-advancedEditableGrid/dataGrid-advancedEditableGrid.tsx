@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
 import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/customers.json';
@@ -81,6 +81,7 @@ const COLUMNS: ColumnDefinition[] = [
 ];
 const formatHeaderLabel = (value: string) => value.replace(/([A-Z])/g, ' $1').replace(/^./, (letter) => letter.toUpperCase());
 export const DataGridAdvancedEditableGrid = () => {
+    const editableRef = useRef<EditableElement | null>(null);
     const [rows, setRows] = useState<CustomerRecord[]>(() => jsonData.slice(0, 8).map((item) => ({
         id: item.index,
         firstName: item.firstName,
@@ -160,7 +161,7 @@ export const DataGridAdvancedEditableGrid = () => {
         if (detail.cancelEdit) {
             return;
         }
-        const editable = document.querySelector('.editable') as EditableElement | null;
+        const editable = editableRef.current;
         if (!editable) {
             return;
         }
@@ -202,18 +203,18 @@ export const DataGridAdvancedEditableGrid = () => {
         const cellValue = cell.item.data.data as CustomerRecord[EditableColumn];
         if (cell.mode === 'edit') {
             if (columnKey === 'balance') {
-                return <oj-input-number class="editable" value={cellValue as number} labelEdge="none" step={0.01}/>;
+                return <oj-input-number ref={editableRef} class="editable" value={cellValue as number} labelEdge="none" step={0.01}/>;
             }
             if (columnKey === 'registered') {
-                return <oj-input-date class="editable" value={cellValue as string} labelEdge="none"/>;
+                return <oj-input-date ref={editableRef} class="editable" value={cellValue as string} labelEdge="none"/>;
             }
             if (columnKey === 'isActive') {
-                return <oj-select-single class="editable" data={selectDataProvider} value={String(cellValue)} labelEdge="none"/>;
+                return <oj-select-single ref={editableRef} class="editable" data={selectDataProvider} value={String(cellValue)} labelEdge="none"/>;
             }
             if (columnKey === 'eyeColor') {
-                return <oj-select-single class="editable" data={selectDataProvider} value={String(cellValue)} labelEdge="none"/>;
+                return <oj-select-single ref={editableRef} class="editable" data={selectDataProvider} value={String(cellValue)} labelEdge="none"/>;
             }
-            return <oj-input-text class="editable" value={String(cellValue)} labelEdge="none"/>;
+            return <oj-input-text ref={editableRef} class="editable" value={String(cellValue)} labelEdge="none"/>;
         }
         return <span>{formatValue(columnKey, cellValue)}</span>;
     };

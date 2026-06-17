@@ -1,6 +1,6 @@
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicData.json';
 import { ojPopup } from 'ojs/ojpopup';
 import 'ojs/ojchart';
@@ -21,6 +21,8 @@ type ChartItemTemplateContext = {
 };
 const chartData = JSON.parse(chartDataText as string) as ChartItem[];
 export const ChartPopup = () => {
+    const popupRef = useRef<(HTMLElement & ojPopup) | null>(null);
+    const popupContentRef = useRef<HTMLDivElement | null>(null);
     const [selectedItemsValue, setSelectedItemsValue] = useState<ChartSelection>([]);
     const data = chartData;
     const dataProvider = useMemo(() => new ArrayDataProvider<ChartItem['id'], ChartItem>(data, {
@@ -43,8 +45,9 @@ export const ChartPopup = () => {
             const id = selection[0];
             dataItemContext = idToItemMap[String(id)];
         }
-        const popup = document.getElementById('popup1') as (HTMLElement & ojPopup) | null;
-        if (!popup) {
+        const popup = popupRef.current;
+        const popupContent = popupContentRef.current;
+        if (!popup || !popupContent) {
             return;
         }
         let popupText: string | undefined;
@@ -55,7 +58,7 @@ export const ChartPopup = () => {
                 'Value: ' +
                     dataItemContext.value +
                     "<br/><a href='https://www.oracle.com' target='_blank'>www.oracle.com</a>";
-            popup.innerHTML = popupText;
+            popupContent.innerHTML = popupText;
             pageX = event.pageX;
             pageY = event.pageY;
         }
@@ -64,7 +67,7 @@ export const ChartPopup = () => {
                 'Value: ' +
                     dataItemContext.value +
                     "<br/><a href='https://www.oracle.com' target='_blank'>www.oracle.com</a>";
-            popup.innerHTML = popupText;
+            popupContent.innerHTML = popupText;
             const target = event.target as HTMLElement | null;
             pageX = (target?.offsetWidth ?? 0) / 2.3;
             pageY = (target?.offsetHeight ?? 0) / 3;
@@ -96,7 +99,9 @@ export const ChartPopup = () => {
                         <template slot="itemTemplate" render={itemTemplateRenderer}/>
                     </oj-chart>
             </div>
-          <oj-popup id="popup1" tail="simple" modality="modeless"/>
+          <oj-popup ref={popupRef} id="popup1" tail="simple" modality="modeless">
+              <div ref={popupContentRef} />
+          </oj-popup>
       </>);
 };
 export default ChartPopup;

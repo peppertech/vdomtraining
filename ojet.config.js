@@ -19,6 +19,25 @@ function isResizeObserverLoopError(error) {
   return resizeObserverLoopMessages.has(message);
 }
 
+const oracleJetDynamicRequireWarningModules =
+  /node_modules[\\/]@oracle[\\/]oraclejet[\\/]dist[\\/]js[\\/]libs[\\/]oj[\\/]min[\\/]oj(?:config|module-element-utils|module)\.js$/;
+
+function isOracleJetDynamicRequireWarning(warning) {
+  const message = warning && warning.message;
+  const moduleName =
+    warning &&
+    (warning.moduleName ||
+      warning.moduleIdentifier ||
+      (warning.module && warning.module.resource));
+
+  return (
+    typeof message === 'string' &&
+    message.includes('Critical dependency') &&
+    typeof moduleName === 'string' &&
+    oracleJetDynamicRequireWarningModules.test(moduleName)
+  );
+}
+
 class EnsureRedwoodThemeFirstPlugin {
   apply(compiler) {
     compiler.hooks.compilation.tap('EnsureRedwoodThemeFirstPlugin', (compilation) => {
@@ -133,6 +152,11 @@ module.exports = {
         ]
       }),
       new webpack.NormalModuleReplacementPlugin(/^ojs\/_foo_$/, path.resolve(__dirname, 'src/webpack-empty-module.js'))
+    ];
+
+    config.ignoreWarnings = [
+      ...(config.ignoreWarnings || []),
+      isOracleJetDynamicRequireWarning
     ];
 
     const existingSetupMiddlewares = config.devServer && config.devServer.setupMiddlewares;

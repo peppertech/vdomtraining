@@ -45,6 +45,7 @@ type GanttTaskbarContext = {
 const data = JSON.parse(dataText as string) as Row[];
 
 export const GanttContextMenu = () => {
+  const ganttRef = useRef<ojGantt<null, null, null, null, Row['resource'], Row> | null>(null);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('(None selected yet)');
   const [selectedItemsValue, setSelectedItemsValue] = useState<GanttSelection>([]);
   const rowIndexRef = useRef<number | null>(null);
@@ -84,8 +85,7 @@ export const GanttContextMenu = () => {
         taskIndexRef.current = Number(parsedId[2]) - 1;
       }
     } else if (target) {
-      const gantt = document.getElementById('gantt') as ojGantt<null, null, null, null, Row['resource'], Row>;
-      const context = gantt.getContextByNode(target) as GanttTaskbarContext | null;
+      const context = ganttRef.current?.getContextByNode(target) as GanttTaskbarContext | null;
       if (context?.subId === 'oj-gantt-taskbar') {
         rowIndexRef.current = context.rowIndex;
         taskIndexRef.current = context.index;
@@ -123,6 +123,7 @@ export const GanttContextMenu = () => {
   return (
     <div id="gantt-container">
       <oj-gantt
+        ref={ganttRef}
         id="gantt"
         aria-label="Project Gantt Context Menu Demo"
         start={projectStartDate}

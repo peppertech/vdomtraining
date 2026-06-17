@@ -1,25 +1,26 @@
 import { h } from 'preact';
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojdialog';
 import 'ojs/ojbutton';
 import 'ojs/ojdefer';
 
 export const DialogDefer = () => {
+  const dialogRef = useRef<ojDialog | null>(null);
   const [closeButtonStatus, setCloseButtonStatus] = useState<string>('close button has not been rendered');
   const closeButtonLabel = 'Close';
 
   const handleOpen = () => {
-      (document.querySelector('#dialog1') as ojDialog).open();
+      dialogRef.current?.open();
   };
 
   const handleClose = () => {
-      (document.querySelector('#dialog1') as ojDialog).close();
+      dialogRef.current?.close();
   };
 
   return (
       <div id="dialogWrapper">
-            <oj-dialog id="dialog1" dialog-title="Dialog with deferred content" aria-describedby="desc">
+            <oj-dialog ref={dialogRef} id="dialog1" dialog-title="Dialog with deferred content" aria-describedby="desc">
                     <div slot="body">
                               {h('oj-defer', null, (
                                           <>

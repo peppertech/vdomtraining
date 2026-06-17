@@ -26,7 +26,7 @@ type ItemInfo = {
   icons: { class: string };
 };
 
-const getViewportWidth = () => (typeof window === "undefined" ? 1280 : window.innerWidth);
+const getViewportWidth = () => (typeof window === "undefined" ? 1280 : innerWidth);
 
 const itemValues: ItemInfo[] = [
   { value: "home", regular: "Home", icons: { class: "oj-ux-ico-home" } },

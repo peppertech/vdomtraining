@@ -1,6 +1,6 @@
 import { Fragment, h } from 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/diagramDataSample.json';
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -43,6 +43,7 @@ type LinkTemplateContext = {
 };
 const jsonData = JSON.parse(jsonDataText as string) as DiagramData;
 export const DiagramContextMenu = () => {
+    const diagramRef = useRef<ojDiagram<string, string, DiagramNodeDatum, DiagramLinkDatum> | null>(null);
     const [node, setNode] = useState<DiagramNodeDatum | null>(null);
     const [link, setLink] = useState<DiagramLinkDatum | null>(null);
     const [selectedMenuItem, setSelectedMenuItem] = useState<string>('(None selected yet)');
@@ -88,16 +89,7 @@ export const DiagramContextMenu = () => {
         }
         else {
             // Handle mouse interaction.
-            const diagram = document.getElementById('diagram1') as ojDiagram<string, string, {
-                id: string;
-                category: string;
-            }, {
-                id: string;
-                category: string;
-                start: string;
-                end: string;
-            }>;
-            const context = diagram.getContextByNode(target) as DiagramContext | null;
+            const context = diagramRef.current?.getContextByNode(target) as DiagramContext | null;
             if (context != null) {
                 if (context.subId === 'oj-diagram-node')
                     setNode(data.nodes[context.index] ?? null);
@@ -130,7 +122,7 @@ export const DiagramContextMenu = () => {
         return <oj-diagram-link startNode={link.data.start} endNode={link.data.end} shortDesc={"Link " + link.data.id + ", Category " + link.data.category + ", connects " + link.data.start + " to " + link.data.end} color={colorHandler.getValue(link.data.category)} startConnectorType="none" endConnectorType="arrow"/>;
     };
     return (<div id="diagram-container">
-            <oj-diagram id="diagram1" nodeData={nodeDataProvider} linkData={linkDataProvider} layout={layoutFunc} selectionMode="single" onselectionChanged={handleSelectedItemsValueSelectionChanged} selection={selectedItemsValue}>
+            <oj-diagram ref={diagramRef} id="diagram1" nodeData={nodeDataProvider} linkData={linkDataProvider} layout={layoutFunc} selectionMode="single" onselectionChanged={handleSelectedItemsValueSelectionChanged} selection={selectedItemsValue}>
                     <template slot="nodeTemplate" render={nodeTemplateRenderer}/>
                     <template slot="linkTemplate" render={linkTemplateRenderer}/>
                     <oj-menu slot="contextMenu" aria-label="Edit" onojMenuAction={menuItemAction} onojBeforeOpen={beforeOpenFunction}>

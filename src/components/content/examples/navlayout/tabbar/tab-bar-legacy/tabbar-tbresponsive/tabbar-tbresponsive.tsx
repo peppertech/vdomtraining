@@ -18,7 +18,7 @@ type TabbarSelectionChangedEvent = Parameters<
 export const TabbarTbresponsive = () => {
   const mdQuery = ResponsiveUtils.getFrameworkQuery('md-up');
   const [selectedItem, setSelectedItem] = useState('home');
-  const [isMedium, setIsMedium] = useState(() => (typeof window !== 'undefined' && mdQuery ? window.matchMedia(mdQuery).matches : true));
+  const [isMedium, setIsMedium] = useState(() => (typeof window !== 'undefined' && mdQuery ? matchMedia(mdQuery).matches : true));
   const dataProvider = useMemo(
     () =>
       new ArrayDataProvider<TabbarItem["id"], TabbarItem>(
@@ -37,7 +37,7 @@ export const TabbarTbresponsive = () => {
     if (!mdQuery || typeof window === 'undefined') {
       return;
     }
-    const mediaQuery = window.matchMedia(mdQuery);
+    const mediaQuery = matchMedia(mdQuery);
     const listener = (event: MediaQueryListEvent) => setIsMedium(event.matches);
     mediaQuery.addEventListener('change', listener);
     return () => mediaQuery.removeEventListener('change', listener);

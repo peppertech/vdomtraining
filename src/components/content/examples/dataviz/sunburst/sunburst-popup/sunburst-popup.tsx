@@ -20,6 +20,7 @@ const nodes = JSON.parse(jsonDataText as string) as PopupNode[];
 export const SunburstPopup = () => {
   const [tailMode, setTailMode] = useState<'none' | 'simple'>('simple');
   const [selectedItemsValue, setSelectedItemsValue] = useState<string[]>([]);
+  const sunburstRef = useRef<ojSunburst<string, PopupNode> | null>(null);
   const popupRef = useRef<ojPopup | null>(null);
   const popupContentRef = useRef<HTMLDivElement | null>(null);
   const colorHandler = useMemo(() => new ColorAttributeGroupHandler(), []);
@@ -59,8 +60,7 @@ export const SunburstPopup = () => {
       const [nodeId] = selectedItemsValue;
       node = nodeId ? idToItemMap[nodeId] ?? null : null;
     } else {
-      const sunburst = document.getElementById('sunburst1') as ojSunburst<string, PopupNode>;
-      nodeContext = sunburst.getContextByNode(event.target as Element);
+      nodeContext = sunburstRef.current?.getContextByNode(event.target as Element);
     }
 
     let popupText: string | undefined;
@@ -108,6 +108,7 @@ export const SunburstPopup = () => {
   return (
     <div id="sunburst-container">
       <oj-sunburst
+        ref={sunburstRef}
         id="sunburst1"
         onClick={openPopup}
         onKeyDown={openPopup}

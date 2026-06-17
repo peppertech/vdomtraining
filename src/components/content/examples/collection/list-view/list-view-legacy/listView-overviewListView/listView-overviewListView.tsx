@@ -622,6 +622,7 @@ export const ListViewOverviewListView = () => {
   const [activeTaskId, setActiveTaskId] = useState<Task['taskId'] | null>(null);
   const [selected, setSelected] = useState<SelectedKeySet>(createSelectedKeys());
   const nextIdRef = useRef(Math.max(...INITIAL_TASKS.map((task) => task.taskId)) + 1);
+  const editListViewRef = useRef<ojListView<Task['taskId'], Task> | null>(null);
   const [draftTask, setDraftTask] = useState<Task>(() => createDraftTask(nextIdRef.current));
 
   const dataProvider = useMemo(
@@ -778,9 +779,7 @@ export const ListViewOverviewListView = () => {
   };
 
   const handleReorder = (event: ReorderEvent) => {
-    const listView = document.getElementById('listviewEditMode') as
-      | ojListView<Task['taskId'], Task>
-      | null;
+    const listView = editListViewRef.current;
     const referenceContext = listView?.getContextByNode(event.detail.reference);
     const itemContext = listView?.getContextByNode(event.detail.items[0]);
     const sourceKey = itemContext?.key;
@@ -924,6 +923,7 @@ export const ListViewOverviewListView = () => {
           ) : null}
           <oj-list-view
             id="listviewEditMode"
+            ref={editListViewRef}
             aria-label="To-Do list"
             data={dataProvider}
             selected={selected}

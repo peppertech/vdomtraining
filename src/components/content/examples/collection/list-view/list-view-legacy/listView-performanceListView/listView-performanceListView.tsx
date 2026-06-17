@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Fragment, h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import { ojButton } from 'ojs/ojbutton';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import Context = require('ojs/ojcontext');
@@ -31,6 +31,7 @@ const generateData = (count: number) => {
 };
 
 export const ListViewPerformanceListView = () => {
+  const listViewRef = useRef<HTMLElement | null>(null);
   const initialData = useMemo(() => generateData(1000), []);
   const [scrollPolicyValue, setScrollPolicyValue] = useState<ScrollPolicyValue>('loadMoreOnScroll');
   const [numItems, setNumItems] = useState(1000);
@@ -52,7 +53,11 @@ export const ListViewPerformanceListView = () => {
 
   const renderTimeWhenReady = () => {
       const start = new Date().getTime();
-      const busyContext = Context.getContext(document.getElementById('listview')).getBusyContext();
+      const listView = listViewRef.current;
+      if (!listView) {
+          return;
+      }
+      const busyContext = Context.getContext(listView).getBusyContext();
       busyContext.whenReady().then(() => {
           const end = new Date().getTime();
           setRenderTime(end - start);
@@ -92,7 +97,7 @@ export const ListViewPerformanceListView = () => {
                               ms
                           </p>
                 </oj-form-layout>
-            <oj-list-view id="listview" aria-label="performance test for list view" class="demo-list" data={dataProvider} scroll-policy={scrollPolicyValue} {...{ 'scroll-policy-options.fetch-size': "10", 'scroll-policy-options.max-count': "10000" }}>
+            <oj-list-view ref={listViewRef} id="listview" aria-label="performance test for list view" class="demo-list" data={dataProvider} scroll-policy={scrollPolicyValue} {...{ 'scroll-policy-options.fetch-size': "10", 'scroll-policy-options.max-count': "10000" }}>
                     <template slot="itemTemplate" render={(item) => (
                             <>
                                 <span>{item.data.name}</span>

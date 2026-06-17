@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useRef, useState } from 'preact/hooks';
 import * as jsonData from 'text!../../data/cookbook/dataVisualizations/tagCloud/resources/socialNetworks.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojmenu';
@@ -26,6 +26,7 @@ const renderContextMenuTagCloudItem = (item: DatavizTemplateContext<DatavizChart
 );
 
 export const TagCloudContextMenu = () => {
+  const tagCloudRef = useRef(null);
   const [selectedMenuItem, setSelectedMenuItem] = useState('(None selected yet)');
   const [selectedItemsValue, setSelectedItemsValue] = useState<string[]>([]);
   const [item, setItem] = useState<SocialNetwork | null>(null);
@@ -61,7 +62,7 @@ export const TagCloudContextMenu = () => {
       return;
     }
 
-    const tagCloud = document.getElementById('tagcloud1');
+    const tagCloud = tagCloudRef.current;
     const context = tagCloud?.getContextByNode?.(target);
     if (context != null) {
       setItem(socialNetworks[context.index] ?? null);
@@ -76,6 +77,7 @@ export const TagCloudContextMenu = () => {
   return (
     <div id="tagcloud-container">
       <oj-tag-cloud
+        ref={tagCloudRef}
         id="tagcloud1"
         layout="cloud"
         data={dataProvider}

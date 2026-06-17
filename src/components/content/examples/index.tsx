@@ -4,7 +4,8 @@ import DataViz from "./dataviz/index";
 import Control from "./control/index";
 import NavLayout from "./navlayout/index";
 import "preact";
-import { useEffect, useMemo, useRef } from "preact/hooks";
+import type { JSX } from "preact";
+import { useEffect, useMemo } from "preact/hooks";
 import { Route, Router, useLocation } from "preact-iso";
 import "ojs/ojnavigationlist";
 import { ojTabBar } from "ojs/ojnavigationlist";
@@ -78,7 +79,6 @@ const DataVizRoute = () => (
 
 const ExampleContent = () => {
   const location = useLocation();
-  const tabBarRef = useRef<HTMLElement | null>(null);
   const activeTab =
     location.path.replace(/^\/examples\/?/, "").split("/")[0] || "collection";
   const selectedTab = isExampleRouteKey(activeTab) ? activeTab : "collection";
@@ -99,36 +99,6 @@ const ExampleContent = () => {
     }
   };
 
-  useEffect(() => {
-    const tabBar = tabBarRef.current;
-
-    if (!tabBar) {
-      return;
-    }
-
-    const handleTabClick = (event: MouseEvent) => {
-      const target = event.target as Element | null;
-      const anchor = target?.closest(
-        "a[data-tab-path]",
-      ) as HTMLAnchorElement | null;
-      const tabPath = anchor?.dataset.tabPath as Tab["path"] | undefined;
-
-      if (!anchor || !tabPath || !tabBar.contains(anchor)) {
-        return;
-      }
-
-      event.preventDefault();
-      event.stopPropagation();
-      routeToTab(tabPath);
-    };
-
-    tabBar.addEventListener("click", handleTabClick, true);
-
-    return () => {
-      tabBar.removeEventListener("click", handleTabClick, true);
-    };
-  }, [location.path]);
-
   const loadTabContent = (
     event: ojTabBar.selectionChanged<Tab["path"], Tab>,
   ): void => {
@@ -137,12 +107,22 @@ const ExampleContent = () => {
     }
   };
 
+  const handleTabAnchorClick = (
+    event: JSX.TargetedMouseEvent<HTMLAnchorElement>,
+    tabPath: Tab["path"],
+  ) => {
+    event.preventDefault();
+    event.stopPropagation();
+    routeToTab(tabPath);
+  };
+
   const tabItemTemplate = (item: ojTabBar.ItemContext<Tab["path"], Tab>) => {
     return (
       <li>
         <a
-          href="#"
+          href={`/examples/${item.data.path}`}
           data-tab-path={item.data.path}
+          onClick={(event) => handleTabAnchorClick(event, item.data.path)}
         >
           <span></span>
           {item.data.label}
@@ -154,7 +134,6 @@ const ExampleContent = () => {
   return (
     <div class="oj-web-applayout-content">
       <oj-tab-bar
-        ref={tabBarRef}
         edge="top"
         data={tabbarDP}
         selection={selectedTab}

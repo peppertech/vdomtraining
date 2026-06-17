@@ -78,13 +78,13 @@ const getScreenRange = (): ScreenRange => {
   const lgQuery = ResponsiveUtils.getFrameworkQuery(ResponsiveUtils.FRAMEWORK_QUERY_KEY.LG_UP);
   const mdQuery = ResponsiveUtils.getFrameworkQuery(ResponsiveUtils.FRAMEWORK_QUERY_KEY.MD_UP);
 
-  if (xlQuery && window.matchMedia(xlQuery).matches) {
+  if (xlQuery && matchMedia(xlQuery).matches) {
     return "xl";
   }
-  if (lgQuery && window.matchMedia(lgQuery).matches) {
+  if (lgQuery && matchMedia(lgQuery).matches) {
     return "lg";
   }
-  if (mdQuery && window.matchMedia(mdQuery).matches) {
+  if (mdQuery && matchMedia(mdQuery).matches) {
     return "md";
   }
   return "sm";
@@ -139,7 +139,7 @@ export const TableResponsiveTablecorepack = () => {
       ResponsiveUtils.getFrameworkQuery(ResponsiveUtils.FRAMEWORK_QUERY_KEY.XL_UP)
     ].filter((query): query is string => Boolean(query));
 
-    const mediaQueryLists = queries.map((query) => window.matchMedia(query));
+    const mediaQueryLists = queries.map((query) => matchMedia(query));
     const handleChange = () => setScreenRange(getScreenRange());
 
     mediaQueryLists.forEach((mediaQueryList) => mediaQueryList.addEventListener("change", handleChange));

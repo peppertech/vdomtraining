@@ -50,8 +50,8 @@ const tabData: TabData<TabKey>[] = [
 ];
 
 const getResponsiveState = () => ({
-  isSmall: typeof window !== "undefined" ? window.matchMedia(smQuery).matches : false,
-  isLarge: typeof window !== "undefined" ? window.matchMedia(lgQuery).matches : true
+  isSmall: typeof window !== "undefined" ? matchMedia(smQuery).matches : false,
+  isLarge: typeof window !== "undefined" ? matchMedia(lgQuery).matches : true
 });
 
 export const TabBarResponsivecorepack = () => {
@@ -59,8 +59,8 @@ export const TabBarResponsivecorepack = () => {
   const [responsiveState, setResponsiveState] = useState(getResponsiveState);
 
   useEffect(() => {
-    const smallMediaQuery = window.matchMedia(smQuery);
-    const largeMediaQuery = window.matchMedia(lgQuery);
+    const smallMediaQuery = matchMedia(smQuery);
+    const largeMediaQuery = matchMedia(lgQuery);
     const listener = () => setResponsiveState(getResponsiveState());
 
     smallMediaQuery.addEventListener("change", listener);

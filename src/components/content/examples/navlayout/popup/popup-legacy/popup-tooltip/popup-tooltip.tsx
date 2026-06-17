@@ -75,7 +75,7 @@ export const PopupTooltip = () => {
   }, []);
 
   const openTooltip = (launcher: HTMLElement, title: string) => {
-    const popup = document.getElementById("tooltipPopup") as ojPopup | null;
+    const popup = popupRef.current;
     const popupContent =
       popup instanceof HTMLElement
         ? popup.querySelector<HTMLElement>(".oj-popup-content")
