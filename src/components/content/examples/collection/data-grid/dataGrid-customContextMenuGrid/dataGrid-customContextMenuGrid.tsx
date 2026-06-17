@@ -41,7 +41,7 @@ type CustomerRecord = {
 };
 const jsonData = JSON.parse(jsonDataText as string) as CustomerRecord[];
 interface CustomerRow {
-    id: number;
+    index: number;
     firstName: string;
     lastName: string;
     balance: number;
@@ -67,24 +67,20 @@ interface CustomerRow {
     latitude: number;
     longitude: number;
 }
-type CustomerColumnKey = keyof Omit<CustomerRow, 'id'>;
-interface ColumnDefinition {
-    key: CustomerColumnKey;
-    label: string;
-    width: string;
-}
+type CustomerColumnKey = keyof Omit<CustomerRow, 'index'>;
+type CustomerCellValue = CustomerRow[CustomerColumnKey];
 type DataGridCellTemplateContext = {
     item: {
         columnIndex: number;
-        data: {
-            data: CustomerRow[ColumnDefinition['key']];
+            data: {
+            data: CustomerCellValue;
         };
     };
 };
 type DataGridHeaderTemplateContext = {
     item: {
         data: {
-            data: string;
+            data: CustomerColumnKey;
         };
     };
 };
@@ -96,71 +92,51 @@ type DataGridContext = {
     index?: number;
     axis?: string;
 };
-const COLUMNS: ColumnDefinition[] = [
-    { key: 'firstName', label: 'First Name', width: '160px' },
-    { key: 'lastName', label: 'Last Name', width: '160px' },
-    { key: 'balance', label: 'Balance', width: '140px' },
-    { key: 'registered', label: 'Registered', width: '150px' },
-    { key: 'totalAmountOrdered', label: 'Total Amount Ordered', width: '190px' },
-    { key: 'lastOrder', label: 'Last Order', width: '150px' },
-    { key: 'company', label: 'Company', width: '180px' },
-    { key: 'shortName', label: 'Short Name', width: '140px' },
-    { key: 'phone', label: 'Phone', width: '170px' },
-    { key: 'address', label: 'Address', width: '210px' },
-    { key: 'city', label: 'City', width: '150px' },
-    { key: 'state', label: 'State', width: '140px' },
-    { key: 'zip', label: 'Zip', width: '110px' },
-    { key: 'countryOrigin', label: 'Country Origin', width: '190px' },
-    { key: 'gender', label: 'Gender', width: '110px' },
-    { key: 'age', label: 'Age', width: '90px' },
-    { key: 'birthdate', label: 'Birthdate', width: '150px' },
-    { key: 'isActive', label: 'Active', width: '110px' },
-    { key: 'height', label: 'Height', width: '110px' },
-    { key: 'weight', label: 'Weight', width: '110px' },
-    { key: 'eyeColor', label: 'Eye Color', width: '130px' },
-    { key: 'hairColor', label: 'Hair Color', width: '130px' },
-    { key: 'latitude', label: 'Latitude', width: '130px' },
-    { key: 'longitude', label: 'Longitude', width: '130px' }
-];
+const COLUMNS = Object.keys(jsonData[0]).filter((key): key is CustomerColumnKey => key !== 'index');
 const DATE_COLUMNS = new Set<CustomerColumnKey>(['registered', 'lastOrder', 'birthdate']);
 const CURRENCY_COLUMNS = new Set<CustomerColumnKey>(['balance', 'totalAmountOrdered']);
-const RIGHT_ALIGNED_COLUMNS = new Set<CustomerColumnKey>([
-    'balance',
-    'totalAmountOrdered',
-    'zip',
-    'age',
-    'height',
-    'weight',
-    'latitude',
-    'longitude'
-]);
+const WIDE_COLUMN_WIDTHS: Partial<Record<CustomerColumnKey, string>> = {
+    phone: '175px',
+    registered: '150px',
+    lastOrder: '150px',
+    birthdate: '150px',
+    totalAmountOrdered: '185px',
+    address: '250px',
+    state: '250px',
+    countryOrigin: '250px'
+};
+
+const formatColumnName = (column: CustomerColumnKey) => {
+    return column.replace(/([A-Z])/g, ' $1').replace(/^./, (value) => value.toUpperCase());
+};
+
 export const DataGridCustomContextMenuGrid = () => {
-    const dataGridRef = useRef<ojDataGrid<string, number> | null>(null);
+    const dataGridRef = useRef<ojDataGrid<CustomerCellValue, number> | null>(null);
     const [selectedMenuItem, setSelectedMenuItem] = useState<string>('None selected yet');
     const [launchedFromCell, setLaunchedFromCell] = useState<string>('None launched yet');
-    const rows = useMemo<CustomerRow[]>(
-        () =>
-            jsonData.slice(0, 8).map(({ index, ...item }) => ({
-                id: index,
-                ...item
-            })),
-        []
-    );
+    const rows = useMemo<CustomerRow[]>(() => jsonData.map((item) => ({ ...item })), []);
     const rowDataProvider = useMemo(() => new ArrayDataProvider<number, CustomerRow>(rows, {
-        keyAttributes: 'id'
+        keyAttributes: 'index'
     }), [rows]);
-    const dataGridProvider = useMemo(() => new RowDataGridProvider<string, number, CustomerRow>(rowDataProvider, {
+    const dataGridProvider = useMemo(() => new RowDataGridProvider<CustomerCellValue, number, CustomerRow>(rowDataProvider, {
         columns: {
-            rowHeader: ['id'],
-            databody: COLUMNS.map((column) => column.key)
+            rowHeader: ['index'],
+            databody: COLUMNS
         },
         columnHeaders: {
-            column: COLUMNS.map((column) => ({ data: column.label }))
-        },
-        headerLabels: {
-            row: ['Customer']
+            column: COLUMNS.slice()
         }
     }), [rowDataProvider]);
+    const numericIndexes = useMemo(() => {
+        const firstRowValues = COLUMNS.map((column) => rows[0]?.[column]) as CustomerCellValue[];
+        return firstRowValues.reduce<number[]>((numeric, data, index) => {
+            const numberValue = Number(data);
+            if (!Number.isNaN(numberValue) || !Number.isNaN(Date.parse(String(data)))) {
+                numeric.push(index);
+            }
+            return numeric;
+        }, []);
+    }, [rows]);
     const dateConverter = useMemo(() => new IntlDateTimeConverter({
         formatType: 'date',
         dateFormat: 'medium'
@@ -170,7 +146,7 @@ export const DataGridCustomContextMenuGrid = () => {
         currency: 'USD',
         currencyDisplay: 'symbol'
     }), []);
-    const formatCellValue = (columnKey: CustomerColumnKey, value: CustomerRow[CustomerColumnKey]) => {
+    const formatCellValue = (columnKey: CustomerColumnKey, value: CustomerCellValue) => {
         if (CURRENCY_COLUMNS.has(columnKey)) {
             return numberConverter.format(value as number) ?? '';
         }
@@ -183,16 +159,16 @@ export const DataGridCustomContextMenuGrid = () => {
         return String(value ?? '');
     };
     const isRightAlignedColumn = (columnIndex: number) => {
-        const columnKey = COLUMNS[columnIndex]?.key;
-        return columnKey ? RIGHT_ALIGNED_COLUMNS.has(columnKey) : false;
+        return numericIndexes.includes(columnIndex) || columnIndex === 15;
     };
-    const getColumnHeaderStyle = (headerContext: ojDataGrid.HeaderContext<number, string | number>) => {
-        return `width:${COLUMNS[headerContext.index]?.width ?? '140px'};`;
+    const getColumnHeaderStyle = (headerContext: ojDataGrid.HeaderContext<number, CustomerCellValue>) => {
+        const column = COLUMNS[headerContext.index];
+        return `width:${column ? WIDE_COLUMN_WIDTHS[column] ?? '125px' : '125px'};`;
     };
-    const getColumnHeaderHorizontalAlignment = (headerContext: ojDataGrid.HeaderContext<number, string | number>) => {
+    const getColumnHeaderHorizontalAlignment = (headerContext: ojDataGrid.HeaderContext<number, CustomerCellValue>) => {
         return isRightAlignedColumn(headerContext.index) ? 'right' : 'start';
     };
-    const getCellHorizontalAlignment = (cellContext: ojDataGrid.CellContext<number, string | number>) => {
+    const getCellHorizontalAlignment = (cellContext: ojDataGrid.CellContext<number, CustomerCellValue>) => {
         return isRightAlignedColumn(cellContext.indexes.column) ? 'right' : 'start';
     };
     const myActionFunction = (event: ojMenuEventMap['ojMenuAction']) => {
@@ -217,11 +193,14 @@ export const DataGridCustomContextMenuGrid = () => {
         setLaunchedFromCell('Unknown origin');
     };
     const columnHeaderContentTemplateRenderer = (header: DataGridHeaderTemplateContext) => {
-        return header.item.data.data;
+        return formatColumnName(header.item.data.data);
     };
     const cellTemplateRenderer = (cell: DataGridCellTemplateContext) => {
         const column = COLUMNS[cell.item.columnIndex];
-        return <span>{formatCellValue(column.key, cell.item.data.data)}</span>;
+        if (!column) {
+            return null;
+        }
+        return <span>{formatCellValue(column, cell.item.data.data)}</span>;
     };
     const ojDataGridProps: Partial<ComponentProps<'oj-data-grid'>> = { cell: {
             alignment: {
@@ -250,16 +229,16 @@ export const DataGridCustomContextMenuGrid = () => {
             <oj-data-grid ref={dataGridRef} id="datagrid" class="demo-data-grid" aria-label="Data Grid custom context menu demo" data={dataGridProvider} scrollPolicy="scroll" {...ojDataGridProps}>
                     <template slot="columnHeaderContentTemplate" render={columnHeaderContentTemplateRenderer}/>
                     <template slot="cellTemplate" render={cellTemplateRenderer}/>
-                    <oj-menu slot="contextMenu" onojMenuAction={myActionFunction} onojBeforeOpen={myBeforeOpenFunction} aria-label="Grid context menu">
-                              <oj-option id="myFirstItem" value="Inspect Cell">Inspect Cell</oj-option>
-                              <oj-option id="myOtherItem" value="Inspect Header">Inspect Header</oj-option>
+                    <oj-menu slot="contextMenu" onojMenuAction={myActionFunction} onojBeforeOpen={myBeforeOpenFunction} aria-label="Employee Edit">
+                              <oj-option id="myFirstItem" value="My First Item">My First Item</oj-option>
+                              <oj-option id="myOtherItem" value="My Other Item">My Other Item</oj-option>
                               <oj-option id="resizeWidth" value="Resize Width" data-oj-command="oj-datagrid-resizeWidth"/>
                               <oj-option id="resizeHeight" value="Resize Height" data-oj-command="oj-datagrid-resizeHeight"/>
                           </oj-menu>
                 </oj-data-grid>
             <div class="oj-sm-margin-5x-bottom">
                     <p class="bold">Last selected menu item: <span id="results">{selectedMenuItem}</span></p>
-                    <p class="bold">Launched from: <span id="results1">{launchedFromCell}</span></p>
+                    <p class="bold">Launched from cell: <span id="results1">{launchedFromCell}</span></p>
                 </div>
         </div>);
 };

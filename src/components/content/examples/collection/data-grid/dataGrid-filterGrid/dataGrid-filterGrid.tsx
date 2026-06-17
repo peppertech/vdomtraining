@@ -36,12 +36,14 @@ interface NullableRangeValue {
     start: number | null;
     end: number | null;
 }
-const VISIBLE_COLUMNS = ['states', '2015', '2016', '2017', '2018', '2019', '2020'] as const;
+const COLUMNS = Object.keys(jsonData[0] ?? {})
+    .filter((key) => key !== 'states')
+    .sort((left, right) => Number(left) - Number(right));
 export const DataGridFilterGrid = () => {
     const [filterColumn, setFilterColumn] = useState<string>('2020');
     const [sliderVal, setSliderVal] = useState<RangeValue>({ start: 100000, end: 8000000 });
     const [transientValue, setTransientValue] = useState<RangeValue>({ start: 100000, end: 8000000 });
-    const filterColumnOptions = useMemo(() => VISIBLE_COLUMNS.filter((column) => column !== 'states').map((column) => ({
+    const filterColumnOptions = useMemo(() => COLUMNS.map((column) => ({
         value: column,
         label: column
     })), []);
@@ -55,10 +57,10 @@ export const DataGridFilterGrid = () => {
     const dataGridProvider = useMemo(() => new RowDataGridProvider<string, string, States>(rowDataProvider, {
         columns: {
             rowHeader: ['states'],
-            databody: VISIBLE_COLUMNS.filter((column) => column !== 'states')
+            databody: COLUMNS
         },
         columnHeaders: {
-            column: VISIBLE_COLUMNS.filter((column) => column !== 'states')
+            column: COLUMNS
         },
         headerLabels: {
             row: ['States']
@@ -72,19 +74,16 @@ export const DataGridFilterGrid = () => {
     }), [filterColumnOptions]);
     const numberConverter = useMemo(() => new IntlNumberConverter({ useGrouping: true }), []);
     const getColumnHeaderStyle = (headerContext: HeaderContext) => {
-        if (headerContext.index === 0) {
-            return 'width: 165px;';
-        }
         return 'width: 120px;';
     };
-    const getColumnHeaderHorizontalAlignment = (headerContext: HeaderContext) => {
-        return headerContext.index === 0 ? 'start' : 'right';
+    const getColumnHeaderHorizontalAlignment = (headerContext: HeaderContext): ojDataGrid.HorizontalAlignment => {
+        return 'right';
     };
-    const getCellHorizontalAlignment = (cellContext: CellContext) => {
-        return cellContext.indexes.column === 0 ? 'start' : 'right';
+    const getCellHorizontalAlignment = (cellContext: CellContext): ojDataGrid.HorizontalAlignment => {
+        return 'right';
     };
     const cellTemplateRenderer = (cell: CellTemplateContext) => {
-        return cell.item.columnIndex === 0 ? cell.item.data.data : numberConverter.format(cell.item.data.data as number);
+        return numberConverter.format(cell.item.data.data as number);
     };
     const ojDataGridProps: Partial<ComponentProps<'oj-data-grid'>> = { header: {
             column: {

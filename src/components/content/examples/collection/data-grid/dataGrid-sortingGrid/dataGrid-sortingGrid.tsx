@@ -13,7 +13,20 @@ interface States {
     states: string;
     [propName: string]: number | string;
 }
-const INITIAL_COLUMNS = ['2016', '2017', '2018', '2019', '2020'];
+const populationRows = jsonData as States[];
+const INITIAL_COLUMNS = Object.keys(populationRows[0] ?? {})
+    .filter((key) => key !== 'states')
+    .sort((left, right) => Number(left) - Number(right));
+const DEFAULT_SORT_COLUMN = INITIAL_COLUMNS[1] ?? INITIAL_COLUMNS[0] ?? '2000';
+const getSortedRows = (rows: States[], column: string, direction: SortDirection) => {
+    const nextRows = [...rows];
+    nextRows.sort((left, right) => {
+        const leftValue = Number(left[column] ?? 0);
+        const rightValue = Number(right[column] ?? 0);
+        return direction === 'ascending' ? leftValue - rightValue : rightValue - leftValue;
+    });
+    return nextRows;
+};
 type SortDirection = NonNullable<ComponentProps<'oj-data-grid'>['header']>['column'] extends {
     sortable?: ((context: unknown) => infer TResult) | infer TResult;
 } ? Extract<TResult, 'ascending' | 'descending'> : 'ascending' | 'descending';
@@ -21,18 +34,8 @@ type SortRequestEvent = Parameters<NonNullable<ComponentProps<'oj-data-grid'>['o
 type SortLabelRequestEvent = Parameters<NonNullable<ComponentProps<'oj-data-grid'>['onojSortLabelRequest']>>[0];
 type CellTemplateContext = DataGridElement.CellTemplateContext<States>;
 export const DataGridSortingGrid = () => {
-    const [rowsSortedBy, setRowsSortedBy] = useState<string>('2020');
-    const [rowDirection, setRowDirection] = useState<SortDirection>('descending');
+    const [rows, setRows] = useState<States[]>(() => getSortedRows(populationRows, DEFAULT_SORT_COLUMN, 'ascending'));
     const [columns, setColumns] = useState<string[]>(INITIAL_COLUMNS);
-    const rows = useMemo(() => {
-        const nextRows = [...(jsonData as States[])].slice(0, 20);
-        nextRows.sort((left, right) => {
-            const leftValue = Number(left[rowsSortedBy] ?? 0);
-            const rightValue = Number(right[rowsSortedBy] ?? 0);
-            return rowDirection === 'ascending' ? leftValue - rightValue : rightValue - leftValue;
-        });
-        return nextRows;
-    }, [rowDirection, rowsSortedBy]);
     const rowDataProvider = useMemo(() => new ArrayDataProvider<string, States>(rows, {
         keyAttributes: 'states'
     }), [rows]);
@@ -51,22 +54,45 @@ export const DataGridSortingGrid = () => {
     }), [columns, rowDataProvider]);
     const numberConverter = useMemo(() => new IntlNumberConverter({ useGrouping: true }), []);
     const handleSortRequest = (event: SortRequestEvent) => {
-        const column = columns[event.detail.item.index] ?? rowsSortedBy;
-        setRowsSortedBy(column);
-        setRowDirection(event.detail.direction);
-    };
-    const handleSortLabelRequest = (event: SortLabelRequestEvent) => {
-        if (event.detail.axis !== 'column') {
+        if (event.detail.axis === 'column') {
+            const column = columns[event.detail.item.index] ?? DEFAULT_SORT_COLUMN;
+            setRows((currentRows) => getSortedRows(currentRows, column, event.detail.direction));
+            return;
+        }
+        const row = rows[event.detail.item.index];
+        if (!row) {
             return;
         }
         setColumns((currentColumns) => {
             const nextColumns = [...currentColumns];
             nextColumns.sort((left, right) => {
-                const leftNumber = Number(left);
-                const rightNumber = Number(right);
-                return event.detail.direction === 'ascending' ? leftNumber - rightNumber : rightNumber - leftNumber;
+                const leftValue = Number(row[left] ?? 0);
+                const rightValue = Number(row[right] ?? 0);
+                return event.detail.direction === 'ascending' ? leftValue - rightValue : rightValue - leftValue;
             });
             return nextColumns;
+        });
+    };
+    const handleSortLabelRequest = (event: SortLabelRequestEvent) => {
+        if (event.detail.axis === 'column') {
+            setColumns((currentColumns) => {
+                const nextColumns = [...currentColumns];
+                nextColumns.sort((left, right) => {
+                    const leftNumber = Number(left);
+                    const rightNumber = Number(right);
+                    return event.detail.direction === 'ascending' ? leftNumber - rightNumber : rightNumber - leftNumber;
+                });
+                return nextColumns;
+            });
+            return;
+        }
+        setRows((currentRows) => {
+            const nextRows = [...currentRows];
+            nextRows.sort((left, right) => {
+                const comparison = left.states.localeCompare(right.states);
+                return event.detail.direction === 'ascending' ? comparison : -comparison;
+            });
+            return nextRows;
         });
     };
     const cellTemplateRenderer = (cell: CellTemplateContext) => {
@@ -78,12 +104,14 @@ export const DataGridSortingGrid = () => {
                 label: {
                     sortable: 'auto'
                 },
+                sortable: 'auto',
                 style: 'width:160px;'
             },
             column: {
                 label: {
                     sortable: 'auto'
                 },
+                sortable: 'auto',
                 style: 'width:120px;'
             }
         } };
