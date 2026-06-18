@@ -3,14 +3,15 @@ import "ojs/ojaccordion";
 import "ojs/ojcollapsible";
 import "ojs/ojlabel";
 import "ojs/ojradioset";
+import "ojs/ojoption";
 
-export const Accordion = () => {
+export const AccordionBasicAccordion = () => {
   return (
-    <div class="oj-web-applayout-max-width oj-web-applayout-content">
+    <div id="accordionPage">
       <oj-accordion id="a1">
         <oj-collapsible id="c1">
           <h3 slot="header">
-            <span class="oj-ux-ico-cart oj-ux-icon-size-5x oj-sm-padding-2x-end"></span>
+            <span class="oj-ux-ico-cart oj-ux-icon-size-5x oj-sm-padding-2x-end" />
             Header 1
           </h3>
           <p>Content 1.</p>
@@ -44,3 +45,5 @@ export const Accordion = () => {
     </div>
   );
 };
+
+export default AccordionBasicAccordion;

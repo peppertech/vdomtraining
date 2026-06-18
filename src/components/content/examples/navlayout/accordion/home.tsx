@@ -6,9 +6,9 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
 
-import { Accordion } from "./accordion";
-import CorePackAccordianItemMultiple from "./core-pack-accordian-item-multiple";
-import CorePackAccordianItemSingle from "./core-pack-accordian-item-single";
+import AccordionLegacyRecipePage from "./accordion-legacy/index";
+import AccordionMultipleCorePackRecipePage from "./accordion-multiple-corepack/index";
+import AccordionSingleCorePackRecipePage from "./accordion-single-corepack/index";
 import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
@@ -26,20 +26,20 @@ type AccordionComponent = {
 const accordionComponents: AccordionComponent[] = [
   {
     id: 1,
-    routeId: "accordion-and-collapsible",
-    name: "Accordion & Collapsible",
+    routeId: "accordion-legacy",
+    name: "Accordion",
     image: "oj-ux-icon-size-12x oj-ux-ico-accordion",
   },
   {
     id: 2,
-    routeId: "accordion-item-multiple",
+    routeId: "accordion-multiple-corepack",
     name: "Accordion Item Multiple",
     image: "oj-ux-icon-size-12x oj-ux-ico-accordion",
     isCorePack: true,
   },
   {
     id: 3,
-    routeId: "accordion-item-single",
+    routeId: "accordion-single-corepack",
     name: "Accordion Item Single",
     image: "oj-ux-icon-size-12x oj-ux-ico-accordion",
     isCorePack: true,
@@ -124,11 +124,11 @@ const AccordionHome = ({
   const ComponentDetail = useCallback(() => {
     switch (activeComponentId) {
       case 1:
-        return <Accordion />;
+        return <AccordionLegacyRecipePage />;
       case 2:
-        return <CorePackAccordianItemMultiple />;
+        return <AccordionMultipleCorePackRecipePage />;
       case 3:
-        return <CorePackAccordianItemSingle />;
+        return <AccordionSingleCorePackRecipePage />;
       default:
         return null;
     }
@@ -183,7 +183,7 @@ const AccordionHome = ({
 
     onBreadcrumbChange([
       { label: "Layout & Nav", onSelect: onNavigateRootHome },
-      { label: "Accordion & Collapsible", onSelect: handleHomeNavigation },
+      { label: "Accordion", onSelect: handleHomeNavigation },
       {
         label: formatCorePackLabel(
           activeComponent.name,
