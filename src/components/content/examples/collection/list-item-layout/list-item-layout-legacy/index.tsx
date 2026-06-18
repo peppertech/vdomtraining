@@ -21,9 +21,6 @@ import { listItemLayoutOverlineSlotlegacyRecipe } from "./listItemLayout-overlin
 import { ListItemLayoutOverviewlegacy } from "./listItemLayout-overviewlegacy/listItemLayout-overviewlegacy";
 import { listItemLayoutOverviewlegacyDescription } from "./listItemLayout-overviewlegacy/description";
 import { listItemLayoutOverviewlegacyRecipe } from "./listItemLayout-overviewlegacy/recipe";
-import { ListItemLayoutPaddinglegacy } from "./listItemLayout-paddinglegacy/listItemLayout-paddinglegacy";
-import { listItemLayoutPaddinglegacyDescription } from "./listItemLayout-paddinglegacy/description";
-import { listItemLayoutPaddinglegacyRecipe } from "./listItemLayout-paddinglegacy/recipe";
 import { ListItemLayoutQuaternarySlotlegacy } from "./listItemLayout-quaternarySlotlegacy/listItemLayout-quaternarySlotlegacy";
 import { listItemLayoutQuaternarySlotlegacyDescription } from "./listItemLayout-quaternarySlotlegacy/description";
 import { listItemLayoutQuaternarySlotlegacyRecipe } from "./listItemLayout-quaternarySlotlegacy/recipe";
@@ -42,9 +39,6 @@ import { listItemLayoutTrailingSlotlegacyRecipe } from "./listItemLayout-trailin
 import { ListItemLayoutTwoLinelegacy } from "./listItemLayout-twoLinelegacy/listItemLayout-twoLinelegacy";
 import { listItemLayoutTwoLinelegacyDescription } from "./listItemLayout-twoLinelegacy/description";
 import { listItemLayoutTwoLinelegacyRecipe } from "./listItemLayout-twoLinelegacy/recipe";
-import { ListItemLayoutVerticalAlignmentlegacy } from "./listItemLayout-verticalAlignmentlegacy/listItemLayout-verticalAlignmentlegacy";
-import { listItemLayoutVerticalAlignmentlegacyDescription } from "./listItemLayout-verticalAlignmentlegacy/description";
-import { listItemLayoutVerticalAlignmentlegacyRecipe } from "./listItemLayout-verticalAlignmentlegacy/recipe";
 
 const listItemLayoutItems = [
   {

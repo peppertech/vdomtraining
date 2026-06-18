@@ -1,8 +1,6 @@
 import { h } from "preact";
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import ValidatorsCustomValidatorsExample from "./validators-customValidators/validators-customValidators";
-import ValidatorsDateRestrictionValidatorExample from "./validators-dateRestrictionValidator/validators-dateRestrictionValidator";
-import ValidatorsDateTimeRangeValidatorExample from "./validators-dateTimeRangeValidator/validators-dateTimeRangeValidator";
 import ValidatorsDefaultValidatorMessagesExample from "./validators-defaultValidatorMessages/validators-defaultValidatorMessages";
 import ValidatorsLengthValidatorExample from "./validators-lengthValidator/validators-lengthValidator";
 import ValidatorsNumberRangeValidatorExample from "./validators-numberRangeValidator/validators-numberRangeValidator";

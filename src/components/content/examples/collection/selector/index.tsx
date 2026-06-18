@@ -3,12 +3,6 @@ import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-p
 import { ListViewSelectionListView } from "../list-view/list-view-legacy/listView-selectionListView/listView-selectionListView";
 import { listViewSelectionListViewDescription } from "../list-view/list-view-legacy/listView-selectionListView/description";
 import { listViewSelectionListViewRecipe } from "../list-view/list-view-legacy/listView-selectionListView/recipe";
-import { SelectorCheckboxSelectableTable } from "./selector-checkboxSelectableTable/selector-checkboxSelectableTable";
-import { selectorCheckboxSelectableTableDescription } from "./selector-checkboxSelectableTable/description";
-import { selectorCheckboxSelectableTableRecipe } from "./selector-checkboxSelectableTable/recipe";
-import { SelectorCheckboxSelectableTreeView } from "./selector-checkboxSelectableTreeView/selector-checkboxSelectableTreeView";
-import { selectorCheckboxSelectableTreeViewDescription } from "./selector-checkboxSelectableTreeView/description";
-import { selectorCheckboxSelectableTreeViewRecipe } from "./selector-checkboxSelectableTreeView/recipe";
 import { SelectorCheckboxLeafOnlyTreeView } from "./selector-checkboxLeafOnlyTreeView/selector-checkboxLeafOnlyTreeView";
 import { selectorCheckboxLeafOnlyTreeViewDescription } from "./selector-checkboxLeafOnlyTreeView/description";
 import { selectorCheckboxLeafOnlyTreeViewRecipe } from "./selector-checkboxLeafOnlyTreeView/recipe";
@@ -21,9 +15,6 @@ import { selectorPerformanceSelectorRecipe } from "./selector-performanceSelecto
 import { TableSelectionTable } from "./table-selectionTable/table-selectionTable";
 import { tableSelectionTableDescription } from "./table-selectionTable/description";
 import { tableSelectionTableRecipe } from "./table-selectionTable/recipe";
-import { TreeViewSelectable } from "./treeView-selectable/treeView-selectable";
-import { treeViewSelectableDescription } from "./treeView-selectable/description";
-import { treeViewSelectableRecipe } from "./treeView-selectable/recipe";
 import { TreeViewSelection } from "./treeView-selection/treeView-selection";
 import { treeViewSelectionDescription } from "./treeView-selection/description";
 import { treeViewSelectionRecipe } from "./treeView-selection/recipe";

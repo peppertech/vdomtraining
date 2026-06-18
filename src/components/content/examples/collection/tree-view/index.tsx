@@ -1,11 +1,5 @@
 import { h } from "preact";
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
-import { TreeViewCheckbox } from "./treeView-checkbox/treeView-checkbox";
-import { treeViewCheckboxDescription } from "./treeView-checkbox/description";
-import { treeViewCheckboxRecipe } from "./treeView-checkbox/recipe";
-import { TreeViewCollection } from "./treeView-collection/treeView-collection";
-import { treeViewCollectionDescription } from "./treeView-collection/description";
-import { treeViewCollectionRecipe } from "./treeView-collection/recipe";
 import { TreeViewContextMenu } from "./treeView-contextMenu/treeView-contextMenu";
 import { treeViewContextMenuDescription } from "./treeView-contextMenu/description";
 import { treeViewContextMenuRecipe } from "./treeView-contextMenu/recipe";
@@ -39,9 +33,6 @@ import { treeViewProgressiveLoadTreeViewRecipe } from "./treeView-progressiveLoa
 import { TreeViewRenderer } from "./treeView-renderer/treeView-renderer";
 import { treeViewRendererDescription } from "./treeView-renderer/description";
 import { treeViewRendererRecipe } from "./treeView-renderer/recipe";
-import { TreeViewSearchable } from "./treeView-searchable/treeView-searchable";
-import { treeViewSearchableDescription } from "./treeView-searchable/description";
-import { treeViewSearchableRecipe } from "./treeView-searchable/recipe";
 import { TreeViewSelectable } from "./treeView-selectable/treeView-selectable";
 import { treeViewSelectableDescription } from "./treeView-selectable/description";
 import { treeViewSelectableRecipe } from "./treeView-selectable/recipe";

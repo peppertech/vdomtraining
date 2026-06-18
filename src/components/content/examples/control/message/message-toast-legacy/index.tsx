@@ -1,20 +1,5 @@
 import { h } from "preact";
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { MessagesCustomIcon } from "./messages-customIcon/messages-customIcon";
-import { messagesCustomIconDescription } from "./messages-customIcon/description";
-import { messagesCustomIconRecipe } from "./messages-customIcon/recipe";
-import { MessagesGroupingMessages } from "./messages-groupingMessages/messages-groupingMessages";
-import { messagesGroupingMessagesDescription } from "./messages-groupingMessages/description";
-import { messagesGroupingMessagesRecipe } from "./messages-groupingMessages/recipe";
-import { MessagesInline } from "./messages-inline/messages-inline";
-import { messagesInlineDescription } from "./messages-inline/description";
-import { messagesInlineRecipe } from "./messages-inline/recipe";
-import { MessagesOverlay } from "./messages-overlay/messages-overlay";
-import { messagesOverlayDescription } from "./messages-overlay/description";
-import { messagesOverlayRecipe } from "./messages-overlay/recipe";
-import { MessagesSortingMessages } from "./messages-sortingMessages/messages-sortingMessages";
-import { messagesSortingMessagesDescription } from "./messages-sortingMessages/description";
-import { messagesSortingMessagesRecipe } from "./messages-sortingMessages/recipe";
 import { MessagetoastAddingButtonLinkAndMore } from "./messagetoast-addingButtonLinkAndMore/messagetoast-addingButtonLinkAndMore";
 import { messagetoastAddingButtonLinkAndMoreDescription } from "./messagetoast-addingButtonLinkAndMore/description";
 import { messagetoastAddingButtonLinkAndMoreRecipe } from "./messagetoast-addingButtonLinkAndMore/recipe";
@@ -66,46 +51,7 @@ const messageToastLegacyItems = [
     description: messagetoastPageNotificationDescription,
     recipe: messagetoastPageNotificationRecipe,
     Component: MessagetoastPageNotification,
-  },
-  
-  
-  
-  
-  // {
-  //   id: "custom-icon",
-  //   name: "Custom Icon",
-  //   description: messagesCustomIconDescription,
-  //   recipe: messagesCustomIconRecipe,
-  //   Component: MessagesCustomIcon,
-  // },
-  // {
-  //   id: "grouping-messages",
-  //   name: "Grouping Messages",
-  //   description: messagesGroupingMessagesDescription,
-  //   recipe: messagesGroupingMessagesRecipe,
-  //   Component: MessagesGroupingMessages,
-  // },
-  // {
-  //   id: "inline",
-  //   name: "Inline",
-  //   description: messagesInlineDescription,
-  //   recipe: messagesInlineRecipe,
-  //   Component: MessagesInline,
-  // },
-  // {
-  //   id: "overlay",
-  //   name: "Overlay",
-  //   description: messagesOverlayDescription,
-  //   recipe: messagesOverlayRecipe,
-  //   Component: MessagesOverlay,
-  // },
-  // {
-  //   id: "sorting-messages",
-  //   name: "Sorting Messages",
-  //   description: messagesSortingMessagesDescription,
-  //   recipe: messagesSortingMessagesRecipe,
-  //   Component: MessagesSortingMessages,
-  // },
+  }
 ];
 
 export default function MessageToastLegacyRecipePage() {

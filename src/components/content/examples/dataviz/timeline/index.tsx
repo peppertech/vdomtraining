@@ -6,21 +6,9 @@ import {
 import { TimelineAnimations } from "./timeline-animations/timeline-animations";
 import { timelineAnimationsDescription } from "./timeline-animations/description";
 import { timelineAnimationsRecipe } from "./timeline-animations/recipe";
-import { TimelineBasicDualOverviewTimeline } from "./timeline-basicDualOverviewTimeline/timeline-basicDualOverviewTimeline";
-import { timelineBasicDualOverviewTimelineDescription } from "./timeline-basicDualOverviewTimeline/description";
-import { timelineBasicDualOverviewTimelineRecipe } from "./timeline-basicDualOverviewTimeline/recipe";
-import { TimelineBasicDualTimeline } from "./timeline-basicDualTimeline/timeline-basicDualTimeline";
-import { timelineBasicDualTimelineDescription } from "./timeline-basicDualTimeline/description";
-import { timelineBasicDualTimelineRecipe } from "./timeline-basicDualTimeline/recipe";
-import { TimelineBasicOverviewTimeline } from "./timeline-basicOverviewTimeline/timeline-basicOverviewTimeline";
-import { timelineBasicOverviewTimelineDescription } from "./timeline-basicOverviewTimeline/description";
-import { timelineBasicOverviewTimelineRecipe } from "./timeline-basicOverviewTimeline/recipe";
 import { TimelineBasicTimeline } from "./timeline-basicTimeline/timeline-basicTimeline";
 import { timelineBasicTimelineDescription } from "./timeline-basicTimeline/description";
 import { timelineBasicTimelineRecipe } from "./timeline-basicTimeline/recipe";
-import { TimelineBasicVertDualTimeline } from "./timeline-basicVertDualTimeline/timeline-basicVertDualTimeline";
-import { timelineBasicVertDualTimelineDescription } from "./timeline-basicVertDualTimeline/description";
-import { timelineBasicVertDualTimelineRecipe } from "./timeline-basicVertDualTimeline/recipe";
 import { TimelineContextMenuTimeline } from "./timeline-contextMenuTimeline/timeline-contextMenuTimeline";
 import { timelineContextMenuTimelineDescription } from "./timeline-contextMenuTimeline/description";
 import { timelineContextMenuTimelineRecipe } from "./timeline-contextMenuTimeline/recipe";
@@ -122,28 +110,6 @@ const timelineItems: RecipePageItem[] = [
     recipe: timelineDiscreteNavigationTimelineRecipe,
     Component: TimelineDiscreteNavigationTimeline,
   },
-
-  // {
-  //   id: "basic-dual-overview-timeline",
-  //   name: "Basic Dual Overview",
-  //   description: timelineBasicDualOverviewTimelineDescription,
-  //   recipe: timelineBasicDualOverviewTimelineRecipe,
-  //   Component: TimelineBasicDualOverviewTimeline,
-  // },
-  // {
-  //   id: "basic-dual-timeline",
-  //   name: "Basic Dual",
-  //   description: timelineBasicDualTimelineDescription,
-  //   recipe: timelineBasicDualTimelineRecipe,
-  //   Component: TimelineBasicDualTimeline,
-  // },
-  // {
-  //   id: "basic-overview-timeline",
-  //   name: "Basic Overview",
-  //   description: timelineBasicOverviewTimelineDescription,
-  //   recipe: timelineBasicOverviewTimelineRecipe,
-  //   Component: TimelineBasicOverviewTimeline,
-  // },
    {
     id: "item-layouts-timeline",
     name: "Item Layouts",

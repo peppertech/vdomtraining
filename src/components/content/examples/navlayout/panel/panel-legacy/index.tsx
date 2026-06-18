@@ -12,12 +12,6 @@ import { panelPanelcolorsRecipe } from "./panel-panelcolors/recipe";
 import { PanelPanelshadow } from "./panel-panelshadow/panel-panelshadow";
 import { panelPanelshadowDescription } from "./panel-panelshadow/description";
 import { panelPanelshadowRecipe } from "./panel-panelshadow/recipe";
-import { PanelPanelselected } from "./panel-panelselected/panel-panelselected";
-import { panelPanelselectedDescription } from "./panel-panelselected/description";
-import { panelPanelselectedRecipe } from "./panel-panelselected/recipe";
-import { PanelPaneldrag } from "./panel-paneldrag/panel-paneldrag";
-import { panelPaneldragDescription } from "./panel-paneldrag/description";
-import { panelPaneldragRecipe } from "./panel-paneldrag/recipe";
 
 const panelLegacyItems = [
   {

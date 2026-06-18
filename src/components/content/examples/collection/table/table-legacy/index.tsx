@@ -78,9 +78,6 @@ import { tableInitialSortTableRecipe } from "./table-initialSortTable/recipe";
 import { TableInsertRowTable } from "./table-insertRowTable/table-insertRowTable";
 import { tableInsertRowTableDescription } from "./table-insertRowTable/description";
 import { tableInsertRowTableRecipe } from "./table-insertRowTable/recipe";
-import { TableNavigateTable } from "./table-navigateTable/table-navigateTable";
-import { tableNavigateTableDescription } from "./table-navigateTable/description";
-import { tableNavigateTableRecipe } from "./table-navigateTable/recipe";
 import { TableNoDataTable } from "./table-noDataTable/table-noDataTable";
 import { tableNoDataTableDescription } from "./table-noDataTable/description";
 import { tableNoDataTableRecipe } from "./table-noDataTable/recipe";
@@ -93,9 +90,6 @@ import { tablePerformanceTableRecipe } from "./table-performanceTable/recipe";
 import { TableProgressiveLoadTable } from "./table-progressiveLoadTable/table-progressiveLoadTable";
 import { tableProgressiveLoadTableDescription } from "./table-progressiveLoadTable/description";
 import { tableProgressiveLoadTableRecipe } from "./table-progressiveLoadTable/recipe";
-import { TableRowReorderTable } from "./table-rowReorderTable/table-rowReorderTable";
-import { tableRowReorderTableDescription } from "./table-rowReorderTable/description";
-import { tableRowReorderTableRecipe } from "./table-rowReorderTable/recipe";
 import { TableRowTemplate } from "./table-rowTemplate/table-rowTemplate";
 import { tableRowTemplateDescription } from "./table-rowTemplate/description";
 import { tableRowTemplateRecipe } from "./table-rowTemplate/recipe";
@@ -127,7 +121,7 @@ const tableLegacyItems = [
     recipe: tableSelectionTableRecipe,
     Component: TableSelectionTable,
   },
-{
+  {
     id: "filtering",
     name: "Filtering",
     description: tableFilteringTableDescription,
@@ -156,14 +150,14 @@ const tableLegacyItems = [
     recipe: tableColumnLayoutsRecipe,
     Component: TableColumnLayouts,
   },
-{
+  {
     id: "column-resizing",
     name: "Column Resizing",
     description: tableColumnResizingDescription,
     recipe: tableColumnResizingRecipe,
     Component: TableColumnResizing,
   },
-{
+  {
     id: "frozen-column",
     name: "Frozen Column",
     description: tableFrozenColumnTableDescription,
@@ -184,7 +178,7 @@ const tableLegacyItems = [
     recipe: tableAddRowTableRecipe,
     Component: TableAddRowTable,
   },
-   {
+  {
     id: "insert-row",
     name: "Insert Row",
     description: tableInsertRowTableDescription,
@@ -206,21 +200,21 @@ const tableLegacyItems = [
     recipe: tableActionTableRecipe,
     Component: TableActionTable,
   },
-   {
+  {
     id: "no-data",
     name: "No Data",
     description: tableNoDataTableDescription,
     recipe: tableNoDataTableRecipe,
     Component: TableNoDataTable,
   },
-   {
+  {
     id: "column-content-wrapping",
     name: "Column Content Wrapping",
     description: tableColumnContentWrappingDescription,
     recipe: tableColumnContentWrappingRecipe,
     Component: TableColumnContentWrapping,
   },
-   {
+  {
     id: "custom-context-menu",
     name: "Context Menu",
     description: tableCustomContextMenuTableDescription,
@@ -248,7 +242,7 @@ const tableLegacyItems = [
     recipe: tableColumnAdditionTableRecipe,
     Component: TableColumnAdditionTable,
   },
-   {
+  {
     id: "drag-drop",
     name: "Drag and Drop",
     description: tableDragDropTableDescription,
@@ -276,9 +270,7 @@ const tableLegacyItems = [
     recipe: tableScrollToKeyTableRecipe,
     Component: TableScrollToKeyTable,
   },
-  
-  
- 
+
   {
     id: "column-renderer",
     name: "Column Renderer",
@@ -286,7 +278,7 @@ const tableLegacyItems = [
     recipe: tableColumnRendererRecipe,
     Component: TableColumnRenderer,
   },
-  
+
   {
     id: "custom-sortable",
     name: "Custom Sortable",
@@ -308,7 +300,7 @@ const tableLegacyItems = [
     recipe: tableDetailTableRecipe,
     Component: TableDetailTable,
   },
- 
+
   {
     id: "editable-array",
     name: "Editable Array",
@@ -337,15 +329,6 @@ const tableLegacyItems = [
     recipe: tableExternalScrollTableRecipe,
     Component: TableExternalScrollTable,
   },
- 
-  // {
-  //   id: "navigate",
-  //   name: "Navigate",
-  //   description: tableNavigateTableDescription,
-  //   recipe: tableNavigateTableRecipe,
-  //   Component: TableNavigateTable,
-  // },
- 
   {
     id: "observable-array",
     name: "Observable Array",
@@ -367,8 +350,6 @@ const tableLegacyItems = [
     recipe: tableProgressiveLoadTableRecipe,
     Component: TableProgressiveLoadTable,
   },
-  
-  
   {
     id: "template-slot",
     name: "Template Slot",

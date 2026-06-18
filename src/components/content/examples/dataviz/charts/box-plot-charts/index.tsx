@@ -18,9 +18,6 @@ import { boxPlotRefObjectRecipe } from "./boxPlot-refObject/recipe";
 import { BoxPlotSelection } from "./boxPlot-selection/boxPlot-selection";
 import { boxPlotSelectionDescription } from "./boxPlot-selection/description";
 import { boxPlotSelectionRecipe } from "./boxPlot-selection/recipe";
-import { BoxPlotShapedData } from "./boxPlot-shapedData/boxPlot-shapedData";
-import { boxPlotShapedDataDescription } from "./boxPlot-shapedData/description";
-import { boxPlotShapedDataRecipe } from "./boxPlot-shapedData/recipe";
 import { BoxPlotStyles } from "./boxPlot-styles/boxPlot-styles";
 import { boxPlotStylesDescription } from "./boxPlot-styles/description";
 import { boxPlotStylesRecipe } from "./boxPlot-styles/recipe";
@@ -72,13 +69,6 @@ const boxPlotItems = [
     recipe: boxPlotSelectionRecipe,
     Component: BoxPlotSelection,
   },
-  // {
-  //   id: "shaped-data",
-  //   name: "Shaped Data",
-  //   description: boxPlotShapedDataDescription,
-  //   recipe: boxPlotShapedDataRecipe,
-  //   Component: BoxPlotShapedData,
-  // },
   {
     id: "styling",
     name: "Styles",

@@ -18,9 +18,6 @@ import { messagebannerDetailListRecipe } from "./messagebanner-detailList/recipe
 import { MessagebannerDetailActions } from "./messagebanner-detailActions/messagebanner-detailActions";
 import { messagebannerDetailActionsDescription } from "./messagebanner-detailActions/description";
 import { messagebannerDetailActionsRecipe } from "./messagebanner-detailActions/recipe";
-import { MessagebannerTest } from "./messagebanner-test/messagebanner-test";
-import { messagebannerTestDescription } from "./messagebanner-test/description";
-import { messagebannerTestRecipe } from "./messagebanner-test/recipe";
 
 const messageBannerLegacyItems = [
   {

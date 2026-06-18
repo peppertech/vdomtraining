@@ -1,8 +1,5 @@
 import { h } from "preact";
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { MessagetoastAccessibilityAndUsabilitycorepack } from "./messagetoast-accessibilityAndUsabilitycorepack/messagetoast-accessibilityAndUsabilitycorepack";
-import { messagetoastAccessibilityAndUsabilitycorepackDescription } from "./messagetoast-accessibilityAndUsabilitycorepack/description";
-import { messagetoastAccessibilityAndUsabilitycorepackRecipe } from "./messagetoast-accessibilityAndUsabilitycorepack/recipe";
 import { MessagetoastAutoTimeoutcorepack } from "./messagetoast-autoTimeoutcorepack/messagetoast-autoTimeoutcorepack";
 import { messagetoastAutoTimeoutcorepackDescription } from "./messagetoast-autoTimeoutcorepack/description";
 import { messagetoastAutoTimeoutcorepackRecipe } from "./messagetoast-autoTimeoutcorepack/recipe";

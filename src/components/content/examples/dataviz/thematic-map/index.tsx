@@ -45,15 +45,9 @@ import { thematicMapInlineTemplatesRecipe } from "./thematicMap-inlineTemplates/
 import { ThematicMapStyles } from "./thematicMap-styles/thematicMap-styles";
 import { thematicMapStylesDescription } from "./thematicMap-styles/description";
 import { thematicMapStylesRecipe } from "./thematicMap-styles/recipe";
-import { ThematicMapAnimation } from "./thematicMap-animation/thematicMap-animation";
-import { thematicMapAnimationDescription } from "./thematicMap-animation/description";
-import { thematicMapAnimationRecipe } from "./thematicMap-animation/recipe";
 import { ThematicMapSmallFormFactor } from "./thematicMap-smallFormFactor/thematicMap-smallFormFactor";
 import { thematicMapSmallFormFactorDescription } from "./thematicMap-smallFormFactor/description";
 import { thematicMapSmallFormFactorRecipe } from "./thematicMap-smallFormFactor/recipe";
-import { ThematicMapPerformance } from "./thematicMap-performance/thematicMap-performance";
-import { thematicMapPerformanceDescription } from "./thematicMap-performance/description";
-import { thematicMapPerformanceRecipe } from "./thematicMap-performance/recipe";
 
 const thematicMapItems: RecipePageItem[] = [
   {
@@ -157,21 +151,6 @@ const thematicMapItems: RecipePageItem[] = [
     recipe: thematicMapStylesRecipe,
     Component: ThematicMapStyles,
   },
-  // {
-  //   id: "animation",
-  //   name: "Animation",
-  //   description: thematicMapAnimationDescription,
-  //   recipe: thematicMapAnimationRecipe,
-  //   Component: ThematicMapAnimation,
-  // },
-  
-  // {
-  //   id: "performance",
-  //   name: "Performance",
-  //   description: thematicMapPerformanceDescription,
-  //   recipe: thematicMapPerformanceRecipe,
-  //   Component: ThematicMapPerformance,
-  // },
   {
     id: "tooltip",
     name: "Tooltip Customiztion",

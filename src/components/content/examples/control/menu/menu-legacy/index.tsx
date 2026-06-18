@@ -12,9 +12,6 @@ import { menuMenuForEachTemplateRecipe } from "./menu-menuForEachTemplate/recipe
 import { MenuDeferredRendering } from "./menu-deferredRendering/menu-deferredRendering";
 import { menuDeferredRenderingDescription } from "./menu-deferredRendering/description";
 import { menuDeferredRenderingRecipe } from "./menu-deferredRendering/recipe";
-import { MenuMenuRecursiveTemplate } from "./menu-menuRecursiveTemplate/menu-menuRecursiveTemplate";
-import { menuMenuRecursiveTemplateDescription } from "./menu-menuRecursiveTemplate/description";
-import { menuMenuRecursiveTemplateRecipe } from "./menu-menuRecursiveTemplate/recipe";
 
 const menuLegacyItems = [
   {
@@ -44,14 +41,7 @@ const menuLegacyItems = [
     description: menuDeferredRenderingDescription,
     recipe: menuDeferredRenderingRecipe,
     Component: MenuDeferredRendering,
-  },
-  // {
-  //   id: "menu-recursive-template",
-  //   name: "Menu Recursive Template",
-  //   description: menuMenuRecursiveTemplateDescription,
-  //   recipe: menuMenuRecursiveTemplateRecipe,
-  //   Component: MenuMenuRecursiveTemplate,
-  // },
+  }
 ];
 
 export default function MenuLegacyRecipePage() {
