@@ -72,27 +72,9 @@ import { dataGridStylingGridRecipe } from "./dataGrid-stylingGrid/recipe";
 import { DataGridTemplateGrid } from "./dataGrid-templateGrid/dataGrid-templateGrid";
 import { dataGridTemplateGridDescription } from "./dataGrid-templateGrid/description";
 import { dataGridTemplateGridRecipe } from "./dataGrid-templateGrid/recipe";
-import { RowExpanderDataGridCollectionRowExpander } from "./rowExpanderDataGrid-collectionRowExpander/rowExpanderDataGrid-collectionRowExpander";
-import { rowExpanderDataGridCollectionRowExpanderDescription } from "./rowExpanderDataGrid-collectionRowExpander/description";
-import { rowExpanderDataGridCollectionRowExpanderRecipe } from "./rowExpanderDataGrid-collectionRowExpander/recipe";
-import { RowExpanderDataGridDataGridRowExpander } from "./rowExpanderDataGrid-dataGridRowExpander/rowExpanderDataGrid-dataGridRowExpander";
-import { rowExpanderDataGridDataGridRowExpanderDescription } from "./rowExpanderDataGrid-dataGridRowExpander/description";
-import { rowExpanderDataGridDataGridRowExpanderRecipe } from "./rowExpanderDataGrid-dataGridRowExpander/recipe";
 import { RowExpanderDataGridDataGridRowExpanderDataProvider } from "./rowExpanderDataGrid-dataGridRowExpanderDataProvider/rowExpanderDataGrid-dataGridRowExpanderDataProvider";
 import { rowExpanderDataGridDataGridRowExpanderDataProviderDescription } from "./rowExpanderDataGrid-dataGridRowExpanderDataProvider/description";
 import { rowExpanderDataGridDataGridRowExpanderDataProviderRecipe } from "./rowExpanderDataGrid-dataGridRowExpanderDataProvider/recipe";
-import { RowExpanderDataGridDataGridRowExpanderExpand } from "./rowExpanderDataGrid-dataGridRowExpanderExpand/rowExpanderDataGrid-dataGridRowExpanderExpand";
-import { rowExpanderDataGridDataGridRowExpanderExpandDescription } from "./rowExpanderDataGrid-dataGridRowExpanderExpand/description";
-import { rowExpanderDataGridDataGridRowExpanderExpandRecipe } from "./rowExpanderDataGrid-dataGridRowExpanderExpand/recipe";
-import { RowExpanderDataGridDataGridRowExpanderExpandAll } from "./rowExpanderDataGrid-dataGridRowExpanderExpandAll/rowExpanderDataGrid-dataGridRowExpanderExpandAll";
-import { rowExpanderDataGridDataGridRowExpanderExpandAllDescription } from "./rowExpanderDataGrid-dataGridRowExpanderExpandAll/description";
-import { rowExpanderDataGridDataGridRowExpanderExpandAllRecipe } from "./rowExpanderDataGrid-dataGridRowExpanderExpandAll/recipe";
-import { RowExpanderDataGridEditableDataGridRowExpander } from "./rowExpanderDataGrid-editableDataGridRowExpander/rowExpanderDataGrid-editableDataGridRowExpander";
-import { rowExpanderDataGridEditableDataGridRowExpanderDescription } from "./rowExpanderDataGrid-editableDataGridRowExpander/description";
-import { rowExpanderDataGridEditableDataGridRowExpanderRecipe } from "./rowExpanderDataGrid-editableDataGridRowExpander/recipe";
-import { RowExpanderDataGridVirtualRowExpander } from "./rowExpanderDataGrid-virtualRowExpander/rowExpanderDataGrid-virtualRowExpander";
-import { rowExpanderDataGridVirtualRowExpanderDescription } from "./rowExpanderDataGrid-virtualRowExpander/description";
-import { rowExpanderDataGridVirtualRowExpanderRecipe } from "./rowExpanderDataGrid-virtualRowExpander/recipe";
 
 const dataGridItems = [
   {
@@ -226,9 +208,9 @@ const dataGridItems = [
   {
     id: "row-expander",
     name: "Expand/Collapse",
-    description: rowExpanderDataGridDataGridRowExpanderDescription,
-    recipe: rowExpanderDataGridDataGridRowExpanderRecipe,
-    Component: RowExpanderDataGridDataGridRowExpander,
+    description: rowExpanderDataGridDataGridRowExpanderDataProviderDescription,
+    recipe: rowExpanderDataGridDataGridRowExpanderDataProviderRecipe,
+    Component: RowExpanderDataGridDataGridRowExpanderDataProvider,
   },
   {
     id: "data-transfer",

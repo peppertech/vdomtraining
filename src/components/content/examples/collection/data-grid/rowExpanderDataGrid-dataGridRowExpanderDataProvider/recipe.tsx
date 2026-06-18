@@ -9,13 +9,13 @@ export const rowExpanderDataGridDataGridRowExpanderDataProviderRecipe = (
         oj-data-grid.
       </li>
       <li>
-        In the HTML specify a cell template that adds the row expander to the row header. Use the
-        oj.KnockoutTemplateUtils.getRenderer to convert templates to renderers.
+        Specify a cell renderer that adds the row expander to the region/state column.
       </li>
       <li>
-        Create a FlattenedTreeDataProviderView from the ArrayTreeDataProvider and options specific to
-        the grid implementation.
+        Create a FlattenedTreeDataProviderView from an ArrayTreeDataProvider backed by hierarchical
+        region and state data.
       </li>
+      <li>Add a pivot button that switches between the region/state hierarchy and a decade/year view.</li>
       <li>Apply bindings to the data grid with the data in the binding.</li>
     </ol>
   </>

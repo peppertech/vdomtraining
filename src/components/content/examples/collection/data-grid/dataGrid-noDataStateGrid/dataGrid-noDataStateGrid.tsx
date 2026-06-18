@@ -5,7 +5,6 @@ import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojbutton';
 import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
 import 'ojs/ojdatagrid';
-import type { DataGridElement } from 'ojs/ojdatagrid';
 import "css!./demo.css";
 interface DataDetails {
     index: number;
@@ -15,15 +14,33 @@ interface DataDetails {
     gender: string;
     salary: number;
 }
-type CellTemplateContext = DataGridElement.CellTemplateContext<DataDetails>;
-const DATA_COLUMNS: Array<keyof Omit<DataDetails, 'index'>> = ['name', 'address', 'age', 'gender', 'salary'];
+type DataColumn = keyof Omit<DataDetails, 'index'>;
+type CellValue = DataDetails[DataColumn];
+type CellTemplateContext = {
+    item: {
+        columnIndex: number;
+        data: {
+            data: CellValue;
+        };
+    };
+};
+const DATA_COLUMNS: DataColumn[] = ['name', 'address', 'age', 'gender', 'salary'];
 const SAMPLE_ROW: DataDetails = {
-    index: 0,
-    name: 'Freda Gray',
-    address: '267 Albany Avenue',
-    age: 33,
+    index: 1001,
+    name: 'Asha Mehta',
+    address: '500 Oracle Parkway, Redwood Shores, CA',
+    age: 34,
     gender: 'Female',
-    salary: 2270
+    salary: 84250
+};
+const formatCellValue = (column: DataColumn | undefined, value: CellValue | undefined) => {
+    if (!column) {
+        return '';
+    }
+    if (value == null) {
+        return '';
+    }
+    return column === 'salary' && typeof value === 'number' ? `$${value.toLocaleString('en-US')}` : String(value);
 };
 export const DataGridNoDataStateGrid = () => {
     const [rows, setRows] = useState<DataDetails[]>([]);
@@ -43,17 +60,18 @@ export const DataGridNoDataStateGrid = () => {
         }
     }), [rowDataProvider, rows.length]);
     const cellTemplateRenderer = (cell: CellTemplateContext) => {
-        return <div class="oj-flex oj-sm-justify-content-space-between oj-sm-align-items-center">
-                                    <span>{String(cell.item.data[DATA_COLUMNS[cell.item.columnIndex] ?? 'name'])}</span>
-                                    {cell.item.columnIndex === 4 ? <oj-button onojAction={() => setRows([])} display="icons" chroming="borderless"><span slot="startIcon" class="oj-ux-ico-delete-circle"/></oj-button> : null}
+        const column = DATA_COLUMNS[cell.item.columnIndex];
+        return <div class="oj-flex oj-sm-justify-content-space-between oj-sm-align-items-center">
+                                    <span>{formatCellValue(column, cell.item.data.data)}</span>
+                                    {cell.item.columnIndex === 4 ? <oj-button onojAction={() => setRows([])} display="icons" chroming="borderless"><span slot="startIcon" class="oj-ux-ico-delete-circle"/></oj-button> : null}
                                 </div>;
     };
     const noDataTemplateRenderer = () => {
         return <div class="oj-flex oj-sm-align-items-center oj-sm-margin-6x">
-                                    <div class="oj-flex oj-sm-align-items-start oj-sm-flex-direction-column">
-                                                  <span class="oj-sm-padding-2x oj-typography-body-xl">Add a customer for this account.</span>
-                                                  <oj-button onojAction={() => setRows([SAMPLE_ROW])} class="oj-sm-padding-2x oj-sm-align-self-flex-start">Add Customer</oj-button>
-                                              </div>
+                                    <div class="oj-flex oj-sm-align-items-start oj-sm-flex-direction-column">
+                                                  <span class="oj-sm-padding-2x oj-typography-body-xl">Add a customer for this account.</span>
+                                                  <oj-button onojAction={() => setRows([SAMPLE_ROW])} class="oj-sm-padding-2x oj-sm-align-self-flex-start">Add Customer</oj-button>
+                                              </div>
                                 </div>;
     };
     const ojDataGridProps: Partial<ComponentProps<'oj-data-grid'>> = { cell: {

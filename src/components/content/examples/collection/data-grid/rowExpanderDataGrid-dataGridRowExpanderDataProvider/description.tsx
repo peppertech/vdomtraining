@@ -3,9 +3,10 @@ import { h } from 'preact';
 
 export const rowExpanderDataGridDataGridRowExpanderDataProviderDescription = (
   <>
-    <p>Enable hierarchical data to be displayed in a JET Table.</p><p>
-      The DataGrid with DataProvider does not yet support row headers, but row expander can be placed in
-      the cells.
+    <p>Enable hierarchical data to be displayed in a JET Data Grid.</p><p>
+      This demo groups US states by region and uses row expanders in the first data column to show or
+      hide the state rows under South, West, North East, and Mid West. Use the pivot button to switch
+      between states grouped by region and years grouped by decade.
     </p>
   </>
 );

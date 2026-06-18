@@ -1,5 +1,44 @@
-.demo-rowexpander {
+.demo-rowexpander-dataprovider-container {
+  display: grid;
+  gap: 0.75rem;
   width: 100%;
-  max-width: 31.375rem;
-  height: 25rem;
+  min-width: 0;
+}
+
+.demo-rowexpander-dataprovider-toolbar {
+  display: flex;
+  align-items: center;
+}
+
+.demo-rowexpander-dataprovider {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: clamp(31.25rem, calc(100vh - 16rem), 44rem);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.demo-rowexpander-dataprovider .oj-datagrid-hierarchical-tree,
+.demo-rowexpander-dataprovider .oj-datagrid-hierarchical-group {
+  display: flex;
+  align-items: center;
+}
+
+.demo-rowexpander-dataprovider .oj-datagrid-tree-spacer,
+.demo-rowexpander-dataprovider .oj-datagrid-disclosure-icon-container {
+  flex: 0 0 auto;
+}
+
+.demo-rowexpander-dataprovider-renderer-content {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.demo-rowexpander-dataprovider-header-cell {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  min-width: 0;
 }
