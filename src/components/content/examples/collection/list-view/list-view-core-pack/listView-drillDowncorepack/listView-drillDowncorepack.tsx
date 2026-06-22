@@ -110,9 +110,8 @@ export const ListViewDrillDowncorepack = () => {
                           </oj-c-list-view>
                 </div>
             <div ref={page2Ref} id="page2" class="demo-page demo-page2-hide">
-                    <oj-c-button id="buttonIcon2" onojAction={gotoList} disabled={disabled}>
+                    <oj-c-button id="buttonIcon2" label="Back" onojAction={gotoList} disabled={disabled}>
                               <span slot="startIcon" class="oj-ux-ico-chevron-left" />
-                              Back
                           </oj-c-button>
                     <div class="oj-sm-margin-2x-top demo-panel"><span>{content}</span></div>
                 </div>
