@@ -271,7 +271,102 @@ white-space: normal !important;
     height: calc(100vh - 6.25rem);
     min-height: 32.5rem;
   }
-  
+
+/* Card spacing for ListView Card Layout with Group Header demo */
+/* Scope to the demo container to avoid affecting other demos */
+#listviewContainer .oj-listview.oj-listview-card-layout .oj-listview-group {
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+#listviewContainer .demo-card {
+  box-sizing: border-box;
+  margin: 0.75rem;
+  display: block;
+  flex: 0 0 18.75rem;
+  width: 18.75rem;
+  min-width: 14rem;
+}
+
+#listviewContainer .demo-card oj-c-action-card,
+#listviewContainer .demo-card .oj-panel {
+  width: 100%;
+  min-height: 395px;
+}
+
+#listviewContainer .oj-listview.oj-listview-card-layout .oj-listview-group-item,
+#listviewContainer .oj-listview.oj-listview-card-layout .oj-listview-card,
+#listviewContainer .oj-listview.oj-listview-card-layout li.oj-listview-item {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#listviewContainer .oj-listview.oj-listview-card-layout .oj-listview-group-item {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+/* Ensure the card group lays out items without overlap */
+#listviewContainer .oj-listview.oj-listview-card-layout .oj-listview-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+#listviewContainer .oj-listview.oj-listview-card-layout li.oj-listview-item {
+  position: relative;
+  box-sizing: border-box;
+  flex: 0 0 18.75rem;
+  width: 18.75rem;
+  margin: 0.5rem 0.5rem 0 0;
+}
+
+#listviewContainer .demo-card-panel {
+  height: 100%;
+  min-height: 395px;
+}
+
+/* Strong overrides for demo: remove listview gridlines and force stacked card layout */
+#listviewContainer .oj-listview.oj-listview-card-layout,
+#listviewContainer .oj-listview.oj-listview-card-layout * {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#listviewContainer .oj-listview.oj-listview-card-layout .oj-listview-group,
+#listviewContainer .oj-listview.oj-listview-card-layout .oj-listview-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 1rem;
+}
+
+#listviewContainer .oj-listview.oj-listview-card-layout li.oj-listview-item-element,
+#listviewContainer .oj-listview.oj-listview-card-layout li.oj-listview-item,
+#listviewContainer .demo-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex: 0 0 18.75rem;
+  width: 18.75rem;
+  margin: 1rem 2rem 12rem  2rem;
+  overflow: visible;
+}
+
+#listviewContainer .demo-card-panel {
+  height: 100%;
+  min-height: 395px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
   .demo-list-edit-mode {
     height: calc(100vh - 9.375rem);
     min-height: 32.5rem;

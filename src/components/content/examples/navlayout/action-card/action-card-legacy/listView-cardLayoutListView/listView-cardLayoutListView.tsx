@@ -3,11 +3,10 @@ import { h } from "preact";
 import { useEffect, useMemo, useState } from "preact/hooks";
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import * as ResponsiveUtils from "ojs/ojresponsiveutils";
-import "ojs/ojactioncard";
+import "oj-c/action-card";
 import "../../../../../../jet-composites/demo-profile-card-layout/loader";
 import "ojs/ojavatar";
 import "ojs/ojbutton";
-// import "ojs/ojbuttonsetone";
 import "ojs/ojlistitemlayout";
 import "ojs/ojlistview";
 import "ojs/ojoption";
@@ -169,6 +168,11 @@ export const ListViewCardLayoutListView = () => {
     setActiveLayout(event.detail.value);
   };
 
+  const listViewClassName =
+    effectiveLayout === "card"
+      ? "oj-listview-item-padding-off oj-sm-padding-2x-bottom"
+      : "oj-listview-item-padding-off";
+
   return (
     <div id="listviewContainer">
       {!isSmall ? (
@@ -196,11 +200,7 @@ export const ListViewCardLayoutListView = () => {
           aria-label="list with card layout"
           data={dataProvider}
           display={effectiveLayout}
-          class={
-            effectiveLayout === "card"
-              ? "oj-listview-item-padding-off oj-sm-padding-2x-bottom"
-              : "oj-listview-item-padding-off"
-          }
+          class={listViewClassName}
         >
           <template
             slot="itemTemplate"
@@ -209,29 +209,33 @@ export const ListViewCardLayoutListView = () => {
 
               if (effectiveLayout === "list") {
                 return (
-                  <oj-list-item-layout>
-                    <span class="oj-typography-body-md">{data.name}</span>
-                    <oj-avatar slot="leading" size="xs" src={data.image} />
-                    <span
-                      slot="secondary"
-                      class="oj-typography-body-sm oj-text-color-secondary"
-                    >
-                      {data.title}
-                    </span>
-                  </oj-list-item-layout>
+                  <li>
+                    <oj-list-item-layout>
+                      <span class="oj-typography-body-md">{data.name}</span>
+                      <oj-avatar slot="leading" size="xs" src={data.image} />
+                      <span
+                        slot="secondary"
+                        class="oj-typography-body-sm oj-text-color-secondary"
+                      >
+                        {data.title}
+                      </span>
+                    </oj-list-item-layout>
+                  </li>
                 );
               }
 
               return (
-                <li class="demo-card">
-                  <oj-action-card>
-                    <demo-profile-card-layout
-                      name={data.name}
-                      work-title={data.title}
-                      initials={data.initials}
-                      image={data.image}
-                    />
-                  </oj-action-card>
+                <li class="demo-card oj-listview-item">
+                  <oj-c-action-card>
+                    <div class="oj-panel demo-card-panel">
+                      <demo-profile-card-layout
+                        name={data.name}
+                        workTitle={data.title}
+                        initials={data.initials}
+                        image={data.image}
+                      />
+                    </div>
+                  </oj-c-action-card>
                 </li>
               );
             }}

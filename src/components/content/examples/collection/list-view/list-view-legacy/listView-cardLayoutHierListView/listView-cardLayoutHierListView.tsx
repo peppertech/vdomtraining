@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Fragment, h } from 'preact';
+import { h } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import 'ojs/ojactioncard';
@@ -11,7 +11,6 @@ import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojswitch';
 import 'ojs/ojlabel';
-// import 'ojs/ojbuttonsetone';
 import 'ojs/ojoption';
 
 interface Contact {
@@ -44,19 +43,19 @@ export const ListViewCardLayoutHierListView = () => {
                   id: 1,
                   name: 'Alfred Marchris',
                   title: 'Principal Developer',
-                  image: '../images/hcm/placeholder-male-13.png'
+                  image: '/styles/images/hcm/placeholder-male-13.png'
               },
               {
                   id: 11,
                   name: 'Andrew Chrismon',
                   title: 'Consulting Project Technical Manager',
-                  image: '../images/hcm/placeholder-male-08.png'
+                  image: '/styles/images/hcm/placeholder-male-08.png'
               },
               {
                   id: 12,
                   name: 'Annett Christy',
                   title: 'Area Business Operations Director EMEA & JAPAC',
-                  image: '../images/hcm/placeholder-female-03.png'
+                  image: '/styles/images/hcm/placeholder-female-03.png'
               }
           ]
       },
@@ -68,19 +67,19 @@ export const ListViewCardLayoutHierListView = () => {
                   id: 5,
                   name: 'Bart Christian',
                   title: 'Consulting Project Technical Manager',
-                  image: '../images/hcm/placeholder-male-05.png'
+                  image: '/styles/images/hcm/placeholder-male-05.png'
               },
               {
                   id: 6,
                   name: 'Ben Marchris',
                   title: 'Customer Service Analyst',
-                  image: '../images/hcm/placeholder-male-06.png'
+                  image: '/styles/images/hcm/placeholder-male-06.png'
               },
               {
                   id: 7,
                   name: 'Brie Christian Cooperman',
                   title: 'Senior Principal Escalation Manager',
-                  image: '../images/hcm/placeholder-female-02.png'
+                  image: '/styles/images/hcm/placeholder-female-02.png'
               }
           ]
       },
@@ -92,19 +91,19 @@ export const ListViewCardLayoutHierListView = () => {
                   id: 3,
                   name: 'Christine Cooper',
                   title: 'Senior Principal Escalation Manager',
-                  image: '../images/hcm/placeholder-female-01.png'
+                  image: '/styles/images/hcm/placeholder-female-01.png'
               },
               {
                   id: 31,
                   name: 'Chris Benalamore',
                   title: 'Area Business Operations Director EMEA & JAPAC',
-                  image: '../images/hcm/placeholder-male-03.png'
+                  image: '/styles/images/hcm/placeholder-male-03.png'
               },
               {
                   id: 32,
                   name: 'Christopher Johnson',
                   title: 'Vice-President HCM Application Development',
-                  image: '../images/hcm/placeholder-male-04.png'
+                  image: '/styles/images/hcm/placeholder-male-04.png'
               }
           ]
       }
@@ -147,48 +146,32 @@ export const ListViewCardLayoutHierListView = () => {
                                       }
                           </oj-buttonset-one>
                 </div>
-            <oj-list-view ref={listViewRef} id="listview" class="oj-sm-padding-1x" aria-label="list with card layout for items in group" data={dataProvider} display={activeLayout} drill-mode="none" group-header-position="static">
-                    <template slot="itemTemplate" render={(item) => (
-                            <>
-                                {
-                                            item.leaf ? (
-                                              <>
-                                                {
-                                                              activeLayout == 'list' ? (
-                                                                <>
-                                                                  <li>
-                                                                                    <oj-list-item-layout>
-                                                                                                        <span class="oj-typography-body-md">{item.data.name}</span>
-                                                                                                        <oj-avatar slot="leading" size="xs" src={item.data.image} />
-                                                                                                        <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">{item.data.title}</span>
-                                                                                                    </oj-list-item-layout>
-                                                                                </li>
-                                                                </>
-                                                              ) : null
-                                                            }
-                                                {
-                                                              activeLayout == 'card' ? (
-                                                                <>
-                                                                  <li class="demo-card">
-                                                                                    <oj-action-card>
-                                                                                                        <demo-profile-card-layout name={item.data.name} work-title={item.data.title} initials={item.data.initials} image={item.data.image} />
-                                                                                                    </oj-action-card>
-                                                                                </li>
-                                                                </>
-                                                              ) : null
-                                                            }
-                                              </>
-                                            ) : null
-                                          }
-                                {
-                                            !item.leaf ? (
-                                              <>
-                                                <span>{item.data.label}</span>
-                                              </>
-                                            ) : null
-                                          }
-                            </>
-                          )} />
+            <oj-list-view ref={listViewRef} id="listview" class="oj-sm-padding-1x" aria-label="list with card layout for items in group" data={dataProvider} display={activeLayout} drill-mode="none" group-header-position="static" {...{ 'item.enter-key-focus-behavior': "focusWithin" }}>
+                    <template slot="itemTemplate" render={(item) => {
+                      if (!item.leaf) {
+                        return <span>{item.data.label}</span>;
+                      }
+
+                      if (activeLayout === 'list') {
+                        return (
+                          <li>
+                            <oj-list-item-layout>
+                              <span class="oj-typography-body-md">{item.data.name}</span>
+                              <oj-avatar slot="leading" size="xs" src={item.data.image} />
+                              <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">{item.data.title}</span>
+                            </oj-list-item-layout>
+                          </li>
+                        );
+                      }
+
+                      return (
+                        <li class="demo-card">
+                          <oj-c-action-card>
+                            <demo-profile-card-layout name={item.data.name} workTitle={item.data.title} image={item.data.image} />
+                          </oj-c-action-card>
+                        </li>
+                      );
+                    }} />
                 </oj-list-view>
         </div>
     );

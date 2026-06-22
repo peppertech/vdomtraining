@@ -35,19 +35,19 @@ export const ListViewGroupHeaderListView = () => {
             id: 1,
             name: 'Chris Black',
             title: 'Oracle Cloud Infrastructure GTM Channel Director EMEA',
-            image: '../images/hcm/placeholder-male-01.png'
+            image: '/styles/images/hcm/placeholder-male-01.png'
           },
           {
             id: 2,
             name: 'Christine Cooper',
             title: 'Senior Principal Escalation Manager',
-            image: '../images/hcm/placeholder-female-01.png'
+            image: '/styles/images/hcm/placeholder-female-01.png'
           },
           {
             id: 3,
             name: 'Chris Benalamore',
             title: 'Area Business Operations Director EMEA & JAPAC',
-            image: '../images/hcm/placeholder-male-03.png'
+            image: '/styles/images/hcm/placeholder-male-03.png'
           }
         ]
       }
@@ -87,7 +87,7 @@ export const ListViewGroupHeaderListView = () => {
 
   return (
     <div id="listviewContainer">
-      <div class="oj-typography-body-lg oj-text-color-secondary">Small size group headers</div>
+      <div class="oj-typography-body-lg oj-text-color-secondary">Small Size Group Headers</div>
       <oj-list-view
         id="listview"
         aria-label="simple list"
@@ -99,7 +99,7 @@ export const ListViewGroupHeaderListView = () => {
         <template slot="itemTemplate" render={renderItem} />
       </oj-list-view>
       <div class="oj-sm-padding-4x-top oj-typography-body-lg oj-text-color-secondary">
-        Medium size group headers
+        Medium Size Group Headers
       </div>
       <oj-list-view
         id="listview2"
@@ -111,7 +111,7 @@ export const ListViewGroupHeaderListView = () => {
         <template slot="itemTemplate" render={renderItem} />
       </oj-list-view>
       <div class="oj-sm-padding-4x-top oj-typography-body-lg oj-text-color-secondary">
-        Large dize group headers
+        Large Size Group Headers
       </div>
       <oj-list-view
         id="listview3"

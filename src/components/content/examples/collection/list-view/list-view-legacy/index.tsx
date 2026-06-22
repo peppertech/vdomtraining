@@ -39,7 +39,7 @@ import { listViewNoDataListViewRecipe } from "./listView-noDataListView/recipe";
 import { ListViewObservableArrayListView } from "./listView-observableArrayListView/listView-observableArrayListView";
 import { listViewObservableArrayListViewDescription } from "./listView-observableArrayListView/description";
 import { listViewObservableArrayListViewRecipe } from "./listView-observableArrayListView/recipe";
-import { ListViewObservableNestedArrayListView } from "./listView-observableNestedArrayListView/listView-observableNestedArrayListView";
+import { ListViewObservableNestedArrayListView } from "./listView-observableNestedArrayListView";
 import { listViewObservableNestedArrayListViewDescription } from "./listView-observableNestedArrayListView/description";
 import { listViewObservableNestedArrayListViewRecipe } from "./listView-observableNestedArrayListView/recipe";
 import { ListViewOverviewListView } from "./listView-overviewListView/listView-overviewListView";
@@ -88,7 +88,7 @@ const listViewItems = [
     recipe: listViewBasicListViewRecipe,
     Component: ListViewBasicListView,
   },
-   {
+  {
     id: "gridlines",
     name: "Gridlines",
     description: listViewGridlinesListViewDescription,
@@ -96,18 +96,25 @@ const listViewItems = [
     Component: ListViewGridlinesListView,
   },
   {
+    id: "array",
+    name: "Single Selection",
+    description: listViewArrayListViewDescription,
+    recipe: listViewArrayListViewRecipe,
+    Component: ListViewArrayListView,
+  },
+  {
     id: "selection",
-    name: "Selection",
+    name: "Multiple Selection",
     description: listViewSelectionListViewDescription,
     recipe: listViewSelectionListViewRecipe,
     Component: ListViewSelectionListView,
   },
   {
-    id: "group-header",
-    name: "Group Header",
-    description: listViewGroupHeaderListViewDescription,
-    recipe: listViewGroupHeaderListViewRecipe,
-    Component: ListViewGroupHeaderListView,
+    id: "json-hierarchical",
+    name: "Group Headers",
+    description: listViewJsonHierListViewDescription,
+    recipe: listViewJsonHierListViewRecipe,
+    Component: ListViewJsonHierListView,
   },
   {
     id: "collapsible",
@@ -124,46 +131,36 @@ const listViewItems = [
     Component: ListViewStickyGroupHeaderListView,
   },
   {
-    id: "array",
-    name: "Array",
-    description: listViewArrayListViewDescription,
-    recipe: listViewArrayListViewRecipe,
-    Component: ListViewArrayListView,
+    id: "group-header",
+    name: "Group Header Sizes",
+    description: listViewGroupHeaderListViewDescription,
+    recipe: listViewGroupHeaderListViewRecipe,
+    Component: ListViewGroupHeaderListView,
   },
   {
     id: "collection",
-    name: "Collection",
+    name: "Card Layout",
     description: listViewCollectionListViewDescription,
     recipe: listViewCollectionListViewRecipe,
     Component: ListViewCollectionListView,
   },
   {
-    id: "json-hierarchical",
-    name: "JSON Hierarchical",
-    description: listViewJsonHierListViewDescription,
-    recipe: listViewJsonHierListViewRecipe,
-    Component: ListViewJsonHierListView,
-  },
-  {
     id: "card-layout-hierarchical",
-    name: "Card Layout Hierarchical",
+    name: "Card Layout with Group Header",
     description: listViewCardLayoutHierListViewDescription,
     recipe: listViewCardLayoutHierListViewRecipe,
     Component: ListViewCardLayoutHierListView,
   },
-  
-  
-  
   {
     id: "observable-array",
-    name: "Observable Array",
+    name: "CRUD",
     description: listViewObservableArrayListViewDescription,
     recipe: listViewObservableArrayListViewRecipe,
     Component: ListViewObservableArrayListView,
   },
   {
     id: "observable-nested-array",
-    name: "Observable Nested Array",
+    name: "Add/Remove Hierarchical Data",
     description: listViewObservableNestedArrayListViewDescription,
     recipe: listViewObservableNestedArrayListViewRecipe,
     Component: ListViewObservableNestedArrayListView,
@@ -210,7 +207,7 @@ const listViewItems = [
     recipe: listViewProgressiveLoadHierListViewRecipe,
     Component: ListViewProgressiveLoadHierListView,
   },
-   {
+  {
     id: "no-data",
     name: "No Data",
     description: listViewNoDataListViewDescription,
@@ -224,14 +221,14 @@ const listViewItems = [
     recipe: listViewScrollPosListViewRecipe,
     Component: ListViewScrollPosListView,
   },
+  // {
+  //   id: "smart-suggestions",
+  //   name: "Suggestions (Oracle Internal)",
+  //   description: listViewSmartSuggestionsListViewDescription,
+  //   recipe: listViewSmartSuggestionsListViewRecipe,
+  //   Component: ListViewSmartSuggestionsListView,
+  // },
   {
-    id: "smart-suggestions",
-    name: "Suggestions (Oracle Internal)",
-    description: listViewSmartSuggestionsListViewDescription,
-    recipe: listViewSmartSuggestionsListViewRecipe,
-    Component: ListViewSmartSuggestionsListView,
-  },
-    {
     id: "performance",
     name: "Performance: Dataset Size",
     description: listViewPerformanceListViewDescription,

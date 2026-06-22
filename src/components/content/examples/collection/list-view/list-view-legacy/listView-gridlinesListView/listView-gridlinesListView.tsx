@@ -23,19 +23,19 @@ export const ListViewGridlinesListView = () => {
         id: 1,
         name: 'Chris Black',
         title: 'Oracle Cloud Infrastructure GTM Channel Director EMEA',
-        image: '../images/hcm/placeholder-male-01.png'
+        image: '/styles/images/hcm/placeholder-male-01.png'
       },
       {
         id: 2,
         name: 'Christine Cooper',
         title: 'Senior Principal Escalation Manager',
-        image: '../images/hcm/placeholder-female-01.png'
+        image: '/styles/images/hcm/placeholder-female-01.png'
       },
       {
         id: 3,
         name: 'Chris Benalamore',
         title: 'Area Business Operations Director EMEA & JAPAC',
-        image: '../images/hcm/placeholder-male-03.png'
+        image: '/styles/images/hcm/placeholder-male-03.png'
       }
     ],
     []

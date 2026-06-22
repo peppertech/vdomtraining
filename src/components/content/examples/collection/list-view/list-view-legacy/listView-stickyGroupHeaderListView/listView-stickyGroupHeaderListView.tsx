@@ -4,6 +4,7 @@ import { useMemo } from 'preact/hooks';
 import 'ojs/ojlabel';
 import 'ojs/ojlistview';
 import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listView/stickyGroupHeaderListView/contacts.json';
+import 'css!./demo.css';
 
 type ContactLeafData = {
   attr: {

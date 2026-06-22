@@ -1,77 +1,111 @@
-import { Fragment, h } from 'preact';
-import { useEffect, useMemo } from 'preact/hooks';
-import { RESTDataProvider } from 'ojs/ojrestdataprovider';
-import { CollectionMockFetchServer as MockFetchServer } from '../../../shared/CollectionMockFetchServer';
-import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listView/collectionListView/tweets.json';
+// @ts-nocheck
+import { h } from 'preact';
+import { useMemo } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import '../../../../../../jet-composites/demo-profile-card-layout/loader';
 import 'ojs/ojlistview';
-import 'ojs/ojlistitemlayout';
-import 'ojs/ojavatar';
+import 'css!./demo.css';
 
-type Tweet = {
-    source: string;
-    name: string;
-    screen_name: string;
-    text: string;
-    created_at: string;
+type EmployeeData = {
+  id: number;
+  image: string;
+  initials: string;
+  name: string;
+  title: string;
 };
 
-type Key = Tweet['source'];
+type ListViewItemContext = {
+  data: EmployeeData;
+};
+
+const EMPLOYEES: EmployeeData[] = [
+  {
+    id: 1,
+    name: 'Chris Black',
+    initials: 'CB',
+    title: 'Oracle Cloud Infrastructure GTM Channel Director EMEA',
+    image: '/styles/images/hcm/placeholder-male-01.png'
+  },
+  {
+    id: 2,
+    name: 'Christine Cooper',
+    initials: 'CC',
+    title: 'Senior Principal Escalation Manager',
+    image: '/styles/images/hcm/placeholder-female-01.png'
+  },
+  {
+    id: 3,
+    name: 'Chris Benalamore',
+    initials: 'CB',
+    title: 'Area Business Operations Director EMEA & JAPAC',
+    image: '/styles/images/hcm/placeholder-male-03.png'
+  },
+  {
+    id: 4,
+    name: 'Christopher Johnson',
+    initials: 'CJ',
+    title: 'Vice-President HCM Application Development',
+    image: '/styles/images/hcm/placeholder-male-04.png'
+  },
+  {
+    id: 5,
+    name: 'Samire Christian',
+    initials: 'SC',
+    title: 'Consulting Project Technical Manager',
+    image: '/styles/images/hcm/placeholder-male-05.png'
+  },
+  {
+    id: 6,
+    name: 'Kurt Marchris',
+    initials: 'KM',
+    title: 'Customer Service Analyst',
+    image: '/styles/images/hcm/placeholder-male-06.png'
+  },
+  {
+    id: 7,
+    name: 'Zelda Christian Cooperman',
+    initials: 'ZC',
+    title: 'Senior Principal Escalation Manager',
+    image: '/styles/images/hcm/placeholder-female-02.png'
+  }
+];
+
+const renderCard = (context: ListViewItemContext) => (
+  <li class="demo-card">
+    <div class="oj-panel demo-card-panel">
+      {h('demo-profile-card-layout', {
+        name: context.data.name,
+        workTitle: context.data.title,
+        initials: context.data.initials,
+        image: context.data.image
+      })}
+    </div>
+  </li>
+);
 
 export const ListViewCollectionListView = () => {
-  const keyAttributes: keyof Tweet = 'source';
-  const server = useMemo(() => new MockFetchServer({
-      keyAttributes: keyAttributes,
-      data: JSON.parse(jsonDataStr)
-  }), [keyAttributes]);
-  useEffect(() => {
-      server.start();
-      return () => server.stop();
-  }, [server]);
-  const dataProvider = useMemo(() => new RESTDataProvider<Key, Tweet>({
-      keyAttributes: keyAttributes,
-      url: server.getUrl(),
-      transforms: {
-          fetchFirst: {
-              request: async (options: RESTDataProvider.FetchByOffsetRequestTransformOptions<Key, Tweet>) => {
-                  const url = new URL(options.url);
-                  // Map paging params expected by the mock server
-                  const size = options.fetchParameters?.size;
-                  const offset = options.fetchParameters?.offset;
-                  if (size != null)
-                      url.searchParams.set('limit', String(size));
-                  if (offset != null)
-                      url.searchParams.set('offset', String(offset));
-                  return new Request(url.href);
-              },
-              response: async ({ body }: RESTDataProvider.FetchResponseTransformOptions) => {
-                  // Mock server returns { data, totalSize, hasMore }
-                  const { data, totalSize, hasMore } = body;
-                  return { data, totalSize, hasMore };
-              }
-          }
-      }
-  }), [keyAttributes, server]);
+  const dataProvider = useMemo(
+    () =>
+      new ArrayDataProvider<EmployeeData['id'], EmployeeData>(EMPLOYEES, {
+        keyAttributes: 'id'
+      }),
+    []
+  );
 
   return (
-      <oj-list-view id="listview" aria-label="list using collection" class="demo-list oj-listview-item-padding-off" data={dataProvider} selection-mode="single" scroll-policy="loadMoreOnScroll" {...{ 'item.enter-key-focus-behavior': "focusWithin", 'scroll-policy-options.fetch-size': "15" }}>
-            <template slot="itemTemplate" render={(item) => (
-                  <>
-                      <oj-list-item-layout>
-                                  <div>
-                                                <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
-                                                <span class="oj-typography-body-xs">{'@' + item.data.screen_name}</span>
-                                            </div>
-                                  <oj-avatar slot="leading" size="xs" src={'../images/listView/oracle.gif'} />
-                                  <div slot="secondary" class="demo-tweet">
-                                                <span class="oj-typography-body-sm oj-text-color-secondary">{item.data.text}</span>
-                                                <a href={item.data.source} class="oj-typography-body-sm">{item.data.source}</a>
-                                            </div>
-                                  <span slot="tertiary" class="oj-typography-body-xs oj-text-color-secondary">{item.data.created_at}</span>
-                              </oj-list-item-layout>
-                  </>
-                )} />
-        </oj-list-view>
-    );
+    <div id="listviewContainer">
+      <oj-list-view
+        id="listview"
+        aria-label="list with card layout"
+        class="demo-card-layout-list"
+        data={dataProvider}
+        display="card"
+        {...{ 'item.enter-key-focus-behavior': 'focusWithin' }}
+      >
+        <template slot="itemTemplate" render={renderCard} />
+      </oj-list-view>
+    </div>
+  );
 };
 
 export default ListViewCollectionListView;

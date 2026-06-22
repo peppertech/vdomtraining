@@ -49,7 +49,7 @@ export function DemoLayoutTemplate({
         )}
 
         {description && (
-          <div class="demo-layout-template__description oj-typography-body-lg">
+          <div class="demo-layout-template__description oj-typography-body-md">
             {description}
           </div>
         )}
@@ -73,7 +73,9 @@ export function DemoLayoutTemplate({
           Recipe
           <hr/>
         </h2>
-        <div class="demo-layout-template__recipe-body">{recipe}</div>
+        <div class="demo-layout-template__recipe-body oj-typography-body-md">
+          {recipe}
+        </div>
       </section>
     </article>
   );

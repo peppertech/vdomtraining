@@ -2,14 +2,13 @@
 import { Fragment, h } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
-import 'ojs/ojactioncard';
+import 'oj-c/action-card';
 import 'jet-composites/demo-profile-card-layout/loader';
 import 'ojs/ojlistview';
 import 'ojs/ojbutton';
 import 'ojs/ojswitch';
 import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
-// import 'ojs/ojbuttonsetone';
 import 'ojs/ojoption';
 
 interface Data {
@@ -165,56 +164,67 @@ export const ListViewCardLayoutListView = () => {
 
   return (
       <div id="listviewContainer">
-            {
-                  !isSmall() ? (
-                    <>
-                      <div class="oj-flex oj-sm-justify-content-flex-end">
-                                <oj-buttonset-one display="icons" onvalueChanged={handleActiveLayoutValueChanged} value={activeLayout} chroming="borderless" class="oj-flex-item oj-sm-flex-initial oj-buttonset-width-auto" aria-label="Choose layout view.">
-                                            {
-                                                        (layoutViewRadios ?? []).map(($current, index) => (
-                                                          <>
-                                                            <oj-option value={$current.data.id} id={$current.data.id}>
-                                                                              <span slot="startIcon" class={$current.data.icon} />
-                                                                              <span>{$current.data.id}</span>
-                                                                          </oj-option>
-                                                          </>
-                                                        ))
-                                                      }
-                                        </oj-buttonset-one>
-                            </div>
-                    </>
-                  ) : null
-                }
+            {!isSmall() ? (
+              <div class="oj-flex oj-sm-justify-content-flex-end">
+                <oj-buttonset-one
+                  display="icons"
+                  onvalueChanged={handleActiveLayoutValueChanged}
+                  value={activeLayout}
+                  chroming="borderless"
+                  class="oj-flex-item oj-sm-flex-initial oj-buttonset-width-auto"
+                  aria-label="Choose layout view."
+                >
+                  {layoutViewRadios.map((layout) => (
+                    <oj-option value={layout.id} id={layout.id}>
+                      <span slot="startIcon" class={layout.icon} />
+                      <span>{layout.id}</span>
+                    </oj-option>
+                  ))}
+                </oj-buttonset-one>
+              </div>
+            ) : null}
             <div class="demo-card-container">
-                    <oj-list-view id="listview" aria-label="list with card layout" data={dataProvider} display={activeLayout} class={{ 'oj-listview-item-padding-off': 'true', 'oj-sm-padding-2x-bottom': activeLayout() === 'card' || false }}>
-                              <template slot="itemTemplate" render={(item) => (
-                                        <>
-                                            {
-                                                          activeLayout.peek() == 'list' ? (
-                                                            <>
-                                                              <oj-list-item-layout>
-                                                                                <span class="oj-typography-body-md">{item.item.data.name}</span>
-                                                                                <oj-avatar slot="leading" size="xs" src={item.item.data.image} />
-                                                                                <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">{item.item.data.title}</span>
-                                                                            </oj-list-item-layout>
-                                                            </>
-                                                          ) : null
-                                                        }
-                                            {
-                                                          activeLayout.peek() == 'card' ? (
-                                                            <>
-                                                              <li class="demo-card">
-                                                                                <oj-action-card>
-                                                                                                    <demo-profile-card-layout name={item.item.data.name} work-title={item.item.data.title} initials={item.item.data.initials} image={item.item.data.image} />
-                                                                                                </oj-action-card>
-                                                                            </li>
-                                                            </>
-                                                          ) : null
-                                                        }
-                                        </>
-                                      )} />
-                          </oj-list-view>
-                </div>
+              <oj-list-view
+                id="listview"
+                aria-label="list with card layout"
+                data={dataProvider}
+                display={activeLayout}
+                class={`oj-listview-item-padding-off ${activeLayout === 'card' ? 'oj-sm-padding-2x-bottom' : ''}`}
+              >
+                <template
+                  slot="itemTemplate"
+                  render={(item) => (
+                    <>
+                      {activeLayout === 'list' ? (
+                        <li>
+                          <oj-list-item-layout>
+                            <span class="oj-typography-body-md">{item.item.data.name}</span>
+                            <oj-avatar slot="leading" size="xs" src={item.item.data.image} />
+                            <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">
+                              {item.item.data.title}
+                            </span>
+                          </oj-list-item-layout>
+                        </li>
+                      ) : null}
+                      {activeLayout === 'card' ? (
+                        <li class="demo-card oj-listview-item">
+                          <oj-c-action-card>
+                            <div class="oj-panel demo-card-panel">
+                              <demo-profile-card-layout
+                                name={item.item.data.name}
+                                workTitle={item.item.data.title}
+                                initials={item.item.data.initials}
+                                image={item.item.data.image}
+                              />
+                            </div>
+                          </oj-c-action-card>
+                        </li>
+                      ) : null}
+                    </>
+                  )}
+                />
+              </oj-list-view>
+            </div>
         </div>
     );
 };

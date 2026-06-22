@@ -12,7 +12,6 @@ import 'ojs/ojavatar';
 import 'ojs/ojformlayout';
 import 'ojs/ojactioncard';
 import 'ojs/ojlistitemlayout';
-// import 'ojs/ojbuttonsetone';
 import 'ojs/ojoption';
 
 interface Data {

@@ -10,7 +10,6 @@ import 'ojs/ojrowexpander';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import { AllKeySetImpl, KeySetImpl } from 'ojs/ojkeyset';
-// import 'ojs/ojbuttonsetone';
 import 'ojs/ojoption';
 import 'ojs/ojbutton';
 import 'css!./demo.css';

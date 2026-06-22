@@ -19,7 +19,6 @@ import 'ojs/ojlistitemlayout';
 import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listView/filterSortListView/productData.json';
 import 'ojs/ojlabel';
 import 'ojs/ojoption';
-// import 'ojs/ojratinggauge';
 
 interface OptionData {
 	    value: string;
@@ -118,11 +117,16 @@ export const ListViewFilterSortListView = () => {
       keyAttributes: 'value'
   }), [options]);
 
+	  const getImageUrl = (url: string) => {
+      const fileName = url.split('/').pop();
+      return fileName ? `/styles/images/listView/${fileName}` : url;
+  };
+
 	  const getImage = (url: string): ProductImageStyle => {
       return {
-          backgroundImage: 'url(' + url + ')',
+          backgroundImage: `url("${getImageUrl(url)}")`,
           backgroundRepeat: 'no-repeat',
-          backgroundSize: '100%',
+          backgroundSize: 'contain',
           backgroundPosition: 'center',
           height: '172px',
           width: '140px'
@@ -134,9 +138,6 @@ export const ListViewFilterSortListView = () => {
 	      setCurrentSort(selectedSort);
 	      const selectedSortCriterion = sortCriteriaMap[selectedSort];
 	      let sortCriteria = selectedSortCriterion ? [selectedSortCriterion] : undefined;
-      if (sortCriteria != null) {
-          sortCriteria = [sortCriteria];
-      }
       currentSortCriteriaRef.current = sortCriteria;
       setDataProvider(new ListDataProviderView(baseDataProvider, {
           filterCriterion: currentFilterCriterionRef.current,
@@ -239,7 +240,7 @@ export const ListViewFilterSortListView = () => {
                                                                                                                                           </span>
                                                                                                                   </div>
                                                                                                 <div class="oj-flex">
-                                                                                                                      <div class="oj-lg-12 oj-md-12 oj-sm-only-hide oj-flex-item">
+                                                                                                                      <div class="oj-lg-12 oj-md-12 oj-sm-12 oj-flex-item">
                                                                                                                                               <ul class="oj-typography-body-xs demo-sku-model">
                                                                                                                                                                         <li class="oj-helper-inline-block oj-divider-end oj-divider-padding oj-divider-margin">
                                                                                                                                                                                                     <span>SKU:</span>

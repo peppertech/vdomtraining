@@ -33,9 +33,21 @@ type SortDirection = NonNullable<ComponentProps<'oj-data-grid'>['header']>['colu
 type SortRequestEvent = Parameters<NonNullable<ComponentProps<'oj-data-grid'>['onojSortRequest']>>[0];
 type SortLabelRequestEvent = Parameters<NonNullable<ComponentProps<'oj-data-grid'>['onojSortLabelRequest']>>[0];
 type CellTemplateContext = DataGridElement.CellTemplateContext<States>;
+type ActiveSort = {
+    axis: 'row' | 'column';
+    type: 'header' | 'label';
+    key: string;
+    direction: SortDirection;
+};
 export const DataGridSortingGrid = () => {
     const [rows, setRows] = useState<States[]>(() => getSortedRows(populationRows, DEFAULT_SORT_COLUMN, 'ascending'));
     const [columns, setColumns] = useState<string[]>(INITIAL_COLUMNS);
+    const [activeSort, setActiveSort] = useState<ActiveSort>({
+        axis: 'column',
+        type: 'header',
+        key: DEFAULT_SORT_COLUMN,
+        direction: 'ascending'
+    });
     const rowDataProvider = useMemo(() => new ArrayDataProvider<string, States>(rows, {
         keyAttributes: 'states'
     }), [rows]);
@@ -50,12 +62,44 @@ export const DataGridSortingGrid = () => {
         headerLabels: {
             row: ['States'],
             column: ['Years']
+        },
+        itemMetadata: {
+            columnHeader: (item) => ({
+                sortDirection: activeSort.axis === 'column' &&
+                    activeSort.type === 'header' &&
+                    activeSort.key === String(item.data.data)
+                    ? activeSort.direction
+                    : 'unsorted'
+            }),
+            columnHeaderLabel: () => ({
+                sortDirection: activeSort.axis === 'column' && activeSort.type === 'label'
+                    ? activeSort.direction
+                    : 'unsorted'
+            }),
+            rowHeader: (item) => ({
+                sortDirection: activeSort.axis === 'row' &&
+                    activeSort.type === 'header' &&
+                    activeSort.key === String(item.data.data)
+                    ? activeSort.direction
+                    : 'unsorted'
+            }),
+            rowHeaderLabel: () => ({
+                sortDirection: activeSort.axis === 'row' && activeSort.type === 'label'
+                    ? activeSort.direction
+                    : 'unsorted'
+            })
         }
-    }), [columns, rowDataProvider]);
+    }), [activeSort, columns, rowDataProvider]);
     const numberConverter = useMemo(() => new IntlNumberConverter({ useGrouping: true }), []);
     const handleSortRequest = (event: SortRequestEvent) => {
         if (event.detail.axis === 'column') {
             const column = columns[event.detail.item.index] ?? DEFAULT_SORT_COLUMN;
+            setActiveSort({
+                axis: 'column',
+                type: 'header',
+                key: column,
+                direction: event.detail.direction
+            });
             setRows((currentRows) => getSortedRows(currentRows, column, event.detail.direction));
             return;
         }
@@ -63,6 +107,12 @@ export const DataGridSortingGrid = () => {
         if (!row) {
             return;
         }
+        setActiveSort({
+            axis: 'row',
+            type: 'header',
+            key: row.states,
+            direction: event.detail.direction
+        });
         setColumns((currentColumns) => {
             const nextColumns = [...currentColumns];
             nextColumns.sort((left, right) => {
@@ -75,6 +125,12 @@ export const DataGridSortingGrid = () => {
     };
     const handleSortLabelRequest = (event: SortLabelRequestEvent) => {
         if (event.detail.axis === 'column') {
+            setActiveSort({
+                axis: 'column',
+                type: 'label',
+                key: 'Years',
+                direction: event.detail.direction
+            });
             setColumns((currentColumns) => {
                 const nextColumns = [...currentColumns];
                 nextColumns.sort((left, right) => {
@@ -86,6 +142,12 @@ export const DataGridSortingGrid = () => {
             });
             return;
         }
+        setActiveSort({
+            axis: 'row',
+            type: 'label',
+            key: 'States',
+            direction: event.detail.direction
+        });
         setRows((currentRows) => {
             const nextRows = [...currentRows];
             nextRows.sort((left, right) => {
