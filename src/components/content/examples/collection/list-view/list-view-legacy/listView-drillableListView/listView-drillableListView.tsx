@@ -20,6 +20,7 @@ export const ListViewDrillableListView = () => {
   const [content, setContent] = useState('');
   const [disabled, setDisabled] = useState(true);
   const [previousElementKey, setPreviousElementKey] = useState<TodoTask['id'] | null>(null);
+  const itemConfig = useMemo(() => ({ enterKeyFocusBehavior: 'none' }), []);
 
   const data = useMemo(() => [
       {
@@ -54,7 +55,7 @@ export const ListViewDrillableListView = () => {
       },
       { id: 5, name: 'Party guest list', date: 'Mar 29', content: '' },
       { id: 6, name: 'Weekend projects', date: 'Mar 2', content: 'TBD' }
-  ], [content]);
+  ], []);
   const dataProvider = useMemo(() => new ArrayDataProvider(data, {
       keys: data.map((value) => {
           return value.id;
@@ -72,10 +73,13 @@ export const ListViewDrillableListView = () => {
   };
 
   const gotoContent = (event: ojListView.ojItemAction<TodoTask['id'], TodoTask>) => {
-	      if (event.detail.context != null) {
-	          let key = event.detail.context.key;
-	          setPreviousElementKey(key);
-	          let row = data[key];
+      if (event.detail.context != null) {
+          const key = event.detail.context.key;
+          const row = data.find((value) => value.id === key);
+          if (!row) {
+              return;
+          }
+          setPreviousElementKey(key);
           setContent(row.content);
           slide();
           setDisabled(false);
@@ -90,13 +94,13 @@ export const ListViewDrillableListView = () => {
   return (
       <div id="listviewContainer" class="demo-container">
             <div ref={page1Ref} id="page1" class="demo-page">
-                    <oj-list-view ref={listViewRef} id="listview" aria-label="drill down list" data={dataProvider} onojItemAction={gotoContent}>
+                    <oj-list-view ref={listViewRef} id="listview" aria-label="drill down list" data={dataProvider} item={itemConfig} onojItemAction={gotoContent}>
                               <template slot="itemTemplate" render={(item) => (
                                         <>
                                             <div class="oj-flex oj-sm-justify-content-space-between oj-sm-align-items-center">
-                                                            <span oj-typography-body-md oj-text-color-primary>{item.data.name}</span>
+                                                            <span class="oj-typography-body-md oj-text-color-primary">{item.item.data.name}</span>
                                                             <div class="oj-flex oj-sm-align-items-center">
-                                                                              <span>{item.data.date}</span>
+                                                                              <span>{item.item.data.date}</span>
                                                                               <div aria-label="Press enter to see detail" role="img">
                                                                                                   <div role="presentation" class="oj-sm-margin-2x-start oj-listview-drill-icon" />
                                                                                               </div>

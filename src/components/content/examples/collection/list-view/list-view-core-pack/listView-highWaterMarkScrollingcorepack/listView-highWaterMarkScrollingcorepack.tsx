@@ -5,7 +5,6 @@ import * as jsonDataStr from 'text!./tweets.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import DemoDelayingDataProvider from '../../../shared/DemoDelayingDataProvider';
 import 'css!./demo.css';
-import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'oj-c/avatar';
@@ -40,16 +39,14 @@ export const ListViewHighWaterMarkScrollingcorepack = () => {
   );
 
   const handleDelayValueChanged = (event: PropertyChangedEvent<number>) => {
-    setDelay(event.detail.value ?? initialDelay);
-  };
-
-  const applyDelay = () => {
+    const nextDelay = event.detail.value ?? initialDelay;
+    setDelay(nextDelay);
     setDataProvider(
       new DemoDelayingDataProvider(
         new ArrayDataProvider<Data['source'], Data>(arr, {
           keyAttributes: 'source'
         }),
-        delay
+        nextDelay
       )
     );
   };
@@ -66,9 +63,6 @@ export const ListViewHighWaterMarkScrollingcorepack = () => {
             value={delay}
             label-hint="Fetch delay (ms)"
           />
-          <oj-button class="oj-button-lg" onojAction={applyDelay}>
-            Apply
-          </oj-button>
         </oj-form-layout>
         <oj-c-list-view
           id="listview"

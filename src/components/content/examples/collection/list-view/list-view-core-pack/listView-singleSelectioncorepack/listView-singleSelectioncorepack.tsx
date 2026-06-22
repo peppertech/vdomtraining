@@ -9,12 +9,8 @@ import 'ojs/ojswitch';
 import 'ojs/ojlabel';
 import 'oj-c/avatar';
 import 'oj-c/list-item-layout';
-import 'oj-c/selector';
-import 'oj-c/selector-all';
-import 'ojs/ojradioset';
 import { ojListView } from 'ojs/ojlistview';
 import { ImmutableKeySet, KeySetImpl } from 'ojs/ojkeyset';
-import 'ojs/ojoption';
 
 interface EmployeeData {
     id: number;
@@ -23,20 +19,12 @@ interface EmployeeData {
     image: string;
 }
 
-type SelectionMode = Extract<ComponentProps<'oj-c-list-view'>['selectionMode'], 'multiple' | 'multipleToggle'>;
 type SelectedKeySet = ImmutableKeySet<EmployeeData['id']>;
 type FirstSelectedItem = Parameters<
   NonNullable<ComponentProps<'oj-c-list-view'>['onfirstSelectedItemChanged']>
 >[0]['detail']['value'];
 type ItemTemplateContext = ojListView.ItemTemplateContext<EmployeeData['id'], EmployeeData>;
 type SwitchValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-switch'>['onvalueChanged']>>[0];
-type SelectorSelectedKeysChangedEvent = Parameters<
-  NonNullable<ComponentProps<'oj-c-selector'>['onselectedKeysChanged']>
->[0];
-type SelectorIndeterminateChangedEvent = Parameters<
-  NonNullable<ComponentProps<'oj-c-selector'>['onindeterminateChanged']>
->[0];
-type RadioValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0];
 type FirstSelectedItemChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-list-view'>['onfirstSelectedItemChanged']>
 >[0];
@@ -46,8 +34,6 @@ export const ListViewSingleSelectioncorepack = () => {
   const [selectedSelectionRequired, setSelectedSelectionRequired] = useState(false);
   const [firstSelectedItem, setFirstSelectedItem] = useState<FirstSelectedItem | null>(null);
   const [selectedIds, setSelectedIds] = useState<string | null>(null);
-  const [isIndeterminate, setIsIndeterminate] = useState(false);
-  const [selectionMode, setSelectionMode] = useState<SelectionMode>('multiple');
 
   const data = useMemo(() => [
       {
@@ -101,24 +87,8 @@ export const ListViewSingleSelectioncorepack = () => {
     setSelectedSelectionRequired(event.detail.value ?? false);
   };
 
-  const handleSelectedItemsSelectedKeysChanged = (event: SelectorSelectedKeysChangedEvent) => {
-    setSelectedItems(event.detail.value ?? new KeySetImpl());
-  };
-
-  const handleIsIndeterminateIndeterminateChanged = (event: SelectorIndeterminateChangedEvent) => {
-    setIsIndeterminate(event.detail.value ?? false);
-  };
-
   const handleFirstSelectedItemFirstSelectedItemChanged = (event: FirstSelectedItemChangedEvent) => {
     setFirstSelectedItem(event.detail.value ?? null);
-  };
-
-  const handleSelectionModeChanged = (event: RadioValueChangedEvent) => {
-      // Reset selected on selection mode change.
-      setSelectionMode((event.detail.value as SelectionMode | null) ?? 'multiple');
-      setSelectedItems(new KeySetImpl());
-      setSelectedIds(null);
-      setFirstSelectedItem(null);
   };
 
   const getDisplayValue = (keySet: SelectedKeySet) => {
@@ -137,30 +107,15 @@ export const ListViewSingleSelectioncorepack = () => {
 
   const handleSelectedChanged = (event: ojListView.selectedChanged<EmployeeData['id'], EmployeeData>) => {
       const currentSelection = event.detail.value as ImmutableKeySet<EmployeeData['id']>;
-      setSelectedIds(getDisplayValue(currentSelection as SelectedKeySet)); // show selected list item elements' ids
-      if ((!currentSelection.keys.all && currentSelection.keys.keys!.size > 0) ||
-          (currentSelection.keys.all && currentSelection.keys.deletedKeys!.size > 0)) {
-          setIsIndeterminate(true);
-      }
-      else {
-          setIsIndeterminate(false);
-      }
+      setSelectedItems(currentSelection as SelectedKeySet);
+      setSelectedIds(getDisplayValue(currentSelection as SelectedKeySet));
   };
 
   const renderItem = (item: ItemTemplateContext) => {
       return (
           <oj-c-list-item-layout>
-              <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
-              <oj-c-selector
-                aria-label="selector for item"
-                slot="selector"
-                onselectedKeysChanged={handleSelectedItemsSelectedKeysChanged}
-                selectedKeys={selectedItems}
-                selectionMode="multiple"
-                rowKey={item.data.id}
-                id={`listview_checkboxset${item.data.id}`}
-              />
               <oj-c-avatar slot="leading" size="xs" src={item.data.image} />
+              <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
               <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">
                 {item.data.title}
               </span>
@@ -178,16 +133,8 @@ export const ListViewSingleSelectioncorepack = () => {
                     <div class="oj-flex oj-sm-align-items-center">
                               <oj-switch id="selection-required" onvalueChanged={handleSelectedSelectionRequiredValueChanged} value={selectedSelectionRequired} labelHint="Selection Required" labelEdge="inside" />
                           </div>
-                    <oj-radioset id="selectionMode" value={selectionMode} onvalueChanged={handleSelectionModeChanged} labelHint="Selection Mode">
-                              <oj-option value="multiple">Multiple</oj-option>
-                              <oj-option value="multipleToggle">Multiple Toggle</oj-option>
-                          </oj-radioset>
                 </div>
-            <oj-c-list-item-layout>
-                    <oj-c-selector-all onselectedKeysChanged={handleSelectedItemsSelectedKeysChanged} selectedKeys={selectedItems} id="selectAll" aria-label="select all" />
-                    <span>Select All</span>
-                </oj-c-list-item-layout>
-            <oj-c-list-view id="listview" aria-label="list to show selection features" class="oj-listview-item-padding-off" data={dataProvider} selected={selectedItems} selectionMode={selectionMode} selectionRequired={selectedSelectionRequired} onselectedChanged={handleSelectedChanged} onojFirstSelectedItem={handleFirstSelectedItemFirstSelectedItemChanged} {...{ 'item.enter-key-focus-behavior': "focusWithin" }}>
+            <oj-c-list-view id="listview" aria-label="list to show selection features" class="oj-listview-item-padding-off" data={dataProvider} selected={selectedItems} selectionMode="single" selectionRequired={selectedSelectionRequired} onselectedChanged={handleSelectedChanged} onojFirstSelectedItem={handleFirstSelectedItemFirstSelectedItemChanged} {...{ 'item.enter-key-focus-behavior': "focusWithin" }}>
                     <template slot="itemTemplate" render={renderItem} />
                 </oj-c-list-view>
             <div class="oj-typography-body-sm oj-text-color-secondary">

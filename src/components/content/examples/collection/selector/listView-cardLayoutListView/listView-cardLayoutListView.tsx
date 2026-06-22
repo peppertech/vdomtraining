@@ -2,7 +2,7 @@
 import { Fragment, h } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
-import 'oj-c/action-card';
+import 'ojs/ojactioncard';
 import 'jet-composites/demo-profile-card-layout/loader';
 import 'ojs/ojlistview';
 import 'ojs/ojbutton';
@@ -208,7 +208,7 @@ export const ListViewCardLayoutListView = () => {
                       ) : null}
                       {activeLayout === 'card' ? (
                         <li class="demo-card oj-listview-item">
-                          <oj-c-action-card>
+                          <oj-action-card>
                             <div class="oj-panel demo-card-panel">
                               <demo-profile-card-layout
                                 name={item.item.data.name}
@@ -217,7 +217,7 @@ export const ListViewCardLayoutListView = () => {
                                 image={item.item.data.image}
                               />
                             </div>
-                          </oj-c-action-card>
+                          </oj-action-card>
                         </li>
                       ) : null}
                     </>

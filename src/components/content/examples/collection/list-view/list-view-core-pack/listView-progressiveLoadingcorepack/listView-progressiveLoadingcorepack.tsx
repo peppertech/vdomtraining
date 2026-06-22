@@ -5,9 +5,9 @@ import * as jsonDataStr from 'text!./tweets.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import DemoDelayingDataProvider from '../../../shared/DemoDelayingDataProvider';
 import 'css!./demo.css';
-import 'ojs/ojbutton';
+import 'oj-c/button';
 import 'ojs/ojformlayout';
-import 'ojs/ojinputnumber';
+import 'oj-c/input-number';
 import 'oj-c/avatar';
 import 'oj-c/list-item-layout';
 import 'oj-c/list-view';
@@ -58,17 +58,15 @@ export const ListViewProgressiveLoadingcorepack = () => {
     <div id="listviewContainer">
       <div class="demo-list-container">
         <oj-form-layout max-columns="2" direction="row">
-          <oj-input-number
+          <oj-c-input-number
             id="fetch-delay-input"
             min="0"
             step="0"
-            onvalueChanged={handleDelayValueChanged}
             value={delay}
             label-hint="Fetch delay (ms)"
+            onojValueChanged={handleDelayValueChanged}
           />
-          <oj-button class="oj-button-lg" onojAction={applyDelay}>
-            Apply
-          </oj-button>
+          <oj-c-button size="lg" onojAction={applyDelay} label="Apply" />
         </oj-form-layout>
         <oj-c-list-view
           id="listview"
