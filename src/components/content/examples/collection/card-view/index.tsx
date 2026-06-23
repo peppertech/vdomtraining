@@ -130,6 +130,7 @@ export default function CardViewRecipePage() {
     <RecipePageTemplate
       ariaLabel="Card View examples"
       componentType="oj-c-card-view"
+      packLabel="Core Pack"
       items={cardViewItems}
       initialItemId="basic"
       navigationTitle="Card View"

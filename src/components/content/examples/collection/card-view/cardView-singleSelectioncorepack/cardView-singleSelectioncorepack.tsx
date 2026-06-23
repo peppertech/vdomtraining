@@ -100,13 +100,15 @@ export const CardViewSingleSelectioncorepack = () => {
   };
 
   const renderCard = (context: CardItemContext) => (
-    <oj-c-selection-card selected={selectedItems.has(context.item.metadata.key)} class="demo-card">
-      {h("demo-profile-card-layout", {
-        name: context.data.name,
-        workTitle: context.data.title,
-        initials: context.data.initials,
-        image: context.data.image,
-      })}
+    <oj-c-selection-card selected={selectedItems.has(context.item.metadata.key)}>
+      <div class="oj-panel">
+        {h("demo-profile-card-layout", {
+          name: context.data.name,
+          workTitle: context.data.title,
+          initials: context.data.initials,
+          image: context.data.image,
+        })}
+      </div>
     </oj-c-selection-card>
   );
 

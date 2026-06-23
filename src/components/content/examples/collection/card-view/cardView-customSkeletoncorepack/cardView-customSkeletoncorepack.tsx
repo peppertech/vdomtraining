@@ -31,8 +31,17 @@ type CardItemContext = {
 type InputNumberValueChangedEvent = Parameters<
   NonNullable<ComponentProps<"oj-c-input-number">["onvalueChanged"]>
 >[0];
+type InputNumberRawValueChangedEvent = Parameters<
+  NonNullable<ComponentProps<"oj-c-input-number">["onrawValueChanged"]>
+>[0];
 
 const CONTACTS = JSON.parse(jsonDataStr as string) as Contact[];
+
+const normalizeDelay = (value: number | string | null | undefined) => {
+  const parsedValue =
+    typeof value === "string" ? Number(value.replace(/,/g, "")) : value;
+  return Number.isFinite(parsedValue) ? Math.max(0, parsedValue as number) : 0;
+};
 
 const renderCard = (context: CardItemContext) => (
   <div class="oj-panel">
@@ -58,7 +67,9 @@ const renderSkeleton = (context: CardSkeletonContext) => (
 
 export const CardViewCustomSkeletoncorepack = () => {
   const [delayInput, setDelayInput] = useState(2000);
+  const [delayRawValue, setDelayRawValue] = useState("2000");
   const [fetchDelay, setFetchDelay] = useState(2000);
+  const [reloadKey, setReloadKey] = useState(0);
 
   const dataProvider = useMemo(
     () =>
@@ -69,15 +80,29 @@ export const CardViewCustomSkeletoncorepack = () => {
         0,
         { fetchFirst: fetchDelay }
       ),
-    [fetchDelay]
+    [fetchDelay, reloadKey]
   );
 
   const handleDelayChanged = (event: InputNumberValueChangedEvent) => {
-    setDelayInput(Math.max(0, event.detail.value ?? 0));
+    const nextDelay = normalizeDelay(event.detail.value);
+    setDelayInput(nextDelay);
+    setDelayRawValue(String(nextDelay));
+  };
+
+  const handleDelayRawValueChanged = (
+    event: InputNumberRawValueChangedEvent
+  ) => {
+    setDelayRawValue(event.detail.value ?? "");
   };
 
   const handleApply = () => {
-    setFetchDelay(Math.max(0, delayInput));
+    const nextDelay = normalizeDelay(
+      delayRawValue === "" ? delayInput : delayRawValue
+    );
+    setDelayInput(nextDelay);
+    setDelayRawValue(String(nextDelay));
+    setFetchDelay(nextDelay);
+    setReloadKey((currentKey) => currentKey + 1);
   };
 
   return (
@@ -91,6 +116,7 @@ export const CardViewCustomSkeletoncorepack = () => {
             value={delayInput}
             labelHint="Fetch delay (ms)"
             onvalueChanged={handleDelayChanged}
+            onrawValueChanged={handleDelayRawValueChanged}
           />
           <oj-c-button size="lg" onojAction={handleApply} label="Apply" />
         </oj-form-layout>
