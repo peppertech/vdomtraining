@@ -9,20 +9,17 @@
 
 .demo-timeline-bubble-content {
   box-sizing: border-box;
-  width: 24.5em;
-  height: 6em;
+  height: 6.5em;
+  overflow: visible;
+  padding: 0.75rem 1rem;
+  width: 26em;
 }
 
-.demo-timeline-list-item {
-  width: 100%;
-}
-
-.demo-timeline-avatar {
-  border-radius: 50%;
-  display: block;
-  height: 2rem;
-  object-fit: cover;
-  width: 2rem;
+.demo-timeline-title {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* overflow: visible is needed in RTL mode to prevent

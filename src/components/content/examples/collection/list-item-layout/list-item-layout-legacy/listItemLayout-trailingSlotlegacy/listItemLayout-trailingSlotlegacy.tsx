@@ -1,3 +1,4 @@
+import type { ComponentProps } from "preact";
 import { useMemo, useState } from "preact/hooks";
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import { KeySetImpl, type KeySet } from "ojs/ojkeyset";
@@ -24,6 +25,12 @@ interface Product {
 type ActivityItemContext = ojListView.ItemTemplateContext<Activity["id"], Activity>;
 type ActivitySelectedChangedEvent = ojListView.selectedChanged<Activity["id"], Activity>;
 type ProductItemContext = ojListView.ItemTemplateContext<Product["id"], Product>;
+type SelectorSelectedKeysChangedEvent = Parameters<
+  NonNullable<ComponentProps<"oj-selector">["onselectedKeysChanged"]>
+>[0];
+type SelectorSelectedKeysChangedHandler = NonNullable<
+  ComponentProps<"oj-selector">["onselectedKeysChanged"]
+>;
 
 const ACTIVITIES: Activity[] = [
   { id: "id1", activity: "Content Creation", status: "Open" },
@@ -68,9 +75,20 @@ const getBadgeVariant = (status: Activity["status"]) => {
   }
 };
 
-const renderOverviewItem = (context: ActivityItemContext) => (
+const renderOverviewItem = (
+  context: ActivityItemContext,
+  selectedItems: KeySet<string>,
+  onSelectedKeysChanged: SelectorSelectedKeysChangedHandler
+) => (
   <oj-list-item-layout aria-label={`Details for ${context.data.activity}`}>
-    <oj-selector slot="selector" aria-label={`Select ${context.data.activity}`} />
+    <oj-selector
+      slot="selector"
+      aria-label={`Select ${context.data.activity}`}
+      selectedKeys={selectedItems}
+      onselectedKeysChanged={onSelectedKeysChanged}
+      selectionMode="multiple"
+      rowKey={context.data.id}
+    />
     <div class="oj-typography-body-md">Default Slot</div>
     <div slot="trailing">
       <span class="oj-badge">Trailing Slot</span>
@@ -78,9 +96,20 @@ const renderOverviewItem = (context: ActivityItemContext) => (
   </oj-list-item-layout>
 );
 
-const renderActivityItem = (context: ActivityItemContext) => (
+const renderActivityItem = (
+  context: ActivityItemContext,
+  selectedItems: KeySet<string>,
+  onSelectedKeysChanged: SelectorSelectedKeysChangedHandler
+) => (
   <oj-list-item-layout aria-label={`Details for ${context.data.activity}`}>
-    <oj-selector slot="selector" aria-label={`Select ${context.data.activity}`} />
+    <oj-selector
+      slot="selector"
+      aria-label={`Select ${context.data.activity}`}
+      selectedKeys={selectedItems}
+      onselectedKeysChanged={onSelectedKeysChanged}
+      selectionMode="multiple"
+      rowKey={context.data.id}
+    />
     <div class="oj-typography-body-md">{context.data.activity}</div>
     <div slot="trailing" class="oj-typography-body-sm" aria-label={`Status ${context.data.status}`}>
       <span class={getBadgeVariant(context.data.status)}>{context.data.status}</span>
@@ -147,6 +176,38 @@ export const ListItemLayoutTrailingSlotlegacy = () => {
     setActivitySelectedItems(event.detail.value ?? new KeySetImpl<string>());
   };
 
+  const handleOverviewSelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setOverviewSelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const handleActivitySelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setActivitySelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const renderOverviewItemTemplate = (context: ActivityItemContext) =>
+    renderOverviewItem(
+      context,
+      overviewSelectedItems,
+      handleOverviewSelectorSelectedKeysChanged
+    );
+
+  const renderActivityItemTemplate = (context: ActivityItemContext) =>
+    renderActivityItem(
+      context,
+      activitySelectedItems,
+      handleActivitySelectorSelectedKeysChanged
+    );
+
   return (
     <div id="listitemlayout">
       <div class="oj-sm-only-hide">
@@ -161,7 +222,7 @@ export const ListItemLayoutTrailingSlotlegacy = () => {
           selectionMode="multiple"
           onselectedChanged={handleOverviewSelectedChanged}
         >
-          <template slot="itemTemplate" render={renderOverviewItem} />
+          <template slot="itemTemplate" render={renderOverviewItemTemplate} />
         </oj-list-view>
       </div>
 
@@ -176,7 +237,7 @@ export const ListItemLayoutTrailingSlotlegacy = () => {
         selectionMode="multiple"
         onselectedChanged={handleActivitySelectedChanged}
       >
-        <template slot="itemTemplate" render={renderActivityItem} />
+        <template slot="itemTemplate" render={renderActivityItemTemplate} />
       </oj-list-view>
 
       <div class="oj-sm-padding-4x-vertical">This demo shows trailing slot having images.</div>

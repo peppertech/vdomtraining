@@ -6,8 +6,8 @@ import { pullToRefreshBasicPullToRefreshRecipe } from "./pullToRefresh-basicPull
 
 const refresherTouchItems = [
   {
-    id: "basic-pull-to-refresh",
-    name: "Refresher",
+    id: "basic",
+    name: "Basic",
     description: pullToRefreshBasicPullToRefreshDescription,
     recipe: pullToRefreshBasicPullToRefreshRecipe,
     Component: PullToRefreshBasicPullToRefresh,
@@ -20,8 +20,9 @@ export default function RefresherTouchRecipePage() {
       ariaLabel="Refresher touch examples"
       componentType="oj-refresher"
       items={refresherTouchItems}
-      initialItemId="basic-pull-to-refresh"
+      initialItemId="basic"
       navigationTitle="Refresher Touch"
+      showNavigationForSingleItem
     />
   );
 }

@@ -3,6 +3,20 @@
   height: 30rem;
 }
 
+.demo-timeline-bubble {
+  overflow: visible;
+}
+
+.demo-timeline-bubble-content {
+  box-sizing: border-box;
+  height: 6em;
+  width: 24.5em;
+}
+
+.demo-timeline-list-item {
+  width: 100%;
+}
+
 /* overflow: visible is needed in RTL mode to prevent
    content from being hidden due to inverted x-axis causing
    negative x-axis coordinates */

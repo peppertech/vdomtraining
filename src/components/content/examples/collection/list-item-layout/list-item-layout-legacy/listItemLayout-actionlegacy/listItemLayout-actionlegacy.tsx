@@ -1,3 +1,4 @@
+import type { ComponentProps } from "preact";
 import { useMemo, useState } from "preact/hooks";
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import { KeySetImpl, type KeySet } from "ojs/ojkeyset";
@@ -44,8 +45,14 @@ type EmployeeInfoSelectedChangedEvent = ojListView.selectedChanged<
 >;
 type PaymentItemContext = ojListView.ItemTemplateContext<Payment["id"], Payment>;
 type ButtonsetValueChangedEvent = Parameters<
-  NonNullable<import("preact").ComponentProps<"oj-buttonset-one">["onvalueChanged"]>
+  NonNullable<ComponentProps<"oj-buttonset-one">["onvalueChanged"]>
 >[0];
+type SelectorSelectedKeysChangedEvent = Parameters<
+  NonNullable<ComponentProps<"oj-selector">["onselectedKeysChanged"]>
+>[0];
+type SelectorSelectedKeysChangedHandler = NonNullable<
+  ComponentProps<"oj-selector">["onselectedKeysChanged"]
+>;
 
 const EMPLOYEES: Employee[] = [
   { id: "id1", image: "/styles/images/listItemImages/placeholder-male-01.png", name: "Chris Black", initials: "CB" },
@@ -117,9 +124,20 @@ const getIconClass = (type: Payment["type"]) => {
   }
 };
 
-const renderOverviewItem = (context: EmployeeItemContext) => (
+const renderOverviewItem = (
+  context: EmployeeItemContext,
+  selectedItems: KeySet<string>,
+  onSelectedKeysChanged: SelectorSelectedKeysChangedHandler
+) => (
   <oj-list-item-layout aria-label={`Details for ${context.data.name}`}>
-    <oj-selector slot="selector" aria-label={`Select ${context.data.name}`} />
+    <oj-selector
+      slot="selector"
+      aria-label={`Select ${context.data.name}`}
+      selectedKeys={selectedItems}
+      onselectedKeysChanged={onSelectedKeysChanged}
+      selectionMode="multiple"
+      rowKey={context.data.id}
+    />
     <div class="oj-typography-body-md">Default slot</div>
     <div slot="action">
       <oj-button chroming="borderless" label="Action Slot" class="oj-button-sm" />
@@ -211,6 +229,40 @@ export const ListItemLayoutActionlegacy = () => {
     setToolbarSelectedItems(event.detail.value ?? new KeySetImpl<string>());
   };
 
+  const handleOverviewSelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setOverviewSelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const handleEmployeeSelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setEmployeeSelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const handleToolbarSelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setToolbarSelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const renderOverviewItemTemplate = (context: EmployeeItemContext) =>
+    renderOverviewItem(
+      context,
+      overviewSelectedItems,
+      handleOverviewSelectorSelectedKeysChanged
+    );
+
   const renderEmployeeActionItem = (context: EmployeeInfoItemContext) => {
     const handleValueChanged = (event: ButtonsetValueChangedEvent) => {
       setButtonsetValues((currentValues) => ({
@@ -221,7 +273,14 @@ export const ListItemLayoutActionlegacy = () => {
 
     return (
       <oj-list-item-layout aria-label={`Details for ${context.data.name}`}>
-        <oj-selector slot="selector" aria-label={`Select ${context.data.name}`} />
+        <oj-selector
+          slot="selector"
+          aria-label={`Select ${context.data.name}`}
+          selectedKeys={employeeSelectedItems}
+          onselectedKeysChanged={handleEmployeeSelectorSelectedKeysChanged}
+          selectionMode="multiple"
+          rowKey={context.data.id}
+        />
         <div class="oj-typography-body-md oj-typography-bold">{context.data.name}</div>
         <div
           slot="secondary"
@@ -255,7 +314,14 @@ export const ListItemLayoutActionlegacy = () => {
 
   const renderToolbarItem = (context: EmployeeInfoItemContext) => (
     <oj-list-item-layout aria-label={`Details for ${context.data.name}`}>
-      <oj-selector slot="selector" aria-label={`Select ${context.data.name}`} />
+      <oj-selector
+        slot="selector"
+        aria-label={`Select ${context.data.name}`}
+        selectedKeys={toolbarSelectedItems}
+        onselectedKeysChanged={handleToolbarSelectorSelectedKeysChanged}
+        selectionMode="multiple"
+        rowKey={context.data.id}
+      />
       <div class="oj-typography-body-md oj-typography-bold">{context.data.name}</div>
       <div
         slot="secondary"
@@ -297,7 +363,7 @@ export const ListItemLayoutActionlegacy = () => {
           selectionMode="multiple"
           onselectedChanged={handleOverviewSelectedChanged}
         >
-          <template slot="itemTemplate" render={renderOverviewItem} />
+          <template slot="itemTemplate" render={renderOverviewItemTemplate} />
         </oj-list-view>
       </div>
 

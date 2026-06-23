@@ -43,6 +43,9 @@ const employeeItems = (JSON.parse(employeeStartDataText) as TimelineEmployeeItem
 }));
 const majorAxis = { scale: 'quarters' };
 const minorAxis = { scale: 'weeks', zoomOrder: ['months', 'weeks', 'days'] };
+const bubbleWidth = '26em';
+const bubbleHeight = '6.5em';
+const bubbleRtlX = '-24em';
 const menuItems: MenuItem[] = [
   { id: 'save', label: 'Save', icon: 'oj-ux-ico-save' },
   { id: 'download', label: 'Download', icon: 'oj-ux-ico-download' },
@@ -73,41 +76,54 @@ export const TimelineCustomRendererTimeline = () => {
   const currentDateString = 'Mar 1, 2013';
   const currentDate = new Date(currentDateString).toISOString();
   const referenceObjects = useMemo(() => [{ value: currentDate }], [currentDate]);
-  const bubbleX = document.documentElement.getAttribute('dir') === 'ltr' ? '0' : '-22.5em';
+  const bubbleX = document.documentElement.getAttribute('dir') === 'ltr' ? '0' : bubbleRtlX;
 
   const renderItemBubbleContentTemplate = (item: TimelineBubbleContext) => (
     <svg class="demo-timeline-bubble">
       <g>
-        <foreignObject x={bubbleX} y="0" width="24.5em" height="6.0em">
-          <oj-c-list-item-layout>
-            <div slot="leading">
-              <oj-c-avatar
-                role="img"
-                size="xs"
-                initials={item.itemData.name}
-                src={item.itemData.image}
-                aria-label={`Avatar of ${item.itemData.name}`}
-                title={`Avatar of ${item.itemData.name}`}
-              />
-            </div>
-            <div class="oj-typography-body-sm">{item.itemData.name}</div>
-            <div slot="secondary">
-              <span class="oj-badge oj-badge-subtle oj-badge-info">{item.itemData.title}</span>
-            </div>
-            <div slot="tertiary">{item.itemData.begin}</div>
-            <div slot="action">
-              <oj-menu-button chroming="borderless" id={`menu${item.data.id}`} class="oj-button-sm" display="icons">
-                <oj-menu slot="menu">
-                  {menuItems.map((menuItem) => (
-                    <oj-option key={`${menuItem.id}${item.data.id}`} value={menuItem.label} id={`${menuItem.id}${item.data.id}`}>
-                      <span slot="startIcon" class={menuItem.icon}></span>
-                      <span>{menuItem.label}</span>
-                    </oj-option>
-                  ))}
-                </oj-menu>
-              </oj-menu-button>
-            </div>
-          </oj-c-list-item-layout>
+        <foreignObject x={bubbleX} y="0" width={bubbleWidth} height={bubbleHeight}>
+          <div xmlns="http://www.w3.org/1999/xhtml" class="demo-timeline-bubble-content">
+            <oj-c-list-item-layout
+              aria-label={`Timeline details for ${item.itemData.name}`}
+              inset="none"
+              verticalAlignment="top"
+            >
+              <div slot="leading">
+                <oj-c-avatar
+                  role="img"
+                  size="xs"
+                  initials={item.itemData.name}
+                  src={item.itemData.image}
+                  aria-label={`Avatar of ${item.itemData.name}`}
+                  title={`Avatar of ${item.itemData.name}`}
+                />
+              </div>
+              <div class="oj-typography-body-sm">{item.itemData.name}</div>
+              <div slot="secondary">
+                <span class="demo-timeline-title oj-badge oj-badge-subtle oj-badge-info">
+                  {item.itemData.title}
+                </span>
+              </div>
+              <div slot="tertiary">{item.itemData.begin}</div>
+              <div slot="action">
+                <oj-menu-button
+                  chroming="borderless"
+                  id={`menu${item.data.id}`}
+                  class="oj-button-sm"
+                  display="icons"
+                >
+                  <oj-menu slot="menu">
+                    {menuItems.map((menuItem) => (
+                      <oj-option key={`${menuItem.id}${item.data.id}`} value={menuItem.label} id={`${menuItem.id}${item.data.id}`}>
+                        <span slot="startIcon" class={menuItem.icon}></span>
+                        <span>{menuItem.label}</span>
+                      </oj-option>
+                    ))}
+                  </oj-menu>
+                </oj-menu-button>
+              </div>
+            </oj-c-list-item-layout>
+          </div>
         </foreignObject>
       </g>
     </svg>
@@ -123,7 +139,7 @@ export const TimelineCustomRendererTimeline = () => {
       end={new Date('Dec 31, 2013').toISOString()}
       viewportStart={new Date('Jan 27, 2013').toISOString()}
       viewportEnd={new Date('Mar 24, 2013').toISOString()}
-      selection={[4]}
+      selection={[2]}
       selectionMode="single"
       referenceObjects={referenceObjects}
       majorAxis={majorAxis}

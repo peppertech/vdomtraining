@@ -1,3 +1,4 @@
+import type { ComponentProps } from "preact";
 import { useMemo, useState } from "preact/hooks";
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import { KeySetImpl, type KeySet } from "ojs/ojkeyset";
@@ -25,6 +26,12 @@ type PersonItemContext = ojListView.ItemTemplateContext<Person["id"], Person>;
 type PersonSelectedChangedEvent = ojListView.selectedChanged<Person["id"], Person>;
 type CountryItemContext = ojListView.ItemTemplateContext<Country["id"], Country>;
 type CountrySelectedChangedEvent = ojListView.selectedChanged<Country["id"], Country>;
+type SelectorSelectedKeysChangedEvent = Parameters<
+  NonNullable<ComponentProps<"oj-selector">["onselectedKeysChanged"]>
+>[0];
+type SelectorSelectedKeysChangedHandler = NonNullable<
+  ComponentProps<"oj-selector">["onselectedKeysChanged"]
+>;
 
 const PEOPLE: Person[] = [
   {
@@ -53,9 +60,20 @@ const COUNTRIES: Country[] = [
   { id: "id3", icon: "oj-ux-flg-in", default: "India", meta: "Rupees" }
 ];
 
-const renderOverviewItem = (context: PersonItemContext) => (
+const renderOverviewItem = (
+  context: PersonItemContext,
+  selectedItems: KeySet<string>,
+  onSelectedKeysChanged: SelectorSelectedKeysChangedHandler
+) => (
   <oj-list-item-layout aria-label={`Details for ${context.data.name}`}>
-    <oj-selector slot="selector" aria-label={`Select ${context.data.name}`} />
+    <oj-selector
+      slot="selector"
+      aria-label={`Select ${context.data.name}`}
+      selectedKeys={selectedItems}
+      onselectedKeysChanged={onSelectedKeysChanged}
+      selectionMode="multiple"
+      rowKey={context.data.id}
+    />
     <div slot="leading">
       <span class="oj-badge">Leading Slot</span>
     </div>
@@ -66,9 +84,20 @@ const renderOverviewItem = (context: PersonItemContext) => (
   </oj-list-item-layout>
 );
 
-const renderCountryItem = (context: CountryItemContext) => (
+const renderCountryItem = (
+  context: CountryItemContext,
+  selectedItems: KeySet<string>,
+  onSelectedKeysChanged: SelectorSelectedKeysChangedHandler
+) => (
   <oj-list-item-layout aria-label={`Details for ${context.data.default}`}>
-    <oj-selector slot="selector" aria-label={`Check box for ${context.data.meta}`} />
+    <oj-selector
+      slot="selector"
+      aria-label={`Check box for ${context.data.meta}`}
+      selectedKeys={selectedItems}
+      onselectedKeysChanged={onSelectedKeysChanged}
+      selectionMode="multiple"
+      rowKey={context.data.id}
+    />
     <div slot="leading" class={`demo-image ${context.data.icon}`} aria-label="Country icon" role="img" />
     <div class="oj-typography-body-md">{context.data.default}</div>
     <div slot="metadata" class="oj-typography-body-sm oj-text-color-secondary">
@@ -108,6 +137,38 @@ export const ListItemLayoutOneLinelegacy = () => {
     setCountrySelectedItems(event.detail.value ?? new KeySetImpl<string>());
   };
 
+  const handleOverviewSelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setOverviewSelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const handleCountrySelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setCountrySelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const renderOverviewItemTemplate = (context: PersonItemContext) =>
+    renderOverviewItem(
+      context,
+      overviewSelectedItems,
+      handleOverviewSelectorSelectedKeysChanged
+    );
+
+  const renderCountryItemTemplate = (context: CountryItemContext) =>
+    renderCountryItem(
+      context,
+      countrySelectedItems,
+      handleCountrySelectorSelectedKeysChanged
+    );
+
   return (
     <div id="listitemlayout">
       <div class="oj-sm-padding-4x-vertical">This demo shows where the various slot contents go.</div>
@@ -121,7 +182,7 @@ export const ListItemLayoutOneLinelegacy = () => {
         selectionMode="multiple"
         onselectedChanged={handleOverviewSelectedChanged}
       >
-        <template slot="itemTemplate" render={renderOverviewItem} />
+        <template slot="itemTemplate" render={renderOverviewItemTemplate} />
       </oj-list-view>
 
       <div class="oj-sm-padding-4x-vertical">Currency example</div>
@@ -135,7 +196,7 @@ export const ListItemLayoutOneLinelegacy = () => {
         selectionMode="multiple"
         onselectedChanged={handleCountrySelectedChanged}
       >
-        <template slot="itemTemplate" render={renderCountryItem} />
+        <template slot="itemTemplate" render={renderCountryItemTemplate} />
       </oj-list-view>
     </div>
   );

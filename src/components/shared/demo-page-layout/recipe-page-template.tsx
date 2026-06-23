@@ -23,6 +23,7 @@ type RecipePageTemplateProps = {
   layoutId?: string;
   navigationTitle?: string;
   routeSegments?: string[];
+  showNavigationForSingleItem?: boolean;
 };
 
 export function RecipePageTemplate({
@@ -34,6 +35,7 @@ export function RecipePageTemplate({
   layoutId,
   navigationTitle,
   routeSegments,
+  showNavigationForSingleItem,
 }: RecipePageTemplateProps) {
   const exampleRoute = useExampleRoute();
   const navigationListRef = useRef<HTMLElement | null>(null);
@@ -166,7 +168,7 @@ export function RecipePageTemplate({
 
   const ActiveExampleComponent = activeExample.Component;
 
-  if (items.length === 1) {
+  if (items.length === 1 && !showNavigationForSingleItem) {
     return (
       <main class="oj-web-applayout-max-width oj-web-applayout-content oj-sm-padding-4x">
         <DemoLayoutTemplate

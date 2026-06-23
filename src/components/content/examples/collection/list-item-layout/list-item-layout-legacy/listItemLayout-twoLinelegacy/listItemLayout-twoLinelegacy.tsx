@@ -40,6 +40,12 @@ type PersonSelectedChangedEvent = ojListView.selectedChanged<Person["id"], Perso
 type EmployeeItemContext = ojListView.ItemTemplateContext<Employee["id"], Employee>;
 type EmployeeSelectedChangedEvent = ojListView.selectedChanged<Employee["id"], Employee>;
 type PaymentItemContext = ojListView.ItemTemplateContext<Payment["id"], Payment>;
+type SelectorSelectedKeysChangedEvent = Parameters<
+  NonNullable<ComponentProps<"oj-selector">["onselectedKeysChanged"]>
+>[0];
+type SelectorSelectedKeysChangedHandler = NonNullable<
+  ComponentProps<"oj-selector">["onselectedKeysChanged"]
+>;
 
 const PEOPLE: Person[] = [
   { id: "id1", image: "/styles/images/listItemImages/placeholder-male-01.png", name: "Chris Black", initials: "CB" },
@@ -117,9 +123,20 @@ const getIconClass = (type: Payment["type"]) => {
   }
 };
 
-const renderOverviewItem = (context: PersonItemContext) => (
+const renderOverviewItem = (
+  context: PersonItemContext,
+  selectedItems: KeySet<string>,
+  onSelectedKeysChanged: SelectorSelectedKeysChangedHandler
+) => (
   <oj-list-item-layout aria-label={`Details for ${context.data.name}`}>
-    <oj-selector slot="selector" aria-label={`Select ${context.data.name}`} />
+    <oj-selector
+      slot="selector"
+      aria-label={`Select ${context.data.name}`}
+      selectedKeys={selectedItems}
+      onselectedKeysChanged={onSelectedKeysChanged}
+      selectionMode="multiple"
+      rowKey={context.data.id}
+    />
     <div slot="leading">
       <span class="oj-badge">Leading Slot</span>
     </div>
@@ -133,9 +150,20 @@ const renderOverviewItem = (context: PersonItemContext) => (
   </oj-list-item-layout>
 );
 
-const renderEmployeeItem = (context: EmployeeItemContext) => (
+const renderEmployeeItem = (
+  context: EmployeeItemContext,
+  selectedItems: KeySet<string>,
+  onSelectedKeysChanged: SelectorSelectedKeysChangedHandler
+) => (
   <oj-list-item-layout aria-label={`Details for ${context.data.name}`}>
-    <oj-selector slot="selector" aria-label={`Select ${context.data.name}`} />
+    <oj-selector
+      slot="selector"
+      aria-label={`Select ${context.data.name}`}
+      selectedKeys={selectedItems}
+      onselectedKeysChanged={onSelectedKeysChanged}
+      selectionMode="multiple"
+      rowKey={context.data.id}
+    />
     <oj-avatar
       slot="leading"
       size="xs"
@@ -221,6 +249,38 @@ export const ListItemLayoutTwoLinelegacy = () => {
     setEmployeeSelectedItems(event.detail.value ?? new KeySetImpl<string>());
   };
 
+  const handleOverviewSelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setOverviewSelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const handleEmployeeSelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setEmployeeSelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const renderOverviewItemTemplate = (context: PersonItemContext) =>
+    renderOverviewItem(
+      context,
+      overviewSelectedItems,
+      handleOverviewSelectorSelectedKeysChanged
+    );
+
+  const renderEmployeeItemTemplate = (context: EmployeeItemContext) =>
+    renderEmployeeItem(
+      context,
+      employeeSelectedItems,
+      handleEmployeeSelectorSelectedKeysChanged
+    );
+
   return (
     <div id="listitemlayout">
       <div class="oj-sm-padding-4x-vertical">This demo shows where the various slot contents go.</div>
@@ -234,7 +294,7 @@ export const ListItemLayoutTwoLinelegacy = () => {
         selectionMode="multiple"
         onselectedChanged={handleOverviewSelectedChanged}
       >
-        <template slot="itemTemplate" render={renderOverviewItem} />
+        <template slot="itemTemplate" render={renderOverviewItemTemplate} />
       </oj-list-view>
 
       <div class="oj-sm-padding-4x-vertical">Employee list example</div>
@@ -248,7 +308,7 @@ export const ListItemLayoutTwoLinelegacy = () => {
         selectionMode="multiple"
         onselectedChanged={handleEmployeeSelectedChanged}
       >
-        <template slot="itemTemplate" render={renderEmployeeItem} />
+        <template slot="itemTemplate" render={renderEmployeeItemTemplate} />
       </oj-list-view>
 
       <div class="oj-sm-padding-4x-vertical">Recurring payments example</div>

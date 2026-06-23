@@ -131,8 +131,7 @@ const listItemLayoutCorePackItems = [
     description: listItemLayoutVerticalAlignmentcorepackDescription,
     recipe: listItemLayoutVerticalAlignmentcorepackRecipe,
     Component: ListItemLayoutVerticalAlignmentcorepack,
-  },
-  
+  }
 ];
 
 export default function ListItemLayoutCorePackRecipePage() {
@@ -140,6 +139,7 @@ export default function ListItemLayoutCorePackRecipePage() {
     <RecipePageTemplate
       ariaLabel="List Item Layout core pack examples"
       componentType="oj-c-list-item-layout"
+      packLabel="Core Pack"
       items={listItemLayoutCorePackItems}
       initialItemId="overview"
       navigationTitle="List Item Layout"

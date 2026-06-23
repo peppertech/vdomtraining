@@ -6,8 +6,8 @@ import { indexerCharacterIndexerRecipe } from "./indexer-characterIndexer/recipe
 
 const indexerItems = [
   {
-    id: "character-indexer",
-    name: "Indexer",
+    id: "basic",
+    name: "Basic",
     description: indexerCharacterIndexerDescription,
     recipe: indexerCharacterIndexerRecipe,
     Component: IndexerCharacterIndexer,
@@ -20,8 +20,9 @@ export default function IndexerRecipePage() {
       ariaLabel="Indexer examples"
       componentType="oj-indexer"
       items={indexerItems}
-      initialItemId="character-indexer"
+      initialItemId="basic"
       navigationTitle="Indexer"
+      showNavigationForSingleItem
     />
   );
 }

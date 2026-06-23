@@ -48,6 +48,12 @@ type PersonItemContext = ojListView.ItemTemplateContext<Person["id"], Person>;
 type PersonSelectedChangedEvent = ojListView.selectedChanged<Person["id"], Person>;
 type ProductItemContext = ojListView.ItemTemplateContext<Product["id"], Product>;
 type DocumentItemContext = ojListView.ItemTemplateContext<DocumentItem["id"], DocumentItem>;
+type SelectorSelectedKeysChangedEvent = Parameters<
+  NonNullable<ComponentProps<"oj-selector">["onselectedKeysChanged"]>
+>[0];
+type SelectorSelectedKeysChangedHandler = NonNullable<
+  ComponentProps<"oj-selector">["onselectedKeysChanged"]
+>;
 
 const ACTIVITIES: Activity[] = [
   { id: "id1", activity: "Content Creation", status: "Open" },
@@ -152,9 +158,20 @@ const getIconBackground = (type: DocumentItem["type"]): AvatarBackground =>
 const getIconClass = (type: DocumentItem["type"]) =>
   type === "pdf" ? "oj-ux-ico-file-pdf" : "oj-ux-ico-file-doc";
 
-const renderOverviewItem = (context: ActivityItemContext) => (
+const renderOverviewItem = (
+  context: ActivityItemContext,
+  selectedItems: KeySet<string>,
+  onSelectedKeysChanged: SelectorSelectedKeysChangedHandler
+) => (
   <oj-list-item-layout aria-label={`Details for ${context.data.activity}`}>
-    <oj-selector slot="selector" aria-label={`Select ${context.data.activity}`} />
+    <oj-selector
+      slot="selector"
+      aria-label={`Select ${context.data.activity}`}
+      selectedKeys={selectedItems}
+      onselectedKeysChanged={onSelectedKeysChanged}
+      selectionMode="multiple"
+      rowKey={context.data.id}
+    />
     <div slot="leading">
       <span class="oj-badge">Leading Slot</span>
     </div>
@@ -162,9 +179,20 @@ const renderOverviewItem = (context: ActivityItemContext) => (
   </oj-list-item-layout>
 );
 
-const renderActivityItem = (context: ActivityItemContext) => (
+const renderActivityItem = (
+  context: ActivityItemContext,
+  selectedItems: KeySet<string>,
+  onSelectedKeysChanged: SelectorSelectedKeysChangedHandler
+) => (
   <oj-list-item-layout aria-label={`Details for ${context.data.activity}`}>
-    <oj-selector slot="selector" aria-label={`Select ${context.data.activity}`} />
+    <oj-selector
+      slot="selector"
+      aria-label={`Select ${context.data.activity}`}
+      selectedKeys={selectedItems}
+      onselectedKeysChanged={onSelectedKeysChanged}
+      selectionMode="multiple"
+      rowKey={context.data.id}
+    />
     <div
       slot="leading"
       class="oj-typography-body-sm demo-badge-width"
@@ -178,9 +206,20 @@ const renderActivityItem = (context: ActivityItemContext) => (
   </oj-list-item-layout>
 );
 
-const renderPersonItem = (context: PersonItemContext) => (
+const renderPersonItem = (
+  context: PersonItemContext,
+  selectedItems: KeySet<string>,
+  onSelectedKeysChanged: SelectorSelectedKeysChangedHandler
+) => (
   <oj-list-item-layout aria-label={`Details for ${context.data.name}`}>
-    <oj-selector slot="selector" aria-label={`Select ${context.data.name}`} />
+    <oj-selector
+      slot="selector"
+      aria-label={`Select ${context.data.name}`}
+      selectedKeys={selectedItems}
+      onselectedKeysChanged={onSelectedKeysChanged}
+      selectionMode="multiple"
+      rowKey={context.data.id}
+    />
     <oj-avatar
       slot="leading"
       size="xs"
@@ -288,6 +327,54 @@ export const ListItemLayoutLeadingSlotlegacy = () => {
     setPersonSelectedItems(event.detail.value ?? new KeySetImpl<string>());
   };
 
+  const handleOverviewSelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setOverviewSelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const handleActivitySelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setActivitySelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const handlePersonSelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setPersonSelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const renderOverviewItemTemplate = (context: ActivityItemContext) =>
+    renderOverviewItem(
+      context,
+      overviewSelectedItems,
+      handleOverviewSelectorSelectedKeysChanged
+    );
+
+  const renderActivityItemTemplate = (context: ActivityItemContext) =>
+    renderActivityItem(
+      context,
+      activitySelectedItems,
+      handleActivitySelectorSelectedKeysChanged
+    );
+
+  const renderPersonItemTemplate = (context: PersonItemContext) =>
+    renderPersonItem(
+      context,
+      personSelectedItems,
+      handlePersonSelectorSelectedKeysChanged
+    );
+
   return (
     <div id="listitemlayout">
       <div class="oj-sm-only-hide">
@@ -302,7 +389,7 @@ export const ListItemLayoutLeadingSlotlegacy = () => {
           selectionMode="multiple"
           onselectedChanged={handleOverviewSelectedChanged}
         >
-          <template slot="itemTemplate" render={renderOverviewItem} />
+          <template slot="itemTemplate" render={renderOverviewItemTemplate} />
         </oj-list-view>
       </div>
 
@@ -317,7 +404,7 @@ export const ListItemLayoutLeadingSlotlegacy = () => {
         selectionMode="multiple"
         onselectedChanged={handleActivitySelectedChanged}
       >
-        <template slot="itemTemplate" render={renderActivityItem} />
+        <template slot="itemTemplate" render={renderActivityItemTemplate} />
       </oj-list-view>
 
       <div class="oj-sm-padding-4x-vertical">The demo shows Leading slot with Avatar</div>
@@ -331,7 +418,7 @@ export const ListItemLayoutLeadingSlotlegacy = () => {
         selectionMode="multiple"
         onselectedChanged={handlePersonSelectedChanged}
       >
-        <template slot="itemTemplate" render={renderPersonItem} />
+        <template slot="itemTemplate" render={renderPersonItemTemplate} />
       </oj-list-view>
 
       <div class="oj-sm-padding-4x-vertical">This demo shows leading slot having images.</div>

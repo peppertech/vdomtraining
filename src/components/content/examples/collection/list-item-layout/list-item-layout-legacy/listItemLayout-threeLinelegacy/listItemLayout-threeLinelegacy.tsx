@@ -40,6 +40,12 @@ type PersonSelectedChangedEvent = ojListView.selectedChanged<Person["id"], Perso
 type EmployeeItemContext = ojListView.ItemTemplateContext<Employee["id"], Employee>;
 type EmployeeSelectedChangedEvent = ojListView.selectedChanged<Employee["id"], Employee>;
 type DocumentItemContext = ojListView.ItemTemplateContext<DocumentItem["id"], DocumentItem>;
+type SelectorSelectedKeysChangedEvent = Parameters<
+  NonNullable<ComponentProps<"oj-selector">["onselectedKeysChanged"]>
+>[0];
+type SelectorSelectedKeysChangedHandler = NonNullable<
+  ComponentProps<"oj-selector">["onselectedKeysChanged"]
+>;
 
 const PEOPLE: Person[] = [
   { id: "id1", image: "/styles/images/listItemImages/placeholder-male-01.png", name: "Chris Black", initials: "CB" },
@@ -107,9 +113,20 @@ const getIconBackground = (type: DocumentItem["type"]): AvatarBackground =>
 const getIconClass = (type: DocumentItem["type"]) =>
   type === "pdf" ? "oj-ux-ico-file-pdf" : "oj-ux-ico-file-doc";
 
-const renderOverviewItem = (context: PersonItemContext) => (
+const renderOverviewItem = (
+  context: PersonItemContext,
+  selectedItems: KeySet<string>,
+  onSelectedKeysChanged: SelectorSelectedKeysChangedHandler
+) => (
   <oj-list-item-layout aria-label={`Details for ${context.data.name}`}>
-    <oj-selector slot="selector" aria-label={`Select ${context.data.name}`} />
+    <oj-selector
+      slot="selector"
+      aria-label={`Select ${context.data.name}`}
+      selectedKeys={selectedItems}
+      onselectedKeysChanged={onSelectedKeysChanged}
+      selectionMode="multiple"
+      rowKey={context.data.id}
+    />
     <div slot="leading" class="oj-typography-body-sm">
       <span class="oj-badge">Leading Slot</span>
     </div>
@@ -126,9 +143,20 @@ const renderOverviewItem = (context: PersonItemContext) => (
   </oj-list-item-layout>
 );
 
-const renderEmployeeItem = (context: EmployeeItemContext) => (
+const renderEmployeeItem = (
+  context: EmployeeItemContext,
+  selectedItems: KeySet<string>,
+  onSelectedKeysChanged: SelectorSelectedKeysChangedHandler
+) => (
   <oj-list-item-layout aria-label={`Details for ${context.data.name}`}>
-    <oj-selector slot="selector" aria-label={`Select ${context.data.name}`} />
+    <oj-selector
+      slot="selector"
+      aria-label={`Select ${context.data.name}`}
+      selectedKeys={selectedItems}
+      onselectedKeysChanged={onSelectedKeysChanged}
+      selectionMode="multiple"
+      rowKey={context.data.id}
+    />
     <oj-avatar
       slot="leading"
       size="xs"
@@ -227,6 +255,38 @@ export const ListItemLayoutThreeLinelegacy = () => {
     setEmployeeSelectedItems(event.detail.value ?? new KeySetImpl<string>());
   };
 
+  const handleOverviewSelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setOverviewSelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const handleEmployeeSelectorSelectedKeysChanged = (
+    event: SelectorSelectedKeysChangedEvent
+  ) => {
+    setEmployeeSelectedItems(
+      (event.detail.value as KeySet<string> | null | undefined) ??
+        new KeySetImpl<string>()
+    );
+  };
+
+  const renderOverviewItemTemplate = (context: PersonItemContext) =>
+    renderOverviewItem(
+      context,
+      overviewSelectedItems,
+      handleOverviewSelectorSelectedKeysChanged
+    );
+
+  const renderEmployeeItemTemplate = (context: EmployeeItemContext) =>
+    renderEmployeeItem(
+      context,
+      employeeSelectedItems,
+      handleEmployeeSelectorSelectedKeysChanged
+    );
+
   return (
     <div id="listitemlayout">
       <div class="oj-sm-only-hide">
@@ -241,7 +301,7 @@ export const ListItemLayoutThreeLinelegacy = () => {
           selectionMode="multiple"
           onselectedChanged={handleOverviewSelectedChanged}
         >
-          <template slot="itemTemplate" render={renderOverviewItem} />
+          <template slot="itemTemplate" render={renderOverviewItemTemplate} />
         </oj-list-view>
       </div>
 
@@ -256,7 +316,7 @@ export const ListItemLayoutThreeLinelegacy = () => {
         selectionMode="multiple"
         onselectedChanged={handleEmployeeSelectedChanged}
       >
-        <template slot="itemTemplate" render={renderEmployeeItem} />
+        <template slot="itemTemplate" render={renderEmployeeItemTemplate} />
       </oj-list-view>
 
       <div class="oj-sm-padding-4x-vertical">Document list example</div>
