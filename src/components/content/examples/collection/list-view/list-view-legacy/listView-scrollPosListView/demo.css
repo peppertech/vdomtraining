@@ -1,5 +1,47 @@
 .demo-list {
   width: 37.5rem;
-  height: 18.75rem;
+  height: 25rem;
+  max-height: 400px;
+  max-width: 100%;
   overflow-x: hidden;
+}
+
+.demo-note-item {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 4rem;
+  width: 100%;
+  padding-inline: 1rem;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.demo-note-item span:last-child {
+  flex: 0 0 auto;
+  text-align: end;
+}
+
+.demo-scroll-position-instructions {
+  max-width: 72rem;
+}
+
+.demo-scroll-position-panel {
+  width: 37.5rem;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+.demo-reverse-button {
+  margin-bottom: 1rem;
+}
+
+.demo-scroll-position-status {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
 }

@@ -2,11 +2,67 @@
   height: calc(100vh - 4.375rem);
 }
 
+.demo-filter-sort-list .oj-listview-item,
+.demo-filter-sort-list .oj-listview-item-element,
+.demo-product-layout {
+  text-align: start;
+}
+
+.demo-product-layout {
+  width: 100%;
+}
+
+.demo-product-title,
+.demo-product-details,
+.demo-product-tertiary,
+.demo-product-price,
+.demo-product-action {
+  text-align: start;
+}
+
+.demo-product-details,
+.demo-product-meta,
+.demo-product-rating-row {
+  justify-content: flex-start;
+}
+
+.demo-product-author {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.demo-product-rating-row .oj-flex-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.125rem;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.demo-product-rating-value {
+  line-height: 1.25em;
+  margin-inline-start: 0;
+}
+
+.demo-product-price,
+.demo-product-action {
+  justify-self: start;
+}
+
 .demo-gauge {
   width: 5.375rem;
   height: 1.25em;
   display: inline-block;
   vertical-align: text-bottom;
+}
+
+.demo-filter-sort-list .demo-gauge {
+  flex: 0 0 auto;
+  width: 5.375rem;
+  min-width: 5.375rem;
+  max-width: 5.375rem;
 }
 
 .demo-sku-model {

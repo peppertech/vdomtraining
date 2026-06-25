@@ -132,7 +132,7 @@ export const ListViewCrudcorepack = () => {
           labelHint="Enter a value here"
           onvalueChanged={handleCurrentItemValueChanged}
         />
-        <div>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
           <oj-c-button
             id="addButton"
             size="lg"

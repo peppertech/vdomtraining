@@ -7,6 +7,7 @@ import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojbutton';
 import { AllKeySetImpl, KeySetImpl } from 'ojs/ojkeyset';
+import 'css!./demo.css';
 
 type EmployeeData = {
   id: number;
@@ -135,8 +136,10 @@ export const ListViewCollapsibleListView = () => {
 
   return (
       <div id="listviewContainer">
+          <div class="demo-collapsible-button-row">
             <oj-button onojAction={expandAll}>Expand All</oj-button>
             <oj-button onojAction={collapseAll}>Collapse All</oj-button>
+          </div>
             <h5>Directory</h5>
             <oj-list-view id="listview" aria-label="collapsible list" class="oj-listview-item-padding-off" data={dataProvider} expanded={expanded} group-header-position="static" {...{ 'item.enter-key-focus-behavior': "focusWithin" }}>
                     <template slot="itemTemplate" render={renderItem} />

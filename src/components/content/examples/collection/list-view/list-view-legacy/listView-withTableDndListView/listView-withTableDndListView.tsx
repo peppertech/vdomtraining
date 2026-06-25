@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Fragment, h } from 'preact';
+import { h } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import { ojListView } from 'ojs/ojlistview';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
@@ -9,6 +9,7 @@ import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojmenu';
 import 'ojs/ojoption';
+import 'css!./demo.css';
 
 interface DataInfo {
     id: string;
@@ -20,89 +21,118 @@ interface DataInfo {
 type ItemTemplateContext = ojListView.ItemTemplateContext<DataInfo['id'], DataInfo>;
 type TransferSource = DataTransfer | DemoDataTransfer | null;
 type MenuActionEvent = CustomEvent<{ selectedValue?: 'cut' | 'paste' }>;
+type TransferItem = DataInfo | { data?: DataInfo; item?: { data?: DataInfo } };
+type LegacyItemTemplateContext = ItemTemplateContext & {
+    item?: {
+        data: DataInfo;
+        metadata: {
+            key: DataInfo['id'];
+        };
+    };
+};
+
+const LISTVIEW_ITEM_MIME_TYPE = 'application/ojlistviewitems+json';
+
+const SOURCE_DATA: DataInfo[] = [
+    {
+        id: 'i1',
+        name: 'Chris Black',
+        title: 'Oracle Cloud Infrastructure GTM Channel Director EMEA',
+        image: '/styles/images/hcm/placeholder-male-01.png'
+    },
+    {
+        id: 'i2',
+        name: 'Christine Cooper',
+        title: 'Senior Principal Escalation Manager',
+        image: '/styles/images/hcm/placeholder-female-01.png'
+    },
+    {
+        id: 'i3',
+        name: 'Chris Benalamore',
+        title: 'Area Business Operations Director EMEA & JAPAC',
+        image: '/styles/images/hcm/placeholder-male-03.png'
+    },
+    {
+        id: 'i4',
+        name: 'Christopher Johnson',
+        title: 'Vice-President HCM Application Development',
+        image: '/styles/images/hcm/placeholder-male-04.png'
+    },
+    {
+        id: 'i5',
+        name: 'Samire Christian',
+        title: 'Consulting Project Technical Manager',
+        image: '/styles/images/hcm/placeholder-male-05.png'
+    },
+    {
+        id: 'i6',
+        name: 'Kurt Marchris',
+        title: 'Customer Service Analyst',
+        image: '/styles/images/hcm/placeholder-male-06.png'
+    },
+    {
+        id: 'i7',
+        name: 'Jennifer Christy',
+        title: 'Area Business Operations Director EMEA & JAPAC',
+        image: '/styles/images/hcm/placeholder-female-03.png'
+    }
+];
+
+const TARGET_DATA: DataInfo[] = [
+    {
+        id: 'i8',
+        name: 'Zelda Christian Cooperman',
+        title: 'Senior Principal Escalation Manager',
+        image: '/styles/images/hcm/placeholder-female-02.png'
+    },
+    {
+        id: 'i9',
+        name: 'Christian Wu',
+        title: 'Senior Principal Escalation Manager',
+        image: '/styles/images/hcm/placeholder-male-07.png'
+    },
+    {
+        id: 'i10',
+        name: 'Christine Ellis',
+        title: 'Vice-President HCM Application Development',
+        image: '/styles/images/hcm/placeholder-female-04.png'
+    },
+    {
+        id: 'i11',
+        name: 'Patrick Chrismon',
+        title: 'Consulting Project Technical Manager',
+        image: '/styles/images/hcm/placeholder-male-08.png'
+    },
+    {
+        id: 'i12',
+        name: 'Alfred Marchris',
+        title: 'Principal Developer',
+        image: '/styles/images/hcm/placeholder-male-13.png'
+    }
+];
+
+const getTemplateData = (item: LegacyItemTemplateContext): DataInfo => {
+    return item.data ?? item.item?.data;
+};
+
+const getTemplateKey = (item: LegacyItemTemplateContext): DataInfo['id'] => {
+    return item.key ?? item.metadata?.key ?? item.item?.metadata?.key ?? getTemplateData(item).id;
+};
+
+const getTransferData = (item: TransferItem): DataInfo | null => {
+    const data = 'data' in item ? item.data : undefined;
+    const itemData = 'item' in item ? item.item?.data : undefined;
+    const candidate = data ?? itemData ?? item;
+    return candidate && 'id' in candidate ? candidate as DataInfo : null;
+};
 
 export const ListViewWithTableDndListView = () => {
-  const sourceData = useMemo(() => [
-      {
-          id: 'i1',
-          name: 'Chris Black',
-          title: 'Oracle Cloud Infrastructure GTM Channel Director EMEA',
-          image: '../images/hcm/placeholder-male-01.png'
-      },
-      {
-          id: 'i2',
-          name: 'Christine Cooper',
-          title: 'Senior Principal Escalation Manager',
-          image: '../images/hcm/placeholder-female-01.png'
-      },
-      {
-          id: 'i3',
-          name: 'Chris Benalamore',
-          title: 'Area Business Operations Director EMEA & JAPAC',
-          image: '../images/hcm/placeholder-male-03.png'
-      },
-      {
-          id: 'i4',
-          name: 'Christopher Johnson',
-          title: 'Vice-President HCM Application Development',
-          image: '../images/hcm/placeholder-male-04.png'
-      },
-      {
-          id: 'i5',
-          name: 'Samire Christian',
-          title: 'Consulting Project Technical Manager',
-          image: '../images/hcm/placeholder-male-05.png'
-      },
-      {
-          id: 'i6',
-          name: 'Kurt Marchris',
-          title: 'Customer Service Analyst',
-          image: '../images/hcm/placeholder-male-06.png'
-      },
-      {
-          id: 'i7',
-          name: 'Jennifer Christy',
-          title: 'Area Business Operations Director EMEA & JAPAC',
-          image: '../images/hcm/placeholder-female-03.png'
-      }
-  ], []);
-  const targetData = useMemo(() => [
-      {
-          id: 'i8',
-          name: 'Zelda Christian Cooperman',
-          title: 'Senior Principal Escalation Manager',
-          image: '../images/hcm/placeholder-female-02.png'
-      },
-      {
-          id: 'i9',
-          name: 'Christian Wu',
-          title: 'Senior Principal Escalation Manager',
-          image: '../images/hcm/placeholder-male-07.png'
-      },
-      {
-          id: 'i10',
-          name: 'Christine Ellis',
-          title: 'Vice-President HCM Application Development',
-          image: '../images/hcm/placeholder-female-04.png'
-      },
-      {
-          id: 'i11',
-          name: 'Patrick Chrismon',
-          title: 'Consulting Project Technical Manager',
-          image: '../images/hcm/placeholder-male-08.png'
-      },
-      {
-          id: 'i12',
-          name: 'Alfred Marchris',
-          title: 'Principal Developer',
-          image: '../images/hcm/placeholder-male-13.png'
-      }
-  ], []);
-  const [sourceArr, setSourceArr] = useState<DataInfo[]>(sourceData);
-  const [targetArr, setTargetArr] = useState<DataInfo[]>(targetData);
+  const [sourceArr, setSourceArr] = useState<DataInfo[]>(() => [...SOURCE_DATA]);
+  const [targetArr, setTargetArr] = useState<DataInfo[]>(() => [...TARGET_DATA]);
   const [cutItem, setCutItem] = useState<DataInfo['id'] | null>(null);
 
   const dragItemIdRef = useRef<DataInfo['id'] | null>(null);
+  const dragItemDataRef = useRef<DataInfo | null>(null);
   const sourceListRef = useRef<ojListView<DataInfo['id'], DataInfo> | null>(null);
   const targetListRef = useRef<ojListView<DataInfo['id'], DataInfo> | null>(null);
   const sourceDataProvider = useMemo(() => new ArrayDataProvider(sourceArr, {
@@ -113,40 +143,64 @@ export const ListViewWithTableDndListView = () => {
   }), [targetArr]);
   const clipboard = useMemo(() => new DemoDataTransfer(), []);
 
+  const handleDragOver = (event: DragEvent) => {
+      const hasListViewItemData = Array.from(event.dataTransfer?.types ?? []).includes(LISTVIEW_ITEM_MIME_TYPE);
+      if (hasListViewItemData || dragItemDataRef.current != null) {
+          event.preventDefault();
+          if (event.dataTransfer) {
+              event.dataTransfer.dropEffect = 'move';
+          }
+      }
+  };
+
   const handleDrop = (event: DragEvent, context: ojListView.ItemsDropContext) => {
       event.preventDefault();
       let index = -1;
       if (context.item) {
           const itemContext = targetListRef.current?.getContextByNode(context.item);
-          if (!itemContext) {
-              return;
-          }
-          index = itemContext.index;
-          if (context.position === 'after') {
-              index += 1;
+          if (itemContext) {
+              index = itemContext.index;
+              if (context.position === 'after') {
+                  index += 1;
+              }
           }
       }
-      _handleDataTransfer(event.dataTransfer, index);
+      const data = _getFirstTransferredItem(event.dataTransfer) ?? dragItemDataRef.current;
+      if (data == null) {
+          return;
+      }
+      _moveSourceItemToTarget(data, index);
+      dragItemIdRef.current = null;
+      dragItemDataRef.current = null;
+      setCutItem(null);
   };
 
-	  const handleDragStart = (event: DragEvent) => {
-	      const data = _getFirstTransferredItem(event.dataTransfer);
-	      dragItemIdRef.current = data?.id ?? null;
-	  };
+  const handleDragStart = (event: DragEvent, context: { items: TransferItem[] }) => {
+      const data = context.items[0] ? getTransferData(context.items[0]) : null;
+      dragItemIdRef.current = data?.id ?? null;
+      dragItemDataRef.current = data;
 
-  const handleDragEnd = (event: DragEvent) => {
-      if (event.dataTransfer.dropEffect !== 'none') {
-	          _removeSourceItem(dragItemIdRef.current);
-	      }
-	  };
+      if (data != null) {
+          event.dataTransfer?.setData(LISTVIEW_ITEM_MIME_TYPE, JSON.stringify([data]));
+          if (event.dataTransfer) {
+              event.dataTransfer.effectAllowed = 'move';
+          }
+      }
+  };
+
+  const handleDragEnd = (_event: DragEvent) => {
+      dragItemIdRef.current = null;
+      dragItemDataRef.current = null;
+  };
 
 	  const _getFirstTransferredItem = (dataTransfer: TransferSource): DataInfo | null => {
-	      const dataStr = dataTransfer?.getData('application/ojlistviewitems+json') ?? '';
+	      const dataStr = dataTransfer?.getData(LISTVIEW_ITEM_MIME_TYPE) ?? '';
 	      if (dataStr === '') {
 	          return null;
 	      }
-	      const [data] = JSON.parse(dataStr) as DataInfo[];
-	      return data ?? null;
+	      const parsedData = JSON.parse(dataStr) as TransferItem[] | TransferItem;
+	      const [firstItem] = Array.isArray(parsedData) ? parsedData : [parsedData];
+	      return firstItem ? getTransferData(firstItem) : null;
 	  };
 
 	  const _handleDataTransfer = (dataTransfer: TransferSource, index: number) => {
@@ -160,12 +214,17 @@ export const ListViewWithTableDndListView = () => {
 	      setSourceArr((arr) => arr.filter((item) => item.id !== itemId));
 	  };
 
+	  const _moveSourceItemToTarget = (data: DataInfo, index: number) => {
+	      setSourceArr((arr) => arr.filter((item) => item.id !== data.id));
+	      _insertTargetItem(data, index);
+	  };
+
 	  const _insertTargetItem = (data: DataInfo | null, index: number) => {
 	      if (data == null) {
 	          return;
 	      }
 	      setTargetArr((arr) => {
-	          const nextArr = [...arr];
+	          const nextArr = arr.filter((item) => item.id !== data.id);
 	          if (index === -1) {
 	              // empty list case
 	              nextArr.push(data);
@@ -198,7 +257,7 @@ export const ListViewWithTableDndListView = () => {
 	      }
 	      const data = listView.getDataForVisibleItem({ key: currentItem }) as DataInfo;
       const jsonStr = JSON.stringify([data]);
-      clipboard.setData('application/ojlistviewitems+json', jsonStr);
+      clipboard.setData(LISTVIEW_ITEM_MIME_TYPE, jsonStr);
       setCutItem(currentItem);
   };
 
@@ -218,7 +277,7 @@ export const ListViewWithTableDndListView = () => {
 	          return;
 	      }
 	      const currentItem = listView.currentItem as DataInfo['id'] | null;
-	      const index = _findIndex(targetData, currentItem);
+	      const index = _findIndex(targetArr, currentItem);
       _handleDataTransfer(clipboard, index + 1);
       _removeSourceItem(cutItem);
       setCutItem(null);
@@ -232,37 +291,38 @@ export const ListViewWithTableDndListView = () => {
   };
 
   return (
-      <div id="container">
-            <div class="oj-sm-float-start">
+      <div id="container" class="demo-dnd-container">
+            <div class="demo-dnd-column">
                     <h4 class="oj-sm-margin-2x-start">Drag Source</h4>
-                    <oj-list-view ref={sourceListRef} id="source" onkeydown={handleKeyCut} aria-label="list drag source" class="demo-list oj-listview-item-padding-off" data={sourceDataProvider} {...{ 'dnd.drag.items.data-types': "[\"application/ojlistviewitems+json\"]", 'dnd.drag.items.drag-start': handleDragStart, 'dnd.drag.items.drag-end': handleDragEnd, 'dnd.drop.items.data-types': "[\"application/ojtablerows+json\"]" }}>
+                    <oj-list-view ref={sourceListRef} id="source" onKeyDown={handleKeyCut} aria-label="list drag source" class="demo-dnd-list oj-listview-item-padding-off" data={sourceDataProvider} {...{ 'dnd.drag.items.data-types': `["${LISTVIEW_ITEM_MIME_TYPE}"]`, 'dnd.drag.items.drag-start': handleDragStart, 'dnd.drag.items.drag-end': handleDragEnd, 'dnd.drop.items.data-types': "[\"application/ojtablerows+json\"]" }}>
                               <oj-menu slot="contextMenu" onojMenuAction={handleMenuCut} aria-label="menu with actions"><oj-option value="cut">Cut</oj-option></oj-menu>
-	                              <template slot="itemTemplate" render={(item: ItemTemplateContext) => (
-                                        <>
-                                            <li class={cutItem === item.key ? 'demo-cut-item' : ''}>
-                                                            <oj-list-item-layout>
-                                                                              <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
-                                                                              <oj-avatar slot="leading" size="xs" src={item.data.image} />
-                                                                              <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">{item.data.title}</span>
-                                                                              <div id={item.metadata.key + '_draghandle'} slot="action" role="presentation" class="oj-sm-margin-4x-horizontal oj-listview-drag-handle" />
-                                                                          </oj-list-item-layout>
-                                                        </li>
-                                        </>
-                                      )} />
+	                              <template slot="itemTemplate" render={(item: LegacyItemTemplateContext) => {
+                                        const data = getTemplateData(item);
+                                        const key = getTemplateKey(item);
+                                        return (
+                                            <oj-list-item-layout class={cutItem === key ? 'demo-cut-item' : ''}>
+                                                <span class="oj-typography-body-md oj-text-color-primary">{data.name}</span>
+                                                <oj-avatar slot="leading" size="xs" src={data.image} />
+                                                <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">{data.title}</span>
+                                                <div id={key + '_draghandle'} slot="action" role="presentation" class="oj-sm-margin-4x-horizontal oj-listview-drag-handle" />
+                                            </oj-list-item-layout>
+                                        );
+                                      }} />
                           </oj-list-view>
                 </div>
-            <div class="oj-sm-float-start oj-sm-margin-4x-start">
+            <div class="demo-dnd-column">
                     <h4 class="oj-sm-margin-2x-start">Drop Target</h4>
-                    <oj-list-view ref={targetListRef} id="target" onkeydown={handleKeyPaste} aria-label="list drop target" class="demo-list oj-listview-item-padding-off" data={targetDataProvider} {...{ 'dnd.drop.items.data-types': "[\"application/ojlistviewitems+json\"]", 'dnd.drop.items.drop': handleDrop }}>
+                    <oj-list-view ref={targetListRef} id="target" onKeyDown={handleKeyPaste} aria-label="list drop target" class="demo-dnd-list oj-listview-item-padding-off" data={targetDataProvider} {...{ 'dnd.drop.items.data-types': `["${LISTVIEW_ITEM_MIME_TYPE}"]`, 'dnd.drop.items.drag-over': handleDragOver, 'dnd.drop.items.drop': handleDrop }}>
                               <oj-menu slot="contextMenu" onojMenuAction={handleMenuPaste} aria-label="menu with actions"><oj-option value="paste" disabled={cutItem == null}>Paste</oj-option></oj-menu>
-	                              <template slot="itemTemplate" render={(item: ItemTemplateContext) => (
-                                        <>
+	                              <template slot="itemTemplate" render={(item: LegacyItemTemplateContext) => {
+                                        const data = getTemplateData(item);
+                                        return (
                                             <oj-list-item-layout>
-                                                            <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
-                                                            <oj-avatar slot="leading" size="xs" src={item.data.image} />
-                                                        </oj-list-item-layout>
-                                        </>
-                                      )} />
+                                                <span class="oj-typography-body-md oj-text-color-primary">{data.name}</span>
+                                                <oj-avatar slot="leading" size="xs" src={data.image} />
+                                            </oj-list-item-layout>
+                                        );
+                                      }} />
                           </oj-list-view>
                 </div>
         </div>

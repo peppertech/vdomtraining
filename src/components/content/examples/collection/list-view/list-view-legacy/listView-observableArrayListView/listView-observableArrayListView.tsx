@@ -119,7 +119,7 @@ export const ListViewObservableArrayListView = () => {
           label-hint="Enter a value here"
           onrawValueChanged={handleRawValueChanged}
         />
-        <div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
           <oj-button id="addButton" class="oj-button-lg" onojAction={addItem} disabled={isTextEmpty}>
             Add
           </oj-button>

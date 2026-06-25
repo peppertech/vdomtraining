@@ -30,6 +30,9 @@ import { listViewGridlinesListViewRecipe } from "./listView-gridlinesListView/re
 import { ListViewGroupHeaderListView } from "./listView-groupHeaderListView/listView-groupHeaderListView";
 import { listViewGroupHeaderListViewDescription } from "./listView-groupHeaderListView/description";
 import { listViewGroupHeaderListViewRecipe } from "./listView-groupHeaderListView/recipe";
+import { ListViewHighWaterMarkScrollingListView } from "./listView-highWaterMarkScrollingListView/listView-highWaterMarkScrollingListView";
+import { listViewHighWaterMarkScrollingListViewDescription } from "./listView-highWaterMarkScrollingListView/description";
+import { listViewHighWaterMarkScrollingListViewRecipe } from "./listView-highWaterMarkScrollingListView/recipe";
 import { ListViewJsonHierListView } from "./listView-jsonHierListView/listView-jsonHierListView";
 import { listViewJsonHierListViewDescription } from "./listView-jsonHierListView/description";
 import { listViewJsonHierListViewRecipe } from "./listView-jsonHierListView/recipe";
@@ -88,6 +91,7 @@ const listViewItems = [
     recipe: listViewBasicListViewRecipe,
     Component: ListViewBasicListView,
   },
+  
   {
     id: "gridlines",
     name: "Gridlines",
@@ -108,6 +112,13 @@ const listViewItems = [
     description: listViewSelectionListViewDescription,
     recipe: listViewSelectionListViewRecipe,
     Component: ListViewSelectionListView,
+  },
+  {
+    id: "high-water-mark-scrolling",
+    name: "High-Water Mark Scrolling",
+    description: listViewHighWaterMarkScrollingListViewDescription,
+    recipe: listViewHighWaterMarkScrollingListViewRecipe,
+    Component: ListViewHighWaterMarkScrollingListView,
   },
   {
     id: "json-hierarchical",
@@ -195,7 +206,7 @@ const listViewItems = [
   },
   {
     id: "progressive-load",
-    name: "Progressive Load",
+    name: "Progressive Loading",
     description: listViewProgressiveLoadListViewDescription,
     recipe: listViewProgressiveLoadListViewRecipe,
     Component: ListViewProgressiveLoadListView,
@@ -221,13 +232,13 @@ const listViewItems = [
     recipe: listViewScrollPosListViewRecipe,
     Component: ListViewScrollPosListView,
   },
-  // {
-  //   id: "smart-suggestions",
-  //   name: "Suggestions (Oracle Internal)",
-  //   description: listViewSmartSuggestionsListViewDescription,
-  //   recipe: listViewSmartSuggestionsListViewRecipe,
-  //   Component: ListViewSmartSuggestionsListView,
-  // },
+  {
+    id: "smart-suggestions",
+    name: "Suggestions (Oracle Internal)",
+    description: listViewSmartSuggestionsListViewDescription,
+    recipe: listViewSmartSuggestionsListViewRecipe,
+    Component: ListViewSmartSuggestionsListView,
+  },
   {
     id: "performance",
     name: "Performance: Dataset Size",
@@ -237,7 +248,7 @@ const listViewItems = [
   },
   {
     id: "filter-sort",
-    name: "Filter Sort",
+    name: "Sort & Filter",
     description: listViewFilterSortListViewDescription,
     recipe: listViewFilterSortListViewRecipe,
     Component: ListViewFilterSortListView,
@@ -250,7 +261,7 @@ export default function ListViewHome() {
       ariaLabel="List View examples"
       componentType="oj-list-view"
       items={listViewItems}
-      initialItemId="basic"
+      initialItemId="overview"
       navigationTitle="List View"
     />
   );

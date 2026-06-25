@@ -135,6 +135,7 @@ export const ListViewSelectionListView = () => {
 
   const handleSelectedChanged = (event: ojListView.selectedChanged<EmployeeData['id'], EmployeeData>) => {
       const currentSelection = event.detail.value as ImmutableKeySet<EmployeeData['id']>;
+      setSelectedItems(currentSelection as SelectedKeySet);
       setSelectedIds(getDisplayValue(currentSelection as SelectedKeySet)); // show selected list item elements' ids
       if ((!currentSelection.keys.all && currentSelection.keys.keys!.size > 0) ||
           (currentSelection.keys.all && currentSelection.keys.deletedKeys!.size > 0)) {

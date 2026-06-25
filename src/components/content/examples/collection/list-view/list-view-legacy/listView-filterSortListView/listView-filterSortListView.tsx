@@ -17,6 +17,7 @@ import 'ojs/ojgauge';
 import 'ojs/ojbutton';
 import 'ojs/ojlistitemlayout';
 import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listView/filterSortListView/productData.json';
+import 'css!./demo.css';
 import 'ojs/ojlabel';
 import 'ojs/ojoption';
 
@@ -227,19 +228,17 @@ export const ListViewFilterSortListView = () => {
                                                         <oj-select-single id="sortBy" data={optionsDataProvider} label-hint="Sort by:" label-edge="inside" value={currentSort} class="oj-form-control-max-width-sm" onvalueChanged={handleSortCriteriaChanged} />
                                                     </div>
                                       </div>
-                              <oj-list-view id="listview" aria-label="list with external sort and filter controls" class="demo-list oj-listview-item-padding-off" data={dataProvider} selection-mode="single" {...{ 'item.enter-key-focus-behavior': "focusWithin" }}>
+                              <oj-list-view id="listview" aria-label="list with external sort and filter controls" class="demo-list demo-filter-sort-list oj-listview-item-padding-off" data={dataProvider} selection-mode="single" {...{ 'item.enter-key-focus-behavior': "focusWithin" }}>
 	                                          <template slot="itemTemplate" render={(item: ProductItemTemplateContext) => (
                                                       <>
-                                                          <oj-list-item-layout>
-                                                                            <div class="oj-typography-body-xl"><a href="#">{item.data.TITLE}</a></div>
-                                                                            <div slot="secondary">
-                                                                                                <div>
-                                                                                                                      <span>
-                                                                                                                                              By
-                                                                                                                                              <a href="#">{item.data.AUTHOR}</a>
-                                                                                                                                          </span>
+                                                          <oj-list-item-layout class="demo-product-layout">
+                                                                            <div class="oj-typography-body-xl demo-product-title"><a href="#">{item.data.TITLE}</a></div>
+                                                                            <div slot="secondary" class="demo-product-details">
+                                                                                                <div class="demo-product-author">
+                                                                                                                      <span>By</span>
+                                                                                                                      <a href="#">{item.data.AUTHOR}</a>
                                                                                                                   </div>
-                                                                                                <div class="oj-flex">
+                                                                                                <div class="oj-flex demo-product-meta">
                                                                                                                       <div class="oj-lg-12 oj-md-12 oj-sm-12 oj-flex-item">
                                                                                                                                               <ul class="oj-typography-body-xs demo-sku-model">
                                                                                                                                                                         <li class="oj-helper-inline-block oj-divider-end oj-divider-padding oj-divider-margin">
@@ -257,10 +256,10 @@ export const ListViewFilterSortListView = () => {
                                                                                                                                                                     </ul>
                                                                                                                                           </div>
                                                                                                                   </div>
-                                                                                                <div class="oj-flex">
+                                                                                                <div class="oj-flex demo-product-rating-row">
                                                                                                                       <div class="oj-lg-12 oj-md-12 oj-sm-12 oj-flex-item">
                                                                                                                                               <oj-rating-gauge value={item.data.RATING} readonly class="demo-gauge" aria-label="Rating provided" />
-                                                                                                                                              <span>{item.data.RATING}</span>
+                                                                                                                                              <span class="demo-product-rating-value">{item.data.RATING}</span>
                                                                                                                                               <span>
                                                                                                                                                                         (
                                                                                                                                                                         <a href="#" class="tab-link">
@@ -272,10 +271,10 @@ export const ListViewFilterSortListView = () => {
                                                                                                                                           </div>
                                                                                                                   </div>
                                                                                             </div>
-                                                                            <div slot="tertiary"><a class="oj-typography-body-xs" href="#">Check Shipping & Availability</a></div>
+                                                                            <div slot="tertiary" class="demo-product-tertiary"><a class="oj-typography-body-xs" href="#">Check Shipping & Availability</a></div>
 	                                                                            <div slot="trailing" style={getImage(item.data.IMAGE_URL)} />
-                                                                            <div slot="quaternary" class="oj-typography-body-lg oj-typography-bold">{currencyConverter.format(item.data.PRICE)}</div>
-                                                                            <div slot="navigation"><a class="oj-typography-body-sm" href="#">Add to cart</a></div>
+                                                                            <div slot="quaternary" class="oj-typography-body-lg oj-typography-bold demo-product-price">{currencyConverter.format(item.data.PRICE)}</div>
+                                                                            <div slot="navigation" class="demo-product-action"><a class="oj-typography-body-sm" href="#">Add to cart</a></div>
                                                                         </oj-list-item-layout>
                                                       </>
                                                     )} />

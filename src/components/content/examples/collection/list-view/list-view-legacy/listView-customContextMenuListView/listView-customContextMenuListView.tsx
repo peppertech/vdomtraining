@@ -22,6 +22,7 @@ type ItemTemplateContext = {
 
 export const ListViewCustomContextMenuListView = () => {
   const listViewRef = useRef<ojListView<EmployeeData['id'], EmployeeData> | null>(null);
+  const contextMenuKeyRef = useRef<EmployeeData['id'] | null>(null);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('None selected yet');
   const [launchedFromItem, setLaunchedFromItem] = useState<string>('None launched yet');
 
@@ -31,43 +32,43 @@ export const ListViewCustomContextMenuListView = () => {
         id: 'i1',
         name: 'Chris Black',
         title: 'Oracle Cloud Infrastructure GTM Channel Director EMEA',
-        image: '../images/hcm/placeholder-male-01.png'
+        image: '/styles/images/hcm/placeholder-male-01.png'
       },
       {
         id: 'i2',
         name: 'Christine Cooper',
         title: 'Senior Principal Escalation Manager',
-        image: '../images/hcm/placeholder-female-01.png'
+        image: '/styles/images/hcm/placeholder-female-01.png'
       },
       {
         id: 'i3',
         name: 'Chris Benalamore',
         title: 'Area Business Operations Director EMEA & JAPAC',
-        image: '../images/hcm/placeholder-male-03.png'
+        image: '/styles/images/hcm/placeholder-male-03.png'
       },
       {
         id: 'i4',
         name: 'Christopher Johnson',
         title: 'Vice-President HCM Application Development',
-        image: '../images/hcm/placeholder-male-04.png'
+        image: '/styles/images/hcm/placeholder-male-04.png'
       },
       {
         id: 'i5',
         name: 'Samire Christian',
         title: 'Consulting Project Technical Manager',
-        image: '../images/hcm/placeholder-male-05.png'
+        image: '/styles/images/hcm/placeholder-male-05.png'
       },
       {
         id: 'i6',
         name: 'Kurt Marchris',
         title: 'Customer Service Analyst',
-        image: '../images/hcm/placeholder-male-06.png'
+        image: '/styles/images/hcm/placeholder-male-06.png'
       },
       {
         id: 'i7',
         name: 'Zelda Christian Cooperman',
         title: 'Senior Principal Escalation Manager',
-        image: '../images/hcm/placeholder-female-02.png'
+        image: '/styles/images/hcm/placeholder-female-02.png'
       }
     ],
     []
@@ -80,21 +81,69 @@ export const ListViewCustomContextMenuListView = () => {
     [data]
   );
 
+  const getContextKey = (node: Node | null | undefined): EmployeeData['id'] | null => {
+    if (!(node instanceof Element)) {
+      return null;
+    }
+
+    const context = listViewRef.current?.getContextByNode(node);
+    if (context?.key != null) {
+      return String(context.key);
+    }
+
+    const itemNode = node.closest('li, .oj-listview-item');
+    if (itemNode instanceof Element) {
+      const itemContext = listViewRef.current?.getContextByNode(itemNode);
+      if (itemContext?.key != null) {
+        return String(itemContext.key);
+      }
+    }
+
+    return null;
+  };
+
+  const resolveLauncherNode = (launcher: string | Element | undefined): Node | null => {
+    if (launcher instanceof Element) {
+      return launcher;
+    }
+
+    if (typeof launcher === 'string') {
+      return document.querySelector(launcher);
+    }
+
+    return null;
+  };
+
+  const updateLaunchedFrom = (node: Node | null | undefined) => {
+    const key = getContextKey(node);
+    if (key != null) {
+      contextMenuKeyRef.current = key;
+      setLaunchedFromItem(key);
+    }
+    return key;
+  };
+
   const handleMenuAction = (event: ojMenuEventMap['ojMenuAction']) => {
     setSelectedMenuItem(event.detail.selectedValue);
+    const key = updateLaunchedFrom(event.target as Node | null);
+    if (key == null && contextMenuKeyRef.current != null) {
+      setLaunchedFromItem(contextMenuKeyRef.current);
+    }
+  };
+
+  const handleContextMenu = (event: MouseEvent) => {
+    updateLaunchedFrom(event.target as Node | null);
   };
 
   const handleBeforeOpen = (event: ojMenuEventMap['ojBeforeOpen']) => {
-    const launcher = event.detail.openOptions.launcher;
-    if (!(launcher instanceof Element)) {
+    const originalEvent = event.detail.originalEvent as Event | undefined;
+    const key = updateLaunchedFrom(originalEvent?.target as Node | null);
+    if (key != null) {
       return;
     }
 
-    const context = listViewRef.current?.getContextByNode(launcher);
-
-    if (context != null && context.key != null) {
-      setLaunchedFromItem(String(context.key));
-    }
+    const launcher = event.detail.openOptions.launcher;
+    updateLaunchedFrom(resolveLauncherNode(launcher));
   };
 
   const renderItem = (item: ItemTemplateContext) => {
@@ -117,6 +166,7 @@ export const ListViewCustomContextMenuListView = () => {
         aria-label="list with context menu"
         class="oj-listview-item-padding-off"
         data={dataProvider}
+        onContextMenuCapture={handleContextMenu}
         {...{ 'item.enter-key-focus-behavior': 'focusWithin' }}
       >
         <oj-menu

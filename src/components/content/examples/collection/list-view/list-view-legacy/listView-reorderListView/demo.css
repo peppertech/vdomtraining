@@ -1,6 +1,81 @@
-.demo-card {
+#listviewContainer .demo-reorder-listview .demo-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   width: 15.625rem;
   height: 8.125rem;
+  margin: 0;
+  padding: 2rem;
+}
+
+#listviewContainer .demo-reorder-listview .demo-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#listviewContainer .demo-reorder-listview .demo-card-title {
+  margin-top: 0.75rem;
+}
+
+#listviewContainer .demo-reorder-listview .demo-card-drag-handle {
+  flex: 0 0 auto;
+}
+
+#listviewContainer .demo-reorder-listview-card {
+  width: 100%;
+}
+
+#listviewContainer .demo-reorder-listview-card .oj-listview-card-layout,
+#listviewContainer .demo-reorder-listview-card .oj-listview-card-group,
+#listviewContainer .demo-reorder-listview-card .oj-listview-group,
+#listviewContainer .demo-reorder-listview-card ul[role='group'] {
+  display: flex !important;
+  flex-flow: row wrap !important;
+  gap: 1rem !important;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#listviewContainer .demo-reorder-listview-card .oj-listview-card,
+#listviewContainer .demo-reorder-listview-card .oj-listview-item {
+  box-sizing: border-box;
+  display: block;
+  flex: 0 0 15.625rem;
+  /* width: 15.625rem !important; */
+  /* max-width: 15.625rem; */
+  margin: 0 !important;
+  /* padding: 0 !important; */
+}
+
+#listviewContainer .demo-reorder-listview-card li.oj-listview-item,
+#listviewContainer .demo-reorder-listview-card li.oj-listview-item-element,
+#listviewContainer .demo-reorder-listview-card .demo-card {
+  box-sizing: border-box;
+  flex: 0 0 15.625rem;
+  /* width: 15.625rem; */
+  /* max-width: 15.625rem; */
+  margin: 0;
+}
+
+#listviewContainer .demo-reorder-listview-card .folder,
+#listviewContainer .demo-reorder-listview-card .oj-listview-group-item:has(> .folder),
+#listviewContainer .demo-reorder-listview-card li.oj-listview-item:has(> .folder),
+#listviewContainer .demo-reorder-listview-card li.oj-listview-item-element:has(> .folder) {
+  flex-basis: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+#listviewContainer .demo-reorder-listview-card .folder {
+  box-sizing: border-box;
+  max-width: none;
+  padding: 0;
 }
 
 .demo-cut-item {

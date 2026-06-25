@@ -40,37 +40,37 @@ export const ListViewProgressiveLoadHierListView = () => {
                   id: 1,
                   name: 'Alfred Marchris',
                   title: 'Principal Developer',
-                  image: '../images/hcm/placeholder-male-13.png'
+                  image: '/styles/images/hcm/placeholder-male-13.png'
               },
               {
                   id: 11,
                   name: 'Andrew Chrismon',
                   title: 'Consulting Project Technical Manager',
-                  image: '../images/hcm/placeholder-male-08.png'
+                  image: '/styles/images/hcm/placeholder-male-08.png'
               },
               {
                   id: 12,
                   name: 'Annett Christy',
                   title: 'Area Business Operations Director EMEA & JAPAC',
-                  image: '../images/hcm/placeholder-female-03.png'
+                  image: '/styles/images/hcm/placeholder-female-03.png'
               },
               {
                   id: 13,
                   name: 'Arthur Christian',
                   title: 'Consulting Project Technical Manager',
-                  image: '../images/hcm/placeholder-male-05.png'
+                  image: '/styles/images/hcm/placeholder-male-05.png'
               },
               {
                   id: 14,
                   name: 'Ashton Marchris',
                   title: 'Customer Service Analyst',
-                  image: '../images/hcm/placeholder-male-06.png'
+                  image: '/styles/images/hcm/placeholder-male-06.png'
               },
               {
                   id: 15,
                   name: 'Ava Christy',
                   title: 'Area Business Operations Director EMEA & JAPAC',
-                  image: '../images/hcm/placeholder-female-03.png'
+                  image: '/styles/images/hcm/placeholder-female-03.png'
               }
           ]
       },
@@ -82,7 +82,7 @@ export const ListViewProgressiveLoadHierListView = () => {
                   id: 2,
                   name: 'Brie Christian Cooperman',
                   title: 'Senior Principal Escalation Manager',
-                  image: '../images/hcm/placeholder-female-02.png'
+                  image: '/styles/images/hcm/placeholder-female-02.png'
               }
           ]
       },
@@ -94,19 +94,19 @@ export const ListViewProgressiveLoadHierListView = () => {
                   id: 3,
                   name: 'Christine Cooper',
                   title: 'Senior Principal Escalation Manager',
-                  image: '../images/hcm/placeholder-female-01.png'
+                  image: '/styles/images/hcm/placeholder-female-01.png'
               },
               {
                   id: 31,
                   name: 'Chris Benalamore',
                   title: 'Area Business Operations Director EMEA & JAPAC',
-                  image: '../images/hcm/placeholder-male-03.png'
+                  image: '/styles/images/hcm/placeholder-male-03.png'
               },
               {
                   id: 32,
                   name: 'Christopher Johnson',
                   title: 'Vice-President HCM Application Development',
-                  image: '../images/hcm/placeholder-male-04.png'
+                  image: '/styles/images/hcm/placeholder-male-04.png'
               }
           ]
       }
@@ -130,9 +130,17 @@ export const ListViewProgressiveLoadHierListView = () => {
 
   return (
       <div id="listviewContainer">
-            <oj-form-layout max-columns="3" direction="row">
-                    <oj-input-number id="fetch-delay-input" min="0" step="0" onvalueChanged={handleDelayValueChanged} value={delay} label-hint="Fetch delay (ms)" />
-                    <oj-input-number id="fetch-child-delay-input" min="0" step="0" onvalueChanged={handleChildDelayValueChanged} value={childDelay} label-hint="Fetch delay for expanding a node (ms)" />
+            <oj-form-layout max-columns={3} direction="row">
+                <oj-input-number
+                    id="fetch-delay-input"
+                    min={0}
+                    step={1000}
+                    onvalueChanged={handleDelayValueChanged} value={delay} labelHint="Fetch delay (ms)" />
+                <oj-input-number
+                    id="fetch-child-delay-input"
+                     min={0}
+                     step={1000}
+                    onvalueChanged={handleChildDelayValueChanged} value={childDelay} labelHint="Fetch delay for expanding a node (ms)" />
                     <oj-button class="oj-button-lg" onojAction={applyDelay}>Apply</oj-button>
                 </oj-form-layout>
             <h5>Contacts</h5>

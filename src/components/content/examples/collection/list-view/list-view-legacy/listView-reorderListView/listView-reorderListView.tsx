@@ -341,33 +341,27 @@ export const ListViewReorderListView = () => {
   );
 
   const renderFileCardItem = (item: ItemTemplateContext) => (
-    <div
-      class={`demo-card oj-panel oj-flex-bar oj-sm-justify-content-space-between${
-        cutItem === item.key ? ' demo-cut-item' : ''
-      }`}
+    <li
+      class={`demo-card oj-panel${cutItem === item.key ? ' demo-cut-item' : ''}`}
     >
-      <oj-list-item-layout>
-        <div class="oj-flex-item">
-          <oj-avatar
-            slot="leading"
-            background={getIconColor(item.data.type)}
-            size="xs"
-            icon-class={getIconClass(item.data.type)}
-            role="img"
-            aria-label="Circular icon with type icon"
-            shape="circle"
-          />
-        </div>
-        <div class="oj-sm-flex-direction-column oj-sm-margin-1x-top">
-          <div class="oj-flex-item">
-            <strong>{item.data.name}</strong>
-          </div>
-        </div>
-      </oj-list-item-layout>
-      <div class="oj-flex-bar">
-        <div role="presentation" class="oj-listview-drag-handle" />
+      <div class="demo-card-header">
+        <oj-avatar
+          background={getIconColor(item.data.type)}
+          size="xs"
+          icon-class={getIconClass(item.data.type)}
+          role="img"
+          aria-label="Circular icon with type icon"
+          shape="circle"
+        />
+        <div
+          role="presentation"
+          class="oj-listview-drag-handle demo-card-drag-handle"
+        />
       </div>
-    </div>
+      <div class="demo-card-title">
+        <strong>{item.data.name}</strong>
+      </div>
+    </li>
   );
 
   const renderItem = (item: ItemTemplateContext) => {
@@ -417,7 +411,9 @@ export const ListViewReorderListView = () => {
         ref={listViewRef}
         id="listview"
         aria-label="reorderable list using json data"
-        class="oj-sm-padding-1x oj-listview-item-padding-off"
+        class={`demo-reorder-listview oj-sm-padding-1x oj-listview-item-padding-off ${
+          activeLayout === 'card' ? 'demo-reorder-listview-card' : 'demo-reorder-listview-list'
+        }`}
         data={dataProvider}
         currentItem={currentItem ?? undefined}
         drillMode="none"

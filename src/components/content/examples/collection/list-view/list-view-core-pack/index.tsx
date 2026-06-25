@@ -51,18 +51,18 @@ import { listViewSmartSuggestionscorepackRecipe } from "./listView-smartSuggesti
 
 const listViewCorePackItems = [
   {
-    id: "overview",
-    name: "Overview",
-    description: listViewOverviewcorepackDescription,
-    recipe: listViewOverviewcorepackRecipe,
-    Component: ListViewOverviewcorepack,
-  },
-  {
     id: "basic",
     name: "Basic",
     description: listViewBasiccorepackDescription,
     recipe: listViewBasiccorepackRecipe,
     Component: ListViewBasiccorepack,
+  },
+  {
+    id: "overview",
+    name: "Overview",
+    description: listViewOverviewcorepackDescription,
+    recipe: listViewOverviewcorepackRecipe,
+    Component: ListViewOverviewcorepack,
   },
   {
     id: "gridlines",
@@ -170,7 +170,7 @@ export default function ListViewCorePackRecipePage() {
       ariaLabel="Core Pack List View examples"
       componentType="oj-c-list-view"
       items={listViewCorePackItems}
-      initialItemId="overview"
+      initialItemId="basic"
       navigationTitle="List View"
       packLabel="Core Pack"
     />

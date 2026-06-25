@@ -1,5 +1,20 @@
-.demo-list {
-  display: inline-block;
+.demo-dnd-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4rem;
+  align-items: flex-start;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.demo-dnd-column {
+  flex: 0 0 calc((100% - 4rem) / 2);
+  min-width: 32rem;
+}
+
+.demo-dnd-list {
+  display: block;
+  width: 100%;
 }
 
 .demo-cut-item {
