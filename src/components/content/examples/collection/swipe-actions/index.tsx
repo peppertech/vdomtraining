@@ -6,8 +6,8 @@ import { swipeToRevealBasicSwipeToRevealRecipe } from "./swipeToReveal-basicSwip
 
 const swipeActionsItems = [
   {
-    id: "basic-swipe-to-reveal",
-    name: "Overview",
+    id: "basic",
+    name: "Basic",
     description: swipeToRevealBasicSwipeToRevealDescription,
     recipe: swipeToRevealBasicSwipeToRevealRecipe,
     Component: SwipeToRevealBasicSwipeToReveal,
@@ -20,8 +20,9 @@ export default function SwipeActionsRecipePage() {
       ariaLabel="Swipe Actions examples"
       componentType="oj-swipe-actions"
       items={swipeActionsItems}
-      initialItemId="basic-swipe-to-reveal"
+      initialItemId="basic"
       navigationTitle="Swipe Actions"
+      showNavigationForSingleItem
     />
   );
 }

@@ -74,7 +74,7 @@ export default function SelectorRecipePage() {
       ariaLabel="Selector examples"
       componentType="oj-selector"
       items={selectorItems}
-      initialItemId="checkbox-selectable-list-view"
+      initialItemId="table-selection"
       navigationTitle="Selector"
     />
   );

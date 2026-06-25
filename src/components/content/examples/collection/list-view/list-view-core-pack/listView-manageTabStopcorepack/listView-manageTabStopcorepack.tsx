@@ -24,49 +24,49 @@ const EMPLOYEES: Employee[] = [
     id: "e1",
     name: "Chris Black",
     email: "chris.black@acme.com",
-    image: "./placeholder-male-01.png",
+    image: "/styles/images/hcm/placeholder-male-01.png",
     status: "In Office"
   },
   {
     id: "e2",
     name: "Christine Cooper",
     email: "christine.cooper@acme.com",
-    image: "./placeholder-female-01.png",
+    image: "/styles/images/hcm/placeholder-female-01.png",
     status: "In Office"
   },
   {
     id: "e3",
     name: "Chris Benalamore",
     email: "chris.benalamore@acme.com",
-    image: "./placeholder-male-03.png",
+    image: "/styles/images/hcm/placeholder-male-03.png",
     status: "Out of Office"
   },
   {
     id: "e4",
     name: "Christopher Johnson",
     email: "christopher.johnson@acme.com",
-    image: "./placeholder-male-04.png",
+    image: "/styles/images/hcm/placeholder-male-04.png",
     status: "In Office"
   },
   {
     id: "e5",
     name: "Samire Christian",
     email: "samire.christian@acme.com",
-    image: "./placeholder-male-05.png",
+    image: "/styles/images/hcm/placeholder-male-05.png",
     status: "In Office"
   },
   {
     id: "e6",
     name: "Kurt Marchris",
     email: "kurt.marchris@acme.com",
-    image: "./placeholder-male-06.png",
+    image: "/styles/images/hcm/placeholder-male-06.png",
     status: "Out of Office"
   },
   {
     id: "e7",
     name: "Zelda Christian Cooperman",
     email: "zelda.christian.cooperman@acme.com",
-    image: "./placeholder-female-02.png",
+    image: "/styles/images/hcm/placeholder-female-02.png",
     status: "Out of Office"
   }
 ];

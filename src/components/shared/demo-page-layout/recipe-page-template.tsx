@@ -147,6 +147,7 @@ export function RecipePageTemplate({
       <li id={item.data.id}>
         <a
           href="#"
+          class="recipe-page-template__navigation-link"
           data-recipe-page-item-id={item.data.id}
           style="color: inherit; text-decoration: none;"
         >

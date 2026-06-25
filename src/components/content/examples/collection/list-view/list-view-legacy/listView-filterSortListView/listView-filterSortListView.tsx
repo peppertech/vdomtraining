@@ -263,8 +263,7 @@ export const ListViewFilterSortListView = () => {
                                                                                                                                               <span>
                                                                                                                                                                         (
                                                                                                                                                                         <a href="#" class="tab-link">
-                                                                                                                                                                                                    {item.data.REVIEWS}
-                                                                                                                                                                                                    Reviews
+                                                                                                                                                                                                    {item.data.REVIEWS} reviews
                                                                                                                                                                                                 </a>
                                                                                                                                                                         )
                                                                                                                                                                     </span>

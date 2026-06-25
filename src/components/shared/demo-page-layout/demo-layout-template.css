@@ -19,6 +19,20 @@
   flex: 0 0 12rem;
 }
 
+.recipe-page-template__navigation .oj-navigationlist-item-label,
+.recipe-page-template__navigation-link {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.recipe-page-template__navigation-link {
+  display: block;
+  line-height: 1.35;
+}
+
 .recipe-page-template__content,
 .oj-web-applayout-content > [id*="NavigationLayout"].oj-flex > .oj-flex-item {
   flex: 1 1 auto;
