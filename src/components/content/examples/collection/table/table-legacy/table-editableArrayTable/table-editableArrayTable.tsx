@@ -31,6 +31,7 @@ import 'ojs/ojoption';
 import 'ojs/ojdatetimepicker';
 import 'ojs/ojlabel';
 import 'ojs/ojinputtext';
+import "css!./demo.css";
 
 interface DepartmentData {
     DepartmentId: number;
@@ -49,13 +50,17 @@ interface SelectSingleData {
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 type TableColumns = ComponentProps<'oj-table'>['columns'];
 type DelayMode = 'off' | 'on';
-type EditRowState = { rowKey?: DepartmentData['DepartmentId'] | null; rowIndex?: number };
+type EditRowState = ComponentProps<'oj-table'>['editRow'];
+type EditableRowTemplateContext = ojTable.RowTemplateContext<DepartmentData['DepartmentId'], DepartmentData> & {
+  mode?: 'navigation' | 'edit';
+};
 const formatPrimaryValue = (primary: DepartmentData['Primary']) =>
     primary.includes('checked') ? 'Checked' : 'Unchecked';
 
 export const TableEditableArrayTable = () => {
-  const deptArray: DepartmentData[] = JSON.parse(deptData as string) as DepartmentData[];
-  const [deptObservableArray, setDeptObservableArray] = useState<DepartmentData[]>(deptArray);
+  const [deptObservableArray, setDeptObservableArray] = useState<DepartmentData[]>(
+    () => JSON.parse(deptData as string) as DepartmentData[]
+  );
   const [simulatedDelays, setSimulatedDelays] = useState<DelayMode>('off');
   const [editDelay, setEditDelay] = useState(2000);
   const [editEndDelay, setEditEndDelay] = useState(2000);
@@ -78,7 +83,6 @@ export const TableEditableArrayTable = () => {
           headerText: 'ReadOnly',
           headerClassName: 'oj-helper-text-align-end',
           className: 'oj-helper-text-align-end oj-table-data-cell-padding',
-          template: 'deptIdTemplate',
           id: 'depId',
           minWidth: '7rem'
       },
@@ -87,7 +91,6 @@ export const TableEditableArrayTable = () => {
           weight: 3,
           minWidth: '10rem',
           headerText: 'InputText',
-          template: 'deptNameTemplate',
           id: 'depName'
       },
       {
@@ -97,7 +100,6 @@ export const TableEditableArrayTable = () => {
           headerText: 'InputText Number',
           headerClassName: 'oj-helper-text-align-end',
           className: 'oj-helper-text-align-end',
-          template: 'locIdTemplate',
           id: 'locId',
           minWidth: '10rem'
       },
@@ -106,7 +108,6 @@ export const TableEditableArrayTable = () => {
           headerText: 'SelectSingle',
           weight: 2,
           minWidth: '10rem',
-          template: 'typeTemplate',
           id: 'type'
       },
       {
@@ -114,7 +115,6 @@ export const TableEditableArrayTable = () => {
           headerText: 'Combobox',
           minWidth: '8rem',
           weight: 2,
-          template: 'currencyTemplate',
           id: 'currency'
       },
       {
@@ -122,7 +122,6 @@ export const TableEditableArrayTable = () => {
           weight: 2,
           minWidth: '10rem',
           headerText: 'InputDate',
-          template: 'dateTemplate',
           id: 'start'
       },
       {
@@ -131,7 +130,6 @@ export const TableEditableArrayTable = () => {
           headerStyle: 'text-align: center;',
           minWidth: '8rem',
           style: 'padding-top: 0px; padding-bottom: 0px; text-align: center;',
-          template: 'primaryTemplate',
           id: 'primary'
       },
       {
@@ -140,7 +138,6 @@ export const TableEditableArrayTable = () => {
           style: 'padding-top: 0px; padding-bottom: 0px;',
           headerClassName: 'oj-helper-text-align-end',
           className: 'oj-helper-text-align-end',
-          template: 'actionTemplate',
           id: 'action'
       }
   ], []);
@@ -165,7 +162,7 @@ export const TableEditableArrayTable = () => {
     setEditEndDelay(event.detail.value ?? 2000);
   };
 
-  const handleEditRowEditRowChanged = (event: PropertyChangedEvent<EditRowState | null>) => {
+  const handleEditRowEditRowChanged = (event: Parameters<NonNullable<ComponentProps<'oj-table'>['oneditRowChanged']>>[0]) => {
     setEditRow(event.detail.value ?? { rowKey: null });
   };
 
@@ -301,12 +298,11 @@ export const TableEditableArrayTable = () => {
 	          dataprovider.setItemStatus(editItem, 'submitted');
 	          return;
 	      }
-	      for (let idx = 0; idx < deptObservableArray.length; idx++) {
-	          if (deptObservableArray[idx].DepartmentId === editItem.item.metadata.key) {
-	              deptObservableArray.splice(idx, 1, itemData);
-              break;
-          }
-      }
+      setDeptObservableArray((currentData) =>
+          currentData.map((department) =>
+              department.DepartmentId === editItem.item.metadata.key ? itemData : department
+          )
+      );
       // Set the edit item to "submitted" if successful
       dataprovider.setItemStatus(editItem, 'submitted');
       setEditedData(JSON.stringify(editItem.item.data));
@@ -355,166 +351,139 @@ export const TableEditableArrayTable = () => {
       setEditRow({ rowKey: null });
   };
 
+  const rowTemplateRenderer = (row: EditableRowTemplateContext) => {
+      const rowItem = row.item.data;
+      const currentRowData = rowData?.DepartmentId === rowItem.DepartmentId ? rowData : rowItem;
+
+      if (row.mode === 'edit') {
+          return (
+              <tr>
+                  <td class="oj-helper-text-align-end oj-table-data-cell-padding">
+                      {numberConverter.format(rowItem.DepartmentId)}
+                  </td>
+                  <td>
+                      <oj-input-text
+                          id="it1"
+                          aria-label="Input Text"
+                          value={currentRowData.DepartmentName}
+                          class="editable"
+                          onvalueChanged={(event) => updateRowData('DepartmentName', event.detail.value ?? '')}
+                      />
+                  </td>
+                  <td class="oj-helper-text-align-end">
+                      <oj-input-text
+                          id="it2"
+                          aria-label="Input Text Number"
+                          required
+                          value={currentRowData.LocationId}
+                          validators={validators}
+                          converter={numberConverter}
+                          class="editable"
+                          onvalueChanged={(event) => updateRowData('LocationId', Number(event.detail.value ?? 0))}
+                      />
+                  </td>
+                  <td>
+                      <oj-select-single
+                          id="ss1"
+                          aria-label="Select Single"
+                          value={currentRowData.Type}
+                          data={departments}
+                          class="editable"
+                          onvalueChanged={(event) => updateRowData('Type', event.detail.value ?? '')}
+                      />
+                  </td>
+                  <td>
+                      <oj-combobox-one
+                          id="co1"
+                          aria-label="Combobox"
+                          value={currentRowData.Currency}
+                          class="editable"
+                          onvalueChanged={(event) => updateRowData('Currency', event.detail.value ?? '')}
+                      >
+                          <oj-option value="USD">USD</oj-option>
+                          <oj-option value="JPY">JPY</oj-option>
+                          <oj-option value="EUR">EUR</oj-option>
+                      </oj-combobox-one>
+                  </td>
+                  <td>
+                      <oj-input-date
+                          id="id1"
+                          aria-label="Input Date"
+                          value={currentRowData.StartDate}
+                          class="editable"
+                          onvalueChanged={(event) => updateRowData('StartDate', event.detail.value ?? '')}
+                      />
+                  </td>
+                  <td class="oj-helper-text-align-center">
+                      <oj-checkboxset
+                          id="cs2"
+                          aria-label="Checkboxset"
+                          value={currentRowData.Primary}
+                          class="oj-choice-direction-row demo-table-checkbox editable"
+                          onvalueChanged={(event) => updateRowData('Primary', event.detail.value ?? [])}
+                      >
+                          <oj-option value="checked" />
+                      </oj-checkboxset>
+                  </td>
+                  <td class="oj-helper-text-align-end">
+                      <oj-toolbar data-oj-clickthrough="disabled" chroming="borderless" class="oj-sm-padding-0-vertical oj-sm-padding-4x-end oj-sm-float-end">
+                          <oj-button display="icons" label="Submit" class="oj-button-sm" onojAction={handleDone} data-oj-clickthrough="disabled">
+                              <span slot="startIcon" class="oj-ux-ico-check" />
+                              Save
+                          </oj-button>
+                          <oj-button display="icons" label="Cancel" class="oj-button-sm" onojAction={handleCancel} data-oj-clickthrough="disabled">
+                              <span slot="startIcon" class="oj-ux-ico-multiply" />
+                              Cancel
+                          </oj-button>
+                      </oj-toolbar>
+                  </td>
+              </tr>
+          );
+      }
+
+      return (
+          <tr>
+              <td class="oj-helper-text-align-end oj-table-data-cell-padding">{numberConverter.format(rowItem.DepartmentId)}</td>
+              <td>{rowItem.DepartmentName}</td>
+              <td class="oj-helper-text-align-end">{numberConverter.format(rowItem.LocationId)}</td>
+              <td>{rowItem.Type}</td>
+              <td>{rowItem.Currency}</td>
+              <td>{dateConverter.format(rowItem.StartDate)}</td>
+              <td class="oj-helper-text-align-center">{formatPrimaryValue(rowItem.Primary)}</td>
+              <td class="oj-helper-text-align-end">
+                  <oj-button
+                      data-oj-clickthrough="disabled"
+                      class="oj-button-sm"
+                      display="icons"
+                      label="Edit"
+                      chroming="borderless"
+                      onojAction={handleUpdate(row.item.metadata.key)}
+                  >
+                      <span slot="startIcon" class="oj-ux-ico-edit" />
+                      Edit
+                  </oj-button>
+              </td>
+          </tr>
+      );
+  };
+
+  const ojTableProps: Partial<ComponentProps<'oj-table'>> = {
+      accessibility: { rowHeader: 'depName' },
+      columnsDefault: { sortable: 'disabled' }
+  };
+
   return (
       <div id="tableWrapper">
             <div class="oj-panel oj-bg-neutral-30">
                     <h2 id="table-controls-heading" class="oj-typography-subheading-md">Options To Control The Table Below</h2>
-                    <oj-form-layout aria-controls="table" max-columns="3" class="oj-formlayout-full-width">
-                              <demo-radioset-enum direction="row" label-hint="Simulated Delays" onvalueChanged={handleSimulatedDelaysValueChanged} value={simulatedDelays} enum-values={JSON.stringify(['off', 'on'])} />
-                              <oj-input-number id="edit-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditDelayValueChanged} value={editDelay} label-hint="Simulated Enter Edit Mode Delay (ms)" />
-                              <oj-input-number id="edit-end-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditEndDelayValueChanged} value={editEndDelay} label-hint="Simulated Submit Edit Delay (ms)" />
+                    <oj-form-layout aria-controls="table" maxColumns={3} class="oj-formlayout-full-width">
+                              <demo-radioset-enum direction="row" labelHint="Simulated Delays" onvalueChanged={handleSimulatedDelaysValueChanged} value={simulatedDelays} enumValues={JSON.stringify(['off', 'on'])} />
+                              <oj-input-number id="edit-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditDelayValueChanged} value={editDelay} labelHint="Simulated Enter Edit Mode Delay (ms)" />
+                              <oj-input-number id="edit-end-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditEndDelayValueChanged} value={editEndDelay} labelHint="Simulated Submit Edit Delay (ms)" />
                           </oj-form-layout>
                 </div>
-            <oj-table ref={tableRef} id="table" aria-label="Departments Table" class="demo-table-container" data={dataprovider} edit-mode="rowEdit" oneditRowChanged={handleEditRowEditRowChanged} edit-row={editRow} onojBeforeRowEdit={beforeRowEditListener} onojBeforeRowEditEnd={beforeRowEditEndListener} layout="fixed" columns={columnArray} {...{ 'accessibility.row-header': "depName", 'columns-default.sortable': "disabled" }}>
-                    <template slot="deptIdTemplate" render={(cell) => (
-                            <>
-                                {numberConverter.format(cell.data)}
-                            </>
-                          )} />
-                    <template slot="deptNameTemplate" render={(cell) => (
-                            <>
-                                {
-                                            cell.mode == "navigation" ? (
-                                              <>
-                                                {cell.data}
-                                              </>
-                                            ) : null
-                                          }
-                                {
-                                            cell.mode == "edit" ? (
-                                              <>
-                                                <oj-input-text id="it1" aria-label="Input Text" value={rowData?.DepartmentName ?? ''} class="editable" onvalueChanged={(event) => updateRowData('DepartmentName', event.detail.value ?? '')} />
-                                              </>
-                                            ) : null
-                                          }
-                            </>
-                          )} />
-                    <template slot="locIdTemplate" render={(cell) => (
-                            <>
-                                {
-                                            cell.mode == "navigation" ? (
-                                              <>
-                                                {numberConverter.format(cell.data)}
-                                              </>
-                                            ) : null
-                                          }
-                                {
-                                            cell.mode == "edit" ? (
-                                              <>
-                                                <oj-input-text id="it2" aria-label="Input Text Number" required value={rowData?.LocationId ?? null} validators={validators} converter={numberConverter} class="editable" onvalueChanged={(event) => updateRowData('LocationId', Number(event.detail.value ?? 0))} />
-                                              </>
-                                            ) : null
-                                          }
-                            </>
-                          )} />
-                    <template slot="typeTemplate" render={(cell) => (
-                            <>
-                                {
-                                            cell.mode == "navigation" ? (
-                                              <>
-                                                {cell.data}
-                                              </>
-                                            ) : null
-                                          }
-                                {
-                                            cell.mode == "edit" ? (
-                                              <>
-                                                <oj-select-single id="ss1" aria-label="Select Single" value={rowData?.Type ?? ''} data={departments} class="editable" onvalueChanged={(event) => updateRowData('Type', event.detail.value ?? '')} />
-                                              </>
-                                            ) : null
-                                          }
-                            </>
-                          )} />
-                    <template slot="currencyTemplate" render={(cell) => (
-                            <>
-                                {
-                                            cell.mode == "navigation" ? (
-                                              <>
-                                                {cell.data}
-                                              </>
-                                            ) : null
-                                          }
-                                {
-                                            cell.mode == "edit" ? (
-                                              <>
-                                                <oj-combobox-one id="co1" aria-label="Combobox" value={rowData?.Currency ?? ''} class="editable" onvalueChanged={(event) => updateRowData('Currency', event.detail.value ?? '')}>
-                                                                <oj-option value="USD">USD</oj-option>
-                                                                <oj-option value="JPY">JPY</oj-option>
-                                                                <oj-option value="EUR">EUR</oj-option>
-                                                            </oj-combobox-one>
-                                              </>
-                                            ) : null
-                                          }
-                            </>
-                          )} />
-                    <template slot="dateTemplate" render={(cell) => (
-                            <>
-                                {
-                                            cell.mode == "navigation" ? (
-                                              <>
-                                                {dateConverter.format(cell.data)}
-                                              </>
-                                            ) : null
-                                          }
-                                {
-                                            cell.mode == "edit" ? (
-                                              <>
-                                                <oj-input-date id="id1" aria-label="Input Date" value={rowData?.StartDate ?? ''} class="editable" onvalueChanged={(event) => updateRowData('StartDate', event.detail.value ?? '')} />
-                                              </>
-                                            ) : null
-                                          }
-                            </>
-                          )} />
-                    <template slot="primaryTemplate" render={(cell) => (
-                            <>
-                                {
-                                            cell.mode == "navigation" ? (
-                                              <>
-                                                {formatPrimaryValue(cell.data)}
-                                              </>
-                                            ) : null
-                                          }
-                                {
-                                            cell.mode == "edit" ? (
-                                              <>
-                                                <div class="oj-sm-justify-content-center">
-                                                                <oj-checkboxset id="cs2" aria-label="Checkboxset" value={rowData?.Primary ?? []} class="oj-choice-direction-row demo-table-checkbox editable" onvalueChanged={(event) => updateRowData('Primary', event.detail.value ?? [])}><oj-option value="checked" /></oj-checkboxset>
-                                                            </div>
-                                              </>
-                                            ) : null
-                                          }
-                            </>
-                          )} />
-                    <template slot="actionTemplate" render={(cell) => (
-                            <>
-                                {
-                                            cell.mode == "navigation" ? (
-                                              <>
-                                                <oj-button data-oj-clickthrough="disabled" class="oj-button-sm" display="icons" label="Edit" chroming="borderless" onojAction={handleUpdate(cell.item.metadata.key)}>
-                                                                <span slot="startIcon" class="oj-ux-ico-edit" />
-                                                                Edit
-                                                            </oj-button>
-                                              </>
-                                            ) : null
-                                          }
-                                {
-                                            cell.mode == "edit" ? (
-                                              <>
-                                                <oj-toolbar data-oj-clickthrough="disabled" chroming="borderless" class="oj-sm-padding-0-vertical oj-sm-padding-4x-end oj-sm-float-end">
-                                                                <oj-button display="icons" label="Submit" class="oj-button-sm" onojAction={handleDone} data-oj-clickthrough="disabled">
-                                                                                  <span slot="startIcon" class="oj-ux-ico-check" />
-                                                                                  Save
-                                                                              </oj-button>
-                                                                <oj-button display="icons" label="Cancel" class="oj-button-sm" onojAction={handleCancel} data-oj-clickthrough="disabled">
-                                                                                  <span slot="startIcon" class="oj-ux-ico-multiply" />
-                                                                                  Cancel
-                                                                              </oj-button>
-                                                            </oj-toolbar>
-                                              </>
-                                            ) : null
-                                          }
-                            </>
-                          )} />
+            <oj-table ref={tableRef} id="table" aria-label="Departments Table" class="demo-table-container" data={dataprovider} editMode="rowEdit" oneditRowChanged={handleEditRowEditRowChanged} editRow={editRow} onojBeforeRowEdit={beforeRowEditListener} onojBeforeRowEditEnd={beforeRowEditEndListener} layout="fixed" columns={columnArray} {...ojTableProps}>
+                    <template slot="rowTemplate" render={rowTemplateRenderer} />
                 </oj-table>
             <br />
             <br />

@@ -135,18 +135,20 @@ export const StreamListProgressiveLoad = () => {
 
   return (
     <div id="streamListContainer">
-      <oj-form-layout>
-        <oj-label>Data Structure</oj-label>
-        <oj-buttonset-one
-          value={dataStructure}
-          onvalueChanged={handleDataStructureChanged}
-          class="oj-buttonset-width-auto"
-        >
-          <oj-option value="flat">Flat</oj-option>
-          <oj-option value="hierarchical">Group</oj-option>
-        </oj-buttonset-one>
+      <oj-form-layout class="demo-progressive-controls">
+        <div class="demo-progressive-control-row">
+          <oj-label>Data Structure</oj-label>
+          <oj-buttonset-one
+            value={dataStructure}
+            onvalueChanged={handleDataStructureChanged}
+            class="oj-buttonset-width-auto"
+          >
+            <oj-option value="flat">Flat</oj-option>
+            <oj-option value="hierarchical">Group</oj-option>
+          </oj-buttonset-one>
+        </div>
 
-        <div>
+        <div class="demo-progressive-control-row">
           <oj-input-number
             id="fetch-delay-input"
             min={0}

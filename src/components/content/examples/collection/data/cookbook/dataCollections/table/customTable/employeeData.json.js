@@ -1,7 +1,7 @@
 define([], function () { return { __esModule: true, default: [
   {
     "EmployeeId": 5,
-    "Photo": "../images/dvt/1.png",
+    "Photo": "/styles/images/dvt/1.png",
     "FirstName": "Amy",
     "LastName": "Bartlet",
     "Revenue": 100000,
@@ -11,7 +11,7 @@ define([], function () { return { __esModule: true, default: [
   },
   {
     "EmployeeId": 10,
-    "Photo": "../images/dvt/10.png",
+    "Photo": "/styles/images/dvt/10.png",
     "FirstName": "Andy",
     "LastName": "Jones",
     "Revenue": 200000,
@@ -21,7 +21,7 @@ define([], function () { return { __esModule: true, default: [
   },
   {
     "EmployeeId": 20,
-    "Photo": "../images/dvt/11.png",
+    "Photo": "/styles/images/dvt/11.png",
     "FirstName": "Andrew",
     "LastName": "Bugsy",
     "Revenue": 130000,
@@ -31,7 +31,7 @@ define([], function () { return { __esModule: true, default: [
   },
   {
     "EmployeeId": 30,
-    "Photo": "../images/dvt/2.png",
+    "Photo": "/styles/images/dvt/2.png",
     "FirstName": "Annette",
     "LastName": "Barnes",
     "Revenue": 110000,
@@ -41,7 +41,7 @@ define([], function () { return { __esModule: true, default: [
   },
   {
     "EmployeeId": 40,
-    "Photo": "../images/dvt/12.png",
+    "Photo": "/styles/images/dvt/12.png",
     "FirstName": "Bob",
     "LastName": "Jones",
     "Revenue": 230000,
@@ -51,7 +51,7 @@ define([], function () { return { __esModule: true, default: [
   },
   {
     "EmployeeId": 50,
-    "Photo": "../images/dvt/13.png",
+    "Photo": "/styles/images/dvt/13.png",
     "FirstName": "Bart",
     "LastName": "Buckler",
     "Revenue": 400000,
@@ -61,7 +61,7 @@ define([], function () { return { __esModule: true, default: [
   },
   {
     "EmployeeId": 60,
-    "Photo": "../images/dvt/14.png",
+    "Photo": "/styles/images/dvt/14.png",
     "FirstName": "Bobby",
     "LastName": "Fisher",
     "Revenue": 600000,

@@ -18,7 +18,20 @@ type SwitchChangedEvent = Parameters<NonNullable<ComponentProps<'oj-switch'>['on
 type ScrollPositionChangedEvent = Parameters<NonNullable<ComponentProps<'oj-table'>['onscrollPositionChanged']>>[0];
 
 export const TableScrollToKeyTable = () => {
-  const arr = useMemo<TableData[]>(() => [], []);
+  const arr = useMemo<TableData[]>(
+    () =>
+      Array.from({ length: 100 }, (_, index) => {
+        const itemNumber = index + 1;
+
+        return {
+          id: `i${itemNumber}`,
+          name: `Note item ${itemNumber}`,
+          date: '1/1/18',
+          creator: `Owner ${itemNumber}`
+        };
+      }),
+    []
+  );
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(
     () => [
       {

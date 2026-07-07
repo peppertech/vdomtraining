@@ -2,3 +2,47 @@
   height: 27rem;
   width: 100%;
 }
+
+.demo-table-container .oj-table-column-header-text {
+  font-weight: 700;
+}
+
+.demo-group-cell {
+  vertical-align: middle;
+}
+
+.demo-group-content {
+  min-height: 4.25rem;
+}
+
+.demo-group-expander {
+  padding-inline: 1rem 0.5rem;
+}
+
+.demo-group-title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.demo-group-summary {
+  align-items: center;
+  column-gap: 3rem;
+  padding-inline-end: 1rem;
+}
+
+.demo-group-summary-item {
+  min-width: 3.75rem;
+}
+
+.demo-group-summary-label {
+  color: var(--oj-core-text-color-secondary);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.demo-group-summary-value {
+  color: var(--oj-core-text-color-primary);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}

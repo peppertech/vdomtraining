@@ -90,6 +90,7 @@ export const TableCustomTable = () => {
     <oj-avatar
       role="img"
       src={cell.item.data.Photo}
+      initials={`${cell.item.data.FirstName.charAt(0)}${cell.item.data.LastName.charAt(0)}`}
       size="xs"
       aria-label={`Avatar of ${cell.item.data.FirstName} ${cell.item.data.LastName}`}
       title={`Avatar of ${cell.item.data.FirstName} ${cell.item.data.LastName}`}

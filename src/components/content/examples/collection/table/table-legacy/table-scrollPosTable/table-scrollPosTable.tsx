@@ -41,11 +41,24 @@ type ScrollPosition = {
 
 export const TableScrollPosTable = () => {
   const [scrollPolicyValue, setScrollPolicyValue] = useState<ScrollPolicyValue>('loadMoreOnScroll');
-  const [scrollPosValue, setScrollPosValue] = useState<ScrollPosition>({});
-  const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
-      { headerText: 'Id', field: 'id', id: 'id' }
-  ], []);
-  const dataArray = useMemo<Array<TableData>>(() => [], []);
+  const [scrollPosValue, setScrollPosValue] = useState<ScrollPosition>({ x: 0, y: 0 });
+  const columns = useMemo<ComponentProps<'oj-table'>['columns']>(
+    () =>
+      Array.from({ length: 30 }, (_, index) => ({
+        headerText: `Col${index}`,
+        field: `data.${index}`,
+        id: `c${index}`
+      })),
+    []
+  );
+  const dataArray = useMemo<Array<TableData>>(
+    () =>
+      Array.from({ length: 300 }, (_, rowIndex) => ({
+        id: `r${rowIndex}`,
+        data: Array.from({ length: 30 }, (_, columnIndex) => `${rowIndex},${columnIndex}`)
+      })),
+    []
+  );
   const rowPixel = scrollPosValue?.y;
   const columnPixel = scrollPosValue?.x;
   const rowIndex = scrollPosValue?.rowIndex;
@@ -64,7 +77,7 @@ export const TableScrollPosTable = () => {
   ], []);
   const dataprovider = useMemo(() => new ArrayDataProvider(dataArray, {
       keyAttributes: 'id'
-  }), []);
+  }), [dataArray]);
 
   const handleScrollPolicyValueValueChanged = (event: PropertyChangedEvent<ScrollPolicyValue>) => {
     setScrollPolicyValue(event.detail.value ?? 'loadMoreOnScroll');

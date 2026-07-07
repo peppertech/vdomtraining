@@ -2,6 +2,22 @@
   height: 37.5rem;
 }
 
+.demo-progressive-controls {
+  max-width: 100%;
+}
+
+.demo-progressive-control-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-block-end: 1rem;
+}
+
+.demo-progressive-control-row oj-input-number {
+  flex: 0 1 17rem;
+}
+
 .demo-stream-list-group {
   cursor: pointer;
   border-radius: 0.25rem;

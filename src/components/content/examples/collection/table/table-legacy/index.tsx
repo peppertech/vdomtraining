@@ -122,6 +122,13 @@ const tableLegacyItems = [
     Component: TableSelectionTable,
   },
   {
+    id: "observable-array",
+    name: "CRUD",
+    description: tableObservableArrayTableDescription,
+    recipe: tableObservableArrayTableRecipe,
+    Component: TableObservableArrayTable,
+  },
+  {
     id: "filtering",
     name: "Filtering",
     description: tableFilteringTableDescription,
@@ -142,7 +149,13 @@ const tableLegacyItems = [
     recipe: tableInitialSortTableRecipe,
     Component: TableInitialSortTable,
   },
-
+  {
+    id: "custom-sortable",
+    name: "Sort Comparator",
+    description: tableCustomSortableTableDescription,
+    recipe: tableCustomSortableTableRecipe,
+    Component: TableCustomSortableTable,
+  },
   {
     id: "column-layouts",
     name: "Column Layouts",
@@ -165,11 +178,32 @@ const tableLegacyItems = [
     Component: TableFrozenColumnTable,
   },
   {
+    id: "template-slot",
+    name: "Cell Template",
+    description: tableTemplateSlotTableDescription,
+    recipe: tableTemplateSlotTableRecipe,
+    Component: TableTemplateSlotTable,
+  },
+  {
     id: "row-template",
     name: "Row Template",
     description: tableRowTemplateDescription,
     recipe: tableRowTemplateRecipe,
     Component: TableRowTemplate,
+  },
+  {
+    id: "editable-array",
+    name: "Editable",
+    description: tableEditableArrayTableDescription,
+    recipe: tableEditableArrayTableRecipe,
+    Component: TableEditableArrayTable,
+  },
+  {
+    id: "editable-form",
+    name: "Editable Form Table",
+    description: tableEditableFormTableDescription,
+    recipe: tableEditableFormTableRecipe,
+    Component: TableEditableFormTable,
   },
   {
     id: "add-row",
@@ -256,13 +290,7 @@ const tableLegacyItems = [
     recipe: tableDragTableDropChartRecipe,
     Component: TableDragTableDropChart,
   },
-  {
-    id: "scroll-position",
-    name: "Scroll Position",
-    description: tableScrollPosTableDescription,
-    recipe: tableScrollPosTableRecipe,
-    Component: TableScrollPosTable,
-  },
+  
   {
     id: "scroll-to-key",
     name: "Scroll To Key",
@@ -270,50 +298,12 @@ const tableLegacyItems = [
     recipe: tableScrollToKeyTableRecipe,
     Component: TableScrollToKeyTable,
   },
-
   {
-    id: "column-renderer",
-    name: "Column Renderer",
-    description: tableColumnRendererDescription,
-    recipe: tableColumnRendererRecipe,
-    Component: TableColumnRenderer,
-  },
-
-  {
-    id: "custom-sortable",
-    name: "Custom Sortable",
-    description: tableCustomSortableTableDescription,
-    recipe: tableCustomSortableTableRecipe,
-    Component: TableCustomSortableTable,
-  },
-  {
-    id: "custom-table",
-    name: "Custom Table",
-    description: tableCustomTableDescription,
-    recipe: tableCustomTableRecipe,
-    Component: TableCustomTable,
-  },
-  {
-    id: "detail-table",
-    name: "Detail",
-    description: tableDetailTableDescription,
-    recipe: tableDetailTableRecipe,
-    Component: TableDetailTable,
-  },
-
-  {
-    id: "editable-array",
-    name: "Editable Array",
-    description: tableEditableArrayTableDescription,
-    recipe: tableEditableArrayTableRecipe,
-    Component: TableEditableArrayTable,
-  },
-  {
-    id: "editable-form",
-    name: "Editable Form",
-    description: tableEditableFormTableDescription,
-    recipe: tableEditableFormTableRecipe,
-    Component: TableEditableFormTable,
+    id: "scroll-position",
+    name: "Scroll Position",
+    description: tableScrollPosTableDescription,
+    recipe: tableScrollPosTableRecipe,
+    Component: TableScrollPosTable,
   },
   {
     id: "events",
@@ -323,25 +313,11 @@ const tableLegacyItems = [
     Component: TableEventTable,
   },
   {
-    id: "external-scroll",
-    name: "External Scroll",
-    description: tableExternalScrollTableDescription,
-    recipe: tableExternalScrollTableRecipe,
-    Component: TableExternalScrollTable,
-  },
-  {
-    id: "observable-array",
-    name: "Observable Array",
-    description: tableObservableArrayTableDescription,
-    recipe: tableObservableArrayTableRecipe,
-    Component: TableObservableArrayTable,
-  },
-  {
-    id: "performance",
-    name: "Performance",
-    description: tablePerformanceTableDescription,
-    recipe: tablePerformanceTableRecipe,
-    Component: TablePerformanceTable,
+    id: "detail-table",
+    name: "Detail Row with Tree Data",
+    description: tableDetailTableDescription,
+    recipe: tableDetailTableRecipe,
+    Component: TableDetailTable,
   },
   {
     id: "progressive-load",
@@ -351,12 +327,26 @@ const tableLegacyItems = [
     Component: TableProgressiveLoadTable,
   },
   {
-    id: "template-slot",
-    name: "Template Slot",
-    description: tableTemplateSlotTableDescription,
-    recipe: tableTemplateSlotTableRecipe,
-    Component: TableTemplateSlotTable,
+    id: "performance",
+    name: "Performance",
+    description: tablePerformanceTableDescription,
+    recipe: tablePerformanceTableRecipe,
+    Component: TablePerformanceTable,
   },
+  {
+    id: "custom-table",
+    name: "Cell Renderer",
+    description: tableCustomTableDescription,
+    recipe: tableCustomTableRecipe,
+    Component: TableCustomTable,
+  },
+  {
+    id: "column-renderer",
+    name: "Shared Cell Renderer",
+    description: tableColumnRendererDescription,
+    recipe: tableColumnRendererRecipe,
+    Component: TableColumnRenderer,
+  }
 ];
 
 export default function TableLegacyRecipePage() {
