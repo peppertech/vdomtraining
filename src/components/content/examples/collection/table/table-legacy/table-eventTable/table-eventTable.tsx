@@ -26,7 +26,10 @@ export const TableEventTable = () => {
       { headerText: 'Manager Id', field: 'ManagerId', id: 'manId' }
   ], []);
 
-  const deptArray: DepartmentData[] = JSON.parse(deptData as string) as DepartmentData[];
+  const deptArray = useMemo<DepartmentData[]>(
+      () => JSON.parse(deptData as string) as DepartmentData[],
+      []
+  );
   const dataprovider = useMemo(() => new ArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(deptArray, {
       keyAttributes: 'DepartmentId'
   }), [deptArray]);
@@ -39,7 +42,7 @@ export const TableEventTable = () => {
   });
   const ojTableProps: Partial<ComponentProps<'oj-table'>> = {
       accessibility: { rowHeader: 'depName' },
-      selectionMode: { row: 'multiple', column: 'multiple' },
+      selectionMode: { row: 'multipleToggle', column: 'none' },
       columnsDefault: { sortable: 'enabled' },
       selected: selectedItems
   };

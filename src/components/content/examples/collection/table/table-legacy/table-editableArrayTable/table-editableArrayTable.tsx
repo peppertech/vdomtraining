@@ -339,6 +339,12 @@ export const TableEditableArrayTable = () => {
   };
 
   const handleUpdate = (rowKey: DepartmentData['DepartmentId']) => () => {
+      const itemData = deptObservableArray.find((department) => department.DepartmentId === rowKey);
+      if (itemData) {
+          cancelEditRef.current = false;
+          originalDataRef.current = Object.assign({}, itemData);
+          setRowData(Object.assign({}, itemData));
+      }
       setEditRow({ rowKey });
   };
 
@@ -354,8 +360,9 @@ export const TableEditableArrayTable = () => {
   const rowTemplateRenderer = (row: EditableRowTemplateContext) => {
       const rowItem = row.item.data;
       const currentRowData = rowData?.DepartmentId === rowItem.DepartmentId ? rowData : rowItem;
+      const isEditing = row.mode === 'edit' || editRow?.rowKey === row.item.metadata.key;
 
-      if (row.mode === 'edit') {
+      if (isEditing) {
           return (
               <tr>
                   <td class="oj-helper-text-align-end oj-table-data-cell-padding">
@@ -414,19 +421,21 @@ export const TableEditableArrayTable = () => {
                           onvalueChanged={(event) => updateRowData('StartDate', event.detail.value ?? '')}
                       />
                   </td>
-                  <td class="oj-helper-text-align-center">
-                      <oj-checkboxset
-                          id="cs2"
-                          aria-label="Checkboxset"
-                          value={currentRowData.Primary}
-                          class="oj-choice-direction-row demo-table-checkbox editable"
-                          onvalueChanged={(event) => updateRowData('Primary', event.detail.value ?? [])}
-                      >
-                          <oj-option value="checked" />
-                      </oj-checkboxset>
+                  <td class="oj-helper-text-align-center demo-edit-checkbox-cell">
+                      <div class="demo-edit-checkbox-aligner">
+                          <oj-checkboxset
+                              id="cs2"
+                              aria-label="Checkboxset"
+                              value={currentRowData.Primary}
+                              class="oj-choice-direction-row demo-table-checkbox editable"
+                              onvalueChanged={(event) => updateRowData('Primary', event.detail.value ?? [])}
+                          >
+                              <oj-option value="checked" />
+                          </oj-checkboxset>
+                      </div>
                   </td>
-                  <td class="oj-helper-text-align-end">
-                      <oj-toolbar data-oj-clickthrough="disabled" chroming="borderless" class="oj-sm-padding-0-vertical oj-sm-padding-4x-end oj-sm-float-end">
+                  <td class="oj-helper-text-align-end demo-edit-action-cell">
+                      <oj-toolbar data-oj-clickthrough="disabled" chroming="borderless" class="demo-edit-action-toolbar">
                           <oj-button display="icons" label="Submit" class="oj-button-sm" onojAction={handleDone} data-oj-clickthrough="disabled">
                               <span slot="startIcon" class="oj-ux-ico-check" />
                               Save
@@ -476,10 +485,10 @@ export const TableEditableArrayTable = () => {
       <div id="tableWrapper">
             <div class="oj-panel oj-bg-neutral-30">
                     <h2 id="table-controls-heading" class="oj-typography-subheading-md">Options To Control The Table Below</h2>
-                    <oj-form-layout aria-controls="table" maxColumns={3} class="oj-formlayout-full-width">
-                              <demo-radioset-enum direction="row" labelHint="Simulated Delays" onvalueChanged={handleSimulatedDelaysValueChanged} value={simulatedDelays} enumValues={JSON.stringify(['off', 'on'])} />
-                              <oj-input-number id="edit-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditDelayValueChanged} value={editDelay} labelHint="Simulated Enter Edit Mode Delay (ms)" />
-                              <oj-input-number id="edit-end-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditEndDelayValueChanged} value={editEndDelay} labelHint="Simulated Submit Edit Delay (ms)" />
+                    <oj-form-layout aria-controls="table" max-columns="3" class="oj-formlayout-full-width">
+                              <demo-radioset-enum direction="row" label-hint="Simulated Delays" onvalueChanged={handleSimulatedDelaysValueChanged} value={simulatedDelays} enum-values={JSON.stringify(['off', 'on'])} />
+                              <oj-input-number id="edit-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditDelayValueChanged} value={editDelay} label-hint="Simulated Enter Edit Mode Delay (ms)" />
+                              <oj-input-number id="edit-end-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditEndDelayValueChanged} value={editEndDelay} label-hint="Simulated Submit Add / Edit Delay (ms)" />
                           </oj-form-layout>
                 </div>
             <oj-table ref={tableRef} id="table" aria-label="Departments Table" class="demo-table-container" data={dataprovider} editMode="rowEdit" oneditRowChanged={handleEditRowEditRowChanged} editRow={editRow} onojBeforeRowEdit={beforeRowEditListener} onojBeforeRowEditEnd={beforeRowEditEndListener} layout="fixed" columns={columnArray} {...ojTableProps}>

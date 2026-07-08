@@ -9,6 +9,7 @@ import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
 import * as Context from 'ojs/ojcontext';
 import { ojTable } from 'ojs/ojtable';
 import { ojInputText } from 'ojs/ojinputtext';
+import { ojInputNumber } from 'ojs/ojinputnumber';
 import { ojInputDate } from 'ojs/ojdatetimepicker';
 import { ojSelectSingle } from 'ojs/ojselectsingle';
 import { ojComboboxOne } from 'ojs/ojselectcombobox';
@@ -63,6 +64,8 @@ export const TableEditableFormTable = () => {
     const originalDataRef = useRef<DepartmentData | null>(null);
     const rowDataRef = useRef<DepartmentData | null>(null);
     const cancelEditRef = useRef<boolean | null>(null);
+    const allowEditRowClearRef = useRef(false);
+    const manualSaveRef = useRef(false);
     const tableRef = useRef<ojTable<DepartmentData['DepartmentId'], DepartmentData> | null>(null);
     const dataprovider = useMemo(() => new BufferingDataProvider(new ArrayDataProvider(deptObservableArray, {
         keyAttributes: 'DepartmentId'
@@ -133,7 +136,12 @@ export const TableEditableFormTable = () => {
         setEditEndDelay(event.detail.value);
     };
     const handleEditRowEditRowChanged = (event: Parameters<NonNullable<ComponentProps<'oj-table'>['oneditRowChanged']>>[0]) => {
-        setEditRow(event.detail.value);
+        const nextEditRow = event.detail.value ?? { rowKey: null };
+        if (nextEditRow.rowKey == null && editRow?.rowKey != null && !allowEditRowClearRef.current) {
+            return;
+        }
+        allowEditRowClearRef.current = false;
+        setEditRow(nextEditRow);
     };
     const rowEditable = (item: Item<DepartmentData['DepartmentId'], DepartmentData>) => {
         if (disabledKeys.has(item.metadata.key)) {
@@ -171,6 +179,17 @@ export const TableEditableFormTable = () => {
             detail.setUpdatedItem(new Promise((resolve) => {
                 resolve({ updatedItem: detail.rowContext.item });
             }));
+        }
+        else if (manualSaveRef.current) {
+            detail.setUpdatedItem(new Promise((resolve) => {
+                resolve({
+                    updatedItem: {
+                        data: rowDataRef.current ?? detail.rowContext.item.data,
+                        metadata: detail.rowContext.item.metadata
+                    }
+                });
+            }));
+            manualSaveRef.current = false;
         }
         else if (!detail.cancelEdit) {
             const validateAndUpdate = async () => {
@@ -236,24 +255,28 @@ export const TableEditableFormTable = () => {
         }
     };
     const submitRow = (key: DepartmentData['DepartmentId']) => {
+        if (!rowDataRef.current) {
+            return;
+        }
         dataprovider.updateItem({
             metadata: { key: key },
             data: rowDataRef.current
         });
         const editItem = dataprovider.getSubmittableItems()[0];
-        if (!editItem) {
-            return;
+        const itemData = (editItem?.item.data ?? rowDataRef.current) as DepartmentData;
+        if (editItem) {
+            dataprovider.setItemStatus(editItem, 'submitting');
         }
-        dataprovider.setItemStatus(editItem, 'submitting');
-        for (let idx = 0; idx < deptObservableArray.length; idx++) {
-            if (deptObservableArray[idx].DepartmentId === editItem.item.metadata.key) {
-                deptObservableArray.splice(idx, 1, editItem.item.data as DepartmentData);
-                break;
-            }
-        }
+        setDeptObservableArray((currentData) =>
+            currentData.map((department) =>
+                department.DepartmentId === key ? itemData : department
+            )
+        );
         // Set the edit item to "submitted" if successful
-        dataprovider.setItemStatus(editItem, 'submitted');
-        setEditedData(JSON.stringify(editItem.item.data));
+        if (editItem) {
+            dataprovider.setItemStatus(editItem, 'submitted');
+        }
+        setEditedData(JSON.stringify(itemData));
     };
     const isRowDataUpdated = () => {
         if (!rowDataRef.current || !originalDataRef.current) {
@@ -273,39 +296,87 @@ export const TableEditableFormTable = () => {
         }
         rowDataRef.current = { ...rowDataRef.current, [field]: value };
     };
+    const readEditedRowData = () => {
+        if (!tableRef.current || !rowDataRef.current) {
+            return null;
+        }
+        const textValue = tableRef.current.querySelector<ojInputText>('#it1')?.value;
+        const locationValue = tableRef.current.querySelector<ojInputNumber>('#it2')?.value;
+        const managerValue = tableRef.current.querySelector<ojInputNumber>('#it3')?.value;
+        const typeValue = tableRef.current.querySelector<ojSelectSingle<SelectSingleData['label'], SelectSingleData>>('#ss1')?.value;
+        const currencyValue = tableRef.current.querySelector<ojComboboxOne<string, string>>('#cb1')?.value;
+        const dateValue = tableRef.current.querySelector<ojInputDate>('#dt1')?.value;
+        return {
+            ...rowDataRef.current,
+            DepartmentName: textValue ?? rowDataRef.current.DepartmentName,
+            LocationId: Number(locationValue ?? rowDataRef.current.LocationId),
+            ManagerId: Number(managerValue ?? rowDataRef.current.ManagerId),
+            Type: typeValue ?? rowDataRef.current.Type,
+            Currency: currencyValue ?? rowDataRef.current.Currency,
+            StartDate: dateValue ?? rowDataRef.current.StartDate
+        };
+    };
     const hasValidationErrorInRow = async (table: ojTable<DepartmentData['DepartmentId'], DepartmentData>) => {
         const editables = table.querySelectorAll('.editable');
+        const invalidInputs: HTMLElement[] = [];
         for (let i = 0; i < editables.length; i++) {
-            const inputControl = editables.item(i) as ojInputText | ojInputDate | ojSelectSingle<SelectSingleData['label'], SelectSingleData> | ojComboboxOne<string, string>;
+            const inputControl = editables.item(i) as ojInputText | ojInputNumber | ojInputDate | ojSelectSingle<SelectSingleData['label'], SelectSingleData> | ojComboboxOne<string, string>;
             // make sure to call 'validate' on each input control to ensure component is fully
             // validated prior to checking its 'valid' state below. otherwise pending edits could
             // be missed due to race conditions between the table's edit mode ending due to focus
             // loss and the input control's new value being submitted due to the same focus loss
             await inputControl.validate();
-        }
-        const tracker = table.querySelector<ojValidationGroup>('#tracker');
-        if (tracker?.valid === 'valid') {
-            return false;
-        }
-        else {
-            const tableElement = tableRef.current;
-            if (!tableElement) {
-                return true;
+            if (inputControl.valid !== 'valid') {
+                invalidInputs.push(inputControl);
             }
-            let busyContext = Context.getContext(tableElement).getBusyContext();
-            busyContext.whenReady().then(() => {
-                tracker?.focusOn('@firstInvalidShown');
-            });
+        }
+        if (invalidInputs.length === 0) {
+            return false;
+        } else {
+            applyFocus(invalidInputs[0]);
             return true;
         }
     };
+    const applyFocus = (element: HTMLElement) => {
+        const tableElement = tableRef.current;
+        if (!tableElement) {
+            return;
+        }
+        const busyContext = Context.getContext(tableElement).getBusyContext();
+        busyContext.whenReady().then(() => {
+            element.focus();
+        });
+    };
     const handleUpdate = (rowKey: DepartmentData['DepartmentId']) => () => {
+        const itemData = deptObservableArray.find((department) => department.DepartmentId === rowKey);
+        if (itemData) {
+            manualSaveRef.current = false;
+            allowEditRowClearRef.current = false;
+            cancelEditRef.current = false;
+            originalDataRef.current = Object.assign({}, itemData);
+            rowDataRef.current = Object.assign({}, itemData);
+        }
         setEditRow({ rowKey });
     };
-    const handleDone = () => {
+    const handleDone = async () => {
+        if (tableRef.current) {
+            const hasError = await hasValidationErrorInRow(tableRef.current);
+            if (hasError) {
+                return;
+            }
+        }
+        const editedRowData = readEditedRowData();
+        if (editedRowData) {
+            rowDataRef.current = editedRowData;
+            submitRow(editedRowData.DepartmentId);
+            originalDataRef.current = Object.assign({}, editedRowData);
+        }
+        manualSaveRef.current = true;
+        allowEditRowClearRef.current = true;
         setEditRow({ rowKey: null });
     };
     const handleCancel = () => {
+        allowEditRowClearRef.current = true;
         cancelEditRef.current = true;
         setEditRow({ rowKey: null });
     };
@@ -316,20 +387,23 @@ export const TableEditableFormTable = () => {
         } };
     const rowTemplateRenderer = (row: EditableRowTemplateContext) => {
         const rowData = row.item.data;
-        const currentRowData = rowDataRef.current ?? rowData;
-        if (row.mode === 'edit') {
+        const currentRowData = rowDataRef.current?.DepartmentId === rowData.DepartmentId ? rowDataRef.current : rowData;
+        const isEditing = row.mode === 'edit' || editRow?.rowKey === row.item.metadata.key;
+        if (isEditing) {
             return (
                 <tr>
                     <td colSpan={6} class="oj-form-control-default">
                         <oj-validation-group id="tracker">
                             <oj-form-layout maxColumns={3} direction="row" class="oj-formlayout-full-width">
                                 <oj-input-text
+                                    id="it1"
                                     labelHint="Department Name"
                                     value={currentRowData.DepartmentName}
                                     class="editable"
                                     onvalueChanged={(event) => updateRowData('DepartmentName', event.detail.value ?? '')}
                                 />
                                 <oj-input-number
+                                    id="it2"
                                     labelHint="Location Id"
                                     value={currentRowData.LocationId}
                                     converter={numberConverter}
@@ -337,6 +411,7 @@ export const TableEditableFormTable = () => {
                                     onvalueChanged={(event) => updateRowData('LocationId', Number(event.detail.value ?? 0))}
                                 />
                                 <oj-input-number
+                                    id="it3"
                                     labelHint="Manager Id"
                                     value={currentRowData.ManagerId}
                                     converter={numberConverter}
@@ -344,6 +419,7 @@ export const TableEditableFormTable = () => {
                                     onvalueChanged={(event) => updateRowData('ManagerId', Number(event.detail.value ?? 0))}
                                 />
                                 <oj-select-single
+                                    id="ss1"
                                     labelHint="Type"
                                     value={currentRowData.Type}
                                     data={departments}
@@ -351,6 +427,7 @@ export const TableEditableFormTable = () => {
                                     onvalueChanged={(event) => updateRowData('Type', event.detail.value ?? '')}
                                 />
                                 <oj-combobox-one
+                                    id="cb1"
                                     labelHint="Currency"
                                     value={currentRowData.Currency}
                                     class="editable"
@@ -361,6 +438,7 @@ export const TableEditableFormTable = () => {
                                     <oj-option value="EUR">EUR</oj-option>
                                 </oj-combobox-one>
                                 <oj-input-date
+                                    id="dt1"
                                     labelHint="Start Date"
                                     value={currentRowData.StartDate}
                                     class="editable"
@@ -368,13 +446,11 @@ export const TableEditableFormTable = () => {
                                 />
                             </oj-form-layout>
                             <oj-toolbar chroming="borderless" class="oj-sm-padding-0-vertical oj-sm-padding-4x-end oj-sm-float-end">
-                                <oj-button display="icons" onojAction={handleDone} data-oj-clickthrough="disabled">
-                                    <span slot="startIcon" class="oj-ux-ico-check" />
-                                    Save
-                                </oj-button>
-                                <oj-button display="icons" onojAction={handleCancel} data-oj-clickthrough="disabled">
-                                    <span slot="startIcon" class="oj-ux-ico-multiply" />
+                                <oj-button onojAction={handleCancel} data-oj-clickthrough="disabled">
                                     Cancel
+                                </oj-button>
+                                <oj-button onojAction={handleDone} data-oj-clickthrough="disabled">
+                                    Apply
                                 </oj-button>
                             </oj-toolbar>
                         </oj-validation-group>
@@ -407,10 +483,10 @@ export const TableEditableFormTable = () => {
     return (<div id="tableWrapper">
             <div class="oj-panel oj-bg-neutral-30">
                     <h2 id="table-controls-heading" class="oj-typography-subheading-md">Options To Control The Table Below</h2>
-                    <oj-form-layout aria-controls="table" maxColumns={3} class="oj-formlayout-full-width">
-                              <demo-radioset-enum direction="row" labelHint="Simulated Delays" onvalueChanged={handleSimulatedDelaysValueChanged} value={simulatedDelays} enumValues={"[\"off\", \"on\"]"}/>
-                              <oj-input-number id="edit-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditDelayValueChanged} value={editDelay} labelHint="Simulated Enter Edit Mode Delay (ms)"/>
-                              <oj-input-number id="edit-end-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditEndDelayValueChanged} value={editEndDelay} labelHint="Simulated Submit Edit Delay (ms)"/>
+                    <oj-form-layout aria-controls="table" max-columns="3" class="oj-formlayout-full-width">
+                              <demo-radioset-enum direction="row" label-hint="Simulated Delays" onvalueChanged={handleSimulatedDelaysValueChanged} value={simulatedDelays} enum-values={JSON.stringify(['off', 'on'])}/>
+                              <oj-input-number id="edit-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditDelayValueChanged} value={editDelay} label-hint="Simulated Enter Edit Mode Delay (ms)"/>
+                              <oj-input-number id="edit-end-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditEndDelayValueChanged} value={editEndDelay} label-hint="Simulated Submit Add / Edit Delay (ms)"/>
                           </oj-form-layout>
                 </div>
             <oj-table ref={tableRef} id="table" class="demo-table-container" aria-label="Departments Table" data={dataprovider} editMode="rowEdit" oneditRowChanged={handleEditRowEditRowChanged} editRow={editRow} onojBeforeRowEdit={beforeRowEditListener} onojBeforeRowEditEnd={beforeRowEditEndListener} layout="fixed" columns={columns} {...ojTableProps}>

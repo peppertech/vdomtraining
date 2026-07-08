@@ -529,8 +529,8 @@ export const TableAddRowTable = () => {
                           onvalueChanged={(event) => updateRowData('StartDate', event.detail.value ?? '')}
                       />
                   </td>
-                  <td class="oj-helper-text-align-end oj-sm-padding-0-vertical">
-                      <oj-toolbar chroming="borderless" class="oj-sm-padding-0-vertical oj-sm-padding-4x-end oj-sm-float-end">
+                  <td class="oj-helper-text-align-end demo-edit-action-cell">
+                      <oj-toolbar chroming="borderless" class="demo-edit-action-toolbar">
                           <oj-button display="icons" onojAction={handleDone} class="oj-button-sm" data-oj-clickthrough="disabled">
                               <span slot="startIcon" class="oj-ux-ico-check" />
                               Save
@@ -605,8 +605,8 @@ export const TableAddRowTable = () => {
                                               <td>
                                                               <oj-input-date label-hint="Start Date" label-edge="none" value={addRowData.StartDate} class="addRowEditable" onvalueChanged={(event) => updateAddRowData('StartDate', event.detail.value ?? '')} />
                                                           </td>
-                                              <td>
-                                                              <oj-toolbar data-oj-clickthrough="disabled" chroming="borderless" class="oj-sm-padding-0-vertical oj-sm-padding-4x-end oj-sm-float-end">
+                                              <td class="oj-helper-text-align-end demo-edit-action-cell">
+                                                              <oj-toolbar data-oj-clickthrough="disabled" chroming="borderless" class="demo-edit-action-toolbar">
                                                                                 <oj-button class="oj-button-sm" display="icons" onojAction={handleAddSubmit(addRow as AddRowContext)} data-oj-clickthrough="disabled">
                                                                                                     <span slot="startIcon" class="oj-ux-ico-check" />
                                                                                                     Submit
@@ -753,7 +753,7 @@ export const TableAddRowTable = () => {
                                 {
                                             cell.mode == "edit" ? (
                                               <>
-                                                <oj-toolbar chroming="borderless" class="oj-sm-padding-0-vertical oj-sm-padding-4x-end oj-sm-float-end">
+                                                <oj-toolbar chroming="borderless" class="demo-edit-action-toolbar">
                                                                 <oj-button display="icons" onojAction={handleDone} class="oj-button-sm" data-oj-clickthrough="disabled">
                                                                                   <span slot="startIcon" class="oj-ux-ico-check" />
                                                                                   Save

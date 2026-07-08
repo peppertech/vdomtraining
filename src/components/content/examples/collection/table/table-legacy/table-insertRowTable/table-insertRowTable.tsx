@@ -1,9 +1,9 @@
-import { Fragment, h } from 'preact';
+import { h } from 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 import * as Context from 'ojs/ojcontext';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import BufferingDataProvider = require('ojs/ojbufferingdataprovider');
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 import NumberRangeValidator = require('ojs/ojvalidator-numberrange');
 import 'ojs/ojinputtext';
 import 'ojs/ojdatetimepicker';
@@ -11,7 +11,6 @@ import 'ojs/ojselectcombobox';
 import 'ojs/ojcheckboxset';
 import 'ojs/ojtable';
 import 'ojs/ojtoolbar';
-import { ojButton } from 'ojs/ojbutton';
 import 'ojs/ojbutton';
 import 'ojs/ojmessages';
 import 'ojs/ojselectsingle';
@@ -32,6 +31,7 @@ import 'ojs/ojoption';
 import 'ojs/ojdatetimepicker';
 import 'ojs/ojlabel';
 import 'ojs/ojinputtext';
+import "css!./demo.css";
 
 interface DepartmentData {
     DepartmentId: number;
@@ -51,9 +51,12 @@ type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 type TableColumns = ComponentProps<'oj-table'>['columns'];
 type AddRowContext = { submitAddRow: (cancelAdd: boolean) => void };
 type DelayMode = 'off' | 'on';
-type EditRowState = { rowKey?: DepartmentData['DepartmentId'] | null; rowIndex?: number };
+type EditRowState = ComponentProps<'oj-table'>['editRow'];
 type InsertPosition = 'before' | 'after';
 type InsertRowDisplay = { position: InsertPosition; rowKey: DepartmentData['DepartmentId'] | null } | null;
+type EditableRowTemplateContext = ojTable.RowTemplateContext<DepartmentData['DepartmentId'], DepartmentData> & {
+    mode?: 'navigation' | 'edit';
+};
 type EditableDepartmentData = Omit<DepartmentData, 'DepartmentId' | 'LocationId'> & {
     DepartmentId: number | null;
     LocationId: number | null;
@@ -65,6 +68,9 @@ const isCompleteDepartmentData = (data: EditableDepartmentData): data is Complet
     data.DepartmentId != null && data.LocationId != null;
 
 export const TableInsertRowTable = () => {
+  const [deptObservableArray, setDeptObservableArray] = useState<DepartmentData[]>(
+      () => JSON.parse(deptData as string) as DepartmentData[]
+  );
   const [rowData, setRowData] = useState<DepartmentData | null>(null);
   const [editedData, setEditedData] = useState<string>('');
   const [simulatedDelays, setSimulatedDelays] = useState<DelayMode>('off');
@@ -86,15 +92,14 @@ export const TableInsertRowTable = () => {
       Primary: []
   });
 
-  const deptArrayRef = useRef<DepartmentData[]>(JSON.parse(deptData as string) as DepartmentData[]);
   const originalDataRef = useRef<DepartmentData | null>(null);
   const tableRef = useRef<ojTable<DepartmentData['DepartmentId'], DepartmentData> | null>(null);
   const cancelEditRef = useRef<boolean>(false);
 
-  const dataprovider = useMemo(() => new BufferingDataProvider<DepartmentData['DepartmentId'], DepartmentData>(new MutableArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(deptArrayRef.current, {
+  const dataprovider = useMemo(() => new BufferingDataProvider<DepartmentData['DepartmentId'], DepartmentData>(new ArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(deptObservableArray, {
       keyAttributes: 'DepartmentId'
-  })), []);
-  const departments = useMemo(() => new MutableArrayDataProvider([{ label: 'Sales' }, { label: 'HR' }, { label: 'Marketing' }, { label: 'Finance' }], { keyAttributes: 'label' }), []);
+  })), [deptObservableArray]);
+  const departments = useMemo(() => new ArrayDataProvider([{ label: 'Sales' }, { label: 'HR' }, { label: 'Marketing' }, { label: 'Finance' }], { keyAttributes: 'label' }), []);
   const numberConverter = useMemo(() => new IntlNumberConverter(), []);
   const dateConverter = useMemo(() => new IntlDateTimeConverter({
       year: '2-digit',
@@ -112,7 +117,6 @@ export const TableInsertRowTable = () => {
           showRequired: true,
           headerClassName: 'oj-helper-text-align-end',
           className: 'oj-helper-text-align-end oj-table-data-cell-padding',
-          template: 'deptIdTemplate',
           sortable: 'enabled',
           id: 'depId',
           minWidth: '10rem'
@@ -122,7 +126,6 @@ export const TableInsertRowTable = () => {
           weight: 3,
           minWidth: '10rem',
           headerText: 'InputText',
-          template: 'deptNameTemplate',
           sortable: 'enabled',
           id: 'depName'
       },
@@ -132,7 +135,6 @@ export const TableInsertRowTable = () => {
           weight: 2,
           headerClassName: 'oj-helper-text-align-end',
           className: 'oj-helper-text-align-end',
-          template: 'locIdTemplate',
           sortable: 'enabled',
           id: 'locId',
           minWidth: '11rem'
@@ -142,7 +144,6 @@ export const TableInsertRowTable = () => {
           headerText: 'SelectSingle',
           weight: 2,
           minWidth: '10rem',
-          template: 'typeTemplate',
           id: 'type'
       },
       {
@@ -150,7 +151,6 @@ export const TableInsertRowTable = () => {
           headerText: 'Combobox',
           minWidth: '8rem',
           weight: 2,
-          template: 'currencyTemplate',
           id: 'currency'
       },
       {
@@ -158,7 +158,6 @@ export const TableInsertRowTable = () => {
           weight: 2,
           minWidth: '10rem',
           headerText: 'InputDate',
-          template: 'dateTemplate',
           id: 'start'
       },
       {
@@ -166,7 +165,6 @@ export const TableInsertRowTable = () => {
           width: '6.2rem',
           headerClassName: 'oj-helper-text-align-end',
           className: 'oj-helper-text-align-end oj-sm-padding-0-vertical',
-          template: 'actionTemplate',
           id: 'action'
       }
   ], []);
@@ -199,7 +197,7 @@ export const TableInsertRowTable = () => {
     setInsertPosition(event.detail.value ?? 'before');
   };
 
-  const handleEditRowEditRowChanged = (event: PropertyChangedEvent<EditRowState | null>) => {
+  const handleEditRowEditRowChanged = (event: Parameters<NonNullable<ComponentProps<'oj-table'>['oneditRowChanged']>>[0]) => {
     setEditRow(event.detail.value ?? { rowKey: null });
   };
 
@@ -392,7 +390,24 @@ export const TableInsertRowTable = () => {
 	          dataprovider.setItemStatus(editItem, 'submitting');
 	          const itemData = editItem.item.data;
 	          if (itemData != null) {
-	              deptArrayRef.current.splice(0, 0, itemData);
+	              setDeptObservableArray((currentData) => {
+	                  const dataWithoutDuplicate = currentData.filter(
+	                      (department) => department.DepartmentId !== itemData.DepartmentId
+	                  );
+	                  const anchorIndex = dataWithoutDuplicate.findIndex(
+	                      (department) => department.DepartmentId === insertRowKey
+	                  );
+	                  const insertIndex = anchorIndex === -1
+	                      ? dataWithoutDuplicate.length
+	                      : insertPosition === 'before'
+	                          ? anchorIndex
+	                          : anchorIndex + 1;
+	                  return [
+	                      ...dataWithoutDuplicate.slice(0, insertIndex),
+	                      itemData,
+	                      ...dataWithoutDuplicate.slice(insertIndex)
+	                  ];
+	              });
 	          }
           dataprovider.setItemStatus(editItem, 'submitted');
       }
@@ -424,12 +439,11 @@ export const TableInsertRowTable = () => {
 	          dataprovider.setItemStatus(editItem, 'submitted');
 	          return;
 	      }
-	      for (let idx = 0; idx < deptArrayRef.current.length; idx++) {
-	          if (deptArrayRef.current[idx].DepartmentId === editItem.item.metadata.key) {
-	              deptArrayRef.current.splice(idx, 1, itemData);
-              break;
-          }
-      }
+      setDeptObservableArray((currentData) =>
+          currentData.map((department) =>
+              department.DepartmentId === editItem.item.metadata.key ? itemData : department
+          )
+      );
       // Set the edit item to "submitted" if successful
       dataprovider.setItemStatus(editItem, 'submitted');
       setEditedData(JSON.stringify(editItem.item.data));
@@ -473,10 +487,13 @@ export const TableInsertRowTable = () => {
       }
   };
 
-  const handleUpdate = (_event: ojButton.ojAction, context: ojTable.CellTemplateContext<DepartmentData['DepartmentId'], DepartmentData>) => {
-      setEditRow({ rowKey: context.item.metadata.key });
-  };
   const handleUpdateRow = (rowKey: DepartmentData['DepartmentId']) => () => {
+      const itemData = deptObservableArray.find((department) => department.DepartmentId === rowKey);
+      if (itemData) {
+          cancelEditRef.current = false;
+          originalDataRef.current = Object.assign({}, itemData);
+          setRowData(Object.assign({}, itemData));
+      }
       setEditRow({ rowKey });
   };
 
@@ -516,6 +533,115 @@ export const TableInsertRowTable = () => {
       context.submitAddRow(true);
   };
 
+  const ojTableProps: Partial<ComponentProps<'oj-table'>> = {
+      accessibility: { rowHeader: 'depName' },
+      columnsDefault: { sortable: 'disabled' }
+  };
+
+  const rowTemplateRenderer = (row: EditableRowTemplateContext) => {
+      const rowItem = row.item.data;
+      const currentRowData = rowData?.DepartmentId === rowItem.DepartmentId ? rowData : rowItem;
+      const isEditing = row.mode === 'edit' || editRow?.rowKey === row.item.metadata.key;
+
+      if (isEditing) {
+          return (
+              <tr>
+                  <td class="oj-helper-text-align-end oj-table-data-cell-padding">
+                      {numberConverter.format(rowItem.DepartmentId)}
+                  </td>
+                  <td>
+                      <oj-input-text
+                          id="it1"
+                          aria-label="Department Name"
+                          value={currentRowData.DepartmentName}
+                          class="editable"
+                          onvalueChanged={(event) => updateRowData('DepartmentName', event.detail.value ?? '')}
+                      />
+                  </td>
+                  <td class="oj-helper-text-align-end">
+                      <oj-input-text
+                          id="it2"
+                          aria-label="Location Id"
+                          value={currentRowData.LocationId}
+                          validators={validators}
+                          converter={numberConverter}
+                          class="editable"
+                          onvalueChanged={(event) => updateRowData('LocationId', Number(event.detail.value ?? 0))}
+                      />
+                  </td>
+                  <td>
+                      <oj-select-single
+                          id="ss1"
+                          aria-label="Type"
+                          value={currentRowData.Type}
+                          data={departments}
+                          class="editable"
+                          onvalueChanged={(event) => updateRowData('Type', event.detail.value ?? '')}
+                      />
+                  </td>
+                  <td>
+                      <oj-combobox-one
+                          id="co1"
+                          aria-label="Currency"
+                          value={currentRowData.Currency}
+                          class="editable"
+                          onvalueChanged={(event) => updateRowData('Currency', event.detail.value ?? '')}
+                      >
+                          <oj-option value="USD">USD</oj-option>
+                          <oj-option value="JPY">JPY</oj-option>
+                          <oj-option value="EUR">EUR</oj-option>
+                      </oj-combobox-one>
+                  </td>
+                  <td>
+                      <oj-input-date
+                          id="id1"
+                          aria-label="Start Date"
+                          value={currentRowData.StartDate}
+                          class="editable"
+                          onvalueChanged={(event) => updateRowData('StartDate', event.detail.value ?? '')}
+                      />
+                  </td>
+                  <td class="oj-helper-text-align-end demo-edit-action-cell">
+                      <oj-toolbar data-oj-clickthrough="disabled" chroming="borderless" class="demo-edit-action-toolbar">
+                          <oj-button display="icons" label="Submit" class="oj-button-sm" onojAction={handleDone} data-oj-clickthrough="disabled">
+                              <span slot="startIcon" class="oj-ux-ico-check" />
+                              Save
+                          </oj-button>
+                          <oj-button display="icons" label="Cancel" class="oj-button-sm" onojAction={handleCancel} data-oj-clickthrough="disabled">
+                              <span slot="startIcon" class="oj-ux-ico-multiply" />
+                              Cancel
+                          </oj-button>
+                      </oj-toolbar>
+                  </td>
+              </tr>
+          );
+      }
+
+      return (
+          <tr>
+              <td class="oj-helper-text-align-end oj-table-data-cell-padding">{numberConverter.format(rowItem.DepartmentId)}</td>
+              <td>{rowItem.DepartmentName}</td>
+              <td class="oj-helper-text-align-end">{numberConverter.format(rowItem.LocationId)}</td>
+              <td>{rowItem.Type}</td>
+              <td>{rowItem.Currency}</td>
+              <td>{dateConverter.format(rowItem.StartDate)}</td>
+              <td class="oj-helper-text-align-end">
+                  <oj-button
+                      data-oj-clickthrough="disabled"
+                      class="oj-button-sm"
+                      display="icons"
+                      label="Edit"
+                      chroming="borderless"
+                      onojAction={handleUpdateRow(row.item.metadata.key)}
+                  >
+                      <span slot="startIcon" class="oj-ux-ico-edit" />
+                      Edit
+                  </oj-button>
+              </td>
+          </tr>
+      );
+  };
+
   return (
       <div id="tableWrapper">
             <div class="oj-panel oj-bg-neutral-30">
@@ -529,7 +655,7 @@ export const TableInsertRowTable = () => {
                               {h('demo-radioset-enum', { direction: 'row', 'label-hint': 'Insert Row Anchor Key Position', onvalueChanged: handleInsertPositionValueChanged, value: insertPosition, 'enum-values': JSON.stringify(['before', 'after']) })}
                           </oj-form-layout>
                 </div>
-            <oj-table ref={tableRef} id="table" aria-label="Departments Table" class="oj-bg-body demo-table-container" data={dataprovider} edit-mode="rowEdit" insert-row-display={insertRowDisplay} oninsertRowDisplayChanged={handleInsertRow} add-row-display="hidden" oneditRowChanged={handleEditRowEditRowChanged} edit-row={editRow} onojBeforeRowEdit={beforeRowEditListener} onojBeforeRowEditEnd={beforeRowEditEndListener} onojBeforeRowAddEnd={beforeRowAddEndListener} layout="fixed" columns={columnArray} {...{ 'accessibility.row-header': "depName", 'columns-default.sortable': "disabled" }}>
+            <oj-table ref={tableRef} id="table" aria-label="Departments Table" class="oj-bg-body demo-table-container" data={dataprovider} editMode="rowEdit" insertRowDisplay={insertRowDisplay} oninsertRowDisplayChanged={handleInsertRow} addRowDisplay="hidden" oneditRowChanged={handleEditRowEditRowChanged} editRow={editRow} onojBeforeRowEdit={beforeRowEditListener} onojBeforeRowEditEnd={beforeRowEditEndListener} onojBeforeRowAddEnd={beforeRowAddEndListener} layout="fixed" columns={columnArray} {...ojTableProps}>
                     <template slot="addRowTemplate" render={(addRow) => (
                             <>
                                 <tr>
@@ -555,8 +681,8 @@ export const TableInsertRowTable = () => {
                                               <td>
                                                               <oj-input-date label-hint="Start Date" label-edge="none" value={insertRowData.StartDate} class="addRowEditable" onvalueChanged={(event) => updateInsertRowData('StartDate', event.detail.value ?? '')} />
                                                           </td>
-                                              <td>
-                                                              <oj-toolbar data-oj-clickthrough="disabled" chroming="borderless" class="oj-sm-padding-0-vertical oj-sm-padding-4x-end oj-sm-float-end">
+                                              <td class="oj-helper-text-align-end demo-edit-action-cell">
+                                                              <oj-toolbar data-oj-clickthrough="disabled" chroming="borderless" class="demo-edit-action-toolbar">
                                                                                 <oj-button class="oj-button-sm" display="icons" onojAction={handleAddSubmit(addRow as AddRowContext)} data-oj-clickthrough="disabled">
                                                                                                     <span slot="startIcon" class="oj-ux-ico-check" />
                                                                                                     Submit
@@ -570,6 +696,7 @@ export const TableInsertRowTable = () => {
                                           </tr>
                             </>
                           )} />
+                    <template slot="rowTemplate" render={rowTemplateRenderer} />
                     <template slot="deptIdTemplate" render={(cell) => (
                             <>
                                 {numberConverter.format(cell.data)}
