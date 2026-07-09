@@ -4,7 +4,6 @@ import DataViz from "./dataviz/index";
 import Control from "./control/index";
 import NavLayout from "./navlayout/index";
 import "preact";
-import type { JSX } from "preact";
 import { useEffect, useMemo } from "preact/hooks";
 import { Route, Router, useLocation } from "preact-iso";
 import "ojs/ojnavigationlist";
@@ -107,23 +106,10 @@ const ExampleContent = () => {
     }
   };
 
-  const handleTabAnchorClick = (
-    event: JSX.TargetedMouseEvent<HTMLAnchorElement>,
-    tabPath: Tab["path"],
-  ) => {
-    event.preventDefault();
-    event.stopPropagation();
-    routeToTab(tabPath);
-  };
-
   const tabItemTemplate = (item: ojTabBar.ItemContext<Tab["path"], Tab>) => {
     return (
       <li>
-        <a
-          href={`/examples/${item.data.path}`}
-          data-tab-path={item.data.path}
-          onClick={(event) => handleTabAnchorClick(event, item.data.path)}
-        >
+        <a href="#" data-tab-path={item.data.path}>
           <span></span>
           {item.data.label}
         </a>
