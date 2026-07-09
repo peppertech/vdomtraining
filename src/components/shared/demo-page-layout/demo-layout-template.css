@@ -29,7 +29,8 @@
 }
 
 .recipe-page-template__navigation-link {
-  display: block;
+  display: flex;
+  align-items: center;
   line-height: 1.35;
 }
 

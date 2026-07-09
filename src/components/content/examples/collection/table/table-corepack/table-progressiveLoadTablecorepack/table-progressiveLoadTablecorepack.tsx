@@ -26,6 +26,7 @@ type NumberChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-number
 
 export const TableProgressiveLoadTablecorepack = () => {
   const [fetchDelay, setFetchDelay] = useState(2000);
+  const [appliedFetchDelay, setAppliedFetchDelay] = useState(2000);
   const [dataProvider, setDataProvider] = useState<DelayedEmployeeDataProvider | undefined>(undefined);
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Employee Id', field: 'EMPLOYEE_ID', id: 'id' },
@@ -44,10 +45,6 @@ export const TableProgressiveLoadTablecorepack = () => {
       keyAttributes: keyAttributes,
 	      data: (JSON.parse(jsonDataStr as string) as EmployeeResponse).Employees
   }), [keyAttributes]);
-  useEffect(() => {
-      server.start();
-      return () => server.stop();
-  }, [server]);
   const restDataProvider = useMemo(() => new RESTDataProvider<Key, Employee>({
       keyAttributes: keyAttributes,
       url: server.getUrl(),
@@ -73,13 +70,18 @@ export const TableProgressiveLoadTablecorepack = () => {
           }
       }
   }), [keyAttributes, server]);
+  useEffect(() => {
+      server.start();
+      setDataProvider(new DemoDelayingDataProvider(restDataProvider, appliedFetchDelay));
+      return () => server.stop();
+  }, [appliedFetchDelay, restDataProvider, server]);
 
   const handleFetchDelayValueChanged = (event: NumberChangedEvent) => {
     setFetchDelay(event.detail.value ?? 0);
   };
 
   const applyFetchDelay = () => {
-      setDataProvider(new DemoDelayingDataProvider(restDataProvider, fetchDelay));
+      setAppliedFetchDelay(fetchDelay);
   };
 
   return (

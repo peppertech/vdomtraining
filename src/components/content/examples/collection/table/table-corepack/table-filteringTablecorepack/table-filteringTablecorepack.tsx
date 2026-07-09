@@ -25,7 +25,7 @@ interface EmployeeData {
 }
 
 type TableColumns = ComponentProps<'oj-table'>['columns'];
-type FilterChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>>[0];
+type FilterChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-text'>['onrawValueChanged']>>[0];
 
 const baseDeptArray = JSON.parse(deptDataText as string) as DepartmentSource[];
 
@@ -127,7 +127,7 @@ export const TableFilteringTablecorepack = () => {
     [filter]
   );
 
-  const handleFilterValueChanged = (event: FilterChangedEvent) => {
+  const handleFilterRawValueChanged = (event: FilterChangedEvent) => {
     setFilter(event.detail.value ?? '');
   };
 
@@ -145,7 +145,7 @@ export const TableFilteringTablecorepack = () => {
           labelHint="Filter"
           labelEdge="inside"
           placeholder="Type to filter"
-          onvalueChanged={handleFilterValueChanged}
+          onrawValueChanged={handleFilterRawValueChanged}
           value={filter}
           clearIcon="always"
         />

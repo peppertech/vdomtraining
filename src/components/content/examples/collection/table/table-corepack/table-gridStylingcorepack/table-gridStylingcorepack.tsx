@@ -15,14 +15,12 @@ interface DepartmentData {
   ManagerId: number;
 }
 
-type DisplayOption = 'list' | 'grid';
-type GridVisibleOption = 'auto' | 'disabled' | 'enabled';
+type GridVisibleOption = 'disabled' | 'enabled';
 type RadioChangedEvent = Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0];
 
 export const TableGridStylingcorepack = () => {
-  const [currentDisplayOption, setCurrentDisplayOption] = useState<DisplayOption>('list');
-  const [currentHorizontalGridVisible, setCurrentHorizontalGridVisible] = useState<GridVisibleOption>('auto');
-  const [currentVerticalGridVisible, setCurrentVerticalGridVisible] = useState<GridVisibleOption>('auto');
+  const [currentHorizontalGridVisible, setCurrentHorizontalGridVisible] = useState<GridVisibleOption>('disabled');
+  const [currentVerticalGridVisible, setCurrentVerticalGridVisible] = useState<GridVisibleOption>('disabled');
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(
     () => [
       { headerText: 'Department Id', field: 'DepartmentId', id: 'depId' },
@@ -43,16 +41,12 @@ export const TableGridStylingcorepack = () => {
     []
   );
 
-  const handleCurrentDisplayOptionValueChanged = (event: RadioChangedEvent) => {
-    setCurrentDisplayOption((event.detail.value ?? 'list') as DisplayOption);
-  };
-
   const handleCurrentHorizontalGridVisibleValueChanged = (event: RadioChangedEvent) => {
-    setCurrentHorizontalGridVisible((event.detail.value ?? 'auto') as GridVisibleOption);
+    setCurrentHorizontalGridVisible((event.detail.value ?? 'disabled') as GridVisibleOption);
   };
 
   const handleCurrentVerticalGridVisibleValueChanged = (event: RadioChangedEvent) => {
-    setCurrentVerticalGridVisible((event.detail.value ?? 'auto') as GridVisibleOption);
+    setCurrentVerticalGridVisible((event.detail.value ?? 'disabled') as GridVisibleOption);
   };
 
   return (
@@ -60,21 +54,11 @@ export const TableGridStylingcorepack = () => {
       <div class="oj-panel oj-bg-neutral-30 oj-sm-margin-4x-bottom">
         <oj-form-layout id="formLayoutOptions" maxColumns={4} direction="row">
           <oj-radioset
-            onvalueChanged={handleCurrentDisplayOptionValueChanged}
-            value={currentDisplayOption}
-            labelHint="Display Option"
-            aria-controls="table"
-          >
-            <oj-option value="list">List</oj-option>
-            <oj-option value="grid">Grid</oj-option>
-          </oj-radioset>
-          <oj-radioset
             onvalueChanged={handleCurrentHorizontalGridVisibleValueChanged}
             value={currentHorizontalGridVisible}
             labelHint="Horizontal Grid Visible"
             aria-controls="table"
           >
-            <oj-option value="auto">Auto</oj-option>
             <oj-option value="disabled">Disabled</oj-option>
             <oj-option value="enabled">Enabled</oj-option>
           </oj-radioset>
@@ -84,7 +68,6 @@ export const TableGridStylingcorepack = () => {
             labelHint="Vertical Grid Visible"
             aria-controls="table"
           >
-            <oj-option value="auto">Auto</oj-option>
             <oj-option value="disabled">Disabled</oj-option>
             <oj-option value="enabled">Enabled</oj-option>
           </oj-radioset>
@@ -94,7 +77,6 @@ export const TableGridStylingcorepack = () => {
         id="table"
         aria-label="Departments Table"
         data={dataprovider}
-        display={currentDisplayOption}
         horizontalGridVisible={currentHorizontalGridVisible}
         class="demo-table-container"
         verticalGridVisible={currentVerticalGridVisible}

@@ -12,6 +12,9 @@ import { tableBasicTablecorepackRecipe } from "./table-basicTablecorepack/recipe
 import { TableColumnLayoutscorepack } from "./table-columnLayoutscorepack/table-columnLayoutscorepack";
 import { tableColumnLayoutscorepackDescription } from "./table-columnLayoutscorepack/description";
 import { tableColumnLayoutscorepackRecipe } from "./table-columnLayoutscorepack/recipe";
+import { TableColumnSortingcorepack } from "./table-columnSortingcorepack/table-columnSortingcorepack";
+import { tableColumnSortingcorepackDescription } from "./table-columnSortingcorepack/description";
+import { tableColumnSortingcorepackRecipe } from "./table-columnSortingcorepack/recipe";
 import { TableColumnResizingcorepack } from "./table-columnResizingcorepack/table-columnResizingcorepack";
 import { tableColumnResizingcorepackDescription } from "./table-columnResizingcorepack/description";
 import { tableColumnResizingcorepackRecipe } from "./table-columnResizingcorepack/recipe";
@@ -85,6 +88,13 @@ const tableCorePackItems = [
     Component: TableColumnLayoutscorepack,
   },
   {
+    id: "column-sorting",
+    name: "Column Sorting",
+    description: tableColumnSortingcorepackDescription,
+    recipe: tableColumnSortingcorepackRecipe,
+    Component: TableColumnSortingcorepack,
+  },
+  {
     id: "responsive",
     name: "Responsive Columns",
     description: tableResponsiveTablecorepackDescription,
@@ -101,7 +111,7 @@ const tableCorePackItems = [
   },
  {
     id: "template-slots",
-    name: "Template Slots",
+    name: "Cell Templates",
     description: tableTemplateSlotTablecorepackDescription,
     recipe: tableTemplateSlotTablecorepackRecipe,
     Component: TableTemplateSlotTablecorepack,

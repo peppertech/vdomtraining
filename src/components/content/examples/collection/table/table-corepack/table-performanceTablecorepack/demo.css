@@ -1,4 +1,39 @@
-.demo-table-container {
+.demo-table-performance-panel {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 2.5rem;
+  min-height: 10rem;
+  padding: 1rem;
+}
+
+.demo-table-performance-input-number {
+  width: 100%;
+}
+
+.demo-table-performance-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: start;
+  gap: 0.25rem;
+  margin: 0;
+}
+
+.demo-table-render-time {
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.demo-table-performance-table {
   width: 100%;
   height: 27rem;
+}
+
+@media (max-width: 60rem) {
+  .demo-table-performance-panel {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }

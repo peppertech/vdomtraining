@@ -173,7 +173,7 @@ export const TableStickyColumnTablecorepack = () => {
       columns={columns}
       row={{ accessibleRowHeader: "col2" }}
       selectionMode={selectionMode}
-      class="demo-table-container"
+      class="demo-sticky-column-table-container"
     >
       <template slot="empNameTemplate" render={renderEmployeeNameTemplate} />
       <template slot="actionTemplate" render={renderActionTemplate} />
