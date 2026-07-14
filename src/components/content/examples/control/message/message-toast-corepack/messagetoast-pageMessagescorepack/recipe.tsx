@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<p>Toast messages in page layout:</p>
 <ul>

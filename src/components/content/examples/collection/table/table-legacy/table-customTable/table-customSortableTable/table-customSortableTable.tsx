@@ -1,9 +1,9 @@
-import { h } from 'preact';
+import 'ojs/ojtable';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import * as deptData from 'text!../../../../data/cookbook/dataCollections/table/shared/departmentData.json';
-import 'ojs/ojtable';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface DepartmentData {
     DepartmentId: number;

@@ -1,16 +1,15 @@
-import { JetElementCustomEvent } from 'ojs/index';
-import { h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useState } from 'preact/hooks';
-import 'ojs/ojdrawerlayout';
 import 'ojs/ojavatar';
+import 'ojs/ojdrawerlayout';
+import { useState } from 'preact/hooks';
 // Controls
+import "css!./demo.css";
 import 'ojs/ojbutton';
 import 'ojs/ojinputnumber';
-import 'ojs/ojlabelvalue';
 import 'ojs/ojlabel';
-import "css!./demo.css";
+import 'ojs/ojlabelvalue';
 
 type DrawerOpened = NonNullable<ComponentProps<'oj-drawer-layout'>['startOpened']>;
 type DrawerOpenedEventValue = ComponentProps<'oj-drawer-layout'>['startOpened'];

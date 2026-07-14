@@ -1,14 +1,13 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import '../../../../../../jet-composites/demo-profile-card-layout/loader';
+import 'css!./demo.css';
 import 'ojs/ojavatar';
 import 'ojs/ojbutton';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojlistview';
 import 'ojs/ojoption';
-import 'css!./demo.css';
+import * as preact from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import '../../../../../../jet-composites/demo-profile-card-layout/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type EmployeeData = {
   id: number;
@@ -114,7 +113,7 @@ const EMPLOYEES: EmployeeData[] = [
 const renderCard = (context: ListViewItemContext) => (
   <li class="demo-card">
     <div class="oj-panel demo-card-panel">
-      {h('demo-profile-card-layout', {
+      {preact.h('demo-profile-card-layout', {
         name: context.data.name,
         workTitle: context.data.title,
         initials: context.data.initials,

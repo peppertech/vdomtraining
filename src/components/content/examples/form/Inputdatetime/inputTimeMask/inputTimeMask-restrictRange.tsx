@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/input-time-mask";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import { type InputTimeMaskValueChangedEvent } from "./inputTimeMask-shared";
 
 export default function InputTimeMaskRestrictRangeVdomExample() {

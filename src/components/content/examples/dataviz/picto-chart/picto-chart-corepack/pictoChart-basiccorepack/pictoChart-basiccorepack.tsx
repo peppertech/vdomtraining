@@ -1,7 +1,6 @@
-// @ts-nocheck
+import "oj-c/picto-chart";
 import { useMemo } from "preact/hooks";
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import "oj-c/picto-chart";
 
 type PictoDatum = {
   name: string;

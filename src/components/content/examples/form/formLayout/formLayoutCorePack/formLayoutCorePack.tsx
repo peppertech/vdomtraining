@@ -5,49 +5,35 @@
  * as shown at https://oss.oracle.com/licenses/upl/
  * @ignore
  */
-import { h } from 'preact';
-import { useState, useCallback, useMemo } from 'preact/hooks';
+import 'preact';
 import { ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from 'preact/hooks';
 
 // CorePack component imports
-import 'oj-c/form-layout';
-import 'oj-c/collapsible';
-import 'oj-c/radioset';
+import 'oj-c/checkbox';
 import 'oj-c/checkboxset';
-import 'oj-c/input-text';
+import 'oj-c/collapsible';
+import 'oj-c/form-layout';
+import 'oj-c/input-date-mask';
+import 'oj-c/input-date-picker';
+import 'oj-c/input-date-text';
+import 'oj-c/input-month-mask';
+import 'oj-c/input-number';
 import 'oj-c/input-password';
 import 'oj-c/input-sensitive-text';
-import 'oj-c/input-number';
-import 'oj-c/input-date-mask';
-import 'oj-c/input-month-mask';
-import 'oj-c/input-date-text';
-import 'oj-c/input-date-picker';
+import 'oj-c/input-text';
 import 'oj-c/input-time-mask';
-import 'oj-c/select-single';
-import 'oj-c/select-multiple';
-import 'oj-c/text-area';
-import 'oj-c/checkbox';
 import 'oj-c/labelled-link';
+import 'oj-c/radioset';
 import 'oj-c/rich-checkboxset';
 import 'oj-c/rich-radioset';
+import 'oj-c/select-multiple';
+import 'oj-c/select-single';
+import 'oj-c/text-area';
 
 // Type imports
-import { CCollapsibleElement } from 'oj-c/collapsible';
-import { CRadiosetElement } from 'oj-c/radioset';
-import { CCheckboxsetElement } from 'oj-c/checkboxset';
-import { CInputTextElement } from 'oj-c/input-text';
-import { CInputPasswordElement } from 'oj-c/input-password';
-import { CInputSensitiveTextElement } from 'oj-c/input-sensitive-text';
-import { CInputNumberElement } from 'oj-c/input-number';
-import { CInputDateMaskElement } from 'oj-c/input-date-mask';
 import { CInputMonthMaskElement } from 'oj-c/input-month-mask';
-import { CInputDateTextElement } from 'oj-c/input-date-text';
-import { CInputDatePickerElement } from 'oj-c/input-date-picker';
 import { CInputTimeMaskElement } from 'oj-c/input-time-mask';
-import { CSelectSingleElement } from 'oj-c/select-single';
-import { CSelectMultipleElement } from 'oj-c/select-multiple';
-import { CTextAreaElement } from 'oj-c/text-area';
-import { CCheckboxElement } from 'oj-c/checkbox';
 
 // Data provider
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");

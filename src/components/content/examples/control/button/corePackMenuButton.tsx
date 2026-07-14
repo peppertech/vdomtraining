@@ -1,6 +1,7 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/menu-button";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 type MenuButtonProps = ComponentProps<"oj-c-menu-button">;
 type MenuButtonItem = NonNullable<MenuButtonProps["items"]>[number];

@@ -1,28 +1,28 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { LineChartBasiccorepack } from "./lineChart-basiccorepack/lineChart-basiccorepack";
 import { lineChartBasiccorepackDescription } from "./lineChart-basiccorepack/description";
+import { LineChartBasiccorepack } from "./lineChart-basiccorepack/lineChart-basiccorepack";
 import { lineChartBasiccorepackRecipe } from "./lineChart-basiccorepack/recipe";
-import { LineChartDataLabelscorepack } from "./lineChart-dataLabelscorepack/lineChart-dataLabelscorepack";
 import { lineChartDataLabelscorepackDescription } from "./lineChart-dataLabelscorepack/description";
+import { LineChartDataLabelscorepack } from "./lineChart-dataLabelscorepack/lineChart-dataLabelscorepack";
 import { lineChartDataLabelscorepackRecipe } from "./lineChart-dataLabelscorepack/recipe";
-import { LineChartDualYcorepack } from "./lineChart-dualYcorepack/lineChart-dualYcorepack";
 import { lineChartDualYcorepackDescription } from "./lineChart-dualYcorepack/description";
+import { LineChartDualYcorepack } from "./lineChart-dualYcorepack/lineChart-dualYcorepack";
 import { lineChartDualYcorepackRecipe } from "./lineChart-dualYcorepack/recipe";
-import { LineChartHideShowcorepack } from "./lineChart-hideShowcorepack/lineChart-hideShowcorepack";
 import { lineChartHideShowcorepackDescription } from "./lineChart-hideShowcorepack/description";
+import { LineChartHideShowcorepack } from "./lineChart-hideShowcorepack/lineChart-hideShowcorepack";
 import { lineChartHideShowcorepackRecipe } from "./lineChart-hideShowcorepack/recipe";
-import { LineChartLineTypescorepack } from "./lineChart-lineTypescorepack/lineChart-lineTypescorepack";
 import { lineChartLineTypescorepackDescription } from "./lineChart-lineTypescorepack/description";
+import { LineChartLineTypescorepack } from "./lineChart-lineTypescorepack/lineChart-lineTypescorepack";
 import { lineChartLineTypescorepackRecipe } from "./lineChart-lineTypescorepack/recipe";
-import { LineChartSelectioncorepack } from "./lineChart-selectioncorepack/lineChart-selectioncorepack";
 import { lineChartSelectioncorepackDescription } from "./lineChart-selectioncorepack/description";
+import { LineChartSelectioncorepack } from "./lineChart-selectioncorepack/lineChart-selectioncorepack";
 import { lineChartSelectioncorepackRecipe } from "./lineChart-selectioncorepack/recipe";
-import { LineChartShapedDatacorepack } from "./lineChart-shapedDatacorepack/lineChart-shapedDatacorepack";
 import { lineChartShapedDatacorepackDescription } from "./lineChart-shapedDatacorepack/description";
+import { LineChartShapedDatacorepack } from "./lineChart-shapedDatacorepack/lineChart-shapedDatacorepack";
 import { lineChartShapedDatacorepackRecipe } from "./lineChart-shapedDatacorepack/recipe";
-import { LineChartStylescorepack } from "./lineChart-stylescorepack/lineChart-stylescorepack";
 import { lineChartStylescorepackDescription } from "./lineChart-stylescorepack/description";
+import { LineChartStylescorepack } from "./lineChart-stylescorepack/lineChart-stylescorepack";
 import { lineChartStylescorepackRecipe } from "./lineChart-stylescorepack/recipe";
 
 const lineChartCorePackItems = [

@@ -1,15 +1,15 @@
-import { h } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
-import { LocalDateConverter } from "ojs/ojconverter-localdate";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import "oj-c/form-layout";
 import "oj-c/input-date-text";
 import "oj-c/select-single";
+import { LocalDateConverter } from "ojs/ojconverter-localdate";
+import 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 import {
   type InputDateTextValue,
   type InputDateTextValueChangedEvent,
   type SelectSingleValueChangedEvent,
 } from "./inputDateText-shared";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 type DateStyle = NonNullable<LocalDateConverter.ConverterOptions["dateStyle"]>;
 

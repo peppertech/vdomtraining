@@ -1,12 +1,12 @@
-import { h } from 'preact';
+import 'css!./demo.css';
+import 'ojs/ojrowexpander';
+import 'ojs/ojtable';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
+import * as jsonDataStr from 'text!../../data/cookbook/dataCollections/rowExpanderTable/tableAnimationRowExpander/projectData.json';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
-import * as jsonDataStr from 'text!../../data/cookbook/dataCollections/rowExpanderTable/tableAnimationRowExpander/projectData.json';
-import 'ojs/ojtable';
-import 'ojs/ojrowexpander';
-import 'css!./demo.css';
 
 export const RowExpanderTableTableAnimationRowExpander = () => {
   const arrayTreeDataProvider = useMemo(() => new ArrayTreeDataProvider(JSON.parse(jsonDataStr), {

@@ -1,12 +1,12 @@
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import 'css!./demo.css';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
 import '../../../../../../jet-composites/demo-select-enum/loader';
-import 'css!./demo.css';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type DataLabelPosition = 'auto' | 'center' | 'aboveMarker' | 'belowMarker' | 'beforeMarker' | 'afterMarker' | 'none';
 type DataLabelCollision = 'none' | 'fitInBounds';
 type ToggleValue = 'on' | 'off';

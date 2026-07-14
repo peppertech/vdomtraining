@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useState, useCallback } from "preact/hooks";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 
-import "oj-c/input-time-mask";
 import "oj-c/form-layout";
+import "oj-c/input-time-mask";
 
 import {
   type InputTimeMaskProps,

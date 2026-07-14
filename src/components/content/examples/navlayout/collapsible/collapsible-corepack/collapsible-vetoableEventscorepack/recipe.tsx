@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ol>
   <li>Add an event handler for beforeExpand/beforeCollapse as shown.</li>

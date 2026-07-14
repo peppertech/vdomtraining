@@ -1,10 +1,10 @@
-import { h } from 'preact';
+import 'ojs/ojdiagram';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/diagramShapedDataSample.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import * as layout from '../diagram-layouts';
-import 'ojs/ojdiagram';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface DiagramNode {
     id: string;

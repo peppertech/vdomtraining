@@ -1,9 +1,9 @@
-import { h } from 'preact';
+import { ojMessage } from 'ojs/ojmessage';
+import 'ojs/ojmessages';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ojMessage } from 'ojs/ojmessage';
-import 'ojs/ojmessages';
 
 type MessageData = ojMessage.Message;
 type MessagesPosition = NonNullable<ComponentProps<'oj-messages'>['position']>;

@@ -1,20 +1,21 @@
-import { h, type ComponentProps } from "preact";
-import { useState } from "preact/hooks";
-import * as peopleData from "text!../data/peopleData.json";
-import * as employeeData from "text!../data/employeeData.json";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import type { ItemContext } from "ojs/ojcommontypes";
-import "oj-c/select-single";
-import "oj-c/list-item-layout";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import "oj-c/form-layout";
 import "oj-c/avatar";
+import "oj-c/form-layout";
 import "oj-c/highlight-text";
-import type { CSelectSingleElement } from "oj-c/select-single";
+import "oj-c/list-item-layout";
 import "oj-c/list-view";
 import type { CListViewElement } from "oj-c/list-view";
+import "oj-c/select-single";
+import type { CSelectSingleElement } from "oj-c/select-single";
 import "oj-c/table";
 import type { CTableElement } from "oj-c/table";
+import type { ItemContext } from "ojs/ojcommontypes";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useState } from "preact/hooks";
+import * as employeeData from "text!../data/employeeData.json";
+import * as peopleData from "text!../data/peopleData.json";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 //  data types
 type Person = {

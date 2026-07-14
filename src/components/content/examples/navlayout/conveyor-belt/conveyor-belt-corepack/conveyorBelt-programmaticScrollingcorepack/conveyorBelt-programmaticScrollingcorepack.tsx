@@ -1,10 +1,11 @@
-import { h, type ComponentProps } from 'preact';
-import { useCallback, useMemo, useRef, useState } from 'preact/hooks';
 import 'oj-c/conveyor-belt';
-import 'ojs/ojnavigationlist';
-import 'ojs/ojselectsingle';
-import { ojTabBar } from 'ojs/ojnavigationlist';
 import type { CConveyorBeltElement } from 'oj-c/conveyor-belt';
+import 'ojs/ojnavigationlist';
+import { ojTabBar } from 'ojs/ojnavigationlist';
+import 'ojs/ojselectsingle';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useMemo,useRef,useState } from 'preact/hooks';
 import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 
 type TabItem = {

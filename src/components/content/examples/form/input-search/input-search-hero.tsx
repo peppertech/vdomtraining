@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "ojs/ojinputsearch";
+import 'preact';
+import { useMemo,useState } from "preact/hooks";
 import { createBrowserSuggestionsDataProvider } from "./input-search-shared";
 
 export default function InputSearchHeroExample() {

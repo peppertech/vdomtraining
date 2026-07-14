@@ -1,4 +1,5 @@
-import { ComponentProps } from "preact";
+import 'preact';
+import { ComponentProps } from 'preact';
 
 export type InputMonthMaskProps = ComponentProps<"oj-c-input-month-mask">;
 export type InputMonthMaskValue = NonNullable<InputMonthMaskProps["value"]>;

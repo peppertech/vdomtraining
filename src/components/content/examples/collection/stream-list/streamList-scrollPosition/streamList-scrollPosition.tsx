@@ -1,14 +1,14 @@
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { AllKeySetImpl } from 'ojs/ojkeyset';
+import 'css!./demo.css';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
+import { AllKeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojlabel';
 import 'ojs/ojoption';
 import 'ojs/ojstreamlist';
 import { StreamListElement } from 'ojs/ojstreamlist';
-import 'css!./demo.css';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type DataStructure = 'flat' | 'hierarchical';
 type FlatItem = {

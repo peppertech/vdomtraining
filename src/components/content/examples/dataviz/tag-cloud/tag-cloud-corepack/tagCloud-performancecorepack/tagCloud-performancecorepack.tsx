@@ -1,14 +1,14 @@
 // @ts-nocheck
-import { h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import Context = require('ojs/ojcontext');
+import 'css!./demo.css';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
-import '../../../../../../jet-composites/demo-radioset-enum/loader';
 import 'ojs/ojtagcloud';
-import 'css!./demo.css';
+import 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
+import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import Context = require('ojs/ojcontext');
 type RandomTag = {
     id: string;
     label: string;

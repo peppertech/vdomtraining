@@ -1,7 +1,7 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
-import { ojTrain } from 'ojs/ojtrain';
 import 'ojs/ojtrain';
+import { ojTrain } from 'ojs/ojtrain';
+import 'preact';
+import { useState } from 'preact/hooks';
 
 const stepArray: ojTrain.Step[] = [
   { label: 'Step One', id: 'stp1', disabled: false },

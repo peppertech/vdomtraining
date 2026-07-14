@@ -1,12 +1,13 @@
-import { ComponentProps } from "preact";
+import { Item } from "ojs/ojdataprovider";
+import { KeySetImpl } from "ojs/ojkeyset";
+import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
+import "ojs/ojrowexpander";
 import "ojs/ojtable";
 import { ojTable } from "ojs/ojtable";
-import { Item } from "ojs/ojdataprovider";
-import "ojs/ojrowexpander";
+import 'preact';
+import { ComponentProps } from 'preact';
 import * as groupData from "text!../data/groupdata.json";
-import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
 import FlattenedTreeDataProviderView = require("ojs/ojflattenedtreedataproviderview");
-import { KeySetImpl } from "ojs/ojkeyset";
 
 type Dept = {
   probability?: string;

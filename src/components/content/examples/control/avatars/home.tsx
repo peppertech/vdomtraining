@@ -1,18 +1,19 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import AvatarLegacyRecipePage from "./avatar-legacy/index";
-import AvatarCorePackRecipePage from "./avatar-corepack/index";
-import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
 } from "../../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../../example-route-context";
+import AvatarCorePackRecipePage from "./avatar-corepack/index";
+import AvatarLegacyRecipePage from "./avatar-legacy/index";
 
 interface AvatarComponent {
   id: number;

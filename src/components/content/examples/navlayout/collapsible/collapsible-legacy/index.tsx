@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import { CollapsibleBasicCollapsible } from "./collapsible-basicCollapsible/collapsible-basicCollapsible";
 import { collapsibleBasicCollapsibleDescription } from "./collapsible-basicCollapsible/description";

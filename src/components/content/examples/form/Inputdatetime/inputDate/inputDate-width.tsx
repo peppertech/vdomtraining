@@ -1,9 +1,9 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import "css!../../inputtext/inputTextLegacy/inputTextLegacy.css";
 import "ojs/ojdatetimepicker";
 import "ojs/ojlabel";
-import "css!../../inputtext/inputTextLegacy/inputTextLegacy.css";
-import { sampleIsoDate, type InputDateValueChangedEvent } from "./inputDate-shared";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
+import { sampleIsoDate,type InputDateValueChangedEvent } from "./inputDate-shared";
 
 export default function InputDateWidthVdomExample() {
   const [value, setValue] = useState(sampleIsoDate);

@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useRef } from 'preact/hooks';
 import 'ojs/ojbutton';
 import 'ojs/ojpopup';
 import { ojPopup } from 'ojs/ojpopup';
+import 'preact';
+import { useRef } from 'preact/hooks';
 
 export const PopupPopup = () => {
   const popupRef = useRef<ojPopup | null>(null);

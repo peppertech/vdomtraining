@@ -1,9 +1,9 @@
-import { h } from "preact";
-import { useRef, useState } from "preact/hooks";
-import { ojPopup } from "ojs/ojpopup";
-import "ojs/ojpopup";
-import "ojs/ojdefer";
 import "ojs/ojbutton";
+import "ojs/ojdefer";
+import "ojs/ojpopup";
+import { ojPopup } from "ojs/ojpopup";
+import * as preact from 'preact';
+import { useRef,useState } from "preact/hooks";
 
 export const PopupDefer = () => {
   const popupRef = useRef<ojPopup>(null);
@@ -23,7 +23,7 @@ export const PopupDefer = () => {
   return (
     <div id="popupWrapper">
       <oj-popup id="popup1" ref={popupRef} autoDismiss="none">
-        {h("oj-defer", null, [
+        {preact.h("oj-defer", null, [
           <p>Popup has been rendered.</p>,
           <oj-button onojAction={closeListener}>
             <span>Close</span>

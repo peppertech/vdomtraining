@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojinputtext";
+import 'preact';
+import { useState } from "preact/hooks";
 
 export default function InputTextLegacyRawValueExample() {
   const [currentValue, setCurrentValue] = useState("Blue");

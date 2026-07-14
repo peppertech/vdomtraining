@@ -1,7 +1,8 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojmessages";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 import type { ojMessage } from "ojs/ojmessage";

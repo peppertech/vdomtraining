@@ -1,13 +1,14 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/fruitData.json';
-import 'ojs/ojpictochart';
 import 'ojs/ojlegend';
+import 'ojs/ojpictochart';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/fruitData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+type FruitName = 'Bananas' | 'Apples' | 'Oranges' | 'Strawberries' | 'Grapes' | 'Lemons' | 'Peaches' | 'Pears';
+type FruitItem = { name: FruitName; count: number };
 
 export const PictoChartCustomImages = () => {
-  const dataProvider = useMemo(() => new ArrayDataProvider(JSON.parse(chartData), {
+  const dataProvider = useMemo(() => new ArrayDataProvider(JSON.parse(chartData) as FruitItem[], {
       keyAttributes: 'name'
   }), []);
   const imageSourceMap = useMemo(() => ({
@@ -35,14 +36,14 @@ export const PictoChartCustomImages = () => {
       <div id="chart-container">
             <div class="oj-typography-bold">Amount of Fresh Fruit Consumed Per Capita in the US (2014)</div>
             <oj-picto-chart id="pictochart1" column-count="10" data={dataProvider} class="oj-sm-margin-6x-bottom">
-                    <template slot="itemTemplate" render={(item) => (
+                    <template slot="itemTemplate" render={(item: DatavizTemplateContext<FruitItem>) => (
                             <>
                                 <oj-picto-chart-item name={item.data.name} short-desc={item.data.name + ': ' + item.data.count + ' Pounds'} source={imageSourceMap[item.data.name]} count={item.data.count} color={colorMap[item.data.name]} />
                             </>
                           )} />
                 </oj-picto-chart>
             <oj-legend id="legend1" symbol-height="20" orientation="horizontal" data={dataProvider}>
-                    <template slot="itemTemplate" render={(item) => (
+                    <template slot="itemTemplate" render={(item: DatavizTemplateContext<FruitItem>) => (
                             <>
                                 <oj-legend-item short-desc={item.data.name} text={item.data.name} symbol-type="image" source={imageSourceMap[item.data.name]} />
                             </>

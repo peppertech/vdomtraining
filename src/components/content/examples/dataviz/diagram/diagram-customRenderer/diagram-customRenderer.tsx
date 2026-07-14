@@ -1,13 +1,12 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojdiagram';
+import { ojDiagram } from 'ojs/ojdiagram';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/diagramDataSample.json';
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojdiagram';
-import { ojDiagram } from 'ojs/ojdiagram';
 import * as layout from '../diagram-layouts';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 interface DiagramNodeData {
     id: string;
     category: string;
@@ -34,10 +33,10 @@ export const DiagramCustomRenderer = () => {
     const linkDataProvider = useMemo(() => new ArrayDataProvider(data.links, {
         keyAttributes: 'id'
     }), [data]);
-    const styleDefaults = useMemo(() => ({
+    const styleDefaults = useMemo<NonNullable<ComponentProps<'oj-diagram'>['styleDefaults']>>(() => ({
         linkDefaults: {
-            startConnectorType: 'none',
-            endConnectorType: 'arrow'
+            startConnectorType: 'none' as const,
+            endConnectorType: 'arrow' as const
         }
     }), []);
     const nodeTextColorFunc = (nodeId: string) => {
@@ -62,7 +61,7 @@ export const DiagramCustomRenderer = () => {
             addCircle(group, color, '10');
         }
         return {
-            insert: rootElement
+            insert: rootElement as SVGElement
         };
     };
     const hoverRenderer = (context: ojDiagram.RendererContext<string, {
@@ -126,7 +125,7 @@ export const DiagramCustomRenderer = () => {
             (linkPath as SVGElement).setAttribute('fill', strokeColor);
         }
         return {
-            insert: rootElement
+            insert: rootElement as SVGElement
         };
     };
     const addLinkPath = (parent: Element, stroke: string, fill: string, width: string, path: string) => {
@@ -138,8 +137,8 @@ export const DiagramCustomRenderer = () => {
         svgPath.setAttribute('vector-effect', 'non-scaling-stroke');
         parent.appendChild(svgPath);
     };
-    const createSVG = () => {
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    const createSVG = (): SVGSVGElement => {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg') as SVGSVGElement;
         svg.setAttribute('width', '200');
         svg.setAttribute('height', '200');
         svg.setAttribute('viewBox', '0 0 200 200');

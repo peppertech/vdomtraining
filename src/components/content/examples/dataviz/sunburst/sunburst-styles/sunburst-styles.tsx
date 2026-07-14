@@ -1,17 +1,17 @@
-import { h } from 'preact';
-import type { ComponentProps, JSX } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import { JetElementCustomEvent } from 'ojs/index';
 import "css!./demo.css";
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
+import { JetElementCustomEvent } from 'ojs/index';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojinputtext';
 import 'ojs/ojsunburst';
+import 'preact';
+import type { ComponentProps,JSX } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
 import '../../../../../jet-composites/demo-input-json/loader';
 import '../../../../../jet-composites/demo-select-enum/loader';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type LabelDisplay = 'auto' | 'horizontal' | 'rotated' | 'off';
 type LabelHalign = 'center' | 'inner' | 'outer';

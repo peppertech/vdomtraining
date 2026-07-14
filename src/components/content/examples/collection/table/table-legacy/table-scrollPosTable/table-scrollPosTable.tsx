@@ -1,17 +1,16 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojtable';
+import 'ojs/ojbutton';
 import 'ojs/ojdatasource-common';
+import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojinputtext';
-import 'ojs/ojbutton';
 import 'ojs/ojlabel';
-import 'ojs/ojformlayout';
-import 'ojs/ojbutton';
 import 'ojs/ojoption';
+import 'ojs/ojtable';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface ColumnOption {
     headerText: string;

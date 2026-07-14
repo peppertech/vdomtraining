@@ -1,9 +1,10 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from "preact/hooks";
 import "oj-c/button";
 import "oj-c/form-layout";
 import "oj-c/input-text";
 import "oj-c/radioset";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from "preact/hooks";
 import {
   labelEdgeOptions,
   stateOptions,

@@ -1,9 +1,3 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import {
   ColorAttributeGroupHandler,
   ShapeAttributeGroupHandler
@@ -13,6 +7,12 @@ import 'ojs/ojlabel';
 import 'ojs/ojlegend';
 import 'ojs/ojnbox';
 import 'ojs/ojoption';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type Employee = {
   name: string;

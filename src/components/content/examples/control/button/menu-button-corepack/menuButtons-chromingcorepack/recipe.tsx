@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import 'preact';
 
 const recipeHtmlText = String.raw`<ol>
   <li>Create any kind of Core Pack JET Button, per the instructions in the corresponding Button demo.</li>

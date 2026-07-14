@@ -1,20 +1,20 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import ConvertersBigDecimalConverterExample from "./converters-bigDecimalConverter/converters-bigDecimalConverter";
 import ConvertersColorConvertersExample from "./converters-colorConverters/converters-colorConverters";
 import ConvertersConverterFactoryExample from "./converters-converterFactory/converters-converterFactory";
 import ConvertersDateTimeConverterExample from "./converters-dateTimeConverter/converters-dateTimeConverter";
 import ConvertersDefaultConverterMessagesExample from "./converters-defaultConverterMessages/converters-defaultConverterMessages";
+import { convertersDocs,type ConvertersDemoId } from "./converters-docs";
 import ConvertersNativeNumberConverterExample from "./converters-nativeNumberConverter/converters-nativeNumberConverter";
 import ConvertersNumberConverterExample from "./converters-numberConverter/converters-numberConverter";
-import { convertersDocs, type ConvertersDemoId } from "./converters-docs";
 
 const convertersItems: {
   id: ConvertersDemoId;
   name: string;
   description: (typeof convertersDocs)[ConvertersDemoId]["description"];
   recipe: (typeof convertersDocs)[ConvertersDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "date-time-converter",

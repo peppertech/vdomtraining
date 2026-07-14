@@ -1,27 +1,28 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import ButtonLegacyRecipePage from "./button-legacy/index";
-import ButtonCorePackRecipePage from "./button-corepack/index";
-import ButtonsetManyRecipePage from "./buttonset-many/index";
-import ButtonsetMultipleRecipePage from "./buttonset-multiple/index";
-import ButtonsetOneRecipePage from "./buttonset-one/index";
-import MenuButtonLegacyRecipePage from "./menu-button-legacy/index";
-import ButtonsetSingleRecipePage from "./buttonset-single/index";
-import MenuButtonCorePackRecipePage from "./menu-button-corepack/index";
-import ProgressButtonCorePackRecipePage from "./progress-button-corepack/index";
-import SplitMenuButtonCorePackRecipePage from "./split-menu-button-corepack/index";
-import ToggleButtonCorePackRecipePage from "./toggle-button-corepack/index";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
 } from "../../../../shared/catalog-breadcrumb";
 import { useExampleRoute } from "../../example-route-context";
+import ButtonCorePackRecipePage from "./button-corepack/index";
+import ButtonLegacyRecipePage from "./button-legacy/index";
+import ButtonsetManyRecipePage from "./buttonset-many/index";
+import ButtonsetMultipleRecipePage from "./buttonset-multiple/index";
+import ButtonsetOneRecipePage from "./buttonset-one/index";
+import ButtonsetSingleRecipePage from "./buttonset-single/index";
+import MenuButtonCorePackRecipePage from "./menu-button-corepack/index";
+import MenuButtonLegacyRecipePage from "./menu-button-legacy/index";
+import ProgressButtonCorePackRecipePage from "./progress-button-corepack/index";
+import SplitMenuButtonCorePackRecipePage from "./split-menu-button-corepack/index";
+import ToggleButtonCorePackRecipePage from "./toggle-button-corepack/index";
 
 type ButtonComponent = {
   id: number;

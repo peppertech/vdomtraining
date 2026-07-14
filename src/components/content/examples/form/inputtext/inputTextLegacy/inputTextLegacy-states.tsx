@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
+import 'preact';
+import { useState } from "preact/hooks";
 import {
   confirmationMessages,
   errorMessages,

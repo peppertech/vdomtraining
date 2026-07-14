@@ -1,10 +1,10 @@
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "css!./demo.css";
 import "oj-c/form-layout";
 import "oj-c/radioset";
 import "oj-c/tab-bar";
 import type { TabData } from "oj-c/tab-bar";
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
 
 type TabKey = "payslip" | "procurement" | "expenses" | "admin" | "tools";
 type Edge = NonNullable<ComponentProps<"oj-c-tab-bar">["edge"]>;

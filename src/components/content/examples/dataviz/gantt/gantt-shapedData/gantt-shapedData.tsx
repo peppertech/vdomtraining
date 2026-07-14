@@ -1,11 +1,11 @@
-import { h } from 'preact';
+import 'css!./demo.css';
+import 'ojs/ojgantt';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
-import * as rowDataText from 'text!../data/cookbook/dataVisualizations/gantt/shapedData/rowData.json';
 import * as depDataText from 'text!../data/cookbook/dataVisualizations/gantt/shapedData/depData.json';
+import * as rowDataText from 'text!../data/cookbook/dataVisualizations/gantt/shapedData/rowData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojgantt';
-import 'css!./demo.css';
 
 type GanttProps = ComponentProps<'oj-gantt'>;
 

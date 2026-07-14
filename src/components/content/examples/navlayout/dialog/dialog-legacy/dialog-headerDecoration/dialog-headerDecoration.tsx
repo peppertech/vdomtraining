@@ -1,11 +1,11 @@
-import { Fragment, h } from 'preact';
-import { useRef, useState } from 'preact/hooks';
-import { ojDialog } from 'ojs/ojdialog';
-import 'ojs/ojdialog';
 import 'ojs/ojbutton';
-import 'ojs/ojradioset';
+import 'ojs/ojdialog';
+import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojlabel';
 import 'ojs/ojoption';
+import 'ojs/ojradioset';
+import 'preact';
+import { useRef,useState } from 'preact/hooks';
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 

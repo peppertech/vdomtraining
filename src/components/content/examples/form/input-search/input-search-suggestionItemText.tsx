@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useMemo } from "preact/hooks";
 import "ojs/ojinputsearch";
+import 'preact';
+import { useMemo } from "preact/hooks";
 import {
   createEmployeeLastNameDataProvider,
   InputSearchDiagnostics,

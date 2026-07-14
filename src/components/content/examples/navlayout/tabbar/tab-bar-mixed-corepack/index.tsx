@@ -1,17 +1,17 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { TabBarMixedBasiccorepack } from "./tabBarMixed-basiccorepack/tabBarMixed-basiccorepack";
 import { tabBarMixedBasiccorepackDescription } from "./tabBarMixed-basiccorepack/description";
 import { tabBarMixedBasiccorepackRecipe } from "./tabBarMixed-basiccorepack/recipe";
-import { TabBarMixedOverflowIconcorepack } from "./tabBarMixed-overflowIconcorepack/tabBarMixed-overflowIconcorepack";
+import { TabBarMixedBasiccorepack } from "./tabBarMixed-basiccorepack/tabBarMixed-basiccorepack";
 import { tabBarMixedOverflowIconcorepackDescription } from "./tabBarMixed-overflowIconcorepack/description";
 import { tabBarMixedOverflowIconcorepackRecipe } from "./tabBarMixed-overflowIconcorepack/recipe";
-import { TabBarMixedResponsivecorepack } from "./tabBarMixed-responsivecorepack/tabBarMixed-responsivecorepack";
+import { TabBarMixedOverflowIconcorepack } from "./tabBarMixed-overflowIconcorepack/tabBarMixed-overflowIconcorepack";
 import { tabBarMixedResponsivecorepackDescription } from "./tabBarMixed-responsivecorepack/description";
 import { tabBarMixedResponsivecorepackRecipe } from "./tabBarMixed-responsivecorepack/recipe";
-import { TabBarMixedSelectioncorepack } from "./tabBarMixed-selectioncorepack/tabBarMixed-selectioncorepack";
+import { TabBarMixedResponsivecorepack } from "./tabBarMixed-responsivecorepack/tabBarMixed-responsivecorepack";
 import { tabBarMixedSelectioncorepackDescription } from "./tabBarMixed-selectioncorepack/description";
 import { tabBarMixedSelectioncorepackRecipe } from "./tabBarMixed-selectioncorepack/recipe";
+import { TabBarMixedSelectioncorepack } from "./tabBarMixed-selectioncorepack/tabBarMixed-selectioncorepack";
 
 const tabBarMixedCorePackItems = [
   {

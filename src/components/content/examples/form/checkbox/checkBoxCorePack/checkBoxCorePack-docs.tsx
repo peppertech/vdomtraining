@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import type { ComponentChildren } from "preact";
 
 export type CheckBoxCorePackDemoId = "overview" | "cross-field-validation";

@@ -1,9 +1,9 @@
-import { Fragment, h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojtoolbar';
 import 'ojs/ojbutton';
 import 'ojs/ojchart';
+import 'ojs/ojtoolbar';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface BubbleChartDatum {
     id: string;

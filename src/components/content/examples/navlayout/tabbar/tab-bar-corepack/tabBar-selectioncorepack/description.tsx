@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A tab bar allows navigation between different content sections.</p><p>This demo shows how to monitor when a tab is selected or re-selected using the selection action listener.</p>`;
 

@@ -1,37 +1,34 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
+import "css!./demo.css";
+import 'ojs/ojbutton';
+import 'ojs/ojcheckboxset';
 import * as Context from 'ojs/ojcontext';
+import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
+import 'ojs/ojdatetimepicker';
+import { ojInputDate } from 'ojs/ojdatetimepicker';
+import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import 'ojs/ojinputtext';
+import { ojInputText } from 'ojs/ojinputtext';
+import 'ojs/ojlabel';
+import 'ojs/ojlabelvalue';
+import 'ojs/ojmessages';
+import 'ojs/ojoption';
+import 'ojs/ojselectcombobox';
+import { ojComboboxOne } from 'ojs/ojselectcombobox';
+import 'ojs/ojselectsingle';
+import { ojSelectSingle } from 'ojs/ojselectsingle';
+import 'ojs/ojtable';
+import { ojTable } from 'ojs/ojtable';
+import 'ojs/ojtoolbar';
+import * as preact from 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as deptData from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
+import '../../../../../../jet-composites/demo-radioset-enum/loader';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import BufferingDataProvider = require('ojs/ojbufferingdataprovider');
 import NumberRangeValidator = require('ojs/ojvalidator-numberrange');
-import 'ojs/ojinputtext';
-import 'ojs/ojdatetimepicker';
-import 'ojs/ojselectcombobox';
-import 'ojs/ojcheckboxset';
-import 'ojs/ojtable';
-import 'ojs/ojtoolbar';
-import 'ojs/ojbutton';
-import 'ojs/ojmessages';
-import 'ojs/ojselectsingle';
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
-import { ojTable } from 'ojs/ojtable';
-import { ojInputText } from 'ojs/ojinputtext';
-import { ojInputDate } from 'ojs/ojdatetimepicker';
-import { ojSelectSingle } from 'ojs/ojselectsingle';
-import { ojComboboxOne } from 'ojs/ojselectcombobox';
-import * as deptData from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
-import 'ojs/ojformlayout';
-import 'ojs/ojlabelvalue';
-import '../../../../../../jet-composites/demo-radioset-enum/loader';
-import 'ojs/ojinputnumber';
-import 'ojs/ojselectcombobox';
-import 'ojs/ojoption';
-import 'ojs/ojdatetimepicker';
-import 'ojs/ojlabel';
-import 'ojs/ojinputtext';
-import "css!./demo.css";
 
 interface DepartmentData {
     DepartmentId: number;
@@ -647,12 +644,12 @@ export const TableInsertRowTable = () => {
             <div class="oj-panel oj-bg-neutral-30">
                     <h2 id="table-controls-heading" class="oj-typography-subheading-md">Options To Control The Table Below</h2>
                     <oj-form-layout aria-controls="table" max-columns="3" class="oj-formlayout-full-width">
-                              {h('demo-radioset-enum', { direction: 'row', 'label-hint': 'Simulated Delays', onvalueChanged: handleSimulatedDelaysValueChanged, value: simulatedDelays, 'enum-values': JSON.stringify(['off', 'on']) })}
+                              {preact.h('demo-radioset-enum', { direction: 'row', 'label-hint': 'Simulated Delays', onvalueChanged: handleSimulatedDelaysValueChanged, value: simulatedDelays, 'enum-values': JSON.stringify(['off', 'on']) })}
                               <oj-input-number id="edit-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditDelayValueChanged} value={editDelay} label-hint="Simulated Enter Edit Mode Delay (ms)" />
                               <oj-input-number id="edit-end-delay-input" min={0} disabled={isDelayDisabled} step={200} onvalueChanged={handleEditEndDelayValueChanged} value={editEndDelay} label-hint="Simulated Submit Add / Edit Delay (ms)" />
                               <oj-button id="insertRowDisplay" display="icons" onojAction={handleDisplay} label={buttonText} />
                               <oj-input-number id="insert-row-key-input" onvalueChanged={handleInsertRowKeyValueChanged} value={insertRowKey} label-hint="Insert Row Anchor Key" />
-                              {h('demo-radioset-enum', { direction: 'row', 'label-hint': 'Insert Row Anchor Key Position', onvalueChanged: handleInsertPositionValueChanged, value: insertPosition, 'enum-values': JSON.stringify(['before', 'after']) })}
+                              {preact.h('demo-radioset-enum', { direction: 'row', 'label-hint': 'Insert Row Anchor Key Position', onvalueChanged: handleInsertPositionValueChanged, value: insertPosition, 'enum-values': JSON.stringify(['before', 'after']) })}
                           </oj-form-layout>
                 </div>
             <oj-table ref={tableRef} id="table" aria-label="Departments Table" class="oj-bg-body demo-table-container" data={dataprovider} editMode="rowEdit" insertRowDisplay={insertRowDisplay} oninsertRowDisplayChanged={handleInsertRow} addRowDisplay="hidden" oneditRowChanged={handleEditRowEditRowChanged} editRow={editRow} onojBeforeRowEdit={beforeRowEditListener} onojBeforeRowEditEnd={beforeRowEditEndListener} onojBeforeRowAddEnd={beforeRowAddEndListener} layout="fixed" columns={columnArray} {...ojTableProps}>

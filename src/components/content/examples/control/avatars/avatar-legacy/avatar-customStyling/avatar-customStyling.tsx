@@ -1,14 +1,14 @@
-// @ts-nocheck
-import { JetElementCustomEvent } from 'ojs/index';
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';type ValueChangedEvent<TValue> = JetElementCustomEvent<TValue>;
-type AvatarShape = ComponentProps<'oj-avatar'>['shape'];
-import { useState } from 'preact/hooks';
-import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
-import 'ojs/ojavatar';
-import 'ojs/ojradioset';
-import 'ojs/ojoption';
 import "css!./demo.css";
+import { JetElementCustomEvent } from 'ojs/index';
+import 'ojs/ojavatar';
+import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
+import 'ojs/ojoption';
+import 'ojs/ojradioset';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
+type ValueChangedEvent<TValue> = JetElementCustomEvent<TValue>;
+type AvatarShape = ComponentProps<'oj-avatar'>['shape'];
 export const AvatarCustomStyling = () => {
   const [shape, setShape] = useState<string>('theme');
   const shapeValue: AvatarShape = shape === 'theme' ? undefined : (shape as Exclude<AvatarShape, undefined>);

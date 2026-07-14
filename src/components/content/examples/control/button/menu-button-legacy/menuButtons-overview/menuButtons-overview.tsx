@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
 import 'ojs/ojbutton';
 import 'ojs/ojmenu';
 import 'ojs/ojoption';
+import 'preact';
+import { useMemo } from 'preact/hooks';
 
 type ItemInfo = {
   id: string;

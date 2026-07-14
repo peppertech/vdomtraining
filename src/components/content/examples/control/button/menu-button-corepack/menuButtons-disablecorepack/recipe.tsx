@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ol>
   <li>JET Menu Buttons items property can have an item dynamically disabled.</li>

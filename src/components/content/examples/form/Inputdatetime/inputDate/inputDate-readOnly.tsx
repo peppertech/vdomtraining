@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "ojs/ojdatetimepicker";
 import "ojs/ojlabel";
+import 'preact';
 
 export default function InputDateReadOnlyVdomExample() {
   return (

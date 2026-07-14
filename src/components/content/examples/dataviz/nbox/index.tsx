@@ -1,34 +1,34 @@
-import { h } from "preact";
+import 'preact';
 import {
   RecipePageTemplate,
   type RecipePageItem,
 } from "../../../../shared/demo-page-layout/recipe-page-template";
-import { NBoxContextMenu } from "./nBox-contextMenu/nBox-contextMenu";
 import { nBoxContextMenuDescription } from "./nBox-contextMenu/description";
+import { NBoxContextMenu } from "./nBox-contextMenu/nBox-contextMenu";
 import { nBoxContextMenuRecipe } from "./nBox-contextMenu/recipe";
-import { NBoxDefault } from "./nBox-default/nBox-default";
 import { nBoxDefaultDescription } from "./nBox-default/description";
+import { NBoxDefault } from "./nBox-default/nBox-default";
 import { nBoxDefaultRecipe } from "./nBox-default/recipe";
-import { NBoxDndEvents } from "./nBox-dndEvents/nBox-dndEvents";
 import { nBoxDndEventsDescription } from "./nBox-dndEvents/description";
+import { NBoxDndEvents } from "./nBox-dndEvents/nBox-dndEvents";
 import { nBoxDndEventsRecipe } from "./nBox-dndEvents/recipe";
-import { NBoxDndSample } from "./nBox-dndSample/nBox-dndSample";
 import { nBoxDndSampleDescription } from "./nBox-dndSample/description";
+import { NBoxDndSample } from "./nBox-dndSample/nBox-dndSample";
 import { nBoxDndSampleRecipe } from "./nBox-dndSample/recipe";
-import { NBoxGrouping } from "./nBox-grouping/nBox-grouping";
 import { nBoxGroupingDescription } from "./nBox-grouping/description";
+import { NBoxGrouping } from "./nBox-grouping/nBox-grouping";
 import { nBoxGroupingRecipe } from "./nBox-grouping/recipe";
-import { NBoxPerformance } from "./nBox-performance/nBox-performance";
 import { nBoxPerformanceDescription } from "./nBox-performance/description";
+import { NBoxPerformance } from "./nBox-performance/nBox-performance";
 import { nBoxPerformanceRecipe } from "./nBox-performance/recipe";
-import { NBoxShapedData } from "./nBox-shapedData/nBox-shapedData";
 import { nBoxShapedDataDescription } from "./nBox-shapedData/description";
+import { NBoxShapedData } from "./nBox-shapedData/nBox-shapedData";
 import { nBoxShapedDataRecipe } from "./nBox-shapedData/recipe";
-import { NBoxStyles } from "./nBox-styles/nBox-styles";
 import { nBoxStylesDescription } from "./nBox-styles/description";
+import { NBoxStyles } from "./nBox-styles/nBox-styles";
 import { nBoxStylesRecipe } from "./nBox-styles/recipe";
-import { NBoxTooltip } from "./nBox-tooltip/nBox-tooltip";
 import { nBoxTooltipDescription } from "./nBox-tooltip/description";
+import { NBoxTooltip } from "./nBox-tooltip/nBox-tooltip";
 import { nBoxTooltipRecipe } from "./nBox-tooltip/recipe";
 
 const nBoxItems: RecipePageItem[] = [

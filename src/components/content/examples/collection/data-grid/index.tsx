@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
 import { DataGridAdvancedEditableGrid } from "./dataGrid-advancedEditableGrid/dataGrid-advancedEditableGrid";
 import { dataGridAdvancedEditableGridDescription } from "./dataGrid-advancedEditableGrid/description";
@@ -72,9 +72,9 @@ import { dataGridStylingGridRecipe } from "./dataGrid-stylingGrid/recipe";
 import { DataGridTemplateGrid } from "./dataGrid-templateGrid/dataGrid-templateGrid";
 import { dataGridTemplateGridDescription } from "./dataGrid-templateGrid/description";
 import { dataGridTemplateGridRecipe } from "./dataGrid-templateGrid/recipe";
-import { RowExpanderDataGridDataGridRowExpanderDataProvider } from "./rowExpanderDataGrid-dataGridRowExpanderDataProvider/rowExpanderDataGrid-dataGridRowExpanderDataProvider";
 import { rowExpanderDataGridDataGridRowExpanderDataProviderDescription } from "./rowExpanderDataGrid-dataGridRowExpanderDataProvider/description";
 import { rowExpanderDataGridDataGridRowExpanderDataProviderRecipe } from "./rowExpanderDataGrid-dataGridRowExpanderDataProvider/recipe";
+import { RowExpanderDataGridDataGridRowExpanderDataProvider } from "./rowExpanderDataGrid-dataGridRowExpanderDataProvider/rowExpanderDataGrid-dataGridRowExpanderDataProvider";
 
 const dataGridItems = [
   {

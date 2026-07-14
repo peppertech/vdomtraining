@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import { BubbleChartAnimation } from "./bubbleChart-animation/bubbleChart-animation";
 import { bubbleChartAnimationDescription } from "./bubbleChart-animation/description";

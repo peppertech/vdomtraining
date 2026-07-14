@@ -1,28 +1,28 @@
-import { h } from "preact";
+import 'preact';
 import {
   RecipePageTemplate,
   type RecipePageItem,
 } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { LegendContextMenucorepack } from "./legend-contextMenucorepack/legend-contextMenucorepack";
 import { legendContextMenucorepackDescription } from "./legend-contextMenucorepack/description";
+import { LegendContextMenucorepack } from "./legend-contextMenucorepack/legend-contextMenucorepack";
 import { legendContextMenucorepackRecipe } from "./legend-contextMenucorepack/recipe";
-import { LegendDefaultcorepack } from "./legend-defaultcorepack/legend-defaultcorepack";
 import { legendDefaultcorepackDescription } from "./legend-defaultcorepack/description";
+import { LegendDefaultcorepack } from "./legend-defaultcorepack/legend-defaultcorepack";
 import { legendDefaultcorepackRecipe } from "./legend-defaultcorepack/recipe";
-import { LegendItemscorepack } from "./legend-itemscorepack/legend-itemscorepack";
 import { legendItemscorepackDescription } from "./legend-itemscorepack/description";
+import { LegendItemscorepack } from "./legend-itemscorepack/legend-itemscorepack";
 import { legendItemscorepackRecipe } from "./legend-itemscorepack/recipe";
-import { LegendLayoutcorepack } from "./legend-layoutcorepack/legend-layoutcorepack";
 import { legendLayoutcorepackDescription } from "./legend-layoutcorepack/description";
+import { LegendLayoutcorepack } from "./legend-layoutcorepack/legend-layoutcorepack";
 import { legendLayoutcorepackRecipe } from "./legend-layoutcorepack/recipe";
-import { LegendSectionscorepack } from "./legend-sectionscorepack/legend-sectionscorepack";
 import { legendSectionscorepackDescription } from "./legend-sectionscorepack/description";
+import { LegendSectionscorepack } from "./legend-sectionscorepack/legend-sectionscorepack";
 import { legendSectionscorepackRecipe } from "./legend-sectionscorepack/recipe";
-import { LegendShapedDatacorepack } from "./legend-shapedDatacorepack/legend-shapedDatacorepack";
 import { legendShapedDatacorepackDescription } from "./legend-shapedDatacorepack/description";
+import { LegendShapedDatacorepack } from "./legend-shapedDatacorepack/legend-shapedDatacorepack";
 import { legendShapedDatacorepackRecipe } from "./legend-shapedDatacorepack/recipe";
-import { LegendStylescorepack } from "./legend-stylescorepack/legend-stylescorepack";
 import { legendStylescorepackDescription } from "./legend-stylescorepack/description";
+import { LegendStylescorepack } from "./legend-stylescorepack/legend-stylescorepack";
 import { legendStylescorepackRecipe } from "./legend-stylescorepack/recipe";
 
 const legendItems: RecipePageItem[] = [

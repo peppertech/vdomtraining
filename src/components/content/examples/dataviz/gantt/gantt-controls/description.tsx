@@ -1,3 +1,3 @@
-import { h } from 'preact';
+import 'preact';
 
 export const ganttControlsDescription = <>Gantt controls</>;

@@ -1,10 +1,11 @@
-import { h, type ComponentChildren, type FunctionComponent } from "preact";
-import { useCallback, useEffect, useMemo, useRef, useState } from "preact/hooks";
-import "ojs/ojnavigationlist";
 import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
+import "ojs/ojnavigationlist";
 import { ojNavigationList } from "ojs/ojnavigationlist";
-import { DemoLayoutTemplate } from "./demo-layout-template";
+import 'preact';
+import { type ComponentChildren,type FunctionComponent } from 'preact';
+import { useCallback,useEffect,useMemo,useRef,useState } from "preact/hooks";
 import { useExampleRoute } from "../../content/examples/example-route-context";
+import { DemoLayoutTemplate } from "./demo-layout-template";
 
 export type RecipePageItem = {
   id: string;

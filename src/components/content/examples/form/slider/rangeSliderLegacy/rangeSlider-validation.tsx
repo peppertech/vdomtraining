@@ -1,14 +1,14 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
-import Message = require("ojs/ojmessaging");
 import "ojs/ojformlayout";
 import "ojs/ojlabel";
 import "ojs/ojslider";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import {
   formatRangeValue,
   type RangeSliderValue,
   type RangeSliderValueChangedEvent,
 } from "./rangeSlider-shared";
+import Message = require("ojs/ojmessaging");
 
 const helpInstruction = {
   instruction: "Input is valid when range is within 5",

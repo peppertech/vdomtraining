@@ -1,10 +1,10 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import 'ojs/ojbutton';
 import 'ojs/ojmenu';
 import 'ojs/ojmenuselectmany';
 import 'ojs/ojoption';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 
 type MenuActionEvent = Parameters<NonNullable<ComponentProps<'oj-menu'>['onojMenuAction']>>[0];
 type MenuSelectManyValueChangedEvent = Parameters<

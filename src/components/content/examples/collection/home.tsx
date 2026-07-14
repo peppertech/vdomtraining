@@ -1,25 +1,12 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import * as preact from 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import TableHome from "./table/home";
-import ListViewHome from "./list-view/index";
-import ListItemLayoutHome from "./list-item-layout/home";
-import TreeViewRecipePage from "./tree-view/index";
-import DataGridRecipePage from "./data-grid/index";
-import IndexerRecipePage from "./indexer/index";
-import RefresherTouchRecipePage from "./refresher-touch/index";
-import StreamListRecipePage from "./stream-list/index";
-import CardViewRecipePage from "./card-view/index";
-import WaterfallLayoutRecipePage from "./waterfall-layout/index";
-import SwipeActionsRecipePage from "./swipe-actions/index";
-import RowExpanderRecipePage from "./row-expander/index";
-import SelectorRecipePage from "./selector/index";
-import GroupByTable from "./table/group-by-table";
 import {
   CatalogBreadcrumb,
   type CatalogBreadcrumbItem,
@@ -27,6 +14,20 @@ import {
   formatCorePackLabel,
 } from "../../../shared/catalog-breadcrumb";
 import { useExampleRoute } from "../example-route-context";
+import CardViewRecipePage from "./card-view/index";
+import DataGridRecipePage from "./data-grid/index";
+import IndexerRecipePage from "./indexer/index";
+import ListItemLayoutHome from "./list-item-layout/home";
+import ListViewHome from "./list-view/index";
+import RefresherTouchRecipePage from "./refresher-touch/index";
+import RowExpanderRecipePage from "./row-expander/index";
+import SelectorRecipePage from "./selector/index";
+import StreamListRecipePage from "./stream-list/index";
+import SwipeActionsRecipePage from "./swipe-actions/index";
+import GroupByTable from "./table/group-by-table";
+import TableHome from "./table/home";
+import TreeViewRecipePage from "./tree-view/index";
+import WaterfallLayoutRecipePage from "./waterfall-layout/index";
 
 type CollectionComponent = {
   id: number;
@@ -35,7 +36,7 @@ type CollectionComponent = {
   image: string;
   isAvailable?: boolean;
   isCorePack?: boolean;
-  render?: (props?: NestedCatalogHomeProps) => h.JSX.Element | null;
+  render?: (props?: NestedCatalogHomeProps) => preact.JSX.Element | null;
 };
 type CollectionSelectedChangedEvent = ojListView.selectedChanged<
   CollectionComponent["id"],

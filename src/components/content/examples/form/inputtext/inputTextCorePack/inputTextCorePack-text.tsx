@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/input-text";
+import 'preact';
+import { useState } from "preact/hooks";
 
 export default function InputTextCorePackTextExample() {
   const [value, setValue] = useState("Green");

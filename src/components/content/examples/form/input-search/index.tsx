@@ -1,4 +1,5 @@
-import { h } from "preact";
+import "css!./input-search.css";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
 import InputSearchBasicExample from "./input-search-basic";
 import {
@@ -9,14 +10,13 @@ import InputSearchHeroExample from "./input-search-hero";
 import InputSearchSuggestionItemTemplateExample from "./input-search-suggestionItemTemplate";
 import InputSearchSuggestionItemTextExample from "./input-search-suggestionItemText";
 import InputSearchSuggestionsExample from "./input-search-suggestions";
-import "css!./input-search.css";
 
 const inputSearchItems: {
   id: InputSearchDemoId;
   name: string;
   description: (typeof inputSearchDocs)[InputSearchDemoId]["description"];
   recipe: (typeof inputSearchDocs)[InputSearchDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "basic",

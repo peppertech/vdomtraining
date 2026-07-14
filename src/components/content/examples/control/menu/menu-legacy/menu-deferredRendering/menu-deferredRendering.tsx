@@ -1,10 +1,10 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
+import 'ojs/ojbutton';
 import 'ojs/ojdefer';
 import 'ojs/ojmenu';
-import 'ojs/ojbutton';
 import 'ojs/ojoption';
+import * as preact from 'preact';
+import type { ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
 
 type MenuActionEvent = Parameters<NonNullable<ComponentProps<'oj-menu'>['onojMenuAction']>>[0];
 
@@ -25,7 +25,7 @@ export const MenuDeferredRendering = () => {
           onojMenuAction={handleMenuItemAction}
           aria-label="menu with deferred content"
         >
-          {h('oj-defer', null, [
+          {preact.h('oj-defer', null, [
             <oj-option id="deferredZoomIn" value="Zoom In">
               <span class="oj-ux-ico-zoom-in" slot="startIcon" />
               Zoom In

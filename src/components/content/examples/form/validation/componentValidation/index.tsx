@@ -1,12 +1,12 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import ValidationUsecasesAsyncValidatorsExample from "./validationUsecases-asyncValidators/validationUsecases-asyncValidators";
-import ValidationUsecasesComponentCreateExample from "./validationUsecases-componentCreate/validationUsecases-componentCreate";
-import ValidationUsecasesConverterOptionExample from "./validationUsecases-converterOption/validationUsecases-converterOption";
 import {
   componentValidationDocs,
   type ComponentValidationDemoId,
 } from "./componentValidation-docs";
+import ValidationUsecasesAsyncValidatorsExample from "./validationUsecases-asyncValidators/validationUsecases-asyncValidators";
+import ValidationUsecasesComponentCreateExample from "./validationUsecases-componentCreate/validationUsecases-componentCreate";
+import ValidationUsecasesConverterOptionExample from "./validationUsecases-converterOption/validationUsecases-converterOption";
 import ValidationUsecasesMessagesCustomExample from "./validationUsecases-messagesCustom/validationUsecases-messagesCustom";
 import ValidationUsecasesRefreshMethodExample from "./validationUsecases-refreshMethod/validationUsecases-refreshMethod";
 import ValidationUsecasesRequiredOptionExample from "./validationUsecases-requiredOption/validationUsecases-requiredOption";
@@ -22,7 +22,7 @@ const componentValidationItems: {
   name: string;
   description: (typeof componentValidationDocs)[ComponentValidationDemoId]["description"];
   recipe: (typeof componentValidationDocs)[ComponentValidationDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "async-validators",

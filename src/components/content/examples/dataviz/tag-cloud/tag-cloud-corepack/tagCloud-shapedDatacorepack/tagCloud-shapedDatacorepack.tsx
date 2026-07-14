@@ -1,9 +1,9 @@
-import { h } from 'preact';
+import 'css!./demo.css';
+import 'ojs/ojtagcloud';
+import 'preact';
 import { useMemo } from 'preact/hooks';
 import * as jsonData from 'text!../../data/cookbook/dataVisualizations/tagCloud/resources/shapedSocialNetworks.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojtagcloud';
-import 'css!./demo.css';
 
 type ShapedTag = {
   id: string;

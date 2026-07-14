@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/input-date-mask";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import { type InputDateMaskValueChangedEvent } from "./inputDateMask-shared";
 
 export default function InputDateMaskRestrictRangeExample() {

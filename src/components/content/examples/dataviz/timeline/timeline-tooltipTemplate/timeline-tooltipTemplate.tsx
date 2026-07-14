@@ -1,12 +1,11 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
-import * as tooltipSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/tooltipTemplate/basicSeriesData.json';
-import 'ojs/ojtimeline';
-import 'ojs/ojgauge';
 import 'css!./demo.css';
+import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
+import 'ojs/ojgauge';
+import 'ojs/ojtimeline';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as tooltipSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/tooltipTemplate/basicSeriesData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TimelineTooltipTemplateItem = {
   id: string;
@@ -60,7 +59,7 @@ export const TimelineTooltipTemplate = () => {
     ].join(', ');
   };
 
-  const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
+  const renderItemTemplate = (item: DatavizTemplateContext<TimelineTooltipTemplateItem>) => (
     <oj-timeline-item
       seriesId={item.data.series}
       start={item.data.begin}

@@ -1,13 +1,13 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import "css!./demo.css";
 import { JetElementCustomEvent } from 'ojs/index';
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
 import '../../../../../../jet-composites/demo-select-enum/loader';
-import "css!./demo.css";
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 const data = JSON.parse(dataText as string);
 type DataLabelPosition = NonNullable<NonNullable<ComponentProps<'oj-chart'>['styleDefaults']>['dataLabelPosition']>;
 export const BubbleChartDataLabels = () => {

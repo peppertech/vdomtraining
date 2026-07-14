@@ -1,9 +1,9 @@
-import { h } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
 import "ojs/ojoption";
 import "ojs/ojradioset";
+import 'preact';
+import { useMemo,useState } from "preact/hooks";
 
 export default function InputTextLegacyTextAlignExample() {
   const [textAlign, setTextAlign] = useState("start");

@@ -1,6 +1,6 @@
-import { h } from 'preact';
 import 'css!./demo.css';
 import 'ojs/ojbutton';
+import 'preact';
 
 export const PushButtonsPushButton = () => {
   const button2Text = 'Button 2';

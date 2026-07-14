@@ -1,18 +1,18 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import 'css!./demo.css';
+import 'ojs/ojbutton';
 import * as Context from 'ojs/ojcontext';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
-import { ojTable } from 'ojs/ojtable';
-import 'ojs/ojtable';
-import 'ojs/ojrowexpander';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
-import { AllKeySetImpl, KeySetImpl } from 'ojs/ojkeyset';
+import { AllKeySetImpl,KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojoption';
-import 'ojs/ojbutton';
-import 'css!./demo.css';
+import 'ojs/ojrowexpander';
+import 'ojs/ojtable';
+import { ojTable } from 'ojs/ojtable';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useEffect,useMemo,useRef,useState } from 'preact/hooks';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
+import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
 
 interface Item {
   title: string;

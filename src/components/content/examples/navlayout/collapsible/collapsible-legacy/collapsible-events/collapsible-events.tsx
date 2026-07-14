@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
-import type { ojCollapsible } from 'ojs/ojcollapsible';
-import 'ojs/ojcollapsible';
-import 'ojs/ojbutton';
-import 'ojs/ojlabel';
-import 'ojs/ojinputtext';
 import "css!./demo.css";
+import 'ojs/ojbutton';
+import 'ojs/ojcollapsible';
+import type { ojCollapsible } from 'ojs/ojcollapsible';
+import 'ojs/ojinputtext';
+import 'ojs/ojlabel';
+import 'preact';
+import { useState } from 'preact/hooks';
 
 type EventDetailMap = Record<string, { id?: string } | undefined>;
 

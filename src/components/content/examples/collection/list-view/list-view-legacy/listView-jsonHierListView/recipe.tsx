@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { h } from 'preact';
+import 'preact';
 
 export const listViewJsonHierListViewRecipe = (
   <>

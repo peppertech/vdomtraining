@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import 'ojs/ojmenu';
+import { ojMenu,ojMenuEventMap } from 'ojs/ojmenu';
+import 'ojs/ojoption';
 import 'ojs/ojtable';
 import { ojTable } from 'ojs/ojtable';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
 import * as deptData from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
-import { ojMenu, ojMenuEventMap } from 'ojs/ojmenu';
-import 'ojs/ojmenu';
-import 'ojs/ojoption';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface DepartmentData {
     DepartmentId: number;

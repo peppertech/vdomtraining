@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import FormLayoutCorePackColumnSpanExample from "./formLayoutCorePack-columnSpan";
 import FormLayoutCorePackConditionalInputsExample from "./formLayoutCorePack-conditionalInputs";
@@ -17,7 +17,7 @@ const formLayoutCorePackItems: {
   name: string;
   description: (typeof formLayoutCorePackDocs)[FormLayoutCorePackDemoId]["description"];
   recipe: (typeof formLayoutCorePackDocs)[FormLayoutCorePackDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "form-inputs",

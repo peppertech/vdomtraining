@@ -1,20 +1,21 @@
+import 'css!./demo.css';
+import 'ojs/ojcollapsible';
+import type { ojCollapsible } from 'ojs/ojcollapsible';
+import { AllKeySetImpl } from 'ojs/ojkeyset';
+import 'ojs/ojstreamlist';
+import type { StreamListElement } from 'ojs/ojstreamlist';
+import 'preact';
 import { ComponentProps } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useEffect,useMemo,useRef,useState } from 'preact/hooks';
 import * as pastDataText from 'text!./pastData.json';
 import * as pendingDataText from 'text!./pendingData.json';
 import * as pinnedDataText from 'text!./pinnedData.json';
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
-import GroupingDataProvider = require('ojs/ojgroupingdataprovider');
-import { AllKeySetImpl } from 'ojs/ojkeyset';
-import type TreeDataProvider = require('ojs/ojtreedataprovider');
-import 'ojs/ojcollapsible';
-import type { ojCollapsible } from 'ojs/ojcollapsible';
-import 'ojs/ojstreamlist';
-import type { StreamListElement } from 'ojs/ojstreamlist';
 import '../../../../../jet-composites/demo-activity-stream/demo-activity-stream-item/loader';
 import DemoDelayingDataProvider from '../../shared/DemoDelayingDataProvider';
 import DemoDelayingTreeDataProvider from '../../shared/DemoDelayingTreeDataProvider';
-import 'css!./demo.css';
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
+import GroupingDataProvider = require('ojs/ojgroupingdataprovider');
+import type TreeDataProvider = require('ojs/ojtreedataprovider');
 
 type StreamId = number;
 type StreamEvent = {

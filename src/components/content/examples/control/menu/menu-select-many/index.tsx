@@ -1,11 +1,11 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { MenuSelectManyOverview } from "./menuSelectMany-overview/menuSelectMany-overview";
-import { menuSelectManyOverviewDescription } from "./menuSelectMany-overview/description";
-import { menuSelectManyOverviewRecipe } from "./menuSelectMany-overview/recipe";
-import { MenuSelectManyDataProviderOptions } from "./menuSelectMany-dataProviderOptions/menuSelectMany-dataProviderOptions";
 import { menuSelectManyDataProviderOptionsDescription } from "./menuSelectMany-dataProviderOptions/description";
+import { MenuSelectManyDataProviderOptions } from "./menuSelectMany-dataProviderOptions/menuSelectMany-dataProviderOptions";
 import { menuSelectManyDataProviderOptionsRecipe } from "./menuSelectMany-dataProviderOptions/recipe";
+import { menuSelectManyOverviewDescription } from "./menuSelectMany-overview/description";
+import { MenuSelectManyOverview } from "./menuSelectMany-overview/menuSelectMany-overview";
+import { menuSelectManyOverviewRecipe } from "./menuSelectMany-overview/recipe";
 
 const menuSelectManyItems = [
   {

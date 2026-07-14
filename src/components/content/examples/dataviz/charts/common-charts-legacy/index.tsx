@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import { ChartCategoricalAxisSorting } from "./chart-categoricalAxisSorting/chart-categoricalAxisSorting";
 import { chartCategoricalAxisSortingDescription } from "./chart-categoricalAxisSorting/description";

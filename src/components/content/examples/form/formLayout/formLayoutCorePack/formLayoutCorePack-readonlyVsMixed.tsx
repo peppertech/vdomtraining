@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-text";
 import "oj-c/radioset";
+import 'preact';
+import { useState } from "preact/hooks";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 const labelEdgeDataProvider = new MutableArrayDataProvider(

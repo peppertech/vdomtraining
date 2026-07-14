@@ -1,7 +1,8 @@
-import { h, type ComponentProps } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/select-multiple";
 import type { CSelectMultipleElement } from "oj-c/select-multiple";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 import {
   createOracleEmployeeDataProvider,

@@ -1,6 +1,6 @@
 import "css!./demo.css";
-import type { CSplitMenuButtonElement } from "oj-c/split-menu-button";
 import "oj-c/split-menu-button";
+import type { CSplitMenuButtonElement } from "oj-c/split-menu-button";
 
 type MenuItems = CSplitMenuButtonElement["items"];
 

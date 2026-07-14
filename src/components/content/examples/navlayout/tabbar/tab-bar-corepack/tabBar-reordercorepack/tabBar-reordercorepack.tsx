@@ -1,12 +1,12 @@
-// @ts-nocheck
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ojTabBar } from 'ojs/ojnavigationlist';
 import 'ojs/ojlabel';
+import 'ojs/ojnavigationlist';
+import { ojTabBar } from 'ojs/ojnavigationlist';
 import 'ojs/ojoption';
 import 'ojs/ojradioset';
-import 'ojs/ojnavigationlist';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TabbarEdge = 'top' | 'bottom';
 type TabbarItem = {
@@ -74,7 +74,7 @@ export const TabBarReordercorepack = () => {
         <div class="oj-flex demo-header oj-sm-justify-content-flex-end oj-sm-margin-4x-bottom">
           <div class="oj-flex-item oj-sm-padding-2x-horizontal">
             <oj-label id="edgeLabelId">Edge</oj-label>
-            <oj-radioset id="edgeRadioId" labelledBy="edgeLabelId" ariaLabelledby="edgeLabelId" onvalueChanged={(event: RadiosetValueChangedEvent) => setEdge(event.detail.value as TabbarEdge)} value={edge}>
+            <oj-radioset id="edgeRadioId" labelledBy="edgeLabelId" aria-labelledby="edgeLabelId" onvalueChanged={(event: RadiosetValueChangedEvent) => setEdge(event.detail.value as TabbarEdge)} value={edge}>
               <oj-option id="horiEdge" value="top">Top</oj-option>
               <oj-option id="horiBottomEdge" value="bottom">Bottom</oj-option>
             </oj-radioset>

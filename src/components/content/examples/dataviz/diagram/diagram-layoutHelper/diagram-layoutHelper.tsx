@@ -1,13 +1,13 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/baseComponentClasses.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as layout from '../diagram-layouts';
 import 'ojs/ojdiagram';
-import 'ojs/ojinputnumber';
 import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/baseComponentClasses.json';
+import * as layout from '../diagram-layouts';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 const jsonData = JSON.parse(jsonDataText as string);
 type TreeNode = {
     name: string;

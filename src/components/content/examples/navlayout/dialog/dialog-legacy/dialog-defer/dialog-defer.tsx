@@ -1,9 +1,9 @@
-import { h } from 'preact';
-import { useRef, useState } from 'preact/hooks';
-import { ojDialog } from 'ojs/ojdialog';
-import 'ojs/ojdialog';
 import 'ojs/ojbutton';
 import 'ojs/ojdefer';
+import 'ojs/ojdialog';
+import { ojDialog } from 'ojs/ojdialog';
+import * as preact from 'preact';
+import { useRef,useState } from 'preact/hooks';
 
 export const DialogDefer = () => {
   const dialogRef = useRef<ojDialog | null>(null);
@@ -22,7 +22,7 @@ export const DialogDefer = () => {
       <div id="dialogWrapper">
             <oj-dialog ref={dialogRef} id="dialog1" dialog-title="Dialog with deferred content" aria-describedby="desc">
                     <div slot="body">
-                              {h('oj-defer', null, (
+                              {preact.h('oj-defer', null, (
                                           <>
                                             <p id="desc">Dialog content has been rendered.</p>
                                             <oj-button onojAction={handleClose}><span>{closeButtonLabel}</span></oj-button>

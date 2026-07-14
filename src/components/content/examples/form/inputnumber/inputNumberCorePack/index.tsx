@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import InputNumberCorePackConverterExample from "./inputNumberCorePack-converter";
 import {
@@ -17,7 +17,7 @@ const inputNumberCorePackItems: {
   name: string;
   description: (typeof inputNumberCorePackDocs)[InputNumberCorePackDemoId]["description"];
   recipe: (typeof inputNumberCorePackDocs)[InputNumberCorePackDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "states",

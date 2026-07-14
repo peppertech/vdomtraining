@@ -1,6 +1,6 @@
-import type { ComponentProps } from "preact";
 import "css!./demo.css";
 import { TruncatingText } from "oj-c/truncating-text";
+import type { ComponentProps } from "preact";
 
 type Truncation = NonNullable<ComponentProps<typeof TruncatingText>["truncation"]>;
 type LineClamp = NonNullable<ComponentProps<typeof TruncatingText>["lineClamp"]>;

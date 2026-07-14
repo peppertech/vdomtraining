@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ojListView } from 'ojs/ojlistview';
 import 'css!./demo.css';
-import * as jsonDataStr from 'text!../cookbook/dataCollections/listView/collectionListView/tweets.json';
 import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojlistview';
+import { ojListView } from 'ojs/ojlistview';
 import 'ojs/ojrefresher';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataStr from 'text!../cookbook/dataCollections/listView/collectionListView/tweets.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type Tweet = {
   source: string;

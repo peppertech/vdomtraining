@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A line chart displays information graphically using data points connected by straight or curved lines, making relationships among the data easier to understand.</p><p>
   Hide and show feature allows a user to hide and unhide a series by clicking the chart legend

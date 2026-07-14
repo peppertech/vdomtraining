@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ol>
   <li>See the other Buttonset demos for details on creating these JET components.</li>

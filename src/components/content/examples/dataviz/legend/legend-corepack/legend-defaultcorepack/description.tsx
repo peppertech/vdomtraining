@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A legend displays an interactive description of symbols, colors, etc., used in graphical information representations.</p><p>This demo shows how to populate an oj-c-legend element with an MutableArrayDataProvider and the <a target="_blank" href="jsdocs/oj-c.Legend.html#itemTemplate">itemTemplate</a> slot. You can increase the performance of this component by using shaped data. See the <a href="#" onclick="demoGoLink(event, 'legendCorepack', 'shapedData'); return false;">Shaped Data demo</a> for details.</p>
 <ul>

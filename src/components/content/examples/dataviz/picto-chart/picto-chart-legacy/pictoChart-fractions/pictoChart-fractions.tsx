@@ -1,12 +1,12 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as tableDataText from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/appleYearlyData.json';
+import 'ojs/ojlegend';
 import 'ojs/ojpictochart';
 import 'ojs/ojtable';
-import 'ojs/ojlegend';
+import type { ojTable } from 'ojs/ojtable';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as tableDataText from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/appleYearlyData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface Product {
   Product: string;
@@ -15,6 +15,8 @@ interface Product {
   year2012: number;
   total: number;
 }
+
+type TableCellTemplateContext = ojTable.CellTemplateContext<string, Product>;
 
 const tableData = JSON.parse(tableDataText as string) as Product[];
 
@@ -37,7 +39,7 @@ export const PictoChartFractions = () => {
   const legendItems = useMemo(() => [{ text: '10 million units' }], []);
   const legendDataProvider = useMemo(() => new ArrayDataProvider(legendItems, { keyAttributes: 'text' }), [legendItems]);
 
-  const getChartDataProvider = (cell: DatavizTableCellTemplateContext<Product>) => {
+  const getChartDataProvider = (cell: TableCellTemplateContext) => {
     const item = [
       {
         id: `${cell.item.data.Product}-${cell.columnIndex}`,
@@ -49,7 +51,7 @@ export const PictoChartFractions = () => {
     return new ArrayDataProvider(item, { keyAttributes: 'id' });
   };
 
-  const cellTemplateRenderer = (cell: DatavizTableCellTemplateContext<Product>) => (
+  const cellTemplateRenderer = (cell: TableCellTemplateContext) => (
     <oj-picto-chart id={`picto-${cell.item.data.Product}-${cell.columnIndex}`} data={getChartDataProvider(cell)} row-count={1}>
       <template
         slot="itemTemplate"

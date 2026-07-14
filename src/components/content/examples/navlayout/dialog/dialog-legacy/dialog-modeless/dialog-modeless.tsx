@@ -1,13 +1,12 @@
-import { JetElementCustomEvent } from 'ojs/index';
-import { h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useRef, useState } from 'preact/hooks';
-import { ojDialog } from 'ojs/ojdialog';
-import 'ojs/ojdialog';
 import 'ojs/ojbutton';
+import 'ojs/ojdialog';
+import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
+import { useRef,useState } from 'preact/hooks';
 
 type InputTextValue = ComponentProps<'oj-input-text'>['value'];
 type InputTextValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>>[0];

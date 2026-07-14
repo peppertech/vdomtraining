@@ -1,15 +1,15 @@
-import { useEffect, useMemo, useRef, useState } from "preact/hooks";
+import "oj-c/button";
+import "oj-c/message-toast";
 import type {
+  CMessageToastElement,
   MessageToastItem,
   MessageToastTemplateContext,
-  MessageToastTemplateValueParameters,
-  CMessageToastElement
+  MessageToastTemplateValueParameters
 } from "oj-c/message-toast";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { useToastContainerOffset } from "../useToastContainerOffset";
-import "oj-c/message-toast";
-import "oj-c/button";
 import "oj-c/progress-circle";
+import { useEffect,useMemo,useRef,useState } from "preact/hooks";
+import { useToastContainerOffset } from "../useToastContainerOffset";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type DemoMessageToastItem = MessageToastItem & {
   id: string;

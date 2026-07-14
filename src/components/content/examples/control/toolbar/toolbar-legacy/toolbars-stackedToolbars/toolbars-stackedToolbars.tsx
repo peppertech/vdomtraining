@@ -1,6 +1,6 @@
-import { h } from 'preact';
 import 'ojs/ojbutton';
 import 'ojs/ojtoolbar';
+import 'preact';
 
 export const ToolbarsStackedToolbars = () => {
   return (

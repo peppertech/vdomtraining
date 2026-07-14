@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ol>
   <li>The sample shows how to render one line layout with default content.</li>

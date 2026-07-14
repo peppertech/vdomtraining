@@ -1,7 +1,8 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojswitch";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 type EnabledSwitchOnEvent = Parameters<
   NonNullable<ComponentProps<"oj-switch">["onvalueChanged"]>

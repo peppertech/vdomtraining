@@ -1,22 +1,22 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { DrawerPopupAutoDismiss } from "./drawerPopup-autoDismiss/drawerPopup-autoDismiss";
 import { drawerPopupAutoDismissDescription } from "./drawerPopup-autoDismiss/description";
+import { DrawerPopupAutoDismiss } from "./drawerPopup-autoDismiss/drawerPopup-autoDismiss";
 import { drawerPopupAutoDismissRecipe } from "./drawerPopup-autoDismiss/recipe";
-import { DrawerPopupBasic } from "./drawerPopup-basic/drawerPopup-basic";
 import { drawerPopupBasicDescription } from "./drawerPopup-basic/description";
+import { DrawerPopupBasic } from "./drawerPopup-basic/drawerPopup-basic";
 import { drawerPopupBasicRecipe } from "./drawerPopup-basic/recipe";
-import { DrawerPopupCancelableEvents } from "./drawerPopup-cancelableEvents/drawerPopup-cancelableEvents";
 import { drawerPopupCancelableEventsDescription } from "./drawerPopup-cancelableEvents/description";
+import { DrawerPopupCancelableEvents } from "./drawerPopup-cancelableEvents/drawerPopup-cancelableEvents";
 import { drawerPopupCancelableEventsRecipe } from "./drawerPopup-cancelableEvents/recipe";
-import { DrawerPopupEvents } from "./drawerPopup-events/drawerPopup-events";
 import { drawerPopupEventsDescription } from "./drawerPopup-events/description";
+import { DrawerPopupEvents } from "./drawerPopup-events/drawerPopup-events";
 import { drawerPopupEventsRecipe } from "./drawerPopup-events/recipe";
-import { DrawerPopupModality } from "./drawerPopup-modality/drawerPopup-modality";
 import { drawerPopupModalityDescription } from "./drawerPopup-modality/description";
+import { DrawerPopupModality } from "./drawerPopup-modality/drawerPopup-modality";
 import { drawerPopupModalityRecipe } from "./drawerPopup-modality/recipe";
-import { DrawerPopupSizing } from "./drawerPopup-sizing/drawerPopup-sizing";
 import { drawerPopupSizingDescription } from "./drawerPopup-sizing/description";
+import { DrawerPopupSizing } from "./drawerPopup-sizing/drawerPopup-sizing";
 import { drawerPopupSizingRecipe } from "./drawerPopup-sizing/recipe";
 
 const drawerPopupLegacyItems = [

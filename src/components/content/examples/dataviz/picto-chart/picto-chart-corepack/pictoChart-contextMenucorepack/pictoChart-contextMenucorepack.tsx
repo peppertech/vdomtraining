@@ -1,22 +1,19 @@
-// @ts-nocheck
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import * as appleDataText from "text!../../data/cookbook/dataVisualizations/pictoChart/resources/appleData.json";
-import { ColorAttributeGroupHandler } from "ojs/ojattributegrouphandler";
-import "oj-c/picto-chart";
 import "oj-c/form-layout";
-import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import "oj-c/picto-chart";
 import { CPictoChartElement } from "oj-c/picto-chart";
+import { ColorAttributeGroupHandler } from "ojs/ojattributegrouphandler";
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
+import * as appleDataText from "text!../../data/cookbook/dataVisualizations/pictoChart/resources/appleData.json";
+import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 type PictoSelectionMode = NonNullable<ComponentProps<"oj-c-picto-chart">["selectionMode"]>;
 type PictoSelection = NonNullable<ComponentProps<"oj-c-picto-chart">["selection"]>;
 type PictoSelectionChangedEvent = Parameters<
   NonNullable<ComponentProps<"oj-c-picto-chart">["onselectionChanged"]>
 >[0];
-type DemoValueChangedEvent = Parameters<
-  NonNullable<ComponentProps<"demo-radioset-enum">["onvalueChanged"]>
->[0];
+type DemoValueChangedEvent = CustomEvent<{ value: string | null }>;
 type PictoContextMenuConfig = NonNullable<
   CPictoChartElement<string, AppleDatum>["contextMenuConfig"]
 >;

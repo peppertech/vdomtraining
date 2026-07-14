@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import 'preact';
 
 const recipeHtmlText = String.raw`<ol>
   <li>Create an ArrayDataProvider with a keyAttributes value that uniquely identifies each task.</li>

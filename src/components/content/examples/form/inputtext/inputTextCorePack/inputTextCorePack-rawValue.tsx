@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/button";
 import "oj-c/input-text";
+import 'preact';
+import { useState } from "preact/hooks";
 
 export default function InputTextCorePackRawValueExample() {
   const [currentValue, setCurrentValue] = useState("Blue");

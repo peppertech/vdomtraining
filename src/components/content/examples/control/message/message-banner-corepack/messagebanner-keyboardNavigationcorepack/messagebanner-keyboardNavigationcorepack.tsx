@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import { useMemo, useRef } from 'preact/hooks';
-import { MessageBannerItem, CMessageBannerElement } from 'oj-c/message-banner';
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
+import 'oj-c/message-banner';
+import { CMessageBannerElement,MessageBannerItem } from 'oj-c/message-banner';
+import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
-import 'oj-c/message-banner';
-import 'ojs/ojbutton';
+import 'preact';
+import { useMemo,useRef } from 'preact/hooks';
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 
 type DemoMessageBannerItem = MessageBannerItem & {
     id: string;

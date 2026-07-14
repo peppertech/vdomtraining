@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as rangeDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicRangeData.json';
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as rangeDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicRangeData.json';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type RangeChartType = 'bar' | 'area';
 type PolarRangeItem = {

@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojbutton';
-import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
-import 'ojs/ojdatagrid';
 import "css!./demo.css";
+import 'ojs/ojbutton';
+import 'ojs/ojdatagrid';
+import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 interface DataDetails {
     index: number;
     name: string;

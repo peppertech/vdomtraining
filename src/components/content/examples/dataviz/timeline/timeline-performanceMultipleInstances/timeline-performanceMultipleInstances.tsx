@@ -1,17 +1,23 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useEffect, useRef, useState } from 'preact/hooks';
-import * as Context from 'ojs/ojcontext';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojbutton';
-import 'ojs/ojinputnumber';
-import 'ojs/ojtimeline';
-import 'ojs/ojlabel';
-import 'ojs/ojformlayout';
 import 'css!./demo.css';
+import 'ojs/ojbutton';
+import * as Context from 'ojs/ojcontext';
+import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import 'ojs/ojlabel';
+import 'ojs/ojtimeline';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useEffect,useRef,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
-type ToggleValue = 'on' | 'off';
-type OrientationValue = 'horizontal' | 'vertical';
+type TimelineProps = ComponentProps<'oj-timeline'>;
+type ButtonsetOneProps = ComponentProps<'oj-buttonset-one'>;
+type InputNumberProps = ComponentProps<'oj-input-number'>;
+type ButtonsetOneValueChangedEvent = Parameters<NonNullable<ButtonsetOneProps['onvalueChanged']>>[0];
+type InputNumberValueChangedEvent = Parameters<NonNullable<InputNumberProps['onvalueChanged']>>[0];
+type TimelineViewportChangeEvent = Parameters<NonNullable<TimelineProps['onojViewportChange']>>[0];
+type ToggleValue = NonNullable<NonNullable<TimelineProps['overview']>['rendered']>;
+type OrientationValue = NonNullable<TimelineProps['orientation']>;
 type ScaleValue = 'hours' | 'days' | 'weeks' | 'months';
 
 type TimelinePerformanceItem = {
@@ -167,31 +173,31 @@ export const TimelinePerformanceMultipleInstances = () => {
     };
   }, [numItems, numTimelines]);
 
-  const handleOverviewChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleOverviewChanged = (event: ButtonsetOneValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
       measureUpdate(() => {
-        setOverviewValue(event.detail.value);
+        setOverviewValue((event.detail.value as ToggleValue | null) ?? 'on');
       });
     }
   };
 
-  const handleOrientationChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleOrientationChanged = (event: ButtonsetOneValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
       measureUpdate(() => {
-        setOrientationValue(event.detail.value);
+        setOrientationValue((event.detail.value as OrientationValue | null) ?? 'horizontal');
       });
     }
   };
 
-  const handleShapedDataChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleShapedDataChanged = (event: ButtonsetOneValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
       measureUpdate(() => {
-        setShapedDataValue(event.detail.value);
+        setShapedDataValue((event.detail.value as ToggleValue | null) ?? 'on');
       });
     }
   };
 
-  const handleMinTimeScaleChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleMinTimeScaleChanged = (event: ButtonsetOneValueChangedEvent) => {
     if (event.detail.updatedFrom !== 'internal') {
       return;
     }
@@ -210,21 +216,21 @@ export const TimelinePerformanceMultipleInstances = () => {
     });
   };
 
-  const handleNumTimelinesChanged = (event: DatavizValueChangedEvent<number | null>) => {
+  const handleNumTimelinesChanged = (event: InputNumberValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
       setNumTimelines(event.detail.value ?? 1);
     }
   };
 
-  const handleNumItemsChanged = (event: DatavizValueChangedEvent<number | null>) => {
+  const handleNumItemsChanged = (event: InputNumberValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
       setNumItems(event.detail.value ?? 0);
     }
   };
 
-  const handleViewportChange = (event: DatavizTimelineViewportChangeEvent) => {
+  const handleViewportChange = (event: TimelineViewportChangeEvent) => {
     if (event.detail.minorAxisScale) {
-      setCurrentTimeScaleValue(event.detail.minorAxisScale);
+      setCurrentTimeScaleValue((event.detail.minorAxisScale as ScaleValue | null) ?? 'days');
     }
   };
 

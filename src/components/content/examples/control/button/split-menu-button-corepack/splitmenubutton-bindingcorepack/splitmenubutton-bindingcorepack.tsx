@@ -1,8 +1,8 @@
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "css!./demo.css";
-import type { CSplitMenuButtonElement } from "oj-c/split-menu-button";
 import "oj-c/split-menu-button";
+import type { CSplitMenuButtonElement } from "oj-c/split-menu-button";
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
 
 type MenuItems = CSplitMenuButtonElement["items"];
 type MenuActionHandler = NonNullable<ComponentProps<"oj-c-split-menu-button">["onojAction"]>;

@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>Toggle Buttons allow users to switch between states when clicked or tapped.</p><p>
   This demo shows the important visual aspects of

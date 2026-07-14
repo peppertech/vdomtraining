@@ -1,6 +1,6 @@
-import type { ComponentProps } from "preact";
 import "css!./demo.css";
 import { TruncatingText } from "oj-c/truncating-text";
+import type { ComponentProps } from "preact";
 
 type Hyphens = NonNullable<ComponentProps<typeof TruncatingText>["hyphens"]>;
 

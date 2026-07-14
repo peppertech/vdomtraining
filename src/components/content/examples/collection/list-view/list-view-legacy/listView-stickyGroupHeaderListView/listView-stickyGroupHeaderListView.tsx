@@ -1,10 +1,10 @@
-import { h } from 'preact';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { useMemo } from 'preact/hooks';
+import 'css!./demo.css';
 import 'ojs/ojlabel';
 import 'ojs/ojlistview';
+import 'preact';
+import { useMemo } from 'preact/hooks';
 import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listView/stickyGroupHeaderListView/contacts.json';
-import 'css!./demo.css';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type ContactLeafData = {
   attr: {

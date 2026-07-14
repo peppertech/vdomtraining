@@ -1,6 +1,7 @@
-import { h, type ComponentProps } from 'preact';
 import "oj-c/form-layout";
 import "oj-c/select-multiple";
+import 'preact';
+import { type ComponentProps } from 'preact';
 import {
   createBrowserDataProvider,
   getBrowserLabels,

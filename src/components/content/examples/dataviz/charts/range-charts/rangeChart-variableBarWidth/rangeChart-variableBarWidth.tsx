@@ -1,10 +1,10 @@
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/oneSeriesData.json';
 import 'ojs/ojchart';
 import 'ojs/ojtoolbar';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/oneSeriesData.json';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ChartOrientation = NonNullable<ComponentProps<'oj-chart'>['orientation']>;
 type RangeWidthDatum = {

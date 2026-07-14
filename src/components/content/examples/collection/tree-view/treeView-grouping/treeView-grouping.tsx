@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import DemoDataTransfer from './DemoDataTransfer';
-import type { ojMenuEventMap } from 'ojs/ojmenu';
-import type { ojTreeView } from 'ojs/ojtreeview';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { AllKeySetImpl, KeySet, KeySetImpl } from 'ojs/ojkeyset';
 import 'css!./demo.css';
+import { AllKeySetImpl,KeySet,KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojmenu';
+import type { ojMenuEventMap } from 'ojs/ojmenu';
 import 'ojs/ojtreeview';
+import type { ojTreeView } from 'ojs/ojtreeview';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import DemoDataTransfer from './DemoDataTransfer';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type TreeNode = {
   key: string;

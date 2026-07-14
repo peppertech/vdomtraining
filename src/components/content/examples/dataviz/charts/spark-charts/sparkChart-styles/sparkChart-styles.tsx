@@ -1,16 +1,16 @@
-import { useMemo, useState } from 'preact/hooks';
+import 'css!./demo.css';
 import { JetElementCustomEvent } from 'ojs/index';
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/sparkData.json';
-import * as rangeDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/sparkRangeData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojinputtext';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/sparkData.json';
+import * as rangeDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/sparkRangeData.json';
 import '../../../../../../jet-composites/demo-select-enum/loader';
 import '../../../../../../jet-composites/demo-tabs/loader';
-import 'css!./demo.css';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type CurrentTab = 'shapeAttrs' | 'colorAttrs';
 type LineType = 'straight' | 'curved' | 'stepped' | 'segmented' | 'none';

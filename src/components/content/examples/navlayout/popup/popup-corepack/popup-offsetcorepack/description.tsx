@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A popup temporarily 'pops up' content in the foreground.</p><p>This demo shows the usage of popup's
   <code class="prettyprint">offset</code> property.

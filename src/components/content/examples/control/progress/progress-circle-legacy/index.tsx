@@ -1,14 +1,14 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { ProgressCircleOverview } from "./progressCircle-overview/progressCircle-overview";
-import { progressCircleOverviewDescription } from "./progressCircle-overview/description";
-import { progressCircleOverviewRecipe } from "./progressCircle-overview/recipe";
-import { ProgressCircleDefault } from "./progressCircle-default/progressCircle-default";
 import { progressCircleDefaultDescription } from "./progressCircle-default/description";
+import { ProgressCircleDefault } from "./progressCircle-default/progressCircle-default";
 import { progressCircleDefaultRecipe } from "./progressCircle-default/recipe";
-import { ProgressCircleLoading } from "./progressCircle-loading/progressCircle-loading";
 import { progressCircleLoadingDescription } from "./progressCircle-loading/description";
+import { ProgressCircleLoading } from "./progressCircle-loading/progressCircle-loading";
 import { progressCircleLoadingRecipe } from "./progressCircle-loading/recipe";
+import { progressCircleOverviewDescription } from "./progressCircle-overview/description";
+import { ProgressCircleOverview } from "./progressCircle-overview/progressCircle-overview";
+import { progressCircleOverviewRecipe } from "./progressCircle-overview/recipe";
 
 const progressCircleLegacyItems = [
   {

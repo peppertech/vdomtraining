@@ -1,18 +1,18 @@
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojbutton';
+import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
 import 'ojs/ojdatetimepicker';
 import 'ojs/ojinputnumber';
 import 'ojs/ojinputtext';
 import 'ojs/ojlabel';
 import 'ojs/ojlabelvalue';
 import 'ojs/ojoption';
-import 'ojs/ojslider';
 import 'ojs/ojselectcombobox';
 import 'ojs/ojselectsingle';
+import 'ojs/ojslider';
 import 'ojs/ojswitch';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type BrowserOption = {
   value: string;

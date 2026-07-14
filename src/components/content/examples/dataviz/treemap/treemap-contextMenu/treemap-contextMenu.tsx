@@ -1,15 +1,14 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
 import 'ojs/ojmenu';
-import 'ojs/ojtreemap';
 import { ojMenu } from 'ojs/ojmenu';
-import { ojTreemap } from 'ojs/ojtreemap';
 import 'ojs/ojoption';
+import 'ojs/ojtreemap';
+import { ojTreemap } from 'ojs/ojtreemap';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type TreeNode = {
   label: string;

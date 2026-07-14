@@ -1,14 +1,12 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import * as empDataText from 'text!../../../data/cookbook/dataCollections/table/shared/employeeData.json';
-import 'ojs/ojtable';
 import 'ojs/ojgauge';
 import 'ojs/ojinputtext';
-import 'ojs/ojgauge';
-import 'ojs/ojgauge';
+import 'ojs/ojtable';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo } from 'preact/hooks';
+import * as empDataText from 'text!../../../data/cookbook/dataCollections/table/shared/employeeData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface EmployeeData {
   EmployeeId: number;

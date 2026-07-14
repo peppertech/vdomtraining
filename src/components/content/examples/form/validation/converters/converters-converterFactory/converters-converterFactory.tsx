@@ -1,7 +1,7 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
 import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
+import 'preact';
+import { useState } from 'preact/hooks';
 
 export const ConvertersConverterFactory = () => {
   const salOptions: IntlNumberConverter.ConverterOptions = {

@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
-import type { CCollapsibleElement } from 'oj-c/collapsible';
-import 'oj-c/collapsible';
-import 'ojs/ojbutton';
-import 'ojs/ojlabel';
-import 'ojs/ojinputtext';
 import "css!./demo.css";
+import 'oj-c/collapsible';
+import type { CCollapsibleElement } from 'oj-c/collapsible';
+import 'ojs/ojbutton';
+import 'ojs/ojinputtext';
+import 'ojs/ojlabel';
+import 'preact';
+import { useState } from 'preact/hooks';
 
 export const CollapsibleEventscorepack = () => {
   const [evtData, setEvtData] = useState<string>('');

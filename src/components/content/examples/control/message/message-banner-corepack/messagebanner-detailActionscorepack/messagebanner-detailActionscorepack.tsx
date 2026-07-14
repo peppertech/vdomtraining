@@ -1,10 +1,10 @@
 // @ts-nocheck
-import { Fragment, h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import { MessageBannerItem, CMessageBannerElement } from 'oj-c/message-banner';
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 import 'oj-c/message-banner';
+import { CMessageBannerElement,MessageBannerItem } from 'oj-c/message-banner';
 import { ItemContext } from 'ojs/ojcommontypes';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 
 type CustomAction = {
     link?: string;

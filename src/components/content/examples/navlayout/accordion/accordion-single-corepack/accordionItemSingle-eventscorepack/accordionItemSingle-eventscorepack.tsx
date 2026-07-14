@@ -1,10 +1,10 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useState } from "preact/hooks";
 import "css!./demo.css";
 import "oj-c/accordion-item-single";
 import "oj-c/button";
 import "oj-c/text-area";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useState } from "preact/hooks";
 
 type AccordionSingleEvent = Parameters<
   NonNullable<ComponentProps<"oj-c-accordion-item-single">["onojExpand"]>

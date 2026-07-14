@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 
 type InputNumberValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>

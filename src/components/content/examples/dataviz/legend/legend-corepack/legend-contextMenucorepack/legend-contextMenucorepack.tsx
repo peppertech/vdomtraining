@@ -1,9 +1,8 @@
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import { ColorAttributeGroupHandler } from "ojs/ojattributegrouphandler";
 import "oj-c/legend";
 import { CLegendElement } from "oj-c/legend";
+import { ColorAttributeGroupHandler } from "ojs/ojattributegrouphandler";
+import { useMemo,useState } from "preact/hooks";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 type FruitDatum = {
   fruit: string;

@@ -1,9 +1,9 @@
-import { InputSearchElement } from "ojs/ojinputsearch";
-import { ItemContext } from "ojs/ojcommontypes";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import { useState } from "preact/hooks";
-import "ojs/ojinputsearch";
 import "css!./input-search.css";
+import { ItemContext } from "ojs/ojcommontypes";
+import "ojs/ojinputsearch";
+import { InputSearchElement } from "ojs/ojinputsearch";
+import { useState } from "preact/hooks";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 type SearchSuggestion = {
   value: string;

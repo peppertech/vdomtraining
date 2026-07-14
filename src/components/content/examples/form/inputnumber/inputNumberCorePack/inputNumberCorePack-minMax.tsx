@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/input-number";
+import 'preact';
+import { useState } from "preact/hooks";
 import { type InputNumberCorePackValueChangedEvent } from "./inputNumberCorePack-shared";
 
 export default function InputNumberCorePackMinMaxExample() {

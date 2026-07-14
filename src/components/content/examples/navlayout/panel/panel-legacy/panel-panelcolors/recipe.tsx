@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { h } from 'preact';
+import 'preact';
 
 const lightBackgroundClasses = [
   'oj-bg-body',

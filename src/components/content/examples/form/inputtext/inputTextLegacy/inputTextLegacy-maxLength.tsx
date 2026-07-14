@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojinputtext";
+import 'preact';
+import { useState } from "preact/hooks";
 import { maxLengthConfig } from "./inputTextLegacy-shared";
 
 export default function InputTextLegacyMaxLengthExample() {

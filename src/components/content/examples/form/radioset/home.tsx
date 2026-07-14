@@ -1,19 +1,20 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import RadiosetCorePackExample from "./radiosetCorePackExample/index";
-import RichRadioset from "./richRadioSet/index";
-import RadiosetExample from "./radiosetLegacy/index";
 import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
 } from "../form-breadcrumb";
+import RadiosetCorePackExample from "./radiosetCorePackExample/index";
+import RadiosetExample from "./radiosetLegacy/index";
+import RichRadioset from "./richRadioSet/index";
 
 type RadiosetComponent = {
   id: number;

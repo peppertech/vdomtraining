@@ -1,8 +1,8 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import "oj-c/buttonset-single";
 import "oj-c/button";
+import "oj-c/buttonset-single";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
 
 type ButtonsetValueChangedEvent = Parameters<
   NonNullable<ComponentProps<"oj-c-buttonset-single">["onvalueChanged"]>

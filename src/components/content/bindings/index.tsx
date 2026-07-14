@@ -1,8 +1,8 @@
-import { h } from "preact";
+import 'preact';
 import Attributes from "./attributes";
+import Foreach from "./foreach";
 import JETAttr from "./jetattributes";
 import JETforeach from "./jetforeach";
-import Foreach from "./foreach";
 
 const BindingContent = () => {
   return (

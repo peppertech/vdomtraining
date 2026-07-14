@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A CardView displays data items as a grid with highly interactive features.</p><p>
   This demo shows how to manage tab stops in oj-c-card-view.  Specifically, oj-c-card-view should be a single

@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import { ojChart } from 'ojs/ojchart';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as shapedRevenueDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/shapedRevenueData.json';
 import 'ojs/ojchart';
+import { ojChart } from 'ojs/ojchart';
 import 'ojs/ojformlayout';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as shapedRevenueDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/shapedRevenueData.json';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type RevenueYear = '2013' | '2014' | '2015';
 

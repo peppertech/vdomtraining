@@ -1,4 +1,5 @@
-import { ComponentProps, type ComponentChildren } from "preact";
+import 'preact';
+import { ComponentProps,type ComponentChildren } from 'preact';
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 export type CheckboxsetProps = ComponentProps<"oj-checkboxset">;

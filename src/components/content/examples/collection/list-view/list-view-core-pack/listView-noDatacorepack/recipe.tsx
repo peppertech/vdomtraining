@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ul>
   <li>Use the <code>oj-c-list-view</code> tag to create a JET ListView.</li>

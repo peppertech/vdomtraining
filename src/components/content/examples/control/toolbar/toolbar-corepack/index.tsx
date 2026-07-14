@@ -1,20 +1,20 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { ToolbarOverviewcorepack } from "./toolbar-overviewcorepack/toolbar-overviewcorepack";
-import { toolbarOverviewcorepackDescription } from "./toolbar-overviewcorepack/description";
-import { toolbarOverviewcorepackRecipe } from "./toolbar-overviewcorepack/recipe";
-import { ToolbarItemActionscorepack } from "./toolbar-itemActionscorepack/toolbar-itemActionscorepack";
 import { toolbarItemActionscorepackDescription } from "./toolbar-itemActionscorepack/description";
 import { toolbarItemActionscorepackRecipe } from "./toolbar-itemActionscorepack/recipe";
-import { ToolbarToolbarActionscorepack } from "./toolbar-toolbarActionscorepack/toolbar-toolbarActionscorepack";
-import { toolbarToolbarActionscorepackDescription } from "./toolbar-toolbarActionscorepack/description";
-import { toolbarToolbarActionscorepackRecipe } from "./toolbar-toolbarActionscorepack/recipe";
-import { ToolbarSelectioncorepack } from "./toolbar-selectioncorepack/toolbar-selectioncorepack";
-import { toolbarSelectioncorepackDescription } from "./toolbar-selectioncorepack/description";
-import { toolbarSelectioncorepackRecipe } from "./toolbar-selectioncorepack/recipe";
-import { ToolbarModifyContentcorepack } from "./toolbar-modifyContentcorepack/toolbar-modifyContentcorepack";
+import { ToolbarItemActionscorepack } from "./toolbar-itemActionscorepack/toolbar-itemActionscorepack";
 import { toolbarModifyContentcorepackDescription } from "./toolbar-modifyContentcorepack/description";
 import { toolbarModifyContentcorepackRecipe } from "./toolbar-modifyContentcorepack/recipe";
+import { ToolbarModifyContentcorepack } from "./toolbar-modifyContentcorepack/toolbar-modifyContentcorepack";
+import { toolbarOverviewcorepackDescription } from "./toolbar-overviewcorepack/description";
+import { toolbarOverviewcorepackRecipe } from "./toolbar-overviewcorepack/recipe";
+import { ToolbarOverviewcorepack } from "./toolbar-overviewcorepack/toolbar-overviewcorepack";
+import { toolbarSelectioncorepackDescription } from "./toolbar-selectioncorepack/description";
+import { toolbarSelectioncorepackRecipe } from "./toolbar-selectioncorepack/recipe";
+import { ToolbarSelectioncorepack } from "./toolbar-selectioncorepack/toolbar-selectioncorepack";
+import { toolbarToolbarActionscorepackDescription } from "./toolbar-toolbarActionscorepack/description";
+import { toolbarToolbarActionscorepackRecipe } from "./toolbar-toolbarActionscorepack/recipe";
+import { ToolbarToolbarActionscorepack } from "./toolbar-toolbarActionscorepack/toolbar-toolbarActionscorepack";
 
 const toolbarCorePackItems = [
   {

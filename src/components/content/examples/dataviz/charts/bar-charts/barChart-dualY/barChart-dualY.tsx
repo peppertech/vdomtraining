@@ -1,16 +1,16 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojchart';
+import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojtoolbar';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicData.json';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
 import '../../../../../../jet-composites/demo-chart-stack-control/loader';
-import 'ojs/ojformlayout';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ChartStack = ComponentProps<'oj-chart'>['stack'];
 type ChartOrientation = ComponentProps<'oj-chart'>['orientation'];

@@ -1,15 +1,15 @@
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
+import 'css!./demo.css';
+import { KeySet,KeySetImpl } from 'ojs/ojkeyset';
+import 'ojs/ojmenu';
+import type { ojMenu } from 'ojs/ojmenu';
+import 'ojs/ojtreeview';
+import type { ojTreeView } from 'ojs/ojtreeview';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
 import * as jsonDragText from 'text!./treeViewDataDrag.json';
 import * as jsonDropText from 'text!./treeViewDataDrop.json';
-import type { ojMenu } from 'ojs/ojmenu';
-import type { ojTreeView } from 'ojs/ojtreeview';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { KeySet, KeySetImpl } from 'ojs/ojkeyset';
 import DemoDataTransfer from './DemoDataTransfer';
-import 'css!./demo.css';
-import 'ojs/ojmenu';
-import 'ojs/ojtreeview';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type TreeNode = {
   title: string;

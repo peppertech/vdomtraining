@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as dataText from 'text!../data/cookbook/dataVisualizations/gantt/multipleTasks/rowData.json';
+import 'css!./demo.css';
 import 'ojs/ojgantt';
-import 'ojs/ojmenu';
 import { ojGantt } from 'ojs/ojgantt';
+import 'ojs/ojmenu';
 import { ojMenu } from 'ojs/ojmenu';
 import 'ojs/ojoption';
-import 'css!./demo.css';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/gantt/multipleTasks/rowData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type GanttProps = ComponentProps<'oj-gantt'>;
 type GanttStart = GanttProps['start'];

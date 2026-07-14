@@ -1,8 +1,9 @@
-import { h, ComponentProps } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/buttonset-single";
 import "ojs/ojlabel";
 import "ojs/ojlabelvalue";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useState } from "preact/hooks";
 
 type ButtonsetSingleProps = ComponentProps<"oj-c-buttonset-single">;
 type ButtonsetSingleItem = NonNullable<ButtonsetSingleProps["items"]>[number];

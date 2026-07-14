@@ -1,12 +1,12 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import "css!./demo.css";
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as testDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/testScoresData.json';
 import 'ojs/ojchart';
 import 'ojs/ojlegend';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as testDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/testScoresData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import "css!./demo.css";
 interface TestScoreDatum {
     id: string;
     series: string;

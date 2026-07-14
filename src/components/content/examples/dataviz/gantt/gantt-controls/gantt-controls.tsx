@@ -1,10 +1,10 @@
-import { h } from 'preact';
+import 'css!./demo.css';
+import 'ojs/ojgantt';
+import 'preact';
 import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect,useMemo,useState } from 'preact/hooks';
 import * as data from 'text!../data/cookbook/dataVisualizations/gantt/customBars/taskData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojgantt';
-import 'css!./demo.css';
 
 type GanttProps = ComponentProps<'oj-gantt'>;
 type ScreenRange = 'sm' | 'md' | 'lg' | 'xl' | 'xxl';

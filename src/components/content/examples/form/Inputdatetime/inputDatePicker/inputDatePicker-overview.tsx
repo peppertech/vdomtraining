@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "oj-c/form-layout";
 import "oj-c/input-date-picker";
+import 'preact';
 import { messageSets } from "./inputDatePicker-shared";
 
 export default function InputDatePickerOverviewExample() {

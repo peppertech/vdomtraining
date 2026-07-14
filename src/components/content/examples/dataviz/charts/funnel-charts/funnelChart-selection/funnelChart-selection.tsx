@@ -1,15 +1,15 @@
-import { Fragment, h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
-import 'ojs/ojformlayout';
 import 'ojs/ojchart';
+import 'ojs/ojformlayout';
 import 'ojs/ojtoolbar';
+import { useMemo,useState } from 'preact/hooks';
+import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type ChartOrientation = ComponentProps<'oj-chart'>['orientation'];
 type ChartSelectionMode = ComponentProps<'oj-chart'>['selectionMode'];
 type ChartSelection = NonNullable<ComponentProps<'oj-chart'>['selection']>;

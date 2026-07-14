@@ -1,9 +1,9 @@
-import { Fragment, h } from 'preact';
-import { useMemo, useRef } from 'preact/hooks';
-import { ojNavigationList } from 'ojs/ojnavigationlist';
-import 'ojs/ojnavigationlist';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'css!./demo.css';
+import 'ojs/ojnavigationlist';
+import { ojNavigationList } from 'ojs/ojnavigationlist';
+import 'preact';
+import { useMemo,useRef } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type CategoryNavItem = {
   name: string;

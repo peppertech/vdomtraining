@@ -1,11 +1,10 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojbutton';
 import 'ojs/ojpictochart';
 import 'ojs/ojtoolbar';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type PictoChartItem = {
   id: string;

@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import 'ojs/ojcheckboxset';
 import type { ItemContext } from 'ojs/ojcommontypes';
 import type { DataProvider } from 'ojs/ojdataprovider';
-import type { InputSearchElement } from 'ojs/ojinputsearch';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import DemoDelayingDataProvider from './DemoDelayingDataProvider';
-import 'ojs/ojcheckboxset';
 import 'ojs/ojinputsearch';
+import type { InputSearchElement } from 'ojs/ojinputsearch';
 import 'ojs/ojoption';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import DemoDelayingDataProvider from './DemoDelayingDataProvider';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type InputSearchValue = ComponentProps<'oj-input-search'>['value'];
 type InputSearchValueChangedEvent = Parameters<

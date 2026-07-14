@@ -1,9 +1,9 @@
-import { h } from "preact";
-import { useRef, useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojcheckboxset";
 import "ojs/ojlabel";
 import "ojs/ojlabelvalue";
+import 'preact';
+import { useRef,useState } from "preact/hooks";
 import {
   colorOptions,
   renderCheckboxOptions,

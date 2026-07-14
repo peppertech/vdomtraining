@@ -1,14 +1,14 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { ProgressBarOverviewcorepack } from "./progressBar-overviewcorepack/progressBar-overviewcorepack";
-import { progressBarOverviewcorepackDescription } from "./progressBar-overviewcorepack/description";
-import { progressBarOverviewcorepackRecipe } from "./progressBar-overviewcorepack/recipe";
-import { ProgressBarBasiccorepack } from "./progressBar-basiccorepack/progressBar-basiccorepack";
 import { progressBarBasiccorepackDescription } from "./progressBar-basiccorepack/description";
+import { ProgressBarBasiccorepack } from "./progressBar-basiccorepack/progressBar-basiccorepack";
 import { progressBarBasiccorepackRecipe } from "./progressBar-basiccorepack/recipe";
-import { ProgressBarLoadingcorepack } from "./progressBar-loadingcorepack/progressBar-loadingcorepack";
 import { progressBarLoadingcorepackDescription } from "./progressBar-loadingcorepack/description";
+import { ProgressBarLoadingcorepack } from "./progressBar-loadingcorepack/progressBar-loadingcorepack";
 import { progressBarLoadingcorepackRecipe } from "./progressBar-loadingcorepack/recipe";
+import { progressBarOverviewcorepackDescription } from "./progressBar-overviewcorepack/description";
+import { ProgressBarOverviewcorepack } from "./progressBar-overviewcorepack/progressBar-overviewcorepack";
+import { progressBarOverviewcorepackRecipe } from "./progressBar-overviewcorepack/recipe";
 
 const progressBarCorePackItems = [
   {

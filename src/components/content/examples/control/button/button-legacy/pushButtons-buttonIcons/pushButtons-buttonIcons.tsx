@@ -1,6 +1,7 @@
-import { h, type ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
 import 'ojs/ojbutton';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
 
 type ButtonsetValue = NonNullable<ComponentProps<'oj-buttonset-many'>['value']>;
 type ButtonsetValueChangedEvent = Parameters<

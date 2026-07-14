@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import type { MessageToastItem, CMessageToastElement } from 'oj-c/message-toast';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
-import { useToastContainerOffset } from '../useToastContainerOffset';
 import 'oj-c/button';
 import 'oj-c/checkboxset';
 import 'oj-c/message-toast';
+import type { CMessageToastElement,MessageToastItem } from 'oj-c/message-toast';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import { useToastContainerOffset } from '../useToastContainerOffset';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 
 type TimeoutOption = {
   value: NonNullable<MessageToastItem['autoTimeout']>;

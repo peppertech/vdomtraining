@@ -1,10 +1,11 @@
-import { h, type ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
+import 'css!./demo.css';
 import 'ojs/ojbutton';
 import 'ojs/ojlabel';
 import 'ojs/ojlabelvalue';
-import 'css!./demo.css';
+import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
 
 type ResponsiveItem = {
   id: string;

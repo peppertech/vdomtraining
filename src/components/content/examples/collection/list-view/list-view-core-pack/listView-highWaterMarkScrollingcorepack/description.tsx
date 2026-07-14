@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A list view displays data items as a list or a grid with highly interactive features.</p>
 <p>This demo shows oj-list-view powered by a RESTDataProvider with high-water mark (loadMoreOnScroll) virtualization.</p>

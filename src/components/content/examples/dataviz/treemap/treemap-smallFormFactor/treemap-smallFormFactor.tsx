@@ -1,16 +1,15 @@
-// @ts-nocheck
-import { h } from 'preact';
-import type { JSX } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import "css!./demo.css";
 import { JetElementCustomEvent } from 'ojs/index';
-import * as jsonDataText from 'text!./revenueData.json';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojformlayout';
 import 'ojs/ojtreemap';
-import '../../../../../jet-composites/demo-radioset-enum/loader';
-import "css!./demo.css";
 import { ojTreemap } from 'ojs/ojtreemap';
+import 'preact';
+import type { JSX } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!./revenueData.json';
+import '../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type Year = '2013' | '2014' | '2015';
 type Sector = {

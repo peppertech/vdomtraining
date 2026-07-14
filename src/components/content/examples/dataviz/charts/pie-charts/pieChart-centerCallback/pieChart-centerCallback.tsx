@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojchart';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
+import 'ojs/ojthematicmap';
+import 'preact';
 import { useMemo } from 'preact/hooks';
 import * as chartData from 'text!../data/cookbook/dataVisualizations/chart/resources/salesData.json';
-import * as geo from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
 import * as tMapData from 'text!../data/cookbook/dataVisualizations/chart/resources/salesRegionData.json';
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import 'ojs/ojchart';
-import 'ojs/ojthematicmap';
+import * as geo from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type SalesDatum = {
   id: number;

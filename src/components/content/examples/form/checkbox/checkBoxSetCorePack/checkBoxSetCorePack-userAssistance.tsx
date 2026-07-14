@@ -1,11 +1,11 @@
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/checkboxset";
 import "oj-c/radioset";
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 import {
   colorOptionsWithAssistance,
-  createColorDataProvider,
   controlStateOptions,
+  createColorDataProvider,
   type CheckboxsetValueChangedEvent,
   type RadiosetValueChangedEvent,
 } from "./checkBoxSetCorePack-shared";

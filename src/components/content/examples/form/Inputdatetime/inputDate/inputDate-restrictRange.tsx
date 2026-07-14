@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import { IntlConverterUtils } from "ojs/ojconverterutils-i18n";
 import "ojs/ojdatetimepicker";
 import "ojs/ojlabel";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import { type InputDateValueChangedEvent } from "./inputDate-shared";
 
 const initialValue =

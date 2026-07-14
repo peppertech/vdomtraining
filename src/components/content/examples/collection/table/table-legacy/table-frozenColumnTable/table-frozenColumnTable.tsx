@@ -1,15 +1,15 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import type { ojMenuEventMap } from "ojs/ojmenu";
-import type { ojTable } from "ojs/ojtable";
-import "ojs/ojmenu";
+import "css!./demo.css";
 import "ojs/ojbutton";
+import "ojs/ojmenu";
+import type { ojMenuEventMap } from "ojs/ojmenu";
 import "ojs/ojoption";
 import "ojs/ojtable";
-import "css!./demo.css";
+import type { ojTable } from "ojs/ojtable";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
 import * as empData from "text!../../../data/cookbook/dataCollections/table/shared/employeeData.json";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 interface EmployeeStatus {
   EmployeeId: number;

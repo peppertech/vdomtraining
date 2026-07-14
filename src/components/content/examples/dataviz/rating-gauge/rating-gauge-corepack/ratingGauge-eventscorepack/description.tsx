@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>Rating gauges are typically used to display or accept user feedback on a product or service.</p><p>
   Rating gauge is a type of rating scale utilizing a star glyph or similar symbol. It is used by

@@ -1,15 +1,14 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
+import 'css!./demo.css';
+import 'ojs/ojbutton';
 import { ojButton } from 'ojs/ojbutton';
+import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import 'ojs/ojlistview';
+import 'ojs/ojoption';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import Context = require('ojs/ojcontext');
-import 'css!./demo.css';
-import 'ojs/ojlistview';
-import 'ojs/ojinputnumber';
-import 'ojs/ojformlayout';
-import 'ojs/ojbutton';
-import 'ojs/ojoption';
 
 interface Data {
     id: number;

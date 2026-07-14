@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import { IntlConverterUtils } from "ojs/ojconverterutils-i18n";
 import "ojs/ojdatetimepicker";
-import { type InputDateProps, type InputDateValueChangedEvent } from "./inputDate-shared";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
+import { type InputDateProps,type InputDateValueChangedEvent } from "./inputDate-shared";
 
 type DayFormatterInput = {
   fullYear: number;

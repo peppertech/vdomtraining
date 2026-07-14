@@ -1,8 +1,8 @@
+import 'ojs/ojchart';
 import { useMemo } from 'preact/hooks';
 import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/sparkData.json';
 import * as rangeDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/sparkRangeData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojchart';
 
 type SparkValueItem = {
   id: number;

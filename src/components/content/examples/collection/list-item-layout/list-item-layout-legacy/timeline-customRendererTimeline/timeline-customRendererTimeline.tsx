@@ -1,15 +1,14 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as employeeStartDataText from 'text!../../../data/cookbook/dataVisualizations/timeline/customRendererTimeline/employeeStartData.json';
-import type { ojTimeline } from 'ojs/ojtimeline';
-import 'ojs/ojtimeline';
-import 'ojs/ojavatar';
-import 'ojs/ojlistitemlayout';
-import 'ojs/ojbutton';
-import 'ojs/ojmenu';
 import 'css!./demo.css';
+import 'ojs/ojavatar';
+import 'ojs/ojbutton';
+import 'ojs/ojlistitemlayout';
+import 'ojs/ojmenu';
+import 'ojs/ojtimeline';
+import type { ojTimeline } from 'ojs/ojtimeline';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as employeeStartDataText from 'text!../../../data/cookbook/dataVisualizations/timeline/customRendererTimeline/employeeStartData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TimelineEmployeeItem = {
   id: number;
@@ -82,7 +81,7 @@ export const TimelineCustomRendererTimeline = () => {
     <svg class="demo-timeline-bubble">
       <g>
         <foreignObject x={bubbleX} y="0" width={bubbleWidth} height={bubbleHeight}>
-          <div xmlns="http://www.w3.org/1999/xhtml" class="demo-timeline-bubble-content">
+          <div class="demo-timeline-bubble-content">
             <oj-list-item-layout
               class="oj-listitemlayout-padding-off"
               aria-label={`Timeline details for ${item.itemData.name}`}

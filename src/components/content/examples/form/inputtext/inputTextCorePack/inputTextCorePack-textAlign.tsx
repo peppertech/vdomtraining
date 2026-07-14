@@ -1,11 +1,12 @@
-import { h, type ComponentProps } from 'preact';
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/buttonset-single";
 import "oj-c/form-layout";
 import "oj-c/input-number";
 import "oj-c/input-password";
 import "oj-c/input-text";
 import "oj-c/select-multiple";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 import {
   buttonsetItems,

@@ -1,20 +1,21 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import * as preact from 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import ComponentValidation from "./componentValidation/index";
-import Converters from "./converters/index";
+import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
 } from "../form-breadcrumb";
+import ComponentValidation from "./componentValidation/index";
+import Converters from "./converters/index";
 import ValidationGroup from "./validationGroup/index";
 import Validators from "./validators/index";
-import { useExampleRoute } from "../../example-route-context";
 
 type ValidationComponent = {
   id: number;
@@ -22,7 +23,7 @@ type ValidationComponent = {
   name: string;
   image: string;
   isCorePack?: boolean;
-  render: () => h.JSX.Element;
+  render: () => preact.JSX.Element;
 };
 
 const validationComponents: ValidationComponent[] = [

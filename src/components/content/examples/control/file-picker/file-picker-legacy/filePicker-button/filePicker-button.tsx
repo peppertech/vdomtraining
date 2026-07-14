@@ -1,7 +1,7 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
-import { pickFiles, type FileOptions } from 'ojs/ojfilepickerutils';
 import 'ojs/ojbutton';
+import { pickFiles,type FileOptions } from 'ojs/ojfilepickerutils';
+import 'preact';
+import { useState } from 'preact/hooks';
 
 const fileOptions: FileOptions = {
   accept: [],

@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/input-date-text";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import { type InputDateTextValueChangedEvent } from "./inputDateText-shared";
 
 export default function InputDateTextRestrictRangeExample() {

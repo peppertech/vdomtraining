@@ -1,11 +1,11 @@
-import { useMemo, useRef } from 'preact/hooks';
-import { ojListView } from 'ojs/ojlistview';
-import { IndexerModel } from 'ojs/ojindexer';
-import IndexerModelTreeDataProvider = require('ojs/ojindexermodeltreedataprovider');
-import * as contactsText from 'text!./contacts.json';
-import 'ojs/ojindexer';
-import 'ojs/ojlistview';
 import 'css!./demo.css';
+import 'ojs/ojindexer';
+import { IndexerModel } from 'ojs/ojindexer';
+import 'ojs/ojlistview';
+import { ojListView } from 'ojs/ojlistview';
+import { useMemo,useRef } from 'preact/hooks';
+import * as contactsText from 'text!./contacts.json';
+import IndexerModelTreeDataProvider = require('ojs/ojindexermodeltreedataprovider');
 
 type Contact = {
   id: string;

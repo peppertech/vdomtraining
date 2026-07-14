@@ -1,20 +1,20 @@
-import { h } from "preact";
+import 'preact';
 import {
   RecipePageTemplate,
   type RecipePageItem,
 } from "../../../../shared/demo-page-layout/recipe-page-template";
-import { MeterBarOverviewcorepack } from "./meterBar-overviewcorepack/meterBar-overviewcorepack";
-import { meterBarOverviewcorepackDescription } from "./meterBar-overviewcorepack/description";
-import { meterBarOverviewcorepackRecipe } from "./meterBar-overviewcorepack/recipe";
-import { MeterBarCustomizationcorepack } from "./meterBar-customizationcorepack/meterBar-customizationcorepack";
 import { meterBarCustomizationcorepackDescription } from "./meterBar-customizationcorepack/description";
+import { MeterBarCustomizationcorepack } from "./meterBar-customizationcorepack/meterBar-customizationcorepack";
 import { meterBarCustomizationcorepackRecipe } from "./meterBar-customizationcorepack/recipe";
-import { MeterBarSizingcorepack } from "./meterBar-sizingcorepack/meterBar-sizingcorepack";
-import { meterBarSizingcorepackDescription } from "./meterBar-sizingcorepack/description";
-import { meterBarSizingcorepackRecipe } from "./meterBar-sizingcorepack/recipe";
-import { MeterBarEventscorepack } from "./meterBar-eventscorepack/meterBar-eventscorepack";
 import { meterBarEventscorepackDescription } from "./meterBar-eventscorepack/description";
+import { MeterBarEventscorepack } from "./meterBar-eventscorepack/meterBar-eventscorepack";
 import { meterBarEventscorepackRecipe } from "./meterBar-eventscorepack/recipe";
+import { meterBarOverviewcorepackDescription } from "./meterBar-overviewcorepack/description";
+import { MeterBarOverviewcorepack } from "./meterBar-overviewcorepack/meterBar-overviewcorepack";
+import { meterBarOverviewcorepackRecipe } from "./meterBar-overviewcorepack/recipe";
+import { meterBarSizingcorepackDescription } from "./meterBar-sizingcorepack/description";
+import { MeterBarSizingcorepack } from "./meterBar-sizingcorepack/meterBar-sizingcorepack";
+import { meterBarSizingcorepackRecipe } from "./meterBar-sizingcorepack/recipe";
 
 const meterBarItems: RecipePageItem[] = [
   {

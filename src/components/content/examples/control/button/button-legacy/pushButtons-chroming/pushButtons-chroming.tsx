@@ -1,10 +1,10 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import 'ojs/ojbutton';
-import 'ojs/ojmenu';
 import 'ojs/ojcheckboxset';
+import 'ojs/ojmenu';
 import 'ojs/ojoption';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 // import 'ojs/ojmenubutton';
 type ItemInfo = {
     id: string;
@@ -12,9 +12,8 @@ type ItemInfo = {
     icon: string;
     disabled?: boolean;
 };
-type PropertyChangedEvent<T> = CustomEvent<{
-    value: T;
-}>;
+type CheckboxsetProps = ComponentProps<'oj-checkboxset'>;
+type CheckboxsetValueChangedEvent = Parameters<NonNullable<CheckboxsetProps['onvalueChanged']>>[0];
 export const PushButtonsChroming = () => {
     const [disabledValue, setDisabledValue] = useState<string[]>([]);
     const disableControls = disabledValue.includes('true');
@@ -44,8 +43,8 @@ export const PushButtonsChroming = () => {
             disabled: true
         }
     ], []);
-    const handleDisabledValueValueChanged = (event: PropertyChangedEvent<string[]>) => {
-        setDisabledValue(event.detail.value);
+    const handleDisabledValueValueChanged = (event: CheckboxsetValueChangedEvent) => {
+        setDisabledValue(event.detail.value ?? []);
     };
     return (<div id="button-container">
             <oj-checkboxset id="disabledControls" onvalueChanged={handleDisabledValueValueChanged} value={disabledValue}><oj-option value="true">Disable examples</oj-option></oj-checkboxset>

@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
-import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/customers.json';
-import 'ojs/ojdatagrid';
-import { ojDataGrid } from 'ojs/ojdatagrid';
+import "css!./demo.css";
 import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import "css!./demo.css";
+import 'ojs/ojdatagrid';
+import { ojDataGrid } from 'ojs/ojdatagrid';
+import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo } from 'preact/hooks';
+import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/customers.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface CustomerRow {
     index: number;

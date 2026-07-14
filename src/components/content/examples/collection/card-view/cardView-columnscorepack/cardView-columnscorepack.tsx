@@ -1,9 +1,9 @@
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import "css!./demo.css";
 import "oj-c/card-view";
 import "oj-c/input-number";
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 interface DataItem {
   id: number;

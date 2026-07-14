@@ -1,11 +1,11 @@
-import { Fragment, h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as jsonData from 'text!../../data/cookbook/layout/navigationlist/slidingNavlistComponent/treeViewData.json';
+import 'css!./demo.css';
+import 'ojs/ojlabel';
 import 'ojs/ojnavigationlist';
 import 'ojs/ojswitch';
-import 'ojs/ojlabel';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonData from 'text!../../data/cookbook/layout/navigationlist/slidingNavlistComponent/treeViewData.json';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import 'css!./demo.css';
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 

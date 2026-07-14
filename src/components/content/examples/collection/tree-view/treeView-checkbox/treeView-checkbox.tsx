@@ -1,10 +1,10 @@
-import { h } from 'preact';
+import { AllKeySetImpl,KeySet,KeySetImpl } from 'ojs/ojkeyset';
+import 'ojs/ojtreeview';
+import 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo,useState } from 'preact/hooks';
 import * as jsonDataText from 'text!./treeViewData.json';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { AllKeySetImpl, KeySet, KeySetImpl } from 'ojs/ojkeyset';
-import 'ojs/ojtreeview';
 
 type TreeNode = {
   title: string;

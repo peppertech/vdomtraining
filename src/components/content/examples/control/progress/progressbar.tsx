@@ -1,6 +1,7 @@
-import { h, JSX } from "preact";
-import { useEffect, useState } from "preact/hooks";
 import "oj-c/progress-bar";
+import 'preact';
+import { JSX } from 'preact';
+import { useEffect,useState } from "preact/hooks";
 
 const MAX_VALUE = 100;
 

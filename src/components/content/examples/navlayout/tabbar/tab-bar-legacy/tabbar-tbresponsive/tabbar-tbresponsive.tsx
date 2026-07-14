@@ -1,9 +1,10 @@
-import { h, type ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
 import 'ojs/ojnavigationlist';
 import { ojTabBar } from 'ojs/ojnavigationlist';
+import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TabbarItem = {
   name: string;

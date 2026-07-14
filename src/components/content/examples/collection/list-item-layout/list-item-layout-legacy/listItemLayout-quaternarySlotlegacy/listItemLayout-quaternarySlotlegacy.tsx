@@ -1,9 +1,9 @@
-import { useMemo } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import type { ojListView } from "ojs/ojlistview";
 import "css!./demo.css";
 import "ojs/ojlistitemlayout";
 import "ojs/ojlistview";
+import type { ojListView } from "ojs/ojlistview";
+import { useMemo } from "preact/hooks";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 interface Product {
   cost: string;

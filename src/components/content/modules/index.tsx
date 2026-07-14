@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import Modules from "./modules";
 
 const ModulesContent = () => {

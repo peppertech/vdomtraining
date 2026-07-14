@@ -1,6 +1,6 @@
-import { h } from 'preact';
-import 'ojs/ojfilepicker';
 import "css!./demo.css";
+import 'ojs/ojfilepicker';
+import 'preact';
 
 export const FilePickerSize = () => {
   return (

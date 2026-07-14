@@ -1,13 +1,14 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
-import type { CInputPasswordElement } from 'oj-c/input-password';
-import type { CInputTextElement } from 'oj-c/input-text';
 import 'oj-c/button';
 import 'oj-c/input-password';
+import type { CInputPasswordElement } from 'oj-c/input-password';
 import 'oj-c/input-text';
+import type { CInputTextElement } from 'oj-c/input-text';
 import 'ojs/ojformlayout';
 import 'ojs/ojlabelvalue';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 
 type InputTextValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>

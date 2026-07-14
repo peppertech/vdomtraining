@@ -1,7 +1,7 @@
 import type { ComponentProps } from "preact";
-import * as statesText from "text!./data/states.json";
-import * as hierarchicalDataText from "text!./data/hierarchicalData.json";
 import * as employeesText from "text!./data/employees_100.json";
+import * as hierarchicalDataText from "text!./data/hierarchicalData.json";
+import * as statesText from "text!./data/states.json";
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import ArrayTreeDataProvider = require("ojs/ojarraytreedataprovider");
 import ListDataProviderView = require("ojs/ojlistdataproviderview");

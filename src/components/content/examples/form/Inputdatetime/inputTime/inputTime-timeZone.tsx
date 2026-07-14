@@ -1,9 +1,9 @@
-import { h } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import { IntlDateTimeConverter } from "ojs/ojconverter-datetime";
 import "ojs/ojdatetimepicker";
 import "ojs/ojformlayout";
 import "ojs/ojradioset";
+import 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 import {
   type InputTimeValueChangedEvent,
   type RadiosetValueChangedEvent,

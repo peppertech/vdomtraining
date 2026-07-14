@@ -1,10 +1,10 @@
-import { Header } from "./header";
-import Footer from "./footer";
-import Content from "./content/index";
 import { registerCustomElement } from "ojs/ojvcomponent";
 import "preact";
-import { useEffect } from "preact/hooks";
 import { LocationProvider } from "preact-iso";
+import { useEffect } from "preact/hooks";
+import Content from "./content/index";
+import Footer from "./footer";
+import { Header } from "./header";
 import Context = require("ojs/ojcontext");
 
 type Props = {

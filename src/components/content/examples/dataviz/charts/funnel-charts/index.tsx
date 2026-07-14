@@ -1,25 +1,25 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { FunnelChartAnimation } from "./funnelChart-animation/funnelChart-animation";
 import { funnelChartAnimationDescription } from "./funnelChart-animation/description";
+import { FunnelChartAnimation } from "./funnelChart-animation/funnelChart-animation";
 import { funnelChartAnimationRecipe } from "./funnelChart-animation/recipe";
-import { FunnelChartDefault } from "./funnelChart-default/funnelChart-default";
 import { funnelChartDefaultDescription } from "./funnelChart-default/description";
+import { FunnelChartDefault } from "./funnelChart-default/funnelChart-default";
 import { funnelChartDefaultRecipe } from "./funnelChart-default/recipe";
-import { FunnelChartLegend } from "./funnelChart-legend/funnelChart-legend";
 import { funnelChartLegendDescription } from "./funnelChart-legend/description";
+import { FunnelChartLegend } from "./funnelChart-legend/funnelChart-legend";
 import { funnelChartLegendRecipe } from "./funnelChart-legend/recipe";
-import { FunnelChartSelection } from "./funnelChart-selection/funnelChart-selection";
 import { funnelChartSelectionDescription } from "./funnelChart-selection/description";
+import { FunnelChartSelection } from "./funnelChart-selection/funnelChart-selection";
 import { funnelChartSelectionRecipe } from "./funnelChart-selection/recipe";
-import { FunnelChartShapedData } from "./funnelChart-shapedData/funnelChart-shapedData";
 import { funnelChartShapedDataDescription } from "./funnelChart-shapedData/description";
+import { FunnelChartShapedData } from "./funnelChart-shapedData/funnelChart-shapedData";
 import { funnelChartShapedDataRecipe } from "./funnelChart-shapedData/recipe";
-import { FunnelChartStyles } from "./funnelChart-styles/funnelChart-styles";
 import { funnelChartStylesDescription } from "./funnelChart-styles/description";
+import { FunnelChartStyles } from "./funnelChart-styles/funnelChart-styles";
 import { funnelChartStylesRecipe } from "./funnelChart-styles/recipe";
-import { FunnelChartTargetValues } from "./funnelChart-targetValues/funnelChart-targetValues";
 import { funnelChartTargetValuesDescription } from "./funnelChart-targetValues/description";
+import { FunnelChartTargetValues } from "./funnelChart-targetValues/funnelChart-targetValues";
 import { funnelChartTargetValuesRecipe } from "./funnelChart-targetValues/recipe";
 
 const funnelChartItems = [

@@ -1,9 +1,9 @@
 import "preact";
+import { Route,Router,useLocation } from "preact-iso";
 import { useEffect } from "preact/hooks";
 import BindingContent from "./bindings/index";
-import ModulesContent from "./modules/index";
 import ExampleContent from "./examples/index";
-import { Route, Router, useLocation } from "preact-iso";
+import ModulesContent from "./modules/index";
 
 type RedirectProps = {
   to: string;

@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useMemo } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojselectcombobox";
+import 'preact';
+import { useMemo } from "preact/hooks";
 import { createBrowserDataProvider } from "./selectMany-shared";
 
 export default function SelectManyWidthExample() {

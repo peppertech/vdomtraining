@@ -1,9 +1,9 @@
-import { Fragment, h } from 'preact';
-import { useMemo } from 'preact/hooks';
+import "css!./demo.css";
 import 'ojs/ojchart';
+import 'preact';
+import { useMemo } from 'preact/hooks';
 
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import "css!./demo.css";
 
 export const ChartCustomStyling = () => {
   const chartData = useMemo(() => {

@@ -1,9 +1,9 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/radioset";
 import "oj-c/tab-bar-mixed";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useState } from "preact/hooks";
 
 type TabBarMixedProps = ComponentProps<"oj-c-tab-bar-mixed">;
 type RadioValueChangedEvent = Parameters<

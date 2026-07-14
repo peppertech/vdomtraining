@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from 'preact';
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/buttonset-single";
 import "oj-c/form-layout";
 import "oj-c/input-sensitive-text";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 import {
   textAlignItems,
   type ButtonsetSingleValueChangedEvent,

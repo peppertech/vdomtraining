@@ -1,17 +1,16 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojbutton';
+import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import 'ojs/ojpictochart';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useEffect,useMemo,useRef,useState } from 'preact/hooks';
+import '../../../../../../jet-composites/demo-radioset-enum/loader';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import Context = require('ojs/ojcontext');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import 'ojs/ojformlayout';
-import 'ojs/ojpictochart';
-import 'ojs/ojinputnumber';
-import '../../../../../../jet-composites/demo-radioset-enum/loader';
-import 'ojs/ojbutton';
-type PropertyChangedEvent<T> = CustomEvent<{
-    value: T;
-}>;
+type InputNumberValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0];
+type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 type PictoChartItem = {
     name: string;
     shape: string;
@@ -56,10 +55,10 @@ export const PictoChartPerformance = () => {
     useEffect(() => {
         updateData();
     }, [numSets, numCounts, shapedData]);
-    const handleNumSetsChanged = (event: PropertyChangedEvent<number>) => {
+    const handleNumSetsChanged = (event: InputNumberValueChangedEvent) => {
         setNumSets(event.detail.value ?? 0);
     };
-    const handleNumCountsChanged = (event: PropertyChangedEvent<number>) => {
+    const handleNumCountsChanged = (event: InputNumberValueChangedEvent) => {
         setNumCounts(event.detail.value ?? 0);
     };
     const handleAnimationValueChanged = (event: PropertyChangedEvent<string>) => {

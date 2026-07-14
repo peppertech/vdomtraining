@@ -1,11 +1,11 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { BadgeOverviewcorepack } from "./badge-overviewcorepack/badge-overviewcorepack";
-import { badgeOverviewcorepackDescription } from "./badge-overviewcorepack/description";
-import { badgeOverviewcorepackRecipe } from "./badge-overviewcorepack/recipe";
 import { BadgeColorscorepack } from "./badge-colorscorepack/badge-colorscorepack";
 import { badgeColorscorepackDescription } from "./badge-colorscorepack/description";
 import { badgeColorscorepackRecipe } from "./badge-colorscorepack/recipe";
+import { BadgeOverviewcorepack } from "./badge-overviewcorepack/badge-overviewcorepack";
+import { badgeOverviewcorepackDescription } from "./badge-overviewcorepack/description";
+import { badgeOverviewcorepackRecipe } from "./badge-overviewcorepack/recipe";
 
 const badgeCorePackItems = [
   {

@@ -1,15 +1,15 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as jsonDataStr from 'text!./tweets.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import DemoDelayingDataProvider from '../../../shared/DemoDelayingDataProvider';
 import 'css!./demo.css';
-import 'ojs/ojformlayout';
-import 'ojs/ojinputnumber';
 import 'oj-c/avatar';
 import 'oj-c/list-item-layout';
 import 'oj-c/list-view';
+import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataStr from 'text!./tweets.json';
+import DemoDelayingDataProvider from '../../../shared/DemoDelayingDataProvider';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface Data {
   name: string;
@@ -19,7 +19,8 @@ interface Data {
   source: string;
 }
 
-type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type InputNumberProps = ComponentProps<'oj-c-input-number'>;
+type InputNumberValueChangedEvent = Parameters<NonNullable<InputNumberProps['onvalueChanged']>>[0];
 type TweetDataProvider = DemoDelayingDataProvider<Data['source'], Data>;
 
 const ORACLE_AVATAR = '/styles/images/listView/oracle.gif';
@@ -38,7 +39,7 @@ export const ListViewHighWaterMarkScrollingcorepack = () => {
       )
   );
 
-  const handleDelayValueChanged = (event: PropertyChangedEvent<number>) => {
+const handleDelayValueChanged = (event: InputNumberValueChangedEvent) => {
     const nextDelay = event.detail.value ?? initialDelay;
     setDelay(nextDelay);
     setDataProvider(
@@ -57,8 +58,8 @@ export const ListViewHighWaterMarkScrollingcorepack = () => {
         <oj-form-layout max-columns="2" direction="row">
           <oj-input-number
             id="fetch-delay-input"
-            min="0"
-            step="0"
+            min={0}
+            step={0}
             onvalueChanged={handleDelayValueChanged}
             value={delay}
             label-hint="Fetch delay (ms)"

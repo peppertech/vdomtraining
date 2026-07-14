@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A menu button launches a menu when clicked.</p>This demo shows how menu button selections can be managed by the on-oj-menu-action callback and
 the on-oj-menu-selection callback.   This DOM-centric approach may provide easier integration 

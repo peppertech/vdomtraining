@@ -1,15 +1,15 @@
-import { h } from "preact";
+import "css!./rating-gauge-legacy.css";
+import 'preact';
 import {
   RecipePageTemplate,
   type RecipePageItem,
 } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { RatingGaugeRatingGaugeComponent } from "./ratingGauge-ratingGaugeComponent/ratingGauge-ratingGaugeComponent";
 import { ratingGaugeRatingGaugeComponentDescription } from "./ratingGauge-ratingGaugeComponent/description";
+import { RatingGaugeRatingGaugeComponent } from "./ratingGauge-ratingGaugeComponent/ratingGauge-ratingGaugeComponent";
 import { ratingGaugeRatingGaugeComponentRecipe } from "./ratingGauge-ratingGaugeComponent/recipe";
-import { RatingGaugeRatingGaugeEvents } from "./ratingGauge-ratingGaugeEvents/ratingGauge-ratingGaugeEvents";
 import { ratingGaugeRatingGaugeEventsDescription } from "./ratingGauge-ratingGaugeEvents/description";
+import { RatingGaugeRatingGaugeEvents } from "./ratingGauge-ratingGaugeEvents/ratingGauge-ratingGaugeEvents";
 import { ratingGaugeRatingGaugeEventsRecipe } from "./ratingGauge-ratingGaugeEvents/recipe";
-import "css!./rating-gauge-legacy.css";
 
 const ratingGaugeLegacyItems: RecipePageItem[] = [
   {

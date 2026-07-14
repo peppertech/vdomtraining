@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
 import 'oj-c/input-number';
 import 'oj-c/input-text';
 import 'ojs/ojformlayout';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
 
 type InputTextChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>

@@ -1,4 +1,5 @@
-import { ComponentProps } from "preact";
+import 'preact';
+import { ComponentProps } from 'preact';
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 export type InputTextCorePackProps = ComponentProps<"oj-c-input-text">;

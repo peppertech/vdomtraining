@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "oj-c/form-layout";
 import "oj-c/radioset";
+import 'preact';
 import {
   radiosetMessages,
   technologyOptions,

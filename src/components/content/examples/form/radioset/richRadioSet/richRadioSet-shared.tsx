@@ -1,4 +1,5 @@
-import { ComponentProps } from "preact";
+import 'preact';
+import { ComponentProps } from 'preact';
 
 export type RichRadiosetProps = ComponentProps<"oj-c-rich-radioset">;
 export type RichRadiosetValueChangedEvent = Parameters<

@@ -1,10 +1,10 @@
-import { h } from 'preact';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { useMemo } from 'preact/hooks';
 import 'ojs/ojavatar';
+import { AllKeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojlistview';
-import { AllKeySetImpl } from 'ojs/ojkeyset';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type EmployeeData = {
   id: number;

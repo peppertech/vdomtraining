@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import InputTimeCustomValidatorExample from "./inputTime-customValidator";
 import {
@@ -15,7 +15,7 @@ const inputTimeItems: {
   name: string;
   description: (typeof inputTimeDocs)[InputTimeDemoId]["description"];
   recipe: (typeof inputTimeDocs)[InputTimeDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "states",

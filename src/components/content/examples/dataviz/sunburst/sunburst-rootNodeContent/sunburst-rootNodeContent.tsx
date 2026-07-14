@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
+import "css!./demo.css";
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import "css!./demo.css";
-import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
-import * as salesDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/salesByRegion.json';
 import 'ojs/ojsunburst';
 import 'ojs/ojthematicmap';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
+import * as salesDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/salesByRegion.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type SalesNode = {
   id: string;

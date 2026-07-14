@@ -1,10 +1,9 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojlistview';
 import 'ojs/ojbutton';
+import 'ojs/ojlistview';
 import { ojListView } from 'ojs/ojlistview';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface TodoTask {
     id: number;
@@ -68,7 +67,9 @@ export const ListViewDrillableListView = () => {
       if (!listView) {
           return;
       }
-      listView.currentItem = previousElementKey;
+      if (previousElementKey != null) {
+          listView.currentItem = previousElementKey;
+      }
       listView.focus();
   };
 

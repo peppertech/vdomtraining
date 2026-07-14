@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import "css!./demo.css";
 import 'ojs/ojactioncard';
 import 'ojs/ojwaterfalllayout';
+import 'preact';
+import { useMemo } from 'preact/hooks';
 import '../../../../../../jet-composites/demo-dept-card-layout/loader';
 import '../../../../../../jet-composites/demo-profile-card-layout/loader';
-import "css!./demo.css";
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type WaterfallCardData = {
   type: 'people' | 'department';

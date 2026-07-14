@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 import 'oj-c/button';
 import 'oj-c/input-text';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 
 type InputTextValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>

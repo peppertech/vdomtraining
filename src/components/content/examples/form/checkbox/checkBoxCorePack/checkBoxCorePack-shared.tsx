@@ -1,5 +1,6 @@
-import { ComponentProps } from "preact";
 import type { CheckboxsetDataItem } from "oj-c/checkboxset";
+import 'preact';
+import { ComponentProps } from 'preact';
 
 export type CheckBoxCorePackProps = ComponentProps<"oj-c-checkbox">;
 export type CheckBoxsetCorePackProps = ComponentProps<"oj-c-checkboxset">;

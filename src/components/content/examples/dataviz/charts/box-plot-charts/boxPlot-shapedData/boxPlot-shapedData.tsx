@@ -1,15 +1,15 @@
-import { h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useMemo, useState } from 'preact/hooks';
+import "css!./demo.css";
 import { JetElementCustomEvent } from 'ojs/index';
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/boxPlotTwoSeriesShapedData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojbutton';
 import 'ojs/ojchart';
 import 'ojs/ojtoolbar';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/boxPlotTwoSeriesShapedData.json';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
-import "css!./demo.css";
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 const data = JSON.parse(dataText as string);
 
 type ChartOrientation = NonNullable<ComponentProps<'oj-chart'>['orientation']>;

@@ -1,15 +1,13 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import 'ojs/ojpictochart';
-import 'ojs/ojlegend';
-import 'ojs/ojinputnumber';
 import 'ojs/ojformlayout';
-type PropertyChangedEvent<T> = CustomEvent<{
-    value: T;
-}>;
+import 'ojs/ojinputnumber';
+import 'ojs/ojlegend';
+import 'ojs/ojpictochart';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+type InputNumberValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0];
 export const PictoChartMixedSizes = () => {
     const [softwareRowSpan, setSoftwareRowSpan] = useState(1);
     const [softwareColumnSpan, setSoftwareColumnSpan] = useState(1);
@@ -57,7 +55,7 @@ export const PictoChartMixedSizes = () => {
     ]);
     const chartDataProvider = useMemo(() => new ArrayDataProvider(pictoChartItems, { keyAttributes: 'name' }), [pictoChartItems]);
     const getColor = (name: string) => colorHandler.getValue(name);
-    const numberChanged = (setter: (value: number) => void) => (event: PropertyChangedEvent<number>) => {
+    const numberChanged = (setter: (value: number) => void) => (event: InputNumberValueChangedEvent) => {
         setter(event.detail.value ?? 1);
     };
     const renderPictoItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-picto-chart-item name={item.data.name} short-desc={`${item.data.name}: ${item.data.count}`} shape="rectangle" row-span={item.data.rowSpan} column-span={item.data.columnSpan} color={item.data.color} count={item.data.count}/>);

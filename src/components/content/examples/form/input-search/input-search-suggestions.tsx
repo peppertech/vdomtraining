@@ -1,14 +1,14 @@
-import { h } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "ojs/ojcheckboxset";
 import "ojs/ojinputsearch";
 import "ojs/ojoption";
+import 'preact';
+import { useMemo,useState } from "preact/hooks";
 import {
   createBrowserSuggestionsDataProvider,
   DelayingDataProvider,
   InputSearchDiagnostics,
-  type BrowserSuggestion,
   useInputSearchExampleState,
+  type BrowserSuggestion,
 } from "./input-search-shared";
 
 export default function InputSearchSuggestionsExample() {

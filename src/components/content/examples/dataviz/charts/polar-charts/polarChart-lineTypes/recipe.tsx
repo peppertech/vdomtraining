@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import 'preact';
 
 export const polarChartLineTypesRecipe = (
   <ol>

@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import 'ojs/ojbutton';
 import 'ojs/ojlabel';
 import 'ojs/ojlabelvalue';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 
 type DrinkOption = {
   id: string;

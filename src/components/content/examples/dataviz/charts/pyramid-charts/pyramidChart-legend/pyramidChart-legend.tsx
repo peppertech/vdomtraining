@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
 import 'ojs/ojchart';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type PyramidChartDatum = {
   id: number;

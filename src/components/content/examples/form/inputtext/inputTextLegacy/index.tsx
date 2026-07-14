@@ -1,4 +1,5 @@
-import { h } from "preact";
+import "css!./inputTextLegacy.css";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import InputTextLegacyClearIconExample from "./inputTextLegacy-clearIcon";
 import {
@@ -11,18 +12,17 @@ import InputTextLegacyNoLabelExample from "./inputTextLegacy-noLabel";
 import InputTextLegacyRawValueExample from "./inputTextLegacy-rawValue";
 import InputTextLegacyStartEndSlotsExample from "./inputTextLegacy-startEndSlots";
 import InputTextLegacyStatesExample from "./inputTextLegacy-states";
-import InputTextLegacyTextAlignExample from "./inputTextLegacy-textAlign";
 import InputTextLegacyTextExample from "./inputTextLegacy-text";
+import InputTextLegacyTextAlignExample from "./inputTextLegacy-textAlign";
 import InputTextLegacyVirtualKeyboardExample from "./inputTextLegacy-virtualKeyboard";
 import InputTextLegacyWidthExample from "./inputTextLegacy-width";
-import "css!./inputTextLegacy.css";
 
 const inputTextLegacyItems: {
   id: InputTextLegacyDemoId;
   name: string;
   description: (typeof inputTextLegacyDocs)[InputTextLegacyDemoId]["description"];
   recipe: (typeof inputTextLegacyDocs)[InputTextLegacyDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "states",

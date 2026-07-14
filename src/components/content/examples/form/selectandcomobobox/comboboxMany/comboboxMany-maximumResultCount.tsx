@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojinputnumber";
 import "ojs/ojselectcombobox";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 import { createStatesDataProvider } from "./comboboxMany-shared";
 
 type ValueEvent = Parameters<

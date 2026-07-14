@@ -1,10 +1,10 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useEffect, useMemo, useState } from "preact/hooks";
 import "css!./demo.css";
 import "oj-c/buttonset-single";
 import "ojs/ojlabel";
 import "ojs/ojlabelvalue";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useEffect,useMemo,useState } from "preact/hooks";
 
 type ToggleItems = NonNullable<ComponentProps<"oj-c-buttonset-single">["items"]>;
 

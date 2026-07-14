@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
 import 'ojs/ojchart';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import 'ojs/ojformlayout';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 

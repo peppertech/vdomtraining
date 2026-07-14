@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/usaRainfallShaped.json';
 import 'css!./demo.css';
 import 'ojs/ojlegend';
 import 'ojs/ojthematicmap';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/usaRainfallShaped.json';
+import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ThematicMapProvider = ComponentProps<'oj-thematic-map'>['mapProvider'];
 

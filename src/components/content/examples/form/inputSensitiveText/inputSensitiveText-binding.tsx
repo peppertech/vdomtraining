@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/input-sensitive-text";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import { type InputSensitiveTextValueChangedEvent } from "./inputSensitiveText-shared";
 
 export default function InputSensitiveTextBindingVdomExample() {

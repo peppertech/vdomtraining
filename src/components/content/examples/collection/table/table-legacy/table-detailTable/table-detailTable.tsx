@@ -1,14 +1,14 @@
-import { h } from 'preact';
+import "css!./demo.css";
+import 'ojs/ojchart';
+import 'ojs/ojrowexpander';
+import 'ojs/ojtable';
+import { ojTable } from 'ojs/ojtable';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
+import * as jsonDataStrText from 'text!../../../data/cookbook/dataCollections/table/detailTable/projectData.json';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
-import { ojTable } from 'ojs/ojtable';
-import 'ojs/ojtable';
-import * as jsonDataStrText from 'text!../../../data/cookbook/dataCollections/table/detailTable/projectData.json';
-import 'ojs/ojrowexpander';
-import 'ojs/ojchart';
-import "css!./demo.css";
 
 type ProjectRow = {
     attr: {

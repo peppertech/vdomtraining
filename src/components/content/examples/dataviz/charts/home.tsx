@@ -1,10 +1,11 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import * as preact from 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 import {
   type CatalogBreadcrumbItem,
@@ -15,8 +16,8 @@ import AreaChartsHome from "./area-charts/home";
 import BarChartsRecipePage from "./bar-charts/index";
 import BoxPlotChartsRecipePage from "./box-plot-charts/index";
 import BubbleChartsRecipePage from "./bubble-charts/index";
-import CommonChartsLegacyRecipePage from "./common-charts-legacy/index";
 import CombinationChartsRecipePage from "./combination-charts/index";
+import CommonChartsLegacyRecipePage from "./common-charts-legacy/index";
 import FunnelChartsRecipePage from "./funnel-charts/index";
 import LineChartsCorePackRecipePage from "./line-charts-corepack/index";
 import LineChartsRecipePage from "./line-charts/index";
@@ -35,7 +36,7 @@ type ChartComponent = {
   name: string;
   image: string;
   isCorePack?: boolean;
-  render: (props?: NestedCatalogHomeProps) => h.JSX.Element | null;
+  render: (props?: NestedCatalogHomeProps) => preact.JSX.Element | null;
 };
 
 const chartComponents: ChartComponent[] = [

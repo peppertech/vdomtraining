@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
-import { CFilePickerElement } from 'oj-c/file-picker';
-import 'oj-c/file-picker';
 import 'css!./demo.css';
+import 'oj-c/file-picker';
+import { CFilePickerElement } from 'oj-c/file-picker';
+import 'preact';
+import { useState } from 'preact/hooks';
 
 export const FilePickerCustomContentcorepack = () => {
   const [fileNames, setFileNames] = useState<string[]>([]);

@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojbutton';
 import 'ojs/ojdiagram';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useEffect,useMemo,useRef,useState } from 'preact/hooks';
 import '../../../../../jet-composites/demo-radioset-enum/loader';
 import * as layout from '../diagram-layouts';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');

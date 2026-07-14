@@ -1,17 +1,17 @@
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "css!./demo.css";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import DemoDelayingDataProvider from "../../../shared/DemoDelayingDataProvider";
-import * as tweetsText from "text!./tweets.json";
-import "ojs/ojformlayout";
-import type { CListViewElement } from "oj-c/list-view";
 import "oj-c/avatar";
 import "oj-c/button";
 import "oj-c/input-number";
 import "oj-c/list-item-layout";
 import "oj-c/list-view";
+import type { CListViewElement } from "oj-c/list-view";
 import "oj-c/skeleton";
+import "ojs/ojformlayout";
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
+import * as tweetsText from "text!./tweets.json";
+import DemoDelayingDataProvider from "../../../shared/DemoDelayingDataProvider";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 interface Tweet {
   created_at: string;

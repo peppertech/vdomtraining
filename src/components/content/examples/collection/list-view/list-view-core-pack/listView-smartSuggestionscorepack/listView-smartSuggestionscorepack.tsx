@@ -1,10 +1,9 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import DemoSmartSuggestionsDataProvider = require('../../../../../../dataProvider/DemoSmartSuggestionsDataProvider');
-import 'oj-c/list-view';
 import 'oj-c/avatar';
 import 'oj-c/list-item-layout';
+import 'oj-c/list-view';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import DemoSmartSuggestionsDataProvider = require('../../../../../../dataProvider/DemoSmartSuggestionsDataProvider');
 
 interface Employee {
     id: string;

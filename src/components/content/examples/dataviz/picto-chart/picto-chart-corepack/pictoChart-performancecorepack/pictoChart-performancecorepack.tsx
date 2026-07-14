@@ -1,14 +1,14 @@
 // @ts-nocheck
-import { h } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojbutton';
+import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import 'ojs/ojpictochart';
+import 'preact';
+import { useEffect,useMemo,useRef,useState } from 'preact/hooks';
+import '../../../../../../jet-composites/demo-radioset-enum/loader';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import Context = require('ojs/ojcontext');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import 'ojs/ojformlayout';
-import 'ojs/ojpictochart';
-import 'ojs/ojinputnumber';
-import '../../../../../../jet-composites/demo-radioset-enum/loader';
-import 'ojs/ojbutton';
 type PropertyChangedEvent<T> = CustomEvent<{
     value: T;
 }>;

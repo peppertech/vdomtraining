@@ -1,14 +1,14 @@
-import { Fragment, h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojformlayout';
 import 'ojs/ojsunburst';
+import { useMemo,useState } from 'preact/hooks';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
 import '../../../../../jet-composites/demo-radioset-enum/loader';
-import 'ojs/ojformlayout';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 type SunburstSelection = ComponentProps<'oj-sunburst'>['selection'];
 type SunburstSelectionMode = ComponentProps<'oj-sunburst'>['selectionMode'];
 type SunburstSelectionChangedEvent = Parameters<NonNullable<ComponentProps<'oj-sunburst'>['onselectionChanged']>>[0];

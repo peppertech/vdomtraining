@@ -1,9 +1,10 @@
-import { h, type ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import "../../../../../jet-composites/demo-profile-card-layout/loader";
 import "oj-c/action-card";
 import "oj-c/card-view";
+import * as preact from 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from "preact/hooks";
+import "../../../../../jet-composites/demo-profile-card-layout/loader";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 interface EmployeeData {
   id: number;
@@ -94,7 +95,7 @@ export const CardViewActionCardBehaviorcorepack = () => {
 
     return (
       <oj-c-action-card id={String(context.data.id)} onojAction={handleAction}>
-        {h("demo-profile-card-layout", {
+        {preact.h("demo-profile-card-layout", {
           name: context.data.name,
           workTitle: context.data.title,
           initials: context.data.initials,

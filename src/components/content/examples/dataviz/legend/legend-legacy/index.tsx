@@ -1,25 +1,25 @@
-import { h } from "preact";
+import 'preact';
 import {
   RecipePageTemplate,
   type RecipePageItem,
 } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { LegendDefault } from "./legend-default/legend-default";
 import { legendDefaultDescription } from "./legend-default/description";
+import { LegendDefault } from "./legend-default/legend-default";
 import { legendDefaultRecipe } from "./legend-default/recipe";
-import { LegendItems } from "./legend-items/legend-items";
 import { legendItemsDescription } from "./legend-items/description";
+import { LegendItems } from "./legend-items/legend-items";
 import { legendItemsRecipe } from "./legend-items/recipe";
-import { LegendLayout } from "./legend-layout/legend-layout";
 import { legendLayoutDescription } from "./legend-layout/description";
+import { LegendLayout } from "./legend-layout/legend-layout";
 import { legendLayoutRecipe } from "./legend-layout/recipe";
-import { LegendSections } from "./legend-sections/legend-sections";
 import { legendSectionsDescription } from "./legend-sections/description";
+import { LegendSections } from "./legend-sections/legend-sections";
 import { legendSectionsRecipe } from "./legend-sections/recipe";
-import { LegendShapedData } from "./legend-shapedData/legend-shapedData";
 import { legendShapedDataDescription } from "./legend-shapedData/description";
+import { LegendShapedData } from "./legend-shapedData/legend-shapedData";
 import { legendShapedDataRecipe } from "./legend-shapedData/recipe";
-import { LegendStyles } from "./legend-styles/legend-styles";
 import { legendStylesDescription } from "./legend-styles/description";
+import { LegendStyles } from "./legend-styles/legend-styles";
 import { legendStylesRecipe } from "./legend-styles/recipe";
 
 const legendLegacyItems: RecipePageItem[] = [

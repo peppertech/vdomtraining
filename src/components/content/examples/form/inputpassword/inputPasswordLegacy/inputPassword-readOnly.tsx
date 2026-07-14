@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "ojs/ojinputtext";
 import "ojs/ojlabel";
+import 'preact';
 
 export default function InputPasswordReadOnlyExample() {
   return (

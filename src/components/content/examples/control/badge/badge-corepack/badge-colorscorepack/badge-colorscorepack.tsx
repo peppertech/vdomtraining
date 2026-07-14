@@ -1,6 +1,6 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
 import "oj-c/badge";
+import 'preact';
+import type { ComponentProps } from "preact";
 
 const renderBadgeRow = (
   variant: ComponentProps<"oj-c-badge">["variant"] | undefined,

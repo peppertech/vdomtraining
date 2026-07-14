@@ -1,20 +1,20 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import ValidatorsCustomValidatorsExample from "./validators-customValidators/validators-customValidators";
 import ValidatorsDefaultValidatorMessagesExample from "./validators-defaultValidatorMessages/validators-defaultValidatorMessages";
+import { validatorsDocs,type ValidatorsDemoId } from "./validators-docs";
 import ValidatorsLengthValidatorExample from "./validators-lengthValidator/validators-lengthValidator";
 import ValidatorsNumberRangeValidatorExample from "./validators-numberRangeValidator/validators-numberRangeValidator";
 import ValidatorsRegExpValidatorExample from "./validators-regExpValidator/validators-regExpValidator";
 import ValidatorsRequiredValidatorExample from "./validators-requiredValidator/validators-requiredValidator";
 import ValidatorsValidateOnInputExample from "./validators-validateOnInput/validators-validateOnInput";
-import { validatorsDocs, type ValidatorsDemoId } from "./validators-docs";
 
 const validatorsItems: {
   id: ValidatorsDemoId;
   name: string;
   description: (typeof validatorsDocs)[ValidatorsDemoId]["description"];
   recipe: (typeof validatorsDocs)[ValidatorsDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "length-validator",

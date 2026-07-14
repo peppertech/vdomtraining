@@ -1,18 +1,19 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import InputNumber from "./inputNumberLegacy/index";
-import InputNumberCorePack from "./inputNumberCorePack/index";
 import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
 } from "../form-breadcrumb";
+import InputNumberCorePack from "./inputNumberCorePack/index";
+import InputNumber from "./inputNumberLegacy/index";
 
 type NumberComponent = {
   id: number;

@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<p>
   Specify "sm", "md", or "lg" for the property "size" to get different size buttons.  The default is "md".

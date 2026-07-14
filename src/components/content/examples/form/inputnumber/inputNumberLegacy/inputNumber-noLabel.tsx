@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojinputnumber";
+import 'preact';
+import { useState } from "preact/hooks";
 import { type InputNumberValueChangedEvent } from "./inputNumber-shared";
 
 export default function InputNumberNoLabelExample() {

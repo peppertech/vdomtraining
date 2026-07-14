@@ -1,7 +1,8 @@
-import { h, type ComponentProps } from 'preact';
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectcombobox";
-import { createBrowserDataProvider, renderOptionWithBadge } from "./selectMany-shared";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
+import { createBrowserDataProvider,renderOptionWithBadge } from "./selectMany-shared";
 
 type ValueEvent = Parameters<
   NonNullable<ComponentProps<"oj-select-many">["onvalueChanged"]>

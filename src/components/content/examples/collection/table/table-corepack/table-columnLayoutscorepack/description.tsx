@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A table displays data items in a tabular format with highly interactive features.</p>This demo shows how the oj-c-table's layout, columnWidths, and columns sizing attributes affect the overall
 display of the  oj-c-table.

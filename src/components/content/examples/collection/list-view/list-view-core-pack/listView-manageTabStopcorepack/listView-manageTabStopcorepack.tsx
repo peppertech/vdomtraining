@@ -1,12 +1,12 @@
-import { useMemo } from "preact/hooks";
 import "css!./demo.css";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import "../../../../../../jet-composites/demo-responsive-buttonset/loader";
-import type { CListViewElement } from "oj-c/list-view";
 import "oj-c/avatar";
 import "oj-c/button";
 import "oj-c/list-item-layout";
 import "oj-c/list-view";
+import type { CListViewElement } from "oj-c/list-view";
+import { useMemo } from "preact/hooks";
+import "../../../../../../jet-composites/demo-responsive-buttonset/loader";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 interface Employee {
   email: string;

@@ -1,20 +1,20 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
-import { StreamListMutations } from "./streamList-mutations/streamList-mutations";
 import { streamListMutationsDescription } from "./streamList-mutations/description";
 import { streamListMutationsRecipe } from "./streamList-mutations/recipe";
-import { StreamListPerformance } from "./streamList-performance/streamList-performance";
+import { StreamListMutations } from "./streamList-mutations/streamList-mutations";
 import { streamListPerformanceDescription } from "./streamList-performance/description";
 import { streamListPerformanceRecipe } from "./streamList-performance/recipe";
-import { StreamListProgressiveLoad } from "./streamList-progressiveLoad/streamList-progressiveLoad";
+import { StreamListPerformance } from "./streamList-performance/streamList-performance";
 import { streamListProgressiveLoadDescription } from "./streamList-progressiveLoad/description";
 import { streamListProgressiveLoadRecipe } from "./streamList-progressiveLoad/recipe";
-import { StreamListScrollPosition } from "./streamList-scrollPosition/streamList-scrollPosition";
+import { StreamListProgressiveLoad } from "./streamList-progressiveLoad/streamList-progressiveLoad";
 import { streamListScrollPositionDescription } from "./streamList-scrollPosition/description";
 import { streamListScrollPositionRecipe } from "./streamList-scrollPosition/recipe";
-import { StreamListStreamlist } from "./streamList-streamlist/streamList-streamlist";
+import { StreamListScrollPosition } from "./streamList-scrollPosition/streamList-scrollPosition";
 import { streamListStreamlistDescription } from "./streamList-streamlist/description";
 import { streamListStreamlistRecipe } from "./streamList-streamlist/recipe";
+import { StreamListStreamlist } from "./streamList-streamlist/streamList-streamlist";
 
 const streamListItems = [
   {

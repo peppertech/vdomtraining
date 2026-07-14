@@ -1,10 +1,12 @@
-import { h, type ComponentChildren, type FunctionComponent } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
-import "ojs/ojnavigationlist";
 import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
+import "ojs/ojnavigationlist";
 import { ojNavigationList } from "ojs/ojnavigationlist";
+import 'preact';
+import { type ComponentChildren,type FunctionComponent } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 import { DemoLayoutTemplate } from "../../../../../shared/demo-page-layout/demo-layout-template";
 import SelectManyBasicExample from "./selectMany-basic";
+import SelectManyDataMappingExample from "./selectMany-dataMapping";
 import {
   selectManyDocs,
   type SelectManyDemoId,
@@ -15,7 +17,6 @@ import SelectManyItemImgExample from "./selectMany-itemImg";
 import SelectManyMaximumResultCountExample from "./selectMany-maximumResultCount";
 import SelectManyMinimumResultsForSearchExample from "./selectMany-minimumResultsForSearch";
 import SelectManyOverviewExample from "./selectMany-overview";
-import SelectManyDataMappingExample from "./selectMany-dataMapping";
 import SelectManyValueOptionsExample from "./selectMany-valueOptions";
 import SelectManyWidthExample from "./selectMany-width";
 

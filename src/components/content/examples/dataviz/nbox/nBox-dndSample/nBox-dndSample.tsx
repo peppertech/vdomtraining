@@ -1,16 +1,16 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employeesNoInitials.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { DemoDataTransfer } from './DemoDataTransfer';
 import 'css!./demo.css';
-import 'ojs/ojnbox';
-import 'ojs/ojlistview';
-import 'ojs/ojlistviewdnd';
 import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
+import 'ojs/ojlistview';
 import { ojListView } from 'ojs/ojlistview';
+import 'ojs/ojlistviewdnd';
+import 'ojs/ojnbox';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employeesNoInitials.json';
+import { DemoDataTransfer } from './DemoDataTransfer';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type EmployeeNode = {
     name: string;

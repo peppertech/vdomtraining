@@ -1,12 +1,13 @@
-import { h, type ComponentProps } from "preact";
-import { useMemo } from "preact/hooks";
 import "css!./demo.css";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import "oj-c/rating-gauge";
+import "oj-c/table";
+import type { CTableElement } from "oj-c/table";
+import * as preact from 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo } from "preact/hooks";
 import * as empData from "text!./employeeData.json";
 import "../../../../../../jet-composites/demo-memory-card/loader";
-import type { CTableElement } from "oj-c/table";
-import "oj-c/table";
-import "oj-c/rating-gauge";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 interface Employee {
   id: number;
@@ -44,7 +45,7 @@ const columns: TableColumns = {
 };
 
 const renderCardTemplate = (context: CardTemplateContext) =>
-  h("demo-memory-card", {
+  preact.h("demo-memory-card", {
     class: "demo-card-sizing",
     "value-image": String(context.data ?? ""),
     "data-oj-manage-tabs": ""

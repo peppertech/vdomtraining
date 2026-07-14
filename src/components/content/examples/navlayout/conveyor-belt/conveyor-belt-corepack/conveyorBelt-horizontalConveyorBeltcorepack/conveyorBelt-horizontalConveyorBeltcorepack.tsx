@@ -1,6 +1,6 @@
-import { h } from 'preact';
 import 'oj-c/conveyor-belt';
 import 'ojs/ojbutton';
+import 'preact';
 
 export const ConveyorBeltHorizontalConveyorBeltcorepack = () => {
   return (

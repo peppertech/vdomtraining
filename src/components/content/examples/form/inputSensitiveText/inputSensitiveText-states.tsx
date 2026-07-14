@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-sensitive-text";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import {
   messageSets,
   type InputSensitiveTextRawValueChangedEvent,

@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../../shared/demo-page-layout/recipe-page-template";
 import { AreaChartBasiccorepack } from "./areaChart-basiccorepack/areaChart-basiccorepack";
 import { areaChartBasiccorepackDescription } from "./areaChart-basiccorepack/description";

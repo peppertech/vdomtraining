@@ -1,8 +1,8 @@
-import { h } from 'preact';
+import 'ojs/ojtreeview';
+import 'preact';
 import { useMemo } from 'preact/hooks';
 import * as jsonDataText from 'text!./projectData.json';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import 'ojs/ojtreeview';
 
 type EmployeeNode = {
   EmployeeId: number;

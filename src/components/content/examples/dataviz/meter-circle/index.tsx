@@ -1,23 +1,23 @@
-import { h } from "preact";
+import 'preact';
 import {
   RecipePageTemplate,
   type RecipePageItem,
 } from "../../../../shared/demo-page-layout/recipe-page-template";
-import { MeterCircleOverviewcorepack } from "./meterCircle-overviewcorepack/meterCircle-overviewcorepack";
-import { meterCircleOverviewcorepackDescription } from "./meterCircle-overviewcorepack/description";
-import { meterCircleOverviewcorepackRecipe } from "./meterCircle-overviewcorepack/recipe";
-import { MeterCircleCustomizationcorepack } from "./meterCircle-customizationcorepack/meterCircle-customizationcorepack";
-import { meterCircleCustomizationcorepackDescription } from "./meterCircle-customizationcorepack/description";
-import { meterCircleCustomizationcorepackRecipe } from "./meterCircle-customizationcorepack/recipe";
-import { MeterCircleCenterContentcorepack } from "./meterCircle-centerContentcorepack/meterCircle-centerContentcorepack";
 import { meterCircleCenterContentcorepackDescription } from "./meterCircle-centerContentcorepack/description";
+import { MeterCircleCenterContentcorepack } from "./meterCircle-centerContentcorepack/meterCircle-centerContentcorepack";
 import { meterCircleCenterContentcorepackRecipe } from "./meterCircle-centerContentcorepack/recipe";
-import { MeterCircleSizingcorepack } from "./meterCircle-sizingcorepack/meterCircle-sizingcorepack";
-import { meterCircleSizingcorepackDescription } from "./meterCircle-sizingcorepack/description";
-import { meterCircleSizingcorepackRecipe } from "./meterCircle-sizingcorepack/recipe";
-import { MeterCircleEventscorepack } from "./meterCircle-eventscorepack/meterCircle-eventscorepack";
+import { meterCircleCustomizationcorepackDescription } from "./meterCircle-customizationcorepack/description";
+import { MeterCircleCustomizationcorepack } from "./meterCircle-customizationcorepack/meterCircle-customizationcorepack";
+import { meterCircleCustomizationcorepackRecipe } from "./meterCircle-customizationcorepack/recipe";
 import { meterCircleEventscorepackDescription } from "./meterCircle-eventscorepack/description";
+import { MeterCircleEventscorepack } from "./meterCircle-eventscorepack/meterCircle-eventscorepack";
 import { meterCircleEventscorepackRecipe } from "./meterCircle-eventscorepack/recipe";
+import { meterCircleOverviewcorepackDescription } from "./meterCircle-overviewcorepack/description";
+import { MeterCircleOverviewcorepack } from "./meterCircle-overviewcorepack/meterCircle-overviewcorepack";
+import { meterCircleOverviewcorepackRecipe } from "./meterCircle-overviewcorepack/recipe";
+import { meterCircleSizingcorepackDescription } from "./meterCircle-sizingcorepack/description";
+import { MeterCircleSizingcorepack } from "./meterCircle-sizingcorepack/meterCircle-sizingcorepack";
+import { meterCircleSizingcorepackRecipe } from "./meterCircle-sizingcorepack/recipe";
 
 const meterCircleItems: RecipePageItem[] = [
   {

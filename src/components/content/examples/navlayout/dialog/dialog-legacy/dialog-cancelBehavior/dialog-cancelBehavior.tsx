@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useRef, useState } from 'preact/hooks';
-import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojbutton';
 import 'ojs/ojdialog';
+import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojinputtext';
 import 'ojs/ojlabel';
 import 'ojs/ojlabelvalue';
 import 'ojs/ojoption';
 import 'ojs/ojradioset';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useRef,useState } from 'preact/hooks';
 
 type DialogCancelBehavior = ComponentProps<'oj-dialog'>['cancelBehavior'];
 type RadioSetValueChangedEvent = Parameters<

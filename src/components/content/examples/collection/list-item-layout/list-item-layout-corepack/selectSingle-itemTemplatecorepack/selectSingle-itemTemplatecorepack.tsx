@@ -1,14 +1,14 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as employeeDataText from 'text!./employeeData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import type { CSelectSingleElement } from 'oj-c/select-single';
-import 'oj-c/select-single';
+import 'css!./demo.css';
+import 'oj-c/avatar';
 import 'oj-c/highlight-text';
 import 'oj-c/list-item-layout';
-import 'oj-c/avatar';
-import 'css!./demo.css';
+import 'oj-c/select-single';
+import type { CSelectSingleElement } from 'oj-c/select-single';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as employeeDataText from 'text!./employeeData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type Employee = {
   EMPLOYEE_ID: number;
@@ -26,6 +26,9 @@ type SelectSingleValueChangedEvent = CSelectSingleElement.valueChanged<
   Employee['EMPLOYEE_ID'],
   Employee
 >;
+type SelectSingleProps = ComponentProps<'oj-c-select-single'>;
+type SelectSingleItemText = Extract<SelectSingleProps['itemText'], (itemContext: never) => string>;
+type SelectSingleItemTextContext = Parameters<SelectSingleItemText>[0];
 
 const employeeData = (JSON.parse(employeeDataText as string) as Employee[]).map((employee) => ({
   ...employee,
@@ -43,7 +46,7 @@ export const SelectSingleItemTemplatecorepack = () => {
     []
   );
 
-  const getItemText = (itemContext: SelectSingleItemTemplateContext) =>
+  const getItemText = (itemContext: SelectSingleItemTextContext) =>
     `${itemContext.data.FIRST_NAME} ${itemContext.data.LAST_NAME}`;
 
   const handleSelectValChanged = (event: SelectSingleValueChangedEvent) => {

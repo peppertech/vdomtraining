@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A Drawer Popup is a panel that slides into the viewport.</p><p>This demo shows how to set the width of a side drawer or the height of a bottom drawer.</p>
 <p>

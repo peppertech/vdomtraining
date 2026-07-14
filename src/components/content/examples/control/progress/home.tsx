@@ -1,21 +1,22 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import ProgressBarCorePackRecipePage from "./progress-bar-corepack/index";
-import ProgressButtonCorePackRecipePage from "./progress-button-corepack/index";
-import ProgressCircleCorePackRecipePage from "./progress-circle-corepack/index";
-import ProgressBarLegacyRecipePage from "./progress-bar-legacy/index";
-import ProgressCircleLegacyRecipePage from "./progress-circle-legacy/index";
-import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
 } from "../../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../../example-route-context";
+import ProgressBarCorePackRecipePage from "./progress-bar-corepack/index";
+import ProgressBarLegacyRecipePage from "./progress-bar-legacy/index";
+import ProgressButtonCorePackRecipePage from "./progress-button-corepack/index";
+import ProgressCircleCorePackRecipePage from "./progress-circle-corepack/index";
+import ProgressCircleLegacyRecipePage from "./progress-circle-legacy/index";
 
 type ProgressComponent = {
   id: number;

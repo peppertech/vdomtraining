@@ -1,17 +1,17 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as jsonDataStr from 'text!./tweets.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import DemoDelayingDataProvider from '../../../shared/DemoDelayingDataProvider';
 import 'css!./demo.css';
-import 'ojs/ojbutton';
-import 'ojs/ojinputnumber';
 import 'ojs/ojavatar';
+import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojlistview';
 import 'ojs/ojoption';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataStr from 'text!./tweets.json';
+import DemoDelayingDataProvider from '../../../shared/DemoDelayingDataProvider';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface Data {
   name: string;
@@ -21,7 +21,10 @@ interface Data {
   source: string;
 }
 
-type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type InputNumberProps = ComponentProps<'oj-input-number'>;
+type InputNumberValueChangedEvent = Parameters<NonNullable<InputNumberProps['onvalueChanged']>>[0];
+type ButtonsetOneProps = ComponentProps<'oj-buttonset-one'>;
+type ButtonsetOneValueChangedEvent = Parameters<NonNullable<ButtonsetOneProps['onvalueChanged']>>[0];
 type TweetDataProvider = DemoDelayingDataProvider<Data['source'], Data>;
 type ListViewItemContext = {
   data: Data;
@@ -49,12 +52,12 @@ export const ListViewProgressiveLoadListView = () => {
     { id: 'list', icon: 'oj-ux-ico-list-round' }
   ], []);
 
-  const handleDelayValueChanged = (event: PropertyChangedEvent<number>) => {
+const handleDelayValueChanged = (event: InputNumberValueChangedEvent) => {
     setDelay(event.detail.value ?? initialDelay);
   };
 
-  const handleActiveLayoutValueChanged = (event: PropertyChangedEvent<ActiveLayout>) => {
-    setActiveLayout(event.detail.value ?? 'list');
+  const handleActiveLayoutValueChanged = (event: ButtonsetOneValueChangedEvent) => {
+    setActiveLayout((event.detail.value as ActiveLayout | null) ?? 'list');
   };
 
   const applyDelay = () => {

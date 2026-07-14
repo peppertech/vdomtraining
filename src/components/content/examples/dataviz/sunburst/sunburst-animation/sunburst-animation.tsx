@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
 import 'ojs/ojbutton';
-import 'ojs/ojtoolbar';
 import 'ojs/ojsunburst';
+import 'ojs/ojtoolbar';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type AnimationNode = {
   id: string;

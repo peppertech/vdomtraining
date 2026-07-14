@@ -1,7 +1,7 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
-import { IndexerCharacterIndexer } from "./indexer-characterIndexer/indexer-characterIndexer";
 import { indexerCharacterIndexerDescription } from "./indexer-characterIndexer/description";
+import { IndexerCharacterIndexer } from "./indexer-characterIndexer/indexer-characterIndexer";
 import { indexerCharacterIndexerRecipe } from "./indexer-characterIndexer/recipe";
 
 const indexerItems = [

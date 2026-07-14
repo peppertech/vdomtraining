@@ -1,8 +1,8 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useEffect, useRef } from "preact/hooks";
-import { ojPopup } from "ojs/ojpopup";
 import "ojs/ojpopup";
+import { ojPopup } from "ojs/ojpopup";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useEffect,useRef } from "preact/hooks";
 
 type PopupProps = ComponentProps<"oj-popup">;
 

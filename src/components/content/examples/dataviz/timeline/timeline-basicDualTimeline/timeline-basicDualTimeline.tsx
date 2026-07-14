@@ -1,10 +1,9 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/basicDualTimeline/basicSeriesData.json';
-import 'ojs/ojtimeline';
 import 'css!./demo.css';
+import 'ojs/ojtimeline';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/basicDualTimeline/basicSeriesData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TimelineBasicDualItem = {
   id: string;

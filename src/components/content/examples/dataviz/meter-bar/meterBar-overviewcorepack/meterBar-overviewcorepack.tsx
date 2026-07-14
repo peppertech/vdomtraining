@@ -1,6 +1,6 @@
-import type { ComponentProps } from "preact";
 import "css!./demo.css";
 import "oj-c/meter-bar";
+import type { ComponentProps } from "preact";
 
 type MeterBarDatatip = NonNullable<ComponentProps<"oj-c-meter-bar">["datatip"]>;
 type MeterBarReferenceLines = NonNullable<ComponentProps<"oj-c-meter-bar">["referenceLines"]>;

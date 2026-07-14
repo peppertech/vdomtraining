@@ -1,7 +1,7 @@
-import { h } from "preact";
 import "oj-c/form-layout";
 import "oj-c/input-month-mask";
-import { messageSets, todayMonthValue } from "./inputMonthMask-shared";
+import 'preact';
+import { messageSets,todayMonthValue } from "./inputMonthMask-shared";
 
 export default function InputMonthMaskOverviewExample() {
   return (

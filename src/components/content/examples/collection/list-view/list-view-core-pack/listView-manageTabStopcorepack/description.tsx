@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A list view displays data items as a list or a grid with highly interactive features.</p><p>
   This demo shows how to manage tab stops in oj-c-list-view.  Specifically, oj-c-list-view should be a single

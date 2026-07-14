@@ -1,10 +1,10 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
-import { ojMenu } from 'ojs/ojmenu';
-import 'ojs/ojmenu';
 import 'ojs/ojbutton';
-import 'ojs/ojoption';
+import 'ojs/ojmenu';
+import { ojMenu } from 'ojs/ojmenu';
 import 'ojs/ojmenuselectmany';
+import 'ojs/ojoption';
+import 'preact';
+import { useState } from 'preact/hooks';
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 

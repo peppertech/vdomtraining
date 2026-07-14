@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { MessageBannerItem, CMessageBannerElement } from "oj-c/message-banner";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import "oj-c/message-banner";
+import { CMessageBannerElement,MessageBannerItem } from "oj-c/message-banner";
+import 'preact';
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type DemoMessageBannerItem = MessageBannerItem & {
   id: string;

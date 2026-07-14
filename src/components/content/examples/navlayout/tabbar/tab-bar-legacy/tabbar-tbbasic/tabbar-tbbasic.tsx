@@ -1,21 +1,21 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojformlayout';
 import 'ojs/ojlabel';
+import 'ojs/ojnavigationlist';
 import 'ojs/ojoption';
 import 'ojs/ojradioset';
 import 'ojs/ojswitch';
-import 'ojs/ojnavigationlist';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 export const TabbarTbbasic = () => {
   const [isContrastBackground, setIsContrastBackground] = useState(false);
-  const [isChecked, setIsChecked] = useState();
+  const [isChecked, setIsChecked] = useState(false);
   const [isDivider, setIsDivider] = useState(false);
   const [selectedItem, setSelectedItem] = useState('home');
-  const [display, setDisplay] = useState('all');
-  const [edge, setEdge] = useState('top');
+  const [display, setDisplay] = useState<NonNullable<ComponentProps<'oj-tab-bar'>['display']>>('all');
+  const [edge, setEdge] = useState<NonNullable<ComponentProps<'oj-tab-bar'>['edge']>>('top');
 
   const dataProvider = useMemo(
     () =>

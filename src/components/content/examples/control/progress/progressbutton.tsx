@@ -1,6 +1,7 @@
-import { h, ComponentProps, JSX } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/progress-button";
+import 'preact';
+import { ComponentProps,JSX } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 type ProgressButtonProps = ComponentProps<"oj-c-progress-button">;
 type ProgressButtonActionEvent = Parameters<NonNullable<ProgressButtonProps["onojAction"]>>[0];

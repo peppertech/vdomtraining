@@ -1,13 +1,13 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
-import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/moveResizeDurationTimeline/basicSingleSeriesData.json';
-import 'ojs/ojtimeline';
-import 'ojs/ojformlayout';
-import 'ojs/ojbutton';
-import 'ojs/ojlabel';
 import 'css!./demo.css';
+import 'ojs/ojbutton';
+import 'ojs/ojformlayout';
+import 'ojs/ojlabel';
+import 'ojs/ojtimeline';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
+import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/moveResizeDurationTimeline/basicSingleSeriesData.json';
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 
 type TimelineMoveResizeItem = {
   id: string;
@@ -18,17 +18,25 @@ type TimelineMoveResizeItem = {
   series: string;
 };
 
+type TimelineProps = ComponentProps<'oj-timeline'>;
+type Orientation = NonNullable<TimelineProps['orientation']>;
+type OverviewRendered = NonNullable<NonNullable<TimelineProps['overview']>['rendered']>;
+type ItemType = NonNullable<ComponentProps<'oj-timeline-item'>['itemType']>;
+type ButtonsetValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-buttonset-one'>['onvalueChanged']>>[0];
+type TimelineMoveEvent = Parameters<NonNullable<TimelineProps['onojMove']>>[0];
+type TimelineResizeEvent = Parameters<NonNullable<TimelineProps['onojResize']>>[0];
+
 const initialItems = JSON.parse(timelineSeriesDataText) as TimelineMoveResizeItem[];
 const majorAxis = { scale: 'quarters' };
 const minorAxis = { scale: 'weeks', zoomOrder: ['months', 'weeks', 'days'] };
-const dnd = { move: { items: 'enabled' } };
-const itemDefaults = { resizable: 'enabled' };
+const dnd: NonNullable<TimelineProps['dnd']> = { move: { items: 'enabled' } };
+const itemDefaults: NonNullable<TimelineProps['itemDefaults']> = { resizable: 'enabled' };
 
 const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (
   <oj-timeline-series label={series.id} emptyText="No Tournaments Played." />
 );
 
-const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>, itemType: string) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>, itemType: ItemType) => (
   <oj-timeline-item
     itemType={itemType}
     seriesId={item.data.series}
@@ -44,9 +52,9 @@ const getString = (time: number) => new Date(time).toISOString();
 
 export const TimelineMoveResizeDurationTimeline = () => {
   const [items, setItems] = useState(initialItems);
-  const [orientationValue, setOrientationValue] = useState('horizontal');
-  const [overviewValue, setOverviewValue] = useState('on');
-  const [itemType, setItemType] = useState('duration-event');
+  const [orientationValue, setOrientationValue] = useState<Orientation>('horizontal');
+  const [overviewValue, setOverviewValue] = useState<OverviewRendered>('on');
+  const [itemType, setItemType] = useState<ItemType>('duration-event');
   const dataProvider = useMemo(
     () =>
       new MutableArrayDataProvider(items, {
@@ -59,32 +67,32 @@ export const TimelineMoveResizeDurationTimeline = () => {
     dataProvider.data = items;
   }, [dataProvider, items]);
 
-  const handleOrientationChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleOrientationChanged = (event: ButtonsetValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
-      setOrientationValue(event.detail.value);
+      setOrientationValue((event.detail.value as Orientation | null) ?? 'horizontal');
     }
   };
 
-  const handleOverviewChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleOverviewChanged = (event: ButtonsetValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
-      setOverviewValue(event.detail.value);
+      setOverviewValue((event.detail.value as OverviewRendered | null) ?? 'on');
     }
   };
 
-  const handleItemTypeChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleItemTypeChanged = (event: ButtonsetValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
-      setItemType(event.detail.value);
+      setItemType((event.detail.value as ItemType | null) ?? 'duration-event');
     }
   };
 
-  const updateEventData = (event: DatavizTimelineMoveResizeEvent) => {
+  const updateEventData = (event: TimelineMoveEvent | TimelineResizeEvent) => {
     const itemContexts = event.detail.itemContexts;
     const resizeEdge = event.detail.typeDetail;
     const sourceTaskContext = itemContexts[0];
     const timeOffsetFromReference =
       resizeEdge === 'end'
-        ? getTime(event.detail.end) - getTime(sourceTaskContext.data.end)
-        : getTime(event.detail.start) - getTime(sourceTaskContext.data.start);
+        ? getTime(event.detail.end ?? sourceTaskContext.data.end ?? '')
+        : getTime(event.detail.start ?? sourceTaskContext.data.start ?? '');
 
     setItems((current) => {
       const nextItems = current.slice();
@@ -97,8 +105,8 @@ export const TimelineMoveResizeDurationTimeline = () => {
         }
 
         const currentItem = nextItems[itemIndex];
-        const itemStartTime = getTime(itemContext.data.start);
-        const itemEndTime = getTime(itemContext.data.end);
+        const itemStartTime = getTime(itemContext.data.start ?? currentItem.begin);
+        const itemEndTime = getTime(itemContext.data.end ?? currentItem.finish);
         let begin = currentItem.begin;
         let finish = currentItem.finish;
 
@@ -122,11 +130,11 @@ export const TimelineMoveResizeDurationTimeline = () => {
     });
   };
 
-  const handleMove = (event: DatavizTimelineMoveResizeEvent) => {
+  const handleMove = (event: TimelineMoveEvent) => {
     updateEventData(event);
   };
 
-  const handleResize = (event: DatavizTimelineMoveResizeEvent) => {
+  const handleResize = (event: TimelineResizeEvent) => {
     updateEventData(event);
   };
 

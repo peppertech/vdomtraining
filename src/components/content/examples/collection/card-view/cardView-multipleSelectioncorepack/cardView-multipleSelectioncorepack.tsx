@@ -1,16 +1,17 @@
-import { h, type ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
+import "oj-c/card-view";
+import "oj-c/selection-card";
+import "oj-c/selector";
+import "oj-c/selector-all";
 import {
   AllKeySetImpl,
   KeySetImpl,
   type ImmutableKeySet
 } from "ojs/ojkeyset";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
+import * as preact from 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from "preact/hooks";
 import "../../../../../jet-composites/demo-profile-card-layout/loader";
-import "oj-c/card-view";
-import "oj-c/selection-card";
-import "oj-c/selector";
-import "oj-c/selector-all";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 interface EmployeeData {
   id: number;
@@ -122,7 +123,7 @@ export const CardViewMultipleSelectioncorepack = () => {
   const renderCard = (context: CardItemContext) => (
     <oj-c-selection-card selected={selectedItems.has(context.item.metadata.key)}>
       <div>
-        {h("demo-profile-card-layout", {
+        {preact.h("demo-profile-card-layout", {
           name: context.data.name,
           workTitle: context.data.title,
           initials: context.data.initials,

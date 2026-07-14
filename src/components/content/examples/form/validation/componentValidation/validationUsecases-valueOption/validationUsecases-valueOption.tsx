@@ -1,10 +1,11 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import type Message = require('ojs/ojmessaging');
 import 'ojs/ojbutton';
 import 'ojs/ojdatetimepicker';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import type Message = require('ojs/ojmessaging');
 
 type InputDateChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-date'>['onvalueChanged']>

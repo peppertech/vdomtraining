@@ -1,9 +1,9 @@
-import { h } from 'preact';
-import { useMemo, useRef } from 'preact/hooks';
-import AsyncLengthValidator = require('ojs/ojasyncvalidator-length');
-import type { CInputTextElement } from 'oj-c/input-text';
 import 'oj-c/input-text';
+import type { CInputTextElement } from 'oj-c/input-text';
 import 'ojs/ojformlayout';
+import 'preact';
+import { useMemo,useRef } from 'preact/hooks';
+import AsyncLengthValidator = require('ojs/ojasyncvalidator-length');
 
 export const ValidatorsValidateOnInput = () => {
   const inputRef = useRef<CInputTextElement<string> | null>(null);

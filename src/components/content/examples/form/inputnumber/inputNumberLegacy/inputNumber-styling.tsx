@@ -1,7 +1,7 @@
-import { h } from "preact";
+import "css!./inputNumber.css";
 import "ojs/ojformlayout";
 import "ojs/ojinputnumber";
-import "css!./inputNumber.css";
+import 'preact';
 
 export default function InputNumberStylingExample() {
   return (

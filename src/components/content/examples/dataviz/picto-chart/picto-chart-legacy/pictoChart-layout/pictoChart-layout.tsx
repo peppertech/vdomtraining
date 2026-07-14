@@ -1,25 +1,29 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojformlayout';
+import 'ojs/ojlegend';
+import 'ojs/ojpictochart';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import * as populationDataText from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/populationData.json';
 import * as medalDataText from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/summerMedalData.json';
-import 'ojs/ojpictochart';
-import 'ojs/ojformlayout';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
-import 'ojs/ojlegend';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
-type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type PictoChartProps = ComponentProps<'oj-picto-chart'>;
+type Layout = NonNullable<PictoChartProps['layout']>;
+type LayoutOrigin = NonNullable<PictoChartProps['layoutOrigin']>;
+type Dataset = 'Population' | 'Medals';
+type Medal = 'Gold' | 'Silver' | 'Bronze';
 
 const dataPopulation = JSON.parse(populationDataText as string);
 const dataMedal = JSON.parse(medalDataText as string);
 
 export const PictoChartLayout = () => {
-  const [layoutOrigin, setLayoutOrigin] = useState<string>('topStart');
-  const [layout, setLayout] = useState<string>('horizontal');
-  const [dataset, setDataset] = useState<string>('Population');
+  const [layoutOrigin, setLayoutOrigin] = useState<LayoutOrigin>('topStart');
+  const [layout, setLayout] = useState<Layout>('horizontal');
+  const [dataset, setDataset] = useState<Dataset>('Population');
   const colorHandler = useMemo(() => new ColorAttributeGroupHandler(), []);
 
   const headerMap = useMemo(
@@ -50,9 +54,9 @@ export const PictoChartLayout = () => {
     [medalLegendData]
   );
 
-  const handleLayoutValueChanged = (event: PropertyChangedEvent<string>) => setLayout(event.detail.value);
-  const handleLayoutOriginValueChanged = (event: PropertyChangedEvent<string>) => setLayoutOrigin(event.detail.value);
-  const handleDatasetValueChanged = (event: PropertyChangedEvent<string>) => setDataset(event.detail.value);
+  const handleLayoutValueChanged = (event: CustomEvent<{ value?: Layout }>) => setLayout(event.detail.value ?? 'horizontal');
+  const handleLayoutOriginValueChanged = (event: CustomEvent<{ value?: LayoutOrigin }>) => setLayoutOrigin(event.detail.value ?? 'topStart');
+  const handleDatasetValueChanged = (event: CustomEvent<{ value?: Dataset }>) => setDataset(event.detail.value ?? 'Population');
 
   return (
     <div id="chart-container">
@@ -76,11 +80,11 @@ export const PictoChartLayout = () => {
       {dataset === 'Medals' ? (
         <>
           <oj-picto-chart class="oj-sm-margin-6x-bottom" id="pictochart2" data={medalDataProvider} animation-on-data-change="auto" column-count={28} column-width={10} layout={layout} layout-origin={layoutOrigin}>
-            <template slot="itemTemplate" render={(item) => <oj-picto-chart-item name={item.data.name} shape="circle" color={medalMap[item.data.name].color} count={item.data.count} row-span={medalMap[item.data.name].rowSpan} column-span={medalMap[item.data.name].columnSpan} />} />
+            <template slot="itemTemplate" render={(item: { data: { name: Medal; count: number } }) => <oj-picto-chart-item name={item.data.name} shape="circle" color={medalMap[item.data.name].color} count={item.data.count} row-span={medalMap[item.data.name].rowSpan} column-span={medalMap[item.data.name].columnSpan} />} />
             <template slot="tooltipTemplate" render={(item) => <span>{`${item.count} ${item.name} Medals`}</span>} />
           </oj-picto-chart>
           <oj-legend id="legend2" orientation="horizontal" data={medalLegendDataProvider}>
-            <template slot="itemTemplate" render={(item) => <oj-legend-item short-desc={item.data.name} text={item.data.name} marker-shape="human" color={medalMap[item.data.name].color} />} />
+            <template slot="itemTemplate" render={(item: { data: { name: Medal } }) => <oj-legend-item short-desc={item.data.name} text={item.data.name} marker-shape="human" color={medalMap[item.data.name].color} />} />
             <template slot="sectionTemplate" render={(item) => <oj-legend-section text={item.data.title} />} />
           </oj-legend>
         </>

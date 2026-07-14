@@ -1,14 +1,13 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as jsonDataText from 'text!./cityStateData.json';
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import 'ojs/ojbutton';
+import { ojButton } from 'ojs/ojbutton';
 import 'ojs/ojtoolbar';
 import 'ojs/ojtreemap';
-import { ojButton } from 'ojs/ojbutton';
 import { ojTreemap } from 'ojs/ojtreemap';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!./cityStateData.json';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type TreemapNodeDatum = {
   id: string;

@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import InputDateTextConverterExample from "./inputDateText-converter";
 import {
@@ -15,7 +15,7 @@ const inputDateTextItems: {
   name: string;
   description: (typeof inputDateTextDocs)[InputDateTextDemoId]["description"];
   recipe: (typeof inputDateTextDocs)[InputDateTextDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "overview",

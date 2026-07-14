@@ -1,7 +1,7 @@
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
 import 'ojs/ojchart';
+import { useMemo } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ScatterChartItem = {
   id: number;

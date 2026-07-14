@@ -1,10 +1,10 @@
-import { h } from "preact";
-import { useEffect, useMemo, useState } from "preact/hooks";
-import * as ResponsiveUtils from "ojs/ojresponsiveutils";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import "ojs/ojbutton";
 import "ojs/ojoption";
+import * as ResponsiveUtils from "ojs/ojresponsiveutils";
 import "ojs/ojselectsingle";
+import 'preact';
+import { useEffect,useMemo,useState } from "preact/hooks";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 type ValueChangedEvent<T> = CustomEvent<{
   value?: T;

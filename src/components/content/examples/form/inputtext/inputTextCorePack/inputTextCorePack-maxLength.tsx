@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/input-text";
+import 'preact';
+import { useState } from "preact/hooks";
 import { maxLengthConfig } from "./inputTextCorePack-shared";
 
 export default function InputTextCorePackMaxLengthExample() {

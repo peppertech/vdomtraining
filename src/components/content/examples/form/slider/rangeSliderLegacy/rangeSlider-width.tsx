@@ -1,5 +1,5 @@
-import { h } from "preact";
 import "ojs/ojslider";
+import 'preact';
 
 export default function RangeSliderWidthExample() {
   return (

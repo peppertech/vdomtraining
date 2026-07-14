@@ -1,15 +1,15 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ojTable } from 'ojs/ojtable';
-import * as deptData from 'text!../../data/cookbook/dataCollections/table/shared/departmentData.json';
-import 'ojs/ojtable';
 import 'ojs/ojbutton';
-import 'ojs/ojselectsingle';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
-import { KeySetImpl, AllKeySetImpl } from 'ojs/ojkeyset';
+import { AllKeySetImpl,KeySetImpl } from 'ojs/ojkeyset';
+import 'ojs/ojselectsingle';
+import 'ojs/ojtable';
+import { ojTable } from 'ojs/ojtable';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as deptData from 'text!../../data/cookbook/dataCollections/table/shared/departmentData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 // import 'ojs/ojtextarea';
 
 interface Employee {

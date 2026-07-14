@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import InputNumberConverterExample from "./inputNumber-converter";
 import {
@@ -22,7 +22,7 @@ const inputNumberItems: {
   name: string;
   description: (typeof inputNumberDocs)[InputNumberDemoId]["description"];
   recipe: (typeof inputNumberDocs)[InputNumberDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "overview",

@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ol>
   <li>Create a new oj-c-list-item-layout with desired slots. See the Overview demo for examples.</li>

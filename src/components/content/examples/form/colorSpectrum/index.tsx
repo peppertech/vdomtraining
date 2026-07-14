@@ -1,10 +1,10 @@
-import { h } from "preact";
+import 'preact';
+import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
 import { ColorSpectrum } from "./colorSpectrum";
 import {
   colorSpectrumDescription,
   colorSpectrumRecipe,
 } from "./colorSpectrum-docs";
-import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
 
 export default function ColorSpectrumRecipePage() {
   return (

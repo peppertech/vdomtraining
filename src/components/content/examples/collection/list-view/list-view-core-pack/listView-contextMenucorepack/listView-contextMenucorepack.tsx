@@ -1,11 +1,11 @@
-// @ts-nocheck
-import { h } from 'preact';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import type { CListViewElement, ContextMenuConfig } from 'oj-c/list-view';
-import { useMemo, useState } from 'preact/hooks';
 import 'oj-c/avatar';
 import 'oj-c/list-item-layout';
 import 'oj-c/list-view';
+import type { CListViewElement } from 'oj-c/list-view';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface EmployeeData {
   id: string;
@@ -14,7 +14,9 @@ interface EmployeeData {
   image: string;
 }
 
-type ContextMenuItemContext = Parameters<ContextMenuConfig<EmployeeData['id'], EmployeeData>['items']>[0];
+type ListViewProps = ComponentProps<'oj-c-list-view'>;
+type ContextMenuConfig = NonNullable<ListViewProps['contextMenuConfig']>;
+type ContextMenuItemContext = Parameters<ContextMenuConfig['items']>[0];
 type ContextMenuActionEvent = CListViewElement.ojContextMenuAction<EmployeeData['id'], EmployeeData>;
 type ItemTemplateContext = CListViewElement.ItemTemplateContext<EmployeeData['id'], EmployeeData>;
 
@@ -76,7 +78,7 @@ export const ListViewContextMenucorepack = () => {
   );
 
   const contextMenuConfig = useMemo(
-    (): ContextMenuConfig<EmployeeData['id'], EmployeeData> => ({
+    (): ContextMenuConfig => ({
       accessibleLabel: 'Actions',
       items: (context: ContextMenuItemContext) => {
         setLaunchedFromItem(String(context?.item?.metadata?.key ?? 'None launched yet'));

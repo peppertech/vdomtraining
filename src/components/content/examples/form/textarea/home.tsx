@@ -1,18 +1,19 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import * as preact from 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import TextArea from "./textAreaLegacy/index";
-import TextAreaCorePack from "./textAreaCorePack/index";
 import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
 } from "../form-breadcrumb";
+import TextAreaCorePack from "./textAreaCorePack/index";
+import TextArea from "./textAreaLegacy/index";
 
 type TextAreaComponent = {
   id: number;
@@ -20,7 +21,7 @@ type TextAreaComponent = {
   name: string;
   image: string;
   isCorePack?: boolean;
-  render: () => h.JSX.Element;
+  render: () => preact.JSX.Element;
 };
 
 const textAreaComponents: TextAreaComponent[] = [

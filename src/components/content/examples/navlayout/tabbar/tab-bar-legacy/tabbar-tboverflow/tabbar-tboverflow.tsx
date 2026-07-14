@@ -1,10 +1,11 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import 'css!./demo.css';
 import 'ojs/ojconveyorbelt';
 import 'ojs/ojnavigationlist';
 import { ojTabBar } from 'ojs/ojnavigationlist';
-import 'css!./demo.css';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TabbarItem = {
   name: string;

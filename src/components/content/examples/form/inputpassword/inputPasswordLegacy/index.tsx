@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import InputPasswordBindingExample from "./inputPassword-binding";
 import {
@@ -18,7 +18,7 @@ const inputPasswordItems: {
   name: string;
   description: (typeof inputPasswordDocs)[InputPasswordDemoId]["description"];
   recipe: (typeof inputPasswordDocs)[InputPasswordDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "overview",

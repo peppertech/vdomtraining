@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import { ActioncardBasic } from "./actioncard-basic/actioncard-basic";
 import { actioncardBasicDescription } from "./actioncard-basic/description";
@@ -6,12 +6,12 @@ import { actioncardBasicRecipe } from "./actioncard-basic/recipe";
 import { ActioncardProfiledept } from "./actioncard-profiledept/actioncard-profiledept";
 import { actioncardProfiledeptDescription } from "./actioncard-profiledept/description";
 import { actioncardProfiledeptRecipe } from "./actioncard-profiledept/recipe";
-import { ListViewCardLayoutListView } from "./listView-cardLayoutListView/listView-cardLayoutListView";
 import { listViewCardLayoutListViewDescription } from "./listView-cardLayoutListView/description";
+import { ListViewCardLayoutListView } from "./listView-cardLayoutListView/listView-cardLayoutListView";
 import { listViewCardLayoutListViewRecipe } from "./listView-cardLayoutListView/recipe";
-import { WaterfallLayoutBasicWaterfallLayout } from "./waterfallLayout-basicWaterfallLayout/waterfallLayout-basicWaterfallLayout";
 import { waterfallLayoutBasicWaterfallLayoutDescription } from "./waterfallLayout-basicWaterfallLayout/description";
 import { waterfallLayoutBasicWaterfallLayoutRecipe } from "./waterfallLayout-basicWaterfallLayout/recipe";
+import { WaterfallLayoutBasicWaterfallLayout } from "./waterfallLayout-basicWaterfallLayout/waterfallLayout-basicWaterfallLayout";
 
 const actionCardLegacyItems = [
   {

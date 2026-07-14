@@ -1,12 +1,12 @@
 // @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
+import 'css!./demo.css';
+import 'ojs/ojmenu';
+import 'ojs/ojoption';
+import 'ojs/ojtagcloud';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
 import * as jsonData from 'text!../../data/cookbook/dataVisualizations/tagCloud/resources/socialNetworks.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojmenu';
-import 'ojs/ojtagcloud';
-import 'ojs/ojoption';
-import 'css!./demo.css';
 
 type SocialNetwork = {
   id: string;

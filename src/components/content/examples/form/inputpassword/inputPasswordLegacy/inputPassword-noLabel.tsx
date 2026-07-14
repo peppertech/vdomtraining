@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
+import 'preact';
+import { useState } from "preact/hooks";
 import { type InputPasswordValueChangedEvent } from "./inputPassword-shared";
 
 export default function InputPasswordNoLabelExample() {

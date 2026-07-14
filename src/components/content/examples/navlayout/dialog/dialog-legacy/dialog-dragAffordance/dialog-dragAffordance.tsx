@@ -1,13 +1,14 @@
 import { JetElementCustomEvent } from 'ojs/index';
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';type ValueChangedEvent<TValue> = JetElementCustomEvent<TValue>;
-import { useRef, useState } from 'preact/hooks';
-import { ojDialog } from 'ojs/ojdialog';
-import 'ojs/ojdialog';
 import 'ojs/ojbutton';
-import 'ojs/ojradioset';
+import 'ojs/ojdialog';
+import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojlabel';
 import 'ojs/ojoption';
+import 'ojs/ojradioset';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useRef,useState } from 'preact/hooks';
+type ValueChangedEvent<TValue> = JetElementCustomEvent<TValue>;
 export const DialogDragAffordance = () => {
   const dialogRef = useRef<ojDialog | null>(null);
   const [currentDragAffordanceOpt, setCurrentDragAffordanceOpt] = useState<ojDialog['dragAffordance']>('title-bar' as ojDialog['dragAffordance']);

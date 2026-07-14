@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as twoSeriesDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/twoSeriesDualYData.json';
 import 'ojs/ojchart';
-import 'ojs/ojinputnumber';
 import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as twoSeriesDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/twoSeriesDualYData.json';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ChartOrientation = ComponentProps<'oj-chart'>['orientation'];
 type ChartSplitDualY = ComponentProps<'oj-chart'>['splitDualY'];

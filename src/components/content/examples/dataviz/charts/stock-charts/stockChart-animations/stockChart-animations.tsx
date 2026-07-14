@@ -1,11 +1,11 @@
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojbutton';
 import 'ojs/ojchart';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import 'ojs/ojtoolbar';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type StockSeriesType = 'auto' | 'area' | 'bar' | 'candlestick' | 'line' | 'lineWithArea';
 type StockChartItem = {
     id: number;

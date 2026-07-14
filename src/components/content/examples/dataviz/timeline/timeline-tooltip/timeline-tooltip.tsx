@@ -1,12 +1,11 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useRef } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
-import * as tooltipSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/tooltip/basicSeriesData.json';
-import 'ojs/ojtimeline';
-import 'ojs/ojgauge';
 import 'css!./demo.css';
+import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
+import 'ojs/ojgauge';
+import 'ojs/ojtimeline';
+import 'preact';
+import { useMemo,useRef } from 'preact/hooks';
+import * as tooltipSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/tooltip/basicSeriesData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TimelineTooltipItem = {
   id: string;
@@ -46,7 +45,15 @@ export const TimelineTooltip = () => {
   const assignmentTextRef = useRef<HTMLSpanElement | null>(null);
   const startTimeTextRef = useRef<HTMLSpanElement | null>(null);
   const endTimeTextRef = useRef<HTMLSpanElement | null>(null);
-  const gaugeRef = useRef<HTMLElement | null>(null);
+  const gaugeRef = useRef<(HTMLElement & {
+    min: number;
+    max: number;
+    value: number;
+    color: string;
+    orientation: 'circular';
+    plotArea: { rendered: 'on'; color: string };
+    setProperty: (property: string, value: unknown) => void;
+  }) | null>(null);
 
   const getShortDesc = (itemData: TimelineTooltipItem) => {
     const assignmentString = itemData.series;
@@ -72,7 +79,15 @@ export const TimelineTooltip = () => {
       const assignmentText = document.createElement('span');
       const startTimeText = document.createElement('span');
       const endTimeText = document.createElement('span');
-      const gauge = document.createElement('oj-status-meter-gauge');
+      const gauge = document.createElement('oj-status-meter-gauge') as HTMLElement & {
+        min: number;
+        max: number;
+        value: number;
+        color: string;
+        orientation: 'circular';
+        plotArea: { rendered: 'on'; color: string };
+        setProperty: (property: string, value: unknown) => void;
+      };
 
       textDiv.style.cssFloat = 'left';
       textDiv.style.padding = '10px 8px 10px 3px';
@@ -100,25 +115,36 @@ export const TimelineTooltip = () => {
       gaugeRef.current = gauge;
     }
 
+    const tooltipElem = tooltipElemRef.current;
+    const assignmentText = assignmentTextRef.current;
+    const startTimeText = startTimeTextRef.current;
+    const endTimeText = endTimeTextRef.current;
+    const gauge = gaugeRef.current;
+    const data = dataContext.data;
+    const itemData = dataContext.itemData;
+    if (!tooltipElem || !assignmentText || !startTimeText || !endTimeText || !gauge || !data || !itemData) {
+      return { insert: document.createElement('div') };
+    }
+
     dataContext.parentElement.style.borderWidth = '4px';
-    assignmentTextRef.current.textContent = dataContext.seriesData.label;
-    startTimeTextRef.current.textContent = `Start Date: ${dateConverter.format(dataContext.data.start)}`;
-    endTimeTextRef.current.textContent = `End Date: ${dateConverter.format(dataContext.data.end)}`;
-    gaugeRef.current.min = 0;
-    gaugeRef.current.max = 100;
-    gaugeRef.current.value = Number(dataContext.itemData.winPercentage);
-    gaugeRef.current.color = dataContext.color;
-    gaugeRef.current.orientation = 'circular';
-    gaugeRef.current.setProperty('metricLabel.rendered', 'on');
-    gaugeRef.current.plotArea = {
+    assignmentText.textContent = dataContext.seriesData.label;
+    startTimeText.textContent = `Start Date: ${dateConverter.format(data.start)}`;
+    endTimeText.textContent = `End Date: ${dateConverter.format(data.end)}`;
+    gauge.min = 0;
+    gauge.max = 100;
+    gauge.value = Number(itemData.winPercentage);
+    gauge.color = dataContext.color;
+    gauge.orientation = 'circular';
+    gauge.setProperty('metricLabel.rendered', 'on');
+    gauge.plotArea = {
       rendered: 'on',
       color: '#E0E0E0'
     };
 
-    return { insert: tooltipElemRef.current };
+    return { insert: tooltipElem };
   };
 
-  const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => (
+  const renderItemTemplate = (item: DatavizTemplateContext<TimelineTooltipItem>) => (
     <oj-timeline-item
       seriesId={item.data.series}
       start={item.data.begin}

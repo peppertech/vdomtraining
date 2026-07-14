@@ -1,6 +1,6 @@
-import { h } from "preact";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import { IntlConverterUtils } from "ojs/ojconverterutils-i18n";
+import 'preact';
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 export type LabelEdge = "inside" | "start" | "top";
 

@@ -1,10 +1,10 @@
-import { h } from 'preact';
+import 'css!./demo.css';
+import 'ojs/ojtable';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as departmentDataText from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojtable';
-import 'css!./demo.css';
 type Department = {
     DepartmentId: number;
     DepartmentName: string;

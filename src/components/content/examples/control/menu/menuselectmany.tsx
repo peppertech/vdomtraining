@@ -1,11 +1,11 @@
-import { h } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojmenu";
-import "ojs/ojmenuselectmany";
-import "ojs/ojoption";
 import type { MenuElement } from "ojs/ojmenu";
+import "ojs/ojmenuselectmany";
 import type { MenuSelectManyElement } from "ojs/ojmenuselectmany";
+import "ojs/ojoption";
+import 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 type MenuOption = {
   value: string;

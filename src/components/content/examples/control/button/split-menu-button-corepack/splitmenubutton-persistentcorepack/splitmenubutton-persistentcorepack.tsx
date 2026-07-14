@@ -1,8 +1,8 @@
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "css!./demo.css";
-import type { CSplitMenuButtonElement } from "oj-c/split-menu-button";
 import "oj-c/split-menu-button";
+import type { CSplitMenuButtonElement } from "oj-c/split-menu-button";
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
 
 type MenuItems = NonNullable<CSplitMenuButtonElement["items"]>;
 type ActionMenuItem = Extract<MenuItems[number], { label: string; key?: string | number }>;

@@ -1,23 +1,23 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useCallback, useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ojListView } from 'ojs/ojlistview';
-import { KeySetImpl, type ImmutableKeySet, type KeySet } from 'ojs/ojkeyset';
-import type { ojSwipeActions } from 'ojs/ojswipeactions';
 import 'css!./demo.css';
 import 'ojs/ojavatar';
 import 'ojs/ojbutton';
 import 'ojs/ojdatetimepicker';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
+import { KeySetImpl,type ImmutableKeySet,type KeySet } from 'ojs/ojkeyset';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojlistview';
+import { ojListView } from 'ojs/ojlistview';
 import 'ojs/ojoption';
 import 'ojs/ojrefresher';
 import 'ojs/ojselectcombobox';
 import 'ojs/ojselector';
 import 'ojs/ojswipeactions';
+import type { ojSwipeActions } from 'ojs/ojswipeactions';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useCallback,useMemo,useRef,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type Task = {
   taskId: number;

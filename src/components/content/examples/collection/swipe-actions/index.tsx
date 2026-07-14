@@ -1,8 +1,8 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
-import { SwipeToRevealBasicSwipeToReveal } from "./swipeToReveal-basicSwipeToReveal/swipeToReveal-basicSwipeToReveal";
 import { swipeToRevealBasicSwipeToRevealDescription } from "./swipeToReveal-basicSwipeToReveal/description";
 import { swipeToRevealBasicSwipeToRevealRecipe } from "./swipeToReveal-basicSwipeToReveal/recipe";
+import { SwipeToRevealBasicSwipeToReveal } from "./swipeToReveal-basicSwipeToReveal/swipeToReveal-basicSwipeToReveal";
 
 const swipeActionsItems = [
   {

@@ -1,10 +1,10 @@
-import { h } from 'preact';
-import { useRef, useState } from 'preact/hooks';
-import { ojButton } from 'ojs/ojbutton';
-import { ojTrain } from 'ojs/ojtrain';
-import 'ojs/ojbutton';
-import 'ojs/ojtrain';
 import 'css!./demo.css';
+import 'ojs/ojbutton';
+import { ojButton } from 'ojs/ojbutton';
+import 'ojs/ojtrain';
+import { ojTrain } from 'ojs/ojtrain';
+import 'preact';
+import { useRef,useState } from 'preact/hooks';
 
 const defaultSteps: ojTrain.Step[] = [
   { label: 'Step One', id: 'stp1' },

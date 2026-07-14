@@ -1,10 +1,11 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/basicTimeline/seriesOneData.json';
-import 'ojs/ojtimeline';
 import 'css!./demo.css';
+import 'ojs/ojtimeline';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo } from 'preact/hooks';
+import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/basicTimeline/seriesOneData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import type Converter = require('ojs/ojconverter');
 
 type TimelineCustomDatesItem = {
   id: string;
@@ -24,13 +25,15 @@ const diffDays = (dateString: string) => {
   return Math.round(Math.abs(date.getTime() - startDate.getTime()) / day + 1);
 };
 
-const minorAxis = {
+const dayConverter: Converter<string> = {
+  format: (date) => String(diffDays(date)),
+  parse: (value) => value
+};
+const minorAxis: NonNullable<ComponentProps<'oj-timeline'>['minorAxis']> = {
   scale: 'days',
   zoomOrder: ['months', 'weeks', 'days'],
   converter: {
-    days: {
-      format: (date: string) => diffDays(date)
-    }
+    days: dayConverter
   }
 };
 

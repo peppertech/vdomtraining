@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ojPopup, ojPopupSettableProperties } from 'ojs/ojpopup';
-import 'ojs/ojpopup';
-import 'ojs/ojradioset';
 import 'ojs/ojbutton';
 import 'ojs/ojlabel';
+import 'ojs/ojpopup';
+import { ojPopup,ojPopupSettableProperties } from 'ojs/ojpopup';
+import 'ojs/ojradioset';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type RadioChangedEvent = Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0];
 

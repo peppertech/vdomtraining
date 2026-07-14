@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A Drawer Layout adds expandable side contents (drawers) alongside some primary content.</p><p>
   Drawer Layout supports 'ojBeforeClose' event that can be canceled synchronously or asynchronously.

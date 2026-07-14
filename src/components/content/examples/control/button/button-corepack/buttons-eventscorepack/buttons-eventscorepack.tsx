@@ -1,7 +1,7 @@
-import { h } from "preact";
+import "oj-c/button";
+import 'preact';
 import type { ComponentProps } from "preact";
 import { useState } from "preact/hooks";
-import "oj-c/button";
 
 type ButtonActionEvent = Parameters<NonNullable<ComponentProps<"oj-c-button">["onojAction"]>>[0];
 

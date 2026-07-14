@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A Buttonset Single allows a user to select the state of one or more related options.</p><p>
   This demo shows a "select one" Buttonset, i.e. a Buttonset where only one of the buttons can be

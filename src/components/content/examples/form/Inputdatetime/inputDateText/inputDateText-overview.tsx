@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "oj-c/form-layout";
 import "oj-c/input-date-text";
+import 'preact';
 import { messageSets } from "./inputDateText-shared";
 
 export default function InputDateTextOverviewExample() {

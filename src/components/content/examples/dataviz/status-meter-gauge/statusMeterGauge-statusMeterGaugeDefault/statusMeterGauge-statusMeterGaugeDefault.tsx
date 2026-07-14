@@ -1,6 +1,6 @@
-// @ts-nocheck
-import 'ojs/ojgauge';
 import 'css!./demo.css';
+import 'ojs/ojgauge';
+import type { ComponentProps } from 'preact';
 
 const referenceLines = [
   { value: 33, color: '#D63B25' },
@@ -8,33 +8,26 @@ const referenceLines = [
 ];
 
 const thresholdValues = [{ max: 33 }, { max: 67 }, {}];
-const plotAreaProps = { 'plot-area.rendered': 'on' };
+const plotAreaProps = { plotArea: { rendered: 'on' as const } };
 const thresholdTooltipProps = {
-  'tooltip.renderer': (context: DatavizTooltipContext<DatavizChartDatum>) => ({
+  tooltip: { renderer: (context: DatavizTooltipContext<DatavizChartDatum>) => ({
     insert: `Value: ${context.label}<br>Thresholds: Low 33, Medium 67, High 100`
-  })
+  }) }
 };
 const referenceLinesTooltipProps = {
-  'tooltip.renderer': (context: DatavizTooltipContext<DatavizChartDatum>) => ({
+  tooltip: { renderer: (context: DatavizTooltipContext<DatavizChartDatum>) => ({
     insert: `Value: ${context.label}<br>Reference Lines: Low 33, Medium 67, High 100`
-  })
+  }) }
 };
 
-type GaugeProps = {
+type GaugeProps = Pick<ComponentProps<'oj-status-meter-gauge'>,
+  'readonly' | 'step' | 'thresholds' | 'referenceLines' | 'orientation' | 'innerRadius' | 'startAngle' | 'angleExtent'> & {
   wrapperClassName: string;
   labelledBy: string;
   value: number;
   size?: 'md' | 'lg';
   gaugeClassName?: string;
-  tooltipProps?: Record<string, unknown>;
-  readonly?: boolean;
-  step?: number;
-  thresholds?: Array<{ max?: number }>;
-  referenceLines?: Array<{ value: number; color: string }>;
-  orientation?: 'vertical' | 'circular';
-  innerRadius?: string;
-  startAngle?: string;
-  angleExtent?: string;
+  tooltipProps?: ComponentProps<'oj-status-meter-gauge'>;
 };
 
 const StatusMeterGaugeCell = ({
@@ -116,7 +109,7 @@ export const StatusMeterGaugeStatusMeterGaugeDefault = () => {
         labelledBy="circular readonly"
         value={20}
         orientation="circular"
-        innerRadius="0.87"
+        innerRadius={0.87}
         readonly
       />
       <StatusMeterGaugeCell
@@ -124,9 +117,9 @@ export const StatusMeterGaugeStatusMeterGaugeDefault = () => {
         labelledBy="semi-circular readonly"
         value={20}
         orientation="circular"
-        innerRadius="0.87"
-        startAngle="180"
-        angleExtent="180"
+        innerRadius={0.87}
+        startAngle={180}
+        angleExtent={180}
         readonly
       />
 
@@ -153,16 +146,16 @@ export const StatusMeterGaugeStatusMeterGaugeDefault = () => {
         labelledBy="circular editable"
         value={20}
         orientation="circular"
-        innerRadius="0.87"
+        innerRadius={0.87}
       />
       <StatusMeterGaugeCell
         wrapperClassName="demo-gauge-cell oj-flex oj-sm-justify-content-center oj-sm-align-items-center"
         labelledBy="semi-circular editable"
         value={20}
         orientation="circular"
-        innerRadius="0.87"
-        startAngle="180"
-        angleExtent="180"
+        innerRadius={0.87}
+        startAngle={180}
+        angleExtent={180}
       />
 
       <div class="demo-gauge-cell oj-flex oj-sm-align-items-center">
@@ -190,7 +183,7 @@ export const StatusMeterGaugeStatusMeterGaugeDefault = () => {
         value={40}
         step={10}
         orientation="circular"
-        innerRadius="0.87"
+        innerRadius={0.87}
       />
       <StatusMeterGaugeCell
         wrapperClassName="demo-gauge-cell oj-flex oj-sm-justify-content-center oj-sm-align-items-center"
@@ -198,9 +191,9 @@ export const StatusMeterGaugeStatusMeterGaugeDefault = () => {
         value={40}
         step={10}
         orientation="circular"
-        innerRadius="0.87"
-        startAngle="180"
-        angleExtent="180"
+        innerRadius={0.87}
+        startAngle={180}
+        angleExtent={180}
       />
 
       <div class="demo-gauge-cell oj-flex oj-sm-align-items-center">
@@ -230,7 +223,7 @@ export const StatusMeterGaugeStatusMeterGaugeDefault = () => {
         value={40}
         referenceLines={referenceLines}
         orientation="circular"
-        innerRadius="0.87"
+        innerRadius={0.87}
         tooltipProps={referenceLinesTooltipProps}
       />
       <StatusMeterGaugeCell
@@ -239,9 +232,9 @@ export const StatusMeterGaugeStatusMeterGaugeDefault = () => {
         value={40}
         referenceLines={referenceLines}
         orientation="circular"
-        innerRadius="0.87"
-        startAngle="180"
-        angleExtent="180"
+        innerRadius={0.87}
+        startAngle={180}
+        angleExtent={180}
         tooltipProps={referenceLinesTooltipProps}
       />
 
@@ -272,7 +265,7 @@ export const StatusMeterGaugeStatusMeterGaugeDefault = () => {
         value={60}
         thresholds={thresholdValues}
         orientation="circular"
-        innerRadius="0.87"
+        innerRadius={0.87}
         tooltipProps={thresholdTooltipProps}
       />
       <StatusMeterGaugeCell
@@ -281,9 +274,9 @@ export const StatusMeterGaugeStatusMeterGaugeDefault = () => {
         value={60}
         thresholds={thresholdValues}
         orientation="circular"
-        innerRadius="0.87"
-        startAngle="180"
-        angleExtent="180"
+        innerRadius={0.87}
+        startAngle={180}
+        angleExtent={180}
         tooltipProps={thresholdTooltipProps}
       />
 
@@ -313,7 +306,7 @@ export const StatusMeterGaugeStatusMeterGaugeDefault = () => {
         labelledBy="circular metricLabel"
         value={80}
         orientation="circular"
-        innerRadius="0.87"
+        innerRadius={0.87}
         tooltipProps={thresholdTooltipProps}
       />
       <StatusMeterGaugeCell
@@ -321,9 +314,9 @@ export const StatusMeterGaugeStatusMeterGaugeDefault = () => {
         labelledBy="semi-circular metricLabel"
         value={80}
         orientation="circular"
-        innerRadius="0.87"
-        startAngle="180"
-        angleExtent="180"
+        innerRadius={0.87}
+        startAngle={180}
+        angleExtent={180}
         tooltipProps={thresholdTooltipProps}
       />
     </div>

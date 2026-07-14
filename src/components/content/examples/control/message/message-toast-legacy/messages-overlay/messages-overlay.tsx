@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ojMessage } from 'ojs/ojmessage';
 import 'ojs/ojmessages';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type MessageData = ojMessage.Message;
 

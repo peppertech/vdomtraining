@@ -1,9 +1,9 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useEffect, useRef, useState } from 'preact/hooks';
-import type { FilmStripElement } from 'ojs/ojfilmstrip';
-import 'ojs/ojfilmstrip';
 import 'css!./demo.css';
+import 'ojs/ojfilmstrip';
+import type { FilmStripElement } from 'ojs/ojfilmstrip';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useEffect,useRef,useState } from 'preact/hooks';
 import {
   filmStripDemoItems,
   getItemInitialDisplay,

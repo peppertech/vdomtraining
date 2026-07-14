@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/rich-radioset";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import {
   extendedIndustryOptions,
   type RichRadiosetValueChangedEvent,

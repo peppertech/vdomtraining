@@ -1,17 +1,17 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { MenuOverview } from "./menu-overview/menu-overview";
-import { menuOverviewDescription } from "./menu-overview/description";
-import { menuOverviewRecipe } from "./menu-overview/recipe";
-import { MenuMenuOpen } from "./menu-menuOpen/menu-menuOpen";
-import { menuMenuOpenDescription } from "./menu-menuOpen/description";
-import { menuMenuOpenRecipe } from "./menu-menuOpen/recipe";
-import { MenuMenuForEachTemplate } from "./menu-menuForEachTemplate/menu-menuForEachTemplate";
-import { menuMenuForEachTemplateDescription } from "./menu-menuForEachTemplate/description";
-import { menuMenuForEachTemplateRecipe } from "./menu-menuForEachTemplate/recipe";
-import { MenuDeferredRendering } from "./menu-deferredRendering/menu-deferredRendering";
 import { menuDeferredRenderingDescription } from "./menu-deferredRendering/description";
+import { MenuDeferredRendering } from "./menu-deferredRendering/menu-deferredRendering";
 import { menuDeferredRenderingRecipe } from "./menu-deferredRendering/recipe";
+import { menuMenuForEachTemplateDescription } from "./menu-menuForEachTemplate/description";
+import { MenuMenuForEachTemplate } from "./menu-menuForEachTemplate/menu-menuForEachTemplate";
+import { menuMenuForEachTemplateRecipe } from "./menu-menuForEachTemplate/recipe";
+import { menuMenuOpenDescription } from "./menu-menuOpen/description";
+import { MenuMenuOpen } from "./menu-menuOpen/menu-menuOpen";
+import { menuMenuOpenRecipe } from "./menu-menuOpen/recipe";
+import { menuOverviewDescription } from "./menu-overview/description";
+import { MenuOverview } from "./menu-overview/menu-overview";
+import { menuOverviewRecipe } from "./menu-overview/recipe";
 
 const menuLegacyItems = [
   {

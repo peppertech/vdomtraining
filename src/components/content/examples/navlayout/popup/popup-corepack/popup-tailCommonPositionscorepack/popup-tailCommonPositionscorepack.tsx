@@ -1,11 +1,11 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useState } from "preact/hooks";
 import "css!./demo.css";
 import "oj-c/button";
 import "oj-c/form-layout";
 import "oj-c/popup";
 import "oj-c/radioset";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useState } from "preact/hooks";
 
 type PopupProps = ComponentProps<"oj-c-popup">;
 type PopupPlacement = NonNullable<PopupProps["placement"]>;

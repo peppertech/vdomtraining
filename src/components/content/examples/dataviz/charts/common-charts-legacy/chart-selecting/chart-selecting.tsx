@@ -1,15 +1,14 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import { JetElementCustomEvent } from 'ojs/index';
+import "css!./demo.css";
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as bubbleDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/commonCategoriesBubbleData.json';
-import * as timeSeriesDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/commonCategoriesTimeSeriesData.json';
+import 'ojs/ojchart';
 import { ojChart } from 'ojs/ojchart';
 import 'ojs/ojlegend';
-import 'ojs/ojchart';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as bubbleDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/commonCategoriesBubbleData.json';
+import * as timeSeriesDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/commonCategoriesTimeSeriesData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import "css!./demo.css";
 interface BubbleDatum {
     id: number;
     x: number;

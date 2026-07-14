@@ -1,14 +1,15 @@
-import { h, type ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import DemoDelayingDataProvider from "../../shared/DemoDelayingDataProvider";
-import * as jsonDataStr from "text!./contacts.json";
-import "../../../../../jet-composites/demo-profile-card-layout/loader";
 import "css!./demo.css";
 import "oj-c/button";
 import "oj-c/card-view";
 import "oj-c/input-number";
 import "ojs/ojformlayout";
+import * as preact from 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from "preact/hooks";
+import * as jsonDataStr from "text!./contacts.json";
+import "../../../../../jet-composites/demo-profile-card-layout/loader";
+import DemoDelayingDataProvider from "../../shared/DemoDelayingDataProvider";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 interface Contact {
   id: string;
@@ -38,7 +39,7 @@ const normalizeDelay = (value: number | string | null | undefined) => {
 
 const renderCard = (context: CardItemContext) => (
   <div class="oj-panel">
-    {h("demo-profile-card-layout", {
+    {preact.h("demo-profile-card-layout", {
       name: context.data.name,
       initials: context.data.initials,
     })}

@@ -1,7 +1,8 @@
-import { h, type ComponentProps } from 'preact';
-import { useCallback, useEffect, useMemo, useRef, useState } from "preact/hooks";
-import type { CSelectMultipleElement } from "oj-c/select-multiple";
 import "oj-c/select-multiple";
+import type { CSelectMultipleElement } from "oj-c/select-multiple";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useEffect,useMemo,useRef,useState } from "preact/hooks";
 
 import {
   browserOptions,

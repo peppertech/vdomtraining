@@ -1,9 +1,10 @@
-import { h, type ComponentProps } from "preact";
-import { useCallback, useEffect, useMemo, useRef, useState } from "preact/hooks";
-import { useLocation } from "preact-iso";
-import * as ResponsiveUtils from "ojs/ojresponsiveutils";
 import "oj-c/tab-bar";
 import type { TabData } from "oj-c/tab-bar";
+import * as ResponsiveUtils from "ojs/ojresponsiveutils";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useLocation } from "preact-iso";
+import { useCallback,useEffect,useMemo,useRef,useState } from "preact/hooks";
 import type { AppRoute } from "./app";
 
 type Props = Readonly<{

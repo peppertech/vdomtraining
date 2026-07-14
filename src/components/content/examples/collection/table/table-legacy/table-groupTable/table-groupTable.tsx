@@ -1,14 +1,14 @@
-import { h } from 'preact';
+import "css!./demo.css";
+import * as KeySet from 'ojs/ojkeyset';
+import 'ojs/ojrowexpander';
+import 'ojs/ojtable';
+import { ojTable } from 'ojs/ojtable';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
+import * as dataText from 'text!../../../data/cookbook/dataCollections/table/shared/groupData.json';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
-import * as dataText from 'text!../../../data/cookbook/dataCollections/table/shared/groupData.json';
-import * as KeySet from 'ojs/ojkeyset';
-import { ojTable } from 'ojs/ojtable';
-import 'ojs/ojtable';
-import 'ojs/ojrowexpander';
-import "css!./demo.css";
 interface OpportunityRow {
     probability: string;
     description: string;

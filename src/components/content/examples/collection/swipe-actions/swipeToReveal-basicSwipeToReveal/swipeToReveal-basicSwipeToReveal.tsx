@@ -1,17 +1,16 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ojListView } from 'ojs/ojlistview';
-import { ojMenu } from 'ojs/ojmenu';
-import { ojSwipeActions } from 'ojs/ojswipeactions';
 import "css!./demo.css";
 import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojlistview';
+import { ojListView } from 'ojs/ojlistview';
 import 'ojs/ojmenu';
+import { ojMenu } from 'ojs/ojmenu';
 import 'ojs/ojoption';
 import 'ojs/ojswipeactions';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type EmailItem = {
   id: string;
@@ -28,11 +27,7 @@ type EmailItemTemplateContext = ojListView.ItemTemplateContext<
   EmailItem['id'],
   EmailItem
 >;
-type SwipeActionEvent = Event & {
-  target: EventTarget & {
-    value: SwipeAction;
-  };
-};
+type SwipeActionEvent = Parameters<NonNullable<ComponentProps<'oj-swipe-actions'>['onojAction']>>[0];
 type MenuActionEvent = CustomEvent<{
   selectedValue: MenuAction;
 }>;
@@ -80,7 +75,10 @@ export const SwipeToRevealBasicSwipeToReveal = () => {
 
   const handleAction = (event: SwipeActionEvent, context: EmailItemTemplateContext) => {
     currentItemRef.current = context.data.id;
-    doAction(event.target.value);
+    const value = (event.target as HTMLOptionElement | null)?.value;
+    if (value === 'read' || value === 'archive' || value === 'more' || value === 'flag' || value === 'trash') {
+      doAction(value);
+    }
   };
 
   const handleMenuItemAction = (event: MenuActionEvent) => {

@@ -1,24 +1,12 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import * as preact from 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import BadgeHome from "./badge/home";
-import ButtonsHome from "./button/home";
-import FilePickerHome from "./file-picker/home";
-import FilmStripHome from "./film-strip/home";
-import ProgressHome from "./progress/home";
-import ToolbarHome from "./toolbar/home";
-import TrainHome from "./train/home";
-import TruncatingTextHome from "./truncating-text/home";
-import CSSImage from "./image/cssimage";
-import IconFont from "./image/iconfont";
-import AvatarsHome from "./avatars/home";
-import MenuHome from "./menu/home";
-import MessageHome from "./message/home";
 import {
   CatalogBreadcrumb,
   type CatalogBreadcrumbItem,
@@ -26,6 +14,19 @@ import {
   formatCorePackLabel,
 } from "../../../shared/catalog-breadcrumb";
 import { useExampleRoute } from "../example-route-context";
+import AvatarsHome from "./avatars/home";
+import BadgeHome from "./badge/home";
+import ButtonsHome from "./button/home";
+import FilePickerHome from "./file-picker/home";
+import FilmStripHome from "./film-strip/home";
+import CSSImage from "./image/cssimage";
+import IconFont from "./image/iconfont";
+import MenuHome from "./menu/home";
+import MessageHome from "./message/home";
+import ProgressHome from "./progress/home";
+import ToolbarHome from "./toolbar/home";
+import TrainHome from "./train/home";
+import TruncatingTextHome from "./truncating-text/home";
 
 type ControlComponent = {
   id: number;
@@ -34,7 +35,7 @@ type ControlComponent = {
   image: string;
   isAvailable?: boolean;
   isCorePack?: boolean;
-  render?: (props?: NestedCatalogHomeProps) => h.JSX.Element | null;
+  render?: (props?: NestedCatalogHomeProps) => preact.JSX.Element | null;
 };
 
 const controlComponents: ControlComponent[] = [

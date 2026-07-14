@@ -1,12 +1,12 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
-import type { ojAccordion } from "ojs/ojaccordion";
+import "css!./demo.css";
 import "ojs/ojaccordion";
+import type { ojAccordion } from "ojs/ojaccordion";
 import "ojs/ojbutton";
 import "ojs/ojcollapsible";
 import "ojs/ojinputtext";
 import "ojs/ojlabel";
-import "css!./demo.css";
+import 'preact';
+import { useState } from "preact/hooks";
 
 const getCollapsibleId = (collapsible: Element | null | undefined) => {
   return collapsible?.id || "none";

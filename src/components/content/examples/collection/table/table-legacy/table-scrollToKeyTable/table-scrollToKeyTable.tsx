@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojtable';
-import { KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojbutton';
+import { KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojswitch';
+import 'ojs/ojtable';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface TableData {
   id: string;

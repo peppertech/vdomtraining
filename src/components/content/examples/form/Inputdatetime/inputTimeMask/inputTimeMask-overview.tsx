@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "oj-c/form-layout";
 import "oj-c/input-time-mask";
+import 'preact';
 import { messageSets } from "./inputTimeMask-shared";
 
 export default function InputTimeMaskOverviewVdomExample() {

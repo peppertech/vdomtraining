@@ -1,6 +1,6 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
 import 'ojs/ojprogress-circle';
+import 'preact';
+import { useState } from 'preact/hooks';
 
 export const ProgressCircleOverview = () => {
   const [step] = useState(0);

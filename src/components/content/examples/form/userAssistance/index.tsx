@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
 import HelpHintsMessagingConverterHintMessagesExample from "./helpHintsMessaging-converterHintMessages/helpHintsMessaging-converterHintMessages";
 import HelpHintsMessagingHelpTitleExample from "./helpHintsMessaging-helpTitle/helpHintsMessaging-helpTitle";
@@ -15,7 +15,7 @@ const userAssistanceItems: {
   name: string;
   description: (typeof userAssistanceDocs)[UserAssistanceDemoId]["description"];
   recipe: (typeof userAssistanceDocs)[UserAssistanceDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "help-title",

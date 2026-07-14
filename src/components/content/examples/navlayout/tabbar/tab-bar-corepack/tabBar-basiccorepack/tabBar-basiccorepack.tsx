@@ -1,9 +1,9 @@
-import type { ComponentProps } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/radioset";
 import "oj-c/tab-bar";
 import type { TabData } from "oj-c/tab-bar";
+import type { ComponentProps } from "preact";
+import { useState } from "preact/hooks";
 
 type TabKey =
   | "home"

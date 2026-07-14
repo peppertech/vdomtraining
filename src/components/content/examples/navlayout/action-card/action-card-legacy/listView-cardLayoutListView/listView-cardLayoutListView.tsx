@@ -1,15 +1,14 @@
-// @ts-nocheck
-import { h } from "preact";
-import { useEffect, useMemo, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import * as ResponsiveUtils from "ojs/ojresponsiveutils";
 import "oj-c/action-card";
-import "../../../../../../jet-composites/demo-profile-card-layout/loader";
 import "ojs/ojavatar";
 import "ojs/ojbutton";
 import "ojs/ojlistitemlayout";
 import "ojs/ojlistview";
 import "ojs/ojoption";
+import * as ResponsiveUtils from "ojs/ojresponsiveutils";
+import 'preact';
+import { useEffect,useMemo,useState } from "preact/hooks";
+import "../../../../../../jet-composites/demo-profile-card-layout/loader";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 type Layout = "card" | "list";
 
@@ -159,7 +158,7 @@ export const ListViewCardLayoutListView = () => {
       ),
     [],
   );
-  const isSmall = useMediaQuery(smQuery);
+  const isSmall = useMediaQuery(smQuery ?? '(max-width: 599px)');
   const effectiveLayout = isSmall ? "list" : activeLayout;
 
   const handleActiveLayoutValueChanged = (

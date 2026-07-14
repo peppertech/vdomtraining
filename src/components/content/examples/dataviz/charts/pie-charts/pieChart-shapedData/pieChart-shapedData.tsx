@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as data from 'text!../data/cookbook/dataVisualizations/chart/resources/shapedSingleItemData.json';
 import 'ojs/ojchart';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as data from 'text!../data/cookbook/dataVisualizations/chart/resources/shapedSingleItemData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 export const PieChartShapedData = () => {
   const [chartData, setChartData] = useState<DatavizChartDatum[]>(JSON.parse(data));

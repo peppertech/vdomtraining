@@ -1,8 +1,8 @@
+import "css!./demo.css";
+import 'ojs/ojlegend';
 import type { JSX } from 'preact';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import "css!./demo.css";
-import 'ojs/ojlegend';
 
 type LegendItem = {
   text: string;

@@ -1,9 +1,10 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import { NumberConverter } from 'ojs/ojconverter-nativenumber';
-import { JetElementCustomEvent } from 'ojs/index';
 import 'oj-c/input-number';
+import { JetElementCustomEvent } from 'ojs/index';
+import { NumberConverter } from 'ojs/ojconverter-nativenumber';
 import 'ojs/ojformlayout';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 export const ConvertersNativeNumberConverter = () => {
     const [currency, setCurrency] = useState<number | null>(12345);
     const [currencyRoundDuringParse, setCurrencyRoundDuringParse] = useState<number | null>(78000);

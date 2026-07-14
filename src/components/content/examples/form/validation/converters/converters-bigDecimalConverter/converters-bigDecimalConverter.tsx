@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import { BigDecimalStringConverter } from 'ojs/ojconverter-nativenumber';
 import 'oj-c/input-text';
+import { BigDecimalStringConverter } from 'ojs/ojconverter-nativenumber';
 import 'ojs/ojformlayout';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 

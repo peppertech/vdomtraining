@@ -1,5 +1,3 @@
-import { h } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "ojs/ojcheckboxset";
 import "ojs/ojdatetimepicker";
 import "ojs/ojformlayout";
@@ -9,6 +7,8 @@ import "ojs/ojoption";
 import "ojs/ojradioset";
 import "ojs/ojselectcombobox";
 import "ojs/ojselectsingle";
+import 'preact';
+import { useMemo,useState } from "preact/hooks";
 import {
   browserOptions,
   colorOptions,

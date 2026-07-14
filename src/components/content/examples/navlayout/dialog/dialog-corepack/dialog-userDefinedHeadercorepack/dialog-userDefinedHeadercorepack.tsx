@@ -1,7 +1,7 @@
-import type { ComponentProps } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/button";
 import "oj-c/dialog";
+import type { ComponentProps } from "preact";
+import { useState } from "preact/hooks";
 
 type DialogOpenedChangedEvent = Parameters<
   NonNullable<ComponentProps<"oj-c-dialog">["onopenedChanged"]>

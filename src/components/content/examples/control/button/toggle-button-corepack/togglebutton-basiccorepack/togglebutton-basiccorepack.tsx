@@ -1,7 +1,7 @@
-import { h } from "preact";
+import "oj-c/toggle-button";
+import 'preact';
 import type { ComponentProps } from "preact";
 import { useState } from "preact/hooks";
-import "oj-c/toggle-button";
 
 type ToggleButtonValueChangedEvent = Parameters<
   NonNullable<ComponentProps<"oj-c-toggle-button">["onvalueChanged"]>

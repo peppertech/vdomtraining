@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A list view displays data items as a list or a grid with highly interactive features.</p>This demo shows how to display Oracle suggestions in oj-c-list-view. The special effect shown here is a
 designated treatment for Oracle suggestions. In order to display them, you must provide suggestions

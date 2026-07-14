@@ -1,10 +1,10 @@
 // @ts-nocheck
-import { Fragment, h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/dashboardData.json';
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojpictochart';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/dashboardData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type DashboardDatum = Record<string, string | number> & {
   id: string;

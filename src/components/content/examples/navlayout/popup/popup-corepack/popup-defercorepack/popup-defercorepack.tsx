@@ -1,9 +1,9 @@
-import { h } from "preact";
-import { useEffect, useState } from "preact/hooks";
-import "oj-c/popup";
 import "oj-c/button";
-import "ojs/ojdefer";
 import "oj-c/input-text";
+import "oj-c/popup";
+import "ojs/ojdefer";
+import * as preact from 'preact';
+import { useEffect,useState } from "preact/hooks";
 
 export const PopupDefercorepack = () => {
   const [opened, setOpened] = useState(false);
@@ -24,7 +24,7 @@ export const PopupDefercorepack = () => {
         launcher="#btnGo"
         autoDismiss="none"
       >
-        {h("oj-defer", null, [
+        {preact.h("oj-defer", null, [
           <p id="popuplabel">Popup has been rendered.</p>,
           <oj-c-button onojAction={() => setOpened(false)} label="Close" />,
         ])}

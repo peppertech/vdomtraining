@@ -1,12 +1,12 @@
-// @ts-nocheck
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import "css!./demo.css";
 import 'ojs/ojlabel';
+import 'ojs/ojnavigationlist';
 import 'ojs/ojoption';
 import 'ojs/ojradioset';
-import 'ojs/ojnavigationlist';
 import 'ojs/ojswitcher';
-import "css!./demo.css";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 
 const PARAGRAPH =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum, eget vehicula nibh augue sollicitudin ligula. Sed ullamcorper cursus feugiat. Mauris tristique aliquam dictum. Nulla facilisi. Nulla ut sapien sapien. Phasellus tristique arcu id ipsum mattis id aliquam risus sollicitudin.';

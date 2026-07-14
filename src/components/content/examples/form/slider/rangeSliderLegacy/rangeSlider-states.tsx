@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "ojs/ojformlayout";
 import "ojs/ojslider";
+import 'preact';
 import {
   rangeSliderConfirmationMessages,
   rangeSliderDefinitionHints,

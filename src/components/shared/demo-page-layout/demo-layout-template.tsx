@@ -5,8 +5,8 @@
  * as shown at https://oss.oracle.com/licenses/upl/
  * @ignore
  */
-import type { ComponentChildren } from "preact";
 import "css!./demo-layout-template.css";
+import type { ComponentChildren } from "preact";
 
 type Props = Readonly<{
   componentType?: string;

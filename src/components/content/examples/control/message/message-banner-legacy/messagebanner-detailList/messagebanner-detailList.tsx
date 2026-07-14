@@ -1,13 +1,13 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import { MessageBannerItem, MessageBannerElement } from 'ojs/ojmessagebanner';
-import 'ojs/ojmessagebanner';
+import 'ojs/ojbutton';
+import { ItemContext } from 'ojs/ojcommontypes';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
-import 'ojs/ojbutton';
+import 'ojs/ojmessagebanner';
+import { MessageBannerElement,MessageBannerItem } from 'ojs/ojmessagebanner';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
-import { ItemContext } from 'ojs/ojcommontypes';
 
 type DemoMessageBannerItem = MessageBannerItem & {
     id: string;
@@ -15,7 +15,7 @@ type DemoMessageBannerItem = MessageBannerItem & {
 };
 type MessageTemplateContext = ItemContext<string, DemoMessageBannerItem>;
 
-type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type InputTextValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>>[0];
 
 export const MessagebannerDetailList = () => {
   const initialMessage: DemoMessageBannerItem = {
@@ -29,25 +29,26 @@ export const MessagebannerDetailList = () => {
       timestamp: new Date().toISOString()
   };
 
-  const [detailValue, setDetailValue] = useState<string>(undefined);
-  const [detailRawValue, setDetailRawValue] = useState<string>(undefined);
+  const [detailValue, setDetailValue] = useState<string | undefined>(undefined);
+  const [detailRawValue, setDetailRawValue] = useState<string | undefined>(undefined);
 
   const messages = useMemo(() => new MutableArrayDataProvider([initialMessage], {
       keyAttributes: 'id'
   }), []);
   const addButtonDisabled = !detailRawValue;
-  const removeButtonDisabled = !(messages.data.length && messages.data[0].detailList?.length);
+  const messageData = messages.data as DemoMessageBannerItem[];
+  const removeButtonDisabled = !(messageData.length && messageData[0].detailList?.length);
 
-  const handleDetailValueValueChanged = (event: PropertyChangedEvent<string>) => {
-    setDetailValue(event.detail.value);
+  const handleDetailValueValueChanged = (event: InputTextValueChangedEvent) => {
+    setDetailValue(event.detail.value ?? undefined);
   };
 
-  const handleDetailRawValueRawValueChanged = (event: PropertyChangedEvent<string>) => {
-    setDetailRawValue(event.detail.value);
+  const handleDetailRawValueRawValueChanged = (event: InputTextValueChangedEvent) => {
+    setDetailRawValue(event.detail.value ?? undefined);
   };
 
   const closeMessage = (event: MessageBannerElement.ojClose<string, DemoMessageBannerItem>) => {
-      let data = messages.data.slice();
+      let data = messages.data.slice() as DemoMessageBannerItem[];
       const closeMessageKey = event.detail.key;
       data = data.filter((message: DemoMessageBannerItem) => message.id !== closeMessageKey);
       messages.data = data;
@@ -55,19 +56,22 @@ export const MessagebannerDetailList = () => {
 
   const addNewError = () => {
       const detail = detailValue;
-      let data = messages.data.slice();
+      let data = messages.data.slice() as DemoMessageBannerItem[];
       if (data.length === 0) {
           data.push({
               id: 'message',
               severity: 'error',
               summary: 'Changes made to the items in the cart (1 item)',
-              detailList: [detail],
+              detailList: detail ? [detail] : [],
               timestamp: new Date().toISOString()
           });
       }
       else {
           const message = { ...data[0] };
-          message.detailList.unshift(detail);
+          message.detailList = message.detailList ?? [];
+          if (detail) {
+              message.detailList.unshift(detail);
+          }
           message.summary = `Changes made to the items in the cart (${message.detailList.length} items)`;
           data = [message];
       }
@@ -76,9 +80,10 @@ export const MessagebannerDetailList = () => {
   };
 
   const removeOldestError = () => {
-      let data = messages.data.slice();
+      let data = messages.data.slice() as DemoMessageBannerItem[];
       if (data.length !== 0) {
           const message = { ...data[0] };
+          message.detailList = message.detailList ?? [];
           message.detailList.pop();
           if (message.detailList.length === 0) {
               messages.data = [];

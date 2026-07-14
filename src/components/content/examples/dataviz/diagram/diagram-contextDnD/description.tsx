@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import 'preact';
 import * as descriptionHtmlText from 'text!./description.html';
 
 export const diagramContextDnDDescription = (

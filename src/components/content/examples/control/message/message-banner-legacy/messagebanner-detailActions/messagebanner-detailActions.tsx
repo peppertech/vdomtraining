@@ -1,9 +1,8 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import { MessageBannerItem, MessageBannerElement } from 'ojs/ojmessagebanner';
-import 'ojs/ojmessagebanner';
 import { ItemContext } from 'ojs/ojcommontypes';
+import 'ojs/ojmessagebanner';
+import { MessageBannerElement,MessageBannerItem } from 'ojs/ojmessagebanner';
+import 'preact';
+import { useMemo } from 'preact/hooks';
 import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 
 type CustomAction = {
@@ -64,8 +63,8 @@ export const MessagebannerDetailActions = () => {
       _removeMessage(event.detail.key);
   };
 
-  const handleAction = (action: CustomAction, key: string, event: MouseEvent) => {
-      event.preventDefault();
+  const handleAction = (action: CustomAction, key: string, event?: MouseEvent) => {
+      event?.preventDefault();
       if (action.link === '#learnMore') {
           // Perform action for "Learn more"
       }
@@ -78,8 +77,14 @@ export const MessagebannerDetailActions = () => {
   };
 
   const _removeMessage = (key: string) => {
-      const data = messages.data.slice();
+      const data = messages.data.slice() as DemoMessageBannerItem[];
       messages.data = data.filter((message: DemoMessageBannerItem) => message.id !== key);
+  };
+  const handleIndexedAction = (message: MessageTemplateContext, index: number) => {
+      const action = message.data.actions?.[index];
+      if (action) {
+          handleAction(action, message.key);
+      }
   };
 
   return (
@@ -90,10 +95,10 @@ export const MessagebannerDetailActions = () => {
                                 <div class="oj-flex-item"><span>{message.data.detail}</span></div>
                                 <div class="oj-flex oj-flex-item oj-sm-flex-items-initial oj-sm-padding-2x-top">
                                               <div class="oj-flex-item oj-sm-margin-5x-end">
-                                                              <a href={message.data.actions[0].link} onClick={handleAction.bind(null, message.data.actions[0], message.key)} class="oj-link-standalone oj-link-subtle-primary oj-typography-body-sm oj-typography-semi-bold">{message.data.actions[0].title}</a>
+                                                              {message.data.actions?.[0] && <a href={message.data.actions[0].link} onClick={() => handleIndexedAction(message, 0)} class="oj-link-standalone oj-link-subtle-primary oj-typography-body-sm oj-typography-semi-bold">{message.data.actions[0].title}</a>}
                                                           </div>
                                               <div class="oj-flex-item oj-sm-margin-5x-end">
-                                                              <a href={message.data.actions[1].link} onClick={handleAction.bind(null, message.data.actions[1], message.key)} class="oj-link-standalone oj-link-subtle-primary oj-typography-body-sm oj-typography-semi-bold">{message.data.actions[1].title}</a>
+                                                              {message.data.actions?.[1] && <a href={message.data.actions[1].link} onClick={() => handleIndexedAction(message, 1)} class="oj-link-standalone oj-link-subtle-primary oj-typography-body-sm oj-typography-semi-bold">{message.data.actions[1].title}</a>}
                                                           </div>
                                           </div>
                             </>
@@ -102,7 +107,7 @@ export const MessagebannerDetailActions = () => {
                             <>
                                 <div class="oj-flex-item">
                                               <span>{message.data.detail}</span>
-                                              <a href={message.data.detailLink.link} class="oj-link-embedded oj-link-subtle-secondary">{message.data.detailLink.title}</a>
+                                              {message.data.detailLink && <a href={message.data.detailLink.link} class="oj-link-embedded oj-link-subtle-secondary">{message.data.detailLink.title}</a>}
                                           </div>
                             </>
                           )} />

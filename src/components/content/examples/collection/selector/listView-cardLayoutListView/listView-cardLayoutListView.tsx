@@ -1,15 +1,15 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
-import 'ojs/ojactioncard';
 import 'jet-composites/demo-profile-card-layout/loader';
-import 'ojs/ojlistview';
-import 'ojs/ojbutton';
-import 'ojs/ojswitch';
+import 'ojs/ojactioncard';
 import 'ojs/ojavatar';
+import 'ojs/ojbutton';
 import 'ojs/ojlistitemlayout';
+import 'ojs/ojlistview';
 import 'ojs/ojoption';
+import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
+import 'ojs/ojswitch';
+import 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface Data {
     id: number;

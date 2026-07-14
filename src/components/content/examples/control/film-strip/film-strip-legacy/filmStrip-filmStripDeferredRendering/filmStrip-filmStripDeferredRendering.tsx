@@ -1,10 +1,10 @@
-import { h } from 'preact';
-import { useRef } from 'preact/hooks';
-import type { FilmStripElement } from 'ojs/ojfilmstrip';
+import 'css!./demo.css';
 import 'ojs/ojdefer';
 import 'ojs/ojfilmstrip';
+import type { FilmStripElement } from 'ojs/ojfilmstrip';
 import 'ojs/ojpagingcontrol';
-import 'css!./demo.css';
+import * as preact from 'preact';
+import { useRef } from 'preact/hooks';
 import {
   filmStripDemoItems,
   getItemInitialDisplay,
@@ -23,7 +23,7 @@ export const FilmStripFilmStripDeferredRendering = () => {
         class="oj-panel filmstrip-deferred-rendering-item oj-bg-info-30 oj-sm-margin-2x oj-helper-text-align-center oj-typography-bold oj-text-color-primary"
         style={{ display: getItemInitialDisplay(index, 1) }}
       >
-        {h('oj-defer', null, <span>{item.name}</span>)}
+        {preact.h('oj-defer', null, <span>{item.name}</span>)}
       </div>
     );
   };

@@ -1,19 +1,19 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { MessagetoastAddingButtonLinkAndMore } from "./messagetoast-addingButtonLinkAndMore/messagetoast-addingButtonLinkAndMore";
-import { messagetoastAddingButtonLinkAndMoreDescription } from "./messagetoast-addingButtonLinkAndMore/description";
-import { messagetoastAddingButtonLinkAndMoreRecipe } from "./messagetoast-addingButtonLinkAndMore/recipe";
-import { MessagetoastAccessibilityAndUsability } from "./messagetoast-accessibilityAndUsability/messagetoast-accessibilityAndUsability";
 import { messagetoastAccessibilityAndUsabilityDescription } from "./messagetoast-accessibilityAndUsability/description";
+import { MessagetoastAccessibilityAndUsability } from "./messagetoast-accessibilityAndUsability/messagetoast-accessibilityAndUsability";
 import { messagetoastAccessibilityAndUsabilityRecipe } from "./messagetoast-accessibilityAndUsability/recipe";
-import { MessagetoastAutoTimeout } from "./messagetoast-autoTimeout/messagetoast-autoTimeout";
+import { messagetoastAddingButtonLinkAndMoreDescription } from "./messagetoast-addingButtonLinkAndMore/description";
+import { MessagetoastAddingButtonLinkAndMore } from "./messagetoast-addingButtonLinkAndMore/messagetoast-addingButtonLinkAndMore";
+import { messagetoastAddingButtonLinkAndMoreRecipe } from "./messagetoast-addingButtonLinkAndMore/recipe";
 import { messagetoastAutoTimeoutDescription } from "./messagetoast-autoTimeout/description";
+import { MessagetoastAutoTimeout } from "./messagetoast-autoTimeout/messagetoast-autoTimeout";
 import { messagetoastAutoTimeoutRecipe } from "./messagetoast-autoTimeout/recipe";
-import { MessagetoastNotification } from "./messagetoast-notification/messagetoast-notification";
 import { messagetoastNotificationDescription } from "./messagetoast-notification/description";
+import { MessagetoastNotification } from "./messagetoast-notification/messagetoast-notification";
 import { messagetoastNotificationRecipe } from "./messagetoast-notification/recipe";
-import { MessagetoastPageNotification } from "./messagetoast-pageNotification/messagetoast-pageNotification";
 import { messagetoastPageNotificationDescription } from "./messagetoast-pageNotification/description";
+import { MessagetoastPageNotification } from "./messagetoast-pageNotification/messagetoast-pageNotification";
 import { messagetoastPageNotificationRecipe } from "./messagetoast-pageNotification/recipe";
 
 const messageToastLegacyItems = [

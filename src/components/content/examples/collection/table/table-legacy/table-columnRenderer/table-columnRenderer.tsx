@@ -1,13 +1,13 @@
-import { h } from 'preact';
+import 'css!./demo.css';
+import 'ojs/ojgauge';
+import 'ojs/ojtable';
+import type { ojTable } from 'ojs/ojtable';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import type { ojTable } from 'ojs/ojtable';
-import 'ojs/ojtable';
-import 'ojs/ojgauge';
 import * as deptDataText from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
 import * as empDataText from 'text!../../../data/cookbook/dataCollections/table/shared/employeeData.json';
-import 'css!./demo.css';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface EmployeeData {
   EmployeeId: number;

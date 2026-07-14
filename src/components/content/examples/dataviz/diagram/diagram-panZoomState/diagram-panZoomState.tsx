@@ -1,12 +1,12 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as layout from '../diagram-layouts';
+import 'ojs/ojbutton';
 import 'ojs/ojdiagram';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
-import 'ojs/ojbutton';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as layout from '../diagram-layouts';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type DiagramNode = {
     id: string;
 };

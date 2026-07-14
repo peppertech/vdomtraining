@@ -1,18 +1,18 @@
-import { h } from "preact";
-import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import "css!./demo.css";
-import { ButtonsPushButtoncorepack } from "./buttons-pushButtoncorepack/buttons-pushButtoncorepack";
-import { buttonsPushButtoncorepackDescription } from "./buttons-pushButtoncorepack/description";
-import { buttonsPushButtoncorepackRecipe } from "./buttons-pushButtoncorepack/recipe";
+import 'preact';
+import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import { ButtonsChromingcorepack } from "./buttons-chromingcorepack/buttons-chromingcorepack";
 import { buttonsChromingcorepackDescription } from "./buttons-chromingcorepack/description";
 import { buttonsChromingcorepackRecipe } from "./buttons-chromingcorepack/recipe";
-import { ButtonsSizescorepack } from "./buttons-sizescorepack/buttons-sizescorepack";
-import { buttonsSizescorepackDescription } from "./buttons-sizescorepack/description";
-import { buttonsSizescorepackRecipe } from "./buttons-sizescorepack/recipe";
 import { ButtonsEventscorepack } from "./buttons-eventscorepack/buttons-eventscorepack";
 import { buttonsEventscorepackDescription } from "./buttons-eventscorepack/description";
 import { buttonsEventscorepackRecipe } from "./buttons-eventscorepack/recipe";
+import { ButtonsPushButtoncorepack } from "./buttons-pushButtoncorepack/buttons-pushButtoncorepack";
+import { buttonsPushButtoncorepackDescription } from "./buttons-pushButtoncorepack/description";
+import { buttonsPushButtoncorepackRecipe } from "./buttons-pushButtoncorepack/recipe";
+import { ButtonsSizescorepack } from "./buttons-sizescorepack/buttons-sizescorepack";
+import { buttonsSizescorepackDescription } from "./buttons-sizescorepack/description";
+import { buttonsSizescorepackRecipe } from "./buttons-sizescorepack/recipe";
 
 const buttonCorePackItems = [
   {

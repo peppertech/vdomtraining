@@ -1,20 +1,21 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import * as preact from 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import CheckBoxSet from "./checkBoxSet/index";
-import CheckBoxCorePack from "./checkBoxCorePack/index";
-import CheckBoxSetCorePack  from "./checkBoxSetCorePack/index";
-import  RichCheckBoxsetCorePack  from "./richCheckBoxsetCorePack/index";
 import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
 } from "../form-breadcrumb";
+import CheckBoxCorePack from "./checkBoxCorePack/index";
+import CheckBoxSet from "./checkBoxSet/index";
+import CheckBoxSetCorePack from "./checkBoxSetCorePack/index";
+import RichCheckBoxsetCorePack from "./richCheckBoxsetCorePack/index";
 
 type CheckboxComponent = {
   id: number;
@@ -22,7 +23,7 @@ type CheckboxComponent = {
   name: string;
   image: string;
   isCorePack?: boolean;
-  render: () => h.JSX.Element;
+  render: () => preact.JSX.Element;
 };
 
 const checkboxComponents: CheckboxComponent[] = [

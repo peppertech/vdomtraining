@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>An Action Card is an actionable container rendering related information</p><p>
   An action card is itself actionable, and responds to the user's click or touch. Child elements of an

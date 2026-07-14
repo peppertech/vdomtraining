@@ -1,17 +1,16 @@
-// @ts-nocheck
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as stockDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/stockTwoYearsData.json';
+import 'ojs/ojchart';
+import { ojChart } from 'ojs/ojchart';
+import 'ojs/ojcheckboxset';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import * as dowJonesDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/stockDowJonesData.json';
 import * as nasdaqDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/stockNASDAQData.json';
 import * as sp500DataText from 'text!../data/cookbook/dataVisualizations/chart/resources/stockSP500Data.json';
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import { ojChart } from 'ojs/ojchart';
-import 'ojs/ojchart';
-import 'ojs/ojcheckboxset';
+import * as stockDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/stockTwoYearsData.json';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type StockSeriesType = 'auto' | 'area' | 'bar' | 'candlestick' | 'line' | 'lineWithArea';
 type CompareValue = 'dj' | 'nasdaq' | 'sandp';
@@ -29,8 +28,8 @@ type StockChartItem = {
 type ReferenceObject = {
   name: string;
   color: string;
-  type: string;
-  items: number[];
+  type: 'line';
+  items: Array<{ value: number }>;
 };
 
 const twoYearData = JSON.parse(stockDataText as string) as StockChartItem[];
@@ -79,7 +78,7 @@ const buildComparisonData = (startTime: number, compareList: CompareValue[]) => 
     const startReference = source.items[startIndex];
     return {
       ...source,
-      items: source.items.map((item) => (item - startReference) / startReference)
+      items: source.items.map((item) => ({ value: (item.value - startReference.value) / startReference.value }))
     };
   });
 
@@ -112,7 +111,7 @@ export const StockChartComparison = () => {
   );
   const yAxisConverter = useMemo(() => new IntlNumberConverter({ style: 'percent' }), []);
 
-  const tooltipFunction = (dataContext: DatavizTooltipContext<DatavizChartDatum>) => {
+  const tooltipFunction: NonNullable<NonNullable<ComponentProps<'oj-chart'>['tooltip']>['renderer']> = (dataContext) => {
     (dataContext.parentElement as HTMLElement).style.borderColor = '#000000';
 
     const tooltipElem = document.createElement('div');
@@ -166,7 +165,7 @@ export const StockChartComparison = () => {
 
     const groupIndex = findClosestGroup(transformedStockData, Number(dataContext.group));
     referenceObjects.forEach((referenceObject) => {
-      appendRow(referenceObject.name, referenceObject.color, referenceObject.items[groupIndex]);
+      appendRow(referenceObject.name, referenceObject.color, referenceObject.items[groupIndex]?.value ?? 0);
     });
 
     return { insert: tooltipElem };
@@ -201,14 +200,13 @@ export const StockChartComparison = () => {
   const seriesTemplateRenderer = () => <oj-chart-series type={seriesTypeValue} />;
 
   const chartProps: Partial<ComponentProps<'oj-chart'>> = {
-    'legend.rendered': 'off',
-    'tooltip.renderer': tooltipFunction,
+    legend: { rendered: 'off' },
+    tooltip: { renderer: tooltipFunction },
     'dataCursor': 'on',
     'zoomAndScroll': 'live',
     'hideAndShowBehavior': 'withRescale',
-    'xAxis.viewportMin': viewportMinValue,
-    'yAxis.referenceObjects': referenceObjects,
-    'yAxis.tickLabel.converter': yAxisConverter
+    xAxis: { viewportMin: viewportMinValue },
+    yAxis: { referenceObjects, tickLabel: { converter: yAxisConverter } }
   };
 
   return (

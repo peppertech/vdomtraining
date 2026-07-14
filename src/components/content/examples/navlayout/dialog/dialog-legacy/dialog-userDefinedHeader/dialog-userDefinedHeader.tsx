@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useRef } from 'preact/hooks';
-import { ojDialog } from 'ojs/ojdialog';
-import 'ojs/ojdialog';
 import 'ojs/ojbutton';
+import 'ojs/ojdialog';
+import { ojDialog } from 'ojs/ojdialog';
+import 'preact';
+import { useRef } from 'preact/hooks';
 
 export const DialogUserDefinedHeader = () => {
   const dialogRef = useRef<ojDialog | null>(null);

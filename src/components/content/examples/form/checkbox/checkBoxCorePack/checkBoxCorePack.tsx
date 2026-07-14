@@ -5,7 +5,8 @@
  * as shown at https://oss.oracle.com/licenses/upl/
  * @ignore
  */
-import { h, type ComponentProps } from "preact";
+import 'preact';
+import { type ComponentProps } from 'preact';
 
 // CorePack component import
 import "oj-c/checkbox";

@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 type DataLabelPosition = 'auto' | 'outsideSlice' | 'center' | 'none';

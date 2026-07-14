@@ -1,7 +1,8 @@
-import { h, type ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
 import 'oj-c/input-text';
 import 'ojs/ojformlayout';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
 type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
 type InputTextValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>>[0];
 export const HelpHintsMessagingHelpTitle = () => {

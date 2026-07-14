@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ol>
     <li>Create a template element with the slot attribute set to <a href="jsdocs/oj-c.MeterCircle.html#centerTemplate">

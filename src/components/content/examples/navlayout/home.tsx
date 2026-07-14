@@ -1,27 +1,28 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
 import {
   CatalogBreadcrumb,
   type CatalogBreadcrumbItem,
   formatCorePackLabel,
 } from "../../../shared/catalog-breadcrumb";
 import { useExampleRoute } from "../example-route-context";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 import AccordionHome from "./accordion/home";
 import ActionCardHome from "./action-card/home";
+import CollapsibleHome from "./collapsible/home";
 import ConveyorBeltHome from "./conveyor-belt/home";
 import DialogHome from "./dialog/home";
-import PopupHome from "./popup/home";
-import TabBarHome from "./tabbar/home";
 import DrawerHome from "./drawer/home";
 import NavigationListLegacyRecipePage from "./navigation-list/navigation-list-legacy/index";
-import CollapsibleHome from "./collapsible/home";
 import PanelLegacyRecipePage from "./panel/index";
+import PopupHome from "./popup/home";
+import TabBarHome from "./tabbar/home";
 
 type NavLayoutComponent = {
   id: number;

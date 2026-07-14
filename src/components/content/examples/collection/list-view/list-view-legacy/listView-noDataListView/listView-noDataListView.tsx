@@ -1,10 +1,10 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import 'ojs/ojbutton';
 import { ojButton } from 'ojs/ojbutton';
 import 'ojs/ojlistview';
-import 'ojs/ojbutton';
 import { ojListView } from 'ojs/ojlistview';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface Data {
     id: string;

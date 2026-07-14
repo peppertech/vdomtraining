@@ -1,27 +1,27 @@
-import { h } from "preact";
-import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import "css!./demo.css";
+import 'preact';
+import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import { ButtonsetoneBasic } from "./buttonsetone-basic/buttonsetone-basic";
 import { buttonsetoneBasicDescription } from "./buttonsetone-basic/description";
 import { buttonsetoneBasicRecipe } from "./buttonsetone-basic/recipe";
 import { ButtonsetoneButtonRadios } from "./buttonsetone-buttonRadios/buttonsetone-buttonRadios";
 import { buttonsetoneButtonRadiosDescription } from "./buttonsetone-buttonRadios/description";
 import { buttonsetoneButtonRadiosRecipe } from "./buttonsetone-buttonRadios/recipe";
-import { ButtonsetoneChroming } from "./buttonsetone-chroming/buttonsetone-chroming";
-import { buttonsetoneChromingDescription } from "./buttonsetone-chroming/description";
-import { buttonsetoneChromingRecipe } from "./buttonsetone-chroming/recipe";
-import { ButtonsetoneSizes } from "./buttonsetone-sizes/buttonsetone-sizes";
-import { buttonsetoneSizesDescription } from "./buttonsetone-sizes/description";
-import { buttonsetoneSizesRecipe } from "./buttonsetone-sizes/recipe";
-import { ButtonsetoneButtonsetWidth } from "./buttonsetone-buttonsetWidth/buttonsetone-buttonsetWidth";
-import { buttonsetoneButtonsetWidthDescription } from "./buttonsetone-buttonsetWidth/description";
-import { buttonsetoneButtonsetWidthRecipe } from "./buttonsetone-buttonsetWidth/recipe";
 import { ButtonsetoneButtonResponsive } from "./buttonsetone-buttonResponsive/buttonsetone-buttonResponsive";
 import { buttonsetoneButtonResponsiveDescription } from "./buttonsetone-buttonResponsive/description";
 import { buttonsetoneButtonResponsiveRecipe } from "./buttonsetone-buttonResponsive/recipe";
+import { ButtonsetoneButtonsetWidth } from "./buttonsetone-buttonsetWidth/buttonsetone-buttonsetWidth";
+import { buttonsetoneButtonsetWidthDescription } from "./buttonsetone-buttonsetWidth/description";
+import { buttonsetoneButtonsetWidthRecipe } from "./buttonsetone-buttonsetWidth/recipe";
+import { ButtonsetoneChroming } from "./buttonsetone-chroming/buttonsetone-chroming";
+import { buttonsetoneChromingDescription } from "./buttonsetone-chroming/description";
+import { buttonsetoneChromingRecipe } from "./buttonsetone-chroming/recipe";
 import { ButtonsetoneLabelledButtonset } from "./buttonsetone-labelledButtonset/buttonsetone-labelledButtonset";
 import { buttonsetoneLabelledButtonsetDescription } from "./buttonsetone-labelledButtonset/description";
 import { buttonsetoneLabelledButtonsetRecipe } from "./buttonsetone-labelledButtonset/recipe";
+import { ButtonsetoneSizes } from "./buttonsetone-sizes/buttonsetone-sizes";
+import { buttonsetoneSizesDescription } from "./buttonsetone-sizes/description";
+import { buttonsetoneSizesRecipe } from "./buttonsetone-sizes/recipe";
 
 const buttonsetOneItems = [
   {

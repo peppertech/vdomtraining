@@ -1,15 +1,15 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import Context = require('ojs/ojcontext');
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import "css!./demo.css";
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojlabel';
 import 'ojs/ojlabelvalue';
 import 'ojs/ojwaterfalllayout';
-import "css!./demo.css";
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useEffect,useMemo,useRef,useState } from 'preact/hooks';
+import Context = require('ojs/ojcontext');
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type InputNumberValue = ComponentProps<'oj-input-number'>['value'];
 type InputNumberValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0];

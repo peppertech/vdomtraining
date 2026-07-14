@@ -1,10 +1,11 @@
-import { h, type ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import "../../../../../jet-composites/demo-profile-card-layout/loader";
 import "css!./demo.css";
 import "oj-c/card-view";
 import "oj-c/drag-handle";
+import * as preact from 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from "preact/hooks";
+import "../../../../../jet-composites/demo-profile-card-layout/loader";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 interface EmployeeData {
   id: number;
@@ -164,7 +165,7 @@ export const CardViewReordercorepack = () => {
       <div class="oj-flex oj-sm-justify-content-center">
         <oj-c-drag-handle />
       </div>
-      {h("demo-profile-card-layout", {
+      {preact.h("demo-profile-card-layout", {
         name: context.data.name,
         workTitle: context.data.title,
         initials: context.data.initials,

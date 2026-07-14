@@ -1,11 +1,12 @@
-import { h, type ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import { KeySetImpl, type ImmutableKeySet } from "ojs/ojkeyset";
-import "../../../../../jet-composites/demo-profile-card-layout/loader";
 import "oj-c/card-view";
 import "oj-c/selection-card";
+import { KeySetImpl,type ImmutableKeySet } from "ojs/ojkeyset";
 import "ojs/ojswitch";
+import * as preact from 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from "preact/hooks";
+import "../../../../../jet-composites/demo-profile-card-layout/loader";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 interface EmployeeData {
   id: number;
@@ -102,7 +103,7 @@ export const CardViewSingleSelectioncorepack = () => {
   const renderCard = (context: CardItemContext) => (
     <oj-c-selection-card selected={selectedItems.has(context.item.metadata.key)}>
       <div class="oj-panel">
-        {h("demo-profile-card-layout", {
+        {preact.h("demo-profile-card-layout", {
           name: context.data.name,
           workTitle: context.data.title,
           initials: context.data.initials,

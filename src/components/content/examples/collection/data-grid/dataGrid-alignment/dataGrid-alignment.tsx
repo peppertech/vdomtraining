@@ -1,20 +1,20 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import "css!./demo.css";
 import type { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import type {
-    DataGridProvider,
-    FetchByOffsetGridParameters,
-    FetchByOffsetGridResults,
-    GridBodyItem,
-    GridHeaderItem,
-    GridItem
-} from 'ojs/ojdatagridprovider';
 import 'ojs/ojdatagrid';
+import type {
+  DataGridProvider,
+  FetchByOffsetGridParameters,
+  FetchByOffsetGridResults,
+  GridBodyItem,
+  GridHeaderItem,
+  GridItem
+} from 'ojs/ojdatagridprovider';
 import 'ojs/ojformlayout';
 import 'ojs/ojselectsingle';
-import "css!./demo.css";
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ValueChangedEvent<TValue> = JetElementCustomEvent<TValue>;
 type RegionKey = 'cell' | 'columnHeader' | 'rowHeader' | 'columnEndHeader' | 'rowEndHeader' | 'columnHeaderLabel' | 'rowHeaderLabel' | 'columnEndHeaderLabel' | 'rowEndHeaderLabel';

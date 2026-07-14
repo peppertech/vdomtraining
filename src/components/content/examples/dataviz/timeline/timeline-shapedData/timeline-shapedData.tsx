@@ -1,9 +1,8 @@
-// @ts-nocheck
-import { h } from 'preact';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as shapedSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/shapedData/seriesData.json';
-import 'ojs/ojtimeline';
 import 'css!./demo.css';
+import 'ojs/ojtimeline';
+import 'preact';
+import * as shapedSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/shapedData/seriesData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TimelineShapedItem = {
   seriesId: string;

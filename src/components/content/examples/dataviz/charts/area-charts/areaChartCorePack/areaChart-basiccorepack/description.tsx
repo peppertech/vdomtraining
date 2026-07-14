@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>An area chart displays information graphically using lines and filled areas, making relationships among the data easier to understand.</p><p>This demo shows the JET Area Chart (<a target="_blank" href="jsdocs/oj-c.AreaChart.html">oj-c-area-chart</a>) populated with an <a target="_blank" href="jsdocs/MutableArrayDataProvider.html">MutableArrayDataProvider</a> and the <a target="_blank" href="jsdocs/oj-c.AreaChart.html#itemTemplate">itemTemplate</a>. You can increase the performance of this component by using shaped data. See the <a href="#" onclick="demoGoLink(event, 'areaChartCorepack', 'shapedData'); return false;">Shaped Data demo</a> for details.</p>
 <ul>

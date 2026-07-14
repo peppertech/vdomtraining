@@ -1,10 +1,11 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
-import AsyncDateRestrictionValidator = require('ojs/ojasyncvalidator-daterestriction');
 import 'ojs/ojdatetimepicker';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import AsyncDateRestrictionValidator = require('ojs/ojasyncvalidator-daterestriction');
 
 type InputTextChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>

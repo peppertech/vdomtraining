@@ -1,7 +1,8 @@
-import { ComponentProps } from "preact";
+import { IntlConverterUtils } from "ojs/ojconverterutils-i18n";
+import 'preact';
+import { ComponentProps } from 'preact';
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import Message = require("ojs/ojmessaging");
-import { IntlConverterUtils } from "ojs/ojconverterutils-i18n";
 
 export type InputTextProps = ComponentProps<"oj-input-text">;
 

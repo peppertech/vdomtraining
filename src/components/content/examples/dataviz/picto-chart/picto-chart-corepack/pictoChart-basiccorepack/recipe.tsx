@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ul>
     <li>Create an oj-c-picto-chart element.</li>

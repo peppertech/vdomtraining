@@ -1,10 +1,11 @@
-import { h, type ComponentProps } from 'preact';
-import { useState } from "preact/hooks";
-import AsyncRegExpValidator = require("ojs/ojasyncvalidator-regexp");
-import AsyncNumberRangeValidator = require("ojs/ojasyncvalidator-numberrange");
 import { IntlNumberConverter } from "ojs/ojconverter-number";
 import "ojs/ojinputnumber";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useState } from "preact/hooks";
 import { type InputNumberValueChangedEvent } from "./inputNumber-shared";
+import AsyncRegExpValidator = require("ojs/ojasyncvalidator-regexp");
+import AsyncNumberRangeValidator = require("ojs/ojasyncvalidator-numberrange");
 
 const regExpTwoDigitValidator = new AsyncRegExpValidator({
   pattern: "[0-9]{2}",

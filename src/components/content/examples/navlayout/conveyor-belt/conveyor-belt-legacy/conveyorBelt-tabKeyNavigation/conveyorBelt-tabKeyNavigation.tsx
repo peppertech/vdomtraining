@@ -1,5 +1,5 @@
-import { h } from 'preact';
 import 'ojs/ojconveyorbelt';
+import 'preact';
 
 export const ConveyorBeltTabKeyNavigation = () => {
   return (

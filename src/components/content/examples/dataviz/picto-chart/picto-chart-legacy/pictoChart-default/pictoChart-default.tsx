@@ -1,9 +1,8 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/defaultData.json';
 import 'ojs/ojpictochart';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/defaultData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 export const PictoChartDefault = () => {
   const data = JSON.parse(chartData) as DatavizChartDatum[];

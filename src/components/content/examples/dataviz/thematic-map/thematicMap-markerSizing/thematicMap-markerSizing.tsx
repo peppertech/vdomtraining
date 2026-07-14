@@ -1,12 +1,12 @@
-import { h } from 'preact';
+import 'css!./demo.css';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojthematicmap';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/usageData.json';
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import 'css!./demo.css';
-import 'ojs/ojthematicmap';
+import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ThematicMapProvider = ComponentProps<'oj-thematic-map'>['mapProvider'];
 

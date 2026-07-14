@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import type { ComponentProps, JSX } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { JetElementCustomEvent } from 'ojs/index';
-import { getColorValuesFromPalette } from 'ojs/ojpalette';
-import { getColorValue } from 'ojs/ojpaletteutils';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
+import { getColorValuesFromPalette } from 'ojs/ojpalette';
+import { getColorValue } from 'ojs/ojpaletteutils';
 import 'ojs/ojsunburst';
+import 'preact';
+import type { ComponentProps,JSX } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import '../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type NumberInputValue = ComponentProps<'oj-input-number'>['value'];
 type SelectionMode = NonNullable<ComponentProps<'oj-sunburst'>['selectionMode']>;

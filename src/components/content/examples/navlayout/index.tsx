@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import NavLayoutHome from "./home";
 
 const NavLayout = () => {

@@ -1,4 +1,5 @@
-import { ComponentProps } from "preact";
+import 'preact';
+import { ComponentProps } from 'preact';
 
 export type RichCheckboxsetProps = ComponentProps<"oj-c-rich-checkboxset">;
 export type RadiosetProps = ComponentProps<"oj-c-radioset">;

@@ -1,10 +1,10 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojcheckboxset";
 import "ojs/ojformlayout";
-import "ojs/ojmenu";
 import "ojs/ojlabel";
 import "ojs/ojlabelvalue";
+import "ojs/ojmenu";
+import 'preact';
+import { useState } from "preact/hooks";
 import {
   renderCheckboxOptions,
   shapeOptions,

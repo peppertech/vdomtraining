@@ -1,12 +1,12 @@
-import { useMemo } from "preact/hooks";
+import "oj-c/message-toast";
 import type {
+  CMessageToastElement,
   MessageToastItem,
   MessageToastTemplateContext,
-  MessageToastTemplateValueParameters,
-  CMessageToastElement
+  MessageToastTemplateValueParameters
 } from "oj-c/message-toast";
+import { useMemo } from "preact/hooks";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import "oj-c/message-toast";
 
 type CustomAction = {
   link?: string;

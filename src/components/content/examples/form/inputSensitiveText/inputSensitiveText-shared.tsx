@@ -1,4 +1,5 @@
-import { ComponentProps } from "preact";
+import 'preact';
+import { ComponentProps } from 'preact';
 
 export type InputSensitiveTextProps = ComponentProps<"oj-c-input-sensitive-text">;
 export type InputSensitiveTextValueChangedEvent = Parameters<

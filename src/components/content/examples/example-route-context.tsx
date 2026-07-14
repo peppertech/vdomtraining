@@ -1,6 +1,7 @@
-import { createContext, type ComponentChildren } from "preact";
-import { useContext } from "preact/hooks";
+import 'preact';
+import { createContext,type ComponentChildren } from 'preact';
 import { useLocation } from "preact-iso";
+import { useContext } from "preact/hooks";
 
 type ExampleRouteContextValue = {
   category: string;

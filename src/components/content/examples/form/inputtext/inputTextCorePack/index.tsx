@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import InputTextCorePackClearIconExample from "./inputTextCorePack-clearIcon";
 import {
@@ -12,8 +12,8 @@ import InputTextCorePackPrefixSuffixExample from "./inputTextCorePack-prefixSuff
 import InputTextCorePackRawValueExample from "./inputTextCorePack-rawValue";
 import InputTextCorePackStartEndSlotsExample from "./inputTextCorePack-startEndSlots";
 import InputTextCorePackStatesExample from "./inputTextCorePack-states";
-import InputTextCorePackTextAlignExample from "./inputTextCorePack-textAlign";
 import InputTextCorePackTextExample from "./inputTextCorePack-text";
+import InputTextCorePackTextAlignExample from "./inputTextCorePack-textAlign";
 import InputTextCorePackVirtualKeyboardExample from "./inputTextCorePack-virtualKeyboard";
 import InputTextCorePackWidthExample from "./inputTextCorePack-width";
 
@@ -22,7 +22,7 @@ const inputTextCorePackItems: {
   name: string;
   description: (typeof inputTextCorePackDocs)[InputTextCorePackDemoId]["description"];
   recipe: (typeof inputTextCorePackDocs)[InputTextCorePackDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "states",

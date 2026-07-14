@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import ControlHome from "./home";
 
 const Control = () => {

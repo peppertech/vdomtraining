@@ -1,16 +1,14 @@
-// @ts-nocheck
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as stockDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/stockTwoYearsData.json';
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojinputtext';
+import { useMemo,useState } from 'preact/hooks';
+import * as stockDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/stockTwoYearsData.json';
 import '../../../../../../jet-composites/demo-input-json/loader';
 import '../../../../../../jet-composites/demo-select-enum/loader';
 import '../../../../../../jet-composites/demo-tabs/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type CurrentTab = 'stock' | 'series' | 'text' | 'plotArea';
 type TickStyle = 'solid' | 'dashed' | 'dotted';
@@ -124,7 +122,7 @@ export const StockChartStyles = () => {
     () => ({
       title: y2Title,
       titleStyle: y2Style,
-      position: 'start',
+      position: 'start' as const,
       majorTick: {
         lineColor: y2MajorTickColor,
         lineWidth: y2MajorTickWidth,

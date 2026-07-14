@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ol>
   <li>Set <code class="prettyprint">variant=&quot;horizontal-rule&quot;</code> on <code class="prettyprint">oj-c-collapsible</code>.</li>

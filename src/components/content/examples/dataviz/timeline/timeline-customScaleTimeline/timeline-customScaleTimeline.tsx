@@ -1,11 +1,11 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
-import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/customScaleTimeline/seriesCustomData.json';
-import 'ojs/ojtimeline';
 import 'css!./demo.css';
+import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
+import 'ojs/ojtimeline';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo } from 'preact/hooks';
+import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/customScaleTimeline/seriesCustomData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type TimelineCustomScaleItem = {
     id: string;
     title: string;
@@ -13,6 +13,7 @@ type TimelineCustomScaleItem = {
     description: string;
     series: string;
 };
+type TimelineScale = Exclude<NonNullable<NonNullable<ComponentProps<'oj-timeline'>['minorAxis']>['scale']>, string>;
 const customScaleItems = JSON.parse(timelineSeriesDataText) as TimelineCustomScaleItem[];
 const majorAxis = { scale: 'weeks' };
 const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (<oj-timeline-series label={series.id} emptyText="No Data."/>);
@@ -26,9 +27,9 @@ export const TimelineCustomScaleTimeline = () => {
         hour12: true
     }), []);
     const hour = 60 * 60 * 1000;
-    const createHourScale = (hours: number) => ({
+    const createHourScale = (hours: number): TimelineScale => ({
         name: `${hours}hr`,
-        formatter: (date: string) => hourConverter.format(date),
+        formatter: (date: string) => hourConverter.format(date) ?? '',
         getNextDate: (date: string) => new Date(new Date(date).getTime() + hours * hour).toISOString(),
         getPreviousDate: (date: string) => {
             const current = new Date(date);
@@ -38,7 +39,7 @@ export const TimelineCustomScaleTimeline = () => {
     });
     const custom3HrScale = useMemo(() => createHourScale(3), [hourConverter]);
     const custom6HrScale = useMemo(() => createHourScale(6), [hourConverter]);
-    const minorAxis = useMemo(() => ({
+    const minorAxis = useMemo<NonNullable<ComponentProps<'oj-timeline'>['minorAxis']>>(() => ({
         scale: custom3HrScale,
         zoomOrder: ['days', custom6HrScale, custom3HrScale, 'hours']
     }), [custom3HrScale, custom6HrScale]);

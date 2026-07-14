@@ -1,8 +1,8 @@
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojbutton';
 import 'ojs/ojchart';
 import 'ojs/ojtoolbar';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ScatterChartDatum = {
   id: string;

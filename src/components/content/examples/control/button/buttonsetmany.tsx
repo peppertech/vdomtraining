@@ -1,9 +1,9 @@
-import { h } from "preact";
 import "ojs/ojbutton";
+import 'preact';
 //import "ojs/ojbuttonset";
-import "ojs/ojoption";
 import "ojs/ojlabel";
 import "ojs/ojlabelvalue";
+import "ojs/ojoption";
 
 const ButtonSetMany = () => {
   return (

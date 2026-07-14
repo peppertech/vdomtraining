@@ -1,10 +1,11 @@
-import { h, type ComponentProps } from "preact";
-import { useState, useCallback, useMemo } from "preact/hooks";
-import "ojs/ojcolorpalette";
 import "ojs/ojbutton";
-import "ojs/ojoption";
+import "ojs/ojcolorpalette";
 import "ojs/ojlabel";
+import "ojs/ojoption";
 import "ojs/ojswitch";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 import Color = require("ojs/ojcolor");
 
 type SwatchSizeEvent = Parameters<

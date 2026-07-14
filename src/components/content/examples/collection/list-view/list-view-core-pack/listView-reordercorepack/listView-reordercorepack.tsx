@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
-import type { CListViewElement } from 'oj-c/list-view';
 import 'css!./demo.css';
 import 'oj-c/avatar';
 import 'oj-c/drag-handle';
 import 'oj-c/list-item-layout';
 import 'oj-c/list-view';
+import type { CListViewElement } from 'oj-c/list-view';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 
 type EmployeeData = {
   id: number;

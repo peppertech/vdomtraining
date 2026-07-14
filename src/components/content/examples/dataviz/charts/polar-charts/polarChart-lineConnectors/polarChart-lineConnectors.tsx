@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import 'css!./demo.css';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as boatSpeedDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/boatSpeedData.json';
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as boatSpeedDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/boatSpeedData.json';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
-import 'css!./demo.css';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type LineType = 'straight' | 'curved' | 'stepped' | 'segmented' | 'none';
 type BoatSpeedItem = {

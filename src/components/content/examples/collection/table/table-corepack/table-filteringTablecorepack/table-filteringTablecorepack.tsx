@@ -1,14 +1,14 @@
-import { h } from 'preact';
+import { FilterFactory } from 'ojs/ojdataprovider';
+import 'ojs/ojformlayout';
+import 'ojs/ojinputtext';
+import 'ojs/ojtable';
+import { ojTable } from 'ojs/ojtable';
+import 'preact';
 import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect,useMemo,useState } from 'preact/hooks';
+import * as deptDataText from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import ListDataProviderView = require('ojs/ojlistdataproviderview');
-import { ojTable } from 'ojs/ojtable';
-import * as deptDataText from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
-import { FilterFactory } from 'ojs/ojdataprovider';
-import 'ojs/ojtable';
-import 'ojs/ojinputtext';
-import 'ojs/ojformlayout';
 
 interface DepartmentSource {
   DepartmentId: number;

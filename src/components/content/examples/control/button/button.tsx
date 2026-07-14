@@ -1,5 +1,5 @@
-import { h } from "preact";
 import "ojs/ojbutton";
+import 'preact';
 
 const Button = () => {
   return (

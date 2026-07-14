@@ -1,7 +1,7 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojnavigationlist';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 export const TabbarTbselection = () => {
   const dataProvider = useMemo(

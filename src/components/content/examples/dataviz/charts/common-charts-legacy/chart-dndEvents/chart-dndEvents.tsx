@@ -1,12 +1,12 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef } from 'preact/hooks';
-import * as barDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicData.json';
-import * as bubbleDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
-import { ojChart } from 'ojs/ojchart';
-import 'ojs/ojchart';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import "css!./demo.css";
+import 'ojs/ojchart';
+import { ojChart } from 'ojs/ojchart';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef } from 'preact/hooks';
+import * as bubbleDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
+import * as barDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 const barData = JSON.parse(barDataText as string);
 const bubbleData = JSON.parse(bubbleDataText as string);
 export const ChartDndEvents = () => {

@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojcheckboxset";
 import "ojs/ojformlayout";
+import 'preact';
+import { useState } from "preact/hooks";
 import { type CheckboxsetValueChangedEvent } from "./checkBoxSet-shared";
 
 export default function CheckBoxSetSingleItemExample() {

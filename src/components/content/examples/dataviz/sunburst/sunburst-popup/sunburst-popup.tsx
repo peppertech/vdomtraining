@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
 import 'ojs/ojpopup';
-import 'ojs/ojsunburst';
 import { ojPopup } from 'ojs/ojpopup';
+import 'ojs/ojsunburst';
 import { ojSunburst } from 'ojs/ojsunburst';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type PopupNode = {
   id: string;

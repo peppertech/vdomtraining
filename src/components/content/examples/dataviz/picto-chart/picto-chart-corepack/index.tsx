@@ -1,37 +1,37 @@
-import { h } from "preact";
+import 'preact';
 import {
   RecipePageTemplate,
   type RecipePageItem,
 } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { PictoChartBasiccorepack } from "./pictoChart-basiccorepack/pictoChart-basiccorepack";
 import { pictoChartBasiccorepackDescription } from "./pictoChart-basiccorepack/description";
+import { PictoChartBasiccorepack } from "./pictoChart-basiccorepack/pictoChart-basiccorepack";
 import { pictoChartBasiccorepackRecipe } from "./pictoChart-basiccorepack/recipe";
-import { PictoChartContextMenucorepack } from "./pictoChart-contextMenucorepack/pictoChart-contextMenucorepack";
 import { pictoChartContextMenucorepackDescription } from "./pictoChart-contextMenucorepack/description";
+import { PictoChartContextMenucorepack } from "./pictoChart-contextMenucorepack/pictoChart-contextMenucorepack";
 import { pictoChartContextMenucorepackRecipe } from "./pictoChart-contextMenucorepack/recipe";
-import { PictoChartDashboardcorepack } from "./pictoChart-dashboardcorepack/pictoChart-dashboardcorepack";
 import { pictoChartDashboardcorepackDescription } from "./pictoChart-dashboardcorepack/description";
+import { PictoChartDashboardcorepack } from "./pictoChart-dashboardcorepack/pictoChart-dashboardcorepack";
 import { pictoChartDashboardcorepackRecipe } from "./pictoChart-dashboardcorepack/recipe";
-import { PictoChartFractionscorepack } from "./pictoChart-fractionscorepack/pictoChart-fractionscorepack";
 import { pictoChartFractionscorepackDescription } from "./pictoChart-fractionscorepack/description";
+import { PictoChartFractionscorepack } from "./pictoChart-fractionscorepack/pictoChart-fractionscorepack";
 import { pictoChartFractionscorepackRecipe } from "./pictoChart-fractionscorepack/recipe";
-import { PictoChartLayoutcorepack } from "./pictoChart-layoutcorepack/pictoChart-layoutcorepack";
 import { pictoChartLayoutcorepackDescription } from "./pictoChart-layoutcorepack/description";
+import { PictoChartLayoutcorepack } from "./pictoChart-layoutcorepack/pictoChart-layoutcorepack";
 import { pictoChartLayoutcorepackRecipe } from "./pictoChart-layoutcorepack/recipe";
-import { PictoChartMixedSizescorepack } from "./pictoChart-mixedSizescorepack/pictoChart-mixedSizescorepack";
 import { pictoChartMixedSizescorepackDescription } from "./pictoChart-mixedSizescorepack/description";
+import { PictoChartMixedSizescorepack } from "./pictoChart-mixedSizescorepack/pictoChart-mixedSizescorepack";
 import { pictoChartMixedSizescorepackRecipe } from "./pictoChart-mixedSizescorepack/recipe";
-import { PictoChartPerformancecorepack } from "./pictoChart-performancecorepack/pictoChart-performancecorepack";
 import { pictoChartPerformancecorepackDescription } from "./pictoChart-performancecorepack/description";
+import { PictoChartPerformancecorepack } from "./pictoChart-performancecorepack/pictoChart-performancecorepack";
 import { pictoChartPerformancecorepackRecipe } from "./pictoChart-performancecorepack/recipe";
-import { PictoChartSelectioncorepack } from "./pictoChart-selectioncorepack/pictoChart-selectioncorepack";
 import { pictoChartSelectioncorepackDescription } from "./pictoChart-selectioncorepack/description";
+import { PictoChartSelectioncorepack } from "./pictoChart-selectioncorepack/pictoChart-selectioncorepack";
 import { pictoChartSelectioncorepackRecipe } from "./pictoChart-selectioncorepack/recipe";
-import { PictoChartShapedcorepack } from "./pictoChart-shapedcorepack/pictoChart-shapedcorepack";
 import { pictoChartShapedcorepackDescription } from "./pictoChart-shapedcorepack/description";
+import { PictoChartShapedcorepack } from "./pictoChart-shapedcorepack/pictoChart-shapedcorepack";
 import { pictoChartShapedcorepackRecipe } from "./pictoChart-shapedcorepack/recipe";
-import { PictoChartSingletoncorepack } from "./pictoChart-singletoncorepack/pictoChart-singletoncorepack";
 import { pictoChartSingletoncorepackDescription } from "./pictoChart-singletoncorepack/description";
+import { PictoChartSingletoncorepack } from "./pictoChart-singletoncorepack/pictoChart-singletoncorepack";
 import { pictoChartSingletoncorepackRecipe } from "./pictoChart-singletoncorepack/recipe";
 
 const pictoChartCorePackItems: RecipePageItem[] = [

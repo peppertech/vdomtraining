@@ -1,23 +1,23 @@
-import { h } from "preact";
+import 'preact';
 import {
   RecipePageTemplate,
   type RecipePageItem,
 } from "../../../../shared/demo-page-layout/recipe-page-template";
-import { StatusMeterGaugeStatusMeterGaugeDefault } from "./statusMeterGauge-statusMeterGaugeDefault/statusMeterGauge-statusMeterGaugeDefault";
-import { statusMeterGaugeStatusMeterGaugeDefaultDescription } from "./statusMeterGauge-statusMeterGaugeDefault/description";
-import { statusMeterGaugeStatusMeterGaugeDefaultRecipe } from "./statusMeterGauge-statusMeterGaugeDefault/recipe";
-import { StatusMeterGaugeStatusMeterGaugeCustomization } from "./statusMeterGauge-statusMeterGaugeCustomization/statusMeterGauge-statusMeterGaugeCustomization";
-import { statusMeterGaugeStatusMeterGaugeCustomizationDescription } from "./statusMeterGauge-statusMeterGaugeCustomization/description";
-import { statusMeterGaugeStatusMeterGaugeCustomizationRecipe } from "./statusMeterGauge-statusMeterGaugeCustomization/recipe";
-import { StatusMeterGaugeStatusMeterGaugeSizing } from "./statusMeterGauge-statusMeterGaugeSizing/statusMeterGauge-statusMeterGaugeSizing";
-import { statusMeterGaugeStatusMeterGaugeSizingDescription } from "./statusMeterGauge-statusMeterGaugeSizing/description";
-import { statusMeterGaugeStatusMeterGaugeSizingRecipe } from "./statusMeterGauge-statusMeterGaugeSizing/recipe";
-import { StatusMeterGaugeStatusMeterGaugeEvents } from "./statusMeterGauge-statusMeterGaugeEvents/statusMeterGauge-statusMeterGaugeEvents";
-import { statusMeterGaugeStatusMeterGaugeEventsDescription } from "./statusMeterGauge-statusMeterGaugeEvents/description";
-import { statusMeterGaugeStatusMeterGaugeEventsRecipe } from "./statusMeterGauge-statusMeterGaugeEvents/recipe";
-import { StatusMeterGaugeStatusMeterGaugeCenterCallback } from "./statusMeterGauge-statusMeterGaugeCenterCallback/statusMeterGauge-statusMeterGaugeCenterCallback";
 import { statusMeterGaugeStatusMeterGaugeCenterCallbackDescription } from "./statusMeterGauge-statusMeterGaugeCenterCallback/description";
 import { statusMeterGaugeStatusMeterGaugeCenterCallbackRecipe } from "./statusMeterGauge-statusMeterGaugeCenterCallback/recipe";
+import { StatusMeterGaugeStatusMeterGaugeCenterCallback } from "./statusMeterGauge-statusMeterGaugeCenterCallback/statusMeterGauge-statusMeterGaugeCenterCallback";
+import { statusMeterGaugeStatusMeterGaugeCustomizationDescription } from "./statusMeterGauge-statusMeterGaugeCustomization/description";
+import { statusMeterGaugeStatusMeterGaugeCustomizationRecipe } from "./statusMeterGauge-statusMeterGaugeCustomization/recipe";
+import { StatusMeterGaugeStatusMeterGaugeCustomization } from "./statusMeterGauge-statusMeterGaugeCustomization/statusMeterGauge-statusMeterGaugeCustomization";
+import { statusMeterGaugeStatusMeterGaugeDefaultDescription } from "./statusMeterGauge-statusMeterGaugeDefault/description";
+import { statusMeterGaugeStatusMeterGaugeDefaultRecipe } from "./statusMeterGauge-statusMeterGaugeDefault/recipe";
+import { StatusMeterGaugeStatusMeterGaugeDefault } from "./statusMeterGauge-statusMeterGaugeDefault/statusMeterGauge-statusMeterGaugeDefault";
+import { statusMeterGaugeStatusMeterGaugeEventsDescription } from "./statusMeterGauge-statusMeterGaugeEvents/description";
+import { statusMeterGaugeStatusMeterGaugeEventsRecipe } from "./statusMeterGauge-statusMeterGaugeEvents/recipe";
+import { StatusMeterGaugeStatusMeterGaugeEvents } from "./statusMeterGauge-statusMeterGaugeEvents/statusMeterGauge-statusMeterGaugeEvents";
+import { statusMeterGaugeStatusMeterGaugeSizingDescription } from "./statusMeterGauge-statusMeterGaugeSizing/description";
+import { statusMeterGaugeStatusMeterGaugeSizingRecipe } from "./statusMeterGauge-statusMeterGaugeSizing/recipe";
+import { StatusMeterGaugeStatusMeterGaugeSizing } from "./statusMeterGauge-statusMeterGaugeSizing/statusMeterGauge-statusMeterGaugeSizing";
 
 const statusMeterGaugeItems: RecipePageItem[] = [
   {

@@ -1,8 +1,8 @@
-import { useMemo } from "preact/hooks";
 import "css!./demo.css";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import * as socialNetworksText from "text!../../data/cookbook/dataVisualizations/tagCloud/resources/socialNetworks.json";
 import "oj-c/tag-cloud";
+import { useMemo } from "preact/hooks";
+import * as socialNetworksText from "text!../../data/cookbook/dataVisualizations/tagCloud/resources/socialNetworks.json";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 type SocialNetwork = {
   id: string;

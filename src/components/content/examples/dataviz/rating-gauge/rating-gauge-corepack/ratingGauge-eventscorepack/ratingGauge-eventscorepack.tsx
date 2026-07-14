@@ -1,6 +1,6 @@
+import "oj-c/rating-gauge";
 import type { ComponentProps } from "preact";
 import { useState } from "preact/hooks";
-import "oj-c/rating-gauge";
 
 type RatingGaugeValueChangedEvent = Parameters<
   NonNullable<ComponentProps<"oj-c-rating-gauge">["onvalueChanged"]>

@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import Context = require('ojs/ojcontext');
-import type { FilmStripElement } from 'ojs/ojfilmstrip';
-import type { PagingModel } from 'ojs/ojpagingmodel';
-import 'ojs/ojfilmstrip';
-import 'ojs/ojpagingcontrol';
 import 'css!./demo.css';
+import 'ojs/ojfilmstrip';
+import type { FilmStripElement } from 'ojs/ojfilmstrip';
+import 'ojs/ojpagingcontrol';
+import type { PagingModel } from 'ojs/ojpagingmodel';
+import 'preact';
+import { useEffect,useMemo,useRef,useState } from 'preact/hooks';
+import Context = require('ojs/ojcontext');
 
 type Chemical = {
   id: string;

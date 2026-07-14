@@ -1,43 +1,44 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import * as preact from 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
+import { useExampleRoute } from "../example-route-context";
 import CheckboxHome from "./checkbox/home";
 import ColorPalette from "./colorPalette/index";
 import ColorSpectrum from "./colorSpectrum/index";
-import InputDateTimeHome from "./Inputdatetime/home";
-import InputNumberHome from "./inputnumber/home";
-import InputPasswordHome from "./inputpassword/home";
-import InputSensitiveText from "./inputSensitiveText/index";
-import InputTextHome from "./inputtext/home";
-import LabelledLink from "./labelledLink/index";
-import SelectAndComboboxHome from "./selectandcomobobox/home";
-import SliderHome from "./slider/home";
-import SwitchExample from "./switch/index";
-import TextAreaHome from "./textarea/home";
-import UserAssistance from "./userAssistance/index";
-import ValidationHome from "./validation/home";
-import RadiosetHome from "./radioset/home";
-import FormLayoutHome from "./formLayout/home";
 import {
   FormBreadcrumb,
   type FormBreadcrumbItem,
   type NestedFormHomeProps,
   formatCorePackLabel,
 } from "./form-breadcrumb";
+import FormLayoutHome from "./formLayout/home";
 import InputSearchDemoWrapper from "./input-search/index";
-import { useExampleRoute } from "../example-route-context";
+import InputDateTimeHome from "./Inputdatetime/home";
+import InputNumberHome from "./inputnumber/home";
+import InputPasswordHome from "./inputpassword/home";
+import InputSensitiveText from "./inputSensitiveText/index";
+import InputTextHome from "./inputtext/home";
+import LabelledLink from "./labelledLink/index";
+import RadiosetHome from "./radioset/home";
+import SelectAndComboboxHome from "./selectandcomobobox/home";
+import SliderHome from "./slider/home";
+import SwitchExample from "./switch/index";
+import TextAreaHome from "./textarea/home";
+import UserAssistance from "./userAssistance/index";
+import ValidationHome from "./validation/home";
 
 type FormShowcase = {
   id: string;
   name: string;
   image: string;
   isCorePack?: boolean;
-  render: (props?: NestedFormHomeProps) => h.JSX.Element | null;
+  render: (props?: NestedFormHomeProps) => preact.JSX.Element | null;
 };
 
 const formExamples: FormShowcase[] = [

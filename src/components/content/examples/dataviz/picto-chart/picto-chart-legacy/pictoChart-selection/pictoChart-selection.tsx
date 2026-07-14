@@ -1,25 +1,31 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/appleData.json';
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import { ojRadioset } from 'ojs/ojradioset';
-import { ojPictoChart } from 'ojs/ojpictochart';
-import 'ojs/ojpictochart';
-import '../../../../../../jet-composites/demo-radioset-enum/loader';
 import 'ojs/ojformlayout';
+import 'ojs/ojpictochart';
+import { ojPictoChart } from 'ojs/ojpictochart';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/appleData.json';
+import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
-type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type PictoChartProps = ComponentProps<'oj-picto-chart'>;
+type SelectionMode = NonNullable<PictoChartProps['selectionMode']>;
+type Drilling = NonNullable<PictoChartProps['drilling']>;
+type Selection = NonNullable<PictoChartProps['selection']>;
+type ImageItem = 'iPhone' | 'iPad' | 'Mac';
+type ImageVariation = 'source' | 'sourceHover' | 'sourceHoverSelected' | 'sourceSelected';
+type RadiosetValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0];
+type PictoChartSelectionChangedEvent = Parameters<NonNullable<PictoChartProps['onselectionChanged']>>[0];
 
 const data = JSON.parse(chartData as string);
 const initialSelection = ['iPad'];
 
 export const PictoChartSelection = () => {
-  const [selectionValue, setSelectionValue] = useState<string>('single');
-  const [drillingValue, setDrillingValue] = useState<string>('on');
-  const [selectedItemsValue, setSelectedItemsValue] = useState<string[]>(initialSelection);
-  const [selectedImageItemsValue, setSelectedImageItemsValue] = useState<string[]>(initialSelection);
+  const [selectionValue, setSelectionValue] = useState<SelectionMode>('single');
+  const [drillingValue, setDrillingValue] = useState<Drilling>('on');
+  const [selectedItemsValue, setSelectedItemsValue] = useState<Selection>(initialSelection);
+  const [selectedImageItemsValue, setSelectedImageItemsValue] = useState<Selection>(initialSelection);
   const [drillInfo, setDrillInfo] = useState<string>();
   const [drillInfo2, setDrillInfo2] = useState<string>();
 
@@ -43,7 +49,7 @@ export const PictoChartSelection = () => {
     []
   );
 
-  const getImageSourceVariation = (item: string, variation: string) =>
+  const getImageSourceVariation = (item: ImageItem, variation: ImageVariation) =>
     `../images/pictoChart/${itemRootMap[item]}${itemSuffixMap[variation]}.png`;
 
   const getResetSelection = (mode: string) => {
@@ -56,8 +62,8 @@ export const PictoChartSelection = () => {
     return [];
   };
 
-  const handleSelectionModeChanged = (event: ojRadioset.valueChanged<string, string>) => {
-    const nextSelectionMode = event.detail.value;
+  const handleSelectionModeChanged = (event: RadiosetValueChangedEvent) => {
+    const nextSelectionMode = (event.detail.value as SelectionMode | null) ?? 'single';
     const nextSelection = getResetSelection(nextSelectionMode);
 
     setSelectionValue(nextSelectionMode);
@@ -66,15 +72,15 @@ export const PictoChartSelection = () => {
     return true;
   };
 
-  const handleDrillingModeChanged = (event: PropertyChangedEvent<string>) => {
-    setDrillingValue(event.detail.value);
+  const handleDrillingModeChanged = (event: RadiosetValueChangedEvent) => {
+    setDrillingValue((event.detail.value as Drilling | null) ?? 'on');
   };
 
-  const handleSelectedItemsChanged = (event: PropertyChangedEvent<string[]>) => {
+  const handleSelectedItemsChanged = (event: PictoChartSelectionChangedEvent) => {
     setSelectedItemsValue(event.detail.value ?? []);
   };
 
-  const handleSelectedImageItemsChanged = (event: PropertyChangedEvent<string[]>) => {
+  const handleSelectedImageItemsChanged = (event: PictoChartSelectionChangedEvent) => {
     setSelectedImageItemsValue(event.detail.value ?? []);
   };
 

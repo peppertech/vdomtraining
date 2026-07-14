@@ -1,11 +1,11 @@
-import { Fragment, h } from 'preact';
+import 'ojs/ojchart';
+import { ojChart } from 'ojs/ojchart';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as dataText from 'text!../data/cookbook/dataVisualizations/barChart/stackLabelProvider/stackData.json';
-import { ojChart } from 'ojs/ojchart';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojchart';
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
 const data = JSON.parse(dataText as string);
 export const BarChartStackLabelProvider = () => {
     const dataProvider = useMemo(() => new ArrayDataProvider(data, {

@@ -1,9 +1,9 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
-import { CFilePickerElement } from 'oj-c/file-picker';
 import 'oj-c/checkboxset';
 import 'oj-c/file-picker';
+import { CFilePickerElement } from 'oj-c/file-picker';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
 
 type CheckboxValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-checkboxset'>['onvalueChanged']>

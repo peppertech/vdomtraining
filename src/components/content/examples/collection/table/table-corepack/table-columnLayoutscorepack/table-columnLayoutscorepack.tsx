@@ -1,12 +1,12 @@
-import { h } from "preact";
-import { useEffect, useMemo, useRef, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import type { ojTable } from "ojs/ojtable";
-import * as deptData from "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json";
+import "css!./demo.css";
 import "ojs/ojinputtext";
 import "ojs/ojradioset";
 import "ojs/ojtable";
-import "css!./demo.css";
+import type { ojTable } from "ojs/ojtable";
+import 'preact';
+import { useEffect,useMemo,useRef,useState } from "preact/hooks";
+import * as deptData from "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 interface Department {
   DepartmentId: number;

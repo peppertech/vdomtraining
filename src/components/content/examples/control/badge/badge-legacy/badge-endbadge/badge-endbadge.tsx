@@ -1,12 +1,12 @@
-import { h } from 'preact';
+import "css!./demo.css";
+import 'ojs/ojactioncard';
+import 'ojs/ojavatar';
+import 'ojs/ojlistview';
+import { ojListView } from 'ojs/ojlistview';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojavatar';
-import 'ojs/ojlistview';
-import 'ojs/ojactioncard';
-import { ojListView } from 'ojs/ojlistview';
-import "css!./demo.css";
 
 type BadgeEndbadgeItem = {
     id: string;

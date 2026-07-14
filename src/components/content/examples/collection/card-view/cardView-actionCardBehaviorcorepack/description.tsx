@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A CardView displays data items as a grid with highly interactive features.</p>This demo shows how to use action card in oj-c-card-view. When using action card in oj-c-card-view, 
 applications should ensure that focus-behavior is set to 'content' in order to get the correct keyboard behavior.

@@ -1,18 +1,20 @@
-// @ts-nocheck
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
-import * as data2000Text from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/electionData2000.json';
 import 'css!./demo.css';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojthematicmap';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as data2000Text from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/electionData2000.json';
+import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ThematicMapProvider = ComponentProps<'oj-thematic-map'>['mapProvider'];
+type InputNumberValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0];
 
 const geo = JSON.parse(geoText as string);
 const electionData = JSON.parse(data2000Text as string);
+type ElectionDatum = (typeof electionData)[number];
 
 export const ThematicMapAnimation = () => {
   const [electionYear, setElectionYear] = useState(2000);
@@ -28,14 +30,18 @@ export const ThematicMapAnimation = () => {
     []
   );
   const areaData = useMemo(() => {
-    return electionData.map((item, index) => ({
+    return electionData.map((item: ElectionDatum, index: number) => ({
       id: index.toString(),
       color: (item.Democrat + electionYear) % 100 > item.Republican % 100 ? '#336791' : '#C53333',
       location: item.State,
       shortDesc: ((item.Democrat + electionYear) % 100 > item.Republican % 100 ? 'Democrat' : 'Republican') + ' win'
     }));
   }, [electionYear]);
-  const handleElectionYearChanged = (event: DatavizValueChangedEvent<string>) => {
+  const areaDataProvider = useMemo(
+    () => new ArrayDataProvider(areaData, { keyAttributes: 'id' }),
+    [areaData]
+  );
+  const handleElectionYearChanged = (event: InputNumberValueChangedEvent) => {
     setElectionYear(event.detail.value ?? 2000);
   };
 
@@ -51,14 +57,13 @@ export const ThematicMapAnimation = () => {
           value={electionYear}
           displayOptions={{ validatorHint: 'none' }}
           onvalueChanged={handleElectionYearChanged}
-          converter={{ type: 'number', options: { style: 'decimal', useGrouping: false } }}
         />
       </oj-form-layout>
       <oj-thematic-map
         id="map1"
-        animationOnDisplay="auto"
-        animationOnDataChange="auto"
-        areas={areaData}
+        animation-on-display="auto"
+        animation-on-data-change="auto"
+        areaData={areaDataProvider}
         mapProvider={mapProvider}
         class="demo-thematicmap-min-width"
       />

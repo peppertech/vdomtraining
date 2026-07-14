@@ -1,12 +1,12 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "ojs/ojbutton";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojmenu";
 import "ojs/ojtreeview";
+import { ojTreeView } from "ojs/ojtreeview";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import * as treeviewData from "text!./data/treeviewData.json";
 import ArrayTreeDataProvider = require("ojs/ojarraytreedataprovider");
-import { ojTreeView } from "ojs/ojtreeview";
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 
 interface TreeviewItem {
   title: string;

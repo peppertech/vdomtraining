@@ -1,11 +1,11 @@
-import { h, ComponentProps } from "preact";
-import { useState, useRef } from "preact/hooks";
+import "oj-c/form-layout";
+import "oj-c/input-text";
 import * as NumberConverter from "ojs/ojconverter-number";
-import * as ConverterUtilsI18n from "ojs/ojconverterutils-i18n";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
-import "oj-c/input-text";
-import "oj-c/form-layout";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useState } from "preact/hooks";
 import Message = require("ojs/ojmessaging");
 
 type InputTextValueChangedEvent = Parameters<

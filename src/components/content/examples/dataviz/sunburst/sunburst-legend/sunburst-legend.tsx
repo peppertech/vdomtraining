@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import type { ComponentProps, JSX } from 'preact';
-import { useMemo, useRef } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
+import 'ojs/ojlegend';
 import { getColorValuesFromPalette } from 'ojs/ojpalette';
 import { getColorValue } from 'ojs/ojpaletteutils';
-import 'ojs/ojlegend';
 import 'ojs/ojsunburst';
+import 'preact';
+import type { ComponentProps,JSX } from 'preact';
+import { useMemo,useRef } from 'preact/hooks';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncomeSubregion.json';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type IncomeNode = {
   label: string;

@@ -1,6 +1,6 @@
+import "ojs/ojformlayout";
 import "ojs/ojinputtext";
 import "ojs/ojlabel";
-import "ojs/ojformlayout";
 
 import {
   autoGrowSampleValue,

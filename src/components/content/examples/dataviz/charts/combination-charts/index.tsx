@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import { CombinationChartAnimation } from "./combinationChart-animation/combinationChart-animation";
 import { combinationChartAnimationDescription } from "./combinationChart-animation/description";

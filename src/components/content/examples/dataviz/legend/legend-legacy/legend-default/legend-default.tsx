@@ -1,7 +1,7 @@
-import type { JSX } from 'preact';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojlegend';
+import type { JSX } from 'preact';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type FruitItem = {
   fruit: string;

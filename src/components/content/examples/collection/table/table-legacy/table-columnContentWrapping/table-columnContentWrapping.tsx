@@ -1,8 +1,8 @@
-import { h } from 'preact';
+import 'ojs/ojtable';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojtable';
 
 export const TableColumnContentWrapping = () => {
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [

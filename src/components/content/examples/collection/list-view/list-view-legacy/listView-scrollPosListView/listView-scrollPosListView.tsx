@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import { KeySet, KeySetImpl } from 'ojs/ojkeyset';
-import { ojListView } from 'ojs/ojlistview';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'css!./demo.css';
 import 'ojs/ojbutton';
-import 'ojs/ojswitch';
+import { KeySet,KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojlistview';
+import { ojListView } from 'ojs/ojlistview';
+import 'ojs/ojswitch';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface ItemData {
   id: string;

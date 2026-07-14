@@ -1,8 +1,8 @@
-import { h } from 'preact';
+import 'ojs/ojnbox';
+import 'preact';
 import { useMemo } from 'preact/hooks';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojnbox';
 
 type Employee = {
   name: string;

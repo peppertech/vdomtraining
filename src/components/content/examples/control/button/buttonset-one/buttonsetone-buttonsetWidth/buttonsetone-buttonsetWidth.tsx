@@ -1,7 +1,7 @@
-import { h } from "preact";
 import "css!./demo.css";
 import "ojs/ojbutton";
 import "ojs/ojoption";
+import 'preact';
 
 const formatOptions = [
   { id: "bold", label: "Bold" },

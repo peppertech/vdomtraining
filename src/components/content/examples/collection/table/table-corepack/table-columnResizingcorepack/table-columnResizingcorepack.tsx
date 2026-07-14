@@ -1,15 +1,15 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
-import 'ojs/ojtable';
+import 'ojs/ojbutton';
 import 'ojs/ojdatasource-common';
 import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
 import 'ojs/ojlabel';
 import 'ojs/ojlabelvalue';
 import 'ojs/ojradioset';
-import 'ojs/ojinputnumber';
-import 'ojs/ojbutton';
+import 'ojs/ojtable';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 
 interface ColumnOption {
   headerText: string;

@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "css!./demo.css";
 import "oj-c/button";
+import 'preact';
 
 export const ButtonsPushButtoncorepack = () => {
   return (

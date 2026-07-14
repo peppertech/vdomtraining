@@ -1,6 +1,3 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'oj-c/input-number';
 import 'oj-c/input-text';
 import 'oj-c/select-single';
@@ -8,6 +5,10 @@ import 'oj-c/text-area';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojoption';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ButtonsetChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-buttonset-many'>['onvalueChanged']>

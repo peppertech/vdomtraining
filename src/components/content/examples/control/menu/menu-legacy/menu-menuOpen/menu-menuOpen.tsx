@@ -1,11 +1,10 @@
-import { h } from 'preact';
-import type { ComponentProps, JSX } from 'preact';
-import { useRef, useState } from 'preact/hooks';
-import { ojMenu } from 'ojs/ojmenu';
 import 'ojs/ojbutton';
 import 'ojs/ojmenu';
-import 'ojs/ojbutton';
+import { ojMenu } from 'ojs/ojmenu';
 import 'ojs/ojoption';
+import 'preact';
+import type { ComponentProps,JSX } from 'preact';
+import { useRef,useState } from 'preact/hooks';
 
 type MenuActionEvent = Parameters<NonNullable<ComponentProps<'oj-menu'>['onojMenuAction']>>[0];
 

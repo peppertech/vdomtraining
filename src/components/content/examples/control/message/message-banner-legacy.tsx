@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
-import "ojs/ojmessagebanner";
 import "ojs/ojbutton";
+import "ojs/ojmessagebanner";
+import 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 import type { MessageBannerItem } from "ojmessagebanner";

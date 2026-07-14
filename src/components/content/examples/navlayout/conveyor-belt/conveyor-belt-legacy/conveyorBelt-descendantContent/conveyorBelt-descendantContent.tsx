@@ -1,7 +1,7 @@
-import { h } from 'preact';
-import 'ojs/ojconveyorbelt';
 import 'ojs/ojbutton';
+import 'ojs/ojconveyorbelt';
 import 'ojs/ojoption';
+import 'preact';
 
 export const ConveyorBeltDescendantContent = () => {
   return (

@@ -1,22 +1,22 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { PopupModal } from "./popup-modal/popup-modal";
-import { popupModalDescription } from "./popup-modal/description";
-import { popupModalRecipe } from "./popup-modal/recipe";
-import { PopupDefer } from "./popup-defer/popup-defer";
 import { popupDeferDescription } from "./popup-defer/description";
+import { PopupDefer } from "./popup-defer/popup-defer";
 import { popupDeferRecipe } from "./popup-defer/recipe";
-import { PopupPopup } from "./popup-popup/popup-popup";
+import { popupModalDescription } from "./popup-modal/description";
+import { PopupModal } from "./popup-modal/popup-modal";
+import { popupModalRecipe } from "./popup-modal/recipe";
 import { popupPopupDescription } from "./popup-popup/description";
+import { PopupPopup } from "./popup-popup/popup-popup";
 import { popupPopupRecipe } from "./popup-popup/recipe";
-import { PopupTailAdjustPosition } from "./popup-tailAdjustPosition/popup-tailAdjustPosition";
 import { popupTailAdjustPositionDescription } from "./popup-tailAdjustPosition/description";
+import { PopupTailAdjustPosition } from "./popup-tailAdjustPosition/popup-tailAdjustPosition";
 import { popupTailAdjustPositionRecipe } from "./popup-tailAdjustPosition/recipe";
-import { PopupTailCommonPositions } from "./popup-tailCommonPositions/popup-tailCommonPositions";
 import { popupTailCommonPositionsDescription } from "./popup-tailCommonPositions/description";
+import { PopupTailCommonPositions } from "./popup-tailCommonPositions/popup-tailCommonPositions";
 import { popupTailCommonPositionsRecipe } from "./popup-tailCommonPositions/recipe";
-import { PopupTooltip } from "./popup-tooltip/popup-tooltip";
 import { popupTooltipDescription } from "./popup-tooltip/description";
+import { PopupTooltip } from "./popup-tooltip/popup-tooltip";
 import { popupTooltipRecipe } from "./popup-tooltip/recipe";
 
 const popupLegacyItems = [

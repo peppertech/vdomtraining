@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A conveyor belt manages overflow for its child elements and allows scrolling among them.</p>This demo showcases how to make conveyor belt overflow navigation to be accessible by keyboard.
 

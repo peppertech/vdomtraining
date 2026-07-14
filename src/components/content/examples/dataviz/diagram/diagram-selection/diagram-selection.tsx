@@ -1,14 +1,14 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/lateralLinksDataSample.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import { JetElementCustomEvent } from 'ojs/index';
-import * as layout from '../diagram-layouts';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojdiagram';
-import '../../../../../jet-composites/demo-radioset-enum/loader';
 import 'ojs/ojformlayout';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/lateralLinksDataSample.json';
+import '../../../../../jet-composites/demo-radioset-enum/loader';
+import * as layout from '../diagram-layouts';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 interface DiagramNode {
     id: string;
     category: string;

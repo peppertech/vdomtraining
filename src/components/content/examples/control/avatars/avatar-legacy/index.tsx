@@ -1,14 +1,14 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { AvatarOverview } from "./avatar-overview/avatar-overview";
-import { avatarOverviewDescription } from "./avatar-overview/description";
-import { avatarOverviewRecipe } from "./avatar-overview/recipe";
 import { AvatarCombinations } from "./avatar-combinations/avatar-combinations";
 import { avatarCombinationsDescription } from "./avatar-combinations/description";
 import { avatarCombinationsRecipe } from "./avatar-combinations/recipe";
 import { AvatarCustomStyling } from "./avatar-customStyling/avatar-customStyling";
 import { avatarCustomStylingDescription } from "./avatar-customStyling/description";
 import { avatarCustomStylingRecipe } from "./avatar-customStyling/recipe";
+import { AvatarOverview } from "./avatar-overview/avatar-overview";
+import { avatarOverviewDescription } from "./avatar-overview/description";
+import { avatarOverviewRecipe } from "./avatar-overview/recipe";
 
 const avatarLegacyItems = [
   {

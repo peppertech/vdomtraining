@@ -1,15 +1,15 @@
-import { h, ComponentProps, JSX } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import "ojs/ojtoolbar";
+import "oj-c/button";
+import "oj-c/menu-button";
+import "oj-c/progress-button";
+import "oj-c/split-menu-button";
+import "oj-c/toggle-button";
 import "ojs/ojbutton";
 import "ojs/ojmenu";
 import "ojs/ojoption";
-import "ojs/ojmenu";
-import "oj-c/button";
-import "oj-c/menu-button";
-import "oj-c/split-menu-button";
-import "oj-c/toggle-button";
-import "oj-c/progress-button";
+import "ojs/ojtoolbar";
+import 'preact';
+import { ComponentProps,JSX } from 'preact';
+import { useMemo,useState } from "preact/hooks";
 
 type MenuProps = ComponentProps<"oj-menu">;
 type MenuActionEvent = Parameters<NonNullable<MenuProps["onojMenuAction"]>>[0];

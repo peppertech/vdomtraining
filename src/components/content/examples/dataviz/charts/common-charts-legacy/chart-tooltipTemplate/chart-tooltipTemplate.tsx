@@ -1,11 +1,11 @@
-import { Fragment, h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/departmentHiresData.json';
+import "css!./demo.css";
 import 'ojs/ojchart';
 import 'ojs/ojgauge';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/departmentHiresData.json';
 
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import "css!./demo.css";
 
 const data = JSON.parse(dataText as string);
 

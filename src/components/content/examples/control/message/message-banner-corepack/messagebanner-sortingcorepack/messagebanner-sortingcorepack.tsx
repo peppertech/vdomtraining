@@ -1,10 +1,10 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import { CMessageBannerElement, MessageBannerItem } from "oj-c/message-banner";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import "oj-c/message-banner";
+import { CMessageBannerElement,MessageBannerItem } from "oj-c/message-banner";
 import "oj-c/radioset";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type DemoMessageBannerItem = MessageBannerItem & {
   id: string;

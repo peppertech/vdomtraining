@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useEffect, useMemo } from 'preact/hooks';
-import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
 import { RESTTreeDataProvider } from 'ojs/ojresttreedataprovider';
-import { ojTable } from 'ojs/ojtable';
-import { CollectionMockFetchServer as MockFetchServer } from '../../shared/CollectionMockFetchServer';
-import * as treeDataText from 'text!../../data/cookbook/dataCollections/rowExpanderTable/tableCollectionRowExpander/projectData.json';
-import 'ojs/ojtable';
 import 'ojs/ojrowexpander';
+import 'ojs/ojtable';
+import { ojTable } from 'ojs/ojtable';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useEffect,useMemo } from 'preact/hooks';
+import * as treeDataText from 'text!../../data/cookbook/dataCollections/rowExpanderTable/tableCollectionRowExpander/projectData.json';
+import { CollectionMockFetchServer as MockFetchServer } from '../../shared/CollectionMockFetchServer';
+import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
 
 type TaskData = {
   id: string;

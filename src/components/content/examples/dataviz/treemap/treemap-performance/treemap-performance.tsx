@@ -1,16 +1,15 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import * as Context from 'ojs/ojcontext';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import 'ojs/ojtreemap';
 import 'ojs/ojbutton';
+import * as Context from 'ojs/ojcontext';
+import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojinputtext';
-import 'ojs/ojformlayout';
+import 'ojs/ojtreemap';
+import 'preact';
+import { useEffect,useMemo,useRef,useState } from 'preact/hooks';
 import '../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type AnimationValue = 'auto' | 'none';
 type ShapedDataValue = 'on' | 'off';

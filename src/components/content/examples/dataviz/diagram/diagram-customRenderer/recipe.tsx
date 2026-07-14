@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import 'preact';
 import * as recipeHtmlText from 'text!./recipe.html';
 
 export const diagramCustomRendererRecipe = (

@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojselectcombobox";
+import 'preact';
+import { useMemo,useState } from "preact/hooks";
 import {
   confirmationMessages,
   createBrowserDataProvider,

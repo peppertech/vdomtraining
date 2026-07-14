@@ -1,11 +1,11 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import "css!./demo.css";
 import 'ojs/ojfilmstrip';
-import 'ojs/ojradioset';
 import 'ojs/ojlabel';
 import 'ojs/ojoption';
-import "css!./demo.css";
+import 'ojs/ojradioset';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 
 type LoopingChangedEvent = Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0];
 

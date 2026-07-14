@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import ValidationGroupAsyncValidationExample from "./validationGroup-asyncValidation/validationGroup-asyncValidation";
 import ValidationGroupCrossFieldExample from "./validationGroup-crossFieldValidation/validationGroup-crossFieldValidation";
@@ -16,7 +16,7 @@ const validationGroupItems: {
   name: string;
   description: (typeof validationGroupDocs)[ValidationGroupDemoId]["description"];
   recipe: (typeof validationGroupDocs)[ValidationGroupDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "required-fields",

@@ -1,8 +1,9 @@
-import { h, ComponentProps } from "preact";
-import { useMemo } from "preact/hooks";
 import "ojs/ojtable";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useMemo } from "preact/hooks";
 import * as deptData from "text!../data/departmentData.json";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type Department = {
   DepartmentId: number;

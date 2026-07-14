@@ -1,8 +1,7 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
-import 'oj-c/avatar';
 import "css!./demo.css";
+import 'oj-c/avatar';
+import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
+import 'preact';
 
 export const AvatarOverviewcorepack = () => {
   const firstName: string = 'Amy';

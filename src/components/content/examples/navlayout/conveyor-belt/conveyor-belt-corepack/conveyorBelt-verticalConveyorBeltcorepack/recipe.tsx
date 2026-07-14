@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ol>
   <li>In the HTML, specify a group of sibling elements to be managed by the ConveyorBelt.</li>

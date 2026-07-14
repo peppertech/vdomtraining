@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
-import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/employeePerformance.json';
+import "css!./demo.css";
 import 'ojs/ojdatagrid';
 import { ojDataGrid } from 'ojs/ojdatagrid';
-import "css!./demo.css";
+import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo } from 'preact/hooks';
+import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/employeePerformance.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 const jsonData = JSON.parse(jsonDataText as string);
 interface DataDetails {
     name: string;

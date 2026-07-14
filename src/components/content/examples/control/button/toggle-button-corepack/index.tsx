@@ -1,11 +1,11 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { TogglebuttonOverviewcorepack } from "./togglebutton-overviewcorepack/togglebutton-overviewcorepack";
-import { togglebuttonOverviewcorepackDescription } from "./togglebutton-overviewcorepack/description";
-import { togglebuttonOverviewcorepackRecipe } from "./togglebutton-overviewcorepack/recipe";
-import { TogglebuttonBasiccorepack } from "./togglebutton-basiccorepack/togglebutton-basiccorepack";
 import { togglebuttonBasiccorepackDescription } from "./togglebutton-basiccorepack/description";
 import { togglebuttonBasiccorepackRecipe } from "./togglebutton-basiccorepack/recipe";
+import { TogglebuttonBasiccorepack } from "./togglebutton-basiccorepack/togglebutton-basiccorepack";
+import { togglebuttonOverviewcorepackDescription } from "./togglebutton-overviewcorepack/description";
+import { togglebuttonOverviewcorepackRecipe } from "./togglebutton-overviewcorepack/recipe";
+import { TogglebuttonOverviewcorepack } from "./togglebutton-overviewcorepack/togglebutton-overviewcorepack";
 
 const toggleButtonCorePackItems = [
   {

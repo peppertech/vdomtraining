@@ -1,9 +1,10 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojfilmstrip";
 import "ojs/ojlabel";
 import "ojs/ojoption";
 import "ojs/ojradioset";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 type RadioSetProps = ComponentProps<"oj-radioset">;
 type RadioValueChangedEvent = Parameters<NonNullable<RadioSetProps["onvalueChanged"]>>[0];

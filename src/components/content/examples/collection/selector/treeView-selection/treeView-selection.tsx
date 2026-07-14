@@ -1,15 +1,15 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as jsonDataText from 'text!./treeViewData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { AllKeySetImpl, KeySet, KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
+import { AllKeySetImpl,KeySet,KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojselectsingle';
 import 'ojs/ojtreeview';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!./treeViewData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type TreeNode = {
   title: string;

@@ -1,14 +1,13 @@
-import { JetElementCustomEvent } from 'ojs/index';
-import { h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useState } from 'preact/hooks';
-import 'ojs/ojdrawerpopup';
+import "css!./demo.css";
 import 'ojs/ojbutton';
-import 'ojs/ojswitch';
+import 'ojs/ojdrawerpopup';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
-import "css!./demo.css";
+import 'ojs/ojswitch';
+import { useState } from 'preact/hooks';
 
 type DrawerOpened = NonNullable<ComponentProps<'oj-drawer-popup'>['opened']>;
 type SwitchValue = NonNullable<ComponentProps<'oj-switch'>['value']>;

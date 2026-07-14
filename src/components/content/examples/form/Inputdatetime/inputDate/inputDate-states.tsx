@@ -1,7 +1,8 @@
-import { h, type ComponentProps } from 'preact';
 import "ojs/ojdatetimepicker";
 import "ojs/ojformlayout";
-import { messageSets, sampleIsoDate } from "./inputDate-shared";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { messageSets,sampleIsoDate } from "./inputDate-shared";
 
 export default function InputDateStatesVdomExample() {
   return (

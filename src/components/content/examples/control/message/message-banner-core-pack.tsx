@@ -5,18 +5,18 @@
  * as shown at https://oss.oracle.com/licenses/upl/
  * @ignore
  */
-import { h } from "preact";
-import { useState, useCallback, useMemo } from "preact/hooks";
+import 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 // CorePack component import
 import "oj-c/message-banner";
 import "ojs/ojnavigationlist";
 
 // Type imports
-import { CMessageBannerElement, MessageBannerItem, MessageBannerTemplateContext } from "oj-c/message-banner";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import { CMessageBannerElement,MessageBannerItem,MessageBannerTemplateContext } from "oj-c/message-banner";
 import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
 import { ojNavigationList } from "ojs/ojnavigationlist";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type DemoMessageBannerItem = MessageBannerItem & {
   id: string;

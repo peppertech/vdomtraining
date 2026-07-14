@@ -1,16 +1,15 @@
-// @ts-nocheck
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
+import "css!./demo.css";
 import 'ojs/ojdatagrid';
 import { ojDataGrid } from 'ojs/ojdatagrid';
 import 'ojs/ojmenu';
-import { ojMenu, ojMenuEventMap } from 'ojs/ojmenu';
+import { ojMenu,ojMenuEventMap } from 'ojs/ojmenu';
 import 'ojs/ojoption';
+import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
 import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/population.json';
-import "css!./demo.css";
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 const jsonData = JSON.parse(jsonDataText as string);
 interface PopulationRow {
     states: string;
@@ -50,6 +49,14 @@ type DataGridContext = {
     index?: number;
 };
 type DataTransferOptions = NonNullable<ComponentProps<'oj-data-grid'>['dataTransferOptions']>;
+type DataGridProps = ComponentProps<'oj-data-grid'>;
+type DataGridDropConfig = NonNullable<NonNullable<DataGridProps['dnd']>['drop']>;
+type DataGridRowDropHandler = NonNullable<NonNullable<DataGridDropConfig['rows']>['drop']>;
+type DataGridColumnDropHandler = NonNullable<NonNullable<DataGridDropConfig['columns']>['drop']>;
+type DataGridRowDropEvent = Parameters<DataGridRowDropHandler>[0];
+type DataGridRowDropContext = Parameters<DataGridRowDropHandler>[1];
+type DataGridColumnDropEvent = Parameters<DataGridColumnDropHandler>[0];
+type DataGridColumnDropContext = Parameters<DataGridColumnDropHandler>[1];
 const SOURCE_ROWS = (jsonData as PopulationRow[]).slice(0, 8);
 const INITIAL_COLUMNS = Object.keys(SOURCE_ROWS[0]).filter((key) => key !== 'states');
 const cloneRows = () => SOURCE_ROWS.map((row) => ({ ...row }));
@@ -129,11 +136,11 @@ export const DataGridDragAndDropGrid = () => {
     const handleDragStart = (_event: Event, dragContext: DragStartContext) => {
         draggedRangesRef.current = dragContext.range ?? [];
     };
-    const handleDropRows = (_event: Event, dropHeaderContext: DropHeaderContext) => {
-        reorderRows(dropHeaderContext.index, dropHeaderContext.position ?? 'before');
+    const handleDropRows = (_event: DataGridRowDropEvent, dropHeaderContext: DataGridRowDropContext) => {
+        reorderRows(dropHeaderContext.index, dropHeaderContext.position === 'after' ? 'after' : 'before');
     };
-    const handleDropColumns = (_event: Event, dropHeaderContext: DropHeaderContext) => {
-        reorderColumns(dropHeaderContext.index, dropHeaderContext.position ?? 'before');
+    const handleDropColumns = (_event: DataGridColumnDropEvent, dropHeaderContext: DataGridColumnDropContext) => {
+        reorderColumns(dropHeaderContext.index, dropHeaderContext.position === 'after' ? 'after' : 'before');
     };
     const handleCut = (event: CutRequestEvent) => {
         const sourceRange = event.detail.sourceRange;

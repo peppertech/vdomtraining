@@ -1,14 +1,14 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
-import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/controlsTimeline/seriesData.json';
-import 'ojs/ojtimeline';
-import 'ojs/ojbutton';
-import 'ojs/ojlabel';
-import 'ojs/ojformlayout';
 import 'css!./demo.css';
+import 'ojs/ojbutton';
+import 'ojs/ojformlayout';
+import 'ojs/ojlabel';
+import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
+import 'ojs/ojtimeline';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useEffect,useMemo,useRef,useState } from 'preact/hooks';
+import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/controlsTimeline/seriesData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TimelineControlsItem = {
   id: string;
@@ -42,8 +42,8 @@ const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => 
 );
 
 export const TimelineControlsTimeline = () => {
-  const [overviewValue, setOverviewValue] = useState('on');
-  const [orientationValue, setOrientationValue] = useState('horizontal');
+  const [overviewValue, setOverviewValue] = useState<NonNullable<NonNullable<ComponentProps<'oj-timeline'>['overview']>['rendered']>>('on');
+  const [orientationValue, setOrientationValue] = useState<NonNullable<ComponentProps<'oj-timeline'>['orientation']>>('horizontal');
   const [screenSize, setScreenSize] = useState('large');
   const timelineRef = useRef<HTMLElement | null>(null);
 
@@ -93,7 +93,7 @@ export const TimelineControlsTimeline = () => {
     };
   }, [mdQuery, smQuery]);
 
-  const handleOverviewChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleOverviewChanged = (event: DatavizValueChangedEvent<typeof overviewValue>) => {
     if (event.detail.updatedFrom === 'internal') {
       setOverviewValue(event.detail.value);
     }

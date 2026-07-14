@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import { IntlNumberConverter } from "ojs/ojconverter-number";
 import "ojs/ojformlayout";
 import "ojs/ojinputnumber";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import { type InputNumberValueChangedEvent } from "./inputNumber-shared";
 
 const eurNumberConverter = new IntlNumberConverter({

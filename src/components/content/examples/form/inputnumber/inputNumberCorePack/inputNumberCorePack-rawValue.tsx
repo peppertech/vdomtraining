@@ -1,14 +1,15 @@
-import { h, type ComponentProps } from 'preact';
-import { useState } from "preact/hooks";
-import AsyncRegExpValidator = require("ojs/ojasyncvalidator-regexp");
-import { IntlNumberConverter } from "ojs/ojconverter-number";
 import "oj-c/button";
 import "oj-c/input-number";
+import { IntlNumberConverter } from "ojs/ojconverter-number";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useState } from "preact/hooks";
 import {
   type InputNumberCorePackRawValueChangedEvent,
   type InputNumberCorePackTransientValueChangedEvent,
   type InputNumberCorePackValueChangedEvent,
 } from "./inputNumberCorePack-shared";
+import AsyncRegExpValidator = require("ojs/ojasyncvalidator-regexp");
 
 const currencyConverter = new IntlNumberConverter({
   style: "currency",

@@ -1,17 +1,17 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/usaRainfall.json';
-import { getColorValuesFromPalette } from 'ojs/ojpalette';
-import { ojPopup } from 'ojs/ojpopup';
-import { ojThematicMap } from 'ojs/ojthematicmap';
 import 'css!./demo.css';
 import 'ojs/ojlegend';
+import { getColorValuesFromPalette } from 'ojs/ojpalette';
 import 'ojs/ojpopup';
+import { ojPopup } from 'ojs/ojpopup';
 import 'ojs/ojthematicmap';
+import { ojThematicMap } from 'ojs/ojthematicmap';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { Fragment } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/usaRainfall.json';
+import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type RainfallDatum = {
   State: string;
@@ -20,6 +20,7 @@ type RainfallDatum = {
 
 type ThematicMapProvider = ComponentProps<'oj-thematic-map'>['mapProvider'];
 type ThematicMapSelection = NonNullable<ComponentProps<'oj-thematic-map'>['selection']>;
+type ThematicMapSelectionChanged = Parameters<NonNullable<ComponentProps<'oj-thematic-map'>['onselectionChanged']>>[0];
 
 const geo = JSON.parse(geoText as string);
 const rainfallData = JSON.parse(jsonDataText as string) as RainfallDatum[];
@@ -94,7 +95,7 @@ export const ThematicMapPopup = () => {
     return colors[4];
   };
 
-  const handleSelectionChanged = (event: DatavizValueChangedEvent<string[] | null>) => {
+  const handleSelectionChanged = (event: ThematicMapSelectionChanged) => {
     setSelectedItemsValue(event.detail.value ?? []);
   };
 
@@ -133,7 +134,7 @@ export const ThematicMapPopup = () => {
     const popup = popupRef.current;
     if (popupArea != null && pageX != null && pageY != null && popup != null) {
       setPopupText(`${popupArea.Inches} inches of annual rainfall`);
-      popup.open(null, {
+      popup.open(document.body, {
         of: { x: pageX, y: pageY },
         my: { horizontal: 'start', vertical: 'bottom' },
         at: { horizontal: 'center', vertical: 'center' },

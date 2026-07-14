@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A Progress button represents button-level initiation.</p><p>
   A progress button communicates button-level initiation of an indeterminate action with a 

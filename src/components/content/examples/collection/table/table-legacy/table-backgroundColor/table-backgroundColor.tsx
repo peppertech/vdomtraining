@@ -1,8 +1,8 @@
-import { h } from 'preact';
+import "css!./demo.css";
+import 'ojs/ojtable';
+import 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojtable';
-import "css!./demo.css";
 
 export const TableBackgroundColor = () => {
   const deptArray = useMemo(() => [

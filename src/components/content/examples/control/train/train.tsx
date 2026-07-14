@@ -1,7 +1,7 @@
-import "preact";
-import { useState, useRef } from "preact/hooks";
 import "ojs/ojtrain";
 import { TrainElement } from "ojs/ojtrain";
+import "preact";
+import { useRef,useState } from "preact/hooks";
 
 const stepArray = [
   { label: "Step One", id: "stp1", disabled: false },

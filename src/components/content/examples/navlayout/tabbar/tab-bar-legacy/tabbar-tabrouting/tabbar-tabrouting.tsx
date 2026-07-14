@@ -1,8 +1,7 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojnavigationlist';
+import 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type RouteKey = 'dashboard' | 'incidents' | 'customers' | 'about';
 type Route = {

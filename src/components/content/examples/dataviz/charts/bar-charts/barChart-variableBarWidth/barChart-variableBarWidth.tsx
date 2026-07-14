@@ -1,15 +1,15 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import Converter = require('ojs/ojconverter');
 import { JetElementCustomEvent } from 'ojs/index';
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/stockData.json';
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojtoolbar';
 import 'ojs/ojchart';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
+import 'ojs/ojtoolbar';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/stockData.json';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
+import Converter = require('ojs/ojconverter');
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 interface StockDatum {
     id: string;
     stock: string;

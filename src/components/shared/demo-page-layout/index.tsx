@@ -5,11 +5,11 @@
  * as shown at https://oss.oracle.com/licenses/upl/
  * @ignore
  */
-import type { ComponentChildren, FunctionComponent } from "preact";
-import { DemoLayoutTemplate } from "./demo-layout-template";
+import type { ComponentChildren,FunctionComponent } from "preact";
 import ActioncardBasic from "../../content/examples/navlayout/action-card/action-card-legacy/actioncard-basic/actioncard-basic";
 import { actioncardBasicDescription } from "../../content/examples/navlayout/action-card/action-card-legacy/actioncard-basic/description";
 import { actioncardBasicRecipe } from "../../content/examples/navlayout/action-card/action-card-legacy/actioncard-basic/recipe";
+import { DemoLayoutTemplate } from "./demo-layout-template";
 
 type DemoDefinition = {
   componentType: string;

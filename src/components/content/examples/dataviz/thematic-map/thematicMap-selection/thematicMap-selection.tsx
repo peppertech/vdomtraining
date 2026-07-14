@@ -1,24 +1,25 @@
-// @ts-nocheck
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/sodaPop.json';
 import 'css!./demo.css';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojformlayout';
 import 'ojs/ojlegend';
 import 'ojs/ojthematicmap';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/sodaPop.json';
+import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
 import '../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ThematicMapProvider = ComponentProps<'oj-thematic-map'>['mapProvider'];
+type SelectionMode = NonNullable<ComponentProps<'oj-thematic-map'>['selectionMode']>;
+type ThematicMapSelectionChanged = Parameters<NonNullable<ComponentProps<'oj-thematic-map'>['onselectionChanged']>>[0];
 
 const geo = JSON.parse(geoText as string);
 const sodaData = JSON.parse(jsonDataText as string);
 
 export const ThematicMapSelection = () => {
-  const [selectionMode, setSelectionMode] = useState('multiple');
+  const [selectionMode, setSelectionMode] = useState<SelectionMode>('multiple');
   const [selectionValue, setSelectionValue] = useState([3, 28, 39]);
   const mapProvider = useMemo<ThematicMapProvider>(
     () => ({
@@ -57,7 +58,7 @@ export const ThematicMapSelection = () => {
     });
     return items;
   }, [selectionValue]);
-  const handleSelectionModeChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleSelectionModeChanged = (event: DatavizValueChangedEvent<SelectionMode | null>) => {
     const nextMode = event.detail.value ?? 'multiple';
     setSelectionMode(nextMode);
     if (nextMode === 'multiple') setSelectionValue([3, 28, 39]);
@@ -102,7 +103,9 @@ export const ThematicMapSelection = () => {
         mapProvider={mapProvider}
         selectionMode={selectionMode}
         selection={selectionValue}
-        onselectionChanged={(event: DatavizValueChangedEvent<string[] | undefined>) => setSelectionValue(event.detail.value ?? [])}
+        onselectionChanged={(event: ThematicMapSelectionChanged) =>
+          setSelectionValue((event.detail.value ?? []).filter((value): value is number => typeof value === 'number'))
+        }
         areaData={dataProvider}
         class="demo-thematicmap-min-width"
       >

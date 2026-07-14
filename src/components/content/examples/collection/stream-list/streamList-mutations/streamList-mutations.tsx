@@ -1,17 +1,18 @@
-import { ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
-import GroupingDataProvider = require('ojs/ojgroupingdataprovider');
-import { AllKeySetImpl } from 'ojs/ojkeyset';
+import 'css!./demo.css';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
+import { AllKeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojlabel';
 import 'ojs/ojoption';
 import 'ojs/ojstreamlist';
 import { StreamListElement } from 'ojs/ojstreamlist';
 import 'ojs/ojtoolbar';
-import 'css!./demo.css';
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
+import GroupingDataProvider = require('ojs/ojgroupingdataprovider');
 
 type DataStructure = 'flat' | 'group';
 type FlatItem = {

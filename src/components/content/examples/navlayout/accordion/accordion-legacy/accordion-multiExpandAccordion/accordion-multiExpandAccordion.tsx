@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "ojs/ojaccordion";
 import "ojs/ojcollapsible";
+import 'preact';
 
 export const AccordionMultiExpandAccordion = () => {
   return (

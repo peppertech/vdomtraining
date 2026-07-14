@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<p>
     The tab bar has 4 tabs, one for each route in the demo. Selecting a tab updates the route and

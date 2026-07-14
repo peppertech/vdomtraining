@@ -1,19 +1,20 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import TabBarLegacyRecipePage from "./tab-bar-legacy/index";
-import TabBarCorePackRecipePage from "./tab-bar-corepack/index";
-import TabBarMixedCorePackRecipePage from "./tab-bar-mixed-corepack/index";
-import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
 } from "../../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../../example-route-context";
+import TabBarCorePackRecipePage from "./tab-bar-corepack/index";
+import TabBarLegacyRecipePage from "./tab-bar-legacy/index";
+import TabBarMixedCorePackRecipePage from "./tab-bar-mixed-corepack/index";
 
 type TabBarComponent = {
   id: number;

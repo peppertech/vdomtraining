@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import * as quarterDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/quarterData.json';
 import 'ojs/ojchart';
-import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
-import 'ojs/ojtoolbar';
-import '../../../../../../jet-composites/demo-chart-stack-control/loader';
 import 'ojs/ojformlayout';
+import 'ojs/ojtoolbar';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as quarterDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/quarterData.json';
+import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
+import '../../../../../../jet-composites/demo-chart-stack-control/loader';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 

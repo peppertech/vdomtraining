@@ -1,9 +1,10 @@
-import { ComponentProps } from "preact";
+import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
 import "ojs/ojrowexpander";
 import "ojs/ojtable";
 import { ojTable } from "ojs/ojtable";
+import 'preact';
+import { ComponentProps } from 'preact';
 import * as jsonDataStr from "text!./data/projectData.json";
-import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
 import FlattenedTreeDataProviderView = require("ojs/ojflattenedtreedataproviderview");
 
 type TableRow = {

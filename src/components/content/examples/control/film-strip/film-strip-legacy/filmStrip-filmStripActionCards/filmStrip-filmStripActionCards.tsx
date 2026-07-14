@@ -1,9 +1,9 @@
-import { h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
-import 'ojs/ojfilmstrip';
+import 'css!./demo.css';
 import 'ojs/ojactioncard';
 import 'ojs/ojavatar';
-import 'css!./demo.css';
+import 'ojs/ojfilmstrip';
+import 'preact';
+import { useEffect,useState } from 'preact/hooks';
 
 type UserModel = {
   id: number;

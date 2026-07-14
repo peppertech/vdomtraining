@@ -1,11 +1,11 @@
-import { h } from 'preact';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojnbox';
+import { ojNBox } from 'ojs/ojnbox';
+import 'preact';
 import type { ComponentProps } from 'preact';
-import { useCallback, useMemo } from 'preact/hooks';
+import { useCallback,useMemo } from 'preact/hooks';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import { ojNBox } from 'ojs/ojnbox';
-import 'ojs/ojnbox';
 
 type Employee = {
   name: string;

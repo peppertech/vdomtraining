@@ -1,7 +1,7 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
 import "css!./demo.css";
 import 'oj-c/truncating-badge';
+import 'preact';
+import type { ComponentProps } from "preact";
 
 type TruncatingBadgeProps = ComponentProps<"oj-c-truncating-badge">;
 type BadgeVariant = NonNullable<TruncatingBadgeProps["variant"]>;

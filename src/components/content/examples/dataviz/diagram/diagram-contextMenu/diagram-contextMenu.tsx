@@ -1,16 +1,16 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/diagramDataSample.json';
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojmenu';
-import 'ojs/ojdiagram';
-import { ojMenu } from 'ojs/ojmenu';
-import { ojDiagram } from 'ojs/ojdiagram';
 import { JetElementCustomEvent } from 'ojs/index';
-import * as layout from '../diagram-layouts';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojdiagram';
+import { ojDiagram } from 'ojs/ojdiagram';
+import 'ojs/ojmenu';
+import { ojMenu } from 'ojs/ojmenu';
 import 'ojs/ojoption';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/diagramDataSample.json';
+import * as layout from '../diagram-layouts';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type DiagramSelection = NonNullable<ComponentProps<'oj-diagram'>['selection']>;
 type DiagramNodeDatum = {
     id: string;

@@ -1,6 +1,7 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/toggle-button";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useState } from "preact/hooks";
 
 type ToggleButtonProps = ComponentProps<"oj-c-toggle-button">;
 type ToggleButtonValueChangedEvent = Parameters<

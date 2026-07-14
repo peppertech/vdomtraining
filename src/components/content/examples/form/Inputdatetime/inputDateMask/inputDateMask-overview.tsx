@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "oj-c/form-layout";
 import "oj-c/input-date-mask";
+import 'preact';
 import { messageSets } from "./inputDateMask-shared";
 
 export default function InputDateMaskOverviewExample() {

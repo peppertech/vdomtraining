@@ -1,14 +1,14 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import "css!./demo.css";
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojchart';
+import 'ojs/ojlegend';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as bubbleDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/commonCategoriesBubbleData.json';
 import * as singleGroupDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/commonCategoriesSingleGroupData.json';
 import * as timeSeriesDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/commonCategoriesTimeSeriesData.json';
-import * as bubbleDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/commonCategoriesBubbleData.json';
-import 'ojs/ojlegend';
-import 'ojs/ojchart';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import "css!./demo.css";
 interface SingleGroupItem {
     id: string;
     series: string;

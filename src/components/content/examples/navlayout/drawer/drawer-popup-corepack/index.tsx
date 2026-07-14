@@ -1,22 +1,22 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { DrawerPopupAutoDismisscorepack } from "./drawerPopup-autoDismisscorepack/drawerPopup-autoDismisscorepack";
 import { drawerPopupAutoDismisscorepackDescription } from "./drawerPopup-autoDismisscorepack/description";
+import { DrawerPopupAutoDismisscorepack } from "./drawerPopup-autoDismisscorepack/drawerPopup-autoDismisscorepack";
 import { drawerPopupAutoDismisscorepackRecipe } from "./drawerPopup-autoDismisscorepack/recipe";
-import { DrawerPopupBasiccorepack } from "./drawerPopup-basiccorepack/drawerPopup-basiccorepack";
 import { drawerPopupBasiccorepackDescription } from "./drawerPopup-basiccorepack/description";
+import { DrawerPopupBasiccorepack } from "./drawerPopup-basiccorepack/drawerPopup-basiccorepack";
 import { drawerPopupBasiccorepackRecipe } from "./drawerPopup-basiccorepack/recipe";
-import { DrawerPopupCancelableEventscorepack } from "./drawerPopup-cancelableEventscorepack/drawerPopup-cancelableEventscorepack";
 import { drawerPopupCancelableEventscorepackDescription } from "./drawerPopup-cancelableEventscorepack/description";
+import { DrawerPopupCancelableEventscorepack } from "./drawerPopup-cancelableEventscorepack/drawerPopup-cancelableEventscorepack";
 import { drawerPopupCancelableEventscorepackRecipe } from "./drawerPopup-cancelableEventscorepack/recipe";
-import { DrawerPopupEventscorepack } from "./drawerPopup-eventscorepack/drawerPopup-eventscorepack";
 import { drawerPopupEventscorepackDescription } from "./drawerPopup-eventscorepack/description";
+import { DrawerPopupEventscorepack } from "./drawerPopup-eventscorepack/drawerPopup-eventscorepack";
 import { drawerPopupEventscorepackRecipe } from "./drawerPopup-eventscorepack/recipe";
-import { DrawerPopupModalitycorepack } from "./drawerPopup-modalitycorepack/drawerPopup-modalitycorepack";
 import { drawerPopupModalitycorepackDescription } from "./drawerPopup-modalitycorepack/description";
+import { DrawerPopupModalitycorepack } from "./drawerPopup-modalitycorepack/drawerPopup-modalitycorepack";
 import { drawerPopupModalitycorepackRecipe } from "./drawerPopup-modalitycorepack/recipe";
-import { DrawerPopupSizingcorepack } from "./drawerPopup-sizingcorepack/drawerPopup-sizingcorepack";
 import { drawerPopupSizingcorepackDescription } from "./drawerPopup-sizingcorepack/description";
+import { DrawerPopupSizingcorepack } from "./drawerPopup-sizingcorepack/drawerPopup-sizingcorepack";
 import { drawerPopupSizingcorepackRecipe } from "./drawerPopup-sizingcorepack/recipe";
 
 const drawerPopupCorePackItems = [

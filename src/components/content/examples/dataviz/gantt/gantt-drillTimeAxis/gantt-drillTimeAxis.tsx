@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import * as weeksData from 'text!../data/cookbook/dataVisualizations/gantt/drillTimeAxis/rowDataWeeks.json';
-import * as daysData from 'text!../data/cookbook/dataVisualizations/gantt/drillTimeAxis/rowDataDays.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
-import * as TimeUtils from 'ojs/ojtimeutils';
-import 'ojs/ojgantt';
 import 'css!./demo.css';
+import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
+import 'ojs/ojgantt';
+import * as TimeUtils from 'ojs/ojtimeutils';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useEffect,useMemo,useRef,useState } from 'preact/hooks';
+import * as daysData from 'text!../data/cookbook/dataVisualizations/gantt/drillTimeAxis/rowDataDays.json';
+import * as weeksData from 'text!../data/cookbook/dataVisualizations/gantt/drillTimeAxis/rowDataWeeks.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type GanttProps = ComponentProps<'oj-gantt'>;
 type ScreenRange = 'sm' | 'md' | 'lg' | 'xl' | 'xxl';

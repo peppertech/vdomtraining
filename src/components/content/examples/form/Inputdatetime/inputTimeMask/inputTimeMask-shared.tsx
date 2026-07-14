@@ -1,4 +1,5 @@
-import { ComponentProps } from "preact";
+import 'preact';
+import { ComponentProps } from 'preact';
 
 export type InputTimeMaskProps = ComponentProps<"oj-c-input-time-mask">;
 export type InputTimeMaskValueChangedEvent = Parameters<

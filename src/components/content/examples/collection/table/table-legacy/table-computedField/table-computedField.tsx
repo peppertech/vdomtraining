@@ -1,18 +1,18 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
+import "css!./demo.css";
 import * as Context from 'ojs/ojcontext';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import BufferingDataProvider = require('ojs/ojbufferingdataprovider');
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import { ojInputNumber } from 'ojs/ojinputnumber';
-import { ojTable } from 'ojs/ojtable';
-import * as empData from 'text!../../../data/cookbook/dataCollections/table/shared/employeeData.json';
 import 'ojs/ojinputnumber';
+import { ojInputNumber } from 'ojs/ojinputnumber';
 import 'ojs/ojinputtext';
 import 'ojs/ojlabel';
 import 'ojs/ojtable';
-import "css!./demo.css";
+import { ojTable } from 'ojs/ojtable';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as empData from 'text!../../../data/cookbook/dataCollections/table/shared/employeeData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import BufferingDataProvider = require('ojs/ojbufferingdataprovider');
 
 interface EmployeeData {
     EmployeeId: number;

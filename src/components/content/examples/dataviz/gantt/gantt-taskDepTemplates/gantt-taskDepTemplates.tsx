@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
-import * as rowDataText from 'text!../data/cookbook/dataVisualizations/gantt/taskDepTemplates/rowData.json';
-import * as depDataText from 'text!../data/cookbook/dataVisualizations/gantt/taskDepTemplates/depData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import 'css!./demo.css';
 import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
 import 'ojs/ojgantt';
-import 'css!./demo.css';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo } from 'preact/hooks';
+import * as depDataText from 'text!../data/cookbook/dataVisualizations/gantt/taskDepTemplates/depData.json';
+import * as rowDataText from 'text!../data/cookbook/dataVisualizations/gantt/taskDepTemplates/rowData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type GanttProps = ComponentProps<'oj-gantt'>;
 type GanttTaskProps = ComponentProps<'oj-gantt-task'>;

@@ -1,9 +1,9 @@
-import { h } from 'preact';
+import 'ojs/ojtreeview';
+import type { ojTreeView } from 'ojs/ojtreeview';
+import 'preact';
 import { useMemo } from 'preact/hooks';
 import * as jsonDataText from 'text!./treeViewData.json';
-import type { ojTreeView } from 'ojs/ojtreeview';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import 'ojs/ojtreeview';
 
 type TreeNode = {
   title: string;

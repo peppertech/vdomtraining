@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import 'ojs/ojsunburst';
+import 'preact';
+import { useMemo } from 'preact/hooks';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncomeSubregionShaped.json';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 const nodes = JSON.parse(jsonDataText as string);
 

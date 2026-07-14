@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import { IntlDateTimeConverter } from "ojs/ojconverter-datetime";
 import "ojs/ojdatetimepicker";
-import { type InputTimeProps, type InputTimeValueChangedEvent } from "./inputTime-shared";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
+import { type InputTimeProps,type InputTimeValueChangedEvent } from "./inputTime-shared";
 
 const localTimeConverter = new IntlDateTimeConverter({
   formatType: "time",

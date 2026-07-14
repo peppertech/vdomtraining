@@ -1,7 +1,8 @@
-import { h, type ComponentProps } from 'preact';
-import { useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-number";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useState } from "preact/hooks";
 import {
   noGroupingNumberConverter,
   type InputNumberCorePackValueChangedEvent,

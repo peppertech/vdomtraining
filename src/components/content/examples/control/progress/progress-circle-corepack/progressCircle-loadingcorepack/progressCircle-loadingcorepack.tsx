@@ -1,9 +1,9 @@
-import { h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
-import 'ojs/ojbutton';
-import 'ojs/ojlabelvalue';
-import 'ojs/ojlabel';
 import 'oj-c/progress-circle';
+import 'ojs/ojbutton';
+import 'ojs/ojlabel';
+import 'ojs/ojlabelvalue';
+import 'preact';
+import { useEffect,useState } from 'preact/hooks';
 
 export const ProgressCircleLoadingcorepack = () => {
   const [progressValue, setProgressValue] = useState(0);

@@ -1,9 +1,9 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as data from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
 import 'ojs/ojchart';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as data from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ChartDatum = {
   id: number;

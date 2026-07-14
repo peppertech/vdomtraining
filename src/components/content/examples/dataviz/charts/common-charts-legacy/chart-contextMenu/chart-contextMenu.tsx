@@ -1,13 +1,13 @@
+import { JetElementCustomEvent } from 'ojs/index';
+import 'ojs/ojchart';
+import { ojChart } from 'ojs/ojchart';
+import 'ojs/ojmenu';
+import { ojMenu } from 'ojs/ojmenu';
+import 'ojs/ojoption';
 import 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
+import { useMemo,useRef,useState } from 'preact/hooks';
 import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicData.json';
-import { JetElementCustomEvent } from 'ojs/index';
-import { ojChart } from 'ojs/ojchart';
-import { ojMenu } from 'ojs/ojmenu';
-import 'ojs/ojchart';
-import 'ojs/ojmenu';
-import 'ojs/ojoption';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ChartSelection = NonNullable<ComponentProps<'oj-chart'>['selection']>;

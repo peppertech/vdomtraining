@@ -1,15 +1,15 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import { FilterFactory } from 'ojs/ojdataprovider';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import ListDataProviderView = require('ojs/ojlistdataproviderview');
+import "css!./demo.css";
 import 'ojs/ojactioncard';
 import 'ojs/ojbutton';
+import { FilterFactory } from 'ojs/ojdataprovider';
 import 'ojs/ojwaterfalllayout';
+import * as preact from 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import '../../../../../jet-composites/demo-dept-card-layout/loader';
 import '../../../../../jet-composites/demo-profile-card-layout/loader';
-import "css!./demo.css";
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import ListDataProviderView = require('ojs/ojlistdataproviderview');
 
 type FilterValue = 'all' | 'people' | 'department';
 type ButtonsetValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-buttonset-one'>['onvalueChanged']>>[0];
@@ -60,7 +60,7 @@ const renderFilteringWaterfallItem = (item: WaterfallItemTemplateContext) => {
   if (item.data.type === 'people') {
     return (
       <oj-action-card>
-        {h("demo-profile-card-layout", {
+        {preact.h("demo-profile-card-layout", {
           name: item.data.name,
           initials: item.data.initials,
           image: item.data.image,
@@ -72,7 +72,7 @@ const renderFilteringWaterfallItem = (item: WaterfallItemTemplateContext) => {
 
   return (
     <oj-action-card class="oj-bg-warning-30">
-      {h("demo-dept-card-layout", {
+      {preact.h("demo-dept-card-layout", {
         deptName: item.data.name,
         deptCount: item.data.count,
         image: item.data.image,

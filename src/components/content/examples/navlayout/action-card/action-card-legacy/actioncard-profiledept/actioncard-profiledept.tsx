@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import 'ojs/ojactioncard';
 import { ActionCardElement } from 'ojs/ojactioncard';
 import 'ojs/ojlabel';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import '../../../../../../jet-composites/demo-dept-card-layout/loader';
 import '../../../../../../jet-composites/demo-profile-card-layout/loader';
 

@@ -1,23 +1,23 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { MessagebannerSimple } from "./messagebanner-simple/messagebanner-simple";
-import { messagebannerSimpleDescription } from "./messagebanner-simple/description";
-import { messagebannerSimpleRecipe } from "./messagebanner-simple/recipe";
-import { MessagebannerPageMessages } from "./messagebanner-pageMessages/messagebanner-pageMessages";
-import { messagebannerPageMessagesDescription } from "./messagebanner-pageMessages/description";
-import { messagebannerPageMessagesRecipe } from "./messagebanner-pageMessages/recipe";
-import { MessagebannerSectionMessages } from "./messagebanner-sectionMessages/messagebanner-sectionMessages";
-import { messagebannerSectionMessagesDescription } from "./messagebanner-sectionMessages/description";
-import { messagebannerSectionMessagesRecipe } from "./messagebanner-sectionMessages/recipe";
-import { MessagebannerKeyboardNavigation } from "./messagebanner-keyboardNavigation/messagebanner-keyboardNavigation";
-import { messagebannerKeyboardNavigationDescription } from "./messagebanner-keyboardNavigation/description";
-import { messagebannerKeyboardNavigationRecipe } from "./messagebanner-keyboardNavigation/recipe";
-import { MessagebannerDetailList } from "./messagebanner-detailList/messagebanner-detailList";
-import { messagebannerDetailListDescription } from "./messagebanner-detailList/description";
-import { messagebannerDetailListRecipe } from "./messagebanner-detailList/recipe";
-import { MessagebannerDetailActions } from "./messagebanner-detailActions/messagebanner-detailActions";
 import { messagebannerDetailActionsDescription } from "./messagebanner-detailActions/description";
+import { MessagebannerDetailActions } from "./messagebanner-detailActions/messagebanner-detailActions";
 import { messagebannerDetailActionsRecipe } from "./messagebanner-detailActions/recipe";
+import { messagebannerDetailListDescription } from "./messagebanner-detailList/description";
+import { MessagebannerDetailList } from "./messagebanner-detailList/messagebanner-detailList";
+import { messagebannerDetailListRecipe } from "./messagebanner-detailList/recipe";
+import { messagebannerKeyboardNavigationDescription } from "./messagebanner-keyboardNavigation/description";
+import { MessagebannerKeyboardNavigation } from "./messagebanner-keyboardNavigation/messagebanner-keyboardNavigation";
+import { messagebannerKeyboardNavigationRecipe } from "./messagebanner-keyboardNavigation/recipe";
+import { messagebannerPageMessagesDescription } from "./messagebanner-pageMessages/description";
+import { MessagebannerPageMessages } from "./messagebanner-pageMessages/messagebanner-pageMessages";
+import { messagebannerPageMessagesRecipe } from "./messagebanner-pageMessages/recipe";
+import { messagebannerSectionMessagesDescription } from "./messagebanner-sectionMessages/description";
+import { MessagebannerSectionMessages } from "./messagebanner-sectionMessages/messagebanner-sectionMessages";
+import { messagebannerSectionMessagesRecipe } from "./messagebanner-sectionMessages/recipe";
+import { messagebannerSimpleDescription } from "./messagebanner-simple/description";
+import { MessagebannerSimple } from "./messagebanner-simple/messagebanner-simple";
+import { messagebannerSimpleRecipe } from "./messagebanner-simple/recipe";
 
 const messageBannerLegacyItems = [
   {

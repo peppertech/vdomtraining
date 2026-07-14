@@ -1,9 +1,10 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ColorConverter = require('ojs/ojconverter-color');
 import 'oj-c/input-text';
 import 'ojs/ojcolor';
 import 'ojs/ojformlayout';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo } from 'preact/hooks';
+import ColorConverter = require('ojs/ojconverter-color');
 export const HelpHintsMessagingConverterHintMessages = () => {
     const converter = useMemo(() => new ColorConverter({ format: 'hex' }), []);
     const ojCInputTextProps: Partial<ComponentProps<'oj-c-input-text'>> = { displayOptions: {

@@ -1,23 +1,23 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
 import { BufferingTreeDataProviderTableRowExpanderMutations } from "./bufferingTreeDataProvider-tableRowExpanderMutations/bufferingTreeDataProvider-tableRowExpanderMutations";
 import { bufferingTreeDataProviderTableRowExpanderMutationsDescription } from "./bufferingTreeDataProvider-tableRowExpanderMutations/description";
 import { bufferingTreeDataProviderTableRowExpanderMutationsRecipe } from "./bufferingTreeDataProvider-tableRowExpanderMutations/recipe";
-import { RowExpanderTableExpandedRowExpander } from "./rowExpanderTable-expandedRowExpander/rowExpanderTable-expandedRowExpander";
 import { rowExpanderTableExpandedRowExpanderDescription } from "./rowExpanderTable-expandedRowExpander/description";
 import { rowExpanderTableExpandedRowExpanderRecipe } from "./rowExpanderTable-expandedRowExpander/recipe";
-import { RowExpanderTableTableAnimationRowExpander } from "./rowExpanderTable-tableAnimationRowExpander/rowExpanderTable-tableAnimationRowExpander";
+import { RowExpanderTableExpandedRowExpander } from "./rowExpanderTable-expandedRowExpander/rowExpanderTable-expandedRowExpander";
 import { rowExpanderTableTableAnimationRowExpanderDescription } from "./rowExpanderTable-tableAnimationRowExpander/description";
 import { rowExpanderTableTableAnimationRowExpanderRecipe } from "./rowExpanderTable-tableAnimationRowExpander/recipe";
-import { RowExpanderTableTableCollectionRowExpander } from "./rowExpanderTable-tableCollectionRowExpander/rowExpanderTable-tableCollectionRowExpander";
+import { RowExpanderTableTableAnimationRowExpander } from "./rowExpanderTable-tableAnimationRowExpander/rowExpanderTable-tableAnimationRowExpander";
 import { rowExpanderTableTableCollectionRowExpanderDescription } from "./rowExpanderTable-tableCollectionRowExpander/description";
 import { rowExpanderTableTableCollectionRowExpanderRecipe } from "./rowExpanderTable-tableCollectionRowExpander/recipe";
-import { RowExpanderTableTablePerformanceRowExpander } from "./rowExpanderTable-tablePerformanceRowExpander/rowExpanderTable-tablePerformanceRowExpander";
+import { RowExpanderTableTableCollectionRowExpander } from "./rowExpanderTable-tableCollectionRowExpander/rowExpanderTable-tableCollectionRowExpander";
 import { rowExpanderTableTablePerformanceRowExpanderDescription } from "./rowExpanderTable-tablePerformanceRowExpander/description";
 import { rowExpanderTableTablePerformanceRowExpanderRecipe } from "./rowExpanderTable-tablePerformanceRowExpander/recipe";
-import { RowExpanderTableTableRowExpander } from "./rowExpanderTable-tableRowExpander/rowExpanderTable-tableRowExpander";
+import { RowExpanderTableTablePerformanceRowExpander } from "./rowExpanderTable-tablePerformanceRowExpander/rowExpanderTable-tablePerformanceRowExpander";
 import { rowExpanderTableTableRowExpanderDescription } from "./rowExpanderTable-tableRowExpander/description";
 import { rowExpanderTableTableRowExpanderRecipe } from "./rowExpanderTable-tableRowExpander/recipe";
+import { RowExpanderTableTableRowExpander } from "./rowExpanderTable-tableRowExpander/rowExpanderTable-tableRowExpander";
 
 const rowExpanderItems = [
   {

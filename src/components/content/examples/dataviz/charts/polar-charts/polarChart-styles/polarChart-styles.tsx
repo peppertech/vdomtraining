@@ -1,16 +1,16 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as bubbleDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
-import * as lineDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/twoSeriesDualYData.json';
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojinputtext';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as bubbleDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
+import * as lineDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/twoSeriesDualYData.json';
 import '../../../../../../jet-composites/demo-select-enum/loader';
 import '../../../../../../jet-composites/demo-tabs/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type CurrentTab = 'seriesStyles' | 'plotAreaStyles';
 type TextInputValue = ComponentProps<'oj-input-text'>['value'];

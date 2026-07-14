@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
-import 'ojs/ojinputtext';
-import 'ojs/ojinputnumber';
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import 'ojs/ojinputtext';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type PropertyChangedEvent<T> = CustomEvent<{
     value: T | null;
 }>;

@@ -1,15 +1,15 @@
-// @ts-nocheck
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojbutton';
 import 'ojs/ojdialog';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
 import 'ojs/ojlabel';
-import 'ojs/ojswitch';
 import 'ojs/ojnavigationlist';
 import { ojTabBar } from 'ojs/ojnavigationlist';
+import 'ojs/ojswitch';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TabbarItem = {
   name: string;

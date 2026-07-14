@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as taskDataText from 'text!../data/cookbook/dataVisualizations/gantt/progress/taskData.json';
-import * as depDataText from 'text!../data/cookbook/dataVisualizations/gantt/progress/depData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojgantt';
-import 'oj-c/checkboxset';
 import 'css!./demo.css';
+import 'oj-c/checkboxset';
+import 'ojs/ojgantt';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as depDataText from 'text!../data/cookbook/dataVisualizations/gantt/progress/depData.json';
+import * as taskDataText from 'text!../data/cookbook/dataVisualizations/gantt/progress/taskData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type GanttProps = ComponentProps<'oj-gantt'>;
 type GanttTaskProps = ComponentProps<'oj-gantt-task'>;

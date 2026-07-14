@@ -1,7 +1,7 @@
-import { h } from "preact";
 import "ojs/ojformlayout";
 import "ojs/ojoption";
 import "ojs/ojradioset";
+import 'preact';
 import {
   confirmationMessages,
   errorMessages,

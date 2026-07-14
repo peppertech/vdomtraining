@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as dndDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/dndDataSample.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import { getLayout } from 'ojs/ojdiagram-utils';
 import 'ojs/ojdiagram';
+import { getLayout } from 'ojs/ojdiagram-utils';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as dndDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/dndDataSample.json';
 import * as layout from '../diagram-layouts';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type PanZoomState = NonNullable<ComponentProps<'oj-diagram'>['panZoomState']>;
 type DndNode = {

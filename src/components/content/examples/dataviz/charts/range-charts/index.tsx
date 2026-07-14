@@ -1,37 +1,37 @@
-import { h } from "preact";
+import 'preact';
 import {
   RecipePageTemplate,
   type RecipePageItem,
 } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { RangeChartAnimation } from "./rangeChart-animation/rangeChart-animation";
 import { rangeChartAnimationDescription } from "./rangeChart-animation/description";
+import { RangeChartAnimation } from "./rangeChart-animation/rangeChart-animation";
 import { rangeChartAnimationRecipe } from "./rangeChart-animation/recipe";
-import { RangeChartDataLabels } from "./rangeChart-dataLabels/rangeChart-dataLabels";
 import { rangeChartDataLabelsDescription } from "./rangeChart-dataLabels/description";
+import { RangeChartDataLabels } from "./rangeChart-dataLabels/rangeChart-dataLabels";
 import { rangeChartDataLabelsRecipe } from "./rangeChart-dataLabels/recipe";
-import { RangeChartDefault } from "./rangeChart-default/rangeChart-default";
 import { rangeChartDefaultDescription } from "./rangeChart-default/description";
+import { RangeChartDefault } from "./rangeChart-default/rangeChart-default";
 import { rangeChartDefaultRecipe } from "./rangeChart-default/recipe";
-import { RangeChartHideShow } from "./rangeChart-hideShow/rangeChart-hideShow";
 import { rangeChartHideShowDescription } from "./rangeChart-hideShow/description";
+import { RangeChartHideShow } from "./rangeChart-hideShow/rangeChart-hideShow";
 import { rangeChartHideShowRecipe } from "./rangeChart-hideShow/recipe";
-import { RangeChartLineTypes } from "./rangeChart-lineTypes/rangeChart-lineTypes";
 import { rangeChartLineTypesDescription } from "./rangeChart-lineTypes/description";
+import { RangeChartLineTypes } from "./rangeChart-lineTypes/rangeChart-lineTypes";
 import { rangeChartLineTypesRecipe } from "./rangeChart-lineTypes/recipe";
-import { RangeChartPolar } from "./rangeChart-polar/rangeChart-polar";
 import { rangeChartPolarDescription } from "./rangeChart-polar/description";
+import { RangeChartPolar } from "./rangeChart-polar/rangeChart-polar";
 import { rangeChartPolarRecipe } from "./rangeChart-polar/recipe";
-import { RangeChartRefObject } from "./rangeChart-refObject/rangeChart-refObject";
 import { rangeChartRefObjectDescription } from "./rangeChart-refObject/description";
+import { RangeChartRefObject } from "./rangeChart-refObject/rangeChart-refObject";
 import { rangeChartRefObjectRecipe } from "./rangeChart-refObject/recipe";
-import { RangeChartSelection } from "./rangeChart-selection/rangeChart-selection";
 import { rangeChartSelectionDescription } from "./rangeChart-selection/description";
+import { RangeChartSelection } from "./rangeChart-selection/rangeChart-selection";
 import { rangeChartSelectionRecipe } from "./rangeChart-selection/recipe";
-import { RangeChartShapedData } from "./rangeChart-shapedData/rangeChart-shapedData";
 import { rangeChartShapedDataDescription } from "./rangeChart-shapedData/description";
+import { RangeChartShapedData } from "./rangeChart-shapedData/rangeChart-shapedData";
 import { rangeChartShapedDataRecipe } from "./rangeChart-shapedData/recipe";
-import { RangeChartVariableBarWidth } from "./rangeChart-variableBarWidth/rangeChart-variableBarWidth";
 import { rangeChartVariableBarWidthDescription } from "./rangeChart-variableBarWidth/description";
+import { RangeChartVariableBarWidth } from "./rangeChart-variableBarWidth/rangeChart-variableBarWidth";
 import { rangeChartVariableBarWidthRecipe } from "./rangeChart-variableBarWidth/recipe";
 
 const rangeChartItems: RecipePageItem[] = [

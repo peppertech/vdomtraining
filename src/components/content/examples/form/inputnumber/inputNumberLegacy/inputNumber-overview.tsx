@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
-import "ojs/ojinputnumber";
 import "ojs/ojformlayout";
+import "ojs/ojinputnumber";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import {
   messageSets,
   type InputNumberValueChangedEvent,

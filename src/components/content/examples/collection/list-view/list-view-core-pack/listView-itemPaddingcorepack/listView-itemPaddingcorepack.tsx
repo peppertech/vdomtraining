@@ -1,9 +1,9 @@
-import { useMemo, useState } from "preact/hooks";
-import type { ComponentProps } from "preact";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import "ojs/ojswitch";
-import type { CListViewElement } from "oj-c/list-view";
 import "oj-c/list-view";
+import type { CListViewElement } from "oj-c/list-view";
+import "ojs/ojswitch";
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 interface Employee {
   email: string;

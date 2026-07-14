@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from "preact/hooks";
-import type { ComponentProps } from "preact";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import { IntlNumberConverter } from "ojs/ojconverter-number";
-import { ojTable } from "ojs/ojtable";
-import "ojs/ojtable";
 import "oj-c/avatar";
 import "oj-c/list-item-layout";
+import { IntlNumberConverter } from "ojs/ojconverter-number";
+import "ojs/ojtable";
+import { ojTable } from "ojs/ojtable";
+import type { ComponentProps } from "preact";
+import { useEffect,useMemo,useState } from "preact/hooks";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 interface DataInfo {
   Average: number;

@@ -1,14 +1,14 @@
-import { useMemo, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import { KeySetImpl, type KeySet } from "ojs/ojkeyset";
-import type { ojListView } from "ojs/ojlistview";
 import "css!./demo.css";
 import "ojs/ojavatar";
 import "ojs/ojbutton";
+import { KeySetImpl,type KeySet } from "ojs/ojkeyset";
 import "ojs/ojlistitemlayout";
 import "ojs/ojlistview";
+import type { ojListView } from "ojs/ojlistview";
 import "ojs/ojselector";
 import "ojs/ojtoolbar";
+import { useMemo,useState } from "preact/hooks";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 interface Employee {
   department: string;

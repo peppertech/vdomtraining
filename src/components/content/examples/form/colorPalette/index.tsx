@@ -1,10 +1,10 @@
-import { h } from "preact";
+import 'preact';
+import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
 import { ColorPalette } from "./colorPalette";
 import {
   colorPaletteDescription,
   colorPaletteRecipe,
 } from "./colorPalette-docs";
-import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
 
 export default function ColorPaletteRecipePage() {
   return (

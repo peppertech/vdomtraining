@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as lineDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/twoSeriesDualYData.json';
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as lineDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/twoSeriesDualYData.json';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type LineType = 'straight' | 'curved' | 'stepped' | 'segmented' | 'none';
 type PolarChartItem = {

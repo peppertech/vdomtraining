@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import { AccordionItemSingleBasiccorepack } from "./accordionItemSingle-basiccorepack/accordionItemSingle-basiccorepack";
 import { accordionItemSingleBasiccorepackDescription } from "./accordionItemSingle-basiccorepack/description";

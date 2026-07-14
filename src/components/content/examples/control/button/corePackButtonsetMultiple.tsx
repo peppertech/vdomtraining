@@ -1,8 +1,9 @@
-import { h, ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "oj-c/buttonset-multiple";
 import "ojs/ojlabel";
 import "ojs/ojlabelvalue";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useMemo,useState } from "preact/hooks";
 
 type ButtonsetMultipleProps = ComponentProps<"oj-c-buttonset-multiple">;
 type ButtonsetMultipleItem = NonNullable<ButtonsetMultipleProps["items"]>[number];

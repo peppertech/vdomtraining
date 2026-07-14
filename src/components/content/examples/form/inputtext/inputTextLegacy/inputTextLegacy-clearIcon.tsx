@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
+import 'preact';
+import { useState } from "preact/hooks";
 
 export default function InputTextLegacyClearIconExample() {
   const [valueNoClearIcon, setValueNoClearIcon] = useState("");

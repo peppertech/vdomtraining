@@ -1,15 +1,15 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import DemoDelayingDataProvider from '../../shared/DemoDelayingDataProvider';
+import "css!./demo.css";
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojwaterfalllayout';
+import * as preact from 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import '../../../../../jet-composites/demo-dept-card-layout/loader';
 import '../../../../../jet-composites/demo-profile-card-layout/loader';
-import "css!./demo.css";
+import DemoDelayingDataProvider from '../../shared/DemoDelayingDataProvider';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type InputNumberValue = ComponentProps<'oj-input-number'>['value'];
 type InputNumberValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0];
@@ -50,7 +50,7 @@ const renderProgressiveWaterfallItem = (item: WaterfallItemTemplateContext) => {
   if (item.data.type === 'people') {
     return (
       <div class="oj-panel oj-sm-only-width-4/5">
-        {h("demo-profile-card-layout", {
+        {preact.h("demo-profile-card-layout", {
           name: item.data.name,
           initials: item.data.initials,
           image: item.data.image,
@@ -62,7 +62,7 @@ const renderProgressiveWaterfallItem = (item: WaterfallItemTemplateContext) => {
 
   return (
     <div class="oj-panel oj-bg-warning-30 oj-sm-only-width-4/5">
-      {h("demo-dept-card-layout", {
+      {preact.h("demo-dept-card-layout", {
         deptName: item.data.name,
         deptCount: item.data.count,
         image: item.data.image,

@@ -1,9 +1,9 @@
-import { h } from 'preact';
+import 'oj-c/file-picker';
+import { CFilePickerElement } from 'oj-c/file-picker';
+import 'oj-c/radioset';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useState } from 'preact/hooks';
-import { CFilePickerElement } from 'oj-c/file-picker';
-import 'oj-c/file-picker';
-import 'oj-c/radioset';
 
 type CaptureValue = NonNullable<ComponentProps<'oj-c-file-picker'>['capture']>;
 type RadioValueChangedEvent = Parameters<

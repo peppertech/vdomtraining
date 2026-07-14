@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
+import "css!./demo.css";
 import 'ojs/ojbutton';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import 'ojs/ojdatagrid';
 import type { DataGridElement } from 'ojs/ojdatagrid';
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
+import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/stateRegions.json';
-import "css!./demo.css";
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 const jsonData = JSON.parse(jsonDataText as string);
 interface PivotRow {
     label: string;

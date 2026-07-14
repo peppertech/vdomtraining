@@ -1,14 +1,15 @@
-import { h, type ComponentProps } from 'preact';
-import * as employeeDataText from "text!../../data/employeeData.json";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import type { ItemContext } from "ojs/ojcommontypes";
-import type { CSelectSingleElement } from "oj-c/select-single";
-import type { ojTable } from "ojs/ojtable";
 import "oj-c/avatar";
 import "oj-c/highlight-text";
 import "oj-c/list-item-layout";
 import "oj-c/list-view";
+import type { CSelectSingleElement } from "oj-c/select-single";
 import "oj-c/table";
+import type { ItemContext } from "ojs/ojcommontypes";
+import type { ojTable } from "ojs/ojtable";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import * as employeeDataText from "text!../../data/employeeData.json";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type CurrentItemEvent = Parameters<
   NonNullable<ComponentProps<"oj-c-list-view">["oncurrentItemChanged"]>

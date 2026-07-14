@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A progress circle allows the user to visualize the progression of an extended computer operation.</p>This demo shows some of the more important visual aspects of
 <code>oj-c-progress-circle</code>`;

@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import InputDatePickerCustomizeDaysExample from "./inputDatePicker-customizeDays";
 import {
@@ -17,7 +17,7 @@ const inputDatePickerItemsVdom: {
   name: string;
   description: (typeof inputDatePickerDocsVdom)[InputDatePickerVdomDemoId]["description"];
   recipe: (typeof inputDatePickerDocsVdom)[InputDatePickerVdomDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "overview",

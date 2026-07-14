@@ -1,15 +1,14 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
-import { ojChart } from 'ojs/ojchart';
 import 'ojs/ojchart';
+import { ojChart } from 'ojs/ojchart';
 import 'ojs/ojformlayout';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type ChartZoomAndScroll = ComponentProps<'oj-chart'>['zoomAndScroll'];
 type ChartZoomDirection = ComponentProps<'oj-chart'>['zoomDirection'];
 type ScatterChartItem = {
@@ -63,7 +62,7 @@ return (
                     <demo-radioset-enum direction="row" labelHint="Zoom and Control" onvalueChanged={handleZoomValueValueChanged} value={zoomValue} enumValues={["live","liveScrollOnly"]} />
                     <demo-radioset-enum direction="row" onvalueChanged={handleZoomDirectionValueValueChanged} value={zoomDirectionValue} labelHint="Zoom Direction" enumValues={["auto","x","y"]} />
                 </oj-form-layout>
-            <oj-chart id="scatterChart" type="scatter" selectionMode="multiple" data={dataProvider} zoomAndScroll={zoomValue} zoomDirection={zoomDirectionValue} onojViewportChange={viewportChange} xAxis={"{\"viewportMin\": 10, \"viewportMax\": 40}"} yAxis={"{\"viewportMin\": 5, \"viewportMax\": 30}"}>
+            <oj-chart id="scatterChart" type="scatter" selectionMode="multiple" data={dataProvider} zoomAndScroll={zoomValue} zoomDirection={zoomDirectionValue} onojViewportChange={viewportChange} xAxis={{ viewportMin: 10, viewportMax: 40 }} yAxis={{ viewportMin: 5, viewportMax: 30 }}>
                     <template slot="itemTemplate" render={itemTemplateRenderer} />
                 </oj-chart>
             <div class="oj-sm-padding-1x">

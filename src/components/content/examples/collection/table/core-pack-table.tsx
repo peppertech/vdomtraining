@@ -1,9 +1,10 @@
-import { h, ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, ImmutableKeySet } from "ojs/ojkeyset";
 import "oj-c/table";
+import { ImmutableKeySet,KeySetImpl } from "ojs/ojkeyset";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useMemo,useState } from "preact/hooks";
 import * as deptData from "text!../data/departmentData.json";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type Department = {
   DepartmentId: number;

@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
 import SwitchCrossFieldValidationExample from "./switch-crossFieldValidation";
 import {
@@ -14,7 +14,7 @@ const switchItems: {
   name: string;
   description: (typeof switchDocs)[SwitchDemoId]["description"];
   recipe: (typeof switchDocs)[SwitchDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "states",

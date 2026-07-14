@@ -1,12 +1,13 @@
-import { ComponentProps } from "preact";
 import { IntlDateTimeConverter } from "ojs/ojconverter-datetime";
-import * as ResponsiveUtils from "ojs/ojresponsiveutils";
-import Message = require("ojs/ojmessaging");
-import { ojDatePicker } from "ojs/ojdatetimepicker";
-import "ojs/ojknockout";
 import "ojs/ojdatetimepicker";
-import "ojs/ojlabel";
+import { ojDatePicker } from "ojs/ojdatetimepicker";
 import "ojs/ojformlayout";
+import "ojs/ojknockout";
+import "ojs/ojlabel";
+import * as ResponsiveUtils from "ojs/ojresponsiveutils";
+import 'preact';
+import { ComponentProps } from 'preact';
+import Message = require("ojs/ojmessaging");
 
 type InputDateTimeProps = ComponentProps<"oj-input-date-time">;
 

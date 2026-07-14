@@ -1,11 +1,11 @@
-import { h } from 'preact';
+import 'ojs/ojchart';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
+import 'ojs/ojlegend';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import * as complaintsDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/hotelComplaintsData.json';
-import 'ojs/ojchart';
-import 'ojs/ojlegend';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ComplaintDatum = {
     id: string;

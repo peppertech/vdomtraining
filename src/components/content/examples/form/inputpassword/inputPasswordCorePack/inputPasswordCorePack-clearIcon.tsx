@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-password";
+import 'preact';
+import { useState } from "preact/hooks";
 import {
   type InputPasswordCorePackRawValueChangedEvent,
   type InputPasswordCorePackValueChangedEvent,

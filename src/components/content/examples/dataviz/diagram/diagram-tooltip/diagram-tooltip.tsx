@@ -1,13 +1,12 @@
-import { h } from 'preact';
+import "css!./demo.css";
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojdiagram';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/diagramDataSample.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojdiagram';
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import { ojDiagram } from 'ojs/ojdiagram';
 import * as layout from '../diagram-layouts';
-import "css!./demo.css";
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 interface DiagramNode {
     id: string;
     category: string;

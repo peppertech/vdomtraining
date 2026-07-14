@@ -1,12 +1,12 @@
-import { Fragment, h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
 import 'ojs/ojchart';
-import '../../../../../../jet-composites/demo-radioset-enum/loader';
 import 'ojs/ojformlayout';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
+import '../../../../../../jet-composites/demo-radioset-enum/loader';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 const data = JSON.parse(dataText as string);
 

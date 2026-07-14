@@ -1,11 +1,11 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { AvatarOverviewcorepack } from "./avatar-overviewcorepack/avatar-overviewcorepack";
-import { avatarOverviewcorepackDescription } from "./avatar-overviewcorepack/description";
-import { avatarOverviewcorepackRecipe } from "./avatar-overviewcorepack/recipe";
 import { AvatarCombinationscorepack } from "./avatar-combinationscorepack/avatar-combinationscorepack";
 import { avatarCombinationscorepackDescription } from "./avatar-combinationscorepack/description";
 import { avatarCombinationscorepackRecipe } from "./avatar-combinationscorepack/recipe";
+import { AvatarOverviewcorepack } from "./avatar-overviewcorepack/avatar-overviewcorepack";
+import { avatarOverviewcorepackDescription } from "./avatar-overviewcorepack/description";
+import { avatarOverviewcorepackRecipe } from "./avatar-overviewcorepack/recipe";
 
 const avatarCorePackItems = [
   {

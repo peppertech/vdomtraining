@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A List Item Layout represents layout used for list view item elements.</p><p>
   The demo shows how to use multiple list item layout components to build a multi-column layout. To

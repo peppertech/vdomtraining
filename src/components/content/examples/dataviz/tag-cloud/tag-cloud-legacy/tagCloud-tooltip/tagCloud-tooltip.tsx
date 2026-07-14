@@ -1,11 +1,11 @@
-import { h } from 'preact';
+import 'css!./demo.css';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojchart';
+import 'ojs/ojtagcloud';
+import 'preact';
 import { useMemo } from 'preact/hooks';
 import * as jsonData from 'text!../../data/cookbook/dataVisualizations/tagCloud/resources/socialNetworks.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import 'ojs/ojtagcloud';
-import 'ojs/ojchart';
-import 'css!./demo.css';
 
 type SocialNetwork = {
   id: string;

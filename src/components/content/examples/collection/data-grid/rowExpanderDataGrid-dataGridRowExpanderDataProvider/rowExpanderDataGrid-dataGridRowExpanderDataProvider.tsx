@@ -1,17 +1,18 @@
-import { h, render } from 'preact';
-import type { ComponentChildren, ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import type {
-    DataGridProvider,
-    FetchByOffsetGridParameters,
-    FetchByOffsetGridResults,
-    GridBodyItem,
-    GridHeaderItem
-} from 'ojs/ojdatagridprovider';
-import * as jsonDataStr from 'text!../../data/cookbook/dataCollections/dataGrid/shared/hierarchicalPopulation.json';
+import 'css!./demo.css';
 import 'ojs/ojbutton';
 import 'ojs/ojdatagrid';
-import 'css!./demo.css';
+import type {
+  DataGridProvider,
+  FetchByOffsetGridParameters,
+  FetchByOffsetGridResults,
+  GridBodyItem,
+  GridHeaderItem
+} from 'ojs/ojdatagridprovider';
+import 'preact';
+import type { ComponentChildren,ComponentProps } from 'preact';
+import { render } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataStr from 'text!../../data/cookbook/dataCollections/dataGrid/shared/hierarchicalPopulation.json';
 
 type GridData = string | number;
 

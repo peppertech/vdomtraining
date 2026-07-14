@@ -1,5 +1,5 @@
-import { h } from 'preact';
 import "css!./demo.css";
+import 'preact';
 
 const lightColorRows = [
   ['oj-bg-body'],

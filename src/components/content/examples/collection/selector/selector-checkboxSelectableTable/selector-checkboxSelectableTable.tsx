@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { KeySet, KeySetImpl } from 'ojs/ojkeyset';
-import { ojTable } from 'ojs/ojtable';
-import type { SelectorElement } from 'ojs/ojselector';
+import { KeySet,KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojoption';
 import 'ojs/ojradioset';
 import 'ojs/ojselector';
+import type { SelectorElement } from 'ojs/ojselector';
 import 'ojs/ojtable';
+import { ojTable } from 'ojs/ojtable';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type Department = {
   id: number;

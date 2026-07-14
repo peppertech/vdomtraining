@@ -1,6 +1,6 @@
+import 'ojs/ojlegend';
 import type { JSX } from 'preact';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojlegend';
 
 type LegendIconItem = {
   text: string;

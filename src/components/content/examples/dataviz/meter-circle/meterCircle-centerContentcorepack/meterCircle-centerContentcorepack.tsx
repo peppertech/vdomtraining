@@ -1,8 +1,8 @@
-import type { ComponentProps } from "preact";
-import { IntlNumberConverter } from "ojs/ojconverter-number";
-import type { CMeterCircleElement } from "oj-c/meter-circle";
 import "css!./demo.css";
 import "oj-c/meter-circle";
+import type { CMeterCircleElement } from "oj-c/meter-circle";
+import { IntlNumberConverter } from "ojs/ojconverter-number";
+import type { ComponentProps } from "preact";
 
 const numberConverter = new IntlNumberConverter({
   style: "currency",

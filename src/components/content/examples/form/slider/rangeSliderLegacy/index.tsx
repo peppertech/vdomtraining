@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import RangeSliderBasicExample from "./rangeSlider-basic";
 import {
@@ -16,7 +16,7 @@ const rangeSliderItems: {
   name: string;
   description: (typeof rangeSliderDocs)[RangeSliderDemoId]["description"];
   recipe: (typeof rangeSliderDocs)[RangeSliderDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "states",

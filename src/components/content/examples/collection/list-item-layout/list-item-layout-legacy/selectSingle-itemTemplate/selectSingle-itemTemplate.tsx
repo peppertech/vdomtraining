@@ -1,14 +1,14 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as employeeDataText from 'text!../../../data/cookbook/formControls/selectSingle/itemTemplate/employeeData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import type { ojSelectSingle } from 'ojs/ojselectsingle';
-import 'ojs/ojselectsingle';
+import 'css!./demo.css';
+import 'ojs/ojavatar';
 import 'ojs/ojhighlighttext';
 import 'ojs/ojlistitemlayout';
-import 'ojs/ojavatar';
-import 'css!./demo.css';
+import 'ojs/ojselectsingle';
+import type { ojSelectSingle } from 'ojs/ojselectsingle';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as employeeDataText from 'text!../../../data/cookbook/formControls/selectSingle/itemTemplate/employeeData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type Employee = {
   EMPLOYEE_ID: number;
@@ -26,6 +26,9 @@ type SelectSingleValueChangedEvent = ojSelectSingle.valueChanged<
   Employee['EMPLOYEE_ID'],
   Employee
 >;
+type SelectSingleProps = ComponentProps<'oj-select-single'>;
+type SelectSingleItemText = Extract<SelectSingleProps['itemText'], (itemContext: never) => string>;
+type SelectSingleItemTextContext = Parameters<SelectSingleItemText>[0];
 
 const employeeData = (JSON.parse(employeeDataText as string) as Employee[]).map((employee) => ({
   ...employee,
@@ -43,7 +46,7 @@ export const SelectSingleItemTemplate = () => {
     []
   );
 
-  const getItemText = (itemContext: SelectSingleItemTemplateContext) =>
+  const getItemText = (itemContext: SelectSingleItemTextContext) =>
     `${itemContext.data.FIRST_NAME} ${itemContext.data.LAST_NAME}`;
 
   const handleSelectValChanged = (event: SelectSingleValueChangedEvent) => {

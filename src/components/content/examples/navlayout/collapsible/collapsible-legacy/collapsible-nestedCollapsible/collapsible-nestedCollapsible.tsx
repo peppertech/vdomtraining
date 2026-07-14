@@ -1,5 +1,5 @@
-import { h } from 'preact';
 import 'ojs/ojcollapsible';
+import 'preact';
 
 export const CollapsibleNestedCollapsible = () => {
   return (

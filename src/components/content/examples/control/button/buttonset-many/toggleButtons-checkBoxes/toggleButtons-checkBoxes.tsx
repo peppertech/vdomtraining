@@ -1,6 +1,7 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import 'ojs/ojbutton';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 
 type FormatValue = 'bold' | 'italic' | 'underline';
 type ButtonsetManyValueChangedEvent = Parameters<

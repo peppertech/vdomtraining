@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "css!./demo.css";
 import "oj-c/action-card";
 import "ojs/ojlabel";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from "preact/hooks";
 import "../../../../../../jet-composites/demo-dept-card-layout/loader";
 import "../../../../../../jet-composites/demo-profile-card-layout/loader";
 

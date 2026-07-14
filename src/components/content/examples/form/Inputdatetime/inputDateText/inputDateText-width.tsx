@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-date-text";
 import "oj-c/radioset";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import {
   isInputDateTextLabelEdge,
   labelEdgeOptions,

@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as rowDataText from 'text!../data/cookbook/dataVisualizations/gantt/valueFormats/rowData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
-import 'ojs/ojgantt';
+import 'css!./demo.css';
 import 'oj-c/checkboxset';
 import 'oj-c/input-text';
-import 'css!./demo.css';
+import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
+import 'ojs/ojgantt';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as rowDataText from 'text!../data/cookbook/dataVisualizations/gantt/valueFormats/rowData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type GanttProps = ComponentProps<'oj-gantt'>;
 type GanttTaskProps = ComponentProps<'oj-gantt-task'>;

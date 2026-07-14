@@ -1,6 +1,6 @@
+import "oj-c/meter-circle";
 import type { ComponentProps } from "preact";
 import { useState } from "preact/hooks";
-import "oj-c/meter-circle";
 
 type MeterCircleValueChangedHandler = NonNullable<
   ComponentProps<"oj-c-meter-circle">["onvalueChanged"]

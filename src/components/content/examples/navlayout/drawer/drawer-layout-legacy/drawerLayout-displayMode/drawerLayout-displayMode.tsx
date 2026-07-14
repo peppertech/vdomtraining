@@ -1,17 +1,16 @@
-import { JetElementCustomEvent } from 'ojs/index';
-import { h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useState } from 'preact/hooks';
 import 'ojs/ojdrawerlayout';
+import { useState } from 'preact/hooks';
 // Controls
 import 'ojs/ojbutton';
 import 'ojs/ojradioset';
 // Drawers
+import "css!./demo.css";
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
 import 'ojs/ojoption';
-import "css!./demo.css";
 
 export const DrawerLayoutDisplayMode = () => {
   const [endOpened, setEndOpened] = useState<ComponentProps<'oj-drawer-layout'>['endOpened']>(false);

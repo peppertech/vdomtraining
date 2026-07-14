@@ -1,10 +1,10 @@
-import type { JSX } from 'preact';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { ColorAttributeGroupHandler, ShapeAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import "css!./demo.css";
 import "oj-c/legend";
 import "oj-c/legend-item";
 import "oj-c/legend-section";
+import { ColorAttributeGroupHandler,ShapeAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import type { JSX } from 'preact';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type LegendSectionItem = {
   type: 'Brand' | 'Year';

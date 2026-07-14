@@ -1,7 +1,7 @@
-import type { ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
 import 'css!./demo.css';
 import 'ojs/ojgauge';
+import type { ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
 
 type RatingGaugeValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-rating-gauge'>['onvalueChanged']>

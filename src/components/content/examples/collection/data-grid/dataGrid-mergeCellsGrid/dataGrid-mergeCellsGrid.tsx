@@ -1,11 +1,11 @@
-import { h } from 'preact';
+import "css!./demo.css";
+import 'ojs/ojdatagrid';
+import type { DataGridElement } from 'ojs/ojdatagrid';
+import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
-import 'ojs/ojdatagrid';
-import type { DataGridElement } from 'ojs/ojdatagrid';
-import "css!./demo.css";
 interface MergeRow {
     rowLabel: string;
     [key: string]: string;

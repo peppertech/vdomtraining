@@ -1,10 +1,10 @@
-import type { ComponentProps } from "preact";
-import { useEffect, useMemo, useState } from "preact/hooks";
 import "css!./demo.css";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import * as deptData from "text!./departmentData.json";
-import * as ResponsiveUtils from "ojs/ojresponsiveutils";
 import "oj-c/table";
+import * as ResponsiveUtils from "ojs/ojresponsiveutils";
+import type { ComponentProps } from "preact";
+import { useEffect,useMemo,useState } from "preact/hooks";
+import * as deptData from "text!./departmentData.json";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 interface Department {
   DepartmentId: number;

@@ -1,12 +1,12 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import { getLabelFormatInfo } from 'ojs/ojchart-utils';
-import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/regionGDP.json';
 import 'ojs/ojchart';
+import { getLabelFormatInfo } from 'ojs/ojchart-utils';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import 'ojs/ojformlayout';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/regionGDP.json';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type FormatValue = 'decimal' | 'currency';

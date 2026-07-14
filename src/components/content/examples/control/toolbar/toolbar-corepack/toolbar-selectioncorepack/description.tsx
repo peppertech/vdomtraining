@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A toolbar displays a strip of control elements such as buttons and menu buttons, often grouped by separators.</p>This demo shows how a toolbar can control the selection state of its content. The selection state is
 controlled by the toolbar only, and not any of its items.`;

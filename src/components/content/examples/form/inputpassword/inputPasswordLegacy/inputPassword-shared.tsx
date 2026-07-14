@@ -1,4 +1,5 @@
-import { ComponentProps } from "preact";
+import 'preact';
+import { ComponentProps } from 'preact';
 
 export type InputPasswordProps = ComponentProps<"oj-input-password">;
 export type InputPasswordValueChangedEvent = Parameters<

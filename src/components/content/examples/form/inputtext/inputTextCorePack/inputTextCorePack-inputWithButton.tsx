@@ -1,11 +1,11 @@
-import { h } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "oj-c/button";
 import "oj-c/input-number";
 import "oj-c/input-password";
 import "oj-c/input-text";
 import "oj-c/select-multiple";
 import "oj-c/select-single";
+import 'preact';
+import { useMemo,useState } from "preact/hooks";
 import { createBrowserDataProvider } from "./inputTextCorePack-shared";
 
 export default function InputTextCorePackInputWithButtonExample() {

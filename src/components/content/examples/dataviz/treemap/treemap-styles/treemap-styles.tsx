@@ -1,18 +1,17 @@
-// @ts-nocheck
-import { h } from 'preact';
-import type { ComponentProps, JSX } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import "css!./demo.css";
 import { JetElementCustomEvent } from 'ojs/index';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
 import 'ojs/ojtreemap';
+import { ojTreemap } from 'ojs/ojtreemap';
+import 'preact';
+import type { ComponentProps,JSX } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../treemap-animation/cityStateData.json';
 import '../../../../../jet-composites/demo-input-json/loader';
 import '../../../../../jet-composites/demo-select-enum/loader';
-import "css!./demo.css";
-import * as jsonDataText from 'text!../treemap-animation/cityStateData.json';
-import { ojTreemap } from 'ojs/ojtreemap';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type LabelDisplay = 'node' | 'off';
 type LabelHalign = 'start' | 'center' | 'end';

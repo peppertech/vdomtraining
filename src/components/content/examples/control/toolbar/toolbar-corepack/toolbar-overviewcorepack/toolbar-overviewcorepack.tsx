@@ -1,10 +1,10 @@
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "css!./demo.css";
+import "oj-c/form-layout";
+import "oj-c/radioset";
 import "oj-c/toolbar";
 import { Toolbar } from "oj-c/toolbar";
-import "oj-c/radioset";
-import "oj-c/form-layout";
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
 
 type ToolbarItems = NonNullable<ComponentProps<typeof Toolbar>["items"]>;
 type ToolbarSpacing = NonNullable<ComponentProps<typeof Toolbar>["spacing"]>;

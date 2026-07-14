@@ -1,12 +1,12 @@
 // @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as jsonData from 'text!../../data/cookbook/dataVisualizations/tagCloud/resources/socialNetworks.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import 'css!./demo.css';
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojlegend';
 import 'ojs/ojtagcloud';
-import 'css!./demo.css';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonData from 'text!../../data/cookbook/dataVisualizations/tagCloud/resources/socialNetworks.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type SocialNetwork = {
   id: string;

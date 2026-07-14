@@ -1,11 +1,19 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import * as preact from 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
+import {
+  CatalogBreadcrumb,
+  type CatalogBreadcrumbItem,
+  type NestedCatalogHomeProps,
+  formatCorePackLabel,
+} from "../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../example-route-context";
 import ChartsHome from "./charts/home";
 import DiagramRecipePage from "./diagram/index";
 import GanttRecipePage from "./gantt/index";
@@ -19,13 +27,6 @@ import TagCloudHome from "./tag-cloud/home";
 import ThematicMapRecipePage from "./thematic-map/index";
 import TimelineRecipePage from "./timeline/index";
 import TreemapRecipePage from "./treemap/index";
-import {
-  CatalogBreadcrumb,
-  type CatalogBreadcrumbItem,
-  type NestedCatalogHomeProps,
-  formatCorePackLabel,
-} from "../../../shared/catalog-breadcrumb";
-import { useExampleRoute } from "../example-route-context";
 
 type DataVizComponent = {
   id: number;
@@ -34,7 +35,7 @@ type DataVizComponent = {
   image: string;
   isAvailable?: boolean;
   isCorePack?: boolean;
-  render?: (props?: NestedCatalogHomeProps) => h.JSX.Element | null;
+  render?: (props?: NestedCatalogHomeProps) => preact.JSX.Element | null;
 };
 
 const dataVizComponents: DataVizComponent[] = [

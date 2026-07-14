@@ -1,9 +1,9 @@
-import { h } from 'preact';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { useMemo } from 'preact/hooks';
 import 'oj-c/avatar';
 import 'oj-c/list-item-layout';
 import 'oj-c/list-view';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type PersonData = {
   id: number;

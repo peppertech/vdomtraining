@@ -1,15 +1,14 @@
-// @ts-nocheck
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { KeySet, KeySetImpl } from 'ojs/ojkeyset';
-import type { ojTreeView } from 'ojs/ojtreeview';
-import type { SelectorElement } from 'ojs/ojselector';
+import { KeySet,KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojoption';
 import 'ojs/ojradioset';
 import 'ojs/ojselector';
+import type { SelectorElement } from 'ojs/ojselector';
 import 'ojs/ojtreeview';
+import type { ojTreeView } from 'ojs/ojtreeview';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type TreeNode = {
   id: string;

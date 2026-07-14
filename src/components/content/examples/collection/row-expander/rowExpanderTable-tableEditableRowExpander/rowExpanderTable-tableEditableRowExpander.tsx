@@ -1,19 +1,19 @@
-import { h } from 'preact';
+import 'ojs/ojbutton';
+import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
+import 'ojs/ojdatetimepicker';
+import { ojInputDate } from 'ojs/ojdatetimepicker';
+import 'ojs/ojinputtext';
+import { ojInputText } from 'ojs/ojinputtext';
+import 'ojs/ojrowexpander';
+import 'ojs/ojtable';
+import type { ojTable } from 'ojs/ojtable';
+import 'ojs/ojtoolbar';
+import 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../../data/cookbook/dataCollections/rowExpanderTable/tableEditableRowExpander/projectData.json';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
-import * as jsonDataText from 'text!../../data/cookbook/dataCollections/rowExpanderTable/tableEditableRowExpander/projectData.json';
-import type { ojTable } from 'ojs/ojtable';
-import { ojInputText } from 'ojs/ojinputtext';
-import { ojInputDate } from 'ojs/ojdatetimepicker';
-import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
-import 'ojs/ojtable';
-import 'ojs/ojrowexpander';
-import 'ojs/ojinputtext';
-import 'ojs/ojbutton';
-import 'ojs/ojtoolbar';
-import 'ojs/ojdatetimepicker';
 
 
 type TaskNode = {

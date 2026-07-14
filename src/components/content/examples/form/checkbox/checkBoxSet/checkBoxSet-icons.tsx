@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojcheckboxset";
-import { iconOptions, mixedIconOptions, renderCheckboxOptions, type CheckboxsetValueChangedEvent } from "./checkBoxSet-shared";
+import 'preact';
+import { useState } from "preact/hooks";
+import { iconOptions,mixedIconOptions,renderCheckboxOptions,type CheckboxsetValueChangedEvent } from "./checkBoxSet-shared";
 
 export default function CheckBoxSetIconsExample() {
   const [currentBrowsers, setCurrentBrowsers] = useState<string[]>(["Chrome"]);

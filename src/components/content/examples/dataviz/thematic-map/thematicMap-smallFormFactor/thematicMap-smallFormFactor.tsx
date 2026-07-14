@@ -1,20 +1,20 @@
-// @ts-nocheck
-import { h } from 'preact';
+import 'css!./demo.css';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojdatagrid';
+import { DataProvider } from 'ojs/ojdataprovider';
+import 'ojs/ojlegend';
+import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
+import 'ojs/ojthematicmap';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/olympicHosts.json';
 import * as asiaText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/asia_countries.json';
 import * as australiaText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/australia_countries.json';
 import * as europeText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/europe_countries.json';
 import * as northAmericaText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/north_america_countries.json';
 import * as southAmericaText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/south_america_countries.json';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/olympicHosts.json';
-import 'css!./demo.css';
-import 'ojs/ojdatagrid';
-import 'ojs/ojlegend';
-import 'ojs/ojthematicmap';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type OlympicHost = {
   Year: number;
@@ -86,7 +86,7 @@ export const ThematicMapSmallFormFactor = () => {
   );
   const rowDataProvider = useMemo(
     () =>
-      new ArrayDataProvider(rows, {
+      new ArrayDataProvider<number, GridRow>(rows, {
         keyAttributes: 'id'
       }),
     [rows]
@@ -109,7 +109,7 @@ export const ThematicMapSmallFormFactor = () => {
   );
   const areaDataProviderByCountry = useMemo(
     () =>
-      rows.reduce<Record<string, InstanceType<typeof ArrayDataProvider>>>((providers, row) => {
+      rows.reduce<Record<string, DataProvider<string, OlympicHost>>>((providers, row) => {
         providers[row.defaultMap.Country] = new ArrayDataProvider([row.defaultMap], {
           keyAttributes: 'Country'
         });
@@ -164,14 +164,12 @@ export const ThematicMapSmallFormFactor = () => {
   };
 
   const renderMap = (host: OlympicHost, columnKey: GridColumnKey) => {
-    const thematicMapProps: Partial<ComponentProps<'oj-thematic-map'>> = {};
-
-    if (columnKey === 'zoomedMap') {
-      thematicMapProps.initialZooming = 'auto';
-    }
-    if (columnKey === 'isolatedMap') {
-      thematicMapProps.isolatedItem = host.Country;
-    }
+    const thematicMapProps =
+      columnKey === 'zoomedMap'
+        ? { initialZooming: 'auto' as const }
+        : columnKey === 'isolatedMap'
+          ? { isolatedItem: host.Country }
+          : {};
 
     return (
       <oj-thematic-map
@@ -194,11 +192,6 @@ export const ThematicMapSmallFormFactor = () => {
     return renderMap(host, columnKey);
   };
 
-  const ojDataGridProps: Partial<ComponentProps<'oj-data-grid'>> = {
-    'header.row.className': 'oj-typography-body-md demo-header-row-style',
-    'header.column.className': 'oj-typography-body-md demo-header-column-style oj-helper-text-align-center'
-  };
-
   return (
     <div id="mapdemo">
       <oj-legend
@@ -214,7 +207,6 @@ export const ThematicMapSmallFormFactor = () => {
         aria-label="Small Form Factor Thematic Map Demo"
         scrollPolicy="loadMoreOnScroll"
         data={dataGridProvider}
-        {...ojDataGridProps}
       >
         <template slot="cellTemplate" render={cellTemplateRenderer} />
       </oj-data-grid>

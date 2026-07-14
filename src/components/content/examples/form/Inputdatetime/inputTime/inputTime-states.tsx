@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "ojs/ojdatetimepicker";
 import "ojs/ojformlayout";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import {
   defaultTimeValue,
   messageSets,

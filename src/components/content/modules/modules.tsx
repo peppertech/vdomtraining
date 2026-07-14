@@ -1,7 +1,8 @@
-import { h, Fragment } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojbutton";
 import { ojButtonsetOne } from "ojs/ojbutton";
+import 'preact';
+import { Fragment } from 'preact';
+import { useState } from "preact/hooks";
 
 /** Trivial functional components used for demo purposes only **/
 function Page1() {

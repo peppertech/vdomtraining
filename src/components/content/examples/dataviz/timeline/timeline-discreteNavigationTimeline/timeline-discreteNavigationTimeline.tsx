@@ -1,13 +1,13 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/discreteNavigationTimeline/basicSingleSeriesData.json';
-import 'ojs/ojtimeline';
-import 'ojs/ojformlayout';
-import 'ojs/ojbutton';
-import 'ojs/ojlabel';
 import 'css!./demo.css';
+import 'ojs/ojbutton';
+import 'ojs/ojformlayout';
+import 'ojs/ojlabel';
+import 'ojs/ojtimeline';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/discreteNavigationTimeline/basicSingleSeriesData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TimelineDiscreteNavigationItem = {
   id: string;
@@ -26,7 +26,7 @@ const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (
   <oj-timeline-series label={series.id} emptyText="No Tournaments Played." />
 );
 
-const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>, itemType: string) => (
+const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>, itemType: NonNullable<ComponentProps<'oj-timeline-item'>['itemType']>) => (
   <oj-timeline-item
     itemType={itemType}
     seriesId={item.data.series}
@@ -38,9 +38,9 @@ const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>, ite
 );
 
 export const TimelineDiscreteNavigationTimeline = () => {
-  const [orientationValue, setOrientationValue] = useState('horizontal');
-  const [overviewValue, setOverviewValue] = useState('on');
-  const [itemType, setItemType] = useState('duration-event');
+  const [orientationValue, setOrientationValue] = useState<NonNullable<ComponentProps<'oj-timeline'>['orientation']>>('horizontal');
+  const [overviewValue, setOverviewValue] = useState<NonNullable<NonNullable<ComponentProps<'oj-timeline'>['overview']>['rendered']>>('on');
+  const [itemType, setItemType] = useState<NonNullable<ComponentProps<'oj-timeline-item'>['itemType']>>('duration-event');
 
   const dataProvider = useMemo(
     () =>
@@ -50,19 +50,19 @@ export const TimelineDiscreteNavigationTimeline = () => {
     []
   );
 
-  const handleOrientationChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleOrientationChanged = (event: DatavizValueChangedEvent<typeof orientationValue>) => {
     if (event.detail.updatedFrom === 'internal') {
       setOrientationValue(event.detail.value);
     }
   };
 
-  const handleOverviewChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleOverviewChanged = (event: DatavizValueChangedEvent<typeof overviewValue>) => {
     if (event.detail.updatedFrom === 'internal') {
       setOverviewValue(event.detail.value);
     }
   };
 
-  const handleItemTypeChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleItemTypeChanged = (event: DatavizValueChangedEvent<typeof itemType>) => {
     if (event.detail.updatedFrom === 'internal') {
       setItemType(event.detail.value);
     }

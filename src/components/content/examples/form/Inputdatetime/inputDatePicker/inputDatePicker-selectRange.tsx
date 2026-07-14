@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-date-picker";
-import { todayIsoDate, type InputDatePickerValueChangedEvent } from "./inputDatePicker-shared";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
+import { todayIsoDate,type InputDatePickerValueChangedEvent } from "./inputDatePicker-shared";
 
 export default function InputDatePickerSelectRangeExample() {
   const [value, setValue] = useState(todayIsoDate);

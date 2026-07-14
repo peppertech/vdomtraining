@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import { IntlDateTimeConverter } from "ojs/ojconverter-datetime";
 import "ojs/ojdatetimepicker";
 import "ojs/ojlabel";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import {
   localDateTimeValue,
   type InputDateTimeValueChangedEvent,

@@ -1,15 +1,17 @@
 // @ts-nocheck
-import { render } from "preact";
-import type { ComponentChildren, ComponentProps } from "preact";
+// @ts-nocheck
+import "css!./demo.css";
+import "ojs/ojdatagrid";
+import "ojs/ojrowexpander";
+import 'preact';
+import type { ComponentChildren,ComponentProps } from "preact";
+import { render } from 'preact';
 import { useMemo } from "preact/hooks";
-import FlattenedTreeDataProviderView = require("ojs/ojflattenedtreedataproviderview");
-import ArrayTreeDataProvider = require("ojs/ojarraytreedataprovider");
-import * as locationDataText from "text!../../data/cookbook/dataCollections/rowExpanderDataGrid/virtualRowExpander/locations.json";
 import * as departmentDataText from "text!../../data/cookbook/dataCollections/rowExpanderDataGrid/virtualRowExpander/departments.json";
 import * as employeeDataText from "text!../../data/cookbook/dataCollections/rowExpanderDataGrid/virtualRowExpander/employees.json";
-import "ojs/ojrowexpander";
-import "ojs/ojdatagrid";
-import "css!./demo.css";
+import * as locationDataText from "text!../../data/cookbook/dataCollections/rowExpanderDataGrid/virtualRowExpander/locations.json";
+import FlattenedTreeDataProviderView = require("ojs/ojflattenedtreedataproviderview");
+import ArrayTreeDataProvider = require("ojs/ojarraytreedataprovider");
 
 type Location = {
   LocationId: number;

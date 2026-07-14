@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import type { ComponentProps, JSX } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { JetElementCustomEvent } from 'ojs/index';
+import 'ojs/ojformlayout';
 import { getColorValuesFromPalette } from 'ojs/ojpalette';
 import { getColorValue } from 'ojs/ojpaletteutils';
-import 'ojs/ojformlayout';
 import 'ojs/ojsunburst';
+import 'preact';
+import type { ComponentProps,JSX } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncome.json';
 import '../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type SortingValue = NonNullable<ComponentProps<'oj-sunburst'>['sorting']>;
 type IncomeNode = {

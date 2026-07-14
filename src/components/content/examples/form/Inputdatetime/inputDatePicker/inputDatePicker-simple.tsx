@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/input-date-picker";
+import 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 import {
   todayIsoDate,
   type InputDatePickerRawValueChangedEvent,

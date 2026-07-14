@@ -1,7 +1,7 @@
-import { h } from "preact";
+import "oj-c/accordion-item-multiple";
+import 'preact';
 import type { ComponentProps } from "preact";
 import { useState } from "preact/hooks";
-import "oj-c/accordion-item-multiple";
 
 type ExpandedKeysChangedEvent = Parameters<
   NonNullable<

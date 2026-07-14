@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from 'preact';
-import { useState, useCallback, useMemo } from "preact/hooks";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
-import "oj-c/input-sensitive-text";
 import "oj-c/form-layout";
+import "oj-c/input-sensitive-text";
 
 import { CInputSensitiveTextElement } from "oj-c/input-sensitive-text";
 

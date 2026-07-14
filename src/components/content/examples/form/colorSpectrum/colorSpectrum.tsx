@@ -1,9 +1,10 @@
-import { h, type ComponentProps } from "preact";
-import { useState, useCallback } from "preact/hooks";
 import "ojs/ojcolorspectrum";
-import "ojs/ojswitch";
-import "ojs/ojlabel";
 import type { ojColorSpectrum } from "ojs/ojcolorspectrum";
+import "ojs/ojlabel";
+import "ojs/ojswitch";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useState } from "preact/hooks";
 import Color = require("ojs/ojcolor");
 
 type SwitchValueChangedEvent = Parameters<

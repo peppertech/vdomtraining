@@ -1,17 +1,17 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
-import { WaterfallLayoutBasicWaterfallLayout } from "./waterfallLayout-basicWaterfallLayout/waterfallLayout-basicWaterfallLayout";
 import { waterfallLayoutBasicWaterfallLayoutDescription } from "./waterfallLayout-basicWaterfallLayout/description";
 import { waterfallLayoutBasicWaterfallLayoutRecipe } from "./waterfallLayout-basicWaterfallLayout/recipe";
-import { WaterfallLayoutFilteringWaterfallLayout } from "./waterfallLayout-filteringWaterfallLayout/waterfallLayout-filteringWaterfallLayout";
+import { WaterfallLayoutBasicWaterfallLayout } from "./waterfallLayout-basicWaterfallLayout/waterfallLayout-basicWaterfallLayout";
 import { waterfallLayoutFilteringWaterfallLayoutDescription } from "./waterfallLayout-filteringWaterfallLayout/description";
 import { waterfallLayoutFilteringWaterfallLayoutRecipe } from "./waterfallLayout-filteringWaterfallLayout/recipe";
-import { WaterfallLayoutPerformanceWaterfallLayout } from "./waterfallLayout-performanceWaterfallLayout/waterfallLayout-performanceWaterfallLayout";
+import { WaterfallLayoutFilteringWaterfallLayout } from "./waterfallLayout-filteringWaterfallLayout/waterfallLayout-filteringWaterfallLayout";
 import { waterfallLayoutPerformanceWaterfallLayoutDescription } from "./waterfallLayout-performanceWaterfallLayout/description";
 import { waterfallLayoutPerformanceWaterfallLayoutRecipe } from "./waterfallLayout-performanceWaterfallLayout/recipe";
-import { WaterfallLayoutProgressiveLoadWaterfallLayout } from "./waterfallLayout-progressiveLoadWaterfallLayout/waterfallLayout-progressiveLoadWaterfallLayout";
+import { WaterfallLayoutPerformanceWaterfallLayout } from "./waterfallLayout-performanceWaterfallLayout/waterfallLayout-performanceWaterfallLayout";
 import { waterfallLayoutProgressiveLoadWaterfallLayoutDescription } from "./waterfallLayout-progressiveLoadWaterfallLayout/description";
 import { waterfallLayoutProgressiveLoadWaterfallLayoutRecipe } from "./waterfallLayout-progressiveLoadWaterfallLayout/recipe";
+import { WaterfallLayoutProgressiveLoadWaterfallLayout } from "./waterfallLayout-progressiveLoadWaterfallLayout/waterfallLayout-progressiveLoadWaterfallLayout";
 
 const waterfallLayoutItems = [
   {

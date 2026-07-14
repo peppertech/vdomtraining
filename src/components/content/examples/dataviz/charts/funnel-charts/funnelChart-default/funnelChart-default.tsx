@@ -1,13 +1,13 @@
-import { Fragment, h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
 import 'ojs/ojchart';
 import 'ojs/ojtoolbar';
+import { useMemo,useState } from 'preact/hooks';
+import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemData.json';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 const chartData = JSON.parse(chartDataText as string);
 
 type ChartOrientation = NonNullable<ComponentProps<'oj-chart'>['orientation']>;

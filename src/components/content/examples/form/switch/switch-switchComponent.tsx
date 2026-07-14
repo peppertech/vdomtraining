@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojswitch";
+import 'preact';
+import { useState } from "preact/hooks";
 
 export default function SwitchComponentExample() {
   const [isChecked, setIsChecked] = useState(false);

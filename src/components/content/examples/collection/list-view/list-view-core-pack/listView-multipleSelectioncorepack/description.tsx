@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A list view displays data items as a list or a grid with highly interactive features.</p><p>This demo shows how to enable Multiple and MultipleToggle selection modes, and track selected items and current item, and clear current selected items
     in oj-c-list-view.</p>

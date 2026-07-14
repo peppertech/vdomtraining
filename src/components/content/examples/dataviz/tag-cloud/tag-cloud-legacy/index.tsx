@@ -1,38 +1,38 @@
-import { h } from "preact";
+import 'preact';
 import {
   RecipePageTemplate,
   type RecipePageItem,
 } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { TagCloudDefault } from "./tagCloud-default/tagCloud-default";
-import { tagCloudDefaultDescription } from "./tagCloud-default/description";
-import { tagCloudDefaultRecipe } from "./tagCloud-default/recipe";
-import { TagCloudShapedData } from "./tagCloud-shapedData/tagCloud-shapedData";
-import { tagCloudShapedDataDescription } from "./tagCloud-shapedData/description";
-import { tagCloudShapedDataRecipe } from "./tagCloud-shapedData/recipe";
-import { TagCloudAnimation } from "./tagCloud-animation/tagCloud-animation";
 import { tagCloudAnimationDescription } from "./tagCloud-animation/description";
 import { tagCloudAnimationRecipe } from "./tagCloud-animation/recipe";
-import { TagCloudSelection } from "./tagCloud-selection/tagCloud-selection";
-import { tagCloudSelectionDescription } from "./tagCloud-selection/description";
-import { tagCloudSelectionRecipe } from "./tagCloud-selection/recipe";
-import { TagCloudLegend } from "./tagCloud-legend/tagCloud-legend";
-import { tagCloudLegendDescription } from "./tagCloud-legend/description";
-import { tagCloudLegendRecipe } from "./tagCloud-legend/recipe";
-import { TagCloudLinks } from "./tagCloud-links/tagCloud-links";
-import { tagCloudLinksDescription } from "./tagCloud-links/description";
-import { tagCloudLinksRecipe } from "./tagCloud-links/recipe";
-import { TagCloudStyles } from "./tagCloud-styles/tagCloud-styles";
-import { tagCloudStylesDescription } from "./tagCloud-styles/description";
-import { tagCloudStylesRecipe } from "./tagCloud-styles/recipe";
-import { TagCloudTooltip } from "./tagCloud-tooltip/tagCloud-tooltip";
-import { tagCloudTooltipDescription } from "./tagCloud-tooltip/description";
-import { tagCloudTooltipRecipe } from "./tagCloud-tooltip/recipe";
-import { TagCloudContextMenu } from "./tagCloud-contextMenu/tagCloud-contextMenu";
+import { TagCloudAnimation } from "./tagCloud-animation/tagCloud-animation";
 import { tagCloudContextMenuDescription } from "./tagCloud-contextMenu/description";
 import { tagCloudContextMenuRecipe } from "./tagCloud-contextMenu/recipe";
-import { TagCloudPerformance } from "./tagCloud-performance/tagCloud-performance";
+import { TagCloudContextMenu } from "./tagCloud-contextMenu/tagCloud-contextMenu";
+import { tagCloudDefaultDescription } from "./tagCloud-default/description";
+import { tagCloudDefaultRecipe } from "./tagCloud-default/recipe";
+import { TagCloudDefault } from "./tagCloud-default/tagCloud-default";
+import { tagCloudLegendDescription } from "./tagCloud-legend/description";
+import { tagCloudLegendRecipe } from "./tagCloud-legend/recipe";
+import { TagCloudLegend } from "./tagCloud-legend/tagCloud-legend";
+import { tagCloudLinksDescription } from "./tagCloud-links/description";
+import { tagCloudLinksRecipe } from "./tagCloud-links/recipe";
+import { TagCloudLinks } from "./tagCloud-links/tagCloud-links";
 import { tagCloudPerformanceDescription } from "./tagCloud-performance/description";
 import { tagCloudPerformanceRecipe } from "./tagCloud-performance/recipe";
+import { TagCloudPerformance } from "./tagCloud-performance/tagCloud-performance";
+import { tagCloudSelectionDescription } from "./tagCloud-selection/description";
+import { tagCloudSelectionRecipe } from "./tagCloud-selection/recipe";
+import { TagCloudSelection } from "./tagCloud-selection/tagCloud-selection";
+import { tagCloudShapedDataDescription } from "./tagCloud-shapedData/description";
+import { tagCloudShapedDataRecipe } from "./tagCloud-shapedData/recipe";
+import { TagCloudShapedData } from "./tagCloud-shapedData/tagCloud-shapedData";
+import { tagCloudStylesDescription } from "./tagCloud-styles/description";
+import { tagCloudStylesRecipe } from "./tagCloud-styles/recipe";
+import { TagCloudStyles } from "./tagCloud-styles/tagCloud-styles";
+import { tagCloudTooltipDescription } from "./tagCloud-tooltip/description";
+import { tagCloudTooltipRecipe } from "./tagCloud-tooltip/recipe";
+import { TagCloudTooltip } from "./tagCloud-tooltip/tagCloud-tooltip";
 
 const tagCloudLegacyItems: RecipePageItem[] = [
   {

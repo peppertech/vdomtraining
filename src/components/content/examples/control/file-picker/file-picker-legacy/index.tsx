@@ -1,22 +1,22 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { FilePickerBasic } from "./filePicker-basic/filePicker-basic";
 import { filePickerBasicDescription } from "./filePicker-basic/description";
+import { FilePickerBasic } from "./filePicker-basic/filePicker-basic";
 import { filePickerBasicRecipe } from "./filePicker-basic/recipe";
-import { FilePickerButton } from "./filePicker-button/filePicker-button";
 import { filePickerButtonDescription } from "./filePicker-button/description";
+import { FilePickerButton } from "./filePicker-button/filePicker-button";
 import { filePickerButtonRecipe } from "./filePicker-button/recipe";
-import { FilePickerCapture } from "./filePicker-capture/filePicker-capture";
 import { filePickerCaptureDescription } from "./filePicker-capture/description";
+import { FilePickerCapture } from "./filePicker-capture/filePicker-capture";
 import { filePickerCaptureRecipe } from "./filePicker-capture/recipe";
-import { FilePickerCustom } from "./filePicker-custom/filePicker-custom";
 import { filePickerCustomDescription } from "./filePicker-custom/description";
+import { FilePickerCustom } from "./filePicker-custom/filePicker-custom";
 import { filePickerCustomRecipe } from "./filePicker-custom/recipe";
-import { FilePickerCustomText } from "./filePicker-customText/filePicker-customText";
 import { filePickerCustomTextDescription } from "./filePicker-customText/description";
+import { FilePickerCustomText } from "./filePicker-customText/filePicker-customText";
 import { filePickerCustomTextRecipe } from "./filePicker-customText/recipe";
-import { FilePickerSize } from "./filePicker-size/filePicker-size";
 import { filePickerSizeDescription } from "./filePicker-size/description";
+import { FilePickerSize } from "./filePicker-size/filePicker-size";
 import { filePickerSizeRecipe } from "./filePicker-size/recipe";
 
 const filePickerLegacyItems = [

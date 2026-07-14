@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A tag cloud is an interactive data visualization of textual data, where the importance of each tagged word or phrase is represented by font size or color.</p><p>This demo shows the JET Core Pack Tag Cloud </p>
 <p>The selection feature allows a user to focus on a specific data item by clicking on it.</p>

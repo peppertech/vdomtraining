@@ -1,8 +1,8 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useEffect, useMemo, useState } from "preact/hooks";
 import "oj-c/buttonset-single";
 import "oj-c/radioset";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useEffect,useMemo,useState } from "preact/hooks";
 
 type RadioValueChangedEvent = Parameters<
   NonNullable<ComponentProps<"oj-c-radioset">["onvalueChanged"]>

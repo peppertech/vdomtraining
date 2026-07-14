@@ -1,17 +1,18 @@
-import { h, type FunctionComponent } from "preact";
-import { RecipePageTemplate, type RecipePageItem } from "../../../../../shared/demo-page-layout/recipe-page-template";
+import 'preact';
+import { type FunctionComponent } from 'preact';
+import { RecipePageTemplate,type RecipePageItem } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import SelectMultipleAddToListExample from "./selectMultiple-addToList";
 import SelectMultipleBasicExample from "./selectMultiple-basic";
 import SelectMultipleCollectionTemplateTableExample from "./selectMultiple-collectionTemplateTable";
-import {
-  selectMultipleCorePackDocs,
-  type SelectMultipleCorePackDemoId,
-} from "./selectMultipleCorePack-docs";
 import SelectMultipleItemTemplateExample from "./selectMultiple-itemTemplate";
 import SelectMultipleItemTextExample from "./selectMultiple-itemText";
 import SelectMultipleStatesExample from "./selectMultiple-states";
 import SelectMultipleValueItemsExample from "./selectMultiple-valueItems";
 import SelectMultipleWidthExample from "./selectMultiple-width";
+import {
+  selectMultipleCorePackDocs,
+  type SelectMultipleCorePackDemoId,
+} from "./selectMultipleCorePack-docs";
 
 type SelectMultipleRecipeItem = Omit<RecipePageItem, "id" | "Component"> & {
   id: SelectMultipleCorePackDemoId;

@@ -1,11 +1,11 @@
 // @ts-nocheck
-import { Fragment, h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import type { CListViewElement } from 'oj-c/list-view';
-import 'oj-c/list-view';
-import 'oj-c/button';
 import 'css!./demo.css';
+import 'oj-c/button';
+import 'oj-c/list-view';
+import type { CListViewElement } from 'oj-c/list-view';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface TodoTask {
     id: number;

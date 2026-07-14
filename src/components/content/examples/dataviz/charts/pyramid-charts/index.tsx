@@ -1,22 +1,22 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { PyramidChartAnimation } from "./pyramidChart-animation/pyramidChart-animation";
 import { pyramidChartAnimationDescription } from "./pyramidChart-animation/description";
+import { PyramidChartAnimation } from "./pyramidChart-animation/pyramidChart-animation";
 import { pyramidChartAnimationRecipe } from "./pyramidChart-animation/recipe";
-import { PyramidChartDefault } from "./pyramidChart-default/pyramidChart-default";
 import { pyramidChartDefaultDescription } from "./pyramidChart-default/description";
+import { PyramidChartDefault } from "./pyramidChart-default/pyramidChart-default";
 import { pyramidChartDefaultRecipe } from "./pyramidChart-default/recipe";
-import { PyramidChartLegend } from "./pyramidChart-legend/pyramidChart-legend";
 import { pyramidChartLegendDescription } from "./pyramidChart-legend/description";
+import { PyramidChartLegend } from "./pyramidChart-legend/pyramidChart-legend";
 import { pyramidChartLegendRecipe } from "./pyramidChart-legend/recipe";
-import { PyramidChartSelection } from "./pyramidChart-selection/pyramidChart-selection";
 import { pyramidChartSelectionDescription } from "./pyramidChart-selection/description";
+import { PyramidChartSelection } from "./pyramidChart-selection/pyramidChart-selection";
 import { pyramidChartSelectionRecipe } from "./pyramidChart-selection/recipe";
-import { PyramidChartShapedData } from "./pyramidChart-shapedData/pyramidChart-shapedData";
 import { pyramidChartShapedDataDescription } from "./pyramidChart-shapedData/description";
+import { PyramidChartShapedData } from "./pyramidChart-shapedData/pyramidChart-shapedData";
 import { pyramidChartShapedDataRecipe } from "./pyramidChart-shapedData/recipe";
-import { PyramidChartStyles } from "./pyramidChart-styles/pyramidChart-styles";
 import { pyramidChartStylesDescription } from "./pyramidChart-styles/description";
+import { PyramidChartStyles } from "./pyramidChart-styles/pyramidChart-styles";
 import { pyramidChartStylesRecipe } from "./pyramidChart-styles/recipe";
 
 const pyramidChartItems = [

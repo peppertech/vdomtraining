@@ -1,10 +1,10 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import "oj-c/progress-bar";
 import "oj-c/checkboxset";
-import "oj-c/input-number";
 import "oj-c/form-layout";
+import "oj-c/input-number";
+import "oj-c/progress-bar";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
 
 type CheckboxsetValueChangedEvent = Parameters<
   NonNullable<ComponentProps<"oj-c-checkboxset">["onvalueChanged"]>

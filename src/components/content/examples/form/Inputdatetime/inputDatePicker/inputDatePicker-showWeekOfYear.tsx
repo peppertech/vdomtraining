@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/input-date-picker";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import { type InputDatePickerValueChangedEvent } from "./inputDatePicker-shared";
 
 export default function InputDatePickerShowWeekOfYearExample() {

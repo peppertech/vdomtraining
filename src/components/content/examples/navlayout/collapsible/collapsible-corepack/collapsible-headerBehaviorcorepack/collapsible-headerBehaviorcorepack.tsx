@@ -1,7 +1,7 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
 import 'oj-c/collapsible';
 import 'ojs/ojbutton';
+import 'preact';
+import { useState } from 'preact/hooks';
 
 export const CollapsibleHeaderBehaviorcorepack = () => {
   const [clickCounter, setClickCounter] = useState(0);

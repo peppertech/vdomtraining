@@ -1,11 +1,10 @@
-// @ts-nocheck
-import { h } from 'preact';
+import 'css!./demo.css';
+import 'oj-c/tag-cloud';
+import 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo,useState } from 'preact/hooks';
 import * as jsonData from 'text!../../data/cookbook/dataVisualizations/tagCloud/resources/socialNetworks.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'oj-c/tag-cloud';
-import 'css!./demo.css';
 
 type SocialNetwork = {
   id: string;
@@ -89,9 +88,9 @@ export const TagCloudContextMenucorepack = () => {
     [selectedSelectionMenuItem]
   );
 
-  const handleSelectedItemsValueSelectionChanged = (event: SelectionChangedEvent) => {
+  const handleSelectedItemsValueSelectionChanged: NonNullable<ComponentProps<'oj-c-tag-cloud'>['onselectionChanged']> = (event) => {
     if (event.detail.updatedFrom === 'internal') {
-      setSelectedItemsValue(event.detail.value);
+      setSelectedItemsValue((event.detail.value ?? []).map(String));
     }
   };
 

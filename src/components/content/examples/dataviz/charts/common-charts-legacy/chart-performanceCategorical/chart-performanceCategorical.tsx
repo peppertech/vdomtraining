@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import * as Context from 'ojs/ojcontext';
 import 'ojs/ojbutton';
 import 'ojs/ojchart';
-import 'ojs/ojinputnumber';
-import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import * as Context from 'ojs/ojcontext';
 import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import '../../../../../../jet-composites/demo-radioset-enum/loader';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type NumberValueChangedEvent = JetElementCustomEvent<ComponentProps<'oj-input-number'>['value']>;

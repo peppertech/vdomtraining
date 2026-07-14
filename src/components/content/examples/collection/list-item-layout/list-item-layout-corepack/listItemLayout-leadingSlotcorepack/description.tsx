@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A List Item Layout represents layout used for list view item elements.</p><p>
   The demo shows how to render leading content within list view using a list view layout component.

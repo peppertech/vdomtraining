@@ -1,15 +1,14 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
-import 'ojs/ojtreemap';
 import 'ojs/ojformlayout';
+import 'ojs/ojtreemap';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
 import '../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 type TreemapSelection = ComponentProps<'oj-treemap'>['selection'];
 type TreemapSelectionMode = ComponentProps<'oj-treemap'>['selectionMode'];
 type TreemapSelectionChangedEvent = Parameters<NonNullable<ComponentProps<'oj-treemap'>['onselectionChanged']>>[0];

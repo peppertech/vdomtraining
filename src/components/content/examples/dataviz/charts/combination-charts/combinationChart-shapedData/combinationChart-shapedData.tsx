@@ -1,14 +1,14 @@
-import { h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as quarterShapedDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/quarterShapedData.json';
 import 'ojs/ojchart';
 import 'ojs/ojtoolbar';
+import { useMemo,useState } from 'preact/hooks';
+import * as quarterShapedDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/quarterShapedData.json';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
 import '../../../../../../jet-composites/demo-chart-stack-control/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface QuarterDatum {
     id: string;

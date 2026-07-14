@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import FormLayoutLegacyColumnSpanExample from "./formLayoutLegacy-columnSpan";
 import {
@@ -16,7 +16,7 @@ const formLayoutLegacyItems: {
   name: string;
   description: (typeof formLayoutLegacyDocs)[FormLayoutLegacyDemoId]["description"];
   recipe: (typeof formLayoutLegacyDocs)[FormLayoutLegacyDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "form-inputs",

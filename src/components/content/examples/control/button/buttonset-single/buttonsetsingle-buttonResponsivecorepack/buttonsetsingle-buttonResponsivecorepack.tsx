@@ -1,9 +1,9 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useEffect, useMemo, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import "oj-c/buttonset-single";
 import "oj-c/select-single";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useEffect,useMemo,useState } from "preact/hooks";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 type ToggleItem = NonNullable<ComponentProps<"oj-c-buttonset-single">["items"]>[number];
 type ButtonsetSingleValueChangedEvent = Parameters<

@@ -1,6 +1,6 @@
-import { h } from 'preact';
-import 'oj-c/conveyor-belt';
 import "css!./demo.css";
+import 'oj-c/conveyor-belt';
+import 'preact';
 
 export const ConveyorBeltConveyorElementStretchcorepack = () => {
   return (

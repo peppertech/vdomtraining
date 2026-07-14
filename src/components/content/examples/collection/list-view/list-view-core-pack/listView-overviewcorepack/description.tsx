@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>This demo shows the following features all in one oj-c-list-view demo:</p>
 <ul>

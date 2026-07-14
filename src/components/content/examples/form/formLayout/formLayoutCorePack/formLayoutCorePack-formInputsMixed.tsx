@@ -1,5 +1,3 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/checkbox";
 import "oj-c/checkboxset";
 import "oj-c/form-layout";
@@ -16,6 +14,8 @@ import "oj-c/radioset";
 import "oj-c/select-multiple";
 import "oj-c/select-single";
 import "oj-c/text-area";
+import 'preact';
+import { useState } from "preact/hooks";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 const labelEdgeDataProvider = new MutableArrayDataProvider(

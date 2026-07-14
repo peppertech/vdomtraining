@@ -1,9 +1,8 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import * as jsonData from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncomeSubregionShaped.json';
 import 'ojs/ojtreemap';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as jsonData from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncomeSubregionShaped.json';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 export const TreemapShapedData = () => {
   const nodes = JSON.parse(jsonData) as DatavizChartDatum[];

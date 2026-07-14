@@ -1,14 +1,14 @@
-import { h } from 'preact';
+import 'css!./demo.css';
+import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
+import 'ojs/ojgantt';
+import { ojGantt } from 'ojs/ojgantt';
+import 'ojs/ojgauge';
+import { ojStatusMeterGauge } from 'ojs/ojgauge';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as dataText from 'text!../data/cookbook/dataVisualizations/gantt/tooltipTemplate/rowData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
-import { ojGantt } from 'ojs/ojgantt';
-import 'ojs/ojgantt';
-import 'ojs/ojgauge';
-import { ojStatusMeterGauge } from 'ojs/ojgauge';
-import 'css!./demo.css';
 
 type GanttProps = ComponentProps<'oj-gantt'>;
 type GanttStart = GanttProps['start'];

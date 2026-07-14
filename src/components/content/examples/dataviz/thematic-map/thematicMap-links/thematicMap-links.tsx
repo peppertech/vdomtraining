@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/world_countries.json';
-import * as flightDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/flightData.json';
 import 'css!./demo.css';
 import 'ojs/ojthematicmap';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo } from 'preact/hooks';
+import * as flightDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/flightData.json';
+import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/world_countries.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ThematicMapProvider = ComponentProps<'oj-thematic-map'>['mapProvider'];
 type AirportDatum = { city: string; outgoing: number; incoming: number; longitude: number; latitude: number };

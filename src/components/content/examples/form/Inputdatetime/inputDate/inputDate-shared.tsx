@@ -1,5 +1,6 @@
-import { ComponentProps } from "preact";
 import { IntlConverterUtils } from "ojs/ojconverterutils-i18n";
+import 'preact';
+import { ComponentProps } from 'preact';
 
 export type InputDateProps = ComponentProps<"oj-input-date">;
 export type InputDateValueChangedEvent = Parameters<

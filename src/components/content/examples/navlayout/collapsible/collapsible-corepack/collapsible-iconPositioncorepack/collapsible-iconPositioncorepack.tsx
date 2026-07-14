@@ -1,8 +1,8 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/collapsible";
 import "oj-c/radioset";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useState } from "preact/hooks";
 
 type IconPosition = "start" | "end";
 type RadiosetValueChangedEvent = Parameters<

@@ -1,12 +1,12 @@
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as stockDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/stockTwoYearsData.json';
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import { ojChart } from 'ojs/ojchart';
 import 'ojs/ojchart';
+import { ojChart } from 'ojs/ojchart';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as stockDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/stockTwoYearsData.json';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type TimePeriod = '1 Week' | '1 Month' | '3 Month' | 'Max';
 type StockSeriesType = 'auto' | 'area' | 'bar' | 'candlestick' | 'line' | 'lineWithArea';
 type StockChartItem = {

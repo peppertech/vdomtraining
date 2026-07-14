@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import 'ojs/ojlistview';
-import 'ojs/ojavatar';
-import 'ojs/ojlistitemlayout';
-import 'ojs/ojbutton';
-import { AllKeySetImpl, KeySetImpl } from 'ojs/ojkeyset';
 import 'css!./demo.css';
+import 'ojs/ojavatar';
+import 'ojs/ojbutton';
+import { AllKeySetImpl,KeySetImpl } from 'ojs/ojkeyset';
+import 'ojs/ojlistitemlayout';
+import 'ojs/ojlistview';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type EmployeeData = {
   id: number;

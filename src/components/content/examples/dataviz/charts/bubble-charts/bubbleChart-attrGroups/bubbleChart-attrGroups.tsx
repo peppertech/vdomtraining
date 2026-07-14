@@ -1,11 +1,11 @@
-import { Fragment, h } from 'preact';
+import { ColorAttributeGroupHandler,ShapeAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojchart';
+import { ojChart } from 'ojs/ojchart';
+import 'ojs/ojlegend';
+import 'preact';
 import { useMemo } from 'preact/hooks';
 import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/coordDrinksData.json';
-import { ojChart } from 'ojs/ojchart';
-import { ColorAttributeGroupHandler, ShapeAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojchart';
-import 'ojs/ojlegend';
 
 const data = JSON.parse(dataText as string);
 

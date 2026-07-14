@@ -1,8 +1,8 @@
-import { useMemo, useRef } from "preact/hooks";
-import type { MessageToastItem, CMessageToastElement } from "oj-c/message-toast";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import "oj-c/message-toast";
 import "oj-c/button";
+import "oj-c/message-toast";
+import type { CMessageToastElement,MessageToastItem } from "oj-c/message-toast";
+import { useMemo,useRef } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type DemoMessageToastItem = MessageToastItem & {
   id: string;

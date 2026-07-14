@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojinputtext";
+import 'preact';
+import { useState } from "preact/hooks";
 
 export default function InputTextLegacyTextExample() {
   const [value, setValue] = useState("Green");

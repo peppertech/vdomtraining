@@ -4,8 +4,8 @@ import "oj-c/rich-checkboxset";
 import {
   confirmationMessages,
   errorMessages,
-  infoMessages,
   industryOptions,
+  infoMessages,
   warningMessages,
 } from "./richCheckBoxsetCorePack-shared";
 

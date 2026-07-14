@@ -1,5 +1,6 @@
-import { ComponentProps } from "preact";
-import type { CRadiosetElement, RadiosetDataItem } from "oj-c/radioset";
+import type { CRadiosetElement,RadiosetDataItem } from "oj-c/radioset";
+import 'preact';
+import { ComponentProps } from 'preact';
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 export type CorePackRadioOption = RadiosetDataItem & {

@@ -1,10 +1,10 @@
-import { h } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
 import "ojs/ojoption";
 import "ojs/ojradioset";
+import 'preact';
+import { useMemo,useState } from "preact/hooks";
 
 export default function InputTextLegacyStartEndSlotsExample() {
   const [labelEdge, setLabelEdge] = useState<"top" | "inside">("inside");

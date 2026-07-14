@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import 'ojs/ojtreeview';
-import { AllKeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojavatar';
+import { AllKeySetImpl } from 'ojs/ojkeyset';
+import 'ojs/ojtreeview';
+import 'preact';
+import { useMemo } from 'preact/hooks';
 
 export const TreeViewIcons = () => {
   const expanded = useMemo(() => new AllKeySetImpl(), []);

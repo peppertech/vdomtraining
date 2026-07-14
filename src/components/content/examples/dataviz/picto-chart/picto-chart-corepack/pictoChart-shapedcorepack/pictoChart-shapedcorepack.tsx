@@ -1,9 +1,8 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/shapedData.json';
 import 'ojs/ojpictochart';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/shapedData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 export const PictoChartShapedcorepack = () => {
   const dataProvider = useMemo(() => new ArrayDataProvider(JSON.parse(chartData), {

@@ -1,17 +1,17 @@
-import type { ComponentProps, JSX } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import { JetElementCustomEvent } from 'ojs/index';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import "css!./demo.css";
+import { JetElementCustomEvent } from 'ojs/index';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojinputtext';
 import 'ojs/ojlegend';
+import type { ComponentProps,JSX } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import '../../../../../../jet-composites/demo-input-json/loader';
 import '../../../../../../jet-composites/demo-select-enum/loader';
 import '../../../../../../jet-composites/demo-tabs/loader';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type CurrentTab = 'itemStyles' | 'textStyles';
 type LegendLineStyle = 'solid' | 'dashed' | 'dotted';

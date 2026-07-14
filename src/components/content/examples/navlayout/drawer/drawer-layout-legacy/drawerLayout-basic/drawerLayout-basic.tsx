@@ -1,14 +1,13 @@
-import { JetElementCustomEvent } from 'ojs/index';
-import { h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useState } from 'preact/hooks';
 import 'ojs/ojdrawerlayout';
+import { useState } from 'preact/hooks';
 // Controls
 import 'ojs/ojbutton';
 // Drawers
-import 'ojs/ojnavigationlist';
 import "css!./demo.css";
+import 'ojs/ojnavigationlist';
 
 type StartOpened = NonNullable<ComponentProps<'oj-drawer-layout'>['startOpened']>;
 type StartOpenedChangedEvent = Parameters<NonNullable<ComponentProps<'oj-drawer-layout'>['onstartOpenedChanged']>>[0];

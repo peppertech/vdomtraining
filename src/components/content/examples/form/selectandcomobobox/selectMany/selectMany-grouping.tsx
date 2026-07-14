@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectcombobox";
+import 'preact';
+import { useMemo,useState } from "preact/hooks";
 import { createGroupedStatesDataProvider } from "./selectMany-shared";
 
 export default function SelectManyGroupingExample() {

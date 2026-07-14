@@ -1,11 +1,11 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojdatetimepicker";
 import "ojs/ojinputnumber";
 import "ojs/ojinputtext";
 import "ojs/ojlabel";
 import "ojs/ojlabelvalue";
+import 'preact';
+import { useState } from "preact/hooks";
 import { nowIsoDateTime } from "./inputTextLegacy-shared";
 
 export default function InputTextLegacyInputWrapExample() {

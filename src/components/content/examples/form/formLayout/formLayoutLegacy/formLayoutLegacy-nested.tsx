@@ -1,7 +1,7 @@
-import { h } from "preact";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
 import "ojs/ojlabel";
+import 'preact';
 
 export default function FormLayoutLegacyNestedExample() {
   return (

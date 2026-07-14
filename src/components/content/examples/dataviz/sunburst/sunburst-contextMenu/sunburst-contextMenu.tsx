@@ -1,14 +1,14 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
 import 'ojs/ojmenu';
-import 'ojs/ojsunburst';
-import 'ojs/ojoption';
 import { ojMenu } from 'ojs/ojmenu';
+import 'ojs/ojoption';
+import 'ojs/ojsunburst';
 import { ojSunburst } from 'ojs/ojsunburst';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type MenuNode = {
   id: string;
@@ -64,7 +64,10 @@ export const SunburstContextMenu = () => {
     const context = sunburstRef.current?.getContextByNode(target) as ojSunburst.NodeContext | null;
 
     if (context != null) {
-      nodeRef.current = context.indexPath.reduce((acc, cur) => acc.nodes[cur], { nodes } as { nodes: MenuNode[] });
+      nodeRef.current = context.indexPath.reduce<{ nodes: MenuNode[] }>(
+        (acc, cur) => ({ nodes: acc.nodes[cur]?.nodes ?? [] }),
+        { nodes }
+      ).nodes[0] ?? null;
     }
   };
 
@@ -94,11 +97,12 @@ export const SunburstContextMenu = () => {
       <oj-sunburst
         ref={sunburstRef}
         id="sunburst1"
-        contextmenu="menu1"
         animationOnDisplay="auto"
         animationOnDataChange="auto"
         selectionMode="single"
-        onselectionChanged={(event: DatavizValueChangedEvent<string[] | null>) => setSelectedItemsValue(event.detail.value ?? [])}
+        onselectionChanged={(event: Parameters<NonNullable<ComponentProps<'oj-sunburst'>['onselectionChanged']>>[0]) =>
+          setSelectedItemsValue((event.detail.value ?? []).map(String))
+        }
         selection={selectedItemsValue}
         data={sunburstData}
       >

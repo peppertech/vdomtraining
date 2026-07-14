@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "oj-c/checkbox";
 import "oj-c/form-layout";
+import 'preact';
 import {
   confirmationMessages,
   errorMessages,

@@ -1,10 +1,10 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
-import Message = require("ojs/ojmessaging");
 import "ojs/ojformlayout";
 import "ojs/ojlabel";
 import "ojs/ojslider";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import type { SliderValueChangedEvent } from "./slider-shared";
+import Message = require("ojs/ojmessaging");
 
 export default function SliderValidationExample() {
   const [value, setValue] = useState(1);

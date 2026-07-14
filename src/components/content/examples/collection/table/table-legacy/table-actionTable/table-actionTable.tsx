@@ -1,13 +1,13 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import 'ojs/ojbutton';
+import { ojButton } from 'ojs/ojbutton';
+import 'ojs/ojoption';
 import 'ojs/ojtable';
 import { ojTable } from 'ojs/ojtable';
-import { ojButton } from 'ojs/ojbutton';
-import 'ojs/ojbutton';
-import 'ojs/ojoption';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import * as empData from 'text!../../../data/cookbook/dataCollections/table/shared/employeeData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface EmployeeData {
     EmployeeId: number;

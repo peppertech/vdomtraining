@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
-import * as jsonDataText from 'text!./treeViewData.json';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import DemoDelayingTreeDataProvider from '../../shared/DemoDelayingTreeDataProvider';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojtreeview';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
+import * as jsonDataText from 'text!./treeViewData.json';
+import DemoDelayingTreeDataProvider from '../../shared/DemoDelayingTreeDataProvider';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type TreeNode = {
   title: string;

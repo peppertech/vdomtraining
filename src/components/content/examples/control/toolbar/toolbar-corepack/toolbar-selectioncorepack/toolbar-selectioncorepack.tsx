@@ -1,9 +1,9 @@
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "css!./demo.css";
-import type { CToolbarElement, ToolbarSelection } from "oj-c/toolbar";
-import { Toolbar } from "oj-c/toolbar";
 import "oj-c/toolbar";
+import type { CToolbarElement,ToolbarSelection } from "oj-c/toolbar";
+import { Toolbar } from "oj-c/toolbar";
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
 
 type ToolbarItems = NonNullable<ComponentProps<typeof Toolbar>["items"]>;
 type ToolbarSelectionState = Readonly<Record<string, ToolbarSelection>>;

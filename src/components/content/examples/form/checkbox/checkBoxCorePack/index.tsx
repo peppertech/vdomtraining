@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import CheckBoxCorePackCrossFieldValidationExample from "./checkBoxCorePack-crossFieldValidation";
 import {
@@ -12,7 +12,7 @@ const checkBoxCorePackItems: {
   name: string;
   description: (typeof checkBoxCorePackDocs)[CheckBoxCorePackDemoId]["description"];
   recipe: (typeof checkBoxCorePackDocs)[CheckBoxCorePackDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "overview",

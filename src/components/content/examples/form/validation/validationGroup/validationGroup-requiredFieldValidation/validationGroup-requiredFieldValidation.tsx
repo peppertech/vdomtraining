@@ -1,11 +1,12 @@
-import { h, type ComponentProps } from 'preact';
-import { useRef, useState } from 'preact/hooks';
-import type { ojValidationGroup } from 'ojs/ojvalidationgroup';
 import 'oj-c/input-text';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojlabelvalue';
 import 'ojs/ojvalidationgroup';
+import type { ojValidationGroup } from 'ojs/ojvalidationgroup';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useRef,useState } from 'preact/hooks';
 
 type ValidationGroupValidChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-validation-group'>['onvalidChanged']>

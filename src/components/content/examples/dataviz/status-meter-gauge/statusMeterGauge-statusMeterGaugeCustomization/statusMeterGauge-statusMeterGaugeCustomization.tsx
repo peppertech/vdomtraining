@@ -1,26 +1,22 @@
-// @ts-nocheck
-import 'ojs/ojgauge';
 import 'css!./demo.css';
+import 'ojs/ojgauge';
+import type { ComponentProps } from 'preact';
 
 const thresholdValues = [{ max: 33 }, { max: 67 }, {}];
-const plotAreaProps = { 'plot-area.rendered': 'on' };
+const plotAreaProps = { plotArea: { rendered: 'on' as const } };
 const thresholdTooltipProps = {
-  'tooltip.renderer': (context: DatavizTooltipContext<DatavizChartDatum>) => ({
+  tooltip: { renderer: (context: DatavizTooltipContext<DatavizChartDatum>) => ({
     insert: `Value: ${context.label}<br>Thresholds: Low 33, Medium 67, High 100`
-  })
+  }) }
 };
 
-type GaugeProps = {
+type GaugeProps = Pick<ComponentProps<'oj-status-meter-gauge'>,
+  'orientation' | 'innerRadius' | 'indicatorSize' | 'thresholdDisplay' | 'thresholds'> & {
   wrapperClassName: string;
   labelledBy: string;
   value: number;
   gaugeClassName?: string;
-  orientation?: 'vertical' | 'circular';
-  innerRadius?: string;
-  indicatorSize?: string;
-  thresholdDisplay?: 'currentOnly' | 'all';
-  thresholds?: Array<{ max?: number }>;
-  tooltipProps?: Record<string, unknown>;
+  tooltipProps?: ComponentProps<'oj-status-meter-gauge'>;
 };
 
 const StatusMeterGaugeCell = ({
@@ -77,7 +73,7 @@ export const StatusMeterGaugeStatusMeterGaugeCustomization = () => {
         labelledBy="horizontal currentThreshold"
         value={40}
         thresholds={thresholdValues}
-        indicatorSize="0.5"
+        indicatorSize={0.5}
         thresholdDisplay="currentOnly"
         tooltipProps={thresholdTooltipProps}
       />
@@ -86,7 +82,7 @@ export const StatusMeterGaugeStatusMeterGaugeCustomization = () => {
         labelledBy="vertical currentThreshold"
         value={40}
         thresholds={thresholdValues}
-        indicatorSize="0.5"
+        indicatorSize={0.5}
         thresholdDisplay="currentOnly"
         orientation="vertical"
         tooltipProps={thresholdTooltipProps}
@@ -96,10 +92,10 @@ export const StatusMeterGaugeStatusMeterGaugeCustomization = () => {
         labelledBy="circular currentThreshold"
         value={40}
         thresholds={thresholdValues}
-        indicatorSize="0.5"
+        indicatorSize={0.5}
         thresholdDisplay="currentOnly"
         orientation="circular"
-        innerRadius="0.87"
+        innerRadius={0.87}
         tooltipProps={thresholdTooltipProps}
       />
 
@@ -114,7 +110,7 @@ export const StatusMeterGaugeStatusMeterGaugeCustomization = () => {
         labelledBy="horizontal allThresholds"
         value={40}
         thresholds={thresholdValues}
-        indicatorSize="0.5"
+        indicatorSize={0.5}
         thresholdDisplay="all"
         tooltipProps={thresholdTooltipProps}
       />
@@ -123,7 +119,7 @@ export const StatusMeterGaugeStatusMeterGaugeCustomization = () => {
         labelledBy="vertical allThresholds"
         value={40}
         thresholds={thresholdValues}
-        indicatorSize="0.5"
+        indicatorSize={0.5}
         thresholdDisplay="all"
         orientation="vertical"
         tooltipProps={thresholdTooltipProps}
@@ -133,10 +129,10 @@ export const StatusMeterGaugeStatusMeterGaugeCustomization = () => {
         labelledBy="circular allThresholds"
         value={40}
         thresholds={thresholdValues}
-        indicatorSize="0.5"
+        indicatorSize={0.5}
         thresholdDisplay="all"
         orientation="circular"
-        innerRadius="0.87"
+        innerRadius={0.87}
         tooltipProps={thresholdTooltipProps}
       />
 
@@ -150,22 +146,22 @@ export const StatusMeterGaugeStatusMeterGaugeCustomization = () => {
         wrapperClassName="demo-gauge-cell demo-horizontal-gauge oj-flex oj-sm-justify-content-center oj-sm-align-items-center"
         labelledBy="horizontal indicator"
         value={20}
-        indicatorSize="5"
+        indicatorSize={5}
       />
       <StatusMeterGaugeCell
         wrapperClassName="demo-gauge-cell oj-flex oj-sm-justify-content-center"
         labelledBy="vertical indicator"
         value={20}
-        indicatorSize="5"
+        indicatorSize={5}
         orientation="vertical"
       />
       <StatusMeterGaugeCell
         wrapperClassName="demo-gauge-cell oj-flex oj-sm-justify-content-center"
         labelledBy="circular indicator"
         value={20}
-        indicatorSize="5"
+        indicatorSize={5}
         orientation="circular"
-        innerRadius="0.87"
+        innerRadius={0.87}
       />
 
       <div class="demo-gauge-cell oj-flex oj-sm-align-items-center">

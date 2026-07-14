@@ -1,5 +1,6 @@
-import { ComponentProps } from "preact";
 import { IntlNumberConverter } from "ojs/ojconverter-number";
+import 'preact';
+import { ComponentProps } from 'preact';
 
 export type InputNumberProps = ComponentProps<"oj-input-number">;
 export type InputNumberValueChangedEvent = Parameters<

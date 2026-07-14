@@ -1,20 +1,19 @@
-// @ts-nocheck
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import { getContext } from 'ojs/ojcontext';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { KeySet, KeySetImpl } from 'ojs/ojkeyset';
-import type { ojListView } from 'ojs/ojlistview';
-import type { SelectorElement } from 'ojs/ojselector';
+import 'css!./demo.css';
 import 'ojs/ojbutton';
+import { getContext } from 'ojs/ojcontext';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
+import { KeySet,KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojlistview';
+import type { ojListView } from 'ojs/ojlistview';
 import 'ojs/ojoption';
 import 'ojs/ojselector';
-import 'css!./demo.css';
+import type { SelectorElement } from 'ojs/ojselector';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useEffect,useMemo,useRef,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type DemoItem = {
   id: number;

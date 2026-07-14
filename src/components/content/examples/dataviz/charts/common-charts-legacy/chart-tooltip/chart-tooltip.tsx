@@ -1,10 +1,10 @@
-import { Fragment, h } from 'preact';
+import 'ojs/ojchart';
+import { ojChart } from 'ojs/ojchart';
+import 'ojs/ojgauge';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/departmentHiresData.json';
-import { ojChart } from 'ojs/ojchart';
-import 'ojs/ojchart';
-import 'ojs/ojgauge';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 const data = JSON.parse(dataText as string);
 export const ChartTooltip = () => {

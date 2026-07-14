@@ -1,11 +1,11 @@
-import { h } from "preact";
-import { useMemo } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import "../../../../../jet-composites/demo-profile-card-layout/loader";
-import "../../../../../jet-composites/demo-responsive-buttonset/loader";
 import "css!./demo.css";
 import "oj-c/button";
 import "oj-c/card-view";
+import * as preact from 'preact';
+import { useMemo } from "preact/hooks";
+import "../../../../../jet-composites/demo-profile-card-layout/loader";
+import "../../../../../jet-composites/demo-responsive-buttonset/loader";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 interface EmployeeData {
   email: string;
@@ -92,7 +92,7 @@ const EMPLOYEES: EmployeeData[] = [
 
 const renderCard = (context: CardItemContext) => (
   <div class="oj-panel">
-    {h("demo-profile-card-layout", {
+    {preact.h("demo-profile-card-layout", {
       layout: "tabbable",
       name: context.data.name,
       workTitle: context.data.title,

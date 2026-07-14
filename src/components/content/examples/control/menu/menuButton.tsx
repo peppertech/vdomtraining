@@ -1,8 +1,9 @@
-import { h, JSX } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojmenu";
-import "ojs/ojoption";
 import type { MenuElement } from "ojs/ojmenu";
+import "ojs/ojoption";
+import 'preact';
+import { JSX } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 type MenuItem = {
   id: string;

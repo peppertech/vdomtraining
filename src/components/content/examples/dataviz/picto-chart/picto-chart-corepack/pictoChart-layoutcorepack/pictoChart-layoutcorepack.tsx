@@ -1,15 +1,15 @@
 // @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojformlayout';
+import 'ojs/ojlegend';
+import 'ojs/ojpictochart';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import * as populationDataText from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/populationData.json';
 import * as medalDataText from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/summerMedalData.json';
-import 'ojs/ojpictochart';
-import 'ojs/ojformlayout';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
-import 'ojs/ojlegend';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 

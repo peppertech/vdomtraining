@@ -1,5 +1,6 @@
-import { ComponentProps } from "preact";
 import { IntlConverterUtils } from "ojs/ojconverterutils-i18n";
+import 'preact';
+import { ComponentProps } from 'preact';
 
 export type InputDateMaskProps = ComponentProps<"oj-c-input-date-mask">;
 export type InputDateMaskValueChangedEvent = Parameters<

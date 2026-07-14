@@ -1,8 +1,8 @@
-import { Fragment, h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import 'ojs/ojlabel';
 import 'ojs/ojnavigationlist';
 import 'ojs/ojswitch';
-import 'ojs/ojlabel';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;

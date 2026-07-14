@@ -1,7 +1,7 @@
-import { h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
 import 'css!./demo.css';
 import 'oj-c/progress-bar';
+import 'preact';
+import { useEffect,useState } from 'preact/hooks';
 
 export const ProgressBarOverviewcorepack = () => {
   const [step, setStep] = useState(0);

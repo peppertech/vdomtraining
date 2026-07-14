@@ -1,16 +1,16 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import { JetElementCustomEvent } from 'ojs/index';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/diagramDataSample.json';
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as layout from '../diagram-layouts';
-import 'ojs/ojdiagram';
-import 'ojs/ojformlayout';
-import '../../../../../jet-composites/demo-radioset-enum/loader';
-import { ojDiagram } from 'ojs/ojdiagram';
 import "css!./demo.css";
+import { JetElementCustomEvent } from 'ojs/index';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojdiagram';
+import { ojDiagram } from 'ojs/ojdiagram';
+import 'ojs/ojformlayout';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/diagramDataSample.json';
+import '../../../../../jet-composites/demo-radioset-enum/loader';
+import * as layout from '../diagram-layouts';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type HighlightedCategories = ComponentProps<'oj-diagram'>['highlightedCategories'];
 type HoverBehavior = NonNullable<ComponentProps<'oj-diagram'>['hoverBehavior']>;
 type DiagramNodeDatum = {

@@ -1,27 +1,40 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import * as Context from 'ojs/ojcontext';
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
-import { usaProj } from './usaProj';
 import 'css!./demo.css';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojbutton';
-import 'ojs/ojinputnumber';
+import * as Context from 'ojs/ojcontext';
 import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
 import 'ojs/ojthematicmap';
+import { ojThematicMap } from 'ojs/ojthematicmap';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
+import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
 import '../../../../../jet-composites/demo-radioset-enum/loader';
+import { usaProj } from './usaProj';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 const geo = JSON.parse(geoText as string);
+type ThematicMapProps = ComponentProps<'oj-thematic-map'>;
+type AnimationOnDisplay = NonNullable<ThematicMapProps['animationOnDisplay']>;
+type Marker = ojThematicMap.Marker<string>;
+type MapProvider = NonNullable<ThematicMapProps['mapProvider']>;
+type InputNumberValueChanged = Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0];
+type AnimationValueChanged = CustomEvent<{ value: AnimationOnDisplay | null }>;
+type LabelValueChanged = CustomEvent<{ value: string | null }>;
 
 export const ThematicMapPerformance = () => {
-  const [animationValue, setAnimationValue] = useState('auto');
+  const [animationValue, setAnimationValue] = useState<AnimationOnDisplay>('auto');
   const [labelValue, setLabelValue] = useState('off');
   const [numMarkers, setNumMarkers] = useState(30);
-  const [timeValue, setTimeValue] = useState(undefined);
-  const [markers, setMarkers] = useState([]);
+  const [timeValue, setTimeValue] = useState(0);
+  const [markers, setMarkers] = useState<Marker[]>([]);
+  const markerData = useMemo(
+    () => new ArrayDataProvider(markers, { keyAttributes: 'id' }),
+    [markers]
+  );
   const mapProvider = useMemo(
-    () => ({
+    (): MapProvider => ({
       geo,
       propertiesKeys: {
         id: 'Name',
@@ -40,7 +53,7 @@ export const ThematicMapPerformance = () => {
       const projectedCoord = usaProj.project(randomValueX, randomValueY);
       if (projectedCoord) {
         const size = 10 + Math.random() * 20;
-        const city = {
+        const city: Marker = {
           id: i.toString(),
           x: projectedCoord.x,
           y: projectedCoord.y,
@@ -70,7 +83,7 @@ export const ThematicMapPerformance = () => {
     updateData();
   }, []);
 
-  const timerText = timeValue > 0 ? 'Time:  ' + timeValue + 'ms' : '';
+  const timerText = (timeValue ?? 0) > 0 ? 'Time:  ' + timeValue + 'ms' : '';
 
   return (
     <div id="tmap-container">
@@ -89,7 +102,7 @@ export const ThematicMapPerformance = () => {
             min={5}
             step={20}
             value={numMarkers}
-            onvalueChanged={(event) => setNumMarkers(event.detail.value ?? 0)}
+            onvalueChanged={(event: InputNumberValueChanged) => setNumMarkers(event.detail.value ?? 0)}
             labelHint="Markers"
             class="demo-thematicmap-perf-width-rem"
           />
@@ -97,14 +110,14 @@ export const ThematicMapPerformance = () => {
             id="animationButtonSet1"
             labelHint="Animation"
             value={animationValue}
-            onvalueChanged={(event) => setAnimationValue(event.detail.value ?? 'auto')}
+            onvalueChanged={(event: AnimationValueChanged) => setAnimationValue(event.detail.value ?? 'auto')}
             enumValues={['auto', 'none']}
           />
           <demo-radioset-enum
             id="animationButtonSet"
             value={labelValue}
             labelHint="Labels"
-            onvalueChanged={(event) => {
+            onvalueChanged={(event: LabelValueChanged) => {
               setLabelValue(event.detail.value ?? 'off');
               window.setTimeout(updateData, 0);
             }}
@@ -114,8 +127,8 @@ export const ThematicMapPerformance = () => {
       </div>
       <oj-thematic-map
         id="map1"
-        animationOnDataChange={animationValue}
-        markers={markers}
+        animationOnDisplay={animationValue}
+        markerData={markerData}
         mapProvider={mapProvider}
         class="demo-thematicmap-min-width"
       />

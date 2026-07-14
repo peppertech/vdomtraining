@@ -1,8 +1,8 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojoption";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
 
 export const ButtonsetoneButtonRadios = () => {
   const [drink, setDrink] = useState<string | null>("tea");

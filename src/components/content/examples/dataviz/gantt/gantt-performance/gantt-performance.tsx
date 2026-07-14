@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojgantt';
+import 'css!./demo.css';
 import 'oj-c/button';
 import 'oj-c/checkboxset';
 import 'oj-c/input-number';
 import 'oj-c/radioset';
-import 'css!./demo.css';
+import 'ojs/ojgantt';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type GanttProps = ComponentProps<'oj-gantt'>;
 type GanttTaskProps = ComponentProps<'oj-gantt-task'>;

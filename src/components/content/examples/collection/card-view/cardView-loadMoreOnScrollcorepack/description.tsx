@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A CardView displays data items as a grid with highly interactive features.</p>This demo shows an example of load more on scroll in oj-c-card-view, 
 which is enabled by default when oj-c-card-view is scrollable or inside a scrollable container. 

@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useRef } from 'preact/hooks';
-import type { FilmStripElement } from 'ojs/ojfilmstrip';
-import 'ojs/ojfilmstrip';
 import 'css!./demo.css';
+import 'ojs/ojfilmstrip';
+import type { FilmStripElement } from 'ojs/ojfilmstrip';
+import 'preact';
+import { useRef } from 'preact/hooks';
 import {
   filmStripDemoItems,
   getItemInitialDisplay,

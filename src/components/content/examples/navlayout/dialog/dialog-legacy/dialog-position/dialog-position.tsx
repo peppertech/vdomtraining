@@ -1,15 +1,15 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import { ojButton } from 'ojs/ojbutton';
-import { ojDialog } from 'ojs/ojdialog';
+import 'css!./demo.css';
 import 'ojs/ojbutton';
+import { ojButton } from 'ojs/ojbutton';
 import 'ojs/ojcheckboxset';
 import 'ojs/ojdialog';
+import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojlabel';
 import 'ojs/ojoption';
 import 'ojs/ojradioset';
-import 'css!./demo.css';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
 
 type DialogPositionValue = NonNullable<
   NonNullable<ComponentProps<'oj-dialog'>['position']>['at']

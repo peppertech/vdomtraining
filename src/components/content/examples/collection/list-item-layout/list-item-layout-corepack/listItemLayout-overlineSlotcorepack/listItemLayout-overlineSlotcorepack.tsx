@@ -1,14 +1,14 @@
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import { KeySetImpl, type ImmutableKeySet } from "ojs/ojkeyset";
-import type { CListViewElement } from "oj-c/list-view";
 import "css!./demo.css";
 import "oj-c/avatar";
 import "oj-c/badge";
 import "oj-c/list-item-layout";
 import "oj-c/list-view";
+import type { CListViewElement } from "oj-c/list-view";
 import "oj-c/selector";
+import { KeySetImpl,type ImmutableKeySet } from "ojs/ojkeyset";
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 interface Person {
   id: string;

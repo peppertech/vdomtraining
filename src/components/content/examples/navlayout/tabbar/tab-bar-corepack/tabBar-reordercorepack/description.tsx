@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A tab bar allows navigation between different content sections.</p><P>This demo shows how to reorder TabBar Items in oj-c-tab-bar</P>
 <p> For mobile touch devices, a default context menu

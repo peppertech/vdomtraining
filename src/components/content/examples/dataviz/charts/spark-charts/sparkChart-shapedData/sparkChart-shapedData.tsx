@@ -1,10 +1,10 @@
-// @ts-nocheck
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojchart';
+import type { ComponentChildren } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/sparkShapedData.json';
 import * as rangeDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/sparkShapedRangeData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import 'ojs/ojchart';
 
 type SparkShapedValueItem = {
   id: number;
@@ -29,7 +29,7 @@ const lineChartAriaLabel =
 const areaChartAriaLabel =
   'Area Spark Chart, First Value: 5, Last Value: 2, Low Value: 0, High Value: 9';
 
-const SparkChartRow = ({ label, children }) => (
+const SparkChartRow = ({ label, children }: { label: string; children: ComponentChildren }) => (
   <tr>
     <td>{label}</td>
     <td>{children}</td>

@@ -1,14 +1,13 @@
-// @ts-nocheck
-import { h } from 'preact';
+import 'css!./demo.css';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojthematicmap';
+import { ojThematicMap } from 'ojs/ojthematicmap';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/europe_countries.json';
 import * as territoriesText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/europeSalesTerritories.json';
-import { ojThematicMap } from 'ojs/ojthematicmap';
-import 'css!./demo.css';
-import 'ojs/ojthematicmap';
+import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/europe_countries.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TerritoryDatum = {
   Country: string;
@@ -94,7 +93,11 @@ export const ThematicMapRenderer = () => {
   const rendererFunc = (
     context: ojThematicMap.RendererContext<null, null, TerritoryDatum['Country'], null, null, TerritoryDatum>
   ) => {
-    const color = getColor(context.itemData.Territory);
+    const itemData = context.itemData;
+    if (!itemData) {
+      return undefined;
+    }
+    const color = getColor(itemData.Territory);
     let rootElement = context.root as SVGElement | null;
 
     if (rootElement == null) {
@@ -112,13 +115,14 @@ export const ThematicMapRenderer = () => {
   const selectionRenderer = (
     context: ojThematicMap.RendererContext<null, null, TerritoryDatum['Country'], null, null, TerritoryDatum>
   ) => {
+    const itemData = context.itemData;
     const rootElement = context.root as SVGElement | null;
-    if (rootElement != null) {
+    if (rootElement != null && itemData != null) {
       const group = rootElement.childNodes[0] as Element | undefined;
       const circle = group?.childNodes[3] as Element | undefined;
       circle?.setAttribute(
         'fill',
-        context.state.selected ? 'red' : getColor(context.itemData.Territory)
+        context.state.selected ? 'red' : getColor(itemData.Territory)
       );
     }
   };

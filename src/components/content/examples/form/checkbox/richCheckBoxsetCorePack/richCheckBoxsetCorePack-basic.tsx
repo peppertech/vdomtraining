@@ -1,5 +1,5 @@
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/rich-checkboxset";
+import { useCallback,useState } from "preact/hooks";
 
 import {
   industryOptions,

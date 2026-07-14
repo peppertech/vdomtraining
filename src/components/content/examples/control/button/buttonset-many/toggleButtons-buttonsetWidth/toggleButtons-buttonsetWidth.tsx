@@ -1,11 +1,11 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
-import 'ojs/ojbutton';
-import 'ojs/ojradioset';
-import 'ojs/ojcheckboxset';
 import 'css!./demo.css';
+import 'ojs/ojbutton';
+import 'ojs/ojcheckboxset';
+import 'ojs/ojradioset';
+import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
 
 const joinClasses = (...classes: Array<string | false>) => classes.filter(Boolean).join(' ');
 
@@ -13,10 +13,9 @@ type ButtonsetWidthClass = 'default' | 'auto' | 'equal';
 type ButtonsetItem = {
   id: string;
 };
-type ValueChangedEvent<T> = CustomEvent<{
-  value?: T;
-  updatedFrom?: string;
-}>;
+type RadiosetValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0];
+type CheckboxsetValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-checkboxset'>['onvalueChanged']>>[0];
+type ButtonIcon = { start?: string };
 
 const items: ButtonsetItem[] = [{ id: 'Home' }, { id: 'Guide' }, { id: 'Library' }];
 
@@ -48,7 +47,7 @@ export const ToggleButtonsButtonsetWidth = () => {
   const itemIcons = useMemo(
     () =>
       isSmall
-        ? [{}, {}, {}]
+        ? [{}, {}, {}] as ButtonIcon[]
         : [
             { start: 'oj-ux-ico-home' },
             { start: 'oj-ux-ico-education' },
@@ -62,13 +61,13 @@ export const ToggleButtonsButtonsetWidth = () => {
     buttonWidth.includes('true') && 'demo-max-width-400'
   );
 
-  const handleWidthClassChanged = (event: ValueChangedEvent<ButtonsetWidthClass>) => {
+  const handleWidthClassChanged = (event: RadiosetValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
-      setButtonsetWidthClass(event.detail.value ?? 'default');
+      setButtonsetWidthClass((event.detail.value as ButtonsetWidthClass | null) ?? 'default');
     }
   };
 
-  const handleButtonWidthChanged = (event: ValueChangedEvent<string[]>) => {
+  const handleButtonWidthChanged = (event: CheckboxsetValueChangedEvent) => {
     if (event.detail.updatedFrom === 'internal') {
       setButtonWidth(event.detail.value ?? []);
     }

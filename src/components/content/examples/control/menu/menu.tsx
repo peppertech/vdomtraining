@@ -1,9 +1,9 @@
-import { h } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojmenu";
-import "ojs/ojoption";
 import { MenuElement } from "ojs/ojmenu";
+import "ojs/ojoption";
+import 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 type SelectionState = {
   single: string;

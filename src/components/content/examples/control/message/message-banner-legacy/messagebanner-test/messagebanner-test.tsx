@@ -1,16 +1,15 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import { MessageBannerItem, MessageBannerElement } from 'ojs/ojmessagebanner';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
 import 'ojs/ojmessagebanner';
+import { MessageBannerElement,MessageBannerItem } from 'ojs/ojmessagebanner';
+import 'ojs/ojoption';
 import 'ojs/ojradioset';
 import 'ojs/ojselectsingle';
-import 'ojs/ojoption';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 // import 'ojs/ojtextarea';
 
 type DemoMessageBannerItem = MessageBannerItem & {
@@ -47,9 +46,9 @@ export const MessagebannerTest = () => {
       keyAttributes: 'id'
   }), []);
   const [messageType, setMessageType] = useState<'page' | 'section'>('page');
-  const [summary, setSummary] = useState<string>(undefined);
-  const [detail, setDetail] = useState<string>(undefined);
-  const [severity, setSeverity] = useState<string>(undefined);
+  const [summary, setSummary] = useState<string | undefined>(undefined);
+  const [detail, setDetail] = useState<string | undefined>(undefined);
+  const [severity, setSeverity] = useState<string | undefined>(undefined);
   const [currentData, setCurrentData] = useState<string>(JSON.stringify(initialData, null, '  '));
 
   const severities = useMemo(() => new ArrayDataProvider([
@@ -141,7 +140,7 @@ export const MessagebannerTest = () => {
   };
 
   const closeMessage = (event: MessageBannerElement.ojClose<string, DemoMessageBannerItem>) => {
-      let data = messages.data.slice();
+      let data = messages.data.slice() as DemoMessageBannerItem[];
       const closeMessageKey = event.detail.key;
       data = data.filter((message: DemoMessageBannerItem) => message.id !== closeMessageKey);
       messages.data = data;
@@ -151,7 +150,7 @@ export const MessagebannerTest = () => {
       const currentSummary = summary;
       const currentDetail = detail;
       const currentSeverity = severity;
-      const data = messages.data.slice();
+      const data = messages.data.slice() as DemoMessageBannerItem[];
       if (!(currentSummary && currentSeverity)) {
           alert('Fill in all the required fields');
           return;
@@ -166,9 +165,9 @@ export const MessagebannerTest = () => {
       data.unshift(newMessage);
       messages.data = data;
       setCounter(nextCounter);
-      setSummary(null);
-      setDetail(null);
-      setSeverity(null);
+      setSummary(undefined);
+      setDetail(undefined);
+      setSeverity(undefined);
   };
 
   const updateData = () => {
@@ -211,7 +210,7 @@ export const MessagebannerTest = () => {
                                       </div>
                               <div class="oj-flex-item oj-sm-padding-4x-horizontal">
                                           <oj-form-layout>
-                                                        <oj-text-area label-hint="Data" onvalueChanged={handleCurrentDataValueChanged} value={currentData} rows="11" required />
+                                                        <oj-text-area label-hint="Data" onvalueChanged={handleCurrentDataValueChanged} value={currentData} rows={11} required />
                                                     </oj-form-layout>
                                           <oj-button onojAction={updateData}>Update Data</oj-button>
                                       </div>

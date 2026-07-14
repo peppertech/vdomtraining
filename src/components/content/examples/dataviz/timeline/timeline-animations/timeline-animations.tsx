@@ -1,11 +1,10 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
+import 'css!./demo.css';
 import 'ojs/ojbutton';
 import 'ojs/ojtimeline';
 import 'ojs/ojtoolbar';
-import 'css!./demo.css';
+import 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 
 type TimelineAnimationsItem = {
   id: number;

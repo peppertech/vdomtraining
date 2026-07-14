@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import 'ojs/ojavatar';
 import { KeySetImpl } from 'ojs/ojkeyset';
+import 'ojs/ojlistitemlayout';
 import 'ojs/ojlistview';
 import 'ojs/ojswitch';
-import 'ojs/ojavatar';
-import 'ojs/ojlistitemlayout';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type EmployeeData = {
   id: number;

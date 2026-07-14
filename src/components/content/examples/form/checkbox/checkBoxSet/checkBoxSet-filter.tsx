@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "ojs/ojcheckboxset";
 import "ojs/ojformlayout";
-import { filterOptions, type CheckboxsetValueChangedEvent } from "./checkBoxSet-shared";
+import 'preact';
+import { useState } from "preact/hooks";
+import { filterOptions,type CheckboxsetValueChangedEvent } from "./checkBoxSet-shared";
 
 export default function CheckBoxSetFilterExample() {
   const [currentColor, setCurrentColor] = useState<string[]>(["red"]);

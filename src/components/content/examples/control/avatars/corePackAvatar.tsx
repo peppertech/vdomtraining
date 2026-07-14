@@ -1,5 +1,6 @@
-import { h, ComponentProps } from "preact";
 import "oj-c/avatar";
+import 'preact';
+import { ComponentProps } from 'preact';
 import * as PeopleData from "text!./data/peopleData.json";
 
 type AvatarProps = ComponentProps<"oj-c-avatar">;

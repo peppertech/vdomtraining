@@ -1,9 +1,9 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-password";
 import "oj-c/input-text";
 import "oj-c/text-area";
+import 'preact';
+import { useState } from "preact/hooks";
 
 export default function InputTextCorePackNoLabelExample() {
   const [textVal, setTextVal] = useState("text");

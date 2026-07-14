@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import { MessageBannerItem, MessageBannerElement } from 'ojs/ojmessagebanner';
-import { ojCheckboxset } from 'ojs/ojcheckboxset';
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 import 'ojs/ojcheckboxset';
+import { ojCheckboxset } from 'ojs/ojcheckboxset';
 import 'ojs/ojmessagebanner';
+import { MessageBannerElement,MessageBannerItem } from 'ojs/ojmessagebanner';
 import 'ojs/ojoption';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 
 type DemoMessageBannerItem = MessageBannerItem & {
     id: string;

@@ -1,20 +1,20 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { TruncatingTextHyphenscorepack } from "./truncatingText-hyphenscorepack/truncatingText-hyphenscorepack";
 import { truncatingTextHyphenscorepackDescription } from "./truncatingText-hyphenscorepack/description";
 import { truncatingTextHyphenscorepackRecipe } from "./truncatingText-hyphenscorepack/recipe";
-import { TruncatingTextOverflowWrapcorepack } from "./truncatingText-overflowWrapcorepack/truncatingText-overflowWrapcorepack";
+import { TruncatingTextHyphenscorepack } from "./truncatingText-hyphenscorepack/truncatingText-hyphenscorepack";
 import { truncatingTextOverflowWrapcorepackDescription } from "./truncatingText-overflowWrapcorepack/description";
 import { truncatingTextOverflowWrapcorepackRecipe } from "./truncatingText-overflowWrapcorepack/recipe";
-import { TruncatingTextTextColorscorepack } from "./truncatingText-textColorscorepack/truncatingText-textColorscorepack";
+import { TruncatingTextOverflowWrapcorepack } from "./truncatingText-overflowWrapcorepack/truncatingText-overflowWrapcorepack";
 import { truncatingTextTextColorscorepackDescription } from "./truncatingText-textColorscorepack/description";
 import { truncatingTextTextColorscorepackRecipe } from "./truncatingText-textColorscorepack/recipe";
-import { TruncatingTextTextSizescorepack } from "./truncatingText-textSizescorepack/truncatingText-textSizescorepack";
+import { TruncatingTextTextColorscorepack } from "./truncatingText-textColorscorepack/truncatingText-textColorscorepack";
 import { truncatingTextTextSizescorepackDescription } from "./truncatingText-textSizescorepack/description";
 import { truncatingTextTextSizescorepackRecipe } from "./truncatingText-textSizescorepack/recipe";
-import { TruncatingTextTruncationAndLineClampcorepack } from "./truncatingText-truncationAndLineClampcorepack/truncatingText-truncationAndLineClampcorepack";
+import { TruncatingTextTextSizescorepack } from "./truncatingText-textSizescorepack/truncatingText-textSizescorepack";
 import { truncatingTextTruncationAndLineClampcorepackDescription } from "./truncatingText-truncationAndLineClampcorepack/description";
 import { truncatingTextTruncationAndLineClampcorepackRecipe } from "./truncatingText-truncationAndLineClampcorepack/recipe";
+import { TruncatingTextTruncationAndLineClampcorepack } from "./truncatingText-truncationAndLineClampcorepack/truncatingText-truncationAndLineClampcorepack";
 
 const truncatingTextCorePackItems = [
   {

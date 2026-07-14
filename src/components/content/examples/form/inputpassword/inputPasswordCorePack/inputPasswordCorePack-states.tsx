@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "oj-c/form-layout";
 import "oj-c/input-password";
+import 'preact';
 import { messageSets } from "./inputPasswordCorePack-shared";
 
 export default function InputPasswordCorePackStatesExample() {

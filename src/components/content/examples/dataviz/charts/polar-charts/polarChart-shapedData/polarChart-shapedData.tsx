@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as areaShapedDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/quarterShapedData.json';
-import * as barShapedDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/twoSeriesShapedData.json';
-import * as coordShapedDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicShapedCoordData.json';
-import * as lineShapedDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/twoSeriesDualYShapedData.json';
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as coordShapedDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicShapedCoordData.json';
+import * as areaShapedDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/quarterShapedData.json';
+import * as lineShapedDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/twoSeriesDualYShapedData.json';
+import * as barShapedDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/twoSeriesShapedData.json';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type PolarChartType = 'bar' | 'line' | 'area' | 'scatter' | 'bubble';
 type PolarGridShape = 'circle' | 'polygon';

@@ -1,15 +1,14 @@
-import { JetElementCustomEvent } from 'ojs/index';
-import { h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useState } from 'preact/hooks';
-import { FilePickerElement } from 'ojs/ojfilepicker';
+import 'ojs/ojcheckboxset';
 import type { ojCheckboxset } from 'ojs/ojcheckboxset';
 import 'ojs/ojfilepicker';
+import { FilePickerElement } from 'ojs/ojfilepicker';
 import 'ojs/ojinputtext';
 import 'ojs/ojlabel';
-import 'ojs/ojcheckboxset';
 import 'ojs/ojoption';
+import { useState } from 'preact/hooks';
 
 type CheckboxValueChangedEvent = ojCheckboxset.valueChanged<string, string>;
 

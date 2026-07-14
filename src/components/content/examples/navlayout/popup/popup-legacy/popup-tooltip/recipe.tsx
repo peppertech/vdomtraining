@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ul>
   <li>Set the "position" option to an alignment that gives the desired effect.</li>

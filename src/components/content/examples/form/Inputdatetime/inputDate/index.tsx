@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import InputDateCustomizeDaysVdomExample from "./inputDate-customizeDays";
 import {
@@ -17,7 +17,7 @@ const inputDateItemsVdom: {
   name: string;
   description: (typeof inputDateDocsVdom)[InputDateVdomDemoId]["description"];
   recipe: (typeof inputDateDocsVdom)[InputDateVdomDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "states",

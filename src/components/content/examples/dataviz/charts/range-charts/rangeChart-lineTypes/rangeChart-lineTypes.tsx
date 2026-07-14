@@ -1,12 +1,12 @@
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicRangeData.json';
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
 import 'ojs/ojtoolbar';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicRangeData.json';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ChartOrientation = NonNullable<ComponentProps<'oj-chart'>['orientation']>;
 type LineType = 'straight' | 'curved' | 'stepped' | 'centeredStepped' | 'none';

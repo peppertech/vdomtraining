@@ -1,10 +1,8 @@
-// @ts-nocheck
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import 'ojs/ojpictochart';
+import 'preact';
 import { useMemo } from 'preact/hooks';
 import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/winterMedalData.json';
-import 'ojs/ojpictochart';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type MedalName = 'gold' | 'silver' | 'bronze';
 type MedalData = {

@@ -1,17 +1,17 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
-import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/customers.json';
-import 'ojs/ojdatagrid';
-import { ojDataGrid } from 'ojs/ojdatagrid';
+import "css!./demo.css";
 import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
+import 'ojs/ojdatagrid';
+import { ojDataGrid } from 'ojs/ojdatagrid';
 import 'ojs/ojmenu';
-import { ojMenu, ojMenuEventMap } from 'ojs/ojmenu';
+import { ojMenu,ojMenuEventMap } from 'ojs/ojmenu';
 import 'ojs/ojoption';
-import "css!./demo.css";
+import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../../data/cookbook/dataCollections/dataGrid/shared/customers.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type CustomerRecord = {
     index: number;
     firstName: string;

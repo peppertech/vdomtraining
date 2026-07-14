@@ -1,9 +1,10 @@
-import { h, type ComponentProps } from 'preact';
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojoption";
 import "ojs/ojradioset";
 import "ojs/ojselectsingle";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 import { createBrowserDataProvider } from "./selectSingle-shared";
 
 type LabelEdgeEvent = Parameters<

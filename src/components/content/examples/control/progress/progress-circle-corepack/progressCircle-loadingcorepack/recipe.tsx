@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`If the oj-c-progress-circle is describing the loading process of a particular region on the page 
 follow the steps below to ensure accessibility.

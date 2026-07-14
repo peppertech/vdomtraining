@@ -1,25 +1,25 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { DrawerLayoutBasiccorepack } from "./drawerLayout-basiccorepack/drawerLayout-basiccorepack";
 import { drawerLayoutBasiccorepackDescription } from "./drawerLayout-basiccorepack/description";
+import { DrawerLayoutBasiccorepack } from "./drawerLayout-basiccorepack/drawerLayout-basiccorepack";
 import { drawerLayoutBasiccorepackRecipe } from "./drawerLayout-basiccorepack/recipe";
-import { DrawerLayoutCancelableEventscorepack } from "./drawerLayout-cancelableEventscorepack/drawerLayout-cancelableEventscorepack";
 import { drawerLayoutCancelableEventscorepackDescription } from "./drawerLayout-cancelableEventscorepack/description";
+import { DrawerLayoutCancelableEventscorepack } from "./drawerLayout-cancelableEventscorepack/drawerLayout-cancelableEventscorepack";
 import { drawerLayoutCancelableEventscorepackRecipe } from "./drawerLayout-cancelableEventscorepack/recipe";
-import { DrawerLayoutDisplayModecorepack } from "./drawerLayout-displayModecorepack/drawerLayout-displayModecorepack";
 import { drawerLayoutDisplayModecorepackDescription } from "./drawerLayout-displayModecorepack/description";
+import { DrawerLayoutDisplayModecorepack } from "./drawerLayout-displayModecorepack/drawerLayout-displayModecorepack";
 import { drawerLayoutDisplayModecorepackRecipe } from "./drawerLayout-displayModecorepack/recipe";
-import { DrawerLayoutEventscorepack } from "./drawerLayout-eventscorepack/drawerLayout-eventscorepack";
 import { drawerLayoutEventscorepackDescription } from "./drawerLayout-eventscorepack/description";
+import { DrawerLayoutEventscorepack } from "./drawerLayout-eventscorepack/drawerLayout-eventscorepack";
 import { drawerLayoutEventscorepackRecipe } from "./drawerLayout-eventscorepack/recipe";
-import { DrawerLayoutInsetLayoutcorepack } from "./drawerLayout-insetLayoutcorepack/drawerLayout-insetLayoutcorepack";
 import { drawerLayoutInsetLayoutcorepackDescription } from "./drawerLayout-insetLayoutcorepack/description";
+import { DrawerLayoutInsetLayoutcorepack } from "./drawerLayout-insetLayoutcorepack/drawerLayout-insetLayoutcorepack";
 import { drawerLayoutInsetLayoutcorepackRecipe } from "./drawerLayout-insetLayoutcorepack/recipe";
-import { DrawerLayoutMultipleDrawerscorepack } from "./drawerLayout-multipleDrawerscorepack/drawerLayout-multipleDrawerscorepack";
 import { drawerLayoutMultipleDrawerscorepackDescription } from "./drawerLayout-multipleDrawerscorepack/description";
+import { DrawerLayoutMultipleDrawerscorepack } from "./drawerLayout-multipleDrawerscorepack/drawerLayout-multipleDrawerscorepack";
 import { drawerLayoutMultipleDrawerscorepackRecipe } from "./drawerLayout-multipleDrawerscorepack/recipe";
-import { DrawerLayoutSizingcorepack } from "./drawerLayout-sizingcorepack/drawerLayout-sizingcorepack";
 import { drawerLayoutSizingcorepackDescription } from "./drawerLayout-sizingcorepack/description";
+import { DrawerLayoutSizingcorepack } from "./drawerLayout-sizingcorepack/drawerLayout-sizingcorepack";
 import { drawerLayoutSizingcorepackRecipe } from "./drawerLayout-sizingcorepack/recipe";
 
 const drawerLayoutCorePackItems = [

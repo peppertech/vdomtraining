@@ -1,9 +1,10 @@
-// @ts-nocheck
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import 'css!./demo.css';
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojformlayout';
+import 'ojs/ojthematicmap';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import * as africaText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/africa_countries.json';
 import * as asiaText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/asia_countries.json';
 import * as australiaText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/australia_countries.json';
@@ -11,10 +12,8 @@ import * as europeText from 'text!../data/cookbook/dataVisualizations/thematicMa
 import * as northAmericaText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/north_america_countries.json';
 import * as southAmericaText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/south_america_countries.json';
 import * as worldText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/world_countries.json';
-import 'css!./demo.css';
-import 'ojs/ojformlayout';
-import 'ojs/ojthematicmap';
 import '../../../../../jet-composites/demo-select-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ThematicMapProvider = ComponentProps<'oj-thematic-map'>['mapProvider'];
 
@@ -29,7 +28,7 @@ const mapGeoLookup = {
 };
 
 export const ThematicMapBasemaps = () => {
-  const [map, setMap] = useState('World');
+  const [map, setMap] = useState<keyof typeof mapGeoLookup>('World');
   const geo = mapGeoLookup[map] ?? mapGeoLookup.World;
   const dataProvider = useMemo(
     () =>
@@ -67,7 +66,7 @@ export const ThematicMapBasemaps = () => {
           id="mapSelect"
           value={map}
           labelHint="Map"
-          onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setMap(event.detail.value ?? 'World')}
+          onvalueChanged={(event: DatavizValueChangedEvent<keyof typeof mapGeoLookup | null>) => setMap(event.detail.value ?? 'World')}
           enumValues={['Africa', 'Asia', 'Australia', 'Europe', 'North America', 'South America', 'World']}
         />
       </oj-form-layout>

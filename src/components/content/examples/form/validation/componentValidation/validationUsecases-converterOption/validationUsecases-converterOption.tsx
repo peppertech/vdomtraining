@@ -1,12 +1,13 @@
-import { h, type ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
-import { NumberConverter, type ConverterOptions } from 'ojs/ojconverter-nativenumber';
 import 'oj-c/button';
 import 'oj-c/input-text';
+import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
+import { NumberConverter,type ConverterOptions } from 'ojs/ojconverter-nativenumber';
 import 'ojs/ojformlayout';
 import 'ojs/ojlabelvalue';
 import 'ojs/ojswitch';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
 
 type InputTextValidChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-text'>['onvalidChanged']>

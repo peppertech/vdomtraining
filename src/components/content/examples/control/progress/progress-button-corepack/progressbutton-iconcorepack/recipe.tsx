@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ul>
   <li>Configure a on-oj-action handler that turns on the is-loading property prior to the action, and turns it off after the action.</li>

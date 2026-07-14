@@ -1,9 +1,9 @@
-import { Fragment, h } from 'preact';
-import { useMemo } from 'preact/hooks';
+import "css!./demo.css";
 import 'oj-c/conveyor-belt';
 import 'ojs/ojactioncard';
 import 'ojs/ojavatar';
-import "css!./demo.css";
+import 'preact';
+import { useMemo } from 'preact/hooks';
 
 interface UserModel {
     id: number;

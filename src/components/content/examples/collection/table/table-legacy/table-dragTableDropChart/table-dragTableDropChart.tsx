@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import type { ojTable } from 'ojs/ojtable';
+import "css!./demo.css";
+import 'ojs/ojchart';
 import { KeySetImpl } from 'ojs/ojkeyset';
+import 'ojs/ojtable';
+import type { ojTable } from 'ojs/ojtable';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import * as resultDataText from 'text!../../../data/cookbook/dataCollections/table/shared/resultData.json';
 import DemoDataTransfer from './DemoDataTransfer';
-import 'ojs/ojtable';
-import 'ojs/ojchart';
-import "css!./demo.css";
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TableData = {
   Year: string;

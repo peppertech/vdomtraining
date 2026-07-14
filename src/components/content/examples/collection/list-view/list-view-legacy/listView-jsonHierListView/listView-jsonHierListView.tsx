@@ -1,13 +1,13 @@
-import { h } from 'preact';
+import 'ojs/ojavatar';
+import 'ojs/ojbutton';
+import 'ojs/ojlistitemlayout';
+import 'ojs/ojlistview';
+import { ojListView } from 'ojs/ojlistview';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import 'ojs/ojlistview';
-import 'ojs/ojbutton';
-import 'ojs/ojavatar';
-import 'ojs/ojlistitemlayout';
 import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listView/jsonHierListView/files.json';
-import { ojListView } from 'ojs/ojlistview';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 interface File {
     id: string;

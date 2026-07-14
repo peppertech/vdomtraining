@@ -1,12 +1,13 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import type { ojValidationGroup } from 'ojs/ojvalidationgroup';
-import DemoNumberRangeAsyncValidator from './DemoNumberRangeAsyncValidator';
 import 'oj-c/input-number';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojlabelvalue';
 import 'ojs/ojvalidationgroup';
+import type { ojValidationGroup } from 'ojs/ojvalidationgroup';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import DemoNumberRangeAsyncValidator from './DemoNumberRangeAsyncValidator';
 
 type InputNumberValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-number'>['onvalueChanged']>

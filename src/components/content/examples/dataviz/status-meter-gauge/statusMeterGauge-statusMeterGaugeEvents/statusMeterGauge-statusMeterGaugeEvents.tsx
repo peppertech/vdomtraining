@@ -1,7 +1,7 @@
+import 'css!./demo.css';
+import 'ojs/ojgauge';
 import type { ComponentProps } from 'preact';
 import { useState } from 'preact/hooks';
-import 'ojs/ojgauge';
-import 'css!./demo.css';
 
 type StatusMeterGaugeValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-status-meter-gauge'>['onvalueChanged']>

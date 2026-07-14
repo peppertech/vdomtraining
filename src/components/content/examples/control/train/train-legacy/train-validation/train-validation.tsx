@@ -1,16 +1,16 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import { ojButton } from 'ojs/ojbutton';
-import { ojTrain } from 'ojs/ojtrain';
-import { ojValidationGroup } from 'ojs/ojvalidationgroup';
-import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 import 'ojs/ojbutton';
+import { ojButton } from 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
 import 'ojs/ojlabel';
 import 'ojs/ojtrain';
+import { ojTrain } from 'ojs/ojtrain';
 import 'ojs/ojvalidationgroup';
+import { ojValidationGroup } from 'ojs/ojvalidationgroup';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 
 type InputTextValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>>[0];
 

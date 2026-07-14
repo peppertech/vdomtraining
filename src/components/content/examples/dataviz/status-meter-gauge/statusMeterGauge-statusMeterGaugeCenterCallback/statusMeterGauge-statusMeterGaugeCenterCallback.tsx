@@ -1,8 +1,7 @@
-// @ts-nocheck
-import { useMemo } from 'preact/hooks';
+import 'css!./demo.css';
 import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import 'ojs/ojgauge';
-import 'css!./demo.css';
+import { useMemo } from 'preact/hooks';
 type GaugeCenterTemplateContext = {
     innerBounds: {
         width: number;
@@ -38,7 +37,7 @@ export const StatusMeterGaugeStatusMeterGaugeCenterCallback = () => {
           Sales Quota
         </span>
       </div>
-      <oj-status-meter-gauge class="demo-center-content-status-meter-sample" value={value} min={0} max={1000000} innerRadius=".85" step={1} size="lg" aria-labelledby="salesQuota" orientation="circular" thresholds={thresholdValues}>
+      <oj-status-meter-gauge class="demo-center-content-status-meter-sample" value={value} min={0} max={1000000} innerRadius={0.85} step={1} size="lg" aria-labelledby="salesQuota" orientation="circular" thresholds={thresholdValues}>
         <template slot="centerTemplate" render={centerTemplateRenderer}/>
       </oj-status-meter-gauge>
     </div>);

@@ -1,7 +1,8 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/select-single";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from "preact/hooks";
 import { createBrowserDataProvider } from "./selectSingle-shared";
 
 type SelectSingleProps = ComponentProps<"oj-c-select-single">;

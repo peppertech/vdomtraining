@@ -1,13 +1,13 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as selectionDataText from 'text!./nadal_2013.json';
-import 'ojs/ojtimeline';
-import 'ojs/ojlabel';
-import 'ojs/ojformlayout';
-import 'ojs/ojbutton';
 import 'css!./demo.css';
+import 'ojs/ojbutton';
+import 'ojs/ojformlayout';
+import 'ojs/ojlabel';
+import 'ojs/ojtimeline';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as selectionDataText from 'text!./nadal_2013.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TimelineSelectionItem = {
   event: string;
@@ -32,7 +32,7 @@ const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => 
 );
 
 export const TimelineSelection = () => {
-  const [selectionMode, setSelectionMode] = useState('multiple');
+  const [selectionMode, setSelectionMode] = useState<NonNullable<ComponentProps<'oj-timeline'>['selectionMode']>>('multiple');
   const [selectionValue, setSelectionValue] = useState(['FRENCH OPEN', 'US OPEN']);
   const dataProvider = useMemo(
     () =>
@@ -42,7 +42,7 @@ export const TimelineSelection = () => {
     []
   );
 
-  const handleSelectionModeChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleSelectionModeChanged = (event: DatavizValueChangedEvent<typeof selectionMode>) => {
     if (event.detail.updatedFrom !== 'internal') {
       return;
     }
@@ -61,7 +61,7 @@ export const TimelineSelection = () => {
 
   const handleSelectionChanged = (event: DatavizValueChangedEvent<string[] | null>) => {
     if (event.detail.updatedFrom === 'internal') {
-      setSelectionValue(event.detail.value);
+      setSelectionValue(event.detail.value ?? []);
     }
   };
 

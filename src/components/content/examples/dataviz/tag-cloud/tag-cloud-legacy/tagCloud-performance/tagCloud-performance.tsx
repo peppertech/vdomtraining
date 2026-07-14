@@ -1,22 +1,20 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import Context = require('ojs/ojcontext');
+import 'css!./demo.css';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
-import '../../../../../../jet-composites/demo-radioset-enum/loader';
 import 'ojs/ojtagcloud';
-import 'css!./demo.css';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
+import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import Context = require('ojs/ojcontext');
 type RandomTag = {
     id: string;
     label: string;
     value: number;
 };
-type ValueChangedEvent<T> = CustomEvent<{
-    value: T;
-}>;
+type ValueChangedEvent<T> = CustomEvent<{ value: T | null }>;
 const words = ['chart', 'treemap', 'sunburst', 'tag', 'cloud', 'map', 'nbox', 'diagram'];
 const generateRandomData = (numTags: number): RandomTag[] => {
     const data: RandomTag[] = [];
@@ -55,18 +53,18 @@ export const TagCloudPerformance = () => {
             window.clearTimeout(timeoutId);
         };
     }, [numTags]);
-    const handleItemCountChanged = (event: ValueChangedEvent<number>) => {
+    const handleItemCountChanged: NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']> = (event) => {
         setNumTags(event.detail.value ?? 0);
     };
     const handleAnimationChanged = (event: ValueChangedEvent<'auto' | 'none'>) => {
-        setAnimationValue(event.detail.value);
+        setAnimationValue(event.detail.value ?? 'none');
     };
     const handleLayoutChanged = (event: ValueChangedEvent<'rectangular' | 'cloud'>) => {
-        setLayoutValue(event.detail.value);
+        setLayoutValue(event.detail.value ?? 'rectangular');
         regenerateData();
     };
     const handleShapedDataChanged = (event: ValueChangedEvent<'on' | 'off'>) => {
-        setShapedData(event.detail.value);
+        setShapedData(event.detail.value ?? 'on');
         regenerateData();
     };
     return (<div id="tagcloud-container">

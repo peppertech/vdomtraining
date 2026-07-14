@@ -1,19 +1,20 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import AccordionLegacyRecipePage from "./accordion-legacy/index";
-import AccordionMultipleCorePackRecipePage from "./accordion-multiple-corepack/index";
-import AccordionSingleCorePackRecipePage from "./accordion-single-corepack/index";
-import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
 } from "../../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../../example-route-context";
+import AccordionLegacyRecipePage from "./accordion-legacy/index";
+import AccordionMultipleCorePackRecipePage from "./accordion-multiple-corepack/index";
+import AccordionSingleCorePackRecipePage from "./accordion-single-corepack/index";
 
 type AccordionComponent = {
   id: number;

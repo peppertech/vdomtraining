@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import "css!./demo.css";
+import 'ojs/ojcolorspectrum';
 import { ojColorSpectrum } from 'ojs/ojcolorspectrum';
+import 'ojs/ojlabel';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import Color = require('ojs/ojcolor');
 import ColorConverter = require('ojs/ojconverter-color');
-import 'ojs/ojcolorspectrum';
-import 'ojs/ojlabel';
-import "css!./demo.css";
 
 export const ConvertersColorConverters = () => {
   const initialColor = useMemo(() => new Color('rgba(21,0,255,0.8)'), []);

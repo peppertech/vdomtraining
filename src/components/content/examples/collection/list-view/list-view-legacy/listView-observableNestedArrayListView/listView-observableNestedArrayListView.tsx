@@ -1,10 +1,10 @@
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { AllKeySetImpl } from 'ojs/ojkeyset';
-import 'ojs/ojbutton';
-import 'ojs/ojlistview';
 import "css!./demo.css";
+import 'ojs/ojbutton';
+import { AllKeySetImpl } from 'ojs/ojkeyset';
+import 'ojs/ojlistview';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type ListItem = {
   id: string;

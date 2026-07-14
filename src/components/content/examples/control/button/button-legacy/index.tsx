@@ -1,27 +1,27 @@
-import { h } from "preact";
-import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import "css!./demo.css";
-import { PushButtonsPushButton } from "./pushButtons-pushButton/pushButtons-pushButton";
-import { pushButtonsPushButtonDescription } from "./pushButtons-pushButton/description";
-import { pushButtonsPushButtonRecipe } from "./pushButtons-pushButton/recipe";
-import { PushButtonsChroming } from "./pushButtons-chroming/pushButtons-chroming";
-import { pushButtonsChromingDescription } from "./pushButtons-chroming/description";
-import { pushButtonsChromingRecipe } from "./pushButtons-chroming/recipe";
-import { PushButtonsSizes } from "./pushButtons-sizes/pushButtons-sizes";
-import { pushButtonsSizesDescription } from "./pushButtons-sizes/description";
-import { pushButtonsSizesRecipe } from "./pushButtons-sizes/recipe";
-import { PushButtonsButtonIcons } from "./pushButtons-buttonIcons/pushButtons-buttonIcons";
-import { pushButtonsButtonIconsDescription } from "./pushButtons-buttonIcons/description";
-import { pushButtonsButtonIconsRecipe } from "./pushButtons-buttonIcons/recipe";
-import { PushButtonsEvents } from "./pushButtons-events/pushButtons-events";
-import { pushButtonsEventsDescription } from "./pushButtons-events/description";
-import { pushButtonsEventsRecipe } from "./pushButtons-events/recipe";
-import { PushButtonsCustomcolors } from "./pushButtons-customcolors/pushButtons-customcolors";
-import { pushButtonsCustomcolorsDescription } from "./pushButtons-customcolors/description";
-import { pushButtonsCustomcolorsRecipe } from "./pushButtons-customcolors/recipe";
-import { PushButtonsButtonformcontrols } from "./pushButtons-buttonformcontrols/pushButtons-buttonformcontrols";
+import 'preact';
+import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import { pushButtonsButtonformcontrolsDescription } from "./pushButtons-buttonformcontrols/description";
+import { PushButtonsButtonformcontrols } from "./pushButtons-buttonformcontrols/pushButtons-buttonformcontrols";
 import { pushButtonsButtonformcontrolsRecipe } from "./pushButtons-buttonformcontrols/recipe";
+import { pushButtonsButtonIconsDescription } from "./pushButtons-buttonIcons/description";
+import { PushButtonsButtonIcons } from "./pushButtons-buttonIcons/pushButtons-buttonIcons";
+import { pushButtonsButtonIconsRecipe } from "./pushButtons-buttonIcons/recipe";
+import { pushButtonsChromingDescription } from "./pushButtons-chroming/description";
+import { PushButtonsChroming } from "./pushButtons-chroming/pushButtons-chroming";
+import { pushButtonsChromingRecipe } from "./pushButtons-chroming/recipe";
+import { pushButtonsCustomcolorsDescription } from "./pushButtons-customcolors/description";
+import { PushButtonsCustomcolors } from "./pushButtons-customcolors/pushButtons-customcolors";
+import { pushButtonsCustomcolorsRecipe } from "./pushButtons-customcolors/recipe";
+import { pushButtonsEventsDescription } from "./pushButtons-events/description";
+import { PushButtonsEvents } from "./pushButtons-events/pushButtons-events";
+import { pushButtonsEventsRecipe } from "./pushButtons-events/recipe";
+import { pushButtonsPushButtonDescription } from "./pushButtons-pushButton/description";
+import { PushButtonsPushButton } from "./pushButtons-pushButton/pushButtons-pushButton";
+import { pushButtonsPushButtonRecipe } from "./pushButtons-pushButton/recipe";
+import { pushButtonsSizesDescription } from "./pushButtons-sizes/description";
+import { PushButtonsSizes } from "./pushButtons-sizes/pushButtons-sizes";
+import { pushButtonsSizesRecipe } from "./pushButtons-sizes/recipe";
 
 const buttonLegacyItems = [
   {

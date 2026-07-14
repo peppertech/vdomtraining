@@ -1,7 +1,7 @@
-import { h } from "preact";
+import "oj-c/tab-bar-mixed";
+import 'preact';
 import type { ComponentProps } from "preact";
 import { useState } from "preact/hooks";
-import "oj-c/tab-bar-mixed";
 
 type TabBarMixedProps = ComponentProps<"oj-c-tab-bar-mixed">;
 type SelectionChangedEvent = Parameters<

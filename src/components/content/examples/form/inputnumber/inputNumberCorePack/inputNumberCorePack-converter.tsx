@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from 'preact';
-import { useState } from "preact/hooks";
-import { IntlNumberConverter } from "ojs/ojconverter-number";
 import "oj-c/form-layout";
 import "oj-c/input-number";
+import { IntlNumberConverter } from "ojs/ojconverter-number";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useState } from "preact/hooks";
 import { type InputNumberCorePackValueChangedEvent } from "./inputNumberCorePack-shared";
 
 const eurNumberConverter = new IntlNumberConverter({ style: "currency", currency: "EUR", currencyDisplay: "symbol" });

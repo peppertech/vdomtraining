@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import { ActionCardBasicActionCardcorepack } from "./actionCard-basicActionCardcorepack/actionCard-basicActionCardcorepack";
 import { actionCardBasicActionCardcorepackDescription } from "./actionCard-basicActionCardcorepack/description";

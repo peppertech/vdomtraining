@@ -1,10 +1,11 @@
-import { h, ComponentProps } from "preact";
-import { useMemo, useState, useCallback } from "preact/hooks";
 import "ojs/ojcheckboxset";
 import "ojs/ojfilepicker";
-import "ojs/ojoption";
-import "ojs/ojlabel";
 import type { FilePickerElement } from "ojs/ojfilepicker";
+import "ojs/ojlabel";
+import "ojs/ojoption";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 const DEFAULT_ACCEPT = "image/*";
 

@@ -1,25 +1,25 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { FilePickerButtoncorepack } from "./filePicker-buttoncorepack/filePicker-buttoncorepack";
 import { filePickerButtoncorepackDescription } from "./filePicker-buttoncorepack/description";
+import { FilePickerButtoncorepack } from "./filePicker-buttoncorepack/filePicker-buttoncorepack";
 import { filePickerButtoncorepackRecipe } from "./filePicker-buttoncorepack/recipe";
-import { FilePickerCapturecorepack } from "./filePicker-capturecorepack/filePicker-capturecorepack";
 import { filePickerCapturecorepackDescription } from "./filePicker-capturecorepack/description";
+import { FilePickerCapturecorepack } from "./filePicker-capturecorepack/filePicker-capturecorepack";
 import { filePickerCapturecorepackRecipe } from "./filePicker-capturecorepack/recipe";
-import { FilePickerCustomContentcorepack } from "./filePicker-customContentcorepack/filePicker-customContentcorepack";
 import { filePickerCustomContentcorepackDescription } from "./filePicker-customContentcorepack/description";
+import { FilePickerCustomContentcorepack } from "./filePicker-customContentcorepack/filePicker-customContentcorepack";
 import { filePickerCustomContentcorepackRecipe } from "./filePicker-customContentcorepack/recipe";
-import { FilePickerCustomSizecorepack } from "./filePicker-customSizecorepack/filePicker-customSizecorepack";
 import { filePickerCustomSizecorepackDescription } from "./filePicker-customSizecorepack/description";
+import { FilePickerCustomSizecorepack } from "./filePicker-customSizecorepack/filePicker-customSizecorepack";
 import { filePickerCustomSizecorepackRecipe } from "./filePicker-customSizecorepack/recipe";
-import { FilePickerCustomTextcorepack } from "./filePicker-customTextcorepack/filePicker-customTextcorepack";
 import { filePickerCustomTextcorepackDescription } from "./filePicker-customTextcorepack/description";
+import { FilePickerCustomTextcorepack } from "./filePicker-customTextcorepack/filePicker-customTextcorepack";
 import { filePickerCustomTextcorepackRecipe } from "./filePicker-customTextcorepack/recipe";
-import { FilePickerRestrictFileSizecorepack } from "./filePicker-restrictFileSizecorepack/filePicker-restrictFileSizecorepack";
 import { filePickerRestrictFileSizecorepackDescription } from "./filePicker-restrictFileSizecorepack/description";
+import { FilePickerRestrictFileSizecorepack } from "./filePicker-restrictFileSizecorepack/filePicker-restrictFileSizecorepack";
 import { filePickerRestrictFileSizecorepackRecipe } from "./filePicker-restrictFileSizecorepack/recipe";
-import { FilePickerRestrictFileTypescorepack } from "./filePicker-restrictFileTypescorepack/filePicker-restrictFileTypescorepack";
 import { filePickerRestrictFileTypescorepackDescription } from "./filePicker-restrictFileTypescorepack/description";
+import { FilePickerRestrictFileTypescorepack } from "./filePicker-restrictFileTypescorepack/filePicker-restrictFileTypescorepack";
 import { filePickerRestrictFileTypescorepackRecipe } from "./filePicker-restrictFileTypescorepack/recipe";
 
 const filePickerCorePackItems = [

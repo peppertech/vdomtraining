@@ -1,10 +1,10 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
-import { IntlNumberConverter } from "ojs/ojconverter-number";
 import "ojs/ojbutton";
+import { IntlNumberConverter } from "ojs/ojconverter-number";
 import "ojs/ojformlayout";
 import "ojs/ojinputnumber";
 import "ojs/ojlabelvalue";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import { type InputNumberValueChangedEvent } from "./inputNumber-shared";
 
 const decimalConverter = new IntlNumberConverter({

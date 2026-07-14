@@ -1,7 +1,7 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
-import { ojButton } from 'ojs/ojbutton';
 import 'ojs/ojbutton';
+import { ojButton } from 'ojs/ojbutton';
+import 'preact';
+import { useState } from 'preact/hooks';
 
 export const PushButtonsEvents = () => {
   const [activatedButton, setActivatedButton] = useState('(None activated yet)');

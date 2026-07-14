@@ -1,17 +1,17 @@
-import { Fragment, h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useMemo, useState } from 'preact/hooks';
-import { JetElementCustomEvent } from 'ojs/index';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/diagramDataSample.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as layout from '../diagram-layouts';
-import 'ojs/ojdiagram';
-import 'ojs/ojinputnumber';
-import '../../../../../jet-composites/demo-select-enum/loader';
-import 'ojs/ojformlayout';
 import "css!./demo.css";
+import { JetElementCustomEvent } from 'ojs/index';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojdiagram';
+import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/diagramDataSample.json';
+import '../../../../../jet-composites/demo-select-enum/loader';
+import * as layout from '../diagram-layouts';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type ConnectorType = 'none' | 'arrow' | 'arrowOpen' | 'custom';
 type DiagramNodeDatum = {
     id: string;

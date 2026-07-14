@@ -1,12 +1,11 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojlabel';
+import 'ojs/ojnavigationlist';
 import 'ojs/ojoption';
 import 'ojs/ojradioset';
 import 'ojs/ojswitch';
-import 'ojs/ojnavigationlist';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TabbarEdge = 'top' | 'bottom';
 type TabbarItem = {

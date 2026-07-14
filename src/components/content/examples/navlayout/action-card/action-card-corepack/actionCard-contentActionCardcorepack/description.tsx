@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>An Action Card is an actionable container rendering related information</p><p>This demo shows content using web components inside Core Pack action cards.</p>`;
 

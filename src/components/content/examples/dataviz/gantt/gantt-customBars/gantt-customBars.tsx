@@ -1,11 +1,11 @@
-import { h } from 'preact';
+import 'css!./demo.css';
+import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
+import 'ojs/ojgantt';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as dataText from 'text!../data/cookbook/dataVisualizations/gantt/customBars/taskData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
-import 'ojs/ojgantt';
-import 'css!./demo.css';
 
 type GanttProps = ComponentProps<'oj-gantt'>;
 type GanttTaskProps = ComponentProps<'oj-gantt-task'>;

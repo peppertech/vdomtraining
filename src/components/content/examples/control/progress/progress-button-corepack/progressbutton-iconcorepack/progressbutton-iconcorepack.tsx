@@ -1,8 +1,8 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useEffect, useRef, useState } from "preact/hooks";
 import "oj-c/progress-button";
 import "oj-c/radioset";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useEffect,useRef,useState } from "preact/hooks";
 
 type ControlState = "initial" | "loaded";
 type ProgressButtonActionEvent = Parameters<

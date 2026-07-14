@@ -1,5 +1,5 @@
-import { h } from "preact";
 import "oj-c/badge";
+import 'preact';
 
 const strongVariants = [
   { label: "Neutral", variant: "neutral" },

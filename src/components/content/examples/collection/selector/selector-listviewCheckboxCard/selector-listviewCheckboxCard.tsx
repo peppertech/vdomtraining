@@ -1,13 +1,14 @@
-import { h, type ComponentProps } from 'preact';
-import { useCallback, useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { AllKeySetImpl, KeySet, KeySetImpl } from 'ojs/ojkeyset';
-import type { ojListView } from 'ojs/ojlistview';
-import type { SelectorElement } from 'ojs/ojselector';
-import 'ojs/ojlistview';
-import 'ojs/ojselector';
-import '../../../../../jet-composites/demo-profile-card-layout/loader';
 import 'css!./demo.css';
+import { AllKeySetImpl,KeySet,KeySetImpl } from 'ojs/ojkeyset';
+import 'ojs/ojlistview';
+import type { ojListView } from 'ojs/ojlistview';
+import 'ojs/ojselector';
+import type { SelectorElement } from 'ojs/ojselector';
+import * as preact from 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useMemo,useRef,useState } from 'preact/hooks';
+import '../../../../../jet-composites/demo-profile-card-layout/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type CardEmployee = {
   id: string;
@@ -171,7 +172,7 @@ export const SelectorListviewCheckboxCard = () => {
   const renderItemTemplate = useCallback((item: ItemTemplateContext) => (
     <li class="selector-card-item">
       <div class="selector-card-action oj-panel">
-        {h("demo-profile-card-layout", {
+        {preact.h("demo-profile-card-layout", {
           name: item.data.name,
           workTitle: item.data.title,
           initials: item.data.initials,

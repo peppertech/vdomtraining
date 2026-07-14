@@ -1,16 +1,16 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { PanelPaneloverview } from "./panel-paneloverview/panel-paneloverview";
-import { panelPaneloverviewDescription } from "./panel-paneloverview/description";
-import { panelPaneloverviewRecipe } from "./panel-paneloverview/recipe";
-import { PanelPanelbasics } from "./panel-panelbasics/panel-panelbasics";
 import { panelPanelbasicsDescription } from "./panel-panelbasics/description";
+import { PanelPanelbasics } from "./panel-panelbasics/panel-panelbasics";
 import { panelPanelbasicsRecipe } from "./panel-panelbasics/recipe";
-import { PanelPanelcolors } from "./panel-panelcolors/panel-panelcolors";
 import { panelPanelcolorsDescription } from "./panel-panelcolors/description";
+import { PanelPanelcolors } from "./panel-panelcolors/panel-panelcolors";
 import { panelPanelcolorsRecipe } from "./panel-panelcolors/recipe";
-import { PanelPanelshadow } from "./panel-panelshadow/panel-panelshadow";
+import { panelPaneloverviewDescription } from "./panel-paneloverview/description";
+import { PanelPaneloverview } from "./panel-paneloverview/panel-paneloverview";
+import { panelPaneloverviewRecipe } from "./panel-paneloverview/recipe";
 import { panelPanelshadowDescription } from "./panel-panelshadow/description";
+import { PanelPanelshadow } from "./panel-panelshadow/panel-panelshadow";
 import { panelPanelshadowRecipe } from "./panel-panelshadow/recipe";
 
 const panelLegacyItems = [

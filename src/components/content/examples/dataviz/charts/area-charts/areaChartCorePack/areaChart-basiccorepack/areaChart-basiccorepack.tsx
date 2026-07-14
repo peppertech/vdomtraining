@@ -1,11 +1,11 @@
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import * as quarterDataText from "text!../../data/cookbook/dataVisualizations/chart/resources/quarterData.json";
 import "oj-c/area-chart";
 import "ojs/ojtoolbar";
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
+import * as quarterDataText from "text!../../data/cookbook/dataVisualizations/chart/resources/quarterData.json";
 import "../../../../../../../jet-composites/demo-chart-orientation-control/loader";
 import "../../../../../../../jet-composites/demo-chart-stack-control/loader";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 type AreaChartOrientation = NonNullable<ComponentProps<"oj-c-area-chart">["orientation"]>;
 type AreaChartStack = NonNullable<ComponentProps<"oj-c-area-chart">["stack"]>;

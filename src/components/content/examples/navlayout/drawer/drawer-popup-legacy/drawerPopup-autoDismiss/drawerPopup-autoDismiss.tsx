@@ -1,16 +1,15 @@
-import { JetElementCustomEvent } from 'ojs/index';
-import { h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useState } from 'preact/hooks';
 import 'ojs/ojdrawerpopup';
+import { useState } from 'preact/hooks';
 // Controls
 import 'ojs/ojbutton';
 import 'ojs/ojswitch';
 // End drawer
+import "css!./demo.css";
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
-import "css!./demo.css";
 
 export const DrawerPopupAutoDismiss = () => {
   const [endOpened, setEndOpened] = useState<ComponentProps<'oj-drawer-popup'>['opened']>(false);

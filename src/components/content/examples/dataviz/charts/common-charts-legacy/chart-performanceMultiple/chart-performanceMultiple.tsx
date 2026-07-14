@@ -1,17 +1,17 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import "css!./demo.css";
 import { JetElementCustomEvent } from 'ojs/index';
-import * as Context from 'ojs/ojcontext';
 import 'ojs/ojbutton';
 import 'ojs/ojchart';
+import * as Context from 'ojs/ojcontext';
+import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojtoolbar';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
-import 'ojs/ojformlayout';
 import '../../../../../../jet-composites/demo-select-enum/loader';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import "css!./demo.css";
 type NumberValueChangedEvent = JetElementCustomEvent<ComponentProps<'oj-input-number'>['value']>;
 type ChartType = NonNullable<ComponentProps<'oj-chart'>['type']>;
 interface ChartData {

@@ -1,4 +1,5 @@
-import { ComponentProps } from "preact";
+import 'preact';
+import { ComponentProps } from 'preact';
 import Message = require("ojs/ojmessaging");
 
 export type TextAreaProps = ComponentProps<"oj-text-area">;

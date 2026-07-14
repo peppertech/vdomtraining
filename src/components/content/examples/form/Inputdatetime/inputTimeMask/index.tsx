@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import {
   inputTimeMaskDocsVdom,
@@ -14,7 +14,7 @@ const inputTimeMaskItemsVdom: {
   name: string;
   description: (typeof inputTimeMaskDocsVdom)[InputTimeMaskVdomDemoId]["description"];
   recipe: (typeof inputTimeMaskDocsVdom)[InputTimeMaskVdomDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "overview",

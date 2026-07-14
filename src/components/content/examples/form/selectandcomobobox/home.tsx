@@ -1,22 +1,23 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
 import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
 import "ojs/ojlistview";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
 import { ojListView } from "ojs/ojlistview";
+import * as preact from 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import SelectSingleLegacyDemoWrapper from "./selectSingleLegacy/index";
-import SelectSingleDemoWrapper from "./selectSingleCorePack/index";
-import SelectMultipleCorePack from "./selectMultipleCorePack/index";
-import  SelectManyIndex from "./selectMany/index";
-import ComboboxOneExample from "./comboBoxOne/index";
-import ComboboxManyDemoWrapper from "./comboboxMany/index";
 import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedFormHomeProps,
   formatCorePackLabel,
 } from "../form-breadcrumb";
+import ComboboxOneExample from "./comboBoxOne/index";
+import ComboboxManyDemoWrapper from "./comboboxMany/index";
+import SelectManyIndex from "./selectMany/index";
+import SelectMultipleCorePack from "./selectMultipleCorePack/index";
+import SelectSingleDemoWrapper from "./selectSingleCorePack/index";
+import SelectSingleLegacyDemoWrapper from "./selectSingleLegacy/index";
 
 type SelectComponent = {
   id: number;
@@ -24,7 +25,7 @@ type SelectComponent = {
   name: string;
   image: string;
   isCorePack?: boolean;
-  render: () => h.JSX.Element;
+  render: () => preact.JSX.Element;
 };
 
 const selectComponents: SelectComponent[] = [

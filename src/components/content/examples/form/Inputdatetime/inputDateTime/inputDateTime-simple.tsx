@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "ojs/ojdatetimepicker";
 import "ojs/ojlabel";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import {
   sampleDateTimeValue,
   type InputDateTimeValueChangedEvent,

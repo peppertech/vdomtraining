@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
+import 'ojs/ojoption';
 import { getColorValuesFromPalette } from 'ojs/ojpalette';
 import { getColorValue } from 'ojs/ojpaletteutils';
-import 'ojs/ojoption';
 import 'ojs/ojradioset';
 import 'ojs/ojsunburst';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncomeSubregion.json';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type HighlightMode = 'categories' | 'descendants';
 type IncomeNode = {

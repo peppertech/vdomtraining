@@ -1,14 +1,14 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useRef } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import "css!./demo.css";
 import 'ojs/ojchart';
-import 'ojs/ojsunburst';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncomeSubregion.json';
 import { getColorValuesFromPalette } from 'ojs/ojpalette';
 import { getColorValue } from 'ojs/ojpaletteutils';
+import 'ojs/ojsunburst';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useRef } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncomeSubregion.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type SunburstNode = {
   label: string;
@@ -52,7 +52,7 @@ export const SunburstTooltip = () => {
     getColorValue(colors, (meanIncome - minIncome) / (maxIncomeRef.current - minIncome));
 
   const tooltipFunction = (dataContext: DatavizTooltipContext<DatavizChartDatum>) => {
-    const pieChart = tooltipElem.children[1];
+    const pieChart = tooltipElem.children[1] as HTMLElement & { data: ComponentProps<'oj-chart'>['data'] };
     const chartItems = [
       { value: dataContext.value % 50, groupId: ['Group'], color: colors[0], seriesId: '1stQuartile' },
       { value: dataContext.value % 51, groupId: ['Group'], color: colors[1], seriesId: '2ndQuartile' },

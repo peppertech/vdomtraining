@@ -1,5 +1,4 @@
-// @ts-nocheck
-import { h } from 'preact';
+import 'preact';
 
 export const TreemapDrill = () => {
   return (

@@ -1,10 +1,10 @@
-import { Fragment, h } from 'preact';
+import 'ojs/ojbutton';
+import 'ojs/ojtable';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
-import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 import * as deptData from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
-import 'ojs/ojtable';
-import 'ojs/ojbutton';
+import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 
 interface DepartmentData {
     DepartmentId: number;

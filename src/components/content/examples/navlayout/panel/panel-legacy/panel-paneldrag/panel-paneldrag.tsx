@@ -1,6 +1,6 @@
-import { h } from 'preact';
-import 'ojs/ojbutton';
 import "css!./demo.css";
+import 'ojs/ojbutton';
+import 'preact';
 
 export const PanelPaneldrag = () => {
   return (

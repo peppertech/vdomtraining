@@ -1,9 +1,9 @@
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityData.json';
 import 'ojs/ojsunburst';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityData.json';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type RadiusNode = {
   id: string;

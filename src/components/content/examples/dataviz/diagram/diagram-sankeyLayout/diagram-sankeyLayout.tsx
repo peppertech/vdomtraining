@@ -1,11 +1,11 @@
-import { h } from 'preact';
+import "css!./demo.css";
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
+import 'ojs/ojdiagram';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import * as layout from '../diagram-layouts';
-import 'ojs/ojdiagram';
-import "css!./demo.css";
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 export const DiagramSankeyLayout = () => {
     const colorHandler = useMemo(() => new ColorAttributeGroupHandler(), []);
     const nodes = useMemo(() => [

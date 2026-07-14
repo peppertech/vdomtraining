@@ -1,16 +1,15 @@
-import { JetElementCustomEvent } from 'ojs/index';
-import { h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useState } from 'preact/hooks';
-import 'ojs/ojdrawerpopup';
 import 'ojs/ojbutton'; // Controls
+import 'ojs/ojdrawerpopup';
 import 'ojs/ojlabel'; // Main section
 import 'ojs/ojnavigationlist'; // Start drawer
+import { useState } from 'preact/hooks';
 // End drawer
+import "css!./demo.css";
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
-import "css!./demo.css";
 
 type DrawerOpened = ComponentProps<'oj-drawer-popup'>['opened'];
 type TextAreaValue = ComponentProps<'oj-text-area'>['value'];

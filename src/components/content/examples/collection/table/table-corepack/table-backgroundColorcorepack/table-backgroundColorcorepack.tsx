@@ -1,7 +1,7 @@
-import { h } from 'preact';
+import 'ojs/ojtable';
+import 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojtable';
 
 export const TableBackgroundColorcorepack = () => {
   const deptArray = useMemo(() => [

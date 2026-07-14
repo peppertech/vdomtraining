@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as quarterDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/quarterData.json';
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as quarterDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/quarterData.json';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
 import '../../../../../../jet-composites/demo-select-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ChartOrientation = ComponentProps<'oj-chart'>['orientation'];
 type ChartLineType =

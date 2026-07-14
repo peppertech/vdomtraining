@@ -1,14 +1,14 @@
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/button";
 import "oj-c/checkboxset";
-
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
+import { useCallback,useState } from "preact/hooks";
 import {
   browserDataProviderOptions,
   browserShortListOptions,
   type CheckboxsetOption,
   type CheckboxsetValueChangedEvent,
 } from "./checkBoxSetCorePack-shared";
+
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 export default function CheckBoxSetCorePackDataProviderExample() {
   const [selectVal, setSelectVal] = useState<string[]>(["CH"]);

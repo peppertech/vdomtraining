@@ -1,9 +1,9 @@
-import { h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
+import 'oj-c/progress-bar';
 import 'ojs/ojbutton';
 import 'ojs/ojlabel';
 import 'ojs/ojlabelvalue';
-import 'oj-c/progress-bar';
+import 'preact';
+import { useEffect,useState } from 'preact/hooks';
 
 export const ProgressBarLoadingcorepack = () => {
   const [progressValue, setProgressValue] = useState(0);

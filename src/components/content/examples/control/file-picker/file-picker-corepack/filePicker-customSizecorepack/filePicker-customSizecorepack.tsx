@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useEffect, useRef } from "preact/hooks";
 import "css!./demo.css";
 import "oj-c/file-picker";
+import 'preact';
+import { useEffect,useRef } from "preact/hooks";
 
 const demoHtml = String.raw`<div id="parentContainer" data-oj-binding-provider="none">
   <div class="oj-sm-padding-4x-top">25em width</div>

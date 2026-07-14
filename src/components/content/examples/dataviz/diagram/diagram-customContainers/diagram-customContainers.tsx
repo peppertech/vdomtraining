@@ -1,15 +1,14 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/containersData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
+import "css!./demo.css";
 import 'ojs/ojdiagram';
 import { ojDiagram } from 'ojs/ojdiagram';
 import { KeySetImpl } from 'ojs/ojkeyset';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/containersData.json';
 import * as layout from '../diagram-layouts';
-import "css!./demo.css";
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 interface ContainerNode {
     id: string;
     nodes?: ContainerNode[];
@@ -62,7 +61,7 @@ export const DiagramCustomContainers = () => {
             visiblePath.setAttribute('stroke-width', width);
             visiblePath.classList.toggle('demo-diagram-selected-link', context.state.selected);
         }
-        return { insert: rootElement };
+        return { insert: rootElement as SVGElement };
     };
     const nodeRendererFunc = (context: ojDiagram.RendererContext<string, ContainerNode>) => {
         const color = context.state.selected ? 'red' : '#87ceeb';
@@ -107,10 +106,10 @@ export const DiagramCustomContainers = () => {
                 hdrRect.setAttributeNS(null, 'fill', color);
             }
         }
-        return { insert: rootElement };
+        return { insert: rootElement as SVGElement };
     };
-    const createSVG = (id: string, width: string, height: string) => {
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    const createSVG = (id: string, width: string, height: string): SVGSVGElement => {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg') as SVGSVGElement;
         svg.setAttributeNS(null, 'width', width);
         svg.setAttributeNS(null, 'height', height);
         svg.setAttributeNS(null, 'viewBox', '0 0 ' + width + ' ' + height);

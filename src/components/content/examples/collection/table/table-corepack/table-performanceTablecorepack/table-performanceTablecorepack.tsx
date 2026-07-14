@@ -1,12 +1,12 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import * as employeeDataText from "text!../../../data/cookbook/dataCollections/table/shared/employeeData.json";
 import "css!./demo.css";
 import "oj-c/button";
 import "oj-c/input-number";
 import "oj-c/table";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
+import * as employeeDataText from "text!../../../data/cookbook/dataCollections/table/shared/employeeData.json";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 type Employee = {
   EmployeeId: number;

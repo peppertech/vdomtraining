@@ -1,12 +1,12 @@
-import { Fragment, h } from 'preact';
+import 'ojs/ojdiagram';
+import { KeySetImpl } from 'ojs/ojkeyset';
+import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/containersData.json';
+import * as layout from '../diagram-layouts';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { KeySetImpl } from 'ojs/ojkeyset';
-import * as layout from '../diagram-layouts';
-import 'ojs/ojdiagram';
 interface ContainerNode {
     id: string;
     nodes?: ContainerNode[];

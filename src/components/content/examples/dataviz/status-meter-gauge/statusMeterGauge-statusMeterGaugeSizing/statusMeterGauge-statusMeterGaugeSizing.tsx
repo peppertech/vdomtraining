@@ -1,19 +1,17 @@
-// @ts-nocheck
-import 'ojs/ojgauge';
 import 'css!./demo.css';
+import 'ojs/ojgauge';
+import type { ComponentProps } from 'preact';
 
-const plotAreaProps = { 'plot-area.rendered': 'on' };
+const plotAreaProps = { plotArea: { rendered: 'on' as const } };
 
 type GaugeSize = 'sm' | 'md' | 'lg';
 
-type GaugeProps = {
+type GaugeProps = Pick<ComponentProps<'oj-status-meter-gauge'>,
+  'orientation' | 'startAngle' | 'angleExtent'> & {
   labelledBy: string;
   size: GaugeSize;
   wrapperClassName: string;
   gaugeClassName?: string;
-  orientation?: 'vertical' | 'circular';
-  startAngle?: string;
-  angleExtent?: string;
 };
 
 const StatusMeterGaugeCell = ({
@@ -132,24 +130,24 @@ export const StatusMeterGaugeStatusMeterGaugeSizing = () => {
         labelledBy="small semi-circular"
         size="sm"
         orientation="circular"
-        startAngle="180"
-        angleExtent="180"
+        startAngle={180}
+        angleExtent={180}
         wrapperClassName="demo-gauge-cell oj-flex oj-sm-justify-content-center oj-sm-align-items-center"
       />
       <StatusMeterGaugeCell
         labelledBy="medium semi-circular"
         size="md"
         orientation="circular"
-        startAngle="180"
-        angleExtent="180"
+        startAngle={180}
+        angleExtent={180}
         wrapperClassName="demo-gauge-cell oj-flex oj-sm-justify-content-center oj-sm-align-items-center"
       />
       <StatusMeterGaugeCell
         labelledBy="large semi-circular"
         size="lg"
         orientation="circular"
-        startAngle="180"
-        angleExtent="180"
+        startAngle={180}
+        angleExtent={180}
         wrapperClassName="demo-gauge-cell oj-flex oj-sm-justify-content-center oj-sm-align-items-center"
       />
     </div>

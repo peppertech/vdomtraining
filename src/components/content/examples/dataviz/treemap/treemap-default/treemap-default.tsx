@@ -1,12 +1,11 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import * as jsonDataText from 'text!./usaMeanIncomeSubregion.json';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import { getColorValuesFromPalette } from 'ojs/ojpalette';
 import { getColorValue } from 'ojs/ojpaletteutils';
 import 'ojs/ojtreemap';
 import { ojTreemap } from 'ojs/ojtreemap';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as jsonDataText from 'text!./usaMeanIncomeSubregion.json';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type TreemapNodeDatum = {
   label: string;

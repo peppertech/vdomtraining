@@ -1,15 +1,15 @@
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import Context = require('ojs/ojcontext');
-import { AllKeySetImpl, KeySetImpl } from 'ojs/ojkeyset';
+import 'css!./demo.css';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
+import { AllKeySetImpl,KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojoption';
 import 'ojs/ojstreamlist';
 import { StreamListElement } from 'ojs/ojstreamlist';
 import 'ojs/ojtoolbar';
-import 'css!./demo.css';
+import { useEffect,useMemo,useRef,useState } from 'preact/hooks';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
+import Context = require('ojs/ojcontext');
 
 type TreeItem = {
   id: string;

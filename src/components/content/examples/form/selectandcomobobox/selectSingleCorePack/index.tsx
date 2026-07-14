@@ -1,14 +1,19 @@
-import { h, type ComponentChildren, type FunctionComponent } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
-import "ojs/ojnavigationlist";
 import { MutableArrayTreeDataProvider } from "ojs/ojmutablearraytreedataprovider";
+import "ojs/ojnavigationlist";
 import { ojNavigationList } from "ojs/ojnavigationlist";
+import 'preact';
+import { type ComponentChildren,type FunctionComponent } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 import { DemoLayoutTemplate } from "../../../../../shared/demo-page-layout/demo-layout-template";
 import SelectSingleAddToListExample from "./selectSingle-addToList";
 import SelectSingleAdvancedSearchExample from "./selectSingle-advancedSearch";
 import SelectSingleBasicExample from "./selectSingle-basic";
 import SelectSingleCollectionTemplateListViewExample from "./selectSingle-collectionTemplateListView";
 import SelectSingleCollectionTemplateTableExample from "./selectSingle-collectionTemplateTable";
+import {
+  selectSingleCorePackDocs,
+  type SelectSingleCorePackDemoId,
+} from "./selectSingle-docs";
 import SelectSingleEventsExample from "./selectSingle-events";
 import SelectSingleItemTemplateExample from "./selectSingle-itemTemplate";
 import SelectSingleItemTextExample from "./selectSingle-itemText";
@@ -16,10 +21,6 @@ import SelectSingleStatesExample from "./selectSingle-states";
 import SelectSingleValueItemExample from "./selectSingle-valueItem";
 import SelectSingleVirtualKeyboardExample from "./selectSingle-virtualKeyboard";
 import SelectSingleWidthExample from "./selectSingle-width";
-import {
-  selectSingleCorePackDocs,
-  type SelectSingleCorePackDemoId,
-} from "./selectSingle-docs";
 
 type SelectSingleNavItem = {
   id: SelectSingleCorePackDemoId;

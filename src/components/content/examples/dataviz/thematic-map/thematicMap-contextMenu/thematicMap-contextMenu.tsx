@@ -1,17 +1,17 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/usaRainfall.json';
-import { getColorValuesFromPalette } from 'ojs/ojpalette';
-import { ojMenu } from 'ojs/ojmenu';
-import { ojThematicMap } from 'ojs/ojthematicmap';
 import 'css!./demo.css';
 import 'ojs/ojlegend';
 import 'ojs/ojmenu';
+import { ojMenu } from 'ojs/ojmenu';
 import 'ojs/ojoption';
+import { getColorValuesFromPalette } from 'ojs/ojpalette';
 import 'ojs/ojthematicmap';
+import { ojThematicMap } from 'ojs/ojthematicmap';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/usaRainfall.json';
+import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type RainfallDatum = {
   State: string;

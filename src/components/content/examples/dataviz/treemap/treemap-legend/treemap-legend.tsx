@@ -1,12 +1,11 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useRef } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
+import 'ojs/ojlegend';
 import { getColorValuesFromPalette } from 'ojs/ojpalette';
 import { getColorValue } from 'ojs/ojpaletteutils';
-import * as jsonData from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncomeSubregion.json';
 import 'ojs/ojtreemap';
-import 'ojs/ojlegend';
+import 'preact';
+import { useMemo,useRef } from 'preact/hooks';
+import * as jsonData from 'text!../data/cookbook/dataVisualizations/treeView/resources/usaMeanIncomeSubregion.json';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 export const TreemapLegend = () => {
   const maxIncomeRef = useRef<number>(70000);

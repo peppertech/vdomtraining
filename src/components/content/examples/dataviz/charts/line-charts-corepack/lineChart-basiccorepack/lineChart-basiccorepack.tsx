@@ -1,10 +1,10 @@
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import { JetElementCustomEvent } from "ojs/index";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import * as quarterDataText from "text!../data/cookbook/dataVisualizations/chart/resources/quarterData.json";
 import "oj-c/line-chart";
+import { JetElementCustomEvent } from "ojs/index";
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
+import * as quarterDataText from "text!../data/cookbook/dataVisualizations/chart/resources/quarterData.json";
 import "../../../../../../jet-composites/demo-chart-orientation-control/loader";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 type LineChartOrientation = NonNullable<ComponentProps<"oj-c-line-chart">["orientation"]>;
 

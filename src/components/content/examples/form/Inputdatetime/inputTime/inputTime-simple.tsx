@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "ojs/ojdatetimepicker";
-import { shortTimeValue, type InputTimeValueChangedEvent } from "./inputTime-shared";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
+import { shortTimeValue,type InputTimeValueChangedEvent } from "./inputTime-shared";
 
 export default function InputTimeSimpleExample() {
   const [value, setValue] = useState(shortTimeValue);

@@ -1,10 +1,10 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
-import { ojTrain } from 'ojs/ojtrain';
 import 'ojs/ojbutton';
 import 'ojs/ojoption';
 import 'ojs/ojtrain';
+import { ojTrain } from 'ojs/ojtrain';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
 
 type ButtonsetOneValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-buttonset-one'>['onvalueChanged']>>[0];
 type MessageType = NonNullable<ojTrain.Step['messageType']>;

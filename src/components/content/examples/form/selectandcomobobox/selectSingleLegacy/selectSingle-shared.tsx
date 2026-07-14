@@ -1,15 +1,15 @@
-import { h } from 'preact';
-import * as employeeDataText from "text!../../data/employeeData.json";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import type { ItemContext } from "ojs/ojcommontypes";
-import { ojSelectSingle } from "ojs/ojselectsingle";
-import type { ojListView } from "ojs/ojlistview";
-import type { ojTable } from "ojs/ojtable";
 import "ojs/ojavatar";
+import type { ItemContext } from "ojs/ojcommontypes";
 import "ojs/ojhighlighttext";
 import "ojs/ojlistitemlayout";
 import "ojs/ojlistview";
+import type { ojListView } from "ojs/ojlistview";
+import { ojSelectSingle } from "ojs/ojselectsingle";
 import "ojs/ojtable";
+import type { ojTable } from "ojs/ojtable";
+import 'preact';
+import * as employeeDataText from "text!../../data/employeeData.json";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 export type BrowserOption = {
   value: string;

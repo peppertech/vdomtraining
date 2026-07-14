@@ -1,8 +1,9 @@
-import { h, ComponentProps } from "preact";
-import { useState } from "preact/hooks";
-import "ojs/ojformlayout";
 import "ojs/ojcheckboxset";
+import "ojs/ojformlayout";
 import "ojs/ojoption";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useState } from "preact/hooks";
 import Message = require("ojs/ojmessaging");
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 

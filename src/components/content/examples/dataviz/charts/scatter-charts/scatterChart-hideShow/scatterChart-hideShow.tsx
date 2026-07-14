@@ -1,8 +1,8 @@
+import 'ojs/ojchart';
 import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo,useState } from 'preact/hooks';
 import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojchart';
 
 type HiddenCategories = NonNullable<ComponentProps<'oj-chart'>['hiddenCategories']>;
 type HiddenCategoriesChangedEvent = Parameters<

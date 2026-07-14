@@ -1,4 +1,5 @@
-import { Fragment } from "preact";
+import 'preact';
+import { Fragment } from 'preact';
 
 type CatalogBreadcrumbItem = {
   label: string;
@@ -65,4 +66,4 @@ export function CatalogBreadcrumb({
   );
 }
 
-export type { CatalogBreadcrumbItem, NestedCatalogHomeProps };
+export type { CatalogBreadcrumbItem,NestedCatalogHomeProps };

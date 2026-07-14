@@ -1,5 +1,3 @@
-import type { ComponentProps } from "preact";
-import { useRef, useState } from "preact/hooks";
 import "oj-c/button";
 import "oj-c/checkbox";
 import "oj-c/dialog";
@@ -7,6 +5,8 @@ import "oj-c/form-layout";
 import "oj-c/input-text";
 import "oj-c/tab-bar";
 import type { TabData } from "oj-c/tab-bar";
+import type { ComponentProps } from "preact";
+import { useRef,useState } from "preact/hooks";
 
 type InitialTabKey = "settings" | "tools" | "base" | "environment" | "security";
 type DynamicTabKey = `tid${number}`;

@@ -1,6 +1,7 @@
-import { h, type ComponentProps } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/select-single";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 import { createBrowserDataProvider } from "./selectSingle-shared";
 
 type ValueEvent = Parameters<

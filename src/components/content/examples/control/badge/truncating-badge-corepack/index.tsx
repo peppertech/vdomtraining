@@ -1,11 +1,11 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { TruncatingBadgeOverviewcorepack } from "./truncatingBadge-overviewcorepack/truncatingBadge-overviewcorepack";
-import { truncatingBadgeOverviewcorepackDescription } from "./truncatingBadge-overviewcorepack/description";
-import { truncatingBadgeOverviewcorepackRecipe } from "./truncatingBadge-overviewcorepack/recipe";
-import { TruncatingBadgeColorscorepack } from "./truncatingBadge-colorscorepack/truncatingBadge-colorscorepack";
 import { truncatingBadgeColorscorepackDescription } from "./truncatingBadge-colorscorepack/description";
 import { truncatingBadgeColorscorepackRecipe } from "./truncatingBadge-colorscorepack/recipe";
+import { TruncatingBadgeColorscorepack } from "./truncatingBadge-colorscorepack/truncatingBadge-colorscorepack";
+import { truncatingBadgeOverviewcorepackDescription } from "./truncatingBadge-overviewcorepack/description";
+import { truncatingBadgeOverviewcorepackRecipe } from "./truncatingBadge-overviewcorepack/recipe";
+import { TruncatingBadgeOverviewcorepack } from "./truncatingBadge-overviewcorepack/truncatingBadge-overviewcorepack";
 
 const truncatingBadgeCorePackItems = [
   {

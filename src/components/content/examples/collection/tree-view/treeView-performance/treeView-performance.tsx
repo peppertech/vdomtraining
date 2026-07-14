@@ -1,14 +1,14 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import Context = require('ojs/ojcontext');
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { AllKeySetImpl, KeySet, KeySetImpl } from 'ojs/ojkeyset';
 import 'css!./demo.css';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
+import { AllKeySetImpl,KeySet,KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojtreeview';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
+import Context = require('ojs/ojcontext');
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type TreeNode = {
   title: string;

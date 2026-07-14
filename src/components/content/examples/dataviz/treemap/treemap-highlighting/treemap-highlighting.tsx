@@ -1,15 +1,14 @@
-// @ts-nocheck
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as jsonDataText from 'text!../treemap-default/usaMeanIncomeSubregion.json';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
+import 'ojs/ojoption';
 import { getColorValuesFromPalette } from 'ojs/ojpalette';
 import { getColorValue } from 'ojs/ojpaletteutils';
-import 'ojs/ojoption';
 import 'ojs/ojradioset';
 import 'ojs/ojtreemap';
 import { ojTreemap } from 'ojs/ojtreemap';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../treemap-default/usaMeanIncomeSubregion.json';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type HighlightMode = NonNullable<ComponentProps<'oj-treemap'>['highlightMode']>;
 type RadiosetValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0];

@@ -1,5 +1,5 @@
-import { h } from 'preact';
 import "css!./demo.css";
+import 'preact';
 
 export const BadgeCustomstyling = () => {
   return (

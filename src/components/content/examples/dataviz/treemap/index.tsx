@@ -1,56 +1,56 @@
-import { h } from "preact";
+import 'preact';
 import {
   RecipePageTemplate,
   type RecipePageItem,
 } from "../../../../shared/demo-page-layout/recipe-page-template";
-import { TreemapAnimation } from "./treemap-animation/treemap-animation";
 import { treemapAnimationDescription } from "./treemap-animation/description";
 import { treemapAnimationRecipe } from "./treemap-animation/recipe";
-import { TreemapContextMenu } from "./treemap-contextMenu/treemap-contextMenu";
+import { TreemapAnimation } from "./treemap-animation/treemap-animation";
 import { treemapContextMenuDescription } from "./treemap-contextMenu/description";
 import { treemapContextMenuRecipe } from "./treemap-contextMenu/recipe";
-import { TreemapDefault } from "./treemap-default/treemap-default";
+import { TreemapContextMenu } from "./treemap-contextMenu/treemap-contextMenu";
 import { treemapDefaultDescription } from "./treemap-default/description";
 import { treemapDefaultRecipe } from "./treemap-default/recipe";
-import { TreemapDrill } from "./treemap-drill/treemap-drill";
+import { TreemapDefault } from "./treemap-default/treemap-default";
 import { treemapDrillDescription } from "./treemap-drill/description";
 import { treemapDrillRecipe } from "./treemap-drill/recipe";
-import { TreemapHighlighting } from "./treemap-highlighting/treemap-highlighting";
+import { TreemapDrill } from "./treemap-drill/treemap-drill";
 import { treemapHighlightingDescription } from "./treemap-highlighting/description";
 import { treemapHighlightingRecipe } from "./treemap-highlighting/recipe";
-import { TreemapIsolate } from "./treemap-isolate/treemap-isolate";
+import { TreemapHighlighting } from "./treemap-highlighting/treemap-highlighting";
 import { treemapIsolateDescription } from "./treemap-isolate/description";
 import { treemapIsolateRecipe } from "./treemap-isolate/recipe";
-import { TreemapLegend } from "./treemap-legend/treemap-legend";
+import { TreemapIsolate } from "./treemap-isolate/treemap-isolate";
 import { treemapLegendDescription } from "./treemap-legend/description";
 import { treemapLegendRecipe } from "./treemap-legend/recipe";
-import { TreemapPerformance } from "./treemap-performance/treemap-performance";
+import { TreemapLegend } from "./treemap-legend/treemap-legend";
 import { treemapPerformanceDescription } from "./treemap-performance/description";
 import { treemapPerformanceRecipe } from "./treemap-performance/recipe";
-import { TreemapPopup } from "./treemap-popup/treemap-popup";
+import { TreemapPerformance } from "./treemap-performance/treemap-performance";
 import { treemapPopupDescription } from "./treemap-popup/description";
 import { treemapPopupRecipe } from "./treemap-popup/recipe";
-import { TreemapProgressiveLoading } from "./treemap-progressiveLoading/treemap-progressiveLoading";
+import { TreemapPopup } from "./treemap-popup/treemap-popup";
 import { treemapProgressiveLoadingDescription } from "./treemap-progressiveLoading/description";
 import { treemapProgressiveLoadingRecipe } from "./treemap-progressiveLoading/recipe";
-import { TreemapSelection } from "./treemap-selection/treemap-selection";
+import { TreemapProgressiveLoading } from "./treemap-progressiveLoading/treemap-progressiveLoading";
 import { treemapSelectionDescription } from "./treemap-selection/description";
 import { treemapSelectionRecipe } from "./treemap-selection/recipe";
-import { TreemapShapedData } from "./treemap-shapedData/treemap-shapedData";
+import { TreemapSelection } from "./treemap-selection/treemap-selection";
 import { treemapShapedDataDescription } from "./treemap-shapedData/description";
 import { treemapShapedDataRecipe } from "./treemap-shapedData/recipe";
-import { TreemapSmallFormFactor } from "./treemap-smallFormFactor/treemap-smallFormFactor";
+import { TreemapShapedData } from "./treemap-shapedData/treemap-shapedData";
 import { treemapSmallFormFactorDescription } from "./treemap-smallFormFactor/description";
 import { treemapSmallFormFactorRecipe } from "./treemap-smallFormFactor/recipe";
-import { TreemapSorting } from "./treemap-sorting/treemap-sorting";
+import { TreemapSmallFormFactor } from "./treemap-smallFormFactor/treemap-smallFormFactor";
 import { treemapSortingDescription } from "./treemap-sorting/description";
 import { treemapSortingRecipe } from "./treemap-sorting/recipe";
-import { TreemapStyles } from "./treemap-styles/treemap-styles";
+import { TreemapSorting } from "./treemap-sorting/treemap-sorting";
 import { treemapStylesDescription } from "./treemap-styles/description";
 import { treemapStylesRecipe } from "./treemap-styles/recipe";
-import { TreemapTooltip } from "./treemap-tooltip/treemap-tooltip";
+import { TreemapStyles } from "./treemap-styles/treemap-styles";
 import { treemapTooltipDescription } from "./treemap-tooltip/description";
 import { treemapTooltipRecipe } from "./treemap-tooltip/recipe";
+import { TreemapTooltip } from "./treemap-tooltip/treemap-tooltip";
 
 const treemapItems: RecipePageItem[] = [
    {

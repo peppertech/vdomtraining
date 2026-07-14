@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import DataVizHome from "./home";
 
 const DataViz = () => {

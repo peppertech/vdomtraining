@@ -1,11 +1,11 @@
-import { h } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/form-layout";
-import "oj-c/radioset";
 import "oj-c/input-text";
-import "oj-c/labelled-link";
 import type { CInputTextElement } from "oj-c/input-text";
+import "oj-c/labelled-link";
+import "oj-c/radioset";
 import type { CRadiosetElement } from "oj-c/radioset";
+import 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 type ComponentState = "enabled" | "fullReadonly" | "mixedReadonly";
 

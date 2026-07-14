@@ -1,6 +1,7 @@
-import { h, type ComponentProps } from "preact";
-import "oj-c/labelled-link";
 import "oj-c/form-layout";
+import "oj-c/labelled-link";
+import 'preact';
+import { type ComponentProps } from 'preact';
 
 export default function LabelledLinkStatesExample() {
   return (

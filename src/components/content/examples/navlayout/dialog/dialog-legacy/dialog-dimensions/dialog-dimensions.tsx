@@ -1,10 +1,10 @@
-import { h } from 'preact';
-import { useRef } from 'preact/hooks';
-import { ojButton } from 'ojs/ojbutton';
-import 'ojs/ojbutton';
-import { ojDialog } from 'ojs/ojdialog';
-import 'ojs/ojdialog';
 import "css!./demo.css";
+import 'ojs/ojbutton';
+import { ojButton } from 'ojs/ojbutton';
+import 'ojs/ojdialog';
+import { ojDialog } from 'ojs/ojdialog';
+import 'preact';
+import { useRef } from 'preact/hooks';
 
 export const DialogDimensions = () => {
   const dialogRef = useRef<ojDialog | null>(null);

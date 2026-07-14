@@ -1,17 +1,17 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import * as jsonDataText from 'text!../../data/cookbook/dataprovider/bufferingTreeDataProvider/mutation/treeViewData.json';
-import { MutableArrayTreeDataProvider } from 'ojs/ojmutablearraytreedataprovider';
-import { addNode, findPathByData, removeNode as removeTreeNode, replaceNode } from 'ojs/ojimmutabletreedatautils';
-import { AllKeySetImpl, KeySetImpl } from 'ojs/ojkeyset';
 import 'css!./demo.css';
-import 'ojs/ojtreeview';
-import 'ojs/ojinputtext';
-import 'ojs/ojtoolbar';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
+import { addNode,findPathByData,removeNode as removeTreeNode,replaceNode } from 'ojs/ojimmutabletreedatautils';
+import 'ojs/ojinputtext';
+import { AllKeySetImpl,KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojlabel';
+import { MutableArrayTreeDataProvider } from 'ojs/ojmutablearraytreedataprovider';
+import 'ojs/ojtoolbar';
+import 'ojs/ojtreeview';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../../data/cookbook/dataprovider/bufferingTreeDataProvider/mutation/treeViewData.json';
 
 interface TreeviewItem {
   title: string;

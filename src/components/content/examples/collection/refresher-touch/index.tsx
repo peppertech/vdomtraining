@@ -1,7 +1,7 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
-import { PullToRefreshBasicPullToRefresh } from "./pullToRefresh-basicPullToRefresh/pullToRefresh-basicPullToRefresh";
 import { pullToRefreshBasicPullToRefreshDescription } from "./pullToRefresh-basicPullToRefresh/description";
+import { PullToRefreshBasicPullToRefresh } from "./pullToRefresh-basicPullToRefresh/pullToRefresh-basicPullToRefresh";
 import { pullToRefreshBasicPullToRefreshRecipe } from "./pullToRefresh-basicPullToRefresh/recipe";
 
 const refresherTouchItems = [

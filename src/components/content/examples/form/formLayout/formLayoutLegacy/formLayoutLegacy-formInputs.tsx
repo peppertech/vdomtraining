@@ -1,7 +1,3 @@
-import { ComponentProps, h } from "preact";
-import { useMemo, useState } from "preact/hooks";
-import Color = require("ojs/ojcolor");
-import Message = require("ojs/ojmessaging");
 import "ojs/ojcheckboxset";
 import "ojs/ojcollapsible";
 import "ojs/ojcolorspectrum";
@@ -15,6 +11,9 @@ import "ojs/ojselectcombobox";
 import "ojs/ojselectsingle";
 import "ojs/ojslider";
 import "ojs/ojswitch";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useMemo,useState } from "preact/hooks";
 import {
   browserOptions,
   colorOptions,
@@ -32,6 +31,8 @@ import {
   valueLengthOptions,
   type LabelEdge,
 } from "./formLayoutLegacy-shared";
+import Color = require("ojs/ojcolor");
+import Message = require("ojs/ojmessaging");
 
 type InputTextProps = ComponentProps<"oj-input-text">;
 

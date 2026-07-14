@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from 'preact';
-import { useCallback, useState } from "preact/hooks";
 import "ojs/ojdatetimepicker";
 import "ojs/ojlabel";
-import { todayIsoDate, type InputDateValueChangedEvent } from "./inputDate-shared";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useState } from "preact/hooks";
+import { todayIsoDate,type InputDateValueChangedEvent } from "./inputDate-shared";
 
 export default function InputDateShowWeekOfYearVdomExample() {
   const [value, setValue] = useState(todayIsoDate);

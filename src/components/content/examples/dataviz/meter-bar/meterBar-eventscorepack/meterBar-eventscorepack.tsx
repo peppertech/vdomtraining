@@ -1,6 +1,6 @@
+import "oj-c/meter-bar";
 import type { ComponentProps } from "preact";
 import { useState } from "preact/hooks";
-import "oj-c/meter-bar";
 
 type MeterBarValueChangedHandler = NonNullable<ComponentProps<"oj-c-meter-bar">["onvalueChanged"]>;
 type MeterBarTransientValueChangedHandler = NonNullable<

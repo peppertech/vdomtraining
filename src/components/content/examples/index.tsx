@@ -1,15 +1,15 @@
-import Collection from "./collection/index";
-import Form from "./form/index";
-import DataViz from "./dataviz/index";
-import Control from "./control/index";
-import NavLayout from "./navlayout/index";
-import "preact";
-import { useEffect, useMemo } from "preact/hooks";
-import { Route, Router, useLocation } from "preact-iso";
 import "ojs/ojnavigationlist";
 import { ojTabBar } from "ojs/ojnavigationlist";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import "preact";
+import { Route,Router,useLocation } from "preact-iso";
+import { useEffect,useMemo } from "preact/hooks";
+import Collection from "./collection/index";
+import Control from "./control/index";
+import DataViz from "./dataviz/index";
 import { ExampleRouteProvider } from "./example-route-context";
+import Form from "./form/index";
+import NavLayout from "./navlayout/index";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type Tab = {
   path: string;

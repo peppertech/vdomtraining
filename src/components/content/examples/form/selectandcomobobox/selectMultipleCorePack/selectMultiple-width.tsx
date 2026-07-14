@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from 'preact';
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/radioset";
 import "oj-c/select-multiple";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 import {
   createBrowserDataProvider,

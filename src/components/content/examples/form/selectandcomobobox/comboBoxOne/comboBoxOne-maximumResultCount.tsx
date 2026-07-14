@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojinputnumber";
 import "ojs/ojselectcombobox";
+import 'preact';
+import { useMemo,useState } from "preact/hooks";
 import { createStatesDataProvider } from "./comboBoxOne-shared";
 
 export default function ComboboxOneMaximumResultCountExample() {

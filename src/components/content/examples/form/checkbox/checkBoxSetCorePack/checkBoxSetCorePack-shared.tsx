@@ -1,5 +1,6 @@
-import { ComponentProps } from "preact";
-import type { CCheckboxsetElement, CheckboxsetDataItem } from "oj-c/checkboxset";
+import type { CCheckboxsetElement,CheckboxsetDataItem } from "oj-c/checkboxset";
+import 'preact';
+import { ComponentProps } from 'preact';
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 export type CheckboxsetProps = ComponentProps<"oj-c-checkboxset">;

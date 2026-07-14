@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as rowDataText from 'text!../data/cookbook/dataVisualizations/gantt/taskManipulate/rowData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojgantt';
+import 'css!./demo.css';
 import 'oj-c/input-number';
 import 'oj-c/radioset';
-import 'css!./demo.css';
+import 'ojs/ojgantt';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as rowDataText from 'text!../data/cookbook/dataVisualizations/gantt/taskManipulate/rowData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type GanttProps = ComponentProps<'oj-gantt'>;
 type DragMode = NonNullable<GanttProps['dragMode']>;

@@ -1,11 +1,11 @@
-import { h } from "preact";
-import type { ComponentProps } from "preact";
-import { useState } from "preact/hooks";
 import "css!./demo.css";
 import "oj-c/button";
-import "oj-c/popup";
 import "oj-c/form-layout";
 import "oj-c/input-number";
+import "oj-c/popup";
+import 'preact';
+import type { ComponentProps } from "preact";
+import { useState } from "preact/hooks";
 
 type InputNumberValueChangedEvent = Parameters<
   NonNullable<ComponentProps<"oj-c-input-number">["onvalueChanged"]>

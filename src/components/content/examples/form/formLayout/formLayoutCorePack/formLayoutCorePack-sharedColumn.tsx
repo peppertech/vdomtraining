@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "oj-c/form-layout";
 import "oj-c/input-text";
+import 'preact';
 
 export default function FormLayoutCorePackSharedColumnExample() {
   return (

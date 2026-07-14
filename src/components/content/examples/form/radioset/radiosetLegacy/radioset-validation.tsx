@@ -1,10 +1,10 @@
-import { h } from "preact";
-import { useRef, useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojlabel";
 import "ojs/ojlabelvalue";
 import "ojs/ojoption";
 import "ojs/ojradioset";
+import 'preact';
+import { useRef,useState } from "preact/hooks";
 import {
   colorOptions,
   renderRadioOptions,

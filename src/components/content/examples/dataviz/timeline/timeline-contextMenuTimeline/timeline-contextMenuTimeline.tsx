@@ -1,12 +1,12 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ojMenu } from 'ojs/ojmenu';
-import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/contextMenuTimeline/seriesData.json';
-import 'ojs/ojtimeline';
-import 'ojs/ojmenu';
 import 'css!./demo.css';
+import 'ojs/ojmenu';
+import { ojMenu } from 'ojs/ojmenu';
+import 'ojs/ojtimeline';
+import { ojTimeline } from 'ojs/ojtimeline';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/contextMenuTimeline/seriesData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TimelineContextItem = {
   id: string;
@@ -36,9 +36,9 @@ const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => 
 );
 
 export const TimelineContextMenuTimeline = () => {
-  const timelineRef = useRef(null);
+  const timelineRef = useRef<ojTimeline<string, TimelineContextItem> | null>(null);
   const [selectedMenuItem, setSelectedMenuItem] = useState('(None selected yet)');
-  const [selectedItemsValue, setSelectedItemsValue] = useState([]);
+  const [selectedItemsValue, setSelectedItemsValue] = useState<string[]>([]);
   const [itemTitle, setItemTitle] = useState<string | null>(null);
 
   const dataProvider = useMemo(

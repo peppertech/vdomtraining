@@ -1,13 +1,13 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/investorData.json';
+import 'ojs/ojchart';
 import { ojChart } from 'ojs/ojchart';
 import 'ojs/ojformlayout';
-import 'ojs/ojchart';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/investorData.json';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type ZoomAndScrollValue = NonNullable<ComponentProps<'oj-chart'>['zoomAndScroll']>;
 type OverviewValue = 'off' | 'on';
 type InvestorDatum = {

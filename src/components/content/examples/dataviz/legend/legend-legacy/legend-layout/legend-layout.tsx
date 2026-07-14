@@ -1,11 +1,11 @@
-import type { JSX } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import type { ojLegend } from 'ojs/ojlegend';
 import 'ojs/ojformlayout';
 import 'ojs/ojlegend';
+import type { ojLegend } from 'ojs/ojlegend';
+import type { JSX } from 'preact';
+import { useEffect,useMemo,useRef,useState } from 'preact/hooks';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type FruitItem = {
   fruit: string;

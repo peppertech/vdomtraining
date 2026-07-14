@@ -1,9 +1,3 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { ojListView } from 'ojs/ojlistview';
-import { ojMenu } from 'ojs/ojmenu';
 import 'css!./demo.css';
 import 'ojs/ojactioncard';
 import 'ojs/ojavatar';
@@ -11,9 +5,15 @@ import 'ojs/ojbutton';
 import 'ojs/ojlabel';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojlistview';
+import { ojListView } from 'ojs/ojlistview';
 import 'ojs/ojmenu';
+import { ojMenu } from 'ojs/ojmenu';
 import 'ojs/ojoption';
 import 'ojs/ojswitch';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type FileNode = {
   id: string;

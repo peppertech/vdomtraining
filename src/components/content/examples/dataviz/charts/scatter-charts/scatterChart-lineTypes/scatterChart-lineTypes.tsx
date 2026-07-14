@@ -1,11 +1,11 @@
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/twoSeriesData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/twoSeriesData.json';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type ChartLineType = NonNullable<NonNullable<ComponentProps<'oj-chart'>['styleDefaults']>['lineType']>;
 type ScatterChartLineTypeItem = {
     id: number;

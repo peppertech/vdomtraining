@@ -1,9 +1,9 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
+import "css!./demo.css";
 import 'ojs/ojactioncard';
 import { ActionCardElement } from 'ojs/ojactioncard';
 import 'ojs/ojlabel';
-import "css!./demo.css"
+import 'preact';
+import { useState } from 'preact/hooks';
 
 
 export const ActioncardBasic = () => {

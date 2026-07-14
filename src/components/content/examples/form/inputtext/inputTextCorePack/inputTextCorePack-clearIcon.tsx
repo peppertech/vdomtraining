@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-text";
+import 'preact';
+import { useState } from "preact/hooks";
 
 export default function InputTextCorePackClearIconExample() {
   const [valueNoClearIcon, setValueNoClearIcon] = useState("");

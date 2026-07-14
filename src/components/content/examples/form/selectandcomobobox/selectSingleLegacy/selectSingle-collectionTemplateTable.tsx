@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "ojs/ojselectsingle";
+import 'preact';
+import { useMemo,useState } from "preact/hooks";
 import {
   createOracleEmployeeDataProvider,
   getEmployeeItemText,

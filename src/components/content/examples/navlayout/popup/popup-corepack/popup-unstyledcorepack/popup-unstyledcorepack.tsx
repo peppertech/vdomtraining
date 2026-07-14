@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useEffect, useRef, useState } from "preact/hooks";
 import "oj-c/button";
 import "oj-c/popup";
 import "oj-c/progress-circle";
+import 'preact';
+import { useEffect,useRef,useState } from "preact/hooks";
 
 export const PopupUnstyledcorepack = () => {
   const [opened, setOpened] = useState(false);

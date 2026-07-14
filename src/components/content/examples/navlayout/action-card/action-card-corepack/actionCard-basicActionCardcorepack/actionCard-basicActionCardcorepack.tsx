@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from "preact";
-import { useState } from "preact/hooks";
 import "css!./demo.css";
 import "oj-c/action-card";
 import "ojs/ojlabel";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useState } from "preact/hooks";
 
 type ActionCardActionEvent = Parameters<
   NonNullable<ComponentProps<"oj-c-action-card">["onojAction"]>

@@ -1,14 +1,14 @@
-import { h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojdrawerlayout';
-import 'ojs/ojbutton';
-import 'ojs/ojformlayout';
-import 'ojs/ojselectsingle';
-import 'ojs/ojlabelvalue';
 import "css!./demo.css";
+import 'ojs/ojbutton';
+import 'ojs/ojdrawerlayout';
+import 'ojs/ojformlayout';
+import 'ojs/ojlabelvalue';
+import 'ojs/ojselectsingle';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type DrawerOpened = NonNullable<ComponentProps<'oj-drawer-layout'>['startOpened']>;
 type WidthValue = 12 | 19 | 25 | 31 | 37;

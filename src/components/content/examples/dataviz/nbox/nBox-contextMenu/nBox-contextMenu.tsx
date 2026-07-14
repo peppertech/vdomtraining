@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ojNBox } from 'ojs/ojnbox';
+import 'ojs/ojmenu';
 import { ojMenu } from 'ojs/ojmenu';
 import 'ojs/ojnbox';
-import 'ojs/ojmenu';
+import { ojNBox } from 'ojs/ojnbox';
 import 'ojs/ojoption';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type Employee = {
   name: string;

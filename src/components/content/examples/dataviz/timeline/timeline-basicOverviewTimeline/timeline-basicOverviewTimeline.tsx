@@ -1,10 +1,9 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/basicOverviewTimeline/basicThumbSeriesData.json';
-import 'ojs/ojtimeline';
 import 'css!./demo.css';
+import 'ojs/ojtimeline';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/basicOverviewTimeline/basicThumbSeriesData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TimelineBasicOverviewItem = {
   id: string;
@@ -23,7 +22,7 @@ const basicOverviewItems = (JSON.parse(timelineSeriesDataText) as TimelineBasicO
 );
 const majorAxis = { scale: 'quarters' };
 const minorAxis = { scale: 'weeks', zoomOrder: ['months', 'weeks', 'days'] };
-const overview = { rendered: 'on' };
+const overview = { rendered: 'on' } as const;
 
 const renderSeriesTemplate = (series: DatavizSeriesTemplateContext) => (
   <oj-timeline-series label={series.id} emptyText="No Tournaments Played." />

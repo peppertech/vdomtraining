@@ -1,4 +1,5 @@
-import { h } from "preact";
+import * as preact from 'preact';
+import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import CheckBoxSetBasicExample from "./checkBoxSet-basic";
 import CheckBoxSetContextMenuExample from "./checkBoxSet-contextMenu";
 import CheckBoxSetDataProviderExample from "./checkBoxSet-dataProvider";
@@ -12,14 +13,13 @@ import CheckBoxSetOverviewExample from "./checkBoxSet-overview";
 import CheckBoxSetReadonlyExample from "./checkBoxSet-readonly";
 import CheckBoxSetSingleItemExample from "./checkBoxSet-singleItem";
 import CheckBoxSetValidationExample from "./checkBoxSet-validation";
-import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 
 const checkBoxSetItems: {
   id: CheckBoxSetDemoId;
   name: string;
   description: (typeof checkBoxSetDocs)[CheckBoxSetDemoId]["description"];
   recipe: (typeof checkBoxSetDocs)[CheckBoxSetDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "overview",

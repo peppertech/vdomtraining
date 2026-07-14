@@ -1,15 +1,14 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/foreignObjectData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import "css!./demo.css";
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as layout from '../diagram-layouts';
 import 'ojs/ojavatar';
-import 'ojs/ojlistitemlayout';
 import 'ojs/ojdiagram';
 import 'ojs/ojlegend';
-import "css!./demo.css";
+import 'ojs/ojlistitemlayout';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/diagram/resources/foreignObjectData.json';
+import * as layout from '../diagram-layouts';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 interface ForeignObjectNode {
     id: string;
     type?: string;

@@ -1,6 +1,6 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "ojs/ojinputnumber";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import { type InputNumberValueChangedEvent } from "./inputNumber-shared";
 
 export default function InputNumberMinMaxExample() {

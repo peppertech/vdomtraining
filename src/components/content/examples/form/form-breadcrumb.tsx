@@ -1,4 +1,5 @@
-import { Fragment } from "preact";
+import 'preact';
+import { Fragment } from 'preact';
 
 type FormBreadcrumbItem = {
   label: string;
@@ -65,4 +66,4 @@ export function FormBreadcrumb({
   );
 }
 
-export type { FormBreadcrumbItem, NestedFormHomeProps };
+export type { FormBreadcrumbItem,NestedFormHomeProps };

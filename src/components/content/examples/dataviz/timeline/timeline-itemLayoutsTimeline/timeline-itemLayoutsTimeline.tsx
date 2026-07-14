@@ -1,13 +1,13 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/itemLayoutsTimeline/seriesOneData.json';
-import 'ojs/ojtimeline';
-import 'ojs/ojbutton';
-import 'ojs/ojlabel';
-import 'ojs/ojformlayout';
 import 'css!./demo.css';
+import 'ojs/ojbutton';
+import 'ojs/ojformlayout';
+import 'ojs/ojlabel';
+import 'ojs/ojtimeline';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/itemLayoutsTimeline/seriesOneData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TimelineItemLayoutItem = {
   id: string;
@@ -31,7 +31,7 @@ const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => 
 );
 
 export const TimelineItemLayoutsTimeline = () => {
-  const [itemLayoutValue, setItemLayoutValue] = useState('auto');
+  const [itemLayoutValue, setItemLayoutValue] = useState<NonNullable<ComponentProps<'oj-timeline-series'>['itemLayout']>>('auto');
   const dataProvider = useMemo(
     () =>
       new ArrayDataProvider(itemLayoutItems, {
@@ -43,7 +43,7 @@ export const TimelineItemLayoutsTimeline = () => {
   const currentDate = new Date(currentDateString).toISOString();
   const referenceObjects = useMemo(() => [{ value: currentDate }], [currentDate]);
 
-  const handleItemLayoutChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleItemLayoutChanged = (event: DatavizValueChangedEvent<typeof itemLayoutValue>) => {
     if (event.detail.updatedFrom === 'internal') {
       setItemLayoutValue(event.detail.value);
     }

@@ -1,6 +1,6 @@
-import type { ComponentProps } from "preact";
 import "css!./demo.css";
 import "oj-c/rating-gauge";
+import type { ComponentProps } from "preact";
 
 type RatingGaugeSize = NonNullable<ComponentProps<"oj-c-rating-gauge">["size"]>;
 type Thresholds = NonNullable<ComponentProps<"oj-c-rating-gauge">["thresholds"]>;

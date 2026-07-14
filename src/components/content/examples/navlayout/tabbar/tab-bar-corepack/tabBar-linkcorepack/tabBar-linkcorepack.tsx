@@ -1,7 +1,7 @@
-import type { ComponentProps } from "preact";
-import { useEffect, useMemo, useState } from "preact/hooks";
 import "oj-c/tab-bar";
 import type { TabLinkItemData } from "oj-c/tab-bar";
+import type { ComponentProps } from "preact";
+import { useEffect,useMemo,useState } from "preact/hooks";
 
 type TabKey = "home" | "support" | "cookbook";
 type SelectionChangedEvent = Parameters<

@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "css!./demo.css";
 import "oj-c/toggle-button";
+import 'preact';
+import { useState } from "preact/hooks";
 
 export const TogglebuttonOverviewcorepack = () => {
   const [isAdvanced, setIsAdvanced] = useState(false);

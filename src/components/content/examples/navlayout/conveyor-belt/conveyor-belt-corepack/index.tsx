@@ -1,29 +1,29 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { ConveyorBeltHorizontalConveyorBeltcorepack } from "./conveyorBelt-horizontalConveyorBeltcorepack/conveyorBelt-horizontalConveyorBeltcorepack";
-import { conveyorBeltHorizontalConveyorBeltcorepackDescription } from "./conveyorBelt-horizontalConveyorBeltcorepack/description";
-import { conveyorBeltHorizontalConveyorBeltcorepackRecipe } from "./conveyorBelt-horizontalConveyorBeltcorepack/recipe";
-import { ConveyorBeltVerticalConveyorBeltcorepack } from "./conveyorBelt-verticalConveyorBeltcorepack/conveyorBelt-verticalConveyorBeltcorepack";
-import { conveyorBeltVerticalConveyorBeltcorepackDescription } from "./conveyorBelt-verticalConveyorBeltcorepack/description";
-import { conveyorBeltVerticalConveyorBeltcorepackRecipe } from "./conveyorBelt-verticalConveyorBeltcorepack/recipe";
-import { ConveyorBeltKeyboardScrollingcorepack } from "./conveyorBelt-keyboardScrollingcorepack/conveyorBelt-keyboardScrollingcorepack";
-import { conveyorBeltKeyboardScrollingcorepackDescription } from "./conveyorBelt-keyboardScrollingcorepack/description";
-import { conveyorBeltKeyboardScrollingcorepackRecipe } from "./conveyorBelt-keyboardScrollingcorepack/recipe";
-import { ConveyorBeltTabKeyNavigationcorepack } from "./conveyorBelt-tabKeyNavigationcorepack/conveyorBelt-tabKeyNavigationcorepack";
-import { conveyorBeltTabKeyNavigationcorepackDescription } from "./conveyorBelt-tabKeyNavigationcorepack/description";
-import { conveyorBeltTabKeyNavigationcorepackRecipe } from "./conveyorBelt-tabKeyNavigationcorepack/recipe";
+import { ConveyorBeltActionCardsConveyorBeltcorepack } from "./conveyorBelt-actionCardsConveyorBeltcorepack/conveyorBelt-actionCardsConveyorBeltcorepack";
+import { conveyorBeltActionCardsConveyorBeltcorepackDescription } from "./conveyorBelt-actionCardsConveyorBeltcorepack/description";
+import { conveyorBeltActionCardsConveyorBeltcorepackRecipe } from "./conveyorBelt-actionCardsConveyorBeltcorepack/recipe";
 import { ConveyorBeltConveyorArrowsVisibilitycorepack } from "./conveyorBelt-conveyorArrowsVisibilitycorepack/conveyorBelt-conveyorArrowsVisibilitycorepack";
 import { conveyorBeltConveyorArrowsVisibilitycorepackDescription } from "./conveyorBelt-conveyorArrowsVisibilitycorepack/description";
 import { conveyorBeltConveyorArrowsVisibilitycorepackRecipe } from "./conveyorBelt-conveyorArrowsVisibilitycorepack/recipe";
 import { ConveyorBeltConveyorElementStretchcorepack } from "./conveyorBelt-conveyorElementStretchcorepack/conveyorBelt-conveyorElementStretchcorepack";
 import { conveyorBeltConveyorElementStretchcorepackDescription } from "./conveyorBelt-conveyorElementStretchcorepack/description";
 import { conveyorBeltConveyorElementStretchcorepackRecipe } from "./conveyorBelt-conveyorElementStretchcorepack/recipe";
-import { ConveyorBeltActionCardsConveyorBeltcorepack } from "./conveyorBelt-actionCardsConveyorBeltcorepack/conveyorBelt-actionCardsConveyorBeltcorepack";
-import { conveyorBeltActionCardsConveyorBeltcorepackDescription } from "./conveyorBelt-actionCardsConveyorBeltcorepack/description";
-import { conveyorBeltActionCardsConveyorBeltcorepackRecipe } from "./conveyorBelt-actionCardsConveyorBeltcorepack/recipe";
+import { ConveyorBeltHorizontalConveyorBeltcorepack } from "./conveyorBelt-horizontalConveyorBeltcorepack/conveyorBelt-horizontalConveyorBeltcorepack";
+import { conveyorBeltHorizontalConveyorBeltcorepackDescription } from "./conveyorBelt-horizontalConveyorBeltcorepack/description";
+import { conveyorBeltHorizontalConveyorBeltcorepackRecipe } from "./conveyorBelt-horizontalConveyorBeltcorepack/recipe";
+import { ConveyorBeltKeyboardScrollingcorepack } from "./conveyorBelt-keyboardScrollingcorepack/conveyorBelt-keyboardScrollingcorepack";
+import { conveyorBeltKeyboardScrollingcorepackDescription } from "./conveyorBelt-keyboardScrollingcorepack/description";
+import { conveyorBeltKeyboardScrollingcorepackRecipe } from "./conveyorBelt-keyboardScrollingcorepack/recipe";
 import { ConveyorBeltProgrammaticScrollingcorepack } from "./conveyorBelt-programmaticScrollingcorepack/conveyorBelt-programmaticScrollingcorepack";
 import { conveyorBeltProgrammaticScrollingcorepackDescription } from "./conveyorBelt-programmaticScrollingcorepack/description";
 import { conveyorBeltProgrammaticScrollingcorepackRecipe } from "./conveyorBelt-programmaticScrollingcorepack/recipe";
+import { ConveyorBeltTabKeyNavigationcorepack } from "./conveyorBelt-tabKeyNavigationcorepack/conveyorBelt-tabKeyNavigationcorepack";
+import { conveyorBeltTabKeyNavigationcorepackDescription } from "./conveyorBelt-tabKeyNavigationcorepack/description";
+import { conveyorBeltTabKeyNavigationcorepackRecipe } from "./conveyorBelt-tabKeyNavigationcorepack/recipe";
+import { ConveyorBeltVerticalConveyorBeltcorepack } from "./conveyorBelt-verticalConveyorBeltcorepack/conveyorBelt-verticalConveyorBeltcorepack";
+import { conveyorBeltVerticalConveyorBeltcorepackDescription } from "./conveyorBelt-verticalConveyorBeltcorepack/description";
+import { conveyorBeltVerticalConveyorBeltcorepackRecipe } from "./conveyorBelt-verticalConveyorBeltcorepack/recipe";
 
 const conveyorBeltCorePackItems = [
   {

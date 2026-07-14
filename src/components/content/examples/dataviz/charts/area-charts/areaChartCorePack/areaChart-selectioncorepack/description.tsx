@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>An area chart displays information graphically using lines and filled areas, making relationships among the data easier to understand.</p><p>The selection feature allows a user to focus on a specific data point by clicking on it.</p>
 

@@ -1,25 +1,24 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
-import type { JSX } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import { FilterFactory, type AttributeExprFilterDef, type CompoundFilterDef, type DataFilter, type DataProvider, type SortCriterion } from 'ojs/ojdataprovider';
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
+import 'css!./demo.css';
+import 'ojs/ojbutton';
+import 'ojs/ojcheckboxset';
 import { ojCheckboxset } from 'ojs/ojcheckboxset';
+import 'ojs/ojconverter-number';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
+import 'ojs/ojdataprovider';
+import { FilterFactory,type AttributeExprFilterDef,type CompoundFilterDef,type DataFilter,type DataProvider,type SortCriterion } from 'ojs/ojdataprovider';
+import 'ojs/ojgauge';
+import 'ojs/ojlabel';
+import 'ojs/ojlistitemlayout';
+import 'ojs/ojlistview';
+import 'ojs/ojoption';
+import 'ojs/ojselectsingle';
+import { ojSelectSingle } from 'ojs/ojselectsingle';
+import 'preact';
+import type { JSX } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listView/filterSortListView/productData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import ListDataProviderView = require('ojs/ojlistdataproviderview');
-import 'ojs/ojcheckboxset';
-import { ojSelectSingle } from 'ojs/ojselectsingle';
-import 'ojs/ojselectsingle';
-import 'ojs/ojdataprovider';
-import 'ojs/ojconverter-number';
-import 'ojs/ojlistview';
-import 'ojs/ojgauge';
-import 'ojs/ojbutton';
-import 'ojs/ojlistitemlayout';
-import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listView/filterSortListView/productData.json';
-import 'css!./demo.css';
-import 'ojs/ojlabel';
-import 'ojs/ojoption';
 
 interface OptionData {
 	    value: string;
@@ -81,9 +80,9 @@ export const ListViewFilterSortListView = () => {
       mnaftalin: { op: '$eq', attribute: 'AUTHOR', value: 'Maurice Naftalin' }
   }), []);
   const currencyOptions = useMemo(() => ({
-      style: 'currency',
+      style: 'currency' as const,
       currency: 'USD',
-      currencyDisplay: 'symbol'
+      currencyDisplay: 'symbol' as const
   }), []);
   const currencyConverter = useMemo(() => new IntlNumberConverter(currencyOptions), [currencyOptions]);
 	  const productData = useMemo(() => JSON.parse(jsonDataStr) as Product[], []);

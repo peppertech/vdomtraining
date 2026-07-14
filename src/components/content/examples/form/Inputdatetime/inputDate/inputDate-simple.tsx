@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "ojs/ojdatetimepicker";
 import "ojs/ojlabel";
-import { sampleIsoDate, type InputDateValueChangedEvent } from "./inputDate-shared";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
+import { sampleIsoDate,type InputDateValueChangedEvent } from "./inputDate-shared";
 
 export default function InputDateSimpleVdomExample() {
   const [value, setValue] = useState(sampleIsoDate);

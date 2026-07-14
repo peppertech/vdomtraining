@@ -1,7 +1,7 @@
-import { h } from "preact";
+import "css!./inputPassword.css";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
-import "css!./inputPassword.css";
+import 'preact';
 
 export default function InputPasswordWidthExample() {
   return (

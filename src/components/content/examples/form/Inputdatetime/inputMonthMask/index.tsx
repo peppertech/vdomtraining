@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import {
   inputMonthMaskDocs,
@@ -14,7 +14,7 @@ const inputMonthMaskItems: {
   name: string;
   description: (typeof inputMonthMaskDocs)[InputMonthMaskDemoId]["description"];
   recipe: (typeof inputMonthMaskDocs)[InputMonthMaskDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "overview",

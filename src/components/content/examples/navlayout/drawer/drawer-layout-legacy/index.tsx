@@ -1,25 +1,25 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { DrawerLayoutBasic } from "./drawerLayout-basic/drawerLayout-basic";
 import { drawerLayoutBasicDescription } from "./drawerLayout-basic/description";
+import { DrawerLayoutBasic } from "./drawerLayout-basic/drawerLayout-basic";
 import { drawerLayoutBasicRecipe } from "./drawerLayout-basic/recipe";
-import { DrawerLayoutCancelableEvents } from "./drawerLayout-cancelableEvents/drawerLayout-cancelableEvents";
 import { drawerLayoutCancelableEventsDescription } from "./drawerLayout-cancelableEvents/description";
+import { DrawerLayoutCancelableEvents } from "./drawerLayout-cancelableEvents/drawerLayout-cancelableEvents";
 import { drawerLayoutCancelableEventsRecipe } from "./drawerLayout-cancelableEvents/recipe";
-import { DrawerLayoutDisplayMode } from "./drawerLayout-displayMode/drawerLayout-displayMode";
 import { drawerLayoutDisplayModeDescription } from "./drawerLayout-displayMode/description";
+import { DrawerLayoutDisplayMode } from "./drawerLayout-displayMode/drawerLayout-displayMode";
 import { drawerLayoutDisplayModeRecipe } from "./drawerLayout-displayMode/recipe";
-import { DrawerLayoutEvents } from "./drawerLayout-events/drawerLayout-events";
 import { drawerLayoutEventsDescription } from "./drawerLayout-events/description";
+import { DrawerLayoutEvents } from "./drawerLayout-events/drawerLayout-events";
 import { drawerLayoutEventsRecipe } from "./drawerLayout-events/recipe";
-import { DrawerLayoutInsetLayout } from "./drawerLayout-insetLayout/drawerLayout-insetLayout";
 import { drawerLayoutInsetLayoutDescription } from "./drawerLayout-insetLayout/description";
+import { DrawerLayoutInsetLayout } from "./drawerLayout-insetLayout/drawerLayout-insetLayout";
 import { drawerLayoutInsetLayoutRecipe } from "./drawerLayout-insetLayout/recipe";
-import { DrawerLayoutMultipleDrawers } from "./drawerLayout-multipleDrawers/drawerLayout-multipleDrawers";
 import { drawerLayoutMultipleDrawersDescription } from "./drawerLayout-multipleDrawers/description";
+import { DrawerLayoutMultipleDrawers } from "./drawerLayout-multipleDrawers/drawerLayout-multipleDrawers";
 import { drawerLayoutMultipleDrawersRecipe } from "./drawerLayout-multipleDrawers/recipe";
-import { DrawerLayoutSizing } from "./drawerLayout-sizing/drawerLayout-sizing";
 import { drawerLayoutSizingDescription } from "./drawerLayout-sizing/description";
+import { DrawerLayoutSizing } from "./drawerLayout-sizing/drawerLayout-sizing";
 import { drawerLayoutSizingRecipe } from "./drawerLayout-sizing/recipe";
 
 const drawerLayoutLegacyItems = [

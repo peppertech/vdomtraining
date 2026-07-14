@@ -1,7 +1,7 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
-import type { FilePickerElement } from 'ojs/ojfilepicker';
 import 'ojs/ojfilepicker';
+import type { FilePickerElement } from 'ojs/ojfilepicker';
+import 'preact';
+import { useState } from 'preact/hooks';
 
 const MAX_FILE_SIZE = 100 * 1024;
 

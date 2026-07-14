@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "oj-c/form-layout";
 import "oj-c/input-sensitive-text";
+import 'preact';
 
 export default function InputSensitiveTextVirtualKeyboardVdomExample() {
   return (

@@ -1,9 +1,9 @@
+import "css!./demo.css";
+import "oj-c/table";
 import type { ComponentProps } from "preact";
 import { useMemo } from "preact/hooks";
-import "css!./demo.css";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 import * as deptData from "text!./departmentData.json";
-import "oj-c/table";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 interface Department {
   DepartmentId: number;

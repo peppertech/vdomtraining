@@ -1,5 +1,5 @@
-import { h } from 'preact';
 import 'oj-c/conveyor-belt';
+import 'preact';
 
 export const ConveyorBeltTabKeyNavigationcorepack = () => {
   return (

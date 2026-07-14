@@ -1,8 +1,8 @@
-import { h } from 'preact';
+import 'ojs/ojnbox';
+import 'preact';
 import { useMemo } from 'preact/hooks';
 import * as jsonData from 'text!../data/cookbook/dataVisualizations/nBox/resources/employeesShaped.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojnbox';
 
 export const NBoxShapedData = () => {
   const data = JSON.parse(jsonData) as DatavizChartDatum[];

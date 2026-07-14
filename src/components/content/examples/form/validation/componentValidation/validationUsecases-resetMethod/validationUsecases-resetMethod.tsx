@@ -1,11 +1,12 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import AsyncNumberRangeValidator = require('ojs/ojasyncvalidator-numberrange');
-import type { CInputNumberElement } from 'oj-c/input-number';
 import 'oj-c/button';
 import 'oj-c/input-number';
+import type { CInputNumberElement } from 'oj-c/input-number';
 import 'ojs/ojformlayout';
 import 'ojs/ojlabelvalue';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import AsyncNumberRangeValidator = require('ojs/ojasyncvalidator-numberrange');
 
 type InputNumberValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-input-number'>['onvalueChanged']>

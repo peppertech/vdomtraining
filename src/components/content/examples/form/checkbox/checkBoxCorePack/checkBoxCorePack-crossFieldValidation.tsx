@@ -1,9 +1,9 @@
-import { h } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "oj-c/button";
 import "oj-c/checkbox";
 import "oj-c/checkboxset";
 import "oj-c/form-layout";
+import 'preact';
+import { useMemo,useState } from "preact/hooks";
 import {
   groceryOptions,
   type CheckBoxCorePackProps,

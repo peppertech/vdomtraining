@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojlabel";
 import "ojs/ojslider";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 import type { SliderValueChangedEvent } from "./slider-shared";
 
 const wrapperStyle = {

@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import { useCallback, useEffect, useMemo, useState } from 'preact/hooks';
-import * as Context from 'ojs/ojcontext';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import 'ojs/ojnbox';
-import 'ojs/ojinputnumber';
 import 'ojs/ojbutton';
+import * as Context from 'ojs/ojcontext';
 import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import 'ojs/ojnbox';
+import 'preact';
+import { useCallback,useEffect,useMemo,useState } from 'preact/hooks';
 import '../../../../../jet-composites/demo-radioset-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type PropertyChangedEvent<T> = CustomEvent<{
     value: T;

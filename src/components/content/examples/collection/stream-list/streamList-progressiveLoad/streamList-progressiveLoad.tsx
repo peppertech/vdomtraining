@@ -1,7 +1,4 @@
-import { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
+import 'css!./demo.css';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
@@ -9,9 +6,13 @@ import 'ojs/ojlabel';
 import 'ojs/ojoption';
 import 'ojs/ojstreamlist';
 import { StreamListElement } from 'ojs/ojstreamlist';
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import DemoDelayingDataProvider from '../../shared/DemoDelayingDataProvider';
 import DemoDelayingTreeDataProvider from '../../shared/DemoDelayingTreeDataProvider';
-import 'css!./demo.css';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type DataStructure = 'flat' | 'hierarchical';
 type Item = {

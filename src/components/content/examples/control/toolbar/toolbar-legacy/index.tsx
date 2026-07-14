@@ -1,11 +1,11 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { ToolbarsToolbar } from "./toolbars-toolbar/toolbars-toolbar";
-import { toolbarsToolbarDescription } from "./toolbars-toolbar/description";
-import { toolbarsToolbarRecipe } from "./toolbars-toolbar/recipe";
-import { ToolbarsStackedToolbars } from "./toolbars-stackedToolbars/toolbars-stackedToolbars";
 import { toolbarsStackedToolbarsDescription } from "./toolbars-stackedToolbars/description";
 import { toolbarsStackedToolbarsRecipe } from "./toolbars-stackedToolbars/recipe";
+import { ToolbarsStackedToolbars } from "./toolbars-stackedToolbars/toolbars-stackedToolbars";
+import { toolbarsToolbarDescription } from "./toolbars-toolbar/description";
+import { toolbarsToolbarRecipe } from "./toolbars-toolbar/recipe";
+import { ToolbarsToolbar } from "./toolbars-toolbar/toolbars-toolbar";
 
 const toolbarLegacyItems = [
   {

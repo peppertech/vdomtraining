@@ -1,15 +1,15 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import { KeySetImpl } from 'ojs/ojkeyset';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import DemoDelayingTreeDataProvider from '../../../shared/DemoDelayingTreeDataProvider';
-import 'ojs/ojlistview';
-import 'ojs/ojinputnumber';
 import 'ojs/ojavatar';
-import 'ojs/ojformlayout';
 import 'ojs/ojbutton';
+import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import { KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojlistitemlayout';
+import 'ojs/ojlistview';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import DemoDelayingTreeDataProvider from '../../../shared/DemoDelayingTreeDataProvider';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 interface Data {
     id: string;
@@ -24,7 +24,8 @@ interface Contact {
     image: string;
 }
 
-type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
+type InputNumberProps = ComponentProps<'oj-input-number'>;
+type InputNumberValueChangedEvent = Parameters<NonNullable<InputNumberProps['onvalueChanged']>>[0];
 type ContactsDataProvider = DemoDelayingTreeDataProvider<Data['id'], Data>;
 
 export const ListViewProgressiveLoadHierListView = () => {
@@ -116,11 +117,11 @@ export const ListViewProgressiveLoadHierListView = () => {
   }), delay, childDelay));
   const expanded = useMemo(() => new KeySetImpl(), []);
 
-  const handleDelayValueChanged = (event: PropertyChangedEvent<number>) => {
+  const handleDelayValueChanged = (event: InputNumberValueChangedEvent) => {
     setDelay(event.detail.value ?? 2000);
   };
 
-  const handleChildDelayValueChanged = (event: PropertyChangedEvent<number>) => {
+  const handleChildDelayValueChanged = (event: InputNumberValueChangedEvent) => {
     setChildDelay(event.detail.value ?? 2000);
   };
 

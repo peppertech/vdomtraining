@@ -1,8 +1,8 @@
-import { h } from 'preact';
+import 'ojs/ojchart';
+import 'preact';
 import { useMemo } from 'preact/hooks';
 import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicShapedCoordData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojchart';
 
 const data = JSON.parse(dataText as string);
 

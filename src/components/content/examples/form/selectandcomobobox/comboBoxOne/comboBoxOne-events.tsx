@@ -1,7 +1,8 @@
-import { h, type ComponentProps } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "ojs/ojselectcombobox";
-import { createBrowserDataProvider, formatEventDetail } from "./comboBoxOne-shared";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
+import { createBrowserDataProvider,formatEventDetail } from "./comboBoxOne-shared";
 
 type ValueEvent = Parameters<
   NonNullable<ComponentProps<"oj-combobox-one">["onvalueChanged"]>

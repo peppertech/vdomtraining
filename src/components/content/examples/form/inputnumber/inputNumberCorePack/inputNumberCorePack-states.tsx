@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "oj-c/form-layout";
 import "oj-c/input-number";
+import 'preact';
 import { messageSets } from "./inputNumberCorePack-shared";
 
 export default function InputNumberCorePackStatesExample() {

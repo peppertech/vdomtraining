@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A tab bar allows navigation between different content sections.</p><p>This demo uses path-based Preact routing state to keep tab selection, panel content, and browser history in sync.</p>
 

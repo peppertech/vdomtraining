@@ -1,20 +1,19 @@
-// @ts-nocheck
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import 'css!./demo.css';
 import { JetElementCustomEvent } from 'ojs/index';
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojchart';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojinputtext';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicCoordData.json';
 import '../../../../../../jet-composites/demo-input-json/loader';
 import '../../../../../../jet-composites/demo-select-enum/loader';
 import '../../../../../../jet-composites/demo-tabs/loader';
-import 'css!./demo.css';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type CurrentTab = 'seriesStyles' | 'textStyles' | 'plotAreaStyles';
-type TextInputValue = ComponentProps<'oj-input-text'>['value'];
-type NumberInputValue = ComponentProps<'oj-input-number'>['value'];
+type TextInputValue = NonNullable<ComponentProps<'oj-input-text'>['value']>;
+type NumberInputValue = NonNullable<ComponentProps<'oj-input-number'>['value']>;
 type MarkerShape = 'auto' | 'square' | 'circle' | 'diamond' | 'plus' | 'triangleDown' | 'triangleUp' | 'human' | 'star';
 type TickStyle = 'solid' | 'dashed' | 'dotted';
 type TickLabelPosition = 'outside' | 'inside';
@@ -104,7 +103,7 @@ export const ScatterChartStyles = () => {
         setMarkerShape1(event.detail.value);
     };
     const handleMarkerSize1ValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0]) => {
-        setMarkerSize1(event.detail.value);
+        setMarkerSize1(event.detail.value ?? 0);
     };
     const handlePlotAreaColorValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>>[0]) => {
         setPlotAreaColor(event.detail.value);
@@ -113,7 +112,7 @@ export const ScatterChartStyles = () => {
         setPlotAreaBorderColor(event.detail.value);
     };
     const handlePlotAreaBorderWidthValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0]) => {
-        setPlotAreaBorderWidth(event.detail.value);
+        setPlotAreaBorderWidth(event.detail.value ?? 0);
     };
     const handleXTitleValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>>[0]) => {
         setXTitle(event.detail.value);
@@ -125,7 +124,7 @@ export const ScatterChartStyles = () => {
         setXMajorTickColor(event.detail.value);
     };
     const handleXMajorTickWidthValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0]) => {
-        setXMajorTickWidth(event.detail.value);
+        setXMajorTickWidth(event.detail.value ?? 0);
     };
     const handleXMajorTickStyleValueChanged = (event: JetElementCustomEvent<TickStyle>) => {
         setXMajorTickStyle(event.detail.value);
@@ -134,7 +133,7 @@ export const ScatterChartStyles = () => {
         setXAxisLineColor(event.detail.value);
     };
     const handleXAxisLineWidthValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0]) => {
-        setXAxisLineWidth(event.detail.value);
+        setXAxisLineWidth(event.detail.value ?? 0);
     };
     const handleYTitleValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>>[0]) => {
         setYTitle(event.detail.value);
@@ -146,13 +145,13 @@ export const ScatterChartStyles = () => {
         setYAxisLineColor(event.detail.value);
     };
     const handleYAxisLineWidthValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0]) => {
-        setYAxisLineWidth(event.detail.value);
+        setYAxisLineWidth(event.detail.value ?? 0);
     };
     const handleYMajorTickColorValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>>[0]) => {
         setYMajorTickColor(event.detail.value);
     };
     const handleYMajorTickWidthValueChanged = (event: Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0]) => {
-        setYMajorTickWidth(event.detail.value);
+        setYMajorTickWidth(event.detail.value ?? 0);
     };
     const handleYMajorTickStyleValueChanged = (event: JetElementCustomEvent<TickStyle>) => {
         setYMajorTickStyle(event.detail.value);
@@ -163,7 +162,7 @@ export const ScatterChartStyles = () => {
     const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-chart-item x={item.data.x} y={item.data.y} groupId={[item.data.group]} seriesId={item.data.series}/>);
     const seriesTemplateRenderer = (series: DatavizSeriesTemplateContext) => (<oj-chart-series color={series.id === 'Series 1' ? color1 : undefined} borderColor={series.id === 'Series 1' ? borderColor1 : undefined} markerShape={series.id === 'Series 1' ? markerShape1 : undefined} markerSize={series.id === 'Series 1' ? markerSize1 : undefined}/>);
     const ojChartProps: Partial<ComponentProps<'oj-chart'>> = {
-        'legend.position': 'bottom'
+        legend: { position: 'bottom' }
     };
     return (<div id="chart-container" class="oj-flex oj-sm-padding-1x oj-sm-flex-items-1">
       <div class="oj-flex-item oj-sm-12 oj-md-6">

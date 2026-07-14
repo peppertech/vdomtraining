@@ -1,14 +1,14 @@
-import { h } from "preact";
-import type { ComponentProps, ComponentChildren } from "preact";
-import { useState } from "preact/hooks";
-import "oj-c/radioset";
 import "oj-c/button";
+import "oj-c/buttonset-multiple";
+import "oj-c/buttonset-single";
 import "oj-c/menu-button";
+import "oj-c/progress-button";
+import "oj-c/radioset";
 import "oj-c/split-menu-button";
 import "oj-c/toggle-button";
-import "oj-c/buttonset-single";
-import "oj-c/buttonset-multiple";
-import "oj-c/progress-button";
+import 'preact';
+import type { ComponentChildren,ComponentProps } from "preact";
+import { useState } from "preact/hooks";
 
 type ControlState = "enabled" | "disabled";
 type PushChroming = NonNullable<ComponentProps<"oj-c-button">["chroming"]>;

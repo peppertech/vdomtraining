@@ -1,5 +1,3 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from "preact/hooks";
 import "ojs/ojbutton";
 import "ojs/ojcheckboxset";
 import "ojs/ojformlayout";
@@ -7,6 +5,9 @@ import "ojs/ojlabel";
 import "ojs/ojlabelvalue";
 import "ojs/ojoption";
 import "ojs/ojswitch";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from "preact/hooks";
 
 export default function SwitchCrossFieldValidationExample() {
   const [isChecked, setIsChecked] = useState(false);

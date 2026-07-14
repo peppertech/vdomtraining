@@ -1,15 +1,15 @@
+import { IntlNumberConverter } from "ojs/ojconverter-number";
 import type { ComponentProps } from "preact";
-import * as statesText from "text!./data/states.json";
-import * as hierarchicalDataText from "text!./data/hierarchicalData.json";
+import * as emailDataText from "text!./data/emailData.json";
 import * as employeesText from "text!./data/employees_100.json";
 import * as formattedCurrencyText from "text!./data/formattedCurrencyData.json";
+import * as hierarchicalDataText from "text!./data/hierarchicalData.json";
+import * as statesText from "text!./data/states.json";
 import * as unformattedCurrencyText from "text!./data/unformattedCurrencyData.json";
-import * as emailDataText from "text!./data/emailData.json";
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import ArrayTreeDataProvider = require("ojs/ojarraytreedataprovider");
 import ListDataProviderView = require("ojs/ojlistdataproviderview");
 import RegExpValidator = require("ojs/ojvalidator-regexp");
-import { IntlNumberConverter } from "ojs/ojconverter-number";
 
 type ComboboxOneProps = ComponentProps<"oj-combobox-one">;
 type OptionRendererContext<TData> = {

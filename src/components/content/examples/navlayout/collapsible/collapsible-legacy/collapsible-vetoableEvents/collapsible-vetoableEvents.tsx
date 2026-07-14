@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
 import 'ojs/ojcollapsible';
 import 'ojs/ojswitch';
+import 'preact';
+import { useState } from 'preact/hooks';
 
 export const CollapsibleVetoableEvents = () => {
   const [blockEvents, setBlockEvents] = useState(false);

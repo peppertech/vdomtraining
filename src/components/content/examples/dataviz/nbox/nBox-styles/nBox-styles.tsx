@@ -1,18 +1,18 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'css!./demo.css';
-import 'ojs/ojnbox';
-import 'ojs/ojinputtext';
-import 'ojs/ojinputnumber';
 import 'ojs/ojcheckboxset';
 import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import 'ojs/ojinputtext';
+import 'ojs/ojnbox';
+import 'ojs/ojoption';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/nBox/resources/employees.json';
 import '../../../../../jet-composites/demo-input-json/loader';
 import '../../../../../jet-composites/demo-select-enum/loader';
 import '../../../../../jet-composites/demo-tabs/loader';
-import 'ojs/ojoption';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type Employee = {
     name: string;

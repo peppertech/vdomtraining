@@ -1,5 +1,3 @@
-import { h } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "oj-c/button";
 import "oj-c/checkbox";
 import "oj-c/checkboxset";
@@ -9,6 +7,8 @@ import "oj-c/input-text";
 import "oj-c/radioset";
 import "oj-c/select-single";
 import "oj-c/text-area";
+import 'preact';
+import { useMemo,useState } from "preact/hooks";
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 const experienceData = [

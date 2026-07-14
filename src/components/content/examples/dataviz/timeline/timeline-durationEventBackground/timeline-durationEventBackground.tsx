@@ -1,13 +1,13 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
-import * as eventTypeDataText from 'text!../data/cookbook/dataVisualizations/timeline/resources/different_event_types.json';
-import 'ojs/ojtimeline';
-import 'ojs/ojlabel';
-import 'ojs/ojformlayout';
 import 'ojs/ojbutton';
+import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
+import 'ojs/ojformlayout';
+import 'ojs/ojlabel';
+import 'ojs/ojtimeline';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as eventTypeDataText from 'text!../data/cookbook/dataVisualizations/timeline/resources/different_event_types.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type TimelineDurationEventItem = {
     id: string;
     series: string;
@@ -21,7 +21,7 @@ const itemTypeOptions = [
 ];
 const majorAxis = { scale: 'quarters' };
 const minorAxis = { scale: 'weeks' };
-const valueFormats = { title: { tooltipDisplay: 'auto' } };
+const valueFormats: NonNullable<ComponentProps<'oj-timeline'>['valueFormats']> = { title: { tooltipDisplay: 'auto' } };
 const getBackgroundColor = (series: string) => {
     switch (series) {
         case 'Review':
@@ -41,7 +41,7 @@ const getBackgroundColor = (series: string) => {
     }
 };
 export const TimelineDurationEventBackground = () => {
-    const [itemTypeValue, setItemTypeValue] = useState('duration-event');
+    const [itemTypeValue, setItemTypeValue] = useState<NonNullable<ComponentProps<'oj-timeline-item'>['itemType']>>('duration-event');
     const dataProvider = useMemo(() => new ArrayDataProvider(durationEventItems, {
         keyAttributes: 'id'
     }), []);
@@ -49,17 +49,17 @@ export const TimelineDurationEventBackground = () => {
         formatType: 'date',
         dateFormat: 'long'
     }), []);
-    const handleItemTypeChanged = (event: DatavizValueChangedEvent<string>) => {
+    const handleItemTypeChanged = (event: DatavizValueChangedEvent<typeof itemTypeValue>) => {
         if (event.detail.updatedFrom === 'internal') {
             setItemTypeValue(event.detail.value);
         }
     };
     const getShortDesc = (itemData: TimelineDurationEventItem) => {
-        const startTimeString = dateConverter.format(new Date(itemData.begin).toISOString());
-        const endTimeString = dateConverter.format(new Date(itemData.finish).toISOString());
+        const startTimeString = dateConverter.format(new Date(itemData.begin).toISOString()) ?? '';
+        const endTimeString = dateConverter.format(new Date(itemData.finish).toISOString()) ?? '';
         return itemTypeValue === 'duration-event' ? `${startTimeString} - ${endTimeString}` : startTimeString;
     };
-    const itemTemplateRenderer = (item: DatavizTemplateContext<DatavizChartDatum>) => (<oj-timeline-item description={getShortDesc(item.data)} background={getBackgroundColor(item.data.series)} itemType={itemTypeValue} start={item.data.begin} end={item.data.finish} label={item.data.series}/>);
+    const itemTemplateRenderer = (item: DatavizTemplateContext<TimelineDurationEventItem>) => (<oj-timeline-item description={getShortDesc(item.data)} background={getBackgroundColor(item.data.series)} itemType={itemTypeValue} start={item.data.begin} end={item.data.finish} label={item.data.series}/>);
     return (<div id="timeline-container">
       <div class="oj-panel oj-bg-info-30 oj-sm-margin-4x-bottom">
         <h2 class="oj-typography-subheading-md">Options To Control Event Types Below</h2>

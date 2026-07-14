@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import "css!./demo.css";
 import 'ojs/ojactioncard';
 import 'ojs/ojwaterfalllayout';
+import * as preact from 'preact';
+import { useMemo } from 'preact/hooks';
 import '../../../../../jet-composites/demo-dept-card-layout/loader';
 import '../../../../../jet-composites/demo-profile-card-layout/loader';
-import "css!./demo.css";
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type WaterfallCardData = {
   type: 'people' | 'department';
@@ -48,7 +48,7 @@ const renderBasicWaterfallItem = (item: WaterfallItemTemplateContext) => {
   if (item.data.type === 'people') {
     return (
       <oj-action-card class="oj-sm-only-width-4/5">
-        {h("demo-profile-card-layout", {
+        {preact.h("demo-profile-card-layout", {
           name: item.data.name,
           initials: item.data.initials,
           image: item.data.image,
@@ -60,7 +60,7 @@ const renderBasicWaterfallItem = (item: WaterfallItemTemplateContext) => {
 
   return (
     <oj-action-card class="oj-bg-warning-30 oj-sm-only-width-4/5">
-      {h("demo-dept-card-layout", {
+      {preact.h("demo-dept-card-layout", {
         deptName: item.data.name,
         deptCount: item.data.count,
         image: item.data.image,

@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "ojs/ojformlayout";
 import "ojs/ojinputnumber";
+import 'preact';
 import { noGroupingNumberConverter } from "./inputNumber-shared";
 
 export default function InputNumberVirtualKeyboardExample() {

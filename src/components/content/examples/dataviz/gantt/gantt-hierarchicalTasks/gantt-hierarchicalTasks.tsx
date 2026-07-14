@@ -1,16 +1,16 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import * as rowDataText from 'text!../data/cookbook/dataVisualizations/gantt/hierarchicalTasks/rowData.json';
-import * as depDataText from 'text!../data/cookbook/dataVisualizations/gantt/hierarchicalTasks/depData.json';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { KeySetImpl } from 'ojs/ojkeyset';
-import 'ojs/ojgantt';
-import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
+import 'css!./demo.css';
 import 'oj-c/checkboxset';
 import 'oj-c/radioset';
-import 'css!./demo.css';
+import { IntlDateTimeConverter } from 'ojs/ojconverter-datetime';
+import 'ojs/ojgantt';
+import { KeySetImpl } from 'ojs/ojkeyset';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as depDataText from 'text!../data/cookbook/dataVisualizations/gantt/hierarchicalTasks/depData.json';
+import * as rowDataText from 'text!../data/cookbook/dataVisualizations/gantt/hierarchicalTasks/rowData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type GanttProps = ComponentProps<'oj-gantt'>;
 type GanttTaskProps = ComponentProps<'oj-gantt-task'>;

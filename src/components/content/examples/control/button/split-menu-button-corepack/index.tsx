@@ -1,17 +1,17 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { SplitmenubuttonOverviewcorepack } from "./splitmenubutton-overviewcorepack/splitmenubutton-overviewcorepack";
-import { splitmenubuttonOverviewcorepackDescription } from "./splitmenubutton-overviewcorepack/description";
-import { splitmenubuttonOverviewcorepackRecipe } from "./splitmenubutton-overviewcorepack/recipe";
-import { SplitmenubuttonBindingcorepack } from "./splitmenubutton-bindingcorepack/splitmenubutton-bindingcorepack";
 import { splitmenubuttonBindingcorepackDescription } from "./splitmenubutton-bindingcorepack/description";
 import { splitmenubuttonBindingcorepackRecipe } from "./splitmenubutton-bindingcorepack/recipe";
-import { SplitmenubuttonEventcorepack } from "./splitmenubutton-eventcorepack/splitmenubutton-eventcorepack";
+import { SplitmenubuttonBindingcorepack } from "./splitmenubutton-bindingcorepack/splitmenubutton-bindingcorepack";
 import { splitmenubuttonEventcorepackDescription } from "./splitmenubutton-eventcorepack/description";
 import { splitmenubuttonEventcorepackRecipe } from "./splitmenubutton-eventcorepack/recipe";
-import { SplitmenubuttonPersistentcorepack } from "./splitmenubutton-persistentcorepack/splitmenubutton-persistentcorepack";
+import { SplitmenubuttonEventcorepack } from "./splitmenubutton-eventcorepack/splitmenubutton-eventcorepack";
+import { splitmenubuttonOverviewcorepackDescription } from "./splitmenubutton-overviewcorepack/description";
+import { splitmenubuttonOverviewcorepackRecipe } from "./splitmenubutton-overviewcorepack/recipe";
+import { SplitmenubuttonOverviewcorepack } from "./splitmenubutton-overviewcorepack/splitmenubutton-overviewcorepack";
 import { splitmenubuttonPersistentcorepackDescription } from "./splitmenubutton-persistentcorepack/description";
 import { splitmenubuttonPersistentcorepackRecipe } from "./splitmenubutton-persistentcorepack/recipe";
+import { SplitmenubuttonPersistentcorepack } from "./splitmenubutton-persistentcorepack/splitmenubutton-persistentcorepack";
 
 const splitMenuButtonCorePackItems = [
   {

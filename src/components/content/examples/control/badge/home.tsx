@@ -1,20 +1,21 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useEffect, useState } from "preact/hooks";
-import "ojs/ojactioncard";
-import "ojs/ojlistview";
 import "css!./badge-demo-spacing.css";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { KeySetImpl, KeySet } from "ojs/ojkeyset";
+import "ojs/ojactioncard";
+import { KeySet,KeySetImpl } from "ojs/ojkeyset";
+import "ojs/ojlistview";
 import { ojListView } from "ojs/ojlistview";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useEffect,useState } from "preact/hooks";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
-import BadgeLegacyRecipePage from "./badge-legacy/index";
-import BadgeCorePackRecipePage from "./badge-corepack/index";
-import TruncatingBadgeCorePackRecipePage from "./truncating-badge-corepack/index";
-import { useExampleRoute } from "../../example-route-context";
 import {
   type NestedCatalogHomeProps,
   formatCorePackLabel,
 } from "../../../../shared/catalog-breadcrumb";
+import { useExampleRoute } from "../../example-route-context";
+import BadgeCorePackRecipePage from "./badge-corepack/index";
+import BadgeLegacyRecipePage from "./badge-legacy/index";
+import TruncatingBadgeCorePackRecipePage from "./truncating-badge-corepack/index";
 
 type BadgeComponent = {
   id: number;

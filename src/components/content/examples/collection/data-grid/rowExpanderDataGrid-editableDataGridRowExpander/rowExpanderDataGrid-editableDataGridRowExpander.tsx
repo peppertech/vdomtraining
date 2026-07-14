@@ -1,15 +1,16 @@
 // @ts-nocheck
-import { render } from 'preact';
-import type { ComponentChildren, ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
-import * as flattenedModule from 'ojs/ojflattenedtreedatagriddatasource';
-import * as JsonTreeDataSource from 'ojs/ojjsontreedatasource';
-import * as DataCollectionEditUtils from 'ojs/ojdatacollection-utils';
-import * as jsonDataStr from 'text!../../data/cookbook/dataCollections/rowExpanderDataGrid/dataGridRowExpander/projectData.json';
-import 'ojs/ojrowexpander';
-import 'ojs/ojdatagrid';
-import 'ojs/ojinputtext';
 import 'css!./demo.css';
+import * as DataCollectionEditUtils from 'ojs/ojdatacollection-utils';
+import 'ojs/ojdatagrid';
+import * as flattenedModule from 'ojs/ojflattenedtreedatagriddatasource';
+import 'ojs/ojinputtext';
+import * as JsonTreeDataSource from 'ojs/ojjsontreedatasource';
+import 'ojs/ojrowexpander';
+import 'preact';
+import type { ComponentChildren,ComponentProps } from 'preact';
+import { render } from 'preact';
+import { useMemo } from 'preact/hooks';
+import * as jsonDataStr from 'text!../../data/cookbook/dataCollections/rowExpanderDataGrid/dataGridRowExpander/projectData.json';
 
 type DataGridRendererContext = {
   key?: string | number;

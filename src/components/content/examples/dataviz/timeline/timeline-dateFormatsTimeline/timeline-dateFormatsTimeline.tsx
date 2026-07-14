@@ -1,11 +1,10 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
-import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/dateFormatsTimeline/seriesData.json';
-import 'ojs/ojtimeline';
 import 'css!./demo.css';
+import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
+import 'ojs/ojtimeline';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/dateFormatsTimeline/seriesData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TimelineDateFormatsItem = {
   id: string;

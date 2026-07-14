@@ -1,9 +1,10 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojcollapsible';
 import 'ojs/ojdefer';
 import 'ojs/ojtable';
+import * as preact from 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type Department = {
   DepartmentId: number;
@@ -46,7 +47,7 @@ export const CollapsibleDeferredRendering = () => {
   return (
       <oj-collapsible id="defer">
             <h4 id="hd" slot="header">Deferred Content</h4>
-            {h('oj-defer', null, (
+            {preact.h('oj-defer', null, (
                     <oj-table id="table" aria-label="Departments Table" data={dataProvider} columns={columns} />
                 ))}
         </oj-collapsible>

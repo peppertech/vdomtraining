@@ -1,9 +1,9 @@
-import { h } from 'preact';
-import { useEffect, useMemo } from 'preact/hooks';
 import { RESTTreeDataProvider } from 'ojs/ojresttreedataprovider';
-import { CollectionMockFetchServer as MockFetchServer } from '../../shared/CollectionMockFetchServer';
-import * as treeData from 'text!./projectData.json';
 import 'ojs/ojtreeview';
+import 'preact';
+import { useEffect,useMemo } from 'preact/hooks';
+import * as treeData from 'text!./projectData.json';
+import { CollectionMockFetchServer as MockFetchServer } from '../../shared/CollectionMockFetchServer';
 
 type TreeNode = {
   id: string;

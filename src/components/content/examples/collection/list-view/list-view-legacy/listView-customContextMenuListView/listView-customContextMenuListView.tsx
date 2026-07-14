@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { useMemo, useRef, useState } from 'preact/hooks';
 import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
 import 'ojs/ojlistview';
-import 'ojs/ojmenu';
-import 'ojs/ojoption';
-import { ojMenuEventMap } from 'ojs/ojmenu';
 import { ojListView } from 'ojs/ojlistview';
+import 'ojs/ojmenu';
+import { ojMenuEventMap } from 'ojs/ojmenu';
+import 'ojs/ojoption';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface EmployeeData {
   id: string;

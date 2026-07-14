@@ -1,12 +1,12 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
+import "css!./demo.css";
 import 'oj-c/conveyor-belt';
 import 'ojs/ojbutton';
 import 'ojs/ojlabel';
-import 'ojs/ojradioset';
 import 'ojs/ojoption';
-import "css!./demo.css";
+import 'ojs/ojradioset';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
 
 type ArrowVisibility = ComponentProps<'oj-c-conveyor-belt'>['arrowVisibility'];
 

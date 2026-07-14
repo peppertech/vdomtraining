@@ -1,15 +1,14 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import { ojListView } from 'ojs/ojlistview';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import DemoDataTransfer from './DemoDataTransfer';
-import 'ojs/ojlistviewdnd';
+import 'css!./demo.css';
 import 'ojs/ojavatar';
 import 'ojs/ojlistitemlayout';
+import { ojListView } from 'ojs/ojlistview';
+import 'ojs/ojlistviewdnd';
 import 'ojs/ojmenu';
 import 'ojs/ojoption';
-import 'css!./demo.css';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import DemoDataTransfer from './DemoDataTransfer';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface DataInfo {
     id: string;
@@ -23,6 +22,9 @@ type TransferSource = DataTransfer | DemoDataTransfer | null;
 type MenuActionEvent = CustomEvent<{ selectedValue?: 'cut' | 'paste' }>;
 type TransferItem = DataInfo | { data?: DataInfo; item?: { data?: DataInfo } };
 type LegacyItemTemplateContext = ItemTemplateContext & {
+    metadata?: {
+        key: DataInfo['id'];
+    };
     item?: {
         data: DataInfo;
         metadata: {
@@ -284,6 +286,9 @@ export const ListViewWithTableDndListView = () => {
   };
 
 	  const _findIndex = (arr: DataInfo[], key: DataInfo['id'] | null) => {
+        if (key == null) {
+            return -1;
+        }
 	      const keys = arr.map((data: DataInfo) => {
           return data.id;
       });

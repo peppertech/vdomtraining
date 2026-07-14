@@ -1,9 +1,10 @@
-import { h, type ComponentProps } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojbutton';
+import * as ResponsiveUtils from 'ojs/ojresponsiveutils';
 import 'ojs/ojselectcombobox';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useEffect,useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ResponsiveItem = {
   id: string;

@@ -1,15 +1,15 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import "css!./demo.css";
 import type { JetElementCustomEvent } from 'ojs/index';
-import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
 import 'ojs/ojbutton';
 import 'ojs/ojdatagrid';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojoption';
-import "css!./demo.css";
+import { RowDataGridProvider } from 'ojs/ojrowdatagridprovider';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 interface DataDetails {
     rowHeader: string;
     [propName: string]: string;

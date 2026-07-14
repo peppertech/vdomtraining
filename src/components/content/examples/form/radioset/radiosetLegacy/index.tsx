@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import RadiosetBasicExample from "./radioset-basic";
 import RadiosetDataProviderExample from "./radioset-dataProvider";
@@ -15,7 +15,7 @@ const radiosetItems: {
   name: string;
   description: (typeof radiosetDocs)[RadiosetDemoId]["description"];
   recipe: (typeof radiosetDocs)[RadiosetDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "overview",

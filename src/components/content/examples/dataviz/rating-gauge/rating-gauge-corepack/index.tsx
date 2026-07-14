@@ -1,15 +1,15 @@
-import { h } from "preact";
+import "css!./rating-gauge-corepack.css";
+import 'preact';
 import {
   RecipePageTemplate,
   type RecipePageItem,
 } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { RatingGaugeOverviewcorepack } from "./ratingGauge-overviewcorepack/ratingGauge-overviewcorepack";
-import { ratingGaugeOverviewcorepackDescription } from "./ratingGauge-overviewcorepack/description";
-import { ratingGaugeOverviewcorepackRecipe } from "./ratingGauge-overviewcorepack/recipe";
-import { RatingGaugeEventscorepack } from "./ratingGauge-eventscorepack/ratingGauge-eventscorepack";
 import { ratingGaugeEventscorepackDescription } from "./ratingGauge-eventscorepack/description";
+import { RatingGaugeEventscorepack } from "./ratingGauge-eventscorepack/ratingGauge-eventscorepack";
 import { ratingGaugeEventscorepackRecipe } from "./ratingGauge-eventscorepack/recipe";
-import "css!./rating-gauge-corepack.css";
+import { ratingGaugeOverviewcorepackDescription } from "./ratingGauge-overviewcorepack/description";
+import { RatingGaugeOverviewcorepack } from "./ratingGauge-overviewcorepack/ratingGauge-overviewcorepack";
+import { ratingGaugeOverviewcorepackRecipe } from "./ratingGauge-overviewcorepack/recipe";
 
 const ratingGaugeCorePackItems: RecipePageItem[] = [
   {

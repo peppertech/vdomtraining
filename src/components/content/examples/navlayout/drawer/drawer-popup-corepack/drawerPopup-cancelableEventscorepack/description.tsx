@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A Drawer Popup is a panel that slides into the viewport.</p><p>
   Drawer Popup supports 'ojBeforeClose' event that can be canceled synchronously or asynchronously.

@@ -1,16 +1,16 @@
-import { Fragment, h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
+import 'ojs/ojchart';
+import { ojChart } from 'ojs/ojchart';
+import 'ojs/ojformlayout';
+import 'ojs/ojtoolbar';
+import { useMemo,useState } from 'preact/hooks';
 import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicData.json';
 import * as pieDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/singleItemTwelveSeriesData.json';
-import { ojChart } from 'ojs/ojchart';
-import 'ojs/ojchart';
-import 'ojs/ojtoolbar';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
 import '../../../../../../jet-composites/demo-chart-stack-control/loader';
-import 'ojs/ojformlayout';
 import '../../../../../../jet-composites/demo-radioset-enum/loader';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 

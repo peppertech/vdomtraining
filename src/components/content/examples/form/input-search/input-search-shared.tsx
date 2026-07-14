@@ -1,6 +1,3 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import type { ItemContext } from "ojs/ojcommontypes";
 import type {
   DataProvider,
@@ -11,9 +8,12 @@ import type {
   FetchListParameters,
   FetchListResult,
 } from "ojs/ojdataprovider";
-import { InputSearchElement } from "ojs/ojinputsearch";
-import * as employeeDataText from "text!../data/employeeData.json";
 import "ojs/ojhighlighttext";
+import { InputSearchElement } from "ojs/ojinputsearch";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
+import * as employeeDataText from "text!../data/employeeData.json";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 export type BrowserSuggestion = {
   value: string;

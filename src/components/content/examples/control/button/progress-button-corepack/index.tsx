@@ -1,14 +1,14 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { ProgressbuttonOverviewcorepack } from "./progressbutton-overviewcorepack/progressbutton-overviewcorepack";
-import { progressbuttonOverviewcorepackDescription } from "./progressbutton-overviewcorepack/description";
-import { progressbuttonOverviewcorepackRecipe } from "./progressbutton-overviewcorepack/recipe";
-import { ProgressbuttonBasiccorepack } from "./progressbutton-basiccorepack/progressbutton-basiccorepack";
 import { progressbuttonBasiccorepackDescription } from "./progressbutton-basiccorepack/description";
+import { ProgressbuttonBasiccorepack } from "./progressbutton-basiccorepack/progressbutton-basiccorepack";
 import { progressbuttonBasiccorepackRecipe } from "./progressbutton-basiccorepack/recipe";
-import { ProgressbuttonIconcorepack } from "./progressbutton-iconcorepack/progressbutton-iconcorepack";
 import { progressbuttonIconcorepackDescription } from "./progressbutton-iconcorepack/description";
+import { ProgressbuttonIconcorepack } from "./progressbutton-iconcorepack/progressbutton-iconcorepack";
 import { progressbuttonIconcorepackRecipe } from "./progressbutton-iconcorepack/recipe";
+import { progressbuttonOverviewcorepackDescription } from "./progressbutton-overviewcorepack/description";
+import { ProgressbuttonOverviewcorepack } from "./progressbutton-overviewcorepack/progressbutton-overviewcorepack";
+import { progressbuttonOverviewcorepackRecipe } from "./progressbutton-overviewcorepack/recipe";
 
 const progressButtonCorePackItems = [
   {

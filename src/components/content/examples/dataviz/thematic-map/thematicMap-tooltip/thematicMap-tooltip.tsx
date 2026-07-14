@@ -1,14 +1,13 @@
-// @ts-nocheck
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/electionData2000.json';
-import { ojThematicMap } from 'ojs/ojthematicmap';
 import 'css!./demo.css';
 import 'ojs/ojchart';
 import 'ojs/ojthematicmap';
+import { ojThematicMap } from 'ojs/ojthematicmap';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/electionData2000.json';
+import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/usa_states.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ElectionDatum = {
   State: string;
@@ -47,7 +46,9 @@ export const ThematicMapTooltip = () => {
     const textDiv = document.createElement('div');
     const labelText = document.createElement('span');
     const valueText = document.createElement('span');
-    const pieChart = document.createElement('oj-chart');
+    const pieChart = document.createElement('oj-chart') as HTMLElement & {
+      data: ComponentProps<'oj-chart'>['data'];
+    };
 
     textDiv.style.cssFloat = 'left';
     textDiv.style.padding = '10px 8px 10px 3px';
@@ -89,7 +90,9 @@ export const ThematicMapTooltip = () => {
     const rep = dataContext.itemData.Republican;
     const electoralVotes = dem + rep;
     const val = 0.625 + 0.125 * Math.sin(electoralVotes);
-    const pieChart = tooltipElem.children[1];
+    const pieChart = tooltipElem.children[1] as HTMLElement & {
+      data: ComponentProps<'oj-chart'>['data'];
+    };
     const textDiv = tooltipElem.children[0];
 
     textDiv.children[0].textContent = dataContext.locationName;
@@ -129,7 +132,7 @@ export const ThematicMapTooltip = () => {
   };
 
   const thematicMapProps: Partial<ComponentProps<'oj-thematic-map'>> = {
-    'tooltip.renderer': tooltipFunction
+    tooltip: { renderer: tooltipFunction }
   };
 
   return (

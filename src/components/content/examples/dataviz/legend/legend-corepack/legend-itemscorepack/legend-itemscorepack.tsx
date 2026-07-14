@@ -1,8 +1,8 @@
-import type { JSX } from 'preact';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import "oj-c/legend";
 import "oj-c/legend-item";
 import "oj-c/legend-section";
+import type { JSX } from 'preact';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type LegendIconItem = {
   text: string;

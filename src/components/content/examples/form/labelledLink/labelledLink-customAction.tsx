@@ -1,7 +1,7 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/labelled-link";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
 
 export default function LabelledLinkCustomActionExample() {
   const [lastAction, setLastAction] = useState("No custom action triggered yet.");

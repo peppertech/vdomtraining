@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import RichRadioSetBasicExample from "./richRadioSet-basic";
 import {
@@ -14,7 +14,7 @@ const richRadioSetItems: {
   name: string;
   description: (typeof richRadioSetDocs)[RichRadioSetDemoId]["description"];
   recipe: (typeof richRadioSetDocs)[RichRadioSetDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "overview",

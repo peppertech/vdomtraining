@@ -1,13 +1,12 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useRef, useState } from 'preact/hooks';
-import { ojDialog } from 'ojs/ojdialog';
-import { JetElementCustomEvent } from 'ojs/index';
-import 'ojs/ojdialog';
 import 'ojs/ojbutton';
 import 'ojs/ojcheckboxset';
+import 'ojs/ojdialog';
+import { ojDialog } from 'ojs/ojdialog';
 import 'ojs/ojlabel';
 import 'ojs/ojoption';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useRef,useState } from 'preact/hooks';
 
 type CheckboxValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-checkboxset'>['onvalueChanged']>>[0];
 

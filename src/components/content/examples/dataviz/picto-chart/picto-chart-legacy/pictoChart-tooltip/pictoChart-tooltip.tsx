@@ -1,14 +1,14 @@
-// @ts-nocheck
-import { h, render } from 'preact';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import { useMemo, useState } from 'preact/hooks';
-import * as data from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/tooltipData.json';
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import { ojPictoChart } from 'ojs/ojpictochart';
 import 'ojs/ojgauge';
 import 'ojs/ojlegend';
 import 'ojs/ojpictochart';
+import { ojPictoChart } from 'ojs/ojpictochart';
+import 'preact';
+import { render } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as data from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/tooltipData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type ProductName = 'iPhone' | 'iPad' | 'Mac';
 type ChartItem = {

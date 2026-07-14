@@ -1,9 +1,9 @@
-import { h } from "preact";
 import "ojs/ojaccordion";
 import "ojs/ojcollapsible";
 import "ojs/ojlabel";
-import "ojs/ojradioset";
 import "ojs/ojoption";
+import "ojs/ojradioset";
+import 'preact';
 
 export const AccordionBasicAccordion = () => {
   return (

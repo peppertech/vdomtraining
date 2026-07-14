@@ -1,23 +1,23 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { StockChartAnimations } from "./stockChart-animations/stockChart-animations";
 import { stockChartAnimationsDescription } from "./stockChart-animations/description";
 import { stockChartAnimationsRecipe } from "./stockChart-animations/recipe";
-import { StockChartComparison } from "./stockChart-comparison/stockChart-comparison";
+import { StockChartAnimations } from "./stockChart-animations/stockChart-animations";
 import { stockChartComparisonDescription } from "./stockChart-comparison/description";
 import { stockChartComparisonRecipe } from "./stockChart-comparison/recipe";
-import { StockChartDefault } from "./stockChart-default/stockChart-default";
+import { StockChartComparison } from "./stockChart-comparison/stockChart-comparison";
 import { stockChartDefaultDescription } from "./stockChart-default/description";
 import { stockChartDefaultRecipe } from "./stockChart-default/recipe";
-import { StockChartSelection } from "./stockChart-selection/stockChart-selection";
+import { StockChartDefault } from "./stockChart-default/stockChart-default";
 import { stockChartSelectionDescription } from "./stockChart-selection/description";
 import { stockChartSelectionRecipe } from "./stockChart-selection/recipe";
-import { StockChartShapedData } from "./stockChart-shapedData/stockChart-shapedData";
+import { StockChartSelection } from "./stockChart-selection/stockChart-selection";
 import { stockChartShapedDataDescription } from "./stockChart-shapedData/description";
 import { stockChartShapedDataRecipe } from "./stockChart-shapedData/recipe";
-import { StockChartStyles } from "./stockChart-styles/stockChart-styles";
+import { StockChartShapedData } from "./stockChart-shapedData/stockChart-shapedData";
 import { stockChartStylesDescription } from "./stockChart-styles/description";
 import { stockChartStylesRecipe } from "./stockChart-styles/recipe";
+import { StockChartStyles } from "./stockChart-styles/stockChart-styles";
 
 const stockChartItems = [
   {

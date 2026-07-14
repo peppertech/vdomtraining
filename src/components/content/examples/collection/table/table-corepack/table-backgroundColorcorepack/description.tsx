@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A table displays data items in a tabular format with highly interactive features.</p><p>This demo shows how to update the table's background color.</p>
 <p>

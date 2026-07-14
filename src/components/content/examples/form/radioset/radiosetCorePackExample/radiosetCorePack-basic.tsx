@@ -1,10 +1,10 @@
-import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/button";
 import "oj-c/radioset";
 import "ojs/ojlabel";
 import "ojs/ojlabelvalue";
-import { colorOptions, type RadiosetValueChangedEvent } from "./radiosetCorePack-shared";
+import 'preact';
+import { useCallback,useState } from "preact/hooks";
+import { colorOptions,type RadiosetValueChangedEvent } from "./radiosetCorePack-shared";
 
 export default function RadiosetCorePackBasicExample() {
   const [currentColor, setCurrentColor] = useState("red");

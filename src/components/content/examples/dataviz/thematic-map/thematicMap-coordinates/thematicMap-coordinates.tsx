@@ -1,12 +1,11 @@
-// @ts-nocheck
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/uk_27700.json';
-import * as cityDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/ukIrelandCities.json';
 import 'css!./demo.css';
 import 'ojs/ojthematicmap';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo } from 'preact/hooks';
+import * as cityDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/ukIrelandCities.json';
+import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/uk_27700.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type City = {
   long: number;
@@ -113,6 +112,10 @@ export const ThematicMapCoordinates = () => {
     ],
     []
   );
+  const areaDataProvider = useMemo(
+    () => new ArrayDataProvider(areas, { keyAttributes: 'id' }),
+    [areas]
+  );
   const markerTemplateRenderer = ($current: DatavizTemplateContext<DatavizChartDatum>) => {
     return (
       <oj-thematic-map-marker
@@ -127,12 +130,15 @@ export const ThematicMapCoordinates = () => {
     <oj-thematic-map
       id="map1"
       markerData={dataProvider}
-      areas={areas}
+      areaData={areaDataProvider}
       zooming="auto"
       panning="auto"
       mapProvider={mapProvider}
       class="demo-thematicmap-min-width"
     >
+      <template slot="areaTemplate" render={(area: DatavizTemplateContext<DatavizChartDatum>) => (
+        <oj-thematic-map-area location={area.data.location} color={area.data.color} />
+      )} />
       <template slot="markerTemplate" render={markerTemplateRenderer} />
     </oj-thematic-map>
   );

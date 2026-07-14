@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>Buttons direct users to initiate or take actions and work with a single tap, click, or keystroke.</p><p>
   This JET Button demo features push buttons: buttons that do not stay pressed in when activated.

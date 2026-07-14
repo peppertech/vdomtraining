@@ -1,6 +1,6 @@
-import type { ComponentProps } from "preact";
 import "css!./demo.css";
 import "oj-c/meter-circle";
+import type { ComponentProps } from "preact";
 
 type MeterCircleDatatip = NonNullable<ComponentProps<"oj-c-meter-circle">["datatip"]>;
 type MeterCircleReferenceLines = NonNullable<ComponentProps<"oj-c-meter-circle">["referenceLines"]>;

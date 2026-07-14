@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ol>
   <li>Start a mock REST server to serve the Tweets dataset for the demo (not part of RESTDataProvider).</li>

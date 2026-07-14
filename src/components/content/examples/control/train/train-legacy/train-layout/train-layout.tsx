@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
-import { ojTrain } from 'ojs/ojtrain';
-import 'ojs/ojtrain';
 import "css!./demo.css";
+import 'ojs/ojtrain';
+import { ojTrain } from 'ojs/ojtrain';
+import 'preact';
+import { useState } from 'preact/hooks';
 
 const createTrainSteps = (trainName: string): ojTrain.Step[] => [
   { label: 'Step One', id: `stp1-${trainName}` },

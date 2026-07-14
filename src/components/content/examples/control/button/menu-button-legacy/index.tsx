@@ -1,22 +1,22 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
-import { MenuButtonsOverview } from "./menuButtons-overview/menuButtons-overview";
-import { menuButtonsOverviewDescription } from "./menuButtons-overview/description";
-import { menuButtonsOverviewRecipe } from "./menuButtons-overview/recipe";
-import { MenuButtonsMenuButton } from "./menuButtons-menuButton/menuButtons-menuButton";
-import { menuButtonsMenuButtonDescription } from "./menuButtons-menuButton/description";
-import { menuButtonsMenuButtonRecipe } from "./menuButtons-menuButton/recipe";
-import { MenuButtonsMenuButtonDisplay } from "./menuButtons-menuButtonDisplay/menuButtons-menuButtonDisplay";
-import { menuButtonsMenuButtonDisplayDescription } from "./menuButtons-menuButtonDisplay/description";
-import { menuButtonsMenuButtonDisplayRecipe } from "./menuButtons-menuButtonDisplay/recipe";
-import { MenuButtonsMenuButtonset } from "./menuButtons-menuButtonset/menuButtons-menuButtonset";
-import { menuButtonsMenuButtonsetDescription } from "./menuButtons-menuButtonset/description";
-import { menuButtonsMenuButtonsetRecipe } from "./menuButtons-menuButtonset/recipe";
-import { MenuButtonsChroming } from "./menuButtons-chroming/menuButtons-chroming";
 import { menuButtonsChromingDescription } from "./menuButtons-chroming/description";
+import { MenuButtonsChroming } from "./menuButtons-chroming/menuButtons-chroming";
 import { menuButtonsChromingRecipe } from "./menuButtons-chroming/recipe";
-import { MenuButtonsSizes } from "./menuButtons-sizes/menuButtons-sizes";
+import { menuButtonsMenuButtonDescription } from "./menuButtons-menuButton/description";
+import { MenuButtonsMenuButton } from "./menuButtons-menuButton/menuButtons-menuButton";
+import { menuButtonsMenuButtonRecipe } from "./menuButtons-menuButton/recipe";
+import { menuButtonsMenuButtonDisplayDescription } from "./menuButtons-menuButtonDisplay/description";
+import { MenuButtonsMenuButtonDisplay } from "./menuButtons-menuButtonDisplay/menuButtons-menuButtonDisplay";
+import { menuButtonsMenuButtonDisplayRecipe } from "./menuButtons-menuButtonDisplay/recipe";
+import { menuButtonsMenuButtonsetDescription } from "./menuButtons-menuButtonset/description";
+import { MenuButtonsMenuButtonset } from "./menuButtons-menuButtonset/menuButtons-menuButtonset";
+import { menuButtonsMenuButtonsetRecipe } from "./menuButtons-menuButtonset/recipe";
+import { menuButtonsOverviewDescription } from "./menuButtons-overview/description";
+import { MenuButtonsOverview } from "./menuButtons-overview/menuButtons-overview";
+import { menuButtonsOverviewRecipe } from "./menuButtons-overview/recipe";
 import { menuButtonsSizesDescription } from "./menuButtons-sizes/description";
+import { MenuButtonsSizes } from "./menuButtons-sizes/menuButtons-sizes";
 import { menuButtonsSizesRecipe } from "./menuButtons-sizes/recipe";
 
 const menuButtonLegacyItems = [

@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
+import 'preact';
 import { messageSets } from "./inputPassword-shared";
 
 export default function InputPasswordOverviewExample() {

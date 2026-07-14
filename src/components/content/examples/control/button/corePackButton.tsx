@@ -1,8 +1,9 @@
-import { h, ComponentProps } from "preact";
-import { useCallback, useMemo, useState } from "preact/hooks";
 import "oj-c/button";
 import "ojs/ojlabel";
 import "ojs/ojlabelvalue";
+import 'preact';
+import { ComponentProps } from 'preact';
+import { useCallback,useMemo,useState } from "preact/hooks";
 
 type CButtonProps = ComponentProps<"oj-c-button">;
 type CButtonActionEvent = Parameters<NonNullable<CButtonProps["onojAction"]>>[0];

@@ -1,4 +1,4 @@
-import { h } from "preact";
+import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
 import InputSensitiveTextBindingVdomExample from "./inputSensitiveText-binding";
 import InputSensitiveTextClearIconVdomExample from "./inputSensitiveText-clearicon";
@@ -18,7 +18,7 @@ const inputSensitiveTextItemsVdom: {
   name: string;
   description: (typeof inputSensitiveTextDocsVdom)[InputSensitiveTextVdomDemoId]["description"];
   recipe: (typeof inputSensitiveTextDocsVdom)[InputSensitiveTextVdomDemoId]["recipe"];
-  Component: () => h.JSX.Element;
+  Component: () => preact.JSX.Element;
 }[] = [
   {
     id: "states",

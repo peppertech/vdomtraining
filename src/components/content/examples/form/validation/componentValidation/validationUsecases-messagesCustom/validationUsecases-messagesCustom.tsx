@@ -1,10 +1,11 @@
-import { h, type ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
-import type Message = require('ojs/ojmessaging');
 import 'ojs/ojformlayout';
 import 'ojs/ojoption';
 import 'ojs/ojradioset';
 import 'ojs/ojselectcombobox';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
+import type Message = require('ojs/ojmessaging');
 
 type SelectManyChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-select-many'>['onvalueChanged']>

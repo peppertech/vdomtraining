@@ -1,11 +1,10 @@
-// @ts-nocheck
-import { Fragment, h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/customShapesData.json';
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import 'ojs/ojpictochart';
 import 'ojs/ojlegend';
+import 'ojs/ojpictochart';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as chartData from 'text!../../data/cookbook/dataVisualizations/pictoChart/resources/customShapesData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 export const PictoChartCustomShapes = () => {
   const colorHandler = useMemo(() => new ColorAttributeGroupHandler(), []);

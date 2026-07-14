@@ -1,13 +1,13 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/overviewTimeline/seriesData.json';
-import 'ojs/ojtimeline';
-import 'ojs/ojformlayout';
-import 'ojs/ojbutton';
-import 'ojs/ojlabel';
 import 'css!./demo.css';
+import 'ojs/ojbutton';
+import 'ojs/ojformlayout';
+import 'ojs/ojlabel';
+import 'ojs/ojtimeline';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as timelineSeriesDataText from 'text!../data/cookbook/dataVisualizations/timeline/overviewTimeline/seriesData.json';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type TimelineOverviewItem = {
   id: string;
@@ -37,8 +37,8 @@ const renderItemTemplate = (item: DatavizTemplateContext<DatavizChartDatum>) => 
 );
 
 export const TimelineOverviewTimeline = () => {
-  const [orientationValue, setOrientationValue] = useState('horizontal');
-  const [overviewValue, setOverviewValue] = useState('on');
+  const [orientationValue, setOrientationValue] = useState<NonNullable<ComponentProps<'oj-timeline'>['orientation']>>('horizontal');
+  const [overviewValue, setOverviewValue] = useState<NonNullable<NonNullable<ComponentProps<'oj-timeline'>['overview']>['rendered']>>('on');
 
   const dataProvider = useMemo(
     () =>
@@ -48,13 +48,13 @@ export const TimelineOverviewTimeline = () => {
     []
   );
 
-  const handleOrientationChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleOrientationChanged = (event: DatavizValueChangedEvent<typeof orientationValue>) => {
     if (event.detail.updatedFrom === 'internal') {
       setOrientationValue(event.detail.value);
     }
   };
 
-  const handleOverviewChanged = (event: DatavizValueChangedEvent<string>) => {
+  const handleOverviewChanged = (event: DatavizValueChangedEvent<typeof overviewValue>) => {
     if (event.detail.updatedFrom === 'internal') {
       setOverviewValue(event.detail.value);
     }

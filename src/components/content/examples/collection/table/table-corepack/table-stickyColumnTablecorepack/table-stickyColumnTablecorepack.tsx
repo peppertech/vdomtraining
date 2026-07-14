@@ -1,11 +1,11 @@
-import type { ComponentProps } from "preact";
-import { useEffect, useMemo, useState } from "preact/hooks";
 import "css!./demo.css";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import * as empData from "text!./employeeStatusData.json";
-import type { CTableElement } from "oj-c/table";
-import "oj-c/table";
 import "oj-c/menu-button";
+import "oj-c/table";
+import type { CTableElement } from "oj-c/table";
+import type { ComponentProps } from "preact";
+import { useEffect,useMemo,useState } from "preact/hooks";
+import * as empData from "text!./employeeStatusData.json";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 interface EmployeeStatus {
   EmployeeId: number;

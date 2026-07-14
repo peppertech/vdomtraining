@@ -1,7 +1,8 @@
-import { h, type ComponentProps } from 'preact';
 import { IntlDateTimeConverter } from "ojs/ojconverter-datetime";
 import "ojs/ojdatetimepicker";
 import "ojs/ojformlayout";
+import 'preact';
+import { type ComponentProps } from 'preact';
 import {
   messageSets,
   sampleDateTimeValue,

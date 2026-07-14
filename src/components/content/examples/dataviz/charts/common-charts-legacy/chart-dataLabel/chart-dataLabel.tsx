@@ -1,8 +1,8 @@
-import { Fragment, h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
-import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/salesData.json';
 import { ojChart } from 'ojs/ojchart';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
+import 'preact';
+import { useMemo } from 'preact/hooks';
+import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/salesData.json';
 
 import 'ojs/ojchart';
 

@@ -1,10 +1,10 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicData.json';
-import { ojPopup } from 'ojs/ojpopup';
 import 'ojs/ojchart';
 import 'ojs/ojpopup';
+import { ojPopup } from 'ojs/ojpopup';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import * as chartDataText from 'text!../data/cookbook/dataVisualizations/chart/resources/basicData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 interface ChartItem {
     id: string;

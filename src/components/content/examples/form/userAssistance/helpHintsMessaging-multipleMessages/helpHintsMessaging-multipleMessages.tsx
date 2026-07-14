@@ -1,11 +1,12 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import Message = require('ojs/ojmessaging');
 import 'ojs/ojbutton';
-import 'ojs/ojoption';
 import 'ojs/ojformlayout';
-import 'ojs/ojinputtext';
 import 'ojs/ojinputnumber';
+import 'ojs/ojinputtext';
+import 'ojs/ojoption';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import Message = require('ojs/ojmessaging');
 type ButtonsetValue = NonNullable<ComponentProps<'oj-buttonset-many'>['value']>;
 type InputTextValue = ComponentProps<'oj-input-text'>['value'];
 type TextAreaValue = ComponentProps<'oj-text-area'>['value'];

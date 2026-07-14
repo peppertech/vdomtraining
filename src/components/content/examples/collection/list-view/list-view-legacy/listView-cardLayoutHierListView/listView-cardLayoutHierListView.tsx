@@ -1,17 +1,15 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import 'ojs/ojactioncard';
-import '../../../../../../jet-composites/demo-profile-card-layout/loader';
-import 'ojs/ojlistview';
-import { ojButtonsetOne } from 'ojs/ojbutton';
-import 'ojs/ojbutton';
 import 'ojs/ojavatar';
-import 'ojs/ojlistitemlayout';
-import 'ojs/ojswitch';
+import 'ojs/ojbutton';
 import 'ojs/ojlabel';
+import 'ojs/ojlistitemlayout';
+import 'ojs/ojlistview';
 import 'ojs/ojoption';
+import 'ojs/ojswitch';
+import 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
+import '../../../../../../jet-composites/demo-profile-card-layout/loader';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 interface Contact {
     id: number;

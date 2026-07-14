@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import 'preact';
 import { PushButtonsChroming } from '../../button-legacy/pushButtons-chroming/pushButtons-chroming';
 
 export const ToggleButtonsChroming = () => <PushButtonsChroming />;

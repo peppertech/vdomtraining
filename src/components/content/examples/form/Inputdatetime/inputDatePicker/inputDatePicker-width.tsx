@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from 'preact';
-import { useCallback, useState } from "preact/hooks";
 import "oj-c/form-layout";
 import "oj-c/input-date-picker";
 import "oj-c/radioset";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useCallback,useState } from "preact/hooks";
 import {
   labelEdgeOptions,
   type RadiosetValueChangedEvent,

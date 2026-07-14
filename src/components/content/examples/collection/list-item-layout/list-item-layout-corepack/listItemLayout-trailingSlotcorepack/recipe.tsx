@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const recipeHtmlText = String.raw`<ol>
   <li>The sample shows how to render trailing slot contents within a oj-c-list-item-layout tag.</li>

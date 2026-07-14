@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "ojs/ojformlayout";
 import "ojs/ojinputnumber";
 import "ojs/ojradioset";
+import 'preact';
+import { useMemo,useState } from "preact/hooks";
 import { type RadiosetValueChangedEvent } from "./inputNumber-shared";
 
 export default function InputNumberTextAlignExample() {

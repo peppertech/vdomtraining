@@ -1,10 +1,10 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
-import type { FilePickerElement } from 'ojs/ojfilepicker';
 import 'ojs/ojfilepicker';
+import type { FilePickerElement } from 'ojs/ojfilepicker';
 import 'ojs/ojoption';
 import 'ojs/ojradioset';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
 
 type CaptureValue = NonNullable<FilePickerElement['capture']>;
 type RadioValueChangedEvent = Parameters<

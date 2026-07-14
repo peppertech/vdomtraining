@@ -1,11 +1,11 @@
-import { h } from "preact";
-import { useEffect, useMemo } from "preact/hooks";
-import { RESTDataProvider } from "ojs/ojrestdataprovider";
-import { CollectionMockFetchServer } from "../../shared/CollectionMockFetchServer";
-import * as jsonDataStr from "text!./contacts.json";
-import "../../../../../jet-composites/demo-profile-card-layout/loader";
 import "css!./demo.css";
 import "oj-c/card-view";
+import { RESTDataProvider } from "ojs/ojrestdataprovider";
+import * as preact from 'preact';
+import { useEffect,useMemo } from "preact/hooks";
+import * as jsonDataStr from "text!./contacts.json";
+import "../../../../../jet-composites/demo-profile-card-layout/loader";
+import { CollectionMockFetchServer } from "../../shared/CollectionMockFetchServer";
 
 interface Contact {
   id: string;
@@ -23,7 +23,7 @@ const CONTACTS = JSON.parse(jsonDataStr as string) as Contact[];
 
 const renderCard = (context: CardItemContext) => (
   <div class="oj-panel">
-    {h("demo-profile-card-layout", {
+    {preact.h("demo-profile-card-layout", {
       name: context.data.name,
       initials: context.data.initials,
     })}

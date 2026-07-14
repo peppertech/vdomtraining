@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import { BoxPlotAnimation } from "./boxPlot-animation/boxPlot-animation";
 import { boxPlotAnimationDescription } from "./boxPlot-animation/description";

@@ -1,12 +1,12 @@
-import type { ComponentProps } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "css!./demo.css";
-import type { MessageToastItem, CMessageToastElement } from "oj-c/message-toast";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { useToastContainerOffset } from "../useToastContainerOffset";
 import "oj-c/checkboxset";
-import "oj-c/radioset";
 import "oj-c/message-toast";
+import type { CMessageToastElement,MessageToastItem } from "oj-c/message-toast";
+import "oj-c/radioset";
+import type { ComponentProps } from "preact";
+import { useMemo,useState } from "preact/hooks";
+import { useToastContainerOffset } from "../useToastContainerOffset";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type DemoMessageToastItem = MessageToastItem & {
   id: string;

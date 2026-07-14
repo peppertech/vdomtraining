@@ -1,8 +1,8 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
 import "oj-c/buttonset-single";
 import "ojs/ojlabel";
 import "ojs/ojlabelvalue";
+import 'preact';
+import { useState } from "preact/hooks";
 
 const drinkOptions = [
   { value: "coffee", label: "Coffee" },

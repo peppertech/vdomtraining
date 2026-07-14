@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>
   Demonstrates using popup deferred content rendering. Content components of the popup will

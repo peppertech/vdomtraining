@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A truncating badge is a label which holds a small amount of information, and also displays a tooltip when truncation occurs.</p><p>
   Badges are labels which hold small amounts of information such as number of unread messages, or an

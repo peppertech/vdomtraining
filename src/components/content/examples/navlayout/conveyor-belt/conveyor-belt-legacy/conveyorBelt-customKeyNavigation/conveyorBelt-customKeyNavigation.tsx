@@ -1,7 +1,7 @@
-import { h } from 'preact';
-import { useRef } from 'preact/hooks';
-import 'ojs/ojconveyorbelt';
 import "css!./demo.css";
+import 'ojs/ojconveyorbelt';
+import 'preact';
+import { useRef } from 'preact/hooks';
 
 type ConveyorBeltElement = HTMLElement & {
     scrollElementIntoView: (element: Element) => void;

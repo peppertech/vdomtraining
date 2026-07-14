@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojbutton';
-import 'ojs/ojtoolbar';
 import 'ojs/ojchart';
+import 'ojs/ojtoolbar';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
 import '../../../../../../jet-composites/demo-chart-stack-control/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ChartStack = ComponentProps<'oj-chart'>['stack'];
 type ChartOrientation = ComponentProps<'oj-chart'>['orientation'];

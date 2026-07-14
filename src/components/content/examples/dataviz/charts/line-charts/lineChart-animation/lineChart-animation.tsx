@@ -1,11 +1,11 @@
 import { JetElementCustomEvent } from 'ojs/index';
-import { useMemo, useRef, useState } from 'preact/hooks';
-import type { ComponentProps, JSX } from 'preact';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import 'ojs/ojbutton';
 import 'ojs/ojchart';
 import 'ojs/ojtoolbar';
+import type { ComponentProps,JSX } from 'preact';
+import { useMemo,useRef,useState } from 'preact/hooks';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ChartOrientation = ComponentProps<'oj-chart'>['orientation'];
 type AnimatedLineChartItem = {

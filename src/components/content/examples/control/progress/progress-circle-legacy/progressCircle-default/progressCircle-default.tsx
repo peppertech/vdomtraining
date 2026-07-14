@@ -1,11 +1,11 @@
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
-import 'ojs/ojprogress-circle';
-import 'ojs/ojinputnumber';
 import 'ojs/ojcheckboxset';
 import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
 import 'ojs/ojoption';
+import 'ojs/ojprogress-circle';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
 
 type CheckboxsetValue = NonNullable<ComponentProps<'oj-checkboxset'>['value']>;
 type CheckboxChangedEvent = Parameters<NonNullable<ComponentProps<'oj-checkboxset'>['onvalueChanged']>>[0];

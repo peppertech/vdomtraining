@@ -1,15 +1,15 @@
-// @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import { ojMenu } from 'ojs/ojmenu';
-import 'ojs/ojbutton';
-import 'ojs/ojtoolbar';
-import 'ojs/ojmenu';
 import 'oj-c/button';
 import 'oj-c/menu-button';
+import 'oj-c/progress-button';
 import 'oj-c/split-menu-button';
 import 'oj-c/toggle-button';
-import 'oj-c/progress-button';
+import 'ojs/ojbutton';
+import 'ojs/ojmenu';
+import { ojMenu } from 'ojs/ojmenu';
+import 'ojs/ojtoolbar';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
 
 const fileMenuItems = [
   { id: 'new', label: 'New File', icon: 'oj-ux-ico-new-application', disabled: false },
@@ -25,14 +25,14 @@ const cMenuButtonItems = [
   { type: 'divider' },
   { label: 'Zoom In', key: 'zoomin', disabled: false },
   { label: 'Zoom Out', key: 'zoomout', disabled: false }
-];
+] satisfies NonNullable<ComponentProps<'oj-c-menu-button'>['items']>;
 const cSplitMenuButtonItems = [
-  { label: 'Copy' },
-  { label: 'Cut' },
-  { label: 'Paste', disabled: true },
+  { label: 'Copy', key: 'copy' },
+  { label: 'Cut', key: 'cut' },
+  { label: 'Paste', key: 'paste', disabled: true },
   { type: 'divider' },
-  { label: 'Undo' }
-];
+  { label: 'Undo', key: 'undo' }
+] satisfies NonNullable<ComponentProps<'oj-c-split-menu-button'>['items']>;
 const someButtons = [
   { id: 'Library', icon: 'oj-ux-ico-library' },
   { id: 'Home', icon: 'oj-ux-ico-home' },

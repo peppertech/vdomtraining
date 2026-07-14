@@ -1,10 +1,10 @@
-import { useMemo } from "preact/hooks";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
-import type { CListViewElement } from "oj-c/list-view";
 import "css!./demo.css";
 import "oj-c/badge";
 import "oj-c/list-item-layout";
 import "oj-c/list-view";
+import type { CListViewElement } from "oj-c/list-view";
+import { useMemo } from "preact/hooks";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 interface TaskRow {
   code1: string;

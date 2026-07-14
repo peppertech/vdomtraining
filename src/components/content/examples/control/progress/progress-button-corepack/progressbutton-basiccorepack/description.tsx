@@ -1,4 +1,4 @@
-import { h } from "preact";
+import 'preact';
 
 const descriptionHtmlText = String.raw`<p>A Progress button represents button-level initiation.</p>This demo shows binding the value in oj-c-progress-button.`;
 

@@ -1,6 +1,7 @@
-import { h, ComponentProps, JSX } from "preact";
-import { useMemo, useState } from "preact/hooks";
 import "oj-c/split-menu-button";
+import 'preact';
+import { ComponentProps,JSX } from 'preact';
+import { useMemo,useState } from "preact/hooks";
 
 type SplitMenuButtonProps = ComponentProps<"oj-c-split-menu-button">;
 type SplitMenuButtonItem = NonNullable<SplitMenuButtonProps["items"]>[number];

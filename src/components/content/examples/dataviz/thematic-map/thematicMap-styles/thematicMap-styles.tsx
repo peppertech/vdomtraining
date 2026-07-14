@@ -1,28 +1,30 @@
-// @ts-nocheck
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/world_countries.json';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/globalGDP.json';
 import 'css!./demo.css';
+import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
 import 'ojs/ojthematicmap';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/data/globalGDP.json';
+import * as geoText from 'text!../data/cookbook/dataVisualizations/thematicMap/resources/maps/world_countries.json';
 import '../../../../../jet-composites/demo-input-json/loader';
 import '../../../../../jet-composites/demo-select-enum/loader';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 type ThematicMapProvider = ComponentProps<'oj-thematic-map'>['mapProvider'];
+type ThematicMapStyleDefaults = NonNullable<ComponentProps<'oj-thematic-map'>['styleDefaults']>;
+type MarkerBorderStyle = NonNullable<ThematicMapStyleDefaults['dataMarkerDefaults']>['borderStyle'];
+type MarkerLabelStyle = NonNullable<ThematicMapStyleDefaults['dataMarkerDefaults']>['labelStyle'];
 
 const geo = JSON.parse(geoText as string);
 const gdpData = JSON.parse(jsonDataText as string);
 
 export const ThematicMapStyles = () => {
   const [borderWidth, setBorderWidth] = useState(0.75);
-  const [borderStyle, setBorderStyle] = useState('solid');
+  const [borderStyle, setBorderStyle] = useState<MarkerBorderStyle>('solid');
   const [borderColor, setBorderColor] = useState('blue');
-  const [markerLabel, setMarkerLabel] = useState({ color: 'white' });
+  const [markerLabel, setMarkerLabel] = useState<MarkerLabelStyle>({ color: 'white' });
   const mapProvider = useMemo<ThematicMapProvider>(
     () => ({
       geo,
@@ -42,7 +44,7 @@ export const ThematicMapStyles = () => {
       }),
     []
   );
-  const styles = useMemo(
+  const styles = useMemo<ThematicMapStyleDefaults>(
     () => ({
       dataMarkerDefaults: {
         borderColor,
@@ -95,13 +97,13 @@ export const ThematicMapStyles = () => {
           id="select1"
           labelHint="Marker Border Style"
           value={borderStyle}
-          onvalueChanged={(event: DatavizValueChangedEvent<string | null>) => setBorderStyle(event.detail.value ?? 'solid')}
+          onvalueChanged={(event: DatavizValueChangedEvent<MarkerBorderStyle | null>) => setBorderStyle(event.detail.value ?? 'solid')}
           enumValues={['none', 'solid']}
         />
         <demo-input-json
           id="markerLabel"
           value={markerLabel}
-          onvalueChanged={(event: DatavizValueChangedEvent<{ color?: string } | null>) => setMarkerLabel(event.detail.value ?? {})}
+          onvalueChanged={(event: DatavizValueChangedEvent<MarkerLabelStyle | null>) => setMarkerLabel(event.detail.value ?? {})}
           labelHint="Marker Label Style"
         />
       </oj-form-layout>

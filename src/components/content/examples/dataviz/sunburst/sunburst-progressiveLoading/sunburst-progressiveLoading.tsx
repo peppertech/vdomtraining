@@ -1,13 +1,13 @@
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
-import DemoDelayingTreeDataProvider from '../streamList-streamlist/DemoDelayingTreeDataProvider';
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojsunburst';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as jsonDataText from 'text!../data/cookbook/dataVisualizations/treeView/resources/cityStateData.json';
+import DemoDelayingTreeDataProvider from '../streamList-streamlist/DemoDelayingTreeDataProvider';
+import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
 type ProgressiveNode = {
   label: string;

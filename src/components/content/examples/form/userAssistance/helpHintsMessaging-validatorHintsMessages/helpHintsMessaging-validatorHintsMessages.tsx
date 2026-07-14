@@ -1,7 +1,8 @@
-import { h, type ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
-import 'ojs/ojformlayout';
 import 'oj-c/input-number';
+import 'ojs/ojformlayout';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
 type InputNumberValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-c-input-number'>['onvalueChanged']>>[0];
 export const HelpHintsMessagingValidatorHintsMessages = () => {
     const [decimal, setDecimal] = useState<number | null>(null);

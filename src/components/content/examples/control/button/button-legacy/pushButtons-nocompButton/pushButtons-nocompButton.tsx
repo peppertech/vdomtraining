@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from 'preact';
-import { useState } from 'preact/hooks';
+import 'ojs/ojbutton';
 import 'ojs/ojcheckboxset';
 import 'ojs/ojoption';
-import 'ojs/ojbutton';
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
 
 type CheckboxsetValue = NonNullable<ComponentProps<'oj-checkboxset'>['value']>;
 type CheckboxsetValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-checkboxset'>['onvalueChanged']>>[0];

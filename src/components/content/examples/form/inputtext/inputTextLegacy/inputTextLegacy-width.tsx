@@ -1,6 +1,6 @@
-import { h } from "preact";
 import "ojs/ojformlayout";
 import "ojs/ojinputtext";
+import 'preact';
 
 export default function InputTextLegacyWidthExample() {
   return (

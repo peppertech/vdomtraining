@@ -1,17 +1,16 @@
-import { h } from 'preact';
+import 'preact';
 import type { ComponentProps } from 'preact';
 
-import { useMemo, useState } from 'preact/hooks';
-import { JetElementCustomEvent } from 'ojs/index';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
-import 'ojs/ojdrawerpopup';
 import 'ojs/ojbutton'; // Controls
+import 'ojs/ojdrawerpopup';
 import 'ojs/ojnavigationlist'; // Start drawer
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 // End drawer
+import "css!./demo.css";
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
 import 'ojs/ojselectsingle';
-import "css!./demo.css";
 
 type DrawerOpened = NonNullable<ComponentProps<'oj-drawer-popup'>['opened']>;
 type SelectSingleValue = NonNullable<ComponentProps<'oj-select-single'>['value']>;

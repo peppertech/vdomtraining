@@ -1,8 +1,9 @@
-import { h, type ComponentProps } from 'preact';
-import { useMemo, useState } from "preact/hooks";
+import "css!./inputPassword.css";
 import "ojs/ojgauge";
 import "ojs/ojinputtext";
-import "css!./inputPassword.css";
+import 'preact';
+import { type ComponentProps } from 'preact';
+import { useMemo,useState } from "preact/hooks";
 import {
   type InputPasswordRawValueChangedEvent,
   type InputPasswordValueChangedEvent,

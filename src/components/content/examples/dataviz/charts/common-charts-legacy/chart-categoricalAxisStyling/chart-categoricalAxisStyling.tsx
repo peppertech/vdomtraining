@@ -1,11 +1,11 @@
-import { Fragment, h } from 'preact';
-import type { ComponentProps } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
 import { JetElementCustomEvent } from 'ojs/index';
-import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/hiringData.json';
-import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import 'ojs/ojchart';
+import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import 'ojs/ojtoolbar';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import * as dataText from 'text!../data/cookbook/dataVisualizations/chart/resources/hiringData.json';
 import '../../../../../../jet-composites/demo-chart-orientation-control/loader';
 import '../../../../../../jet-composites/demo-chart-stack-control/loader';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');

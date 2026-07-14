@@ -1,9 +1,9 @@
+import "css!./demo.css";
+import "oj-c/tag-cloud";
 import type { ComponentProps } from "preact";
 import { useMemo } from "preact/hooks";
-import "css!./demo.css";
-import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import * as socialNetworksText from "text!../../data/cookbook/dataVisualizations/tagCloud/resources/socialNetworks.json";
-import "oj-c/tag-cloud";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 type TagCloudDatatipConfig = NonNullable<ComponentProps<"oj-c-tag-cloud">["datatipConfig"]>;
 

@@ -1,5 +1,5 @@
-import { h } from "preact";
 import "ojs/ojinputsearch";
+import 'preact';
 import {
   InputSearchDiagnostics,
   useInputSearchExampleState,

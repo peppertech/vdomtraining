@@ -1,11 +1,11 @@
-import { useMemo, useState } from "preact/hooks";
-import type { MessageToastItem, CMessageToastElement } from "oj-c/message-toast";
-import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-import { useToastContainerOffset } from "../useToastContainerOffset";
-import "oj-c/message-toast";
 import "oj-c/button";
-import "oj-c/input-text";
 import "oj-c/form-layout";
+import "oj-c/input-text";
+import "oj-c/message-toast";
+import type { CMessageToastElement,MessageToastItem } from "oj-c/message-toast";
+import { useMemo,useState } from "preact/hooks";
+import { useToastContainerOffset } from "../useToastContainerOffset";
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type DemoMessageToastItem = MessageToastItem & {
   id: string;

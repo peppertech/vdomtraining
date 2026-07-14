@@ -1,12 +1,12 @@
 // @ts-nocheck
-import { h } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
-import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import { ColorAttributeGroupHandler } from 'ojs/ojattributegrouphandler';
-import 'ojs/ojpictochart';
-import 'ojs/ojlegend';
-import 'ojs/ojinputnumber';
 import 'ojs/ojformlayout';
+import 'ojs/ojinputnumber';
+import 'ojs/ojlegend';
+import 'ojs/ojpictochart';
+import 'preact';
+import { useMemo,useState } from 'preact/hooks';
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
 type PropertyChangedEvent<T> = CustomEvent<{
     value: T;
 }>;

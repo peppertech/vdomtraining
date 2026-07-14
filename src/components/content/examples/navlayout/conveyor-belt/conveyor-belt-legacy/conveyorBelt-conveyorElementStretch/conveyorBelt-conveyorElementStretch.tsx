@@ -1,6 +1,6 @@
-import { h } from 'preact';
-import 'ojs/ojconveyorbelt';
 import "css!./demo.css";
+import 'ojs/ojconveyorbelt';
+import 'preact';
 
 export const ConveyorBeltConveyorElementStretch = () => {
   return (

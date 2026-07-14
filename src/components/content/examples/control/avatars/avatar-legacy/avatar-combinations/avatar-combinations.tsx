@@ -1,13 +1,13 @@
-// @ts-nocheck
 import { JetElementCustomEvent } from 'ojs/index';
-import { h } from 'preact';
-import type { ComponentProps } from 'preact';type ValueChangedEvent<TValue> = JetElementCustomEvent<TValue>;
-type AvatarShape = ComponentProps<'oj-avatar'>['shape'];
-import { useState } from 'preact/hooks';
-import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
 import 'ojs/ojavatar';
-import 'ojs/ojradioset';
+import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
 import 'ojs/ojoption';
+import 'ojs/ojradioset';
+import 'preact';
+import type { ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
+type ValueChangedEvent<TValue> = JetElementCustomEvent<TValue>;
+type AvatarShape = ComponentProps<'oj-avatar'>['shape'];
 export const AvatarCombinations = () => {
     const [shape, setShape] = useState<string>('theme');
     const firstName: string = 'Amy';
