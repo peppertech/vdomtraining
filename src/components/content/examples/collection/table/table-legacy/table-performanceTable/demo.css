@@ -2,9 +2,9 @@
   width: 12.5rem;
 }
 
-.demo-table-performance-panel {
+/* .demo-table-performance-panel {
   min-height: 14rem;
-}
+} */
 
 .demo-table-performance-inputs {
   display: flex;
@@ -16,13 +16,13 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  /* gap: 1rem;
+  margin-top: 1.5rem; */
 }
 
-.demo-table-render-time {
+ /* .demo-table-render-time {
   font-size: 1.25rem;
-}
+}  */
 
 .demo-table-container {
   width: 100%;

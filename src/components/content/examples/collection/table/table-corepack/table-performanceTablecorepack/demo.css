@@ -4,7 +4,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: start;
   gap: 2.5rem;
-  min-height: 10rem;
+  /* min-height: 10rem; */
   padding: 1rem;
 }
 
@@ -21,10 +21,10 @@
   margin: 0;
 }
 
-.demo-table-render-time {
+/* .demo-table-render-time {
   font-size: 1.25rem;
   line-height: 1.4;
-}
+} */
 
 .demo-table-performance-table {
   width: 100%;
