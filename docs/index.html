@@ -1,28 +1,14 @@
-<!doctype html>
-<html lang="en-us">
+<!doctype html><html lang="en-us"><head>
+    <link href="/styles/redwood/20.1.2/web/redwood.css" id="themestyle" rel="stylesheet">
+    <link href="/styles/theme-redwood/20.1.2/web/theme.css" id="redwoodbase" rel="stylesheet">
+    <link href="/styles/app.css" id="appbase" rel="stylesheet"><base href="/"/><meta charset="UTF-8"/><script>(function () {
+        var params = new URLSearchParams(window.location.search);
+        var redirectPath = params.get("spaRedirect");
 
-<head>
-  <base href="/" />
-  <meta charset="UTF-8" />
-  <title>Oracle JET VDOM training sample app</title>
-  <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1" />
-  <meta name="description" content="The Oracle JET VDOM Starter Template" />
-  <link rel="icon" href="/styles/images/favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" id="uxiconFont"
-  href="https://static.oracle.com/cdn/fnd/gallery/2607.0.1/images/iconfont/ojuxIconFont.min.css" />
-  <link href="/styles/theme-redwood/20.1.2/web/theme.css" id="redwoodbase" rel="stylesheet">
-  <link href="/styles/redwood/20.1.2/web/redwood.css" id="themestyle" rel="stylesheet">
-  <!-- <link href="/styles/main.7ed7168de56af8c725b0.css" rel="stylesheet"> -->
-  <link href="/styles/app.css" rel="stylesheet">
-</head>
-
-<body class="oj-web-applayout-body" data-oj-binding-provider="preact"><app-root></app-root>
-  <script>// The "oj_whenReady" global variable enables a strategy that the busy context whenReady,
-    // will implicitly add a busy state, until the application calls applicationBootstrapComplete
-    // on the busy state context.
-    window["oj_whenReady"] = true;</script>
-  <script defer="defer" src="/js/runtime.a01bff15e0d42a29157d.js"></script>
-  <script defer="defer" src="/js/main.9afcf1fa620ba3069a6c.js"></script>
-</body>
-
-</html>
+        if (redirectPath) {
+          window.history.replaceState(null, "", redirectPath);
+        }
+      })();</script><title>Oracle JET VDOM training sample app</title><meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1"/><meta name="description" content="The Oracle JET VDOM Starter Template"/><link rel="icon" href="/styles/images/favicon.ico" type="image/x-icon"/><link rel="stylesheet" id="uxiconFont" href="https://static.oracle.com/cdn/fnd/gallery/2607.0.1/images/iconfont/ojuxIconFont.min.css"/><link href="/styles/app.css" rel="stylesheet"><link href="/styles/main.8761e53f7fb56bdf45f6.css" rel="stylesheet"></head><body class="oj-web-applayout-body" data-oj-binding-provider="preact"><app-root></app-root><script>// The "oj_whenReady" global variable enables a strategy that the busy context whenReady,
+      // will implicitly add a busy state, until the application calls applicationBootstrapComplete
+      // on the busy state context.
+      window["oj_whenReady"] = true;</script><script defer="defer" src="/js/runtime.eccee23b639b453ed98b.js"></script><script defer="defer" src="/js/main.0b5f6f74c4667a7d549d.js"></script></body></html>
