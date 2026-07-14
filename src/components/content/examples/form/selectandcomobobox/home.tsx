@@ -214,7 +214,7 @@ const SelectAndComboboxHome = ({
   ]);
 
   const handleSelectedChanged = (event: SelectSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as SelectComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as SelectComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = selectComponents.find(
         (component) => component.id === selectedKey,

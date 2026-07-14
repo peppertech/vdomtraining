@@ -142,7 +142,7 @@ const RadiosetHome = ({
       : undefined);
 
   const handleSelectedChanged = (event: RadiosetSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as RadiosetComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as RadiosetComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = radiosetComponents.find(
         (component) => component.id === selectedKey,

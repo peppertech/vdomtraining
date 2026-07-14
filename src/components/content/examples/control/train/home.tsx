@@ -115,7 +115,7 @@ const TrainHome = ({
   }, [activeComponentId]);
 
   const handleSelectedChanged = (event: TrainSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as TrainComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as TrainComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = trainComponents.find(
         (component) => component.id === selectedKey,

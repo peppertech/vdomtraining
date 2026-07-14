@@ -183,7 +183,7 @@ const InputPasswordHome = ({
   ]);
 
   const handleSelectedChanged = (event: PasswordSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as PasswordComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as PasswordComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = passwordComponents.find(
         (component) => component.id === selectedKey,

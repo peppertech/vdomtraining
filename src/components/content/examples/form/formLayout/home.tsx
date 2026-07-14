@@ -128,7 +128,7 @@ export default function FormLayoutHome({
   }, [activeComponentId]);
 
   const handleSelectedChanged = (event: FormLayoutSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as FormLayoutComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as FormLayoutComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = formLayoutComponents.find(
         (component) => component.id === selectedKey,

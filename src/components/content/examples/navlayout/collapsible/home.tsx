@@ -137,7 +137,7 @@ const CollapsibleHome = ({
   }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: CollapsibleSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as CollapsibleComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as CollapsibleComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = collapsibleComponents.find(
         (component) => component.id === selectedKey,

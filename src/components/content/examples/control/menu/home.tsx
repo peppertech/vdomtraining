@@ -149,7 +149,7 @@ const MenuHome = ({
   }, [activeComponentId]);
 
   const handleSelectedChanged = (event: MenuSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as MenuComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as MenuComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = menuComponents.find(
         (component) => component.id === selectedKey,

@@ -199,7 +199,7 @@ const CheckboxHome = ({
   ]);
 
   const handleSelectedChanged = (event: CheckboxSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as CheckboxComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as CheckboxComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = checkboxComponents.find(
         (component) => component.id === selectedKey,

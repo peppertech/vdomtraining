@@ -133,7 +133,7 @@ const BadgeHome = ({
   }, [activeComponentId]);
 
   const handleSelectedChanged = (event: BadgeSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as BadgeComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as BadgeComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = badgeComponents.find(
         (component) => component.id === selectedKey,

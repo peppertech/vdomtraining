@@ -154,7 +154,7 @@ const DrawerHome = ({
   }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: DrawerSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as DrawerComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as DrawerComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = drawerComponents.find(
         (component) => component.id === selectedKey,

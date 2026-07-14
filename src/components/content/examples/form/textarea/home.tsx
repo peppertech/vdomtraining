@@ -180,7 +180,7 @@ const TextAreaHome = ({
   ]);
 
   const handleSelectedChanged = (event: TextAreaSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as TextAreaComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as TextAreaComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = textAreaComponents.find(
         (component) => component.id === selectedKey,

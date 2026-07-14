@@ -115,7 +115,7 @@ const FilmStripHome = ({
   }, [activeComponentId]);
 
   const handleSelectedChanged = (event: FilmStripSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as FilmStripComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as FilmStripComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = filmStripComponents.find(
         (component) => component.id === selectedKey,

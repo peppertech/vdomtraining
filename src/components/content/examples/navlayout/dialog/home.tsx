@@ -134,7 +134,7 @@ const DialogHome = ({
   }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: DialogSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as DialogComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as DialogComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = dialogComponents.find(
         (component) => component.id === selectedKey,

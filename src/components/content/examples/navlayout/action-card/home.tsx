@@ -137,7 +137,7 @@ const ActionCardHome = ({
   }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: ActionCardSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as ActionCardComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as ActionCardComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = actionCardComponents.find(
         (component) => component.id === selectedKey,

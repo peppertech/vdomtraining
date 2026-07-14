@@ -142,7 +142,7 @@ const TabBarHome = ({
   }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: TabBarSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as TabBarComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as TabBarComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = tabBarComponents.find(
         (component) => component.id === selectedKey,

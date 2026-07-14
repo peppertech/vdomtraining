@@ -121,7 +121,7 @@ const AvatarsHome = ({
   }, [activeComponentId]);
 
   const handleSelectedChanged = (event: AvatarSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as AvatarComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as AvatarComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = avatarComponents.find(
         (component) => component.id === selectedKey,

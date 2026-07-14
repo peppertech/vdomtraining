@@ -134,7 +134,7 @@ const PopupHome = ({
   }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: PopupSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as PopupComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as PopupComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = popupComponents.find(
         (component) => component.id === selectedKey,

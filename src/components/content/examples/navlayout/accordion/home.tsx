@@ -144,7 +144,7 @@ const AccordionHome = ({
   }, [exampleRoute, onBreadcrumbChange, routeSegments]);
 
   const handleSelectedChanged = (event: AccordionSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as AccordionComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as AccordionComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = accordionComponents.find(
         (component) => component.id === selectedKey,

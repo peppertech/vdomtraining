@@ -197,7 +197,7 @@ const ValidationHome = ({
   ]);
 
   const handleSelectedChanged = (event: ValidationSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as ValidationComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as ValidationComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = validationComponents.find(
         (component) => component.id === selectedKey,

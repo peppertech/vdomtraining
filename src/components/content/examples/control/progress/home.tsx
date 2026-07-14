@@ -171,7 +171,7 @@ const ProgressHome = ({
   }, [activeComponentId]);
 
   const handleSelectedChanged = (event: ProgressSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as ProgressComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as ProgressComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = progressComponents.find(
         (component) => component.id === selectedKey,

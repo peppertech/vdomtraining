@@ -127,7 +127,7 @@ const ToolbarHome = ({
   }, [activeComponentId]);
 
   const handleSelectedChanged = (event: ToolbarSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as ToolbarComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as ToolbarComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = toolbarComponents.find(
         (component) => component.id === selectedKey,

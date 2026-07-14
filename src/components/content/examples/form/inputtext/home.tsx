@@ -182,7 +182,7 @@ const InputTextHome = ({
   ]);
 
   const handleSelectedChanged = (event: InputTextSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as InputTextComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as InputTextComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = components.find(
         (component) => component.id === selectedKey,

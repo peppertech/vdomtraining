@@ -169,7 +169,7 @@ const SliderHome = ({
   ]);
 
   const handleSelectedChanged = (event: SliderSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as SliderComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as SliderComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = sliderComponents.find(
         (component) => component.id === selectedKey,

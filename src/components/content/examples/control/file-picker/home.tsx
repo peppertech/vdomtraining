@@ -127,7 +127,7 @@ const FilePickerHome = ({
   }, [activeComponentId]);
 
   const handleSelectedChanged = (event: FilePickerSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as FilePickerComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as FilePickerComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = filePickerComponents.find(
         (component) => component.id === selectedKey,

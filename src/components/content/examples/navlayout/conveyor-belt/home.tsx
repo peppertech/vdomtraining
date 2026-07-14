@@ -138,7 +138,7 @@ const ConveyorBeltHome = ({
 
   const handleSelectedChanged = (event: ConveyorBeltSelectedChangedEvent) => {
     const selectedKey =
-      event.detail.items[0]?.key as ConveyorBeltComponent["id"];
+      event.detail.items?.[0]?.key as ConveyorBeltComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = conveyorBeltComponents.find(
         (component) => component.id === selectedKey,

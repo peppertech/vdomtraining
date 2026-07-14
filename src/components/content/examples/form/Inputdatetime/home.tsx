@@ -253,7 +253,7 @@ const InputDateTimeHome = ({
   ]);
 
   const handleSelectedChanged = (event: DateTimeSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as DateTimeComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as DateTimeComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = dateTimeComponents.find(
         (component) => component.id === selectedKey,

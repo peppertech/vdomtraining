@@ -182,7 +182,7 @@ const InputNumberHome = ({
   ]);
 
   const handleSelectedChanged = (event: NumberSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as NumberComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as NumberComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = numberComponents.find(
         (component) => component.id === selectedKey,

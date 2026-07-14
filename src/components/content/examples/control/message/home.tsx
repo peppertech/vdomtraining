@@ -150,7 +150,7 @@ const MessageHome = ({
   }, [activeComponentId]);
 
   const handleSelectedChanged = (event: MessageSelectedChangedEvent) => {
-    const selectedKey = event.detail.items[0]?.key as MessageComponent["id"];
+    const selectedKey = event.detail.items?.[0]?.key as MessageComponent["id"];
     if (typeof selectedKey === "number") {
       const selectedComponent = messageComponents.find(
         (component) => component.id === selectedKey,
