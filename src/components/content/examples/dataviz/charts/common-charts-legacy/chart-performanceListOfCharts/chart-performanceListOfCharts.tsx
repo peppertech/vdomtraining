@@ -33,7 +33,9 @@ export const ChartPerformanceListOfCharts = () => {
     const [shapedValue, setShapedValue] = useState<ShapedValue>('on');
     const [timeValue, setTimeValue] = useState<number>(0);
     const [numItems, setNumItems] = useState<number>(50);
-    const [dataSource, setDataSource] = useState<ArrayDataProvider<ChartListItem['id'], ChartListItem>>(new ArrayDataProvider<ChartListItem['id'], ChartListItem>([], { keyAttributes: 'id' }));
+    const [dataSource, setDataSource] = useState<ArrayDataProvider<ChartListItem['id'], ChartListItem>>(
+        () => new ArrayDataProvider<ChartListItem['id'], ChartListItem>([], { keyAttributes: 'id' })
+    );
     const scrollPolicyOptionsConfig: ComponentProps<'oj-list-view'>['scrollPolicyOptions'] = { fetchSize: 10, maxCount: 10000 };
     const legendOffChartProps: Partial<ComponentProps<'oj-chart'>> = { legend: {
             rendered: 'off'

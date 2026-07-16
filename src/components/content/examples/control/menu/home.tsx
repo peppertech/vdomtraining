@@ -35,33 +35,13 @@ const menuComponents: MenuComponent[] = [
     description: "Classic oj-menu demos with popup actions, APIs, and template rendering.",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu-modal",
   },
-  // {
-  //   id: 2,
-  //   name: "Menu Button",
-  //   description: "Focused oj-menu-button demo including icon, submenu, and disabled scenarios.",
-  //   image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
-  // },
-  //  {
-  //   id: 4,
-  //   name: "Menu Button",
-  //   description: "Core Pack menu button with selection writeback and chroming variants.",
-  //   image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
-  //   isCorePack: true,
-  // },
   {
     id: 3,
     routeId: "menu-select-many",
     name: "Menu Select Many",
     description: "oj-menu-select-many embedded in an oj-menu for multi-select settings.",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu-select-many",
-  },
-  // {
-  //   id: 5,
-  //   name: "Split Menu Button",
-  //   description: "Core Pack split menu button illustrating primary vs menu actions.",
-  //   image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
-  //   isCorePack: true,
-  // },
+  }
 ];
 
 const dataProvider = new MutableArrayDataProvider<MenuComponent["id"], MenuComponent>(

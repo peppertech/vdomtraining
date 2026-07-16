@@ -1,6 +1,7 @@
 import "oj-c/message-banner";
 import { CMessageBannerElement,MessageBannerItem } from "oj-c/message-banner";
 import 'preact';
+import { useMemo } from 'preact/hooks';
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 type DemoMessageBannerItem = MessageBannerItem & {
@@ -147,27 +148,26 @@ const renderActionsTemplate = (context: ActionsTemplateContext) => (
 );
 
 export const MessagebannerOverviewcorepack = () => {
-  const pageMessages = new MutableArrayDataProvider<string, DemoMessageBannerItem>(sampleMessages, {
-    keyAttributes: "id"
-  });
-  const sectionMessages = new MutableArrayDataProvider<string, DemoMessageBannerItem>(sampleMessages, {
-    keyAttributes: "id"
-  });
-  const customMessages = new MutableArrayDataProvider<string, DemoCustomDetailMessageBannerItem>(
-    customDetailMessages,
-    {
-      keyAttributes: "id"
-    }
+  const pageMessages = useMemo(
+    () => new MutableArrayDataProvider<string, DemoMessageBannerItem>(sampleMessages, { keyAttributes: "id" }),
+    []
   );
-  const closableMessages = new MutableArrayDataProvider<string, DemoMessageBannerItem>(
-    closeAffordanceMessages,
-    {
-      keyAttributes: "id"
-    }
+  const sectionMessages = useMemo(
+    () => new MutableArrayDataProvider<string, DemoMessageBannerItem>(sampleMessages, { keyAttributes: "id" }),
+    []
   );
-  const datedMessages = new MutableArrayDataProvider<string, DemoMessageBannerItem>(timestampMessages, {
-    keyAttributes: "id"
-  });
+  const customMessages = useMemo(
+    () => new MutableArrayDataProvider<string, DemoCustomDetailMessageBannerItem>(customDetailMessages, { keyAttributes: "id" }),
+    []
+  );
+  const closableMessages = useMemo(
+    () => new MutableArrayDataProvider<string, DemoMessageBannerItem>(closeAffordanceMessages, { keyAttributes: "id" }),
+    []
+  );
+  const datedMessages = useMemo(
+    () => new MutableArrayDataProvider<string, DemoMessageBannerItem>(timestampMessages, { keyAttributes: "id" }),
+    []
+  );
 
   const closeCustomDetailMessage = (
     event: CMessageBannerElement.ojClose<string, DemoCustomDetailMessageBannerItem>
