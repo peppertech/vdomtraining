@@ -24,7 +24,6 @@ import RowExpanderRecipePage from "./row-expander/index";
 import SelectorRecipePage from "./selector/index";
 import StreamListRecipePage from "./stream-list/index";
 import SwipeActionsRecipePage from "./swipe-actions/index";
-import GroupByTable from "./table/group-by-table";
 import TableHome from "./table/home";
 import TreeViewRecipePage from "./tree-view/index";
 import WaterfallLayoutRecipePage from "./waterfall-layout/index";
@@ -59,6 +58,8 @@ const collectionComponents: CollectionComponent[] = [
     name: "Data Grid",
     image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
     isAvailable: true,
+    isCorePack: false,
+    render: () => <DataGridRecipePage />,
   },
   {
     id: 11,
@@ -151,13 +152,7 @@ const collectionComponents: CollectionComponent[] = [
     image: "oj-ux-icon-size-12x  oj-ux-ico-cards",
     isAvailable: true,
     render: () => <WaterfallLayoutRecipePage />,
-  },
-  // {
-  //   id: 5,
-  //   name: "Group By Table",
-  //   image: "oj-ux-icon-size-12x oj-ux-ico-group",
-  //   isAvailable: true,
-  // }
+  }
 ];
 
 const dataProvider = new MutableArrayDataProvider<
@@ -247,29 +242,6 @@ const CollectionHome = () => {
     [selectedItems],
   );
 
-  const ComponentDetail = useCallback(() => {
-    const activeComponent = collectionComponents.find(
-      (component) => component.id === activeComponentId,
-    );
-
-    if (activeComponent?.render) {
-      return activeComponent.render({
-        onBreadcrumbChange: updateNestedBreadcrumbItems,
-        onNavigateRootHome: handleHomeNavigation,
-        routeSegments: [activeComponent.routeId],
-      });
-    }
-
-    switch (activeComponentId) {
-      case 4:
-        return <DataGridRecipePage />;
-      case 5:
-        return <GroupByTable />;
-      default:
-        return null;
-    }
-  }, [activeComponentId, updateNestedBreadcrumbItems]);
-
   const handleHomeNavigation = useCallback(() => {
     setActiveComponentId(null);
     setShowComponentDetail(false);
@@ -354,7 +326,11 @@ const CollectionHome = () => {
             ariaLabel="Collection breadcrumb"
           />
           {isComponentAvailable ? (
-            ComponentDetail()
+            activeComponent?.render?.({
+              onBreadcrumbChange: updateNestedBreadcrumbItems,
+              onNavigateRootHome: handleHomeNavigation,
+              routeSegments: [activeComponent.routeId],
+            })
           ) : (
             <div class="comingsoon">Coming soon....</div>
           )}

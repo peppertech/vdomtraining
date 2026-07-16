@@ -12,10 +12,10 @@ import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
 export default function CheckBoxSetCorePackDataProviderExample() {
   const [selectVal, setSelectVal] = useState<string[]>(["CH"]);
-  const [browsersDP, setBrowsersDP] = useState(
+  const [browsersDP, setBrowsersDP] = useState(() =>
     new ArrayDataProvider<string, CheckboxsetOption>(browserDataProviderOptions, {
       keyAttributes: "value",
-    }),
+    })
   );
 
   const handleValueChanged = useCallback(

@@ -9,22 +9,16 @@ import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
 
 import {
   type NestedCatalogHomeProps,
-  formatCorePackLabel,
 } from "../../../../shared/catalog-breadcrumb";
 import { useExampleRoute } from "../../example-route-context";
-import CorePackMenuButton from "./corePackMenuButton";
-import CorePackSplitMenuButton from "./corePackSplitMenuButton";
 import MenuLegacyRecipePage from "./menu-legacy/index";
 import MenuSelectManyRecipePage from "./menu-select-many/index";
-import MenuButton from "./menuButton";
 
 interface MenuComponent {
   id: number;
   routeId: string;
   name: string;
-  description: string;
   image: string;
-  isCorePack?: boolean;
 }
 
 const menuComponents: MenuComponent[] = [
@@ -32,36 +26,14 @@ const menuComponents: MenuComponent[] = [
     id: 1,
     routeId: "menu",
     name: "Menu",
-    description: "Classic oj-menu demos with popup actions, APIs, and template rendering.",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu-modal",
   },
-  // {
-  //   id: 2,
-  //   name: "Menu Button",
-  //   description: "Focused oj-menu-button demo including icon, submenu, and disabled scenarios.",
-  //   image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
-  // },
-  //  {
-  //   id: 4,
-  //   name: "Menu Button",
-  //   description: "Core Pack menu button with selection writeback and chroming variants.",
-  //   image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
-  //   isCorePack: true,
-  // },
   {
     id: 3,
     routeId: "menu-select-many",
     name: "Menu Select Many",
-    description: "oj-menu-select-many embedded in an oj-menu for multi-select settings.",
     image: "oj-ux-icon-size-12x oj-ux-ico-menu-select-many",
-  },
-  // {
-  //   id: 5,
-  //   name: "Split Menu Button",
-  //   description: "Core Pack split menu button illustrating primary vs menu actions.",
-  //   image: "oj-ux-icon-size-12x oj-ux-ico-menu-button",
-  //   isCorePack: true,
-  // },
+  }
 ];
 
 const dataProvider = new MutableArrayDataProvider<MenuComponent["id"], MenuComponent>(
@@ -97,13 +69,7 @@ const MenuHome = ({
   const activeRouteComponent =
     menuComponents.find(
       (component) => component.routeId === exampleRoute.segments[routeBase.length],
-    ) ??
-    (exampleRoute.segments.length > routeBase.length
-      ? menuComponents.find(
-          (component) =>
-            "isCorePack" in component && Boolean(component.isCorePack),
-        ) ?? menuComponents[0]
-      : undefined);
+    );
 
   const renderListItem = useCallback(
     (item: ojListView.ItemTemplateContext<MenuComponent["id"], MenuComponent>) => (
@@ -111,11 +77,6 @@ const MenuHome = ({
         <oj-action-card>
           <div class="component-item" key={item.data.id}>
             <div class="componentImage">
-              {item.data.isCorePack ? (
-                <span class="demo-badge-position oj-sm-margin-2x-vertical oj-badge oj-badge-end oj-badge-success oj-badge-sm">
-                  Core Pack
-                </span>
-              ) : null}
               <div class="oj-helper-text-align-center" style={{ paddingTop: "25px" }}>
                 <div className={item.data.image}></div>
               </div>
@@ -135,14 +96,8 @@ const MenuHome = ({
     switch (activeComponentId) {
       case 1:
         return <MenuLegacyRecipePage />;
-      case 2:
-        return <MenuButton />;
       case 3:
         return <MenuSelectManyRecipePage />;
-      case 4:
-        return <CorePackMenuButton />;
-      case 5:
-        return <CorePackSplitMenuButton />;
       default:
         return null;
     }
@@ -198,12 +153,9 @@ const MenuHome = ({
 
     onBreadcrumbChange([
       { label: "Controls", onSelect: onNavigateRootHome },
-      { label: "Menu & Menu Button", onSelect: handleBack },
+      { label: "Menu", onSelect: handleBack },
       {
-        label: formatCorePackLabel(
-          activeComponent.name,
-          activeComponent.isCorePack,
-        ),
+        label: activeComponent.name,
         current: true,
       },
     ]);
