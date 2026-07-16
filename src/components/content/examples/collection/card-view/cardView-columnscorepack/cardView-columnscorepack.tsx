@@ -24,7 +24,7 @@ const ITEMS: DataItem[] = Array.from({ length: 20 }, (_, index) => ({
   label: `Item ${index + 1}`
 }));
 
-const renderCard = (context: CardItemContext) => (
+const renderCard: import("ojs/ojvcomponent").TemplateSlot<CardItemContext> = (context) => (
   <div class="oj-panel oj-bg-success-30 demo-card">
     <span>{context.data.label}</span>
   </div>

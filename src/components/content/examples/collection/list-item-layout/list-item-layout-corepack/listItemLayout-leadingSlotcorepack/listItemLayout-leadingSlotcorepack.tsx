@@ -153,7 +153,7 @@ const getIconBackground = (type: DocumentItem["type"]): AvatarBackground =>
 const getIconClass = (type: DocumentItem["type"]) =>
   type === "pdf" ? "oj-ux-ico-file-pdf" : "oj-ux-ico-file-doc";
 
-const renderOverviewItem = (context: ActivityItemContext) => (
+const renderOverviewItem: import("ojs/ojvcomponent").TemplateSlot<ActivityItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.activity}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.activity}`} />
     <div slot="leading">
@@ -163,7 +163,7 @@ const renderOverviewItem = (context: ActivityItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderActivityItem = (context: ActivityItemContext) => (
+const renderActivityItem: import("ojs/ojvcomponent").TemplateSlot<ActivityItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.activity}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.activity}`} />
     <div
@@ -179,7 +179,7 @@ const renderActivityItem = (context: ActivityItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderPersonItem = (context: PersonItemContext) => (
+const renderPersonItem: import("ojs/ojvcomponent").TemplateSlot<PersonItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.name}`} />
     <oj-c-avatar
@@ -193,7 +193,7 @@ const renderPersonItem = (context: PersonItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderProductItem = (context: ProductItemContext) => (
+const renderProductItem: import("ojs/ojvcomponent").TemplateSlot<ProductItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <div slot="leading" class="oj-typography-body-sm">
       <img src={context.data.image} alt="Product" width={96} height={96} />
@@ -221,7 +221,7 @@ const renderProductItem = (context: ProductItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderDocumentItem = (context: DocumentItemContext) => (
+const renderDocumentItem: import("ojs/ojvcomponent").TemplateSlot<DocumentItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.company}`}>
     <oj-c-avatar
       slot="leading"

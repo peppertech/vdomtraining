@@ -119,7 +119,7 @@ const TOOLBAR_ITEMS = [
   }
 ] satisfies ToolbarItems;
 
-const renderOverviewItem = (context: EmployeeItemContext) => (
+const renderOverviewItem: import("ojs/ojvcomponent").TemplateSlot<EmployeeItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.name}`} />
     <div slot="leading">
@@ -157,7 +157,7 @@ const renderOverviewItem = (context: EmployeeItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderEmployeeItem = (context: EmployeeItemContext) => (
+const renderEmployeeItem: import("ojs/ojvcomponent").TemplateSlot<EmployeeItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.name}`} />
     <oj-c-avatar
@@ -194,7 +194,7 @@ const renderEmployeeItem = (context: EmployeeItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderProductItem = (context: ProductItemContext) => (
+const renderProductItem: import("ojs/ojvcomponent").TemplateSlot<ProductItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <div
       slot="overline"
@@ -227,7 +227,7 @@ const renderProductItem = (context: ProductItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderToolbarItem = (context: EmployeeItemContext) => (
+const renderToolbarItem: import("ojs/ojvcomponent").TemplateSlot<EmployeeItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <oj-c-avatar
       slot="leading"

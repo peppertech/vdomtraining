@@ -3,11 +3,14 @@ import "oj-c/form-layout";
 import "oj-c/highlight-text";
 import "oj-c/list-item-layout";
 import "oj-c/list-view";
-import type { CListViewElement } from "oj-c/list-view";
+import type { CListViewElement, ListView } from "oj-c/list-view";
 import "oj-c/select-single";
-import type { CSelectSingleElement } from "oj-c/select-single";
+import type {
+  CSelectSingleElement,
+  SelectSingle,
+} from "oj-c/select-single";
 import "oj-c/table";
-import type { CTableElement } from "oj-c/table";
+import type { CTableElement, Table } from "oj-c/table";
 import type { ItemContext } from "ojs/ojcommontypes";
 import 'preact';
 import { type ComponentProps } from 'preact';
@@ -92,6 +95,19 @@ type TableColumnDefinition = {
   field: keyof OracleEmployee;
   template: "cellTemplate";
 };
+type OracleEmployeeSelectSingleProps = Parameters<typeof SelectSingle<
+  OracleEmployee["EMPLOYEE_ID"],
+  OracleEmployee
+>>[0];
+type OracleEmployeeListViewProps = Parameters<typeof ListView<
+  OracleEmployee["EMPLOYEE_ID"],
+  OracleEmployee
+>>[0];
+type OracleEmployeeTableProps = Parameters<typeof Table<
+  OracleEmployee["EMPLOYEE_ID"],
+  OracleEmployee,
+  TableColumnKey
+>>[0];
 type PersonValueChangedEvent = CSelectSingleElement.valueChanged<
   Person["value"],
   Person
@@ -173,12 +189,9 @@ const SelectSingleCorePack = () => {
     return `${itemContext.data.FIRST_NAME} ${itemContext.data.LAST_NAME}`;
   };
 
-  const itemTemplateRenderer = (
-    itemCtx: CSelectSingleElement.ItemTemplateContext<
-      OracleEmployee["EMPLOYEE_ID"],
-      OracleEmployee
-    >,
-  ) => {
+  const itemTemplateRenderer: NonNullable<
+    OracleEmployeeSelectSingleProps["itemTemplate"]
+  > = (itemCtx) => {
     return (
       <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
         <span className="oj-typography-body-md oj-text-color-primary">
@@ -217,18 +230,12 @@ const SelectSingleCorePack = () => {
     );
   };
 
-  const collectionTemplateRendererForListView = (
-    collection: CSelectSingleElement.CollectionTemplateContext<
-      OracleEmployee["EMPLOYEE_ID"],
-      OracleEmployee
-    >,
-  ) => {
-    const itemRenderer = (
-      itemCtx: CSelectSingleElement.ItemTemplateContext<
-        OracleEmployee["EMPLOYEE_ID"],
-        OracleEmployee
-      >,
-    ) => {
+  const collectionTemplateRendererForListView: NonNullable<
+    OracleEmployeeSelectSingleProps["collectionTemplate"]
+  > = (collection) => {
+    const itemRenderer: NonNullable<
+      OracleEmployeeListViewProps["itemTemplate"]
+    > = (itemCtx) => {
       return (
         <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
           <span className="oj-typography-body-md oj-text-color-primary">
@@ -310,19 +317,12 @@ const SelectSingleCorePack = () => {
     );
   };
 
-  const collectionTemplateRendererForTabularView = (
-    colCtx: CSelectSingleElement.CollectionTemplateContext<
-      OracleEmployee["EMPLOYEE_ID"],
-      OracleEmployee
-    >,
-  ) => {
-    const cellRenderer = (
-      cellCtx: CTableElement.CellTemplateContext<
-        OracleEmployee["EMPLOYEE_ID"],
-        OracleEmployee,
-        TableColumnKey
-      >,
-    ) => {
+  const collectionTemplateRendererForTabularView: NonNullable<
+    OracleEmployeeSelectSingleProps["collectionTemplate"]
+  > = (colCtx) => {
+    const cellRenderer: NonNullable<
+      OracleEmployeeTableProps["cellTemplate"]
+    > = (cellCtx) => {
       return (
         <oj-c-highlight-text
           text={String(cellCtx.data)}

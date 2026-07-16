@@ -2,10 +2,14 @@ import "oj-c/avatar";
 import "oj-c/highlight-text";
 import "oj-c/list-item-layout";
 import "oj-c/list-view";
-import type { CSelectSingleElement } from "oj-c/select-single";
+import type { ListView } from "oj-c/list-view";
+import type {
+  CSelectSingleElement,
+  SelectSingle,
+} from "oj-c/select-single";
 import "oj-c/table";
+import type { Table } from "oj-c/table";
 import type { ItemContext } from "ojs/ojcommontypes";
-import type { ojTable } from "ojs/ojtable";
 import 'preact';
 import { type ComponentProps } from 'preact';
 import * as employeeDataText from "text!../../data/employeeData.json";
@@ -41,6 +45,20 @@ export type OracleEmployee = {
   TITLE: string;
   IMAGE: string;
 };
+
+type EmployeeSelectSingleProps = Parameters<typeof SelectSingle<
+  OracleEmployee["EMPLOYEE_ID"],
+  OracleEmployee
+>>[0];
+type EmployeeListViewProps = Parameters<typeof ListView<
+  OracleEmployee["EMPLOYEE_ID"],
+  OracleEmployee
+>>[0];
+type EmployeeTableProps = Parameters<typeof Table<
+  OracleEmployee["EMPLOYEE_ID"],
+  OracleEmployee,
+  string
+>>[0];
 
 export const browserOptions: BrowserOption[] = [
   { value: "IE", label: "Internet Explorer" },
@@ -130,12 +148,9 @@ export const tableColumns = [
   },
 ];
 
-export const renderEmployeeItemTemplate = (
-  itemCtx: CSelectSingleElement.ItemTemplateContext<
-    OracleEmployee["EMPLOYEE_ID"],
-    OracleEmployee
-  >,
-) => (
+export const renderEmployeeItemTemplate: NonNullable<
+  EmployeeSelectSingleProps["itemTemplate"]
+> = (itemCtx) => (
   <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
     <span class="oj-typography-body-md oj-text-color-primary">
       <oj-c-highlight-text
@@ -173,6 +188,14 @@ export const renderEmployeeCollectionListView = (
   >,
   onSelectionChange?: (value: OracleEmployee["EMPLOYEE_ID"] | null) => void,
 ) => {
+  const itemRenderer: NonNullable<EmployeeListViewProps["itemTemplate"]> = (
+    itemCtx,
+  ) =>
+    renderEmployeeItemTemplate({
+      item: itemCtx.item,
+      searchText: collection.searchText,
+    });
+
   const handleCurrentItemChanged = (event: CurrentItemEvent) => {
     const value = event.detail.value as OracleEmployee["EMPLOYEE_ID"] | null;
     if (value != null) {
@@ -199,15 +222,7 @@ export const renderEmployeeCollectionListView = (
       oncurrentItemChanged={handleCurrentItemChanged}
       onojItemAction={handleItemAction}
     >
-      <template
-        slot="itemTemplate"
-        render={(
-          itemCtx: CSelectSingleElement.ItemTemplateContext<
-            OracleEmployee["EMPLOYEE_ID"],
-            OracleEmployee
-          >,
-        ) => renderEmployeeItemTemplate(itemCtx)}
-      ></template>
+      <template slot="itemTemplate" render={itemRenderer}></template>
     </oj-c-list-view>
   );
 };
@@ -238,11 +253,8 @@ export const renderEmployeeCollectionTable = (
     collection.onRowAction({ item });
   };
 
-  const cellRenderer = (
-    cellCtx: ojTable.CellTemplateContext<
-      OracleEmployee["EMPLOYEE_ID"],
-      OracleEmployee
-    >,
+  const cellRenderer: NonNullable<EmployeeTableProps["cellTemplate"]> = (
+    cellCtx,
   ) => (
     <oj-c-highlight-text  style={{ maxWidth: "400px" }}
       text={String(cellCtx.data)}

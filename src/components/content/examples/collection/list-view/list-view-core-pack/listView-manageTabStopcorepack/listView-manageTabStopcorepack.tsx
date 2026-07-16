@@ -71,7 +71,7 @@ const EMPLOYEES: Employee[] = [
   }
 ];
 
-const renderItem = (context: ItemTemplateContext) => (
+const renderItem: import("ojs/ojvcomponent").TemplateSlot<ItemTemplateContext> = (context) => (
   <oj-c-list-item-layout>
     <span class="oj-typography-body-md oj-text-color-primary">{context.data.name}</span>
     <oj-c-avatar slot="leading" size="xs" src={context.data.image} />

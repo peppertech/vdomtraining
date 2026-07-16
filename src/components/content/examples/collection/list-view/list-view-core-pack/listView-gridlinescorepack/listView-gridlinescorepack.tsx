@@ -50,7 +50,7 @@ export const ListViewGridlinescorepack = () => {
     [data]
   );
 
-  const renderItem = (item: ItemTemplateContext) => {
+  const renderItem: import("ojs/ojvcomponent").TemplateSlot<ItemTemplateContext> = (item) => {
     return (
       <oj-c-list-item-layout>
         <span class="oj-typography-body-md oj-text-color-primary">{item.item.data.name}</span>

@@ -15,7 +15,7 @@ type SelectionChangedEvent = CustomEvent<{ value: string[]; updatedFrom?: string
 type TagCloudContextMenuConfig = NonNullable<ComponentProps<'oj-c-tag-cloud'>['contextMenuConfig']>;
 type TagCloudMenuSelectionValue = 'selection1' | 'selection2' | 'selection3';
 
-const renderContextMenuTagCloudItem = (item: DatavizTemplateContext<DatavizChartDatum>) => (
+const renderContextMenuTagCloudItem: import("ojs/ojvcomponent").TemplateSlot<DatavizTemplateContext<DatavizChartDatum>> = (item) => (
   <oj-c-tag-cloud-item
     label={item.data.id}
     value={item.data.total}

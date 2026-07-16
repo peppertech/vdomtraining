@@ -43,8 +43,8 @@ const getIconTemplate = (
   return undefined;
 };
 
-const renderProgressTemplate = (
-  context: MessageToastTemplateContext<string, DemoMessageToastItem>
+const renderProgressTemplate: import("ojs/ojvcomponent").TemplateSlot<MessageToastTemplateContext<string, DemoMessageToastItem>> = (
+  context
 ) => (
   <oj-c-progress-circle
     size="sm"

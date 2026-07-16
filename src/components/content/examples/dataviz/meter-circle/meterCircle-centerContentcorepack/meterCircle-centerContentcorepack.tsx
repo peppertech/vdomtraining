@@ -24,7 +24,7 @@ const getCenterClass = (context: CMeterCircleElement.CenterTemplateContext) =>
     ? "oj-sm-justify-content-center"
     : "oj-sm-justify-content-flex-end";
 
-const renderCenterTemplate = (context: CMeterCircleElement.CenterTemplateContext) => (
+const renderCenterTemplate: import("ojs/ojvcomponent").TemplateSlot<CMeterCircleElement.CenterTemplateContext> = (context) => (
   <div
     class={`${getCenterClass(
       context

@@ -118,7 +118,7 @@ const getIconClass = (type: Payment["type"]) => {
   }
 };
 
-const renderOverviewItem = (context: PersonItemContext) => (
+const renderOverviewItem: import("ojs/ojvcomponent").TemplateSlot<PersonItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.name}`} />
     <div slot="leading">
@@ -134,7 +134,7 @@ const renderOverviewItem = (context: PersonItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderEmployeeItem = (context: EmployeeItemContext) => (
+const renderEmployeeItem: import("ojs/ojvcomponent").TemplateSlot<EmployeeItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.name}`} />
     <oj-c-avatar
@@ -164,7 +164,7 @@ const renderEmployeeItem = (context: EmployeeItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderPaymentItem = (context: PaymentItemContext) => (
+const renderPaymentItem: import("ojs/ojvcomponent").TemplateSlot<PaymentItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.default}`}>
     <oj-c-avatar
       slot="leading"

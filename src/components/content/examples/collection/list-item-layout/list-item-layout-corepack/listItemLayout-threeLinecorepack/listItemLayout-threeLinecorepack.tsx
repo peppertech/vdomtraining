@@ -108,7 +108,7 @@ const getIconBackground = (type: DocumentItem["type"]): AvatarBackground =>
 const getIconClass = (type: DocumentItem["type"]) =>
   type === "pdf" ? "oj-ux-ico-file-pdf" : "oj-ux-ico-file-doc";
 
-const renderOverviewItem = (context: PersonItemContext) => (
+const renderOverviewItem: import("ojs/ojvcomponent").TemplateSlot<PersonItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.name}`} />
     <div slot="leading" class="oj-typography-body-sm">
@@ -127,7 +127,7 @@ const renderOverviewItem = (context: PersonItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderEmployeeItem = (context: EmployeeItemContext) => (
+const renderEmployeeItem: import("ojs/ojvcomponent").TemplateSlot<EmployeeItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.name}`} />
     <oj-c-avatar
@@ -164,7 +164,7 @@ const renderEmployeeItem = (context: EmployeeItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderDocumentItem = (context: DocumentItemContext) => (
+const renderDocumentItem: import("ojs/ojvcomponent").TemplateSlot<DocumentItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.company}`}>
     <oj-c-avatar
       slot="leading"

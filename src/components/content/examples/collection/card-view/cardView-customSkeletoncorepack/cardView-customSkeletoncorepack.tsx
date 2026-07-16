@@ -44,7 +44,7 @@ const normalizeDelay = (value: number | string | null | undefined) => {
   return Number.isFinite(parsedValue) ? Math.max(0, parsedValue as number) : 0;
 };
 
-const renderCard = (context: CardItemContext) => (
+const renderCard: import("ojs/ojvcomponent").TemplateSlot<CardItemContext> = (context) => (
   <div class="oj-panel">
     {preact.h("demo-profile-card-layout", {
       name: context.data.name,
@@ -53,7 +53,7 @@ const renderCard = (context: CardItemContext) => (
   </div>
 );
 
-const renderSkeleton = (context: CardSkeletonContext) => (
+const renderSkeleton: import("ojs/ojvcomponent").TemplateSlot<CardSkeletonContext> = (context) => (
   <div
     class="oj-panel oj-sm-padding-0 demo-skeleton-card"
     style={

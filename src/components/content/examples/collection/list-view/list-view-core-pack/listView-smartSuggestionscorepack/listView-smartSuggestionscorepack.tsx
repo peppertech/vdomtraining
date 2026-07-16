@@ -27,17 +27,17 @@ export const ListViewSmartSuggestionscorepack = () => {
       'e20'
   ]), [data]);
 
+  const renderItem: import("ojs/ojvcomponent").TemplateSlot<{ data: Employee }> = (item) => (
+    <oj-c-list-item-layout>
+      <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
+      <oj-c-avatar slot="leading" size="xs" icon-class="oj-ux-ico-human-8" />
+      <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">{item.data.title}</span>
+    </oj-c-list-item-layout>
+  );
+
   return (
       <oj-c-list-view id="listview" aria-label="list with Oracle Suggestions" data={dataProvider} class="demo-list oj-listview-item-padding-off" {...{ 'item.enter-key-focus-behavior': "focusWithin" }}>
-            <template slot="itemTemplate" render={(item) => (
-                  <>
-                      <oj-c-list-item-layout>
-                                  <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
-                                  <oj-c-avatar slot="leading" size="xs" icon-class="oj-ux-ico-human-8" />
-                                  <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">{item.data.title}</span>
-                              </oj-c-list-item-layout>
-                  </>
-                )} />
+            <template slot="itemTemplate" render={renderItem} />
         </oj-c-list-view>
     );
 };

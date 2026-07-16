@@ -23,7 +23,7 @@ const dataProvider = new ArrayDataProvider<string, FruitItem>(fruits, {
 const colorHandler = new ColorAttributeGroupHandler();
 
 export const LegendDefaultcorepack = (): JSX.Element => {
-  const itemTemplateRenderer = ($current: { data: FruitItem }): JSX.Element => (
+  const itemTemplateRenderer: import("ojs/ojvcomponent").TemplateSlot<{ data: FruitItem }> = ($current): JSX.Element => (
     <oj-c-legend-item
       shortDesc={$current.data.fruit}
       text={$current.data.fruit}

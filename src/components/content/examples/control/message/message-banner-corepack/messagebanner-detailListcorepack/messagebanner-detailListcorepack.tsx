@@ -91,22 +91,18 @@ export const MessagebannerDetailListcorepack = () => {
       }
   };
 
+  const renderDetailList: import("ojs/ojvcomponent").TemplateSlot<MessageTemplateContext> = (context) => (
+    <ul>
+      {(context.data.detailList ?? []).map(($current: string) => (
+        <li>{$current}</li>
+      ))}
+    </ul>
+  );
+
   return (
       <div id="containerDiv">
             <oj-c-message-banner data={messages} type="page" detailTemplateValue="detailList" onojClose={closeMessage}>
-                    <template slot="detailList" render={(context: MessageTemplateContext) => (
-                            <>
-                                <ul>
-                                              {
-                                                            (context.data.detailList ?? []).map(($current: string, index: number) => (
-                                                              <>
-                                                                <li>{$current}</li>
-                                                              </>
-                                                            ))
-                                                          }
-                                          </ul>
-                            </>
-                          )} />
+                    <template slot="detailList" render={renderDetailList} />
                 </oj-c-message-banner>
             <div class="oj-panel oj-bg-info-30 oj-sm-margin-4x-vertical">
                     <div class="oj-header-border oj-typography-subheading-md">Messages settings</div>

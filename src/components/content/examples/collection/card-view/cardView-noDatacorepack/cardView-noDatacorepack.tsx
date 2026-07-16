@@ -21,7 +21,7 @@ type CardItemContext = {
 
 const EMPTY_EMPLOYEES: EmployeeData[] = [];
 
-const renderCard = (context: CardItemContext) => (
+const renderCard: import("ojs/ojvcomponent").TemplateSlot<CardItemContext> = (context) => (
   <div class="oj-panel">
     {preact.h("demo-profile-card-layout", {
       name: context.data.name,
@@ -32,7 +32,7 @@ const renderCard = (context: CardItemContext) => (
   </div>
 );
 
-const renderNoData = () => (
+const renderNoData: import("ojs/ojvcomponent").TemplateSlot<{}> = () => (
   <div class="oj-flex oj-sm-align-items-center demo-nodata-content">
     <div class="oj-flex oj-sm-align-items-center oj-sm-flex-direction-column demo-nodata-inner">
       <span>No matches found</span>

@@ -83,8 +83,8 @@ const renderActionTemplate = (
   </div>
 );
 
-const renderDetailLinkTemplate = (
-  context: MessageToastTemplateContext<string, DemoMessageToastItem>
+const renderDetailLinkTemplate: import("ojs/ojvcomponent").TemplateSlot<MessageToastTemplateContext<string, DemoMessageToastItem>> = (
+  context
 ) => (
   <div class="oj-flex-item">
     <span>{context.data.detail}</span>{" "}
@@ -113,6 +113,9 @@ export const MessagetoastDetailActionscorepack = () => {
     removeMessage(event.detail.key);
   };
 
+  const renderAction: import("ojs/ojvcomponent").TemplateSlot<MessageToastTemplateContext<string, DemoMessageToastItem>> = (context) =>
+    renderActionTemplate(context, removeMessage);
+
   return (
     <div id="containerDiv">
       <oj-c-message-toast
@@ -121,10 +124,7 @@ export const MessagetoastDetailActionscorepack = () => {
         position={toastPosition}
         onojClose={closeMessage}
       >
-        <template
-          slot="action"
-          render={(context) => renderActionTemplate(context, removeMessage)}
-        />
+        <template slot="action" render={renderAction} />
         <template slot="detailLink" render={renderDetailLinkTemplate} />
       </oj-c-message-toast>
     </div>

@@ -69,7 +69,7 @@ const getBadgeVariant = (status: Activity["status"]) => {
   }
 };
 
-const renderOverviewItem = (context: ActivityItemContext) => (
+const renderOverviewItem: import("ojs/ojvcomponent").TemplateSlot<ActivityItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.activity}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.activity}`} />
     <div class="oj-typography-body-md">Default Slot</div>
@@ -79,7 +79,7 @@ const renderOverviewItem = (context: ActivityItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderActivityItem = (context: ActivityItemContext) => (
+const renderActivityItem: import("ojs/ojvcomponent").TemplateSlot<ActivityItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.activity}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.activity}`} />
     <div class="oj-typography-body-md">{context.data.activity}</div>
@@ -89,7 +89,7 @@ const renderActivityItem = (context: ActivityItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderProductItem = (context: ProductItemContext) => (
+const renderProductItem: import("ojs/ojvcomponent").TemplateSlot<ProductItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <div
       slot="overline"

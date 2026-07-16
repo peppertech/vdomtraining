@@ -54,7 +54,7 @@ export const AreaChartBasiccorepack = () => {
     }
   };
 
-  const renderAreaChartItem = (item: AreaChartItemTemplateContext) => (
+  const renderAreaChartItem: import("ojs/ojvcomponent").TemplateSlot<AreaChartItemTemplateContext> = (item) => (
     <oj-c-area-chart-item
       value={item.data.value}
       groupId={[item.data.quarter]}

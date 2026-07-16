@@ -31,7 +31,7 @@ const datatipConfig: TagCloudDatatipConfig = () => ({
   rendered: "on"
 });
 
-const renderTagCloudItem = (item: TagCloudItemTemplateContext) => (
+const renderTagCloudItem: import("ojs/ojvcomponent").TemplateSlot<TagCloudItemTemplateContext> = (item) => (
   <oj-c-tag-cloud-item
     label={item.data.id}
     value={item.data.total}
@@ -39,7 +39,7 @@ const renderTagCloudItem = (item: TagCloudItemTemplateContext) => (
   />
 );
 
-const renderDatatip = (item: TagCloudDatatipTemplateContext) => (
+const renderDatatip: import("ojs/ojvcomponent").TemplateSlot<TagCloudDatatipTemplateContext> = (item) => (
   <div>
     {item.label ?? ""}: {item.value}
   </div>

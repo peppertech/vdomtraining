@@ -87,7 +87,7 @@ export const CardViewActionCardBehaviorcorepack = () => {
     []
   );
 
-  const renderCard = (context: CardItemContext) => {
+  const renderCard: import("ojs/ojvcomponent").TemplateSlot<CardItemContext> = (context) => {
     const handleAction = (event: ActionCardActionEvent) => {
       setActionName(context.data.name);
       setActionReason("action");

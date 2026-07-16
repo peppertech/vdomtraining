@@ -38,7 +38,7 @@ export const ListViewNoDatacorepack = () => {
       setData((currentData) => currentData.filter((item) => item.id !== taskId));
   };
 
-  const renderItem = (item: { data: Data }) => {
+  const renderItem: import("ojs/ojvcomponent").TemplateSlot<{ data: Data }> = (item) => {
       return (
           <li class="demo-item">
               <div class="oj-flex oj-sm-justify-content-space-between oj-sm-align-items-center">
@@ -51,7 +51,7 @@ export const ListViewNoDatacorepack = () => {
       );
   };
 
-  const renderNoData = () => {
+  const renderNoData: import("ojs/ojvcomponent").TemplateSlot<{}> = () => {
       return (
           <div class="oj-flex oj-sm-align-items-center demo-nodata-content">
               <div class="oj-flex oj-sm-align-items-center oj-sm-flex-direction-column demo-nodata-inner">

@@ -1,11 +1,14 @@
 import "oj-c/avatar";
 import "oj-c/highlight-text";
 import "oj-c/list-item-layout";
-import type { CSelectMultipleElement } from "oj-c/select-multiple";
+import type {
+  CSelectMultipleElement,
+  SelectMultiple,
+} from "oj-c/select-multiple";
 import "oj-c/selector";
 import "oj-c/table";
+import type { Table } from "oj-c/table";
 import type { ItemContext } from "ojs/ojcommontypes";
-import type { ojTable } from "ojs/ojtable";
 import 'preact';
 import { type ComponentProps } from 'preact';
 import * as employeeDataText from "text!../../data/employeeData.json";
@@ -35,6 +38,16 @@ export type OracleEmployee = {
   TITLE: string;
   IMAGE: string;
 };
+
+type EmployeeSelectMultipleProps = Parameters<typeof SelectMultiple<
+  OracleEmployee["EMPLOYEE_ID"],
+  OracleEmployee
+>>[0];
+type EmployeeTableProps = Parameters<typeof Table<
+  OracleEmployee["EMPLOYEE_ID"],
+  OracleEmployee,
+  string
+>>[0];
 
 export type BrowserValueItem = {
   key: BrowserOption["value"];
@@ -148,12 +161,9 @@ export const trimValueItems = (valueItems: BrowserValueItems | null | undefined)
       }))
     : [];
 
-export const renderEmployeeItemTemplate = (
-  itemCtx: CSelectMultipleElement.ItemTemplateContext<
-    OracleEmployee["EMPLOYEE_ID"],
-    OracleEmployee
-  >,
-) => (
+export const renderEmployeeItemTemplate: NonNullable<
+  EmployeeSelectMultipleProps["itemTemplate"]
+> = (itemCtx) => (
   <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
     <oj-c-selector
       aria-label="selector"
@@ -215,11 +225,8 @@ export const renderEmployeeCollectionTable = (
     collection.onSelectedChanged({ value: selected?.row });
   };
 
-  const cellRenderer = (
-    cellCtx: ojTable.CellTemplateContext<
-      OracleEmployee["EMPLOYEE_ID"],
-      OracleEmployee
-    >,
+  const cellRenderer: NonNullable<EmployeeTableProps["cellTemplate"]> = (
+    cellCtx,
   ) => (
     <oj-c-highlight-text
       text={String(cellCtx.data)}

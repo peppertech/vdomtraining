@@ -204,8 +204,8 @@ export const MessageBannerCorePackOverview = () => {
   );
 
   // Template for custom detail
-  const actionsTemplate = useCallback(
-    (context: MessageBannerTemplateContext<string, DemoCustomDetailMessageBannerItem>) => (
+  const actionsTemplate: import("ojs/ojvcomponent").TemplateSlot<MessageBannerTemplateContext<string, DemoCustomDetailMessageBannerItem>> = useCallback(
+    (context) => (
       <div>
         {/* The detail text area */}
         <div class="oj-flex-item">

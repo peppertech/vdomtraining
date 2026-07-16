@@ -111,7 +111,7 @@ export const ListViewSingleSelectioncorepack = () => {
       setSelectedIds(getDisplayValue(currentSelection as SelectedKeySet));
   };
 
-  const renderItem = (item: ItemTemplateContext) => {
+  const renderItem: import("ojs/ojvcomponent").TemplateSlot<ItemTemplateContext> = (item) => {
       return (
           <oj-c-list-item-layout>
               <oj-c-avatar slot="leading" size="xs" src={item.data.image} />

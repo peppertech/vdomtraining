@@ -114,7 +114,7 @@ export const PictoChartContextMenucorepack = () => {
     setSelectedItems((event.detail.value as PictoSelection | null) ?? []);
   };
 
-  const renderPictoChartItem = (item: PictoChartItemTemplateContext) => (
+  const renderPictoChartItem: import("ojs/ojvcomponent").TemplateSlot<PictoChartItemTemplateContext> = (item) => (
     <oj-c-picto-chart-item
       name={item.data.name}
       color={colorHandler.getValue(item.data.name)}

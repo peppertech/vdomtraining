@@ -82,7 +82,7 @@ export const LegendContextMenucorepack = () => {
     [selectedSelectionMenuItem]
   );
 
-  const renderLegendItem = (item: LegendItemTemplateContext) => (
+  const renderLegendItem: import("ojs/ojvcomponent").TemplateSlot<LegendItemTemplateContext> = (item) => (
     <oj-c-legend-item text={item.data.fruit} color={colorHandler.getValue(item.data.fruit)} />
   );
 

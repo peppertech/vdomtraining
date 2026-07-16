@@ -81,30 +81,32 @@ export const MessagebannerDetailActionscorepack = () => {
       messages.data = data.filter((message: DemoMessageBannerItem) => message.id !== key);
   };
 
+  const renderActions: import("ojs/ojvcomponent").TemplateSlot<MessageTemplateContext> = (message) => (
+    <>
+      <div class="oj-flex-item"><span>{message.data.detail}</span></div>
+      <div class="oj-flex oj-flex-item oj-sm-flex-items-initial oj-sm-padding-2x-top">
+        <div class="oj-flex-item oj-sm-margin-5x-end">
+          <a href={message.data.actions[0].link} onclick={handleAction.bind(null, message.data.actions[0], message.key)} class="oj-link-standalone oj-link-subtle-primary oj-typography-body-sm oj-typography-semi-bold">{message.data.actions[0].title}</a>
+        </div>
+        <div class="oj-flex-item oj-sm-margin-5x-end">
+          <a href={message.data.actions[1].link} onclick={handleAction.bind(null, message.data.actions[1], message.key)} class="oj-link-standalone oj-link-subtle-primary oj-typography-body-sm oj-typography-semi-bold">{message.data.actions[1].title}</a>
+        </div>
+      </div>
+    </>
+  );
+
+  const renderDetailLink: import("ojs/ojvcomponent").TemplateSlot<MessageTemplateContext> = (message) => (
+    <div class="oj-flex-item">
+      <span>{message.data.detail}</span>
+      <a href={message.data.detailLink.link} class="oj-link-embedded oj-link-subtle-secondary">{message.data.detailLink.title}</a>
+    </div>
+  );
+
   return (
       <div id="containerDiv">
             <oj-c-message-banner data={messages} type="page" detailTemplateValue={getDetailTemplate} onojClose={closeMessage}>
-                    <template slot="actions" render={(message: MessageTemplateContext) => (
-                            <>
-                                <div class="oj-flex-item"><span>{message.data.detail}</span></div>
-                                <div class="oj-flex oj-flex-item oj-sm-flex-items-initial oj-sm-padding-2x-top">
-                                              <div class="oj-flex-item oj-sm-margin-5x-end">
-                                                              <a href={message.data.actions[0].link} onclick={handleAction.bind(null, message.data.actions[0], message.key)} class="oj-link-standalone oj-link-subtle-primary oj-typography-body-sm oj-typography-semi-bold">{message.data.actions[0].title}</a>
-                                                          </div>
-                                              <div class="oj-flex-item oj-sm-margin-5x-end">
-                                                              <a href={message.data.actions[1].link} onclick={handleAction.bind(null, message.data.actions[1], message.key)} class="oj-link-standalone oj-link-subtle-primary oj-typography-body-sm oj-typography-semi-bold">{message.data.actions[1].title}</a>
-                                                          </div>
-                                          </div>
-                            </>
-                          )} />
-                    <template slot="detailLink" render={(message: MessageTemplateContext) => (
-                            <>
-                                <div class="oj-flex-item">
-                                              <span>{message.data.detail}</span>
-                                              <a href={message.data.detailLink.link} class="oj-link-embedded oj-link-subtle-secondary">{message.data.detailLink.title}</a>
-                                          </div>
-                            </>
-                          )} />
+                    <template slot="actions" render={renderActions} />
+                    <template slot="detailLink" render={renderDetailLink} />
                 </oj-c-message-banner>
         </div>
     );

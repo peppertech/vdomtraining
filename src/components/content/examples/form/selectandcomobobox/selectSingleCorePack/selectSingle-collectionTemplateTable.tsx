@@ -1,5 +1,5 @@
 import "oj-c/select-single";
-import type { CSelectSingleElement } from "oj-c/select-single";
+import type { SelectSingle } from "oj-c/select-single";
 import 'preact';
 import { type ComponentProps } from 'preact';
 import { useCallback,useMemo,useState } from "preact/hooks";
@@ -22,13 +22,13 @@ export default function SelectSingleCollectionTemplateTableExample() {
     setSelectVal((event.detail.value as number | null | null | undefined) ?? null);
   }, []);
 
-  const collectionTemplate = useCallback(
-    (
-      collection: CSelectSingleElement.CollectionTemplateContext<
-        OracleEmployee["EMPLOYEE_ID"],
-        OracleEmployee
-      >,
-    ) =>
+  const collectionTemplate: NonNullable<
+    Parameters<typeof SelectSingle<
+      OracleEmployee["EMPLOYEE_ID"],
+      OracleEmployee
+    >>[0]["collectionTemplate"]
+  > = useCallback(
+    (collection) =>
       renderEmployeeCollectionTable(collection, (value) => setSelectVal(value)),
     [],
   );

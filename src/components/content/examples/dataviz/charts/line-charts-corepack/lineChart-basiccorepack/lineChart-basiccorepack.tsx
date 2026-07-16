@@ -39,7 +39,7 @@ export const LineChartBasiccorepack = () => {
     }
   };
 
-  const renderLineChartItem = (item: LineChartItemTemplateContext) => (
+  const renderLineChartItem: import("ojs/ojvcomponent").TemplateSlot<LineChartItemTemplateContext> = (item) => (
     <oj-c-line-chart-item
       value={item.data.value}
       groupId={[item.data.quarter]}

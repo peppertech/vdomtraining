@@ -44,7 +44,7 @@ const PRODUCTS: Product[] = [
   }
 ];
 
-const renderOverviewItem = (context: ProductItemContext) => (
+const renderOverviewItem: import("ojs/ojvcomponent").TemplateSlot<ProductItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <div slot="overline" class="oj-typography-body-xs oj-text-color-secondary">
       Overline slot
@@ -70,7 +70,7 @@ const renderOverviewItem = (context: ProductItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderProductItem = (context: ProductItemContext) => (
+const renderProductItem: import("ojs/ojvcomponent").TemplateSlot<ProductItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <div
       slot="overline"

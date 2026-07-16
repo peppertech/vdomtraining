@@ -56,7 +56,7 @@ const EMPLOYEES: Employee[] = [
   }
 ];
 
-const renderItem = (context: EmployeeItemContext) => (
+const renderItem: import("ojs/ojvcomponent").TemplateSlot<EmployeeItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`} verticalAlignment="top">
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.name}`} />
     <div slot="leading">

@@ -1,5 +1,5 @@
 import "oj-c/select-multiple";
-import type { CSelectMultipleElement } from "oj-c/select-multiple";
+import type { SelectMultiple } from "oj-c/select-multiple";
 import 'preact';
 import { type ComponentProps } from 'preact';
 import { useCallback,useMemo,useState } from "preact/hooks";
@@ -25,13 +25,13 @@ export default function SelectMultipleCollectionTemplateTableExample() {
     setSelectVal((event.detail.value as Set<OracleEmployee["EMPLOYEE_ID"]> | null));
   }, []);
 
-  const collectionTemplate = useCallback(
-    (
-      collection: CSelectMultipleElement.CollectionTemplateContext<
-        OracleEmployee["EMPLOYEE_ID"],
-        OracleEmployee
-      >,
-    ) => renderEmployeeCollectionTable(collection),
+  const collectionTemplate: NonNullable<
+    Parameters<typeof SelectMultiple<
+      OracleEmployee["EMPLOYEE_ID"],
+      OracleEmployee
+    >>[0]["collectionTemplate"]
+  > = useCallback(
+    (collection) => renderEmployeeCollectionTable(collection),
     [],
   );
 

@@ -70,7 +70,7 @@ const getIconBackground = (type: DocumentItem["type"]): AvatarBackground =>
 const getIconClass = (type: DocumentItem["type"]) =>
   type === "pdf" ? "oj-ux-ico-file-pdf" : "oj-ux-ico-file-doc";
 
-const renderOverviewItem = (context: PersonItemContext) => (
+const renderOverviewItem: import("ojs/ojvcomponent").TemplateSlot<PersonItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.name}`} />
     <div slot="leading">
@@ -92,7 +92,7 @@ const renderOverviewItem = (context: PersonItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderDocumentItem = (context: DocumentItemContext) => (
+const renderDocumentItem: import("ojs/ojvcomponent").TemplateSlot<DocumentItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <oj-c-avatar
       slot="leading"

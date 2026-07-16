@@ -140,7 +140,7 @@ const CorePackTable = () => {
     });
   };
 
-  const renderHeader = (context: HeaderTemplateContext) => {
+  const renderHeader: import("ojs/ojvcomponent").TemplateSlot<HeaderTemplateContext> = (context) => {
     const isSortedColumn = sortState?.columnKey === context.key;
     const iconStyle = isSortedColumn
       ? sortState.direction === "ascending"

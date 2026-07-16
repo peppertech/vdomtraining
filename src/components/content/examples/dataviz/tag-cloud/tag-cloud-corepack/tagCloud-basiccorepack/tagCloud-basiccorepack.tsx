@@ -15,7 +15,7 @@ type TagCloudItemTemplateContext = {
 
 const socialNetworks = JSON.parse(socialNetworksText as string) as SocialNetwork[];
 
-const renderTagCloudItem = (item: TagCloudItemTemplateContext) => (
+const renderTagCloudItem: import("ojs/ojvcomponent").TemplateSlot<TagCloudItemTemplateContext> = (item) => (
   <oj-c-tag-cloud-item
     label={item.data.id}
     value={item.data.total}

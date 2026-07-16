@@ -110,7 +110,7 @@ const timestampMessages: DemoMessageBannerItem[] = [
   }
 ];
 
-const renderActionsTemplate = (context: ActionsTemplateContext) => (
+const renderActionsTemplate: import("ojs/ojvcomponent").TemplateSlot<ActionsTemplateContext> = (context) => (
   <div>
     <div class="oj-flex-item">
       <span>{context.data.detail}</span>

@@ -70,7 +70,7 @@ const EMPLOYEES: EmployeeData[] = [
   }
 ];
 
-const renderCard = (context: CardItemContext) => (
+const renderCard: import("ojs/ojvcomponent").TemplateSlot<CardItemContext> = (context) => (
   <div class="oj-panel">
     {preact.h("demo-profile-card-layout", {
       name: context.data.name,

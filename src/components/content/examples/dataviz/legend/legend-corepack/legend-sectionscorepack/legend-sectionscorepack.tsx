@@ -45,11 +45,11 @@ const dataProvider = new ArrayTreeDataProvider<string, LegendSection | LegendSec
 });
 
 export const LegendSectionscorepack = (): JSX.Element => {
-  const sectionTemplateRenderer = ($current: { data: LegendSection }): JSX.Element => (
+  const sectionTemplateRenderer: import("ojs/ojvcomponent").TemplateSlot<{ data: LegendSection }> = ($current): JSX.Element => (
     <oj-c-legend-section text={$current.data.label} />
   );
 
-  const itemTemplateRenderer = ($current: { data: LegendSectionItem }): JSX.Element => (
+  const itemTemplateRenderer: import("ojs/ojvcomponent").TemplateSlot<{ data: LegendSectionItem }> = ($current): JSX.Element => (
     <oj-c-legend-item
       shortDesc={$current.data.label}
       text={$current.data.label}

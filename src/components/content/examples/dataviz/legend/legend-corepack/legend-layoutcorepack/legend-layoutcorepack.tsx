@@ -46,7 +46,7 @@ export const LegendLayoutcorepack = (): JSX.Element => {
     []
   );
 
-  const itemTemplateRenderer = ($current: { data: FruitItem }): JSX.Element => (
+  const itemTemplateRenderer: import("ojs/ojvcomponent").TemplateSlot<{ data: FruitItem }> = ($current) => (
     <oj-c-legend-item
       shortDesc={$current.data.fruit}
       text={$current.data.fruit}

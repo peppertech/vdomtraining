@@ -53,7 +53,7 @@ export const SelectSingleItemTemplatecorepack = () => {
     setSelectVal(event.detail.value ?? null);
   };
 
-  const renderItemTemplate = (item: SelectSingleItemTemplateContext) => (
+  const renderItemTemplate: import("ojs/ojvcomponent").TemplateSlot<SelectSingleItemTemplateContext> = (item) => (
     <oj-c-list-item-layout class="oj-listitemlayout-padding-off">
       <span class="oj-typography-body-md oj-text-color-primary">
         <oj-c-highlight-text

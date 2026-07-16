@@ -44,20 +44,20 @@ const columns: TableColumns = {
   }
 };
 
-const renderCardTemplate = (context: CardTemplateContext) =>
+const renderCardTemplate: import("ojs/ojvcomponent").TemplateSlot<CardTemplateContext> = (context) =>
   preact.h("demo-memory-card", {
     class: "demo-card-sizing",
     "value-image": String(context.data ?? ""),
     "data-oj-manage-tabs": ""
   });
 
-const renderLinkTemplate = (context: LinkTemplateContext) => (
+const renderLinkTemplate: import("ojs/ojvcomponent").TemplateSlot<LinkTemplateContext> = (context) => (
   <a href="#" tabIndex={context.isTabbable ? 0 : -1}>
     {String(context.data ?? "")}
   </a>
 );
 
-const renderRatingTemplate = (context: RatingTemplateContext) => {
+const renderRatingTemplate: import("ojs/ojvcomponent").TemplateSlot<RatingTemplateContext> = (context) => {
   const rating = Number(context.data ?? 0);
   return <oj-c-rating-gauge size="sm" value={rating} readonly aria-label={`${rating} out of 5`} />;
 };

@@ -97,7 +97,7 @@ export const ListViewContextMenucorepack = () => {
     setLaunchedFromItem(String(event.detail.contextMenuContext?.item?.metadata?.key ?? 'None launched yet'));
   };
 
-  const renderItem = (item: ItemTemplateContext) => (
+  const renderItem: import("ojs/ojvcomponent").TemplateSlot<ItemTemplateContext> = (item) => (
     <oj-c-list-item-layout>
       <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
       <oj-c-avatar slot="leading" size="xs" src={item.data.image} />

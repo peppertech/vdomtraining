@@ -35,7 +35,7 @@ export const ListViewBasiccorepack = () => {
   );
   const itemConfig = useMemo(() => ({ enterKeyFocusBehavior: 'focusWithin' as const }), []);
 
-  const itemTemplateRenderer = (item: ListViewItemContext) => (
+  const itemTemplateRenderer: import("ojs/ojvcomponent").TemplateSlot<ListViewItemContext> = (item) => (
     <oj-c-list-item-layout>
       <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
       <oj-c-avatar slot="leading" size="xs" src={item.data.image}></oj-c-avatar>

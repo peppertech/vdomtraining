@@ -90,23 +90,25 @@ export const ListViewDrillDowncorepack = () => {
       page2Ref.current?.classList.toggle('demo-page2-hide');
   };
 
+  const renderItem: import("ojs/ojvcomponent").TemplateSlot<{ data: TodoTask }> = (item) => (
+    <>
+      <div class="oj-flex oj-sm-justify-content-space-between oj-sm-align-items-center">
+        <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
+        <div class="oj-flex oj-sm-align-items-center">
+          <span>{item.data.date}</span>
+          <div aria-label="Press enter to see detail" role="img">
+            <div role="presentation" class="oj-sm-margin-2x-start oj-listview-drill-icon" />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+
   return (
       <div id="listviewContainer" class="demo-container">
             <div ref={page1Ref} id="page1" class="demo-page">
                     <oj-c-list-view ref={listViewRef} id="listview" aria-label="drill down list" data={dataProvider} currentItemOverride={currentItemOverride} item={itemConfig} onojItemAction={gotoContent}>
-                              <template slot="itemTemplate" render={(item) => (
-                                        <>
-                                            <div class="oj-flex oj-sm-justify-content-space-between oj-sm-align-items-center">
-                                                            <span class="oj-typography-body-md oj-text-color-primary">{item.data.name}</span>
-                                                            <div class="oj-flex oj-sm-align-items-center">
-                                                                              <span>{item.data.date}</span>
-                                                                              <div aria-label="Press enter to see detail" role="img">
-                                                                                                  <div role="presentation" class="oj-sm-margin-2x-start oj-listview-drill-icon" />
-                                                                                              </div>
-                                                                          </div>
-                                                        </div>
-                                        </>
-                                      )} />
+                              <template slot="itemTemplate" render={renderItem} />
                           </oj-c-list-view>
                 </div>
             <div ref={page2Ref} id="page2" class="demo-page demo-page2-hide">

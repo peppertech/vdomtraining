@@ -116,7 +116,7 @@ const getBadgeVariant = (status: TaskRow["status"]) => {
   }
 };
 
-const renderTaskItem = (context: TaskRowContext) => (
+const renderTaskItem: import("ojs/ojvcomponent").TemplateSlot<TaskRowContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.userName}`}>
     <div
       slot="leading"

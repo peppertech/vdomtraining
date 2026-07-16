@@ -160,7 +160,7 @@ export const CardViewReordercorepack = () => {
     }
   };
 
-  const renderCard = (context: CardItemContext) => (
+  const renderCard: import("ojs/ojvcomponent").TemplateSlot<CardItemContext> = (context) => (
     <div class={cutItem === context.data.id ? "oj-panel demo-cut-item" : "oj-panel"}>
       <div class="oj-flex oj-sm-justify-content-center">
         <oj-c-drag-handle />

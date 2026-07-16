@@ -60,7 +60,7 @@ const EMPLOYEES: Employee[] = [
   }
 ];
 
-const renderItem = (context: ItemTemplateContext) => (
+const renderItem: import("ojs/ojvcomponent").TemplateSlot<ItemTemplateContext> = (context) => (
   <div class="oj-flex oj-sm-flex-direction-column">
     <span class="oj-typography-body-md oj-text-color-primary">{context.data.name}</span>
     <span class="oj-typography-body-sm oj-text-color-secondary">{context.data.title}</span>

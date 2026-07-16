@@ -80,7 +80,7 @@ export const LegendStylescorepack = (): JSX.Element => {
   );
   const colorHandler = useMemo(() => new ColorAttributeGroupHandler(), []);
 
-  const itemTemplateRenderer = ($current: { data: FruitItem; index: number }): JSX.Element => (
+  const itemTemplateRenderer: import("ojs/ojvcomponent").TemplateSlot<{ data: FruitItem; index: number }> = ($current): JSX.Element => (
     <oj-c-legend-item
       shortDesc={$current.data.fruit}
       text={$current.data.fruit}
@@ -94,7 +94,7 @@ export const LegendStylescorepack = (): JSX.Element => {
     />
   );
 
-  const sectionTemplateRenderer = (): JSX.Element => <oj-c-legend-section text={sectionTitle} />;
+  const sectionTemplateRenderer: import("ojs/ojvcomponent").TemplateSlot<{}> = (): JSX.Element => <oj-c-legend-section text={sectionTitle} />;
 
   const handleNumberChanged =
     (setter: (value: number) => void) =>

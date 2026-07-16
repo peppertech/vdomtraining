@@ -54,7 +54,7 @@ const COUNTRIES: Country[] = [
   { id: "id3", icon: "oj-ux-flg-in", default: "India", meta: "Rupees" }
 ];
 
-const renderOverviewItem = (context: PersonItemContext) => (
+const renderOverviewItem: import("ojs/ojvcomponent").TemplateSlot<PersonItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.name}`} />
     <div slot="leading">
@@ -67,7 +67,7 @@ const renderOverviewItem = (context: PersonItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderCountryItem = (context: CountryItemContext) => (
+const renderCountryItem: import("ojs/ojvcomponent").TemplateSlot<CountryItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.default}`}>
     <oj-c-selector slot="selector" aria-label={`Check box for ${context.data.meta}`} />
     <div slot="leading" class={`demo-image ${context.data.icon}`} aria-label="Country icon" role="img" />

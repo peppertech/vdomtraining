@@ -17,7 +17,7 @@ const pictoData: PictoDatum[] = [
   { name: "Sleep Well", count: 3 }
 ];
 
-const renderPictoChartItem = (item: PictoChartItemTemplateContext) => (
+const renderPictoChartItem: import("ojs/ojvcomponent").TemplateSlot<PictoChartItemTemplateContext> = (item) => (
   <oj-c-picto-chart-item
     name={item.data.name}
     shape="human"

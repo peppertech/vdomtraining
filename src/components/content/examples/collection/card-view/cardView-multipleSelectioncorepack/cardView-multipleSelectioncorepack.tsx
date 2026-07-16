@@ -120,7 +120,7 @@ export const CardViewMultipleSelectioncorepack = () => {
     setSelectedIds(getDisplayValue(nextSelectedItems));
   };
 
-  const renderCard = (context: CardItemContext) => (
+  const renderCard: import("ojs/ojvcomponent").TemplateSlot<CardItemContext> = (context) => (
     <oj-c-selection-card selected={selectedItems.has(context.item.metadata.key)}>
       <div>
         {preact.h("demo-profile-card-layout", {

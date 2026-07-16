@@ -101,7 +101,7 @@ const createMenuItems = (rowData: EmployeeStatus): MenuItems => [
   }
 ];
 
-const renderEmployeeNameTemplate = (context: EmployeeNameTemplateContext) => {
+const renderEmployeeNameTemplate: import("ojs/ojvcomponent").TemplateSlot<EmployeeNameTemplateContext> = (context) => {
   const { FirstName, LastName } = context.item.data;
   return <span>{`${FirstName} ${LastName}`}</span>;
 };
@@ -115,9 +115,10 @@ const createMenuActionHandler =
     handleMenuSelection(rowData, String(event.detail.key));
   };
 
-const createRenderActionTemplate =
-  (handleMenuSelection: (rowData: EmployeeStatus, actionKey: string) => void) =>
-  (context: ActionTemplateContext) => (
+const createRenderActionTemplate = (
+  handleMenuSelection: (rowData: EmployeeStatus, actionKey: string) => void
+) => {
+  const renderer: import("ojs/ojvcomponent").TemplateSlot<ActionTemplateContext> = (context) => (
     <oj-c-menu-button
       label="Action"
       id={`menuButton-${context.item.metadata.key}`}
@@ -129,6 +130,8 @@ const createRenderActionTemplate =
       <span slot="endIcon" class="oj-ux-ico-overflow-h" />
     </oj-c-menu-button>
   );
+  return renderer;
+};
 
 export const TableStickyColumnTablecorepack = () => {
   const initialRows = useMemo(() => JSON.parse(empData) as EmployeeStatus[], []);
@@ -160,7 +163,7 @@ export const TableStickyColumnTablecorepack = () => {
     }
   };
 
-  const renderActionTemplate = useMemo(
+  const renderActionTemplate: import("ojs/ojvcomponent").TemplateSlot<ActionTemplateContext> = useMemo(
     () => createRenderActionTemplate(handleMenuSelection),
     []
   );

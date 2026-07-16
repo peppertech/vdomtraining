@@ -604,7 +604,7 @@ const getBadgeClass = (status: Task['status']) => {
   }
 };
 
-const renderNoData = () => (
+const renderNoData: import("ojs/ojvcomponent").TemplateSlot<{}> = () => (
   <div class="demo-overview-no-data oj-flex oj-sm-align-items-center">
     <div class="oj-flex oj-sm-align-items-center oj-sm-flex-direction-column">
       <h5>There are no tasks!</h5>
@@ -832,7 +832,7 @@ export const ListViewOverviewcorepack = () => {
     </oj-c-list-item-layout>
   );
 
-  const renderViewItem = (item: ItemTemplateContext) => (
+  const renderViewItem: import("ojs/ojvcomponent").TemplateSlot<ItemTemplateContext> = (item) => (
     <div class="oj-swipeactions-container">
       <oj-swipe-actions onojAction={(event) => handleSwipeAction(event, item)}>
         {renderTaskLayout(item)}
@@ -858,7 +858,7 @@ export const ListViewOverviewcorepack = () => {
     </div>
   );
 
-  const renderEditItem = (item: ItemTemplateContext) => <div>{renderTaskLayout(item, true)}</div>;
+  const renderEditItem: import("ojs/ojvcomponent").TemplateSlot<ItemTemplateContext> = (item) => <div>{renderTaskLayout(item, true)}</div>;
 
   const renderListContent = () => (
     <div>

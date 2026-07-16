@@ -164,7 +164,7 @@ const getIconClass = (type: Payment["type"]) => {
   }
 };
 
-const renderOverviewItem = (context: EmployeeItemContext) => (
+const renderOverviewItem: import("ojs/ojvcomponent").TemplateSlot<EmployeeItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
     <oj-c-selector slot="selector" aria-label={`Select ${context.data.name}`} />
     <div class="oj-typography-body-md">Default slot</div>
@@ -174,7 +174,7 @@ const renderOverviewItem = (context: EmployeeItemContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderPaymentItem = (context: PaymentItemContext) => (
+const renderPaymentItem: import("ojs/ojvcomponent").TemplateSlot<PaymentItemContext> = (context) => (
   <oj-c-list-item-layout aria-label={`Details for ${context.data.default}`}>
     <oj-c-avatar
       slot="leading"
@@ -248,7 +248,7 @@ export const ListItemLayoutActioncorepack = () => {
     setToolbarSelectedItems(event.detail.value ?? new KeySetImpl<string>());
   };
 
-  const renderEmployeeActionItem = (context: EmployeeInfoItemContext) => {
+  const renderEmployeeActionItem: import("ojs/ojvcomponent").TemplateSlot<EmployeeInfoItemContext> = (context) => {
     const handleValueChanged = (event: ButtonsetValueChangedEvent) => {
       setButtonsetValues((currentValues) => ({
         ...currentValues,
@@ -282,7 +282,7 @@ export const ListItemLayoutActioncorepack = () => {
     );
   };
 
-  const renderToolbarItem = (context: EmployeeInfoItemContext) => (
+  const renderToolbarItem: import("ojs/ojvcomponent").TemplateSlot<EmployeeInfoItemContext> = (context) => (
     <oj-c-list-item-layout aria-label={`Details for ${context.data.name}`}>
       <oj-c-selector slot="selector" aria-label={`Select ${context.data.name}`} />
       <div class="oj-typography-body-md oj-typography-bold">{context.data.name}</div>

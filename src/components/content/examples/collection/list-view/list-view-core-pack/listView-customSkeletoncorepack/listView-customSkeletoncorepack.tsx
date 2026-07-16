@@ -30,7 +30,7 @@ type SkeletonTemplateContext = CListViewElement.SkeletonTemplateContext;
 
 const TWEETS = JSON.parse(tweetsText) as Tweet[];
 
-const renderSkeleton = (_context: SkeletonTemplateContext) => (
+const renderSkeleton: import("ojs/ojvcomponent").TemplateSlot<SkeletonTemplateContext> = (_context) => (
   <oj-c-list-item-layout>
     <div>
       <oj-c-skeleton height="5x" width="45x" />
@@ -47,7 +47,7 @@ const renderSkeleton = (_context: SkeletonTemplateContext) => (
   </oj-c-list-item-layout>
 );
 
-const renderItem = (context: ItemTemplateContext) => (
+const renderItem: import("ojs/ojvcomponent").TemplateSlot<ItemTemplateContext> = (context) => (
   <oj-c-list-item-layout>
     <div>
       <span class="oj-typography-body-md oj-text-color-primary">{context.data.name}</span>

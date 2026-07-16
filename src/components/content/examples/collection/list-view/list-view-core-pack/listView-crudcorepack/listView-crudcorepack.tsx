@@ -29,7 +29,7 @@ const INITIAL_ITEMS: GroceryItem[] = [
   { id: 4, item: "Vanilla Extract" }
 ];
 
-const renderItem = (context: ItemTemplateContext) => (
+const renderItem: import("ojs/ojvcomponent").TemplateSlot<ItemTemplateContext> = (context) => (
   <oj-c-list-item-layout>
     <span>{context.data.item}</span>
   </oj-c-list-item-layout>
