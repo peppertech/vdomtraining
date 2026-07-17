@@ -8,7 +8,6 @@ import type { ComponentProps } from 'preact';
 import { useMemo,useState } from 'preact/hooks';
 import * as deptData from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-// import 'ojs/ojtextarea';
 
 interface DepartmentData {
     DepartmentId: number;

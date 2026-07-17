@@ -37,7 +37,6 @@ import { CInputTimeMaskElement } from 'oj-c/input-time-mask';
 
 // Data provider
 import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
-//import { MutableArrayDataProvider } from 'ojs/ojmutablearraydataprovider';
 import { IntlConverterUtils } from 'ojs/ojconverterutils-i18n';
 
 type monthMaskValueType = CInputMonthMaskElement['value'];

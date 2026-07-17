@@ -4,7 +4,6 @@ import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-// import 'ojs/ojratinggauge';
 import * as deptDataText from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
 
 interface DepartmentData {

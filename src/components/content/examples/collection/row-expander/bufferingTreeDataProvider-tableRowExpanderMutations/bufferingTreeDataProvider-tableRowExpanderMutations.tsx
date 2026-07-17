@@ -15,7 +15,6 @@ import * as jsonDataText from 'text!../../data/cookbook/dataCollections/rowExpan
 import BufferingTreeDataProvider = require('ojs/ojbufferingtreedataprovider');
 import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
 import BufferingDataProvider = require('ojs/ojbufferingdataprovider');
-// import 'ojs/ojtextarea';
 import 'css!./demo.css';
 import 'ojs/ojtoolbar';
 
