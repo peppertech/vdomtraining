@@ -44,12 +44,12 @@ class EnsureRedwoodThemeFirstPlugin {
       HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tap(
         'EnsureRedwoodThemeFirstPlugin',
         (data) => {
-          const redwoodLegacyThemeHref = '/styles/redwood/20.1.2/web/redwood.css';
-          const redwoodPreactThemeHref = '/styles/theme-redwood/20.1.2/web/theme.css';
+          const redwoodLegacyThemeHref = 'styles/redwood/20.1.2/web/redwood.css';
+          const redwoodPreactThemeHref = 'styles/theme-redwood/20.1.2/web/theme.css';
           const redwoodThemeLinks = [
             `<link href="${redwoodLegacyThemeHref}" id="themestyle" rel="stylesheet">`,
             `<link href="${redwoodPreactThemeHref}" id="redwoodbase" rel="stylesheet">`,
-            `<link href="/styles/app.css" id="appbase" rel="stylesheet">`
+            `<link href="styles/app.css" id="appbase" rel="stylesheet">`
           ].join('\n    ');
 
           data.html = data.html
@@ -109,7 +109,7 @@ module.exports = {
 
     config.output = {
       ...(config.output || {}),
-      publicPath: '/'
+      publicPath: './'
     };
 
     config.resolve = config.resolve || {};
@@ -183,7 +183,7 @@ module.exports = {
           middleware: (req, res, next) => {
             const assetMatch = req.url && req.url.match(/^\/(?:.+\/)?(styles|js)\/(.+)$/);
             if (assetMatch) {
-              req.url = `/${assetMatch[1]}/${assetMatch[2]}`;
+              req.url = `./${assetMatch[1]}/${assetMatch[2]}`;
             }
             next();
           }
@@ -198,15 +198,15 @@ module.exports = {
         rewrites: [
           {
             from: /^\/(?:.+\/)?styles\/(.+)$/,
-            to: ({ match }) => `/styles/${match[1]}`
+            to: ({ match }) => `./styles/${match[1]}`
           },
           {
             from: /^\/(?:.+\/)?js\/(.+)$/,
-            to: ({ match }) => `/js/${match[1]}`
+            to: ({ match }) => `./js/${match[1]}`
           },
           {
-            from: /./,
-            to: '/index.html'
+            from: '/',
+            to: './index.html'
           }
         ]
       }
