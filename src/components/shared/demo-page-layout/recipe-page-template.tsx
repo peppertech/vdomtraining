@@ -6,6 +6,7 @@ import { type ComponentChildren,type FunctionComponent } from 'preact';
 import { useCallback,useEffect,useMemo,useRef,useState } from "preact/hooks";
 import { useExampleRoute } from "../../content/examples/example-route-context";
 import { DemoLayoutTemplate } from "./demo-layout-template";
+import type { PlaygroundConfig } from "../code-playground/tsx-playground";
 
 export type RecipePageItem = {
   id: string;
@@ -13,6 +14,7 @@ export type RecipePageItem = {
   description: ComponentChildren;
   recipe: ComponentChildren;
   Component: FunctionComponent;
+  playground?: PlaygroundConfig;
 };
 
 type RecipePageTemplateProps = {
@@ -180,6 +182,7 @@ export function RecipePageTemplate({
           description={activeExample.description}
           recipe={activeExample.recipe}
           demo={<ActiveExampleComponent />}
+          playground={activeExample.playground}
         />
       </main>
     );
@@ -209,6 +212,7 @@ export function RecipePageTemplate({
           description={activeExample.description}
           recipe={activeExample.recipe}
           demo={<ActiveExampleComponent />}
+          playground={activeExample.playground}
         />
       </div>
     </div>

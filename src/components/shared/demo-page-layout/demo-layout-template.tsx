@@ -6,7 +6,18 @@
  * @ignore
  */
 import "css!./demo-layout-template.css";
-import type { ComponentChildren } from "preact";
+import type { ComponentChildren, FunctionComponent } from "preact";
+import {
+  TsxPlayground,
+  type PlaygroundConfig,
+} from "../code-playground/tsx-playground";
+import { useCallback, useEffect, useRef, useState } from "preact/hooks";
+import {
+  nextAppliedPlayground,
+  type AppliedPlayground,
+} from "./applied-playground-state";
+
+let playgroundScopeSequence = 0;
 
 type Props = Readonly<{
   componentType?: string;
@@ -15,6 +26,7 @@ type Props = Readonly<{
   description?: ComponentChildren;
   recipe?: ComponentChildren;
   demo?: ComponentChildren;
+  playground?: PlaygroundConfig;
 }>;
 
 export function DemoLayoutTemplate({
@@ -24,7 +36,25 @@ export function DemoLayoutTemplate({
   description,
   recipe,
   demo,
+  playground,
 }: Props) {
+  const [appliedPlayground, setAppliedPlayground] =
+    useState<AppliedPlayground>();
+  const playgroundScopeRef = useRef(
+    `tsx-playground-${playgroundScopeSequence++}`,
+  );
+  const updatePlaygroundComponent = useCallback(
+    (component: FunctionComponent | undefined) => {
+      setAppliedPlayground((current) =>
+        nextAppliedPlayground(current, component),
+      );
+    },
+    [],
+  );
+
+  useEffect(() => setAppliedPlayground(undefined), [playground?.initialSource]);
+  const PlaygroundDemo = appliedPlayground?.Component;
+
   return (
     <article class="demo-layout-template">
       <header class="demo-layout-template__header">
@@ -59,24 +89,47 @@ export function DemoLayoutTemplate({
         aria-labelledby="demo-layout-template-demo-heading"
         class="demo-layout-template__demo-section"
       >
-        <div class="demo-layout-template__demo-body">{demo}</div>
-      </section>
-
-      <section
-        aria-labelledby="demo-layout-template-recipe-heading"
-        class="demo-layout-template__recipe-section"
-      >
-        <h2
-          id="demo-layout-template-recipe-heading"
-          class="oj-typography-heading-md"
+        <div
+          key={appliedPlayground?.revision ?? "original"}
+          class="demo-layout-template__demo-body"
+          data-tsx-playground-scope={
+            playground ? playgroundScopeRef.current : undefined
+          }
         >
-          Recipe
-          <hr/>
-        </h2>
-        <div class="demo-layout-template__recipe-body oj-typography-body-md">
-          {recipe}
+          {PlaygroundDemo ? <PlaygroundDemo /> : demo}
         </div>
       </section>
+
+      {playground && (
+        <TsxPlayground
+          ariaLabel={`${demoName ?? componentType ?? "Component"} code editor`}
+          initialSource={playground.initialSource}
+          fileName={playground.fileName}
+          runtimeBindings={playground.runtimeBindings}
+          supportingFiles={playground.supportingFiles}
+          cssScope={playgroundScopeRef.current}
+          infoContent={recipe}
+          onComponentChange={updatePlaygroundComponent}
+        />
+      )}
+
+      {!playground && (
+        <section
+          aria-labelledby="demo-layout-template-recipe-heading"
+          class="demo-layout-template__recipe-section"
+        >
+          <h2
+            id="demo-layout-template-recipe-heading"
+            class="oj-typography-heading-md"
+          >
+            Recipe
+            <hr/>
+          </h2>
+          <div class="demo-layout-template__recipe-body oj-typography-body-md">
+            {recipe}
+          </div>
+        </section>
+      )}
     </article>
   );
 }

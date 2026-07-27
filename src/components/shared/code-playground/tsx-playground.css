@@ -1,0 +1,11 @@
+.tsx-playground { display: grid; gap: 1rem; }
+.tsx-playground__toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.tsx-playground__toolbar h2 { margin: 0; }
+.tsx-playground__notice { margin: 0; color: var(--oj-core-text-color-secondary, #5a5a5a); font-size: .875rem; }
+.tsx-playground__tabs { min-width: 0; }
+.tsx-playground__file-name { font-family: monospace; font-size: .875rem; font-weight: 600; }
+.tsx-playground__editor, .tsx-playground__editor-fallback { box-sizing: border-box; width: 100%; min-height: 30rem; border: 1px solid var(--oj-core-divider-color, #d6dfe6); background: var(--oj-core-neutral-0, #fff); color: var(--oj-core-text-color-primary, #161513); }
+.tsx-playground__editor-fallback { resize: vertical; padding: 1rem; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .875rem; line-height: 1.5; }
+.tsx-playground--dark .tsx-playground__editor-fallback { border-color: #454545; background: #1e1e1e; color: #d4d4d4; }
+.tsx-playground__info { box-sizing: border-box; min-height: 12rem; padding: 1rem; border: 1px solid var(--oj-core-divider-color, #d6dfe6); background: var(--oj-core-neutral-0, #fff); }
+.tsx-playground__error { white-space: pre-wrap; color: #b00020; font-family: monospace; }

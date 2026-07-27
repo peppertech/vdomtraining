@@ -5,11 +5,15 @@ import 'preact';
 import { type ComponentChildren,type FunctionComponent } from 'preact';
 import { useCallback,useMemo,useState } from "preact/hooks";
 import { DemoLayoutTemplate } from "../../../../../shared/demo-page-layout/demo-layout-template";
+import type { PlaygroundConfig } from "../../../../../shared/code-playground/tsx-playground";
 import SelectSingleAddToListExample from "./selectSingle-addToList";
 import SelectSingleAdvancedSearchExample from "./selectSingle-advancedSearch";
 import SelectSingleBasicExample from "./selectSingle-basic";
 import SelectSingleCollectionTemplateListViewExample from "./selectSingle-collectionTemplateListView";
+import selectSingleCollectionTemplateListViewSource from "./selectSingle-collectionTemplateListView-source";
 import SelectSingleCollectionTemplateTableExample from "./selectSingle-collectionTemplateTable";
+import selectSingleCollectionTemplateTableSource from "./selectSingle-collectionTemplateTable-source";
+import selectSingleEmployeeDataSource from "./selectSingle-employeeData-source";
 import {
   selectSingleCorePackDocs,
   type SelectSingleCorePackDemoId,
@@ -21,6 +25,12 @@ import SelectSingleStatesExample from "./selectSingle-states";
 import SelectSingleValueItemExample from "./selectSingle-valueItem";
 import SelectSingleVirtualKeyboardExample from "./selectSingle-virtualKeyboard";
 import SelectSingleWidthExample from "./selectSingle-width";
+import {
+  createOracleEmployeeDataProvider,
+  getEmployeeItemText,
+  renderEmployeeCollectionListView,
+  renderEmployeeCollectionTable,
+} from "./selectSingle-shared";
 
 type SelectSingleNavItem = {
   id: SelectSingleCorePackDemoId;
@@ -28,7 +38,18 @@ type SelectSingleNavItem = {
   description: ComponentChildren;
   recipe: ComponentChildren;
   Component: FunctionComponent;
+  playground?: PlaygroundConfig;
 };
+
+const collectionTemplateSupportingFiles: NonNullable<
+  PlaygroundConfig["supportingFiles"]
+> = [{
+  fileName: "employeeData.json",
+  initialSource: selectSingleEmployeeDataSource,
+  language: "json",
+  importSpecifier: "text!../../data/employeeData.json",
+  bindingName: "employeeDataText",
+}];
 
 const selectSingleNavItems: SelectSingleNavItem[] = [
   {
@@ -65,6 +86,16 @@ const selectSingleNavItems: SelectSingleNavItem[] = [
     description: selectSingleCorePackDocs["collection-list-view"].description,
     recipe: selectSingleCorePackDocs["collection-list-view"].recipe,
     Component: SelectSingleCollectionTemplateListViewExample,
+    playground: {
+      initialSource: selectSingleCollectionTemplateListViewSource,
+      fileName: "selectSingle-collectionTemplateListView.tsx",
+      runtimeBindings: {
+        createOracleEmployeeDataProvider,
+        getEmployeeItemText,
+        renderEmployeeCollectionListView,
+      },
+      supportingFiles: collectionTemplateSupportingFiles,
+    },
   },
   {
     id: "collection-table",
@@ -72,6 +103,16 @@ const selectSingleNavItems: SelectSingleNavItem[] = [
     description: selectSingleCorePackDocs["collection-table"].description,
     recipe: selectSingleCorePackDocs["collection-table"].recipe,
     Component: SelectSingleCollectionTemplateTableExample,
+    playground: {
+      initialSource: selectSingleCollectionTemplateTableSource,
+      fileName: "selectSingle-collectionTemplateTable.tsx",
+      runtimeBindings: {
+        createOracleEmployeeDataProvider,
+        getEmployeeItemText,
+        renderEmployeeCollectionTable,
+      },
+      supportingFiles: collectionTemplateSupportingFiles,
+    },
   },
   {
     id: "events",
@@ -190,6 +231,7 @@ export default function SelectSingleIndex() {
           description={activeExample.description}
           recipe={activeExample.recipe}
           demo={<ActiveExampleComponent />}
+          playground={activeExample.playground}
         />
       </div>
     </div>

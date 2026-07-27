@@ -1,5 +1,8 @@
 import * as preact from 'preact';
-import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
+import {
+  RecipePageTemplate,
+  type RecipePageItem,
+} from "../../../../../shared/demo-page-layout/recipe-page-template";
 import InputTextCorePackClearIconExample from "./inputTextCorePack-clearIcon";
 import {
   inputTextCorePackDocs,
@@ -12,24 +15,42 @@ import InputTextCorePackPrefixSuffixExample from "./inputTextCorePack-prefixSuff
 import InputTextCorePackRawValueExample from "./inputTextCorePack-rawValue";
 import InputTextCorePackStartEndSlotsExample from "./inputTextCorePack-startEndSlots";
 import InputTextCorePackStatesExample from "./inputTextCorePack-states";
+import inputTextCorePackStatesPlaygroundSource from "./inputTextCorePack-states-source";
+import {
+  confirmationMessages,
+  errorMessages,
+  infoMessages,
+  overviewMaxLengthConfig,
+  warningMessages,
+} from "./inputTextCorePack-shared";
 import InputTextCorePackTextExample from "./inputTextCorePack-text";
 import InputTextCorePackTextAlignExample from "./inputTextCorePack-textAlign";
 import InputTextCorePackVirtualKeyboardExample from "./inputTextCorePack-virtualKeyboard";
 import InputTextCorePackWidthExample from "./inputTextCorePack-width";
 
-const inputTextCorePackItems: {
+const inputTextCorePackItems: (RecipePageItem & {
   id: InputTextCorePackDemoId;
-  name: string;
   description: (typeof inputTextCorePackDocs)[InputTextCorePackDemoId]["description"];
   recipe: (typeof inputTextCorePackDocs)[InputTextCorePackDemoId]["recipe"];
   Component: () => preact.JSX.Element;
-}[] = [
+})[] = [
   {
     id: "states",
     name: "Overview",
     description: inputTextCorePackDocs.states.description,
     recipe: inputTextCorePackDocs.states.recipe,
     Component: InputTextCorePackStatesExample,
+    playground: {
+      initialSource: inputTextCorePackStatesPlaygroundSource,
+      fileName: "inputTextCorePack-states.tsx",
+      runtimeBindings: {
+        confirmationMessages,
+        errorMessages,
+        infoMessages,
+        overviewMaxLengthConfig,
+        warningMessages,
+      },
+    },
   },
   {
     id: "text",

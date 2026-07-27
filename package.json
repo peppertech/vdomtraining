@@ -6,6 +6,7 @@
     "@oracle/oraclejet": "20.1.2",
     "@oracle/oraclejet-core-pack": "20.1.2",
     "@oracle/oraclejet-preact": "20.1.2",
+    "monaco-editor": "^0.56.0",
     "preact-iso": "^2.12.0",
     "react-router-dom": "^6.22.3"
   },

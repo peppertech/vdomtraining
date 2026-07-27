@@ -100,9 +100,11 @@ export const createBrowserDataProvider = (
     keyAttributes: "value",
   });
 
-export const createOracleEmployeeDataProvider = () =>
+export const createOracleEmployeeDataProvider = (
+  items: OracleEmployee[] = oracleEmployees,
+) =>
   new MutableArrayDataProvider<OracleEmployee["EMPLOYEE_ID"], OracleEmployee>(
-    oracleEmployees,
+    items,
     {
       keyAttributes: "EMPLOYEE_ID",
       textFilterAttributes: [

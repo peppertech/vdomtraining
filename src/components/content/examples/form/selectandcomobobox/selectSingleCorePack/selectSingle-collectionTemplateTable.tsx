@@ -1,5 +1,6 @@
 import "oj-c/select-single";
 import type { SelectSingle } from "oj-c/select-single";
+import * as employeeDataText from "text!../../data/employeeData.json";
 import 'preact';
 import { type ComponentProps } from 'preact';
 import { useCallback,useMemo,useState } from "preact/hooks";
@@ -14,8 +15,12 @@ import {
 type ValueEvent = Parameters<
   NonNullable<ComponentProps<"oj-c-select-single">["onvalueChanged"]>
 >[0];
+const employeeData = JSON.parse(employeeDataText) as OracleEmployee[];
 export default function SelectSingleCollectionTemplateTableExample() {
-  const dataProvider = useMemo(() => createOracleEmployeeDataProvider(), []);
+  const dataProvider = useMemo(
+    () => createOracleEmployeeDataProvider(employeeData),
+    [],
+  );
   const [selectVal, setSelectVal] = useState<number | null>(103);
 
   const handleValueChanged = useCallback((event: ValueEvent) => {
