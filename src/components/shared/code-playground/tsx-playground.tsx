@@ -9,6 +9,7 @@ import type { ComponentChildren, ComponentProps } from "preact";
 import * as hooks from "preact/hooks";
 import * as typescript from "typescript";
 import { useEffect, useMemo, useRef, useState } from "preact/hooks";
+import { PlaygroundControls } from "./playground-controls";
 
 const ALLOWED_IMPORTS = new Set([
   "preact",
@@ -624,23 +625,13 @@ export function TsxPlayground({
     >
       <div class="tsx-playground__toolbar">
         <h2 class="oj-typography-heading-sm">Try it</h2>
-        {!isInfoTab && (
-          <div>
-            <oj-switch
-              value={isDarkMode}
-              labelHint="Dark mode"
-              labelEdge="inside"
-              onvalueChanged={(event) => setIsDarkMode(!!event.detail.value)}
-            ></oj-switch>
-            <oj-c-button
-              class="oj-sm-margin-2x-start"
-              label="Apply changes"
-              chroming="callToAction"
-              onojAction={run}
-            ></oj-c-button>
-            <oj-c-button class="oj-sm-margin-2x-start" label="Reset" chroming="outlined" onojAction={reset}></oj-c-button>
-          </div>
-        )}
+        <PlaygroundControls
+          disabled={isInfoTab}
+          isDarkMode={isDarkMode}
+          onDarkModeChange={setIsDarkMode}
+          onApply={run}
+          onReset={reset}
+        />
       </div>
       <div class="tsx-playground__tabs">
         <oj-c-tab-bar
