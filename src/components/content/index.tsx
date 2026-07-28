@@ -25,12 +25,12 @@ const Content = () => {
   return (
     <div class="oj-web-applayout-content">
       <Router>
-        <Route path="/" component={Redirect} to="/bindings" />
+        <Route path="/" component={Redirect} to="/examples" />
         <Route path="/bindings" component={BindingContent} />
         <Route path="/modules" component={ModulesContent} />
         <Route path="/examples" component={Redirect} to="/examples/collection" />
         <Route path="/examples/*" component={ExampleContent} />
-        <Route default component={Redirect} to="/bindings" />
+        <Route default component={Redirect} to="/examples" />
       </Router>
     </div>
   );

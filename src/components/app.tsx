@@ -22,6 +22,14 @@ export type AppRoute = {
 
 const routeArray: AppRoute[] = [
   {
+    path: "/examples",
+    detail: {
+      label: "Examples",
+      iconClass:
+        "oj-navigationlist-item-icon oj-ux-ico-instructor-training-plus",
+    },
+  },
+  {
     path: "/bindings",
     detail: {
       label: "Bindings",
@@ -33,14 +41,6 @@ const routeArray: AppRoute[] = [
     detail: {
       label: "Modules",
       iconClass: "oj-navigationlist-item-icon oj-ux-ico-ungroup",
-    },
-  },
-  {
-    path: "/examples",
-    detail: {
-      label: "Examples",
-      iconClass:
-        "oj-navigationlist-item-icon oj-ux-ico-instructor-training-plus",
     },
   },
 ];
