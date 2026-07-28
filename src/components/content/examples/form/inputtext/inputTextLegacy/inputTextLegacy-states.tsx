@@ -18,7 +18,7 @@ export default function InputTextLegacyStatesExample() {
   return (
     <div>
       <h4>States inside oj-form-layout</h4>
-      <oj-form-layout maxColumns={2} direction="row">
+      <oj-form-layout maxColumns={3} direction="row">
         <oj-input-text value="value text" labelHint="enabled"></oj-input-text>
         <oj-input-text labelHint="enabled no value"></oj-input-text>
         <oj-input-text
@@ -36,7 +36,7 @@ export default function InputTextLegacyStatesExample() {
       </oj-form-layout>
 
       <h4>States outside of oj-form-layout</h4>
-      <div class="oj-flex">
+       <div class="oj-flex oj-sm-padding-2x-vertical">
         <div class="oj-sm-12 oj-md-6 oj-flex-item oj-sm-padding-2x-horizontal">
           <oj-input-text
             value="value text"
@@ -50,8 +50,8 @@ export default function InputTextLegacyStatesExample() {
             labelEdge="inside"
           ></oj-input-text>
         </div>
-      </div>
-      <div class="oj-flex">
+        </div>
+         <div class="oj-flex oj-sm-padding-2x-vertical">
         <div class="oj-sm-12 oj-md-6 oj-flex-item oj-sm-padding-2x-horizontal">
           <oj-input-text
             value="value text"
@@ -67,29 +67,29 @@ export default function InputTextLegacyStatesExample() {
             disabled
           ></oj-input-text>
         </div>
-      </div>
-      <div class="oj-flex">
-        <div class="oj-sm-12 oj-md-6 oj-flex-item oj-sm-padding-2x-horizontal">
+       </div>
+        <div class="oj-flex oj-sm-padding-2x-vertical">
+          <div class="oj-sm-12 oj-md-6 oj-flex-item oj-sm-padding-2x-horizontal">
           <oj-input-text
             value="value text"
             labelHint="readonly"
             labelEdge="inside"
             readonly
           ></oj-input-text>
-        </div>
-        <div class="oj-sm-12 oj-md-6 oj-flex-item oj-sm-padding-2x-horizontal">
+           </div>
+           <div class="oj-sm-12 oj-md-6 oj-flex-item oj-sm-padding-2x-horizontal">
           <oj-input-text
             labelHint="readonly no value"
             labelEdge="inside"
             readonly
           ></oj-input-text>
+           </div>
         </div>
-      </div>
 
       <h4 class="oj-sm-margin-4x-top">
         Required, Clear Icon, Placeholder &amp; Max Length
       </h4>
-      <oj-form-layout maxColumns={2} direction="row">
+      <oj-form-layout maxColumns={3} direction="row">
         <oj-input-text required labelHint="required"></oj-input-text>
         <oj-input-text
           clearIcon="always"
@@ -115,7 +115,7 @@ export default function InputTextLegacyStatesExample() {
       </oj-form-layout>
 
       <h4 class="oj-sm-margin-4x-top">Start and End Slots</h4>
-      <oj-form-layout maxColumns={2} direction="row">
+      <oj-form-layout maxColumns={3} direction="row">
         <oj-input-text labelHint="Icon in the start slot">
           <div
             slot="start"
@@ -133,7 +133,7 @@ export default function InputTextLegacyStatesExample() {
       </oj-form-layout>
 
       <h4 class="oj-sm-margin-4x-top">Help</h4>
-      <oj-form-layout maxColumns={2} direction="row">
+      <oj-form-layout maxColumns={3} direction="row">
         <oj-input-text
           help={{ instruction: "help.instruction text" }}
           labelHint="help.instruction"
@@ -149,7 +149,7 @@ export default function InputTextLegacyStatesExample() {
       </oj-form-layout>
 
       <h4 class="oj-sm-margin-4x-top">Messages</h4>
-      <oj-form-layout maxColumns={2} direction="row">
+      <oj-form-layout maxColumns={3} direction="row">
         <oj-input-text
           messagesCustom={errorMessages}
           value="value text"

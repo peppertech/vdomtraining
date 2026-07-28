@@ -18,7 +18,7 @@ export default function InputTextCorePackStatesExample() {
   return (
     <div>
       <h4>States inside oj-c-form-layout</h4>
-      <oj-c-form-layout maxColumns={2} direction="row">
+      <oj-c-form-layout maxColumns={3} direction="row">
         <oj-c-input-text value="value text" labelHint="enabled"></oj-c-input-text>
         <oj-c-input-text labelHint="enabled no value"></oj-c-input-text>
         <oj-c-input-text
@@ -30,9 +30,10 @@ export default function InputTextCorePackStatesExample() {
         <oj-c-input-text
           value="value text"
           labelHint="readonly"
+          containerReadonly={false}
           readonly
         ></oj-c-input-text>
-        <oj-c-input-text labelHint="readonly no value" readonly></oj-c-input-text>
+        <oj-c-input-text containerReadonly={false} labelHint="readonly no value" readonly></oj-c-input-text>
       </oj-c-form-layout>
 
       <h4>States outside of oj-c-form-layout</h4>
@@ -74,6 +75,7 @@ export default function InputTextCorePackStatesExample() {
             value="value text"
             labelHint="readonly"
             labelEdge="inside"
+            containerReadonly={false}
             readonly
           ></oj-c-input-text>
         </div>
@@ -81,6 +83,7 @@ export default function InputTextCorePackStatesExample() {
           <oj-c-input-text
             labelHint="readonly no value"
             labelEdge="inside"
+            containerReadonly={false}
             readonly
           ></oj-c-input-text>
         </div>

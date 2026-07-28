@@ -60,7 +60,8 @@ export default function SelectMultipleStatesExample() {
       </oj-c-form-layout>
 
       <h6 class="oj-sm-margin-6x-top">States outside oj-c-form-layout</h6>
-      <div class="oj-flex oj-sm-flex-wrap-wrap oj-sm-column-gap-4x oj-sm-row-gap-4x">
+      <div class="oj-flex oj-sm-padding-2x-vertical">
+        <div class="oj-sm-12 oj-md-6 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal">
         <oj-c-select-multiple
           labelHint="Enabled"
           labelEdge="inside"
@@ -69,6 +70,8 @@ export default function SelectMultipleStatesExample() {
           itemText="label"
           value={selectedBrowsers}
         ></oj-c-select-multiple>
+        </div>
+        <div class="oj-sm-12 oj-md-6 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal">
         <oj-c-select-multiple
           labelHint="Disabled"
           labelEdge="inside"
@@ -78,6 +81,8 @@ export default function SelectMultipleStatesExample() {
           itemText="label"
           value={selectedBrowsers}
         ></oj-c-select-multiple>
+        </div>
+        <div class="oj-sm-12 oj-md-6 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal">
         <oj-c-select-multiple
           labelHint="Readonly"
           labelEdge="inside"
@@ -87,10 +92,11 @@ export default function SelectMultipleStatesExample() {
           itemText="label"
           value={selectedBrowsers}
         ></oj-c-select-multiple>
+        </div>
       </div>
 
       <h6 class="oj-sm-margin-6x-top">Required</h6>
-      <oj-c-form-layout>
+      <oj-c-form-layout >
         <oj-c-select-multiple
           labelHint="Required"
           required
@@ -100,7 +106,12 @@ export default function SelectMultipleStatesExample() {
       </oj-c-form-layout>
 
       <h6 class="oj-sm-margin-6x-top">Help</h6>
-      <oj-c-form-layout>
+      <oj-c-form-layout  
+        id="selectMultipleHelpLayout"
+        maxColumns={3}
+        direction="row"
+        labelEdge="inside"
+        userAssistanceDensity="efficient">
         <oj-c-select-multiple
           labelHint="Placeholder"
           placeholder="Select browsers"
@@ -122,7 +133,12 @@ export default function SelectMultipleStatesExample() {
       </oj-c-form-layout>
 
       <h6 class="oj-sm-margin-6x-top">Messages</h6>
-      <oj-c-form-layout>
+      <oj-c-form-layout 
+       id="selectMultipleMessagesLayout"
+        maxColumns={3}
+        direction="row"
+        labelEdge="inside"
+        userAssistanceDensity="efficient">
         <oj-c-select-multiple
           labelHint="Error"
           data={browserDataProvider}
