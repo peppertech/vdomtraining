@@ -91,9 +91,11 @@ export const createBrowserDataProvider = (
     keyAttributes: "value",
   });
 
-export const createOracleEmployeeDataProvider = () =>
+export const createOracleEmployeeDataProvider = (
+  items: OracleEmployee[] = oracleEmployees,
+) =>
   new MutableArrayDataProvider<OracleEmployee["EMPLOYEE_ID"], OracleEmployee>(
-    oracleEmployees,
+    items,
     {
       keyAttributes: "EMPLOYEE_ID",
       textFilterAttributes: [
@@ -113,9 +115,10 @@ export const getBrowserLabels = (value: Set<string> | null | undefined) =>
 
 export const getEmployeeNames = (
   value: Set<OracleEmployee["EMPLOYEE_ID"]> | null | undefined,
+  items: OracleEmployee[] = oracleEmployees,
 ) =>
   value
-    ? oracleEmployees
+    ? items
         .filter((employee) => value.has(employee.EMPLOYEE_ID))
         .map((employee) => `${employee.FIRST_NAME} ${employee.LAST_NAME}`)
         .join(", ")
