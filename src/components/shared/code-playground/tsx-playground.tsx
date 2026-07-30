@@ -18,7 +18,17 @@ const ALLOWED_IMPORTS = new Set([
   "oj-c/form-layout",
   "oj-c/button",
   "oj-c/select-single",
+  "ojs/ojbutton",
+  "ojs/ojdatetimepicker",
+  "ojs/ojformlayout",
+  "ojs/ojinputnumber",
+  "ojs/ojinputtext",
+  "ojs/ojlabel",
+  "ojs/ojlabelvalue",
+  "ojs/ojoption",
+  "ojs/ojradioset",
   "./inputTextCorePack-shared",
+  "./inputTextLegacy-shared",
   "./selectSingle-shared",
 ]);
 
