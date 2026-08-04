@@ -20,7 +20,7 @@ const rules = [
   },
   {
     label: "8 Characters",
-    test: (value: string) => /^.{8,}$/.test(value),
+    test: (value: string) => /^.{8}$/.test(value),
   },
 ];
 
@@ -35,12 +35,13 @@ const getStrengthText = (progress: number) => {
 };
 
 export default function InputPasswordPatternMatchingExample() {
+  const [rawPasswordValue, setRawPasswordValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [focused, setFocused] = useState(false);
 
   const passedRules = useMemo(
-    () => rules.map((rule) => rule.test(passwordValue)),
-    [passwordValue],
+    () => rules.map((rule) => rule.test(rawPasswordValue)),
+    [rawPasswordValue],
   );
   const progressBarValue = useMemo(() => {
     const progress = passedRules.reduce(
@@ -49,7 +50,8 @@ export default function InputPasswordPatternMatchingExample() {
     );
     return progress === 99 ? 100 : progress;
   }, [passedRules]);
-  const showRules = focused || (passwordValue.length > 0 && progressBarValue < 100);
+  const showRules =
+    focused || (rawPasswordValue.length > 0 && progressBarValue < 100);
 
   const patternValidator = useMemo(
     () => [
@@ -74,7 +76,6 @@ export default function InputPasswordPatternMatchingExample() {
           labelHint="password"
           id="password-pattern-match"
           value={passwordValue}
-          rawValue={passwordValue}
           validators={patternValidator as ComponentProps<'oj-input-password'>['validators']}
           maskIcon="visible"
           onFocus={() => {
@@ -84,7 +85,7 @@ export default function InputPasswordPatternMatchingExample() {
             setFocused(false);
           }}
           onrawValueChanged={(event: InputPasswordRawValueChangedEvent) => {
-            setPasswordValue(String(event.detail.value ?? ""));
+            setRawPasswordValue(String(event.detail.value ?? ""));
           }}
           onvalueChanged={(event: InputPasswordValueChangedEvent) => {
             setPasswordValue(String(event.detail.value ?? ""));
