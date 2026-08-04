@@ -5,6 +5,7 @@ import 'preact';
 import { type ComponentChildren,type FunctionComponent } from 'preact';
 import { useCallback,useMemo,useState } from "preact/hooks";
 import { DemoLayoutTemplate } from "../../../../../shared/demo-page-layout/demo-layout-template";
+import type { PlaygroundConfig } from "../../../../../shared/code-playground/tsx-playground";
 import RichCheckBoxsetCorePackBasicExample from "./richCheckBoxsetCorePack-basic";
 import {
   richCheckBoxsetCorePackDocs,
@@ -17,6 +18,25 @@ import RichCheckBoxsetCorePackMinimumExample from "./richCheckBoxsetCorePack-min
 import RichCheckBoxsetCorePackOverviewExample from "./richCheckBoxsetCorePack-overview";
 import RichCheckBoxsetCorePackRangeExample from "./richCheckBoxsetCorePack-range";
 import RichCheckBoxsetCorePackUserAssistanceExample from "./richCheckBoxsetCorePack-userAssistance";
+import richCheckBoxsetCorePackBasicPlaygroundSource from "./richCheckBoxsetCorePack-basic-source";
+import richCheckBoxsetCorePackExactPlaygroundSource from "./richCheckBoxsetCorePack-exact-source";
+import richCheckBoxsetCorePackLayoutPlaygroundSource from "./richCheckBoxsetCorePack-layout-source";
+import richCheckBoxsetCorePackMaximumPlaygroundSource from "./richCheckBoxsetCorePack-maximum-source";
+import richCheckBoxsetCorePackMinimumPlaygroundSource from "./richCheckBoxsetCorePack-minimum-source";
+import richCheckBoxsetCorePackOverviewPlaygroundSource from "./richCheckBoxsetCorePack-overview-source";
+import richCheckBoxsetCorePackRangePlaygroundSource from "./richCheckBoxsetCorePack-range-source";
+import richCheckBoxsetCorePackUserAssistancePlaygroundSource from "./richCheckBoxsetCorePack-userAssistance-source";
+import {
+  avatarOptions,
+  confirmationMessages,
+  controlStateOptions,
+  errorMessages,
+  iconOptions,
+  industryOptions,
+  infoMessages,
+  noMediaOptions,
+  warningMessages,
+} from "./richCheckBoxsetCorePack-shared";
 
 type RichCheckBoxsetCorePackNavItem = {
   id: RichCheckBoxsetCorePackDemoId;
@@ -24,6 +44,7 @@ type RichCheckBoxsetCorePackNavItem = {
   description: ComponentChildren;
   recipe: ComponentChildren;
   Component: FunctionComponent;
+  playground?: PlaygroundConfig;
 };
 
 const richCheckBoxsetCorePackNavItems: RichCheckBoxsetCorePackNavItem[] = [
@@ -33,6 +54,17 @@ const richCheckBoxsetCorePackNavItems: RichCheckBoxsetCorePackNavItem[] = [
     description: richCheckBoxsetCorePackDocs.overview.description,
     recipe: richCheckBoxsetCorePackDocs.overview.recipe,
     Component: RichCheckBoxsetCorePackOverviewExample,
+    playground: {
+      initialSource: richCheckBoxsetCorePackOverviewPlaygroundSource,
+      fileName: "richCheckBoxsetCorePack-overview.tsx",
+      runtimeBindings: {
+        confirmationMessages,
+        errorMessages,
+        industryOptions,
+        infoMessages,
+        warningMessages,
+      },
+    },
   },
   {
     id: "basic",
@@ -40,6 +72,13 @@ const richCheckBoxsetCorePackNavItems: RichCheckBoxsetCorePackNavItem[] = [
     description: richCheckBoxsetCorePackDocs.basic.description,
     recipe: richCheckBoxsetCorePackDocs.basic.recipe,
     Component: RichCheckBoxsetCorePackBasicExample,
+    playground: {
+      initialSource: richCheckBoxsetCorePackBasicPlaygroundSource,
+      fileName: "richCheckBoxsetCorePack-basic.tsx",
+      runtimeBindings: {
+        industryOptions,
+      },
+    },
   },
   {
     id: "layout",
@@ -47,6 +86,16 @@ const richCheckBoxsetCorePackNavItems: RichCheckBoxsetCorePackNavItem[] = [
     description: richCheckBoxsetCorePackDocs.layout.description,
     recipe: richCheckBoxsetCorePackDocs.layout.recipe,
     Component: RichCheckBoxsetCorePackLayoutExample,
+    playground: {
+      initialSource: richCheckBoxsetCorePackLayoutPlaygroundSource,
+      fileName: "richCheckBoxsetCorePack-layout.tsx",
+      runtimeBindings: {
+        avatarOptions,
+        iconOptions,
+        industryOptions,
+        noMediaOptions,
+      },
+    },
   },
   {
     id: "user-assistance",
@@ -54,6 +103,14 @@ const richCheckBoxsetCorePackNavItems: RichCheckBoxsetCorePackNavItem[] = [
     description: richCheckBoxsetCorePackDocs["user-assistance"].description,
     recipe: richCheckBoxsetCorePackDocs["user-assistance"].recipe,
     Component: RichCheckBoxsetCorePackUserAssistanceExample,
+    playground: {
+      initialSource: richCheckBoxsetCorePackUserAssistancePlaygroundSource,
+      fileName: "richCheckBoxsetCorePack-userAssistance.tsx",
+      runtimeBindings: {
+        avatarOptions,
+        controlStateOptions,
+      },
+    },
   },
   {
     id: "minimum",
@@ -61,6 +118,13 @@ const richCheckBoxsetCorePackNavItems: RichCheckBoxsetCorePackNavItem[] = [
     description: richCheckBoxsetCorePackDocs.minimum.description,
     recipe: richCheckBoxsetCorePackDocs.minimum.recipe,
     Component: RichCheckBoxsetCorePackMinimumExample,
+    playground: {
+      initialSource: richCheckBoxsetCorePackMinimumPlaygroundSource,
+      fileName: "richCheckBoxsetCorePack-minimum.tsx",
+      runtimeBindings: {
+        avatarOptions,
+      },
+    },
   },
   {
     id: "maximum",
@@ -68,6 +132,13 @@ const richCheckBoxsetCorePackNavItems: RichCheckBoxsetCorePackNavItem[] = [
     description: richCheckBoxsetCorePackDocs.maximum.description,
     recipe: richCheckBoxsetCorePackDocs.maximum.recipe,
     Component: RichCheckBoxsetCorePackMaximumExample,
+    playground: {
+      initialSource: richCheckBoxsetCorePackMaximumPlaygroundSource,
+      fileName: "richCheckBoxsetCorePack-maximum.tsx",
+      runtimeBindings: {
+        avatarOptions,
+      },
+    },
   },
   {
     id: "range",
@@ -75,6 +146,13 @@ const richCheckBoxsetCorePackNavItems: RichCheckBoxsetCorePackNavItem[] = [
     description: richCheckBoxsetCorePackDocs.range.description,
     recipe: richCheckBoxsetCorePackDocs.range.recipe,
     Component: RichCheckBoxsetCorePackRangeExample,
+    playground: {
+      initialSource: richCheckBoxsetCorePackRangePlaygroundSource,
+      fileName: "richCheckBoxsetCorePack-range.tsx",
+      runtimeBindings: {
+        avatarOptions,
+      },
+    },
   },
   {
     id: "exact",
@@ -82,6 +160,13 @@ const richCheckBoxsetCorePackNavItems: RichCheckBoxsetCorePackNavItem[] = [
     description: richCheckBoxsetCorePackDocs.exact.description,
     recipe: richCheckBoxsetCorePackDocs.exact.recipe,
     Component: RichCheckBoxsetCorePackExactExample,
+    playground: {
+      initialSource: richCheckBoxsetCorePackExactPlaygroundSource,
+      fileName: "richCheckBoxsetCorePack-exact.tsx",
+      runtimeBindings: {
+        avatarOptions,
+      },
+    },
   },
 ];
 
@@ -159,6 +244,7 @@ export default function RichCheckBoxsetCorePackIndex() {
           description={activeExample.description}
           recipe={activeExample.recipe}
           demo={<ActiveExampleComponent />}
+          playground={activeExample.playground}
         />
       </div>
     </div>

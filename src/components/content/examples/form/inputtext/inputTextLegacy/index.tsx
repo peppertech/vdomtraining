@@ -116,9 +116,6 @@ const inputTextLegacyItems: {
     playground: {
       initialSource: inputTextLegacyMaxLengthPlaygroundSource,
       fileName: "inputTextLegacy-maxLength.tsx",
-      runtimeBindings: {
-        maxLengthConfig,
-      },
     },
   },
   {
@@ -156,7 +153,7 @@ const inputTextLegacyItems: {
   },
   {
     id: "input-wrap",
-    name: "Input Wrap",
+    name: "With Form Controls",
     description: inputTextLegacyDocs["input-wrap"].description,
     recipe: inputTextLegacyDocs["input-wrap"].recipe,
     Component: InputTextLegacyInputWrapExample,

@@ -15,7 +15,7 @@ type ColorTransientValueChangedEvent = ojColorSpectrum.transientValueChanged;
 
 const INITIAL_COLOR = new Color("#FF0000");
 
-export const ColorSpectrum = () => {
+export default function ColorSpectrum() {
   const [colorValue, setColorValue] = useState<Color>(INITIAL_COLOR);
   const [transientValue, setTransientValue] = useState<Color>(INITIAL_COLOR);
   const [spectrumDisabled, setSpectrumDisabled] = useState(false);
@@ -97,4 +97,4 @@ export const ColorSpectrum = () => {
       </div>
     </div>
   );
-};
+}

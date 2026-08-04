@@ -1,7 +1,6 @@
 import "ojs/ojinputtext";
 import 'preact';
 import { useState } from "preact/hooks";
-import { maxLengthConfig } from "./inputTextLegacy-shared";
 
 export default function InputTextLegacyMaxLengthExample() {
   const [value, setValue] = useState("");
@@ -11,9 +10,9 @@ export default function InputTextLegacyMaxLengthExample() {
     <div>
       <div class="oj-sm-margin-5x-bottom">
         <oj-input-text
+          id="text-input"
           value={value}
-          rawValue={rawValue}
-          length={maxLengthConfig}
+          length={{ max: 3, countBy: "codeUnit" }}
           labelHint="Input text with max length"
           labelEdge="inside"
           onvalueChanged={(event) => {

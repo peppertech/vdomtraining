@@ -54,6 +54,7 @@ export default function RadiosetReadonlyExample() {
       <div class="oj-sm-padding-5x-vertical">
         <h5>Readonly radioset with translations.readonlyNoValue specified:</h5>
         <oj-radioset
+          key={noValueColor}
           id="radiosetReadonlyNoValueDemoId"
           labelHint="No value"
           labelEdge="inside"

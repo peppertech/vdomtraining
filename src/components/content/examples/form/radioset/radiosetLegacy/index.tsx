@@ -1,5 +1,6 @@
 import * as preact from 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
+import type { PlaygroundConfig } from "../../../../../shared/code-playground/tsx-playground";
 import RadiosetBasicExample from "./radioset-basic";
 import RadiosetDataProviderExample from "./radioset-dataProvider";
 import {
@@ -9,6 +10,24 @@ import {
 import RadiosetOverviewExample from "./radioset-overview";
 import RadiosetReadonlyExample from "./radioset-readonly";
 import RadiosetValidationExample from "./radioset-validation";
+import radiosetBasicPlaygroundSource from "./radioset-basic-source";
+import radiosetDataProviderPlaygroundSource from "./radioset-dataProvider-source";
+import radiosetOverviewPlaygroundSource from "./radioset-overview-source";
+import radiosetReadonlyPlaygroundSource from "./radioset-readonly-source";
+import radiosetValidationPlaygroundSource from "./radioset-validation-source";
+import {
+  browserOptions,
+  browserShortListOptions,
+  colorOptions,
+  confirmationMessages,
+  createRadiosetOptionsDataProvider,
+  errorMessages,
+  infoMessages,
+  renderRadioOptions,
+  technologyOptions,
+  warningMessages,
+  wrappingOptions,
+} from "./radioset-shared";
 
 const radiosetItems: {
   id: RadiosetDemoId;
@@ -16,6 +35,7 @@ const radiosetItems: {
   description: (typeof radiosetDocs)[RadiosetDemoId]["description"];
   recipe: (typeof radiosetDocs)[RadiosetDemoId]["recipe"];
   Component: () => preact.JSX.Element;
+  playground?: PlaygroundConfig;
 }[] = [
   {
     id: "overview",
@@ -23,6 +43,19 @@ const radiosetItems: {
     description: radiosetDocs.overview.description,
     recipe: radiosetDocs.overview.recipe,
     Component: RadiosetOverviewExample,
+    playground: {
+      initialSource: radiosetOverviewPlaygroundSource,
+      fileName: "radioset-overview.tsx",
+      runtimeBindings: {
+        confirmationMessages,
+        errorMessages,
+        infoMessages,
+        renderRadioOptions,
+        technologyOptions,
+        warningMessages,
+        wrappingOptions,
+      },
+    },
   },
   {
     id: "basic",
@@ -30,6 +63,14 @@ const radiosetItems: {
     description: radiosetDocs.basic.description,
     recipe: radiosetDocs.basic.recipe,
     Component: RadiosetBasicExample,
+    playground: {
+      initialSource: radiosetBasicPlaygroundSource,
+      fileName: "radioset-basic.tsx",
+      runtimeBindings: {
+        colorOptions,
+        renderRadioOptions,
+      },
+    },
   },
   {
     id: "readonly",
@@ -37,6 +78,14 @@ const radiosetItems: {
     description: radiosetDocs.readonly.description,
     recipe: radiosetDocs.readonly.recipe,
     Component: RadiosetReadonlyExample,
+    playground: {
+      initialSource: radiosetReadonlyPlaygroundSource,
+      fileName: "radioset-readonly.tsx",
+      runtimeBindings: {
+        colorOptions,
+        renderRadioOptions,
+      },
+    },
   },
   {
     id: "validation",
@@ -44,6 +93,14 @@ const radiosetItems: {
     description: radiosetDocs.validation.description,
     recipe: radiosetDocs.validation.recipe,
     Component: RadiosetValidationExample,
+    playground: {
+      initialSource: radiosetValidationPlaygroundSource,
+      fileName: "radioset-validation.tsx",
+      runtimeBindings: {
+        colorOptions,
+        renderRadioOptions,
+      },
+    },
   },
   {
     id: "data-provider",
@@ -51,6 +108,15 @@ const radiosetItems: {
     description: radiosetDocs["data-provider"].description,
     recipe: radiosetDocs["data-provider"].recipe,
     Component: RadiosetDataProviderExample,
+    playground: {
+      initialSource: radiosetDataProviderPlaygroundSource,
+      fileName: "radioset-dataProvider.tsx",
+      runtimeBindings: {
+        browserOptions,
+        browserShortListOptions,
+        createRadiosetOptionsDataProvider,
+      },
+    },
   },
 ];
 

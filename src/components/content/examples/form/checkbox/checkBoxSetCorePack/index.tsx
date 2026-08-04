@@ -5,6 +5,8 @@ import 'preact';
 import { type ComponentChildren,type FunctionComponent } from 'preact';
 import { useCallback,useMemo,useState } from "preact/hooks";
 import { DemoLayoutTemplate } from "../../../../../shared/demo-page-layout/demo-layout-template";
+import type { PlaygroundConfig } from "../../../../../shared/code-playground/tsx-playground";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import CheckBoxSetCorePackBasicExample from "./checkBoxSetCorePack-basic";
 import CheckBoxSetCorePackDataProviderExample from "./checkBoxSetCorePack-dataProvider";
 import {
@@ -14,6 +16,12 @@ import {
 import CheckBoxSetCorePackOverviewExample from "./checkBoxSetCorePack-overview";
 import CheckBoxSetCorePackUserAssistanceExample from "./checkBoxSetCorePack-userAssistance";
 import CheckBoxSetCorePackValidationExample from "./checkBoxSetCorePack-validation";
+import checkBoxSetCorePackBasicPlaygroundSource from "./checkBoxSetCorePack-basic-source";
+import checkBoxSetCorePackDataProviderPlaygroundSource from "./checkBoxSetCorePack-dataProvider-source";
+import checkBoxSetCorePackOverviewPlaygroundSource from "./checkBoxSetCorePack-overview-source";
+import checkBoxSetCorePackUserAssistancePlaygroundSource from "./checkBoxSetCorePack-userAssistance-source";
+import checkBoxSetCorePackValidationPlaygroundSource from "./checkBoxSetCorePack-validation-source";
+import { browserDataProvider, browserDataProviderOptions, browserShortListOptions, colorOptions, colorOptionsWithAssistance, confirmationMessages, controlStateOptions, createColorDataProvider, errorMessages, infoMessages, warningMessages, wrappingDataProvider } from "./checkBoxSetCorePack-shared";
 
 type CheckBoxSetCorePackNavItem = {
   id: CheckBoxSetCorePackDemoId;
@@ -21,6 +29,7 @@ type CheckBoxSetCorePackNavItem = {
   description: ComponentChildren;
   recipe: ComponentChildren;
   Component: FunctionComponent;
+  playground?: PlaygroundConfig;
 };
 
 const checkBoxSetCorePackNavItems: CheckBoxSetCorePackNavItem[] = [
@@ -30,6 +39,7 @@ const checkBoxSetCorePackNavItems: CheckBoxSetCorePackNavItem[] = [
     description: checkBoxSetCorePackDocs.overview.description,
     recipe: checkBoxSetCorePackDocs.overview.recipe,
     Component: CheckBoxSetCorePackOverviewExample,
+    playground: { initialSource: checkBoxSetCorePackOverviewPlaygroundSource, fileName: "checkBoxSetCorePack-overview.tsx", runtimeBindings: { browserDataProvider, confirmationMessages, errorMessages, infoMessages, warningMessages, wrappingDataProvider } },
   },
   {
     id: "basic",
@@ -37,6 +47,7 @@ const checkBoxSetCorePackNavItems: CheckBoxSetCorePackNavItem[] = [
     description: checkBoxSetCorePackDocs.basic.description,
     recipe: checkBoxSetCorePackDocs.basic.recipe,
     Component: CheckBoxSetCorePackBasicExample,
+    playground: { initialSource: checkBoxSetCorePackBasicPlaygroundSource, fileName: "checkBoxSetCorePack-basic.tsx", runtimeBindings: { colorOptions, createColorDataProvider } },
   },
   {
     id: "data-provider",
@@ -44,6 +55,7 @@ const checkBoxSetCorePackNavItems: CheckBoxSetCorePackNavItem[] = [
     description: checkBoxSetCorePackDocs["data-provider"].description,
     recipe: checkBoxSetCorePackDocs["data-provider"].recipe,
     Component: CheckBoxSetCorePackDataProviderExample,
+    playground: { initialSource: checkBoxSetCorePackDataProviderPlaygroundSource, fileName: "checkBoxSetCorePack-dataProvider.tsx", runtimeBindings: { ArrayDataProvider, browserDataProviderOptions, browserShortListOptions } },
   },
   {
     id: "user-assistance",
@@ -51,6 +63,7 @@ const checkBoxSetCorePackNavItems: CheckBoxSetCorePackNavItem[] = [
     description: checkBoxSetCorePackDocs["user-assistance"].description,
     recipe: checkBoxSetCorePackDocs["user-assistance"].recipe,
     Component: CheckBoxSetCorePackUserAssistanceExample,
+    playground: { initialSource: checkBoxSetCorePackUserAssistancePlaygroundSource, fileName: "checkBoxSetCorePack-userAssistance.tsx", runtimeBindings: { colorOptionsWithAssistance, controlStateOptions, createColorDataProvider } },
   },
   {
     id: "validation",
@@ -58,6 +71,7 @@ const checkBoxSetCorePackNavItems: CheckBoxSetCorePackNavItem[] = [
     description: checkBoxSetCorePackDocs.validation.description,
     recipe: checkBoxSetCorePackDocs.validation.recipe,
     Component: CheckBoxSetCorePackValidationExample,
+    playground: { initialSource: checkBoxSetCorePackValidationPlaygroundSource, fileName: "checkBoxSetCorePack-validation.tsx", runtimeBindings: { colorOptions, createColorDataProvider } },
   },
 ];
 
@@ -134,6 +148,7 @@ export default function CheckBoxSetCorePackIndex() {
           description={activeExample.description}
           recipe={activeExample.recipe}
           demo={<ActiveExampleComponent />}
+          playground={activeExample.playground}
         />
       </div>
     </div>

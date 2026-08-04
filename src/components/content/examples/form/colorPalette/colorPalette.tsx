@@ -26,7 +26,7 @@ type ColorInfo = {
   label?: string;
 };
 
-export const ColorPalette = () => {
+export default function ColorPalette() {
   // State for swatch size
   const [swatchSize, setSwatchSize] = useState<SwatchSize>("sm");
 
@@ -130,4 +130,4 @@ export const ColorPalette = () => {
       </div>
     </div>
   );
-};
+}

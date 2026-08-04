@@ -15,7 +15,6 @@ export default function InputTextLegacyRawValueExample() {
       <oj-input-text
         id="text-input"
         value={currentValue}
-        rawValue={currentRawValue}
         labelHint="raw value example"
         labelEdge="inside"
         onvalueChanged={(event) => {

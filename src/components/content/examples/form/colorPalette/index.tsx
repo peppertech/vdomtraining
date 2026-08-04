@@ -1,6 +1,8 @@
 import 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
-import { ColorPalette } from "./colorPalette";
+import Color = require("ojs/ojcolor");
+import ColorPalette from "./colorPalette";
+import colorPalettePlaygroundSource from "./colorPalette-source";
 import {
   colorPaletteDescription,
   colorPaletteRecipe,
@@ -18,6 +20,13 @@ export default function ColorPaletteRecipePage() {
           description: colorPaletteDescription,
           recipe: colorPaletteRecipe,
           Component: ColorPalette,
+          playground: {
+            initialSource: colorPalettePlaygroundSource,
+            fileName: "colorPalette.tsx",
+            runtimeBindings: {
+              Color,
+            },
+          },
         },
       ]}
     />
