@@ -54,6 +54,7 @@ export default function TextAreaCorePackMaxRowsExample() {
         <oj-c-text-area
           labelHint="max-rows = 0, rows defaults to 2"
           readonly={true}
+          containerReadonly={false}
           value={maxRowsDefaultValue}
           maxRows={0}
         />
@@ -62,6 +63,7 @@ export default function TextAreaCorePackMaxRowsExample() {
           readonly={true}
           value={maxRowsStretchValue}
           maxRows={-1}
+          containerReadonly={false}
         />
         <oj-c-text-area
           labelHint="max-rows = 3"
@@ -69,6 +71,7 @@ export default function TextAreaCorePackMaxRowsExample() {
           value={maxRowsPositiveValue}
           maxRows={3}
           rows={1}
+          containerReadonly={false}
         />
       </div>
     </div>

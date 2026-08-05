@@ -35,6 +35,7 @@ export default function TextAreaCorePackLengthMaxExample() {
           labelHint="length.max='100', length.counter='remaining'"
           length={remainingLengthConfig}
           readonly={true}
+          containerReadonly={false}
           value={lengthSampleValue}
         />
       </div>

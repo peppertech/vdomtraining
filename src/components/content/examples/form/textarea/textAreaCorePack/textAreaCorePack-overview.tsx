@@ -32,12 +32,15 @@ export default function TextAreaCorePackOverviewExample() {
         <oj-c-text-area
           value={sampleValue}
           labelHint="readonly"
+          containerReadonly={false}
           readonly={true}
           rows={3}
         />
         <oj-c-text-area labelHint="enabled no value" />
         <oj-c-text-area labelHint="disabled no value" disabled={true} />
-        <oj-c-text-area labelHint="readonly no value" readonly={true} />
+        <oj-c-text-area labelHint="readonly no value"  
+        containerReadonly={false} 
+        readonly={true} />
       </oj-c-form-layout>
 
       <h4 class="oj-sm-margin-4x-top">States outside oj-c-form-layout</h4>
@@ -59,6 +62,7 @@ export default function TextAreaCorePackOverviewExample() {
             labelHint="readonly"
             readonly={true}
             rows={3}
+            containerReadonly={false}
           />
         </div>
       </div>
@@ -70,7 +74,7 @@ export default function TextAreaCorePackOverviewExample() {
           <oj-c-text-area labelHint="disabled no value" disabled={true} />
         </div>
         <div class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal">
-          <oj-c-text-area labelHint="readonly no value" readonly={true} />
+          <oj-c-text-area labelHint="readonly no value"  containerReadonly={false} readonly={true} />
         </div>
       </div>
 
