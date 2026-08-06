@@ -49,6 +49,7 @@ const ALLOWED_IMPORTS = new Set([
   "ojs/ojmenu",
   "ojs/ojoption",
   "ojs/ojradioset",
+  "ojs/ojslider",
   "ojs/ojswitch",
   "./inputTextCorePack-shared",
   "./inputTextLegacy-shared",
@@ -68,6 +69,8 @@ const ALLOWED_IMPORTS = new Set([
   "./richRadioSet-shared",
   "./richCheckBoxsetCorePack-shared",
   "./selectSingle-shared",
+  "./rangeSlider-shared",
+  "./slider-shared",
 ]);
 
 export type PlaygroundSupportingFile = Readonly<{
