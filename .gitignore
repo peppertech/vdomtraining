@@ -11,6 +11,7 @@
 /.DS_Store
 /.npm-cache
 /.vscode
+/.worktrees
 
 Thumbs.db
 migrator.log
