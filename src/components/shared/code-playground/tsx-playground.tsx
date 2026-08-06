@@ -18,6 +18,7 @@ const ALLOWED_IMPORTS = new Set([
   "oj-c/input-number",
   "oj-c/input-password",
   "oj-c/input-sensitive-text",
+  "oj-c/labelled-link",
   "oj-c/text-area",
   "oj-c/form-layout",
   "oj-c/button",

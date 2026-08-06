@@ -5,13 +5,17 @@ import 'preact';
 import { type ComponentChildren,type FunctionComponent } from 'preact';
 import { useCallback,useMemo,useState } from "preact/hooks";
 import { DemoLayoutTemplate } from "../../../../shared/demo-page-layout/demo-layout-template";
+import type { PlaygroundConfig } from "../../../../shared/code-playground/tsx-playground";
 import LabelledLinkCustomActionExample from "./labelledLink-customAction";
+import labelledLinkCustomActionPlaygroundSource from "./labelledLink-customAction-source";
 import {
   labelledLinkDocs,
   type LabelledLinkDemoId,
 } from "./labelledLink-docs";
 import LabelledLinkEditableExample from "./labelledLink-editable";
+import labelledLinkEditablePlaygroundSource from "./labelledLink-editable-source";
 import LabelledLinkStatesExample from "./labelledLink-states";
+import labelledLinkStatesPlaygroundSource from "./labelledLink-states-source";
 
 type LabelledLinkNavItem = {
   id: LabelledLinkDemoId;
@@ -19,6 +23,7 @@ type LabelledLinkNavItem = {
   description: ComponentChildren;
   recipe: ComponentChildren;
   Component: FunctionComponent;
+  playground?: PlaygroundConfig;
 };
 
 const labelledLinkNavItems: LabelledLinkNavItem[] = [
@@ -28,6 +33,10 @@ const labelledLinkNavItems: LabelledLinkNavItem[] = [
     description: labelledLinkDocs.states.description,
     recipe: labelledLinkDocs.states.recipe,
     Component: LabelledLinkStatesExample,
+    playground: {
+      initialSource: labelledLinkStatesPlaygroundSource,
+      fileName: "labelledLink-states.tsx",
+    },
   },
   {
     id: "editable",
@@ -35,6 +44,10 @@ const labelledLinkNavItems: LabelledLinkNavItem[] = [
     description: labelledLinkDocs.editable.description,
     recipe: labelledLinkDocs.editable.recipe,
     Component: LabelledLinkEditableExample,
+    playground: {
+      initialSource: labelledLinkEditablePlaygroundSource,
+      fileName: "labelledLink-editable.tsx",
+    },
   },
   {
     id: "custom-action",
@@ -42,6 +55,10 @@ const labelledLinkNavItems: LabelledLinkNavItem[] = [
     description: labelledLinkDocs["custom-action"].description,
     recipe: labelledLinkDocs["custom-action"].recipe,
     Component: LabelledLinkCustomActionExample,
+    playground: {
+      initialSource: labelledLinkCustomActionPlaygroundSource,
+      fileName: "labelledLink-customAction.tsx",
+    },
   },
 ];
 
@@ -118,6 +135,7 @@ export default function LabelledLinkIndex() {
           description={activeExample.description}
           recipe={activeExample.recipe}
           demo={<ActiveExampleComponent />}
+          playground={activeExample.playground}
         />
       </div>
     </div>
