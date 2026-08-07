@@ -62,6 +62,8 @@ const ALLOWED_IMPORTS = new Set([
   "ojs/ojslider",
   "ojs/ojswitch",
   "ojs/ojvalidator-daterestriction",
+  "ojs/ojvalidationgroup",
+  "./DemoNumberRangeAsyncValidator",
   "./inputTextCorePack-shared",
   "./inputTextLegacy-shared",
   "./inputNumberCorePack-shared",

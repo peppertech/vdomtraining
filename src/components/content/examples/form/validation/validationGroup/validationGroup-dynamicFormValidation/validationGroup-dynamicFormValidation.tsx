@@ -107,7 +107,7 @@ const getContactId = (target: EventTarget | null): number | null => {
   return Number.isNaN(parsedId) ? null : parsedId;
 };
 
-export const ValidationGroupDynamicFormValidation = () => {
+export default function ValidationGroupDynamicFormValidation() {
   const trackerRef = useRef<ojValidationGroup | null>(null);
   const nextContactIdRef = useRef(1);
   const [groupValid, setGroupValid] = useState<ValidationGroupValid>('invalidHidden');
@@ -278,6 +278,4 @@ export const ValidationGroupDynamicFormValidation = () => {
       <span id="namevalid">[oj-validation-group's valid property: {groupValid}]</span>
     </div>
   );
-};
-
-export default ValidationGroupDynamicFormValidation;
+}

@@ -18,7 +18,7 @@ type ValidationGroupValidChangedEvent = Parameters<
 type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
 type ValidationGroupValid = ComponentProps<'oj-validation-group'>['valid'];
 
-export const ValidationGroupAsyncValidation = () => {
+export default function ValidationGroupAsyncValidation() {
   const trackerRef = useRef<ojValidationGroup | null>(null);
   const [quantityLimitNumber, setQuantityLimitNumber] = useState<InputNumberValue>(null);
   const [quantityLimitNumber2, setQuantityLimitNumber2] = useState<InputNumberValue>(null);
@@ -108,6 +108,4 @@ export const ValidationGroupAsyncValidation = () => {
       <span id="namevalid">{groupValid}</span>
     </div>
   );
-};
-
-export default ValidationGroupAsyncValidation;
+}

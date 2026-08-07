@@ -13,7 +13,7 @@ type ValidationGroupValidChangedEvent = Parameters<
 >[0];
 type ValidationGroupValid = ComponentProps<'oj-validation-group'>['valid'];
 
-export const ValidationGroupRequiredFieldValidation = () => {
+export default function ValidationGroupRequiredFieldValidation() {
   const trackerRef = useRef<ojValidationGroup | null>(null);
   const [firstNameVal, setFirstNameVal] = useState<string | null>(null);
   const [lastNameVal, setLastNameVal] = useState<string | null>(null);
@@ -83,6 +83,4 @@ export const ValidationGroupRequiredFieldValidation = () => {
       <span id="namevalid">{groupValid}</span>
     </div>
   );
-};
-
-export default ValidationGroupRequiredFieldValidation;
+}

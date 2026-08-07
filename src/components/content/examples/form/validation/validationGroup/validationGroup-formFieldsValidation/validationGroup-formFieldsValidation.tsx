@@ -27,7 +27,7 @@ const emailMismatchMessages = [
   }
 ] as InputTextMessagesCustom;
 
-export const ValidationGroupFormFieldsValidation = () => {
+export default function ValidationGroupFormFieldsValidation() {
   const trackerRef = useRef<ojValidationGroup | null>(null);
   const [lastName, setLastName] = useState<InputTextValue>(null);
   const [email, setEmail] = useState<InputTextValue>(null);
@@ -158,6 +158,4 @@ export const ValidationGroupFormFieldsValidation = () => {
       <span id="namevalid">{groupValid}</span>
     </div>
   );
-};
-
-export default ValidationGroupFormFieldsValidation;
+}

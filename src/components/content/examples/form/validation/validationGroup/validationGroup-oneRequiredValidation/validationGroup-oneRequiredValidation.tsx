@@ -21,7 +21,7 @@ type InputTextMessagesCustom = ComponentProps<'oj-c-input-text'>['messagesCustom
 type InputTextValidators = ComponentProps<'oj-c-input-text'>['validators'];
 type ValidationGroupValid = ComponentProps<'oj-validation-group'>['valid'];
 
-export const ValidationGroupOneRequiredValidation = () => {
+export default function ValidationGroupOneRequiredValidation() {
   const trackerRef = useRef<ojValidationGroup | null>(null);
   const [firstField, setFirstField] = useState<InputTextValue>(null);
   const [secondField, setSecondField] = useState<InputTextValue>(null);
@@ -178,6 +178,4 @@ export const ValidationGroupOneRequiredValidation = () => {
       </div>
     </div>
   );
-};
-
-export default ValidationGroupOneRequiredValidation;
+}

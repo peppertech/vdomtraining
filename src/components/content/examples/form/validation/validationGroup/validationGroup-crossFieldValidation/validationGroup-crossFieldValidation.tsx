@@ -25,7 +25,7 @@ const requiredPhoneMessage = [
   { detail: 'Phone Number is required.', severity: 'error' }
 ] as InputTextMessagesCustom;
 
-export const ValidationGroupCrossFieldValidation = () => {
+export default function ValidationGroupCrossFieldValidation() {
   const trackerRef = useRef<ojValidationGroup | null>(null);
   const [contactPref, setContactPref] = useState<ContactPref>('email');
   const [emailAddress, setEmailAddress] = useState<InputTextValue>(null);
@@ -187,6 +187,4 @@ export const ValidationGroupCrossFieldValidation = () => {
       </div>
     </>
   );
-};
-
-export default ValidationGroupCrossFieldValidation;
+}
