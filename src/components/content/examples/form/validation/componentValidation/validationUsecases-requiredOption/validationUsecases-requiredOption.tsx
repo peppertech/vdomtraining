@@ -14,7 +14,7 @@ type InputTextValidChangedEvent = Parameters<
 type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
 type InputTextValid = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
 
-export const ValidationUsecasesRequiredOption = () => {
+export default function ValidationUsecasesRequiredOption() {
   const [userName, setUserName] = useState<InputTextValue>(undefined);
   const [userNameValid, setUserNameValid] = useState<InputTextValid>('valid');
   const [userNameRequired, setUserNameRequired] = useState(false);
@@ -66,6 +66,4 @@ export const ValidationUsecasesRequiredOption = () => {
       </div>
     </div>
   );
-};
-
-export default ValidationUsecasesRequiredOption;
+}

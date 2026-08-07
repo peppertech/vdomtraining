@@ -28,7 +28,7 @@ type InputTextMessage = NonNullable<InputTextMessagesCustom>[number];
 type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
 type InputPasswordValue = ComponentProps<'oj-c-input-password'>['value'];
 
-export const ValidationUsecasesValidateMethod = () => {
+export default function ValidationUsecasesValidateMethod() {
   const userNameRef = useRef<CInputTextElement<string> | null>(null);
   const passwordRef = useRef<CInputPasswordElement | null>(null);
   const [userName, setUserName] = useState<InputTextValue>('');
@@ -140,6 +140,4 @@ export const ValidationUsecasesValidateMethod = () => {
       </oj-label-value>
     </oj-form-layout>
   );
-};
-
-export default ValidationUsecasesValidateMethod;
+}

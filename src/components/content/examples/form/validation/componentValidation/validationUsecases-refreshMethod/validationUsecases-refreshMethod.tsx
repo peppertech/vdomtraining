@@ -10,7 +10,7 @@ import AsyncRegExpValidator = require('ojs/ojasyncvalidator-regexp');
 type InputTextValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-text'>['onvalueChanged']>
 >[0];
-export const ValidationUsecasesRefreshMethod = () => {
+export default function ValidationUsecasesRefreshMethod() {
   const inputRef = useRef<ojInputText | null>(null);
   const [userName, setUserName] = useState('');
   const [labelText, setLabelText] = useState('Username');
@@ -63,6 +63,4 @@ export const ValidationUsecasesRefreshMethod = () => {
       </div>
     </div>
   );
-};
-
-export default ValidationUsecasesRefreshMethod;
+}

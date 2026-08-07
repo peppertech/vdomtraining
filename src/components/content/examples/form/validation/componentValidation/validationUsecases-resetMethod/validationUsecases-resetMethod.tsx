@@ -19,7 +19,7 @@ type InputNumberValid = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
 type InputNumberMessagesCustom = ComponentProps<'oj-c-input-number'>['messagesCustom'];
 type InputNumberMessage = NonNullable<InputNumberMessagesCustom>[number];
 
-export const ValidationUsecasesResetMethod = () => {
+export default function ValidationUsecasesResetMethod() {
   const ageRef = useRef<CInputNumberElement | null>(null);
   const weightRef = useRef<CInputNumberElement | null>(null);
   const [age, setAge] = useState<InputNumberValue>(null);
@@ -134,6 +134,4 @@ export const ValidationUsecasesResetMethod = () => {
       </oj-label-value>
     </oj-form-layout>
   );
-};
-
-export default ValidationUsecasesResetMethod;
+}

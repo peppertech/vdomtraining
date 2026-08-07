@@ -26,7 +26,7 @@ type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
 type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
 type InputPasswordValue = ComponentProps<'oj-c-input-password'>['value'];
 
-export const ValidationUsecasesShowMessagesMethod = () => {
+export default function ValidationUsecasesShowMessagesMethod() {
   const userNameRef = useRef<CInputTextElement<string> | null>(null);
   const passwordRef = useRef<CInputPasswordElement | null>(null);
   const [userName, setUserName] = useState<InputTextValue>(null);
@@ -117,6 +117,4 @@ export const ValidationUsecasesShowMessagesMethod = () => {
       </oj-label-value>
     </oj-form-layout>
   );
-};
-
-export default ValidationUsecasesShowMessagesMethod;
+}

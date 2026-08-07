@@ -18,7 +18,7 @@ type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
 type InputNumberMessagesCustom = ComponentProps<'oj-c-input-number'>['messagesCustom'];
 type InputNumberMessage = NonNullable<InputNumberMessagesCustom>[number];
 
-export const ValidationUsecasesValidatorsOption = () => {
+export default function ValidationUsecasesValidatorsOption() {
   const [userName, setUserName] = useState<InputTextValue>(undefined);
   const [userNamePlaceholder, setUserNamePlaceholder] = useState('at least 4 letters');
   const [userNamePattern, setUserNamePattern] = useState('[a-zA-Z]{4,}');
@@ -127,6 +127,4 @@ export const ValidationUsecasesValidatorsOption = () => {
       </div>
     </div>
   );
-};
-
-export default ValidationUsecasesValidatorsOption;
+}

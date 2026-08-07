@@ -75,7 +75,7 @@ const getEndDate = (
   return toIsoDateString(clone);
 };
 
-export const ValidationUsecasesValueOption = () => {
+export default function ValidationUsecasesValueOption() {
   const initialStartDate = useMemo(
     () => toIsoDateString(getClosestWeekdayDate(new Date())),
     []
@@ -219,6 +219,4 @@ export const ValidationUsecasesValueOption = () => {
       </div>
     </div>
   );
-};
-
-export default ValidationUsecasesValueOption;
+}

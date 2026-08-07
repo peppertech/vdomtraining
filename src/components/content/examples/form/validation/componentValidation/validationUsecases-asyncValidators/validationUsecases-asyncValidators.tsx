@@ -45,7 +45,7 @@ const aprilFoolsFormatter = (dateInfo: DayFormatterInput): DayFormatterOutput | 
   return null;
 };
 
-export const ValidationUsecasesAsyncValidators = () => {
+export default function ValidationUsecasesAsyncValidators() {
   const [quantityLimit, setQuantityLimit] = useState<InputTextValue>(undefined);
   const [quantityLimitNumber, setQuantityLimitNumber] = useState<InputNumberValue>(null);
   const [dateValue, setDateValue] = useState<InputDateValue>(undefined);
@@ -236,6 +236,4 @@ export const ValidationUsecasesAsyncValidators = () => {
       </oj-form-layout>
     </div>
   );
-};
-
-export default ValidationUsecasesAsyncValidators;
+}

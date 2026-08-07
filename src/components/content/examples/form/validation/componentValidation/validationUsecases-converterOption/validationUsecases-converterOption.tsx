@@ -18,7 +18,7 @@ type InputTextValueChangedEvent = Parameters<
 type InputTextValid = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
 type SwitchValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-switch'>['onvalueChanged']>>[0];
 
-export const ValidationUsecasesConverterOption = () => {
+export default function ValidationUsecasesConverterOption() {
   const [birthDate, setBirthDate] = useState<string | undefined>(undefined);
   const [birthDateValid, setBirthDateValid] = useState<InputTextValid>('valid');
   const [numberValue, setNumberValue] = useState<unknown>(1000);
@@ -146,6 +146,4 @@ export const ValidationUsecasesConverterOption = () => {
       />
     </oj-form-layout>
   );
-};
-
-export default ValidationUsecasesConverterOption;
+}

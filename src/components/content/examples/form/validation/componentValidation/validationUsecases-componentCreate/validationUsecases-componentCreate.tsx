@@ -10,7 +10,7 @@ type InputTextValueChangedEvent = Parameters<
 >[0];
 type InputTextValue = ComponentProps<'oj-input-text'>['value'];
 
-export const ValidationUsecasesComponentCreate = () => {
+export default function ValidationUsecasesComponentCreate() {
   const [userName, setUserName] = useState<InputTextValue>('');
   const [fullName, setFullName] = useState<InputTextValue>('');
   const [showUserNameInitialError, setShowUserNameInitialError] = useState(true);
@@ -71,6 +71,4 @@ export const ValidationUsecasesComponentCreate = () => {
       <span id="fullnameval">[Component Value: {fullName}]</span>
     </oj-form-layout>
   );
-};
-
-export default ValidationUsecasesComponentCreate;
+}

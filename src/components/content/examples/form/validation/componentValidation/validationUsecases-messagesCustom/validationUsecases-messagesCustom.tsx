@@ -31,7 +31,7 @@ const SAFARI_ON_WINDOWS_MESSAGE: Message = {
   severity: 'error'
 };
 
-export const ValidationUsecasesMessagesCustom = () => {
+export default function ValidationUsecasesMessagesCustom() {
   const [osVal, setOsVal] = useState<RadiosetValue>('Mac');
   const [selectVal1, setSelectVal1] = useState<SelectManyValue>(['SA']);
   const [valid, setValid] = useState<ValidState>('valid');
@@ -99,6 +99,4 @@ export const ValidationUsecasesMessagesCustom = () => {
       <div id="selectValid">select-many&apos;s valid property: {valid}</div>
     </div>
   );
-};
-
-export default ValidationUsecasesMessagesCustom;
+}
