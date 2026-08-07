@@ -14,7 +14,7 @@ type InputNumberChangedEvent = Parameters<
 type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
 type InputNumberValue = ComponentProps<'oj-c-input-number'>['value'];
 
-export const ValidatorsRequiredValidator = () => {
+export default function ValidatorsRequiredValidator() {
   const [requiredValue1, setRequiredValue1] = useState<InputTextValue>('something');
   const [requiredValue3, setRequiredValue3] = useState<InputNumberValue>(1);
 
@@ -49,6 +49,4 @@ export const ValidatorsRequiredValidator = () => {
       />
     </oj-form-layout>
   );
-};
-
-export default ValidatorsRequiredValidator;
+}

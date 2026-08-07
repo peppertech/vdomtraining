@@ -12,7 +12,7 @@ type InputPasswordChangedEvent = Parameters<
 >[0];
 type InputPasswordValue = ComponentProps<'oj-c-input-password'>['value'];
 
-export const ValidatorsCustomValidators = () => {
+export default function ValidatorsCustomValidators() {
   const confirmPasswordRef = useRef<CInputPasswordElement | null>(null);
   const [password, setPassword] = useState<InputPasswordValue>('');
   const [passwordRepeat, setPasswordRepeat] = useState<InputPasswordValue>('');
@@ -82,6 +82,4 @@ export const ValidatorsCustomValidators = () => {
       />
     </oj-form-layout>
   );
-};
-
-export default ValidatorsCustomValidators;
+}

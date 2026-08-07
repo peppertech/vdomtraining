@@ -32,6 +32,7 @@ const ALLOWED_IMPORTS = new Set([
   "ojs/ojbutton",
   "ojs/ojarraydataprovider",
   "ojs/ojasyncvalidator-daterestriction",
+  "ojs/ojasyncvalidator-length",
   "ojs/ojasyncvalidator-numberrange",
   "ojs/ojasyncvalidator-regexp",
   "ojs/ojcheckboxset",

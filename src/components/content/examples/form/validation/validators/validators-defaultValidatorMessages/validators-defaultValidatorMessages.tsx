@@ -21,7 +21,7 @@ type InputTextValue = ComponentProps<'oj-input-text'>['value'];
 type InputNumberValue = ComponentProps<'oj-input-number'>['value'];
 type InputDateValue = string | undefined;
 
-export const ValidatorsDefaultValidatorMessages = () => {
+export default function ValidatorsDefaultValidatorMessages() {
   const localIsoDate = '2019-12-08';
   const [value, setValue] = useState<InputTextValue>('hi');
   const [lengthValue, setLengthValue] = useState<InputTextValue>('');
@@ -160,6 +160,4 @@ export const ValidatorsDefaultValidatorMessages = () => {
       />
     </oj-form-layout>
   );
-};
-
-export default ValidatorsDefaultValidatorMessages;
+}

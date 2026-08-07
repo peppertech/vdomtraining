@@ -10,7 +10,7 @@ type InputTextChangedEvent = Parameters<
 >[0];
 type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
 
-export const ValidatorsLengthValidator = () => {
+export default function ValidatorsLengthValidator() {
   const [lengthValue1, setLengthValue1] = useState<InputTextValue>('');
   const [lengthValue2, setLengthValue2] = useState<InputTextValue>('');
   const [lengthValue3, setLengthValue3] = useState<InputTextValue>('');
@@ -103,6 +103,4 @@ export const ValidatorsLengthValidator = () => {
       />
     </oj-form-layout>
   );
-};
-
-export default ValidatorsLengthValidator;
+}

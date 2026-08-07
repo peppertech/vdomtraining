@@ -5,7 +5,7 @@ import 'preact';
 import { useMemo,useRef } from 'preact/hooks';
 import AsyncLengthValidator = require('ojs/ojasyncvalidator-length');
 
-export const ValidatorsValidateOnInput = () => {
+export default function ValidatorsValidateOnInput() {
   const inputRef = useRef<CInputTextElement<string> | null>(null);
   const validators = useMemo(() => [new AsyncLengthValidator({ max: 10 })], []);
 
@@ -28,6 +28,4 @@ export const ValidatorsValidateOnInput = () => {
       />
     </oj-form-layout>
   );
-};
-
-export default ValidatorsValidateOnInput;
+}

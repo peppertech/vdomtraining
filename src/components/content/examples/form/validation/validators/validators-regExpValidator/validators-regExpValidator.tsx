@@ -10,7 +10,7 @@ type InputTextChangedEvent = Parameters<
 >[0];
 type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
 
-export const ValidatorsRegExpValidator = () => {
+export default function ValidatorsRegExpValidator() {
   const [patternValue, setPatternValue] = useState<InputTextValue>('');
   const [pattern2Value, setPattern2Value] = useState<InputTextValue>('');
   const [emailPatternValue, setEmailPatternValue] = useState<InputTextValue>('');
@@ -90,6 +90,4 @@ export const ValidatorsRegExpValidator = () => {
       />
     </oj-form-layout>
   );
-};
-
-export default ValidatorsRegExpValidator;
+}
