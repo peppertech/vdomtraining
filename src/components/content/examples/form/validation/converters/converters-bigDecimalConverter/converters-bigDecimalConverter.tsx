@@ -6,7 +6,7 @@ import { useMemo,useState } from 'preact/hooks';
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 
-export const ConvertersBigDecimalConverter = () => {
+export default function ConvertersBigDecimalConverter() {
   const [currency, setCurrency] = useState<string | null>('120345999000000000');
   const [currencyRoundDuringParse, setCurrencyRoundDuringParse] = useState<string | null>('78050090096500000');
   const [decimal, setDecimal] = useState<string | null>('23504206999000000');
@@ -421,6 +421,4 @@ export const ConvertersBigDecimalConverter = () => {
             <br />
         </div>
     );
-};
-
-export default ConvertersBigDecimalConverter;
+}

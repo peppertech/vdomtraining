@@ -7,7 +7,7 @@ import { useMemo,useState } from 'preact/hooks';
 import Color = require('ojs/ojcolor');
 import ColorConverter = require('ojs/ojconverter-color');
 
-export const ConvertersColorConverters = () => {
+export default function ConvertersColorConverters() {
   const initialColor = useMemo(() => new Color('rgba(21,0,255,0.8)'), []);
   const [colorValue, setColorValue] = useState<Color>(initialColor);
   const [hslColor, setHslColor] = useState<string>('');
@@ -82,6 +82,4 @@ export const ConvertersColorConverters = () => {
                 </div>
         </div>
     );
-};
-
-export default ConvertersColorConverters;
+}

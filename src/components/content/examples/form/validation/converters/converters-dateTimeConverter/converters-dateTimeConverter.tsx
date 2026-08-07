@@ -11,7 +11,7 @@ type InputDateValue = ComponentProps<'oj-input-date'>['value'];
 type InputDateTimeValue = ComponentProps<'oj-input-date-time'>['value'];
 type InputTimeValue = ComponentProps<'oj-input-time'>['value'];
 
-export const ConvertersDateTimeConverter = () => {
+export default function ConvertersDateTimeConverter() {
   const [date, setDate] = useState<InputDateValue>(IntlConverterUtils.dateToLocalIsoDateString(new Date(2019, 2, 11)));
   const [datetime, setDatetime] = useState<InputDateTimeValue>(IntlConverterUtils.dateToLocalIso(new Date(2019, 0, 1)));
   const [time, setTime] = useState<InputTimeValue>('T18:00:00');
@@ -96,5 +96,4 @@ export const ConvertersDateTimeConverter = () => {
                 </oj-form-layout>
         </div>
     );
-};
-export default ConvertersDateTimeConverter;
+}

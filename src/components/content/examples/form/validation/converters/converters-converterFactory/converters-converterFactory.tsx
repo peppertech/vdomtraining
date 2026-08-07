@@ -3,7 +3,7 @@ import { IntlNumberConverter } from 'ojs/ojconverter-number';
 import 'preact';
 import { useState } from 'preact/hooks';
 
-export const ConvertersConverterFactory = () => {
+export default function ConvertersConverterFactory() {
   const salOptions: IntlNumberConverter.ConverterOptions = {
       style: 'currency',
       currency: 'USD'
@@ -66,6 +66,4 @@ export const ConvertersConverterFactory = () => {
                 </tbody>
         </table>
     );
-};
-
-export default ConvertersConverterFactory;
+}

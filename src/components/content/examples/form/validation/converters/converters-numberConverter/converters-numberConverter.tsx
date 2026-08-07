@@ -8,7 +8,7 @@ import { useMemo,useState } from 'preact/hooks';
 type InputNumberValueChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>
 >[0];
-export const ConvertersNumberConverter = () => {
+export default function ConvertersNumberConverter() {
   const [currency, setCurrency] = useState<number | null>(12345);
   const [currencyRoundDuringParse, setCurrencyRoundDuringParse] = useState<number | null>(78000);
   const [decimal, setDecimal] = useState<number | null>(23450);
@@ -575,6 +575,4 @@ export const ConvertersNumberConverter = () => {
       <br />
     </div>
   );
-};
-
-export default ConvertersNumberConverter;
+}

@@ -8,7 +8,7 @@ import 'preact';
 import { type ComponentProps } from 'preact';
 import { useMemo,useState } from 'preact/hooks';
 import ColorConverter = require('ojs/ojconverter-color');
-export const ConvertersDefaultConverterMessages = () => {
+export default function ConvertersDefaultConverterMessages() {
   const [colorValue, setColorValue] = useState<string>('');
   const [numberValue, setNumberValue] = useState<number | null>(null);
   const [currencyValue, setCurrencyValue] = useState<number | null>(null);
@@ -51,5 +51,4 @@ export const ConvertersDefaultConverterMessages = () => {
             <oj-input-text id="color1" onvalueChanged={handleColorValueValueChanged} value={colorValue} autocomplete="off" converter={colorConverter} labelHint="ColorConverter" />
         </oj-form-layout>
     );
-};
-export default ConvertersDefaultConverterMessages;
+}

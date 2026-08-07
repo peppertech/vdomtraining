@@ -5,7 +5,7 @@ import 'ojs/ojformlayout';
 import 'preact';
 import { type ComponentProps } from 'preact';
 import { useMemo,useState } from 'preact/hooks';
-export const ConvertersNativeNumberConverter = () => {
+export default function ConvertersNativeNumberConverter() {
     const [currency, setCurrency] = useState<number | null>(12345);
     const [currencyRoundDuringParse, setCurrencyRoundDuringParse] = useState<number | null>(78000);
     const [decimal, setDecimal] = useState<number | null>(23450);
@@ -393,5 +393,4 @@ export const ConvertersNativeNumberConverter = () => {
             <span id="valueShortNumber">{currencyRoundDuringParse}</span>
             <br />
         </div>);
-};
-export default ConvertersNativeNumberConverter;
+}
