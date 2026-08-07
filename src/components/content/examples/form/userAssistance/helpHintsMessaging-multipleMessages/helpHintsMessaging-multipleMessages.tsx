@@ -25,7 +25,7 @@ const buildMessages = (severities: Message.SEVERITY_TYPE[]) =>
           severity
       }) as Message
   );
-export const HelpHintsMessagingMultipleMessages = () => {
+export default function HelpHintsMessagingMultipleMessages() {
   const [types, setTypes] = useState<ButtonsetValue>([]);
   const [textValue, setTextValue] = useState<InputTextValue>('');
   const [textAreaValue, setTextAreaValue] = useState<TextAreaValue>('');
@@ -66,6 +66,4 @@ export const HelpHintsMessagingMultipleMessages = () => {
                 </oj-form-layout>
         </div>
     );
-};
-
-export default HelpHintsMessagingMultipleMessages;
+}

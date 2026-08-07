@@ -4,7 +4,7 @@ import 'preact';
 import { type ComponentProps } from 'preact';
 import { useState } from 'preact/hooks';
 type InputNumberValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-c-input-number'>['onvalueChanged']>>[0];
-export const HelpHintsMessagingHintsMessagesTitle = () => {
+export default function HelpHintsMessagingHintsMessagesTitle() {
     const [inputValue, setInputValue] = useState<number | null>(null);
     const ojCInputNumberProps: Partial<ComponentProps<'oj-c-input-number'>> = { help: {
             instruction: 'this is help instruction, it takes precedence over hints'
@@ -23,5 +23,4 @@ export const HelpHintsMessagingHintsMessagesTitle = () => {
             <h5 class="oj-header-border">Show Messages and Hide Hints</h5>
             <oj-c-input-number id="field3" required={true} min={0} max={100} onvalueChanged={(event: InputNumberValueChangedEvent) => setInputValue((event.detail.value as number | null | null | undefined) ?? null)} value={inputValue} displayOptions={{ converterHint: 'none', validatorHint: 'none' }} placeholder="custom placeholder text" labelHint="input number"/>
         </oj-form-layout>);
-};
-export default HelpHintsMessagingHintsMessagesTitle;
+}

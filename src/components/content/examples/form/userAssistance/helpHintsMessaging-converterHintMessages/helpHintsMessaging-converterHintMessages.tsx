@@ -5,7 +5,7 @@ import 'preact';
 import { type ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ColorConverter = require('ojs/ojconverter-color');
-export const HelpHintsMessagingConverterHintMessages = () => {
+export default function HelpHintsMessagingConverterHintMessages() {
     const converter = useMemo(() => new ColorConverter({ format: 'hex' }), []);
     const ojCInputTextProps: Partial<ComponentProps<'oj-c-input-text'>> = { displayOptions: {
             converterHint: 'none'
@@ -17,5 +17,4 @@ export const HelpHintsMessagingConverterHintMessages = () => {
                     <oj-c-input-text id="inputtext3" converter={converter} labelHint="Converter hint and placeholder" placeholder="the placeholder text"/>
                 </oj-form-layout>
         </div>);
-};
-export default HelpHintsMessagingConverterHintMessages;
+}

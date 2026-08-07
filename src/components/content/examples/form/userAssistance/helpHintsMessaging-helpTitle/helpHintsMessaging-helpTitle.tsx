@@ -5,7 +5,7 @@ import { type ComponentProps } from 'preact';
 import { useState } from 'preact/hooks';
 type InputTextValue = ComponentProps<'oj-c-input-text'>['value'];
 type InputTextValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-c-input-text'>['onvalueChanged']>>[0];
-export const HelpHintsMessagingHelpTitle = () => {
+export default function HelpHintsMessagingHelpTitle() {
     const [text, setText] = useState<InputTextValue>('');
     const handleValueChanged = (event: InputTextValueChangedEvent) => {
         setText((event.detail.value as InputTextValue | null | undefined) ?? '');
@@ -47,5 +47,4 @@ export const HelpHintsMessagingHelpTitle = () => {
             <oj-c-input-text autocomplete="off" onvalueChanged={handleValueChanged} value={text} labelHint="Instruction and definition" {...ojCInputTextProps5}/>
             <oj-c-input-text autocomplete="off" onvalueChanged={handleValueChanged} value={text} labelHint="Instruction and source" {...ojCInputTextProps6}/>
         </oj-form-layout>);
-};
-export default HelpHintsMessagingHelpTitle;
+}

@@ -4,7 +4,7 @@ import 'preact';
 import { type ComponentProps } from 'preact';
 import { useState } from 'preact/hooks';
 type InputNumberValueChangedEvent = Parameters<NonNullable<ComponentProps<'oj-c-input-number'>['onvalueChanged']>>[0];
-export const HelpHintsMessagingValidatorHintsMessages = () => {
+export default function HelpHintsMessagingValidatorHintsMessages() {
     const [decimal, setDecimal] = useState<number | null>(null);
     const [decimal2, setDecimal2] = useState<number | null>(null);
     const ojCInputNumberProps: Partial<ComponentProps<'oj-c-input-number'>> = { helpHints: {
@@ -20,5 +20,4 @@ export const HelpHintsMessagingValidatorHintsMessages = () => {
                     <oj-c-input-number id="currency2" required={true} min={10000} max={50000.45} onvalueChanged={(event: InputNumberValueChangedEvent) => setDecimal2((event.detail.value as number | null | null | undefined) ?? null)} value={decimal2} labelHint="min, max, and help.instruction set" {...ojCInputNumberProps2}/>
                 </oj-form-layout>
         </div>);
-};
-export default HelpHintsMessagingValidatorHintsMessages;
+}
