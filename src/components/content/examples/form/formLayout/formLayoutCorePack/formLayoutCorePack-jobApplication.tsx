@@ -102,11 +102,10 @@ export default function FormLayoutCorePackJobApplicationExample() {
   const sponsorshipTypeDisabled = sponsorshipVal !== "yes";
 
   return (
-    <div class="oj-flex oj-sm-flex-direction-column oj-sm-gap-4x">
-      <div>
-        <h1 class="oj-typography-heading-xs">Profile Information</h1>
-        <h2 class="oj-typography-subheading-xs">Personal Information</h2>
-        <oj-c-form-layout direction="row" maxColumns={2}>
+    <div id="form-container">
+      <h1 class="oj-typography-heading-xs">Profile Information</h1>
+      <h2 class="oj-typography-subheading-xs">Personal Information</h2>
+      <oj-c-form-layout direction="row" maxColumns={2}>
           <oj-c-input-text labelHint="First Name" required={true} />
           <oj-c-input-text labelHint="Last Name" required={true} />
           <oj-c-input-text labelHint="Address" autocomplete="off" />
@@ -125,13 +124,11 @@ export default function FormLayoutCorePackJobApplicationExample() {
           </oj-c-form-layout>
           <oj-c-input-text labelHint="Phone" />
           <oj-c-input-text labelHint="Email" />
-        </oj-c-form-layout>
-      </div>
+      </oj-c-form-layout>
 
-      <div>
-        <h1 class="oj-typography-heading-xs">Employment</h1>
-        <h2 class="oj-typography-subheading-xs">Employment Eligibility</h2>
-        <oj-c-form-layout direction="row" maxColumns={2}>
+      <h1 class="oj-typography-heading-xs">Employment</h1>
+      <h2 class="oj-typography-subheading-xs">Employment Eligibility</h2>
+      <oj-c-form-layout direction="row" maxColumns={2}>
           <oj-c-radioset
             labelHint="Are you authorized to work in the United States?"
             options={employmentProvider}
@@ -161,12 +158,12 @@ export default function FormLayoutCorePackJobApplicationExample() {
               }}
             />
           </oj-c-form-layout>
-        </oj-c-form-layout>
+      </oj-c-form-layout>
 
-        <h2 class="oj-typography-subheading-xs">
-          Employment Preferences and Conditions
-        </h2>
-        <oj-c-form-layout direction="row" maxColumns={2}>
+      <h2 class="oj-typography-subheading-xs">
+        Employment Preferences and Conditions
+      </h2>
+      <oj-c-form-layout direction="row" maxColumns={2}>
           <oj-c-input-text labelHint="Job Title" />
           <oj-c-form-layout direction="row" columns={2}>
             <oj-c-select-single
@@ -188,13 +185,11 @@ export default function FormLayoutCorePackJobApplicationExample() {
               setJobTypeVal((event.detail.value as string[]) ?? []);
             }}
           />
-        </oj-c-form-layout>
-      </div>
+      </oj-c-form-layout>
 
-      <div>
-        <h2 class="oj-typography-subheading-xs">Employment History</h2>
-        <p>List employment starting with your most recent position.</p>
-        <oj-c-form-layout direction="row" maxColumns={2}>
+      <h2 class="oj-typography-subheading-xs">Employment History</h2>
+      <p>List employment starting with your most recent position.</p>
+      <oj-c-form-layout direction="row" maxColumns={2}>
           <oj-c-input-text labelHint="Employer Name" />
           <oj-c-input-text labelHint="Position/Job Title" />
           <oj-c-form-layout direction="row" columns={2}>
@@ -209,33 +204,28 @@ export default function FormLayoutCorePackJobApplicationExample() {
             value=""
           />
           <oj-c-input-text labelHint="Employer Address" columnSpan={2} />
-        </oj-c-form-layout>
-        <div class="oj-sm-margin-2x-top">
-          <oj-c-button label="Add More" />
-        </div>
+      </oj-c-form-layout>
+      <div style={{ marginTop: "1rem" }}>
+        <oj-c-button label="Add More" />
       </div>
 
-      <div>
-        <h1 class="oj-typography-heading-xs">Data Privacy</h1>
-        <oj-c-form-layout direction="row">
+      <h1 class="oj-typography-heading-xs">Data Privacy</h1>
+      <oj-c-form-layout direction="row">
           <oj-c-checkbox required={true}>
             I agree my application details may be stored in the Oracle Global
             Recruiting database for 24 months.
           </oj-c-checkbox>
-        </oj-c-form-layout>
-      </div>
+      </oj-c-form-layout>
 
-      <div>
-        <h2 class="oj-typography-subheading-xs">Job Posting Notification</h2>
-        <oj-c-form-layout direction="row">
+      <h2 class="oj-typography-subheading-xs">Job Posting Notification</h2>
+      <oj-c-form-layout direction="row">
           <oj-c-checkbox>
             Send an email notification whenever a new position matching this
             profile is posted.
           </oj-c-checkbox>
-        </oj-c-form-layout>
-      </div>
+      </oj-c-form-layout>
 
-      <div class="oj-flex oj-sm-flex-wrap-wrap oj-sm-gap-2x">
+      <div style={{ display: "flex", gap: "1rem" }}>
         <oj-c-button chroming="outlined" label="Save Draft" />
         <oj-c-button chroming="callToAction" label="Continue" />
       </div>

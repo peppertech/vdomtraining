@@ -45,8 +45,22 @@ const formLayoutCorePackItems: {
     },
   },
   {
+    id: "readonly-vs-mixed",
+    name: "Readonly vs Mixed",
+    description: formLayoutCorePackDocs["readonly-vs-mixed"].description,
+    recipe: formLayoutCorePackDocs["readonly-vs-mixed"].recipe,
+    Component: FormLayoutCorePackReadonlyVsMixedExample,
+    playground: {
+      initialSource: formLayoutCorePackReadonlyVsMixedPlaygroundSource,
+      fileName: "formLayoutCorePack-readonlyVsMixed.tsx",
+      runtimeBindings: {
+        MutableArrayDataProvider,
+      },
+    },
+  },
+  {
     id: "mixed",
-    name: "Mixed Inputs",
+    name: "Mixed Readonly",
     description: formLayoutCorePackDocs.mixed.description,
     recipe: formLayoutCorePackDocs.mixed.recipe,
     Component: FormLayoutCorePackFormInputsMixedExample,
@@ -73,6 +87,31 @@ const formLayoutCorePackItems: {
     },
   },
   {
+    id: "shared-column",
+    name: "Column Share",
+    description: formLayoutCorePackDocs["shared-column"].description,
+    recipe: formLayoutCorePackDocs["shared-column"].recipe,
+    Component: FormLayoutCorePackSharedColumnExample,
+    playground: {
+      initialSource: formLayoutCorePackSharedColumnPlaygroundSource,
+      fileName: "formLayoutCorePack-sharedColumn.tsx",
+    },
+  },
+  {
+    id: "job-application",
+    name: "Job Application Example",
+    description: formLayoutCorePackDocs["job-application"].description,
+    recipe: formLayoutCorePackDocs["job-application"].recipe,
+    Component: FormLayoutCorePackJobApplicationExample,
+    playground: {
+      initialSource: formLayoutCorePackJobApplicationPlaygroundSource,
+      fileName: "formLayoutCorePack-jobApplication.tsx",
+      runtimeBindings: {
+        MutableArrayDataProvider,
+      },
+    },
+  },
+   {
     id: "conditional-inputs",
     name: "Conditional Inputs",
     description: formLayoutCorePackDocs["conditional-inputs"].description,
@@ -85,46 +124,7 @@ const formLayoutCorePackItems: {
         MutableArrayDataProvider,
       },
     },
-  },
-  {
-    id: "job-application",
-    name: "Job Application",
-    description: formLayoutCorePackDocs["job-application"].description,
-    recipe: formLayoutCorePackDocs["job-application"].recipe,
-    Component: FormLayoutCorePackJobApplicationExample,
-    playground: {
-      initialSource: formLayoutCorePackJobApplicationPlaygroundSource,
-      fileName: "formLayoutCorePack-jobApplication.tsx",
-      runtimeBindings: {
-        MutableArrayDataProvider,
-      },
-    },
-  },
-  {
-    id: "readonly-vs-mixed",
-    name: "Readonly vs Mixed",
-    description: formLayoutCorePackDocs["readonly-vs-mixed"].description,
-    recipe: formLayoutCorePackDocs["readonly-vs-mixed"].recipe,
-    Component: FormLayoutCorePackReadonlyVsMixedExample,
-    playground: {
-      initialSource: formLayoutCorePackReadonlyVsMixedPlaygroundSource,
-      fileName: "formLayoutCorePack-readonlyVsMixed.tsx",
-      runtimeBindings: {
-        MutableArrayDataProvider,
-      },
-    },
-  },
-  {
-    id: "shared-column",
-    name: "Shared Column",
-    description: formLayoutCorePackDocs["shared-column"].description,
-    recipe: formLayoutCorePackDocs["shared-column"].recipe,
-    Component: FormLayoutCorePackSharedColumnExample,
-    playground: {
-      initialSource: formLayoutCorePackSharedColumnPlaygroundSource,
-      fileName: "formLayoutCorePack-sharedColumn.tsx",
-    },
-  },
+  }
 ];
 
 export default function FormLayoutCorePackRecipePage() {

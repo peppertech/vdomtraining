@@ -2,6 +2,9 @@
   const { deepEqual, doesNotMatch, match, ok } = require("node:assert/strict");
   const { existsSync, readFileSync } = require("node:fs");
   const { join } = require("node:path");
+  const { createElement } = require("preact");
+  const renderToString = require("preact-render-to-string");
+  const typescript = require("typescript");
 
   const directory = __dirname;
   const registrationSource = readFileSync(join(directory, "index.tsx"), "utf8");
@@ -9,6 +12,47 @@
     join(directory, "../../../../../shared/code-playground/tsx-playground.tsx"),
     "utf8",
   );
+
+  function renderExample(fileName: string) {
+    const source = readFileSync(join(directory, fileName), "utf8");
+    const compiledSource = typescript.transpileModule(source, {
+      compilerOptions: {
+        jsx: typescript.JsxEmit.ReactJSX,
+        jsxImportSource: "preact",
+        module: typescript.ModuleKind.CommonJS,
+        target: typescript.ScriptTarget.ES2020,
+      },
+    }).outputText;
+    const exampleModule = { exports: {} };
+
+    class TestDataProvider {}
+
+    const testRequire = (specifier: string) => {
+      if (specifier.startsWith("ojs/")) {
+        return {};
+      }
+      if (specifier === "./formLayoutLegacy-shared") {
+        return {
+          createDataProvider: () => new TestDataProvider(),
+          experienceOptions: [],
+          sponsorshipTypeOptions: [],
+          stateOptions: [],
+          todayIsoDate: "2026-08-10",
+        };
+      }
+      return require(specifier);
+    };
+
+    new Function("require", "exports", "module", compiledSource)(
+      testRequire,
+      exampleModule.exports,
+      exampleModule,
+    );
+    const Example = (exampleModule.exports as { default: () => unknown }).default;
+    ok(Example, `Missing default export in ${fileName}`);
+
+    return renderToString(createElement(Example));
+  }
   const demos = [
     [
       "form-inputs",
@@ -135,4 +179,18 @@
   match(allowedImports, /"ojs\/ojcollapsible"/);
   match(allowedImports, /"ojs\/ojselectsingle"/);
   match(allowedImports, /"\.\/formLayoutLegacy-shared"/);
+
+  const jobApplicationMarkup = renderExample(
+    "formLayoutLegacy-jobApplication.tsx",
+  );
+  match(
+    jobApplicationMarkup,
+    /<div class="oj-flex oj-sm-flex-wrap-wrap oj-sm-margin-2x-top" style="gap:1rem;"><oj-button chroming="outlined">Save Draft<\/oj-button><oj-button chroming="callToAction">Continue<\/oj-button><\/div>/,
+    "Legacy Job Application should keep a 1rem gap between its action buttons",
+  );
+  doesNotMatch(
+    jobApplicationMarkup,
+    /oj-sm-flex-wrap-wrap oj-sm-gap-2x/,
+    "Legacy Job Application should not retain the smaller action-button gap",
+  );
 })();

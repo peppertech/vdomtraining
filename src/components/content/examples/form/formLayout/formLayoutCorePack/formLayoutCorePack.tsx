@@ -480,9 +480,7 @@ export const FormLayoutCorePack = () => {
   }, []);
 
   return (
-    <div id="sampleDemo" class="demo-padding">
-      <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
-        <div id="form-container">
+    <div id="form-container">
           <oj-c-collapsible expanded={true}>
             <h6 slot="header">Options To Control The Form Layout Below</h6>
             <div class="oj-panel oj-bg-info-30">
@@ -490,7 +488,7 @@ export const FormLayoutCorePack = () => {
                 id="formLayoutOptions"
                 maxColumns={4}
                 direction="row"
-                user-assistance-density="compact"
+                userAssistanceDensity="compact"
               >
                 <oj-c-radioset
                   labelHint="Label Edge"
@@ -541,9 +539,9 @@ export const FormLayoutCorePack = () => {
             <div class="oj-panel oj-bg-info-30">
               <oj-c-form-layout
                 id="formOptions"
-                max-columns="4"
+                maxColumns={4}
                 direction="row"
-                userAssistanceDensity="efficient"
+                userAssistanceDensity="compact"
               >
                 <oj-c-radioset
                   label-hint="Value"
@@ -869,8 +867,6 @@ export const FormLayoutCorePack = () => {
 
           
          
-        </div>
-      </div>
     </div>
   );
 };

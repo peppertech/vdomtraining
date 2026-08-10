@@ -47,8 +47,8 @@ export default function FormLayoutCorePackConditionalInputsExample() {
   const layoutColumns = columns === "1" ? 1 : columns === "2" ? 2 : columns === "4" ? 4 : 3;
 
   return (
-    <div class="oj-flex oj-sm-flex-direction-column oj-sm-gap-4x">
-      <oj-c-collapsible expanded={true}>
+    <div id="form-container">
+      <oj-c-collapsible expanded={true} class="oj-sm-margin-4x-bottom">
         <h6 slot="header">Form Layout Options</h6>
         <div class="oj-panel oj-bg-info-30">
           <oj-c-form-layout maxColumns={3} direction="row">
@@ -110,14 +110,12 @@ export default function FormLayoutCorePackConditionalInputsExample() {
         />
       </oj-c-form-layout>
 
-      <div>
-        <oj-c-button
-          label={showEmail ? "Hide Email Field" : "Show Email Field"}
-          onojAction={() => {
-            setShowEmail((value) => !value);
-          }}
-        />
-      </div>
+      <oj-c-button
+        label={showEmail ? "Hide Email Field" : "Show Email Field"}
+        onojAction={() => {
+          setShowEmail((value) => !value);
+        }}
+      />
     </div>
   );
 }

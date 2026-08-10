@@ -274,7 +274,10 @@ export default function FormLayoutLegacyJobApplicationExample() {
             </oj-option>
           </oj-checkboxset>
         </oj-form-layout>
-        <div class="oj-flex oj-sm-flex-wrap-wrap oj-sm-gap-2x oj-sm-margin-2x-top">
+        <div
+          class="oj-flex oj-sm-flex-wrap-wrap oj-sm-margin-2x-top"
+          style={{ gap: "1rem" }}
+        >
           <oj-button chroming="outlined">Save Draft</oj-button>
           <oj-button chroming="callToAction">Continue</oj-button>
         </div>

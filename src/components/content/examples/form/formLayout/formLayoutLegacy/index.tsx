@@ -76,7 +76,7 @@ const formLayoutLegacyItems: {
   },
   {
     id: "mixed",
-    name: "Mixed Inputs",
+    name: "Mixed Readonly",
     description: formLayoutLegacyDocs.mixed.description,
     recipe: formLayoutLegacyDocs.mixed.recipe,
     Component: FormLayoutLegacyFormInputsMixedExample,
@@ -96,6 +96,17 @@ const formLayoutLegacyItems: {
       },
     },
   },
+   {
+    id: "nested",
+    name: "Nested",
+    description: formLayoutLegacyDocs.nested.description,
+    recipe: formLayoutLegacyDocs.nested.recipe,
+    Component: FormLayoutLegacyNestedExample,
+    playground: {
+      initialSource: formLayoutLegacyNestedPlaygroundSource,
+      fileName: "formLayoutLegacy-nested.tsx",
+    },
+  },
   {
     id: "column-span",
     name: "Column Span",
@@ -111,19 +122,8 @@ const formLayoutLegacyItems: {
     },
   },
   {
-    id: "nested",
-    name: "Nested Form Layout",
-    description: formLayoutLegacyDocs.nested.description,
-    recipe: formLayoutLegacyDocs.nested.recipe,
-    Component: FormLayoutLegacyNestedExample,
-    playground: {
-      initialSource: formLayoutLegacyNestedPlaygroundSource,
-      fileName: "formLayoutLegacy-nested.tsx",
-    },
-  },
-  {
     id: "shared-column",
-    name: "Shared Column",
+    name: "Column Share",
     description: formLayoutLegacyDocs["shared-column"].description,
     recipe: formLayoutLegacyDocs["shared-column"].recipe,
     Component: FormLayoutLegacySharedColumnExample,
@@ -134,7 +134,7 @@ const formLayoutLegacyItems: {
   },
   {
     id: "job-application",
-    name: "Job Application",
+    name: "Job Application Example",
     description: formLayoutLegacyDocs["job-application"].description,
     recipe: formLayoutLegacyDocs["job-application"].recipe,
     Component: FormLayoutLegacyJobApplicationExample,

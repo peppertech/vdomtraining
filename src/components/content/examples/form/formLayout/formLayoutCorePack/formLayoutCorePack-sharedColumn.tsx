@@ -4,16 +4,15 @@ import 'preact';
 
 export default function FormLayoutCorePackSharedColumnExample() {
   return (
-    <div class="oj-sm-padding-2x">
+    <div id="form-container">
       <style>
         {`
-          #formLayoutSharedColumnExample .demo-column-width {
+          .demo-column-width {
             width: 6rem;
           }
         `}
       </style>
-      <div id="formLayoutSharedColumnExample">
-        <oj-c-form-layout labelEdge="inside">
+      <oj-c-form-layout labelEdge="inside">
           <oj-c-input-text value="column not shared" labelHint="one" />
 
           <div class="oj-flex">
@@ -35,8 +34,7 @@ export default function FormLayoutCorePackSharedColumnExample() {
               <oj-c-input-text value="rest of column" labelHint="four.b" />
             </div>
           </div>
-        </oj-c-form-layout>
-      </div>
+      </oj-c-form-layout>
     </div>
   );
 }

@@ -21,7 +21,7 @@ export default function FormLayoutCorePackColumnSpanExample() {
   );
 
   return (
-    <div class="oj-flex oj-sm-flex-direction-column oj-sm-gap-4x">
+    <div id="form-container">
       <oj-c-radioset
         id="formLayoutBehavior"
         labelHint="Form Layout Behavior"
@@ -32,6 +32,8 @@ export default function FormLayoutCorePackColumnSpanExample() {
           setCurrentBehavior(String(event.detail.value));
         }}
       />
+
+      <hr />
 
       <oj-c-form-layout
         labelEdge="inside"

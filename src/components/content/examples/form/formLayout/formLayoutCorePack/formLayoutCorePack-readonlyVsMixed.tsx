@@ -16,12 +16,13 @@ const labelEdgeDataProvider = new MutableArrayDataProvider(
 
 export default function FormLayoutCorePackReadonlyVsMixedExample() {
   const [labelEdge, setLabelEdge] = useState<"inside" | "start" | "top">(
-    "inside",
+    "start",
   );
 
   return (
-    <div class="oj-flex oj-sm-flex-direction-column oj-sm-gap-4x">
-      <div class="oj-panel oj-bg-info-30">
+    <div id="form-container">
+      <h6>Options To Control the Form Controls Below</h6>
+      <div class="oj-panel oj-bg-info-30 oj-sm-margin-4x-bottom">
         <oj-c-form-layout maxColumns={4} direction="row">
           <oj-c-radioset
             value={labelEdge}
@@ -34,9 +35,8 @@ export default function FormLayoutCorePackReadonlyVsMixedExample() {
         </oj-c-form-layout>
       </div>
 
-      <div>
-        <h4>Mixed Readonly</h4>
-        <oj-c-form-layout labelEdge={labelEdge} maxColumns={2}>
+      <h4>Mixed Readonly</h4>
+      <oj-c-form-layout labelEdge={labelEdge} maxColumns={2}>
           <oj-c-input-text labelHint="First Name" value="John" />
           <oj-c-input-text
             labelHint="Last Name (readonly)"
@@ -51,12 +51,10 @@ export default function FormLayoutCorePackReadonlyVsMixedExample() {
             readonly={true}
           />
           <oj-c-input-text labelHint="Zip Code" value="12345-6789" />
-        </oj-c-form-layout>
-      </div>
+      </oj-c-form-layout>
 
-      <div>
-        <h4>Readonly Form Layout</h4>
-        <oj-c-form-layout labelEdge={labelEdge} maxColumns={2} readonly={true}>
+      <h4>Readonly Form Layout</h4>
+      <oj-c-form-layout labelEdge={labelEdge} maxColumns={2} readonly={true}>
           <oj-c-input-text labelHint="First Name" value="John" />
           <oj-c-input-text
             labelHint="Last Name (readonly)"
@@ -71,8 +69,7 @@ export default function FormLayoutCorePackReadonlyVsMixedExample() {
             readonly={true}
           />
           <oj-c-input-text labelHint="Zip Code" value="12345-6789" />
-        </oj-c-form-layout>
-      </div>
+      </oj-c-form-layout>
     </div>
   );
 }
