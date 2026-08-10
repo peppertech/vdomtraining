@@ -34,7 +34,13 @@ const items: SelectMultipleRecipeItem[] = [
     recipe: selectMultipleCorePackDocs.basic.recipe,
     Component: SelectMultipleBasicExample,
   },
-  
+  {
+    id: "value-items",
+    name: "Page Load Performance",
+    description: selectMultipleCorePackDocs["value-items"].description,
+    recipe: selectMultipleCorePackDocs["value-items"].recipe,
+    Component: SelectMultipleValueItemsExample,
+  },
   {
     id: "item-text",
     name: "Item Text",
@@ -57,27 +63,19 @@ const items: SelectMultipleRecipeItem[] = [
     Component: SelectMultipleCollectionTemplateTableExample,
   },
   {
-    id: "value-items",
-    name: "Page Load Performance",
-    description: selectMultipleCorePackDocs["value-items"].description,
-    recipe: selectMultipleCorePackDocs["value-items"].recipe,
-    Component: SelectMultipleValueItemsExample,
-  },
-
-  {
     id: "width",
     name: "Width",
     description: selectMultipleCorePackDocs.width.description,
     recipe: selectMultipleCorePackDocs.width.recipe,
     Component: SelectMultipleWidthExample,
   },
-  {
-    id: "add-to-list",
-    name: "Add to List",
-    description: selectMultipleCorePackDocs["add-to-list"].description,
-    recipe: selectMultipleCorePackDocs["add-to-list"].recipe,
-    Component: SelectMultipleAddToListExample,
-  },
+  // {
+  //   id: "add-to-list",
+  //   name: "Add to List",
+  //   description: selectMultipleCorePackDocs["add-to-list"].description,
+  //   recipe: selectMultipleCorePackDocs["add-to-list"].recipe,
+  //   Component: SelectMultipleAddToListExample,
+  // },
 ];
 
 export default function SelectMultipleCorePackRecipePage() {

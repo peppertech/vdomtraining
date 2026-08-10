@@ -7,8 +7,11 @@ import { useCallback,useMemo,useState } from "preact/hooks";
 import { DemoLayoutTemplate } from "../../../../../shared/demo-page-layout/demo-layout-template";
 import type { PlaygroundConfig } from "../../../../../shared/code-playground/tsx-playground";
 import SelectSingleAddToListExample from "./selectSingle-addToList";
+import selectSingleAddToListSource from "./selectSingle-addToList-source";
 import SelectSingleAdvancedSearchExample from "./selectSingle-advancedSearch";
+import selectSingleAdvancedSearchSource from "./selectSingle-advancedSearch-source";
 import SelectSingleBasicExample from "./selectSingle-basic";
+import selectSingleBasicSource from "./selectSingle-basic-source";
 import SelectSingleCollectionTemplateListViewExample from "./selectSingle-collectionTemplateListView";
 import selectSingleCollectionTemplateListViewSource from "./selectSingle-collectionTemplateListView-source";
 import SelectSingleCollectionTemplateTableExample from "./selectSingle-collectionTemplateTable";
@@ -19,17 +22,29 @@ import {
   type SelectSingleCorePackDemoId,
 } from "./selectSingle-docs";
 import SelectSingleEventsExample from "./selectSingle-events";
+import selectSingleEventsSource from "./selectSingle-events-source";
 import SelectSingleItemTemplateExample from "./selectSingle-itemTemplate";
+import selectSingleItemTemplateSource from "./selectSingle-itemTemplate-source";
 import SelectSingleItemTextExample from "./selectSingle-itemText";
+import selectSingleItemTextSource from "./selectSingle-itemText-source";
 import SelectSingleStatesExample from "./selectSingle-states";
+import selectSingleStatesSource from "./selectSingle-states-source";
 import SelectSingleValueItemExample from "./selectSingle-valueItem";
+import selectSingleValueItemSource from "./selectSingle-valueItem-source";
 import SelectSingleVirtualKeyboardExample from "./selectSingle-virtualKeyboard";
+import selectSingleVirtualKeyboardSource from "./selectSingle-virtualKeyboard-source";
 import SelectSingleWidthExample from "./selectSingle-width";
+import selectSingleWidthSource from "./selectSingle-width-source";
 import {
+  browserOptions,
+  createBrowserDataProvider,
   createOracleEmployeeDataProvider,
   getEmployeeItemText,
+  labelEdgeOptions,
   renderEmployeeCollectionListView,
   renderEmployeeCollectionTable,
+  renderEmployeeItemTemplate,
+  virtualKeyboardOptions,
 } from "./selectSingle-shared";
 
 type SelectSingleNavItem = {
@@ -58,6 +73,13 @@ const selectSingleNavItems: SelectSingleNavItem[] = [
     description: selectSingleCorePackDocs.states.description,
     recipe: selectSingleCorePackDocs.states.recipe,
     Component: SelectSingleStatesExample,
+    playground: {
+      initialSource: selectSingleStatesSource,
+      fileName: "selectSingle-states.tsx",
+      runtimeBindings: {
+        createBrowserDataProvider,
+      },
+    },
   },
   {
     id: "basic",
@@ -65,6 +87,88 @@ const selectSingleNavItems: SelectSingleNavItem[] = [
     description: selectSingleCorePackDocs.basic.description,
     recipe: selectSingleCorePackDocs.basic.recipe,
     Component: SelectSingleBasicExample,
+    playground: {
+      initialSource: selectSingleBasicSource,
+      fileName: "selectSingle-basic.tsx",
+      runtimeBindings: {
+        createBrowserDataProvider,
+      },
+    },
+  },
+  {
+    id: "virtual-keyboard",
+    name: "Virtual Keyboard",
+    description: selectSingleCorePackDocs["virtual-keyboard"].description,
+    recipe: selectSingleCorePackDocs["virtual-keyboard"].recipe,
+    Component: SelectSingleVirtualKeyboardExample,
+    playground: {
+      initialSource: selectSingleVirtualKeyboardSource,
+      fileName: "selectSingle-virtualKeyboard.tsx",
+      runtimeBindings: {
+        createBrowserDataProvider,
+        virtualKeyboardOptions,
+      },
+    },
+  },
+  {
+    id: "events",
+    name: "Events",
+    description: selectSingleCorePackDocs.events.description,
+    recipe: selectSingleCorePackDocs.events.recipe,
+    Component: SelectSingleEventsExample,
+    playground: {
+      initialSource: selectSingleEventsSource,
+      fileName: "selectSingle-events.tsx",
+      runtimeBindings: {
+        createBrowserDataProvider,
+      },
+    },
+  },
+    {
+    id: "value-item",
+    name: "Page Load Performance",
+    description: selectSingleCorePackDocs["value-item"].description,
+    recipe: selectSingleCorePackDocs["value-item"].recipe,
+    Component: SelectSingleValueItemExample,
+    playground: {
+      initialSource: selectSingleValueItemSource,
+      fileName: "selectSingle-valueItem.tsx",
+      runtimeBindings: {
+        browserOptions,
+        createBrowserDataProvider,
+      },
+    },
+  },
+  {
+    id: "item-text",
+    name: "Item Text",
+    description: selectSingleCorePackDocs["item-text"].description,
+    recipe: selectSingleCorePackDocs["item-text"].recipe,
+    Component: SelectSingleItemTextExample,
+    playground: {
+      initialSource: selectSingleItemTextSource,
+      fileName: "selectSingle-itemText.tsx",
+      runtimeBindings: {
+        createOracleEmployeeDataProvider,
+        getEmployeeItemText,
+      },
+    },
+  },
+  {
+    id: "item-template",
+    name: "Item Template",
+    description: selectSingleCorePackDocs["item-template"].description,
+    recipe: selectSingleCorePackDocs["item-template"].recipe,
+    Component: SelectSingleItemTemplateExample,
+    playground: {
+      initialSource: selectSingleItemTemplateSource,
+      fileName: "selectSingle-itemTemplate.tsx",
+      runtimeBindings: {
+        createOracleEmployeeDataProvider,
+        getEmployeeItemText,
+        renderEmployeeItemTemplate,
+      },
+    },
   },
   {
     id: "add-to-list",
@@ -72,6 +176,13 @@ const selectSingleNavItems: SelectSingleNavItem[] = [
     description: selectSingleCorePackDocs["add-to-list"].description,
     recipe: selectSingleCorePackDocs["add-to-list"].recipe,
     Component: SelectSingleAddToListExample,
+    playground: {
+      initialSource: selectSingleAddToListSource,
+      fileName: "selectSingle-addToList.tsx",
+      runtimeBindings: {
+        createBrowserDataProvider,
+      },
+    },
   },
   {
     id: "advanced-search",
@@ -79,6 +190,15 @@ const selectSingleNavItems: SelectSingleNavItem[] = [
     description: selectSingleCorePackDocs["advanced-search"].description,
     recipe: selectSingleCorePackDocs["advanced-search"].recipe,
     Component: SelectSingleAdvancedSearchExample,
+    playground: {
+      initialSource: selectSingleAdvancedSearchSource,
+      fileName: "selectSingle-advancedSearch.tsx",
+      runtimeBindings: {
+        createOracleEmployeeDataProvider,
+        getEmployeeItemText,
+        renderEmployeeItemTemplate,
+      },
+    },
   },
   {
     id: "collection-list-view",
@@ -115,46 +235,19 @@ const selectSingleNavItems: SelectSingleNavItem[] = [
     },
   },
   {
-    id: "events",
-    name: "Events",
-    description: selectSingleCorePackDocs.events.description,
-    recipe: selectSingleCorePackDocs.events.recipe,
-    Component: SelectSingleEventsExample,
-  },
-  {
-    id: "item-template",
-    name: "Item Template",
-    description: selectSingleCorePackDocs["item-template"].description,
-    recipe: selectSingleCorePackDocs["item-template"].recipe,
-    Component: SelectSingleItemTemplateExample,
-  },
-  {
-    id: "item-text",
-    name: "Item Text",
-    description: selectSingleCorePackDocs["item-text"].description,
-    recipe: selectSingleCorePackDocs["item-text"].recipe,
-    Component: SelectSingleItemTextExample,
-  },
-  {
-    id: "value-item",
-    name: "Page Load Performance",
-    description: selectSingleCorePackDocs["value-item"].description,
-    recipe: selectSingleCorePackDocs["value-item"].recipe,
-    Component: SelectSingleValueItemExample,
-  },
-  {
-    id: "virtual-keyboard",
-    name: "Virtual Keyboard",
-    description: selectSingleCorePackDocs["virtual-keyboard"].description,
-    recipe: selectSingleCorePackDocs["virtual-keyboard"].recipe,
-    Component: SelectSingleVirtualKeyboardExample,
-  },
-  {
     id: "width",
     name: "Width",
     description: selectSingleCorePackDocs.width.description,
     recipe: selectSingleCorePackDocs.width.recipe,
     Component: SelectSingleWidthExample,
+    playground: {
+      initialSource: selectSingleWidthSource,
+      fileName: "selectSingle-width.tsx",
+      runtimeBindings: {
+        createBrowserDataProvider,
+        labelEdgeOptions,
+      },
+    },
   },
 ];
 
