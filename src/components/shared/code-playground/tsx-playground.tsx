@@ -25,9 +25,16 @@ const ALLOWED_IMPORTS = new Set([
   "oj-c/buttonset-single",
   "oj-c/checkbox",
   "oj-c/checkboxset",
+  "oj-c/collapsible",
+  "oj-c/input-date-mask",
+  "oj-c/input-date-picker",
+  "oj-c/input-date-text",
+  "oj-c/input-month-mask",
+  "oj-c/input-time-mask",
   "oj-c/radioset",
   "oj-c/rich-radioset",
   "oj-c/rich-checkboxset",
+  "oj-c/select-multiple",
   "oj-c/select-single",
   "ojs/ojbutton",
   "ojs/ojarraydataprovider",
@@ -58,6 +65,7 @@ const ALLOWED_IMPORTS = new Set([
   "ojs/ojlabelvalue",
   "ojs/ojmenu",
   "ojs/ojmessaging",
+  "ojs/ojmutablearraydataprovider",
   "ojs/ojoption",
   "ojs/ojradioset",
   "ojs/ojselectcombobox",
@@ -88,6 +96,7 @@ const ALLOWED_IMPORTS = new Set([
   "./rangeSlider-shared",
   "./slider-shared",
   "./formLayoutLegacy-shared",
+  "./formLayoutCorePack",
 ]);
 
 export type PlaygroundSupportingFile = Readonly<{
@@ -325,10 +334,31 @@ function getImportError(
     ...ALLOWED_IMPORTS,
     ...supportingFiles.map((file) => file.importSpecifier),
   ]);
-  const imports = source.matchAll(/import(?:[\s\S]*?from\s*)?["']([^"']+)["'];?/g);
-  for (const match of imports) {
-    if (!allowedImports.has(match[1])) {
-      return `The import "${match[1]}" is not available in this playground.`;
+  const sourceFile = typescript.createSourceFile(
+    "playground.tsx",
+    source,
+    typescript.ScriptTarget.Latest,
+    true,
+    typescript.ScriptKind.TSX,
+  );
+  for (const statement of sourceFile.statements) {
+    let importSpecifier: string | undefined;
+    if (
+      typescript.isImportDeclaration(statement) &&
+      typescript.isStringLiteralLike(statement.moduleSpecifier)
+    ) {
+      importSpecifier = statement.moduleSpecifier.text;
+    } else if (
+      typescript.isImportEqualsDeclaration(statement) &&
+      typescript.isExternalModuleReference(statement.moduleReference) &&
+      statement.moduleReference.expression &&
+      typescript.isStringLiteralLike(statement.moduleReference.expression)
+    ) {
+      importSpecifier = statement.moduleReference.expression.text;
+    }
+
+    if (importSpecifier && !allowedImports.has(importSpecifier)) {
+      return `The import "${importSpecifier}" is not available in this playground.`;
     }
   }
   return undefined;
