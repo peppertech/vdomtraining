@@ -92,6 +92,7 @@ const ALLOWED_IMPORTS = new Set([
   "./radiosetCorePack-shared",
   "./richRadioSet-shared",
   "./richCheckBoxsetCorePack-shared",
+  "./selectMany-shared",
   "./selectSingle-shared",
   "./rangeSlider-shared",
   "./slider-shared",
