@@ -36,6 +36,7 @@ const ALLOWED_IMPORTS = new Set([
   "ojs/ojasyncvalidator-numberrange",
   "ojs/ojasyncvalidator-regexp",
   "ojs/ojcheckboxset",
+  "ojs/ojcollapsible",
   "ojs/ojcolor",
   "ojs/ojcolorpalette",
   "ojs/ojcolorspectrum",
@@ -60,6 +61,7 @@ const ALLOWED_IMPORTS = new Set([
   "ojs/ojoption",
   "ojs/ojradioset",
   "ojs/ojselectcombobox",
+  "ojs/ojselectsingle",
   "ojs/ojslider",
   "ojs/ojswitch",
   "ojs/ojvalidator-daterestriction",
@@ -85,6 +87,7 @@ const ALLOWED_IMPORTS = new Set([
   "./selectSingle-shared",
   "./rangeSlider-shared",
   "./slider-shared",
+  "./formLayoutLegacy-shared",
 ]);
 
 export type PlaygroundSupportingFile = Readonly<{
