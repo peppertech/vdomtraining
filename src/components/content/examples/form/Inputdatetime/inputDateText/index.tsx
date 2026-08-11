@@ -1,14 +1,23 @@
 import * as preact from 'preact';
+import type { PlaygroundConfig } from "../../../../../shared/code-playground/tsx-playground";
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
+import { LocalDateConverter } from "ojs/ojconverter-localdate";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import InputDateTextConverterExample from "./inputDateText-converter";
+import inputDateTextConverterPlaygroundSource from "./inputDateText-converter-source";
 import {
   inputDateTextDocs,
   type InputDateTextDemoId,
 } from "./inputDateText-docs";
 import InputDateTextOverviewExample from "./inputDateText-overview";
+import inputDateTextOverviewPlaygroundSource from "./inputDateText-overview-source";
 import InputDateTextRestrictRangeExample from "./inputDateText-restrictRange";
+import inputDateTextRestrictRangePlaygroundSource from "./inputDateText-restrictRange-source";
+import { isInputDateTextLabelEdge, labelEdgeOptions, messageSets, todayIsoDate } from "./inputDateText-shared";
 import InputDateTextSimpleExample from "./inputDateText-simple";
+import inputDateTextSimplePlaygroundSource from "./inputDateText-simple-source";
 import InputDateTextWidthExample from "./inputDateText-width";
+import inputDateTextWidthPlaygroundSource from "./inputDateText-width-source";
 
 const inputDateTextItems: {
   id: InputDateTextDemoId;
@@ -16,6 +25,7 @@ const inputDateTextItems: {
   description: (typeof inputDateTextDocs)[InputDateTextDemoId]["description"];
   recipe: (typeof inputDateTextDocs)[InputDateTextDemoId]["recipe"];
   Component: () => preact.JSX.Element;
+  playground?: PlaygroundConfig;
 }[] = [
   {
     id: "overview",
@@ -23,6 +33,13 @@ const inputDateTextItems: {
     description: inputDateTextDocs.overview.description,
     recipe: inputDateTextDocs.overview.recipe,
     Component: InputDateTextOverviewExample,
+    playground: {
+      initialSource: inputDateTextOverviewPlaygroundSource,
+      fileName: "inputDateText-overview.tsx",
+      runtimeBindings: {
+        messageSets,
+      },
+    },
   },
   {
     id: "simple",
@@ -30,6 +47,13 @@ const inputDateTextItems: {
     description: inputDateTextDocs.simple.description,
     recipe: inputDateTextDocs.simple.recipe,
     Component: InputDateTextSimpleExample,
+    playground: {
+      initialSource: inputDateTextSimplePlaygroundSource,
+      fileName: "inputDateText-simple.tsx",
+      runtimeBindings: {
+        todayIsoDate,
+      },
+    },
   },
   {
     id: "converter",
@@ -37,6 +61,14 @@ const inputDateTextItems: {
     description: inputDateTextDocs.converter.description,
     recipe: inputDateTextDocs.converter.recipe,
     Component: InputDateTextConverterExample,
+    playground: {
+      initialSource: inputDateTextConverterPlaygroundSource,
+      fileName: "inputDateText-converter.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+        LocalDateConverter,
+      },
+    },
   },
   {
     id: "restrict-range",
@@ -44,6 +76,10 @@ const inputDateTextItems: {
     description: inputDateTextDocs["restrict-range"].description,
     recipe: inputDateTextDocs["restrict-range"].recipe,
     Component: InputDateTextRestrictRangeExample,
+    playground: {
+      initialSource: inputDateTextRestrictRangePlaygroundSource,
+      fileName: "inputDateText-restrictRange.tsx",
+    },
   },
   {
     id: "width",
@@ -51,6 +87,14 @@ const inputDateTextItems: {
     description: inputDateTextDocs.width.description,
     recipe: inputDateTextDocs.width.recipe,
     Component: InputDateTextWidthExample,
+    playground: {
+      initialSource: inputDateTextWidthPlaygroundSource,
+      fileName: "inputDateText-width.tsx",
+      runtimeBindings: {
+        isInputDateTextLabelEdge,
+        labelEdgeOptions,
+      },
+    },
   },
 ];
 
