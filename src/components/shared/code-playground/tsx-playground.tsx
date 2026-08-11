@@ -95,6 +95,7 @@ const ALLOWED_IMPORTS = new Set([
   "./comboBoxOne-shared",
   "./comboboxMany-shared",
   "./selectMany-shared",
+  "./selectMultiple-shared",
   "./selectSingle-shared",
   "./rangeSlider-shared",
   "./slider-shared",
