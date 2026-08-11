@@ -80,6 +80,7 @@ const ALLOWED_IMPORTS = new Set([
   "./inputNumberCorePack-shared",
   "./inputNumber-shared",
   "./input-search-shared",
+  "./inputDate-shared",
   "./inputPasswordCorePack-shared",
   "./inputPassword-shared",
   "./inputSensitiveText-shared",
