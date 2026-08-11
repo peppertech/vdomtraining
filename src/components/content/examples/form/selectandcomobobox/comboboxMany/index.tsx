@@ -4,25 +4,60 @@ import { ojNavigationList } from "ojs/ojnavigationlist";
 import 'preact';
 import { type ComponentChildren,type FunctionComponent } from 'preact';
 import { useCallback,useMemo,useState } from "preact/hooks";
+import type { PlaygroundConfig } from "../../../../../shared/code-playground/tsx-playground";
 import { DemoLayoutTemplate } from "../../../../../shared/demo-page-layout/demo-layout-template";
 import ComboboxManyBasicExample from "./comboboxMany-basic";
+import comboboxManyBasicPlaygroundSource from "./comboboxMany-basic-source";
 import ComboboxManyConverterExample from "./comboboxMany-converter";
+import comboboxManyConverterPlaygroundSource from "./comboboxMany-converter-source";
 import ComboboxManyConverterWithDataMappingExample from "./comboboxMany-converterWithDataMapping";
+import comboboxManyConverterWithDataMappingPlaygroundSource from "./comboboxMany-converterWithDataMapping-source";
 import ComboboxManyCustomTemplateExample from "./comboboxMany-customTemplate";
+import comboboxManyCustomTemplatePlaygroundSource from "./comboboxMany-customTemplate-source";
 import ComboboxManyDataMappingExample from "./comboboxMany-dataMapping";
+import comboboxManyDataMappingPlaygroundSource from "./comboboxMany-dataMapping-source";
 import {
   comboboxManyDocs,
   type ComboboxManyDemoId,
 } from "./comboboxMany-docs";
 import ComboboxManyEventsExample from "./comboboxMany-events";
+import comboboxManyEventsPlaygroundSource from "./comboboxMany-events-source";
 import ComboboxManyGroupingExample from "./comboboxMany-grouping";
+import comboboxManyGroupingPlaygroundSource from "./comboboxMany-grouping-source";
 import ComboboxManyItemImgExample from "./comboboxMany-itemImg";
+import comboboxManyItemImgPlaygroundSource from "./comboboxMany-itemImg-source";
 import ComboboxManyMaximumResultCountExample from "./comboboxMany-maximumResultCount";
+import comboboxManyMaximumResultCountPlaygroundSource from "./comboboxMany-maximumResultCount-source";
 import ComboboxManyMinLengthExample from "./comboboxMany-minLength";
+import comboboxManyMinLengthPlaygroundSource from "./comboboxMany-minLength-source";
 import ComboboxManyOverviewExample from "./comboboxMany-overview";
+import comboboxManyOverviewPlaygroundSource from "./comboboxMany-overview-source";
+import {
+  confirmationMessages,
+  createBrowserDataProvider,
+  createBrowserLabelDataProvider,
+  createEmailDataProvider,
+  createEmployeeMappedDataProvider,
+  createFormattedCurrencyDataProvider,
+  createGroupedEmployeeDataProvider,
+  createStatesDataProvider,
+  createTimeZoneDataProvider,
+  createUnformattedCurrencyDataProvider,
+  errorMessages,
+  formatEventDetail,
+  infoMessages,
+  multipleEmailValidator,
+  renderBrowserImageOption,
+  renderEmployeeCustomOption,
+  usdCurrencyConverter,
+  warningMessages,
+} from "./comboboxMany-shared";
 import ComboboxManyValidatorExample from "./comboboxMany-validator";
+import comboboxManyValidatorPlaygroundSource from "./comboboxMany-validator-source";
 import ComboboxManyValueOptionsExample from "./comboboxMany-valueOptions";
+import comboboxManyValueOptionsPlaygroundSource from "./comboboxMany-valueOptions-source";
 import ComboboxManyWidthExample from "./comboboxMany-width";
+import comboboxManyWidthPlaygroundSource from "./comboboxMany-width-source";
 
 type ComboboxManyNavItem = {
   id: ComboboxManyDemoId;
@@ -30,6 +65,7 @@ type ComboboxManyNavItem = {
   description: ComponentChildren;
   recipe: ComponentChildren;
   Component: FunctionComponent;
+  playground?: PlaygroundConfig;
 };
 
 const comboboxManyNavItems: ComboboxManyNavItem[] = [
@@ -39,6 +75,17 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs.overview.description,
     recipe: comboboxManyDocs.overview.recipe,
     Component: ComboboxManyOverviewExample,
+    playground: {
+      initialSource: comboboxManyOverviewPlaygroundSource,
+      fileName: "comboboxMany-overview.tsx",
+      runtimeBindings: {
+        confirmationMessages,
+        createBrowserDataProvider,
+        errorMessages,
+        infoMessages,
+        warningMessages,
+      },
+    },
   },
   {
     id: "basic",
@@ -46,6 +93,13 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs.basic.description,
     recipe: comboboxManyDocs.basic.recipe,
     Component: ComboboxManyBasicExample,
+    playground: {
+      initialSource: comboboxManyBasicPlaygroundSource,
+      fileName: "comboboxMany-basic.tsx",
+      runtimeBindings: {
+        createBrowserDataProvider,
+      },
+    },
   },
   {
     id: "grouping",
@@ -53,6 +107,13 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs.grouping.description,
     recipe: comboboxManyDocs.grouping.recipe,
     Component: ComboboxManyGroupingExample,
+    playground: {
+      initialSource: comboboxManyGroupingPlaygroundSource,
+      fileName: "comboboxMany-grouping.tsx",
+      runtimeBindings: {
+        createTimeZoneDataProvider,
+      },
+    },
   },
   {
     id: "width",
@@ -60,6 +121,13 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs.width.description,
     recipe: comboboxManyDocs.width.recipe,
     Component: ComboboxManyWidthExample,
+    playground: {
+      initialSource: comboboxManyWidthPlaygroundSource,
+      fileName: "comboboxMany-width.tsx",
+      runtimeBindings: {
+        createBrowserDataProvider,
+      },
+    },
   },
   {
     id: "events",
@@ -67,6 +135,14 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs.events.description,
     recipe: comboboxManyDocs.events.recipe,
     Component: ComboboxManyEventsExample,
+    playground: {
+      initialSource: comboboxManyEventsPlaygroundSource,
+      fileName: "comboboxMany-events.tsx",
+      runtimeBindings: {
+        createBrowserLabelDataProvider,
+        formatEventDetail,
+      },
+    },
   },
   {
     id: "value-options",
@@ -74,6 +150,13 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs["value-options"].description,
     recipe: comboboxManyDocs["value-options"].recipe,
     Component: ComboboxManyValueOptionsExample,
+    playground: {
+      initialSource: comboboxManyValueOptionsPlaygroundSource,
+      fileName: "comboboxMany-valueOptions.tsx",
+      runtimeBindings: {
+        createStatesDataProvider,
+      },
+    },
   },
   {
     id: "data-mapping",
@@ -81,6 +164,13 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs["data-mapping"].description,
     recipe: comboboxManyDocs["data-mapping"].recipe,
     Component: ComboboxManyDataMappingExample,
+    playground: {
+      initialSource: comboboxManyDataMappingPlaygroundSource,
+      fileName: "comboboxMany-dataMapping.tsx",
+      runtimeBindings: {
+        createEmployeeMappedDataProvider,
+      },
+    },
   },
   {
     id: "custom-template",
@@ -88,6 +178,14 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs["custom-template"].description,
     recipe: comboboxManyDocs["custom-template"].recipe,
     Component: ComboboxManyCustomTemplateExample,
+    playground: {
+      initialSource: comboboxManyCustomTemplatePlaygroundSource,
+      fileName: "comboboxMany-customTemplate.tsx",
+      runtimeBindings: {
+        createGroupedEmployeeDataProvider,
+        renderEmployeeCustomOption,
+      },
+    },
   },
   {
     id: "item-image",
@@ -95,6 +193,14 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs["item-image"].description,
     recipe: comboboxManyDocs["item-image"].recipe,
     Component: ComboboxManyItemImgExample,
+    playground: {
+      initialSource: comboboxManyItemImgPlaygroundSource,
+      fileName: "comboboxMany-itemImg.tsx",
+      runtimeBindings: {
+        createBrowserLabelDataProvider,
+        renderBrowserImageOption,
+      },
+    },
   },
   {
     id: "min-length",
@@ -102,6 +208,13 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs["min-length"].description,
     recipe: comboboxManyDocs["min-length"].recipe,
     Component: ComboboxManyMinLengthExample,
+    playground: {
+      initialSource: comboboxManyMinLengthPlaygroundSource,
+      fileName: "comboboxMany-minLength.tsx",
+      runtimeBindings: {
+        createStatesDataProvider,
+      },
+    },
   },
   {
     id: "maximum-result-count",
@@ -109,6 +222,13 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs["maximum-result-count"].description,
     recipe: comboboxManyDocs["maximum-result-count"].recipe,
     Component: ComboboxManyMaximumResultCountExample,
+    playground: {
+      initialSource: comboboxManyMaximumResultCountPlaygroundSource,
+      fileName: "comboboxMany-maximumResultCount.tsx",
+      runtimeBindings: {
+        createStatesDataProvider,
+      },
+    },
   },
   {
     id: "converter",
@@ -116,6 +236,14 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs.converter.description,
     recipe: comboboxManyDocs.converter.recipe,
     Component: ComboboxManyConverterExample,
+    playground: {
+      initialSource: comboboxManyConverterPlaygroundSource,
+      fileName: "comboboxMany-converter.tsx",
+      runtimeBindings: {
+        createFormattedCurrencyDataProvider,
+        usdCurrencyConverter,
+      },
+    },
   },
   {
     id: "converter-with-data-mapping",
@@ -123,6 +251,14 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs["converter-with-data-mapping"].description,
     recipe: comboboxManyDocs["converter-with-data-mapping"].recipe,
     Component: ComboboxManyConverterWithDataMappingExample,
+    playground: {
+      initialSource: comboboxManyConverterWithDataMappingPlaygroundSource,
+      fileName: "comboboxMany-converterWithDataMapping.tsx",
+      runtimeBindings: {
+        createUnformattedCurrencyDataProvider,
+        usdCurrencyConverter,
+      },
+    },
   },
   {
     id: "validator",
@@ -130,6 +266,14 @@ const comboboxManyNavItems: ComboboxManyNavItem[] = [
     description: comboboxManyDocs.validator.description,
     recipe: comboboxManyDocs.validator.recipe,
     Component: ComboboxManyValidatorExample,
+    playground: {
+      initialSource: comboboxManyValidatorPlaygroundSource,
+      fileName: "comboboxMany-validator.tsx",
+      runtimeBindings: {
+        createEmailDataProvider,
+        multipleEmailValidator,
+      },
+    },
   },
 ];
 
@@ -205,6 +349,7 @@ export default function ComboboxManyIndex() {
           description={activeExample.description}
           recipe={activeExample.recipe}
           demo={<ActiveExampleComponent />}
+          playground={activeExample.playground}
         />
       </div>
     </div>
