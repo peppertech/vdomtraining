@@ -40,7 +40,7 @@ const renderNoData: import("ojs/ojvcomponent").TemplateSlot<{}> = () => (
   </div>
 );
 
-export const CardViewNoDatacorepack = () => {
+export default function CardViewNoDatacorepack() {
   const dataProvider = useMemo(
     () =>
       new ArrayDataProvider<EmployeeData["id"], EmployeeData>(EMPTY_EMPLOYEES, {
@@ -64,6 +64,4 @@ export const CardViewNoDatacorepack = () => {
       </oj-c-card-view>
     </>
   );
-};
-
-export default CardViewNoDatacorepack;
+}

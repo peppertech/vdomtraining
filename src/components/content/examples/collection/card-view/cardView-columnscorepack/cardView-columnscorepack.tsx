@@ -30,7 +30,7 @@ const renderCard: import("ojs/ojvcomponent").TemplateSlot<CardItemContext> = (co
   </div>
 );
 
-export const CardViewColumnscorepack = () => {
+export default function CardViewColumnscorepack() {
   const [columns, setColumns] = useState<number>(3);
 
   const dataProvider = useMemo(
@@ -74,6 +74,4 @@ export const CardViewColumnscorepack = () => {
       </oj-c-card-view>
     </div>
   );
-};
-
-export default CardViewColumnscorepack;
+}

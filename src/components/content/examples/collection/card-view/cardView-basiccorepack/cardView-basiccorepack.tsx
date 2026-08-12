@@ -81,7 +81,7 @@ const renderCard: import("ojs/ojvcomponent").TemplateSlot<CardItemContext> = (co
   </div>
 );
 
-export const CardViewBasiccorepack = () => {
+export default function CardViewBasiccorepack() {
   const dataProvider = useMemo(
     () =>
       new ArrayDataProvider<EmployeeData["id"], EmployeeData>(EMPLOYEES, {
@@ -97,6 +97,4 @@ export const CardViewBasiccorepack = () => {
       </oj-c-card-view>
     </div>
   );
-};
-
-export default CardViewBasiccorepack;
+}

@@ -88,7 +88,7 @@ const renderCard: import("ojs/ojvcomponent").TemplateSlot<CardItemContext> = (co
   </div>
 );
 
-export const CardViewGutterSizecorepack = () => {
+export default function CardViewGutterSizecorepack() {
   const [gutterSize, setGutterSize] = useState<CardGutterSize>("sm");
   const dataProvider = useMemo(
     () =>
@@ -129,6 +129,4 @@ export const CardViewGutterSizecorepack = () => {
       </oj-c-card-view>
     </div>
   );
-};
-
-export default CardViewGutterSizecorepack;
+}

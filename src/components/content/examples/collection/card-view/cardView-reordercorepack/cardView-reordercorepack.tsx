@@ -83,7 +83,7 @@ const EMPLOYEES: EmployeeData[] = [
   }
 ];
 
-export const CardViewReordercorepack = () => {
+export default function CardViewReordercorepack() {
   const [employees, setEmployees] = useState(EMPLOYEES);
   const [currentItem, setCurrentItem] = useState<EmployeeData["id"] | undefined>(undefined);
   const [cutItem, setCutItem] = useState<EmployeeData["id"] | null>(null);
@@ -193,6 +193,4 @@ export const CardViewReordercorepack = () => {
       </div>
     </div>
   );
-};
-
-export default CardViewReordercorepack;
+}

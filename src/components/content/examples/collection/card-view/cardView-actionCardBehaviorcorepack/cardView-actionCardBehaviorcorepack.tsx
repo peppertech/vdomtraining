@@ -75,7 +75,7 @@ const EMPLOYEES: EmployeeData[] = [
   }
 ];
 
-export const CardViewActionCardBehaviorcorepack = () => {
+export default function CardViewActionCardBehaviorcorepack() {
   const [actionName, setActionName] = useState("");
   const [actionReason, setActionReason] = useState("");
 
@@ -130,6 +130,4 @@ export const CardViewActionCardBehaviorcorepack = () => {
       </oj-c-card-view>
     </div>
   );
-};
-
-export default CardViewActionCardBehaviorcorepack;
+}

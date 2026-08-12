@@ -22,6 +22,9 @@ const ALLOWED_IMPORTS = new Set([
   "oj-c/text-area",
   "oj-c/form-layout",
   "oj-c/button",
+  "oj-c/action-card",
+  "oj-c/card-view",
+  "oj-c/drag-handle",
   "oj-c/buttonset-single",
   "oj-c/checkbox",
   "oj-c/checkboxset",
@@ -32,6 +35,10 @@ const ALLOWED_IMPORTS = new Set([
   "oj-c/input-month-mask",
   "oj-c/input-time-mask",
   "oj-c/radioset",
+  "oj-c/selection-card",
+  "oj-c/selector",
+  "oj-c/selector-all",
+  "oj-c/skeleton",
   "oj-c/rich-radioset",
   "oj-c/rich-checkboxset",
   "oj-c/select-multiple",
@@ -56,6 +63,7 @@ const ALLOWED_IMPORTS = new Set([
   "ojs/ojconverterutils-i18n",
   "ojs/ojdatetimepicker",
   "ojs/ojformlayout",
+  "ojs/ojkeyset",
   "ojs/ojgauge",
   "ojs/ojhighlighttext",
   "ojs/ojinputnumber",
@@ -67,6 +75,7 @@ const ALLOWED_IMPORTS = new Set([
   "ojs/ojmenu",
   "ojs/ojmessaging",
   "ojs/ojmutablearraydataprovider",
+  "ojs/ojrestdataprovider",
   "ojs/ojoption",
   "ojs/ojradioset",
   "ojs/ojselectcombobox",
@@ -111,6 +120,10 @@ const ALLOWED_IMPORTS = new Set([
   "./slider-shared",
   "./formLayoutLegacy-shared",
   "./formLayoutCorePack",
+  "../../../../../jet-composites/demo-profile-card-layout/loader",
+  "../../../../../jet-composites/demo-responsive-buttonset/loader",
+  "../../shared/CollectionMockFetchServer",
+  "../../shared/DemoDelayingDataProvider",
 ]);
 
 export type PlaygroundSupportingFile = Readonly<{
@@ -418,7 +431,7 @@ function compileComponent(
   }
 
   const executableSource = source
-    .replace(/import[\s\S]*?;\s*/g, "")
+    .replace(/^\s*import(?:[\s\S]*?;\s*)/gm, "")
     .replace("export default function", "function");
   const result = typescript.transpileModule(executableSource, {
     compilerOptions: {

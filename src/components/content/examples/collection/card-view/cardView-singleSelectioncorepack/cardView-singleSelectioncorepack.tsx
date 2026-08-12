@@ -81,7 +81,7 @@ const EMPLOYEES: EmployeeData[] = [
 const getDisplayValue = (selected: ImmutableKeySet<number>) =>
   JSON.stringify(EMPLOYEES.filter(({ id }) => selected.has(id)).map(({ id }) => id));
 
-export const CardViewSingleSelectioncorepack = () => {
+export default function CardViewSingleSelectioncorepack() {
   const [selectedItems, setSelectedItems] = useState<ImmutableKeySet<number>>(new KeySetImpl<number>());
   const [selectedIds, setSelectedIds] = useState("");
   const [selectionRequired, setSelectionRequired] = useState(false);
@@ -147,6 +147,4 @@ export const CardViewSingleSelectioncorepack = () => {
       </oj-c-card-view>
     </div>
   );
-};
-
-export default CardViewSingleSelectioncorepack;
+}

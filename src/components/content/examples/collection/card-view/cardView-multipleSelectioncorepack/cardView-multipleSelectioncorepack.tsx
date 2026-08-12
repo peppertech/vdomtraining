@@ -96,7 +96,7 @@ const getDisplayValue = (selected: ImmutableKeySet<number>) => {
   return JSON.stringify(Array.from((selected as KeySetImpl<number>).values()));
 };
 
-export const CardViewMultipleSelectioncorepack = () => {
+export default function CardViewMultipleSelectioncorepack() {
   const [selectedItems, setSelectedItems] = useState<ImmutableKeySet<number>>(new KeySetImpl<number>());
   const [selectedIds, setSelectedIds] = useState("");
 
@@ -178,6 +178,4 @@ export const CardViewMultipleSelectioncorepack = () => {
       </oj-c-card-view>
     </div>
   );
-};
-
-export default CardViewMultipleSelectioncorepack;
+}

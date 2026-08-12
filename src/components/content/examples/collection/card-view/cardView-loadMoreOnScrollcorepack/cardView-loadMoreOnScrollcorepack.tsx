@@ -30,7 +30,7 @@ const renderCard: import("ojs/ojvcomponent").TemplateSlot<CardItemContext> = (co
   </div>
 );
 
-export const CardViewLoadMoreOnScrollcorepack = () => {
+export default function CardViewLoadMoreOnScrollcorepack() {
   const server = useMemo(
     () =>
       new CollectionMockFetchServer({
@@ -81,6 +81,4 @@ export const CardViewLoadMoreOnScrollcorepack = () => {
       <template slot="itemTemplate" render={renderCard} />
     </oj-c-card-view>
   );
-};
-
-export default CardViewLoadMoreOnScrollcorepack;
+}

@@ -66,7 +66,7 @@ const renderSkeleton: import("ojs/ojvcomponent").TemplateSlot<CardSkeletonContex
   </div>
 );
 
-export const CardViewCustomSkeletoncorepack = () => {
+export default function CardViewCustomSkeletoncorepack() {
   const [delayInput, setDelayInput] = useState(2000);
   const [delayRawValue, setDelayRawValue] = useState("2000");
   const [fetchDelay, setFetchDelay] = useState(2000);
@@ -134,6 +134,4 @@ export const CardViewCustomSkeletoncorepack = () => {
       </oj-c-card-view>
     </div>
   );
-};
-
-export default CardViewCustomSkeletoncorepack;
+}

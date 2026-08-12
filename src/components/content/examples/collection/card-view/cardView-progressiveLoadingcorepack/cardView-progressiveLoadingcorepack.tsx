@@ -46,7 +46,7 @@ const renderCard: import("ojs/ojvcomponent").TemplateSlot<CardItemContext> = (co
   </div>
 );
 
-export const CardViewProgressiveLoadingcorepack = () => {
+export default function CardViewProgressiveLoadingcorepack() {
   const [delayInput, setDelayInput] = useState(2000);
   const [delayRawValue, setDelayRawValue] = useState("2000");
   const [fetchDelay, setFetchDelay] = useState(2000);
@@ -113,6 +113,4 @@ export const CardViewProgressiveLoadingcorepack = () => {
       </oj-c-card-view>
     </div>
   );
-};
-
-export default CardViewProgressiveLoadingcorepack;
+}

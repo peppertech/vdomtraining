@@ -123,7 +123,7 @@ const renderCard: import("ojs/ojvcomponent").TemplateSlot<CardItemContext> = (co
   </div>
 );
 
-export const CardViewManageTabStopcorepack = () => {
+export default function CardViewManageTabStopcorepack() {
   const dataProvider = useMemo(
     () =>
       new ArrayDataProvider<EmployeeData["id"], EmployeeData>(EMPLOYEES, {
@@ -137,6 +137,4 @@ export const CardViewManageTabStopcorepack = () => {
       <template slot="itemTemplate" render={renderCard} />
     </oj-c-card-view>
   );
-};
-
-export default CardViewManageTabStopcorepack;
+}
