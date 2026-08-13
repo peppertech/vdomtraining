@@ -56,7 +56,18 @@
   <link href="styles/app.css" rel="stylesheet">
   </head>
 
-  <body class="oj-web-applayout-body" data-oj-binding-provider="preact">
+  <body class="oj-web-applayout-body app-theme--dark oj-color-invert oj-c-colorscheme-dark oj-bg-neutral-170" data-oj-binding-provider="preact">
+    <script type="text/javascript">
+      (function () {
+        try {
+          if (localStorage.getItem("vdom-training.theme-mode") === "light") {
+            document.body.classList.remove("app-theme--dark", "oj-color-invert", "oj-c-colorscheme-dark", "oj-bg-neutral-170");
+          }
+        } catch (ignore) {
+          // Dark mode is the safe default when browser storage is unavailable.
+        }
+      })();
+    </script>
     <app-root></app-root>
     <script type="text/javascript">
       // The "oj_whenReady" global variable enables a strategy that the busy context whenReady,

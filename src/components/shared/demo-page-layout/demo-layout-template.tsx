@@ -64,7 +64,7 @@ export function DemoLayoutTemplate({
 
       <section
         aria-labelledby="demo-layout-template-recipe-heading"
-        class="demo-layout-template__recipe-section"
+        class="demo-layout-template__recipe-section oj-panel"
       >
         <h2
           id="demo-layout-template-recipe-heading"

@@ -66,8 +66,8 @@
 }
 
 .demo-layout-template__component-type {
-  background: var(--oj-core-neutral-20, #e8edf3);
-  color: var(--oj-core-text-color-primary, #161513);
+  background: var(--oj-core-neutral-secondary-1);
+  color: var(--oj-core-text-color-primary);
 }
 
 .demo-layout-template__pack-label {
@@ -97,7 +97,7 @@
   gap: 1rem;
   box-sizing: border-box;
   min-inline-size: 0;
-  border: 1px solid #d6dfe6;
+  border: 1px solid var(--oj-core-divider-color);
   padding: 10px 5px 10px 5px;
   max-height: 100%;
   overflow: auto;
@@ -125,7 +125,7 @@
 
 .demo-layout-template__recipe-body {
   /* border-radius: 1rem; */
-  background: var(--oj-core-neutral-10, #f7f9fb);
+  background-color: transparent;
   padding: 1.25rem 1.5rem;
   /* border: 1px solid var(--oj-core-divider-color, #d9e1ea); */
 }
