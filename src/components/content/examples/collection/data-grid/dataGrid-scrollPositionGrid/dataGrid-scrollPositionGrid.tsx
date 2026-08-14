@@ -33,7 +33,7 @@ const createRows = (rowCount: number, columnCount: number) => {
         return row;
     });
 };
-export const DataGridScrollPositionGrid = () => {
+export default function DataGridScrollPositionGrid() {
     const [scrollPolicyValue, setScrollPolicyValue] = useState<'loadMoreOnScroll' | 'scroll'>('loadMoreOnScroll');
     const [scrollPosValue, setScrollPosValue] = useState<ScrollPositionValue>({});
     const data = useMemo(() => createRows(200, 60), []);
@@ -85,4 +85,3 @@ export const DataGridScrollPositionGrid = () => {
             <oj-data-grid id="datagrid" class="demo-data-grid" aria-label="Data Grid scroll position demo" data={dataGridProvider} onscrollPositionChanged={(event: JetElementCustomEvent<ScrollPositionValue>) => setScrollPosValue(event.detail.value ?? {})} scrollPosition={scrollPosValue} scrollPolicy={scrollPolicyValue} {...ojDataGridProps}/>
         </div>);
 };
-export default DataGridScrollPositionGrid;

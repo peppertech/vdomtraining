@@ -50,7 +50,7 @@ const normalizeRange = (range: SelectionRange, rowCount: number, columnCount: nu
     endRow: range.endIndex.row === -1 || range.endIndex.row == null ? rowCount - 1 : range.endIndex.row,
     endColumn: range.endIndex.column === -1 || range.endIndex.column == null ? columnCount - 1 : range.endIndex.column
 });
-export const DataGridDataTransferGrid = () => {
+export default function DataGridDataTransferGrid() {
     const [rows, setRows] = useState<PopulationRow[]>(() => cloneRows());
     const [selection, setSelection] = useState<DataGridSelection>([]);
     const [clipboardData, setClipboardData] = useState<string>('');
@@ -199,4 +199,3 @@ export const DataGridDataTransferGrid = () => {
                 </oj-data-grid>
         </div>);
 };
-export default DataGridDataTransferGrid;

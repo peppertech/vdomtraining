@@ -110,7 +110,7 @@ const WIDE_COLUMN_WIDTHS: Partial<Record<EditableColumn, string>> = {
 const formatHeaderLabel = (value: string) =>
     value.replace(/([A-Z])/g, ' $1').replace(/^./, (letter) => letter.toUpperCase());
 
-export const DataGridAdvancedEditableGrid = () => {
+export default function DataGridAdvancedEditableGrid() {
     const editableRef = useRef<EditableElement | null>(null);
     const [rows, setRows] = useState<CustomerRecord[]>(() => jsonData);
     const [lastEdit, setLastEdit] = useState<EditSummary | null>(null);
@@ -320,5 +320,3 @@ export const DataGridAdvancedEditableGrid = () => {
         </div>
     );
 };
-
-export default DataGridAdvancedEditableGrid;

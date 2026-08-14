@@ -110,7 +110,7 @@ const formatColumnName = (column: CustomerColumnKey) => {
     return column.replace(/([A-Z])/g, ' $1').replace(/^./, (value) => value.toUpperCase());
 };
 
-export const DataGridCustomContextMenuGrid = () => {
+export default function DataGridCustomContextMenuGrid() {
     const dataGridRef = useRef<ojDataGrid<CustomerCellValue, number> | null>(null);
     const [selectedMenuItem, setSelectedMenuItem] = useState<string>('None selected yet');
     const [launchedFromCell, setLaunchedFromCell] = useState<string>('None launched yet');
@@ -242,4 +242,3 @@ export const DataGridCustomContextMenuGrid = () => {
                 </div>
         </div>);
 };
-export default DataGridCustomContextMenuGrid;

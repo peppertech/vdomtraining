@@ -76,7 +76,7 @@ const formatColumnName = (column: CustomerColumnKey) => {
     return column.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase());
 };
 
-export const DataGridStylingGrid = () => {
+export default function DataGridStylingGrid() {
     const rows = useMemo<CustomerRow[]>(() => jsonData, []);
     const rowDataProvider = useMemo(() => new ArrayDataProvider<number, CustomerRow>(rows, {
         keyAttributes: 'index'
@@ -197,5 +197,3 @@ export const DataGridStylingGrid = () => {
         </oj-data-grid>
     );
 };
-
-export default DataGridStylingGrid;

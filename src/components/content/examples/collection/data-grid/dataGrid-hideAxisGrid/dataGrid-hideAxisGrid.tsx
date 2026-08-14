@@ -88,7 +88,7 @@ const setNumberSetIfChanged = (
     setter((currentSet) => areNumberSetsEqual(currentSet, nextSet) ? currentSet : nextSet);
 };
 
-export const DataGridHideAxisGrid = () => {
+export default function DataGridHideAxisGrid() {
     const [hiddenColumnValues, setHiddenColumnValues] = useState<Set<number>>(() => new Set([0, 5]));
     const [hiddenRowValues, setHiddenRowValues] = useState<Set<number>>(() => new Set([0, 7]));
     const baseRows = useMemo<CustomerRow[]>(() => jsonData, []);
@@ -237,5 +237,3 @@ export const DataGridHideAxisGrid = () => {
         </div>
     );
 };
-
-export default DataGridHideAxisGrid;

@@ -39,7 +39,7 @@ interface NullableRangeValue {
 const COLUMNS = Object.keys(jsonData[0] ?? {})
     .filter((key) => key !== 'states')
     .sort((left, right) => Number(left) - Number(right));
-export const DataGridFilterGrid = () => {
+export default function DataGridFilterGrid() {
     const [filterColumn, setFilterColumn] = useState<string>('2020');
     const [sliderVal, setSliderVal] = useState<RangeValue>({ start: 100000, end: 8000000 });
     const [transientValue, setTransientValue] = useState<RangeValue>({ start: 100000, end: 8000000 });
@@ -115,4 +115,3 @@ export const DataGridFilterGrid = () => {
                 </oj-data-grid>
         </div>);
 };
-export default DataGridFilterGrid;

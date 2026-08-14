@@ -27,7 +27,7 @@ const buildRows = (rowCount: number, columnCount: number) => {
         return row;
     });
 };
-export const DataGridPerformanceGrid = () => {
+export default function DataGridPerformanceGrid() {
     const [rowCount, setRowCount] = useState<number>(100);
     const [columnCount, setColumnCount] = useState<number>(30);
     const [scrollPolicyValue, setScrollPolicyValue] = useState<'loadMoreOnScroll' | 'scroll'>('loadMoreOnScroll');
@@ -98,4 +98,3 @@ export const DataGridPerformanceGrid = () => {
                 </div>
         </div>);
 };
-export default DataGridPerformanceGrid;

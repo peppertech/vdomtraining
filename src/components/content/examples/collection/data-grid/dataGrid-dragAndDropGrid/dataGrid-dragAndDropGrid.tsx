@@ -60,7 +60,7 @@ type DataGridColumnDropContext = Parameters<DataGridColumnDropHandler>[1];
 const SOURCE_ROWS = (jsonData as PopulationRow[]).slice(0, 8);
 const INITIAL_COLUMNS = Object.keys(SOURCE_ROWS[0]).filter((key) => key !== 'states');
 const cloneRows = () => SOURCE_ROWS.map((row) => ({ ...row }));
-export const DataGridDragAndDropGrid = () => {
+export default function DataGridDragAndDropGrid() {
     const dataGridRef = useRef<ojDataGrid<string, string> | null>(null);
     const [rows, setRows] = useState<PopulationRow[]>(() => cloneRows());
     const [columns, setColumns] = useState<string[]>(INITIAL_COLUMNS);
@@ -276,4 +276,3 @@ export const DataGridDragAndDropGrid = () => {
                 </oj-data-grid>
         </div>);
 };
-export default DataGridDragAndDropGrid;

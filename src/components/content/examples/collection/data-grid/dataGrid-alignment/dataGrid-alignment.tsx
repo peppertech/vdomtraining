@@ -243,7 +243,7 @@ class DemoAdjustableDataGridProvider implements DataGridProvider<GridCellData> {
     }
 }
 
-export const DataGridAlignment = () => {
+export default function DataGridAlignment() {
     const [regionVal, setRegionVal] = useState<RegionKey>('columnHeader');
     const [alignments, setAlignments] = useState<Record<RegionKey, AlignmentSetting>>(() => createAlignmentState());
     const dataRegions = useMemo<Array<SelectOption<RegionKey>>>(() => [
@@ -383,5 +383,3 @@ export const DataGridAlignment = () => {
         </div>
     );
 };
-
-export default DataGridAlignment;

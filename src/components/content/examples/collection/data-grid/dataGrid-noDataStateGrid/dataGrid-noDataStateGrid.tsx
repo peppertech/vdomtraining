@@ -42,7 +42,7 @@ const formatCellValue = (column: DataColumn | undefined, value: CellValue | unde
     }
     return column === 'salary' && typeof value === 'number' ? `$${value.toLocaleString('en-US')}` : String(value);
 };
-export const DataGridNoDataStateGrid = () => {
+export default function DataGridNoDataStateGrid() {
     const [rows, setRows] = useState<DataDetails[]>([]);
     const rowDataProvider = useMemo(() => new ArrayDataProvider<number, DataDetails>(rows, {
         keyAttributes: 'index'
@@ -93,4 +93,3 @@ export const DataGridNoDataStateGrid = () => {
             <template slot="noData" render={noDataTemplateRenderer}/>
         </oj-data-grid>);
 };
-export default DataGridNoDataStateGrid;

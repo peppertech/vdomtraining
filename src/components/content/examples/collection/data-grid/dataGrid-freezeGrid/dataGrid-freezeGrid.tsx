@@ -24,7 +24,7 @@ const populationRows = jsonData as States[];
 const DATA_COLUMNS = Object.keys(populationRows[0] ?? {})
     .filter((key) => key !== 'states')
     .sort((left, right) => Number(left) - Number(right));
-export const DataGridFreezeGrid = () => {
+export default function DataGridFreezeGrid() {
     const [frozenRowCount, setFrozenRowCount] = useState<number>(2);
     const [frozenColumnCount, setFrozenColumnCount] = useState<number>(2);
     const [scrollPolicyValue, setScrollPolicyValue] = useState<'loadMoreOnScroll' | 'scroll'>('loadMoreOnScroll');
@@ -82,4 +82,3 @@ export const DataGridFreezeGrid = () => {
                 </oj-data-grid>
         </div>);
 };
-export default DataGridFreezeGrid;

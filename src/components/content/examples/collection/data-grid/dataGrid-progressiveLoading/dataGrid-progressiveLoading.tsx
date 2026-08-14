@@ -24,7 +24,7 @@ const buildRows = (headersOnly: boolean) => Array.from({ length: 60 }, (_unused,
     }
     return row;
 });
-export const DataGridProgressiveLoading = () => {
+export default function DataGridProgressiveLoading() {
     const [fetchDelay, setFetchDelay] = useState<number>(2000);
     const [dataAvailabilityValue, setDataAvailabilityValue] = useState<'all' | 'headersOnly'>('all');
     const [scrollPolicyValue, setScrollPolicyValue] = useState<'loadMoreOnScroll' | 'scroll'>('loadMoreOnScroll');
@@ -85,4 +85,3 @@ export const DataGridProgressiveLoading = () => {
             <p class="oj-sm-margin-2x-top">The original demo simulated delayed fetches; this local replacement keeps data in memory and exposes the same controls for consistency.</p>
         </div>);
 };
-export default DataGridProgressiveLoading;

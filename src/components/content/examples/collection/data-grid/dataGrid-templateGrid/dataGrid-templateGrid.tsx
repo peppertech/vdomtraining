@@ -77,7 +77,7 @@ const formatColumnName = (column: CustomerColumnKey) => {
     return column.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase());
 };
 
-export const DataGridTemplateGrid = () => {
+export default function DataGridTemplateGrid() {
     const rows = useMemo<CustomerRow[]>(() => jsonData, []);
     const maxAmountOrdered = useMemo(() => rows.reduce((previousValue, currentValue) => Math.max(previousValue, currentValue.totalAmountOrdered), -Infinity), [rows]);
     const minAmountOrdered = useMemo(() => rows.reduce((previousValue, currentValue) => Math.min(previousValue, currentValue.totalAmountOrdered), Infinity), [rows]);
@@ -200,5 +200,3 @@ export const DataGridTemplateGrid = () => {
         </oj-data-grid>
     );
 };
-
-export default DataGridTemplateGrid;

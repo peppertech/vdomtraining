@@ -254,7 +254,7 @@ class DemoAdjustableDataGridProvider implements DataGridProvider<GridCellData> {
     }
 }
 
-export const DataGridDataRegionsGrid = () => {
+export default function DataGridDataRegionsGrid() {
     const [rowCount, setRowCount] = useState<number>(24);
     const [columnCount, setColumnCount] = useState<number>(8);
     const [rowHeaderVisible, setRowHeaderVisible] = useState<boolean>(true);
@@ -413,5 +413,3 @@ export const DataGridDataRegionsGrid = () => {
         </div>
     );
 };
-
-export default DataGridDataRegionsGrid;

@@ -20,7 +20,7 @@ const COLUMNS = Object.keys(populationRows[0] ?? {})
 const DEFAULT_SORT_COLUMN = COLUMNS[COLUMNS.length - 1] ?? '2020';
 type SortRequestEvent = Parameters<NonNullable<ComponentProps<'oj-data-grid'>['onojSortRequest']>>[0];
 type CellTemplateContext = DataGridElement.CellTemplateContext<States>;
-export const DataGridOverView = () => {
+export default function DataGridOverView() {
     const [sortColumn, setSortColumn] = useState<string>(DEFAULT_SORT_COLUMN);
     const [sortDirection, setSortDirection] = useState<'ascending' | 'descending'>('descending');
     const rows = useMemo(() => {
@@ -83,4 +83,3 @@ export const DataGridOverView = () => {
                 </oj-data-grid>
         </div>);
 };
-export default DataGridOverView;

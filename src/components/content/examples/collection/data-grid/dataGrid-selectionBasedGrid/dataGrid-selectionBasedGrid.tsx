@@ -112,7 +112,7 @@ const formatColumnName = (column: CustomerColumnKey) => {
     return column.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase());
 };
 
-export const DataGridSelectionBasedGrid = () => {
+export default function DataGridSelectionBasedGrid() {
     const [selectValue, setSelectValue] = useState<SelectValue>('cell_multiple');
     const [selectedRows, setSelectedRows] = useState<SelectionRecord[]>([]);
     const rows = useMemo<CustomerRow[]>(() => jsonData, []);
@@ -272,5 +272,3 @@ export const DataGridSelectionBasedGrid = () => {
         </div>
     );
 };
-
-export default DataGridSelectionBasedGrid;

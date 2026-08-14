@@ -25,7 +25,7 @@ const createRows = () => {
     });
 };
 const COLUMNS = Array.from({ length: 12 }, (_unused, index) => `c${index + 1}`);
-export const DataGridMergeCellsGrid = () => {
+export default function DataGridMergeCellsGrid() {
     const rows = useMemo(() => createRows(), []);
     const rowDataProvider = useMemo(() => new ArrayDataProvider<string, MergeRow>(rows, {
         keyAttributes: 'rowLabel'
@@ -71,4 +71,3 @@ export const DataGridMergeCellsGrid = () => {
                 </oj-data-grid>
         </div>);
 };
-export default DataGridMergeCellsGrid;

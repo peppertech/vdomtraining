@@ -16,7 +16,7 @@ interface DataDetails {
     resourceful: number;
 }
 const COLUMN_KEYS: Array<keyof Omit<DataDetails, 'name'>> = ['communication', 'teamwork', 'contingent', 'resourceful'];
-export const DataGridHeaderTooltips = () => {
+export default function DataGridHeaderTooltips() {
     const rows = useMemo(() => jsonData as DataDetails[], []);
     const rowDataProvider = useMemo(() => new ArrayDataProvider<string, DataDetails>(rows, {
         keyAttributes: 'name'
@@ -63,4 +63,3 @@ export const DataGridHeaderTooltips = () => {
             <oj-data-grid id="datagrid" class="demo-data-grid" aria-label="Data Grid header tooltip demo" data={dataGridProvider} {...ojDataGridProps}/>
         </div>);
 };
-export default DataGridHeaderTooltips;

@@ -327,7 +327,7 @@ class RegionStateDataGridProvider implements DataGridProvider<GridData> {
     }
 }
 
-export const RowExpanderDataGridDataGridRowExpanderDataProvider = () => {
+export default function RowExpanderDataGridDataGridRowExpanderDataProvider() {
     const [expandedRows, setExpandedRows] = useState(() => new Set(REGION_ORDER));
     const [expandedDecades, setExpandedDecades] = useState(() => new Set(DECADE_GROUPS.map((group) => group.label)));
     const [isPivoted, setIsPivoted] = useState(false);
@@ -429,5 +429,3 @@ export const RowExpanderDataGridDataGridRowExpanderDataProvider = () => {
         </div>
     );
 };
-
-export default RowExpanderDataGridDataGridRowExpanderDataProvider;

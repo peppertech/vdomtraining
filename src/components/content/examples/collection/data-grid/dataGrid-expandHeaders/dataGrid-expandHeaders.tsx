@@ -52,7 +52,7 @@ const columnDeclaration = [
         ]
     }
 ];
-export const DataGridExpandHeaders = () => {
+export default function DataGridExpandHeaders() {
     const rowDataProvider = useMemo(() => new ArrayDataProvider<string, States>(parsedData, {
         keyAttributes: 'states'
     }), []);
@@ -74,4 +74,3 @@ export const DataGridExpandHeaders = () => {
             <oj-data-grid id="datagrid" class="demo-data-grid" aria-label="Data Grid nested headers demo" data={dataGridProvider}/>
         </div>);
 };
-export default DataGridExpandHeaders;

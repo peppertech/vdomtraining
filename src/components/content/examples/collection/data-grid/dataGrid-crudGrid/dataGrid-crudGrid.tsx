@@ -25,7 +25,7 @@ const SOURCE_ROWS = (jsonData as PopulationRow[]).slice(0, 8);
 const ROW_HEADER_KEY = 'states';
 const COLUMN_KEYS = Object.keys(SOURCE_ROWS[0]).filter((key) => key !== ROW_HEADER_KEY);
 const cloneRows = () => SOURCE_ROWS.map((row) => ({ ...row }));
-export const DataGridCrudGrid = () => {
+export default function DataGridCrudGrid() {
     const dataGridRef = useRef<DataGridDomElement | null>(null);
     const [rows, setRows] = useState<PopulationRow[]>(() => cloneRows());
     const [selection, setSelection] = useState<DataGridSelection>([]);
@@ -183,4 +183,3 @@ export const DataGridCrudGrid = () => {
                 </div>
         </div>);
 };
-export default DataGridCrudGrid;

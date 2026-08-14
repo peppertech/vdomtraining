@@ -39,7 +39,7 @@ type ActiveSort = {
     key: string;
     direction: SortDirection;
 };
-export const DataGridSortingGrid = () => {
+export default function DataGridSortingGrid() {
     const [rows, setRows] = useState<States[]>(() => getSortedRows(populationRows, DEFAULT_SORT_COLUMN, 'ascending'));
     const [columns, setColumns] = useState<string[]>(INITIAL_COLUMNS);
     const [activeSort, setActiveSort] = useState<ActiveSort>({
@@ -183,4 +183,3 @@ export const DataGridSortingGrid = () => {
                 </oj-data-grid>
         </div>);
 };
-export default DataGridSortingGrid;

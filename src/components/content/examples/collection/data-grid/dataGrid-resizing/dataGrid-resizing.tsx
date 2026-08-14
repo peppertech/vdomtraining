@@ -87,7 +87,7 @@ const formatColumnName = (column: CustomerColumnKey) => {
     return column.replace(/([A-Z])/g, ' $1').replace(/^./, (value) => value.toUpperCase());
 };
 
-export const DataGridResizing = () => {
+export default function DataGridResizing() {
     const [eventLog, setEventLog] = useState<string>('');
     const rows = useMemo<CustomerRow[]>(() => jsonData, []);
     const rowDataProvider = useMemo(() => new ArrayDataProvider<number, CustomerRow>(rows, {
@@ -212,5 +212,3 @@ export const DataGridResizing = () => {
         </div>
     );
 };
-
-export default DataGridResizing;

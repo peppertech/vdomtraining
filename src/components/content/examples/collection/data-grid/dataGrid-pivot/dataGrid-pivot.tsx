@@ -40,7 +40,7 @@ const buildRows = (pivotByYear: boolean) => {
         return row;
     });
 };
-export const DataGridPivot = () => {
+export default function DataGridPivot() {
     const [pivotByYear, setPivotByYear] = useState<boolean>(false);
     const rows = useMemo(() => buildRows(pivotByYear), [pivotByYear]);
     const columns = useMemo(() => pivotByYear ? getRegions() : [...YEARS], [pivotByYear]);
@@ -82,4 +82,3 @@ export const DataGridPivot = () => {
                 </oj-data-grid>
         </div>);
 };
-export default DataGridPivot;
