@@ -30,7 +30,7 @@ const isGroupData = (value: ListRow): value is GroupData => {
   return typeof value !== 'string' && !('first' in value);
 };
 
-export const IndexerCharacterIndexer = () => {
+export default function IndexerCharacterIndexer() {
   const listViewRef = useRef<ojListView<string, ListRow> | null>(null);
   const dataProviderRef = useRef<IndexerModelTreeDataProvider<string, ListRow> | null>(null);
 
@@ -128,5 +128,3 @@ export const IndexerCharacterIndexer = () => {
     </div>
   );
 };
-
-export default IndexerCharacterIndexer;

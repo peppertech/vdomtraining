@@ -36,7 +36,7 @@ const menuOpenOptions = {
   'open-options.launcher': 'listview'
 } as const;
 
-export const SwipeToRevealBasicSwipeToReveal = () => {
+export default function SwipeToRevealBasicSwipeToReveal() {
   const [allItems, setAllItems] = useState<EmailItem[]>([
     { id: 'email_1', title: 'Meeting Invite: Product direction', from: 'Amy Bartlet', image: '/styles/images/listItemImages/placeholder-female-01.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum.' },
     { id: 'email_2', title: 'Re: Latest market analysis from XYZ', from: 'Nina Evans', image: '/styles/images/listItemImages/placeholder-female-02.png', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra, risus ac interdum sollicitudin, sem erat ultrices ipsum' },
@@ -151,5 +151,3 @@ export const SwipeToRevealBasicSwipeToReveal = () => {
     </div>
   );
 };
-
-export default SwipeToRevealBasicSwipeToReveal;

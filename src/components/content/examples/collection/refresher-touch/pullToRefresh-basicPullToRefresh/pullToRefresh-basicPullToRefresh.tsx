@@ -22,7 +22,7 @@ type ListViewItemContext = ojListView.ItemTemplateContext<Tweet['source'], Tweet
 const loadTweets = (): Tweet[] => JSON.parse(jsonDataStr) as Tweet[];
 const oracleAvatar = '/styles/images/listView/oracle.gif';
 
-export const PullToRefreshBasicPullToRefresh = () => {
+export default function PullToRefreshBasicPullToRefresh() {
   const [tweets, setTweets] = useState<Tweet[]>(() => loadTweets());
 
   const dataProvider = useMemo(
@@ -74,5 +74,3 @@ export const PullToRefreshBasicPullToRefresh = () => {
     </oj-refresher>
   );
 };
-
-export default PullToRefreshBasicPullToRefresh;
