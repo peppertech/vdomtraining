@@ -248,7 +248,7 @@ const getColumns = (screenRange: ScreenRange): TableColumns => {
   }
 };
 
-export const ListItemLayoutTablecorepack = () => {
+export default function ListItemLayoutTablecorepack() {
   const [viewportWidth, setViewportWidth] = useState(getViewportWidth);
 
   useEffect(() => {
@@ -312,5 +312,3 @@ export const ListItemLayoutTablecorepack = () => {
     </div>
   );
 };
-
-export default ListItemLayoutTablecorepack;

@@ -35,7 +35,7 @@ const employeeData = (JSON.parse(employeeDataText as string) as Employee[]).map(
   IMAGE: `/styles/images/listItemImages/${employee.IMAGE.split('/').pop()}`
 }));
 
-export const SelectSingleItemTemplate = () => {
+export default function SelectSingleItemTemplate() {
   const [selectVal, setSelectVal] = useState<number | null>(null);
   const dataProvider = useMemo(
     () =>
@@ -102,5 +102,3 @@ export const SelectSingleItemTemplate = () => {
     </div>
   );
 };
-
-export default SelectSingleItemTemplate;

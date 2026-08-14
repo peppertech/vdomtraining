@@ -237,7 +237,7 @@ const renderDocumentItem: import("ojs/ojvcomponent").TemplateSlot<DocumentItemCo
   </oj-c-list-item-layout>
 );
 
-export const ListItemLayoutLeadingSlotcorepack = () => {
+export default function ListItemLayoutLeadingSlotcorepack() {
   const [overviewSelectedItems, setOverviewSelectedItems] = useState<ImmutableKeySet<string>>(
     new KeySetImpl<string>()
   );
@@ -359,5 +359,3 @@ export const ListItemLayoutLeadingSlotcorepack = () => {
     </div>
   );
 };
-
-export default ListItemLayoutLeadingSlotcorepack;

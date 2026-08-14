@@ -106,7 +106,7 @@ const renderProductItem: import("ojs/ojvcomponent").TemplateSlot<ProductItemCont
   </oj-c-list-item-layout>
 );
 
-export const ListItemLayoutQuaternarySlotcorepack = () => {
+export default function ListItemLayoutQuaternarySlotcorepack() {
   const dataProvider = useMemo(
     () =>
       new ArrayDataProvider<Product["id"], Product>(PRODUCTS, {
@@ -144,5 +144,3 @@ export const ListItemLayoutQuaternarySlotcorepack = () => {
     </div>
   );
 };
-
-export default ListItemLayoutQuaternarySlotcorepack;

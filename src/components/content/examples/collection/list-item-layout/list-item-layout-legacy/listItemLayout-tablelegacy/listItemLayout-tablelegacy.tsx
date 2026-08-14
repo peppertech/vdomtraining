@@ -248,7 +248,7 @@ const getColumns = (screenRange: ScreenRange): TableColumns => {
   }
 };
 
-export const ListItemLayoutTablelegacy = () => {
+export default function ListItemLayoutTablelegacy() {
   const [viewportWidth, setViewportWidth] = useState(getViewportWidth);
 
   useEffect(() => {
@@ -312,5 +312,3 @@ export const ListItemLayoutTablelegacy = () => {
     </div>
   );
 };
-
-export default ListItemLayoutTablelegacy;

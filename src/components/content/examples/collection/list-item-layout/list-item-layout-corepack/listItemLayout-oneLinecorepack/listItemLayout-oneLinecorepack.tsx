@@ -78,7 +78,7 @@ const renderCountryItem: import("ojs/ojvcomponent").TemplateSlot<CountryItemCont
   </oj-c-list-item-layout>
 );
 
-export const ListItemLayoutOneLinecorepack = () => {
+export default function ListItemLayoutOneLinecorepack() {
   const [overviewSelectedItems, setOverviewSelectedItems] = useState<ImmutableKeySet<string>>(
     new KeySetImpl<string>()
   );
@@ -141,5 +141,3 @@ export const ListItemLayoutOneLinecorepack = () => {
     </div>
   );
 };
-
-export default ListItemLayoutOneLinecorepack;

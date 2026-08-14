@@ -170,7 +170,7 @@ const renderTaskItem: import("ojs/ojvcomponent").TemplateSlot<TaskRowContext> = 
   </oj-c-list-item-layout>
 );
 
-export const ListItemLayoutMultiColumncorepack = () => {
+export default function ListItemLayoutMultiColumncorepack() {
   const dataProvider = useMemo(
     () =>
       new ArrayDataProvider<TaskRow["id"], TaskRow>(TASK_ROWS, {
@@ -194,5 +194,3 @@ export const ListItemLayoutMultiColumncorepack = () => {
     </div>
   );
 };
-
-export default ListItemLayoutMultiColumncorepack;

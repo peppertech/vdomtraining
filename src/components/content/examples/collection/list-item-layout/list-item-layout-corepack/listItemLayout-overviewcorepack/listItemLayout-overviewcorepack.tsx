@@ -252,7 +252,7 @@ const renderToolbarItem: import("ojs/ojvcomponent").TemplateSlot<EmployeeItemCon
   </oj-c-list-item-layout>
 );
 
-export const ListItemLayoutOverviewcorepack = () => {
+export default function ListItemLayoutOverviewcorepack() {
   const [overviewSelectedItems, setOverviewSelectedItems] = useState<ImmutableKeySet<string>>(
     new KeySetImpl<string>()
   );
@@ -348,5 +348,3 @@ export const ListItemLayoutOverviewcorepack = () => {
     </div>
   );
 };
-
-export default ListItemLayoutOverviewcorepack;

@@ -120,7 +120,7 @@ const renderDocumentItem = (context: DocumentItemContext) => (
   </oj-list-item-layout>
 );
 
-export const ListItemLayoutOverlineSlotlegacy = () => {
+export default function ListItemLayoutOverlineSlotlegacy() {
   const [selectedItems, setSelectedItems] = useState<KeySet<string>>(new KeySetImpl<string>());
 
   const peopleDataProvider = useMemo(
@@ -171,5 +171,3 @@ export const ListItemLayoutOverlineSlotlegacy = () => {
     </div>
   );
 };
-
-export default ListItemLayoutOverlineSlotlegacy;

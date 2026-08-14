@@ -181,7 +181,7 @@ const renderPaymentItem = (context: PaymentItemContext) => (
   </oj-list-item-layout>
 );
 
-export const ListItemLayoutActionlegacy = () => {
+export default function ListItemLayoutActionlegacy() {
   const [overviewSelectedItems, setOverviewSelectedItems] = useState<KeySet<string>>(
     new KeySetImpl<string>()
   );
@@ -408,5 +408,3 @@ export const ListItemLayoutActionlegacy = () => {
     </div>
   );
 };
-
-export default ListItemLayoutActionlegacy;

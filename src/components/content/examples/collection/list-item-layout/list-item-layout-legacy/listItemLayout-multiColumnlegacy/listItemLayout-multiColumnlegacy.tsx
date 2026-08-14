@@ -169,7 +169,7 @@ const renderTaskItem = (context: TaskRowContext) => (
   </oj-list-item-layout>
 );
 
-export const ListItemLayoutMultiColumnlegacy = () => {
+export default function ListItemLayoutMultiColumnlegacy() {
   const dataProvider = useMemo(
     () =>
       new ArrayDataProvider<TaskRow["id"], TaskRow>(TASK_ROWS, {
@@ -193,5 +193,3 @@ export const ListItemLayoutMultiColumnlegacy = () => {
     </div>
   );
 };
-
-export default ListItemLayoutMultiColumnlegacy;

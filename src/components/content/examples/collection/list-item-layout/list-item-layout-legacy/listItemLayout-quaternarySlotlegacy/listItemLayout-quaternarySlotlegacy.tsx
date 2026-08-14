@@ -105,7 +105,7 @@ const renderProductItem = (context: ProductItemContext) => (
   </oj-list-item-layout>
 );
 
-export const ListItemLayoutQuaternarySlotlegacy = () => {
+export default function ListItemLayoutQuaternarySlotlegacy() {
   const dataProvider = useMemo(
     () =>
       new ArrayDataProvider<Product["id"], Product>(PRODUCTS, {
@@ -143,5 +143,3 @@ export const ListItemLayoutQuaternarySlotlegacy = () => {
     </div>
   );
 };
-
-export default ListItemLayoutQuaternarySlotlegacy;

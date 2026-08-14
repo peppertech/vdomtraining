@@ -236,7 +236,7 @@ const renderToolbarItem = (context: EmployeeItemContext) => (
   </oj-list-item-layout>
 );
 
-export const ListItemLayoutOverviewlegacy = () => {
+export default function ListItemLayoutOverviewlegacy() {
   const [overviewSelectedItems, setOverviewSelectedItems] = useState<KeySet<string>>(
     new KeySetImpl<string>()
   );
@@ -332,5 +332,3 @@ export const ListItemLayoutOverviewlegacy = () => {
     </div>
   );
 };
-
-export default ListItemLayoutOverviewlegacy;

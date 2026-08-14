@@ -184,7 +184,7 @@ const renderPaymentItem: import("ojs/ojvcomponent").TemplateSlot<PaymentItemCont
   </oj-c-list-item-layout>
 );
 
-export const ListItemLayoutTwoLinecorepack = () => {
+export default function ListItemLayoutTwoLinecorepack() {
   const [overviewSelectedItems, setOverviewSelectedItems] = useState<ImmutableKeySet<string>>(
     new KeySetImpl<string>()
   );
@@ -265,5 +265,3 @@ export const ListItemLayoutTwoLinecorepack = () => {
     </div>
   );
 };
-
-export default ListItemLayoutTwoLinecorepack;

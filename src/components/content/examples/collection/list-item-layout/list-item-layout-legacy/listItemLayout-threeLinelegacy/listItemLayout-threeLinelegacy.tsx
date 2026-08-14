@@ -217,7 +217,7 @@ const renderDocumentItem = (context: DocumentItemContext) => (
   </oj-list-item-layout>
 );
 
-export const ListItemLayoutThreeLinelegacy = () => {
+export default function ListItemLayoutThreeLinelegacy() {
   const [overviewSelectedItems, setOverviewSelectedItems] = useState<KeySet<string>>(
     new KeySetImpl<string>()
   );
@@ -332,5 +332,3 @@ export const ListItemLayoutThreeLinelegacy = () => {
     </div>
   );
 };
-
-export default ListItemLayoutThreeLinelegacy;

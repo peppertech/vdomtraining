@@ -190,7 +190,7 @@ const renderDocumentItem: import("ojs/ojvcomponent").TemplateSlot<DocumentItemCo
   </oj-c-list-item-layout>
 );
 
-export const ListItemLayoutThreeLinecorepack = () => {
+export default function ListItemLayoutThreeLinecorepack() {
   const [overviewSelectedItems, setOverviewSelectedItems] = useState<ImmutableKeySet<string>>(
     new KeySetImpl<string>()
   );
@@ -273,5 +273,3 @@ export const ListItemLayoutThreeLinecorepack = () => {
     </div>
   );
 };
-
-export default ListItemLayoutThreeLinecorepack;

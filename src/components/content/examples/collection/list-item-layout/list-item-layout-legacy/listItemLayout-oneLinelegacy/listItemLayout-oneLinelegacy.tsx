@@ -106,7 +106,7 @@ const renderCountryItem = (
   </oj-list-item-layout>
 );
 
-export const ListItemLayoutOneLinelegacy = () => {
+export default function ListItemLayoutOneLinelegacy() {
   const [overviewSelectedItems, setOverviewSelectedItems] = useState<KeySet<string>>(
     new KeySetImpl<string>()
   );
@@ -201,5 +201,3 @@ export const ListItemLayoutOneLinelegacy = () => {
     </div>
   );
 };
-
-export default ListItemLayoutOneLinelegacy;

@@ -94,7 +94,7 @@ const renderItem: import("ojs/ojvcomponent").TemplateSlot<EmployeeItemContext> =
   </oj-c-list-item-layout>
 );
 
-export const ListItemLayoutVerticalAlignmentcorepack = () => {
+export default function ListItemLayoutVerticalAlignmentcorepack() {
   const [selectedItems, setSelectedItems] = useState<ImmutableKeySet<string>>(new KeySetImpl<string>());
   const dataProvider = useMemo(
     () =>
@@ -129,5 +129,3 @@ export const ListItemLayoutVerticalAlignmentcorepack = () => {
     </div>
   );
 };
-
-export default ListItemLayoutVerticalAlignmentcorepack;

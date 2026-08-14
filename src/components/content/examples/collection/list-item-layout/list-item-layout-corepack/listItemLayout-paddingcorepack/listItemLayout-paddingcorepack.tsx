@@ -94,7 +94,7 @@ const renderItem: import("ojs/ojvcomponent").TemplateSlot<EmployeeItemContext> =
   </oj-c-list-item-layout>
 );
 
-export const ListItemLayoutPaddingcorepack = () => {
+export default function ListItemLayoutPaddingcorepack() {
   const [selectedItems, setSelectedItems] = useState<ImmutableKeySet<string>>(new KeySetImpl<string>());
   const dataProvider = useMemo(
     () =>
@@ -129,5 +129,3 @@ export const ListItemLayoutPaddingcorepack = () => {
     </div>
   );
 };
-
-export default ListItemLayoutPaddingcorepack;

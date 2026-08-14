@@ -145,7 +145,7 @@ const renderProductItem = (context: ProductItemContext) => (
   </oj-list-item-layout>
 );
 
-export const ListItemLayoutTrailingSlotlegacy = () => {
+export default function ListItemLayoutTrailingSlotlegacy() {
   const [overviewSelectedItems, setOverviewSelectedItems] = useState<KeySet<string>>(
     new KeySetImpl<string>()
   );
@@ -253,5 +253,3 @@ export const ListItemLayoutTrailingSlotlegacy = () => {
     </div>
   );
 };
-
-export default ListItemLayoutTrailingSlotlegacy;

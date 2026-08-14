@@ -121,7 +121,7 @@ const renderDocumentItem: import("ojs/ojvcomponent").TemplateSlot<DocumentItemCo
   </oj-c-list-item-layout>
 );
 
-export const ListItemLayoutOverlineSlotcorepack = () => {
+export default function ListItemLayoutOverlineSlotcorepack() {
   const [selectedItems, setSelectedItems] = useState<ImmutableKeySet<string>>(new KeySetImpl<string>());
 
   const peopleDataProvider = useMemo(
@@ -172,5 +172,3 @@ export const ListItemLayoutOverlineSlotcorepack = () => {
     </div>
   );
 };
-
-export default ListItemLayoutOverlineSlotcorepack;

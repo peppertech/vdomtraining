@@ -64,7 +64,7 @@ const renderItemTemplate = (item: TimelineItemContext) => (
   />
 );
 
-export const TimelineCustomRendererTimeline = () => {
+export default function TimelineCustomRendererTimeline() {
   const dataProvider = useMemo(
     () =>
       new ArrayDataProvider(employeeItems, {
@@ -149,5 +149,3 @@ export const TimelineCustomRendererTimeline = () => {
     </oj-timeline>
   );
 };
-
-export default TimelineCustomRendererTimeline;
