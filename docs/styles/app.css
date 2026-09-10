@@ -20,6 +20,61 @@
   background-color: #3a3631;
 }
 
+body.app-theme--dark {
+  background-color: rgb(var(--oj-palette-neutral-rgb-170));
+}
+
+/*
+ * The legacy app-layout header uses private background tokens that are not
+ * changed by oj-color-invert. Align them with the inverted content tokens so
+ * the Core Pack tab bar and the theme switch have a dark surface to contrast
+ * against.
+ */
+body.app-theme--dark .oj-web-applayout-header {
+  --oj-private-app-layout-web-header-bg-color: rgb(var(--oj-palette-neutral-rgb-140));
+  --oj-private-app-layout-web-header-border-color: var(--oj-core-divider-color);
+  --oj-private-app-layout-web-header-title-text-color: var(--oj-core-text-color-primary);
+}
+
+/* oj-bg-info-30 is a fixed Light palette utility; map it to the inverted
+ * Redwood informational surface when it is used with an oj-panel. */
+body.app-theme--dark .oj-panel.oj-bg-info-30 {
+  --oj-current-bg-color: var(--oj-core-info-secondary-1);
+  background-color: var(--oj-core-info-secondary-1) !important;
+}
+
+/* oj-bg-neutral-30 is also a fixed Light palette utility. */
+body.app-theme--dark .oj-panel.oj-bg-neutral-30 {
+  --oj-current-bg-color: var(--oj-core-neutral-secondary-1);
+  background-color: var(--oj-core-neutral-secondary-1) !important;
+}
+
+/* Legacy select and combobox dropdowns use the non-inverted popup token. */
+body.app-theme--dark .oj-listbox-drop {
+  --oj-popup-bg-color: var(--oj-core-bg-color-content);
+  --oj-current-bg-color: var(--oj-core-bg-color-content);
+  --oj-core-bg-color-hover: var(--oj-core-neutral-secondary-1);
+  --oj-core-bg-color-selected: var(--oj-core-info-secondary-1);
+  --oj-core-border-color-selected: var(--oj-core-info-3);
+  --oj-collection-header-text-color: var(--oj-core-text-color-primary);
+}
+
+#appContainer {
+  min-height: 100vh;
+}
+
+.app-theme-switch {
+  display: flex;
+  align-items: center;
+  margin-inline-start: 0.5rem;
+}
+
+@media (max-width: 599px) {
+  .app-theme-switch {
+    margin-inline-start: 0.25rem;
+  }
+}
+
 .demo-oracle-icon {
   width: 137px;
   height: 18px;
@@ -121,10 +176,10 @@
   .component-item{
      width: 150px;
      height: 150px;
-     background-color: #fff;
+     background-color: var(--oj-core-bg-color-content);
      padding: 5px;
      float:left;
-     border: 0.25px solid gray;
+     border: 0.25px solid var(--oj-core-border-color-enabled);
      border-radius: 5px;
   }
  .component-wrapper{
@@ -572,4 +627,3 @@ demo-profile-card-layout .demo-profile-card-layout-emp-title.demo-profile-card-l
 .select-multiple-add-to-list-demo oj-c-select-multiple {
   display: block;
 }
-

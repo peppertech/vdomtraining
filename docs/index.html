@@ -8,7 +8,15 @@
         if (redirectPath) {
           window.history.replaceState(null, "", redirectPath);
         }
-      })();</script><title>Oracle JET VDOM training sample app</title><meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1"/><meta name="description" content="The Oracle JET VDOM Starter Template"/><link rel="icon" href="styles/images/favicon.ico" type="image/x-icon"/><link rel="stylesheet" id="uxiconFont" href="https://static.oracle.com/cdn/fnd/gallery/2607.0.1/images/iconfont/ojuxIconFont.min.css"/><link href="styles/app.css" rel="stylesheet"><link href="./styles/main.4cf8f05e02614eeddd52.css" rel="stylesheet"></head><body class="oj-web-applayout-body" data-oj-binding-provider="preact"><app-root></app-root><script>// The "oj_whenReady" global variable enables a strategy that the busy context whenReady,
+      })();</script><title>Oracle JET VDOM training sample app</title><meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1"/><meta name="description" content="The Oracle JET VDOM Starter Template"/><link rel="icon" href="styles/images/favicon.ico" type="image/x-icon"/><link rel="stylesheet" id="uxiconFont" href="https://static.oracle.com/cdn/fnd/gallery/2607.0.1/images/iconfont/ojuxIconFont.min.css"/><link href="styles/app.css" rel="stylesheet"><link href="./styles/main.efe49a1efa44b2387ad5.css" rel="stylesheet"></head><body class="oj-web-applayout-body app-theme--dark oj-color-invert oj-c-colorscheme-dark oj-bg-neutral-170" data-oj-binding-provider="preact"><script>(function () {
+        try {
+          if (localStorage.getItem("vdom-training.theme-mode") === "light") {
+            document.body.classList.remove("app-theme--dark", "oj-color-invert", "oj-c-colorscheme-dark", "oj-bg-neutral-170");
+          }
+        } catch (ignore) {
+          // Dark mode is the safe default when browser storage is unavailable.
+        }
+      })();</script><app-root></app-root><script>// The "oj_whenReady" global variable enables a strategy that the busy context whenReady,
       // will implicitly add a busy state, until the application calls applicationBootstrapComplete
       // on the busy state context.
-      window["oj_whenReady"] = true;</script><script defer="defer" src="./js/runtime.4a1423372b6292a53207.js"></script><script defer="defer" src="./js/main.34a1b05f92f894a9a9f7.js"></script></body></html>
+      window["oj_whenReady"] = true;</script><script defer="defer" src="./js/runtime.ef4270ab50dbf821f4dc.js"></script><script defer="defer" src="./js/main.4fd0942c1b0121c4d6ca.js"></script></body></html>
