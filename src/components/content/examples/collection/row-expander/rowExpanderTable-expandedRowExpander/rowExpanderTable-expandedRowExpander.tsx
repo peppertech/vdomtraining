@@ -31,7 +31,7 @@ type ExpandedKeySet = ExpandedKeySetImpl | ExpandedAllKeySetImpl;
 
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 
-export const RowExpanderTableExpandedRowExpander = () => {
+export default function RowExpanderTableExpandedRowExpander() {
   const [value, setValue] = useState('');
   const [task1expanded, setTask1expanded] = useState(false);
   const [isAddAll, setIsAddAll] = useState(false);
@@ -130,4 +130,4 @@ export const RowExpanderTableExpandedRowExpander = () => {
     );
 };
 
-export default RowExpanderTableExpandedRowExpander;
+export { RowExpanderTableExpandedRowExpander };

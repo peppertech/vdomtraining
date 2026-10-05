@@ -34,7 +34,7 @@ const initialTargetData: TableData[] = [
 
 const getTransferKey = (item: TableRowTransferItem) => item.metadata?.key ?? item.key ?? item.data.Year;
 
-export const TableDragDropTable = () => {
+export default function TableDragDropTable() {
   const [sourceData, setSourceData] = useState<TableData[]>(
     () => JSON.parse(resultDataText as string) as TableData[]
   );
@@ -215,4 +215,4 @@ export const TableDragDropTable = () => {
   );
 };
 
-export default TableDragDropTable;
+export { TableDragDropTable };

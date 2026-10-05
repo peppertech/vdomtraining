@@ -1,5 +1,6 @@
 import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
+import { listViewPlaygrounds } from "./playgrounds";
 import { listViewArrayListViewDescription } from "./listView-arrayListView/description";
 import { ListViewArrayListView } from "./listView-arrayListView/listView-arrayListView";
 import { listViewArrayListViewRecipe } from "./listView-arrayListView/recipe";
@@ -83,6 +84,7 @@ const listViewItems = [
     description: listViewOverviewListViewDescription,
     recipe: listViewOverviewListViewRecipe,
     Component: ListViewOverviewListView,
+    playground: listViewPlaygrounds["listView-overviewListView"],
   },
   {
     id: "basic",
@@ -90,6 +92,7 @@ const listViewItems = [
     description: listViewBasicListViewDescription,
     recipe: listViewBasicListViewRecipe,
     Component: ListViewBasicListView,
+    playground: listViewPlaygrounds["listView-basicListView"],
   },
   
   {
@@ -98,6 +101,7 @@ const listViewItems = [
     description: listViewGridlinesListViewDescription,
     recipe: listViewGridlinesListViewRecipe,
     Component: ListViewGridlinesListView,
+    playground: listViewPlaygrounds["listView-gridlinesListView"],
   },
   {
     id: "array",
@@ -105,6 +109,7 @@ const listViewItems = [
     description: listViewArrayListViewDescription,
     recipe: listViewArrayListViewRecipe,
     Component: ListViewArrayListView,
+    playground: listViewPlaygrounds["listView-arrayListView"],
   },
   {
     id: "selection",
@@ -112,6 +117,7 @@ const listViewItems = [
     description: listViewSelectionListViewDescription,
     recipe: listViewSelectionListViewRecipe,
     Component: ListViewSelectionListView,
+    playground: listViewPlaygrounds["listView-selectionListView"],
   },
   {
     id: "high-water-mark-scrolling",
@@ -119,6 +125,7 @@ const listViewItems = [
     description: listViewHighWaterMarkScrollingListViewDescription,
     recipe: listViewHighWaterMarkScrollingListViewRecipe,
     Component: ListViewHighWaterMarkScrollingListView,
+    playground: listViewPlaygrounds["listView-highWaterMarkScrollingListView"],
   },
   {
     id: "json-hierarchical",
@@ -126,6 +133,7 @@ const listViewItems = [
     description: listViewJsonHierListViewDescription,
     recipe: listViewJsonHierListViewRecipe,
     Component: ListViewJsonHierListView,
+    playground: listViewPlaygrounds["listView-jsonHierListView"],
   },
   {
     id: "collapsible",
@@ -133,6 +141,7 @@ const listViewItems = [
     description: listViewCollapsibleListViewDescription,
     recipe: listViewCollapsibleListViewRecipe,
     Component: ListViewCollapsibleListView,
+    playground: listViewPlaygrounds["listView-collapsibleListView"],
   },
   {
     id: "sticky-group-header",
@@ -140,6 +149,7 @@ const listViewItems = [
     description: listViewStickyGroupHeaderListViewDescription,
     recipe: listViewStickyGroupHeaderListViewRecipe,
     Component: ListViewStickyGroupHeaderListView,
+    playground: listViewPlaygrounds["listView-stickyGroupHeaderListView"],
   },
   {
     id: "group-header",
@@ -147,6 +157,7 @@ const listViewItems = [
     description: listViewGroupHeaderListViewDescription,
     recipe: listViewGroupHeaderListViewRecipe,
     Component: ListViewGroupHeaderListView,
+    playground: listViewPlaygrounds["listView-groupHeaderListView"],
   },
   {
     id: "collection",
@@ -154,6 +165,7 @@ const listViewItems = [
     description: listViewCollectionListViewDescription,
     recipe: listViewCollectionListViewRecipe,
     Component: ListViewCollectionListView,
+    playground: listViewPlaygrounds["listView-collectionListView"],
   },
   {
     id: "card-layout-hierarchical",
@@ -161,6 +173,7 @@ const listViewItems = [
     description: listViewCardLayoutHierListViewDescription,
     recipe: listViewCardLayoutHierListViewRecipe,
     Component: ListViewCardLayoutHierListView,
+    playground: listViewPlaygrounds["listView-cardLayoutHierListView"],
   },
   {
     id: "observable-array",
@@ -168,6 +181,7 @@ const listViewItems = [
     description: listViewObservableArrayListViewDescription,
     recipe: listViewObservableArrayListViewRecipe,
     Component: ListViewObservableArrayListView,
+    playground: listViewPlaygrounds["listView-observableArrayListView"],
   },
   {
     id: "observable-nested-array",
@@ -175,6 +189,7 @@ const listViewItems = [
     description: listViewObservableNestedArrayListViewDescription,
     recipe: listViewObservableNestedArrayListViewRecipe,
     Component: ListViewObservableNestedArrayListView,
+    playground: listViewPlaygrounds["listView-observableNestedArrayListView"],
   },
   {
     id: "reorder",
@@ -182,6 +197,7 @@ const listViewItems = [
     description: listViewReorderListViewDescription,
     recipe: listViewReorderListViewRecipe,
     Component: ListViewReorderListView,
+    playground: listViewPlaygrounds["listView-reorderListView"],
   },
   {
     id: "with-table-dnd",
@@ -189,6 +205,7 @@ const listViewItems = [
     description: listViewWithTableDndListViewDescription,
     recipe: listViewWithTableDndListViewRecipe,
     Component: ListViewWithTableDndListView,
+    playground: listViewPlaygrounds["listView-withTableDndListView"],
   },
   {
     id: "drillable",
@@ -196,6 +213,7 @@ const listViewItems = [
     description: listViewDrillableListViewDescription,
     recipe: listViewDrillableListViewRecipe,
     Component: ListViewDrillableListView,
+    playground: listViewPlaygrounds["listView-drillableListView"],
   },
   {
     id: "custom-context-menu",
@@ -203,6 +221,7 @@ const listViewItems = [
     description: listViewCustomContextMenuListViewDescription,
     recipe: listViewCustomContextMenuListViewRecipe,
     Component: ListViewCustomContextMenuListView,
+    playground: listViewPlaygrounds["listView-customContextMenuListView"],
   },
   {
     id: "progressive-load",
@@ -210,6 +229,7 @@ const listViewItems = [
     description: listViewProgressiveLoadListViewDescription,
     recipe: listViewProgressiveLoadListViewRecipe,
     Component: ListViewProgressiveLoadListView,
+    playground: listViewPlaygrounds["listView-progressiveLoadListView"],
   },
   {
     id: "progressive-load-hierarchical",
@@ -217,6 +237,7 @@ const listViewItems = [
     description: listViewProgressiveLoadHierListViewDescription,
     recipe: listViewProgressiveLoadHierListViewRecipe,
     Component: ListViewProgressiveLoadHierListView,
+    playground: listViewPlaygrounds["listView-progressiveLoadHierListView"],
   },
   {
     id: "no-data",
@@ -224,6 +245,7 @@ const listViewItems = [
     description: listViewNoDataListViewDescription,
     recipe: listViewNoDataListViewRecipe,
     Component: ListViewNoDataListView,
+    playground: listViewPlaygrounds["listView-noDataListView"],
   },
   {
     id: "scroll-position",
@@ -231,6 +253,7 @@ const listViewItems = [
     description: listViewScrollPosListViewDescription,
     recipe: listViewScrollPosListViewRecipe,
     Component: ListViewScrollPosListView,
+    playground: listViewPlaygrounds["listView-scrollPosListView"],
   },
   {
     id: "smart-suggestions",
@@ -238,6 +261,7 @@ const listViewItems = [
     description: listViewSmartSuggestionsListViewDescription,
     recipe: listViewSmartSuggestionsListViewRecipe,
     Component: ListViewSmartSuggestionsListView,
+    playground: listViewPlaygrounds["listView-smartSuggestionsListView"],
   },
   {
     id: "performance",
@@ -245,6 +269,7 @@ const listViewItems = [
     description: listViewPerformanceListViewDescription,
     recipe: listViewPerformanceListViewRecipe,
     Component: ListViewPerformanceListView,
+    playground: listViewPlaygrounds["listView-performanceListView"],
   },
   {
     id: "filter-sort",
@@ -252,6 +277,7 @@ const listViewItems = [
     description: listViewFilterSortListViewDescription,
     recipe: listViewFilterSortListViewRecipe,
     Component: ListViewFilterSortListView,
+    playground: listViewPlaygrounds["listView-filterSortListView"],
   },
 ];
 

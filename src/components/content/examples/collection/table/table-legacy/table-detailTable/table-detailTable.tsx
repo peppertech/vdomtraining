@@ -28,7 +28,7 @@ type ProjectRowContext = ojTable.RowTemplateContext<ProjectRow['attr']['id'], Pr
 
 const jsonDataStr = JSON.parse(jsonDataStrText as string) as ProjectRow[];
 
-export const TableDetailTable = () => {
+export default function TableDetailTable() {
     const columns = useMemo(() => ([
         { headerText: 'Task Name', sortProperty: 'attr.name', weight: 2, id: 'name', minWidth: '8rem' },
         { headerText: 'Resource', sortProperty: 'attr.resource', id: 'resource', minWidth: '9rem' },
@@ -90,4 +90,4 @@ export const TableDetailTable = () => {
         </oj-table>
     );
 };
-export default TableDetailTable;
+export { TableDetailTable };

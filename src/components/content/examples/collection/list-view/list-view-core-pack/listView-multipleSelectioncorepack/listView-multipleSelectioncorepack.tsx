@@ -41,7 +41,7 @@ type FirstSelectedItemChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-list-view'>['onojFirstSelectedItem']>
 >[0];
 
-export const ListViewMultipleSelectioncorepack = () => {
+export default function ListViewMultipleSelectioncorepack() {
   const [selectedItems, setSelectedItems] = useState<SelectedKeySet>(new KeySetImpl());
   const [selectedSelectionRequired, setSelectedSelectionRequired] = useState(false);
   const [firstSelectedItem, setFirstSelectedItem] = useState<FirstSelectedItem | null>(null);
@@ -207,4 +207,4 @@ export const ListViewMultipleSelectioncorepack = () => {
     );
 };
 
-export default ListViewMultipleSelectioncorepack;
+export { ListViewMultipleSelectioncorepack };

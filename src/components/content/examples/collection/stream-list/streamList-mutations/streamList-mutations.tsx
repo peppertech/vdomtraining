@@ -80,7 +80,7 @@ const initialGroupedItems: GroupedItem[] = [
 const isGroupedItem = (item: CurrentItem | null): item is GroupedItem =>
   item != null && 'group' in item;
 
-export const StreamListMutations = () => {
+export default function StreamListMutations() {
   const [dataStructure, setDataStructure] = useState<DataStructure>('flat');
   const [currentItem, setCurrentItem] = useState<CurrentItem | null>(null);
   const [currentText, setCurrentText] = useState<string>('');
@@ -416,4 +416,4 @@ export const StreamListMutations = () => {
   );
 };
 
-export default StreamListMutations;
+export { StreamListMutations };

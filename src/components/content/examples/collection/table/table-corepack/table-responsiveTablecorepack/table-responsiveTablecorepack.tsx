@@ -121,7 +121,7 @@ const getColumnOrder = (screenRange: ScreenRange): ColumnKey[] => {
   return ["departmentId", "departmentName"];
 };
 
-export const TableResponsiveTablecorepack = () => {
+export default function TableResponsiveTablecorepack() {
   const departments = useMemo(() => JSON.parse(deptData) as Department[], []);
   const dataProvider = useMemo(
     () =>
@@ -160,6 +160,6 @@ export const TableResponsiveTablecorepack = () => {
       class="demo-table-container"
     />
   );
-};
+}
 
-export default TableResponsiveTablecorepack;
+export { TableResponsiveTablecorepack };

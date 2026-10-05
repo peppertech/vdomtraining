@@ -1,10 +1,10 @@
 import "css!./demo.css";
 import "ojs/ojinputtext";
 import "ojs/ojradioset";
-import "ojs/ojtable";
-import type { ojTable } from "ojs/ojtable";
+import "oj-c/table";
 import 'preact';
-import { useEffect,useMemo,useRef,useState } from "preact/hooks";
+import type { ComponentProps } from 'preact';
+import { useMemo, useState } from "preact/hooks";
 import * as deptData from "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json";
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 
@@ -20,17 +20,23 @@ type TableLayout = "contents" | "fixed";
 type ColumnSizeValue = string | null;
 type ColumnWeightValue = string | null;
 
-const toColumnWeight = (value: ColumnWeightValue): number | null => {
+type TableColumns = NonNullable<ComponentProps<'oj-c-table'>['columns']>;
+
+const toColumnSize = (value: ColumnSizeValue): number | undefined => {
   if (value == null || value.trim() === "") {
-    return null;
+    return undefined;
   }
 
   const parsedValue = Number(value);
-  return Number.isFinite(parsedValue) ? parsedValue : null;
+  return Number.isFinite(parsedValue) && parsedValue > 0 ? parsedValue : undefined;
 };
 
-export const TableColumnLayoutscorepack = () => {
-  const tableRef = useRef<ojTable<Department["DepartmentId"], Department> | null>(null);
+const toColumnWeight = (value: ColumnWeightValue): number | undefined => {
+  const parsedValue = toColumnSize(value);
+  return parsedValue !== undefined && parsedValue >= 1 ? parsedValue : undefined;
+};
+
+export default function TableColumnLayoutscorepack() {
   const [selectedLayout, setSelectedLayout] = useState<TableLayout>("contents");
   const [col1Width, setCol1Width] = useState<ColumnSizeValue>(null);
   const [col1MinWidth, setCol1MinWidth] = useState<ColumnSizeValue>(null);
@@ -71,68 +77,47 @@ export const TableColumnLayoutscorepack = () => {
     () => new ArrayDataProvider(layoutValues, { keyAttributes: "value" }),
     [layoutValues]
   );
-  const tableColumns = useMemo(
-    () => [
-      {
-        headerText: "Department Id",
-        field: "DepartmentId",
-        id: "depId",
-        width: col1Width,
-        minWidth: col1MinWidth,
-        maxWidth: col1MaxWidth,
-        weight: toColumnWeight(col1Weight)
-      },
-      {
-        headerText: "Department Name",
-        field: "DepartmentName",
-        id: "depName",
-        width: col2Width,
-        minWidth: col2MinWidth,
-        maxWidth: col2MaxWidth,
-        weight: toColumnWeight(col2Weight)
-      },
-      {
-        headerText: "Location Id",
-        field: "LocationId",
-        id: "locId",
-        width: col3Width,
-        minWidth: col3MinWidth,
-        maxWidth: col3MaxWidth,
-        weight: toColumnWeight(col3Weight)
-      },
-      {
-        headerText: "Manager Id",
-        field: "ManagerId",
-        id: "manId",
-        width: col4Width,
-        minWidth: col4MinWidth,
-        maxWidth: col4MaxWidth,
-        weight: toColumnWeight(col4Weight)
-      }
-    ],
-    [
-      col1MaxWidth,
-      col1MinWidth,
-      col1Weight,
-      col1Width,
-      col2MaxWidth,
-      col2MinWidth,
-      col2Weight,
-      col2Width,
-      col3MaxWidth,
-      col3MinWidth,
-      col3Weight,
-      col3Width,
-      col4MaxWidth,
-      col4MinWidth,
-      col4Weight,
-      col4Width
-    ]
-  );
-
-  useEffect(() => {
-    tableRef.current?.refresh();
-  }, [tableColumns]);
+  const tableColumns = useMemo<TableColumns>(() => ({
+    departmentId: {
+      headerText: "Department Id", field: "DepartmentId",
+      minWidth: toColumnSize(col1MinWidth), maxWidth: toColumnSize(col1MaxWidth),
+      weight: toColumnWeight(col1Weight)
+    },
+    departmentName: {
+      headerText: "Department Name", field: "DepartmentName",
+      minWidth: toColumnSize(col2MinWidth), maxWidth: toColumnSize(col2MaxWidth),
+      weight: toColumnWeight(col2Weight)
+    },
+    locationId: {
+      headerText: "Location Id", field: "LocationId",
+      minWidth: toColumnSize(col3MinWidth), maxWidth: toColumnSize(col3MaxWidth),
+      weight: toColumnWeight(col3Weight)
+    },
+    managerId: {
+      headerText: "Manager Id", field: "ManagerId",
+      minWidth: toColumnSize(col4MinWidth), maxWidth: toColumnSize(col4MaxWidth),
+      weight: toColumnWeight(col4Weight)
+    }
+  }), [
+    col1MinWidth, col1MaxWidth, col1Weight,
+    col2MinWidth, col2MaxWidth, col2Weight,
+    col3MinWidth, col3MaxWidth, col3Weight,
+    col4MinWidth, col4MaxWidth, col4Weight
+  ]);
+  const columnWidths = useMemo(() => {
+    const widths: Record<string, number> = {};
+    const requestedWidths = {
+      departmentId: col1Width,
+      departmentName: col2Width,
+      locationId: col3Width,
+      managerId: col4Width
+    };
+    for (const [columnKey, value] of Object.entries(requestedWidths)) {
+      const width = toColumnSize(value);
+      if (width !== undefined) widths[columnKey] = width;
+    }
+    return widths;
+  }, [col1Width, col2Width, col3Width, col4Width]);
 
   const handleSelectedLayoutValueChanged = (
     event: PropertyChangedEvent<TableLayout>
@@ -299,18 +284,19 @@ export const TableColumnLayoutscorepack = () => {
         </div>
       </section>
 
-      <oj-table
-        ref={tableRef}
+      <oj-c-table
         id="table"
         aria-label="Departments Table"
         class="demo-column-layout-table"
         data={dataProvider}
         layout={selectedLayout}
         columns={tableColumns}
-        accessibility={{ rowHeader: "depName" }}
+        columnOrder={['departmentId', 'departmentName', 'locationId', 'managerId']}
+        columnWidths={columnWidths}
+        row={{ accessibleRowHeader: 'departmentName' }}
       />
     </div>
   );
-};
+}
 
-export default TableColumnLayoutscorepack;
+export { TableColumnLayoutscorepack };

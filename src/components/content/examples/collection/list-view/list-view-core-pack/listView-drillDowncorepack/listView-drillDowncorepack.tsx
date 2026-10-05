@@ -14,7 +14,7 @@ interface TodoTask {
     content: string;
 }
 
-export const ListViewDrillDowncorepack = () => {
+export default function ListViewDrillDowncorepack() {
   const listViewRef = useRef<CListViewElement<TodoTask['id'], TodoTask> | null>(null);
   const page1Ref = useRef<HTMLDivElement | null>(null);
   const page2Ref = useRef<HTMLDivElement | null>(null);
@@ -121,4 +121,4 @@ export const ListViewDrillDowncorepack = () => {
     );
 };
 
-export default ListViewDrillDowncorepack;
+export { ListViewDrillDowncorepack };

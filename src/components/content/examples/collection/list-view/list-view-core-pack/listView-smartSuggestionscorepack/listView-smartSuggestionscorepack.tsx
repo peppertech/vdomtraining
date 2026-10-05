@@ -11,7 +11,7 @@ interface Employee {
     title: string;
 }
 
-export const ListViewSmartSuggestionscorepack = () => {
+export default function ListViewSmartSuggestionscorepack() {
   const generateData = (count: number) => {
       const data: Array<Employee> = [];
       for (let i = 1; i <= count; i++) {
@@ -42,4 +42,4 @@ export const ListViewSmartSuggestionscorepack = () => {
     );
 };
 
-export default ListViewSmartSuggestionscorepack;
+export { ListViewSmartSuggestionscorepack };

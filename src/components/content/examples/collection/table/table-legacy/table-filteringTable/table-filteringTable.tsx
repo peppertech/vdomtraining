@@ -46,7 +46,7 @@ const generateDeptArray = (num: number) => {
   return deptArray;
 };
 
-export const TableFilteringTable = () => {
+export default function TableFilteringTable() {
   const [filter, setFilter] = useState('');
   const [rowCount, setRowCount] = useState('');
 
@@ -167,4 +167,4 @@ export const TableFilteringTable = () => {
   );
 };
 
-export default TableFilteringTable;
+export { TableFilteringTable };

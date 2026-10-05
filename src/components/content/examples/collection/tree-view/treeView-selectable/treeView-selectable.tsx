@@ -30,7 +30,7 @@ const treeItemOptions = {
   selectable: leafOnly
 };
 
-export const TreeViewSelectable = () => {
+export default function TreeViewSelectable() {
   const data = useMemo(
     () =>
       new ArrayTreeDataProvider(jsonData, {
@@ -54,4 +54,4 @@ export const TreeViewSelectable = () => {
   );
 };
 
-export default TreeViewSelectable;
+export { TreeViewSelectable };

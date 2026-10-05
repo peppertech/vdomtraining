@@ -11,6 +11,8 @@ import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listVi
 import DemoDelayingDataProvider from '../../../shared/DemoDelayingDataProvider';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewHighWaterMarkScrollingListView };
 interface Data {
   name: string;
   screen_name: string;
@@ -25,7 +27,7 @@ type TweetDataProvider = DemoDelayingDataProvider<Data['source'], Data>;
 
 const ORACLE_AVATAR = '/styles/images/listView/oracle.gif';
 
-export const ListViewHighWaterMarkScrollingListView = () => {
+export default function ListViewHighWaterMarkScrollingListView() {
   const initialDelay = 2000;
   const arr: Data[] = useMemo(() => JSON.parse(jsonDataStr) as Data[], []);
   const [delay, setDelay] = useState(initialDelay);
@@ -98,5 +100,3 @@ const handleDelayValueChanged = (event: InputNumberValueChangedEvent) => {
     </div>
   );
 };
-
-export default ListViewHighWaterMarkScrollingListView;

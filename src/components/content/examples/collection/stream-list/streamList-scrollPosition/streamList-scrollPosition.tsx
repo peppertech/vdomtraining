@@ -52,7 +52,7 @@ const flatData = generateData(250);
 const treeData = generateTreeData(100);
 const expanded = new AllKeySetImpl<string>();
 
-export const StreamListScrollPosition = () => {
+export default function StreamListScrollPosition() {
   const [dataStructure, setDataStructure] = useState<DataStructure>('flat');
   const [scrollPositionDetail, setScrollPositionDetail] = useState<string>('');
 
@@ -131,4 +131,4 @@ export const StreamListScrollPosition = () => {
   );
 };
 
-export default StreamListScrollPosition;
+export { StreamListScrollPosition };

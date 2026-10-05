@@ -12,19 +12,19 @@ const recipeHtmlText = String.raw`<ul>
     Set a template for the
     <code class="prettyprint">columns</code>
     attribute and create a template for action column with an
-    <code class="prettyprint">oj-c-button</code>
+    <code class="prettyprint">oj-button</code>
     component.
   </li>
   <li>
     Add an action handler on the
-    <code class="prettyprint">oj-c-button</code>
+    <code class="prettyprint">oj-button</code>
     to update the mutable array due to the action.
   </li>
   <li>
     Set the
     <code class="prettyprint">data-oj-clickthrough</code>
     attribute on the
-    <code class="prettyprint">oj-c-button</code>
+    <code class="prettyprint">oj-button</code>
     to
     <code class="prettyprint">disabled</code>
     to prevent clicks from affecting the

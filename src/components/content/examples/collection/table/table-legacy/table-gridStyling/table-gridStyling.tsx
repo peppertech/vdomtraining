@@ -19,7 +19,7 @@ type DisplayOption = 'list' | 'grid';
 type GridVisibleOption = 'auto' | 'disabled' | 'enabled';
 type RadioChangedEvent = Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0];
 
-export const TableGridStyling = () => {
+export default function TableGridStyling() {
   const [currentDisplayOption, setCurrentDisplayOption] = useState<DisplayOption>('list');
   const [currentHorizontalGridVisible, setCurrentHorizontalGridVisible] = useState<GridVisibleOption>('auto');
   const [currentVerticalGridVisible, setCurrentVerticalGridVisible] = useState<GridVisibleOption>('auto');
@@ -105,4 +105,4 @@ export const TableGridStyling = () => {
   );
 };
 
-export default TableGridStyling;
+export { TableGridStyling };

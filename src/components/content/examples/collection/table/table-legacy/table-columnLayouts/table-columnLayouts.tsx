@@ -23,7 +23,7 @@ type TableLayout = 'contents' | 'fixed';
 type ColumnSizeValue = string | null;
 type ColumnWeightValue = number | null;
 
-export const TableColumnLayouts = () => {
+export default function TableColumnLayouts() {
   const tableRef = useRef<ojTable<Employee['DepartmentId'], Employee> | null>(null);
   const [selectedLayout, setSelectedLayout] = useState<TableLayout>('contents');
   const [col1Width, setCol1Width] = useState<ColumnSizeValue>(null);
@@ -170,4 +170,4 @@ export const TableColumnLayouts = () => {
     );
 };
 
-export default TableColumnLayouts;
+export { TableColumnLayouts };

@@ -1,126 +1,119 @@
+import 'oj-c/table';
 import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
-import { AllKeySetImpl,KeySet,KeySetImpl } from 'ojs/ojkeyset';
+import { AllKeySetImpl, KeySetImpl } from 'ojs/ojkeyset';
 import 'ojs/ojselectsingle';
-import 'ojs/ojtable';
-import { ojTable } from 'ojs/ojtable';
 import 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo,useState } from 'preact/hooks';
+import { useMemo, useState } from 'preact/hooks';
 import * as deptData from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface Employee {
-    DepartmentId: number;
-    DepartmentName: string;
-    LocationId: number;
-    ManagerId: number;
+  DepartmentId: number;
+  DepartmentName: string;
+  LocationId: number;
+  ManagerId: number;
 }
 
-type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
-type TableSelectedItems = {
-    row?: KeySet<Employee['DepartmentId']>;
-    column?: KeySet<string>;
-};
-type TableSelectionMode = {
-    row: 'none' | 'single' | 'multiple' | 'multipleToggle';
-    column: 'none' | 'single' | 'multiple';
-};
-type SelectionModeOption = {
-    value: TableSelectionMode;
-    label: string;
-};
+type SelectedItems = NonNullable<ComponentProps<'oj-c-table'>['selected']>;
+type SelectionMode = NonNullable<ComponentProps<'oj-c-table'>['selectionMode']>;
+type SelectedChangedEvent = Parameters<NonNullable<ComponentProps<'oj-c-table'>['onselectedChanged']>>[0];
+type SelectionModeOption = { value: SelectionMode; label: string };
 
-export const TableSelectionTablecorepack = () => {
-  const [selectedItems, setSelectedItems] = useState<TableSelectedItems>({
-	      row: new KeySetImpl(),
-	      column: new KeySetImpl()
-	  });
+export default function TableSelectionTablecorepack() {
+  const [selectedItems, setSelectedItems] = useState<SelectedItems>({
+    row: new KeySetImpl<number>(),
+    column: new KeySetImpl<string>()
+  });
   const [isDisabled, setIsDisabled] = useState(true);
   const [selectionInfo, setSelectionInfo] = useState('');
-  const [selectedSelectionMode, setSelectedSelectionMode] = useState<TableSelectionMode>({
-	      row: 'multiple',
-	      column: 'none'
-	  });
-  const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
-      { headerText: 'Department Id', field: 'DepartmentId', id: 'depId' },
-      { headerText: 'Department Name', field: 'DepartmentName', id: 'depName' },
-      { headerText: 'Location Id', field: 'LocationId', id: 'locId' },
-      { headerText: 'Manager Id', field: 'ManagerId', id: 'manId' }
-  ], []);
-  const ojTableProps: Partial<ComponentProps<'oj-table'>> = {
-      accessibility: { rowHeader: 'depName' }
-  };
+  const [selectionMode, setSelectionMode] = useState<SelectionMode>({ row: 'multiple', column: 'none' });
 
-  const deptArray: Employee[] = JSON.parse(deptData as string) as Employee[];
-  const dataprovider = useMemo(() => new ArrayDataProvider<Employee['DepartmentId'], Employee>(deptArray, {
-	      keyAttributes: 'DepartmentId'
-	  }), [deptArray]);
+  const columns = useMemo<NonNullable<ComponentProps<'oj-c-table'>['columns']>>(() => ({
+    depId: { headerText: 'Department Id', field: 'DepartmentId' },
+    depName: { headerText: 'Department Name', field: 'DepartmentName' },
+    locId: { headerText: 'Location Id', field: 'LocationId' },
+    manId: { headerText: 'Manager Id', field: 'ManagerId' }
+  }), []);
+  const departments = useMemo<Employee[]>(() => JSON.parse(deptData as string) as Employee[], []);
+  const dataProvider = useMemo(() => new ArrayDataProvider<Employee['DepartmentId'], Employee>(
+    departments, { keyAttributes: 'DepartmentId' }
+  ), [departments]);
   const selectionModes = useMemo<SelectionModeOption[]>(() => [
-      { value: { row: 'none', column: 'single' }, label: 'Single Column' },
-      { value: { row: 'none', column: 'multiple' }, label: 'Multiple Column' },
-      { value: { row: 'single', column: 'none' }, label: 'Single Row' },
-      { value: { row: 'multiple', column: 'none' }, label: 'Multiple Row' },
-      { value: { row: 'multipleToggle', column: 'none' }, label: 'Multiple Toggle Row' }
+    { value: { row: 'none', column: 'single' }, label: 'Single Column' },
+    { value: { row: 'none', column: 'multiple' }, label: 'Multiple Column' },
+    { value: { row: 'single', column: 'none' }, label: 'Single Row' },
+    { value: { row: 'multiple', column: 'none' }, label: 'Multiple Row' },
+    { value: { row: 'multipleToggle', column: 'none' }, label: 'Multiple Toggle Row' }
   ], []);
-  const selectionModeDP = useMemo(() => new ArrayDataProvider(selectionModes, {
-      keyAttributes: 'value'
+  const selectionModeProvider = useMemo(() => new ArrayDataProvider(selectionModes, {
+    keyAttributes: 'value'
   }), [selectionModes]);
 
-  const handleSelectedSelectionModeValueChanged = (event: PropertyChangedEvent<TableSelectionMode>) => {
-    setSelectedSelectionMode(event.detail.value ?? { row: 'multiple', column: 'none' });
+  const handleSelectionModeChanged = (event: CustomEvent<{ value: SelectionMode }>) => {
+    setSelectionMode(event.detail.value ?? { row: 'multiple', column: 'none' });
   };
 
-  const selectedChangedListener = (event: ojTable.selectedChanged<Employee['DepartmentId'], Employee>) => {
-      let selectionText = '';
-      if (event.detail.value.row?.isAddAll()) {
-          setIsDisabled(false);
-          const iterator = (event.detail.value.row as AllKeySetImpl<number>).deletedValues();
-          iterator.forEach(function (key) {
-              selectionText = selectionText.length === 0 ? `${key}` : `${selectionText}, ${key}`;
-          });
-          if (iterator.size > 0) {
-              selectionText = ' except ' + selectionText;
-          }
-          selectionText = 'All rows are selected' + selectionText;
-      }
-      else {
-          const row = event.detail.value.row as KeySetImpl<number>;
-          const column = event.detail.value.column as KeySetImpl<string>;
-          if (row.values().size > 0) {
-              row.values().forEach(function (key) {
-                  selectionText += selectionText.length === 0 ? key : ', ' + key;
-              });
-              selectionText = 'Row Keys: ' + selectionText;
-          }
-          if (column.values().size > 0) {
-              column.values().forEach(function (key) {
-                  selectionText += selectionText.length === 0 ? key : ', ' + key;
-              });
-              selectionText = 'Column Keys: ' + selectionText;
-          }
-          setIsDisabled(row.values().size === 0 && column.values().size === 0);
-      }
-      setSelectionInfo(selectionText);
+  const handleSelectedChanged = (event: SelectedChangedEvent) => {
+    const selected: SelectedItems = event.detail.value ?? {};
+    setSelectedItems(selected);
+    const row = selected.row;
+    const column = selected.column;
+    let selectionText = '';
+    if (row?.isAddAll()) {
+      const excluded = Array.from((row as AllKeySetImpl<number>).deletedValues()).join(', ');
+      selectionText = 'All rows are selected' + (excluded ? ` except ${excluded}` : '');
+      setIsDisabled(false);
+    } else {
+      const rowKeys = row ? Array.from((row as KeySetImpl<number>).values()).join(', ') : '';
+      const columnKeys = column ? Array.from((column as KeySetImpl<string>).values()).join(', ') : '';
+      selectionText = [
+        rowKeys && `Row Keys: ${rowKeys}`,
+        columnKeys && `Column Keys: ${columnKeys}`
+      ].filter(Boolean).join('\n');
+      setIsDisabled(!rowKeys && !columnKeys);
+    }
+    setSelectionInfo(selectionText);
   };
 
   const clearSelection = () => {
-      setSelectedItems({ row: new KeySetImpl(), column: new KeySetImpl() });
+    setSelectedItems({ row: new KeySetImpl<number>(), column: new KeySetImpl<string>() });
+    setSelectionInfo('');
+    setIsDisabled(true);
   };
 
   return (
-      <div id="container">
-            <div class="oj-panel oj-bg-neutral-30 oj-sm-margin-4x-bottom">
-                    <oj-form-layout label-edge="top" max-columns="2" direction="row">
-                              <oj-select-single label-hint="Selection Mode" id="selection-mode" onvalueChanged={handleSelectedSelectionModeValueChanged} value={selectedSelectionMode} data={selectionModeDP} class="demo-table-select-single" />
-                              <oj-text-area label-hint="Current Selection" readonly value={selectionInfo} />
-                              <oj-button onojAction={clearSelection} disabled={isDisabled}>Clear selection</oj-button>
-                          </oj-form-layout>
-                </div>
-            <oj-table id="table" aria-label="Departments Table" class="demo-table-container" data={dataprovider} selected={selectedItems} selectionMode={selectedSelectionMode} scrollPolicy="loadMoreOnScroll" scrollPolicyOptions={{ fetchSize: 10 }} onselectedChanged={selectedChangedListener} columns={columns} {...ojTableProps} />
-        </div>
-    );
-};
+    <div id="container">
+      <div class="oj-panel oj-bg-neutral-30 oj-sm-margin-4x-bottom">
+        <oj-form-layout label-edge="top" max-columns="2" direction="row">
+          <oj-select-single
+            label-hint="Selection Mode"
+            id="selection-mode"
+            onvalueChanged={handleSelectionModeChanged}
+            value={selectionMode}
+            data={selectionModeProvider}
+            class="demo-table-select-single"
+          />
+          <oj-text-area label-hint="Current Selection" readonly value={selectionInfo} />
+          <oj-button onojAction={clearSelection} disabled={isDisabled}>Clear selection</oj-button>
+        </oj-form-layout>
+      </div>
+      <oj-c-table
+        id="table"
+        aria-label="Departments Table"
+        class="demo-table-container"
+        data={dataProvider}
+        selected={selectedItems}
+        selectionMode={selectionMode}
+        scrollPolicyOptions={{ fetchSize: 10 }}
+        onselectedChanged={handleSelectedChanged}
+        columns={columns}
+        row={{ accessibleRowHeader: 'depName' }}
+      />
+    </div>
+  );
+}
 
-export default TableSelectionTablecorepack;
+export { TableSelectionTablecorepack };

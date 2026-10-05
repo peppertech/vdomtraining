@@ -1,7 +1,6 @@
 import 'preact';
 
-const descriptionHtmlText = String.raw`<p>A table displays data items in a tabular format with highly interactive features.</p>This demo shows how the Table's column resize behavior attribute affects the overall display of the
-Table.
+const descriptionHtmlText = String.raw`<p>A table displays data items in a tabular format with highly interactive features.</p>This demo shows how the oj-c-table's column resize behavior affects column widths.
 <br />
 <br />
 columnResizeBehavior='redistribute' :

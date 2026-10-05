@@ -10,6 +10,8 @@ import { useMemo,useRef,useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import Context = require('ojs/ojcontext');
 
+
+export { ListViewPerformanceListView };
 interface Data {
     id: number;
     name: string;
@@ -33,7 +35,7 @@ const createDataProvider = (data: Data[]) =>
     keys: data.map((value: Data) => value.id)
   });
 
-export const ListViewPerformanceListView = () => {
+export default function ListViewPerformanceListView() {
   const listViewRef = useRef<HTMLElement | null>(null);
   const initialData = useMemo(() => generateData(1000), []);
   const [scrollPolicyValue, setScrollPolicyValue] = useState<ScrollPolicyValue>('loadMoreOnScroll');
@@ -117,5 +119,3 @@ export const ListViewPerformanceListView = () => {
         </div>
     );
 };
-
-export default ListViewPerformanceListView;

@@ -16,7 +16,7 @@ interface Task {
     status: string;
 }
 
-export const TableNoDataTable = () => {
+export default function TableNoDataTable() {
   const [data, setData] = useState<Task[]>([]);
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Name', id: 'name', sortable: 'enabled', minWidth: '8rem' },
@@ -82,4 +82,4 @@ export const TableNoDataTable = () => {
     );
 };
 
-export default TableNoDataTable;
+export { TableNoDataTable };

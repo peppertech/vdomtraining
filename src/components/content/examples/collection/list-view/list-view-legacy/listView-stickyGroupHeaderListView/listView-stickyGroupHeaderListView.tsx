@@ -6,6 +6,8 @@ import { useMemo } from 'preact/hooks';
 import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listView/stickyGroupHeaderListView/contacts.json';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
+
+export { ListViewStickyGroupHeaderListView };
 type ContactLeafData = {
   attr: {
     name: string;
@@ -18,7 +20,7 @@ type ItemTemplateContext = {
   data: ContactLeafData;
 };
 
-export const ListViewStickyGroupHeaderListView = () => {
+export default function ListViewStickyGroupHeaderListView() {
   const data = JSON.parse(jsonDataStr as unknown as string);
   const dataProvider = useMemo(() => new ArrayTreeDataProvider(data), [data]);
 
@@ -47,5 +49,3 @@ export const ListViewStickyGroupHeaderListView = () => {
     </div>
   );
 };
-
-export default ListViewStickyGroupHeaderListView;

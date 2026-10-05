@@ -64,7 +64,7 @@ type CompleteEditableDepartmentData = EditableDepartmentData & DepartmentData;
 const isCompleteDepartmentData = (data: EditableDepartmentData): data is CompleteEditableDepartmentData =>
     data.DepartmentId != null && data.LocationId != null;
 
-export const TableInsertRowTable = () => {
+export default function TableInsertRowTable() {
   const [deptObservableArray, setDeptObservableArray] = useState<DepartmentData[]>(
       () => JSON.parse(deptData as string) as DepartmentData[]
   );
@@ -850,4 +850,4 @@ export const TableInsertRowTable = () => {
     );
 };
 
-export default TableInsertRowTable;
+export { TableInsertRowTable };

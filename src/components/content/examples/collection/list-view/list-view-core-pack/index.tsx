@@ -1,5 +1,6 @@
 import 'preact';
 import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
+import { listViewCorePackPlaygrounds } from "./playgrounds";
 import { listViewBasiccorepackDescription } from "./listView-basiccorepack/description";
 import { ListViewBasiccorepack } from "./listView-basiccorepack/listView-basiccorepack";
 import { listViewBasiccorepackRecipe } from "./listView-basiccorepack/recipe";
@@ -56,6 +57,7 @@ const listViewCorePackItems = [
     description: listViewBasiccorepackDescription,
     recipe: listViewBasiccorepackRecipe,
     Component: ListViewBasiccorepack,
+    playground: listViewCorePackPlaygrounds["listView-basiccorepack"],
   },
   {
     id: "overview",
@@ -63,6 +65,7 @@ const listViewCorePackItems = [
     description: listViewOverviewcorepackDescription,
     recipe: listViewOverviewcorepackRecipe,
     Component: ListViewOverviewcorepack,
+    playground: listViewCorePackPlaygrounds["listView-overviewcorepack"],
   },
   {
     id: "gridlines",
@@ -70,6 +73,7 @@ const listViewCorePackItems = [
     description: listViewGridlinescorepackDescription,
     recipe: listViewGridlinescorepackRecipe,
     Component: ListViewGridlinescorepack,
+    playground: listViewCorePackPlaygrounds["listView-gridlinescorepack"],
   },
   {
     id: "single-selection",
@@ -77,6 +81,7 @@ const listViewCorePackItems = [
     description: listViewSingleSelectioncorepackDescription,
     recipe: listViewSingleSelectioncorepackRecipe,
     Component: ListViewSingleSelectioncorepack,
+    playground: listViewCorePackPlaygrounds["listView-singleSelectioncorepack"],
   },
   {
     id: "multiple-selection",
@@ -84,6 +89,7 @@ const listViewCorePackItems = [
     description: listViewMultipleSelectioncorepackDescription,
     recipe: listViewMultipleSelectioncorepackRecipe,
     Component: ListViewMultipleSelectioncorepack,
+    playground: listViewCorePackPlaygrounds["listView-multipleSelectioncorepack"],
   },
   {
     id: "high-water-mark-scrolling",
@@ -91,6 +97,7 @@ const listViewCorePackItems = [
     description: listViewHighWaterMarkScrollingcorepackDescription,
     recipe: listViewHighWaterMarkScrollingcorepackRecipe,
     Component: ListViewHighWaterMarkScrollingcorepack,
+    playground: listViewCorePackPlaygrounds["listView-highWaterMarkScrollingcorepack"],
   },
   {
     id: "progressive-loading",
@@ -98,6 +105,7 @@ const listViewCorePackItems = [
     description: listViewProgressiveLoadingcorepackDescription,
     recipe: listViewProgressiveLoadingcorepackRecipe,
     Component: ListViewProgressiveLoadingcorepack,
+    playground: listViewCorePackPlaygrounds["listView-progressiveLoadingcorepack"],
   },
 {
     id: "custom-skeleton",
@@ -105,6 +113,7 @@ const listViewCorePackItems = [
     description: listViewCustomSkeletoncorepackDescription,
     recipe: listViewCustomSkeletoncorepackRecipe,
     Component: ListViewCustomSkeletoncorepack,
+    playground: listViewCorePackPlaygrounds["listView-customSkeletoncorepack"],
   },
 {
     id: "crud",
@@ -112,6 +121,7 @@ const listViewCorePackItems = [
     description: listViewCrudcorepackDescription,
     recipe: listViewCrudcorepackRecipe,
     Component: ListViewCrudcorepack,
+    playground: listViewCorePackPlaygrounds["listView-crudcorepack"],
   },
    {
     id: "drill-down",
@@ -119,6 +129,7 @@ const listViewCorePackItems = [
     description: listViewDrillDowncorepackDescription,
     recipe: listViewDrillDowncorepackRecipe,
     Component: ListViewDrillDowncorepack,
+    playground: listViewCorePackPlaygrounds["listView-drillDowncorepack"],
   },
   {
     id: "no-data",
@@ -126,6 +137,7 @@ const listViewCorePackItems = [
     description: listViewNoDatacorepackDescription,
     recipe: listViewNoDatacorepackRecipe,
     Component: ListViewNoDatacorepack,
+    playground: listViewCorePackPlaygrounds["listView-noDatacorepack"],
   },
  {
     id: "manage-tab-stops",
@@ -133,6 +145,7 @@ const listViewCorePackItems = [
     description: listViewManageTabStopcorepackDescription,
     recipe: listViewManageTabStopcorepackRecipe,
     Component: ListViewManageTabStopcorepack,
+    playground: listViewCorePackPlaygrounds["listView-manageTabStopcorepack"],
   },
   {
     id: "smart-suggestions",
@@ -140,6 +153,7 @@ const listViewCorePackItems = [
     description: listViewSmartSuggestionscorepackDescription,
     recipe: listViewSmartSuggestionscorepackRecipe,
     Component: ListViewSmartSuggestionscorepack,
+    playground: listViewCorePackPlaygrounds["listView-smartSuggestionscorepack"],
   },
    {
     id: "context-menu",
@@ -147,6 +161,7 @@ const listViewCorePackItems = [
     description: listViewContextMenucorepackDescription,
     recipe: listViewContextMenucorepackRecipe,
     Component: ListViewContextMenucorepack,
+    playground: listViewCorePackPlaygrounds["listView-contextMenucorepack"],
   },
   {
     id: "reorder",
@@ -154,6 +169,7 @@ const listViewCorePackItems = [
     description: listViewReordercorepackDescription,
     recipe: listViewReordercorepackRecipe,
     Component: ListViewReordercorepack,
+    playground: listViewCorePackPlaygrounds["listView-reordercorepack"],
   },
    {
     id: "item-padding",
@@ -161,6 +177,7 @@ const listViewCorePackItems = [
     description: listViewItemPaddingcorepackDescription,
     recipe: listViewItemPaddingcorepackRecipe,
     Component: ListViewItemPaddingcorepack,
+    playground: listViewCorePackPlaygrounds["listView-itemPaddingcorepack"],
   },
 ];
 

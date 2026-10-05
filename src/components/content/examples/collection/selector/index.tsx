@@ -1,5 +1,7 @@
 import 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
+import { listViewPlaygrounds } from "../list-view/list-view-legacy/playgrounds";
+import { selectorPlaygrounds } from "./playgrounds";
 import { listViewSelectionListViewDescription } from "../list-view/list-view-legacy/listView-selectionListView/description";
 import { ListViewSelectionListView } from "../list-view/list-view-legacy/listView-selectionListView/listView-selectionListView";
 import { listViewSelectionListViewRecipe } from "../list-view/list-view-legacy/listView-selectionListView/recipe";
@@ -26,6 +28,7 @@ const selectorItems = [
     description: tableSelectionTableDescription,
     recipe: tableSelectionTableRecipe,
     Component: TableSelectionTable,
+    playground: selectorPlaygrounds["table-selectionTable"],
   },
   {
     id: "checkbox-selectable-list-view",
@@ -33,6 +36,7 @@ const selectorItems = [
     description: listViewSelectionListViewDescription,
     recipe: listViewSelectionListViewRecipe,
     Component: ListViewSelectionListView,
+    playground: listViewPlaygrounds["listView-selectionListView"],
   },
   {
     id: "list-view-checkbox-card",
@@ -40,6 +44,7 @@ const selectorItems = [
     description: selectorListviewCheckboxCardDescription,
     recipe: selectorListviewCheckboxCardRecipe,
     Component: SelectorListviewCheckboxCard,
+    playground: selectorPlaygrounds["selector-listviewCheckboxCard"],
   },
   {
     id: "tree-view-selection",
@@ -47,6 +52,7 @@ const selectorItems = [
     description: treeViewSelectionDescription,
     recipe: treeViewSelectionRecipe,
     Component: TreeViewSelection,
+    playground: selectorPlaygrounds["treeView-selection"],
   },
   {
     id: "checkbox-leaf-only-tree-view",
@@ -54,6 +60,7 @@ const selectorItems = [
     description: selectorCheckboxLeafOnlyTreeViewDescription,
     recipe: selectorCheckboxLeafOnlyTreeViewRecipe,
     Component: SelectorCheckboxLeafOnlyTreeView,
+    playground: selectorPlaygrounds["selector-checkboxLeafOnlyTreeView"],
   },
   
   {
@@ -62,6 +69,7 @@ const selectorItems = [
     description: selectorPerformanceSelectorDescription,
     recipe: selectorPerformanceSelectorRecipe,
     Component: SelectorPerformanceSelector,
+    playground: selectorPlaygrounds["selector-performanceSelector"],
   },
   
  

@@ -97,7 +97,7 @@ const selectionMode: TableSelectionMode = {
   column: "multiple"
 };
 
-export const TableFrozenColumnTable = () => {
+export default function TableFrozenColumnTable() {
   const [rows, setRows] = useState<EmployeeStatus[]>(
     () => JSON.parse(empData as string) as EmployeeStatus[]
   );
@@ -181,4 +181,4 @@ export const TableFrozenColumnTable = () => {
   );
 };
 
-export default TableFrozenColumnTable;
+export { TableFrozenColumnTable };

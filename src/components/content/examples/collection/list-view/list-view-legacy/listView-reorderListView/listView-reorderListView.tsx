@@ -15,6 +15,8 @@ import type { ComponentProps } from 'preact';
 import { useMemo,useRef,useState } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
+
+export { ListViewReorderListView };
 type FileNode = {
   id: string;
   name: string;
@@ -188,7 +190,7 @@ const getIconClass = (type: FileNode['type']) => {
   }
 };
 
-export const ListViewReorderListView = () => {
+export default function ListViewReorderListView() {
   const listViewRef = useRef<ojListView<FileNode['id'], FileNode> | null>(null);
   const [data, setData] = useState<FileNode[]>(() => cloneNodes(INITIAL_DATA));
   const [currentItem, setCurrentItem] = useState<FileNode['id'] | null>(null);
@@ -458,5 +460,3 @@ export const ListViewReorderListView = () => {
     </div>
   );
 };
-
-export default ListViewReorderListView;

@@ -16,7 +16,7 @@ interface DepartmentData {
     ManagerId: number;
 }
 
-export const TableCustomContextMenuTable = () => {
+export default function TableCustomContextMenuTable() {
   const tableRef = useRef<ojTable<DepartmentData['DepartmentId'], DepartmentData> | null>(null);
   const [selectedMenuItem, setSelectedMenuItem] = useState('None selected yet');
   const [launchedFrom, setLaunchedFrom] = useState('None launched yet');
@@ -74,4 +74,4 @@ export const TableCustomContextMenuTable = () => {
     );
 };
 
-export default TableCustomContextMenuTable;
+export { TableCustomContextMenuTable };

@@ -119,7 +119,7 @@ const itemTemplateRenderer = (item: TreeViewItemTemplateContext) => (
   </li>
 );
 
-export const TreeViewGrouping = () => {
+export default function TreeViewGrouping() {
   const treeViewRef = useRef<ojTreeView<string, TreeNode> | null>(null);
   const clipboardRef = useRef(new DemoDataTransfer());
   const [flatArray, setFlatArray] = useState<FlatItem[]>(initialFlatArray);
@@ -326,4 +326,4 @@ export const TreeViewGrouping = () => {
   );
 };
 
-export default TreeViewGrouping;
+export { TreeViewGrouping };

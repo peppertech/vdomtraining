@@ -1,83 +1,60 @@
-import 'ojs/ojbutton';
-import 'ojs/ojdatasource-common';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import 'ojs/ojlabel';
-import 'ojs/ojlabelvalue';
 import 'ojs/ojradioset';
-import 'ojs/ojtable';
+import 'oj-c/table';
 import 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo,useState } from 'preact/hooks';
+import { useMemo, useState } from 'preact/hooks';
 import MutableArrayDataProvider = require('ojs/ojmutablearraydataprovider');
 
-interface ColumnOption {
-  headerText: string;
-  field: string;
-  resizable?: 'enabled' | 'disabled';
-}
-
+type TableColumns = NonNullable<ComponentProps<'oj-c-table'>['columns']>;
 type ResizeBehavior = 'redistribute' | 'add';
-type TableColumns = NonNullable<ComponentProps<'oj-table'>['columns']>;
-type InputNumberChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0];
-type RadiosetChangedEvent = Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0];
+type DataRow = { id: number; [field: string]: string | number };
 
 const rows = 100;
 
-const generateData = (columns: number) => {
-  const dataArray: Array<Array<string>> = [];
-  for (let i = 0; i < rows; i++) {
-    const row: Array<string> = [];
-    for (let j = 0; j < columns; j++) {
-      row[j] = `${i},${j}`;
+const generateData = (columnCount: number): DataRow[] =>
+  Array.from({ length: rows }, (_, rowIndex) => {
+    const row: DataRow = { id: rowIndex };
+    for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+      row[`col${columnIndex}`] = `${rowIndex},${columnIndex}`;
     }
-    dataArray[i] = row;
-  }
-  return dataArray;
-};
+    return row;
+  });
 
 const generateColumns = (count: number): TableColumns =>
-  Array.from({ length: count }, (_, index) => ({
-    headerText: `Col${index}`,
-    field: `${index}`,
-    resizable: 'enabled'
-  }));
+  Object.fromEntries(Array.from({ length: count }, (_, index) => [
+    `col${index}`,
+    { headerText: `Col${index}`, field: `col${index}`, resizable: 'enabled' as const }
+  ])) as TableColumns;
 
-export const TableColumnResizingcorepack = () => {
+export default function TableColumnResizingcorepack() {
   const [columnCount, setColumnCount] = useState(10);
-  const [columnsOption, setColumnsOption] = useState<TableColumns>(() => generateColumns(10));
   const [selectedBehavior, setSelectedBehavior] = useState<ResizeBehavior>('redistribute');
+  const [columnWidths, setColumnWidths] = useState<Record<string, number>>({});
 
-  const behaviorValues = useMemo(
-    () => [
-      { value: 'redistribute', label: 'redistribute' },
-      { value: 'add', label: 'add' }
-    ] as const,
-    []
-  );
-  const selectedBehaviorDP = useMemo(
-    () => new MutableArrayDataProvider([...behaviorValues], { keyAttributes: 'value' }),
+  const behaviorValues = useMemo(() => [
+    { value: 'redistribute', label: 'redistribute' },
+    { value: 'add', label: 'add' }
+  ], []);
+  const selectedBehaviorDP = useMemo(() =>
+    new MutableArrayDataProvider(behaviorValues, { keyAttributes: 'value' }),
     [behaviorValues]
   );
-  const dataprovider = useMemo(
-    () => new MutableArrayDataProvider(generateData(columnCount), { keyAttributes: '0' }),
-    [columnCount]
+  const columns = useMemo(() => generateColumns(columnCount), [columnCount]);
+  const columnOrder = useMemo(() => Object.keys(columns), [columns]);
+  const dataProvider = useMemo(() =>
+    new MutableArrayDataProvider<number, DataRow>(generateData(columnCount), {
+      keyAttributes: 'id'
+    }), [columnCount]
   );
 
-  const handleSelectedBehaviorValueChanged = (event: RadiosetChangedEvent) => {
-    setSelectedBehavior((event.detail.value ?? 'redistribute') as ResizeBehavior);
-  };
-
-  const handleColumnsOptionColumnsChanged = (
-    event: Parameters<NonNullable<ComponentProps<'oj-table'>['oncolumnsChanged']>>[0]
+  const updateData = (
+    event: Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0]
   ) => {
-    setColumnsOption((event.detail.value ?? []) as TableColumns);
-  };
-
-  const updateData = (event: InputNumberChangedEvent) => {
-    const columns = event.detail.value ?? 1;
-    setColumnCount(columns);
-    setColumnsOption(generateColumns(columns));
+    setColumnCount(Math.max(1, Math.floor(event.detail.value ?? 1)));
+    setColumnWidths({});
   };
 
   return (
@@ -92,7 +69,8 @@ export const TableColumnResizingcorepack = () => {
             <oj-radioset
               id="radiosetBasicDemoId"
               labelledBy="resizeBehaviorLabel"
-              onvalueChanged={handleSelectedBehaviorValueChanged}
+              onvalueChanged={(event) =>
+                setSelectedBehavior((event.detail.value ?? 'redistribute') as ResizeBehavior)}
               value={selectedBehavior}
               options={selectedBehaviorDP}
             />
@@ -108,17 +86,21 @@ export const TableColumnResizingcorepack = () => {
           </oj-form-layout>
         </oj-form-layout>
       </div>
-      <oj-table
+      <oj-c-table
         id="table"
         aria-label="Column Resizing Table"
-        data={dataprovider}
+        data={dataProvider}
+        layout="fixed"
         columnResizeBehavior={selectedBehavior}
-        oncolumnsChanged={handleColumnsOptionColumnsChanged}
-        columns={columnsOption}
+        columnWidths={columnWidths}
+        oncolumnWidthsChanged={(event) => setColumnWidths(event.detail.value ?? {})}
+        columns={columns}
+        columnOrder={columnOrder}
+        row={{ accessibleRowHeader: 'col0' }}
         class="demo-table-container"
       />
     </div>
   );
-};
+}
 
-export default TableColumnResizingcorepack;
+export { TableColumnResizingcorepack };

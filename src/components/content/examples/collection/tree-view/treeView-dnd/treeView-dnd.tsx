@@ -104,7 +104,7 @@ const targetItemTemplateRenderer = (row: TreeViewItemTemplateContext) => [
   </span>
 ];
 
-export const TreeViewDnd = () => {
+export default function TreeViewDnd() {
   const sourceTreeRef = useRef<ojTreeView<string, TreeNode> | null>(null);
   const targetTreeRef = useRef<ojTreeView<string, TreeNode> | null>(null);
   const clipboardRef = useRef(new DemoDataTransfer());
@@ -403,4 +403,4 @@ export const TreeViewDnd = () => {
   );
 };
 
-export default TreeViewDnd;
+export { TreeViewDnd };

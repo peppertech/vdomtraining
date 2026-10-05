@@ -10,7 +10,7 @@ interface Data {
     name: string;
 }
 
-export const ListViewNoDatacorepack = () => {
+export default function ListViewNoDatacorepack() {
   const [data, setData] = useState<Data[]>([]);
 
   const dataProvider = useMemo(() => new ArrayDataProvider<Data['id'], Data>(data, {
@@ -73,4 +73,4 @@ export const ListViewNoDatacorepack = () => {
     );
 };
 
-export default ListViewNoDatacorepack;
+export { ListViewNoDatacorepack };

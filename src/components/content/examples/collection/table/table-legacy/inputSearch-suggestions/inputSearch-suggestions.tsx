@@ -58,7 +58,7 @@ const getCurrentTime = (): string => {
   return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds()}`;
 };
 
-export const InputSearchSuggestions = () => {
+export default function InputSearchSuggestions() {
   const [value, setValue] = useState<InputSearchValue>(undefined);
   const [rawValue, setRawValue] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState<string | undefined>(undefined);
@@ -138,4 +138,4 @@ export const InputSearchSuggestions = () => {
   );
 };
 
-export default InputSearchSuggestions;
+export { InputSearchSuggestions };

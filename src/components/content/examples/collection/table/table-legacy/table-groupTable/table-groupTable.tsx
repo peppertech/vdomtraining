@@ -32,7 +32,7 @@ type TableRowSelectable = NonNullable<NonNullable<ComponentProps<'oj-table'>['ro
 type TableRowSticky = NonNullable<NonNullable<ComponentProps<'oj-table'>['row']>['sticky']>;
 type TableRowTemplateContext = ojTable.RowTemplateContext<string, TableRow>;
 const data = JSON.parse(dataText as string) as OpportunityGroupRow[];
-export const TableGroupTable = () => {
+export default function TableGroupTable() {
     const dataArray = data;
     const columns = useMemo<TableColumns>(() => ([
         { headerText: 'Probability', id: 'probability', field: 'probability' },
@@ -114,4 +114,4 @@ export const TableGroupTable = () => {
         <template slot="rowTemplate" render={rowItemTemplate}></template>
     </oj-table>);
 };
-export default TableGroupTable;
+export { TableGroupTable };

@@ -1,127 +1,96 @@
+import 'oj-c/table';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
-import { AllKeySetImpl,KeySet,KeySetImpl } from 'ojs/ojkeyset';
-import 'ojs/ojtable';
-import { ojTable } from 'ojs/ojtable';
+import { AllKeySetImpl, KeySetImpl } from 'ojs/ojkeyset';
 import 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo,useState } from 'preact/hooks';
+import { useMemo, useState } from 'preact/hooks';
 import * as deptData from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface DepartmentData {
-    DepartmentId: number;
-    DepartmentName: string;
-    LocationId: number;
-    ManagerId: number;
+  DepartmentId: number;
+  DepartmentName: string;
+  LocationId: number;
+  ManagerId: number;
 }
 
-export const TableEventTablecorepack = () => {
+type SelectedItems = NonNullable<ComponentProps<'oj-c-table'>['selected']>;
+type SelectedChangedEvent = Parameters<NonNullable<ComponentProps<'oj-c-table'>['onselectedChanged']>>[0];
+type CurrentCellChangedEvent = Parameters<NonNullable<ComponentProps<'oj-c-table'>['oncurrentCellChanged']>>[0];
+type RowActionEvent = Parameters<NonNullable<ComponentProps<'oj-c-table'>['onojRowAction']>>[0];
+
+export default function TableEventTablecorepack() {
   const [eventLog, setEventLog] = useState('');
-  const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
-      { headerText: 'Department Id', field: 'DepartmentId', id: 'depId' },
-      { headerText: 'Department Name', field: 'DepartmentName', id: 'depName' },
-      { headerText: 'Location Id', field: 'LocationId', id: 'locId' },
-      { headerText: 'Manager Id', field: 'ManagerId', id: 'manId' }
-  ], []);
-
-  const deptArray: DepartmentData[] = JSON.parse(deptData as string) as DepartmentData[];
-  const dataprovider = useMemo(() => new ArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(deptArray, {
-      keyAttributes: 'DepartmentId'
-  }), [deptArray]);
-  const [selectedItems, setSelectedItems] = useState<{
-      row?: KeySet<number>;
-      column?: KeySet<string>;
-  }>({
-      row: new KeySetImpl<number>(),
-      column: new KeySetImpl<string>()
+  const [selectedItems, setSelectedItems] = useState<SelectedItems>({
+    row: new KeySetImpl<number>(),
+    column: new KeySetImpl<string>()
   });
-  const ojTableProps: Partial<ComponentProps<'oj-table'>> = {
-      accessibility: { rowHeader: 'depName' },
-      selectionMode: { row: 'multiple', column: 'multiple' },
-      columnsDefault: { sortable: 'enabled' },
-      selected: selectedItems
+  const columns = useMemo<NonNullable<ComponentProps<'oj-c-table'>['columns']>>(() => ({
+    depId: { headerText: 'Department Id', field: 'DepartmentId' },
+    depName: { headerText: 'Department Name', field: 'DepartmentName' },
+    locId: { headerText: 'Location Id', field: 'LocationId' },
+    manId: { headerText: 'Manager Id', field: 'ManagerId' }
+  }), []);
+  const departments = useMemo<DepartmentData[]>(() => JSON.parse(deptData as string) as DepartmentData[], []);
+  const dataProvider = useMemo(() => new ArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(
+    departments, { keyAttributes: 'DepartmentId' }
+  ), [departments]);
+
+  const log = (message: string) => setEventLog((current) => `${message}\n\n${current}`);
+
+  const handleSelectedChanged = (event: SelectedChangedEvent) => {
+    const selected: SelectedItems = event.detail.value ?? {};
+    setSelectedItems(selected);
+    const row = selected.row;
+    const column = selected.column;
+    const rowKeys = row?.isAddAll()
+      ? `Everything selected${(row as AllKeySetImpl<number>).deletedValues().size ? ` except ${Array.from((row as AllKeySetImpl<number>).deletedValues()).join(' ')}` : ''}`
+      : row ? Array.from((row as KeySetImpl<number>).values()).join(' ') : '';
+    const columnKeys = column?.isAddAll()
+      ? `Everything selected${(column as AllKeySetImpl<string>).deletedValues().size ? ` except ${Array.from((column as AllKeySetImpl<string>).deletedValues()).join(' ')}` : ''}`
+      : column ? Array.from((column as KeySetImpl<string>).values()).join(' ') : '';
+    if (rowKeys) log(`Triggered selectedChanged event:\nSelected Row Key(s):\n${rowKeys}`);
+    else if (columnKeys) log(`Triggered selectedChanged event:\nSelected Column Key(s):\n${columnKeys}`);
+    else log('Triggered selectedChanged event:\nSelection Cleared');
   };
 
-  const sortListener = (event: ojTable.ojSort) => {
-      const data = event.detail;
-      let eventTxt = 'Triggered ojSort event: \n';
-      eventTxt = eventTxt + '{header: ' + data.header + ' direction: ' + data.direction + '} \n';
-      const currentTxt = eventLog;
-      setEventLog(eventTxt + '\n' + currentTxt);
+  const handleCurrentCellChanged = (event: CurrentCellChangedEvent) => {
+    const cell = event.detail.value;
+    const previous = event.detail.previousValue;
+    const describeCell = (value: typeof cell) => {
+      if (!value) return 'none';
+      if (value.type === 'data') return `data row ${value.rowKey}, column ${value.columnKey}`;
+      if (value.type === 'noData') return 'no data';
+      return `${value.type} column ${value.columnKey}`;
+    };
+    log(`Triggered currentCellChanged event:\nCurrent cell: ${describeCell(cell)}\nPrevious cell: ${describeCell(previous)}`);
   };
 
-  const selectedListener = (event: ojTable.selectedChanged<DepartmentData['DepartmentId'], DepartmentData>) => {
-      setSelectedItems(event.detail.value);
-      let eventTxt = '';
-      let keys = '';
-      if (event.type === 'selectedChanged') {
-          let rowKeySet: KeySet<number> | undefined = event.detail.value.row;
-          let columnKeySet: KeySet<string> | undefined = event.detail.value.column;
-          // Add the keys of the selected rows into the eventLog
-          if (rowKeySet != null && rowKeySet.isAddAll()) {
-              eventTxt += 'Triggered selectedChanged event: \nSelected Row Key(s):\n';
-              keys = 'Everything selected ';
-              if ((rowKeySet as AllKeySetImpl<number>).deletedValues().size > 0) {
-                  keys = keys + 'except ';
-              }
-              (rowKeySet as AllKeySetImpl<number>).deletedValues().forEach((key) => {
-                  keys = keys + key + '  ';
-              });
-          }
-          else if (rowKeySet != null && (rowKeySet as KeySetImpl<number>).values().size > 0) {
-              eventTxt += 'Triggered selectedChanged event: \nSelected Row Key(s):\n';
-              (rowKeySet as KeySetImpl<number>).values().forEach((key) => {
-                  keys = keys + key + '  ';
-              });
-          }
-          else if (columnKeySet != null && (columnKeySet as KeySetImpl<string>).values().size > 0) {
-              // Add the keys of the selected columns into the eventLog
-              (columnKeySet as KeySetImpl<string>).values().forEach((key) => {
-                  keys = keys + key + '  ';
-              });
-              eventTxt += 'Triggered selectedChanged event: \nSelected Column Key(s):\n';
-          }
-          else {
-              eventTxt += 'Triggered selectedChanged event: \nSelection Cleared';
-          }
-          eventTxt = eventTxt + keys + '\n';
-          let currentTxt = eventLog;
-          currentTxt = currentTxt == null ? '' : currentTxt;
-          if (eventTxt != null && eventTxt !== '') {
-              setEventLog(eventTxt + '\n' + currentTxt);
-          }
-      }
-  };
-
-  const currentRowListener = (event: ojTable.currentRowChanged<DepartmentData['DepartmentId'], DepartmentData>) => {
-      const data = event.detail;
-      const currentTxt = eventLog;
-      let eventTxt = 'Triggered CurrentRowChanged event: \n';
-      eventTxt += 'Current row key: ' + (data.value != null ? data.value.rowKey : '') + '\n';
-      eventTxt +=
-          'Previous current row key: ' +
-              (data.previousValue != null ? data.previousValue.rowKey : '') +
-              '\n';
-      setEventLog(eventTxt + '\n' + currentTxt);
-  };
-
-  const rowActionListener = (event: ojTable.ojRowAction<DepartmentData['DepartmentId'], DepartmentData>) => {
-      const data = event.detail;
-      const currentTxt = eventLog;
-      let eventTxt = 'Triggered ojRowAction event: \n';
-      eventTxt += 'Row key: ' + data.context.key + '\n';
-      setEventLog(eventTxt + '\n' + currentTxt);
+  const handleRowAction = (event: RowActionEvent) => {
+    log(`Triggered ojRowAction event:\nRow key: ${event.detail.context.item.metadata.key}`);
   };
 
   return (
-      <div id="tableContainer">
-            <oj-table id="table" aria-label="Departments Table" data={dataprovider} columns={columns} class="demo-table-container" onselectedChanged={selectedListener} onojSort={sortListener} oncurrentRowChanged={currentRowListener} onojRowAction={rowActionListener} {...ojTableProps} />
-            <oj-form-layout>
-                    <oj-text-area id="eventLog" value={eventLog} rows={10} readonly label-hint="event log" />
-                </oj-form-layout>
-        </div>
-    );
-};
+    <div id="tableContainer">
+      <oj-c-table
+        id="table"
+        aria-label="Departments Table"
+        data={dataProvider}
+        columns={columns}
+        row={{ accessibleRowHeader: 'depName' }}
+        class="demo-table-container"
+        selectionMode={{ row: 'multiple', column: 'multiple' }}
+        selected={selectedItems}
+        onselectedChanged={handleSelectedChanged}
+        oncurrentCellChanged={handleCurrentCellChanged}
+        onojRowAction={handleRowAction}
+      />
+      <oj-form-layout>
+        <oj-text-area id="eventLog" value={eventLog} rows={10} readonly label-hint="event log" />
+      </oj-form-layout>
+    </div>
+  );
+}
 
-export default TableEventTablecorepack;
+export { TableEventTablecorepack };

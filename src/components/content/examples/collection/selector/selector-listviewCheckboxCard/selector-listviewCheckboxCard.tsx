@@ -49,7 +49,7 @@ const getDisplayValue = (selected: SelectedKeySet) => {
   return JSON.stringify(getSelectionKeys(selected));
 };
 
-export const SelectorListviewCheckboxCard = () => {
+export default function SelectorListviewCheckboxCard() {
   const initialSelectedItems = useMemo(createEmptySelection, []);
   const [selectedDisplayValue, setSelectedDisplayValue] = useState(
     getDisplayValue(initialSelectedItems)
@@ -217,4 +217,4 @@ export const SelectorListviewCheckboxCard = () => {
   );
 };
 
-export default SelectorListviewCheckboxCard;
+export { SelectorListviewCheckboxCard };

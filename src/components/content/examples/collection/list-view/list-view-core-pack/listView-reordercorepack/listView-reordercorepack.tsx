@@ -82,7 +82,7 @@ const getReorderMessage = (
   return `move ${fromName} after ${toName}`;
 };
 
-export const ListViewReordercorepack = () => {
+export default function ListViewReordercorepack() {
   const [employees, setEmployees] = useState<EmployeeData[]>(() => [...INITIAL_EMPLOYEES]);
   const [reorderMessage, setReorderMessage] = useState('');
   const dataProvider = useMemo(
@@ -146,4 +146,4 @@ export const ListViewReordercorepack = () => {
   );
 };
 
-export default ListViewReordercorepack;
+export { ListViewReordercorepack };

@@ -28,7 +28,7 @@ const optionalColumns: Record<ColumnKey, TableColumns[number]> = {
   managerId: { headerText: 'Manager Id', field: 'ManagerId', id: 'manId' }
 };
 
-export const TableColumnAdditionTable = () => {
+export default function TableColumnAdditionTable() {
   const [columns, setColumns] = useState<TableColumns>(baseColumns);
 
   const dataprovider = useMemo(
@@ -143,4 +143,4 @@ export const TableColumnAdditionTable = () => {
   );
 };
 
-export default TableColumnAdditionTable;
+export { TableColumnAdditionTable };

@@ -72,7 +72,7 @@ const renderProgressiveWaterfallItem = (item: WaterfallItemTemplateContext) => {
   );
 };
 
-export const WaterfallLayoutProgressiveLoadWaterfallLayout = () => {
+export default function WaterfallLayoutProgressiveLoadWaterfallLayout() {
   const [delay, setDelay] = useState<InputNumberValue>(2000);
   const data = useMemo(() => generateProgressiveData(50), []);
   const createDataProvider = (nextDelay: number) =>
@@ -113,4 +113,4 @@ export const WaterfallLayoutProgressiveLoadWaterfallLayout = () => {
   );
 };
 
-export default WaterfallLayoutProgressiveLoadWaterfallLayout;
+export { WaterfallLayoutProgressiveLoadWaterfallLayout };

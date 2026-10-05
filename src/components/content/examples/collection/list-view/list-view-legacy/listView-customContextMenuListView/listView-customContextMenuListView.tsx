@@ -9,6 +9,8 @@ import 'preact';
 import { useMemo,useRef,useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewCustomContextMenuListView };
 interface EmployeeData {
   id: string;
   name: string;
@@ -20,7 +22,7 @@ type ItemTemplateContext = {
   data: EmployeeData;
 };
 
-export const ListViewCustomContextMenuListView = () => {
+export default function ListViewCustomContextMenuListView() {
   const listViewRef = useRef<ojListView<EmployeeData['id'], EmployeeData> | null>(null);
   const contextMenuKeyRef = useRef<EmployeeData['id'] | null>(null);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('None selected yet');
@@ -198,5 +200,3 @@ export const ListViewCustomContextMenuListView = () => {
     </div>
   );
 };
-
-export default ListViewCustomContextMenuListView;

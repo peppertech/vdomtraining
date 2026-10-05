@@ -11,6 +11,8 @@ import { useMemo,useState } from 'preact/hooks';
 import DemoDelayingTreeDataProvider from '../../../shared/DemoDelayingTreeDataProvider';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
+
+export { ListViewProgressiveLoadHierListView };
 interface Data {
     id: string;
     label: string;
@@ -28,7 +30,7 @@ type InputNumberProps = ComponentProps<'oj-input-number'>;
 type InputNumberValueChangedEvent = Parameters<NonNullable<InputNumberProps['onvalueChanged']>>[0];
 type ContactsDataProvider = DemoDelayingTreeDataProvider<Data['id'], Data>;
 
-export const ListViewProgressiveLoadHierListView = () => {
+export default function ListViewProgressiveLoadHierListView() {
   const [delay, setDelay] = useState(2000);
   const [childDelay, setChildDelay] = useState(2000);
 
@@ -172,5 +174,3 @@ export const ListViewProgressiveLoadHierListView = () => {
         </div>
     );
 };
-
-export default ListViewProgressiveLoadHierListView;

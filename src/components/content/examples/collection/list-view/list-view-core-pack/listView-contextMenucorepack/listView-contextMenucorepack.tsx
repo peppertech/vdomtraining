@@ -65,7 +65,7 @@ const data: EmployeeData[] = [
   }
 ];
 
-export const ListViewContextMenucorepack = () => {
+export default function ListViewContextMenucorepack() {
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('None selected yet');
   const [launchedFromItem, setLaunchedFromItem] = useState<string>('None launched yet');
 
@@ -132,4 +132,4 @@ export const ListViewContextMenucorepack = () => {
   );
 };
 
-export default ListViewContextMenucorepack;
+export { ListViewContextMenucorepack };

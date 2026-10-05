@@ -70,7 +70,7 @@ const renderBasicWaterfallItem = (item: WaterfallItemTemplateContext) => {
   );
 };
 
-export const WaterfallLayoutBasicWaterfallLayout = () => {
+export default function WaterfallLayoutBasicWaterfallLayout() {
   const dataProvider = useMemo(
     () => new ArrayDataProvider<WaterfallCardData['id'], WaterfallCardData>(basicWaterfallData, { keyAttributes: 'id' }),
     []
@@ -83,4 +83,4 @@ export const WaterfallLayoutBasicWaterfallLayout = () => {
   );
 };
 
-export default WaterfallLayoutBasicWaterfallLayout;
+export { WaterfallLayoutBasicWaterfallLayout };

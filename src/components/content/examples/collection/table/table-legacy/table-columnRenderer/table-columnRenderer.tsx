@@ -28,7 +28,7 @@ type EmployeeCellContext = ojTable.CellTemplateContext<EmployeeData['EmployeeId'
 type DepartmentCellContext = ojTable.CellTemplateContext<DepartmentData['DepartmentId'], DepartmentData>;
 type GaugeThresholds = ComponentProps<'oj-status-meter-gauge'>['thresholds'];
 
-export const TableColumnRenderer = () => {
+export default function TableColumnRenderer() {
   const employees = useMemo<EmployeeData[]>(() => JSON.parse(empDataText as string) as EmployeeData[], []);
   const departments = useMemo<DepartmentData[]>(
     () => JSON.parse(deptDataText as string) as DepartmentData[],
@@ -155,4 +155,4 @@ export const TableColumnRenderer = () => {
   );
 };
 
-export default TableColumnRenderer;
+export { TableColumnRenderer };

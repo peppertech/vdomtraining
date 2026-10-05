@@ -5,6 +5,8 @@ import 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewBasicListView };
 type EmployeeData = {
   id: number;
   name: string;
@@ -26,7 +28,7 @@ const data: EmployeeData[] = [
   { id: 7, name: 'Zelda Christian Cooperman', title: 'Senior Principal Escalation Manager', image: '/styles/images/hcm/placeholder-female-02.png' }
 ];
 
-export const ListViewBasicListView = () => {
+export default function ListViewBasicListView() {
   const dataProvider = useMemo(() => new ArrayDataProvider(data, { keyAttributes: 'id' }), []);
 
   const itemTemplateRenderer = (item: ListViewItemContext) => (
@@ -53,5 +55,3 @@ export const ListViewBasicListView = () => {
     </oj-list-view>
   );
 };
-
-export default ListViewBasicListView;

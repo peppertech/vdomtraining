@@ -3,8 +3,8 @@ import 'preact';
 export const tableColumnSortingcorepackRecipe = (
   <>
     <ol>
-      <li>Set the 'sortable' option for every column you want to enable sort for.</li>
-      <li>Pass in the 'SortComparators' option to the ArrayDataProvider with your own custom comparator.</li>
+      <li>Use the controls above the table to choose a column and direction.</li>
+      <li>Sort the rows before passing them to the ArrayDataProvider. The date column uses a date comparator.</li>
     </ol>
   </>
 );

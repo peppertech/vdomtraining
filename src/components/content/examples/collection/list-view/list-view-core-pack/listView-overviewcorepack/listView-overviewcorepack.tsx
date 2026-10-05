@@ -612,7 +612,7 @@ const renderNoData: import("ojs/ojvcomponent").TemplateSlot<{}> = () => (
   </div>
 );
 
-export const ListViewOverviewcorepack = () => {
+export default function ListViewOverviewcorepack() {
   const [tasks, setTasks] = useState<Task[]>(() => [...INITIAL_TASKS]);
   const [mode, setMode] = useState<ListMode>('view');
   const [panelMode, setPanelMode] = useState<PanelMode>(null);
@@ -1054,4 +1054,4 @@ export const ListViewOverviewcorepack = () => {
   );
 };
 
-export default ListViewOverviewcorepack;
+export { ListViewOverviewcorepack };

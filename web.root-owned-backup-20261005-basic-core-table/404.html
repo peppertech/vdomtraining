@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
+    <script>
+      (function () {
+        var locationPath =
+          window.location.pathname +
+          window.location.search +
+          window.location.hash;
+
+        window.location.replace(
+          "/?spaRedirect=" + encodeURIComponent(locationPath)
+        );
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

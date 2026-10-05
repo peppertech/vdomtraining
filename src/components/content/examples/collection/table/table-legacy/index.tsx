@@ -1,5 +1,103 @@
-import 'preact';
-import { RecipePageTemplate } from "../../../../../shared/demo-page-layout/recipe-page-template";
+import * as preact from "preact";
+import ArrayDataProvider = require("ojs/ojarraydataprovider");
+import ArrayTreeDataProvider = require("ojs/ojarraytreedataprovider");
+import BufferingDataProvider = require("ojs/ojbufferingdataprovider");
+import * as Context from "ojs/ojcontext";
+import { IntlDateTimeConverter } from "ojs/ojconverter-datetime";
+import { IntlNumberConverter } from "ojs/ojconverter-number";
+import * as NumberConverter from "ojs/ojconverter-number";
+import { FilterFactory } from "ojs/ojdataprovider";
+import FlattenedTreeDataProviderView = require("ojs/ojflattenedtreedataproviderview");
+import * as KeySet from "ojs/ojkeyset";
+import { KeySetImpl } from "ojs/ojkeyset";
+import ListDataProviderView = require("ojs/ojlistdataproviderview");
+import MutableArrayDataProvider = require("ojs/ojmutablearraydataprovider");
+import { RESTDataProvider } from "ojs/ojrestdataprovider";
+import NumberRangeValidator = require("ojs/ojvalidator-numberrange");
+import { CollectionMockFetchServer } from "../../shared/CollectionMockFetchServer";
+import DemoDelayingDataProvider from "./inputSearch-suggestions/DemoDelayingDataProvider";
+import TableDragDropDataTransfer from "./table-dragDropTable/DemoDataTransfer";
+import ChartDragDropDataTransfer from "./table-dragTableDropChart/DemoDataTransfer";
+import TableBasicTableSource from "./table-basicTable/table-basicTable-source";
+import TableBasicTableDemoCssSource from "./table-basicTable/demo-source";
+import TableBasicTableDepartmentDataTextSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableSelectionTableSource from "./table-selectionTable/table-selectionTable-source";
+import TableSelectionTableDeptDataSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableObservableArrayTableSource from "./table-observableArrayTable/table-observableArrayTable-source";
+import TableObservableArrayTableDeptDataSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableFilteringTableSource from "./table-filteringTable/table-filteringTable-source";
+import TableFilteringTableDeptDataTextSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableGroupTableSource from "./table-groupTable/table-groupTable-source";
+import TableGroupTableDemoCssSource from "./table-groupTable/demo-source";
+import TableGroupTableDataTextSource from "../../data/cookbook/dataCollections/table/shared/groupData-source";
+import TableInitialSortTableSource from "./table-initialSortTable/table-initialSortTable-source";
+import TableInitialSortTableDeptDataSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableCustomSortableTableSource from "./table-customSortableTable/table-customSortableTable-source";
+import TableCustomSortableTableDemoCssSource from "./table-customSortableTable/demo-source";
+import TableCustomSortableTableDepartmentDataTextSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableColumnLayoutsSource from "./table-columnLayouts/table-columnLayouts-source";
+import TableColumnLayoutsDeptDataSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableColumnResizingSource from "./table-columnResizing/table-columnResizing-source";
+import TableFrozenColumnTableSource from "./table-frozenColumnTable/table-frozenColumnTable-source";
+import TableFrozenColumnTableDemoCssSource from "./table-frozenColumnTable/demo-source";
+import TableFrozenColumnTableEmpDataSource from "../../data/cookbook/dataCollections/table/shared/employeeData-source";
+import TableTemplateSlotTableSource from "./table-templateSlotTable/table-templateSlotTable-source";
+import TableTemplateSlotTableDeptDataTextSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableRowTemplateSource from "./table-rowTemplate/table-rowTemplate-source";
+import TableRowTemplateEmpDataTextSource from "../../data/cookbook/dataCollections/table/shared/employeeData-source";
+import TableEditableArrayTableSource from "./table-editableArrayTable/table-editableArrayTable-source";
+import TableEditableArrayTableDemoCssSource from "./table-editableArrayTable/demo-source";
+import TableEditableArrayTableDeptDataSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableEditableFormTableSource from "./table-editableFormTable/table-editableFormTable-source";
+import TableEditableFormTableDemoCssSource from "./table-editableFormTable/demo-source";
+import TableEditableFormTableDeptDataTextSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableAddRowTableSource from "./table-addRowTable/table-addRowTable-source";
+import TableAddRowTableDemoCssSource from "./table-addRowTable/demo-source";
+import TableAddRowTableDeptDataSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableInsertRowTableSource from "./table-insertRowTable/table-insertRowTable-source";
+import TableInsertRowTableDemoCssSource from "./table-insertRowTable/demo-source";
+import TableInsertRowTableDeptDataSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableComputedFieldSource from "./table-computedField/table-computedField-source";
+import TableComputedFieldDemoCssSource from "./table-computedField/demo-source";
+import TableComputedFieldEmpDataSource from "../../data/cookbook/dataCollections/table/shared/employeeData-source";
+import TableActionTableSource from "./table-actionTable/table-actionTable-source";
+import TableActionTableEmpDataSource from "../../data/cookbook/dataCollections/table/shared/employeeData-source";
+import TableNoDataTableSource from "./table-noDataTable/table-noDataTable-source";
+import TableColumnContentWrappingSource from "./table-columnContentWrapping/table-columnContentWrapping-source";
+import TableCustomContextMenuTableSource from "./table-customContextMenuTable/table-customContextMenuTable-source";
+import TableCustomContextMenuTableDeptDataSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableGridStylingSource from "./table-gridStyling/table-gridStyling-source";
+import TableGridStylingDeptDataTextSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableBackgroundColorSource from "./table-backgroundColor/table-backgroundColor-source";
+import TableBackgroundColorDemoCssSource from "./table-backgroundColor/demo-source";
+import TableColumnAdditionTableSource from "./table-columnAdditionTable/table-columnAdditionTable-source";
+import TableColumnAdditionTableDeptDataTextSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableDragDropTableSource from "./table-dragDropTable/table-dragDropTable-source";
+import TableDragDropTableDemoCssSource from "./table-dragDropTable/demo-source";
+import TableDragDropTableResultDataTextSource from "../../data/cookbook/dataCollections/table/shared/resultData-source";
+import TableDragTableDropChartSource from "./table-dragTableDropChart/table-dragTableDropChart-source";
+import TableDragTableDropChartDemoCssSource from "./table-dragTableDropChart/demo-source";
+import TableDragTableDropChartResultDataTextSource from "../../data/cookbook/dataCollections/table/shared/resultData-source";
+import TableScrollToKeyTableSource from "./table-scrollToKeyTable/table-scrollToKeyTable-source";
+import TableScrollPosTableSource from "./table-scrollPosTable/table-scrollPosTable-source";
+import TableEventTableSource from "./table-eventTable/table-eventTable-source";
+import TableEventTableDeptDataSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableDetailTableSource from "./table-detailTable/table-detailTable-source";
+import TableDetailTableDemoCssSource from "./table-detailTable/demo-source";
+import TableDetailTableJsonDataStrTextSource from "../../data/cookbook/dataCollections/table/detailTable/projectData-source";
+import TableProgressiveLoadTableSource from "./table-progressiveLoadTable/table-progressiveLoadTable-source";
+import TableProgressiveLoadTableJsonDataStrSource from "../../data/cookbook/dataCollections/sharedData/employeeData-source";
+import TablePerformanceTableSource from "./table-performanceTable/table-performanceTable-source";
+import TablePerformanceTableDemoCssSource from "./table-performanceTable/demo-source";
+import TablePerformanceTableEmployeeDataTextSource from "../../data/cookbook/dataCollections/table/shared/employeeData-source";
+import TableCustomTableSource from "./table-customTable/table-customTable-source";
+import TableCustomTableDemoCssSource from "./table-customTable/demo-source";
+import TableCustomTableEmpDataTextSource from "../../data/cookbook/dataCollections/table/customTable/employeeData-source";
+import TableColumnRendererSource from "./table-columnRenderer/table-columnRenderer-source";
+import TableColumnRendererDemoCssSource from "./table-columnRenderer/demo-source";
+import TableColumnRendererDeptDataTextSource from "../../data/cookbook/dataCollections/table/shared/departmentData-source";
+import TableColumnRendererEmpDataTextSource from "../../data/cookbook/dataCollections/table/shared/employeeData-source";
+import { RecipePageTemplate, type RecipePageItem } from "../../../../../shared/demo-page-layout/recipe-page-template";
 import { tableActionTableDescription } from "./table-actionTable/description";
 import { tableActionTableRecipe } from "./table-actionTable/recipe";
 import { TableActionTable } from "./table-actionTable/table-actionTable";
@@ -11,7 +109,7 @@ import { tableBackgroundColorRecipe } from "./table-backgroundColor/recipe";
 import { TableBackgroundColor } from "./table-backgroundColor/table-backgroundColor";
 import { tableBasicTableDescription } from "./table-basicTable/description";
 import { tableBasicTableRecipe } from "./table-basicTable/recipe";
-import { TableBasicTable } from "./table-basicTable/table-basicTable";
+import TableBasicTable from "./table-basicTable/table-basicTable";
 import { tableColumnAdditionTableDescription } from "./table-columnAdditionTable/description";
 import { tableColumnAdditionTableRecipe } from "./table-columnAdditionTable/recipe";
 import { TableColumnAdditionTable } from "./table-columnAdditionTable/table-columnAdditionTable";
@@ -103,13 +201,35 @@ import { tableTemplateSlotTableDescription } from "./table-templateSlotTable/des
 import { tableTemplateSlotTableRecipe } from "./table-templateSlotTable/recipe";
 import { TableTemplateSlotTable } from "./table-templateSlotTable/table-templateSlotTable";
 
-const tableLegacyItems = [
+const tableLegacyItems: RecipePageItem[] = [
   {
     id: "basic-table",
     name: "Overview",
     description: tableBasicTableDescription,
     recipe: tableBasicTableRecipe,
     Component: TableBasicTable,
+    playground: {
+      initialSource: TableBasicTableSource,
+      fileName: "table-basicTable.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableBasicTableDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "departmentData.json",
+          initialSource: TableBasicTableDepartmentDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "departmentDataText",
+        },
+      ],
+    },
   },
   {
     id: "selection",
@@ -117,6 +237,23 @@ const tableLegacyItems = [
     description: tableSelectionTableDescription,
     recipe: tableSelectionTableRecipe,
     Component: TableSelectionTable,
+    playground: {
+      initialSource: TableSelectionTableSource,
+      fileName: "table-selectionTable.tsx",
+      runtimeBindings: {
+        KeySetImpl,
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "departmentData.json",
+          initialSource: TableSelectionTableDeptDataSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptData",
+        },
+      ],
+    },
   },
   {
     id: "observable-array",
@@ -124,6 +261,25 @@ const tableLegacyItems = [
     description: tableObservableArrayTableDescription,
     recipe: tableObservableArrayTableRecipe,
     Component: TableObservableArrayTable,
+    playground: {
+      initialSource: TableObservableArrayTableSource,
+      fileName: "table-observableArrayTable.tsx",
+      runtimeBindings: {
+        NumberConverter,
+        KeySetImpl,
+        ArrayDataProvider,
+        BufferingDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "departmentData.json",
+          initialSource: TableObservableArrayTableDeptDataSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptData",
+        },
+      ],
+    },
   },
   {
     id: "filtering",
@@ -131,6 +287,24 @@ const tableLegacyItems = [
     description: tableFilteringTableDescription,
     recipe: tableFilteringTableRecipe,
     Component: TableFilteringTable,
+    playground: {
+      initialSource: TableFilteringTableSource,
+      fileName: "table-filteringTable.tsx",
+      runtimeBindings: {
+        FilterFactory,
+        ArrayDataProvider,
+        ListDataProviderView,
+      },
+      supportingFiles: [
+        {
+          fileName: "departmentData.json",
+          initialSource: TableFilteringTableDeptDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptDataText",
+        },
+      ],
+    },
   },
   {
     id: "group-table",
@@ -138,6 +312,30 @@ const tableLegacyItems = [
     description: tableGroupTableDescription,
     recipe: tableGroupTableRecipe,
     Component: TableGroupTable,
+    playground: {
+      initialSource: TableGroupTableSource,
+      fileName: "table-groupTable.tsx",
+      runtimeBindings: {
+        KeySet,
+        ArrayTreeDataProvider,
+        FlattenedTreeDataProviderView,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableGroupTableDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "groupData.json",
+          initialSource: TableGroupTableDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/groupData.json",
+          bindingName: "dataText",
+        },
+      ],
+    },
   },
   {
     id: "initial-sort",
@@ -145,6 +343,23 @@ const tableLegacyItems = [
     description: tableInitialSortTableDescription,
     recipe: tableInitialSortTableRecipe,
     Component: TableInitialSortTable,
+    playground: {
+      initialSource: TableInitialSortTableSource,
+      fileName: "table-initialSortTable.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+        ListDataProviderView,
+      },
+      supportingFiles: [
+        {
+          fileName: "departmentData.json",
+          initialSource: TableInitialSortTableDeptDataSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptData",
+        },
+      ],
+    },
   },
   {
     id: "custom-sortable",
@@ -152,6 +367,28 @@ const tableLegacyItems = [
     description: tableCustomSortableTableDescription,
     recipe: tableCustomSortableTableRecipe,
     Component: TableCustomSortableTable,
+    playground: {
+      initialSource: TableCustomSortableTableSource,
+      fileName: "table-customSortableTable.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableCustomSortableTableDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "departmentData.json",
+          initialSource: TableCustomSortableTableDepartmentDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "departmentDataText",
+        },
+      ],
+    },
   },
   {
     id: "column-layouts",
@@ -159,6 +396,22 @@ const tableLegacyItems = [
     description: tableColumnLayoutsDescription,
     recipe: tableColumnLayoutsRecipe,
     Component: TableColumnLayouts,
+    playground: {
+      initialSource: TableColumnLayoutsSource,
+      fileName: "table-columnLayouts.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "departmentData.json",
+          initialSource: TableColumnLayoutsDeptDataSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptData",
+        },
+      ],
+    },
   },
   {
     id: "column-resizing",
@@ -166,6 +419,13 @@ const tableLegacyItems = [
     description: tableColumnResizingDescription,
     recipe: tableColumnResizingRecipe,
     Component: TableColumnResizing,
+    playground: {
+      initialSource: TableColumnResizingSource,
+      fileName: "table-columnResizing.tsx",
+      runtimeBindings: {
+        MutableArrayDataProvider,
+      },
+    },
   },
   {
     id: "frozen-column",
@@ -173,6 +433,28 @@ const tableLegacyItems = [
     description: tableFrozenColumnTableDescription,
     recipe: tableFrozenColumnTableRecipe,
     Component: TableFrozenColumnTable,
+    playground: {
+      initialSource: TableFrozenColumnTableSource,
+      fileName: "table-frozenColumnTable.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableFrozenColumnTableDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "employeeData.json",
+          initialSource: TableFrozenColumnTableEmpDataSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/employeeData.json",
+          bindingName: "empData",
+        },
+      ],
+    },
   },
   {
     id: "template-slot",
@@ -180,6 +462,22 @@ const tableLegacyItems = [
     description: tableTemplateSlotTableDescription,
     recipe: tableTemplateSlotTableRecipe,
     Component: TableTemplateSlotTable,
+    playground: {
+      initialSource: TableTemplateSlotTableSource,
+      fileName: "table-templateSlotTable.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "departmentData.json",
+          initialSource: TableTemplateSlotTableDeptDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptDataText",
+        },
+      ],
+    },
   },
   {
     id: "row-template",
@@ -187,6 +485,23 @@ const tableLegacyItems = [
     description: tableRowTemplateDescription,
     recipe: tableRowTemplateRecipe,
     Component: TableRowTemplate,
+    playground: {
+      initialSource: TableRowTemplateSource,
+      fileName: "table-rowTemplate.tsx",
+      runtimeBindings: {
+        IntlNumberConverter,
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "employeeData.json",
+          initialSource: TableRowTemplateEmpDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/employeeData.json",
+          bindingName: "empDataText",
+        },
+      ],
+    },
   },
   {
     id: "editable-array",
@@ -194,6 +509,33 @@ const tableLegacyItems = [
     description: tableEditableArrayTableDescription,
     recipe: tableEditableArrayTableRecipe,
     Component: TableEditableArrayTable,
+    playground: {
+      initialSource: TableEditableArrayTableSource,
+      fileName: "table-editableArrayTable.tsx",
+      runtimeBindings: {
+        Context,
+        IntlDateTimeConverter,
+        IntlNumberConverter,
+        ArrayDataProvider,
+        BufferingDataProvider,
+        NumberRangeValidator,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableEditableArrayTableDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "departmentData.json",
+          initialSource: TableEditableArrayTableDeptDataSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptData",
+        },
+      ],
+    },
   },
   {
     id: "editable-form",
@@ -201,6 +543,33 @@ const tableLegacyItems = [
     description: tableEditableFormTableDescription,
     recipe: tableEditableFormTableRecipe,
     Component: TableEditableFormTable,
+    playground: {
+      initialSource: TableEditableFormTableSource,
+      fileName: "table-editableFormTable.tsx",
+      runtimeBindings: {
+        Context,
+        IntlDateTimeConverter,
+        IntlNumberConverter,
+        KeySetImpl,
+        ArrayDataProvider,
+        BufferingDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableEditableFormTableDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "departmentData.json",
+          initialSource: TableEditableFormTableDeptDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptDataText",
+        },
+      ],
+    },
   },
   {
     id: "add-row",
@@ -208,6 +577,33 @@ const tableLegacyItems = [
     description: tableAddRowTableDescription,
     recipe: tableAddRowTableRecipe,
     Component: TableAddRowTable,
+    playground: {
+      initialSource: TableAddRowTableSource,
+      fileName: "table-addRowTable.tsx",
+      runtimeBindings: {
+        Context,
+        IntlDateTimeConverter,
+        IntlNumberConverter,
+        ArrayDataProvider,
+        BufferingDataProvider,
+        NumberRangeValidator,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableAddRowTableDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "departmentData.json",
+          initialSource: TableAddRowTableDeptDataSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptData",
+        },
+      ],
+    },
   },
   {
     id: "insert-row",
@@ -215,6 +611,34 @@ const tableLegacyItems = [
     description: tableInsertRowTableDescription,
     recipe: tableInsertRowTableRecipe,
     Component: TableInsertRowTable,
+    playground: {
+      initialSource: TableInsertRowTableSource,
+      fileName: "table-insertRowTable.tsx",
+      runtimeBindings: {
+        Context,
+        IntlDateTimeConverter,
+        IntlNumberConverter,
+        preact,
+        ArrayDataProvider,
+        BufferingDataProvider,
+        NumberRangeValidator,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableInsertRowTableDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "departmentData.json",
+          initialSource: TableInsertRowTableDeptDataSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptData",
+        },
+      ],
+    },
   },
   {
     id: "computed-field",
@@ -222,6 +646,31 @@ const tableLegacyItems = [
     description: tableComputedFieldDescription,
     recipe: tableComputedFieldRecipe,
     Component: TableComputedField,
+    playground: {
+      initialSource: TableComputedFieldSource,
+      fileName: "table-computedField.tsx",
+      runtimeBindings: {
+        Context,
+        IntlNumberConverter,
+        ArrayDataProvider,
+        BufferingDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableComputedFieldDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "employeeData.json",
+          initialSource: TableComputedFieldEmpDataSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/employeeData.json",
+          bindingName: "empData",
+        },
+      ],
+    },
   },
 
   {
@@ -230,6 +679,22 @@ const tableLegacyItems = [
     description: tableActionTableDescription,
     recipe: tableActionTableRecipe,
     Component: TableActionTable,
+    playground: {
+      initialSource: TableActionTableSource,
+      fileName: "table-actionTable.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "employeeData.json",
+          initialSource: TableActionTableEmpDataSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/employeeData.json",
+          bindingName: "empData",
+        },
+      ],
+    },
   },
   {
     id: "no-data",
@@ -237,6 +702,13 @@ const tableLegacyItems = [
     description: tableNoDataTableDescription,
     recipe: tableNoDataTableRecipe,
     Component: TableNoDataTable,
+    playground: {
+      initialSource: TableNoDataTableSource,
+      fileName: "table-noDataTable.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+    },
   },
   {
     id: "column-content-wrapping",
@@ -244,6 +716,13 @@ const tableLegacyItems = [
     description: tableColumnContentWrappingDescription,
     recipe: tableColumnContentWrappingRecipe,
     Component: TableColumnContentWrapping,
+    playground: {
+      initialSource: TableColumnContentWrappingSource,
+      fileName: "table-columnContentWrapping.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+    },
   },
   {
     id: "custom-context-menu",
@@ -251,6 +730,22 @@ const tableLegacyItems = [
     description: tableCustomContextMenuTableDescription,
     recipe: tableCustomContextMenuTableRecipe,
     Component: TableCustomContextMenuTable,
+    playground: {
+      initialSource: TableCustomContextMenuTableSource,
+      fileName: "table-customContextMenuTable.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "departmentData.json",
+          initialSource: TableCustomContextMenuTableDeptDataSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptData",
+        },
+      ],
+    },
   },
   {
     id: "grid-styling",
@@ -258,6 +753,22 @@ const tableLegacyItems = [
     description: tableGridStylingDescription,
     recipe: tableGridStylingRecipe,
     Component: TableGridStyling,
+    playground: {
+      initialSource: TableGridStylingSource,
+      fileName: "table-gridStyling.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "departmentData.json",
+          initialSource: TableGridStylingDeptDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptDataText",
+        },
+      ],
+    },
   },
   {
     id: "background-color",
@@ -265,6 +776,21 @@ const tableLegacyItems = [
     description: tableBackgroundColorDescription,
     recipe: tableBackgroundColorRecipe,
     Component: TableBackgroundColor,
+    playground: {
+      initialSource: TableBackgroundColorSource,
+      fileName: "table-backgroundColor.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableBackgroundColorDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+      ],
+    },
   },
   {
     id: "column-addition",
@@ -272,6 +798,22 @@ const tableLegacyItems = [
     description: tableColumnAdditionTableDescription,
     recipe: tableColumnAdditionTableRecipe,
     Component: TableColumnAdditionTable,
+    playground: {
+      initialSource: TableColumnAdditionTableSource,
+      fileName: "table-columnAdditionTable.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "departmentData.json",
+          initialSource: TableColumnAdditionTableDeptDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptDataText",
+        },
+      ],
+    },
   },
   {
     id: "drag-drop",
@@ -279,6 +821,29 @@ const tableLegacyItems = [
     description: tableDragDropTableDescription,
     recipe: tableDragDropTableRecipe,
     Component: TableDragDropTable,
+    playground: {
+      initialSource: TableDragDropTableSource,
+      fileName: "table-dragDropTable.tsx",
+      runtimeBindings: {
+        DemoDataTransfer: TableDragDropDataTransfer,
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableDragDropTableDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "resultData.json",
+          initialSource: TableDragDropTableResultDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/resultData.json",
+          bindingName: "resultDataText",
+        },
+      ],
+    },
   },
   {
     id: "drag-table-drop-chart",
@@ -286,6 +851,29 @@ const tableLegacyItems = [
     description: tableDragTableDropChartDescription,
     recipe: tableDragTableDropChartRecipe,
     Component: TableDragTableDropChart,
+    playground: {
+      initialSource: TableDragTableDropChartSource,
+      fileName: "table-dragTableDropChart.tsx",
+      runtimeBindings: {
+        DemoDataTransfer: ChartDragDropDataTransfer,
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableDragTableDropChartDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "resultData.json",
+          initialSource: TableDragTableDropChartResultDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/resultData.json",
+          bindingName: "resultDataText",
+        },
+      ],
+    },
   },
   
   {
@@ -294,6 +882,14 @@ const tableLegacyItems = [
     description: tableScrollToKeyTableDescription,
     recipe: tableScrollToKeyTableRecipe,
     Component: TableScrollToKeyTable,
+    playground: {
+      initialSource: TableScrollToKeyTableSource,
+      fileName: "table-scrollToKeyTable.tsx",
+      runtimeBindings: {
+        KeySetImpl,
+        ArrayDataProvider,
+      },
+    },
   },
   {
     id: "scroll-position",
@@ -301,6 +897,13 @@ const tableLegacyItems = [
     description: tableScrollPosTableDescription,
     recipe: tableScrollPosTableRecipe,
     Component: TableScrollPosTable,
+    playground: {
+      initialSource: TableScrollPosTableSource,
+      fileName: "table-scrollPosTable.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+    },
   },
   {
     id: "events",
@@ -308,6 +911,23 @@ const tableLegacyItems = [
     description: tableEventTableDescription,
     recipe: tableEventTableRecipe,
     Component: TableEventTable,
+    playground: {
+      initialSource: TableEventTableSource,
+      fileName: "table-eventTable.tsx",
+      runtimeBindings: {
+        KeySetImpl,
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "departmentData.json",
+          initialSource: TableEventTableDeptDataSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptData",
+        },
+      ],
+    },
   },
   {
     id: "detail-table",
@@ -315,6 +935,29 @@ const tableLegacyItems = [
     description: tableDetailTableDescription,
     recipe: tableDetailTableRecipe,
     Component: TableDetailTable,
+    playground: {
+      initialSource: TableDetailTableSource,
+      fileName: "table-detailTable.tsx",
+      runtimeBindings: {
+        ArrayTreeDataProvider,
+        FlattenedTreeDataProviderView,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableDetailTableDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "projectData.json",
+          initialSource: TableDetailTableJsonDataStrTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/detailTable/projectData.json",
+          bindingName: "jsonDataStrText",
+        },
+      ],
+    },
   },
   {
     id: "progressive-load",
@@ -322,6 +965,24 @@ const tableLegacyItems = [
     description: tableProgressiveLoadTableDescription,
     recipe: tableProgressiveLoadTableRecipe,
     Component: TableProgressiveLoadTable,
+    playground: {
+      initialSource: TableProgressiveLoadTableSource,
+      fileName: "table-progressiveLoadTable.tsx",
+      runtimeBindings: {
+        RESTDataProvider,
+        CollectionMockFetchServer,
+        DemoDelayingDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "employeeData.json",
+          initialSource: TableProgressiveLoadTableJsonDataStrSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/sharedData/employeeData.json",
+          bindingName: "jsonDataStr",
+        },
+      ],
+    },
   },
   {
     id: "performance",
@@ -329,6 +990,28 @@ const tableLegacyItems = [
     description: tablePerformanceTableDescription,
     recipe: tablePerformanceTableRecipe,
     Component: TablePerformanceTable,
+    playground: {
+      initialSource: TablePerformanceTableSource,
+      fileName: "table-performanceTable.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TablePerformanceTableDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "employeeData.json",
+          initialSource: TablePerformanceTableEmployeeDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/employeeData.json",
+          bindingName: "employeeDataText",
+        },
+      ],
+    },
   },
   {
     id: "custom-table",
@@ -336,6 +1019,29 @@ const tableLegacyItems = [
     description: tableCustomTableDescription,
     recipe: tableCustomTableRecipe,
     Component: TableCustomTable,
+    playground: {
+      initialSource: TableCustomTableSource,
+      fileName: "table-customTable.tsx",
+      runtimeBindings: {
+        IntlNumberConverter,
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableCustomTableDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "employeeData.json",
+          initialSource: TableCustomTableEmpDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/customTable/employeeData.json",
+          bindingName: "empDataText",
+        },
+      ],
+    },
   },
   {
     id: "column-renderer",
@@ -343,6 +1049,35 @@ const tableLegacyItems = [
     description: tableColumnRendererDescription,
     recipe: tableColumnRendererRecipe,
     Component: TableColumnRenderer,
+    playground: {
+      initialSource: TableColumnRendererSource,
+      fileName: "table-columnRenderer.tsx",
+      runtimeBindings: {
+        ArrayDataProvider,
+      },
+      supportingFiles: [
+        {
+          fileName: "demo.css",
+          initialSource: TableColumnRendererDemoCssSource,
+          language: "css",
+          importSpecifier: "css!./demo.css",
+        },
+        {
+          fileName: "departmentData.json",
+          initialSource: TableColumnRendererDeptDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/departmentData.json",
+          bindingName: "deptDataText",
+        },
+        {
+          fileName: "employeeData.json",
+          initialSource: TableColumnRendererEmpDataTextSource,
+          language: "json",
+          importSpecifier: "text!../../../data/cookbook/dataCollections/table/shared/employeeData.json",
+          bindingName: "empDataText",
+        },
+      ],
+    },
   }
 ];
 

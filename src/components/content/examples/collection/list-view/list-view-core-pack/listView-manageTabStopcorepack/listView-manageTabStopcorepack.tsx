@@ -97,7 +97,7 @@ const renderItem: import("ojs/ojvcomponent").TemplateSlot<ItemTemplateContext> =
   </oj-c-list-item-layout>
 );
 
-export const ListViewManageTabStopcorepack = () => {
+export default function ListViewManageTabStopcorepack() {
   const dataProvider = useMemo(
     () =>
       new MutableArrayDataProvider<Employee["id"], Employee>(EMPLOYEES, {
@@ -118,4 +118,4 @@ export const ListViewManageTabStopcorepack = () => {
   );
 };
 
-export default ListViewManageTabStopcorepack;
+export { ListViewManageTabStopcorepack };

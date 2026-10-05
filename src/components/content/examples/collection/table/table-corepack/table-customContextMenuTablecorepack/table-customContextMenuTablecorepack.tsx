@@ -1,77 +1,68 @@
-import 'ojs/ojmenu';
-import { ojMenu,ojMenuEventMap } from 'ojs/ojmenu';
-import 'ojs/ojoption';
-import 'ojs/ojtable';
-import { ojTable } from 'ojs/ojtable';
+import 'css!./demo.css';
+import 'oj-c/table';
 import 'preact';
 import type { ComponentProps } from 'preact';
-import { useMemo,useRef,useState } from 'preact/hooks';
+import { useMemo, useState } from 'preact/hooks';
 import * as deptData from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
 interface DepartmentData {
-    DepartmentId: number;
-    DepartmentName: string;
-    LocationId: number;
-    ManagerId: number;
+  DepartmentId: number;
+  DepartmentName: string;
+  LocationId: number;
+  ManagerId: number;
 }
 
-export const TableCustomContextMenuTablecorepack = () => {
-  const tableRef = useRef<ojTable<DepartmentData['DepartmentId'], DepartmentData> | null>(null);
+export default function TableCustomContextMenuTablecorepack() {
   const [selectedMenuItem, setSelectedMenuItem] = useState('None selected yet');
   const [launchedFrom, setLaunchedFrom] = useState('None launched yet');
-  const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
-      { headerText: 'Department Id', field: 'DepartmentId', id: 'depId' },
-      { headerText: 'Department Name', field: 'DepartmentName', id: 'depName' },
-      { headerText: 'Location Id', field: 'LocationId', id: 'locId' },
-      { headerText: 'Manager Id', field: 'ManagerId', id: 'manId' }
-  ], []);
-  const ojTableProps: Partial<ComponentProps<'oj-table'>> = {
-      accessibility: { rowHeader: 'depName' }
-  };
-
-  const deptArray: DepartmentData[] = JSON.parse(deptData as string) as DepartmentData[];
-  const dataprovider = useMemo(() => new ArrayDataProvider<DepartmentData['DepartmentId'], DepartmentData>(deptArray, {
-      keyAttributes: 'DepartmentId'
-  }), [deptArray]);
-
-  const myActionFunction = (event: ojMenuEventMap['ojMenuAction']) => {
-      setSelectedMenuItem(event.detail.selectedValue);
-  };
-
-  const myBeforeOpenFunction = (event: ojMenu.ojBeforeOpen) => {
-      const target = event.detail.originalEvent.target;
-      const context = tableRef.current?.getContextByNode(target);
-      if (context != null) {
-          if (context.subId === 'oj-table-header') {
-              setLaunchedFrom('Header: [' + context.index + ']');
-          }
-          else if (context.subId === 'oj-table-cell') {
-              setLaunchedFrom('Cell: [' + context.rowIndex + ', ' + context.columnIndex + ']');
-          }
-      }
+  const columns = useMemo<NonNullable<ComponentProps<'oj-c-table'>['columns']>>(() => ({
+    depId: { headerText: 'Department Id', field: 'DepartmentId' },
+    depName: { headerText: 'Department Name', field: 'DepartmentName' },
+    locId: { headerText: 'Location Id', field: 'LocationId' },
+    manId: { headerText: 'Manager Id', field: 'ManagerId' }
+  }), []);
+  const departments = useMemo<DepartmentData[]>(() => JSON.parse(deptData as string) as DepartmentData[], []);
+  const dataProvider = useMemo(() => new ArrayDataProvider<number, DepartmentData>(departments, {
+    keyAttributes: 'DepartmentId'
+  }), [departments]);
+  const contextMenuConfig: NonNullable<ComponentProps<'oj-c-table'>['contextMenuConfig']> = {
+    accessibleLabel: 'Departments actions',
+    items: (context) => {
+      setLaunchedFrom(context.type === 'data'
+        ? `Cell: [${context.rowKey}, ${context.columnKey}]`
+        : `Header: [${context.columnKey}]`);
+      return [
+        { label: 'My First Item', key: 'first', onAction: () => setSelectedMenuItem('My First Item') },
+        ...(context.hasDefaultMenuItems ? [
+          { type: 'separator' as const },
+          'defaultMenuItems' as const,
+          { type: 'separator' as const }
+        ] : [{ type: 'separator' as const }]),
+        { label: 'My Other Item', key: 'other', onAction: () => setSelectedMenuItem('My Other Item') }
+      ];
+    }
   };
 
   return (
-      <div id="tableWrapper">
-            <oj-table ref={tableRef} id="table" aria-label="Departments Table" data={dataprovider} columns={columns} class="demo-table-container" {...ojTableProps}>
-                    <oj-menu slot="contextMenu" onojMenuAction={myActionFunction} onojBeforeOpen={myBeforeOpenFunction} aria-label="Employee Edit">
-                              <oj-option value="My First Item">My First Item</oj-option>
-                              <oj-option value="Sort Ascending" data-oj-command="oj-table-sortAsc" />
-                              <oj-option value="Sort Descending" data-oj-command="oj-table-sortDsc" />
-                              <oj-option value="My Other Item">My Other Item</oj-option>
-                          </oj-menu>
-                </oj-table>
-            <p class="bold">
-                    Last selected menu item:
-                    <span id="results1">{selectedMenuItem}</span>
-                </p>
-            <p class="bold">
-                    Launched from:
-                    <span id="results">{launchedFrom}</span>
-                </p>
-        </div>
-    );
-};
+    <div id="tableWrapper">
+      <oj-c-table
+        id="table"
+        aria-label="Departments Table"
+        data={dataProvider}
+        columns={columns}
+        row={{ accessibleRowHeader: 'depName' }}
+        contextMenuConfig={contextMenuConfig}
+        class="demo-table-container"
+      />
+      <p class="bold">
+        Last selected menu item: <span id="results1">{selectedMenuItem}</span>
+      </p>
+      <p class="bold">
+        Launched from: <span id="results">{launchedFrom}</span>
+      </p>
+    </div>
+  );
+}
 
-export default TableCustomContextMenuTablecorepack;
+export { TableCustomContextMenuTablecorepack };

@@ -11,6 +11,8 @@ import { useMemo,useRef,useState } from 'preact/hooks';
 import '../../../../../../jet-composites/demo-profile-card-layout/loader';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
+
+export { ListViewCardLayoutHierListView };
 interface Contact {
     id: number;
     name: string;
@@ -27,7 +29,7 @@ interface Data {
 type PropertyChangedEvent<T> = CustomEvent<{ value: T }>;
 type ActiveLayout = 'card' | 'list';
 
-export const ListViewCardLayoutHierListView = () => {
+export default function ListViewCardLayoutHierListView() {
   const listViewRef = useRef<HTMLElement | null>(null);
   const [fullWidthMode, setFullWidthMode] = useState(false);
   const [activeLayout, setActiveLayout] = useState<ActiveLayout>('card');
@@ -174,5 +176,3 @@ export const ListViewCardLayoutHierListView = () => {
         </div>
     );
 };
-
-export default ListViewCardLayoutHierListView;

@@ -35,7 +35,7 @@ type NumericInputValue = number | null | undefined;
 type FirstSelectedRow = ItemContext<DepartmentData['DepartmentId'], DepartmentData> | null;
 type DemoMessage = ojMessage.Message;
 
-export const TableObservableArrayTable = () => {
+export default function TableObservableArrayTable() {
   const tableRef = useRef<ojTable<DepartmentData['DepartmentId'], DepartmentData> | null>(null);
   const bufferContentRef = useRef<ojTextArea | null>(null);
   const noDataRef = useRef<HTMLDivElement | null>(null);
@@ -348,4 +348,4 @@ export const TableObservableArrayTable = () => {
     );
 };
 
-export default TableObservableArrayTable;
+export { TableObservableArrayTable };

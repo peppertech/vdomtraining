@@ -2,12 +2,11 @@ import 'preact';
 
 const recipeHtmlText = String.raw`<ol>
   <li>
-    Construct a MutableArrayDataProvider using the JavaScript array as shown. Make sure to specify the
+    Construct an ArrayDataProvider using the JavaScript array as shown. Make sure to specify the
     "keyAttributes" property of the "options" parameter.
   </li>
   <li>
-    Use the JET binding to create a JET Table which uses the MutableArrayDataProvider you created
-    previously as input.
+    Pass that data provider and a keyed columns record to each <code>oj-c-table</code>.
   </li>
   <li>
     If an application uses any background color class demonstrated in the

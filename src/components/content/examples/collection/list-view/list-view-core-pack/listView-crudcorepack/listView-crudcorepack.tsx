@@ -40,7 +40,7 @@ const getSelectedIds = (
   selectedItems: ImmutableKeySet<GroceryItem["id"]>
 ): GroceryItem["id"][] => items.filter(({ id }) => selectedItems.has(id)).map(({ id }) => id);
 
-export const ListViewCrudcorepack = () => {
+export default function ListViewCrudcorepack() {
   const [items, setItems] = useState(INITIAL_ITEMS);
   const [currentItem, setCurrentItem] = useState("");
   const [currentItemId, setCurrentItemId] = useState<GroceryItem["id"] | null>(null);
@@ -171,4 +171,4 @@ export const ListViewCrudcorepack = () => {
   );
 };
 
-export default ListViewCrudcorepack;
+export { ListViewCrudcorepack };

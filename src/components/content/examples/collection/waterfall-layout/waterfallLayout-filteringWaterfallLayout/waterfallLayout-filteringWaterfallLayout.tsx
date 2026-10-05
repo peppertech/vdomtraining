@@ -82,7 +82,7 @@ const renderFilteringWaterfallItem = (item: WaterfallItemTemplateContext) => {
   );
 };
 
-export const WaterfallLayoutFilteringWaterfallLayout = () => {
+export default function WaterfallLayoutFilteringWaterfallLayout() {
   const [filterValue, setFilterValue] = useState<FilterValue>('all');
   const baseDataProvider = useMemo(
     () => new ArrayDataProvider<WaterfallCardData['id'], WaterfallCardData>(filteringWaterfallData, { keyAttributes: 'id' }),
@@ -125,4 +125,4 @@ export const WaterfallLayoutFilteringWaterfallLayout = () => {
   );
 };
 
-export default WaterfallLayoutFilteringWaterfallLayout;
+export { WaterfallLayoutFilteringWaterfallLayout };

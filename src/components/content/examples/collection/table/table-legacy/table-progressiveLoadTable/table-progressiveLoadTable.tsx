@@ -24,7 +24,7 @@ type DelayedEmployeeDataProvider = DemoDelayingDataProvider<Key, Employee>;
 
 type NumberChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0];
 
-export const TableProgressiveLoadTable = () => {
+export default function TableProgressiveLoadTable() {
   const [fetchDelay, setFetchDelay] = useState(2000);
   const [appliedFetchDelay, setAppliedFetchDelay] = useState(2000);
   const [dataProvider, setDataProvider] = useState<DelayedEmployeeDataProvider | undefined>(undefined);
@@ -97,4 +97,4 @@ export const TableProgressiveLoadTable = () => {
     );
 };
 
-export default TableProgressiveLoadTable;
+export { TableProgressiveLoadTable };

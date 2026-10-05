@@ -67,7 +67,7 @@ const getSelectionInfo = (selected: KeySet<string>) => {
 const isSelectionEmpty = (selected: KeySet<string>) =>
   !selected.isAddAll() && Array.from((selected as KeySetImpl<string>).values()).length === 0;
 
-export const TreeViewSelection = () => {
+export default function TreeViewSelection() {
   const data = useMemo(
     () =>
       new ArrayTreeDataProvider(jsonData, {
@@ -137,4 +137,4 @@ export const TreeViewSelection = () => {
   );
 };
 
-export default TreeViewSelection;
+export { TreeViewSelection };

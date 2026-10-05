@@ -15,7 +15,7 @@ interface DepartmentData {
   Rating: number;
 }
 
-export const TableTemplateSlotTable = () => {
+export default function TableTemplateSlotTable() {
   const departments = useMemo<DepartmentData[]>(() => JSON.parse(deptDataText as string) as DepartmentData[], []);
   const totalEmployees = useMemo(
     () => departments.reduce((sum, department) => sum + department.EmployeeCount, 0),
@@ -85,4 +85,4 @@ export const TableTemplateSlotTable = () => {
   );
 };
 
-export default TableTemplateSlotTable;
+export { TableTemplateSlotTable };

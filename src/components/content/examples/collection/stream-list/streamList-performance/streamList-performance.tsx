@@ -58,7 +58,7 @@ const generateTreeData = (
     };
   });
 
-export const StreamListPerformance = () => {
+export default function StreamListPerformance() {
   const streamListRef = useRef<StreamListElement<string, TreeItem>>(null);
   const [numItems, setNumItems] = useState<number>(100);
   const [numChild, setNumChild] = useState<number>(5);
@@ -260,4 +260,4 @@ export const StreamListPerformance = () => {
   );
 };
 
-export default StreamListPerformance;
+export { StreamListPerformance };

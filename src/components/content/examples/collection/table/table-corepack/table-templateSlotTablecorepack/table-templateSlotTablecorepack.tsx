@@ -1,5 +1,7 @@
+import 'css!./demo.css';
+import 'oj-c/table';
+import type { CellTemplateContext, HeaderTemplateContext } from 'oj-c/table';
 import 'ojs/ojgauge';
-import 'ojs/ojtable';
 import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
@@ -15,74 +17,53 @@ interface DepartmentData {
   Rating: number;
 }
 
-export const TableTemplateSlotTablecorepack = () => {
+export default function TableTemplateSlotTablecorepack() {
   const departments = useMemo<DepartmentData[]>(() => JSON.parse(deptDataText as string) as DepartmentData[], []);
   const totalEmployees = useMemo(
     () => departments.reduce((sum, department) => sum + department.EmployeeCount, 0),
     [departments]
   );
-  const ojTableProps: Partial<ComponentProps<'oj-table'>> = {
-    accessibility: { rowHeader: 'depName' },
-    columnsDefault: { sortable: 'disabled' }
-  };
-  const dataprovider = useMemo(
+  const columns = useMemo<NonNullable<ComponentProps<'oj-c-table'>['columns']>>(() => ({
+    depId: { headerText: 'Department Id', field: 'DepartmentId', minWidth: 144 },
+    depName: { headerText: 'Department Name', field: 'DepartmentName', minWidth: 160 },
+    locId: { headerText: 'Location Id', field: 'LocationId', minWidth: 128 },
+    manId: { headerText: 'Manager Id', field: 'ManagerId', minWidth: 128 },
+    count: { headerText: 'Employee Count', field: 'EmployeeCount', footerTemplate: 'totalFooterTemplate', minWidth: 160 },
+    rating: { headerText: 'Rating', field: 'Rating', template: 'ratingCellTemplate', minWidth: 128 }
+  }), []);
+  const dataProvider = useMemo(
     () => new ArrayDataProvider<number, DepartmentData>(departments, { keyAttributes: 'DepartmentId' }),
     [departments]
   );
-  const columnArray = useMemo(
-    () => [
-      { headerText: 'Department Id', field: 'DepartmentId', id: 'depId', minWidth: '9rem' },
-      { headerText: 'Department Name', field: 'DepartmentName', id: 'depName', minWidth: '10rem' },
-      { headerText: 'Location Id', field: 'LocationId', id: 'locId', minWidth: '8rem' },
-      { headerText: 'Manager Id', field: 'ManagerId', id: 'manId', minWidth: '8rem' },
-      {
-        headerText: 'Employee Count',
-        field: 'EmployeeCount',
-        footerTemplate: 'totalFooterTemplate',
-        id: 'count',
-        minWidth: '10rem'
-      },
-      {
-        headerText: 'Rating',
-        field: 'Rating',
-        template: 'ratingCellTemplate',
-        id: 'rating',
-        minWidth: '8rem'
-      }
-    ],
-    []
-  );
 
   return (
-    <oj-table id="table" aria-label="Departments Table" data={dataprovider} columns={columnArray} class="demo-table-container" {...ojTableProps}>
-      <template
-        slot="cellTemplate"
-        render={(cell: { data: unknown }) => (
-          <>
-            {cell.data}
-          </>
-        )}
-      />
-      <template
-        slot="ratingCellTemplate"
-        render={(cell: { data: number }) => (
-          <oj-rating-gauge value={cell.data} readonly class="demo-table-rating-cell" aria-label="rating gauge" />
-        )}
-      />
-      <template
-        slot="headerTemplate"
-        render={(header: { data: string }) => (
-          <div class="demo-header">{header.data}</div>
-        )}
-      />
-      <template
-        slot="totalFooterTemplate"
-        render={() => (
-          <div id="table:emp_total">{totalEmployees}</div>
-        )}
-      />
-    </oj-table>
+    <oj-c-table
+      id="table"
+      aria-label="Departments Table"
+      data={dataProvider}
+      columns={columns}
+      row={{ accessibleRowHeader: 'depName' }}
+      class="demo-table-container"
+    >
+      <template slot="cellTemplate" render={(cell: CellTemplateContext<number, DepartmentData, string>) => (
+        <>{cell.data}</>
+      )} />
+      <template slot="ratingCellTemplate" render={(cell: CellTemplateContext<number, DepartmentData, string>) => (
+        <oj-rating-gauge
+          value={typeof cell.data === 'number' ? cell.data : 0}
+          readonly
+          class="demo-table-rating-cell"
+          aria-label="rating gauge"
+        />
+      )} />
+      <template slot="headerTemplate" render={(header: HeaderTemplateContext<string>) => (
+        <div class="demo-header">{header.headerText}</div>
+      )} />
+      <template slot="totalFooterTemplate" render={() => (
+        <div id="table:emp_total">{totalEmployees}</div>
+      )} />
+    </oj-c-table>
   );
-};
+}
 
-export default TableTemplateSlotTablecorepack;
+export { TableTemplateSlotTablecorepack };

@@ -6,12 +6,14 @@ import 'preact';
 import { useMemo,useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewNoDataListView };
 interface Data {
     id: string;
     name: string;
 }
 
-export const ListViewNoDataListView = () => {
+export default function ListViewNoDataListView() {
   const [data, setData] = useState<Data[]>([]);
 
   const dataProvider = useMemo(() => new ArrayDataProvider<Data['id'], Data>(data, {
@@ -79,5 +81,3 @@ export const ListViewNoDataListView = () => {
       </div>
     );
 };
-
-export default ListViewNoDataListView;

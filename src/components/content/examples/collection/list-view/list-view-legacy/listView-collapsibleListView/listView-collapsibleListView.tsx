@@ -9,6 +9,8 @@ import type { ComponentProps } from 'preact';
 import { useMemo,useState } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
+
+export { ListViewCollapsibleListView };
 type EmployeeData = {
   id: number;
   name: string;
@@ -28,7 +30,7 @@ type ItemTemplateContext = {
   data: GroupData | EmployeeData;
 };
 
-export const ListViewCollapsibleListView = () => {
+export default function ListViewCollapsibleListView() {
   const [expanded, setExpanded] = useState<Expanded>(new KeySetImpl(['a', 'c']));
 
   const data = useMemo<GroupData[]>(() => [
@@ -147,5 +149,3 @@ export const ListViewCollapsibleListView = () => {
         </div>
     );
 };
-
-export default ListViewCollapsibleListView;

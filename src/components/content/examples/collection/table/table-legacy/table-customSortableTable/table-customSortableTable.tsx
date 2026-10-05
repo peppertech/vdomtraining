@@ -16,7 +16,7 @@ const compareDates = (left: string, right: string): number => {
     }
     return new Date(left).getTime() < new Date(right).getTime() ? -1 : 1;
 };
-export const TableCustomSortableTable = () => {
+export default function TableCustomSortableTable() {
     const departments = useMemo(() => JSON.parse(departmentDataText as string) as Department[], []);
     const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
         { headerText: 'Department Id', field: 'DepartmentId', id: 'depId', minWidth: '10rem' },
@@ -37,4 +37,4 @@ export const TableCustomSortableTable = () => {
     };
     return (<oj-table id="table" aria-label="Departments Table" data={dataProvider} layout="fixed" columnsDefault={columnsDefault} columns={columns} class="demo-table-container" {...ojTableProps}/>);
 };
-export default TableCustomSortableTable;
+export { TableCustomSortableTable };

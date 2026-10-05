@@ -5,7 +5,7 @@ import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import * as departmentDataText from 'text!../../../data/cookbook/dataCollections/table/shared/departmentData.json';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
-export const TableBasicTable = () => {
+export default function TableBasicTable() {
     type Department = {
         DepartmentId: number;
         DepartmentName: string;
@@ -29,4 +29,3 @@ export const TableBasicTable = () => {
       <oj-table id="basicTable" aria-label="Departments Table" data={dataProvider} columns={columns} class="demo-table-container" {...ojTableProps}/>
     </div>);
 };
-export default TableBasicTable;

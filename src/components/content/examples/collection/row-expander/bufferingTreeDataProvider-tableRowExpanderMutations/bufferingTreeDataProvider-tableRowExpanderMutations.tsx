@@ -103,7 +103,7 @@ const applyEdit = (
   return nextTasks;
 };
 
-export const BufferingTreeDataProviderTableRowExpanderMutations = () => {
+export default function BufferingTreeDataProviderTableRowExpanderMutations() {
   const dataRef = useRef<Task[]>(cloneTasks(initialTreeData));
   const newTaskCounterRef = useRef(0);
   const [firstSelected, setFirstSelected] = useState<FirstSelectedRow>(undefined);
@@ -373,4 +373,4 @@ export const BufferingTreeDataProviderTableRowExpanderMutations = () => {
   );
 };
 
-export default BufferingTreeDataProviderTableRowExpanderMutations;
+export { BufferingTreeDataProviderTableRowExpanderMutations };

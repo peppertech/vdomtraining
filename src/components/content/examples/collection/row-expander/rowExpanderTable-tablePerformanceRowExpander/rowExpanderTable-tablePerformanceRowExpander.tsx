@@ -28,7 +28,7 @@ type ButtonsetChangedEvent = Parameters<NonNullable<ComponentProps<'oj-buttonset
 type TableColumns = ComponentProps<'oj-table'>['columns'];
 type ItemRowTemplateContext = ojTable.RowTemplateContext<Item['id'], Item>;
 
-export const RowExpanderTableTablePerformanceRowExpander = () => {
+export default function RowExpanderTableTablePerformanceRowExpander() {
   const [scrollPolicyValue, setScrollPolicyValue] = useState<ScrollPolicyValue>('loadMoreOnScroll');
   const [countPerLevel, setCountPerLevel] = useState(40);
   const [numLevels, setNumLevels] = useState(3);
@@ -266,4 +266,4 @@ export const RowExpanderTableTablePerformanceRowExpander = () => {
   );
 };
 
-export default RowExpanderTableTablePerformanceRowExpander;
+export { RowExpanderTableTablePerformanceRowExpander };

@@ -43,7 +43,7 @@ const generateColumns = (count: number): TableColumns =>
     resizable: 'enabled'
   }));
 
-export const TableColumnResizing = () => {
+export default function TableColumnResizing() {
   const [columnCount, setColumnCount] = useState(10);
   const [columnsOption, setColumnsOption] = useState<TableColumns>(() => generateColumns(10));
   const [selectedBehavior, setSelectedBehavior] = useState<ResizeBehavior>('redistribute');
@@ -121,4 +121,4 @@ export const TableColumnResizing = () => {
   );
 };
 
-export default TableColumnResizing;
+export { TableColumnResizing };

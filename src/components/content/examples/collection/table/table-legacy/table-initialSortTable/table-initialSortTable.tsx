@@ -13,7 +13,7 @@ interface EmployeeData {
     ManagerId: number;
 }
 
-export const TableInitialSortTable = () => {
+export default function TableInitialSortTable() {
   const deptArray: Array<EmployeeData> = JSON.parse(deptData);
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Department Id', field: 'DepartmentId', id: 'depId' },
@@ -34,4 +34,4 @@ export const TableInitialSortTable = () => {
     );
 };
 
-export default TableInitialSortTable;
+export { TableInitialSortTable };

@@ -1,5 +1,6 @@
 import 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
+import { rowExpanderPlaygrounds } from "./playgrounds";
 import { BufferingTreeDataProviderTableRowExpanderMutations } from "./bufferingTreeDataProvider-tableRowExpanderMutations/bufferingTreeDataProvider-tableRowExpanderMutations";
 import { bufferingTreeDataProviderTableRowExpanderMutationsDescription } from "./bufferingTreeDataProvider-tableRowExpanderMutations/description";
 import { bufferingTreeDataProviderTableRowExpanderMutationsRecipe } from "./bufferingTreeDataProvider-tableRowExpanderMutations/recipe";
@@ -26,6 +27,7 @@ const rowExpanderItems = [
     description: rowExpanderTableTableRowExpanderDescription,
     recipe: rowExpanderTableTableRowExpanderRecipe,
     Component: RowExpanderTableTableRowExpander,
+    playground: rowExpanderPlaygrounds["rowExpanderTable-tableRowExpander"],
   },
   {
     id: "table-collection-row-expander",
@@ -33,6 +35,7 @@ const rowExpanderItems = [
     description: rowExpanderTableTableCollectionRowExpanderDescription,
     recipe: rowExpanderTableTableCollectionRowExpanderRecipe,
     Component: RowExpanderTableTableCollectionRowExpander,
+    playground: rowExpanderPlaygrounds["rowExpanderTable-tableCollectionRowExpander"],
   },
   {
     id: "table-animation-row-expander",
@@ -40,6 +43,7 @@ const rowExpanderItems = [
     description: rowExpanderTableTableAnimationRowExpanderDescription,
     recipe: rowExpanderTableTableAnimationRowExpanderRecipe,
     Component: RowExpanderTableTableAnimationRowExpander,
+    playground: rowExpanderPlaygrounds["rowExpanderTable-tableAnimationRowExpander"],
   },
   {
     id: "expanded-row-expander",
@@ -47,6 +51,7 @@ const rowExpanderItems = [
     description: rowExpanderTableExpandedRowExpanderDescription,
     recipe: rowExpanderTableExpandedRowExpanderRecipe,
     Component: RowExpanderTableExpandedRowExpander,
+    playground: rowExpanderPlaygrounds["rowExpanderTable-expandedRowExpander"],
   },
   {
     id: "table-performance-row-expander",
@@ -54,6 +59,7 @@ const rowExpanderItems = [
     description: rowExpanderTableTablePerformanceRowExpanderDescription,
     recipe: rowExpanderTableTablePerformanceRowExpanderRecipe,
     Component: RowExpanderTableTablePerformanceRowExpander,
+    playground: rowExpanderPlaygrounds["rowExpanderTable-tablePerformanceRowExpander"],
   },
   {
     id: "table-row-expander-mutations",
@@ -61,6 +67,7 @@ const rowExpanderItems = [
     description: bufferingTreeDataProviderTableRowExpanderMutationsDescription,
     recipe: bufferingTreeDataProviderTableRowExpanderMutationsRecipe,
     Component: BufferingTreeDataProviderTableRowExpanderMutations,
+    playground: rowExpanderPlaygrounds["bufferingTreeDataProvider-tableRowExpanderMutations"],
   }
 ];
 

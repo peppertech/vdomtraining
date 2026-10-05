@@ -5,6 +5,8 @@ import 'preact';
 import { useMemo } from 'preact/hooks';
 import DemoSmartSuggestionsDataProvider = require('../../../../../../dataProvider/DemoSmartSuggestionsDataProvider');
 
+
+export { ListViewSmartSuggestionsListView };
 interface Employee {
     id: string;
     name: string;
@@ -19,7 +21,7 @@ const generateData = (count: number) => {
   return data;
 };
 
-export const ListViewSmartSuggestionsListView = () => {
+export default function ListViewSmartSuggestionsListView() {
   const data: Employee[] = useMemo(() => generateData(30), []);
   const dataProvider = useMemo(() => new DemoSmartSuggestionsDataProvider(data, 'id', [
       'e5',
@@ -42,5 +44,3 @@ export const ListViewSmartSuggestionsListView = () => {
         </oj-list-view>
     );
 };
-
-export default ListViewSmartSuggestionsListView;

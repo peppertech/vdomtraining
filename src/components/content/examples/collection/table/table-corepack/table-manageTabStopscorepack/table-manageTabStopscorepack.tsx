@@ -62,7 +62,7 @@ const renderRatingTemplate: import("ojs/ojvcomponent").TemplateSlot<RatingTempla
   return <oj-c-rating-gauge size="sm" value={rating} readonly aria-label={`${rating} out of 5`} />;
 };
 
-export const TableManageTabStopscorepack = () => {
+export default function TableManageTabStopscorepack() {
   const employees = useMemo(() => JSON.parse(empData) as Employee[], []);
   const dataProvider = useMemo(
     () =>
@@ -87,6 +87,6 @@ export const TableManageTabStopscorepack = () => {
       <template slot="rating" render={renderRatingTemplate} />
     </oj-c-table>
   );
-};
+}
 
-export default TableManageTabStopscorepack;
+export { TableManageTabStopscorepack };

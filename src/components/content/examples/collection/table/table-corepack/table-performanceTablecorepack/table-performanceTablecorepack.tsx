@@ -94,7 +94,7 @@ const createRows = (rowCount: number): Employee[] =>
     };
   });
 
-export const TablePerformanceTablecorepack = () => {
+export default function TablePerformanceTablecorepack() {
   const [rowInputValue, setRowInputValue] = useState(defaultRowCount);
   const [columnInputValue, setColumnInputValue] = useState(defaultColumnCount);
   const [rowCount, setRowCount] = useState(defaultRowCount);
@@ -184,6 +184,6 @@ export const TablePerformanceTablecorepack = () => {
       />
     </div>
   );
-};
+}
 
-export default TablePerformanceTablecorepack;
+export { TablePerformanceTablecorepack };

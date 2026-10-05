@@ -1,5 +1,6 @@
 import 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
+import { waterfallPlaygrounds } from "./playgrounds";
 import { waterfallLayoutBasicWaterfallLayoutDescription } from "./waterfallLayout-basicWaterfallLayout/description";
 import { waterfallLayoutBasicWaterfallLayoutRecipe } from "./waterfallLayout-basicWaterfallLayout/recipe";
 import { WaterfallLayoutBasicWaterfallLayout } from "./waterfallLayout-basicWaterfallLayout/waterfallLayout-basicWaterfallLayout";
@@ -20,6 +21,7 @@ const waterfallLayoutItems = [
     description: waterfallLayoutBasicWaterfallLayoutDescription,
     recipe: waterfallLayoutBasicWaterfallLayoutRecipe,
     Component: WaterfallLayoutBasicWaterfallLayout,
+    playground: waterfallPlaygrounds["waterfallLayout-basicWaterfallLayout"],
   },
   {
     id: "filtering",
@@ -27,6 +29,7 @@ const waterfallLayoutItems = [
     description: waterfallLayoutFilteringWaterfallLayoutDescription,
     recipe: waterfallLayoutFilteringWaterfallLayoutRecipe,
     Component: WaterfallLayoutFilteringWaterfallLayout,
+    playground: waterfallPlaygrounds["waterfallLayout-filteringWaterfallLayout"],
   },
   {
     id: "progressive-load",
@@ -34,6 +37,7 @@ const waterfallLayoutItems = [
     description: waterfallLayoutProgressiveLoadWaterfallLayoutDescription,
     recipe: waterfallLayoutProgressiveLoadWaterfallLayoutRecipe,
     Component: WaterfallLayoutProgressiveLoadWaterfallLayout,
+    playground: waterfallPlaygrounds["waterfallLayout-progressiveLoadWaterfallLayout"],
   },
   {
     id: "performance",
@@ -41,6 +45,7 @@ const waterfallLayoutItems = [
     description: waterfallLayoutPerformanceWaterfallLayoutDescription,
     recipe: waterfallLayoutPerformanceWaterfallLayoutRecipe,
     Component: WaterfallLayoutPerformanceWaterfallLayout,
+    playground: waterfallPlaygrounds["waterfallLayout-performanceWaterfallLayout"],
   },
 ];
 

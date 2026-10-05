@@ -26,7 +26,7 @@ type SelectorSelectedKeysChangedEvent =
 
 const createEmptySelection = () => new KeySetImpl<TreeNode['id']>();
 
-export const SelectorCheckboxLeafOnlyTreeView = () => {
+export default function SelectorCheckboxLeafOnlyTreeView() {
   const [selectedItems, setSelectedItems] =
     useState<TreeNodeKeySet>(createEmptySelection());
   const expanded = useMemo(
@@ -134,4 +134,4 @@ export const SelectorCheckboxLeafOnlyTreeView = () => {
   );
 };
 
-export default SelectorCheckboxLeafOnlyTreeView;
+export { SelectorCheckboxLeafOnlyTreeView };

@@ -8,6 +8,8 @@ import type { ComponentProps } from 'preact';
 import { useMemo,useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewArrayListView };
 type EmployeeData = {
   id: number;
   name: string;
@@ -33,7 +35,7 @@ const data: EmployeeData[] = [
 
 const getDisplayValue = (set: KeySetImpl<number>) => JSON.stringify(Array.from(set.values()));
 
-export const ListViewArrayListView = () => {
+export default function ListViewArrayListView() {
   const [selectedSelectionRequired, setSelectedSelectionRequired] = useState(false);
   const [selectedItems, setSelectedItems] = useState<KeySetImpl<number>>(new KeySetImpl<number>());
   const [firstSelectedItem, setFirstSelectedItem] = useState<unknown>(null);
@@ -103,5 +105,3 @@ export const ListViewArrayListView = () => {
     </div>
   );
 };
-
-export default ListViewArrayListView;

@@ -98,7 +98,7 @@ const createItemTemplateRenderer = (disabledKey: string) => (row: TreeViewItemTe
   </span>
 ];
 
-export const TreeViewDndReorder = () => {
+export default function TreeViewDndReorder() {
   const treeViewRef = useRef<ojTreeView<string, TreeNode> | null>(null);
   const clipboardRef = useRef(new DemoDataTransfer());
   const [items, setItems] = useState<TreeNode[]>(treeData);
@@ -268,4 +268,4 @@ export const TreeViewDndReorder = () => {
   );
 };
 
-export default TreeViewDndReorder;
+export { TreeViewDndReorder };

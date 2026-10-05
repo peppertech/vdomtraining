@@ -41,10 +41,7 @@ const recipeHtmlText = String.raw`<ul>
     slot.
   </li>
   <li>
-    Set the
-    <code class="prettyprint">data-oj-as</code>
-    attribute on the template element to set the alias for the cell context for individual
-    templates.
+    Use a named <code class="prettyprint">footerTemplate</code> on the employee-count column to display the total in its footer.
   </li>
 </ul>`;
 

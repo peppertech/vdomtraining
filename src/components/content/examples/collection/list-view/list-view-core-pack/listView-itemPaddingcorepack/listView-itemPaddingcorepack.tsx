@@ -68,7 +68,7 @@ const renderItem: import("ojs/ojvcomponent").TemplateSlot<ItemTemplateContext> =
   </div>
 );
 
-export const ListViewItemPaddingcorepack = () => {
+export default function ListViewItemPaddingcorepack() {
   const [paddingEnabled, setPaddingEnabled] = useState(true);
   const dataProvider = useMemo(
     () =>
@@ -105,4 +105,4 @@ export const ListViewItemPaddingcorepack = () => {
   );
 };
 
-export default ListViewItemPaddingcorepack;
+export { ListViewItemPaddingcorepack };

@@ -19,6 +19,8 @@ import type { ComponentProps } from 'preact';
 import { useCallback,useMemo,useRef,useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewOverviewListView };
 type Task = {
   taskId: number;
   taskName: string;
@@ -615,7 +617,7 @@ const renderNoData = () => (
   </div>
 );
 
-export const ListViewOverviewListView = () => {
+export default function ListViewOverviewListView() {
   const [tasks, setTasks] = useState<Task[]>(() => [...INITIAL_TASKS]);
   const [mode, setMode] = useState<ListMode>('view');
   const [panelMode, setPanelMode] = useState<PanelMode>(null);
@@ -1084,5 +1086,3 @@ export const ListViewOverviewListView = () => {
     </div>
   );
 };
-
-export default ListViewOverviewListView;

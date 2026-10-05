@@ -18,7 +18,7 @@ type ItemTemplateContext = {
   };
 };
 
-export const ListViewGridlinescorepack = () => {
+export default function ListViewGridlinescorepack() {
   const data = useMemo<PersonData[]>(
     () => [
       {
@@ -105,4 +105,4 @@ export const ListViewGridlinescorepack = () => {
   );
 };
 
-export default ListViewGridlinescorepack;
+export { ListViewGridlinescorepack };

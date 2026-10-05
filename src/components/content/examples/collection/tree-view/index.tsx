@@ -1,5 +1,6 @@
 import 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
+import { treeViewPlaygrounds } from "./playgrounds";
 import { treeViewContextMenuDescription } from "./treeView-contextMenu/description";
 import { treeViewContextMenuRecipe } from "./treeView-contextMenu/recipe";
 import { TreeViewContextMenu } from "./treeView-contextMenu/treeView-contextMenu";
@@ -47,6 +48,7 @@ const treeViewItems = [
     description: treeViewJsonDescription,
     recipe: treeViewJsonRecipe,
     Component: TreeViewJson,
+    playground: treeViewPlaygrounds["treeView-json"],
   },
   {
     id: "selection",
@@ -54,6 +56,7 @@ const treeViewItems = [
     description: treeViewSelectionDescription,
     recipe: treeViewSelectionRecipe,
     Component: TreeViewSelection,
+    playground: treeViewPlaygrounds["treeView-selection"],
   },
    {
     id: "expansion",
@@ -61,6 +64,7 @@ const treeViewItems = [
     description: treeViewExpansionDescription,
     recipe: treeViewExpansionRecipe,
     Component: TreeViewExpansion,
+    playground: treeViewPlaygrounds["treeView-expansion"],
   },
   {
     id: "context-menu",
@@ -68,6 +72,7 @@ const treeViewItems = [
     description: treeViewContextMenuDescription,
     recipe: treeViewContextMenuRecipe,
     Component: TreeViewContextMenu,
+    playground: treeViewPlaygrounds["treeView-contextMenu"],
   },
   {
     id: "crud",
@@ -75,6 +80,7 @@ const treeViewItems = [
     description: treeViewCrudDescription,
     recipe: treeViewCrudRecipe,
     Component: TreeViewCrud,
+    playground: treeViewPlaygrounds["treeView-crud"],
   },
   {
     id: "icons",
@@ -82,6 +88,7 @@ const treeViewItems = [
     description: treeViewIconsDescription,
     recipe: treeViewIconsRecipe,
     Component: TreeViewIcons,
+    playground: treeViewPlaygrounds["treeView-icons"],
   },
   {
     id: "drag-and-drop",
@@ -89,6 +96,7 @@ const treeViewItems = [
     description: treeViewDndDescription,
     recipe: treeViewDndRecipe,
     Component: TreeViewDnd,
+    playground: treeViewPlaygrounds["treeView-dnd"],
   },
   {
     id: "drag-and-drop-reorder",
@@ -96,6 +104,7 @@ const treeViewItems = [
     description: treeViewDndReorderDescription,
     recipe: treeViewDndReorderRecipe,
     Component: TreeViewDndReorder,
+    playground: treeViewPlaygrounds["treeView-dndReorder"],
   },
   {
     id: "renderer",
@@ -103,6 +112,7 @@ const treeViewItems = [
     description: treeViewRendererDescription,
     recipe: treeViewRendererRecipe,
     Component: TreeViewRenderer,
+    playground: treeViewPlaygrounds["treeView-renderer"],
   },
   {
     id: "selectable",
@@ -110,6 +120,7 @@ const treeViewItems = [
     description: treeViewSelectableDescription,
     recipe: treeViewSelectableRecipe,
     Component: TreeViewSelectable,
+    playground: treeViewPlaygrounds["treeView-selectable"],
   },
   
   {
@@ -118,6 +129,7 @@ const treeViewItems = [
     description: treeViewGroupingDescription,
     recipe: treeViewGroupingRecipe,
     Component: TreeViewGrouping,
+    playground: treeViewPlaygrounds["treeView-grouping"],
   },
   {
     id: "progressive-load",
@@ -125,6 +137,7 @@ const treeViewItems = [
     description: treeViewProgressiveLoadTreeViewDescription,
     recipe: treeViewProgressiveLoadTreeViewRecipe,
     Component: TreeViewProgressiveLoadTreeView,
+    playground: treeViewPlaygrounds["treeView-progressiveLoadTreeView"],
   },
   {
     id: "performance",
@@ -132,6 +145,7 @@ const treeViewItems = [
     description: treeViewPerformanceDescription,
     recipe: treeViewPerformanceRecipe,
     Component: TreeViewPerformance,
+    playground: treeViewPlaygrounds["treeView-performance"],
   }
 ];
 

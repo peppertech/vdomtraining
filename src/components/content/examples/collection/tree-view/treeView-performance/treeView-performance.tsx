@@ -63,7 +63,7 @@ const createDataProvider = (data: TreeNode[]) =>
     keyAttributes: 'id'
   });
 
-export const TreeViewPerformance = () => {
+export default function TreeViewPerformance() {
   const [countPerLevel, setCountPerLevel] = useState<number>(5);
   const [numLevels, setNumLevels] = useState<number>(3);
   const [renderTime, setRenderTime] = useState('0');
@@ -187,4 +187,4 @@ export const TreeViewPerformance = () => {
   );
 };
 
-export default TreeViewPerformance;
+export { TreeViewPerformance };

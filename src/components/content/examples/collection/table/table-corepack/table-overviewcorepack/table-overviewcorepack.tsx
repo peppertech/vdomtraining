@@ -45,7 +45,7 @@ const selectionMode: TableSelectionMode = {
   column: "multiple"
 };
 
-export const TableOverviewcorepack = () => {
+export default function TableOverviewcorepack() {
   const departments = useMemo(() => JSON.parse(deptData) as Department[], []);
   const dataProvider = useMemo(
     () =>
@@ -66,6 +66,6 @@ export const TableOverviewcorepack = () => {
       class="demo-table-container"
     />
   );
-};
+}
 
-export default TableOverviewcorepack;
+export { TableOverviewcorepack };

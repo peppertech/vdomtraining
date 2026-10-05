@@ -9,6 +9,8 @@ import { useMemo,useState } from 'preact/hooks';
 import '../../../../../../jet-composites/demo-profile-card-layout/loader';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewCollectionListView };
 type EmployeeData = {
   id: number;
   image: string;
@@ -123,7 +125,7 @@ const renderCard = (context: ListViewItemContext) => (
   </li>
 );
 
-export const ListViewCollectionListView = () => {
+export default function ListViewCollectionListView() {
   const [activeLayout, setActiveLayout] = useState<ActiveLayout>('card');
   const layoutViewRadios = useMemo(() => [
     { id: 'card', icon: 'oj-ux-ico-grid-view-small' },
@@ -191,5 +193,3 @@ export const ListViewCollectionListView = () => {
     </div>
   );
 };
-
-export default ListViewCollectionListView;

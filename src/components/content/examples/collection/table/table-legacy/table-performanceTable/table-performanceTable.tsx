@@ -97,7 +97,7 @@ const createRows = (rowCount: number) => {
   });
 };
 
-export const TablePerformanceTable = () => {
+export default function TablePerformanceTable() {
   const [rowInputValue, setRowInputValue] = useState(defaultRowCount);
   const [columnInputValue, setColumnInputValue] = useState(defaultColumnCount);
   const [rowCount, setRowCount] = useState(defaultRowCount);
@@ -206,4 +206,4 @@ export const TablePerformanceTable = () => {
   );
 };
 
-export default TablePerformanceTable;
+export { TablePerformanceTable };

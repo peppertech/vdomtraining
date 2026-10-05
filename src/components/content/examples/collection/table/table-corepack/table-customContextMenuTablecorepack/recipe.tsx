@@ -10,13 +10,13 @@ const recipeHtmlText = String.raw`<ul>
     </li>
     <li>
         Use the
-        <code>context-menu-config</code>
-        attribute to specify a context menu.
+        <code>contextMenuConfig</code>
+        property to return custom actions for the cell or header that opened the menu.
     </li>
     <li>
-        You can specify <code>defaultMenuItems</code> as a part of the array returned by the context menu items so it would render the resize menu item to perform the resizing when applicable.
+        Include <code>'defaultMenuItems'</code> when <code>hasDefaultMenuItems</code> is true to place supported built-in actions between custom actions.
     </li>
-    <li>To add default menu items, please add string <code>'defaultMenuItems'</code> as shown in the demo typescript with a seperator</li>
+    <li>Add <code>{ type: 'separator' }</code> objects around the built-in actions, as shown in the TypeScript demo.</li>
 </ul>`;
 
 export const tableCustomContextMenuTablecorepackRecipe = (

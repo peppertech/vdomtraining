@@ -145,7 +145,7 @@ const renderGroupHeader = (
   </div>
 );
 
-export const StreamListStreamlist = () => {
+export default function StreamListStreamlist() {
   const rootRef = useRef<HTMLDivElement>(null);
   const [scroller, setScroller] = useState<HTMLDivElement | null>(null);
   const [pendingExpanded, setPendingExpanded] = useState<boolean>(true);
@@ -429,4 +429,4 @@ export const StreamListStreamlist = () => {
   );
 };
 
-export default StreamListStreamlist;
+export { StreamListStreamlist };

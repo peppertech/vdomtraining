@@ -1,7 +1,7 @@
 import 'ojs/ojformlayout';
 import 'ojs/ojoption';
 import 'ojs/ojradioset';
-import 'ojs/ojtable';
+import 'oj-c/table';
 import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo,useState } from 'preact/hooks';
@@ -18,22 +18,18 @@ interface DepartmentData {
 type GridVisibleOption = 'disabled' | 'enabled';
 type RadioChangedEvent = Parameters<NonNullable<ComponentProps<'oj-radioset'>['onvalueChanged']>>[0];
 
-export const TableGridStylingcorepack = () => {
+export default function TableGridStylingcorepack() {
   const [currentHorizontalGridVisible, setCurrentHorizontalGridVisible] = useState<GridVisibleOption>('disabled');
   const [currentVerticalGridVisible, setCurrentVerticalGridVisible] = useState<GridVisibleOption>('disabled');
-  const columns = useMemo<ComponentProps<'oj-table'>['columns']>(
-    () => [
-      { headerText: 'Department Id', field: 'DepartmentId', id: 'depId' },
-      { headerText: 'Department Name', field: 'DepartmentName', id: 'depName' },
-      { headerText: 'Location Id', field: 'LocationId', id: 'locId' },
-      { headerText: 'Manager Id', field: 'ManagerId', id: 'manId' }
-    ],
+  const columns = useMemo<NonNullable<ComponentProps<'oj-c-table'>['columns']>>(
+    () => ({
+      depId: { headerText: 'Department Id', field: 'DepartmentId' },
+      depName: { headerText: 'Department Name', field: 'DepartmentName' },
+      locId: { headerText: 'Location Id', field: 'LocationId' },
+      manId: { headerText: 'Manager Id', field: 'ManagerId' }
+    }),
     []
   );
-  const ojTableProps: Partial<ComponentProps<'oj-table'>> = {
-    accessibility: { rowHeader: 'depName' },
-    columnsDefault: { sortable: 'enabled' }
-  };
 
   const departments = JSON.parse(deptDataText as string) as DepartmentData[];
   const dataprovider = useMemo(
@@ -73,7 +69,7 @@ export const TableGridStylingcorepack = () => {
           </oj-radioset>
         </oj-form-layout>
       </div>
-      <oj-table
+      <oj-c-table
         id="table"
         aria-label="Departments Table"
         data={dataprovider}
@@ -81,10 +77,10 @@ export const TableGridStylingcorepack = () => {
         class="demo-table-container"
         verticalGridVisible={currentVerticalGridVisible}
         columns={columns}
-        {...ojTableProps}
+        row={{ accessibleRowHeader: 'depName' }}
       />
     </div>
   );
-};
+}
 
-export default TableGridStylingcorepack;
+export { TableGridStylingcorepack };

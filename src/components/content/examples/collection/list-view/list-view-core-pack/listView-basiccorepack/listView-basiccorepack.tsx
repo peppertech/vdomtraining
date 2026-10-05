@@ -28,7 +28,7 @@ const data: EmployeeData[] = [
   { id: 7, name: 'Zelda Christian Cooperman', title: 'Senior Principal Escalation Manager', image: '/styles/images/hcm/placeholder-female-02.png' }
 ];
 
-export const ListViewBasiccorepack = () => {
+export default function ListViewBasiccorepack() {
   const dataProvider = useMemo(
     () => new MutableArrayDataProvider<EmployeeData['id'], EmployeeData>(data, { keyAttributes: 'id' }),
     []
@@ -58,4 +58,4 @@ export const ListViewBasiccorepack = () => {
   );
 };
 
-export default ListViewBasiccorepack;
+export { ListViewBasiccorepack };

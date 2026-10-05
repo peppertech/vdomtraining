@@ -24,7 +24,7 @@ type EmployeeData = {
 type TableColumns = ComponentProps<'oj-table'>['columns'];
 type EmployeeCellContext = ojTable.CellTemplateContext<EmployeeData['EmployeeId'], EmployeeData>;
 
-export const TableCustomTable = () => {
+export default function TableCustomTable() {
   const employees = useMemo<EmployeeData[]>(() => JSON.parse(empDataText as string) as EmployeeData[], []);
   const dataProvider = useMemo(
     () => new ArrayDataProvider<EmployeeData['EmployeeId'], EmployeeData>(employees, { keyAttributes: 'EmployeeId' }),
@@ -156,4 +156,4 @@ export const TableCustomTable = () => {
   );
 };
 
-export default TableCustomTable;
+export { TableCustomTable };

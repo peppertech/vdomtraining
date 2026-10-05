@@ -28,7 +28,7 @@ type EditableRowTemplateContext = ojTable.RowTemplateContext<EmployeeData['Emplo
     mode?: 'navigation' | 'edit';
 };
 
-export const TableComputedField = () => {
+export default function TableComputedField() {
     const [employeeData, setEmployeeData] = useState<EmployeeData[]>(
         () => JSON.parse(empData as string) as EmployeeData[]
     );
@@ -260,4 +260,4 @@ export const TableComputedField = () => {
     );
 };
 
-export default TableComputedField;
+export { TableComputedField };

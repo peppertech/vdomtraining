@@ -63,7 +63,7 @@ const renderItem: import("ojs/ojvcomponent").TemplateSlot<ItemTemplateContext> =
   </oj-c-list-item-layout>
 );
 
-export const ListViewCustomSkeletoncorepack = () => {
+export default function ListViewCustomSkeletoncorepack() {
   const [delayInput, setDelayInput] = useState(2000);
   const [fetchDelay, setFetchDelay] = useState(2000);
 
@@ -117,4 +117,4 @@ export const ListViewCustomSkeletoncorepack = () => {
   );
 };
 
-export default ListViewCustomSkeletoncorepack;
+export { ListViewCustomSkeletoncorepack };

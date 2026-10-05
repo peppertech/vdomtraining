@@ -9,6 +9,8 @@ import { useMemo } from 'preact/hooks';
 import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listView/jsonHierListView/files.json';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
+
+export { ListViewJsonHierListView };
 interface File {
     id: string;
     name: string;
@@ -34,7 +36,7 @@ type AvatarBackground = NonNullable<ComponentProps<'oj-avatar'>['background']>;
 type ListItemData = FileData | HeaderData;
 type ItemTemplateContext = ojListView.ItemContext<File | Header, ListItemData>;
 
-export const ListViewJsonHierListView = () => {
+export default function ListViewJsonHierListView() {
   const data = useMemo<HeaderData[]>(() => JSON.parse(jsonDataStr as string) as HeaderData[], []);
   const dataProvider = useMemo(() => new ArrayTreeDataProvider<File['id'] | Header['id'], ListItemData>(data, {
       keyAttributes: 'attr.id'
@@ -100,5 +102,3 @@ export const ListViewJsonHierListView = () => {
         </oj-list-view>
     );
 };
-
-export default ListViewJsonHierListView;

@@ -52,7 +52,7 @@ type EditableRowTemplateContext = ojTable.RowTemplateContext<DepartmentData['Dep
     mode?: 'navigation' | 'edit';
 };
 const deptData = JSON.parse(deptDataText as string) as DepartmentData[];
-export const TableEditableFormTable = () => {
+export default function TableEditableFormTable() {
     const deptArray = useMemo<DepartmentData[]>(() => deptData, []);
     const [deptObservableArray, setDeptObservableArray] = useState<DepartmentData[]>(() => [...deptArray]);
     const [simulatedDelays, setSimulatedDelays] = useState<SimulatedDelays>('off');
@@ -497,4 +497,4 @@ export const TableEditableFormTable = () => {
             <oj-text-area id="editedContent" rows={3} value={editedData}/>
         </div>);
 };
-export default TableEditableFormTable;
+export { TableEditableFormTable };

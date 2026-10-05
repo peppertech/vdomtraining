@@ -26,7 +26,7 @@ const itemTemplateRenderer = (row: TreeViewItemTemplateContext) => [
   </span>
 ];
 
-export const TreeViewContextMenu = () => {
+export default function TreeViewContextMenu() {
   const treeViewRef = useRef<ojTreeView<string, TreeNode> | null>(null);
   const data = useMemo(
     () =>
@@ -83,4 +83,4 @@ export const TreeViewContextMenu = () => {
   );
 };
 
-export default TreeViewContextMenu;
+export { TreeViewContextMenu };

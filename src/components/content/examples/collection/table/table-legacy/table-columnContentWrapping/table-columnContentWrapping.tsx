@@ -4,7 +4,7 @@ import type { ComponentProps } from 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
-export const TableColumnContentWrapping = () => {
+export default function TableColumnContentWrapping() {
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       {
           headerText: 'Column 1',
@@ -47,4 +47,4 @@ export const TableColumnContentWrapping = () => {
     );
 };
 
-export default TableColumnContentWrapping;
+export { TableColumnContentWrapping };

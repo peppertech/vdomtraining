@@ -9,6 +9,8 @@ import 'preact';
 import { useMemo,useRef,useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewObservableArrayListView };
 type ItemData = {
   id: number;
   item: string;
@@ -29,7 +31,7 @@ const initialItems: ItemData[] = [
   { id: 4, item: 'Vanilla Extract' }
 ];
 
-export const ListViewObservableArrayListView = () => {
+export default function ListViewObservableArrayListView() {
   const [currentItem, setCurrentItem] = useState('');
   const [allItems, setAllItems] = useState<ItemData[]>(initialItems);
   const [selectedItems, setSelectedItems] = useState<SelectedItems>(
@@ -160,5 +162,3 @@ export const ListViewObservableArrayListView = () => {
     </div>
   );
 };
-
-export default ListViewObservableArrayListView;

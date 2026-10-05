@@ -29,7 +29,7 @@ type FirstSelectedItemChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-c-list-view'>['onfirstSelectedItemChanged']>
 >[0];
 
-export const ListViewSingleSelectioncorepack = () => {
+export default function ListViewSingleSelectioncorepack() {
   const [selectedItems, setSelectedItems] = useState<SelectedKeySet>(new KeySetImpl());
   const [selectedSelectionRequired, setSelectedSelectionRequired] = useState(false);
   const [firstSelectedItem, setFirstSelectedItem] = useState<FirstSelectedItem | null>(null);
@@ -154,4 +154,4 @@ export const ListViewSingleSelectioncorepack = () => {
     );
 };
 
-export default ListViewSingleSelectioncorepack;
+export { ListViewSingleSelectioncorepack };

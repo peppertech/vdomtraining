@@ -28,7 +28,7 @@ type ChartItem = {
 const clipboard = new DemoDataTransfer();
 const dataMimeType = 'application/ojtablerows+json';
 
-export const TableDragTableDropChart = () => {
+export default function TableDragTableDropChart() {
   const dataArray = useMemo<TableData[]>(() => JSON.parse(resultDataText as string) as TableData[], []);
   const dataProvider = useMemo(
     () => new ArrayDataProvider<TableData['Year'], TableData>(dataArray, { keyAttributes: 'Year' }),
@@ -163,4 +163,4 @@ export const TableDragTableDropChart = () => {
   );
 };
 
-export default TableDragTableDropChart;
+export { TableDragTableDropChart };

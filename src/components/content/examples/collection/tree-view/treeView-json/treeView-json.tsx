@@ -23,7 +23,7 @@ const itemTemplateRenderer = (row: TreeViewItemTemplateContext) => [
   </span>
 ];
 
-export const TreeViewJson = () => {
+export default function TreeViewJson() {
   const data = useMemo(
     () =>
       new ArrayTreeDataProvider(jsonData, {
@@ -44,4 +44,4 @@ export const TreeViewJson = () => {
   );
 };
 
-export default TreeViewJson;
+export { TreeViewJson };

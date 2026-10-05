@@ -6,6 +6,8 @@ import 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
+
+export { ListViewGroupHeaderListView };
 type EmployeeData = {
   id: number;
   name: string;
@@ -24,7 +26,7 @@ type ItemTemplateContext = {
   data: GroupData | EmployeeData;
 };
 
-export const ListViewGroupHeaderListView = () => {
+export default function ListViewGroupHeaderListView() {
   const data = useMemo<GroupData[]>(
     () => [
       {
@@ -125,5 +127,3 @@ export const ListViewGroupHeaderListView = () => {
     </div>
   );
 };
-
-export default ListViewGroupHeaderListView;

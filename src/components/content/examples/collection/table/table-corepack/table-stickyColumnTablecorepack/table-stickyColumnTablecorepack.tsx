@@ -133,7 +133,7 @@ const createRenderActionTemplate = (
   return renderer;
 };
 
-export const TableStickyColumnTablecorepack = () => {
+export default function TableStickyColumnTablecorepack() {
   const initialRows = useMemo(() => JSON.parse(empData) as EmployeeStatus[], []);
   const [rows, setRows] = useState<EmployeeStatus[]>(initialRows);
   const dataProvider = useMemo(
@@ -182,6 +182,6 @@ export const TableStickyColumnTablecorepack = () => {
       <template slot="actionTemplate" render={renderActionTemplate} />
     </oj-c-table>
   );
-};
+}
 
-export default TableStickyColumnTablecorepack;
+export { TableStickyColumnTablecorepack };

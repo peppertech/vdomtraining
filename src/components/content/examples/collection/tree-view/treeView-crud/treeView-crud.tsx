@@ -48,7 +48,7 @@ const getMetadataKeys = (metadata?: MutateMetadata) => {
   return Array.from(metadata, (item) => item.key).join();
 };
 
-export const TreeViewCrud = () => {
+export default function TreeViewCrud() {
   const [addEvtDisabled, setAddEvtDisabled] = useState(false);
   const [removeEvtDisabled, setRemoveEvtDisabled] = useState(true);
   const [eventStatus, setEventStatus] = useState('');
@@ -324,4 +324,4 @@ export const TreeViewCrud = () => {
   );
 };
 
-export default TreeViewCrud;
+export { TreeViewCrud };

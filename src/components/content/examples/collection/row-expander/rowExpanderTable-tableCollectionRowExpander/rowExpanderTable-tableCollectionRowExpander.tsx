@@ -28,7 +28,7 @@ type TaskItem = {
 };
 type TaskRowTemplateContext = ojTable.RowTemplateContext<TaskKey, TaskData>;
 
-export const RowExpanderTableTableCollectionRowExpander = () => {
+export default function RowExpanderTableTableCollectionRowExpander() {
   const keyAttributes: keyof TaskData = 'id';
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(
     () => [
@@ -163,4 +163,4 @@ export const RowExpanderTableTableCollectionRowExpander = () => {
   );
 };
 
-export default RowExpanderTableTableCollectionRowExpander;
+export { RowExpanderTableTableCollectionRowExpander };

@@ -6,6 +6,8 @@ import 'preact';
 import { useMemo,useRef,useState } from 'preact/hooks';
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 
+
+export { ListViewObservableNestedArrayListView };
 type ListItem = {
   id: string;
   label: string;
@@ -70,7 +72,7 @@ const removeItem = (data: ListItem[], itemId: string): ListItem[] =>
     return result;
   }, []);
 
-export const ListViewObservableNestedArrayListView = () => {
+export default function ListViewObservableNestedArrayListView() {
   const itemCounter = useRef(5);
   const [data, setData] = useState<ListItem[]>(() => cloneData(initialData));
   const expanded = useMemo(() => new AllKeySetImpl(), []);
@@ -146,5 +148,3 @@ export const ListViewObservableNestedArrayListView = () => {
     </oj-list-view>
   );
 };
-
-export default ListViewObservableNestedArrayListView;

@@ -16,7 +16,7 @@ interface DepartmentData {
     ManagerId: number;
 }
 
-export const TableEventTable = () => {
+export default function TableEventTable() {
   const [eventLog, setEventLog] = useState('');
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Department Id', field: 'DepartmentId', id: 'depId' },
@@ -127,4 +127,4 @@ export const TableEventTable = () => {
     );
 };
 
-export default TableEventTable;
+export { TableEventTable };

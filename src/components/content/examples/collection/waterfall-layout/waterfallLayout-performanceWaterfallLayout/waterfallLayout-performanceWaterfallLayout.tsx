@@ -46,7 +46,7 @@ const renderPerformanceItem = (item: PerformanceTemplateContext) => (
   </div>
 );
 
-export const WaterfallLayoutPerformanceWaterfallLayout = () => {
+export default function WaterfallLayoutPerformanceWaterfallLayout() {
   const waterfallRef = useRef<HTMLElement | null>(null);
   const [numItems, setNumItems] = useState<InputNumberValue>(1000);
   const [renderTime, setRenderTime] = useState(0);
@@ -114,4 +114,4 @@ export const WaterfallLayoutPerformanceWaterfallLayout = () => {
   );
 };
 
-export default WaterfallLayoutPerformanceWaterfallLayout;
+export { WaterfallLayoutPerformanceWaterfallLayout };

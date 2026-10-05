@@ -10,6 +10,8 @@ import type { ComponentProps } from 'preact';
 import { useMemo,useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewScrollPosListView };
 interface ItemData {
   id: string;
   title: string;
@@ -37,7 +39,7 @@ const createItems = (count: number): ItemData[] =>
 
 const formatScrollValue = (value?: number) => value ?? 0;
 
-export const ListViewScrollPosListView = () => {
+export default function ListViewScrollPosListView() {
   const initialItems = useMemo(() => createItems(200), []);
   const [items, setItems] = useState<ItemData[]>(initialItems);
   const [scrollPosition, setScrollPosition] = useState<ScrollPosition>({ index: 25 });
@@ -122,5 +124,3 @@ export const ListViewScrollPosListView = () => {
     </div>
   );
 };
-
-export default ListViewScrollPosListView;

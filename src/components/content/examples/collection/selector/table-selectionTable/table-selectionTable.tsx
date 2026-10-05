@@ -31,7 +31,7 @@ type SelectionModeOption = {
   label: string;
 };
 
-export const TableSelectionTable = () => {
+export default function TableSelectionTable() {
   const [selectedItems, setSelectedItems] = useState<TableSelectedItems>({
       row: new KeySetImpl<Employee['DepartmentId']>(),
       column: new KeySetImpl<string>()
@@ -125,4 +125,4 @@ export const TableSelectionTable = () => {
     );
 };
 
-export default TableSelectionTable;
+export { TableSelectionTable };

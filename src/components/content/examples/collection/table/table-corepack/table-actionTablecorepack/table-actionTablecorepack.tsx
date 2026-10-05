@@ -1,8 +1,8 @@
 import 'ojs/ojbutton';
 import { ojButton } from 'ojs/ojbutton';
 import 'ojs/ojoption';
-import 'ojs/ojtable';
-import { ojTable } from 'ojs/ojtable';
+import 'oj-c/table';
+import type { CTableElement } from 'oj-c/table';
 import 'preact';
 import type { ComponentProps } from 'preact';
 import { useMemo,useState } from 'preact/hooks';
@@ -18,40 +18,36 @@ interface EmployeeData {
     Status: string;
 }
 
-export const TableActionTablecorepack = () => {
+export default function TableActionTablecorepack() {
   const [empArray, setEmpArray] = useState<EmployeeData[]>(() => JSON.parse(empData as string) as EmployeeData[]);
-  const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
-      { headerText: 'Employee Id', field: 'EmployeeId', id: 'id' },
-      { headerText: 'Employee Name', template: 'empNameTemplate', id: 'name' },
-      { headerText: 'Sales Revenue', field: 'Revenue', id: 'revenue' },
-      { headerText: 'Rating', field: 'Rating', id: 'rating' },
-      { headerText: 'Status', field: 'Status', id: 'status' },
-      {
+  type ColumnKey = 'id' | 'name' | 'revenue' | 'rating' | 'status' | 'action';
+  const columns = useMemo<NonNullable<ComponentProps<'oj-c-table'>['columns']>>(() => ({
+      id: { headerText: 'Employee Id', field: 'EmployeeId' },
+      name: { headerText: 'Employee Name', template: 'empNameTemplate' },
+      revenue: { headerText: 'Sales Revenue', field: 'Revenue' },
+      rating: { headerText: 'Rating', field: 'Rating' },
+      status: { headerText: 'Status', field: 'Status' },
+      action: {
           headerText: 'Action',
-          maxWidth: '10rem',
-          frozenEdge: 'all',
-          headerClassName: 'oj-helper-text-align-end',
-          className: 'oj-helper-text-align-end oj-sm-padding-0-vertical',
-          template: 'actionTemplate',
-          id: 'action'
+          maxWidth: 160,
+          sticky: 'enabled',
+          horizontalAlignment: 'end',
+          padding: { top: 'disabled', bottom: 'disabled' },
+          template: 'actionTemplate'
       }
-  ], []);
-  const ojTableProps: Partial<ComponentProps<'oj-table'>> = {
-      accessibility: { rowHeader: 'name' },
-      columnsDefault: { sortable: 'disabled' }
-  };
+  }), []);
 
   const dataprovider = useMemo(() => new ArrayDataProvider<EmployeeData['EmployeeId'], EmployeeData>(empArray, {
       keyAttributes: 'EmployeeId',
       implicitSort: [{ attribute: 'EmployeeId', direction: 'ascending' }]
   }), [empArray]);
 
-  const handleApprove = (_event: ojButton.ojAction, context: ojTable.CellTemplateContext<EmployeeData['EmployeeId'], EmployeeData>) => {
+  const handleApprove = (_event: ojButton.ojAction, context: CTableElement.CellTemplateContext<EmployeeData['EmployeeId'], EmployeeData, ColumnKey>) => {
       setEmpArray((current) => current.map((row) => row.EmployeeId === context.item.data.EmployeeId ? { ...row, Status: 'Approved' } : row));
   };
 
   return (
-      <oj-table id="table" aria-label="Departments Table" class="demo-table-container" data={dataprovider} selectionMode={{ row: 'single' }} dnd={{ reorder: { columns: 'enabled' } }} scrollPolicy="loadMoreOnScroll" scrollPolicyOptions={{ fetchSize: 10 }} columns={columns} {...ojTableProps}>
+      <oj-c-table id="table" aria-label="Employees Table" class="demo-table-container" data={dataprovider} selectionMode={{ row: 'single' }} scrollPolicyOptions={{ fetchSize: 10 }} columns={columns} row={{ accessibleRowHeader: 'name' }}>
             <template slot="empNameTemplate" render={(cell) => (
                   <>
                       {cell.item.data.FirstName + ' ' + cell.item.data.LastName}
@@ -65,8 +61,8 @@ export const TableActionTablecorepack = () => {
                               </oj-button>
                   </>
                 )} />
-        </oj-table>
+        </oj-c-table>
     );
-};
+}
 
-export default TableActionTablecorepack;
+export { TableActionTablecorepack };

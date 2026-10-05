@@ -41,7 +41,7 @@ const createDataProvider = (delay: number, childDelay: number) =>
     childDelay
   );
 
-export const TreeViewProgressiveLoadTreeView = () => {
+export default function TreeViewProgressiveLoadTreeView() {
   const [delay, setDelay] = useState<number>(2000);
   const [childDelay, setChildDelay] = useState<number>(2000);
   const [dataProvider, setDataProvider] = useState(() => createDataProvider(2000, 2000));
@@ -98,4 +98,4 @@ export const TreeViewProgressiveLoadTreeView = () => {
   );
 };
 
-export default TreeViewProgressiveLoadTreeView;
+export { TreeViewProgressiveLoadTreeView };

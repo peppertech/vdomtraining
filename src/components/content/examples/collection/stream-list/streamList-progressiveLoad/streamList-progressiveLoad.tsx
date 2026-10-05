@@ -58,7 +58,7 @@ const generateTreeData = (count: number, idPrefix = '', hasChildren = true): Ite
 const flatData = generateData(250);
 const treeData = generateTreeData(100);
 
-export const StreamListProgressiveLoad = () => {
+export default function StreamListProgressiveLoad() {
   const [dataStructure, setDataStructure] = useState<DataStructure>('flat');
   const [delay, setDelay] = useState<number>(2000);
   const [childDelay, setChildDelay] = useState<number>(2000);
@@ -186,4 +186,4 @@ export const StreamListProgressiveLoad = () => {
   );
 };
 
-export default StreamListProgressiveLoad;
+export { StreamListProgressiveLoad };

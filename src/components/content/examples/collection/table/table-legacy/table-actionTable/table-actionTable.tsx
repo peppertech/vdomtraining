@@ -18,7 +18,7 @@ interface EmployeeData {
     Status: string;
 }
 
-export const TableActionTable = () => {
+export default function TableActionTable() {
   const [empArray, setEmpArray] = useState<EmployeeData[]>(() => JSON.parse(empData as string) as EmployeeData[]);
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
       { headerText: 'Employee Id', field: 'EmployeeId', id: 'id' },
@@ -69,4 +69,4 @@ export const TableActionTable = () => {
     );
 };
 
-export default TableActionTable;
+export { TableActionTable };

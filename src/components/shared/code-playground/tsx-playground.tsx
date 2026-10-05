@@ -44,6 +44,8 @@ const ALLOWED_IMPORTS = new Set([
   "oj-c/selector",
   "oj-c/selector-all",
   "oj-c/skeleton",
+  "oj-c/table",
+  "oj-c/rating-gauge",
   "oj-c/rich-radioset",
   "oj-c/rich-checkboxset",
   "oj-c/select-multiple",
@@ -51,12 +53,19 @@ const ALLOWED_IMPORTS = new Set([
   "oj-c/toolbar",
   "ojs/ojavatar",
   "ojs/ojbutton",
+  "ojs/ojbufferingdataprovider",
+  "ojs/ojbufferingtreedataprovider",
   "ojs/ojarraydataprovider",
+  "ojs/ojactioncard",
+  "ojs/ojdataprovider",
+  "ojs/ojdatasource-common",
   "ojs/ojasyncvalidator-daterestriction",
   "ojs/ojasyncvalidator-length",
   "ojs/ojasyncvalidator-numberrange",
   "ojs/ojasyncvalidator-regexp",
   "ojs/ojcheckboxset",
+  "ojs/ojchart",
+  "ojs/ojcommontypes",
   "ojs/ojcollapsible",
   "ojs/ojcolor",
   "ojs/ojcolorpalette",
@@ -75,23 +84,34 @@ const ALLOWED_IMPORTS = new Set([
   "ojs/ojarraytreedataprovider",
   "ojs/ojtable",
   "ojs/ojformlayout",
+  "ojs/ojflattenedtreedataproviderview",
   "ojs/ojkeyset",
   "ojs/ojgauge",
+  "ojs/ojgroupingdataprovider",
   "ojs/ojhighlighttext",
   "ojs/ojinputnumber",
   "ojs/ojinputsearch",
   "ojs/ojinputtext",
+  "ojs/ojimmutabletreedatautils",
   "ojs/index",
   "ojs/ojindexer",
   "ojs/ojindexermodeltreedataprovider",
   "ojs/ojlabel",
   "ojs/ojlabelvalue",
   "ojs/ojlistitemlayout",
+  "ojs/ojlistdataproviderview",
   "ojs/ojlistview",
+  "ojs/ojlistviewdnd",
   "ojs/ojmenu",
+  "ojs/ojmessage",
+  "ojs/ojmessages",
   "ojs/ojmessaging",
   "ojs/ojmutablearraydataprovider",
+  "ojs/ojmutablearraytreedataprovider",
   "ojs/ojrestdataprovider",
+  "ojs/ojresponsiveutils",
+  "ojs/ojresttreedataprovider",
+  "ojs/ojrowexpander",
   "ojs/ojoption",
   "ojs/ojradioset",
   "ojs/ojrefresher",
@@ -102,9 +122,14 @@ const ALLOWED_IMPORTS = new Set([
   "ojs/ojswitch",
   "ojs/ojswipeactions",
   "ojs/ojtimeline",
+  "ojs/ojstreamlist",
+  "ojs/ojtreedataprovider",
   "ojs/ojtoolbar",
+  "ojs/ojtreeview",
   "ojs/ojvalidator",
   "ojs/ojvalidator-daterestriction",
+  "ojs/ojvalidator-numberrange",
+  "ojs/ojwaterfalllayout",
   "ojs/ojvalidationgroup",
   "./DemoNumberRangeAsyncValidator",
   "./inputTextCorePack-shared",
@@ -142,7 +167,20 @@ const ALLOWED_IMPORTS = new Set([
   "./formLayoutLegacy-shared",
   "./formLayoutCorePack",
   "../../../../../jet-composites/demo-profile-card-layout/loader",
+  "../../../../../jet-composites/demo-dept-card-layout/loader",
+  "../../../../../../jet-composites/demo-profile-card-layout/loader",
   "../../../../../jet-composites/demo-responsive-buttonset/loader",
+  "../../../../../../jet-composites/demo-responsive-buttonset/loader",
+  "../../../../../../jet-composites/demo-radioset-enum/loader",
+  "../../../../../../jet-composites/demo-memory-card/loader",
+  "../../../shared/DemoDelayingDataProvider",
+  "../../../shared/DemoDelayingTreeDataProvider",
+  "../../shared/DemoDelayingTreeDataProvider",
+  "../../../../../jet-composites/demo-activity-stream/demo-activity-stream-item/loader",
+  "../../../../../../dataProvider/DemoSmartSuggestionsDataProvider",
+  "./DemoDataTransfer",
+  "../../../shared/CollectionMockFetchServer",
+  "../inputSearch-suggestions/DemoDelayingDataProvider",
   "../../shared/CollectionMockFetchServer",
   "../../shared/DemoDelayingDataProvider",
 ]);
@@ -451,7 +489,25 @@ function compileComponent(
     throw new Error("Export a named default function component to run this example.");
   }
 
-  const executableSource = source
+  const sourceFile = typescript.createSourceFile(
+    "playground.tsx",
+    source,
+    typescript.ScriptTarget.Latest,
+    true,
+    typescript.ScriptKind.TSX,
+  );
+  const sourceWithoutLocalExports = sourceFile.statements
+    .filter(
+      (statement): statement is typescript.ExportDeclaration =>
+        typescript.isExportDeclaration(statement) && !statement.moduleSpecifier,
+    )
+    .reduceRight(
+      (currentSource, statement) =>
+        currentSource.slice(0, statement.getStart(sourceFile)) +
+        currentSource.slice(statement.end),
+      source,
+    );
+  const executableSource = sourceWithoutLocalExports
     .replace(/^\s*import(?:[\s\S]*?;\s*)/gm, "")
     .replace("export default function", "function");
   const result = typescript.transpileModule(executableSource, {

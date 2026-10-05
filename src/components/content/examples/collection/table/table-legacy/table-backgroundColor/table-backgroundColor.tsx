@@ -4,7 +4,7 @@ import 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
-export const TableBackgroundColor = () => {
+export default function TableBackgroundColor() {
   const deptArray = useMemo(() => [
       {
           DepartmentId: 10,
@@ -65,4 +65,4 @@ export const TableBackgroundColor = () => {
     );
 };
 
-export default TableBackgroundColor;
+export { TableBackgroundColor };

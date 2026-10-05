@@ -1,8 +1,8 @@
 import { FilterFactory } from 'ojs/ojdataprovider';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputtext';
-import 'ojs/ojtable';
-import { ojTable } from 'ojs/ojtable';
+import 'oj-c/table';
+import type { CTableElement } from 'oj-c/table';
 import 'preact';
 import type { ComponentProps } from 'preact';
 import { useEffect,useMemo,useState } from 'preact/hooks';
@@ -24,7 +24,8 @@ interface EmployeeData {
   ManagerId: string;
 }
 
-type TableColumns = ComponentProps<'oj-table'>['columns'];
+type ColumnKey = 'depId' | 'depName' | 'locId' | 'manId';
+type TableColumns = NonNullable<ComponentProps<'oj-c-table'>['columns']>;
 type FilterChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-text'>['onrawValueChanged']>>[0];
 
 const baseDeptArray = JSON.parse(deptDataText as string) as DepartmentSource[];
@@ -46,7 +47,7 @@ const generateDeptArray = (num: number) => {
   return deptArray;
 };
 
-export const TableFilteringTablecorepack = () => {
+export default function TableFilteringTablecorepack() {
   const [filter, setFilter] = useState('');
   const [rowCount, setRowCount] = useState('');
 
@@ -88,52 +89,33 @@ export const TableFilteringTablecorepack = () => {
     return () => subscriber.unsubscribe?.();
   }, [dataprovider]);
 
-  const highlightingCellRenderer = (context: ojTable.ColumnsRendererContext<EmployeeData['DepartmentId'], EmployeeData>) => {
-    const fields: Array<keyof EmployeeData> = ['DepartmentId', 'DepartmentName', 'LocationId', 'ManagerId'];
-    const field = fields[context.columnIndex] ?? 'DepartmentId';
-    const data = String(context.row[field] ?? '');
-    const filterString = filter;
-    const spanNode = document.createElement('span');
-
-    if (filterString.length > 0) {
-      const index = data.toLowerCase().indexOf(filterString.toLowerCase());
-      if (index > -1) {
-        if (index !== 0) {
-          spanNode.appendChild(document.createTextNode(data.slice(0, index)));
-        }
-        const bold = document.createElement('b');
-        bold.appendChild(document.createTextNode(data.slice(index, index + filterString.length)));
-        spanNode.appendChild(bold);
-        if (index + filterString.length < data.length) {
-          spanNode.appendChild(document.createTextNode(data.slice(index + filterString.length)));
-        }
-      } else {
-        spanNode.appendChild(document.createTextNode(data));
-      }
-    } else {
-      spanNode.appendChild(document.createTextNode(data));
-    }
-
-    context.parentElement?.appendChild(spanNode);
+  const renderHighlightedCell = (
+    context: CTableElement.CellTemplateContext<EmployeeData['DepartmentId'], EmployeeData, ColumnKey>
+  ) => {
+    const data = String(context.data ?? '');
+    const index = filter ? data.toLowerCase().indexOf(filter.toLowerCase()) : -1;
+    return (
+      <span>
+        {index < 0 ? data : (
+          <>
+            {data.slice(0, index)}
+            <b>{data.slice(index, index + filter.length)}</b>
+            {data.slice(index + filter.length)}
+          </>
+        )}
+      </span>
+    );
   };
 
-  const columnArray = useMemo<TableColumns>(
-    () => [
-      { headerText: 'Department Id', renderer: highlightingCellRenderer, id: 'depId', field: 'DepartmentId' },
-      { headerText: 'Department Name', renderer: highlightingCellRenderer, id: 'depName', field: 'DepartmentName' },
-      { headerText: 'Location Id', renderer: highlightingCellRenderer, id: 'locId', field: 'LocationId' },
-      { headerText: 'Manager Id', renderer: highlightingCellRenderer, id: 'manId', field: 'ManagerId' }
-    ],
-    [filter]
-  );
+  const columns = useMemo<TableColumns>(() => ({
+    depId: { headerText: 'Department Id', field: 'DepartmentId', template: 'highlight' },
+    depName: { headerText: 'Department Name', field: 'DepartmentName', template: 'highlight' },
+    locId: { headerText: 'Location Id', field: 'LocationId', template: 'highlight' },
+    manId: { headerText: 'Manager Id', field: 'ManagerId', template: 'highlight' }
+  }), []);
 
   const handleFilterRawValueChanged = (event: FilterChangedEvent) => {
     setFilter(event.detail.value ?? '');
-  };
-
-  const ojTableProps: Partial<ComponentProps<'oj-table'>> = {
-    accessibility: { rowHeader: 'depName' },
-    columnsDefault: { sortable: 'disabled' }
   };
 
   return (
@@ -154,17 +136,18 @@ export const TableFilteringTablecorepack = () => {
           {rowCount}
         </span>
       </oj-form-layout>
-      <oj-table
+      <oj-c-table
         id="table"
         aria-label="Departments Table"
         data={dataprovider}
-        scrollPolicy="loadMoreOnScroll"
-        columns={columnArray}
+        columns={columns}
+        row={{ accessibleRowHeader: 'depName' }}
         class="demo-table-container"
-        {...ojTableProps}
-      />
+      >
+        <template slot="highlight" render={renderHighlightedCell} />
+      </oj-c-table>
     </div>
   );
-};
+}
 
-export default TableFilteringTablecorepack;
+export { TableFilteringTablecorepack };

@@ -10,6 +10,8 @@ import { useMemo,useRef,useState } from 'preact/hooks';
 import DemoDataTransfer from './DemoDataTransfer';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewWithTableDndListView };
 interface DataInfo {
     id: string;
     name: string;
@@ -128,7 +130,7 @@ const getTransferData = (item: TransferItem): DataInfo | null => {
     return candidate && 'id' in candidate ? candidate as DataInfo : null;
 };
 
-export const ListViewWithTableDndListView = () => {
+export default function ListViewWithTableDndListView() {
   const [sourceArr, setSourceArr] = useState<DataInfo[]>(() => [...SOURCE_DATA]);
   const [targetArr, setTargetArr] = useState<DataInfo[]>(() => [...TARGET_DATA]);
   const [cutItem, setCutItem] = useState<DataInfo['id'] | null>(null);
@@ -333,5 +335,3 @@ export const ListViewWithTableDndListView = () => {
         </div>
     );
 };
-
-export default ListViewWithTableDndListView;

@@ -2,7 +2,7 @@ import 'ojs/ojbutton';
 import 'ojs/ojformlayout';
 import 'ojs/ojinputnumber';
 import { RESTDataProvider } from 'ojs/ojrestdataprovider';
-import 'ojs/ojtable';
+import 'oj-c/table';
 import 'preact';
 import type { ComponentProps } from 'preact';
 import { useEffect,useMemo,useState } from 'preact/hooks';
@@ -24,21 +24,17 @@ type DelayedEmployeeDataProvider = DemoDelayingDataProvider<Key, Employee>;
 
 type NumberChangedEvent = Parameters<NonNullable<ComponentProps<'oj-input-number'>['onvalueChanged']>>[0];
 
-export const TableProgressiveLoadTablecorepack = () => {
+export default function TableProgressiveLoadTablecorepack() {
   const [fetchDelay, setFetchDelay] = useState(2000);
   const [appliedFetchDelay, setAppliedFetchDelay] = useState(2000);
   const [dataProvider, setDataProvider] = useState<DelayedEmployeeDataProvider | undefined>(undefined);
-  const columns = useMemo<ComponentProps<'oj-table'>['columns']>(() => [
-      { headerText: 'Employee Id', field: 'EMPLOYEE_ID', id: 'id' },
-      { headerText: 'First Name', field: 'FIRST_NAME', id: 'first' },
-      { headerText: 'Last Name', field: 'LAST_NAME', id: 'last' },
-      { headerText: 'E-mail', field: 'EMAIL', id: 'email' },
-      { headerText: 'Phone #', field: 'PHONE_NUMBER', id: 'phone' }
-  ], []);
-  const ojTableProps: Partial<ComponentProps<'oj-table'>> = {
-      accessibility: { rowHeader: ['first', 'last'] },
-      columnsDefault: { resizable: 'enabled' }
-  };
+  const columns = useMemo<NonNullable<ComponentProps<'oj-c-table'>['columns']>>(() => ({
+      id: { headerText: 'Employee Id', field: 'EMPLOYEE_ID', resizable: 'enabled' },
+      first: { headerText: 'First Name', field: 'FIRST_NAME', resizable: 'enabled' },
+      last: { headerText: 'Last Name', field: 'LAST_NAME', resizable: 'enabled' },
+      email: { headerText: 'E-mail', field: 'EMAIL', resizable: 'enabled' },
+      phone: { headerText: 'Phone #', field: 'PHONE_NUMBER', resizable: 'enabled' }
+  }), []);
 
   const keyAttributes: keyof Employee = 'EMPLOYEE_ID';
   const server = useMemo(() => new CollectionMockFetchServer<Employee>({
@@ -92,9 +88,9 @@ export const TableProgressiveLoadTablecorepack = () => {
                               <oj-button id="fetch-delay-button" class="oj-button-lg" onojAction={applyFetchDelay}>Apply</oj-button>
                           </oj-form-layout>
                 </div>
-            <oj-table id="table" aria-label="Fetch Delay Table" data={dataProvider} columns={columns} class="demo-table-container" {...ojTableProps} />
+            <oj-c-table id="table" aria-label="Fetch Delay Table" data={dataProvider} columns={columns} row={{ accessibleRowHeader: ['first', 'last'] }} class="demo-table-container" />
         </div>
     );
-};
+}
 
-export default TableProgressiveLoadTablecorepack;
+export { TableProgressiveLoadTablecorepack };

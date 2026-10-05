@@ -26,7 +26,7 @@ type TweetDataProvider = DemoDelayingDataProvider<Data['source'], Data>;
 
 const ORACLE_AVATAR = '/styles/images/listView/oracle.gif';
 
-export const ListViewProgressiveLoadingcorepack = () => {
+export default function ListViewProgressiveLoadingcorepack() {
   const initialDelay = 2000;
   const arr: Data[] = useMemo(() => JSON.parse(jsonDataStr), []);
   const [delay, setDelay] = useState(initialDelay);
@@ -98,4 +98,4 @@ const handleDelayValueChanged = (event: InputNumberValueChangedEvent) => {
   );
 };
 
-export default ListViewProgressiveLoadingcorepack;
+export { ListViewProgressiveLoadingcorepack };

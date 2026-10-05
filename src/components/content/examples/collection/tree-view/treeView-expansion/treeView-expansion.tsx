@@ -45,7 +45,7 @@ const getExpandedText = (expanded: KeySet<string>) => {
 
 const isExpanded = (expanded: KeySet<string>, key: string) => expanded.has(key);
 
-export const TreeViewExpansion = () => {
+export default function TreeViewExpansion() {
   const data = useMemo(
     () =>
       new ArrayTreeDataProvider(jsonData, {
@@ -104,4 +104,4 @@ export const TreeViewExpansion = () => {
   );
 };
 
-export default TreeViewExpansion;
+export { TreeViewExpansion };

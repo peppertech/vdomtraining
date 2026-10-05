@@ -51,7 +51,7 @@ const generateData = (count: number): DemoItem[] =>
     name: `Item ${index + 1}`
   }));
 
-export const SelectorPerformanceSelector = () => {
+export default function SelectorPerformanceSelector() {
   const [scrollPolicyValue, setScrollPolicyValue] =
     useState<ScrollPolicyValue>('loadMoreOnScroll');
   const [numItems, setNumItems] = useState(100);
@@ -177,4 +177,4 @@ export const SelectorPerformanceSelector = () => {
   );
 };
 
-export default SelectorPerformanceSelector;
+export { SelectorPerformanceSelector };

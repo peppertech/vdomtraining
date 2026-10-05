@@ -4,7 +4,7 @@ import 'ojs/ojtreeview';
 import 'preact';
 import { useMemo } from 'preact/hooks';
 
-export const TreeViewIcons = () => {
+export default function TreeViewIcons() {
   const expanded = useMemo(() => new AllKeySetImpl(), []);
 
   return (
@@ -33,4 +33,4 @@ export const TreeViewIcons = () => {
     );
 };
 
-export default TreeViewIcons;
+export { TreeViewIcons };

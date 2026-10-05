@@ -38,7 +38,7 @@ type ScrollPosition = {
     offsetX?: number | null;
 };
 
-export const TableScrollPosTable = () => {
+export default function TableScrollPosTable() {
   const [scrollPolicyValue, setScrollPolicyValue] = useState<ScrollPolicyValue>('loadMoreOnScroll');
   const [scrollPosValue, setScrollPosValue] = useState<ScrollPosition>({ x: 0, y: 0 });
   const columns = useMemo<ComponentProps<'oj-table'>['columns']>(
@@ -158,4 +158,4 @@ export const TableScrollPosTable = () => {
     );
 };
 
-export default TableScrollPosTable;
+export { TableScrollPosTable };

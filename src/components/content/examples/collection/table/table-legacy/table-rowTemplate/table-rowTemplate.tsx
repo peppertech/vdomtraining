@@ -24,7 +24,7 @@ type RowTemplateContext = {
   data: EmployeeData;
 };
 
-export const TableRowTemplate = () => {
+export default function TableRowTemplate() {
   const employees = useMemo<EmployeeData[]>(() => JSON.parse(empDataText as string) as EmployeeData[], []);
   const totalRevenue = useMemo(
     () => employees.reduce((sum, employee) => sum + employee.Revenue, 0),
@@ -125,4 +125,4 @@ export const TableRowTemplate = () => {
   );
 };
 
-export default TableRowTemplate;
+export { TableRowTemplate };

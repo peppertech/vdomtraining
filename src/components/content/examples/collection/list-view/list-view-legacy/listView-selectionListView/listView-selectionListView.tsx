@@ -14,6 +14,8 @@ import type { ComponentProps } from 'preact';
 import { useMemo,useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewSelectionListView };
 interface EmployeeData {
     id: number;
     name: string;
@@ -39,7 +41,7 @@ type FirstSelectedItemChangedEvent = Parameters<
   NonNullable<ComponentProps<'oj-list-view'>['onfirstSelectedItemChanged']>
 >[0];
 
-export const ListViewSelectionListView = () => {
+export default function ListViewSelectionListView() {
   const [selectedItems, setSelectedItems] = useState<SelectedKeySet>(new KeySetImpl());
   const [selectedSelectionRequired, setSelectedSelectionRequired] = useState(false);
   const [firstSelectedItem, setFirstSelectedItem] = useState<FirstSelectedItem | null>(null);
@@ -205,5 +207,3 @@ export const ListViewSelectionListView = () => {
         </div>
     );
 };
-
-export default ListViewSelectionListView;

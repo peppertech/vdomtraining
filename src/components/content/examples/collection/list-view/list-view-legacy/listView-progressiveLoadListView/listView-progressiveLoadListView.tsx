@@ -13,6 +13,8 @@ import * as jsonDataStr from 'text!./tweets.json';
 import DemoDelayingDataProvider from '../../../shared/DemoDelayingDataProvider';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewProgressiveLoadListView };
 interface Data {
   name: string;
   screen_name: string;
@@ -33,7 +35,7 @@ type ActiveLayout = 'card' | 'list';
 
 const ORACLE_AVATAR = '/styles/images/listView/oracle.gif';
 
-export const ListViewProgressiveLoadListView = () => {
+export default function ListViewProgressiveLoadListView() {
   const initialDelay = 2000;
   const arr: Data[] = useMemo(() => JSON.parse(jsonDataStr), []);
   const [delay, setDelay] = useState(initialDelay);
@@ -169,5 +171,3 @@ const handleDelayValueChanged = (event: InputNumberValueChangedEvent) => {
     </div>
   );
 };
-
-export default ListViewProgressiveLoadListView;

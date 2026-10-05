@@ -5,6 +5,8 @@ import 'preact';
 import { useMemo } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewGridlinesListView };
 type PersonData = {
   id: number;
   name: string;
@@ -16,7 +18,7 @@ type ItemTemplateContext = {
   data: PersonData;
 };
 
-export const ListViewGridlinesListView = () => {
+export default function ListViewGridlinesListView() {
   const data = useMemo<PersonData[]>(
     () => [
       {
@@ -99,5 +101,3 @@ export const ListViewGridlinesListView = () => {
     </div>
   );
 };
-
-export default ListViewGridlinesListView;

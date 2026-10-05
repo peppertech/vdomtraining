@@ -1,5 +1,6 @@
 import 'preact';
 import { RecipePageTemplate } from "../../../../shared/demo-page-layout/recipe-page-template";
+import { streamListPlaygrounds } from "./playgrounds";
 import { streamListMutationsDescription } from "./streamList-mutations/description";
 import { streamListMutationsRecipe } from "./streamList-mutations/recipe";
 import { StreamListMutations } from "./streamList-mutations/streamList-mutations";
@@ -23,6 +24,7 @@ const streamListItems = [
     description: streamListStreamlistDescription,
     recipe: streamListStreamlistRecipe,
     Component: StreamListStreamlist,
+    playground: streamListPlaygrounds["streamList-streamlist"],
   },
   {
     id: "mutations",
@@ -30,6 +32,7 @@ const streamListItems = [
     description: streamListMutationsDescription,
     recipe: streamListMutationsRecipe,
     Component: StreamListMutations,
+    playground: streamListPlaygrounds["streamList-mutations"],
   },
   
   {
@@ -38,6 +41,7 @@ const streamListItems = [
     description: streamListProgressiveLoadDescription,
     recipe: streamListProgressiveLoadRecipe,
     Component: StreamListProgressiveLoad,
+    playground: streamListPlaygrounds["streamList-progressiveLoad"],
   },
   {
     id: "scroll-position",
@@ -45,6 +49,7 @@ const streamListItems = [
     description: streamListScrollPositionDescription,
     recipe: streamListScrollPositionRecipe,
     Component: StreamListScrollPosition,
+    playground: streamListPlaygrounds["streamList-scrollPosition"],
   },
   {
     id: "performance",
@@ -52,6 +57,7 @@ const streamListItems = [
     description: streamListPerformanceDescription,
     recipe: streamListPerformanceRecipe,
     Component: StreamListPerformance,
+    playground: streamListPlaygrounds["streamList-performance"],
   },
   
 ];

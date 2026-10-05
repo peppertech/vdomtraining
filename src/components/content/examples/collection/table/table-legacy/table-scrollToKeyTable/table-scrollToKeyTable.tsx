@@ -17,7 +17,7 @@ interface TableData {
 type SwitchChangedEvent = Parameters<NonNullable<ComponentProps<'oj-switch'>['onvalueChanged']>>[0];
 type ScrollPositionChangedEvent = Parameters<NonNullable<ComponentProps<'oj-table'>['onscrollPositionChanged']>>[0];
 
-export const TableScrollToKeyTable = () => {
+export default function TableScrollToKeyTable() {
   const arr = useMemo<TableData[]>(
     () =>
       Array.from({ length: 100 }, (_, index) => {
@@ -109,4 +109,4 @@ export const TableScrollToKeyTable = () => {
   );
 };
 
-export default TableScrollToKeyTable;
+export { TableScrollToKeyTable };

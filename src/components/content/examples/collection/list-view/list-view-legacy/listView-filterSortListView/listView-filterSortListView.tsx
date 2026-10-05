@@ -20,6 +20,8 @@ import * as jsonDataStr from 'text!../../../data/cookbook/dataCollections/listVi
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 import ListDataProviderView = require('ojs/ojlistdataproviderview');
 
+
+export { ListViewFilterSortListView };
 interface OptionData {
 	    value: string;
 	    label: string;
@@ -47,7 +49,7 @@ type ProductItemTemplateContext = {
 };
 type ProductImageStyle = JSX.CSSProperties;
 
-export const ListViewFilterSortListView = () => {
+export default function ListViewFilterSortListView() {
 	  const priceCriteriaRef = useRef<ProductFilterCriterion[]>([]);
 	  const ratingCriteriaRef = useRef<ProductFilterCriterion[]>([]);
 	  const authorCriteriaRef = useRef<ProductFilterCriterion[]>([]);
@@ -282,5 +284,3 @@ export const ListViewFilterSortListView = () => {
         </div>
     );
 };
-
-export default ListViewFilterSortListView;

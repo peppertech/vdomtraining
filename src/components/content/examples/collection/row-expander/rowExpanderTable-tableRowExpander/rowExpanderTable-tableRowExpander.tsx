@@ -7,7 +7,7 @@ import * as jsonDataStr from 'text!../../data/cookbook/dataCollections/rowExpand
 import ArrayTreeDataProvider = require('ojs/ojarraytreedataprovider');
 import FlattenedTreeDataProviderView = require('ojs/ojflattenedtreedataproviderview');
 
-export const RowExpanderTableTableRowExpander = () => {
+export default function RowExpanderTableTableRowExpander() {
   const arrayTreeDataProvider = useMemo(() => new ArrayTreeDataProvider(JSON.parse(jsonDataStr), {
       keyAttributes: 'id'
   }), []);
@@ -44,4 +44,4 @@ export const RowExpanderTableTableRowExpander = () => {
     );
 };
 
-export default RowExpanderTableTableRowExpander;
+export { RowExpanderTableTableRowExpander };

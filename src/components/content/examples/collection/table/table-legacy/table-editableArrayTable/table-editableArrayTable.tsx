@@ -54,7 +54,7 @@ type EditableRowTemplateContext = ojTable.RowTemplateContext<DepartmentData['Dep
 const formatPrimaryValue = (primary: DepartmentData['Primary']) =>
     primary.includes('checked') ? 'Checked' : 'Unchecked';
 
-export const TableEditableArrayTable = () => {
+export default function TableEditableArrayTable() {
   const [deptObservableArray, setDeptObservableArray] = useState<DepartmentData[]>(
     () => JSON.parse(deptData as string) as DepartmentData[]
   );
@@ -499,4 +499,4 @@ export const TableEditableArrayTable = () => {
     );
 };
 
-export default TableEditableArrayTable;
+export { TableEditableArrayTable };

@@ -5,6 +5,8 @@ import 'preact';
 import { useMemo,useRef,useState } from 'preact/hooks';
 import ArrayDataProvider = require('ojs/ojarraydataprovider');
 
+
+export { ListViewDrillableListView };
 interface TodoTask {
     id: number;
     name: string;
@@ -12,7 +14,7 @@ interface TodoTask {
     content: string;
 }
 
-export const ListViewDrillableListView = () => {
+export default function ListViewDrillableListView() {
   const listViewRef = useRef<ojListView<TodoTask['id'], TodoTask> | null>(null);
   const page1Ref = useRef<HTMLDivElement | null>(null);
   const page2Ref = useRef<HTMLDivElement | null>(null);
@@ -121,5 +123,3 @@ export const ListViewDrillableListView = () => {
         </div>
     );
 };
-
-export default ListViewDrillableListView;
